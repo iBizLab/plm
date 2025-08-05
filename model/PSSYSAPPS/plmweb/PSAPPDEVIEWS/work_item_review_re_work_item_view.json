@@ -7,6 +7,7 @@
   "codeName" : "work_item_review_re_work_item_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_review_re_work_item_view.json",
   "name" : "work_itemreview_re_work_item_view",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -391,15 +392,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     },
-    "getPSAppViewRefs" : [ {
-      "name" : "EXPITEM:node",
-      "realTitle" : "关联工作项多项选择视图_选择数据视图（测试用例关联）",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_re_mpick_up_grid_view.json",
-        "viewType" : "DEPICKUPGRIDVIEW"
-      }
-    } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
       "id" : "treeexpbar"
@@ -410,7 +402,7 @@
       "id" : "TREEEXPBAR"
     },
     "getPSControls" : [ {
-      "codeName" : "relation_mpick_up_view_tree_view",
+      "codeName" : "work_item_mpick_up_tree",
       "controlType" : "TREEVIEW",
       "getCreatePSControlAction" : {
         "modelref" : true,
@@ -428,7 +420,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSTREEVIEWS/relation_mpick_up_view_tree_view.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSTREEVIEWS/work_item_mpick_up_tree.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -456,7 +448,7 @@
         }
       },
       "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
-      "logicName" : "关联工作项多项选择视图_树视图（测试用例关联）",
+      "logicName" : "工作项评审多项选择树",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -551,7 +543,7 @@
           "modelref" : true,
           "id" : "node_1"
         },
-        "name" : "项目名称 - 最近浏览",
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node"
@@ -563,7 +555,7 @@
           "modelref" : true,
           "id" : "node"
         },
-        "name" : "默认根节点 - 项目名称",
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "ROOT"
@@ -575,7 +567,7 @@
           "modelref" : true,
           "id" : "node_2"
         },
-        "name" : "项目名称 - 全部",
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node"
@@ -587,7 +579,19 @@
           "modelref" : true,
           "id" : "node_3"
         },
-        "name" : "项目名称 - 我负责的",
+        "name" : "null - null",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_4"
+        },
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node"
@@ -599,7 +603,7 @@
           "modelref" : true,
           "id" : "node_5"
         },
-        "name" : "项目名称 - 打开的",
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node"
@@ -611,7 +615,7 @@
           "modelref" : true,
           "id" : "node_6"
         },
-        "name" : "项目名称 - 已完成的",
+        "name" : "null - null",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node"
@@ -651,20 +655,21 @@
         },
         "maxSize" : -1,
         "name" : "项目名称",
-        "getNavPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_re_mpick_up_grid_view.json",
-          "viewType" : "DEPICKUPGRIDVIEW"
-        },
         "nodeType" : "node",
         "getPSAppDEDataSet" : {
           "modelref" : true,
-          "id" : "fetch_default"
+          "id" : "fetch_current"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
         },
+        "getPSNavigateParams" : [ {
+          "key" : "n_work_item_type_id_in",
+          "name" : "n_work_item_type_id_in",
+          "value" : "n_work_item_type_id_in",
+          "rawValue" : false
+        } ],
         "getTextPSAppDEField" : {
           "name" : "NAME",
           "codeName" : "name"
@@ -684,7 +689,7 @@
         "expanded" : true,
         "rootNode" : false,
         "selectFirstOnly" : false,
-        "selected" : false,
+        "selected" : true,
         "id" : "node"
       }, {
         "counterMode" : 0,
@@ -693,7 +698,7 @@
         "getPSNavigateParams" : [ {
           "key" : "query_recent",
           "name" : "query_recent",
-          "value" : "1",
+          "value" : "recent",
           "rawValue" : true
         } ],
         "text" : "最近浏览",
@@ -768,11 +773,17 @@
         "counterMode" : 0,
         "name" : "我关注的",
         "nodeType" : "node_4",
+        "getPSNavigateParams" : [ {
+          "key" : "query_attention",
+          "name" : "query_attention",
+          "value" : "attention",
+          "rawValue" : true
+        } ],
         "text" : "我关注的",
         "treeNodeType" : "STATIC",
         "hasPSDETreeNodeRSs" : false,
         "appendPNodeId" : false,
-        "disableSelect" : true,
+        "disableSelect" : false,
         "enableCheck" : false,
         "enableEditData" : false,
         "enableNewData" : false,
@@ -880,7 +891,7 @@
       "outputIconDefault" : true,
       "rootVisible" : false,
       "name" : "treeexpbar_tree",
-      "modelid" : "a00d1babde8f4cf82d1f61a498ade8f7",
+      "modelid" : "230803490ad84ffb4b531bf338858304",
       "modeltype" : "PSDETREEVIEW"
     } ],
     "xDataControlName" : "treeexpbar_tree",
