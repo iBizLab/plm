@@ -155,3 +155,32 @@ $ docker-compose up -d    #重新启动，重新初始持久化数据
 ```
 
 将备份文件导入到新服务的数据库服务中。
+
+##### 问题4、离线环境使用插件市场
+
+插件市场通过公网获取，离线使用需要以下步骤，操作前备份好nacos配置信息和数据库。
+
+- 替换plmweb镜像，如ibiz-cloud-web-runner:9.0.7.41-alpha.16.plm.250801改为ibiz-cloud-web-runner:9.0.7.41-alpha.16.plm.chart.250801，就是在默认镜像基础上plm后面加上.chart，后续发版镜像都是按照这种格式来。
+
+  ```shell
+  $ cd plm/deploy/compose 
+  $ sed -i "s#ibiz-cloud-web-runner:9.0.7.41-alpha.16.plm.250801#ibiz-cloud-web-runner:9.0.7.41-alpha.16.plm.chart.250801#g" docker-compose.yml
+  ```
+
+- 访问nacos界面：http://localhost:8848 修改nacos配置deploysystem-gateway，将serviceurl改为http://plmweb/api/v4 ，projectid改为1或者任一数字然后发布。
+
+  ![img](../../sample/nacos-deploysystem-gateway.png)
+
+- 修改rt数据库中system表数据MARKET_URL为http://plmweb/api/v4
+
+  ```sql
+  UPDATE `a_lab01_3f9ebc219`.`system` SET `MARKET_URL` = 'http://plmweb/api/v4';
+  ```
+
+- 重启allinone、gateway、uaa、plmweb、plmservice服务
+
+  ```shell
+  $ cd plm/deploy/compose
+  $ docker-compose down
+  $ docker-compose up -d
+  ```
