@@ -1580,6 +1580,9 @@
       "name" : "JOB_TYPE",
       "codeName" : "job_type"
     }, {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
+    }, {
       "name" : "SEQUENCE",
       "codeName" : "sequence"
     }, {
@@ -16905,6 +16908,99 @@
     "viewLevel" : 0,
     "phisicalDEField" : false,
     "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REVIEW_RESULT_STATE",
+      "dBType" : "MYSQL5",
+      "name" : "REVIEW_RESULT_STATE",
+      "queryCodeExp" : "t1.`REVIEW_RESULT_STATE`",
+      "standardColumnName" : "`REVIEW_RESULT_STATE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REVIEW_RESULT_STATE_EQ",
+      "name" : "N_REVIEW_RESULT_STATE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REVIEW_RESULT_STATE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "review_result_state",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "评审结果",
+    "name" : "REVIEW_RESULT_STATE",
+    "orderValue" : 460,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "REVIEW_RESULT_STATE"
+    },
+    "serviceCodeName" : "review_result_state",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -46909,6 +47005,18 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "测试计划ID",
       "name" : "test_plan_id",
       "getPSDEField" : {
@@ -48559,6 +48667,21 @@
       "getPSDEField" : {
         "name" : "RELEASE_NAME",
         "codeName" : "release_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "n_review_result_state_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REVIEW_RESULT_STATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,

@@ -725,9 +725,9 @@
           "detailType" : "TABPAGE",
           "name" : "tabpage3",
           "getPSDEFormDetails" : [ {
-            "caption" : "需求",
+            "caption" : "工作项",
             "codeName" : "druipart4",
-            "dRItemTag" : "UsrDRItem0507996873",
+            "dRItemTag" : "UsrDRItem0805466700",
             "detailStyle" : "DEFAULT",
             "detailType" : "DRUIPART",
             "name" : "druipart4",
@@ -737,25 +737,25 @@
                 "lanResTag" : "DE.LNAME.REVIEW_CONTENT"
               },
               "caption" : "评审内容",
-              "codeName" : "review_content_idea_grid_view_all",
-              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_idea_grid_view_all.json",
+              "codeName" : "review_content_work_item_grid_view_all",
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_work_item_grid_view_all.json",
               "gridRowActiveMode" : 1,
-              "name" : "review_contentidea_grid_view_all",
+              "name" : "review_contentwork_item_grid_view_all",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
               },
               "getPSAppModule" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
               },
               "getPSAppViewParams" : [ {
                 "key" : "PROPERTYMAP",
                 "name" : "PROPERTYMAP",
-                "value" : "show_identifier:idea.show_identifier,title:title"
+                "value" : "show_identifier:work_item.show_identifier,title:title"
               } ],
-              "getPSDEViewCodeName" : "idea_grid_view_all",
-              "getPSDEViewId" : "041b4d056d9e525e247f692bfcd968fe",
+              "getPSDEViewCodeName" : "work_item_grid_view_all",
+              "getPSDEViewId" : "bdcf027762e89d184ba505e56941b39b",
               "getPSViewLayoutPanel" : {
                 "getAllPSPanelFields" : [ {
                   "id" : "schedule",
@@ -1144,6 +1144,17 @@
                   }
                 } ],
                 "getPSAppViewRefs" : [ {
+                  "name" : "NEWDATA",
+                  "realTitle" : "评审内容编辑视图",
+                  "getRealTitlePSLanguageRes" : {
+                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
+                  },
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
                   "name" : "EDITDATA",
                   "openMode" : "POPUPMODAL",
                   "getPSNavigateContexts" : [ {
@@ -1163,17 +1174,6 @@
                     "viewType" : "DEEDITVIEW"
                   }
                 }, {
-                  "name" : "NEWDATA",
-                  "realTitle" : "评审内容编辑视图",
-                  "getRealTitlePSLanguageRes" : {
-                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
-                  },
-                  "getRefPSAppView" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
-                    "viewType" : "DEEDITVIEW"
-                  }
-                }, {
                   "name" : "MPICKUPVIEW:IDEA",
                   "realOpenMode" : "POPUPMODAL",
                   "realTitle" : "计划关联需求多项数据选择视图",
@@ -1189,7 +1189,7 @@
                   "name" : "MPICKUPVIEW:REVIEW_WIZARD"
                 } ],
                 "getPSControls" : [ {
-                  "codeName" : "idea_grid_view_all_toolbar",
+                  "codeName" : "work_item_grid_view_all_toolbar",
                   "controlType" : "TOOLBAR",
                   "logicName" : "工作流评审内容表格_工具栏",
                   "name" : "toolbar",
@@ -1516,7 +1516,7 @@
                     "id" : "GRID"
                   },
                   "getPSControls" : [ {
-                    "codeName" : "idea_grid_view_all_grid_batchtoolbar",
+                    "codeName" : "work_item_grid_view_all_grid_batchtoolbar",
                     "controlType" : "TOOLBAR",
                     "logicName" : "批操作工具栏",
                     "name" : "grid_batchtoolbar",
@@ -2144,7 +2144,7 @@
                     "lanResTag" : "DE.LNAME.REVIEW_CONTENT"
                   },
                   "caption" : "评审内容",
-                  "codeName" : "idea_grid_view_all_captionbar",
+                  "codeName" : "work_item_grid_view_all_captionbar",
                   "controlType" : "CAPTIONBAR",
                   "name" : "captionbar",
                   "getPSAppDataEntity" : {
@@ -2166,7 +2166,7 @@
               "enableRowEdit" : true,
               "enableSearch" : true,
               "rowEditDefault" : false,
-              "modelid" : "9f5c77c327e0a74c4b10d6c8d0ed43f9",
+              "modelid" : "2dbde9823b4919779711c23f6aca2b18",
               "modeltype" : "PSAPPDEVIEW",
               "getPSAppDERSPaths" : [ [ {
                 "actionRSMode" : 1,
@@ -2538,27 +2538,6 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "getPSNavigateContexts" : [ {
-              "key" : "CUR_REVIEWER_ID",
-              "name" : "CUR_REVIEWER_ID",
-              "value" : "cur_reviewer_id",
-              "rawValue" : false
-            }, {
-              "key" : "CURSTAGE_STATE",
-              "name" : "CURSTAGE_STATE",
-              "value" : "curstage_state",
-              "rawValue" : false
-            }, {
-              "key" : "CURSTAGE_ID",
-              "name" : "CURSTAGE_ID",
-              "value" : "curstage_id",
-              "rawValue" : false
-            }, {
-              "key" : "REVIEW_STATE",
-              "name" : "REVIEW_STATE",
-              "value" : "state",
-              "rawValue" : false
-            } ],
             "parentDataJO" : {
               "srfparentdename" : "REVIEW",
               "SRFPARENTTYPE" : "CUSTOM"
@@ -2568,9 +2547,9 @@
             "refreshItemsSetParamOnly" : false,
             "showCaption" : true
           }, {
-            "caption" : "需求",
+            "caption" : "工作项",
             "codeName" : "druipart5",
-            "dRItemTag" : "UsrDRItem0507599397",
+            "dRItemTag" : "UsrDRItem0805357248",
             "detailStyle" : "DEFAULT",
             "detailType" : "DRUIPART",
             "name" : "druipart5",
@@ -2580,25 +2559,25 @@
                 "lanResTag" : "DE.LNAME.REVIEW_CONTENT"
               },
               "caption" : "评审内容",
-              "codeName" : "review_content_idea_no_grid_view_all",
-              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_idea_no_grid_view_all.json",
+              "codeName" : "review_content_work_item_no_grid_view_all",
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_work_item_no_grid_view_all.json",
               "gridRowActiveMode" : 1,
-              "name" : "review_contentidea_no_grid_view_all",
+              "name" : "review_contentwork_item_no_grid_view_all",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
               },
               "getPSAppModule" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
               },
               "getPSAppViewParams" : [ {
                 "key" : "PROPERTYMAP",
                 "name" : "PROPERTYMAP",
-                "value" : "show_identifier:idea.show_identifier,title:title"
+                "value" : "show_identifier:work_item.show_identifier,title:title"
               } ],
-              "getPSDEViewCodeName" : "idea_no_grid_view_all",
-              "getPSDEViewId" : "8ce423ee0265114262e6e7f17c641a63",
+              "getPSDEViewCodeName" : "work_item_no_grid_view_all",
+              "getPSDEViewId" : "c55cd7ac1cc3988c123d34dfa466da95",
               "getPSViewLayoutPanel" : {
                 "getAllPSPanelFields" : [ {
                   "id" : "schedule",
@@ -2987,6 +2966,17 @@
                   }
                 } ],
                 "getPSAppViewRefs" : [ {
+                  "name" : "NEWDATA",
+                  "realTitle" : "评审内容编辑视图",
+                  "getRealTitlePSLanguageRes" : {
+                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
+                  },
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
                   "name" : "EDITDATA",
                   "openMode" : "POPUPMODAL",
                   "getPSNavigateContexts" : [ {
@@ -3006,17 +2996,6 @@
                     "viewType" : "DEEDITVIEW"
                   }
                 }, {
-                  "name" : "NEWDATA",
-                  "realTitle" : "评审内容编辑视图",
-                  "getRealTitlePSLanguageRes" : {
-                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
-                  },
-                  "getRefPSAppView" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
-                    "viewType" : "DEEDITVIEW"
-                  }
-                }, {
                   "name" : "MPICKUPVIEW:IDEA",
                   "realOpenMode" : "POPUPMODAL",
                   "realTitle" : "计划关联需求多项数据选择视图",
@@ -3032,7 +3011,7 @@
                   "name" : "MPICKUPVIEW:REVIEW_WIZARD"
                 } ],
                 "getPSControls" : [ {
-                  "codeName" : "idea_no_grid_view_all_toolbar",
+                  "codeName" : "work_item_no_grid_view_all_toolbar",
                   "controlType" : "TOOLBAR",
                   "logicName" : "评审内容表格（无多选）_工具栏",
                   "name" : "toolbar",
@@ -3398,7 +3377,7 @@
                     "id" : "GRID"
                   },
                   "getPSControls" : [ {
-                    "codeName" : "idea_no_grid_view_all_grid_batchtoolbar",
+                    "codeName" : "work_item_no_grid_view_all_grid_batchtoolbar",
                     "controlType" : "TOOLBAR",
                     "logicName" : "批操作工具栏",
                     "name" : "grid_batchtoolbar",
@@ -4105,7 +4084,7 @@
                     "lanResTag" : "DE.LNAME.REVIEW_CONTENT"
                   },
                   "caption" : "评审内容",
-                  "codeName" : "idea_no_grid_view_all_captionbar",
+                  "codeName" : "work_item_no_grid_view_all_captionbar",
                   "controlType" : "CAPTIONBAR",
                   "name" : "captionbar",
                   "getPSAppDataEntity" : {
@@ -4127,7 +4106,7 @@
               "enableRowEdit" : true,
               "enableSearch" : true,
               "rowEditDefault" : false,
-              "modelid" : "fb2368e975f0777fbda0776328f71d83",
+              "modelid" : "d3bae59f547baa23c28a6b8143d89234",
               "modeltype" : "PSAPPDEVIEW",
               "getPSAppDERSPaths" : [ [ {
                 "actionRSMode" : 1,
@@ -4494,27 +4473,6 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "getPSNavigateContexts" : [ {
-              "key" : "CUR_REVIEWER_ID",
-              "name" : "CUR_REVIEWER_ID",
-              "value" : "cur_reviewer_id",
-              "rawValue" : false
-            }, {
-              "key" : "CURSTAGE_STATE",
-              "name" : "CURSTAGE_STATE",
-              "value" : "curstage_state",
-              "rawValue" : false
-            }, {
-              "key" : "CURSTAGE_ID",
-              "name" : "CURSTAGE_ID",
-              "value" : "curstage_id",
-              "rawValue" : false
-            }, {
-              "key" : "REVIEW_STATE",
-              "name" : "REVIEW_STATE",
-              "value" : "state",
-              "rawValue" : false
-            } ],
             "parentDataJO" : {
               "srfparentdename" : "REVIEW",
               "SRFPARENTTYPE" : "CUSTOM"
@@ -8715,7 +8673,7 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel1",
           "getPSDEFormDetails" : [ {
-            "caption" : "所属产品",
+            "caption" : "所属项目",
             "codeName" : "principal_name",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
