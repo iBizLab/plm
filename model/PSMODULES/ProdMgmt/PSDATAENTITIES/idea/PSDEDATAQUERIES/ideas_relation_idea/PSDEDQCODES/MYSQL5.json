@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "t41.`PRINCIPAL_ID` IN (\n  SELECT\n    t1.`ID` \n  FROM\n    `IDEA` t1 \n  WHERE\n    EXISTS (\n      SELECT\n        1\n      FROM\n        `RELATION` t41 \n      WHERE\n        t1.`ID` = t41.`TARGET_ID` \n        AND t41.`PRINCIPAL_ID` = ${ctx.datacontext.principal_id} \n        AND t41.`TARGET_TYPE` = 'idea' \n    AND t41.`PRINCIPAL_TYPE` = 'product_plan') \n    AND t1.`IS_DELETED` = 0 \nAND t1.`IS_ARCHIVED` = 0)",
+    "customCond" : "(t41.`PRINCIPAL_TYPE` = 'idea' AND t41.`TARGET_TYPE` = 'idea' AND t41.`PRINCIPAL_ID` IN (\n  SELECT\n    t1.`ID` \n  FROM\n    `IDEA` t1 \n  WHERE\n    EXISTS (\n      SELECT\n        1\n      FROM\n        `RELATION` t41 \n      WHERE\n        t1.`ID` = t41.`TARGET_ID` \n        AND t41.`PRINCIPAL_ID` = ${ctx.datacontext.principal_id} \n        AND t41.`TARGET_TYPE` = 'idea' \n    AND t41.`PRINCIPAL_TYPE` = 'product_plan') \n    AND t1.`IS_DELETED` = 0 \nAND t1.`IS_ARCHIVED` = 0))",
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",
