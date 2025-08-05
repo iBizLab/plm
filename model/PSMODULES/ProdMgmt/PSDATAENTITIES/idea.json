@@ -17970,7 +17970,7 @@
         "id" : "page_ideas"
       }
     }, {
-      "code" : "// 获取系统定义变量\r\ndef page_ideas = logic.param('page_ideas').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\n\r\nList<String> ids = new ArrayList<String>()\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n    ids.add(id)\r\n}\r\n// 设置通用过滤器\r\nString idsString = ids.collect { \"'$it'\" }.join(',')\r\nbase_filter.set(\"principal_id\", idsString)",
+      "code" : "// 获取系统定义变量\r\ndef page_ideas = logic.param('page_ideas').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\n\r\nList<String> ids = new ArrayList<String>()\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n    ids.add(id)\r\n}\r\n// 设置通用过滤器\r\nString idsString = ids.collect { \"'$it'\" }.join(',')\r\nbase_filter.set(\"principal_id\", idsString)\r\nbase_filter.all()",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 330,
@@ -18135,39 +18135,6 @@
       },
       "topPos" : 428
     }, {
-      "codeName" : "DEDATASET5",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "ideas_relation_test_case"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "base_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      },
-      "leftPos" : 950,
-      "logicNodeType" : "DEDATASET",
-      "name" : "获取关联测试用例",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET5"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_case"
-      },
-      "topPos" : 428
-    }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 10,
       "logicNodeType" : "PREPAREPARAM",
@@ -18293,6 +18260,39 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 540
+    }, {
+      "codeName" : "DEDATASET5",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_test_case"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "base_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 950,
+      "logicNodeType" : "DEDATASET",
+      "name" : "获取关联测试用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET5"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "re_page_case"
+      },
+      "topPos" : 428
     }, {
       "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\n\r\n// 5. 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n\r\n    List<Object> relationIdeaList = new ArrayList<Object>()\r\n    List<Object> relationWorkItemList = new ArrayList<Object>()\r\n    List<Object> relationTicketList = new ArrayList<Object>()\r\n    List<Object> relationCaseList = new ArrayList<Object>()\r\n\r\n    relation_idea.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationIdeaList.add(it)\r\n        }\r\n    }\r\n    relation_work_item.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationWorkItemList.add(it)\r\n        }\r\n    }\r\n    relation_ticket.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationTicketList.add(it)\r\n\r\n        }\r\n    }\r\n    relation_test_case.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationCaseList.add(it)\r\n        }\r\n    }\r\n    def re_idea = sys.createEntity(null, false)\r\n    def re_item = sys.createEntity(null, false)\r\n    def re_ticket = sys.createEntity(null, false)\r\n    def re_case = sys.createEntity(null, false)\r\n\r\n    re_idea.set(\"content\", relationIdeaList)\r\n    re_item.set(\"content\", relationWorkItemList)\r\n    re_ticket.set(\"content\", relationTicketList)\r\n    re_case.set(\"content\", relationCaseList)\r\n\r\n    // 组装数据\r\n    idea.set(\"re_idea\", re_idea)\r\n    idea.set(\"re_item\", re_item)\r\n    idea.set(\"re_ticket\", re_ticket)\r\n    idea.set(\"re_case\", re_case)\r\n    idea.set(\"idea_sum\", relationIdeaList.size())\r\n    idea.set(\"work_item_sum\", relationWorkItemList.size())\r\n    idea.set(\"ticket_sum\", relationTicketList.size())\r\n    idea.set(\"test_case_sum\", relationCaseList.size())\r\n\r\n    // 添加到结果集\r\n    result.add(idea)\r\n}",
       "codeName" : "RAWSFCODE2",

@@ -144,22 +144,6 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_track_data;
                         update(ideaplan_track_dataresult);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取关联测试用例]
-            rule "dedataset5"
-            ruleflow-group "ideaplan_track_datadedataset5"
-            when
-            then
-                        update(ideaplan_track_datadefault);//更新fact中变量值
-                        update(ideaplan_track_database_filter);//更新fact中变量值
-                        update(ideaplan_track_dataidea);//更新fact中变量值
-                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
-                        update(ideaplan_track_datare_page_case);//更新fact中变量值
-                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
-                        update(ideaplan_track_datare_page_item);//更新fact中变量值
-                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
-                        update(ideaplan_track_dataresult);//更新fact中变量值
-            end
-
             //逻辑处理节点[组装数据]
             rule "prepareparam1"
             ruleflow-group "ideaplan_track_dataprepareparam1"
@@ -173,6 +157,22 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_track_data;
                             ideaplan_track_dataidea.set("re_item",ideaplan_track_datare_page_item.get(""));
                             ideaplan_track_dataidea.set("re_case",ideaplan_track_datare_page_case.get(""));
                             ideaplan_track_dataidea.set("re_ticket",ideaplan_track_datare_page_ticket.get(""));
+                        update(ideaplan_track_datadefault);//更新fact中变量值
+                        update(ideaplan_track_database_filter);//更新fact中变量值
+                        update(ideaplan_track_dataidea);//更新fact中变量值
+                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
+                        update(ideaplan_track_datare_page_case);//更新fact中变量值
+                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
+                        update(ideaplan_track_datare_page_item);//更新fact中变量值
+                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
+                        update(ideaplan_track_dataresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取关联测试用例]
+            rule "dedataset5"
+            ruleflow-group "ideaplan_track_datadedataset5"
+            when
+            then
                         update(ideaplan_track_datadefault);//更新fact中变量值
                         update(ideaplan_track_database_filter);//更新fact中变量值
                         update(ideaplan_track_dataidea);//更新fact中变量值
