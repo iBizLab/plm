@@ -10,6 +10,7 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.guideline()" name="review_contentgenerate_review_resultsguideline_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.guideline()" name="review_contentgenerate_review_resultsguideline_pages" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="review_contentgenerate_review_resultsidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="review_contentgenerate_review_resultspage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review()" name="review_contentgenerate_review_resultsreview" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_result()" name="review_contentgenerate_review_resultsreview_result" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentgenerate_review_resultsreview_stage" type="refentity"/>
@@ -18,6 +19,7 @@
                                 <tns:metaData express="new HashMap()" name="review_contentgenerate_review_resultsreviewer_list" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="review_contentgenerate_review_resultsreviewer_temp" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="review_contentgenerate_review_resultstest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="review_contentgenerate_review_resultswork_item" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IguidelineService))" name="guidelineservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_resultService))" name="review_resultservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="iBzSysReview_contentDefaultService" type="service"/>
@@ -27,27 +29,30 @@
                             <tns:global identifier="review_contentgenerate_review_resultsguideline_filter" type="cn.ibizlab.plm.core.testmgmt.domain.guideline" />
                             <tns:global identifier="review_contentgenerate_review_resultsguideline_pages" type="cn.ibizlab.plm.core.testmgmt.domain.guideline" />
                             <tns:global identifier="review_contentgenerate_review_resultsidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="review_contentgenerate_review_resultspage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="review_contentgenerate_review_resultsreview" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
                             <tns:global identifier="review_contentgenerate_review_resultsreview_result" type="cn.ibizlab.plm.core.testmgmt.domain.review_result" />
                             <tns:global identifier="review_contentgenerate_review_resultsreview_stage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="review_contentgenerate_review_resultsreview_stage_filter" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="review_contentgenerate_review_resultsreview_stage_list" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="review_contentgenerate_review_resultstest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="review_contentgenerate_review_resultswork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="产品需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="通用参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询流程准则"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取流程准则信息，设置评审阶段过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="绑定评审阶段数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环评审阶段"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="产品需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="项目工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置新建的评审结果数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="空间页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="创建前的评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <endEvent id="prepareparam7_end" name="end"/>
@@ -59,9 +64,7 @@
                         <sequenceFlow id="renewparam1_end_line" sourceRef="renewparam1" targetRef="renewparam1_end"/>
                     <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam4_loopsubcall1" sourceRef="debugparam4" targetRef="loopsubcall1">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_prepareparam1" sourceRef="prepareparam6" targetRef="prepareparam1">
+                    <sequenceFlow id="prepareparam5_prepareparam1" sourceRef="prepareparam5" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam2_prepareparam6" sourceRef="gateway-debugparam2" targetRef="prepareparam6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -70,6 +73,7 @@
                                             $review_contentgenerate_review_resultsguideline_filter:guideline();
                                             $review_contentgenerate_review_resultsguideline_pages:guideline();
                                             $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultspage:article_page();
                                             $review_contentgenerate_review_resultsreview:review();
                                             $review_contentgenerate_review_resultsreview_result:review_result();
                                             $review_contentgenerate_review_resultsreview_stage:review_stage();
@@ -78,7 +82,8 @@
                                             $review_contentgenerate_review_resultsreviewer_list:Map();
                                             $review_contentgenerate_review_resultsreviewer_temp:Map();
                                             $review_contentgenerate_review_resultstest_case:test_case();
-                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
+                                            $review_contentgenerate_review_resultswork_item:work_item();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultspage==review_contentgenerate_review_resultspage && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case && $review_contentgenerate_review_resultswork_item==review_contentgenerate_review_resultswork_item);
                                 eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","TEST_CASE")))
                                 ]]>
                             </conditionExpression>
@@ -90,6 +95,7 @@
                                             $review_contentgenerate_review_resultsguideline_filter:guideline();
                                             $review_contentgenerate_review_resultsguideline_pages:guideline();
                                             $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultspage:article_page();
                                             $review_contentgenerate_review_resultsreview:review();
                                             $review_contentgenerate_review_resultsreview_result:review_result();
                                             $review_contentgenerate_review_resultsreview_stage:review_stage();
@@ -98,10 +104,57 @@
                                             $review_contentgenerate_review_resultsreviewer_list:Map();
                                             $review_contentgenerate_review_resultsreviewer_temp:Map();
                                             $review_contentgenerate_review_resultstest_case:test_case();
-                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
+                                            $review_contentgenerate_review_resultswork_item:work_item();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultspage==review_contentgenerate_review_resultspage && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case && $review_contentgenerate_review_resultswork_item==review_contentgenerate_review_resultswork_item);
                                 eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","IDEA")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam8" sourceRef="gateway-debugparam2" targetRef="prepareparam8">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentgenerate_review_resultsdefault:review_content();
+                                            $review_contentgenerate_review_resultsguideline:guideline();
+                                            $review_contentgenerate_review_resultsguideline_filter:guideline();
+                                            $review_contentgenerate_review_resultsguideline_pages:guideline();
+                                            $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultspage:article_page();
+                                            $review_contentgenerate_review_resultsreview:review();
+                                            $review_contentgenerate_review_resultsreview_result:review_result();
+                                            $review_contentgenerate_review_resultsreview_stage:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_filter:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_list:review_stage();
+                                            $review_contentgenerate_review_resultsreviewer_list:Map();
+                                            $review_contentgenerate_review_resultsreviewer_temp:Map();
+                                            $review_contentgenerate_review_resultstest_case:test_case();
+                                            $review_contentgenerate_review_resultswork_item:work_item();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultspage==review_contentgenerate_review_resultspage && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case && $review_contentgenerate_review_resultswork_item==review_contentgenerate_review_resultswork_item);
+                                eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam9" sourceRef="gateway-debugparam2" targetRef="prepareparam9">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentgenerate_review_resultsdefault:review_content();
+                                            $review_contentgenerate_review_resultsguideline:guideline();
+                                            $review_contentgenerate_review_resultsguideline_filter:guideline();
+                                            $review_contentgenerate_review_resultsguideline_pages:guideline();
+                                            $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultspage:article_page();
+                                            $review_contentgenerate_review_resultsreview:review();
+                                            $review_contentgenerate_review_resultsreview_result:review_result();
+                                            $review_contentgenerate_review_resultsreview_stage:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_filter:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_list:review_stage();
+                                            $review_contentgenerate_review_resultsreviewer_list:Map();
+                                            $review_contentgenerate_review_resultsreviewer_temp:Map();
+                                            $review_contentgenerate_review_resultstest_case:test_case();
+                                            $review_contentgenerate_review_resultswork_item:work_item();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultspage==review_contentgenerate_review_resultspage && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case && $review_contentgenerate_review_resultswork_item==review_contentgenerate_review_resultswork_item);
+                                eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","PAGE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_prepareparam1" sourceRef="prepareparam6" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
@@ -109,15 +162,17 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_prepareparam4" sourceRef="prepareparam2" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_debugparam4" sourceRef="prepareparam4" targetRef="debugparam4">
+                    <sequenceFlow id="prepareparam4_loopsubcall1" sourceRef="prepareparam4" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam5_prepareparam1" sourceRef="prepareparam5" targetRef="prepareparam1">
+                    <sequenceFlow id="prepareparam8_prepareparam1" sourceRef="prepareparam8" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_debugparam3" sourceRef="prepareparam3" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_prepareparam1" sourceRef="prepareparam9" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam3_loopsubcall2" sourceRef="debugparam3" targetRef="loopsubcall2">
                     </sequenceFlow>
@@ -128,6 +183,7 @@
                                             $review_contentgenerate_review_resultsguideline_filter:guideline();
                                             $review_contentgenerate_review_resultsguideline_pages:guideline();
                                             $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultspage:article_page();
                                             $review_contentgenerate_review_resultsreview:review();
                                             $review_contentgenerate_review_resultsreview_result:review_result();
                                             $review_contentgenerate_review_resultsreview_stage:review_stage();
@@ -136,7 +192,8 @@
                                             $review_contentgenerate_review_resultsreviewer_list:Map();
                                             $review_contentgenerate_review_resultsreviewer_temp:Map();
                                             $review_contentgenerate_review_resultstest_case:test_case();
-                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
+                                            $review_contentgenerate_review_resultswork_item:work_item();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultspage==review_contentgenerate_review_resultspage && $review_contentgenerate_review_resultsreview==review_contentgenerate_review_resultsreview && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case && $review_contentgenerate_review_resultswork_item==review_contentgenerate_review_resultswork_item);
                                 eval((RuleUtils.test($review_contentgenerate_review_resultsreview_stage.get("id"),"EQ","id")))
                                 ]]>
                             </conditionExpression>
