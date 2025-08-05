@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEDATASET1"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -21,7 +21,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -128,
+    "topPos" : -188,
     "parallelOutput" : true
   }, {
     "codeName" : "DEDATASET1",
@@ -54,26 +54,8 @@
     "getRetPSDELogicParam" : {
       "modelref" : true,
       "id" : "page_ideas"
-    }
-  }, {
-    "code" : "// 获取系统定义变量\r\ndef page_ideas = logic.param('page_ideas').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\n\r\nList<String> ids = new ArrayList<String>()\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n    ids.add(id)\r\n}\r\n// 设置通用过滤器\r\nString idsString = ids.collect { \"'$it'\" }.join(',')\r\nbase_filter.set(\"principal_id\", idsString)\r\nbase_filter.all()",
-    "codeName" : "RAWSFCODE1",
-    "codeType" : "Groovy",
-    "leftPos" : 330,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "获取所有需求标识并设置过滤器参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : 130
+    },
+    "topPos" : 20
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -121,105 +103,6 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 300
-  }, {
-    "codeName" : "DEDATASET2",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "ideas_relation_idea"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-    },
-    "leftPos" : 330,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联需求",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET2"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_idea"
-    },
-    "topPos" : 428
-  }, {
-    "codeName" : "DEDATASET3",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "ideas_relation_work_item"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-    },
-    "leftPos" : 540,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联工作项",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET3"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_item"
-    },
-    "topPos" : 428
-  }, {
-    "codeName" : "DEDATASET4",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "ideas_relation_ticket"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-    },
-    "leftPos" : 740,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联工单",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET5"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET4"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_ticket"
-    },
-    "topPos" : 428
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 10,
@@ -346,6 +229,145 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 540
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 330,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "规划",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : -87
+  }, {
+    "code" : "// 获取系统定义变量\r\ndef page_ideas = logic.param('page_ideas').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\n\r\nList<String> ids = new ArrayList<String>()\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n    ids.add(id)\r\n}\r\n// 设置通用过滤器\r\nString idsString = ids.collect { \"'$it'\" }.join(',')\r\n// base_filter.set(\"principal_id\", idsString)\r\nbase_filter.all()",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 330,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "获取所有需求标识并设置过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 130
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_idea"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "leftPos" : 330,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联需求",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_idea"
+    },
+    "topPos" : 428
+  }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_work_item"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 540,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_item"
+    },
+    "topPos" : 428
+  }, {
+    "codeName" : "DEDATASET4",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_ticket"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+    },
+    "leftPos" : 740,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联工单",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET4"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_ticket"
+    },
+    "topPos" : 428
   }, {
     "codeName" : "DEDATASET5",
     "getDstPSDEDataSet" : {
