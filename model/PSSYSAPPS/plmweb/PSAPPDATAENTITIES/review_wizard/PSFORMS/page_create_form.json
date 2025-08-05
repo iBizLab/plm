@@ -57,9 +57,9 @@
       "id" : "fill_guideline"
     },
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "review_stage"
-    }, {
       "name" : "review_guideline_id"
+    }, {
+      "name" : "review_stage"
     } ]
   } ],
   "getPSDEFormItems" : [ {
@@ -519,23 +519,23 @@
             "getPSNavigateParams" : [ {
               "key" : "n_owner_subtype_eq",
               "name" : "n_owner_subtype_eq",
-              "value" : "product_review",
+              "value" : "space_review",
               "rawValue" : true
             }, {
               "key" : "n_owner_id_eq",
               "name" : "n_owner_id_eq",
-              "value" : "product",
+              "value" : "space",
               "rawValue" : false
             }, {
               "key" : "n_owner_type_eq",
               "name" : "n_owner_type_eq",
-              "value" : "product",
+              "value" : "space",
               "rawValue" : true
             } ]
           } ],
           "getPickupPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_pick_up_tree_view.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_page_pick_up_tree_view.json",
             "viewType" : "DEPICKUPTREEVIEW"
           },
           "placeHolder" : "选择类别",
@@ -681,7 +681,7 @@
                 "TEAMMEMBERMETHOD" : "post",
                 "TEAMURL" : "/groups/fetch_default",
                 "SRFNAVPARAM.n_status_eq" : "1",
-                "URL" : "products/${context.product}/product_members/fetch_default",
+                "URL" : "products/${context.space}/space_members/fetch_default",
                 "PICKUPVIEW" : "TRUE",
                 "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "USERMETHOD" : "post",
@@ -689,7 +689,7 @@
                 "DEPTMETHOD" : "get",
                 "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}"
               },
-              "editorStyle" : "IDEA_TEAM_SELECT",
+              "editorStyle" : "PAGE_TEAM_SELECT",
               "editorType" : "PICKER",
               "name" : "reviewer_name",
               "getPSNavigateParams" : [ {
@@ -908,26 +908,26 @@
         },
         "getPSEditor" : {
           "editorParams" : {
-            "srfnavparam.n_owner_subtype_eq" : "product_review",
-            "srfnavparam.n_owner_id_eq" : "%product%",
-            "srfnavparam.n_owner_type_eq" : "product"
+            "srfnavparam.n_owner_subtype_eq" : "space_review",
+            "srfnavparam.n_owner_id_eq" : "%space%",
+            "srfnavparam.n_owner_type_eq" : "space"
           },
           "editorType" : "HIDDEN",
           "name" : "categories",
           "getPSNavigateParams" : [ {
             "key" : "n_owner_subtype_eq",
             "name" : "n_owner_subtype_eq",
-            "value" : "product_review",
+            "value" : "space_review",
             "rawValue" : true
           }, {
             "key" : "n_owner_id_eq",
             "name" : "n_owner_id_eq",
-            "value" : "product",
+            "value" : "space",
             "rawValue" : false
           }, {
             "key" : "n_owner_type_eq",
             "name" : "n_owner_type_eq",
-            "value" : "product",
+            "value" : "space",
             "rawValue" : true
           } ]
         },
@@ -975,7 +975,7 @@
               "SRFNAVPARAM.n_status_eq" : "1",
               "TRIGGER" : "TRUE",
               "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
-              "URL" : "products/${context.product}/product_members/fetch_default",
+              "URL" : "spaces/${context.space}/space_members/fetch_default",
               "PICKUPVIEW" : "FALSE",
               "USERMETHOD" : "post",
               "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
@@ -983,7 +983,7 @@
               "DEPTMETHOD" : "get",
               "DEPTURL" : "/users/fetch_default"
             },
-            "editorStyle" : "PERSONEL_SELECT_PRODUCT",
+            "editorStyle" : "PERSONEL_SELECT_SPACE",
             "editorType" : "PICKEREX_TRIGGER",
             "handlerType" : "PickupText",
             "name" : "attentions",
