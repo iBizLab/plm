@@ -17927,7 +17927,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "DEDATASET1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -17937,215 +17937,6 @@
       } ],
       "topPos" : -188,
       "parallelOutput" : true
-    }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "leftPos" : 20,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环所有的需求",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page_ideas"
-      },
-      "topPos" : 148
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 20,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置基础过滤器",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "principal_id",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "base_filter"
-        },
-        "name" : "idea[ID] ==> base_filter[principal_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 300
-    }, {
-      "codeName" : "PREPAREPARAM1",
-      "leftPos" : 10,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "组装数据",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "APPENDPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "re_idea",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_idea ==> idea[re_idea]",
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_idea"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "idea_sum",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_idea[size] ==> idea[idea_sum]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "size",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_idea"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "work_item_sum",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_item[size] ==> idea[work_item_sum]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "size",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_item"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "ticket_sum",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_ticket[size] ==> idea[ticket_sum]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "size",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_ticket"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "test_case_sum",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_case[size] ==> idea[test_case_sum]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "size",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_case"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "re_item",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_items ==> idea[re_item]",
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_item"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "re_case",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_case ==> idea[re_case]",
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_case"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "re_ticket",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "re_page_ticket ==> idea[re_ticket]",
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "re_page_ticket"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 540
-    }, {
-      "codeName" : "APPENDPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "result"
-      },
-      "leftPos" : 330,
-      "logicNodeType" : "APPENDPARAM",
-      "name" : "附加到数组参数",
-      "srcIndex" : 0,
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "topPos" : 770
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 330,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "规划",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : -87
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -18185,7 +17976,7 @@
       "codeType" : "Groovy",
       "leftPos" : 330,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "获取所有需求标识并设置过滤器参数",
+      "name" : "设置通用过滤器参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -18348,10 +18139,10 @@
           "id" : "RAWSFCODE2"
         }
       } ],
-      "topPos" : 570
+      "topPos" : 550
     }, {
       "codeName" : "END",
-      "leftPos" : 750,
+      "leftPos" : 990,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -18359,7 +18150,7 @@
         "id" : "result"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 720
+      "topPos" : 740
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

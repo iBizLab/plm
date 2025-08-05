@@ -4352,13 +4352,13 @@
     "name" : "获取评审数据",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -130,
+      "leftPos" : 140,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -4369,34 +4369,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 570,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 39,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 208
     }, {
       "code" : "const appDataEntityId = 'plmweb.review_content';\r\nconst context = uiLogic.ctx;\r\nconst data_arr = uiLogic.default;\r\n\r\nconst keyMapping = {\r\n    srfkey: 'target_id',\r\n};\r\n\r\nconst propertyMap = uiLogic.view.model.appViewParams?.find(\r\n    item => item.key.toLowerCase() === 'PROPERTYMAP'.toLowerCase(),\r\n);\r\n\r\nif (propertyMap) {\r\n    const keyValuePairs = propertyMap.value.split(',');\r\n    // 遍历键值对数组并添加到 keyMapping 映射对象中\r\n    for (const pair of keyValuePairs) {\r\n        const [sourceKey, targetKey] = pair.split(':');\r\n        if (sourceKey && targetKey) {\r\n            keyMapping[sourceKey] = targetKey;\r\n        }\r\n    }\r\n}\r\n\r\n// *转换属性\r\nconst addData = data_arr.map(item => {\r\n    const tempData = {};\r\n    // 遍历映射对象，将属性从 item 复制到 tempData\r\n    Object.keys(keyMapping).forEach(key => {\r\n        const targetKey = keyMapping[key];\r\n        tempData[targetKey] = item[key];\r\n    });\r\n    // 获取 change_version 中 from 对象的 owner_type\r\n    const ownerType = context.principal_type.toUpperCase();\r\n    // 将 target_type 字段设置为 owner_type\r\n    tempData['target_type'] = ownerType;\r\n    keyMapping['srfkey'] = item['id'];\r\n    return tempData;\r\n});\r\n\r\n// 获取实体服务并调用创建接口\r\nconst service = ibiz.hub.getApp(context.srfappid).deService;\r\nservice.exec(appDataEntityId, 'Create', context, addData);\r\n",
       "codeName" : "RAWJSCODE1",
@@ -4416,6 +4388,12 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 550,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
