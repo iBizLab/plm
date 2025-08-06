@@ -46,7 +46,7 @@
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "if (context.project) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n}",
+    "afterCode" : "if (context.project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    context.project = context.new_project;\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n    console.log(data);\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
@@ -4455,7 +4455,7 @@
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "if (context.project) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n}",
+    "afterCode" : "if (context.project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    context.project = context.new_project;\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n    console.log(data);\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
