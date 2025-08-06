@@ -110,7 +110,7 @@
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "if (context.project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    data.name=\"123\";\r\n    context.project = context.new_project;\r\n}",
+    "afterCode" : "if (context.cur_project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.cur_project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    data.name=\"123\";\r\n    context.project = context.new_project;\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
@@ -4519,7 +4519,7 @@
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "if (context.project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    data.name=\"123\";\r\n    context.project = context.new_project;\r\n}",
+    "afterCode" : "if (context.cur_project) {\r\n    console.log(\"测试点\");\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.cur_project});\r\n    console.log(res.data);\r\n    console.log(data);\r\n    data.name=\"123\";\r\n    context.project = context.new_project;\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
@@ -8044,14 +8044,14 @@
       "id" : "UPDATE"
     },
     "getPSNavigateContexts" : [ {
-      "key" : "TEST_PROJECT",
-      "name" : "TEST_PROJECT",
-      "value" : "id",
-      "rawValue" : false
-    }, {
       "key" : "PROJECT",
       "name" : "PROJECT",
       "rawValue" : true
+    }, {
+      "key" : "CUR_PROJECT",
+      "name" : "CUR_PROJECT",
+      "value" : "id",
+      "rawValue" : false
     } ],
     "getPSSysImage" : {
       "glyph" : "xf0c5@FontAwesome",
