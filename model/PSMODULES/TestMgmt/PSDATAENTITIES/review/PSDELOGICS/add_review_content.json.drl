@@ -125,6 +125,34 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.add_review_content;
                         update(reviewadd_review_contentselectdata);//更新fact中变量值
             end
 
+            //逻辑处理节点[填充工作项属性值]
+            rule "prepareparam4"
+            ruleflow-group "reviewadd_review_contentprepareparam4"
+            when
+            then
+                            reviewadd_review_contentforward_relation_obj.set("targettype","WORK_ITEM");
+                            reviewadd_review_contentreverse_relation_obj.set("principaltype","WORK_ITEM");
+                        update(reviewadd_review_contentdefault);//更新fact中变量值
+                        update(reviewadd_review_contentfor_temp_obj);//更新fact中变量值
+                        update(reviewadd_review_contentforward_relation_obj);//更新fact中变量值
+                        update(reviewadd_review_contentreverse_relation_obj);//更新fact中变量值
+                        update(reviewadd_review_contentselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充页面属性值]
+            rule "prepareparam5"
+            ruleflow-group "reviewadd_review_contentprepareparam5"
+            when
+            then
+                            reviewadd_review_contentforward_relation_obj.set("targettype","PAGE");
+                            reviewadd_review_contentreverse_relation_obj.set("principaltype","PAGE");
+                        update(reviewadd_review_contentdefault);//更新fact中变量值
+                        update(reviewadd_review_contentfor_temp_obj);//更新fact中变量值
+                        update(reviewadd_review_contentforward_relation_obj);//更新fact中变量值
+                        update(reviewadd_review_contentreverse_relation_obj);//更新fact中变量值
+                        update(reviewadd_review_contentselectdata);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "reviewadd_review_contentend1"
