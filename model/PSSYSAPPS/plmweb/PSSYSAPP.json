@@ -90343,6 +90343,7 @@
       "getAllPSAppDEActions" : [ {
         "actionMode" : "CREATE",
         "actionType" : "BUILTIN",
+        "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.new_project = data.id;\r\nconst res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});",
         "codeName" : "CreateTemp",
         "methodType" : "DEACTION",
         "name" : "CreateTemp",
@@ -90936,6 +90937,43 @@
           "modelref" : true,
           "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
         },
+        "builtinMethod" : false
+      }, {
+        "actionMode" : "GETDRAFT",
+        "codeName" : "fill_copy_info",
+        "methodType" : "DEACTION",
+        "name" : "fill_copy_info",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "READ"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "fill_copy_info"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/fill_copy_info",
         "builtinMethod" : false
       }, {
         "actionMode" : "READ",
@@ -94714,6 +94752,7 @@
       "getAllPSAppDEMethods" : [ {
         "actionMode" : "CREATE",
         "actionType" : "BUILTIN",
+        "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.new_project = data.id;\r\nconst res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});",
         "codeName" : "CreateTemp",
         "methodType" : "DEACTION",
         "name" : "CreateTemp",
@@ -95307,6 +95346,43 @@
           "modelref" : true,
           "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
         },
+        "builtinMethod" : false
+      }, {
+        "actionMode" : "GETDRAFT",
+        "codeName" : "fill_copy_info",
+        "methodType" : "DEACTION",
+        "name" : "fill_copy_info",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "READ"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "fill_copy_info"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/fill_copy_info",
         "builtinMethod" : false
       }, {
         "actionMode" : "READ",
@@ -98179,7 +98255,7 @@
         "reloadData" : true,
         "id" : "change_admin_role@project"
       }, {
-        "actionTarget" : "SINGLEDATA",
+        "actionTarget" : "SINGLEKEY",
         "caption" : "复制项目",
         "codeName" : "copy_project",
         "dataAccessAction" : "UPDATE",
