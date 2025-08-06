@@ -46,7 +46,7 @@
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.new_project = data.id;\r\nconst res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});",
+    "afterCode" : "if (context.project) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
@@ -4455,7 +4455,7 @@
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.new_project = data.id;\r\nconst res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});",
+    "afterCode" : "if (context.project) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.new_project = data.id;\r\n    const res = await app.deService.exec( 'plmweb.project', 'fill_copy_info', context, {\"new_project\":data.id,\"cur_project\":context.project});\r\n    const project = res.data;\r\n    await app.deService.exec( 'plmweb.project', 'UpdateTemp', context, project);\r\n}",
     "codeName" : "CreateTemp",
     "methodType" : "DEACTION",
     "name" : "CreateTemp",
