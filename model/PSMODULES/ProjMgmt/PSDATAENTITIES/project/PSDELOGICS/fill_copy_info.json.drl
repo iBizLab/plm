@@ -51,6 +51,16 @@ package cn.ibizlab.plm.projmgmt.logic.projectlogic.fill_copy_info;
                         update(projectfill_copy_infoproject);//更新fact中变量值
             end
 
+            //逻辑处理节点[实体行为]
+            rule "deaction2"
+            ruleflow-group "projectfill_copy_infodeaction2"
+            when
+            then
+                        projectservice.createTemp(projectfill_copy_infoproject);
+                        update(projectfill_copy_infodefault);//更新fact中变量值
+                        update(projectfill_copy_infoproject);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "projectfill_copy_infoend1"

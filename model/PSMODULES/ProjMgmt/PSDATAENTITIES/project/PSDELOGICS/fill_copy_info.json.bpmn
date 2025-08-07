@@ -17,6 +17,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectfill_copy_infoprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectfill_copy_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectfill_copy_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectfill_copy_infodeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectfill_copy_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -26,7 +27,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    <sequenceFlow id="prepareparam2_deaction2" sourceRef="prepareparam2" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>
