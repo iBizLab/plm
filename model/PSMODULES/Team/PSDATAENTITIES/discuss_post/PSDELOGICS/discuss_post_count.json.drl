@@ -1,0 +1,58 @@
+package cn.ibizlab.plm.team.logic.discuss_postlogic.discuss_post_count;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postdiscuss_post_countdefault;
+                global cn.ibizlab.plm.core.team.domain.discuss_topic discuss_postdiscuss_post_countresult;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_postService iBzSysDiscuss_postDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_postdiscuss_post_countbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "discuss_postdiscuss_post_countend1"
+            when
+            then
+                        update(discuss_postdiscuss_post_countdefault);//更新fact中变量值
+                        update(discuss_postdiscuss_post_countresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "discuss_postdiscuss_post_countdebugparam1"
+            when
+            then
+                        update(discuss_postdiscuss_post_countdefault);//更新fact中变量值
+                        update(discuss_postdiscuss_post_countresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "discuss_postdiscuss_post_countrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_postdiscuss_post_countdefault.get("id"));
+    String strSql="SELECT count(1) as discuss_post_count FROM `comment` where OWNER_TYPE = 'DISCUSS_POST' AND PRINCIPAL_ID = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysDiscuss_postDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    discuss_postdiscuss_post_countresult.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(discuss_postdiscuss_post_countdefault);//更新fact中变量值
+                        update(discuss_postdiscuss_post_countresult);//更新fact中变量值
+            end

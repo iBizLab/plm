@@ -1,0 +1,6 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "queryCode" : "SELECT\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`FILE_ID`,\nt1.`ID`,\nt1.`NAME`,\nt1.`OWNER_ID`,\nt1.`OWNER_SUBTYPE`,\nt1.`OWNER_TYPE`,\nt1.`TITLE`,\nt2.TITLE as `WORK_ITEM_TITLE`,\nt2.IDENTIFIER as `WORK_ITEM_IDENTIFIER`,\nt2.WORK_ITEM_TYPE_ID as `WORK_ITEM_TYPE_ID`\nFROM `ATTACHMENT` `t1`, `WORK_ITEM` `t2`\nWHERE t1.OWNER_ID = t2.ID and t1.OWNER_TYPE = 'WORK_ITEM' and t1.OWNER_SUBTYPE = 'DELIVERABLE'\nand t2.is_archived = 0 and t2.is_deleted = 0\nand exists(select 1 from `project` t3 where t3.id = t2.project_id and t3.id = #{ctx.webcontext.project_id})",
+  "id" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDEDATAQUERIES/project_deliverable/PSDEDQCODES/MYSQL5.json"
+}

@@ -1,0 +1,83 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.other_re_space;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectother_re_spacedefault;
+                global cn.ibizlab.plm.core.base.domain.relation projectother_re_spacerelationobj;
+                global cn.ibizlab.plm.core.base.domain.relation projectother_re_spacerelationobj2;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectother_re_spacebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充关联参数]
+            rule "prepareparam1"
+            ruleflow-group "projectother_re_spaceprepareparam1"
+            when
+            then
+                            projectother_re_spacerelationobj2.set("targetid",projectother_re_spacedefault.get("space_id"));
+                            projectother_re_spacerelationobj2.set("targettype",projectother_re_spacedefault.get("target_type"));
+                            projectother_re_spacerelationobj2.set("principalid",projectother_re_spacedefault.get("target_id"));
+                            projectother_re_spacerelationobj2.set("principaltype",projectother_re_spacedefault.get("principal_type"));
+                            projectother_re_spacerelationobj.set("targetid",projectother_re_spacedefault.get("target_id"));
+                            projectother_re_spacerelationobj.set("targettype",projectother_re_spacedefault.get("principal_type"));
+                            projectother_re_spacerelationobj.set("principalid",projectother_re_spacedefault.get("space_id"));
+                            projectother_re_spacerelationobj.set("principaltype",projectother_re_spacedefault.get("target_type"));
+                        update(projectother_re_spacedefault);//更新fact中变量值
+                        update(projectother_re_spacerelationobj);//更新fact中变量值
+                        update(projectother_re_spacerelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "projectother_re_spacedeaction1"
+            when
+            then
+                        relationservice.create(projectother_re_spacerelationobj);
+                        update(projectother_re_spacedefault);//更新fact中变量值
+                        update(projectother_re_spacerelationobj);//更新fact中变量值
+                        update(projectother_re_spacerelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "projectother_re_spacedeaction2"
+            when
+            then
+                        relationservice.create(projectother_re_spacerelationobj2);
+                        update(projectother_re_spacedefault);//更新fact中变量值
+                        update(projectother_re_spacerelationobj);//更新fact中变量值
+                        update(projectother_re_spacerelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[抛出异常]
+            rule "throwexception1"
+            ruleflow-group "projectother_re_spacethrowexception1"
+            when
+            then
+                        update(projectother_re_spacedefault);//更新fact中变量值
+                        update(projectother_re_spacerelationobj);//更新fact中变量值
+                        update(projectother_re_spacerelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectother_re_spaceend1"
+            when
+            then
+                        update(projectother_re_spacedefault);//更新fact中变量值
+                        update(projectother_re_spacerelationobj);//更新fact中变量值
+                        update(projectother_re_spacerelationobj2);//更新fact中变量值
+            end

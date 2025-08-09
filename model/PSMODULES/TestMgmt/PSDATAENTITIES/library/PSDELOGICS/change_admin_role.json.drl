@@ -1,0 +1,94 @@
+package cn.ibizlab.plm.testmgmt.logic.librarylogic.change_admin_role;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarychange_admin_roledefault;
+                global cn.ibizlab.plm.core.base.domain.user librarychange_admin_rolefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.user librarychange_admin_roleselectdata;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member librarychange_admin_roleupdate_member_info;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService library_memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "librarychange_admin_rolebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取选中成员参数]
+            rule "bindparam1"
+            ruleflow-group "librarychange_admin_rolebindparam1"
+            when
+            then
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "librarychange_admin_roleloopsubcall1"
+            when
+            then
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立更新成员信息参数]
+            rule "renewparam4"
+            ruleflow-group "librarychange_admin_rolerenewparam4"
+            when
+            then
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备更新管理员身份]
+            rule "prepareparam2"
+            ruleflow-group "librarychange_admin_roleprepareparam2"
+            when
+            then
+                            librarychange_admin_roleupdate_member_info.set("userid",librarychange_admin_rolefor_temp_obj.get("id"));
+                            librarychange_admin_roleupdate_member_info.set("roleid","admin");
+                            librarychange_admin_roleupdate_member_info.set("libraryid",librarychange_admin_roledefault.get("id"));
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新管理员身份]
+            rule "deaction1"
+            ruleflow-group "librarychange_admin_roledeaction1"
+            when
+            then
+                        library_memberservice.save(librarychange_admin_roleupdate_member_info);
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "librarychange_admin_roleend1"
+            when
+            then
+                        update(librarychange_admin_roledefault);//更新fact中变量值
+                        update(librarychange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(librarychange_admin_roleselectdata);//更新fact中变量值
+                        update(librarychange_admin_roleupdate_member_info);//更新fact中变量值
+            end
