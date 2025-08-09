@@ -809,6 +809,138 @@
         "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
+      }, {
+        "caption" : "添加内容",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "work_item",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_work_item"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "work_item",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "work_item",
+          "scriptCode" : "(data.state == '10'||data.state=='50')&&(context.curstage_id == null)&&(data.create_man == context.srfuserid)&&(data.type == 'WORK_ITEM')",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "添加内容",
+          "codeName" : "add_work_item_review_content",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_review_re_work_item_view.json",
+            "viewType" : "DEMPICKUPVIEW2"
+          },
+          "fullCodeName" : "review_add_work_item_review_content",
+          "name" : "添加工作项评审内容",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "add_review_content"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "WORK_ITEM",
+            "rawValue" : true
+          }, {
+            "key" : "review",
+            "name" : "review",
+            "value" : "review",
+            "rawValue" : false
+          } ],
+          "paramItem" : "review",
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "add_work_item_review_content",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "add_work_item_review_content@review"
+        },
+        "tooltip" : "添加内容",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "添加内容",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "page",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_page"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "page",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "page",
+          "scriptCode" : "(data.state == '10'||data.state=='50')&&(context.curstage_id == null)&&(data.create_man == context.srfuserid)&&(data.type == 'PAGE')",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "添加内容",
+          "codeName" : "add_page_review_content",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_review_re_page_view.json",
+            "viewType" : "DEMPICKUPVIEW2"
+          },
+          "fullCodeName" : "review_add_page_review_content",
+          "name" : "添加页面评审内容",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "add_review_content"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "PAGE",
+            "rawValue" : true
+          }, {
+            "key" : "review",
+            "name" : "review",
+            "value" : "review",
+            "rawValue" : false
+          } ],
+          "paramItem" : "review",
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "add_page_review_content",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "add_page_review_content@review"
+        },
+        "tooltip" : "添加内容",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
       } ],
       "toolbarStyle" : "USER",
       "xDataControlName" : "form",
@@ -2090,7 +2222,7 @@
                         "viewType" : "DEMPICKUPVIEW2"
                       }
                     }, {
-                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
+                      "name" : "MPICKUPVIEW:PAGE"
                     } ],
                     "getPSControls" : [ {
                       "codeName" : "idea_grid_view_all_toolbar",
@@ -3076,6 +3208,94 @@
                     "actionRSMode" : 1,
                     "codeName" : "reviews",
                     "dataRSMode" : 0,
+                    "majorDECodeName" : "space",
+                    "majorDEName" : "SPACE",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                    },
+                    "minorDECodeName" : "review",
+                    "minorDEName" : "REVIEW",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "review_contents",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "review",
+                    "majorDEName" : "REVIEW",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "minorDECodeName" : "review_content",
+                    "minorDEName" : "REVIEW_CONTENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "reviews",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "review",
+                    "minorDEName" : "REVIEW",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "review_contents",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "review",
+                    "majorDEName" : "REVIEW",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "minorDECodeName" : "review_content",
+                    "minorDEName" : "REVIEW_CONTENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "reviews",
+                    "dataRSMode" : 0,
                     "majorDECodeName" : "product",
                     "majorDEName" : "PRODUCT",
                     "getMajorPSAppDataEntity" : {
@@ -3845,7 +4065,7 @@
                         "viewType" : "DEMPICKUPVIEW2"
                       }
                     }, {
-                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
+                      "name" : "MPICKUPVIEW:PAGE"
                     } ],
                     "getPSControls" : [ {
                       "codeName" : "idea_no_grid_view_all_toolbar",
@@ -4946,6 +5166,94 @@
                   "modelid" : "fb2368e975f0777fbda0776328f71d83",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "reviews",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "space",
+                    "majorDEName" : "SPACE",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                    },
+                    "minorDECodeName" : "review",
+                    "minorDEName" : "REVIEW",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "review_contents",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "review",
+                    "majorDEName" : "REVIEW",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "minorDECodeName" : "review_content",
+                    "minorDEName" : "REVIEW_CONTENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "reviews",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "review",
+                    "minorDEName" : "REVIEW",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "review_contents",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "review",
+                    "majorDEName" : "REVIEW",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                    },
+                    "minorDECodeName" : "review_content",
+                    "minorDEName" : "REVIEW_CONTENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                    },
+                    "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "reviews",
                     "dataRSMode" : 0,
@@ -7468,6 +7776,94 @@
                           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                         },
                         "name" : "DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PRINCIPAL_ID",
+                          "codeName" : "principal_id"
+                        },
+                        "rSMode" : 2
+                      } ], [ {
+                        "actionRSMode" : 1,
+                        "codeName" : "reviews",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "space",
+                        "majorDEName" : "SPACE",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                        },
+                        "minorDECodeName" : "review",
+                        "minorDEName" : "REVIEW",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                        },
+                        "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PRINCIPAL_ID",
+                          "codeName" : "principal_id"
+                        },
+                        "rSMode" : 2
+                      }, {
+                        "actionRSMode" : 1,
+                        "codeName" : "comments",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "review",
+                        "majorDEName" : "REVIEW",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                        },
+                        "minorDECodeName" : "comment",
+                        "minorDEName" : "COMMENT",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                        },
+                        "name" : "DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PRINCIPAL_ID",
+                          "codeName" : "principal_id"
+                        },
+                        "rSMode" : 2
+                      } ], [ {
+                        "actionRSMode" : 1,
+                        "codeName" : "reviews",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "project",
+                        "majorDEName" : "PROJECT",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                        },
+                        "minorDECodeName" : "review",
+                        "minorDEName" : "REVIEW",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                        },
+                        "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PRINCIPAL_ID",
+                          "codeName" : "principal_id"
+                        },
+                        "rSMode" : 2
+                      }, {
+                        "actionRSMode" : 1,
+                        "codeName" : "comments",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "review",
+                        "majorDEName" : "REVIEW",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                        },
+                        "minorDECodeName" : "comment",
+                        "minorDEName" : "COMMENT",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                        },
+                        "name" : "DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID",
                         "getParentPSAppDEField" : {
                           "name" : "PRINCIPAL_ID",
                           "codeName" : "principal_id"
@@ -11592,6 +11988,94 @@
                   "actionRSMode" : 1,
                   "codeName" : "reviews",
                   "dataRSMode" : 0,
+                  "majorDECodeName" : "space",
+                  "majorDEName" : "SPACE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                  },
+                  "minorDECodeName" : "review",
+                  "minorDEName" : "REVIEW",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                  },
+                  "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRINCIPAL_ID",
+                    "codeName" : "principal_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "review_contents",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "review",
+                  "majorDEName" : "REVIEW",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                  },
+                  "minorDECodeName" : "review_content",
+                  "minorDEName" : "REVIEW_CONTENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                  },
+                  "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRINCIPAL_ID",
+                    "codeName" : "principal_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "reviews",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "review",
+                  "minorDEName" : "REVIEW",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                  },
+                  "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRINCIPAL_ID",
+                    "codeName" : "principal_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "review_contents",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "review",
+                  "majorDEName" : "REVIEW",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+                  },
+                  "minorDECodeName" : "review_content",
+                  "minorDEName" : "REVIEW_CONTENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                  },
+                  "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRINCIPAL_ID",
+                    "codeName" : "principal_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "reviews",
+                  "dataRSMode" : 0,
                   "majorDECodeName" : "product",
                   "majorDEName" : "PRODUCT",
                   "getMajorPSAppDataEntity" : {
@@ -12021,6 +12505,50 @@
   "modelid" : "4ea3c830a8438f134a9ab58ffcd59164",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "reviews",
     "dataRSMode" : 0,

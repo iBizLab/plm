@@ -8575,6 +8575,35 @@
       "enableTestMethod" : false
     }, {
       "actionType" : "DEACTION",
+      "codeName" : "copy",
+      "methodType" : "DEACTION",
+      "name" : "Copy",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDEACTIONS/Copy.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "board_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy",
+      "tempDataMode" : 0,
+      "uniqueTag" : "BOARD__DEACTION__COPY",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
       "codeName" : "get_draft",
       "dataAccessAction" : "CREATE",
       "methodType" : "DEACTION",
@@ -17991,6 +18020,766 @@
     "enableDataImport" : true,
     "id" : "DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID"
   }, {
+    "codeName" : "guidelines",
+    "getMajorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "project"
+    },
+    "getMinorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "guideline"
+    },
+    "name" : "DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDERS/DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID.json"
+    },
+    "getPSDEServiceAPIMethods" : [ {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Create.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__CREATE",
+      "enableTestMethod" : false,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Get.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__GET",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Remove.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__REMOVE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Update.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__UPDATE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "check_key",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/CheckKey.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/check_key",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__CHECKKEY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_draft",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/GetDraft.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "requestPath" : "/get_draft",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__GETDRAFT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Save.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/save",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__SAVE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_base",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_base",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "base"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_base",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__BASE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_default",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_default",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_default",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__DEFAULT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_normal",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_normal",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "normal"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_normal",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__NORMAL",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_under_library",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_under_library",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "under_library"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_under_library",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__UNDER_LIBRARY",
+      "enableTestMethod" : false
+    } ],
+    "getParentIdPSDEField" : {
+      "name" : "SCOPE_ID",
+      "codeName" : "scope_id"
+    },
+    "enableDataExport" : true,
+    "enableDataImport" : true,
+    "id" : "DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID"
+  }, {
+    "codeName" : "guidelines",
+    "getMajorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "space"
+    },
+    "getMinorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "guideline"
+    },
+    "name" : "DERCUSTOM_GUIDELINE_SPACE_SPACE_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDERS/DERCUSTOM_GUIDELINE_SPACE_SPACE_ID.json"
+    },
+    "getPSDEServiceAPIMethods" : [ {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Create.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__CREATE",
+      "enableTestMethod" : false,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Get.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__GET",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Remove.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__REMOVE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Update.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__UPDATE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "check_key",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/CheckKey.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/check_key",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__CHECKKEY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_draft",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/GetDraft.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "requestPath" : "/get_draft",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__GETDRAFT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Save.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/save",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__DEACTION__SAVE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_base",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_base",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "base"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_base",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__BASE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_default",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_default",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_default",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__DEFAULT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_normal",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_normal",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "normal"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_normal",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__NORMAL",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_under_library",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_under_library",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "under_library"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "guideline_def_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_under_library",
+      "tempDataMode" : 0,
+      "uniqueTag" : "GUIDELINE__FETCH__UNDER_LIBRARY",
+      "enableTestMethod" : false
+    } ],
+    "getParentIdPSDEField" : {
+      "name" : "SCOPE_ID",
+      "codeName" : "scope_id"
+    },
+    "enableDataExport" : true,
+    "enableDataImport" : true,
+    "id" : "DERCUSTOM_GUIDELINE_SPACE_SPACE_ID"
+  }, {
     "codeName" : "idea_templates",
     "getMajorPSDEServiceAPI" : {
       "modelref" : true,
@@ -19637,6 +20426,39 @@
       "requestPath" : "/fetch_deleted",
       "tempDataMode" : 0,
       "uniqueTag" : "IDEA__FETCH__DELETED",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_ideas_relation_idea",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_idea",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_idea"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "idea_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "idea_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_idea",
+      "tempDataMode" : 0,
+      "uniqueTag" : "IDEA__FETCH__IDEAS_RELATION_IDEA",
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
@@ -47694,6 +48516,1472 @@
     "enableDataImport" : true,
     "id" : "DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID"
   }, {
+    "codeName" : "reviews",
+    "getMajorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "project"
+    },
+    "getMinorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "review"
+    },
+    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID.json"
+    },
+    "getPSDEServiceAPIMethods" : [ {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Create.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CREATE",
+      "enableTestMethod" : false,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Get.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_def_group_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Remove.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__REMOVE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__UPDATE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "add_review_content",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "add_review_content",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/add_review_content.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/add_review_content",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__ADD_REVIEW_CONTENT",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "change_review_stage",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "change_review_stage",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/change_review_stage.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/change_review_stage",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CHANGE_REVIEW_STAGE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "check_key",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/CheckKey.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/check_key",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CHECKKEY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "completed_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "completed_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/completed_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/completed_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__COMPLETED_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_cureent_stage_info",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "fill_cureent_stage_info",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_cureent_stage_info.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_cureent_stage_info",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_CUREENT_STAGE_INFO",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_guideline",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "fill_guideline",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_guideline.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_guideline",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_GUIDELINE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_stage_reviewer",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "fill_stage_reviewer",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_stage_reviewer.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_stage_reviewer",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_STAGE_REVIEWER",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_attention",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "get_attention",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_attention.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "requestPath" : "/get_attention",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET_ATTENTION",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_draft",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/GetDraft.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_def_group_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "requestPath" : "/get_draft",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GETDRAFT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_redirect_data",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "get_redirect_data",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "requestPath" : "/get_redirect_data",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET_REDIRECT_DATA",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "repeal_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "repeal_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/repeal_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/repeal_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__REPEAL_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Save.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/save",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__SAVE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "submit_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "submit_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/submit_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/submit_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__SUBMIT_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_bi_search",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_bi_search",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "bi_search"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_bi_search_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_bi_search",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__BI_SEARCH",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_default",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_default",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_default",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__DEFAULT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_attention",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_attention",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "my_attention"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_attention",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MY_ATTENTION",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_reviewed",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_reviewed",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "my_reviewed"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_reviewed",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MY_REVIEWED",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_todo",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_todo",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "MyTodo"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_todo",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MYTODO",
+      "enableTestMethod" : false
+    } ],
+    "getParentIdPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "enableDataExport" : true,
+    "enableDataImport" : true,
+    "id" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID"
+  }, {
+    "codeName" : "reviews",
+    "getMajorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "space"
+    },
+    "getMinorPSDEServiceAPI" : {
+      "modelref" : true,
+      "id" : "review"
+    },
+    "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID.json"
+    },
+    "getPSDEServiceAPIMethods" : [ {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Create.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CREATE",
+      "enableTestMethod" : false,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Get.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_def_group_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Remove.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__REMOVE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__UPDATE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "add_review_content",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "add_review_content",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/add_review_content.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/add_review_content",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__ADD_REVIEW_CONTENT",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "change_review_stage",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "change_review_stage",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/change_review_stage.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/change_review_stage",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CHANGE_REVIEW_STAGE",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "check_key",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/CheckKey.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/check_key",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__CHECKKEY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "completed_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "completed_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/completed_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/completed_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__COMPLETED_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_cureent_stage_info",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "fill_cureent_stage_info",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_cureent_stage_info.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_cureent_stage_info",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_CUREENT_STAGE_INFO",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_guideline",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "fill_guideline",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_guideline.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_guideline",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_GUIDELINE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "fill_stage_reviewer",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "fill_stage_reviewer",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/fill_stage_reviewer.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fill_stage_reviewer",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__FILL_STAGE_REVIEWER",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_attention",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "get_attention",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_attention.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "requestPath" : "/get_attention",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET_ATTENTION",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_draft",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/GetDraft.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_def_group_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "requestPath" : "/get_draft",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GETDRAFT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_redirect_data",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "get_redirect_data",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "requestPath" : "/get_redirect_data",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__GET_REDIRECT_DATA",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "repeal_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "repeal_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/repeal_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/repeal_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__REPEAL_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Save.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/save",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__SAVE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "submit_review",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "submit_review",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/submit_review.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/submit_review",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__DEACTION__SUBMIT_REVIEW",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_bi_search",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_bi_search",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "bi_search"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_bi_search_group_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_bi_search",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__BI_SEARCH",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_default",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_default",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_default",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__DEFAULT",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_attention",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_attention",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "my_attention"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_attention",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MY_ATTENTION",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_reviewed",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_reviewed",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "my_reviewed"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_reviewed",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MY_REVIEWED",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_my_todo",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_my_todo",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "MyTodo"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "review_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_my_todo",
+      "tempDataMode" : 0,
+      "uniqueTag" : "REVIEW__FETCH__MYTODO",
+      "enableTestMethod" : false
+    } ],
+    "getParentIdPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "enableDataExport" : true,
+    "enableDataImport" : true,
+    "id" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID"
+  }, {
     "codeName" : "role_members",
     "getMajorPSDEServiceAPI" : {
       "modelref" : true,
@@ -56580,6 +58868,39 @@
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
+      "codeName" : "fetch_ideas_relation_test_case",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_test_case",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_test_case"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "test_case_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "test_case_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_test_case",
+      "tempDataMode" : 0,
+      "uniqueTag" : "TEST_CASE__FETCH__IDEAS_RELATION_TEST_CASE",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
       "codeName" : "fetch_implementation_results",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -60374,6 +62695,39 @@
       "requestPath" : "/fetch_idea_relation_ticket",
       "tempDataMode" : 0,
       "uniqueTag" : "TICKET__FETCH__IDEA_RELATION_TICKET",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_ideas_relation_ticket",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_ticket",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_ticket"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ticket_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ticket_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_ticket",
+      "tempDataMode" : 0,
+      "uniqueTag" : "TICKET__FETCH__IDEAS_RELATION_TICKET",
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
@@ -64400,12 +66754,12 @@
     }, {
       "actionType" : "DEACTION",
       "codeName" : "copy",
-      "dataAccessAction" : "CREATE",
+      "dataAccessAction" : "COPY",
       "methodType" : "DEACTION",
-      "name" : "copy",
+      "name" : "Copy",
       "getPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Copy.json"
       },
       "getPSDEServiceAPIMethodInput" : {
         "name" : "输入对象",
@@ -64425,6 +66779,36 @@
       "requestPath" : "/copy",
       "tempDataMode" : 0,
       "uniqueTag" : "WORK_ITEM__DEACTION__COPY",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "copy_item",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "copy_item",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy_item.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy_item",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__DEACTION__COPY_ITEM",
       "enableTestMethod" : false,
       "needResourceKey" : true
     }, {
@@ -66180,6 +68564,39 @@
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
+      "codeName" : "fetch_copy",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_copy",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "copy"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_copy",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__FETCH__COPY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
       "codeName" : "fetch_default",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -66375,6 +68792,39 @@
       "requestPath" : "/fetch_idea_relation_work_item",
       "tempDataMode" : 0,
       "uniqueTag" : "WORK_ITEM__FETCH__IDEA_RELATION_WORK_ITEM",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_ideas_relation_work_item",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_work_item",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_work_item"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_work_item",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__FETCH__IDEAS_RELATION_WORK_ITEM",
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
@@ -68485,12 +70935,12 @@
     }, {
       "actionType" : "DEACTION",
       "codeName" : "copy",
-      "dataAccessAction" : "CREATE",
+      "dataAccessAction" : "COPY",
       "methodType" : "DEACTION",
-      "name" : "copy",
+      "name" : "Copy",
       "getPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Copy.json"
       },
       "getPSDEServiceAPIMethodInput" : {
         "name" : "输入对象",
@@ -68510,6 +70960,36 @@
       "requestPath" : "/copy",
       "tempDataMode" : 0,
       "uniqueTag" : "WORK_ITEM__DEACTION__COPY",
+      "enableTestMethod" : false,
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "copy_item",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "copy_item",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy_item.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy_item",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__DEACTION__COPY_ITEM",
       "enableTestMethod" : false,
       "needResourceKey" : true
     }, {
@@ -70265,6 +72745,39 @@
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
+      "codeName" : "fetch_copy",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_copy",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "copy"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_copy",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__FETCH__COPY",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
       "codeName" : "fetch_default",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -70460,6 +72973,39 @@
       "requestPath" : "/fetch_idea_relation_work_item",
       "tempDataMode" : 0,
       "uniqueTag" : "WORK_ITEM__FETCH__IDEA_RELATION_WORK_ITEM",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_ideas_relation_work_item",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_work_item",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_work_item"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_work_item",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORK_ITEM__FETCH__IDEAS_RELATION_WORK_ITEM",
       "enableTestMethod" : false
     }, {
       "actionType" : "FETCH",
@@ -88493,6 +91039,19 @@
       "keyField" : false,
       "majorField" : false
     }, {
+      "codeName" : "review_result_state",
+      "codeName2" : "review_result_state",
+      "logicName" : "评审结果",
+      "name" : "REVIEW_RESULT_STATE",
+      "orderValue" : 460,
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
       "codeName" : "attention_count",
       "codeName2" : "attention_count",
       "logicName" : "关注数",
@@ -95961,6 +98520,31 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/check_key",
       "uniqueTag" : "BOARD__DEACTION__CHECKKEY"
+    }, {
+      "codeName" : "copy",
+      "methodType" : "DEACTION",
+      "name" : "Copy",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDEACTIONS/Copy.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "board_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy",
+      "uniqueTag" : "BOARD__DEACTION__COPY",
+      "needResourceKey" : true
     }, {
       "codeName" : "get_draft",
       "dataAccessAction" : "CREATE",
@@ -108081,6 +110665,12 @@
     }, {
       "modelref" : true,
       "id" : "DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_GUIDELINE_SPACE_SPACE_ID"
     } ],
     "name" : "GUIDELINE",
     "getPSDEServiceAPIFields" : [ {
@@ -110673,6 +113263,35 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/fetch_deleted",
       "uniqueTag" : "IDEA__FETCH__DELETED"
+    }, {
+      "codeName" : "fetch_ideas_relation_idea",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_idea",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_idea"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "idea_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "idea_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_idea",
+      "uniqueTag" : "IDEA__FETCH__IDEAS_RELATION_IDEA"
     }, {
       "codeName" : "fetch_mob_not_archived",
       "dataAccessAction" : "READ",
@@ -125761,6 +128380,9 @@
       "id" : "DER1N_ENTRY_PROJECT_PROJECT_ID"
     }, {
       "modelref" : true,
+      "id" : "DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID"
+    }, {
+      "modelref" : true,
       "id" : "DERCUSTOM_MEMBER_PROJECT_OWNER_ID"
     }, {
       "modelref" : true,
@@ -125771,6 +128393,9 @@
     }, {
       "modelref" : true,
       "id" : "DER1N_RELEASE_PROJECT_PROJECT_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID"
     }, {
       "modelref" : true,
       "id" : "DER1N_SPRINT_PROJECT_PROJECT_ID"
@@ -126458,6 +129083,32 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/check_key",
       "uniqueTag" : "PROJECT__DEACTION__CHECKKEY"
+    }, {
+      "codeName" : "copy",
+      "dataAccessAction" : "COPY",
+      "methodType" : "DEACTION",
+      "name" : "Copy",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "project_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy",
+      "uniqueTag" : "PROJECT__DEACTION__COPY",
+      "needResourceKey" : true
     }, {
       "codeName" : "delete",
       "dataAccessAction" : "UPDATE",
@@ -133598,6 +136249,12 @@
     }, {
       "modelref" : true,
       "id" : "DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID"
     } ],
     "name" : "REVIEW",
     "getPSDEServiceAPIFields" : [ {
@@ -135262,6 +137919,32 @@
       "codeName2" : "idea",
       "logicName" : "产品需求",
       "name" : "IDEA",
+      "orderValue" : 310,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "page",
+      "codeName2" : "page",
+      "logicName" : "空间页面",
+      "name" : "PAGE",
+      "orderValue" : 310,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "work_item",
+      "codeName2" : "work_item",
+      "logicName" : "项目工作项",
+      "name" : "WORK_ITEM",
       "orderValue" : 310,
       "stdDataType" : 21,
       "stringLength" : 1048576,
@@ -143893,7 +146576,13 @@
       "id" : "DERCUSTOM_BASELINE_SPACE_OWNER_ID"
     }, {
       "modelref" : true,
+      "id" : "DERCUSTOM_GUIDELINE_SPACE_SPACE_ID"
+    }, {
+      "modelref" : true,
       "id" : "DER1N_PAGE_SPACE_SPACE_ID"
+    }, {
+      "modelref" : true,
+      "id" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID"
     }, {
       "modelref" : true,
       "id" : "DER1N_SPACE_MEMBER_SPACE_SPACE_ID"
@@ -152288,6 +154977,35 @@
       "requestPath" : "/fetch_idea_relation_test_case",
       "uniqueTag" : "TEST_CASE__FETCH__IDEA_RELATION_TEST_CASE"
     }, {
+      "codeName" : "fetch_ideas_relation_test_case",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_test_case",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_test_case"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "test_case_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "test_case_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_test_case",
+      "uniqueTag" : "TEST_CASE__FETCH__IDEAS_RELATION_TEST_CASE"
+    }, {
       "codeName" : "fetch_implementation_results",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -156709,6 +159427,35 @@
       "requestPath" : "/fetch_idea_relation_ticket",
       "uniqueTag" : "TICKET__FETCH__IDEA_RELATION_TICKET"
     }, {
+      "codeName" : "fetch_ideas_relation_ticket",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_ticket",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_ticket"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ticket_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ticket_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_ticket",
+      "uniqueTag" : "TICKET__FETCH__IDEAS_RELATION_TICKET"
+    }, {
       "codeName" : "fetch_mob_ticket_list",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -161118,6 +163865,19 @@
       "keyField" : false,
       "majorField" : false
     }, {
+      "codeName" : "review_result_state",
+      "codeName2" : "review_result_state",
+      "logicName" : "评审结果",
+      "name" : "REVIEW_RESULT_STATE",
+      "orderValue" : 460,
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
       "codeName" : "remaining_workload",
       "codeName2" : "remaining_workload",
       "logicName" : "剩余工时",
@@ -162346,12 +165106,12 @@
       "needResourceKey" : true
     }, {
       "codeName" : "copy",
-      "dataAccessAction" : "CREATE",
+      "dataAccessAction" : "COPY",
       "methodType" : "DEACTION",
-      "name" : "copy",
+      "name" : "Copy",
       "getPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Copy.json"
       },
       "getPSDEServiceAPIMethodInput" : {
         "name" : "输入对象",
@@ -162369,6 +165129,32 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/copy",
       "uniqueTag" : "WORK_ITEM__DEACTION__COPY",
+      "needResourceKey" : true
+    }, {
+      "codeName" : "copy_item",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "copy_item",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy_item.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/copy_item",
+      "uniqueTag" : "WORK_ITEM__DEACTION__COPY_ITEM",
       "needResourceKey" : true
     }, {
       "codeName" : "count_my_todo",
@@ -163906,6 +166692,35 @@
       "requestPath" : "/fetch_complete_trend",
       "uniqueTag" : "WORK_ITEM__FETCH__COMPLETE_TREND"
     }, {
+      "codeName" : "fetch_copy",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_copy",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "copy"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_copy",
+      "uniqueTag" : "WORK_ITEM__FETCH__COPY"
+    }, {
       "codeName" : "fetch_default",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -164079,6 +166894,35 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/fetch_idea_relation_work_item",
       "uniqueTag" : "WORK_ITEM__FETCH__IDEA_RELATION_WORK_ITEM"
+    }, {
+      "codeName" : "fetch_ideas_relation_work_item",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_ideas_relation_work_item",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_work_item"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "work_item_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_ideas_relation_work_item",
+      "uniqueTag" : "WORK_ITEM__FETCH__IDEAS_RELATION_WORK_ITEM"
     }, {
       "codeName" : "fetch_kanban_user_stat",
       "dataAccessAction" : "READ",

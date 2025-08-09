@@ -21,7 +21,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -38,
+    "topPos" : -188,
     "parallelOutput" : true
   }, {
     "codeName" : "DEDATASET1",
@@ -43,7 +43,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "LOOPSUBCALL1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -55,59 +55,14 @@
       "modelref" : true,
       "id" : "page_ideas"
     },
-    "topPos" : 100
+    "topPos" : 40
   }, {
-    "codeName" : "END1",
-    "leftPos" : 580,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "result"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 200
-  }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "idea"
-    },
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\nString principal_id = _default.get(\"principal_id\")\r\nbase_filter.set(\"principal_id\", \"'\" + principal_id + \"'\")\r\nbase_filter.all()",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
     "leftPos" : 330,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环所有的需求",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      }
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page_ideas"
-    },
-    "topPos" : 208
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 330,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置基础过滤器",
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "设置通用过滤器参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -116,30 +71,15 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM2"
+        "id" : "RAWSFCODE1"
       }
     } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "principal_id",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "base_filter"
-      },
-      "name" : "idea[ID] ==> base_filter[principal_id]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 331
+    "topPos" : 240
   }, {
     "codeName" : "DEDATASET2",
     "getDstPSDEDataSet" : {
       "modelref" : true,
-      "id" : "relation_idea"
+      "id" : "ideas_relation_idea"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -169,10 +109,43 @@
     },
     "topPos" : 428
   }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_work_item"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 540,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_item"
+    },
+    "topPos" : 428
+  }, {
     "codeName" : "DEDATASET4",
     "getDstPSDEDataSet" : {
       "modelref" : true,
-      "id" : "relation_ticket"
+      "id" : "ideas_relation_ticket"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -205,7 +178,7 @@
     "codeName" : "DEDATASET5",
     "getDstPSDEDataSet" : {
       "modelref" : true,
-      "id" : "relation_test_case"
+      "id" : "ideas_relation_test_case"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -221,7 +194,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "RAWSFCODE2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -235,179 +208,35 @@
     },
     "topPos" : 428
   }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 330,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "组装数据",
+    "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\n\r\n// 5. 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n\r\n    List<Object> relationIdeaList = new ArrayList<Object>()\r\n    List<Object> relationWorkItemList = new ArrayList<Object>()\r\n    List<Object> relationTicketList = new ArrayList<Object>()\r\n    List<Object> relationCaseList = new ArrayList<Object>()\r\n\r\n    relation_idea.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationIdeaList.add(it)\r\n        }\r\n    }\r\n    relation_work_item.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationWorkItemList.add(it)\r\n        }\r\n    }\r\n    relation_ticket.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationTicketList.add(it)\r\n\r\n        }\r\n    }\r\n    relation_test_case.each { it ->\r\n        String principal_id = it.get(\"principal_id\")\r\n        if (principal_id.equals(id)) {\r\n            relationCaseList.add(it)\r\n        }\r\n    }\r\n    def re_idea = sys.createEntity(null, false)\r\n    def re_item = sys.createEntity(null, false)\r\n    def re_ticket = sys.createEntity(null, false)\r\n    def re_case = sys.createEntity(null, false)\r\n\r\n    re_idea.set(\"content\", relationIdeaList)\r\n    re_item.set(\"content\", relationWorkItemList)\r\n    re_ticket.set(\"content\", relationTicketList)\r\n    re_case.set(\"content\", relationCaseList)\r\n\r\n    // 组装数据\r\n    idea.set(\"re_idea\", re_idea)\r\n    idea.set(\"re_item\", re_item)\r\n    idea.set(\"re_ticket\", re_ticket)\r\n    idea.set(\"re_case\", re_case)\r\n    idea.set(\"idea_sum\", relationIdeaList.size())\r\n    idea.set(\"work_item_sum\", relationWorkItemList.size())\r\n    idea.set(\"ticket_sum\", relationTicketList.size())\r\n    idea.set(\"test_case_sum\", relationCaseList.size())\r\n\r\n    // 添加到结果集\r\n    result.add(idea)\r\n}",
+    "codeName" : "RAWSFCODE2",
+    "codeType" : "Groovy",
+    "leftPos" : 950,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "处理返回结果",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "APPENDPARAM1"
+        "id" : "END"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "RAWSFCODE2"
       }
     } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "re_idea",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_idea ==> idea[re_idea]",
-      "paramAction" : "SETPARAMVALUE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_idea"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "idea_sum",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_idea[size] ==> idea[idea_sum]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "size",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_idea"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "work_item_sum",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_item[size] ==> idea[work_item_sum]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "size",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_item"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "ticket_sum",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_ticket[size] ==> idea[ticket_sum]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "size",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_ticket"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "test_case_sum",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_case[size] ==> idea[test_case_sum]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "size",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_case"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "re_item",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_items ==> idea[re_item]",
-      "paramAction" : "SETPARAMVALUE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_item"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "re_case",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_case ==> idea[re_case]",
-      "paramAction" : "SETPARAMVALUE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_case"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "re_ticket",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "name" : "re_page_ticket ==> idea[re_ticket]",
-      "paramAction" : "SETPARAMVALUE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_ticket"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 585
+    "topPos" : 550
   }, {
-    "codeName" : "APPENDPARAM1",
-    "getDstPSDELogicParam" : {
+    "codeName" : "END",
+    "leftPos" : 990,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
       "modelref" : true,
       "id" : "result"
     },
-    "leftPos" : 330,
-    "logicNodeType" : "APPENDPARAM",
-    "name" : "附加到数组参数",
-    "srcIndex" : 0,
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "idea"
-    },
-    "topPos" : 770
-  }, {
-    "codeName" : "DEDATASET3",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "relation_work_item"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-    },
-    "leftPos" : 540,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联工作项",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET3"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_item"
-    },
-    "topPos" : 428
+    "returnType" : "LOGICPARAM",
+    "topPos" : 740
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

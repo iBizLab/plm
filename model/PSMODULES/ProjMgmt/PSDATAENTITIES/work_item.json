@@ -327,6 +327,27 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "COPY",
+    "actionType" : "BUILTIN",
+    "codeName" : "Copy",
+    "dataAccessAction" : "COPY",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Copy.json",
+    "logicName" : "复制",
+    "name" : "Copy",
+    "getPSDEActionInput" : {
+      "name" : "CopyInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "CopyResult",
+      "type" : "VOID"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -601,13 +622,13 @@
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
-    "codeName" : "copy",
+    "codeName" : "copy_item",
     "dataAccessAction" : "CREATE",
-    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy.json",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy_item.json",
     "logicName" : "复制",
-    "name" : "copy",
+    "name" : "copy_item",
     "getPSDEActionInput" : {
-      "name" : "CopyInput",
+      "name" : "Copy_itemInput",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "work_item_dto"
@@ -615,7 +636,7 @@
       "type" : "DTO"
     },
     "getPSDEActionReturn" : {
-      "name" : "CopyResult",
+      "name" : "Copy_itemResult",
       "type" : "VOID"
     },
     "getPSDELogic" : {
@@ -1579,6 +1600,9 @@
     }, {
       "name" : "JOB_TYPE",
       "codeName" : "job_type"
+    }, {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
     }, {
       "name" : "SEQUENCE",
       "codeName" : "sequence"
@@ -4269,6 +4293,39 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/copy/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "copy",
+    "logicName" : "拷贝集合",
+    "name" : "copy",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "CopyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "CopyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/deleted/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "deleted",
@@ -4411,6 +4468,101 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/ideas_relation_work_item/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ideas_relation_work_item",
+    "logicName" : "关联工作项（多需求）",
+    "name" : "ideas_relation_work_item",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_WORK_ITEM.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1NLEFTOUT",
+        "name" : "RELATION*左外联接 1:NDERCUSTOM_RELATION_TARGET_WORK_ITEM",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "work_item",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) work_item",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          }, {
+            "condType" : "CUSTOM",
+            "condition" : " t101.`PRINCIPAL_ID` IN (${ctx.datacontext.principal_id})",
+            "name" : "关联"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 不等于(<>) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ideas_relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ideas_relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTOS"
+    },
+    "customCode" : true
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -8595,6 +8747,34 @@
     "enableFront" : false,
     "enableTempData" : true
   }, {
+    "codeName" : "copy",
+    "logicName" : "拷贝集合",
+    "name" : "copy",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "copy"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "CopyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "CopyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "actionHolder" : 1,
     "codeName" : "defect_age_report",
     "dataSetType" : "DELOGIC",
@@ -8805,6 +8985,33 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Idea_relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "ideas_relation_work_item",
+    "logicName" : "关联工作项（多需求）",
+    "name" : "ideas_relation_work_item",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ideas_relation_work_item"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ideas_relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ideas_relation_work_itemResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "work_item_dto"
@@ -16783,6 +16990,99 @@
     "viewLevel" : 0,
     "phisicalDEField" : false,
     "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REVIEW_RESULT_STATE",
+      "dBType" : "MYSQL5",
+      "name" : "REVIEW_RESULT_STATE",
+      "queryCodeExp" : "t1.`REVIEW_RESULT_STATE`",
+      "standardColumnName" : "`REVIEW_RESULT_STATE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REVIEW_RESULT_STATE_EQ",
+      "name" : "N_REVIEW_RESULT_STATE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REVIEW_RESULT_STATE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "review_result_state",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "评审结果",
+    "name" : "REVIEW_RESULT_STATE",
+    "orderValue" : 460,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "REVIEW_RESULT_STATE"
+    },
+    "serviceCodeName" : "review_result_state",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -46787,6 +47087,18 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "测试计划ID",
       "name" : "test_plan_id",
       "getPSDEField" : {
@@ -48437,6 +48749,21 @@
       "getPSDEField" : {
         "name" : "RELEASE_NAME",
         "codeName" : "release_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "n_review_result_state_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REVIEW_RESULT_STATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -50777,6 +51104,9 @@
     "taskMode" : 0
   } ],
   "getAllPSDEOPPrivs" : [ {
+    "logicName" : "复制",
+    "name" : "COPY"
+  }, {
     "logicName" : "建立",
     "mapPSDEName" : "PROJECT",
     "mapPSDEOPPrivName" : "SUBDATA",
@@ -51271,6 +51601,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "not_add_pick_up_grid_view_review",
+    "logicName" : "未添加的工作项表格视图（评审）",
+    "name" : "未添加的工作项表格视图（评审）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "program_pickup_grid_view",
     "logicName" : "规划计划的工作项表格视图",
     "name" : "规划计划的工作项表格视图",
@@ -51564,6 +51900,12 @@
     "logicName" : "工作项移动端列表视图（hybrid）",
     "name" : "工作项移动端列表视图（hybrid）",
     "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "review_re_work_item_view",
+    "logicName" : "工作项评审多项数据选择视图",
+    "name" : "工作项评审多项数据选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "project_resource_gantt_view",
@@ -52833,6 +53175,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "WORK_ITEM"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -52849,6 +53192,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
     },
     "name" : "DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "ATTENTIONS",
       "codeName" : "attentions"
@@ -52865,6 +53212,7 @@
     "serviceCodeName" : "work_item",
     "typeValue" : "WORK_ITEM"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -52881,6 +53229,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
     },
     "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "orderValue" : 100,
     "parentSubType" : "WORK_ITEM",
     "pickupDEFName" : "PRINCIPAL_ID",
@@ -52893,6 +53245,31 @@
     "serviceCodeName" : "work_item",
     "typeValue" : "WORK_ITEM"
   }, {
+    "codeName" : "TARGET_WORK_ITEM",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/dependency/PSDERS/DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM.json",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dependency.json"
+    },
+    "name" : "DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM",
+    "orderValue" : 100,
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "target_work_item"
+  }, {
+    "cloneOrder" : 10,
     "codeName" : "DERCUSTOM_DEPENDENCY_WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -52910,7 +53287,7 @@
     "name" : "DERCUSTOM_DEPENDENCY_WORK_ITEM",
     "getNestedPSDEDataSet" : {
       "modelref" : true,
-      "id" : "dependency_work_items"
+      "id" : "Default"
     },
     "getOne2XDataPSDEField" : {
       "name" : "DEPENDENCIES",
@@ -52926,6 +53303,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "dercustom_dependency_work_item"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -52942,6 +53320,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
     },
     "name" : "DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "EXECUTORS",
       "codeName" : "executors"
@@ -53111,6 +53493,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "work_item"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -53127,6 +53510,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
     },
     "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "ATTACHMENTS",
       "codeName" : "attachments"
@@ -53141,6 +53528,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "work_item"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -53157,6 +53545,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable.json"
     },
     "name" : "DERCUSTOM_WORK_ITEM_DELIVERABLE",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "DELIVERABLE",
       "codeName" : "deliverable"
@@ -53172,6 +53564,38 @@
     "removeOrder" : -1,
     "serviceCodeName" : "work_item",
     "typeValue" : "DELIVERABLE"
+  }, {
+    "codeName" : "work_item",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERCUSTOM_WORK_ITEM_REVIEW_CONTENT.json",
+    "logicName" : "项目工作项-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 7,
+    "minorCodeName" : "review_contents",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+    },
+    "minorServiceCodeName" : "review_contents",
+    "name" : "DERCUSTOM_WORK_ITEM_REVIEW_CONTENT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "work_item"
   }, {
     "codeName" : "DER_WORK_ITEM",
     "dERSubType" : "DER1N",
@@ -53326,6 +53750,7 @@
     "serviceCodeName" : "entry",
     "enableFKey" : true
   }, {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json",
@@ -53344,6 +53769,10 @@
     },
     "minorServiceCodeName" : "work_items",
     "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
     "orderValue" : 100,
     "getPSPickupDEField" : {
       "name" : "PROJECT_ID",
@@ -53357,6 +53786,7 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
     "codeName" : "release",

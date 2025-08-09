@@ -505,6 +505,41 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "COPY",
+    "actionTag" : "Copy",
+    "codeName" : "copy",
+    "methodType" : "DEACTION",
+    "name" : "Copy",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "COPY"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/copy",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -638,6 +673,44 @@
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "codeName" : "fill_copy_info",
+    "methodType" : "DEACTION",
+    "name" : "fill_copy_info",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "fill_copy_info"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Fill_copy_infoInput",
+      "name" : "Fill_copy_infoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Fill_copy_infoResult",
+      "name" : "Fill_copy_infoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
     },
     "builtinMethod" : false
   }, {
@@ -3334,6 +3407,200 @@
     "enableBackend" : false,
     "enableFront" : true
   }, {
+    "codeName" : "fill_copy_info",
+    "defaultParamName" : "Default",
+    "logicName" : "填充复制项目信息",
+    "memo" : "复制项目时，填充当前项目的基本信息",
+    "name" : "填充复制项目信息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[cur_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "cur_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "get"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取目标项目数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 580
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[new_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "new_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 662
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "CreateTemp"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/CreateTemp.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建临时数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 732
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 890
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "project",
+      "logicName" : "项目",
+      "name" : "项目",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "nothing",
     "defaultParamName" : "Default",
     "logicName" : "无操作",
@@ -4876,6 +5143,41 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "COPY",
+    "actionTag" : "Copy",
+    "codeName" : "copy",
+    "methodType" : "DEACTION",
+    "name" : "Copy",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "COPY"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/copy",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -5009,6 +5311,44 @@
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "codeName" : "fill_copy_info",
+    "methodType" : "DEACTION",
+    "name" : "fill_copy_info",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "fill_copy_info"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Fill_copy_infoInput",
+      "name" : "Fill_copy_infoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Fill_copy_infoResult",
+      "name" : "Fill_copy_infoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
     },
     "builtinMethod" : false
   }, {
@@ -8232,6 +8572,9 @@
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "开始",
     "name" : "BEGIN"
+  }, {
+    "logicName" : "复制",
+    "name" : "COPY"
   }, {
     "logicName" : "建立",
     "name" : "CREATE"

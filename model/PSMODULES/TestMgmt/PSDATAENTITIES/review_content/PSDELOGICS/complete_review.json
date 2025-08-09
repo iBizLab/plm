@@ -360,6 +360,24 @@
     } ],
     "topPos" : 208
   }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1430,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知下一评审人（需求）",
+    "topPos" : 276
+  }, {
     "codeName" : "DEBUGPARAM2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -530,6 +548,58 @@
         "modelref" : true,
         "id" : "PREPAREPARAM8"
       }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY6"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY5"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
     } ],
     "getPSDELogicNodeParams" : [ {
       "getDstPSDELogicParam" : {
@@ -580,24 +650,6 @@
     } ],
     "topPos" : 334
   }, {
-    "codeName" : "DENOTIFY1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "review_detail"
-    },
-    "getDstPSDENotify" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-    },
-    "leftPos" : 1388,
-    "logicNodeType" : "DENOTIFY",
-    "name" : "通知下一评审人（需求）",
-    "topPos" : 334
-  }, {
     "codeName" : "DENOTIFY2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -611,10 +663,28 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
     },
-    "leftPos" : 1388,
+    "leftPos" : 1430,
     "logicNodeType" : "DENOTIFY",
     "name" : "通知下一评审人（测试用例）",
-    "topPos" : 437
+    "topPos" : 357
+  }, {
+    "codeName" : "DENOTIFY6",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/work_item_review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1430,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知下一评审人（工作项）",
+    "topPos" : 440
   }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : 700,
@@ -718,6 +788,24 @@
     } ],
     "topPos" : 460
   }, {
+    "codeName" : "DENOTIFY5",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/page_review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1430,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知下一评审人（页面）",
+    "topPos" : 520
+  }, {
     "codeName" : "DENOTIFY3",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -731,7 +819,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
     },
-    "leftPos" : 905,
+    "leftPos" : 925,
     "logicNodeType" : "DENOTIFY",
     "name" : "通知关注人（需求）",
     "getPSDELogicLinks" : [ {
@@ -745,7 +833,36 @@
         "id" : "DENOTIFY3"
       }
     } ],
-    "topPos" : 612
+    "topPos" : 532
+  }, {
+    "codeName" : "DENOTIFY4",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_complete_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 925,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知关注人（用例）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY4"
+      }
+    } ],
+    "topPos" : 630
   }, {
     "codeName" : "PREPAREPARAM6",
     "leftPos" : 700,
@@ -803,6 +920,58 @@
         "modelref" : true,
         "id" : "PREPAREPARAM6"
       }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY7"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY8"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
     } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "STATE",
@@ -836,22 +1005,22 @@
     } ],
     "topPos" : 672
   }, {
-    "codeName" : "DENOTIFY4",
+    "codeName" : "DENOTIFY7",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "review_detail"
     },
     "getDstPSDENotify" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_complete_notify.json"
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/work_item_complete_notify.json"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
     },
-    "leftPos" : 905,
+    "leftPos" : 925,
     "logicNodeType" : "DENOTIFY",
-    "name" : "通知关注人（用例）",
+    "name" : "通知关注人（工作项）",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -860,10 +1029,39 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DENOTIFY4"
+        "id" : "DENOTIFY7"
       }
     } ],
-    "topPos" : 732
+    "topPos" : 743
+  }, {
+    "codeName" : "DENOTIFY8",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/page_complete_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 925,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知关注人（页面）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY8"
+      }
+    } ],
+    "topPos" : 851
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
