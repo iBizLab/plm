@@ -95,6 +95,9 @@
     "expression" : "DATEDIFF(CURDATE(), t1.`CREATE_TIME`)",
     "name" : "RECENT_CREATE_DAYS"
   }, {
+    "expression" : "t1.`REVIEW_RESULT_STATE`",
+    "name" : "REVIEW_RESULT_STATE"
+  }, {
     "expression" : "t1.`SEQUENCE`",
     "name" : "SEQUENCE"
   }, {
@@ -131,6 +134,6 @@
     "expression" : "t1.`USER_TAG2`",
     "name" : "USER_TAG2"
   } ],
-  "queryCode" : "SELECT\nt1.`ACCESS_PASSWORD`,\n(SELECT COUNT( att.ID ) AS comment_count FROM page p LEFT JOIN `attention` att ON p.ID = att.OWNER_ID WHERE p.ID = t1.`ID`) AS `ATTENTION_COUNT`,\nt1.`CATEGORIES`,\n(SELECT COUNT( com.ID ) AS comment_count FROM page p LEFT JOIN `comment` com ON p.ID = com.PRINCIPAL_ID WHERE p.ID = t1.`ID`) AS `COMMENT_COUNT`,\nt1.`CONTENT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`CUR_VERSION_ID`,\nt1.`CUR_VERSION_NAME`,\nt1.`EXPIRATION_DATE`,\nt1.`FORMAT_TYPE`,\nt1.`ICON`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LEAF`,\nt1.`IS_LOCK`,\nt1.`IS_PUBLISHED`,\nt1.`IS_SHARED`,\nt1.`IS_SHARED_SUBSET`,\nt1.`NAME`,\nt1.`PARENT_ID`,\nt1.`PUBLISHED`,\nt1.`PUBLISH_CONTENT`,\nt1.`PUBLISH_MAN`,\nt1.`PUBLISH_NAME`,\nt1.`PUBLISH_TIME`,\nCASE WHEN EXISTS (SELECT 1 FROM ( select id from page where is_shared = '1' ) AS ids WHERE FIND_IN_SET(ids.id, REPLACE(t1.`CATEGORIES`, '/', ','))) THEN 1 ELSE 0 END AS `READ_SHARED`,\nDATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,\nt1.`SEQUENCE`,\nt1.`SHARED_BY`,\nt1.`SHARED_TIME`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPACE_ID`,\nt11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,\nt11.`NAME` AS `SPACE_NAME`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`USER_TAG`,\nt1.`USER_TAG2`\nFROM `PAGE` t1 \nLEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` \n",
+  "queryCode" : "SELECT\nt1.`ACCESS_PASSWORD`,\n(SELECT COUNT( att.ID ) AS comment_count FROM page p LEFT JOIN `attention` att ON p.ID = att.OWNER_ID WHERE p.ID = t1.`ID`) AS `ATTENTION_COUNT`,\nt1.`CATEGORIES`,\n(SELECT COUNT( com.ID ) AS comment_count FROM page p LEFT JOIN `comment` com ON p.ID = com.PRINCIPAL_ID WHERE p.ID = t1.`ID`) AS `COMMENT_COUNT`,\nt1.`CONTENT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`CUR_VERSION_ID`,\nt1.`CUR_VERSION_NAME`,\nt1.`EXPIRATION_DATE`,\nt1.`FORMAT_TYPE`,\nt1.`ICON`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LEAF`,\nt1.`IS_LOCK`,\nt1.`IS_PUBLISHED`,\nt1.`IS_SHARED`,\nt1.`IS_SHARED_SUBSET`,\nt1.`NAME`,\nt1.`PARENT_ID`,\nt1.`PUBLISHED`,\nt1.`PUBLISH_CONTENT`,\nt1.`PUBLISH_MAN`,\nt1.`PUBLISH_NAME`,\nt1.`PUBLISH_TIME`,\nCASE WHEN EXISTS (SELECT 1 FROM ( select id from page where is_shared = '1' ) AS ids WHERE FIND_IN_SET(ids.id, REPLACE(t1.`CATEGORIES`, '/', ','))) THEN 1 ELSE 0 END AS `READ_SHARED`,\nDATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,\nt1.`REVIEW_RESULT_STATE`,\nt1.`SEQUENCE`,\nt1.`SHARED_BY`,\nt1.`SHARED_TIME`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPACE_ID`,\nt11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,\nt11.`NAME` AS `SPACE_NAME`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`USER_TAG`,\nt1.`USER_TAG2`\nFROM `PAGE` t1 \nLEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` \n",
   "id" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
 }

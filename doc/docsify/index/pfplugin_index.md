@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.215`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.232`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -72,7 +72,7 @@
 
 运行对象：`MobPersonalInfo`
 
-远程仓库：`@ibiz-template-plmmob/mob-personal-info@0.0.3-alpha.89`
+远程仓库：`@ibiz-template-plmmob/mob-personal-info@0.0.3-alpha.206`
 
 ### 人员头像上传 :id=AVATAR_UPLOAD
 
@@ -167,7 +167,7 @@
 
 运行对象：`IBizListTreeControl`
 
-远程仓库：`@ibiz-template-plm/list-tree@0.0.3-dev.198`
+远程仓库：`@ibiz-template-plm/list-tree@0.0.3-alpha.225`
 
 ### 团队选择 :id=TEAM_PICKER
 
@@ -221,7 +221,7 @@
 
 运行对象：`IBizDRBarExControl`
 
-远程仓库：`@ibiz-template-plm/drbar-ex@0.0.3-alpha.41`
+远程仓库：`@ibiz-template-plm/drbar-ex@0.0.3-alpha.241`
 
 ### 多数据列表树（移动端） :id=MOB_MDCTRL_TREE
 
@@ -266,7 +266,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.167`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.220`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 
@@ -293,7 +293,7 @@
 
 运行对象：`IBizRoutePicker`
 
-远程仓库：`@ibiz-template-plm/route-picker@0.0.3-alpha.190`
+远程仓库：`@ibiz-template-plm/route-picker@0.0.3-alpha.245`
 
 ### 文件下载 :id=FILE_DOWNLOAD
 
@@ -437,7 +437,7 @@
 
 运行对象：`MobSimpleList`
 
-远程仓库：`@ibiz-template-plmmob/mob-simple-list@0.0.3-alpha.96`
+远程仓库：`@ibiz-template-plmmob/mob-simple-list@0.0.3-alpha.240`
 
 ### 移动端编号标题栏 :id=MOB_IDENTIFIER_TITLE
 
@@ -500,7 +500,7 @@
 
 运行对象：`IBizFormDataComparison`
 
-远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-dev.262`
+远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-alpha.223`
 
 ### 自动规则 :id=AUTO_RULES
 
@@ -572,7 +572,7 @@
 
 运行对象：`IBizGridEditColumn`
 
-远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.191`
+远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.237`
 
 ### 评审内容排序 :id=REVIEW_CONTENT_SORT
 
@@ -599,7 +599,7 @@
 
 运行对象：`IBizCommentItemRawItem`
 
-远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.209`
+远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.230`
 
 ### 评论回复列表 :id=COMMENT_LIST
 
@@ -636,7 +636,7 @@
 
 运行对象：`IBizTrackTreeGridControl`
 
-远程仓库：`@ibiz-template-plm/track-tree-grid@0.0.3-alpha.176`
+远程仓库：`@ibiz-template-plm/track-tree-grid@0.0.3-alpha.236`
 
 ### 路由drbar :id=ROUTE_DRBAR
 
@@ -699,7 +699,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.186`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.216`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 
@@ -726,7 +726,7 @@
 
 运行对象：`IBizAttachmentGridControl`
 
-远程仓库：`@ibiz-template-plm/attachment-grid@0.0.3-dev.48`
+远程仓库：`@ibiz-template-plm/attachment-grid@0.0.3-alpha.219`
 
 ### 面包屑导航 :id=BREADCRUMB_EXP
 
@@ -744,7 +744,7 @@
 
 运行对象：`BREADCRUMB_NAV_POS`
 
-远程仓库：`@ibiz-template-plm/breadcrumb-nav-pos@0.0.3-alpha.164`
+远程仓库：`@ibiz-template-plm/breadcrumb-nav-pos@0.0.3-alpha.244`
 
 ### 项目属性 :id=PROJECT_ATTRIBUTES
 

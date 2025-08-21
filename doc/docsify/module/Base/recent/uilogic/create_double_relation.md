@@ -15,18 +15,22 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_double_relation#begin {开始}]]
-state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
-state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
-state "更新srfdecodename" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {更新srfdecodename}]]
-state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
+state "提取客户ID" as RAWJSCODE4  [[$./create_double_relation#rawjscode4 {提取客户ID}]]
 state "绑定表格部件" as PREPAREJSPARAM2  [[$./create_double_relation#preparejsparam2 {绑定表格部件}]]
 state "填充测试用例属性" as PREPAREJSPARAM3  [[$./create_double_relation#preparejsparam3 {填充测试用例属性}]]
-state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
 state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
+state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
+state "更新srfdecodename" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {更新srfdecodename}]]
+state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
+state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
+state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
+state "关联客户" as DEACTION3  [[$./create_double_relation#deaction3 {关联客户}]]
 
 
-Begin --> PREPAREJSPARAM1
+Begin --> RAWJSCODE4
+RAWJSCODE4 --> DEACTION3 : [[$./create_double_relation#rawjscode4-deaction3{连接名称} 连接名称]]
+DEACTION3 --> PREPAREJSPARAM1
 PREPAREJSPARAM1 --> DEACTION1
 DEACTION1 --> DEACTION2
 DEACTION2 --> PREPAREJSPARAM3 : [[$./create_double_relation#deaction2-preparejsparam3{执行用例同步新建测试用例} 执行用例同步新建测试用例]]
@@ -36,6 +40,7 @@ PREPAREJSPARAM2 --> RAWJSCODE2
 RAWJSCODE2 --> VIEWCTRLINVOKE1
 VIEWCTRLINVOKE1 --> RAWJSCODE3
 RAWJSCODE3 --> END1
+RAWJSCODE4 --> PREPAREJSPARAM1 : [[$./create_double_relation#rawjscode4-preparejsparam1{连接名称} 连接名称]]
 
 
 @enduml
@@ -48,6 +53,29 @@ RAWJSCODE3 --> END1
 
 
 
+
+#### 提取客户ID :id=RAWJSCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+let choose = uiLogic.default.customer_id;
+if(choose != null && choose != ''){
+    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));
+    uiLogic.dto.principal_id = uiLogic.default.id;
+    uiLogic.dto.id = uiLogic.default.id;
+    uiLogic.dto.principal_type = "idea";
+    uiLogic.dto.target_type = "customer";
+}
+```
+
+#### 关联客户 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 行为 [其他实体关联需求(others_relation_idea)](module/ProdMgmt/idea#行为) ，行为参数为`dto(传入后台对象)`
 
 #### 填充关联数据属性 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -126,18 +154,25 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 
 ### 连接条件说明
+#### 连接名称 :id=RAWJSCODE4-DEACTION3
+
+```dto(传入后台对象).srfactionparam``` ISNOTNULL
 #### 执行用例同步新建测试用例 :id=DEACTION2-PREPAREJSPARAM3
 
 ```ctx(ctx).run``` ISNOTNULL AND ```ctx(ctx).principal_type``` EQ ```run```
+#### 连接名称 :id=RAWJSCODE4-PREPAREJSPARAM1
+
+```dto(传入后台对象).srfactionparam``` ISNULL
 
 
 ### 实体逻辑参数
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|表格对象|grid|部件对象||
+|当前视图对象|view|当前视图对象||
 |正向关联对象|relation|数据对象||
-|ctx|ctx|导航视图参数绑定参数||
 |反向关联对象|relation2|数据对象||
+|ctx|ctx|导航视图参数绑定参数||
+|表格对象|grid|部件对象||
+|传入后台对象|dto|数据对象||

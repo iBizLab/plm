@@ -38,7 +38,46 @@
 
 <tr>
 
-<td rowspan="42">统一资源</td>
+<td rowspan="43">统一资源</td>
+
+<td>PLM社区插件</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+<tr>
 
 <td>主状态逻辑模型扩展</td>
 <td align="center">
@@ -2065,6 +2104,48 @@
 
   <tr>
 
+<td rowspan="1"><a href ="#/module/Base/dependency">依赖(DEPENDENCY)</a></td>
+
+<td><a href ="#/module/Base/dependency#dependency-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+
+  <tr>
+
 <td rowspan="2"><a href ="#/module/Base/dictionary_data">数据字典(DICTIONARY)</a></td>
 
 <td><a href ="#/module/Base/dictionary_data#dictionary_data-all_r">全部数据（读）</a></td>
@@ -3758,6 +3839,86 @@
 
 </tr>
 
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ebsx/openuser">第三方用户(OPENUSER)</a></td>
+
+<td><a href ="#/module/ebsx/openuser#openuser-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ebsx/openuser#openuser-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
   <tr>
 

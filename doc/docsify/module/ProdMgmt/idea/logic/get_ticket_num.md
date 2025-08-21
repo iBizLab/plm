@@ -38,7 +38,7 @@ RAWSQLCALL1 --> END1
 
 
 
-返回 `result(返回结果)`
+返回 `Default(传入变量)`
 
 #### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -66,7 +66,7 @@ from (select CASE
 
 1. `Default(传入变量).ID(标识)`
 
-重置参数`result(返回结果)`，并将执行sql结果赋值给参数`result(返回结果)`
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
 
 

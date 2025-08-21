@@ -7,6 +7,7 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|工时类别|CATEGORY|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
@@ -120,6 +121,7 @@
 |登记工时并更新剩余工时|create_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/Base/workload/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |填充工时数据|fill_workload_data|[实体处理逻辑](module/Base/workload/logic/fill_workload_data "填充工时数据")|默认|不支持||||
+|获取重定向数据|get_redirect_data|[实体处理逻辑](module/Base/workload/logic/get_redirect_data "获取重定向数据")|默认|不支持||||
 |获取已登记工时|get_register_workload|[实体处理逻辑](module/Base/workload/logic/get_register_workload "获取已登记工时")|默认|不支持|||修改实际工时表单获取数据行为|
 |修改工时并更新剩余工时|update_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 
@@ -143,6 +145,7 @@
 |[测试用例维度管理工时日历查询](module/Base/workload/logic/test_case_management_dimension)|test_case_management_dimension|无||工时管理菜单中工时日历：测试库/测试用例维度查询数据使用|
 |[登记工时并更新剩余工时](module/Base/workload/logic/save_workload)|save_workload|无||保存实际登记工时记录，并计算重置剩余工时属性|
 |[获取已登记工时](module/Base/workload/logic/get_register_workload)|get_register_workload|无||查看工时详情时，获取预估、已登记、剩余工时；并计算出工时进度|
+|[获取重定向数据](module/Base/workload/logic/get_redirect_data)|get_redirect_data|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -263,6 +266,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_CATEGORY_EQ|工时类别|EQ||
 |N_CREATE_MAN_EQ|建立人|EQ||
 |N_CREATE_MAN_IN|建立人|IN||
 |N_DURATION_EQ|时长|EQ||
@@ -336,8 +340,8 @@
 | 工时日历链接日志表格视图 | calendar_link_log_view | 工时日历链接日志表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日志->工作项/产品需求/测试用例维度->工时时长链接|
 | 工时明细返回执行用例主表单 | back_run_main_view | 返回 |无数据|用户自定义||
 | 打开成员工时记录 | open_member_workload_detail | 打开成员工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->人员维度->工时时长链接|
-| 打开工时移动端重定向视图 | open_workload_mob_redirect | 打开工时移动端重定向视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_mob_redirect_view)</details>||
 | 打开BI报表配置表单_工时类别占比 | open_bi_form_workload_type_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
+| 打开工时移动端重定向视图 | open_workload_mob_redirect | 打开工时移动端重定向视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_mob_redirect_view)</details>||
 | 工时日历链接日志表格视图（管理） | management_calendar_duration_link | 工时日历链接日志表格视图（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->工作项/产品需求/测试用例维度->工时时长链接|
 | 团队维度表格列行为 | group_dimension | 团队维度表格列行为 |单项数据|用户自定义|工时管理->工时日历->团队维度->时长表格列->绑定行为|
 | 工作类别总登记时长链接跳转（管理） | management_type_duration_link | 工作类别总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
@@ -367,6 +371,7 @@
 |[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
 |[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
 |[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
+|[重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)|reset_workload_category||
 |[门户全屏](module/Base/workload/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/Base/workload/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/Base/workload/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|

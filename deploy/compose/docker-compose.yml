@@ -4,7 +4,7 @@ services:
   #plmservice
   plmservice:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.569.45.plm.250608
+    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.570.32.16.plm.250809
     container_name: plmservice
     ports:
       - "${SYSTEM_APIPORT}:${SYSTEM_APIPORT}"
@@ -21,7 +21,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=plm@2024
       - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/plm?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=plm
-      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K -Dgroovy.grape.report.downloads=true
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-gateway:30086
 
@@ -29,7 +29,7 @@ services:
   #plmweb
   plmweb:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.40.plm.250608
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.17.plm.250809	
     container_name: plmweb
     ports:
       - ${SYSTEM_WEBPORT}:80
@@ -54,11 +54,44 @@ services:
   #plmmob
   plmmob:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.250226
+    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.250802
     container_name: plmmob
     ports:
       - ${SYSTEM_MOBPORT}:80
     networks:
       - agent_network
+    environment:
+      - TZ=Asia/Shanghai  
+      - MOCKDCSYSTEMID=ibizplm
+      - APPNAME=移动端
+      - APPCODE=ibizplm-plmmob
+      - APICODE=ibizplm__plmmob
+      - BASEURL=ibizplm__plmmob
+      - PLUGINBASEURL=./plugins
+      - UPLOADFILEURL=/ibizutil/upload/ibizplm
+      - DOWNLOADFILEURL=/ibizutil/download/ibizplm
+  
+  #plmwiki
+  plmwiki:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.16.plmwiki.250801
+    container_name: plmwiki
+    ports:
+      - ${SYSTEM_WIKIPORT}:80
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - MOCKDCSYSTEMID=ibizplm
+      - APPNAME=百科
+      - APPCODE=plmwiki
+      - APICODE=ibizplm__plmwiki
+      - BASEURL=ibizplm__plmwiki
+      - PLUGINBASEURL=./plugins
+      - UPLOADFILEURL=/ibizutil/upload/ibizplm
+      - DOWNLOADFILEURL=/ibizutil/download/ibizplm
+      - ENABLEANONYMOUS=false
+      - ANONYMOUSUSER=
+      - ANONYMOUSPWD=
     entrypoint: /entrypoint-waitfor.sh
     command: plmservice:${SYSTEM_APIPORT}

@@ -27,21 +27,21 @@
       "logicTag" : "layoutpanel",
       "logicType" : "SCRIPT",
       "name" : "logic",
-      "scriptCode" : "var ENABLEMULTILOGIN = ibiz.env.customParams.ENABLEMULTILOGIN;\r\nif (ENABLEMULTILOGIN && ENABLEMULTILOGIN === true) {\r\n    // 启用多登录模式,默认显示微信登录\r\n    view.layoutPanel.panelItems.container_login_qr.state.keepAlive = true;\r\n    view.layoutPanel.panelItems.container_login_qr.state.visible = true;\r\n    view.layoutPanel.panelItems.container_qrimg.state.visible = false;\r\n    view.layoutPanel.panelItems.container_pcimg.state.visible = true;\r\n    view.layoutPanel.panelItems.container5.state.visible = false;\r\n} else {\r\n    // 不启用多登录模式，隐藏切换的两个图标及微信登录\r\n    view.layoutPanel.panelItems.container_login_qr.state.visible = false;\r\n    view.layoutPanel.panelItems.container_qrimg.state.visible = false;\r\n    view.layoutPanel.panelItems.container_pcimg.state.visible = false;\r\n    view.layoutPanel.panelItems.container5.state.visible = true;\r\n}\r\n"
+      "scriptCode" : "var ENABLEMULTILOGIN = ibiz.env.customParams.ENABLEMULTILOGIN;\nif (ENABLEMULTILOGIN && ENABLEMULTILOGIN === true) {\n    // 启用多登录模式,默认显示微信登录\n    view.layoutPanel.panelItems.container_login_qr.state.keepAlive = true;\n    view.layoutPanel.panelItems.container_login_qr.state.visible = true;\n    view.layoutPanel.panelItems.container_qrimg.state.visible = false;\n    view.layoutPanel.panelItems.container_pcimg.state.visible = true;\n    view.layoutPanel.panelItems.container5.state.visible = false;\n} else {\n    // 不启用多登录模式，隐藏切换的两个图标及微信登录\n    view.layoutPanel.panelItems.container_login_qr.state.visible = false;\n    view.layoutPanel.panelItems.container_qrimg.state.visible = false;\n    view.layoutPanel.panelItems.container_pcimg.state.visible = false;\n    view.layoutPanel.panelItems.container5.state.visible = true;\n}\n"
     }, {
       "eventNames" : "onClick",
       "itemName" : "BUTTON_LINK",
       "logicTag" : "layoutpanel",
       "logicType" : "SCRIPT",
       "name" : "logic_pc",
-      "scriptCode" : "console.log(\"登录，隐藏QR\")\r\nview.layoutPanel.panelItems.container5.state.visible = true;\r\nview.layoutPanel.panelItems.container_qrimg.state.visible = true;\r\nview.layoutPanel.panelItems.container_login_qr.state.visible = false;\r\nview.layoutPanel.panelItems.container_pcimg.state.visible = false;"
+      "scriptCode" : "console.log(\"登录，隐藏QR\")\nview.layoutPanel.panelItems.container5.state.visible = true;\nview.layoutPanel.panelItems.container_qrimg.state.visible = true;\nview.layoutPanel.panelItems.container_login_qr.state.visible = false;\nview.layoutPanel.panelItems.container_pcimg.state.visible = false;"
     }, {
       "eventNames" : "onClick",
       "itemName" : "BUTTON_LINK1",
       "logicTag" : "layoutpanel",
       "logicType" : "SCRIPT",
       "name" : "logic_qr",
-      "scriptCode" : "console.log(\"登录，隐藏PC\")\r\nview.layoutPanel.panelItems.container5.state.visible = false;\r\nview.layoutPanel.panelItems.container_qrimg.state.visible = false;\r\nview.layoutPanel.panelItems.container_login_qr.state.visible = true;\r\nview.layoutPanel.panelItems.container_pcimg.state.visible = true;"
+      "scriptCode" : "console.log(\"登录，隐藏PC\")\nview.layoutPanel.panelItems.container5.state.visible = false;\nview.layoutPanel.panelItems.container_qrimg.state.visible = false;\nview.layoutPanel.panelItems.container_login_qr.state.visible = true;\nview.layoutPanel.panelItems.container_pcimg.state.visible = true;"
     } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
@@ -280,6 +280,7 @@
               } ]
             }, {
               "caption" : "容器",
+              "dataRegionType" : "SINGLEDATA",
               "itemStyle" : "DEFAULT",
               "itemType" : "CONTAINER",
               "name" : "container5",
@@ -292,9 +293,11 @@
               },
               "getPSPanelItems" : [ {
                 "caption" : "容器",
+                "dataRegionType" : "SINGLEDATA",
+                "dataSourceType" : "CUSTOM",
                 "itemStyle" : "DEFAULT",
                 "itemType" : "CONTAINER",
-                "name" : "container2",
+                "name" : "container_login_info",
                 "getPSLayout" : {
                   "layout" : "FLEX"
                 },
@@ -303,48 +306,10 @@
                   "layout" : "FLEX"
                 },
                 "getPSPanelItems" : [ {
-                  "caption" : "用户名",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "FIELD",
-                  "name" : "auth_userid",
-                  "getPSEditor" : {
-                    "editorParams" : {
-                      "autocomplete" : "true"
-                    },
-                    "editorType" : "TEXTBOX",
-                    "name" : "auth_userid",
-                    "predefinedType" : "AUTH_USERID"
-                  },
-                  "getPSLayoutPos" : {
-                    "grow" : -1,
-                    "layout" : "FLEX",
-                    "spacingBottom" : "INNERLARGE"
-                  },
-                  "viewFieldName" : "username"
-                }, {
-                  "caption" : "密码",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "FIELD",
-                  "name" : "auth_password",
-                  "getPSEditor" : {
-                    "editorParams" : {
-                      "autocomplete" : "true"
-                    },
-                    "editorType" : "PASSWORD",
-                    "name" : "auth_password",
-                    "predefinedType" : "AUTH_PASSWORD"
-                  },
-                  "getPSLayoutPos" : {
-                    "grow" : -1,
-                    "layout" : "FLEX",
-                    "spacingBottom" : "INNERLARGE"
-                  },
-                  "viewFieldName" : "password"
-                }, {
-                  "caption" : "记住我",
+                  "caption" : "容器",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "CONTAINER",
-                  "name" : "container7",
+                  "name" : "container2",
                   "getPSLayout" : {
                     "layout" : "FLEX"
                   },
@@ -352,52 +317,105 @@
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
-                  "predefinedType" : "REMEMBER_ME"
-                } ]
-              }, {
-                "caption" : "容器",
-                "itemStyle" : "DEFAULT",
-                "itemType" : "CONTAINER",
-                "name" : "container3",
-                "getPSLayout" : {
-                  "align" : "space-around",
-                  "dir" : "row",
-                  "layout" : "FLEX",
-                  "vAlign" : "center"
-                },
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
-                },
-                "getPSPanelItems" : [ {
-                  "actionType" : "UIACTION",
-                  "buttonStyle" : "DEFAULT",
-                  "caption" : "登录",
+                  "getPSPanelItems" : [ {
+                    "caption" : "用户名",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "auth_userid",
+                    "getPSEditor" : {
+                      "editorParams" : {
+                        "autocomplete" : "true"
+                      },
+                      "editorType" : "TEXTBOX",
+                      "name" : "auth_userid",
+                      "predefinedType" : "AUTH_USERID"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingBottom" : "INNERLARGE"
+                    },
+                    "viewFieldName" : "username"
+                  }, {
+                    "caption" : "密码",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "auth_password",
+                    "getPSEditor" : {
+                      "editorParams" : {
+                        "autocomplete" : "true"
+                      },
+                      "editorType" : "PASSWORD",
+                      "name" : "auth_password",
+                      "predefinedType" : "AUTH_PASSWORD"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingBottom" : "INNERLARGE"
+                    },
+                    "viewFieldName" : "password"
+                  }, {
+                    "caption" : "记住我",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container7",
+                    "getPSLayout" : {
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "predefinedType" : "REMEMBER_ME"
+                  } ]
+                }, {
+                  "caption" : "容器",
                   "itemStyle" : "DEFAULT",
-                  "itemType" : "BUTTON",
-                  "name" : "auth_loginbutton",
-                  "getPSAppViewUIAction" : {
-                    "modelref" : true,
-                    "id" : "layoutpanel_auth_loginbutton"
+                  "itemType" : "CONTAINER",
+                  "name" : "container3",
+                  "getPSLayout" : {
+                    "align" : "space-around",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
                   },
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
-                  "getPSUIAction" : {
+                  "getPSPanelItems" : [ {
+                    "actionType" : "UIACTION",
+                    "buttonStyle" : "DEFAULT",
                     "caption" : "登录",
-                    "codeName" : "Login",
-                    "fullCodeName" : "Login",
-                    "name" : "应用登录",
-                    "predefinedType" : "APP_LOGIN",
-                    "timeout" : 60000,
-                    "uIActionMode" : "SYS",
-                    "uIActionTag" : "Login",
-                    "uIActionType" : "DEUIACTION"
-                  },
-                  "tooltip" : "登录",
-                  "showCaption" : true
-                } ]
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "BUTTON",
+                    "name" : "auth_loginbutton",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "layoutpanel_auth_loginbutton"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSUIAction" : {
+                      "caption" : "登录",
+                      "codeName" : "Login",
+                      "fullCodeName" : "Login",
+                      "name" : "应用登录",
+                      "predefinedType" : "APP_LOGIN",
+                      "timeout" : 60000,
+                      "uIActionMode" : "SYS",
+                      "uIActionTag" : "Login",
+                      "uIActionType" : "DEUIACTION"
+                    },
+                    "tooltip" : "登录",
+                    "showCaption" : true
+                  } ]
+                } ],
+                "predefinedType" : "CONTAINER_SINGLEDATA",
+                "scriptCode" : "{username:ibiz.env.customParams.defaultusername,password:ibiz.env.customParams.defaultpassword}"
               } ]
             }, {
               "caption" : "容器",

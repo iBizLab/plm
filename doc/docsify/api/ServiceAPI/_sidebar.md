@@ -126,6 +126,7 @@
 * ebsx系统管理
   * [应用视图主题](api/ServiceAPI/deapi/app_view_theme#app_view_theme)
   * [认证日志](api/ServiceAPI/deapi/auth_log_admin#auth_log_admin)
+  * [第三方用户](api/ServiceAPI/deapi/openuser#openuser)
   * [人员](api/ServiceAPI/deapi/SysEmployee#SysEmployee)
   * [待办](api/ServiceAPI/deapi/SysTodo#SysTodo)
 * 模型扩展

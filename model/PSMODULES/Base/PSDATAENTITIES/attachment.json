@@ -345,6 +345,54 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attachment/PSDEDATAQUERIES/attachments/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "attachments",
+    "logicName" : "附件",
+    "name" : "attachments",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/attachment/PSDERS/DERCUSTOM_WORK_ITEM_ATTACHMENT.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+        },
+        "joinType" : "N1",
+        "name" : "WORK_ITEM相关N:1（INNER JOIN）DERCUSTOM_WORK_ITEM_ATTACHMENT"
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "ATTACHMENT"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "AttachmentsInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attachment_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "AttachmentsResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/attachment/PSDEDATAQUERIES/mob_work_item_attachment/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "mob_work_item_attachment",
@@ -502,6 +550,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "attachments",
+    "logicName" : "附件",
+    "name" : "attachments",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "attachments"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "AttachmentsInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attachment_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "AttachmentsResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -2431,6 +2505,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "ticket"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "WORK_ITEM",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -2447,6 +2522,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
     },
     "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "ATTACHMENTS",
       "codeName" : "attachments"

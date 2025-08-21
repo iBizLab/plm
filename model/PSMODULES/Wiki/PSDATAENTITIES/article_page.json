@@ -694,6 +694,32 @@
     "enableBackend" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "publish_name",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/publish_name.json",
+    "logicName" : "发布名称",
+    "name" : "publish_name",
+    "getPSDEActionInput" : {
+      "name" : "Publish_nameInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Publish_nameResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/publish_name.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "CREATE",
     "actionType" : "DELOGIC",
     "codeName" : "publish_page",
@@ -1026,6 +1052,9 @@
     }, {
       "name" : "SHARED_TIME",
       "codeName" : "shared_time"
+    }, {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -7174,6 +7203,98 @@
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REVIEW_RESULT_STATE",
+      "dBType" : "MYSQL5",
+      "name" : "REVIEW_RESULT_STATE",
+      "queryCodeExp" : "t1.`REVIEW_RESULT_STATE`",
+      "standardColumnName" : "`REVIEW_RESULT_STATE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REVIEW_RESULT_STATE_EQ",
+      "name" : "N_REVIEW_RESULT_STATE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REVIEW_RESULT_STATE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "review_result_state",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "评审结果",
+    "name" : "REVIEW_RESULT_STATE",
+    "orderValue" : 460,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "REVIEW_RESULT_STATE"
+    },
+    "serviceCodeName" : "review_result_state",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ATTENTION_COUNT",
@@ -15580,6 +15701,127 @@
     "enableBackend" : false,
     "enableFront" : true
   }, {
+    "codeName" : "publish_name",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/publish_name.json",
+    "logicName" : "发布名称",
+    "memo" : "页面树更新发布名称，同步更新名称",
+    "name" : "发布名称",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 220,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 170,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "发布名称赋值",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PUBLISH_NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 330,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "leftPos" : 180,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新页面名称",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 494,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 220,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 619,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "publish_page",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/publish_page.json",
@@ -17553,11 +17795,12 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\ndef plm_wiki = sys.param('plm_wiki','')\r\nif(_default.get('id') != null && plm_wiki != '') {\r\n    def _url = ''\r\n  if(_default.get('is_shared_subset') == '1'){\r\n      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_with_sub_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'\r\n  } else {\r\n      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'\r\n  }\r\n  _default.set('shared_page_url', _url)\r\n}",
+      "code" : "def _default = logic.param('Default').getReal()\r\ndef plm_wiki = sys.param('plm_wiki','')\r\nif(_default.get('id') != null && plm_wiki != '') {\r\n    def _url = ''\r\n  if(_default.get('is_shared_subset') == '1'){\r\n      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_with_sub_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'\r\n  } else {\r\n      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_wiki_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'\r\n  }\r\n  _default.set('shared_page_url', _url)\r\n}",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 160,
       "logicNodeType" : "RAWSFCODE",
+      "memo" : "article_page_shared_view",
       "name" : "拼接共享链接",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
@@ -19301,6 +19544,18 @@
       "stdDataType" : 5,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "关注数",
       "name" : "attention_count",
       "getPSDEField" : {
@@ -19921,6 +20176,21 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "n_review_result_state_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REVIEW_RESULT_STATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "logicName" : "编号",
@@ -20654,6 +20924,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "wiki_shared_view",
+    "logicName" : "共享页面视图",
+    "name" : "共享页面视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "shared_with_me_grid_view",
     "logicName" : "与我共享表格视图",
     "name" : "与我共享表格视图",
@@ -20755,6 +21031,12 @@
     "logicName" : "页面筛选器表格视图",
     "name" : "页面筛选器表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "review_re_page_view",
+    "logicName" : "页面评审多项数据选择视图",
+    "name" : "页面评审多项数据选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "baseline_mpick_up_grid_view",
@@ -20859,6 +21141,12 @@
     "logicName" : "基线规划页面多项选择视图",
     "name" : "基线规划页面多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "not_add_pick_up_grid_view_review",
+    "logicName" : "未添加的页面表格视图（评审）",
+    "name" : "未添加的页面表格视图（评审）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "model_show_view_noupdown",
@@ -21137,6 +21425,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "wiki_show_edit_view_form",
+    "logicName" : "页面实体共享表单",
+    "modelTag2" : "0",
+    "name" : "页面实体共享表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "page_header",
     "logicName" : "页面表头测试",
     "modelTag2" : "0",
@@ -21359,6 +21654,38 @@
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
       "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "page"
+  }, {
+    "codeName" : "page",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERCUSTOM_PAGE_REVIEW_CONTENT.json",
+    "logicName" : "空间页面-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 7,
+    "minorCodeName" : "review_contents",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+    },
+    "minorServiceCodeName" : "review_contents",
+    "name" : "DERCUSTOM_PAGE_REVIEW_CONTENT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
     },
     "removeActionType" : 0,
     "removeOrder" : -1,

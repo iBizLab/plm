@@ -15,6 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./save_workload#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./save_workload#debugparam1 {"调试逻辑参数"}]]
 state "绑定所属对象标识" as PREPAREPARAM2  [[$./save_workload#prepareparam2 {"绑定所属对象标识"}]]
 state "获取需求" as DEACTION3  [[$./save_workload#deaction3 {"获取需求"}]]
 state "获取工作项" as DEACTION4  [[$./save_workload#deaction4 {"获取工作项"}]]
@@ -24,14 +25,15 @@ state "产品需求和产品信息属性" as PREPAREPARAM4  [[$./save_workload#p
 state "测试用例和测试库信息属性" as PREPAREPARAM5  [[$./save_workload#prepareparam5 {"测试用例和测试库信息属性"}]]
 state "保存工时" as DEACTION2  [[$./save_workload#deaction2 {"保存工时"}]]
 state "更新剩余工时" as DEACTION6  [[$./save_workload#deaction6 {"更新剩余工时"}]]
-state "工时为0时置为NULL" as PREPAREPARAM6  [[$./save_workload#prepareparam6 {"工时为0时置为NULL"}]]
 state "合计已登记工时" as RAWSQLCALL1  [[$./save_workload#rawsqlcall1 {"合计已登记工时"}]]
 state "更新实际工时" as DEACTION7  [[$./save_workload#deaction7 {"更新实际工时"}]]
 state "填充父工作项标识" as PREPAREPARAM7  [[$./save_workload#prepareparam7 {"填充父工作项标识"}]]
 state "自动计算父工时" as DELOGIC1  [[$./save_workload#delogic1 {"自动计算父工时"}]]
+state "工时为0时置为NULL" as PREPAREPARAM6  [[$./save_workload#prepareparam6 {"工时为0时置为NULL"}]]
 
 
-Begin --> PREPAREPARAM2
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION3 : [[$./save_workload#prepareparam2-deaction3{产品需求登记工时} 产品需求登记工时]]
 DEACTION3 --> PREPAREPARAM4
 PREPAREPARAM4 --> DEACTION2
@@ -61,6 +63,14 @@ PREPAREPARAM5 --> DEACTION2
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 绑定所属对象标识 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -104,7 +114,7 @@ PREPAREPARAM5 --> DEACTION2
 
 1. 将`idea(产品需求).IDENTIFIER(编号)` 设置给  `Default(传入变量).IDENTIFIER(编号)`
 2. 将`IDEA` 设置给  `actual(实际工时).OWNER_TYPE(所属数据对象)`
-3. 将`ACTUAL_WORKLOAD` 设置给  `actual(实际工时).NAME(名称)`
+3. 将`Default(传入变量).CATEGORY(工时类别)` 设置给  `actual(实际工时).NAME(名称)`
 4. 将`IDEA` 设置给  `remaining(剩余工时).OWNER_TYPE(所属数据对象)`
 5. 将`idea(产品需求).PRODUCT_ID(产品)` 设置给  `Default(传入变量).RECENT_PARENT(访问父类)`
 6. 将`idea(产品需求).PRODUCT_NAME(所属产品)` 设置给  `Default(传入变量).RECENT_PARENT_NAME(访问父类名称)`
@@ -117,7 +127,7 @@ PREPAREPARAM5 --> DEACTION2
 
 
 1. 将`work_item(工作项).IDENTIFIER(编号)` 设置给  `Default(传入变量).IDENTIFIER(编号)`
-2. 将`ACTUAL_WORKLOAD` 设置给  `actual(实际工时).NAME(名称)`
+2. 将`Default(传入变量).CATEGORY(工时类别)` 设置给  `actual(实际工时).NAME(名称)`
 3. 将`WORK_ITEM` 设置给  `actual(实际工时).OWNER_TYPE(所属数据对象)`
 4. 将`WORK_ITEM` 设置给  `remaining(剩余工时).OWNER_TYPE(所属数据对象)`
 5. 将`WORK_ITEM` 设置给  `Default(传入变量).PRINCIPAL_TYPE(工时主体类型)`
@@ -132,7 +142,7 @@ PREPAREPARAM5 --> DEACTION2
 
 1. 将`test_case(测试用例).IDENTIFIER(编号)` 设置给  `Default(传入变量).IDENTIFIER(编号)`
 2. 将`TEST_CASE` 设置给  `actual(实际工时).OWNER_TYPE(所属数据对象)`
-3. 将`ACTUAL_WORKLOAD` 设置给  `actual(实际工时).NAME(名称)`
+3. 将`Default(传入变量).CATEGORY(工时类别)` 设置给  `actual(实际工时).NAME(名称)`
 4. 将`TEST_CASE` 设置给  `remaining(剩余工时).OWNER_TYPE(所属数据对象)`
 5. 将`test_case(测试用例).LIBRARY_IDENTIFIER(测试库标识)` 设置给  `Default(传入变量).RECENT_PARENT_IDENTIFIER(访问父类编号)`
 6. 将`test_case(测试用例).TEST_LIBRARY_ID(测试库)` 设置给  `Default(传入变量).RECENT_PARENT(访问父类)`
@@ -167,13 +177,14 @@ PREPAREPARAM5 --> DEACTION2
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ?
+select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ? and CATEGORY = ?
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `actual(实际工时).OWNER_ID(所属数据标识)`
 2. `actual(实际工时).OWNER_TYPE(所属数据对象)`
+3. `actual(实际工时).NAME(名称)`
 
 重置参数`actual(实际工时)`，并将执行sql结果赋值给参数`actual(实际工时)`
 

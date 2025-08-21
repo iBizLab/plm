@@ -10,6 +10,9 @@
 #### 数据表格(grid)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
+
+##### 部件逻辑
+* `onChange` : [重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
@@ -29,6 +32,9 @@ Object.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, dat
 ### 关联界面行为
   * [工时(WORKLOAD)](module/Base/workload) : [团队维度表格列行为](module/Base/workload#界面行为)
   * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
+
+### 关联界面逻辑
+  * [工时(WORKLOAD)](module/Base/workload) : [重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)

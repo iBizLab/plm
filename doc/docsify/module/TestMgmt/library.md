@@ -18,6 +18,7 @@
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |测试库名称|NAME|文本，可指定长度|200|否||
+|执行用例参数|RUN_PARAMETER|一对多关系数据集合|1048576|是||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -43,6 +44,7 @@
 |[DERCUSTOM_ADDON_LIBRARY_OWNER_ID](der/DERCUSTOM_ADDON_LIBRARY_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
+|[DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID](der/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID)|[系统参数(PARAMETER)](module/Base/parameter)|自定义关系||
 
 
 </el-tab-pane>
@@ -259,14 +261,14 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 取消星标 | unstar | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 打开测试库配置 | open_global_setting | 测试库配置 |无数据|用户自定义||
+| 取消星标 | unstar | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 测试库信息 | open_show_edit_view | 测试库信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库信息](app/view/library_show_edit_view)</details>||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 测试库设置（移动端） | mob_setting | 测试库设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库设置](app/view/library_mob_setting_view)</details>||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 移动测试库（移动端） | mob_move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 打开测试库导航页 | open_library_exp_view | 打开测试库导航页 |无数据|<details><summary>打开顶级视图</summary>[测试管理](app/view/library_tree_exp_view)</details>||
+| 移动测试库（移动端） | mob_move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 移动测试库 | move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 测试库成员 | setting_library_member | 测试库成员 |单项数据（主键）|用户自定义||
 | 打开新建测试库 | open_new_library | 打开新建测试库 |单项数据|<details><summary>打开顶级视图</summary>[测试库](app/view/library_index_view)</details>||
@@ -277,8 +279,8 @@
 | 添加测试库成员 | add_library_member | 添加成员 |无数据|系统预定义||
 | 新建测试库 | create_library | 新建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_create_wizard_view)</details>||
 | 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
+| 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/test_case_mob_recycle_md_view)</details>||

@@ -29,6 +29,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立反向参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充需求属性值"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充用例属性值"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="填充工作项属性值"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="填充页面属性值"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -85,9 +87,37 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-renewparam2_prepareparam4" sourceRef="gateway-renewparam2" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $reviewadd_review_contentdefault:review();
+                                            $reviewadd_review_contentfor_temp_obj:review();
+                                            $reviewadd_review_contentforward_relation_obj:review_content();
+                                            $reviewadd_review_contentreverse_relation_obj:relation();
+                                            $reviewadd_review_contentselectdata:review();
+                                    eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-renewparam2_prepareparam5" sourceRef="gateway-renewparam2" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $reviewadd_review_contentdefault:review();
+                                            $reviewadd_review_contentfor_temp_obj:review();
+                                            $reviewadd_review_contentforward_relation_obj:review_content();
+                                            $reviewadd_review_contentreverse_relation_obj:relation();
+                                            $reviewadd_review_contentselectdata:review();
+                                    eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","PAGE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam2_prepareparam1" sourceRef="prepareparam2" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_prepareparam1" sourceRef="prepareparam3" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_prepareparam1" sourceRef="prepareparam4" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_prepareparam1" sourceRef="prepareparam5" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>

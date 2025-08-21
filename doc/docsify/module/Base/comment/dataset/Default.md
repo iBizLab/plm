@@ -18,8 +18,12 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `CREATE_TIME(建立时间)` `ASC`
+* `IS_TOP(是否置顶)` `DESC`
 
+
+<p class="panel-title"><b>从排序属性</b></p>
+
+* `CREATE_TIME(建立时间)` `ASC`
 
 
 ### 数据查询

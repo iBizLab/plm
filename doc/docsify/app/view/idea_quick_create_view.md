@@ -11,6 +11,21 @@
 * `onChange` : [重置上下文产品ID](module/ProdMgmt/idea/uilogic/reset_product_id)
 #### 工具栏(toolbar)
 
+## 视图界面逻辑
+* `onCreated`
+```javascript
+ctrl.evt.on('onFormDataChange', evt => {
+    const { name, value } = evt;
+    if (name === 'product_id') {
+        view.redrawView({
+            context: { product: value, dynamicnew: true },
+            params: {},
+            isReloadModel: true,
+        });
+    }
+});
+```
+
 
 ### 关联界面行为
   * [需求(IDEA)](module/ProdMgmt/idea) : [选择模板](module/ProdMgmt/idea#界面行为)

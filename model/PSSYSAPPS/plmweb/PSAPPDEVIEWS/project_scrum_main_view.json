@@ -517,6 +517,57 @@
           "showCaption" : true,
           "showIcon" : true
         }, {
+          "caption" : "复制项目",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction6",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "toolbar_deuiaction6"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c5@FontAwesome",
+            "cssClass" : "fa fa-copy"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "复制项目",
+            "codeName" : "copy_project",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_copy_wizard_view.json",
+              "viewType" : "DEWIZARDVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "project_copy_project",
+            "memo" : "项目快速建立视图",
+            "name" : "复制项目",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf0c5@FontAwesome",
+              "cssClass" : "fa fa-copy"
+            },
+            "refreshMode" : 1,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "copy_project",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "copy_project@project"
+          },
+          "tooltip" : "复制项目",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
           "caption" : "更多设置",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
@@ -1564,7 +1615,7 @@
                         "detailType" : "FORMITEM",
                         "enableCond" : 0,
                         "ignoreInput" : 0,
-                        "inputTip" : "已完成状态类型的工作项 / 所有工作项",
+                        "inputTip" : "状态类型为已完成的工作项 / 所有工作项",
                         "labelPos" : "TOP",
                         "labelWidth" : 130,
                         "name" : "schedule",
@@ -4210,6 +4261,23 @@
             "modelid" : "e723ab68c7e6d6d31af097bbf739cb3d",
             "modeltype" : "PSSYSDASHBOARD"
           }, {
+            "controlType" : "SEARCHBAR",
+            "name" : "searchbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+            },
+            "getPSControlParam" : {
+              "id" : "searchbar"
+            },
+            "quickGroupCount" : -1,
+            "quickSearchMode" : 0,
+            "quickSearchWidth" : 0,
+            "enableFilter" : false,
+            "enableGroup" : false,
+            "enableQuickSearch" : false,
+            "mobileSearchBar" : false
+          }, {
             "caption" : "概览",
             "codeName" : "over_view_captionbar",
             "controlType" : "CAPTIONBAR",
@@ -4242,7 +4310,7 @@
           "enableDP" : true,
           "enableQuickGroup" : false,
           "enableQuickSearch" : false,
-          "enableSearch" : false,
+          "enableSearch" : true,
           "expandSearchForm" : true,
           "loadDefault" : true,
           "showDataInfoBar" : true,
@@ -4260,6 +4328,7 @@
         },
         "name" : "guihua",
         "getNavPSDER" : {
+          "cloneOrder" : 10,
           "codeName" : "project",
           "dERType" : "DER1N",
           "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json",
@@ -4278,6 +4347,10 @@
           },
           "minorServiceCodeName" : "work_items",
           "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getNestedPSDEDataSet" : {
+            "modelref" : true,
+            "id" : "copy"
+          },
           "orderValue" : 100,
           "getPSPickupDEField" : {
             "name" : "PROJECT_ID",
@@ -4291,6 +4364,7 @@
           "removeActionType" : -1,
           "removeOrder" : 0,
           "serviceCodeName" : "project",
+          "cloneRS" : true,
           "enableFKey" : true
         },
         "getPSAppDataEntity" : {
@@ -4319,6 +4393,7 @@
         },
         "name" : "workitem",
         "getNavPSDER" : {
+          "cloneOrder" : 10,
           "codeName" : "project",
           "dERType" : "DER1N",
           "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json",
@@ -4337,6 +4412,10 @@
           },
           "minorServiceCodeName" : "work_items",
           "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getNestedPSDEDataSet" : {
+            "modelref" : true,
+            "id" : "copy"
+          },
           "orderValue" : 100,
           "getPSPickupDEField" : {
             "name" : "PROJECT_ID",
@@ -4350,6 +4429,7 @@
           "removeActionType" : -1,
           "removeOrder" : 0,
           "serviceCodeName" : "project",
+          "cloneRS" : true,
           "enableFKey" : true
         },
         "getPSAppDataEntity" : {
@@ -4378,6 +4458,7 @@
         },
         "name" : "defect",
         "getNavPSDER" : {
+          "cloneOrder" : 10,
           "codeName" : "project",
           "dERType" : "DER1N",
           "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json",
@@ -4396,6 +4477,10 @@
           },
           "minorServiceCodeName" : "work_items",
           "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getNestedPSDEDataSet" : {
+            "modelref" : true,
+            "id" : "copy"
+          },
           "orderValue" : 100,
           "getPSPickupDEField" : {
             "name" : "PROJECT_ID",
@@ -4409,6 +4494,7 @@
           "removeActionType" : -1,
           "removeOrder" : 0,
           "serviceCodeName" : "project",
+          "cloneRS" : true,
           "enableFKey" : true
         },
         "getPSAppDataEntity" : {
@@ -4437,6 +4523,7 @@
         },
         "name" : "sprint",
         "getNavPSDER" : {
+          "cloneOrder" : 10,
           "codeName" : "project",
           "dERType" : "DER1N",
           "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDERS/DER1N_SPRINT_PROJECT_PROJECT_ID.json",
@@ -4468,6 +4555,7 @@
           "removeActionType" : -1,
           "removeOrder" : 0,
           "serviceCodeName" : "project",
+          "cloneRS" : true,
           "enableFKey" : true
         },
         "getPSAppDataEntity" : {

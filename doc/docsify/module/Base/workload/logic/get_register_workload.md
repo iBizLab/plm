@@ -15,17 +15,21 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_register_workload#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./get_register_workload#debugparam1 {"调试逻辑参数"}]]
 state "获取工时明细" as DEACTION1  [[$./get_register_workload#deaction1 {"获取工时明细"}]]
-state "获取已登记工时" as RAWSQLCALL1  [[$./get_register_workload#rawsqlcall1 {"获取已登记工时"}]]
+state "获取已登记实际工时" as RAWSQLCALL1  [[$./get_register_workload#rawsqlcall1 {"获取已登记实际工时"}]]
+state "获取已登记预估工时" as RAWSQLCALL4  [[$./get_register_workload#rawsqlcall4 {"获取已登记预估工时"}]]
 state "获取剩余工时" as RAWSQLCALL2  [[$./get_register_workload#rawsqlcall2 {"获取剩余工时"}]]
 state "获取预估工时" as RAWSQLCALL3  [[$./get_register_workload#rawsqlcall3 {"获取预估工时"}]]
 state "计算进度" as RAWSFCODE1  [[$./get_register_workload#rawsfcode1 {"计算进度"}]]
 state "结束" as END1 <<end>> [[$./get_register_workload#end1 {"结束"}]]
 
 
-Begin --> DEACTION1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> DEACTION1
 DEACTION1 --> RAWSQLCALL1
-RAWSQLCALL1 --> RAWSQLCALL2
+RAWSQLCALL1 --> RAWSQLCALL4
+RAWSQLCALL4 --> RAWSQLCALL2
 RAWSQLCALL2 --> RAWSQLCALL3
 RAWSQLCALL3 --> RAWSFCODE1
 RAWSFCODE1 --> END1
@@ -42,6 +46,14 @@ RAWSFCODE1 --> END1
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 获取工时明细 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
@@ -50,14 +62,14 @@ RAWSFCODE1 --> END1
 
 将执行结果返回给参数`Default(传入变量)`
 
-#### 获取已登记工时 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 获取已登记实际工时 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ?
+select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ACTUAL_WORKLOAD'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -66,6 +78,22 @@ select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = 
 2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 获取已登记预估工时 :id=RAWSQLCALL4<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select sum(DURATION) as `ESTIMATED_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ESTIMATED_WORKLOAD'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).PRINCIPAL_TYPE(工时主体类型)`
+2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
+
 
 #### 获取剩余工时 :id=RAWSQLCALL2<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -113,11 +141,21 @@ var remaining_workload = defaultObj.get("remaining_workload") == null ? 0 : Numb
 var actual_workload = defaultObj.get("actual_workload") == null ? 0 : Number(defaultObj.get("actual_workload"));
 var estimated_workload = defaultObj.get("estimated_workload") == null ? 0 : Number(defaultObj.get("estimated_workload"));
 var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
-var actual = actual_workload - duration;
-if(actual <= 0){
-    defaultObj.set("actual_workload", null);
-} else {
-    defaultObj.set("actual_workload", actual);
+
+if (defaultObj.get('category') === 'ACTUAL_WORKLOAD') {
+    var actual = actual_workload - duration;
+    if(actual <= 0){
+        defaultObj.set("actual_workload", null);
+    } else {
+        defaultObj.set("actual_workload", actual);
+    }
+}else{
+    var estimated = estimated_workload - duration;
+    if(estimated <= 0){
+        defaultObj.set("estimated_workload", null);
+    } else {
+        defaultObj.set("estimated_workload", estimated);
+    }
 }
 // 计算工时进度
 if((actual_workload + remaining_workload) != 0){

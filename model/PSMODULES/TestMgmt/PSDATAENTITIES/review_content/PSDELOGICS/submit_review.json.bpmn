@@ -8,6 +8,7 @@
                                 <tns:metaData express="" name="review_contentsubmit_reviewdefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewfor_reltion" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="review_contentsubmit_reviewidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="review_contentsubmit_reviewpage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewrelation_page" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewreltion_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="review_contentsubmit_reviewreview_content" type="refentity"/>
@@ -17,8 +18,11 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentsubmit_reviewstage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentsubmit_reviewstages" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="review_contentsubmit_reviewtest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="review_contentsubmit_reviewwork_item" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="reviewservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="iBzSysReview_contentDefaultService" type="service"/>
@@ -26,6 +30,7 @@
                             <tns:global identifier="review_contentsubmit_reviewdefault" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
                             <tns:global identifier="review_contentsubmit_reviewfor_reltion" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="review_contentsubmit_reviewidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="review_contentsubmit_reviewpage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="review_contentsubmit_reviewrelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="review_contentsubmit_reviewreltion_filter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="review_contentsubmit_reviewreview_content" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
@@ -33,22 +38,25 @@
                             <tns:global identifier="review_contentsubmit_reviewstage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="review_contentsubmit_reviewstages" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="review_contentsubmit_reviewtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="review_contentsubmit_reviewwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify2" id="denotify2" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（测试用例）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（需求）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置提交时间"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置提交人、状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置关系过滤器参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（需求）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify3" id="denotify3" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（项目工作项）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取关系数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段的状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="获取评审ID"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify4" id="denotify4" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（空间页面）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify2" id="denotify2" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（测试用例）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewthrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="评审内容为空"/>
                         <endEvent id="throwexception1_end" name="end"/>
                         <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
@@ -60,14 +68,28 @@
                         <sequenceFlow id="prepareparam9_end_line" sourceRef="prepareparam9" targetRef="prepareparam9_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam12" id="prepareparam12" implementation="http://www.jboss.org/drools/rule" name="获取页面ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="获取工作项ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="获取需求ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="获取测试用例ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction9" id="deaction9" implementation="http://www.jboss.org/drools/rule" name="获取空间页面详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="获取项目工作项详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取产品需求详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取测试用例详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam13" id="prepareparam13" implementation="http://www.jboss.org/drools/rule" name="设置空间页面评审状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam11" id="prepareparam11" implementation="http://www.jboss.org/drools/rule" name="设置项目工作项评审状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置产品需求评审状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置测试用例评审状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction10" id="deaction10" implementation="http://www.jboss.org/drools/rule" name="更新空间页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="更新项目工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="更新产品需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="更新测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewresetparam4" id="resetparam4" implementation="http://www.jboss.org/drools/rule" name="重置空间页面参数"/>
+                        <endEvent id="resetparam4_end" name="end"/>
+                        <sequenceFlow id="resetparam4_end_line" sourceRef="resetparam4" targetRef="resetparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewresetparam3" id="resetparam3" implementation="http://www.jboss.org/drools/rule" name="重置项目工作项参数"/>
+                        <endEvent id="resetparam3_end" name="end"/>
+                        <sequenceFlow id="resetparam3_end_line" sourceRef="resetparam3" targetRef="resetparam3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置产品需求参数"/>
                         <endEvent id="resetparam2_end" name="end"/>
                         <sequenceFlow id="resetparam2_end_line" sourceRef="resetparam2" targetRef="resetparam2_end"/>
@@ -76,7 +98,7 @@
                         <sequenceFlow id="resetparam1_end_line" sourceRef="resetparam1" targetRef="resetparam1_end"/>
                     <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="denotify2_prepareparam1" sourceRef="denotify2" targetRef="prepareparam1">
+                    <sequenceFlow id="denotify1_prepareparam1" sourceRef="denotify1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction4_rawsfcode1" sourceRef="deaction4" targetRef="rawsfcode1">
                     </sequenceFlow>
@@ -87,6 +109,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -96,8 +119,30 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewreview_detail.get("type"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam3_denotify3" sourceRef="gateway-debugparam3" targetRef="denotify3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewreviewer_list:Map();
+                                            $review_contentsubmit_reviewreviewer_temp:Map();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
+                                eval((RuleUtils.test($review_contentsubmit_reviewreview_detail.get("type"),"EQ","WORK_ITEM")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -106,6 +151,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -115,8 +161,30 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewreview_detail.get("type"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam3_denotify4" sourceRef="gateway-debugparam3" targetRef="denotify4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewreviewer_list:Map();
+                                            $review_contentsubmit_reviewreviewer_temp:Map();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
+                                eval((RuleUtils.test($review_contentsubmit_reviewreview_detail.get("type"),"EQ","PAGE")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -124,7 +192,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="denotify1_prepareparam1" sourceRef="denotify1" targetRef="prepareparam1">
+                    <sequenceFlow id="denotify3_prepareparam1" sourceRef="denotify3" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_debugparam2" sourceRef="bindparam1" targetRef="debugparam2">
                     </sequenceFlow>
@@ -133,6 +201,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -142,7 +211,8 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewrelation_page.get("size"),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -152,6 +222,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -161,7 +232,8 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewrelation_page.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -170,7 +242,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_deaction4" sourceRef="prepareparam6" targetRef="deaction4">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_loopsubcall1" sourceRef="deaction1" targetRef="loopsubcall1">
+                    <sequenceFlow id="denotify4_prepareparam1" sourceRef="denotify4" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam2_loopsubcall2" sourceRef="debugparam2" targetRef="loopsubcall2">
                     </sequenceFlow>
@@ -179,6 +251,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -188,12 +261,17 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewreviewer_temp.get("order"),"EQ","1")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall2_debugparam3" sourceRef="loopsubcall2" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="denotify2_prepareparam1" sourceRef="denotify2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_loopsubcall1" sourceRef="deaction1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_debugparam1" sourceRef="loopsubcall1" targetRef="debugparam1">
                     </sequenceFlow>
@@ -204,6 +282,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -213,8 +292,30 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam10" sourceRef="gateway-debugparam1" targetRef="prepareparam10">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewreviewer_list:Map();
+                                            $review_contentsubmit_reviewreviewer_temp:Map();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
+                                eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","WORK_ITEM")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -223,6 +324,7 @@
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
                                             $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -232,22 +334,60 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
                                 eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","IDEA")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam12" sourceRef="gateway-debugparam1" targetRef="prepareparam12">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewpage:article_page();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewreviewer_list:Map();
+                                            $review_contentsubmit_reviewreviewer_temp:Map();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                            $review_contentsubmit_reviewwork_item:work_item();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewpage==review_contentsubmit_reviewpage && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case && $review_contentsubmit_reviewwork_item==review_contentsubmit_reviewwork_item);
+                                eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","PAGE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam12_deaction9" sourceRef="prepareparam12" targetRef="deaction9">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam10_deaction7" sourceRef="prepareparam10" targetRef="deaction7">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam7_deaction5" sourceRef="prepareparam7" targetRef="deaction5">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_deaction2" sourceRef="prepareparam4" targetRef="deaction2">
                     </sequenceFlow>
+                    <sequenceFlow id="deaction9_prepareparam13" sourceRef="deaction9" targetRef="prepareparam13">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction7_prepareparam11" sourceRef="deaction7" targetRef="prepareparam11">
+                    </sequenceFlow>
                     <sequenceFlow id="deaction5_prepareparam8" sourceRef="deaction5" targetRef="prepareparam8">
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_prepareparam5" sourceRef="deaction2" targetRef="prepareparam5">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam13_deaction10" sourceRef="prepareparam13" targetRef="deaction10">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam11_deaction8" sourceRef="prepareparam11" targetRef="deaction8">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam8_deaction6" sourceRef="prepareparam8" targetRef="deaction6">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam5_deaction3" sourceRef="prepareparam5" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction10_resetparam4" sourceRef="deaction10" targetRef="resetparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction8_resetparam3" sourceRef="deaction8" targetRef="resetparam3">
                     </sequenceFlow>
                     <sequenceFlow id="deaction6_resetparam2" sourceRef="deaction6" targetRef="resetparam2">
                     </sequenceFlow>

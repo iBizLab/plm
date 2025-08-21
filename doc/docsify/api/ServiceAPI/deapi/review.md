@@ -22,6 +22,7 @@
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -57,6 +58,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -98,6 +100,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -231,6 +234,7 @@
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -266,6 +270,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -307,6 +312,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -366,6 +372,7 @@
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -401,6 +408,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -461,6 +469,7 @@
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -496,6 +505,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -551,6 +561,7 @@
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -586,6 +597,7 @@
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -650,6 +662,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -685,6 +698,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -726,6 +740,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -780,6 +795,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -815,6 +831,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -856,6 +873,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -910,6 +928,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -945,6 +964,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -986,6 +1006,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1045,6 +1066,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -1080,6 +1102,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1142,6 +1165,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1196,6 +1220,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -1231,6 +1256,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1325,6 +1351,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1384,6 +1411,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -1419,6 +1447,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1474,6 +1503,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -1509,6 +1539,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1550,6 +1581,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1609,6 +1641,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -1644,6 +1677,7 @@ Integer
   "principal_name" : null,
   "principal_type" : null,
   "description" : null,
+  "next_reviewer" : null,
   "reviewer" : null,
   "submitted_at" : null,
   "completed_at" : null,
@@ -1821,6 +1855,7 @@ Integer
     "principal_name" : null,
     "principal_type" : null,
     "description" : null,
+    "next_reviewer" : null,
     "reviewer" : null,
     "submitted_at" : null,
     "completed_at" : null,
@@ -1916,6 +1951,7 @@ Integer
     "principal_name" : null,
     "principal_type" : null,
     "description" : null,
+    "next_reviewer" : null,
     "reviewer" : null,
     "submitted_at" : null,
     "completed_at" : null,
@@ -2010,6 +2046,7 @@ Integer
     "principal_name" : null,
     "principal_type" : null,
     "description" : null,
+    "next_reviewer" : null,
     "reviewer" : null,
     "submitted_at" : null,
     "completed_at" : null,
@@ -2104,6 +2141,7 @@ Integer
     "principal_name" : null,
     "principal_type" : null,
     "description" : null,
+    "next_reviewer" : null,
     "reviewer" : null,
     "submitted_at" : null,
     "completed_at" : null,
@@ -2326,6 +2364,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2424,6 +2463,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2480,6 +2520,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2536,6 +2577,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2591,6 +2633,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2647,6 +2690,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2702,6 +2746,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2757,6 +2802,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2813,6 +2859,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2889,6 +2936,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -2966,6 +3014,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3021,6 +3070,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3077,6 +3127,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3505,6 +3556,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3603,6 +3655,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3659,6 +3712,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3715,6 +3769,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3770,6 +3825,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3826,6 +3882,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3881,6 +3938,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3936,6 +3994,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -3992,6 +4051,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -4068,6 +4128,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -4145,6 +4206,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -4200,6 +4262,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
@@ -4256,6 +4319,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">principal_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体名称|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审主体类型|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">next_reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下一个评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">submitted_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|提交时间|
 |<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|

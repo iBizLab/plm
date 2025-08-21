@@ -63,11 +63,27 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
     }
   },
+  "hookEventNames" : [ "ONCHANGE" ],
   "logicName" : "迭代确认完成视图_表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onChange",
+    "itemName" : "choose_move",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "logic1",
+    "scriptCode" : "if (data[0].choose_move) {\r\n    data[0].choose_finish = null;\r\n}"
+  }, {
+    "eventNames" : "onChange",
+    "itemName" : "choose_finish",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "logic2",
+    "scriptCode" : "if (data[0].choose_finish) {\r\n    data[0].choose_move = null;\r\n}"
+  } ],
   "getPSCtrlMsg" : {
     "codeName" : "UsrCtrlMsg0228593610",
     "dynaModelFilePath" : "PSCTRLMSGS/UsrCtrlMsg0228593610.json",
@@ -151,6 +167,10 @@
     "hidden" : true,
     "dataType" : 25
   }, {
+    "id" : "not_finish_num",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
     "id" : "id",
     "hidden" : true,
     "dataType" : 25,
@@ -192,180 +212,228 @@
         },
         "allowEmpty" : true
       }, {
-        "codeName" : "choose_move",
-        "dataType" : 25,
+        "codeName" : "grouppanel1",
         "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "fieldName" : "choose_move",
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "choose_move",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "CHECKBOX",
-          "name" : "choose_move"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 2,
-          "colMD" : 2,
-          "colSM" : 2,
-          "colXS" : 2,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "choose_finish",
-        "resetItemNames" : [ "choose_finish" ],
-        "updateDV" : "1",
-        "allowEmpty" : true
-      }, {
-        "codeName" : "formitem1",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem1",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "SPAN",
-          "name" : "formitem1",
-          "enableLinkView" : false
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 2,
-          "colMD" : 2,
-          "colSM" : 2,
-          "colXS" : 2,
-          "layout" : "TABLE_24COL"
-        },
-        "updateDV" : "移动至",
-        "allowEmpty" : true
-      }, {
-        "caption" : "目标迭代标识",
-        "codeName" : "target_sprint_name",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "target_sprint_name",
-        "noPrivDisplayMode" : 1,
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
         "getPSDEFDGroupLogics" : [ {
           "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
+          "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "choose_move",
+            "condOP" : "NOTEQ",
+            "dEFDName" : "not_finish_num",
             "logicType" : "SINGLE",
-            "value" : "1"
+            "name" : "not_finish_num不等于(<>) 0",
+            "value" : "0"
           } ],
-          "relatedDetailNames" : [ "choose_move" ],
+          "relatedDetailNames" : [ "not_finish_num" ],
           "notMode" : false
         } ],
-        "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "srfnavparam.sprint_id" : "%sprint%",
-            "PICKUPVIEW" : "TRUE"
+        "getPSDEFormDetails" : [ {
+          "codeName" : "choose_move",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "choose_move",
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "choose_move",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "CHECKBOX",
+            "name" : "choose_move"
           },
-          "editorType" : "PICKER",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "1",
+          "allowEmpty" : true
+        }, {
+          "codeName" : "formitem1",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "formitem1",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "formitem1",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "移动至",
+          "allowEmpty" : true
+        }, {
+          "caption" : "目标迭代标识",
+          "codeName" : "target_sprint_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemWidth" : 300.0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
           "name" : "target_sprint_name",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_choose_move"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
-          },
-          "getPSEditorItems" : [ {
-            "name" : "target_sprint_id"
+          "noPrivDisplayMode" : 1,
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "choose_move",
+              "logicType" : "SINGLE",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "choose_move" ],
+            "notMode" : false
           } ],
-          "getPSNavigateParams" : [ {
-            "key" : "sprint_id",
-            "name" : "sprint_id",
-            "value" : "sprint",
-            "rawValue" : false
-          } ],
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "srfnavparam.sprint_id" : "%sprint%",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorType" : "PICKER",
+            "editorWidth" : 300.0,
+            "name" : "target_sprint_name",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_choose_move"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "target_sprint_id"
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "sprint_id",
+              "name" : "sprint_id",
+              "value" : "sprint",
+              "rawValue" : false
+            } ],
+            "valueItemName" : "target_sprint_id",
+            "enableAC" : true,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "待分配工作项",
           "valueItemName" : "target_sprint_id",
-          "enableAC" : true,
-          "enablePickupView" : true,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
+          "allowEmpty" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
-          "colLG" : 20,
-          "colMD" : 20,
-          "colSM" : 20,
-          "colXS" : 20,
+          "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "待分配工作项",
-        "valueItemName" : "target_sprint_id",
-        "allowEmpty" : true
+        "infoGroupMode" : false,
+        "showCaption" : false
       }, {
-        "codeName" : "choose_finish",
-        "dataType" : 25,
+        "codeName" : "grouppanel2",
         "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "fieldName" : "choose_finish",
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "choose_finish",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "CHECKBOX",
-          "name" : "choose_finish"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 2,
-          "colMD" : 2,
-          "colSM" : 2,
-          "colXS" : 2,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "choose_move",
-        "resetItemNames" : [ "choose_move" ],
-        "allowEmpty" : true
-      }, {
-        "codeName" : "formitem",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "SPAN",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel2",
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "NOTEQ",
+            "dEFDName" : "not_finish_num",
+            "logicType" : "SINGLE",
+            "name" : "not_finish_num不等于(<>) 0",
+            "value" : "0"
+          } ],
+          "relatedDetailNames" : [ "not_finish_num" ],
+          "notMode" : false
+        } ],
+        "getPSDEFormDetails" : [ {
+          "codeName" : "choose_finish",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "choose_finish",
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "choose_finish",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "CHECKBOX",
+            "name" : "choose_finish"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "allowEmpty" : true
+        }, {
+          "codeName" : "formitem",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
           "name" : "formitem",
-          "enableLinkView" : false
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "formitem",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "全部标记为已完成",
+          "allowEmpty" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
-          "colLG" : 22,
-          "colMD" : 22,
-          "colSM" : 22,
-          "colXS" : 22,
+          "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "全部标记为已完成",
-        "allowEmpty" : true
+        "infoGroupMode" : false,
+        "showCaption" : false
       }, {
+        "caption" : "目标迭代标识",
         "codeName" : "target_sprint_id",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
@@ -373,13 +441,35 @@
         "enableCond" : 3,
         "fieldName" : "target_sprint_id",
         "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
         "name" : "target_sprint_id",
         "noPrivDisplayMode" : 1,
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "target_sprint_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "未完成数量",
+        "codeName" : "not_finish_num",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "not_finish_num",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "not_finish_num"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,

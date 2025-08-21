@@ -225,11 +225,63 @@
         "modelref" : true,
         "id" : "RENEWPARAM2"
       }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "tag",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[tag] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "tag",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[tag] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM2"
+      }
     } ],
     "topPos" : 330
   }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 640,
+    "leftPos" : 496,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "填充需求属性值",
     "getPSDELogicLinks" : [ {
@@ -264,10 +316,10 @@
       "srcValue" : "IDEA",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 450
+    "topPos" : 460
   }, {
     "codeName" : "PREPAREPARAM3",
-    "leftPos" : 896,
+    "leftPos" : 676,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "填充用例属性值",
     "getPSDELogicLinks" : [ {
@@ -302,7 +354,83 @@
       "srcValue" : "TEST_CASE",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 450
+    "topPos" : 460
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 853,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充工作项属性值",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TARGET_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "直接值[WORK_ITEM] ==> forward_relation_obj[TARGET_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "WORK_ITEM",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[WORK_ITEM] ==> reverse_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "WORK_ITEM",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 460
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 1040,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充页面属性值",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TARGET_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "直接值[PAGE] ==> forward_relation_obj[TARGET_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "PAGE",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[PAGE] ==> reverse_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "PAGE",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 460
   }, {
     "codeName" : "END1",
     "leftPos" : 400,

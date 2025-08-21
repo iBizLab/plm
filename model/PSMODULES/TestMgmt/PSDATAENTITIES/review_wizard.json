@@ -3428,13 +3428,13 @@
     "name" : "填充评审规则",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -380,
+      "leftPos" : -120,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "PREPAREPARAM1"
         },
         "name" : "测试用例",
         "getPSDELogicLinkGroupCond" : {
@@ -3460,7 +3460,7 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "PREPAREPARAM3"
         },
         "name" : "产品需求",
         "getPSDELogicLinkGroupCond" : {
@@ -3483,8 +3483,60 @@
           "modelref" : true,
           "id" : "Begin"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "项目工作项",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[TYPE] 等于(=) WORK_ITEM",
+            "paramValue" : "WORK_ITEM"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM8"
+        },
+        "name" : "空间页面",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[TYPE] 等于(=) PAGE",
+            "paramValue" : "PAGE"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
       } ],
-      "topPos" : 260,
+      "topPos" : 362,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
@@ -3529,29 +3581,50 @@
       } ],
       "topPos" : 200
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -50,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "需求参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "PREPAREPARAM4"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "PREPAREPARAM3"
         }
       } ],
-      "topPos" : 230
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OBJECT_TYPE_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "直接值[PRODUCT] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "PRODUCT",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_SCOPE_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "Default[PRINCIPAL_ID] ==> guideline_filter[N_SCOPE_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 315
     }, {
       "codeName" : "END1",
-      "leftPos" : 1049,
+      "leftPos" : 1059,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -3559,10 +3632,10 @@
         "id" : "guideline_detail"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 239
+      "topPos" : 362
     }, {
       "codeName" : "PREPAREPARAM4",
-      "leftPos" : 410,
+      "leftPos" : 450,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "通用参数",
       "getPSDELogicLinks" : [ {
@@ -3591,7 +3664,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 247
+      "topPos" : 370
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -3624,10 +3697,10 @@
         "modelref" : true,
         "id" : "guideline_page"
       },
-      "topPos" : 247
+      "topPos" : 370
     }, {
       "codeName" : "PREPAREPARAM2",
-      "leftPos" : 842,
+      "leftPos" : 852,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置返回的guideline_id",
       "getPSDELogicLinks" : [ {
@@ -3684,33 +3757,12 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 247
+      "topPos" : 370
     }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -50,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 290
-    }, {
-      "codeName" : "PREPAREPARAM3",
+      "codeName" : "PREPAREPARAM5",
       "leftPos" : 170,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "需求参数",
+      "name" : "工作项参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3719,7 +3771,7 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM3"
+          "id" : "PREPAREPARAM5"
         }
       } ],
       "getPSDELogicNodeParams" : [ {
@@ -3728,9 +3780,9 @@
           "modelref" : true,
           "id" : "guideline_filter"
         },
-        "name" : "直接值[PRODUCT] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+        "name" : "直接值[PROJECT] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
         "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "PRODUCT",
+        "srcValue" : "PROJECT",
         "srcValueType" : "SRCVALUE"
       }, {
         "dstFieldName" : "N_SCOPE_ID_EQ",
@@ -3747,7 +3799,49 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 315
+      "topPos" : 430
+    }, {
+      "codeName" : "PREPAREPARAM8",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "页面参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM8"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OBJECT_TYPE_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "直接值[SPACE] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "SPACE",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_SCOPE_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "Default[PRINCIPAL_ID] ==> guideline_filter[N_SCOPE_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 555
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -4449,9 +4543,21 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "page_create_wizard_view",
+    "logicName" : "页面评审新建向导视图",
+    "name" : "页面评审新建向导视图",
+    "realModelSubType" : "DEWIZARDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "idea_create_wizard_view",
     "logicName" : "需求评审新建向导视图",
     "name" : "需求评审新建向导视图",
+    "realModelSubType" : "DEWIZARDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "work_create_wizard_view",
+    "logicName" : "工作项评审新建向导视图",
+    "name" : "工作项评审新建向导视图",
     "realModelSubType" : "DEWIZARDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -4526,11 +4632,27 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "create_re_idea_form",
-    "logicName" : "新建时规划需求表单",
+    "codeName" : "page_create_form",
+    "logicName" : "页面新建表单",
     "modelTag" : "WIZARDFORM",
     "modelTag2" : "0",
-    "name" : "新建时规划需求表单",
+    "name" : "页面新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "work_item_create_form",
+    "logicName" : "工作项新建表单",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "工作项新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "create_common_form",
+    "logicName" : "新建时规划通用表单",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "新建时规划通用表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

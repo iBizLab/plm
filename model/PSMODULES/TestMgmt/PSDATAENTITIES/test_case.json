@@ -2024,6 +2024,101 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/ideas_relation_test_case/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ideas_relation_test_case",
+    "logicName" : "关联测试用例（多需求）",
+    "name" : "ideas_relation_test_case",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TEST_CASE.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1NLEFTOUT",
+        "name" : "RELATION左外联接 1:NDERCUSTOM_RELATION_TARGET_TEST_CASE",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "test_case",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) test_case",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          }, {
+            "condType" : "CUSTOM",
+            "condition" : " t31.`PRINCIPAL_ID` IN (${ctx.datacontext.principal_id})",
+            "name" : "关联"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_CASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 不等于(<>) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ideas_relation_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ideas_relation_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTOS"
+    },
+    "customCode" : true
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/my_assign/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "my_assign",
@@ -4198,6 +4293,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Idea_relation_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "ideas_relation_test_case",
+    "logicName" : "关联测试用例（多需求）",
+    "name" : "ideas_relation_test_case",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ideas_relation_test_case"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ideas_relation_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ideas_relation_test_caseResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_case_dto"

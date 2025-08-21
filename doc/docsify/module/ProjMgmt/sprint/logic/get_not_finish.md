@@ -83,7 +83,8 @@ sprint.set("remind", "该迭代仍有" + not_finish_num + "个工作项没有完
 
 
 
-1. 将`该迭代下工作项已全部完成` 设置给  `Default(传入变量).remind`
+1. 将`该迭代下工作项已全部完成，完成后迭代将无法重新开启。` 设置给  `Default(传入变量).remind`
+2. 将`0` 设置给  `Default(传入变量).choose_move`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

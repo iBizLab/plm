@@ -202,17 +202,17 @@
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | panel_usr0516087018_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 | 移动 | move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
-| 删除评论（移动端） | mob_del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[del_comment](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；|
-| 发起讨论（移动端） | mob_create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_mob_dis_create_view)</details>||
+| 删除评论（移动端） | mob_del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[del_comment](#行为)||
 | 添加回复 | create_reply | 添加回复 |无数据|用户自定义||
 | 评论 | panel_usr0516087018_button_calluilogic2_click | 评论 |单项数据|用户自定义||
+| 发起讨论（移动端） | mob_create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_mob_dis_create_view)</details>||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 新建讨论（快速新建） | quick_new_discuss_post | 新建讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_quick_create_view)</details>||
 | 打开讨论 | open_discuss_post | 打开讨论 |无数据|用户自定义||
 | 发送 | panel_usr1029137485_button_calluilogic_click | 发送 |单项数据|用户自定义||
-| 移动（移动端） | mob_move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
 | 发起讨论 | create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_quick_create_view)</details>||
+| 移动（移动端） | mob_move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|
 | 清空回复 | clear_reply | 清空 |无数据|用户自定义||
 | 发表评论 | send_comment | 评论 |无数据|用户自定义||

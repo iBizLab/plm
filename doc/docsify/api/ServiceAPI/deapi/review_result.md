@@ -18,6 +18,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -32,6 +33,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -52,6 +54,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -92,6 +95,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -151,6 +155,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -165,6 +170,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -185,6 +191,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -218,6 +225,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -232,6 +240,7 @@
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -270,6 +279,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -284,6 +294,7 @@ Integer
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -304,6 +315,7 @@ Integer
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -337,6 +349,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -351,6 +364,7 @@ Integer
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -371,6 +385,7 @@ Integer
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -409,6 +424,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|状态|
 |<el-row justify="space-between"><el-col :span="20">comment</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审意见|
+|<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">whether_review</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否可评审|
 |<el-row justify="space-between"><el-col :span="20">stage_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段标识|
 |<el-row justify="space-between"><el-col :span="20">sequences</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|顺序|
@@ -423,6 +439,7 @@ Integer
 {
   "result_state" : null,
   "comment" : null,
+  "reviewer" : null,
   "whether_review" : null,
   "stage_id" : null,
   "sequences" : null,
@@ -484,6 +501,7 @@ Integer
   {
     "result_state" : null,
     "comment" : null,
+    "reviewer" : null,
     "whether_review" : null,
     "stage_id" : null,
     "sequences" : null,

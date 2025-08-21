@@ -261,6 +261,7 @@
 |[我参与的(my_participate)](module/TestMgmt/test_plan/query/my_participate)|my_participate|否|否 |否 ||
 |[未开始和进行中的计划(pending_and_in_progress)](module/TestMgmt/test_plan/query/pending_and_in_progress)|pending_and_in_progress|否|否 |否 ||
 |[查询未移入过的计划(query_no_shift_in)](module/TestMgmt/test_plan/query/query_no_shift_in)|query_no_shift_in|否|否 |否 ||
+|[测试计划(test_plan)](module/TestMgmt/test_plan/query/test_plan)|test_plan|否|否 |否 ||
 |[未加入计划(un_join_plan)](module/TestMgmt/test_plan/query/un_join_plan)|un_join_plan|否|否 |否 ||
 
 ## 数据集合
@@ -275,6 +276,7 @@
 |[我参与的(my_participate)](module/TestMgmt/test_plan/dataset/my_participate)|my_participate|数据查询|否|||
 |[未开始和进行中的计划(pending_and_in_progress)](module/TestMgmt/test_plan/dataset/pending_and_in_progress)|pending_and_in_progress|数据查询|否|||
 |[查询未移入过的计划(query_no_shift_in)](module/TestMgmt/test_plan/dataset/query_no_shift_in)|query_no_shift_in|数据查询|否|||
+|[测试计划(test_plan)](module/TestMgmt/test_plan/dataset/test_plan)|test_plan|数据查询|否|||
 |[未加入计划(un_join_plan)](module/TestMgmt/test_plan/dataset/un_join_plan)|un_join_plan|数据查询|否|||
 
 ## 数据权限

@@ -318,6 +318,20 @@ if(executors != null && executors != undefined && executors.length > 0){
 
 ## 视图界面逻辑
   * [设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)
+* `onCreated`
+```javascript
+ctrl.evt.on('onFormDataChange', evt => {
+  const { name } = evt;
+  const data = ctrl.state.data;
+  if (['project_id', 'work_item_type_id'].includes(name) && data.work_item_type_id) {
+	view.redrawView({
+	  context: { project: data.project_id, dynamicnew: true },
+	  params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },
+	  isReloadModel: true,
+	});
+  }
+});
+```
 
 
 ### 关联界面行为

@@ -17,6 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./set_type_bug#begin {"开始"}]]
 state "准备项目ID" as PREPAREPARAM1  [[$./set_type_bug#prepareparam1 {"准备项目ID"}]]
 state "获取项目信息" as DEACTION1  [[$./set_type_bug#deaction1 {"获取项目信息"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./set_type_bug#debugparam1 {"调试逻辑参数"}]]
 state "设置项目类别" as PREPAREPARAM2  [[$./set_type_bug#prepareparam2 {"设置项目类别"}]]
 state "执行脚本代码" as RAWSFCODE2  [[$./set_type_bug#rawsfcode2 {"执行脚本代码"}]]
 state "设置缺陷类型" as RAWSFCODE1  [[$./set_type_bug#rawsfcode1 {"设置缺陷类型"}]]
@@ -25,7 +26,8 @@ state "结束" as END1 <<end>> [[$./set_type_bug#end1 {"结束"}]]
 
 Begin --> PREPAREPARAM1 : [[$./set_type_bug#begin-prepareparam1{项目ID不为空} 项目ID不为空]]
 PREPAREPARAM1 --> DEACTION1
-DEACTION1 --> PREPAREPARAM2
+DEACTION1 --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM2
 PREPAREPARAM2 --> RAWSFCODE1 : [[$./set_type_bug#prepareparam2-rawsfcode1{缺陷类型不为空} 缺陷类型不为空]]
 RAWSFCODE1 --> END1
 PREPAREPARAM2 --> RAWSFCODE2 : [[$./set_type_bug#prepareparam2-rawsfcode2{缺陷类型为空} 缺陷类型为空]]
@@ -56,6 +58,14 @@ RAWSFCODE2 --> END1
 调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 行为 [Get](module/ProjMgmt/project#行为) ，行为参数为`project`
 
 将执行结果返回给参数`project`
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`project`的详细信息
+
 
 #### 设置项目类别 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 

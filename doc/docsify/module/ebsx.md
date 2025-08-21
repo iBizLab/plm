@@ -15,4 +15,5 @@ ebsx部门及人员业务实体的映射。
 |[用户角色关系(SYS_USER_ROLE)](module/ebsx/UserRole)|UserRole|主实体|ServiceAPI||否|否|自控制|否|角色成员映射实体|
 |[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|app_view_theme|主实体|SQL|APP_VIEW_THEME|否|否|自控制|否||
 |[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|auth_log_admin|主实体|SQL|IBZAUTHLOG|否|否|自控制|否|记录登录认证相关信息。|
+|[第三方用户(OPENUSER)](module/ebsx/openuser)|openuser|主实体|SQL|IBZOPENUSER|否|否|自控制|否||
 

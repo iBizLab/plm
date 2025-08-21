@@ -128,6 +128,7 @@
 |[通过主数据标识查询通知对象(attention_by_ownerid)](module/Base/attention/query/attention_by_ownerid)|attention_by_ownerid|否|否 |否 ||
 |[评论提醒(comment_attention)](module/Base/attention/query/comment_attention)|comment_attention|否|否 |否 ||
 |[通知对象(notify)](module/Base/attention/query/notify)|notify|否|否 |否 ||
+|[评审通知(review_notify)](module/Base/attention/query/review_notify)|review_notify|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -136,6 +137,7 @@
 |[通过主数据标识查询通知对象(attention_by_ownerid)](module/Base/attention/dataset/attention_by_ownerid)|attention_by_ownerid|数据查询|否|||
 |[评论提醒(comment_attention)](module/Base/attention/dataset/comment_attention)|comment_attention|数据查询|否|||
 |[通知对象(notify)](module/Base/attention/dataset/notify)|notify|数据查询|否|||
+|[评审关注(review_notify)](module/Base/attention/dataset/review_notify)|review_notify|数据查询|否|||
 
 ## 数据权限
 

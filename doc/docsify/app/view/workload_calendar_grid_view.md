@@ -8,6 +8,9 @@
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
 
+##### 部件逻辑
+* `onChange` : [重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)
+
 ## 视图界面逻辑
 * `onBeforeLoadDraft`
 ```javascript
@@ -21,6 +24,9 @@ Object.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, dat
   * [工时打开对应事项详情视图](module/Base/workload/uilogic/open_main_view)
   * newdata(预置新建数据逻辑)
 
+
+### 关联界面逻辑
+  * [工时(WORKLOAD)](module/Base/workload) : [重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)

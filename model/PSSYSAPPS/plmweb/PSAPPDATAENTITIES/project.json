@@ -569,6 +569,41 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "COPY",
+    "actionTag" : "Copy",
+    "codeName" : "copy",
+    "methodType" : "DEACTION",
+    "name" : "Copy",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "COPY"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/copy",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -702,6 +737,44 @@
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "codeName" : "fill_copy_info",
+    "methodType" : "DEACTION",
+    "name" : "fill_copy_info",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "fill_copy_info"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Fill_copy_infoInput",
+      "name" : "Fill_copy_infoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Fill_copy_infoResult",
+      "name" : "Fill_copy_infoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
     },
     "builtinMethod" : false
   }, {
@@ -3398,6 +3471,200 @@
     "enableBackend" : false,
     "enableFront" : true
   }, {
+    "codeName" : "fill_copy_info",
+    "defaultParamName" : "Default",
+    "logicName" : "填充复制项目信息",
+    "memo" : "复制项目时，填充当前项目的基本信息",
+    "name" : "填充复制项目信息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[cur_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "cur_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "get"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取目标项目数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 580
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[new_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "new_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 662
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "CreateTemp"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/CreateTemp.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建临时数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 732
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 890
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "project",
+      "logicName" : "项目",
+      "name" : "项目",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "nothing",
     "defaultParamName" : "Default",
     "logicName" : "无操作",
@@ -4940,6 +5207,41 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "COPY",
+    "actionTag" : "Copy",
+    "codeName" : "copy",
+    "methodType" : "DEACTION",
+    "name" : "Copy",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "COPY"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/copy",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -5073,6 +5375,44 @@
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_bi_form_default.json"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "codeName" : "fill_copy_info",
+    "methodType" : "DEACTION",
+    "name" : "fill_copy_info",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "fill_copy_info"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Fill_copy_infoInput",
+      "name" : "Fill_copy_infoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Fill_copy_infoResult",
+      "name" : "Fill_copy_infoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
     },
     "builtinMethod" : false
   }, {
@@ -7946,6 +8286,38 @@
     "reloadData" : true,
     "id" : "change_admin_role@project"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "复制项目",
+    "codeName" : "copy_project",
+    "dataAccessAction" : "UPDATE",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_copy_wizard_view.json",
+      "viewType" : "DEWIZARDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_copy_project",
+    "memo" : "项目快速建立视图",
+    "name" : "复制项目",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0c5@FontAwesome",
+      "cssClass" : "fa fa-copy"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "copy_project",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "copy_project@project"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "新建项目",
     "codeName" : "create_project",
@@ -10087,10 +10459,17 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_all_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_copy_wizard_view.json",
+    "viewType" : "DEWIZARDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "开始",
     "name" : "BEGIN"
+  }, {
+    "logicName" : "复制",
+    "name" : "COPY"
   }, {
     "logicName" : "建立",
     "name" : "CREATE"
@@ -10497,7 +10876,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u3695842",
+      "name" : "u5746dc5",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -10516,7 +10895,7 @@
     }, {
       "actionLevel" : 250,
       "detailType" : "DEUIACTION",
-      "name" : "u1f10be1",
+      "name" : "uc25a4a1",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -10535,7 +10914,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u1c54e14",
+      "name" : "u2b43a40",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M7.875,1.75 C7.94375,1.75 8,1.80625 8,1.875 L8,2.75 C8,2.81875 7.94375,2.875 7.875,2.875 L2.875,2.875 L2.875,13.125 L13.125,13.125 L13.125,8.125 C13.125,8.05625 13.18125,8 13.25,8 L14.125,8 C14.19375,8 14.25,8.05625 14.25,8.125 L14.25,13.75 C14.25,14.0265625 14.0265625,14.25 13.75,14.25 L2.25,14.25 C1.9734375,14.25 1.75,14.0265625 1.75,13.75 L1.75,2.25 C1.75,1.9734375 1.9734375,1.75 2.25,1.75 Z M12.7666777,2.4349185 C12.7666777,2.333356 12.8838652,2.277106 12.9635527,2.339606 L14.9635527,3.917731 C15.0260527,3.9661685 15.0260527,4.0599185 14.9635527,4.1099185 L12.9619902,5.689606 C12.8823027,5.752106 12.7651152,5.695856 12.7651152,5.5942935 L12.7651152,4.595856 C12.5635527,4.5974185 12.3619902,4.6099185 12.1588652,4.6349185 C11.4994902,4.7161685 10.8760527,4.9192935 10.2979277,5.2411685 C9.70261522,5.570856 9.18542772,6.0161685 8.76042772,6.558356 C8.33699022,7.1005435 8.03074022,7.708356 7.85261522,8.367731 C7.68074022,9.0036685 7.63386522,9.6599185 7.71355272,10.317731 C7.72449022,10.402106 7.73699022,10.486481 7.75105272,10.5692935 L6.58074022,10.5692935 C6.35261522,8.9474185 6.76042772,7.2380435 7.84792772,5.8442935 C9.07917772,4.2692935 10.9104277,3.442731 12.7635527,3.4349185 Z\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -10554,7 +10933,7 @@
     }, {
       "caption" : "项目信息",
       "detailType" : "DEUIACTION",
-      "name" : "u186f340",
+      "name" : "uf110384",
       "getPSSysImage" : {
         "glyph" : "xf05a@FontAwesome",
         "cssClass" : "fa fa-info-circle"
@@ -10573,7 +10952,7 @@
     }, {
       "caption" : "项目成员",
       "detailType" : "DEUIACTION",
-      "name" : "ub4fa962",
+      "name" : "u842209c",
       "getPSSysImage" : {
         "glyph" : "xf0c0@FontAwesome",
         "cssClass" : "fa fa-users"
@@ -10592,7 +10971,7 @@
     }, {
       "caption" : "编辑基本信息",
       "detailType" : "DEUIACTION",
-      "name" : "uef96384",
+      "name" : "u20ca925",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -10609,9 +10988,28 @@
         "id" : "open_edit_view@project"
       }
     }, {
+      "caption" : "复制项目",
+      "detailType" : "DEUIACTION",
+      "name" : "u6215ebd",
+      "getPSSysImage" : {
+        "glyph" : "xf0c5@FontAwesome",
+        "cssClass" : "fa fa-copy"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "modelref" : true,
+        "id" : "copy_project@project"
+      }
+    }, {
       "caption" : "更多设置",
       "detailType" : "DEUIACTION",
-      "name" : "u769958e",
+      "name" : "u3213b79",
       "getPSSysImage" : {
         "glyph" : "xf00b@FontAwesome",
         "cssClass" : "fa fa-th-list"
@@ -10630,7 +11028,7 @@
     }, {
       "caption" : "回收站",
       "detailType" : "DEUIACTION",
-      "name" : "u2fc4c44",
+      "name" : "u0d28e68",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

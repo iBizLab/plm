@@ -1,7 +1,7 @@
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ?
+select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ACTUAL_WORKLOAD'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

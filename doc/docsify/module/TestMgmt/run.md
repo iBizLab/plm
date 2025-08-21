@@ -341,12 +341,12 @@
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 打开选项操作视图（门户）（测试） | open_optview_portlet | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_test_option_view)</details>||
 | 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
-| 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
 | 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
+| 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
-| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
+| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 移出（主视图） | delete_run_main | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
@@ -354,9 +354,9 @@
 | 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
 | 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
-| 执行用例关联缺陷（移动端） | mob_add_bug | 执行用例关联缺陷 |无数据|<details><summary>后台调用</summary>[other_relation_run](#行为)||
 | 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 选择用例（工作项） | work_item_choose_case | 选择工作项 |无数据|<details><summary>后台调用</summary>[program_plan_by_workitem](#行为)||
+| 执行用例关联缺陷（移动端） | mob_add_bug | 执行用例关联缺陷 |无数据|<details><summary>后台调用</summary>[other_relation_run](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 
 ## 界面逻辑

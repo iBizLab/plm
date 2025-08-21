@@ -15,6 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./generate_review_results#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM4  [[$./generate_review_results#debugparam4 {"调试逻辑参数"}]]
 state "测试用例" as PREPAREPARAM6  [[$./generate_review_results#prepareparam6 {"测试用例"}]]
 state "结束" as END1 <<end>> [[$./generate_review_results#end1 {"结束"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./generate_review_results#debugparam2 {"调试逻辑参数"}]]
@@ -23,11 +24,14 @@ state "查询流程准则" as DEDATASET1  [[$./generate_review_results#dedataset
 state "获取流程准则信息，设置评审阶段过滤参数" as PREPAREPARAM2  [[$./generate_review_results#prepareparam2 {"获取流程准则信息，设置评审阶段过滤参数"}]]
 state "绑定评审阶段数据" as PREPAREPARAM4  [[$./generate_review_results#prepareparam4 {"绑定评审阶段数据"}]]
 state "产品需求" as PREPAREPARAM5  [[$./generate_review_results#prepareparam5 {"产品需求"}]]
+state "创建评审结果" as DEACTION1  [[$./generate_review_results#deaction1 {"创建评审结果"}]]
+state "重置评审结果" as RENEWPARAM1  [[$./generate_review_results#renewparam1 {"重置评审结果"}]]
 state "循环评审阶段" as LOOPSUBCALL1  [[$./generate_review_results#loopsubcall1 {"循环评审阶段"}]] #green {
 state "设置新建的评审结果数据" as PREPAREPARAM3  [[$./generate_review_results#prepareparam3 {"设置新建的评审结果数据"}]]
 state "创建前的评审结果" as DEBUGPARAM3  [[$./generate_review_results#debugparam3 {"创建前的评审结果"}]]
-state "创建评审结果" as DEACTION1  [[$./generate_review_results#deaction1 {"创建评审结果"}]]
-state "重置评审结果" as RENEWPARAM1  [[$./generate_review_results#renewparam1 {"重置评审结果"}]]
+}
+state "循环子调用" as LOOPSUBCALL2  [[$./generate_review_results#loopsubcall2 {"循环子调用"}]] #green {
+state "准备参数" as PREPAREPARAM7  [[$./generate_review_results#prepareparam7 {"准备参数"}]]
 }
 
 
@@ -37,10 +41,13 @@ PREPAREPARAM6 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEDATASET1
 DEDATASET1 --> PREPAREPARAM2
 PREPAREPARAM2 --> PREPAREPARAM4
-PREPAREPARAM4 --> LOOPSUBCALL1
+PREPAREPARAM4 --> DEBUGPARAM4
+DEBUGPARAM4 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> PREPAREPARAM3
 PREPAREPARAM3 --> DEBUGPARAM3
-DEBUGPARAM3 --> DEACTION1
+DEBUGPARAM3 --> LOOPSUBCALL2
+LOOPSUBCALL2 --> PREPAREPARAM7
+LOOPSUBCALL2 --> DEACTION1
 DEACTION1 --> RENEWPARAM1
 LOOPSUBCALL1 --> END1
 DEBUGPARAM2 --> PREPAREPARAM5 : [[$./generate_review_results#debugparam2-prepareparam5{连接名称} 连接名称]]
@@ -52,6 +59,14 @@ PREPAREPARAM5 --> PREPAREPARAM1
 
 
 ### 处理步骤说明
+
+#### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`reviewer_list`的详细信息
+
 
 #### 测试用例 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -85,6 +100,7 @@ PREPAREPARAM5 --> PREPAREPARAM1
 
 
 1. 将`Default(传入变量).TARGET_TYPE(关联目标类型)` 设置给  `guideline_filter(流程准则过滤器).N_SUBJECT_TYPE_EQ`
+2. 将`Default(传入变量).REVIEW_DATA(评审数据)` 绑定给  `review`
 
 #### 查询流程准则 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -106,6 +122,7 @@ PREPAREPARAM5 --> PREPAREPARAM1
 
 
 1. 将`guideline(流程准则).review_stage(评审阶段)` 绑定给  `review_stage_list(评审阶段对象列表)`
+2. 将`review.STAGE(阶段)` 绑定给  `reviewer_list`
 
 #### 循环评审阶段 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
@@ -138,6 +155,17 @@ PREPAREPARAM5 --> PREPAREPARAM1
 > 调试输出参数`review_result(评审结果)`的详细信息
 
 
+#### 准备参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`reviewer_temp.reviewer` 设置给  `review_result(评审结果).REVIEWER(评审人)`
+
+#### 循环子调用 :id=LOOPSUBCALL2<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
+
+
+
+循环参数`reviewer_list`，子循环参数使用`reviewer_temp`
 #### 创建评审结果 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
@@ -154,6 +182,9 @@ PREPAREPARAM5 --> PREPAREPARAM1
 #### 连接名称 :id=DEBUGPARAM2-PREPAREPARAM6
 
 `Default(传入变量).target_type(关联目标类型)` EQ `TEST_CASE`
+#### 连接名称 
+
+
 #### 连接名称 :id=DEBUGPARAM2-PREPAREPARAM5
 
 `Default(传入变量).target_type(关联目标类型)` EQ `IDEA`
@@ -168,8 +199,11 @@ PREPAREPARAM5 --> PREPAREPARAM1
 |流程准则过滤器|guideline_filter|过滤器|||
 |流程准则分页查询结果|guideline_pages|分页查询|||
 |产品需求|idea|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||
+|review|review|数据对象|[评审(REVIEW)](module/TestMgmt/review.md)||
 |评审结果|review_result|数据对象|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md)||
 |评审阶段|review_stage|数据对象|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
 |过滤器|review_stage_filter|过滤器|||
 |评审阶段对象列表|review_stage_list|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
+|reviewer_list|reviewer_list|数据对象列表|||
+|reviewer_temp|reviewer_temp|数据对象|||
 |测试用例|test_case|数据对象|[用例(TEST_CASE)](module/TestMgmt/test_case.md)||

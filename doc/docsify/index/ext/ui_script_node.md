@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[470]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[475]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -1845,6 +1845,15 @@ uiLogic.view.ctx.controllersMap.get("form").details.grouppanel11.state.visible=t
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel11.state.visible=true;
 ```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[查看预估工时明细(check_estimated_workload_detail)](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel17.state.visible=true;
+```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取需求工时进度(get_workload_schedule)](module/ProdMgmt/idea/uilogic/get_workload_schedule)
 
 节点：计算工时进度
@@ -2888,6 +2897,21 @@ if (selecteddata.length > 0) {
 let selecteddata=uiLogic.selecteddata;
 if (selecteddata.length > 0) {
     uiLogic.selectobj = selecteddata[0];
+}
+```
+#### [最近访问(RECENT)](module/Base/recent)的处理逻辑[建立双向关联数据(create_double_relation)](module/Base/recent/uilogic/create_double_relation)
+
+节点：提取客户ID
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+let choose = uiLogic.default.customer_id;
+if(choose != null && choose != ''){
+    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));
+    uiLogic.dto.principal_id = uiLogic.default.id;
+    uiLogic.dto.id = uiLogic.default.id;
+    uiLogic.dto.principal_type = "idea";
+    uiLogic.dto.target_type = "customer";
 }
 ```
 #### [最近访问(RECENT)](module/Base/recent)的处理逻辑[建立双向关联数据(create_double_relation)](module/Base/recent/uilogic/create_double_relation)
@@ -4142,6 +4166,14 @@ uiLogic.treeexpbar.layoutPanel.panelItems.control_toolbar.state.visible=false;
 ```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
 
+节点：通过实体刷新表格、树
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: params.owner_id})
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
+
 节点：刷新视图
 <p class="panel-title"><b>执行代码</b></p>
 
@@ -4160,14 +4192,6 @@ setTimeout(() => {
         }
     }
 }, 300)
-```
-#### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
-
-节点：通过实体刷新表格、树
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: params.owner_id})
 ```
 #### [空间成员(SPACE_MEMBER)](module/Wiki/space_member)的处理逻辑[新建空间默认临时成员(create_default_temp_members)](module/Wiki/space_member/uilogic/create_default_temp_members)
 
@@ -4483,6 +4507,15 @@ uiLogic.attach = uiLogic.files.map(item =>
         }
     }
 )
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[查看预估工时明细(check_estimated_workload_detail)](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel14.state.visible=true;
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[清空表单关注人(clean_attentions)](module/TestMgmt/test_case/uilogic/clean_attentions)
 
@@ -5273,8 +5306,10 @@ uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
 ```javascript
 var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;
 var n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;
+var n_category_eq = view.layoutPanel.panelItems.searchform.control.data.n_category_eq;
 uiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;
 uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
+uiLogic.default.n_category_eq=n_category_eq;
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[打开工作类别工时记录列表视图(open_type_detail)](module/Base/workload/uilogic/open_type_detail)
 
@@ -5284,8 +5319,10 @@ uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
 ```javascript
 var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;
 var n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;
+var n_category_eq = view.layoutPanel.panelItems.searchform.control.data.n_category_eq;
 uiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;
 uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
+uiLogic.default.n_category_eq=n_category_eq;
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[打开所属工时记录列表视图(管理)(open_parent_with_log_grid)](module/Base/workload/uilogic/open_parent_with_log_grid)
 
@@ -5306,8 +5343,10 @@ uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
 ```javascript
 var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;
 var n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;
+var n_category_eq = view.layoutPanel.panelItems.searchform.control.data.n_category_eq;
 uiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;
 uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
+uiLogic.default.n_category_eq=n_category_eq;
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[工时日历打开工时日志视图（管理）(calendar_management_link_log_view)](module/Base/workload/uilogic/calendar_management_link_log_view)
 
@@ -5319,6 +5358,16 @@ var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.dat
 var n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;
 uiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;
 uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
+```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[重置上下文工时类型(reset_workload_category)](module/Base/workload/uilogic/reset_workload_category)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+console.log(view);
+console.log(uiLogic.default);
+view.context.category = uiLogic.default.n_category_eq;
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[打开团队下成员工时日历(open_group_member_calendar)](module/Base/workload/uilogic/open_group_member_calendar)
 
@@ -5809,6 +5858,15 @@ setTimeout(() => {
 		})
 	}
 }, 1000);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[查看预估工时明细(check_estimated_workload_detail)](module/ProjMgmt/work_item/uilogic/check_estimated_workload_detail)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel17.state.visible=true;
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算父工作项类型(calc_parent_work_item_type)](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type)
 

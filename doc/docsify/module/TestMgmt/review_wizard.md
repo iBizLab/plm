@@ -65,7 +65,7 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#review_wizard_Create)|||
+|Create|Create|内置方法|默认|不支持||||
 |CreateTemp|CreateTemp|内置方法|默认|不支持||||
 |CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
 |Get|Get|内置方法|默认|不支持||||
@@ -89,7 +89,6 @@
 |[创建后修改附加数据归属](module/TestMgmt/review_wizard/logic/fix_nested_data)|fix_nested_data|无||创建后修改附加数据归属|
 |[创建后附加评审规则](module/TestMgmt/review_wizard/logic/add_guideline_after_created)|add_guideline_after_created|无|| 进行中|
 |[填充评审规则](module/TestMgmt/review_wizard/logic/fill_guideline)|fill_guideline|无||获取评审规则并返回|
-|[评审新建通知](module/TestMgmt/review_wizard/logic/create_review_notify)|create_review_notify|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -119,11 +118,6 @@
 
 
 
-## 消息通知
-
-|    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
-|------------| -----   |  -------- | -------- |-------- |-------- |
-|[新建需求评审通知](module/TestMgmt/review_wizard/notify/idea_review_notify)|idea_review_notify|[默认消息队列](index/notify_index)|[需求新建评审通知模板](index/notify_index#idea_create_review)|reviewers ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -167,9 +161,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_wizard?id=数据权限`">
   数据权限
-</el-anchor-link>
-<el-anchor-link :href="`#/module/TestMgmt/review_wizard?id=消息通知`">
-  消息通知
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_wizard?id=搜索模式`">
   搜索模式

@@ -1748,6 +1748,44 @@
     "requestPath" : "/fetch_deleted",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ideas_relation_idea",
+    "dataSetName" : "ideas_relation_idea",
+    "dataSetTag" : "ideas_relation_idea",
+    "methodType" : "FETCH",
+    "name" : "fetch_ideas_relation_idea",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_idea"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ideas_relation_idea"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ideas_relation_idea",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_mob_not_archived",
     "dataSetName" : "mob_not_archived",
     "dataSetTag" : "mob_not_archived",
@@ -4181,7 +4219,8 @@
     "logicName" : "关注",
     "name" : "ATTENTIONS",
     "stdDataType" : 21,
-    "stringLength" : 1048576
+    "stringLength" : 1048576,
+    "userTag4" : "INTENAL"
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -9532,6 +9571,44 @@
     "requestPath" : "/fetch_deleted",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ideas_relation_idea",
+    "dataSetName" : "ideas_relation_idea",
+    "dataSetTag" : "ideas_relation_idea",
+    "methodType" : "FETCH",
+    "name" : "fetch_ideas_relation_idea",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_idea"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ideas_relation_idea"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ideas_relation_idea",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_mob_not_archived",
     "dataSetName" : "mob_not_archived",
     "dataSetTag" : "mob_not_archived",
@@ -10714,6 +10791,48 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "deleted"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempIdeas_relation_idea",
+    "dataSetTag" : "ideas_relation_idea",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "ideas_relation_idea",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Ideas_relation_ideaInput",
+      "name" : "Ideas_relation_ideaInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Ideas_relation_ideaResult",
+      "name" : "Ideas_relation_ideaResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "1",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 不等于(<>) 1"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_idea"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -19518,6 +19637,10 @@
       "name" : "PRODUCT_ID",
       "codeName" : "product_id"
     },
+    "getParentTextPSAppDEField" : {
+      "name" : "PRODUCT_NAME",
+      "codeName" : "product_name"
+    },
     "rSMode" : 2
   } ],
   "name" : "IDEA",
@@ -19678,5 +19801,13 @@
         "id" : "recover@idea"
       }
     } ]
+  }, {
+    "codeName" : "idea_tree_node_ext_action",
+    "name" : "树节点扩展界面行为组",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "uniqueTag" : "idea__idea_tree_node_ext_action"
   } ]
 }

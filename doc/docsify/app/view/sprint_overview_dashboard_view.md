@@ -5,6 +5,7 @@
 ## 控件
 #### CAPTIONBAR(captionbar)
 #### 数据看板(dashboard)
+#### 搜索栏(searchbar)
 
 
 ### 关联视图

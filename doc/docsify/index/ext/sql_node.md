@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[223]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[224]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -849,7 +849,7 @@ from (select CASE
 
 1. `Default(传入变量).ID(标识)`
 
-重置参数`result(返回结果)`，并将执行sql结果赋值给参数`result(返回结果)`
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[删除类别(delete_categories)](module/Insight/insight_report/logic/delete_categories)
 
 节点：直接SQL调用当类别删除时修改发布的类别属性
@@ -3880,13 +3880,14 @@ limit 1
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ?
+select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = ?
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).PRINCIPAL_TYPE(工时主体类型)`
 2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
+3. `Default(传入变量).CATEGORY(工时类别)`
 
 重置参数`total_register(已登记总工时)`，并将执行sql结果赋值给参数`total_register(已登记总工时)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[填充工时数据(fill_workload_data)](module/Base/workload/logic/fill_workload_data)
@@ -3936,22 +3937,23 @@ IFNULL(sum(case when name='ESTIMATED_WORKLOAD' then DECIMAL_VALUE else 0 end),0)
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ?
+select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ? and CATEGORY = ?
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `actual(实际工时).OWNER_ID(所属数据标识)`
 2. `actual(实际工时).OWNER_TYPE(所属数据对象)`
+3. `actual(实际工时).NAME(名称)`
 
 重置参数`actual(实际工时)`，并将执行sql结果赋值给参数`actual(实际工时)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload)
 
-节点：获取已登记工时
+节点：获取已登记实际工时
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ?
+select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ACTUAL_WORKLOAD'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -3960,6 +3962,20 @@ select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = 
 2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload)
+
+节点：获取已登记预估工时
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select sum(DURATION) as `ESTIMATED_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ESTIMATED_WORKLOAD'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).PRINCIPAL_TYPE(工时主体类型)`
+2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
+
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload)
 
 节点：获取剩余工时

@@ -1759,6 +1759,44 @@
     "requestPath" : "/fetch_idea_relation_ticket",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ideas_relation_ticket",
+    "dataSetName" : "ideas_relation_ticket",
+    "dataSetTag" : "ideas_relation_ticket",
+    "methodType" : "FETCH",
+    "name" : "fetch_ideas_relation_ticket",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_ticket"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ideas_relation_ticket"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ideas_relation_ticket",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_mob_ticket_list",
     "dataSetName" : "mob_ticket_list",
     "dataSetTag" : "mob_ticket_list",
@@ -2444,6 +2482,447 @@
     "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ID][标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "id",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.ID"
+    },
+    "logicName" : "标识",
+    "name" : "ID",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "keyField" : true
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[NAME][名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[NAME][名称]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "name",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "logicName" : "名称",
+    "name" : "NAME",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "create_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+    },
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CREATE_MAN][建立人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_MAN][建立人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "create_man",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_MAN"
+    },
+    "logicName" : "建立人",
+    "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "update_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "update_man",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "logicName" : "更新人",
+    "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PRODUCT_ID][产品标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PRODUCT_ID][产品标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PRODUCT_ID][产品标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[PRODUCT_ID][产品标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "product_id",
+    "logicName" : "产品标识",
+    "name" : "PRODUCT_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PRODUCT_NAME][产品名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[PRODUCT_NAME][产品名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "mpick_up_view",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "refPickupPSDEViewCodeName" : "pick_up_view",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PRODUCT_NAME][产品名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[PRODUCT_NAME][产品名称]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "mpick_up_view",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "refPickupPSDEViewCodeName" : "pick_up_view",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "product_name",
+    "logicName" : "所属产品",
+    "name" : "PRODUCT_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CUSTOMER_ID][客户标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[CUSTOMER_ID][客户标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CUSTOMER_ID][客户标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[CUSTOMER_ID][客户标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "customer_id",
+    "logicName" : "客户标识",
+    "name" : "CUSTOMER_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CUSTOMER_NAME][名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[CUSTOMER_NAME][名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "mpick_up_view",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+        },
+        "refPickupPSDEViewCodeName" : "pick_up_view",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CUSTOMER_NAME][名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[CUSTOMER_NAME][名称]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "mpick_up_view",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+        },
+        "refPickupPSDEViewCodeName" : "pick_up_view",
+        "stringLength" : 500,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "customer_name",
+    "logicName" : "客户",
+    "name" : "CUSTOMER_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 500
+  }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[IDENTIFIER][工单标识]",
@@ -3440,447 +3919,6 @@
     "name" : "RECENT_CREATE_DAYS",
     "stdDataType" : 9,
     "userTag4" : "INTENAL"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[ID][标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ID][标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "id",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.ID"
-    },
-    "logicName" : "标识",
-    "name" : "ID",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "keyField" : true
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_MAN][建立人]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_MAN][建立人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "create_man",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_MAN"
-    },
-    "logicName" : "建立人",
-    "name" : "CREATE_MAN",
-    "predefinedType" : "CREATEMAN",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "create_time",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
-    },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "predefinedType" : "CREATEDATE",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_MAN][更新人]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "update_man",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-    },
-    "logicName" : "更新人",
-    "name" : "UPDATE_MAN",
-    "predefinedType" : "UPDATEMAN",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "update_time",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-    },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "predefinedType" : "UPDATEDATE",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[NAME][名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[NAME][名称]移动端默认",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "name",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.NAME"
-    },
-    "logicName" : "名称",
-    "name" : "NAME",
-    "stdDataType" : 25,
-    "stringLength" : 200
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PRODUCT_ID][产品标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[PRODUCT_ID][产品标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[PRODUCT_ID][产品标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[PRODUCT_ID][产品标识]移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "product_id",
-    "logicName" : "产品标识",
-    "name" : "PRODUCT_ID",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CUSTOMER_ID][客户标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[CUSTOMER_ID][客户标识]移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CUSTOMER_ID][客户标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[CUSTOMER_ID][客户标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "customer_id",
-    "logicName" : "客户标识",
-    "name" : "CUSTOMER_ID",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CUSTOMER_NAME][名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[CUSTOMER_NAME][名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "mpick_up_view",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
-        },
-        "refPickupPSDEViewCodeName" : "pick_up_view",
-        "stringLength" : 500,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[CUSTOMER_NAME][名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBPICKER",
-        "name" : "[CUSTOMER_NAME][名称]移动端默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "mpick_up_view",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
-        },
-        "refPickupPSDEViewCodeName" : "pick_up_view",
-        "stringLength" : 500,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "customer_name",
-    "logicName" : "客户",
-    "name" : "CUSTOMER_NAME",
-    "stdDataType" : 25,
-    "stringLength" : 500
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PRODUCT_NAME][产品名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[PRODUCT_NAME][产品名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "mpick_up_view",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-        },
-        "refPickupPSDEViewCodeName" : "pick_up_view",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[PRODUCT_NAME][产品名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBPICKER",
-        "name" : "[PRODUCT_NAME][产品名称]移动端默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "mpick_up_view",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-        },
-        "refPickupPSDEViewCodeName" : "pick_up_view",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "product_name",
-    "logicName" : "所属产品",
-    "name" : "PRODUCT_NAME",
-    "stdDataType" : 25,
-    "stringLength" : 200
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "fill_bi_form_default",
@@ -4373,6 +4411,124 @@
     "codeName" : "ticket_dto",
     "name" : "ticket_dto",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "id",
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "name",
+      "logicName" : "名称",
+      "name" : "name",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "create_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "create_man",
+      "logicName" : "建立人",
+      "name" : "create_man",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "update_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "update_man",
+      "logicName" : "更新人",
+      "name" : "update_man",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "product_id",
+      "logicName" : "产品标识",
+      "name" : "product_id",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "product_name",
+      "logicName" : "所属产品",
+      "name" : "product_name",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "product_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "customer_id",
+      "logicName" : "客户标识",
+      "name" : "customer_id",
+      "getPSAppDEField" : {
+        "name" : "CUSTOMER_ID",
+        "codeName" : "customer_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "customer_name",
+      "logicName" : "客户",
+      "name" : "customer_name",
+      "getPSAppDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "customer_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "identifier",
       "logicName" : "编号",
       "name" : "identifier",
@@ -4716,124 +4872,6 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
       "type" : "SIMPLE"
-    }, {
-      "codeName" : "create_man",
-      "logicName" : "建立人",
-      "name" : "create_man",
-      "getPSAppDEField" : {
-        "name" : "CREATE_MAN",
-        "codeName" : "create_man"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "create_time",
-      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-      "logicName" : "建立时间",
-      "name" : "create_time",
-      "getPSAppDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "create_time"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 5,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "customer_id",
-      "logicName" : "客户标识",
-      "name" : "customer_id",
-      "getPSAppDEField" : {
-        "name" : "CUSTOMER_ID",
-        "codeName" : "customer_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "customer_name",
-      "logicName" : "客户",
-      "name" : "customer_name",
-      "getPSAppDEField" : {
-        "name" : "CUSTOMER_NAME",
-        "codeName" : "customer_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "id",
-      "logicName" : "标识",
-      "name" : "id",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "name",
-      "logicName" : "名称",
-      "name" : "name",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "product_id",
-      "logicName" : "产品标识",
-      "name" : "product_id",
-      "getPSAppDEField" : {
-        "name" : "PRODUCT_ID",
-        "codeName" : "product_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "product_name",
-      "logicName" : "所属产品",
-      "name" : "product_name",
-      "getPSAppDEField" : {
-        "name" : "PRODUCT_NAME",
-        "codeName" : "product_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "update_man",
-      "logicName" : "更新人",
-      "name" : "update_man",
-      "getPSAppDEField" : {
-        "name" : "UPDATE_MAN",
-        "codeName" : "update_man"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "update_time",
-      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-      "logicName" : "更新时间",
-      "name" : "update_time",
-      "getPSAppDEField" : {
-        "name" : "UPDATE_TIME",
-        "codeName" : "update_time"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 5,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
@@ -6627,6 +6665,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_idea_relation_ticket",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_ideas_relation_ticket",
+    "dataSetName" : "ideas_relation_ticket",
+    "dataSetTag" : "ideas_relation_ticket",
+    "methodType" : "FETCH",
+    "name" : "fetch_ideas_relation_ticket",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_ticket"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ideas_relation_ticket"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ideas_relation_ticket",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_mob_ticket_list",
@@ -8629,12 +8705,12 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "toolbar_link_ticket@ticket"
   }, {
-    "actionTarget" : "NONE",
-    "caption" : "关联工作项",
-    "codeName" : "toolbar_link_work_item",
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "工作项",
+    "codeName" : "toolbar_main_view_toolbar_deuiaction2_click",
     "frontProcessType" : "OTHER",
-    "fullCodeName" : "ticket_toolbar_link_work_item",
-    "name" : "关联工作项（工具栏）",
+    "fullCodeName" : "ticket_toolbar_main_view_toolbar_deuiaction2_click",
+    "name" : "工作项",
     "getPSAppDEUILogic" : {
       "modelref" : true,
       "id" : "toolbar_link_work_item"
@@ -8644,10 +8720,32 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     },
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_link_work_item",
+    "uIActionTag" : "toolbar_main_view_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
-    "id" : "toolbar_link_work_item@ticket"
+    "uILogicType" : "DELOGIC",
+    "id" : "toolbar_main_view_toolbar_deuiaction2_click@ticket"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "工作项",
+    "codeName" : "toolbar_test_main_view_toolbar_deuiaction2_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ticket_toolbar_test_main_view_toolbar_deuiaction2_click",
+    "name" : "工作项",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "toolbar_link_work_item"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "toolbar_test_main_view_toolbar_deuiaction2_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "toolbar_test_main_view_toolbar_deuiaction2_click@ticket"
   }, {
     "actionTarget" : "MULTIKEY",
     "caption" : "归档",
@@ -12449,6 +12547,10 @@
     "getParentPSAppDEField" : {
       "name" : "PRODUCT_ID",
       "codeName" : "product_id"
+    },
+    "getParentTextPSAppDEField" : {
+      "name" : "PRODUCT_NAME",
+      "codeName" : "product_name"
     },
     "rSMode" : 2
   } ],

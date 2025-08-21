@@ -15,11 +15,12 @@
 
 
 ### 关联界面行为
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [规划评审用例](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [表格界面_保存行](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [评审内容版本比对](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [规划评审需求](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [评审内容版本比对](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [规划评审用例](module/TestMgmt/review_content#界面行为)
 
 ### 关联视图
   * [选择需求(idea_review_re_idea_view)](app/view/idea_review_re_idea_view)

@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [项目(PROJECT)](module/ProjMgmt/project) : [已归档_激活](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [已归档_删除](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [已归档_激活](module/ProjMgmt/project#界面行为)
 
 ### 关联视图
   * [项目(project_edit_view)](app/view/project_edit_view)

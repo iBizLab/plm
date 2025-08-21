@@ -20,4 +20,4 @@ from (select CASE
 
 1. `Default(传入变量).ID(标识)`
 
-重置参数`result(返回结果)`，并将执行sql结果赋值给参数`result(返回结果)`
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`

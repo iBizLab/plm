@@ -913,6 +913,14 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "check_palntime",
+        "name" : "校验计划时间",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "plan_at"
+        } ],
+        "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
+        "customCode" : true
+      }, {
         "codeName" : "mob_remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
@@ -928,14 +936,6 @@
           "name" : "real_at"
         } ],
         "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
-        "customCode" : true
-      }, {
-        "codeName" : "check_palntime",
-        "name" : "校验计划时间",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "plan_at"
-        } ],
-        "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
         "customCode" : true
       }, {
         "codeName" : "mob_estimated_update",
@@ -2422,6 +2422,10 @@
                         "name" : "PROJECT_ID",
                         "codeName" : "project_id"
                       },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "PROJECT_NAME",
+                        "codeName" : "project_name"
+                      },
                       "rSMode" : 2
                     }, {
                       "actionRSMode" : 1,
@@ -2465,6 +2469,10 @@
                       "getParentPSAppDEField" : {
                         "name" : "PRODUCT_ID",
                         "codeName" : "product_id"
+                      },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "PRODUCT_NAME",
+                        "codeName" : "product_name"
                       },
                       "rSMode" : 2
                     }, {
@@ -2510,6 +2518,10 @@
                         "name" : "TEST_LIBRARY_ID",
                         "codeName" : "test_library_id"
                       },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "TEST_LIBRARY_NAME",
+                        "codeName" : "test_library_name"
+                      },
                       "rSMode" : 2
                     }, {
                       "actionRSMode" : 1,
@@ -2553,6 +2565,10 @@
                       "getParentPSAppDEField" : {
                         "name" : "SPACE_ID",
                         "codeName" : "space_id"
+                      },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "SPACE_NAME",
+                        "codeName" : "space_name"
                       },
                       "rSMode" : 2
                     }, {
@@ -2598,6 +2614,10 @@
                         "name" : "PRODUCT_ID",
                         "codeName" : "product_id"
                       },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "PRODUCT_NAME",
+                        "codeName" : "product_name"
+                      },
                       "rSMode" : 2
                     }, {
                       "actionRSMode" : 1,
@@ -2641,6 +2661,10 @@
                       "getParentPSAppDEField" : {
                         "name" : "TOPIC_ID",
                         "codeName" : "topic_id"
+                      },
+                      "getParentTextPSAppDEField" : {
+                        "name" : "TOPIC_NAME",
+                        "codeName" : "topic_name"
                       },
                       "rSMode" : 2
                     }, {
@@ -3053,7 +3077,7 @@
                   "dataType" : 6,
                   "detailStyle" : "DEFAULT",
                   "detailType" : "FORMITEM",
-                  "enableCond" : 3,
+                  "enableCond" : 0,
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
                   "labelWidth" : 130,
@@ -3078,11 +3102,168 @@
                     "precision" : 1
                   },
                   "getPSLayoutPos" : {
-                    "colMD" : 24,
+                    "colLG" : 18,
+                    "colMD" : 18,
                     "layout" : "TABLE_24COL"
                   },
                   "allowEmpty" : true,
                   "showCaption" : true
+                }, {
+                  "codeName" : "grouppanel6",
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "GROUPPANEL",
+                  "name" : "grouppanel6",
+                  "getPSDEFormDetails" : [ {
+                    "actionType" : "UIACTION",
+                    "buttonStyle" : "STYLE2",
+                    "caption" : "添加预估工时",
+                    "codeName" : "button4",
+                    "detailStyle" : "STYLE2",
+                    "detailType" : "BUTTON",
+                    "name" : "button4",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button4"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "添加预估工时",
+                      "codeName" : "mob_add_forecast_workload",
+                      "dataAccessAction" : "UPDATE",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "idea_mob_add_forecast_workload",
+                      "name" : "添加预估工时（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                      },
+                      "getPSDEOPPriv" : {
+                        "modelref" : true,
+                        "id" : "product__UPDATE"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "estimated_workload",
+                        "name" : "estimated_workload",
+                        "value" : "estimated_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "remaining_workload",
+                        "name" : "remaining_workload",
+                        "value" : "remaining_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "name",
+                        "name" : "name",
+                        "value" : "title",
+                        "rawValue" : false
+                      }, {
+                        "key" : "principal_id",
+                        "name" : "principal_id",
+                        "value" : "principal_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "actual_workload",
+                        "name" : "actual_workload",
+                        "value" : "actual_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "workload_kind",
+                        "name" : "workload_kind",
+                        "value" : "产品需求",
+                        "rawValue" : true
+                      } ],
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "refreshMode" : 1,
+                      "tooltip" : "添加预估工时",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_add_forecast_workload",
+                      "uIActionType" : "DEUIACTION",
+                      "reloadData" : true,
+                      "id" : "mob_add_forecast_workload@idea"
+                    },
+                    "tooltip" : "添加预估工时",
+                    "uIActionTarget" : "SINGLEKEY",
+                    "showCaption" : false
+                  }, {
+                    "actionType" : "UIACTION",
+                    "caption" : "查看预估工时明细",
+                    "codeName" : "button3",
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "BUTTON",
+                    "name" : "button3",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button3"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf18e@FontAwesome",
+                      "cssClass" : "fa fa-arrow-circle-o-right"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "NONE",
+                      "caption" : "查看预估工时明细",
+                      "codeName" : "mob_check_forecast_workload_detail",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_detail_view.json",
+                        "viewType" : "DEMOBMDVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "idea_mob_check_forecast_workload_detail",
+                      "name" : "查看预估工时明细（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "n_principal_id_eq",
+                        "name" : "n_principal_id_eq",
+                        "value" : "idea",
+                        "rawValue" : false
+                      } ],
+                      "tooltip" : "查看预估工时明细",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_check_forecast_workload_detail",
+                      "uIActionType" : "DEUIACTION",
+                      "id" : "mob_check_forecast_workload_detail@idea"
+                    },
+                    "tooltip" : "查看预估工时明细",
+                    "uIActionTarget" : "NONE",
+                    "showCaption" : false
+                  } ],
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 6,
+                    "colMD" : 6,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "infoGroupMode" : false,
+                  "showCaption" : false
                 }, {
                   "getCapPSLanguageRes" : {
                     "lanResTag" : "DEF.LNAME.ACTUAL_WORKLOAD"
@@ -4741,6 +4922,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -4762,6 +4947,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -4803,6 +4992,10 @@
                       "name" : "LIBRARY_ID",
                       "codeName" : "library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "LIBRARY_NAME",
+                      "codeName" : "library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -4824,6 +5017,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -4865,6 +5062,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -4886,6 +5087,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -4927,6 +5132,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -4966,6 +5175,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -5007,6 +5220,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -5046,6 +5263,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -5087,6 +5308,10 @@
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -5127,6 +5352,10 @@
                       "name" : "SPACE_ID",
                       "codeName" : "space_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "SPACE_NAME",
+                      "codeName" : "space_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -5166,6 +5395,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6535,6 +6768,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6556,6 +6793,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6597,6 +6838,10 @@
                       "name" : "LIBRARY_ID",
                       "codeName" : "library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "LIBRARY_NAME",
+                      "codeName" : "library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6618,6 +6863,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6659,6 +6908,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6680,6 +6933,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6721,6 +6978,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6760,6 +7021,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6801,6 +7066,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6840,6 +7109,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -6881,6 +7154,10 @@
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6921,6 +7198,10 @@
                       "name" : "SPACE_ID",
                       "codeName" : "space_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "SPACE_NAME",
+                      "codeName" : "space_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -6960,6 +7241,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8352,6 +8637,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8373,6 +8662,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8414,6 +8707,10 @@
                       "name" : "LIBRARY_ID",
                       "codeName" : "library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "LIBRARY_NAME",
+                      "codeName" : "library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8435,6 +8732,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8476,6 +8777,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8497,6 +8802,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8538,6 +8847,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8577,6 +8890,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8618,6 +8935,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8657,6 +8978,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -8698,6 +9023,10 @@
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8738,6 +9067,10 @@
                       "name" : "SPACE_ID",
                       "codeName" : "space_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "SPACE_NAME",
+                      "codeName" : "space_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -8777,6 +9110,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10300,6 +10637,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10321,6 +10662,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10362,6 +10707,10 @@
                       "name" : "LIBRARY_ID",
                       "codeName" : "library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "LIBRARY_NAME",
+                      "codeName" : "library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10383,6 +10732,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10424,6 +10777,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10445,6 +10802,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10486,6 +10847,10 @@
                       "name" : "PROJECT_ID",
                       "codeName" : "project_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PROJECT_NAME",
+                      "codeName" : "project_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10525,6 +10890,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10566,6 +10935,10 @@
                       "name" : "TEST_LIBRARY_ID",
                       "codeName" : "test_library_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "TEST_LIBRARY_NAME",
+                      "codeName" : "test_library_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10605,6 +10978,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PLAN_ID",
                       "codeName" : "plan_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PLAN_NAME",
+                      "codeName" : "plan_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -10646,6 +11023,10 @@
                       "name" : "CASE_ID",
                       "codeName" : "case_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "CASE_NAME",
+                      "codeName" : "case_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10686,6 +11067,10 @@
                       "name" : "SPACE_ID",
                       "codeName" : "space_id"
                     },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "SPACE_NAME",
+                      "codeName" : "space_name"
+                    },
                     "rSMode" : 2
                   }, {
                     "actionRSMode" : 1,
@@ -10725,6 +11110,10 @@
                     "getParentPSAppDEField" : {
                       "name" : "PRODUCT_ID",
                       "codeName" : "product_id"
+                    },
+                    "getParentTextPSAppDEField" : {
+                      "name" : "PRODUCT_NAME",
+                      "codeName" : "product_name"
                     },
                     "rSMode" : 2
                   }, {
@@ -11234,6 +11623,10 @@
     "getParentPSAppDEField" : {
       "name" : "PRODUCT_ID",
       "codeName" : "product_id"
+    },
+    "getParentTextPSAppDEField" : {
+      "name" : "PRODUCT_NAME",
+      "codeName" : "product_name"
     },
     "rSMode" : 2
   } ] ]

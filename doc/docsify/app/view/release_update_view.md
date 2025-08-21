@@ -16,13 +16,17 @@
 
 ```javascript
 (time) => {
-    if (!data.end_at) {
+    const formC = view.getController('form');
+    if (!formC) {
         return false;
     }
-    const end_at = new Date(data.end_at);
+    if(!formC.state.data.end_at){
+        return false;
+    }
+    const end_at = new Date(formC.state.data.end_at);
     // 比对天
-    time.setHours(0, 0, 0, 0);
     end_at.setHours(0, 0, 0, 0);
+    time.setHours(0, 0, 0, 0);
     return time.getTime() > end_at.getTime();
 }
 ```
@@ -31,10 +35,14 @@
 
 ```javascript
 (time) => {
-    if (!data.start_at) {
+    const formC = view.getController('form');
+    if (!formC) {
         return false;
     }
-    const start_at = new Date(data.start_at);
+    if(!formC.state.data.start_at){
+        return false;
+    }
+    const start_at = new Date(formC.state.data.start_at);
     // 比对天
     start_at.setHours(0, 0, 0, 0);
     time.setHours(0, 0, 0, 0);

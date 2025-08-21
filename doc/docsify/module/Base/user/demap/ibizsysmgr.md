@@ -40,6 +40,8 @@
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
 * `属性等价`
+`OPEN_USER_TAG(第三方用户标识)` <i class="fa fa-angle-double-right"/></i> `IDENTIFICATION_NUMBER(证件号)`
+* `属性等价`
 `EMAIL(邮箱)` <i class="fa fa-angle-double-right"/></i> `MAIL(电子邮箱)`
 * `属性等价`
 `EMPLOYEE_NUMBER(工号)` <i class="fa fa-angle-double-right"/></i> `EMPLOYEE_NUMBER(人员编号)`

@@ -319,6 +319,8 @@
 |[工时日历](app/view/workload_mob_calendar_view)|workload_mob_calendar_view|工时|实体移动端多数据视图||
 |[工时日历详情](app/view/workload_mob_calender_detail_view)|workload_mob_calender_detail_view|工时|实体移动端多数据视图||
 |[工时记录](app/view/workload_mob_detail_view)|workload_mob_detail_view|工时记录|实体移动端多数据视图||
+|[工时记录](app/view/workload_mob_forecast_detail_view)|workload_mob_forecast_detail_view|工时记录|实体移动端多数据视图||
+|[登记工时（移动端）](app/view/workload_mob_forecast_edit_view)|workload_mob_forecast_edit_view|登记预估工时|实体移动端编辑视图||
 |[工时列表](app/view/workload_mob_list_view)|workload_mob_list_view|工时|实体移动端多数据视图||
 |[工时移动端数据重定向](app/view/workload_mob_redirect_view)|workload_mob_redirect_view|工时|实体移动端数据重定向视图||
 |[移动端工时分页导航](app/view/workload_mob_workload_exp_view)|workload_mob_workload_exp_view|工时|实体移动端分页导航视图||

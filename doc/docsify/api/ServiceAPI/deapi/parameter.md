@@ -16,6 +16,10 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -24,6 +28,10 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -38,6 +46,10 @@
 ```json
 
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -72,6 +84,10 @@
 ```json
 
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -125,6 +141,10 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -133,6 +153,10 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -147,6 +171,10 @@
 ```json
 
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -174,6 +202,10 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -182,6 +214,10 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -214,6 +250,10 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -222,6 +262,10 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -236,6 +280,10 @@ Integer
 ```json
 
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -263,6 +311,10 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -271,6 +323,10 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -285,6 +341,10 @@ Integer
 ```json
 
 {
+  "owner_id" : null,
+  "owner_type" : null,
+  "val" : null,
+  "owner_subtype" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -314,6 +374,9 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 
 
 
@@ -325,6 +388,9 @@ Integer
   "sort" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_owner_id_eq" : null,
+  "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
 }
 ```
 
@@ -333,6 +399,10 @@ Integer
 ```json
 [
   {
+    "owner_id" : null,
+    "owner_type" : null,
+    "val" : null,
+    "owner_subtype" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

@@ -1,5 +1,6 @@
 ```sql
 SELECT
+t1.`CATEGORY`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,

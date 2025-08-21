@@ -5427,7 +5427,16 @@
         },
         "name" : "直接值[该迭代下工作项已全部完成] ==> Default[remind]",
         "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "该迭代下工作项已全部完成",
+        "srcValue" : "该迭代下工作项已全部完成，完成后迭代将无法重新开启。",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "choose_move",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 490
@@ -5460,7 +5469,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 637
+      "topPos" : 637,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -7883,6 +7893,7 @@
   } ],
   "memo" : "产品开发过程中的一次迭代或冲刺，用于规划和跟踪一段时间内的开发任务。",
   "getMinorPSDERs" : [ {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDERS/DER1N_SPRINT_PROJECT_PROJECT_ID.json",
@@ -7914,6 +7925,7 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
     "codeName" : "sprint",

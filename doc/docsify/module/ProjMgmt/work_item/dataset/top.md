@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>选择列级别</b></p>
 
-* `默认（全部查询列）`
+* `指定属性组`
 
 
 <p class="panel-title"><b>主排序属性</b></p>

@@ -72,6 +72,15 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/auto_create_guideline.json"
+      },
+      "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
@@ -559,6 +568,31 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "COPY",
+    "actionType" : "BUILTIN",
+    "codeName" : "Copy",
+    "dataAccessAction" : "COPY",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json",
+    "logicName" : "复制",
+    "name" : "Copy",
+    "getPSDEActionInput" : {
+      "name" : "CopyInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "CopyResult",
+      "type" : "VOID"
+    },
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/ProjectCopyDEActionRuntime.json"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -733,6 +767,36 @@
     "getPSDELogic" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/fill_bi_form_default.json"
+    },
+    "enableBackend" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "codeName" : "fill_copy_info",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/fill_copy_info.json",
+    "logicName" : "填充复制项目信息",
+    "name" : "fill_copy_info",
+    "getPSDEActionInput" : {
+      "name" : "Fill_copy_infoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Fill_copy_infoResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/fill_copy_info.json"
     },
     "enableBackend" : false
   }, {
@@ -1271,6 +1335,9 @@
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRGROUPS/UsrDRGroup1225507417.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRGROUPS/UsrDRGroup0804792174.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRGROUPS/UsrDRGroup1225047544.json"
   }, {
     "modelref" : true,
@@ -1381,6 +1448,15 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0710608503.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0804140791.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0804701153.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0807737362.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0919534308.json"
@@ -7523,6 +7599,545 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "auto_create_guideline",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/auto_create_guideline.json",
+    "logicName" : "创建项目流程准则",
+    "memo" : "创建产品后，自动生成产品内的评审规则",
+    "name" : "创建项目流程准则",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 314,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OBJECT_TYPE_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "直接值[PROJECT] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "PROJECT",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_SCOPE_ID_ISNULL",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "guideline_filter"
+        },
+        "name" : "直接值[1] ==> guideline_filter[N_SCOPE_ID_ISNULL]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "leftPos" : 518,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询项目全局流程规则",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_pages"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj_guideline"
+      },
+      "leftPos" : 721,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_pages"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 914,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "绑定阶段用于后续循环，设置新建流程准则参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "review_stage_list"
+        },
+        "name" : "for_obj_guideline[REVIEW_STAGE] ==> review_stage_list",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "REVIEW_STAGE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_guideline"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "IS_ENABLED",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "for_obj_guideline[IS_ENABLED] ==> new_guideline[IS_ENABLED]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "IS_ENABLED",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_guideline"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "for_obj_guideline[NAME] ==> new_guideline[NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_guideline"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "SUBJECT_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "for_obj_guideline[SUBJECT_TYPE] ==> new_guideline[SUBJECT_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "SUBJECT_TYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_guideline"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "OBJECT_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "for_obj_guideline[OBJECT_TYPE] ==> new_guideline[OBJECT_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "OBJECT_TYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_guideline"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "SCOPE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "Default[ID] ==> new_guideline[SCOPE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "LOOPSUBCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj_review_stage"
+      },
+      "leftPos" : 1116,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_stage_list"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 1326,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "将阶段数据设置进guideline",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "REVIEW_STAGE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "new_guideline"
+        },
+        "name" : "stage_arr ==> new_guideline[REVIEW_STAGE]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stage_arr"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "var new_guideline = logic.getParam(\"new_guideline\");\r\nvar for_obj_guideline = logic.getParam(\"for_obj_guideline\");\r\nnew_guideline.set(\"id\",new_guideline.get(\"scope_id\")+\"_\"+for_obj_guideline.get(\"id\"));",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 1535,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接guideline_ID",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 761,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 332
+    }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : 1116,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "置空阶段的所属ID与ID",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "GUIDELINE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_review_stage"
+        },
+        "name" : "无值（NONE） ==> for_obj_review_stage[GUIDELINE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NONEVALUE"
+      }, {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_review_stage"
+        },
+        "name" : "无值（NONE） ==> for_obj_review_stage[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NONEVALUE"
+      } ],
+      "topPos" : 340
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_guideline"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "leftPos" : 1535,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建属于项目的流程准则",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 340
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 1116,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置阶段至流程准则",
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stage_arr"
+        },
+        "name" : "for_obj_review_stage ==> stage_arr",
+        "paramAction" : "APPENDPARAM",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj_review_stage"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 473
+    }, {
+      "codeName" : "RENEWPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_guideline"
+      },
+      "leftPos" : 1535,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重新建立参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        }
+      } ],
+      "topPos" : 473
+    }, {
+      "codeName" : "RENEWPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_arr"
+      },
+      "leftPos" : 1535,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重新建立参数",
+      "topPos" : 595
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_obj_guideline",
+      "logicName" : "循环评审准则临时变量",
+      "name" : "循环评审准则临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "for_obj_review_stage",
+      "logicName" : "循环阶段临时变量",
+      "name" : "循环阶段临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "guideline",
+      "logicName" : "评审规则",
+      "name" : "评审规则",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "guideline_filter",
+      "logicName" : "流程准则过滤器",
+      "name" : "流程准则过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "guideline_pages",
+      "logicName" : "评审准则分页结果",
+      "name" : "评审准则分页结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "new_guideline",
+      "logicName" : "新评审规则",
+      "name" : "新评审规则",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "new_review_stage",
+      "logicName" : "新评审阶段",
+      "name" : "新评审阶段",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "review_stage_list",
+      "logicName" : "评审阶段列表",
+      "name" : "评审阶段列表",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityListParam" : true
+    }, {
+      "codeName" : "stage_arr",
+      "logicName" : "阶段集合",
+      "name" : "阶段集合",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityListParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "auto_create_members",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/auto_create_members.json",
@@ -9043,6 +9658,177 @@
     "name" : "填充BI报表默认值",
     "scriptCode" : "if(!data){\n    data = {};\n}\nObject.keys(viewParam).forEach((key) =>{\n    data[key] = viewParam[key];\n})\nreturn data;",
     "customCode" : true,
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
+    "codeName" : "fill_copy_info",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/fill_copy_info.json",
+    "logicName" : "填充复制项目信息",
+    "memo" : "复制项目时，填充当前项目的基本信息",
+    "name" : "填充复制项目信息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[cur_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "cur_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取目标项目数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 580
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : -170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "name" : "Default[new_project] ==> project[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "new_project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 662
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/CreateTemp.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建临时数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 732
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 890
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "project",
+      "logicName" : "项目",
+      "name" : "项目",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
     "enableBackend" : false,
     "enableFront" : true
   }, {
@@ -14272,6 +15058,9 @@
     "logicName" : "开始",
     "name" : "BEGIN"
   }, {
+    "logicName" : "复制",
+    "name" : "COPY"
+  }, {
     "logicName" : "建立",
     "name" : "CREATE"
   }, {
@@ -14345,81 +15134,11 @@
       "id" : "admin"
     },
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "END",
-      "name" : "END",
+      "dataAccessAction" : "MANAGE_PSDELOGIC",
+      "name" : "MANAGE_PSDELOGIC",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "END"
-      }
-    }, {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDELOGIC",
-      "name" : "READ_PSDELOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDELOGIC"
-      }
-    }, {
-      "dataAccessAction" : "MANAGE_PSDEFORM",
-      "name" : "MANAGE_PSDEFORM",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "MANAGE_PSDEFORM"
-      }
-    }, {
-      "dataAccessAction" : "MANAGE_PSDEMSLOGIC",
-      "name" : "MANAGE_PSDEMSLOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "MANAGE_PSDEMSLOGIC"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDENOTIFY",
-      "name" : "READ_PSDENOTIFY",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDENOTIFY"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDEFIELD",
-      "name" : "READ_PSDEFIELD",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEFIELD"
-      }
-    }, {
-      "dataAccessAction" : "MANAGE_PSDEFIELD",
-      "name" : "MANAGE_PSDEFIELD",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "MANAGE_PSDEFIELD"
-      }
-    }, {
-      "dataAccessAction" : "BEGIN",
-      "name" : "BEGIN",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "BEGIN"
-      }
-    }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDEFORM",
-      "name" : "READ_PSDEFORM",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEFORM"
+        "id" : "MANAGE_PSDELOGIC"
       }
     }, {
       "dataAccessAction" : "SUBDATA",
@@ -14429,6 +15148,48 @@
         "id" : "SUBDATA"
       }
     }, {
+      "dataAccessAction" : "MANAGE_PSDEFIELD",
+      "name" : "MANAGE_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "COPY",
+      "name" : "COPY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "COPY"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDELOGIC",
+      "name" : "READ_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDELOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFIELD",
+      "name" : "READ_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
       "dataAccessAction" : "MANAGE_PSDENOTIFY",
       "name" : "MANAGE_PSDENOTIFY",
       "getPSDEOPPriv" : {
@@ -14436,11 +15197,32 @@
         "id" : "MANAGE_PSDENOTIFY"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEMSLOGIC",
-      "name" : "READ_PSDEMSLOGIC",
+      "dataAccessAction" : "MANAGE_PSDEMSLOGIC",
+      "name" : "MANAGE_PSDEMSLOGIC",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ_PSDEMSLOGIC"
+        "id" : "MANAGE_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "END",
+      "name" : "END",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "END"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDENOTIFY",
+      "name" : "READ_PSDENOTIFY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDENOTIFY"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDEFORM",
+      "name" : "MANAGE_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEFORM"
       }
     }, {
       "dataAccessAction" : "DELETE",
@@ -14450,11 +15232,25 @@
         "id" : "DELETE"
       }
     }, {
-      "dataAccessAction" : "MANAGE_PSDELOGIC",
-      "name" : "MANAGE_PSDELOGIC",
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "MANAGE_PSDELOGIC"
+        "id" : "READ_PSDEFORM"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEMSLOGIC",
+      "name" : "READ_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "BEGIN",
+      "name" : "BEGIN",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "BEGIN"
       }
     } ],
     "roleTag" : "ADMIN_RW",
@@ -14466,13 +15262,6 @@
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/ALL_RW.json",
     "name" : "全部数据（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    }, {
       "dataAccessAction" : "SUBDATA",
       "name" : "SUBDATA",
       "getPSDEOPPriv" : {
@@ -14480,11 +15269,18 @@
         "id" : "SUBDATA"
       }
     }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ"
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "BEGIN",
+      "name" : "BEGIN",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "BEGIN"
       }
     }, {
       "dataAccessAction" : "END",
@@ -14494,13 +15290,6 @@
         "id" : "END"
       }
     }, {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
-      }
-    }, {
       "dataAccessAction" : "UPDATE",
       "name" : "UPDATE",
       "getPSDEOPPriv" : {
@@ -14508,11 +15297,25 @@
         "id" : "UPDATE"
       }
     }, {
-      "dataAccessAction" : "BEGIN",
-      "name" : "BEGIN",
+      "dataAccessAction" : "COPY",
+      "name" : "COPY",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "BEGIN"
+        "id" : "COPY"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
       }
     } ],
     "roleTag" : "ALL_RW",
@@ -14524,6 +15327,13 @@
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/ALL_W.json",
     "name" : "项目数据（写）",
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "COPY",
+      "name" : "COPY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "COPY"
+      }
+    }, {
       "dataAccessAction" : "CREATE",
       "name" : "CREATE",
       "getPSDEOPPriv" : {
@@ -14563,20 +15373,6 @@
       "id" : "user"
     },
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ_PSDELOGIC",
-      "name" : "READ_PSDELOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDELOGIC"
-      }
-    }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
       "dataAccessAction" : "READ_PSDENOTIFY",
       "name" : "READ_PSDENOTIFY",
       "getPSDEOPPriv" : {
@@ -14584,18 +15380,11 @@
         "id" : "READ_PSDENOTIFY"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEFORM",
-      "name" : "READ_PSDEFORM",
+      "dataAccessAction" : "READ_PSDELOGIC",
+      "name" : "READ_PSDELOGIC",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ_PSDEFORM"
-      }
-    }, {
-      "dataAccessAction" : "SUBDATA",
-      "name" : "SUBDATA",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "SUBDATA"
+        "id" : "READ_PSDELOGIC"
       }
     }, {
       "dataAccessAction" : "BEGIN",
@@ -14605,11 +15394,25 @@
         "id" : "BEGIN"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEMSLOGIC",
-      "name" : "READ_PSDEMSLOGIC",
+      "dataAccessAction" : "READ",
+      "name" : "READ",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ_PSDEMSLOGIC"
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "COPY",
+      "name" : "COPY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "COPY"
+      }
+    }, {
+      "dataAccessAction" : "SUBDATA",
+      "name" : "SUBDATA",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "SUBDATA"
       }
     }, {
       "dataAccessAction" : "READ_PSDEFIELD",
@@ -14617,6 +15420,20 @@
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEMSLOGIC",
+      "name" : "READ_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFORM"
       }
     }, {
       "dataAccessAction" : "END",
@@ -14913,6 +15730,12 @@
     "logicName" : "工作项移动时选择视图",
     "name" : "工作项移动时选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "copy_wizard_view",
+    "logicName" : "项目复制向导视图",
+    "name" : "项目复制向导视图",
+    "realModelSubType" : "DEWIZARDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_hybrid_tree_exp_view",
@@ -15222,6 +16045,14 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "wizard_member_copy",
+    "logicName" : "成员复制绑定",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "成员复制绑定",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "mob_setting_form",
     "logicName" : "移动端项目设置_表单",
     "modelTag2" : "1",
@@ -15233,6 +16064,14 @@
     "logicName" : "移动端高级设置_表单",
     "modelTag2" : "1",
     "name" : "移动端高级设置_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "wizard_copy",
+    "logicName" : "复制表单",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "复制表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -15312,6 +16151,7 @@
     "codeName" : "name"
   },
   "getMajorPSDERs" : [ {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDERS/DER1N_BOARD_PROJECT_PROJECT_ID.json",
@@ -15339,6 +16179,7 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
     "codeName" : "project",
@@ -15501,6 +16342,7 @@
     "serviceCodeName" : "project",
     "enableFKey" : true
   }, {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDERS/DER1N_SPRINT_PROJECT_PROJECT_ID.json",
@@ -15532,6 +16374,7 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
     "codeName" : "project",
@@ -15596,6 +16439,7 @@
     "serviceCodeName" : "project",
     "enableFKey" : true
   }, {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json",
@@ -15614,6 +16458,10 @@
     },
     "minorServiceCodeName" : "work_items",
     "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "copy"
+    },
     "orderValue" : 100,
     "getPSPickupDEField" : {
       "name" : "PROJECT_ID",
@@ -15627,8 +16475,10 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
+    "cloneOrder" : 10,
     "codeName" : "project",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDERS/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID.json",
@@ -15656,6 +16506,7 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "project",
+    "cloneRS" : true,
     "enableFKey" : true
   }, {
     "codeName" : "project",
@@ -15742,6 +16593,7 @@
     "serviceCodeName" : "project",
     "typeValue" : "project"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "PROJECT",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -15758,6 +16610,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
     },
     "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline"
+    },
     "orderValue" : 100,
     "parentSubType" : "PROJECT",
     "pickupDEFName" : "OWNER_ID",
@@ -15769,6 +16625,32 @@
     "removeOrder" : -1,
     "serviceCodeName" : "project",
     "typeValue" : "PROJECT"
+  }, {
+    "codeName" : "PROJECT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDERS/DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID.json",
+    "logicName" : "项目-评审准则",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "name" : "DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID",
+    "orderValue" : 100,
+    "pickupDEFName" : "SCOPE_ID",
+    "getPickupPSDEField" : {
+      "name" : "SCOPE_ID",
+      "codeName" : "scope_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "project"
   }, {
     "codeName" : "project_resource",
     "dERSubType" : "DER1N",
@@ -15798,6 +16680,7 @@
     "serviceCodeName" : "project_resource",
     "typeValue" : "PROJECT_RESOURCE"
   }, {
+    "cloneOrder" : 10,
     "codeName" : "principal_project",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -15813,6 +16696,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
     "name" : "DERCUSTOM_RELATION_PROJECT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "project_re_product"
+    },
     "orderValue" : 100,
     "parentSubType" : "project",
     "pickupDEFName" : "PRINCIPAL_ID",
@@ -15851,6 +16738,34 @@
     "removeOrder" : -1,
     "serviceCodeName" : "target_project",
     "typeValue" : "project"
+  }, {
+    "codeName" : "PROJECT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID.json",
+    "logicName" : "项目-评审",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+    "orderValue" : 100,
+    "parentSubType" : "PROJECT",
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "project",
+    "typeValue" : "PROJECT"
   }, {
     "codeName" : "PROJECT",
     "dERSubType" : "DER1N",

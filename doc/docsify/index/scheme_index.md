@@ -29,9 +29,25 @@
 |LOGID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |MACADDR|MAC地址|VARCHAR|是|100|||
 |PERSONNAME|用户名称|VARCHAR|是|100|||
-|USERAGENT|客户端|VARCHAR|是|100|||
+|USERAGENT|客户端|VARCHAR|是|500|||
 |USERID|用户全局标识|VARCHAR|是|100|||
 |USERNAME|用户全局名|VARCHAR|是|100|||
+#### 第三方用户(IBZOPENUSER)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATEDATE|建立时间|DATETIME|是||||
+|CREATEMAN|创建人|VARCHAR|是|100|||
+|DEPTS|部门|VARCHAR|是|100|||
+|ISBINDING|是否绑定|INT|是||||
+|MOBILE|手机|VARCHAR|是|100|||
+|OPENUSERCODE|第三方用户代码|VARCHAR|是|100|||
+|OPENUSERID<i class="fa fa-key"></i>|第三方用户标识|VARCHAR|否|60|||
+|OPENUSERNAME|第三方用户名称|VARCHAR|是|100|||
+|OPEN_TYPE|第三方用户类型|VARCHAR|是|100|||
+|ORGID|组织标识|VARCHAR|是|100|||
+|UPDATEDATE|更新时间|DATETIME|是||||
+|UPDATEMAN|最后更新人|VARCHAR|是|100|||
+|USERID|用户标识|VARCHAR|是|100|||
 ### 默认数据库架构
 #### 活动(ACTIVITY)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -227,6 +243,7 @@
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_TOP|是否置顶|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
 |PID|父标识|VARCHAR|是|100|||
@@ -701,8 +718,12 @@
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
+|OWNER_ID|所属数据标识|VARCHAR|是|100|||
+|OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
+|OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|VAL|值|VARCHAR|是|100|||
 #### 周期(PERIOD)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -984,6 +1005,7 @@
 |IDENTIFIER|编号|VARCHAR|是|100|||
 |LIBRARY_ID|测试库标识|VARCHAR|是|100|||
 |NAME|名称|VARCHAR|是|200|||
+|NEXT_REVIEWER|下一个评审人|VARCHAR|是|100|||
 |PRINCIPAL_ID|评审主体标识|VARCHAR|是|100|||
 |PRINCIPAL_NAME|评审主体名称|VARCHAR|是|100|||
 |PRINCIPAL_TYPE|评审主体类型|VARCHAR|是|100|||
@@ -1020,6 +1042,7 @@
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
 |RESULT_STATE|状态|INT|是||||
+|REVIEWER|评审人|VARCHAR|是|100|||
 |SEQUENCES|顺序|INT|是||||
 |STAGE_ID|阶段标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
@@ -1218,6 +1241,7 @@
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### test(TEST)
 #### 用例(TEST_CASE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -1435,6 +1459,7 @@
 #### 工时(WORKLOAD)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CATEGORY|工时类别|VARCHAR|是|100|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |DESCRIPTION|描述|TEXT|是|1048576|||

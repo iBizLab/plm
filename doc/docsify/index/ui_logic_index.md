@@ -160,6 +160,7 @@
 
 
 
+
 ## [数据字典(DICTIONARY)](module/Base/dictionary_data.md) :id=dictionary_data
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -267,6 +268,7 @@
 |[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|check_ticket_info|按钮触发，通过脚本切换显示组件|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
+|[查看预估工时明细](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -368,6 +370,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[保存列表多数据部件](module/extension/notify_event/uilogic/save_list_mdctrl)|save_list_mdctrl|保存列表多数据部件|
+
 
 
 
@@ -776,6 +779,7 @@
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[查看已规划基线](module/TestMgmt/test_case/uilogic/check_baseline_version)|check_baseline_version|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
+|[查看预估工时明细](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
 |[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|fill_att_com_count||
@@ -895,6 +899,7 @@
 |[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
 |[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
 |[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
+|[重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)|reset_workload_category||
 |[门户全屏](module/Base/workload/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/Base/workload/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/Base/workload/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
@@ -946,6 +951,7 @@
 |[显示下拉并展开选项（嵌入视图）](module/ProjMgmt/work_item/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
 |[显示表单侧边栏](module/ProjMgmt/work_item/uilogic/show_form_sidebar)|show_form_sidebar|每次工作项主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看预估工时明细](module/ProjMgmt/work_item/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|

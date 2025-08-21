@@ -292,9 +292,9 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 产品新建（移动端） | mob_product_create | 产品新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品新建](app/view/product_mob_create_view)</details>||
 | 添加产品成员 | add_product_member | 添加成员 |无数据|系统预定义||
 | 打开产品配置 | open_global_setting | 产品配置 |无数据|用户自定义||
+| 产品新建（移动端） | mob_product_create | 产品新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品新建](app/view/product_mob_create_view)</details>||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 产品设置（移动端） | mob_product_setting | 产品设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品设置](app/view/product_mob_setting_view)</details>||
@@ -322,8 +322,8 @@
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 打开新建产品 | open_new_product | 打开新建产品 |单项数据|<details><summary>打开顶级视图</summary>[产品](app/view/product_index_view)</details>||
 | 产品高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/product_mob_ad_setting_view)</details>||
-| 产品归档（进行中-移动端） | mob_in_progress_into_archived | 产品归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 产品关联项目 | relation_project | 关联项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联项目](app/view/project_choose_project_option_view)</details>||
+| 产品归档（进行中-移动端） | mob_in_progress_into_archived | 产品归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

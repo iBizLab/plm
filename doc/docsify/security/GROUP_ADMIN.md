@@ -20,15 +20,15 @@
 
 |实体|数据能力|
 |---|---|
-|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|<a href ="#/module/Base/addon_resource#addon_resource-all_rw">全部数据（读写）</a>|
-|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|<a href ="#/module/ProdMgmt/product_ticket_type#product_ticket_type-all_rw">全部数据（读写）</a>|
-|[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-all_w">效能数据（写）</a>|
-|[产品(PRODUCT)](module/ProdMgmt/product)|<a href ="#/module/ProdMgmt/product#product-all_w">产品数据（写）</a>|
-|[团队(GROUP)](module/Base/group)|<a href ="#/module/Base/group#group-admin_r">管理员（读）</a>|
-|[空间(SPACE)](module/Wiki/space)|<a href ="#/module/Wiki/space#space-all_w">空间数据（写）</a>|
-|[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|<a href ="#/module/Team/discuss_topic#discuss_topic-all_w">话题数据（写）</a>|
-|[项目(PROJECT)](module/ProjMgmt/project)|<a href ="#/module/ProjMgmt/project#project-all_w">项目数据（写）</a>|
 |[测试库(LIBRARY)](module/TestMgmt/library)|<a href ="#/module/TestMgmt/library#library-all_w">测试库数据（写）</a>|
+|[产品(PRODUCT)](module/ProdMgmt/product)|<a href ="#/module/ProdMgmt/product#product-all_w">产品数据（写）</a>|
+|[项目(PROJECT)](module/ProjMgmt/project)|<a href ="#/module/ProjMgmt/project#project-all_w">项目数据（写）</a>|
+|[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|<a href ="#/module/Team/discuss_topic#discuss_topic-all_w">话题数据（写）</a>|
+|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|<a href ="#/module/ProdMgmt/product_ticket_type#product_ticket_type-all_rw">全部数据（读写）</a>|
+|[空间(SPACE)](module/Wiki/space)|<a href ="#/module/Wiki/space#space-all_w">空间数据（写）</a>|
+|[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-all_w">效能数据（写）</a>|
+|[团队(GROUP)](module/Base/group)|<a href ="#/module/Base/group#group-admin_r">管理员（读）</a>|
+|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|<a href ="#/module/Base/addon_resource#addon_resource-all_rw">全部数据（读写）</a>|
 
 
 

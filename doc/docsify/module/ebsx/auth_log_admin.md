@@ -16,7 +16,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|LOGID|全局唯一标识，文本类型，用户不可见|100|否||
 |MAC地址|MACADDR|文本，可指定长度|100|是||
 |用户名称|PERSONNAME|文本，可指定长度|100|是||
-|客户端|USERAGENT|文本，可指定长度|100|是||
+|客户端|USERAGENT|文本，可指定长度|500|是||
 |用户全局标识|USERID|文本，可指定长度|100|是||
 |用户全局名|USERNAME|文本，可指定长度|100|是||
 

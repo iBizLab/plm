@@ -17,7 +17,7 @@
 |描述|DESCRIPTION|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|继承属性|100|否||
 |需求来源|IDEA_FROM|单项选择(文本值)|200|是||
-|需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|200|是||
+|需求类型|IDEA_TYPE|单项选择(文本值)|200|是||
 |编号|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|文本，可指定长度|100|是||

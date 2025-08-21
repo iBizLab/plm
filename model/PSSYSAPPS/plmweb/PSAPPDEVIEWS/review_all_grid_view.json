@@ -84,19 +84,6 @@
     "rawValue" : true
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "评审新建向导",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.REVIEW.CREATE_WIZARD_VIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
-      "viewType" : "DEWIZARDVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
@@ -108,6 +95,19 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_redirect_view.json",
       "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "评审新建向导",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.REVIEW.CREATE_WIZARD_VIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
+      "viewType" : "DEWIZARDVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -230,6 +230,128 @@
         "closePopupView" : true,
         "reloadData" : true,
         "id" : "new_idea_review@review"
+      },
+      "tooltip" : "新建评审",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "新建评审",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "page",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_page"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "page",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "page",
+        "scriptCode" : "(context.srfreadonly != true)&&((context.space != null) || (context.space != undefined))",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建评审",
+        "codeName" : "new_page_review",
+        "dialogResult" : "OK",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_page_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "review_new_page_review",
+        "name" : "新建页面评审",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_page_review",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "reloadData" : true,
+        "id" : "new_page_review@review"
+      },
+      "tooltip" : "新建评审",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "新建评审",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "work_item",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_work_item"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "work_item",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "work_item",
+        "scriptCode" : "(context.srfreadonly != true)&&((context.project != null) || (context.project != undefined))",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建评审",
+        "codeName" : "new_work_item_review",
+        "dialogResult" : "OK",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_work_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "review_new_work_item_review",
+        "name" : "新建工作项评审",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_work_item_review",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "reloadData" : true,
+        "id" : "new_work_item_review@review"
       },
       "tooltip" : "新建评审",
       "uIActionTarget" : "NONE",
@@ -1223,6 +1345,50 @@
     "actionRSMode" : 1,
     "codeName" : "reviews",
     "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
     "majorDECodeName" : "product",
     "majorDEName" : "PRODUCT",
     "getMajorPSAppDataEntity" : {
@@ -1261,6 +1427,10 @@
     "getParentPSAppDEField" : {
       "name" : "LIBRARY_ID",
       "codeName" : "library_id"
+    },
+    "getParentTextPSAppDEField" : {
+      "name" : "LIBRARY_NAME",
+      "codeName" : "library_name"
     },
     "rSMode" : 2
   } ] ]

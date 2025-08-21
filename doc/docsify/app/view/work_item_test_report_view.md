@@ -5,6 +5,7 @@
 ## 控件
 #### CAPTIONBAR(captionbar)
 #### 报表面板(reportpanel)
+#### 搜索栏(searchbar)
 #### 工具栏(toolbar)
 
 

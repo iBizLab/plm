@@ -38,11 +38,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_wizardlogic.fill_guideline;
                         update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "review_wizardfill_guidelinedebugparam1"
+            //逻辑处理节点[需求参数]
+            rule "prepareparam3"
+            ruleflow-group "review_wizardfill_guidelineprepareparam3"
             when
             then
+                            review_wizardfill_guidelineguideline_filter.set("n_object_type_eq","PRODUCT");
+                            review_wizardfill_guidelineguideline_filter.set("n_scope_id_eq",review_wizardfill_guidelinedefault.get("principalid"));
                         update(review_wizardfill_guidelinedefault);//更新fact中变量值
                         update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
                         update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
@@ -102,11 +104,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_wizardlogic.fill_guideline;
                         update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "review_wizardfill_guidelinedebugparam2"
+            //逻辑处理节点[工作项参数]
+            rule "prepareparam5"
+            ruleflow-group "review_wizardfill_guidelineprepareparam5"
             when
             then
+                            review_wizardfill_guidelineguideline_filter.set("n_object_type_eq","PROJECT");
+                            review_wizardfill_guidelineguideline_filter.set("n_scope_id_eq",review_wizardfill_guidelinedefault.get("principalid"));
                         update(review_wizardfill_guidelinedefault);//更新fact中变量值
                         update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
                         update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
@@ -114,12 +118,12 @@ package cn.ibizlab.plm.testmgmt.logic.review_wizardlogic.fill_guideline;
                         update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[需求参数]
-            rule "prepareparam3"
-            ruleflow-group "review_wizardfill_guidelineprepareparam3"
+            //逻辑处理节点[页面参数]
+            rule "prepareparam8"
+            ruleflow-group "review_wizardfill_guidelineprepareparam8"
             when
             then
-                            review_wizardfill_guidelineguideline_filter.set("n_object_type_eq","PRODUCT");
+                            review_wizardfill_guidelineguideline_filter.set("n_object_type_eq","SPACE");
                             review_wizardfill_guidelineguideline_filter.set("n_scope_id_eq",review_wizardfill_guidelinedefault.get("principalid"));
                         update(review_wizardfill_guidelinedefault);//更新fact中变量值
                         update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值

@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [列表导航加载完成](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
 
 ### 关联界面逻辑
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)
