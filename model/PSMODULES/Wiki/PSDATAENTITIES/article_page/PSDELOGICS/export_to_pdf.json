@@ -1,0 +1,137 @@
+{
+  "codeName" : "export_to_pdf",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/export_to_pdf.json",
+  "logicName" : "导出页面为pdf",
+  "memo" : "导出页面为pdf",
+  "name" : "导出页面为pdf",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 270,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取页面信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "SFPLUGIN1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 300
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 718,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "web_response"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 392
+  }, {
+    "codeName" : "SFPLUGIN1",
+    "leftPos" : 380,
+    "logicNodeType" : "SFPLUGIN",
+    "name" : "服务插件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "SFPLUGIN1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "pdf_file",
+      "paramAction" : "SFPLUGINPARAM",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "pdf_file"
+      },
+      "srcValueType" : "LOGICPARAM"
+    }, {
+      "name" : "Default",
+      "paramAction" : "SFPLUGINPARAM",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "LOGICPARAM"
+    } ],
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/UsrSFPlugin0612360832.json"
+    },
+    "topPos" : 400
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "pdf_file",
+    "fileType" : "TEMP",
+    "logicName" : "pdf文件",
+    "name" : "pdf文件",
+    "fileParam" : true
+  }, {
+    "codeName" : "web_response",
+    "logicName" : "web_response",
+    "name" : "web_response",
+    "webResponseParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

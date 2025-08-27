@@ -1,0 +1,214 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "history",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run/PSGRIDS/history.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_plan_run_history"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "执行历史",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "测试计划",
+    "codeName" : "plan_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "plan_name",
+    "excelCaption" : "测试计划",
+    "name" : "plan_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PLAN_NAME",
+      "codeName" : "plan_name"
+    },
+    "width" : 350,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "执行结果",
+    "codeName" : "status",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "status",
+    "excelCaption" : "执行结果",
+    "name" : "status",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__run_status.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "执行人",
+    "codeName" : "executor_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "executor_name",
+    "excelCaption" : "执行人",
+    "name" : "executor_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_NAME",
+      "codeName" : "executor_name"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "执行时间",
+    "codeName" : "executed_at",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "executed_at",
+    "excelCaption" : "执行时间",
+    "name" : "executed_at",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "EXECUTED_AT",
+      "codeName" : "executed_at"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "plan_name",
+    "getPSAppDEField" : {
+      "name" : "PLAN_NAME",
+      "codeName" : "plan_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "status",
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "executor_name",
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_NAME",
+      "codeName" : "executor_name"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "executed_at",
+    "getPSAppDEField" : {
+      "name" : "EXECUTED_AT",
+      "codeName" : "executed_at"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "plan_id",
+    "getPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "case_id",
+    "getPSAppDEField" : {
+      "name" : "CASE_ID",
+      "codeName" : "case_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 1000,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "90183f3e0c689f7a1a26c9f6886724d4",
+  "modeltype" : "PSDEGRID"
+}

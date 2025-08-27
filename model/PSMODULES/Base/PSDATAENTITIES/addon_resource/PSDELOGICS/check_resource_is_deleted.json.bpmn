@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.addon_resourcecheck_resource_is_deleted" isClosed="false" isExecutable="true" name="base_addon_resource_check_resource_is_deleted_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.addon_resourcecheck_resource_is_deleted">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="addon_resourcecheck_resource_is_deleteddefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="addon_resourcecheck_resource_is_deletedcheckkey" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iaddon_resourceService))" name="addon_resourceservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iaddon_resourceService))" name="iBzSysAddon_resourceDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="addon_resourcecheck_resource_is_deleteddefault" type="cn.ibizlab.plm.core.base.domain.addon_resource" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="addon_resourcecheck_resource_is_deleteddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="验证主键是否存在"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="addon_resourcecheck_resource_is_deletedprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="addon_resourcecheck_resource_is_deletedend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam1" sourceRef="deaction1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_end1" sourceRef="prepareparam1" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>
