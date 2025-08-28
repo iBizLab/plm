@@ -1,0 +1,47 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.publish_name;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagepublish_namedefault;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagepublish_namebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[发布名称赋值]
+            rule "prepareparam_01"
+            ruleflow-group "article_pagepublish_nameprepareparam_01"
+            when
+            then
+                            article_pagepublish_namedefault.set("name",article_pagepublish_namedefault.get("publishname"));
+                        update(article_pagepublish_namedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新页面名称]
+            rule "deaction_01"
+            ruleflow-group "article_pagepublish_namedeaction_01"
+            when
+            then
+                        article_pageservice.update(article_pagepublish_namedefault);
+                        update(article_pagepublish_namedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "article_pagepublish_nameend_01"
+            when
+            then
+                        update(article_pagepublish_namedefault);//更新fact中变量值
+            end
