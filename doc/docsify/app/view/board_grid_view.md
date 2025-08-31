@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [看板(BOARD)](module/ProjMgmt/board) : [删除](module/ProjMgmt/board#界面行为)
   * [看板(BOARD)](module/ProjMgmt/board) : [新建看板（看板表格）](module/ProjMgmt/board#界面行为)
+  * [看板(BOARD)](module/ProjMgmt/board) : [删除](module/ProjMgmt/board#界面行为)
 
 ### 关联视图
   * [看板(board_edit_view)](app/view/board_edit_view)

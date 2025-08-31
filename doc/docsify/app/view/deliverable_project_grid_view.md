@@ -18,11 +18,11 @@
 
 
 ### 关联界面行为
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [新建交付目标](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [交付物下载](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑](module/Base/deliverable#界面行为)
 
 ### 关联界面逻辑
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [计算交付物表格列行为状态](module/Base/deliverable/uilogic/calc_grid_column_action_state)

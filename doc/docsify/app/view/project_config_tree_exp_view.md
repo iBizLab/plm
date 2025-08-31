@@ -18,6 +18,7 @@
 ### 关联视图
   * [发布配置(dictionary_data_global_tab_exp_view)](app/view/dictionary_data_global_tab_exp_view)
   * [数据字典(dictionary_data_work_item_dictionary_grid_view)](app/view/dictionary_data_work_item_dictionary_grid_view)
+  * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [项目集管理(portfolio_deleted_grid_view)](app/view/portfolio_deleted_grid_view)
   * [项目集管理(portfolio_in_progress_grid_view)](app/view/portfolio_in_progress_grid_view)
   * [项目集管理(portfolio_project_set_tab_exp_view)](app/view/portfolio_project_set_tab_exp_view)

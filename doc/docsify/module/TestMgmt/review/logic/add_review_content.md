@@ -24,6 +24,8 @@ state "重新建立正向参数" as RENEWPARAM1  [[$./add_review_content#renewpa
 state "重新建立反向参数" as RENEWPARAM2  [[$./add_review_content#renewparam2 {"重新建立反向参数"}]]
 state "填充需求属性值" as PREPAREPARAM2  [[$./add_review_content#prepareparam2 {"填充需求属性值"}]]
 state "填充用例属性值" as PREPAREPARAM3  [[$./add_review_content#prepareparam3 {"填充用例属性值"}]]
+state "填充工作项属性值" as PREPAREPARAM4  [[$./add_review_content#prepareparam4 {"填充工作项属性值"}]]
+state "填充页面属性值" as PREPAREPARAM5  [[$./add_review_content#prepareparam5 {"填充页面属性值"}]]
 state "填充通用属性值" as PREPAREPARAM1  [[$./add_review_content#prepareparam1 {"填充通用属性值"}]]
 state "生成正向关联数据" as DEACTION1  [[$./add_review_content#deaction1 {"生成正向关联数据"}]]
 state "生成反向关联数据" as DEACTION2  [[$./add_review_content#deaction2 {"生成反向关联数据"}]]
@@ -42,6 +44,10 @@ PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> DEACTION2
 RENEWPARAM2 --> PREPAREPARAM3 : [[$./add_review_content#renewparam2-prepareparam3{连接名称} 连接名称]]
 PREPAREPARAM3 --> PREPAREPARAM1
+RENEWPARAM2 --> PREPAREPARAM4 : [[$./add_review_content#renewparam2-prepareparam4{连接名称} 连接名称]]
+PREPAREPARAM4 --> PREPAREPARAM1
+RENEWPARAM2 --> PREPAREPARAM5 : [[$./add_review_content#renewparam2-prepareparam5{连接名称} 连接名称]]
+PREPAREPARAM5 --> PREPAREPARAM1
 LOOPSUBCALL1 --> END1
 
 
@@ -106,6 +112,20 @@ LOOPSUBCALL1 --> END1
 1. 将`TEST_CASE` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
 2. 将`TEST_CASE` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
 
+#### 填充工作项属性值 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`WORK_ITEM` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
+2. 将`WORK_ITEM` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
+
+#### 填充页面属性值 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`PAGE` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
+2. 将`PAGE` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
+
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
@@ -148,6 +168,12 @@ LOOPSUBCALL1 --> END1
 #### 连接名称 :id=RENEWPARAM2-PREPAREPARAM3
 
 `Default(传入变量).tag` EQ `TEST_CASE`
+#### 连接名称 :id=RENEWPARAM2-PREPAREPARAM4
+
+`Default(传入变量).tag` EQ `WORK_ITEM`
+#### 连接名称 :id=RENEWPARAM2-PREPAREPARAM5
+
+`Default(传入变量).tag` EQ `PAGE`
 
 
 ### 实体逻辑参数

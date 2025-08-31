@@ -29,8 +29,6 @@
 
 |  中文名     |   代码名  |  视图标题 | 视图类型   |   备注  |
 |  --------   |------------| -----------|  -----   |  -----   |
-|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
-|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
 |[活动历史列表](app/view/activity_history_list_view)|activity_history_list_view|活动历史列表|实体列表视图||
 |[活动选择表格视图](app/view/activity_pick_up_grid_view)|activity_pick_up_grid_view|活动|实体选择表格视图（部件视图）|系统自动添加|
 |[活动数据选择视图](app/view/activity_pick_up_view)|activity_pick_up_view|活动|实体数据选择视图|系统自动添加|
@@ -70,6 +68,7 @@
 |[页面](app/view/article_page_model_show_view_noupdown)|article_page_model_show_view_noupdown|页面|实体编辑视图||
 |[移动页面](app/view/article_page_move_page_option_view)|article_page_move_page_option_view|移动页面|实体选项操作视图||
 |[我收藏的页面](app/view/article_page_my_favorite_page_grid_view)|article_page_my_favorite_page_grid_view|我的收藏|实体表格视图||
+|[未添加的页面表格](app/view/article_page_not_add_pick_up_grid_view_review)|article_page_not_add_pick_up_grid_view_review|页面|实体选择表格视图（部件视图）||
 |[空间内页面](app/view/article_page_other_re_sapce_page_grid_view)|article_page_other_re_sapce_page_grid_view|页面|实体表格视图||
 |[页面信息](app/view/article_page_page_detail_edit_view)|article_page_page_detail_edit_view|页面信息|实体编辑视图||
 |[页面选择](app/view/article_page_pick_up_tree_view)|article_page_pick_up_tree_view|页面选择|实体选择树视图（部件视图）||
@@ -78,6 +77,7 @@
 |[页面](app/view/article_page_re_show_view)|article_page_re_show_view|页面|实体编辑视图||
 |[回收站](app/view/article_page_recycle_grid_view)|article_page_recycle_grid_view|回收站|实体表格视图||
 |[页面数据重定向视图](app/view/article_page_redirect_view)|article_page_redirect_view|页面|实体数据重定向视图|系统自动添加|
+|[选择页面](app/view/article_page_review_re_page_view)|article_page_review_re_page_view|选择页面|实体多项数据选择视图（左右关系）||
 |[保存命名版本](app/view/article_page_set_name_version_option_view)|article_page_set_name_version_option_view|保存命名版本|实体选项操作视图||
 |[共享页面表格视图](app/view/article_page_shared_grid_view)|article_page_shared_grid_view|共享页面|实体表格视图||
 |[共享设置](app/view/article_page_shared_setting_view)|article_page_shared_setting_view|共享设置|实体选项操作视图||
@@ -292,6 +292,7 @@
 |[流程准则编辑视图](app/view/guideline_edit_view)|guideline_edit_view|流程准则|实体编辑视图|系统自动添加|
 |[测试库流程准则表格视图](app/view/guideline_library_all_grid_view)|guideline_library_all_grid_view|评审配置|实体表格视图||
 |[测试库流程准则表格视图](app/view/guideline_product_all_grid_view)|guideline_product_all_grid_view|评审配置|实体表格视图||
+|[项目流程准则表格视图](app/view/guideline_project_all_grid_view)|guideline_project_all_grid_view|评审配置|实体表格视图||
 |[流程准则数据重定向视图](app/view/guideline_redirect_view)|guideline_redirect_view|流程准则|实体数据重定向视图|系统自动添加|
 |[需求高级搜索表格视图](app/view/idea_advanced_search_grid_view)|idea_advanced_search_grid_view|需求|实体表格视图||
 |[全部需求](app/view/idea_all_grid_view)|idea_all_grid_view|全部需求|实体表格视图||
@@ -549,6 +550,7 @@
 |[基本信息](app/view/project_baseinfo_over_view)|project_baseinfo_over_view|基本信息|实体编辑视图||
 |[选择关联项目](app/view/project_choose_project_option_view)|project_choose_project_option_view|关联项目|实体选项操作视图||
 |[项目管理配置](app/view/project_config_tree_exp_view)|project_config_tree_exp_view|项目管理|实体树导航视图||
+|[复制项目](app/view/project_copy_wizard_view)|project_copy_wizard_view|复制项目|实体向导视图||
 |[新建项目](app/view/project_create_wizard_view)|project_create_wizard_view|新建项目|实体向导视图||
 |[主数据表格视图（测试）](app/view/project_data_grid_main)|project_data_grid_main|主数据表格视图（测试）|实体表格视图||
 |[项目管理](app/view/project_deleted_grid_view)|project_deleted_grid_view|项目管理|实体表格视图||
@@ -564,6 +566,7 @@
 |[主数据视图kanban](app/view/project_kanban_index_view)|project_kanban_index_view|项目|实体首页视图||
 |[项目](app/view/project_kanban_main_view)|project_kanban_main_view|项目|实体分页导航视图||
 |[项目管理](app/view/project_management_tab_exp_view)|project_management_tab_exp_view|项目管理|实体分页导航视图||
+|[复制项目成员绑定表格视图](app/view/project_member_assigned_copy_grid_view)|project_member_assigned_copy_grid_view|项目成员|实体表格视图||
 |[项目成员绑定表格视图](app/view/project_member_assigned_grid_view)|project_member_assigned_grid_view|项目成员|实体表格视图||
 |[选择职位](app/view/project_member_choose_position_option_view)|project_member_choose_position_option_view|选择职位|实体选项操作视图||
 |[项目成员](app/view/project_member_config_grid_view)|project_member_config_grid_view|项目成员|实体表格视图||
@@ -704,6 +707,8 @@
 |[首页](app/view/recent_tree_exp_view)|recent_tree_exp_view|首页|实体树导航视图||
 |[引用索引编辑视图](app/view/references_index_edit_view)|references_index_edit_view|引用索引|实体编辑视图|系统自动添加|
 |[引用索引表格视图](app/view/references_index_grid_view)|references_index_grid_view|引用索引|实体表格视图||
+|[引用索引索引关系选择数据视图](app/view/references_index_index_pick_up_data_view)|references_index_index_pick_up_data_view|引用索引|实体索引关系选择数据视图（部件视图）|系统自动添加|
+|[引用索引数据选择视图](app/view/references_index_index_pick_up_view)|references_index_index_pick_up_view|引用索引|实体数据选择视图|系统自动添加|
 |[工作项依赖](app/view/relation_depend_on_list_view)|relation_depend_on_list_view|关联|实体列表视图||
 |[工作项关联编辑视图](app/view/relation_edit_view)|relation_edit_view|关联|实体编辑视图||
 |[工作项关联表格视图](app/view/relation_grid_view)|relation_grid_view|关联|实体表格视图||
@@ -786,10 +791,14 @@
 |[评审内容表格](app/view/review_content_idea_under_review_grid_view)|review_content_idea_under_review_grid_view|评审内容|实体表格视图||
 |[评审历史列表](app/view/review_content_list_view)|review_content_list_view|评审历史|实体列表视图||
 |[评审内容表格](app/view/review_content_no_grid_view_all)|review_content_no_grid_view_all|评审内容|实体表格视图||
+|[评审内容表格](app/view/review_content_page_grid_view_all)|review_content_page_grid_view_all|评审内容|实体表格视图||
+|[评审内容表格](app/view/review_content_page_no_grid_view_all)|review_content_page_no_grid_view_all|评审内容|实体表格视图||
 |[评审内容数据重定向视图](app/view/review_content_redirect_view)|review_content_redirect_view|评审内容|实体数据重定向视图|系统自动添加|
 |[评审结果选项操作视图](app/view/review_content_result_option_view)|review_content_result_option_view|评审内容|实体选项操作视图||
 |[设置评审结果](app/view/review_content_set_result_edit_view)|review_content_set_result_edit_view|评审结果|实体编辑视图||
 |[评审内容表格](app/view/review_content_under_review_grid_view)|review_content_under_review_grid_view|评审内容|实体表格视图||
+|[评审内容表格](app/view/review_content_work_item_grid_view_all)|review_content_work_item_grid_view_all|评审内容|实体表格视图||
+|[评审内容表格](app/view/review_content_work_item_no_grid_view_all)|review_content_work_item_no_grid_view_all|评审内容|实体表格视图||
 |[评审新建向导](app/view/review_create_wizard_view)|review_create_wizard_view|新建评审|实体向导视图||
 |[评审反查表格](app/view/review_drill_detail_grid_view)|review_drill_detail_grid_view|评审反查|实体表格视图||
 |[评审编辑视图](app/view/review_edit_view)|review_edit_view|评审|实体编辑视图|系统自动添加|
@@ -801,6 +810,9 @@
 |[我关注的评审表格](app/view/review_my_attention_grid_view)|review_my_attention_grid_view|我关注的|实体表格视图|系统自动添加|
 |[我创建的评审表格](app/view/review_my_created_grid_view)|review_my_created_grid_view|我创建的|实体表格视图|系统自动添加|
 |[我评审的表格](app/view/review_my_reviewed_grid_view)|review_my_reviewed_grid_view|我评审的|实体表格视图|系统自动添加|
+|[评审主视图](app/view/review_page_main_view)|review_page_main_view|评审|实体编辑视图||
+|[评审选择](app/view/review_page_pick_up_tree_view)|review_page_pick_up_tree_view|评审选择|实体选择树视图（部件视图）||
+|[评审实体树导航](app/view/review_page_tree_exp_view)|review_page_tree_exp_view|评审|实体树导航视图||
 |[评审选择](app/view/review_pick_up_tree_view)|review_pick_up_tree_view|评审选择|实体选择树视图（部件视图）||
 |[评审数据重定向视图](app/view/review_redirect_view)|review_redirect_view|评审|实体数据重定向视图|系统自动添加|
 |[设置类别](app/view/review_set_category_option_view)|review_set_category_option_view|设置类别|实体选项操作视图||
@@ -810,6 +822,11 @@
 |[评审实体树导航](app/view/review_tree_exp_view)|review_tree_exp_view|评审|实体树导航视图||
 |[评审新建向导](app/view/review_wizard_create_wizard_view)|review_wizard_create_wizard_view|新建评审|实体向导视图||
 |[评审新建向导](app/view/review_wizard_idea_create_wizard_view)|review_wizard_idea_create_wizard_view|新建评审|实体向导视图||
+|[评审新建向导](app/view/review_wizard_page_create_wizard_view)|review_wizard_page_create_wizard_view|新建评审|实体向导视图||
+|[评审新建向导](app/view/review_wizard_work_create_wizard_view)|review_wizard_work_create_wizard_view|新建评审|实体向导视图||
+|[评审主视图](app/view/review_work_item_main_view)|review_work_item_main_view|评审|实体编辑视图||
+|[评审选择](app/view/review_work_item_pick_up_tree_view)|review_work_item_pick_up_tree_view|评审选择|实体选择树视图（部件视图）||
+|[评审实体树导航](app/view/review_work_item_tree_exp_view)|review_work_item_tree_exp_view|评审|实体树导航视图||
 |[角色编辑视图](app/view/role_edit_view)|role_edit_view|角色|实体编辑视图|系统自动添加|
 |[角色配置](app/view/role_edit_view2)|role_edit_view2|角色配置|实体编辑视图（左右关系）||
 |[角色表格视图](app/view/role_grid_view)|role_grid_view|角色配置|实体表格视图|系统自动添加|
@@ -1219,6 +1236,7 @@
 |[我关注的工作项表格视图](app/view/work_item_my_attention_grid_view)|work_item_my_attention_grid_view|工作项|实体表格视图||
 |[我创建的工作项](app/view/work_item_my_created_grid_view)|work_item_my_created_grid_view|工作项|实体表格视图||
 |[我待完成的工作项](app/view/work_item_my_todo_gird_view)|work_item_my_todo_gird_view|工作项|实体表格视图|系统自动添加|
+|[未添加的工作项表格](app/view/work_item_not_add_pick_up_grid_view_review)|work_item_not_add_pick_up_grid_view_review|工作项|实体选择表格视图（部件视图）||
 |[其他实体关联工作项多项选择视图_选择数据视图](app/view/work_item_others_re_mpick_up_grid_view)|work_item_others_re_mpick_up_grid_view|工作项|实体选择表格视图（部件视图）|系统自动添加|
 |[用例关联工作项多项选择视图_选择数据视图](app/view/work_item_others_re_notbug_mpick_up_grid_view)|work_item_others_re_notbug_mpick_up_grid_view|工作项|实体选择表格视图（部件视图）|不含缺陷|
 |[用例关联工作项多项选择视图](app/view/work_item_others_re_notbug_view)|work_item_others_re_notbug_view|选择工作项|实体多项数据选择视图（左右关系）|不含缺陷类型|
@@ -1248,6 +1266,7 @@
 |[发布工作项统计](app/view/work_item_release_work_item_custom_view)|work_item_release_work_item_custom_view|工作项统计|实体自定义视图||
 |[需求树表格视图](app/view/work_item_requirement_tree_grid_view)|work_item_requirement_tree_grid_view|全部需求|实体树表格视图||
 |[资源分配](app/view/work_item_resource_gantt_view)|work_item_resource_gantt_view|资源分配|实体甘特视图||
+|[选择工作项](app/view/work_item_review_re_work_item_view)|work_item_review_re_work_item_view|选择工作项|实体多项数据选择视图（左右关系）||
 |[Scrum需求累计流图](app/view/work_item_scrum_backlog_flow_report_view)|work_item_scrum_backlog_flow_report_view|需求累计流图|实体图表视图||
 |[需求状态分布报表](app/view/work_item_scrum_backlog_state_report_view)|work_item_scrum_backlog_state_report_view|需求状态分布|实体图表视图||
 |[Scrum缺陷每日趋势报表](app/view/work_item_scrum_bug_daily_tide_report_view)|work_item_scrum_bug_daily_tide_report_view|缺陷每日趋势|实体图表视图||

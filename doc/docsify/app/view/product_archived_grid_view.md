@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [已归档_删除](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [已归档_激活](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [已归档_删除](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [产品(product_edit_view)](app/view/product_edit_view)

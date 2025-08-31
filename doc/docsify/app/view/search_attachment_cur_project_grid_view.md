@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [打开主数据详情视图](module/Base/search_attachment#界面行为)
   * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [附件下载](module/Base/search_attachment#界面行为)
+  * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [打开主数据详情视图](module/Base/search_attachment#界面行为)
   * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [附件预览](module/Base/search_attachment#界面行为)
 
 ### 关联界面逻辑

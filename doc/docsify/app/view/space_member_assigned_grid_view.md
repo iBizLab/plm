@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [移除成员](module/Wiki/space_member#界面行为)
   * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [表格界面_新建操作](module/Wiki/space_member#界面行为)
+  * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [移除成员](module/Wiki/space_member#界面行为)
 
 ### 关联界面逻辑
   * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [新建空间默认临时成员](module/Wiki/space_member/uilogic/create_default_temp_members)

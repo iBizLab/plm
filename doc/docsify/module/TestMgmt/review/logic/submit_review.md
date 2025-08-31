@@ -16,6 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./submit_review#begin {"开始"}]]
 state "通知第一评审人（测试用例）" as DENOTIFY2  [[$./submit_review#denotify2 {"通知第一评审人（测试用例）"}]]
+state "通知第一评审人（需求）" as DENOTIFY1  [[$./submit_review#denotify1 {"通知第一评审人（需求）"}]]
 state "绑定参数" as BINDPARAM1  [[$./submit_review#bindparam1 {"绑定参数"}]]
 state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./submit_review#debugparam2 {"调试逻辑参数"}]]
@@ -23,10 +24,11 @@ state "调试逻辑参数" as DEBUGPARAM3  [[$./submit_review#debugparam3 {"调�
 state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
 state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
 state "设置关系过滤参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"设置关系过滤参数"}]]
-state "通知第一评审人（需求）" as DENOTIFY1  [[$./submit_review#denotify1 {"通知第一评审人（需求）"}]]
+state "通知第一评审人（工作项）" as DENOTIFY3  [[$./submit_review#denotify3 {"通知第一评审人（工作项）"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]
 state "获取关系信息" as DEDATASET1  [[$./submit_review#dedataset1 {"获取关系信息"}]]
 state "设置提交时间" as RAWSFCODE1  [[$./submit_review#rawsfcode1 {"设置提交时间"}]]
+state "通知第一评审人（页面）" as DENOTIFY4  [[$./submit_review#denotify4 {"通知第一评审人（页面）"}]]
 state "评审内容为空" as THROWEXCEPTION1  [[$./submit_review#throwexception1 {"评审内容为空"}]]
 state "循环子调用" as LOOPSUBCALL2  [[$./submit_review#loopsubcall2 {"循环子调用"}]] #green {
 state "准备参数" as PREPAREPARAM6  [[$./submit_review#prepareparam6 {"准备参数"}]]
@@ -38,11 +40,21 @@ state "获取产品需求详情" as DEACTION4  [[$./submit_review#deaction4 {"�
 state "设置产品需求评审状态" as PREPAREPARAM8  [[$./submit_review#prepareparam8 {"设置产品需求评审状态"}]]
 state "更新产品需求" as DEACTION5  [[$./submit_review#deaction5 {"更新产品需求"}]]
 state "重置产品需求参数" as RESETPARAM2  [[$./submit_review#resetparam2 {"重置产品需求参数"}]]
+state "获取工作项ID" as PREPAREPARAM9  [[$./submit_review#prepareparam9 {"获取工作项ID"}]]
+state "获取项目工作项详情" as DEACTION6  [[$./submit_review#deaction6 {"获取项目工作项详情"}]]
+state "设置项目工作项评审状态" as PREPAREPARAM10  [[$./submit_review#prepareparam10 {"设置项目工作项评审状态"}]]
+state "更新项目工作项" as DEACTION7  [[$./submit_review#deaction7 {"更新项目工作项"}]]
+state "重置项目工作项参数" as RESETPARAM3  [[$./submit_review#resetparam3 {"重置项目工作项参数"}]]
 state "获取测试用例ID" as PREPAREPARAM4  [[$./submit_review#prepareparam4 {"获取测试用例ID"}]]
 state "获取测试用例详情" as DEACTION2  [[$./submit_review#deaction2 {"获取测试用例详情"}]]
 state "设置测试用例评审状态" as PREPAREPARAM5  [[$./submit_review#prepareparam5 {"设置测试用例评审状态"}]]
 state "更新测试用例" as DEACTION3  [[$./submit_review#deaction3 {"更新测试用例"}]]
 state "重置测试用例参数" as RESETPARAM1  [[$./submit_review#resetparam1 {"重置测试用例参数"}]]
+state "获取页面ID" as PREPAREPARAM12  [[$./submit_review#prepareparam12 {"获取页面ID"}]]
+state "获取空间页面详情" as DEACTION9  [[$./submit_review#deaction9 {"获取空间页面详情"}]]
+state "设置空间页面评审状态" as PREPAREPARAM11  [[$./submit_review#prepareparam11 {"设置空间页面评审状态"}]]
+state "更新空间页面" as DEACTION8  [[$./submit_review#deaction8 {"更新空间页面"}]]
+state "重置空间页面参数" as RESETPARAM4  [[$./submit_review#resetparam4 {"重置空间页面参数"}]]
 }
 
 
@@ -64,14 +76,28 @@ PREPAREPARAM7 --> DEACTION4
 DEACTION4 --> PREPAREPARAM8
 PREPAREPARAM8 --> DEACTION5
 DEACTION5 --> RESETPARAM2
+DEBUGPARAM4 --> PREPAREPARAM9 : [[$./submit_review#debugparam4-prepareparam9{连接名称} 连接名称]]
+PREPAREPARAM9 --> DEACTION6
+DEACTION6 --> PREPAREPARAM10
+PREPAREPARAM10 --> DEACTION7
+DEACTION7 --> RESETPARAM3
 DEBUGPARAM4 --> PREPAREPARAM4 : [[$./submit_review#debugparam4-prepareparam4{连接名称} 连接名称]]
 PREPAREPARAM4 --> DEACTION2
 DEACTION2 --> PREPAREPARAM5
 PREPAREPARAM5 --> DEACTION3
 DEACTION3 --> RESETPARAM1
+DEBUGPARAM4 --> PREPAREPARAM12 : [[$./submit_review#debugparam4-prepareparam12{连接名称} 连接名称]]
+PREPAREPARAM12 --> DEACTION9
+DEACTION9 --> PREPAREPARAM11
+PREPAREPARAM11 --> DEACTION8
+DEACTION8 --> RESETPARAM4
 LOOPSUBCALL1 --> END1
+DEBUGPARAM3 --> DENOTIFY3 : [[$./submit_review#debugparam3-denotify3{连接名称} 连接名称]]
+DENOTIFY3 --> PREPAREPARAM1
 DEBUGPARAM3 --> DENOTIFY1 : [[$./submit_review#debugparam3-denotify1{连接名称} 连接名称]]
 DENOTIFY1 --> PREPAREPARAM1
+DEBUGPARAM3 --> DENOTIFY4 : [[$./submit_review#debugparam3-denotify4{连接名称} 连接名称]]
+DENOTIFY4 --> PREPAREPARAM1
 LOOPSUBCALL2 --> PREPAREPARAM6 : [[$./submit_review#loopsubcall2-prepareparam6{连接名称} 连接名称]]
 DEDATASET1 --> THROWEXCEPTION1 : [[$./submit_review#dedataset1-throwexception1{连接名称} 连接名称]]
 
@@ -82,16 +108,21 @@ DEDATASET1 --> THROWEXCEPTION1 : [[$./submit_review#dedataset1-throwexception1{�
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 通知第一评审人（测试用例） :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [测试用例评审通知(test_case_review_notify)](module/TestMgmt/review/notify/test_case_review_notify) ，参数为`Default(传入变量)`
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
+#### 通知第一评审人（需求） :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [评审通知(review_notify)](module/TestMgmt/review/notify/review_notify) ，参数为`Default(传入变量)`
 #### 设置关系过滤参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -147,11 +178,11 @@ DEDATASET1 --> THROWEXCEPTION1 : [[$./submit_review#dedataset1-throwexception1{�
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [Update](module/TestMgmt/review#行为) ，行为参数为`Default(传入变量)`
 
-#### 通知第一评审人（需求） :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+#### 通知第一评审人（工作项） :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [评审通知(review_notify)](module/TestMgmt/review/notify/review_notify) ，参数为`Default(传入变量)`
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [项目工作项评审通知(work_item_review_notify)](module/TestMgmt/review/notify/work_item_review_notify) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
@@ -189,6 +220,11 @@ default_obj.set("submitted_at", new Date());
 1. 将`reviewer_temp(评审人临时变量).reviewer` 设置给  `Default(传入变量).NEXT_REVIEWER(下一个评审人)`
 2. 将`Default(传入变量).CREATE_MAN(建立人)` 设置给  `Default(传入变量).REVIEWER(评审人)`
 
+#### 通知第一评审人（页面） :id=DENOTIFY4<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [空间页面评审通知(page_review_notify)](module/TestMgmt/review/notify/page_review_notify) ，参数为`Default(传入变量)`
 #### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
@@ -204,6 +240,18 @@ default_obj.set("submitted_at", new Date());
 > [!ATTENTION|label:抛出异常|icon:fa fa-warning]
 > 错误信息：请添加评审内容
 
+#### 获取页面ID :id=PREPAREPARAM12<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`for_reltion(循环中的关联对象).TARGET_ID(目标主体标识)` 设置给  `page(页面).ID(标识)`
+
+#### 获取工作项ID :id=PREPAREPARAM9<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`for_reltion(循环中的关联对象).TARGET_ID(目标主体标识)` 设置给  `work_item(工作项).ID(标识)`
+
 #### 获取需求ID :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -215,6 +263,18 @@ default_obj.set("submitted_at", new Date());
 
 
 1. 将`for_reltion(循环中的关联对象).TARGET_ID(目标主体标识)` 设置给  `test_case(测试用例).ID(标识)`
+
+#### 获取空间页面详情 :id=DEACTION9<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [页面(PAGE)](module/Wiki/article_page.md) 行为 [Get](module/Wiki/article_page#行为) ，行为参数为`page(页面)`
+
+#### 获取项目工作项详情 :id=DEACTION6<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Get](module/ProjMgmt/work_item#行为) ，行为参数为`work_item(工作项)`
 
 #### 获取产品需求详情 :id=DEACTION4<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -228,6 +288,18 @@ default_obj.set("submitted_at", new Date());
 
 调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 行为 [Get](module/TestMgmt/test_case#行为) ，行为参数为`test_case(测试用例)`
 
+#### 设置空间页面评审状态 :id=PREPAREPARAM11<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`2` 设置给  `page(页面).REVIEW_RESULT_STATE(评审结果)`
+
+#### 设置项目工作项评审状态 :id=PREPAREPARAM10<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`2` 设置给  `work_item(工作项).REVIEW_RESULT_STATE(评审结果)`
+
 #### 设置产品需求评审状态 :id=PREPAREPARAM8<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -239,6 +311,18 @@ default_obj.set("submitted_at", new Date());
 
 
 1. 将`2` 设置给  `test_case(测试用例).REVIEW_RESULT_STATE(评审结果)`
+
+#### 更新空间页面 :id=DEACTION8<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [页面(PAGE)](module/Wiki/article_page.md) 行为 [Update](module/Wiki/article_page#行为) ，行为参数为`page(页面)`
+
+#### 更新项目工作项 :id=DEACTION7<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`work_item(工作项)`
 
 #### 更新产品需求 :id=DEACTION5<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -252,6 +336,16 @@ default_obj.set("submitted_at", new Date());
 
 调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 行为 [Update](module/TestMgmt/test_case#行为) ，行为参数为`test_case(测试用例)`
 
+#### 重置空间页面参数 :id=RESETPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+
+
+
+重置参数```page(页面)```
+#### 重置项目工作项参数 :id=RESETPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+
+
+
+重置参数```work_item(工作项)```
 #### 重置产品需求参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
@@ -273,12 +367,24 @@ default_obj.set("submitted_at", new Date());
 #### 连接名称 :id=DEBUGPARAM4-PREPAREPARAM7
 
 `for_reltion(循环中的关联对象).target_type(关联目标类型)` EQ `IDEA`
+#### 连接名称 :id=DEBUGPARAM4-PREPAREPARAM9
+
+`for_reltion(循环中的关联对象).target_type(关联目标类型)` EQ `WORK_ITEM`
 #### 连接名称 :id=DEBUGPARAM4-PREPAREPARAM4
 
 `for_reltion(循环中的关联对象).target_type(关联目标类型)` EQ `TEST_CASE`
+#### 连接名称 :id=DEBUGPARAM4-PREPAREPARAM12
+
+`for_reltion(循环中的关联对象).target_type(关联目标类型)` EQ `PAGE`
+#### 连接名称 :id=DEBUGPARAM3-DENOTIFY3
+
+`Default(传入变量).TYPE(评审类型)` EQ `WORK_ITEM`
 #### 连接名称 :id=DEBUGPARAM3-DENOTIFY1
 
 `Default(传入变量).TYPE(评审类型)` EQ `IDEA`
+#### 连接名称 :id=DEBUGPARAM3-DENOTIFY4
+
+`Default(传入变量).TYPE(评审类型)` EQ `PAGE`
 #### 连接名称 :id=LOOPSUBCALL2-PREPAREPARAM6
 
 `reviewer_temp(评审人临时变量).order` EQ `1`
@@ -294,6 +400,7 @@ default_obj.set("submitted_at", new Date());
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[评审(REVIEW)](module/TestMgmt/review.md)||
 |循环中的关联对象|for_reltion|数据对象|[关联(RELATION)](module/Base/relation.md)||
 |产品需求|idea|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||
+|页面|page|数据对象|[页面(PAGE)](module/Wiki/article_page.md)||
 |relation分页数据|relation_page|分页查询|||
 |relation过滤器|reltion_filter|过滤器|||
 |评审内容|review_content|分页查询|||
@@ -302,3 +409,4 @@ default_obj.set("submitted_at", new Date());
 |阶段|stage|数据对象|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
 |评审阶段|stages|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
 |测试用例|test_case|数据对象|[用例(TEST_CASE)](module/TestMgmt/test_case.md)||
+|工作项|work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||

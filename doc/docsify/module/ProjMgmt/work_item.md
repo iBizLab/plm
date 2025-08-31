@@ -76,6 +76,7 @@
 |报表值1|REP_VALUE_1|整型||是||
 |报表值2|REP_VALUE_2|整型||是||
 |报表值3|REP_VALUE_3|整型||是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |风险|RISK|单项选择(文本值)|60|是||
 |序号|SEQUENCE|数值||是||
 |严重程度|SEVERITY|单项选择(文本值)|60|是||
@@ -460,6 +461,7 @@
 |[DERCUSTOM_APP_VIEW_THEME_WORK_ITEM](der/DERCUSTOM_APP_VIEW_THEME_WORK_ITEM)|[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|自定义关系||
 |[DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID](der/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
+|[DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM)|[依赖(DEPENDENCY)](module/Base/dependency)|自定义关系||
 |[DERCUSTOM_DEPENDENCY_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_WORK_ITEM)|[依赖(DEPENDENCY)](module/Base/dependency)|自定义关系||
 |[DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID](der/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID)|[执行人(EXECUTOR)](module/Base/executor)|自定义关系||
 |[DERCUSTOM_RECENT_WORK_ITEM](der/DERCUSTOM_RECENT_WORK_ITEM)|[最近访问(RECENT)](module/Base/recent)|自定义关系||
@@ -470,6 +472,7 @@
 |[DERCUSTOM_VIEW_THEME_SETTING_WORK_ITEM](der/DERCUSTOM_VIEW_THEME_SETTING_WORK_ITEM)|[视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)|自定义关系||
 |[DERCUSTOM_WORK_ITEM_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
 |[DERCUSTOM_WORK_ITEM_DELIVERABLE](der/DERCUSTOM_WORK_ITEM_DELIVERABLE)|[交付物(DELIVERABLE)](module/Base/deliverable)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_REVIEW_CONTENT](der/DERCUSTOM_WORK_ITEM_REVIEW_CONTENT)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
 |[DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_WORK_ITEM_SEARCH_COMMENT](der/DERCUSTOM_WORK_ITEM_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 |[DERCUSTOM_WORK_ITEM_WORKLOAD](der/DERCUSTOM_WORK_ITEM_WORKLOAD)|[工时(WORKLOAD)](module/Base/workload)|自定义关系||
@@ -501,6 +504,7 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
+|复制|Copy|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Create)|||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_GetDraft)|||
@@ -517,7 +521,7 @@
 |修改时间|change_time|[实体处理逻辑](module/ProjMgmt/work_item/logic/change_time "修改时间")|默认|不支持||||
 |子工作项取消关联|child_del_relation|[实体处理逻辑](module/ProjMgmt/work_item/logic/child_del_relation "子工作项取消关联")|默认|不支持||||
 |选择子工作项|choose_child|[实体处理逻辑](module/ProjMgmt/work_item/logic/choose_child "选择子工作项")|默认|不支持||||
-|复制|copy|[实体处理逻辑](module/ProjMgmt/work_item/logic/copy_work_item "复制工作项")|默认|不支持||||
+|复制|copy_item|[实体处理逻辑](module/ProjMgmt/work_item/logic/copy_work_item "复制工作项")|默认|不支持||||
 |首页待完成项计数器|count_my_todo|[实体处理逻辑](module/ProjMgmt/work_item/logic/count_my_todo "首页待完成项计数器")|默认|不支持||||
 |新建规划快照|create_plan_snapshot|[实体处理逻辑](module/ProjMgmt/work_item/logic/create_plan_snapshot "新建规划快照")|默认|不支持||||
 |自定义draft|custom_draft|[实体处理逻辑](module/ProjMgmt/work_item/logic/custom_draft "获取草稿")|默认|不支持||||
@@ -697,8 +701,10 @@
 |[评论通知负责人(comment_notify_assignee)](module/ProjMgmt/work_item/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 ||
 |[普通工作项(common)](module/ProjMgmt/work_item/query/common)|common|否|否 |否 |未删除|
 |[普通状态缺陷(common_bug)](module/ProjMgmt/work_item/query/common_bug)|common_bug|否|否 |否 ||
+|[拷贝集合(copy)](module/ProjMgmt/work_item/query/copy)|copy|否|否 |否 ||
 |[已删除(deleted)](module/ProjMgmt/work_item/query/deleted)|deleted|否|否 |否 ||
 |[需求关联工作项(idea_relation_work_item)](module/ProjMgmt/work_item/query/idea_relation_work_item)|idea_relation_work_item|否|否 |否 ||
+|[关联工作项（多需求）(ideas_relation_work_item)](module/ProjMgmt/work_item/query/ideas_relation_work_item)|ideas_relation_work_item|否|否 |是 ||
 |[看板工作项(kanban_work_item)](module/ProjMgmt/work_item/query/kanban_work_item)|kanban_work_item|否|否 |否 ||
 |[里程碑(milestone)](module/ProjMgmt/work_item/query/milestone)|milestone|否|否 |否 ||
 |[移动工作项(move_work_item)](module/ProjMgmt/work_item/query/move_work_item)|move_work_item|否|否 |否 ||
@@ -769,11 +775,13 @@
 |[普通工作项(common)](module/ProjMgmt/work_item/dataset/common)|common|数据查询|否||未删除|
 |[普通状态缺陷(common_bug)](module/ProjMgmt/work_item/dataset/common_bug)|common_bug|数据查询|否|||
 |[工作项完成趋势(complete_trend)](module/ProjMgmt/work_item/dataset/complete_trend)|complete_trend|[实体逻辑](module/ProjMgmt/work_item/logic/complete_trend)|否|||
+|[拷贝集合(copy)](module/ProjMgmt/work_item/dataset/copy)|copy|数据查询|否|||
 |[缺陷年龄报告(defect_age_report)](module/ProjMgmt/work_item/dataset/defect_age_report)|defect_age_report|[实体逻辑](module/ProjMgmt/work_item/logic/defect_age_report)|否|||
 |[缺陷属性分布(defect_property_distribution)](module/ProjMgmt/work_item/dataset/defect_property_distribution)|defect_property_distribution|数据查询|否|||
 |[缺陷累计趋势(defect_total_trend)](module/ProjMgmt/work_item/dataset/defect_total_trend)|defect_total_trend|[实体逻辑](module/ProjMgmt/work_item/logic/defect_total_trend)|否|||
 |[已删除(deleted)](module/ProjMgmt/work_item/dataset/deleted)|deleted|数据查询|否|||
 |[需求关联工作项(idea_relation_work_item)](module/ProjMgmt/work_item/dataset/idea_relation_work_item)|idea_relation_work_item|数据查询|否|||
+|[关联工作项（多需求）(ideas_relation_work_item)](module/ProjMgmt/work_item/dataset/ideas_relation_work_item)|ideas_relation_work_item|数据查询|否|||
 |[kanban成员负荷报告(kanban_user_stat)](module/ProjMgmt/work_item/dataset/kanban_user_stat)|kanban_user_stat|数据查询|否|||
 |[里程碑(milestone)](module/ProjMgmt/work_item/dataset/milestone)|milestone|数据查询|否|||
 |[移动工作项数据(move_work_item)](module/ProjMgmt/work_item/dataset/move_work_item)|move_work_item|数据查询|否|||
@@ -944,6 +952,7 @@
 |N_RELEASE_ID_EQ|项目发布标识|EQ||
 |N_RELEASE_NAME_EQ|项目发布名称|EQ||
 |N_RELEASE_NAME_LIKE|项目发布名称|LIKE||
+|N_REVIEW_RESULT_STATE_EQ|评审结果|EQ||
 |N_RISK_EQ|风险|EQ||
 |N_SEVERITY_EQ|严重程度|EQ||
 |N_SHOW_IDENTIFIER_EQ|编号|EQ||
@@ -999,6 +1008,7 @@
 | 新建缺陷（scrum动态） | new_dyna_scrum_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_scrum_quick_create_view)</details>|SRFNAVPARAM.work_item_type_group_bug=bug|
 | 项目资源成员设置(设置回显数据) | project_resource_member_pre | 成员管理 |无数据|用户自定义||
 | 新建事务（hybrid） | new_hybrid_issue | 新建事务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 复制工作项 | copy_item | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy_item](#行为)||
 | 新建特性（移动端hybrid） | mob_create_hybrid_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建史诗（scrum） | new_scrum_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建阶段（移动端waterfall） | mob_create_waterfall_stage | 新建阶段 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
@@ -1109,7 +1119,6 @@
 | 添加子工作项（移动端） | mob_add_child | 添加子工作项 |无数据|<details><summary>后台调用</summary>[choose_child](#行为)||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 打开执行人设置视图（新建工作项时） | create_open_executors | 打开执行人 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_executors_edit_form)</details>||
-| 复制工作项 | copy | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy](#行为)||
 | 新建缺陷（hybrid）（工具栏） | new_hybrid_bug_toolbar | 新建缺陷 |无数据|用户自定义||
 | 移出发布 | shift_out_release | 移出发布 |单项数据（主键）|<details><summary>后台调用</summary>[shift_out_release](#行为)||
 | 跳转已完成的工作项 | jump_completed_work_item | 跳转已完成的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[个人工作项](app/view/work_item_my_assignee_gird_view_show)</details>||

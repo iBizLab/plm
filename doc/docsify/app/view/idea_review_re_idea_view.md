@@ -10,11 +10,11 @@
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [移除全部数据（数据选择）](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [视图_确定](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [移除选中数据（数据选择）](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [视图_取消](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [添加选中数据（数据选择）](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [移除全部数据（数据选择）](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [移除选中数据（数据选择）](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [视图_确定](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [添加全部数据（数据选择）](module/ProdMgmt/idea#界面行为)
 
 ### 关联视图

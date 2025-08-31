@@ -47,6 +47,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -144,6 +145,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -247,6 +249,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -370,6 +373,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -512,6 +516,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -609,6 +614,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -712,6 +718,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -833,6 +840,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -930,6 +938,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -1052,6 +1061,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -1149,6 +1159,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -1271,6 +1282,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -1368,6 +1380,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -1471,6 +1484,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -1592,6 +1606,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -1689,6 +1704,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -1811,6 +1827,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -1908,6 +1925,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -2030,6 +2048,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -2127,6 +2146,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -2249,6 +2269,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -2346,6 +2367,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -2463,6 +2485,7 @@
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -2560,6 +2583,7 @@
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -2686,6 +2710,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -2783,6 +2808,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -2905,6 +2931,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -3002,6 +3029,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3105,6 +3133,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3183,7 +3212,7 @@ Integer
 <el-alert title="/work_items/{key}/copy" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`CREATE`
+权限标识：`COPY`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -3226,6 +3255,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -3323,6 +3353,331 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
+  "test_plan_id" : null,
+  "remaining_workload" : null,
+  "attachments" : null,
+  "actual_workload" : null,
+  "deliverable" : null,
+  "attention_count" : null,
+  "p_work_item_type_id" : null,
+  "comment_count" : null,
+  "project_identifier" : null,
+  "attentions" : null,
+  "rep_group_value" : null,
+  "rep_percent_value" : null,
+  "rep_value1" : null,
+  "rep_value3" : null,
+  "rep_value2" : null,
+  "state_type" : null,
+  "cur_version_name" : null,
+  "choose_version_id" : null,
+  "choose_version_name" : null,
+  "attentions_imp" : null,
+  "sprint_status" : null,
+  "release_status" : null,
+  "work_item_sub_type" : null,
+  "rep_date" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
+  "relation_total_idea" : null,
+  "relation_total_test_case" : null,
+  "relation_total_ticket" : null,
+  "relation_total_work_item" : null,
+  "work_item_origin_state" : null,
+  "is_overtime" : null,
+  "executors" : null,
+  "multiple_people" : null,
+  "actual_start_at" : null,
+  "actual_end_at" : null,
+  "finisher" : null,
+  "overdue_time" : null,
+  "deliverable_imp" : null,
+  "project_is_deleted" : null,
+  "project_is_archived" : null,
+  "dependencies" : null,
+  "board_id" : null,
+  "board_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "entry_id" : null,
+  "entry_name" : null,
+  "id" : null,
+  "pid" : null,
+  "project_id" : null,
+  "project_name" : null,
+  "ptitle" : null,
+  "release_id" : null,
+  "release_name" : null,
+  "sprint_id" : null,
+  "sprint_name" : null,
+  "swimlane_id" : null,
+  "top_id" : null,
+  "top_title" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "work_item_type_id" : null,
+  "work_item_type_name" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "show_identifier" : null,
+  "identifier" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "title" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "state" : null,
+  "priority" : null,
+  "is_leaf" : null,
+  "backlog_type" : null,
+  "backlog_from" : null,
+  "assignee_name" : null,
+  "description" : null,
+  "assignee_id" : null,
+  "cur_version_id" : null,
+  "reappear_probability" : null,
+  "severity" : null,
+  "risk" : null,
+  "project_type" : null,
+  "work_item_type_group" : null,
+  "tags" : null,
+  "entry_status" : null,
+  "entry_position" : null,
+  "rep_num" : null,
+  "solution_way" : null,
+  "work_item_type_sequence" : null,
+  "completed_at" : null,
+  "workload_schedule" : null,
+  "estimated_workload" : null,
+  "job_type" : null,
+  "review_result_state" : null,
+  "test_plan_id" : null,
+  "remaining_workload" : null,
+  "attachments" : null,
+  "actual_workload" : null,
+  "deliverable" : null,
+  "attention_count" : null,
+  "p_work_item_type_id" : null,
+  "comment_count" : null,
+  "project_identifier" : null,
+  "attentions" : null,
+  "rep_group_value" : null,
+  "rep_percent_value" : null,
+  "rep_value1" : null,
+  "rep_value3" : null,
+  "rep_value2" : null,
+  "state_type" : null,
+  "cur_version_name" : null,
+  "choose_version_id" : null,
+  "choose_version_name" : null,
+  "attentions_imp" : null,
+  "sprint_status" : null,
+  "release_status" : null,
+  "work_item_sub_type" : null,
+  "rep_date" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
+  "relation_total_idea" : null,
+  "relation_total_test_case" : null,
+  "relation_total_ticket" : null,
+  "relation_total_work_item" : null,
+  "work_item_origin_state" : null,
+  "is_overtime" : null,
+  "executors" : null,
+  "multiple_people" : null,
+  "actual_start_at" : null,
+  "actual_end_at" : null,
+  "finisher" : null,
+  "overdue_time" : null,
+  "deliverable_imp" : null,
+  "project_is_deleted" : null,
+  "project_is_archived" : null,
+  "dependencies" : null,
+  "board_id" : null,
+  "board_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "entry_id" : null,
+  "entry_name" : null,
+  "id" : null,
+  "pid" : null,
+  "project_id" : null,
+  "project_name" : null,
+  "ptitle" : null,
+  "release_id" : null,
+  "release_name" : null,
+  "sprint_id" : null,
+  "sprint_name" : null,
+  "swimlane_id" : null,
+  "top_id" : null,
+  "top_title" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "work_item_type_id" : null,
+  "work_item_type_name" : null,
+}
+
+```
+
+## 复制
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/{key}/copy_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`CREATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">backlog_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">backlog_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">reappear_probability</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">severity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">risk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_group</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">entry_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏状态|
+|<el-row justify="space-between"><el-col :span="20">entry_position</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|所在看板栏位置|
+|<el-row justify="space-between"><el-col :span="20">rep_num</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|统计数|
+|<el-row justify="space-between"><el-col :span="20">solution_way</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解决办法|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工作项类型序号|
+|<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
+|<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
+|<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
+|<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
+|<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">actual_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|实际工时|
+|<el-row justify="space-between"><el-col :span="20">deliverable</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|交付物|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">p_work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项类型|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">rep_group_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表分组属性|
+|<el-row justify="space-between"><el-col :span="20">rep_percent_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Double|报表百分值|
+|<el-row justify="space-between"><el-col :span="20">rep_value1</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值1|
+|<el-row justify="space-between"><el-col :span="20">rep_value3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值3|
+|<el-row justify="space-between"><el-col :span="20">rep_value2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值2|
+|<el-row justify="space-between"><el-col :span="20">state_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">sprint_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代状态|
+|<el-row justify="space-between"><el-col :span="20">release_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布阶段|
+|<el-row justify="space-between"><el-col :span="20">work_item_sub_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项下级类型|
+|<el-row justify="space-between"><el-col :span="20">rep_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|统计日期字段|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">relation_total_idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联产品需求数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联测试用例数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工单数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工作项数|
+|<el-row justify="space-between"><el-col :span="20">work_item_origin_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">is_overtime</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否超时|
+|<el-row justify="space-between"><el-col :span="20">executors</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|执行人|
+|<el-row justify="space-between"><el-col :span="20">multiple_people</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|多人任务|
+|<el-row justify="space-between"><el-col :span="20">actual_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">actual_end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">finisher</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完成人|
+|<el-row justify="space-between"><el-col :span="20">overdue_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
+|<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
+|<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">entry_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">ptitle</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">release_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">release_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">sprint_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">sprint_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">swimlane_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">top_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">top_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "show_identifier" : null,
+  "identifier" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "title" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "state" : null,
+  "priority" : null,
+  "is_leaf" : null,
+  "backlog_type" : null,
+  "backlog_from" : null,
+  "assignee_name" : null,
+  "description" : null,
+  "assignee_id" : null,
+  "cur_version_id" : null,
+  "reappear_probability" : null,
+  "severity" : null,
+  "risk" : null,
+  "project_type" : null,
+  "work_item_type_group" : null,
+  "tags" : null,
+  "entry_status" : null,
+  "entry_position" : null,
+  "rep_num" : null,
+  "solution_way" : null,
+  "work_item_type_sequence" : null,
+  "completed_at" : null,
+  "workload_schedule" : null,
+  "estimated_workload" : null,
+  "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3440,6 +3795,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -3537,6 +3893,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3640,6 +3997,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3756,6 +4114,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -3853,6 +4212,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -3956,6 +4316,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4072,6 +4433,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -4169,6 +4531,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4272,6 +4635,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4393,6 +4757,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -4490,6 +4855,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4607,6 +4973,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -4704,6 +5071,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4807,6 +5175,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -4923,6 +5292,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -5020,6 +5390,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5123,6 +5494,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5244,6 +5616,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -5341,6 +5714,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5465,6 +5839,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5588,6 +5963,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5704,6 +6080,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -5801,6 +6178,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -5904,6 +6282,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6025,6 +6404,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -6122,6 +6502,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6225,6 +6606,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6346,6 +6728,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -6443,6 +6826,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6565,6 +6949,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -6662,6 +7047,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6765,6 +7151,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -6886,6 +7273,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -6983,6 +7371,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7086,6 +7475,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7202,6 +7592,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -7299,6 +7690,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7402,6 +7794,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7523,6 +7916,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -7620,6 +8014,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7737,6 +8132,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -7834,6 +8230,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -7937,6 +8334,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8058,6 +8456,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -8155,6 +8554,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8272,6 +8672,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -8369,6 +8770,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8472,6 +8874,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8588,6 +8991,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -8685,6 +9089,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8788,6 +9193,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -8904,6 +9310,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -9001,6 +9408,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -9104,6 +9512,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -9225,6 +9634,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -9322,6 +9732,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -9444,6 +9855,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -9541,6 +9953,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -9663,6 +10076,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -9760,6 +10174,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -9882,6 +10297,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -9979,6 +10395,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -10101,6 +10518,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -10198,6 +10616,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -10320,6 +10739,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -10417,6 +10837,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -10539,6 +10960,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -10636,6 +11058,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -10758,6 +11181,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -10855,6 +11279,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -10979,6 +11404,7 @@ Integer
   "workload_schedule" : null,
   "estimated_workload" : null,
   "job_type" : null,
+  "review_result_state" : null,
   "test_plan_id" : null,
   "remaining_workload" : null,
   "attachments" : null,
@@ -11118,6 +11544,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11220,6 +11647,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -11291,6 +11719,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -11430,6 +11859,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11532,6 +11962,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -11603,6 +12034,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -11742,6 +12174,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11844,6 +12277,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -11915,6 +12349,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -12054,6 +12489,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -12156,6 +12592,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -12227,6 +12664,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -12366,6 +12804,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -12468,6 +12907,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -12539,6 +12979,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -12678,6 +13119,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -12780,6 +13222,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -12932,6 +13375,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -13034,6 +13478,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -13186,6 +13631,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -13288,6 +13734,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -13414,6 +13861,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -13516,6 +13964,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -13587,6 +14036,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -13726,6 +14176,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -13828,6 +14279,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -13994,6 +14446,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -14096,6 +14549,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -14262,6 +14716,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -14364,6 +14819,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -14435,6 +14891,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -14574,6 +15031,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -14676,6 +15134,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -14747,6 +15206,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -14886,6 +15346,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -14988,6 +15449,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -15059,6 +15521,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -15198,6 +15661,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -15300,6 +15764,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -15371,6 +15836,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -15510,6 +15976,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -15612,6 +16079,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -15731,6 +16199,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -15833,6 +16302,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -15904,6 +16374,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -16043,6 +16514,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -16145,6 +16617,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -16216,6 +16689,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -16355,6 +16829,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -16457,6 +16932,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -16528,6 +17004,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -16667,6 +17144,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -16769,6 +17247,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -16840,6 +17319,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -16979,6 +17459,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -17081,6 +17562,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -17200,6 +17682,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -17302,6 +17785,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -17454,6 +17938,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -17556,6 +18041,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -17708,6 +18194,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -17810,6 +18297,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -17881,6 +18369,322 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
+    "test_plan_id" : null,
+    "remaining_workload" : null,
+    "attachments" : null,
+    "actual_workload" : null,
+    "deliverable" : null,
+    "attention_count" : null,
+    "p_work_item_type_id" : null,
+    "comment_count" : null,
+    "project_identifier" : null,
+    "attentions" : null,
+    "rep_group_value" : null,
+    "rep_percent_value" : null,
+    "rep_value1" : null,
+    "rep_value3" : null,
+    "rep_value2" : null,
+    "state_type" : null,
+    "cur_version_name" : null,
+    "choose_version_id" : null,
+    "choose_version_name" : null,
+    "attentions_imp" : null,
+    "sprint_status" : null,
+    "release_status" : null,
+    "work_item_sub_type" : null,
+    "rep_date" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
+    "relation_total_idea" : null,
+    "relation_total_test_case" : null,
+    "relation_total_ticket" : null,
+    "relation_total_work_item" : null,
+    "work_item_origin_state" : null,
+    "is_overtime" : null,
+    "executors" : null,
+    "multiple_people" : null,
+    "actual_start_at" : null,
+    "actual_end_at" : null,
+    "finisher" : null,
+    "overdue_time" : null,
+    "deliverable_imp" : null,
+    "project_is_deleted" : null,
+    "project_is_archived" : null,
+    "dependencies" : null,
+    "board_id" : null,
+    "board_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "entry_id" : null,
+    "entry_name" : null,
+    "id" : null,
+    "pid" : null,
+    "project_id" : null,
+    "project_name" : null,
+    "ptitle" : null,
+    "release_id" : null,
+    "release_name" : null,
+    "sprint_id" : null,
+    "sprint_name" : null,
+    "swimlane_id" : null,
+    "top_id" : null,
+    "top_title" : null,
+    "update_man" : null,
+    "update_time" : null,
+    "work_item_type_id" : null,
+    "work_item_type_name" : null,
+  }
+]
+```
+
+## 拷贝集合
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/fetch_copy" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "f_end_at_datediffnow_gtandeq" : null,
+  "n_assignee_id_eq" : null,
+  "n_assignee_id_in" : null,
+  "n_assignee_id_isnotnull" : null,
+  "n_assignee_id_isnull" : null,
+  "n_assignee_id_noteq" : null,
+  "n_assignee_id_notin" : null,
+  "n_attentions_exists_n_owner_id_eq" : null,
+  "n_attentions_exists_n_type_eq" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
+  "n_attentions_notexists_n_type_eq" : null,
+  "n_attentions_notexists_n_user_id_eq" : null,
+  "n_backlog_from_eq" : null,
+  "n_backlog_type_eq" : null,
+  "n_board_id_eq" : null,
+  "n_board_name_eq" : null,
+  "n_board_name_like" : null,
+  "n_create_man_eq" : null,
+  "n_create_man_in" : null,
+  "n_create_man_isnotnull" : null,
+  "n_create_man_isnull" : null,
+  "n_create_man_noteq" : null,
+  "n_create_man_notin" : null,
+  "n_create_time_eq" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
+  "n_description_eq" : null,
+  "n_description_like" : null,
+  "n_end_at_gtandeq" : null,
+  "n_end_at_ltandeq" : null,
+  "n_entry_id_eq" : null,
+  "n_entry_name_eq" : null,
+  "n_entry_name_like" : null,
+  "n_executors_exists_n_user_id_eq" : null,
+  "n_id_eq" : null,
+  "n_id_exists_n_id_eq" : null,
+  "n_id_in" : null,
+  "n_id_noteq" : null,
+  "n_id_notin" : null,
+  "n_identifier_eq" : null,
+  "n_identifier_like" : null,
+  "n_is_archived_eq" : null,
+  "n_is_archived_in" : null,
+  "n_is_deleted_eq" : null,
+  "n_is_deleted_in" : null,
+  "n_job_type_eq" : null,
+  "n_overdue_time_eq" : null,
+  "n_overdue_time_gt" : null,
+  "n_overdue_time_gtandeq" : null,
+  "n_overdue_time_lt" : null,
+  "n_pid_eq" : null,
+  "n_priority_eq" : null,
+  "n_project_id_eq" : null,
+  "n_project_id_in" : null,
+  "n_project_name_eq" : null,
+  "n_project_name_like" : null,
+  "n_ptitle_eq" : null,
+  "n_ptitle_like" : null,
+  "n_reappear_probability_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
+  "n_release_id_eq" : null,
+  "n_release_name_eq" : null,
+  "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
+  "n_risk_eq" : null,
+  "n_severity_eq" : null,
+  "n_show_identifier_eq" : null,
+  "n_show_identifier_like" : null,
+  "n_sprint_id_eq" : null,
+  "n_sprint_id_isnull" : null,
+  "n_sprint_name_eq" : null,
+  "n_sprint_name_like" : null,
+  "n_start_at_gtandeq" : null,
+  "n_start_at_lt" : null,
+  "n_start_at_ltandeq" : null,
+  "n_state_eq" : null,
+  "n_state_noteq" : null,
+  "n_state_notin" : null,
+  "n_state_type_eq" : null,
+  "n_state_type_noteq" : null,
+  "n_swimlane_id_eq" : null,
+  "n_tags_like" : null,
+  "n_title_like" : null,
+  "n_top_id_eq" : null,
+  "n_top_id_in" : null,
+  "n_top_title_eq" : null,
+  "n_top_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
+  "n_work_item_origin_state_eq" : null,
+  "n_work_item_type_group_eq" : null,
+  "n_work_item_type_id_eq" : null,
+  "n_work_item_type_id_in" : null,
+  "n_work_item_type_id_like" : null,
+  "n_work_item_type_name_eq" : null,
+  "n_work_item_type_name_like" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "show_identifier" : null,
+    "identifier" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "title" : null,
+    "start_at" : null,
+    "end_at" : null,
+    "state" : null,
+    "priority" : null,
+    "is_leaf" : null,
+    "backlog_type" : null,
+    "backlog_from" : null,
+    "assignee_name" : null,
+    "description" : null,
+    "assignee_id" : null,
+    "cur_version_id" : null,
+    "reappear_probability" : null,
+    "severity" : null,
+    "risk" : null,
+    "project_type" : null,
+    "work_item_type_group" : null,
+    "tags" : null,
+    "entry_status" : null,
+    "entry_position" : null,
+    "rep_num" : null,
+    "solution_way" : null,
+    "work_item_type_sequence" : null,
+    "completed_at" : null,
+    "workload_schedule" : null,
+    "estimated_workload" : null,
+    "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -18020,6 +18824,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -18122,6 +18927,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -18193,6 +18999,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -18332,6 +19139,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -18434,6 +19242,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -18505,6 +19314,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -18644,6 +19454,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -18746,6 +19557,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -18817,6 +19629,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -18956,6 +19769,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -19058,6 +19872,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -19129,6 +19944,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -19268,6 +20084,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -19370,6 +20187,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -19441,6 +20259,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -19580,6 +20399,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -19682,6 +20502,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -19753,6 +20574,322 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
+    "test_plan_id" : null,
+    "remaining_workload" : null,
+    "attachments" : null,
+    "actual_workload" : null,
+    "deliverable" : null,
+    "attention_count" : null,
+    "p_work_item_type_id" : null,
+    "comment_count" : null,
+    "project_identifier" : null,
+    "attentions" : null,
+    "rep_group_value" : null,
+    "rep_percent_value" : null,
+    "rep_value1" : null,
+    "rep_value3" : null,
+    "rep_value2" : null,
+    "state_type" : null,
+    "cur_version_name" : null,
+    "choose_version_id" : null,
+    "choose_version_name" : null,
+    "attentions_imp" : null,
+    "sprint_status" : null,
+    "release_status" : null,
+    "work_item_sub_type" : null,
+    "rep_date" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
+    "relation_total_idea" : null,
+    "relation_total_test_case" : null,
+    "relation_total_ticket" : null,
+    "relation_total_work_item" : null,
+    "work_item_origin_state" : null,
+    "is_overtime" : null,
+    "executors" : null,
+    "multiple_people" : null,
+    "actual_start_at" : null,
+    "actual_end_at" : null,
+    "finisher" : null,
+    "overdue_time" : null,
+    "deliverable_imp" : null,
+    "project_is_deleted" : null,
+    "project_is_archived" : null,
+    "dependencies" : null,
+    "board_id" : null,
+    "board_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "entry_id" : null,
+    "entry_name" : null,
+    "id" : null,
+    "pid" : null,
+    "project_id" : null,
+    "project_name" : null,
+    "ptitle" : null,
+    "release_id" : null,
+    "release_name" : null,
+    "sprint_id" : null,
+    "sprint_name" : null,
+    "swimlane_id" : null,
+    "top_id" : null,
+    "top_title" : null,
+    "update_man" : null,
+    "update_time" : null,
+    "work_item_type_id" : null,
+    "work_item_type_name" : null,
+  }
+]
+```
+
+## 关联工作项（多需求）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/fetch_ideas_relation_work_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "f_end_at_datediffnow_gtandeq" : null,
+  "n_assignee_id_eq" : null,
+  "n_assignee_id_in" : null,
+  "n_assignee_id_isnotnull" : null,
+  "n_assignee_id_isnull" : null,
+  "n_assignee_id_noteq" : null,
+  "n_assignee_id_notin" : null,
+  "n_attentions_exists_n_owner_id_eq" : null,
+  "n_attentions_exists_n_type_eq" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
+  "n_attentions_notexists_n_type_eq" : null,
+  "n_attentions_notexists_n_user_id_eq" : null,
+  "n_backlog_from_eq" : null,
+  "n_backlog_type_eq" : null,
+  "n_board_id_eq" : null,
+  "n_board_name_eq" : null,
+  "n_board_name_like" : null,
+  "n_create_man_eq" : null,
+  "n_create_man_in" : null,
+  "n_create_man_isnotnull" : null,
+  "n_create_man_isnull" : null,
+  "n_create_man_noteq" : null,
+  "n_create_man_notin" : null,
+  "n_create_time_eq" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
+  "n_description_eq" : null,
+  "n_description_like" : null,
+  "n_end_at_gtandeq" : null,
+  "n_end_at_ltandeq" : null,
+  "n_entry_id_eq" : null,
+  "n_entry_name_eq" : null,
+  "n_entry_name_like" : null,
+  "n_executors_exists_n_user_id_eq" : null,
+  "n_id_eq" : null,
+  "n_id_exists_n_id_eq" : null,
+  "n_id_in" : null,
+  "n_id_noteq" : null,
+  "n_id_notin" : null,
+  "n_identifier_eq" : null,
+  "n_identifier_like" : null,
+  "n_is_archived_eq" : null,
+  "n_is_archived_in" : null,
+  "n_is_deleted_eq" : null,
+  "n_is_deleted_in" : null,
+  "n_job_type_eq" : null,
+  "n_overdue_time_eq" : null,
+  "n_overdue_time_gt" : null,
+  "n_overdue_time_gtandeq" : null,
+  "n_overdue_time_lt" : null,
+  "n_pid_eq" : null,
+  "n_priority_eq" : null,
+  "n_project_id_eq" : null,
+  "n_project_id_in" : null,
+  "n_project_name_eq" : null,
+  "n_project_name_like" : null,
+  "n_ptitle_eq" : null,
+  "n_ptitle_like" : null,
+  "n_reappear_probability_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
+  "n_release_id_eq" : null,
+  "n_release_name_eq" : null,
+  "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
+  "n_risk_eq" : null,
+  "n_severity_eq" : null,
+  "n_show_identifier_eq" : null,
+  "n_show_identifier_like" : null,
+  "n_sprint_id_eq" : null,
+  "n_sprint_id_isnull" : null,
+  "n_sprint_name_eq" : null,
+  "n_sprint_name_like" : null,
+  "n_start_at_gtandeq" : null,
+  "n_start_at_lt" : null,
+  "n_start_at_ltandeq" : null,
+  "n_state_eq" : null,
+  "n_state_noteq" : null,
+  "n_state_notin" : null,
+  "n_state_type_eq" : null,
+  "n_state_type_noteq" : null,
+  "n_swimlane_id_eq" : null,
+  "n_tags_like" : null,
+  "n_title_like" : null,
+  "n_top_id_eq" : null,
+  "n_top_id_in" : null,
+  "n_top_title_eq" : null,
+  "n_top_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
+  "n_work_item_origin_state_eq" : null,
+  "n_work_item_type_group_eq" : null,
+  "n_work_item_type_id_eq" : null,
+  "n_work_item_type_id_in" : null,
+  "n_work_item_type_id_like" : null,
+  "n_work_item_type_name_eq" : null,
+  "n_work_item_type_name_like" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "show_identifier" : null,
+    "identifier" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "title" : null,
+    "start_at" : null,
+    "end_at" : null,
+    "state" : null,
+    "priority" : null,
+    "is_leaf" : null,
+    "backlog_type" : null,
+    "backlog_from" : null,
+    "assignee_name" : null,
+    "description" : null,
+    "assignee_id" : null,
+    "cur_version_id" : null,
+    "reappear_probability" : null,
+    "severity" : null,
+    "risk" : null,
+    "project_type" : null,
+    "work_item_type_group" : null,
+    "tags" : null,
+    "entry_status" : null,
+    "entry_position" : null,
+    "rep_num" : null,
+    "solution_way" : null,
+    "work_item_type_sequence" : null,
+    "completed_at" : null,
+    "workload_schedule" : null,
+    "estimated_workload" : null,
+    "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -19892,6 +21029,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -19994,6 +21132,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -20065,6 +21204,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -20204,6 +21344,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -20306,6 +21447,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -20377,6 +21519,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -20516,6 +21659,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -20618,6 +21762,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -20689,6 +21834,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -20828,6 +21974,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -20930,6 +22077,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -21001,6 +22149,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -21140,6 +22289,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -21242,6 +22392,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -21313,6 +22464,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -21452,6 +22604,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -21554,6 +22707,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -21625,6 +22779,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -21764,6 +22919,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -21866,6 +23022,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -21937,6 +23094,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -22076,6 +23234,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -22178,6 +23337,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -22249,6 +23409,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -22388,6 +23549,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -22490,6 +23652,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -22561,6 +23724,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -22700,6 +23864,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -22802,6 +23967,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -22873,6 +24039,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -23012,6 +24179,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -23114,6 +24282,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -23185,6 +24354,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -23324,6 +24494,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -23426,6 +24597,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -23497,6 +24669,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -23636,6 +24809,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -23738,6 +24912,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -23809,6 +24984,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -23948,6 +25124,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -24050,6 +25227,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -24202,6 +25380,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -24304,6 +25483,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -24508,6 +25688,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -24610,6 +25791,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -24681,6 +25863,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -24820,6 +26003,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -24922,6 +26106,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -24993,6 +26178,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -25133,6 +26319,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -25235,6 +26422,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -25306,6 +26494,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -25445,6 +26634,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -25547,6 +26737,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -25665,6 +26856,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -25767,6 +26959,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -25919,6 +27112,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -26021,6 +27215,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -26092,6 +27287,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -26231,6 +27427,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -26333,6 +27530,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -26450,6 +27648,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -26552,6 +27751,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -26684,6 +27884,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -26786,6 +27987,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -26938,6 +28140,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -27040,6 +28243,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -27111,6 +28315,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -27250,6 +28455,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -27352,6 +28558,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -27423,6 +28630,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -27562,6 +28770,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -27664,6 +28873,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -27735,6 +28945,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -27874,6 +29085,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -27976,6 +29188,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -28128,6 +29341,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -28230,6 +29444,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -28301,6 +29516,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -28440,6 +29656,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -28542,6 +29759,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -28613,6 +29831,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -28752,6 +29971,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -28854,6 +30074,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -28925,6 +30146,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -29064,6 +30286,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -29166,6 +30389,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -29318,6 +30542,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -29420,6 +30645,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -29572,6 +30798,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -29674,6 +30901,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -29745,6 +30973,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -29884,6 +31113,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -29986,6 +31216,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -30057,6 +31288,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -30197,6 +31429,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -30299,6 +31532,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -30370,6 +31604,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -30509,6 +31744,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -30611,6 +31847,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -30682,6 +31919,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -30821,6 +32059,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -30923,6 +32162,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -30994,6 +32234,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -31133,6 +32374,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -31235,6 +32477,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -31306,6 +32549,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -31445,6 +32689,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -31547,6 +32792,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -31618,6 +32864,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -31757,6 +33004,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -31859,6 +33107,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -31930,6 +33179,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -32069,6 +33319,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -32171,6 +33422,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -32242,6 +33494,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -32381,6 +33634,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -32483,6 +33737,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -32554,6 +33809,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -32693,6 +33949,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -32795,6 +34052,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -32999,6 +34257,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -33101,6 +34360,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -33253,6 +34513,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -33355,6 +34616,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -33426,6 +34688,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -33565,6 +34828,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -33667,6 +34931,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -33738,6 +35003,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -33877,6 +35143,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -33979,6 +35246,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -34111,6 +35379,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -34213,6 +35482,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -34284,6 +35554,7 @@ Integer
     "workload_schedule" : null,
     "estimated_workload" : null,
     "job_type" : null,
+    "review_result_state" : null,
     "test_plan_id" : null,
     "remaining_workload" : null,
     "attachments" : null,
@@ -34423,6 +35694,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -34525,6 +35797,7 @@ Integer
   "n_release_id_eq" : null,
   "n_release_name_eq" : null,
   "n_release_name_like" : null,
+  "n_review_result_state_eq" : null,
   "n_risk_eq" : null,
   "n_severity_eq" : null,
   "n_show_identifier_eq" : null,
@@ -34787,6 +36060,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -34947,6 +36221,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35065,6 +36340,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35183,6 +36459,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35301,6 +36578,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35419,6 +36697,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35537,6 +36816,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35655,6 +36935,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35773,6 +37054,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -35890,6 +37172,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36008,6 +37291,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36126,6 +37410,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36244,6 +37529,126 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
+|<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">actual_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|实际工时|
+|<el-row justify="space-between"><el-col :span="20">deliverable</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|交付物|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">p_work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项类型|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">rep_group_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表分组属性|
+|<el-row justify="space-between"><el-col :span="20">rep_percent_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Double|报表百分值|
+|<el-row justify="space-between"><el-col :span="20">rep_value1</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值1|
+|<el-row justify="space-between"><el-col :span="20">rep_value3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值3|
+|<el-row justify="space-between"><el-col :span="20">rep_value2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值2|
+|<el-row justify="space-between"><el-col :span="20">state_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">sprint_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代状态|
+|<el-row justify="space-between"><el-col :span="20">release_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布阶段|
+|<el-row justify="space-between"><el-col :span="20">work_item_sub_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项下级类型|
+|<el-row justify="space-between"><el-col :span="20">rep_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|统计日期字段|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">relation_total_idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联产品需求数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联测试用例数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工单数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工作项数|
+|<el-row justify="space-between"><el-col :span="20">work_item_origin_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">is_overtime</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否超时|
+|<el-row justify="space-between"><el-col :span="20">executors</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|执行人|
+|<el-row justify="space-between"><el-col :span="20">multiple_people</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|多人任务|
+|<el-row justify="space-between"><el-col :span="20">actual_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">actual_end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">finisher</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完成人|
+|<el-row justify="space-between"><el-col :span="20">overdue_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
+|<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
+|<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">entry_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">ptitle</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">release_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">release_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">sprint_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">sprint_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">swimlane_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">top_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">top_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据项目复制
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/work_items/{key}/copy_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">backlog_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">backlog_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">reappear_probability</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">severity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">risk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_group</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">entry_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏状态|
+|<el-row justify="space-between"><el-col :span="20">entry_position</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|所在看板栏位置|
+|<el-row justify="space-between"><el-col :span="20">rep_num</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|统计数|
+|<el-row justify="space-between"><el-col :span="20">solution_way</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解决办法|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工作项类型序号|
+|<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
+|<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
+|<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
+|<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36361,6 +37766,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36478,6 +37884,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36595,6 +38002,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36713,6 +38121,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36830,6 +38239,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -36947,6 +38357,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37065,6 +38476,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37224,6 +38636,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37342,6 +38755,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37460,6 +38874,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37578,6 +38993,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37696,6 +39112,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37813,6 +39230,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -37931,6 +39349,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38048,6 +39467,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38166,6 +39586,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38283,6 +39704,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38400,6 +39822,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38517,6 +39940,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38635,6 +40059,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38753,6 +40178,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38871,6 +40297,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -38989,6 +40416,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -39107,6 +40535,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -39225,6 +40654,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -39343,6 +40773,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -39461,6 +40892,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -39622,6 +41054,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -39732,6 +41165,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -39842,6 +41276,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -39952,6 +41387,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40062,6 +41498,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40172,6 +41609,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40282,6 +41720,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40392,6 +41831,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40502,6 +41942,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40612,6 +42053,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40722,6 +42164,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40832,6 +42275,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -40942,6 +42386,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41052,6 +42497,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41162,6 +42608,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41272,6 +42719,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41382,6 +42830,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41492,6 +42941,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41602,6 +43052,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41712,6 +43163,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41822,6 +43274,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -41932,6 +43385,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42042,6 +43496,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42152,6 +43607,118 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据项目拷贝集合
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/work_items/fetch_copy" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42262,6 +43829,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42372,6 +43940,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42482,6 +44051,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42592,6 +44162,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42702,6 +44273,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42812,6 +44384,118 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据项目关联工作项（多需求）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/work_items/fetch_ideas_relation_work_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -42922,6 +44606,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43032,6 +44717,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43142,6 +44828,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43252,6 +44939,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43362,6 +45050,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43472,6 +45161,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43582,6 +45272,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43692,6 +45383,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43802,6 +45494,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -43912,6 +45605,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44022,6 +45716,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44132,6 +45827,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44242,6 +45938,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44352,6 +46049,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44462,6 +46160,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44572,6 +46271,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44682,6 +46382,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44792,6 +46493,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -44902,6 +46604,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45012,6 +46715,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45122,6 +46826,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45232,6 +46937,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45342,6 +47048,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45452,6 +47159,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45562,6 +47270,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45672,6 +47381,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45782,6 +47492,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -45892,6 +47603,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46002,6 +47714,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46112,6 +47825,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46222,6 +47936,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46332,6 +48047,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46442,6 +48158,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46552,6 +48269,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46662,6 +48380,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46772,6 +48491,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46882,6 +48602,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -46992,6 +48713,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47102,6 +48824,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47212,6 +48935,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47322,6 +49046,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47432,6 +49157,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47542,6 +49268,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47652,6 +49379,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47762,6 +49490,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47872,6 +49601,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -47982,6 +49712,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -48092,6 +49823,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -48202,6 +49934,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -48312,6 +50045,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -48587,6 +50321,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -48747,6 +50482,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -48865,6 +50601,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -48983,6 +50720,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49101,6 +50839,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49219,6 +50958,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49337,6 +51077,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49455,6 +51196,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49573,6 +51315,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49690,6 +51433,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49808,6 +51552,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -49926,6 +51671,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50044,6 +51790,126 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
+|<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">actual_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|实际工时|
+|<el-row justify="space-between"><el-col :span="20">deliverable</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|交付物|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">p_work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项类型|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">rep_group_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表分组属性|
+|<el-row justify="space-between"><el-col :span="20">rep_percent_value</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Double|报表百分值|
+|<el-row justify="space-between"><el-col :span="20">rep_value1</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值1|
+|<el-row justify="space-between"><el-col :span="20">rep_value3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值3|
+|<el-row justify="space-between"><el-col :span="20">rep_value2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|报表值2|
+|<el-row justify="space-between"><el-col :span="20">state_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">sprint_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代状态|
+|<el-row justify="space-between"><el-col :span="20">release_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布阶段|
+|<el-row justify="space-between"><el-col :span="20">work_item_sub_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项下级类型|
+|<el-row justify="space-between"><el-col :span="20">rep_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|统计日期字段|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">relation_total_idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联产品需求数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联测试用例数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工单数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工作项数|
+|<el-row justify="space-between"><el-col :span="20">work_item_origin_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">is_overtime</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否超时|
+|<el-row justify="space-between"><el-col :span="20">executors</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|执行人|
+|<el-row justify="space-between"><el-col :span="20">multiple_people</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|多人任务|
+|<el-row justify="space-between"><el-col :span="20">actual_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">actual_end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">finisher</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完成人|
+|<el-row justify="space-between"><el-col :span="20">overdue_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
+|<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
+|<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">entry_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">ptitle</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">release_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">release_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">sprint_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">sprint_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">swimlane_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">top_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">top_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据工作项复制
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/{pkey}/work_items/{key}/copy_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工作项主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">backlog_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">backlog_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">reappear_probability</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">severity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">risk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_group</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">entry_status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏状态|
+|<el-row justify="space-between"><el-col :span="20">entry_position</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|所在看板栏位置|
+|<el-row justify="space-between"><el-col :span="20">rep_num</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|统计数|
+|<el-row justify="space-between"><el-col :span="20">solution_way</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解决办法|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工作项类型序号|
+|<el-row justify="space-between"><el-col :span="20">completed_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|完成时间|
+|<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
+|<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
+|<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50161,6 +52027,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50278,6 +52145,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50395,6 +52263,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50513,6 +52382,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50630,6 +52500,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50747,6 +52618,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -50865,6 +52737,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51024,6 +52897,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51142,6 +53016,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51260,6 +53135,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51378,6 +53254,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51496,6 +53373,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51613,6 +53491,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51731,6 +53610,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51848,6 +53728,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -51966,6 +53847,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52083,6 +53965,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52200,6 +54083,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52317,6 +54201,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52435,6 +54320,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52553,6 +54439,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52671,6 +54558,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52789,6 +54677,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -52907,6 +54796,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -53025,6 +54915,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -53143,6 +55034,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -53261,6 +55153,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
 |<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
 |<el-row justify="space-between"><el-col :span="20">job_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">review_result_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">test_plan_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划ID|
 |<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
 |<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
@@ -53422,6 +55315,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -53532,6 +55426,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -53642,6 +55537,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -53752,6 +55648,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -53862,6 +55759,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -53972,6 +55870,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54082,6 +55981,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54192,6 +56092,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54302,6 +56203,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54412,6 +56314,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54522,6 +56425,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54632,6 +56536,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54742,6 +56647,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54852,6 +56758,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -54962,6 +56869,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55072,6 +56980,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55182,6 +57091,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55292,6 +57202,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55402,6 +57313,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55512,6 +57424,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55622,6 +57535,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55732,6 +57646,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55842,6 +57757,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -55952,6 +57868,118 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据工作项拷贝集合
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/{pkey}/work_items/fetch_copy" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工作项主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56062,6 +58090,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56172,6 +58201,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56282,6 +58312,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56392,6 +58423,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56502,6 +58534,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56612,6 +58645,118 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
+|<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代标识|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_sprint_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|迭代名称|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_start_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_state_type_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项状态类型|
+|<el-row justify="space-between"><el-col :span="20">n_swimlane_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|泳道标识|
+|<el-row justify="space-between"><el-col :span="20">n_tags_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标签|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标识|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_top_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|顶级工作项标题|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_origin_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|原始状态|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_group_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型分组|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_id_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_type_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
+
+
+
+## 根据工作项关联工作项（多需求）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/{pkey}/work_items/fetch_ideas_relation_work_item" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工作项主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">f_end_at_datediffnow_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_notexists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_backlog_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_board_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_board_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_end_at_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|截止时间|
+|<el-row justify="space-between"><el-col :span="20">n_entry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_entry_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏名称|
+|<el-row justify="space-between"><el-col :span="20">n_executors_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_exists_n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|任务类别|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_overdue_time_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逾期天数|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属项目|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_ptitle_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父工作项|
+|<el-row justify="space-between"><el-col :span="20">n_reappear_probability_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|复现概率|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56722,6 +58867,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56832,6 +58978,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -56942,6 +59089,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57052,6 +59200,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57162,6 +59311,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57272,6 +59422,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57382,6 +59533,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57492,6 +59644,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57602,6 +59755,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57712,6 +59866,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57822,6 +59977,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -57932,6 +60088,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58042,6 +60199,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58152,6 +60310,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58262,6 +60421,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58372,6 +60532,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58482,6 +60643,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58592,6 +60754,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58702,6 +60865,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58812,6 +60976,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -58922,6 +61087,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59032,6 +61198,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59142,6 +61309,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59252,6 +61420,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59362,6 +61531,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59472,6 +61642,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59582,6 +61753,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59692,6 +61864,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59802,6 +61975,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -59912,6 +62086,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60022,6 +62197,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60132,6 +62308,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60242,6 +62419,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60352,6 +62530,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60462,6 +62641,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60572,6 +62752,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60682,6 +62863,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60792,6 +62974,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -60902,6 +63085,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61012,6 +63196,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61122,6 +63307,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61232,6 +63418,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61342,6 +63529,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61452,6 +63640,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61562,6 +63751,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61672,6 +63862,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61782,6 +63973,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -61892,6 +64084,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -62002,6 +64195,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -62112,6 +64306,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布名称|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_risk_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|风险|
 |<el-row justify="space-between"><el-col :span="20">n_severity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|严重程度|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|

@@ -73,6 +73,7 @@
 |[共享空间(SHARED_SPACE)](module/Wiki/shared_space)|<a href ="#/module/Wiki/shared_space#shared_space-admin_rw">管理员（读写）</a>|
 |[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)|<a href ="#/module/Team/discuss_reply#discuss_reply-all_r">全部数据（读）</a>|
 |[工时(WORKLOAD)](module/Base/workload)|<a href ="#/module/Base/workload#workload-all_r">全部数据（读）</a>|
+|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|<a href ="#/module/ProjMgmt/transition_history#transition_history-all_r">全部数据（读）</a>|
 |[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|<a href ="#/module/ProjMgmt/project_state#project_state-all_r">全部数据（读）</a>|
 |[人员(SYS_PERSON)](module/ibizsysmgr/sys_person)|<a href ="#/module/ibizsysmgr/sys_person#sys_person-user_rw">普通用户（读写）</a>|
 |[洞察力(INSIGHT)](module/Base/insight)|<a href ="#/module/Base/insight#insight-all_r">全部数据（读）</a>|
@@ -121,6 +122,7 @@
 |[智能报表(PSSYSBIREPORT)](module/extension/PSSysBIReport)|<a href ="#/module/extension/PSSysBIReport#pssysbireport-all_rw">全部数据（读写）</a>|
 |[视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)|<a href ="#/module/Base/view_theme_setting#view_theme_setting-all_r">全部数据（读）</a>|
 |[类别(CATEGORY)](module/Base/category)|<a href ="#/module/Base/category#category-all_r">全部数据（读）</a>|
+|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|<a href ="#/module/ProdMgmt/product_ticket_type#product_ticket_type-all_r">全部数据（读）</a>|
 |[智能报表立方体(PSSYSBICUBE)](module/extension/PSSysBICube)|<a href ="#/module/extension/PSSysBICube#pssysbicube-all_rw">全部数据（读写）</a>|
 |[项目(PROJECT)](module/ProjMgmt/project)|<a href ="#/module/ProjMgmt/project#project-user_rw">普通用户（读写）</a>|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|<a href ="#/module/extension/PSDENotify#psdenotify-all_rw">全部数据（读写）</a>|

@@ -265,6 +265,7 @@
 |[已删除(deleted)](module/TestMgmt/test_case/query/deleted)|deleted|否|否 |否 ||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/test_case/query/everydayTest)|everydayTest|否|否 |否 ||
 |[需求关联测试用例(idea_relation_test_case)](module/TestMgmt/test_case/query/idea_relation_test_case)|idea_relation_test_case|否|否 |否 ||
+|[关联测试用例（多需求）(ideas_relation_test_case)](module/TestMgmt/test_case/query/ideas_relation_test_case)|ideas_relation_test_case|否|否 |是 ||
 |[我负责的测试用例(my_assign)](module/TestMgmt/test_case/query/my_assign)|my_assign|否|否 |否 ||
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的测试用例(my_created)](module/TestMgmt/test_case/query/my_created)|my_created|否|否 |否 ||
@@ -309,6 +310,7 @@
 |[已删除(deleted)](module/TestMgmt/test_case/dataset/deleted)|deleted|数据查询|否|||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/test_case/dataset/everydayTest)|everydayTest|数据查询|否|||
 |[需求关联测试用例(idea_relation_test_case)](module/TestMgmt/test_case/dataset/idea_relation_test_case)|idea_relation_test_case|数据查询|否|||
+|[关联测试用例（多需求）(ideas_relation_test_case)](module/TestMgmt/test_case/dataset/ideas_relation_test_case)|ideas_relation_test_case|数据查询|否|||
 |[我负责的测试用例(my_assign)](module/TestMgmt/test_case/dataset/my_assign)|my_assign|数据查询|否|||
 |[我负责的用例(my_assignee_count_test_case)](module/TestMgmt/test_case/dataset/my_assignee_count_test_case)|my_assignee_count_test_case|数据查询|否|||
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/dataset/my_attention)|my_attention|数据查询|否|||

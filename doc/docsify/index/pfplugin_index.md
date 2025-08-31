@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.232`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.258`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -72,7 +72,7 @@
 
 运行对象：`MobPersonalInfo`
 
-远程仓库：`@ibiz-template-plmmob/mob-personal-info@0.0.3-alpha.206`
+远程仓库：`@ibiz-template-plmmob/mob-personal-info@0.0.3-alpha.256`
 
 ### 人员头像上传 :id=AVATAR_UPLOAD
 
@@ -135,7 +135,7 @@
 
 运行对象：`IBizGroupTreeControl`
 
-远程仓库：`@ibiz-template-plm/group-tree@0.0.3-alpha.196`
+远程仓库：`@ibiz-template-plm/group-tree@0.0.3-alpha.252`
 
 ### 分页分组下拉导航树插件 :id=TAB_GROUP_SELECT
 
@@ -744,7 +744,7 @@
 
 运行对象：`BREADCRUMB_NAV_POS`
 
-远程仓库：`@ibiz-template-plm/breadcrumb-nav-pos@0.0.3-alpha.244`
+远程仓库：`@ibiz-template-plm/breadcrumb-nav-pos@0.0.3-alpha.247`
 
 ### 项目属性 :id=PROJECT_ATTRIBUTES
 

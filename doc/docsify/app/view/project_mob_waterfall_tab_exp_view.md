@@ -9,10 +9,10 @@
 
 
 ### 关联界面行为
-  * [项目(PROJECT)](module/ProjMgmt/project) : [项目成员（移动端）](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [回收站（移动端）](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [项目设置（移动端）](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [项目成员（移动端）](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [高级设置（移动端）](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [项目设置（移动端）](module/ProjMgmt/project#界面行为)
 
 ### 关联视图
   * [交付物(deliverable_mob_list_view)](app/view/deliverable_mob_list_view)

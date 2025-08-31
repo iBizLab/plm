@@ -44,6 +44,7 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
+|拷贝|Copy|内置方法|默认|不支持||[BoardCopyDEActionRuntime](index/plugin_index#BoardCopyDEActionRuntime)||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#board_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||

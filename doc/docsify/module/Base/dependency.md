@@ -35,6 +35,7 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_TARGET_WORK_ITEM)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
 |[DERCUSTOM_DEPENDENCY_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_WORK_ITEM)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
 
 </el-tab-pane>

@@ -7688,9 +7688,9 @@
     "emptyText" : "未定义",
     "name" : "工单字典",
     "getPSCodeItems" : [ {
-      "codeName" : "ticket_status",
+      "codeName" : "ticket_state",
       "text" : "工单状态",
-      "value" : "ticket_status"
+      "value" : "ticket_state"
     }, {
       "codeName" : "ticket_solution",
       "text" : "工单解决方案",
@@ -14713,7 +14713,7 @@
     "pluginCode" : "COMMENT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizHtmlComment",
-    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.232",
+    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.259",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -14880,7 +14880,7 @@
     "pluginCode" : "GROUP_TREE",
     "pluginType" : "TREE_RENDER",
     "rTObjectName" : "IBizGroupTreeControl",
-    "rTObjectRepo" : "@ibiz-template-plm/group-tree@0.0.3-alpha.196",
+    "rTObjectRepo" : "@ibiz-template-plm/group-tree@0.0.3-alpha.252",
     "refMode" : "CONTROL",
     "refTag" : "TREEVIEW",
     "runtimeObject" : true
@@ -58718,7 +58718,7 @@
     "name" : "memberRedirectView"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/INDEX.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/references_index_index_pick_up_data_view.json",
     "viewType" : "DEINDEXPICKUPDATAVIEW",
     "resource" : "references_index",
     "view" : "index_pick_up_data_view",
@@ -59085,7 +59085,7 @@
     "name" : "project_memberassigned_grid_view"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/INDEX.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/references_index_index_pick_up_view.json",
     "viewType" : "DEPICKUPVIEW",
     "resource" : "references_index",
     "view" : "index_pick_up_view",
@@ -90831,11 +90831,16 @@
             "modelref" : true,
             "id" : "project_dto"
           },
-          "type" : "DTO"
+          "type" : "DTO",
+          "output" : true
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
-          "type" : "VOID"
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
         },
         "getPSDEAction" : {
           "modelref" : true,
@@ -93746,27 +93751,6 @@
           "topPos" : 410,
           "parallelOutput" : true
         }, {
-          "codeName" : "PREPAREPARAM1",
-          "leftPos" : -170,
-          "logicNodeType" : "PREPAREPARAM",
-          "name" : "准备参数",
-          "getPSDELogicNodeParams" : [ {
-            "dstFieldName" : "ID",
-            "getDstPSDELogicParam" : {
-              "modelref" : true,
-              "id" : "project"
-            },
-            "name" : "Default[cur_project] ==> project[ID]",
-            "paramAction" : "SETPARAMVALUE",
-            "srcFieldName" : "cur_project",
-            "getSrcPSDELogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "srcValueType" : "SRCDLPARAM"
-          } ],
-          "topPos" : 460
-        }, {
           "codeName" : "DEACTION1",
           "getDstPSAppDEAction" : {
             "modelref" : true,
@@ -93807,27 +93791,6 @@
             "id" : "project"
           },
           "topPos" : 580
-        }, {
-          "codeName" : "PREPAREPARAM2",
-          "leftPos" : -170,
-          "logicNodeType" : "PREPAREPARAM",
-          "name" : "准备参数",
-          "getPSDELogicNodeParams" : [ {
-            "dstFieldName" : "ID",
-            "getDstPSDELogicParam" : {
-              "modelref" : true,
-              "id" : "project"
-            },
-            "name" : "Default[new_project] ==> project[ID]",
-            "paramAction" : "SETPARAMVALUE",
-            "srcFieldName" : "new_project",
-            "getSrcPSDELogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "srcValueType" : "SRCDLPARAM"
-          } ],
-          "topPos" : 662
         }, {
           "codeName" : "DEACTION2",
           "getDstPSAppDEAction" : {
@@ -95469,11 +95432,16 @@
             "modelref" : true,
             "id" : "project_dto"
           },
-          "type" : "DTO"
+          "type" : "DTO",
+          "output" : true
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
-          "type" : "VOID"
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "project_dto"
+          },
+          "type" : "DTO"
         },
         "getPSDEAction" : {
           "modelref" : true,
@@ -128694,7 +128662,7 @@
               }, {
                 "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
                 "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
-                "value" : "n_work_item_type_id_in",
+                "value" : "work_item_sub_type",
                 "rawValue" : false
               } ],
               "getPSSysImage" : {
@@ -134246,7 +134214,7 @@
         }, {
           "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
           "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
-          "value" : "n_work_item_type_id_in",
+          "value" : "work_item_sub_type",
           "rawValue" : false
         } ],
         "getPSSysImage" : {
@@ -146164,11 +146132,16 @@
             "modelref" : true,
             "id" : "work_item_dto"
           },
-          "type" : "DTO"
+          "type" : "DTO",
+          "output" : true
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
-          "type" : "VOID"
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "work_item_dto"
+          },
+          "type" : "DTO"
         },
         "getPSDEAction" : {
           "modelref" : true,
@@ -161381,11 +161354,16 @@
             "modelref" : true,
             "id" : "work_item_dto"
           },
-          "type" : "DTO"
+          "type" : "DTO",
+          "output" : true
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
-          "type" : "VOID"
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "work_item_dto"
+          },
+          "type" : "DTO"
         },
         "getPSDEAction" : {
           "modelref" : true,

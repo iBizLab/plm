@@ -18,11 +18,11 @@
 
 
 ### 关联界面行为
+  * [基线(BASELINE)](module/Base/baseline) : [表格界面_导出操作（Excel）](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [删除基线](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [表格界面_新建操作](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [编辑基线（项目）](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [设立完成（项目）](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [表格界面_导出操作（Excel）](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [编辑基线（项目）](module/Base/baseline#界面行为)
 
 ### 关联界面逻辑
   * [基线(BASELINE)](module/Base/baseline) : [计算表格列行为状态](module/Base/baseline/uilogic/calc_column_action_state)

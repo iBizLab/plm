@@ -127,9 +127,11 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[DERCUSTOM_ADDON_PROJECT_OWNER_ID](der/DERCUSTOM_ADDON_PROJECT_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID](der/DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID)|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|自定义关系||
 |[DERCUSTOM_BASELINE_PROJECT_OWNER_ID](der/DERCUSTOM_BASELINE_PROJECT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
+|[DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID](der/DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 |[DERCUSTOM_MEMBER_PROJECT_OWNER_ID](der/DERCUSTOM_MEMBER_PROJECT_OWNER_ID)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_RELATION_PROJECT](der/DERCUSTOM_RELATION_PROJECT)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PROJECT](der/DERCUSTOM_RELATION_TARGET_PROJECT)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID](der/DERCUSTOM_REVIEW_PROJECT_PRINCIPAL_ID)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_WORK_PROJECT_PILOT_ID](der/DERCUSTOM_WORK_PROJECT_PILOT_ID)|[工作(WORK)](module/Base/work)|自定义关系||
 
 
@@ -150,6 +152,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
+|复制|Copy|内置方法|默认|不支持||[ProjectCopyDEActionRuntime](index/plugin_index#ProjectCopyDEActionRuntime)||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#project_Create)|||
 |CreateTemp|CreateTemp|内置方法|默认|不支持||||
 |CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
@@ -172,6 +175,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |删除|delete|[实体处理逻辑](module/ProjMgmt/project/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProjMgmt/project/logic/favorite "设置星标")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProjMgmt/project/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
+|填充复制项目信息|fill_copy_info|[实体处理逻辑](module/ProjMgmt/project/logic/fill_copy_info "填充复制项目信息")|默认|不支持||||
 |获取主数据|get_major_data|用户自定义|默认|不支持|[附加操作](index/action_logic_index#project_get_major_data)|||
 |混合项目组件计数器|hybrid_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/hybrid_project_addon_authority "hybrid项目组件权限计数器")|默认|不支持||||
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
@@ -197,10 +201,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
 |[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
+|[创建项目流程准则](module/ProjMgmt/project/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
+|[填充复制项目信息](module/ProjMgmt/project/logic/fill_copy_info)|fill_copy_info|无||复制项目时，填充当前项目的基本信息|
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -293,22 +299,23 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `END`
-* `UPDATE`
-* `READ_PSDELOGIC`
-* `MANAGE_PSDEFORM`
-* `MANAGE_PSDEMSLOGIC`
-* `READ_PSDENOTIFY`
-* `READ_PSDEFIELD`
-* `MANAGE_PSDEFIELD`
-* `BEGIN`
-* `READ`
-* `READ_PSDEFORM`
-* `SUBDATA`
-* `MANAGE_PSDENOTIFY`
-* `READ_PSDEMSLOGIC`
-* `DELETE`
 * `MANAGE_PSDELOGIC`
+* `SUBDATA`
+* `MANAGE_PSDEFIELD`
+* `COPY`
+* `READ_PSDELOGIC`
+* `READ_PSDEFIELD`
+* `READ`
+* `UPDATE`
+* `MANAGE_PSDENOTIFY`
+* `MANAGE_PSDEMSLOGIC`
+* `END`
+* `READ_PSDENOTIFY`
+* `MANAGE_PSDEFORM`
+* `DELETE`
+* `READ_PSDEFORM`
+* `READ_PSDEMSLOGIC`
+* `BEGIN`
 
 
 
@@ -320,13 +327,14 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
 * `SUBDATA`
-* `READ`
-* `END`
-* `CREATE`
-* `UPDATE`
+* `DELETE`
 * `BEGIN`
+* `END`
+* `UPDATE`
+* `COPY`
+* `CREATE`
+* `READ`
 
 
 
@@ -338,6 +346,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `COPY`
 * `CREATE`
 
 
@@ -362,14 +371,15 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ_PSDELOGIC`
-* `READ`
 * `READ_PSDENOTIFY`
-* `READ_PSDEFORM`
-* `SUBDATA`
+* `READ_PSDELOGIC`
 * `BEGIN`
-* `READ_PSDEMSLOGIC`
+* `READ`
+* `COPY`
+* `SUBDATA`
 * `READ_PSDEFIELD`
+* `READ_PSDEMSLOGIC`
+* `READ_PSDEFORM`
 * `END`
 
 
@@ -444,6 +454,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 反查打开项目 | bi_open_project | 打开项目 |单项数据|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
+| 复制项目 | copy_project | 复制项目 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[复制项目](app/view/project_copy_wizard_view)</details>|项目快速建立视图|
 | 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/project_mob_advanced_setting_view)</details>||
 | 查看当日到期预警 | open_cur_waring | 查看当日到期预警 |无数据|<details><summary>打开视图或向导（模态）</summary>[今日到期预警](app/view/work_item_cur_warning_grid_view)</details>||

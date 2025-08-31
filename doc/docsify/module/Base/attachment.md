@@ -78,6 +78,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/attachment/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/attachment/query/View)|VIEW|否|否 |否 ||
+|[附件(attachments)](module/Base/attachment/query/attachments)|attachments|否|否 |否 ||
 |[移动端工作项附件(mob_work_item_attachment)](module/Base/attachment/query/mob_work_item_attachment)|mob_work_item_attachment|否|否 |否 ||
 |[项目下的交付物(project_deliverable)](module/Base/attachment/query/project_deliverable)|project_deliverable|否|否 |是 ||
 |[工作项交付物(work_item_deliverable)](module/Base/attachment/query/work_item_deliverable)|work_item_deliverable|否|否 |否 ||
@@ -86,6 +87,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/attachment/dataset/Default)|DEFAULT|数据查询|是|||
+|[附件(attachments)](module/Base/attachment/dataset/attachments)|attachments|数据查询|否|||
 |[移动端工作项附件(mob_work_item_attachment)](module/Base/attachment/dataset/mob_work_item_attachment)|mob_work_item_attachment|数据查询|否|||
 |[项目下的交付物(project_deliverable)](module/Base/attachment/dataset/project_deliverable)|project_deliverable|数据查询|否|||
 |[工作项交付物(work_item_deliverable)](module/Base/attachment/dataset/work_item_deliverable)|work_item_deliverable|数据查询|否|||

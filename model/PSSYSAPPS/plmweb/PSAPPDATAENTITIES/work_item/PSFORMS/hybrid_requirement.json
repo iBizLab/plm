@@ -1008,20 +1008,24 @@
                 "getPSDEFDLogics" : [ {
                   "groupOP" : "OR",
                   "logicType" : "GROUP",
+                  "name" : "OR",
                   "getPSDEFDLogics" : [ {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) closed",
                     "value" : "closed"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) completed",
                     "value" : "completed"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) in_progress",
                     "value" : "in_progress"
                   } ],
                   "notMode" : false
@@ -7758,7 +7762,7 @@
                       "srfnavparam.size" : "20",
                       "srfnavparam.principal_id" : "%principal_id%",
                       "lastlabel" : "更多工作项",
-                      "srfnavparam.n_work_item_type_id_in" : "%n_work_item_type_id_in%",
+                      "srfnavparam.n_work_item_type_id_in" : "%work_item_sub_type%",
                       "AC" : "TRUE",
                       "srfnavparam.project" : "%project%",
                       "toplabel" : "最近浏览",
@@ -7792,7 +7796,7 @@
                     }, {
                       "key" : "n_work_item_type_id_in",
                       "name" : "n_work_item_type_id_in",
-                      "value" : "n_work_item_type_id_in",
+                      "value" : "work_item_sub_type",
                       "rawValue" : false
                     }, {
                       "key" : "project",
@@ -7848,7 +7852,7 @@
                           }, {
                             "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
                             "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
-                            "value" : "n_work_item_type_id_in",
+                            "value" : "work_item_sub_type",
                             "rawValue" : false
                           } ],
                           "getPSSysImage" : {
@@ -8869,6 +8873,12 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "getPSNavigateContexts" : [ {
+              "key" : "WORK_ITEM_SUB_TYPE",
+              "name" : "WORK_ITEM_SUB_TYPE",
+              "value" : "work_item_sub_type",
+              "rawValue" : false
+            } ],
             "parentDataJO" : {
               "SRFPARENTTYPE" : "DER1N",
               "srfparentdename" : "WORK_ITEM",
@@ -20613,11 +20623,13 @@
                   "condOP" : "EQ",
                   "dEFDName" : "is_archived",
                   "logicType" : "SINGLE",
+                  "name" : "is_archived等于(=) 0",
                   "value" : "0"
                 }, {
                   "condOP" : "EQ",
                   "dEFDName" : "is_deleted",
                   "logicType" : "SINGLE",
+                  "name" : "is_deleted等于(=) 0",
                   "value" : "0"
                 } ],
                 "relatedDetailNames" : [ "is_archived", "is_deleted" ],
@@ -20813,11 +20825,13 @@
                   "condOP" : "EQ",
                   "dEFDName" : "is_archived",
                   "logicType" : "SINGLE",
+                  "name" : "is_archived等于(=) 0",
                   "value" : "0"
                 }, {
                   "condOP" : "EQ",
                   "dEFDName" : "is_deleted",
                   "logicType" : "SINGLE",
+                  "name" : "is_deleted等于(=) 0",
                   "value" : "0"
                 } ],
                 "relatedDetailNames" : [ "is_archived", "is_deleted" ],
@@ -21202,6 +21216,7 @@
             "condOP" : "EQ",
             "dEFDName" : "workload_schedule",
             "logicType" : "SINGLE",
+            "name" : "workload_schedule等于(=) -1",
             "value" : "-1"
           } ],
           "relatedDetailNames" : [ "workload_schedule" ],
@@ -22030,6 +22045,7 @@
             "condOP" : "EQ",
             "dEFDName" : "workload_schedule",
             "logicType" : "SINGLE",
+            "name" : "workload_schedule等于(=) -1",
             "value" : "-1"
           } ],
           "relatedDetailNames" : [ "workload_schedule" ],
@@ -22858,7 +22874,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNULL",
             "dEFDName" : "id",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "id值为空(Nil)"
           } ],
           "relatedDetailNames" : [ "id" ],
           "notMode" : false

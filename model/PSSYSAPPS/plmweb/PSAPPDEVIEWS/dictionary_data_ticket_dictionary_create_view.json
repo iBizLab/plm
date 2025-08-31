@@ -335,7 +335,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "catalog",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "catalog值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "catalog" ],
             "notMode" : false
@@ -374,10 +375,23 @@
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
             "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "catalog",
-              "logicType" : "SINGLE",
-              "value" : "idea_state"
+              "groupOP" : "OR",
+              "logicType" : "GROUP",
+              "name" : "OR",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "catalog",
+                "logicType" : "SINGLE",
+                "name" : "catalog等于(=) idea_state",
+                "value" : "idea_state"
+              }, {
+                "condOP" : "EQ",
+                "dEFDName" : "catalog",
+                "logicType" : "SINGLE",
+                "name" : "catalog等于(=) ticket_state",
+                "value" : "ticket_state"
+              } ],
+              "notMode" : false
             } ],
             "relatedDetailNames" : [ "catalog" ],
             "notMode" : false
@@ -388,7 +402,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "catalog",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "catalog值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "catalog" ],
             "notMode" : false
@@ -434,7 +449,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "catalog",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "catalog值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "catalog" ],
             "notMode" : false
@@ -474,6 +490,7 @@
               "condOP" : "EQ",
               "dEFDName" : "catalog",
               "logicType" : "SINGLE",
+              "name" : "catalog等于(=) ticket_priority",
               "value" : "ticket_priority"
             } ],
             "relatedDetailNames" : [ "catalog" ],

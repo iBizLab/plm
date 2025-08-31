@@ -126,9 +126,9 @@
     "codeName" : "estimated_update",
     "name" : "预估工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "workload_schedule"
-    }, {
       "name" : "remaining_workload"
+    }, {
+      "name" : "workload_schedule"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
     "customCode" : true,
@@ -1008,20 +1008,24 @@
                 "getPSDEFDLogics" : [ {
                   "groupOP" : "OR",
                   "logicType" : "GROUP",
+                  "name" : "OR",
                   "getPSDEFDLogics" : [ {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) closed",
                     "value" : "closed"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) completed",
                     "value" : "completed"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "state_type",
                     "logicType" : "SINGLE",
+                    "name" : "state_type等于(=) in_progress",
                     "value" : "in_progress"
                   } ],
                   "notMode" : false
@@ -7758,7 +7762,7 @@
                       "srfnavparam.size" : "20",
                       "srfnavparam.principal_id" : "%principal_id%",
                       "lastlabel" : "更多工作项",
-                      "srfnavparam.n_work_item_type_id_in" : "%n_work_item_type_id_in%",
+                      "srfnavparam.n_work_item_type_id_in" : "%work_item_sub_type%",
                       "AC" : "TRUE",
                       "srfnavparam.project" : "%project%",
                       "toplabel" : "最近浏览",
@@ -7792,7 +7796,7 @@
                     }, {
                       "key" : "n_work_item_type_id_in",
                       "name" : "n_work_item_type_id_in",
-                      "value" : "n_work_item_type_id_in",
+                      "value" : "work_item_sub_type",
                       "rawValue" : false
                     }, {
                       "key" : "project",
@@ -7848,7 +7852,7 @@
                           }, {
                             "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
                             "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
-                            "value" : "n_work_item_type_id_in",
+                            "value" : "work_item_sub_type",
                             "rawValue" : false
                           } ],
                           "getPSSysImage" : {
@@ -8869,6 +8873,12 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "getPSNavigateContexts" : [ {
+              "key" : "WORK_ITEM_SUB_TYPE",
+              "name" : "WORK_ITEM_SUB_TYPE",
+              "value" : "work_item_sub_type",
+              "rawValue" : false
+            } ],
             "parentDataJO" : {
               "SRFPARENTTYPE" : "DER1N",
               "srfparentdename" : "WORK_ITEM",
@@ -20613,11 +20623,13 @@
                   "condOP" : "EQ",
                   "dEFDName" : "is_archived",
                   "logicType" : "SINGLE",
+                  "name" : "is_archived等于(=) 0",
                   "value" : "0"
                 }, {
                   "condOP" : "EQ",
                   "dEFDName" : "is_deleted",
                   "logicType" : "SINGLE",
+                  "name" : "is_deleted等于(=) 0",
                   "value" : "0"
                 } ],
                 "relatedDetailNames" : [ "is_archived", "is_deleted" ],
@@ -20813,11 +20825,13 @@
                   "condOP" : "EQ",
                   "dEFDName" : "is_archived",
                   "logicType" : "SINGLE",
+                  "name" : "is_archived等于(=) 0",
                   "value" : "0"
                 }, {
                   "condOP" : "EQ",
                   "dEFDName" : "is_deleted",
                   "logicType" : "SINGLE",
+                  "name" : "is_deleted等于(=) 0",
                   "value" : "0"
                 } ],
                 "relatedDetailNames" : [ "is_archived", "is_deleted" ],
@@ -21202,6 +21216,7 @@
             "condOP" : "EQ",
             "dEFDName" : "workload_schedule",
             "logicType" : "SINGLE",
+            "name" : "workload_schedule等于(=) -1",
             "value" : "-1"
           } ],
           "relatedDetailNames" : [ "workload_schedule" ],
@@ -22030,6 +22045,7 @@
             "condOP" : "EQ",
             "dEFDName" : "workload_schedule",
             "logicType" : "SINGLE",
+            "name" : "workload_schedule等于(=) -1",
             "value" : "-1"
           } ],
           "relatedDetailNames" : [ "workload_schedule" ],
@@ -22858,7 +22874,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNULL",
             "dEFDName" : "id",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "id值为空(Nil)"
           } ],
           "relatedDetailNames" : [ "id" ],
           "notMode" : false

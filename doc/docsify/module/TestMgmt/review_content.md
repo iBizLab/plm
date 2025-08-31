@@ -17,6 +17,7 @@
 |产品需求|IDEA|外键值对象|1048576|是||
 |名称|NAME|继承属性|200|是||
 |所属数据对象|OWNER_TYPE|继承属性|100|是||
+|空间页面|PAGE|外键值对象|1048576|是||
 |父对象版本标识|PARENT_VERSION_ID|继承属性|100|是||
 |关联主体标识|PRINCIPAL_ID|继承属性|100|是||
 |关联主体类型|PRINCIPAL_TYPE|继承属性|100|是||
@@ -35,6 +36,7 @@
 |测试用例|TEST_CASE|外键值对象|1048576|是||
 |更新人|UPDATE_MAN|继承属性|100|否||
 |更新时间|UPDATE_TIME|继承属性||否||
+|项目工作项|WORK_ITEM|外键值对象|1048576|是||
 
 <p class="panel-title"><b>联合主键</b></p>
 
@@ -58,10 +60,12 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_IDEA_REVIEW_CONTENT](der/DERCUSTOM_IDEA_REVIEW_CONTENT)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
+|[DERCUSTOM_PAGE_REVIEW_CONTENT](der/DERCUSTOM_PAGE_REVIEW_CONTENT)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_REVIEW)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_VERSION](der/DERCUSTOM_REVIEW_CONTENT_VERSION)|[版本(VERSION)](module/Base/version)|自定义关系||
 |[DERCUSTOM_TEST_CASE_REVIEW_CONTENT](der/DERCUSTOM_TEST_CASE_REVIEW_CONTENT)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_REVIEW_CONTENT](der/DERCUSTOM_WORK_ITEM_REVIEW_CONTENT)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
 |[DERMULINH_REVIEW_CONTENT_RELATION](der/DERMULINH_REVIEW_CONTENT_RELATION)|[关联(RELATION)](module/Base/relation)|多继承关系（虚拟实体）||
 |[DERMULINH_REVIEW_CONTENT_REVIEW_CONTENT_EXTEND](der/DERMULINH_REVIEW_CONTENT_REVIEW_CONTENT_EXTEND)|[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|多继承关系（虚拟实体）||
 
@@ -166,16 +170,18 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 设置评审结果 | set_review_result | 设置评审结果 |单项数据（主键）|用户自定义||
-| 移出用例 | remove_case | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
-| 规划评审需求 | program_review_idea | 规划需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择需求](app/view/idea_review_re_idea_view)</details>||
-| 移出用例（无权限） | remove_case_all | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 规划评审页面 | program_review_page | 规划页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择页面](app/view/article_page_review_re_page_view)</details>||
 | 评审内容版本比对 | review_content_version_comparison | 版本比对 |单项数据|用户自定义||
+| 规划评审工作项 | program_review_work_item | 规划工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择工作项](app/view/work_item_review_re_work_item_view)</details>||
 | 返回 | back | 返回 |无数据|用户自定义||
 | 规划评审用例 | program_review_test_case | 规划用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择用例](app/view/test_case_mpick_up_view2_review)</details>||
 | 提交评审 | submit_review | 提交评审 |无数据|用户自定义||
 | 完成当前阶段评审 | complete_review | 完成评审 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
 | 快速评审 | complete_review_quickly | 评审 |多项数据（主键）|<details><summary>后台调用</summary>[set_review_result_all](#行为)||
+| 设置评审结果 | set_review_result | 设置评审结果 |单项数据（主键）|用户自定义||
+| 移出用例 | remove_case | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 规划评审需求 | program_review_idea | 规划需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择需求](app/view/idea_review_re_idea_view)</details>||
+| 移出用例（无权限） | remove_case_all | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 开始当前阶段评审 | start_cur_stage_review | 开始评审 |无数据|用户自定义||
 | 返回 | panel_usr0612818719_button_calluilogic_click | 返回 |单项数据|用户自定义||
 
