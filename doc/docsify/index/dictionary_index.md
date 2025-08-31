@@ -1165,6 +1165,8 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |TEST_CASE|用例评审|test_case||
 |BASELINE|基线评审|baseline||
 |IDEA|需求评审|idea||
+|PAGE|页面评审|page||
+|WORK_ITEM|工作项评审|work_item||
 
 ##### 评审结果 :id=review_result
 

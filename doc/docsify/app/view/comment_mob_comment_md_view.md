@@ -16,9 +16,9 @@
 
 
 ### 关联界面行为
+  * [评论(COMMENT)](module/Base/comment) : [删除评论](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [回复](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [发送评论（移动端）](module/Base/comment#界面行为)
-  * [评论(COMMENT)](module/Base/comment) : [删除评论](module/Base/comment#界面行为)
 
 <script>
  const { createApp } = Vue

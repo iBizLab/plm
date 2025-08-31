@@ -3,6 +3,10 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
+    "customCond" : "( t11.`IS_DELETED` = 0 )",
+    "name" : "查询条件"
+  }, {
+    "condType" : "CUSTOM",
     "customCond" : "( t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}  OR  (t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}\nand t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )",
     "name" : "查询条件"
   } ],

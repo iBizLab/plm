@@ -39,6 +39,13 @@ and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq})
 
 
 
+### 查询连接
+* **PROJECT相关N:1（INNER JOIN）DER1N_WORK_ITEM_PROJECT_PROJECT_ID**<br>
+连接关系：[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)<br>
+连接实体：[项目](module/ProjMgmt/project)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
+
+
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -88,6 +95,7 @@ t1.`RELEASE_ID`,
 t61.`NAME` AS `RELEASE_NAME`,
 t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
+t1.`REVIEW_RESULT_STATE`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
@@ -123,7 +131,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
 AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
 AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  (t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}
 and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )

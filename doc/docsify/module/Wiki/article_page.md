@@ -42,6 +42,7 @@
 |发布时间|PUBLISH_TIME|日期时间型||是||
 |共享只读能力|READ_SHARED|是否逻辑|200|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |序号|SEQUENCE|数值||是||
 |共享人|SHARED_BY|文本，可指定长度|100|是||
 |共享时间|SHARED_TIME|日期时间型||是||
@@ -170,6 +171,7 @@
 |[DERCUSTOM_ATTENTION_PAGE_OWNER_ID](der/DERCUSTOM_ATTENTION_PAGE_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_MEMBER_PAGE_OWNER_ID](der/DERCUSTOM_MEMBER_PAGE_OWNER_ID)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_PAGE_ATTACHMENT](der/DERCUSTOM_PAGE_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
+|[DERCUSTOM_PAGE_REVIEW_CONTENT](der/DERCUSTOM_PAGE_REVIEW_CONTENT)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
 |[DERCUSTOM_PAGE_SEARCH_ATTACHMENT](der/DERCUSTOM_PAGE_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_PAGE_SEARCH_COMMENT](der/DERCUSTOM_PAGE_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 |[DERCUSTOM_PAGE_VERSION_PAGE](der/DERCUSTOM_PAGE_VERSION_PAGE)|[页面版本(PAGE_VERSION)](module/Wiki/page_version)|自定义关系||
@@ -435,6 +437,7 @@
 |N_PUBLISH_TIME_GTANDEQ|发布时间|GTANDEQ||
 |N_PUBLISH_TIME_LTANDEQ|发布时间|LTANDEQ||
 |N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
+|N_REVIEW_RESULT_STATE_EQ|评审结果|EQ||
 |N_SHOW_IDENTIFIER_EQ|编号|EQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_SPACE_ID_EQ|空间标识|EQ||

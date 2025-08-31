@@ -17,8 +17,8 @@
 
 ### 关联界面行为
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [打开迭代](module/ProjMgmt/sprint#界面行为)
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [刷新](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [全屏](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [刷新](module/ProjMgmt/sprint#界面行为)
 
 ### 关联视图
   * [迭代(sprint_edit_view)](app/view/sprint_edit_view)

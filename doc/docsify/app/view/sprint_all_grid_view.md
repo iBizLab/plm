@@ -18,9 +18,9 @@
 
 
 ### 关联界面行为
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [表格界面_新建操作](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [开始迭代](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [结束迭代](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [表格界面_新建操作](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
 

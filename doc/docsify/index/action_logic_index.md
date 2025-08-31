@@ -736,6 +736,9 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [创建项目流程准则(auto_create_guideline)](module/ProjMgmt/project/logic/auto_create_guideline.md)
+
+> [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/project/logic/create_recent.md)
 
 > [!NOTE|label:内部逻辑]
@@ -1044,6 +1047,9 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建主页(auto_create_home_page)](module/Wiki/space/logic/auto_create_home_page.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [创建空间流程准则(auto_create_guideline)](module/Wiki/space/logic/auto_create_guideline.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建人员(auto_create_members)](module/Wiki/space/logic/auto_create_members.md)

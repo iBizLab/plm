@@ -16,9 +16,9 @@
 
 
 ### 关联界面行为
-  * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [打开评论列表](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [移出（移动端）](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [打开评论列表](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [打开关注列表](module/TestMgmt/run#界面行为)
 
 ### 关联界面逻辑

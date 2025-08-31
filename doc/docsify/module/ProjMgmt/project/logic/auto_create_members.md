@@ -83,7 +83,7 @@ LOOPSUBCALL1 --> END1
 
 
 
-调用实体 [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) 行为 [Create](module/ProjMgmt/project_member#行为) ，行为参数为`project_member(成员参数)`
+调用实体 [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) 行为 [Save](module/ProjMgmt/project_member#行为) ，行为参数为`project_member(成员参数)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

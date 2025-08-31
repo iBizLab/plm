@@ -84,7 +84,7 @@ services:
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
     env_file: .dev
-    image: ${IMAGE_URL}ibiz-ebsx-allinone-rt:8.1.0.569.5
+    image: ${IMAGE_URL}ibiz-ebsx-allinone-rt:8.1.0.570.12.250807
     container_name: ibiz-ebsx-allinone
     ports:
       - "30000:30000"
@@ -113,7 +113,7 @@ services:
   #ibizlab-uaa-api
   ibizlab-uaa-api:
     env_file: .dev
-    image: ${IMAGE_URL}uaa-standalone:2.1.6
+    image: ${IMAGE_URL}uaa-standalone:2.1.7
     container_name: ibizlab-uaa-api
     ports:
       - "32666:32666"
@@ -158,7 +158,7 @@ services:
   #plmservice
   plmservice:
     env_file: .dev
-    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.569.4
+    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.570.32.16.plm.250809
     container_name: plmservice
     ports:
       - "30251:30251"
@@ -175,7 +175,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=plm@2024
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/plm?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=plm
-      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K -Dgroovy.grape.report.downloads=true
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-gateway:30086
 
@@ -183,28 +183,69 @@ services:
   #plmweb
   plmweb:
     env_file: .dev
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.38-alpha.55.plm.250401
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.17.plm.250809
     container_name: plmweb
     ports:
       - 30250:80
     networks:
       - agent_network
     environment:
-      - TZ=Asia/Shanghai  
+      - TZ=Asia/Shanghai
       - FILE_PREVIEW_ADDRESS=http://${IPADDR:-10.144.0.1}:30012
+      - CUSTOMPARAMS={"file_preview_address":"http://${IPADDR:-10.144.0.1}:30012","ENABLEMULTILOGIN":false}
+      - MOCKDCSYSTEMID=ibizplm
+      - APPNAME=桌面端
+      - APPCODE=ibizplm-plmweb
+      - APICODE=ibizplm__plmweb
+      - BASEURL=ibizplm__plmweb
+      - PLUGINBASEURL=./plugins
+      - UPLOADFILEURL=/ibizutil/upload/ibizplm
+      - DOWNLOADFILEURL=/ibizutil/download/ibizplm
     entrypoint: /entrypoint-waitfor.sh
     command: plmservice:30251
-
 
   #plmmob
   plmmob:
     env_file: .dev
-    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.250226
+    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.250802
     container_name: plmmob
     ports:
       - 30260:80
     networks:
       - agent_network
+    environment:
+      - TZ=Asia/Shanghai  
+      - MOCKDCSYSTEMID=ibizplm
+      - APPNAME=移动端
+      - APPCODE=ibizplm-plmmob
+      - APICODE=ibizplm__plmmob
+      - BASEURL=ibizplm__plmmob
+      - PLUGINBASEURL=./plugins
+      - UPLOADFILEURL=/ibizutil/upload/ibizplm
+      - DOWNLOADFILEURL=/ibizutil/download/ibizplm
+  
+  #plmwiki
+  plmwiki:
+    env_file: .dev
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.16.plmwiki.250801
+    container_name: plmwiki
+    ports:
+      - 30270:80
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - MOCKDCSYSTEMID=ibizplm
+      - APPNAME=百科
+      - APPCODE=plmwiki
+      - APICODE=ibizplm__plmwiki
+      - BASEURL=ibizplm__plmwiki
+      - PLUGINBASEURL=./plugins
+      - UPLOADFILEURL=/ibizutil/upload/ibizplm
+      - DOWNLOADFILEURL=/ibizutil/download/ibizplm
+      - ENABLEANONYMOUS=false
+      - ANONYMOUSUSER=
+      - ANONYMOUSPWD=
     entrypoint: /entrypoint-waitfor.sh
     command: plmservice:30251
 
@@ -248,7 +289,7 @@ services:
     profiles:
       - modeling  
     env_file: .dev  
-    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.568.15-modeling.25042101
+    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.570.33-modeling.250826
     container_name: modelingservice
     ports:
       - "32002:32002"
@@ -271,7 +312,7 @@ services:
     profiles:
       - modeling  
     env_file: .dev  
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:v9.0.7.40-alpha.2
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:v9.0.7.40-alpha.19
     container_name: modelingweb
     ports:
       - 32003:80
@@ -291,7 +332,7 @@ services:
     profiles:
       - modeling  
     env_file: .dev  
-    image: ${IMAGE_URL}task7:v115.1.opensource.25042101
+    image: ${IMAGE_URL}task7:v124.2.opensource.25082603
     container_name: task
     networks:
       - agent_network
@@ -302,7 +343,7 @@ services:
       - COREDBNAME=ibizapi
       - DBSERVERIP=mysql
       - DBSERVERPORT=3306
-      - JAVA_OPTS=-Xms256m -Xmx${PLM_LIMITS_MEMORY:-2048m} -Xss256K
+      - JAVA_OPTS=-Xms256m -Xmx${PLM_LIMITS_MEMORY:-4096m} -Xss1024K
     volumes:
       - task_data:/app/application/taskfile/nasfolder
     entrypoint:

@@ -375,6 +375,7 @@
 |[通用需求查询(common)](module/ProdMgmt/idea/query/common)|common|否|否 |否 |状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[特定用户(customer_user)](module/ProdMgmt/idea/query/customer_user)|customer_user|否|否 |否 ||
 |[已删除(deleted)](module/ProdMgmt/idea/query/deleted)|deleted|否|否 |否 |查询已删除的需求数据|
+|[关联需求（多需求）(ideas_relation_idea)](module/ProdMgmt/idea/query/ideas_relation_idea)|ideas_relation_idea|否|否 |是 ||
 |[需求未归档集合过滤（移动端）(mob_not_archived)](module/ProdMgmt/idea/query/mob_not_archived)|mob_not_archived|否|否 |否 ||
 |[移动需求(move_idea)](module/ProdMgmt/idea/query/move_idea)|move_idea|否|否 |否 ||
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/query/my_assign)|my_assign|否|否 |否 |非归档数据，且负责人为当前登录人的数据|
@@ -408,6 +409,7 @@
 |[普通需求(common)](module/ProdMgmt/idea/dataset/common)|common|数据查询|否||状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[特定用户(customer_user)](module/ProdMgmt/idea/dataset/customer_user)|customer_user|数据查询|否|||
 |[已删除(deleted)](module/ProdMgmt/idea/dataset/deleted)|deleted|数据查询|否||查询已删除的需求数据|
+|[关联需求（多需求）(ideas_relation_idea)](module/ProdMgmt/idea/dataset/ideas_relation_idea)|ideas_relation_idea|数据查询|否|||
 |[需求未归档集合过滤（移动端）(mob_not_archived)](module/ProdMgmt/idea/dataset/mob_not_archived)|mob_not_archived|数据查询|否|||
 |[移动需求数据(move_idea)](module/ProdMgmt/idea/dataset/move_idea)|move_idea|数据查询|否|||
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/dataset/my_assign)|my_assign|数据查询|否||非归档数据，且负责人为当前登录人的数据|

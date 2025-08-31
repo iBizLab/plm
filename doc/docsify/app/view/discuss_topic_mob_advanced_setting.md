@@ -12,8 +12,8 @@
 
 
 ### 关联界面行为
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [删除话题（移动端）](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题列表视图（移动端）](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [删除话题（移动端）](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [编辑界面_保存并退出操作](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [归档话题（移动端）](module/Team/discuss_topic#界面行为)
 

@@ -31,11 +31,15 @@ state "设置阶段完成" as PREPAREPARAM3  [[$./complete_review#prepareparam3 
 state "变更阶段状态" as PREPAREPARAM6  [[$./complete_review#prepareparam6 {"变更阶段状态"}]]
 state "通知关注人（需求）" as DENOTIFY3  [[$./complete_review#denotify3 {"通知关注人（需求）"}]]
 state "通知关注人（用例）" as DENOTIFY4  [[$./complete_review#denotify4 {"通知关注人（用例）"}]]
+state "通知关注人（工作项）" as DENOTIFY7  [[$./complete_review#denotify7 {"通知关注人（工作项）"}]]
+state "通知关注人（页面）" as DENOTIFY8  [[$./complete_review#denotify8 {"通知关注人（页面）"}]]
 state "完成时间" as RAWSFCODE1  [[$./complete_review#rawsfcode1 {"完成时间"}]]
 state "附加到数组变量" as PREPAREPARAM4  [[$./complete_review#prepareparam4 {"附加到数组变量"}]]
 state "附加到数组变量，且获取选中阶段的下一阶段数据" as PREPAREPARAM8  [[$./complete_review#prepareparam8 {"附加到数组变量，且获取选中阶段的下一阶段数据"}]]
 state "通知下一评审人（需求）" as DENOTIFY1  [[$./complete_review#denotify1 {"通知下一评审人（需求）"}]]
 state "通知下一评审人（测试用例）" as DENOTIFY2  [[$./complete_review#denotify2 {"通知下一评审人（测试用例）"}]]
+state "通知下一评审人（工作项）" as DENOTIFY6  [[$./complete_review#denotify6 {"通知下一评审人（工作项）"}]]
+state "通知下一评审人（页面）" as DENOTIFY5  [[$./complete_review#denotify5 {"通知下一评审人（页面）"}]]
 }
 
 
@@ -58,11 +62,17 @@ DENOTIFY3 --> RAWSFCODE1
 RAWSFCODE1 --> PREPAREPARAM4
 PREPAREPARAM6 --> DENOTIFY4 : [[$./complete_review#prepareparam6-denotify4{连接名称} 连接名称]]
 DENOTIFY4 --> RAWSFCODE1
+PREPAREPARAM6 --> DENOTIFY7 : [[$./complete_review#prepareparam6-denotify7{连接名称} 连接名称]]
+DENOTIFY7 --> RAWSFCODE1
+PREPAREPARAM6 --> DENOTIFY8 : [[$./complete_review#prepareparam6-denotify8{连接名称} 连接名称]]
+DENOTIFY8 --> RAWSFCODE1
 PREPAREPARAM3 --> PREPAREPARAM4
 DEBUGPARAM2 --> PREPAREPARAM4 : [[$./complete_review#debugparam2-prepareparam4{非选中阶段} 非选中阶段]]
 DEBUGPARAM2 --> PREPAREPARAM8 : [[$./complete_review#debugparam2-prepareparam8{选中阶段的下一阶段} 选中阶段的下一阶段]]
 PREPAREPARAM8 --> DENOTIFY1 : [[$./complete_review#prepareparam8-denotify1{连接名称} 连接名称]]
 PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连接名称} 连接名称]]
+PREPAREPARAM8 --> DENOTIFY6 : [[$./complete_review#prepareparam8-denotify6{连接名称} 连接名称]]
+PREPAREPARAM8 --> DENOTIFY5 : [[$./complete_review#prepareparam8-denotify5{连接名称} 连接名称]]
 
 
 @enduml
@@ -145,6 +155,11 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 
 调用实体 [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md) 处理逻辑 [生成最终评审结果]((module/TestMgmt/review_content/logic/generate_review_result_finally.md)) ，行为参数为`review_detail(评审详情)`
 
+#### 通知下一评审人（需求） :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [评审通知(review_notify)](module/TestMgmt/review/notify/review_notify) ，参数为`review_detail(评审详情)`
 #### 当前阶段数据 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
@@ -162,16 +177,16 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 3. 将`false` 设置给  `next_stage(下一阶段数据).is_next`
 4. 将`20` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
 
-#### 通知下一评审人（需求） :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
-
-
-
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [评审通知(review_notify)](module/TestMgmt/review/notify/review_notify) ，参数为`review_detail(评审详情)`
 #### 通知下一评审人（测试用例） :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [测试用例评审通知(test_case_review_notify)](module/TestMgmt/review/notify/test_case_review_notify) ，参数为`review_detail(评审详情)`
+#### 通知下一评审人（工作项） :id=DENOTIFY6<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [项目工作项评审通知(work_item_review_notify)](module/TestMgmt/review/notify/work_item_review_notify) ，参数为`review_detail(评审详情)`
 #### 设置阶段完成 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -186,11 +201,21 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 
 1. 将`for_stage(当前循环阶段)` 追加到  `stage_arr(阶段数据)`
 
+#### 通知下一评审人（页面） :id=DENOTIFY5<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [空间页面评审通知(page_review_notify)](module/TestMgmt/review/notify/page_review_notify) ，参数为`review_detail(评审详情)`
 #### 通知关注人（需求） :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成需求评审通知(idea_review_notify)](module/TestMgmt/review/notify/idea_review_notify) ，参数为`review_detail(评审详情)`
+#### 通知关注人（用例） :id=DENOTIFY4<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成用例评审通知(test_case_complete_notify)](module/TestMgmt/review/notify/test_case_complete_notify) ，参数为`review_detail(评审详情)`
 #### 变更阶段状态 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -208,11 +233,16 @@ var defaultObj = logic.getParam("review_detail");
 defaultObj.set("COMPLETED_AT", new Date());
 ```
 
-#### 通知关注人（用例） :id=DENOTIFY4<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+#### 通知关注人（工作项） :id=DENOTIFY7<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成用例评审通知(test_case_complete_notify)](module/TestMgmt/review/notify/test_case_complete_notify) ，参数为`review_detail(评审详情)`
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成工作项评审通知(work_item_complete_notify)](module/TestMgmt/review/notify/work_item_complete_notify) ，参数为`review_detail(评审详情)`
+#### 通知关注人（页面） :id=DENOTIFY8<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成页面评审通知(page_complete_notify)](module/TestMgmt/review/notify/page_complete_notify) ，参数为`review_detail(评审详情)`
 
 ### 连接条件说明
 #### 当前循环阶段为选中阶段 
@@ -227,6 +257,12 @@ defaultObj.set("COMPLETED_AT", new Date());
 #### 连接名称 :id=PREPAREPARAM6-DENOTIFY4
 
 `review_detail(评审详情).TYPE(评审类型)` EQ `TEST_CASE`
+#### 连接名称 :id=PREPAREPARAM6-DENOTIFY7
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `WORK_ITEM`
+#### 连接名称 :id=PREPAREPARAM6-DENOTIFY8
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `PAGE`
 #### 非选中阶段 :id=DEBUGPARAM2-PREPAREPARAM4
 
 ( AND `next_stage(下一阶段数据).is_next` EQ `false`)
@@ -239,6 +275,12 @@ defaultObj.set("COMPLETED_AT", new Date());
 #### 连接名称 :id=PREPAREPARAM8-DENOTIFY2
 
 `review_detail(评审详情).TYPE(评审类型)` EQ `TEST_CASE`
+#### 连接名称 :id=PREPAREPARAM8-DENOTIFY6
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `WORK_ITEM`
+#### 连接名称 :id=PREPAREPARAM8-DENOTIFY5
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `PAGE`
 
 
 ### 实体逻辑参数

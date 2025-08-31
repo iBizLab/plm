@@ -72,6 +72,8 @@
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|[测试库(LIBRARY)](module/TestMgmt/library)|自定义关系||
 |[DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID](der/DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
+|[DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID](der/DERCUSTOM_GUIDELINE_PROJECT_PROJECT_ID)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
+|[DERCUSTOM_GUIDELINE_SPACE_SPACE_ID](der/DERCUSTOM_GUIDELINE_SPACE_SPACE_ID)|[空间(SPACE)](module/Wiki/space)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>

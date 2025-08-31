@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[227]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[231]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -568,6 +568,90 @@ if(for_temp_obj.get("cur_version_id")){
         version_id_in = for_temp_obj.get("cur_version_id");
     }
     idea_versions.set("version_id_in", version_id_in);
+}
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[排期跟踪数据(plan_track_data)](module/ProdMgmt/idea/logic/plan_track_data)
+
+节点：设置通用过滤器参数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def base_filter = logic.param('base_filter').getReal()
+String principal_id = _default.get("principal_id")
+base_filter.set("principal_id", "'" + principal_id + "'")
+base_filter.all()
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[排期跟踪数据(plan_track_data)](module/ProdMgmt/idea/logic/plan_track_data)
+
+节点：处理返回结果
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def page_ideas = logic.param('page_ideas').getReal()
+def relation_idea = logic.param('re_page_idea').getReal()
+def relation_work_item = logic.param('re_page_item').getReal()
+def relation_ticket = logic.param('re_page_ticket').getReal()
+def relation_test_case = logic.param('re_page_case').getReal()
+def result = logic.param('result').getReal()
+
+
+// 5. 主循环处理
+page_ideas.each { idea ->
+    String id = idea.get("id")
+
+    List<Object> relationIdeaList = new ArrayList<Object>()
+    List<Object> relationWorkItemList = new ArrayList<Object>()
+    List<Object> relationTicketList = new ArrayList<Object>()
+    List<Object> relationCaseList = new ArrayList<Object>()
+
+    relation_idea.each { it ->
+        String principal_id = it.get("principal_id")
+        if (principal_id.equals(id)) {
+            relationIdeaList.add(it)
+        }
+    }
+    relation_work_item.each { it ->
+        String principal_id = it.get("principal_id")
+        if (principal_id.equals(id)) {
+            relationWorkItemList.add(it)
+        }
+    }
+    relation_ticket.each { it ->
+        String principal_id = it.get("principal_id")
+        if (principal_id.equals(id)) {
+            relationTicketList.add(it)
+
+        }
+    }
+    relation_test_case.each { it ->
+        String principal_id = it.get("principal_id")
+        if (principal_id.equals(id)) {
+            relationCaseList.add(it)
+        }
+    }
+    def re_idea = sys.createEntity(null, false)
+    def re_item = sys.createEntity(null, false)
+    def re_ticket = sys.createEntity(null, false)
+    def re_case = sys.createEntity(null, false)
+
+    re_idea.set("content", relationIdeaList)
+    re_item.set("content", relationWorkItemList)
+    re_ticket.set("content", relationTicketList)
+    re_case.set("content", relationCaseList)
+
+    // 组装数据
+    idea.set("re_idea", re_idea)
+    idea.set("re_item", re_item)
+    idea.set("re_ticket", re_ticket)
+    idea.set("re_case", re_case)
+    idea.set("idea_sum", relationIdeaList.size())
+    idea.set("work_item_sum", relationWorkItemList.size())
+    idea.set("ticket_sum", relationTicketList.size())
+    idea.set("test_case_sum", relationCaseList.size())
+
+    // 添加到结果集
+    result.add(idea)
 }
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member)
@@ -2086,6 +2170,16 @@ if (cur_owner_addons.length == 0) {
   }
 }
 ```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[创建项目流程准则(auto_create_guideline)](module/ProjMgmt/project/logic/auto_create_guideline)
+
+节点：拼接guideline_ID
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_guideline = logic.getParam("new_guideline");
+var for_obj_guideline = logic.getParam("for_obj_guideline");
+new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("id"));
+```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[看板项目组件权限计数器(kanban_project_addon_authority)](module/ProjMgmt/project/logic/kanban_project_addon_authority)
 
 节点：构建计数器结果
@@ -2930,6 +3024,16 @@ if(_default.get('id') != null && plm_wiki != '') {
   def _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_tree_exp_view/srfnavctx=%257B%2522shared_space%2522%253A%2522' + _default.get('id') + '%2522%257D'
   _default.set('shared_url', _url)
 }
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[创建空间流程准则(auto_create_guideline)](module/Wiki/space/logic/auto_create_guideline)
+
+节点：拼接guideline_ID
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_guideline = logic.getParam("new_guideline");
+var for_obj_guideline = logic.getParam("for_obj_guideline");
+new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("id"));
 ```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
 

@@ -56,9 +56,13 @@
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[项目成员加入通知(create_member_notify)](module/ProjMgmt/project_member/notify/create_member_notify)|[项目通知模板(加入项目成员)](#project_member_create)|[Create 执行之后](index/action_logic_index#project_member_Create)||
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[项目成员移除通知(remove_member_nofity)](module/ProjMgmt/project_member/notify/remove_member_nofity)|[项目通知模板(移除项目成员)](#project_member_remove)|[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)||
 |[评审(REVIEW)](module/TestMgmt/review)|[完成需求评审通知(idea_review_notify)](module/TestMgmt/review/notify/idea_review_notify)|[评审完成通知模板(产品需求)](#idea_review_complete)|[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)||
+|[评审(REVIEW)](module/TestMgmt/review)|[完成页面评审通知(page_complete_notify)](module/TestMgmt/review/notify/page_complete_notify)|[评审完成通知模板(空间页面)](#page_review_complete)|[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)||
+|[评审(REVIEW)](module/TestMgmt/review)|[空间页面评审通知(page_review_notify)](module/TestMgmt/review/notify/page_review_notify)|[页面评审通知模板](#page_review_inform_template)|[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)<br>[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)<br>[提交评审(submit_review)](module/TestMgmt/review_content/logic/submit_review)||
 |[评审(REVIEW)](module/TestMgmt/review)|[评审通知(review_notify)](module/TestMgmt/review/notify/review_notify)|[评审通知模板](#review_inform_template)|[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)<br>[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)<br>[提交评审(submit_review)](module/TestMgmt/review_content/logic/submit_review)||
 |[评审(REVIEW)](module/TestMgmt/review)|[完成用例评审通知(test_case_complete_notify)](module/TestMgmt/review/notify/test_case_complete_notify)|[评审完成通知模板(测试用例)](#tc_review_complete_template)|[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)||
 |[评审(REVIEW)](module/TestMgmt/review)|[测试用例评审通知(test_case_review_notify)](module/TestMgmt/review/notify/test_case_review_notify)|[测试用例评审通知模板](#tc_review_inform_template)|[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)<br>[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)<br>[提交评审(submit_review)](module/TestMgmt/review_content/logic/submit_review)||
+|[评审(REVIEW)](module/TestMgmt/review)|[完成工作项评审通知(work_item_complete_notify)](module/TestMgmt/review/notify/work_item_complete_notify)|[评审完成通知模板(项目工作项)](#work_item_review_complete)|[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)||
+|[评审(REVIEW)](module/TestMgmt/review)|[项目工作项评审通知(work_item_review_notify)](module/TestMgmt/review/notify/work_item_review_notify)|[工作项评审通知模板](#wi_review_inform_template)|[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)<br>[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)<br>[提交评审(submit_review)](module/TestMgmt/review_content/logic/submit_review)||
 |[执行用例(RUN)](module/TestMgmt/run)|[执行用例设置执行人通知(executor_notify)](module/TestMgmt/run/notify/executor_notify)|[执行用例通知模板(设置执行人)](#run_executor)|[执行人变更附加逻辑(executor_onchange)](module/TestMgmt/run/logic/executor_onchange)||
 |[空间(SPACE)](module/Wiki/space)|[空间归档/激活通知(archived_or_activate_notify)](module/Wiki/space/notify/archived_or_activate_notify)|[空间通知模板(归档/激活空间)](#space_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/Wiki/space/logic/is_archived_onchange)||
 |[空间(SPACE)](module/Wiki/space)|[空间删除/恢复通知(remove_or_recover_notify)](module/Wiki/space/notify/remove_or_recover_notify)|[空间通知模板(删除/恢复空间)](#space_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/Wiki/space/logic/is_deleted_onchange)||
@@ -384,6 +388,43 @@ ${data.update_mantext}取消分配了需求：${data.title}
 微信消息内容：
 ```
 ${data.update_mantext}取消分配了需求：${data.title}
+```
+#### 评审完成通知模板(空间页面)(page_review_complete) :id=page_review_complete
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`view://review_page_main_view?srfnavctx={"review":"${data.id}","product":"${data.principal_id}"}`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.reviewertext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">完成了页面评审</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 知识管理 · ${data.principal_name}</span>
+        </div>
+    </div>
+</div>
 ```
 #### 测试库通知模板(移除测试库成员)(library_member_remove) :id=library_member_remove
 
@@ -1416,6 +1457,43 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了项目
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了项目：${data.name}
 ```
+#### 工作项评审通知模板(wi_review_inform_template) :id=wi_review_inform_template
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`view://review_work_item_main_view?srfnavctx={"review":"${data.id}","product":"${data.principal_id}"}`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.reviewertext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">给你分配了工作项评审</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 项目管理 · ${data.principal_name}</span>
+        </div>
+    </div>
+</div>
+```
 #### 工作项通知模板(归档/激活工作项)(work_item_archived_or_activate) :id=work_item_archived_or_activate
 
 
@@ -1680,6 +1758,43 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试用例：${data.title}
+```
+#### 页面评审通知模板(page_review_inform_template) :id=page_review_inform_template
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`view://review_page_main_view?srfnavctx={"review":"${data.id}","space":"${data.principal_id}"}`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.reviewertext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">给你分配了页面评审</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 知识管理 · ${data.principal_name}</span>
+        </div>
+    </div>
+</div>
 ```
 #### 评论@通知模板(comment_at) :id=comment_at
 
@@ -3032,6 +3147,43 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间
 微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间：${data.name}
+```
+#### 评审完成通知模板(项目工作项)(work_item_review_complete) :id=work_item_review_complete
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`view://review_work_item_main_view?srfnavctx={"review":"${data.id}","product":"${data.principal_id}"}`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.reviewertext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">完成了工作项评审</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 项目管理 · ${data.principal_name}</span>
+        </div>
+    </div>
+</div>
 ```
 #### 评论客户通知模板(comment_customer) :id=comment_customer
 
