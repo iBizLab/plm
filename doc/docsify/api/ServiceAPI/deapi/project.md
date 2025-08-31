@@ -725,6 +725,141 @@
 Integer
 ```
 
+## 复制
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{key}/copy" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`COPY`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目状态|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
+|<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
+|<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
+|<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
+|<el-row justify="space-between"><el-col :span="20">temp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|临时|
+|<el-row justify="space-between"><el-col :span="20">notice</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|公告|
+|<el-row justify="space-between"><el-col :span="20">schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|进度|
+|<el-row justify="space-between"><el-col :span="20">actual_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">actual_end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">expected_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预计工时|
+|<el-row justify="space-between"><el-col :span="20">consume_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|消耗工时|
+|<el-row justify="space-between"><el-col :span="20">state_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态类型|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "visibility" : null,
+  "state" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "color" : null,
+  "type" : null,
+  "identifier" : null,
+  "is_archived" : null,
+  "description" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "is_local_configure" : null,
+  "members" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "completed_work_items" : null,
+  "all_work_items" : null,
+  "temp" : null,
+  "notice" : null,
+  "schedule" : null,
+  "actual_start_at" : null,
+  "actual_end_at" : null,
+  "expected_time" : null,
+  "consume_time" : null,
+  "state_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "visibility" : null,
+  "state" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "color" : null,
+  "type" : null,
+  "identifier" : null,
+  "is_archived" : null,
+  "description" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "is_local_configure" : null,
+  "members" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "completed_work_items" : null,
+  "all_work_items" : null,
+  "temp" : null,
+  "notice" : null,
+  "schedule" : null,
+  "actual_start_at" : null,
+  "actual_end_at" : null,
+  "expected_time" : null,
+  "consume_time" : null,
+  "state_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
 ## 删除
 
 <el-row>

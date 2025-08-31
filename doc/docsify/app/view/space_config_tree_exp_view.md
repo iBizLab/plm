@@ -18,6 +18,7 @@
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
   * [共享页面(article_page_shared_grid_view)](app/view/article_page_shared_grid_view)
+  * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [共享空间(shared_space_shared_grid_view)](app/view/shared_space_shared_grid_view)
   * [空间管理(space_archived_grid_view)](app/view/space_archived_grid_view)
   * [空间分类(space_category_tree_exp_view)](app/view/space_category_tree_exp_view)

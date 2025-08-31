@@ -595,10 +595,12 @@
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
 |[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
+|[创建项目流程准则](module/ProjMgmt/project/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
+|[填充复制项目信息](module/ProjMgmt/project/logic/fill_copy_info)|fill_copy_info|无||复制项目时，填充当前项目的基本信息|
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -908,6 +910,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[其他实体关联空间](module/Wiki/space/logic/other_re_space)|other_re_space|无||其他实体关联空间操作，生成正反向关联数据|
 |[创建之前](module/Wiki/space/logic/before_create)|before_create|无||创建空间之前，对添加的空间成员进行处理|
+|[创建空间流程准则](module/Wiki/space/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/Wiki/space/logic/delete)|delete|无||空间数据的逻辑删除，修改产品的是否删除属性值|
 |[判断当前用户角色](module/Wiki/space/logic/recognize_cur_user_role)|recognize_cur_user_role|无||判断当前用户角色|
 |[取消关联](module/Wiki/space/logic/del_relation)|del_relation|无||空间取消关联数据（正反向关联数据同时删除）|

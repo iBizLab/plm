@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [成员(MEMBER)](module/Base/member) : [设置](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [表格界面_删除操作](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [添加成员（职位）](module/Base/member#界面行为)
-  * [成员(MEMBER)](module/Base/member) : [设置](module/Base/member#界面行为)
 
 ### 关联视图
   * [成员(member_edit_view)](app/view/member_edit_view)

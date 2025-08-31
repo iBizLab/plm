@@ -13,8 +13,8 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [关闭共享（管理表格操作列）](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [共享设置（管理表格操作列）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [关闭共享（管理表格操作列）](module/Wiki/article_page#界面行为)
 
 ### 关联视图
   * [页面(article_page_edit_view)](app/view/article_page_edit_view)

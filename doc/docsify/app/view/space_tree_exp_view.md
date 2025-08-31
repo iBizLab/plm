@@ -13,8 +13,8 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [打开空间配置](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [打开空间主页面](module/Wiki/space#界面行为)
 
 ### 关联视图

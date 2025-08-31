@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [全屏](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [刷新](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [全屏](module/ProdMgmt/idea#界面行为)
 
 ### 关联视图
   * [需求(idea_edit_view)](app/view/idea_edit_view)

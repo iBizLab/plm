@@ -289,6 +289,7 @@
 |[特定用户(customer_user)](module/ProdMgmt/ticket/query/customer_user)|customer_user|否|否 |否 ||
 |[已删除(deleted)](module/ProdMgmt/ticket/query/deleted)|deleted|否|否 |否 ||
 |[产品需求关联工单(idea_relation_ticket)](module/ProdMgmt/ticket/query/idea_relation_ticket)|idea_relation_ticket|否|否 |否 |产品关联工单表格调用|
+|[关联工单（多需求）(ideas_relation_ticket)](module/ProdMgmt/ticket/query/ideas_relation_ticket)|ideas_relation_ticket|否|否 |是 ||
 |[产品工单集合（移动端）(mob_ticket_list)](module/ProdMgmt/ticket/query/mob_ticket_list)|mob_ticket_list|否|否 |否 ||
 |[我负责的(my_assign)](module/ProdMgmt/ticket/query/my_assign)|my_assign|否|否 |否 |首页我负责的工单表格调用|
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/query/my_attention)|my_attention|否|否 |否 ||
@@ -324,6 +325,7 @@
 |[特定用户(customer_user)](module/ProdMgmt/ticket/dataset/customer_user)|customer_user|数据查询|否|||
 |[已删除(deleted)](module/ProdMgmt/ticket/dataset/deleted)|deleted|数据查询|否|||
 |[产品需求关联工单(idea_relation_ticket)](module/ProdMgmt/ticket/dataset/idea_relation_ticket)|idea_relation_ticket|数据查询|否||产品关联工单表格调用|
+|[关联工单（多需求）(ideas_relation_ticket)](module/ProdMgmt/ticket/dataset/ideas_relation_ticket)|ideas_relation_ticket|数据查询|否|||
 |[产品工单集合（移动端）(mob_ticket_list)](module/ProdMgmt/ticket/dataset/mob_ticket_list)|mob_ticket_list|数据查询|否|||
 |[我负责的(my_assign)](module/ProdMgmt/ticket/dataset/my_assign)|my_assign|数据查询|否||首页我负责的工单表格调用|
 |[我负责的工单(my_assignee_count)](module/ProdMgmt/ticket/dataset/my_assignee_count)|my_assignee_count|数据查询|否||首页我负责的工单表格调用|

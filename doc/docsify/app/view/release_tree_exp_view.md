@@ -14,14 +14,14 @@
 
 ### 关联界面行为
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [新建分组](module/ProjMgmt/release#界面行为)
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [删除](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [删除](module/ProjMgmt/release#界面行为)
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [新建类别](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [树界面_刷新全部操作](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [删除](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [新建分组](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [新建类别](module/ProjMgmt/release#界面行为)
 
 ### 关联视图
   * [全部发布(release_all_grid_view)](app/view/release_all_grid_view)

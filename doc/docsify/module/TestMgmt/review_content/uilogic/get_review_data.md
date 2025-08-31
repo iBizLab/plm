@@ -15,13 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_review_data#begin {开始}]]
-state "结束" as END1 <<end>> [[$./get_review_data#end1 {结束}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./get_review_data#debugparam1 {调试逻辑参数}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./get_review_data#rawjscode1 {注入脚本代码}]]
+state "结束" as END1 <<end>> [[$./get_review_data#end1 {结束}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWJSCODE1
+Begin --> RAWJSCODE1
 RAWJSCODE1 --> END1
 
 
@@ -40,13 +38,6 @@ RAWJSCODE1 --> END1
 
 
 
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`传入变量`的详细信息
 
 #### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 

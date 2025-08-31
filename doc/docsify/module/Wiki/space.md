@@ -43,7 +43,9 @@
 |[DER1N_STENCIL_SPACE_SPACE_ID](der/DER1N_STENCIL_SPACE_SPACE_ID)|[页面模板(STENCIL)](module/Wiki/stencil)|1:N关系||
 |[DERCUSTOM_ADDON_SPACE_OWNER_ID](der/DERCUSTOM_ADDON_SPACE_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_BASELINE_SPACE_OWNER_ID](der/DERCUSTOM_BASELINE_SPACE_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
+|[DERCUSTOM_GUIDELINE_SPACE_SPACE_ID](der/DERCUSTOM_GUIDELINE_SPACE_SPACE_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID](der/DERCUSTOM_REVIEW_SPACE_PRINCIPAL_ID)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 
 
 </el-tab-pane>
@@ -98,6 +100,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[其他实体关联空间](module/Wiki/space/logic/other_re_space)|other_re_space|无||其他实体关联空间操作，生成正反向关联数据|
 |[创建之前](module/Wiki/space/logic/before_create)|before_create|无||创建空间之前，对添加的空间成员进行处理|
+|[创建空间流程准则](module/Wiki/space/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/Wiki/space/logic/delete)|delete|无||空间数据的逻辑删除，修改产品的是否删除属性值|
 |[判断当前用户角色](module/Wiki/space/logic/recognize_cur_user_role)|recognize_cur_user_role|无||判断当前用户角色|
 |[取消关联](module/Wiki/space/logic/del_relation)|del_relation|无||空间取消关联数据（正反向关联数据同时删除）|

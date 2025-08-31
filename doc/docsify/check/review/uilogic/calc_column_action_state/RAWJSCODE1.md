@@ -23,6 +23,10 @@
                         action.visible = true;
                     }else if (action.uiActionId === 'set_idea_category@review'&& create_man == cur_user && type == 'IDEA'){
                         action.visible = true;
+                    }else if (action.uiActionId === 'set_work_item_category@review'&& create_man == cur_user && type == 'WORK_ITEM'){
+                        action.visible = true;
+                    }else if (action.uiActionId === 'set_page_category@review'&& create_man == cur_user && type == 'PAGE'){
+                        action.visible = true;
                     }
 				})
 			}

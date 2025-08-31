@@ -16,8 +16,8 @@
 
 ### 关联界面行为
   * [关联(RELATION)](module/Base/relation) : [关联工作项（移动端）](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [新建执行后（建立双向关联数据)](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [产品移动端新建工作项（新建后关联）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [新建执行后（建立双向关联数据)](module/Base/relation#界面行为)
 
 ### 关联视图
   * [工作项(work_item_mob_common_edit_view)](app/view/work_item_mob_common_edit_view)
