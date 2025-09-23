@@ -1,0 +1,743 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.DYNADASHBOARD"
+  },
+  "caption" : "仪表盘管理",
+  "codeName" : "dyna_dashboard_insight_view_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_insight_view_grid_view.json",
+  "gridRowActiveMode" : 1,
+  "height" : 500,
+  "name" : "dyna_dashboardinsight_view_grid_view",
+  "openMode" : "POPUPMODAL",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Insight.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "GridView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "getNewDataPSAppView" : {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_info_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_info_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_owner_id_eq",
+    "name" : "n_owner_id_eq",
+    "value" : "insight_view",
+    "rawValue" : false
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "openMode" : "POPUPMODAL",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "仪表盘编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_info_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "动态数据看板编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.DYNADASHBOARD.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "insight_view_grid_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "效能度量仪表盘管理表格视图_工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "新建仪表盘",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 1,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "noPrivDisplayMode" : 1,
+        "caption" : "新建仪表盘",
+        "codeName" : "new_dynadashboard_edit",
+        "dataAccessAction" : "SRFUR__INSIGHT_M",
+        "dialogResult" : "OK",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_list_exp_view2.json",
+          "viewType" : "DELISTEXPVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "dyna_dashboard_new_dynadashboard_edit",
+        "name" : "新建仪表盘_管理",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_board_test@dyna_dashboard"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SRFUR__INSIGHT_M"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_dynadashboard_edit",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "id" : "new_dynadashboard_edit@dyna_dashboard"
+      },
+      "tooltip" : "新建仪表盘",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "grid",
+    "modelid" : "e9ca66706596418818ae9a1121d3167b",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "aggMode" : "NONE",
+    "codeName" : "insight_view_grid_view_grid",
+    "columnEnableFilter" : 2,
+    "columnEnableLink" : 2,
+    "controlType" : "GRID",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard/PSGRIDS/insight_view_grid_view_grid.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fetch_normal"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
+    "logicName" : "效能度量仪表盘管理表格视图_表格",
+    "getMovePSControlAction" : {
+      "actionName" : "move_order",
+      "actionType" : "DEACTION",
+      "name" : "move",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "move_order"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      }
+    },
+    "getOrderValuePSAppDEField" : {
+      "name" : "SEQUENCES",
+      "codeName" : "sequences"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionName" : "move_order",
+        "actionType" : "DEACTION",
+        "name" : "move",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "move_order"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionName" : "GetDraft",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get_draft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "fetch_normal"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "数据表格处理器"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "control_del",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "control_del"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      }
+    } ],
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "GRID"
+    },
+    "getPSDEGridColumns" : [ {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "仪表盘名称",
+      "codeName" : "dynadashboardname",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "dynadashboardname",
+      "excelCaption" : "仪表盘名称",
+      "getFilterPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "n_dynadashboardname_like",
+        "placeHolder" : "仪表盘名称"
+      },
+      "name" : "dynadashboardname",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDNAME",
+        "codeName" : "dyna_dashboard_name"
+      },
+      "width" : 200,
+      "widthUnit" : "STAR",
+      "enableSort" : true
+    }, {
+      "align" : "RIGHT",
+      "caption" : "操作",
+      "codeName" : "uagridcolumn1",
+      "columnType" : "UAGRIDCOLUMN",
+      "name" : "uagridcolumn1",
+      "noPrivDisplayMode" : 1,
+      "getPSDEUIActionGroup" : {
+        "codeName" : "Usr0621100545",
+        "name" : "管理表格操作列",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        },
+        "getPSUIActionGroupDetails" : [ {
+          "detailType" : "DEUIACTION",
+          "name" : "u311c0fe",
+          "getPSSysImage" : {
+            "glyph" : "xf013@FontAwesome",
+            "cssClass" : "fa fa-gear"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.EDIT"
+            },
+            "caption" : "编辑",
+            "codeName" : "Edit",
+            "fullCodeName" : "Edit",
+            "name" : "表格界面_编辑操作",
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "predefinedType" : "GRIDVIEW_EDITACTION",
+            "timeout" : 60000,
+            "tooltip" : "编辑",
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "Edit",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "编辑",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+          },
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "detailType" : "DEUIACTION",
+          "name" : "u7176ed9",
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "noPrivDisplayMode" : 1,
+            "caption" : "删除",
+            "codeName" : "delete_dynadashboard",
+            "confirmMsg" : "确定删除选中仪表盘吗？",
+            "dataAccessAction" : "UPDATE",
+            "dialogResult" : "OK",
+            "fullCodeName" : "dyna_dashboard_delete_dynadashboard",
+            "name" : "删除仪表盘",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "INSIGHT_VIEW__UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "successMsg" : "删除成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "delete_dynadashboard",
+            "uIActionType" : "DEUIACTION",
+            "closeEditView" : true,
+            "closePopupView" : true,
+            "enableConfirm" : true,
+            "id" : "delete_dynadashboard@dyna_dashboard"
+          },
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "uniqueTag" : "dyna_dashboard__Usr0621100545"
+      },
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableSort" : false
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "序号",
+      "codeName" : "sequences",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "sequences",
+      "excelCaption" : "序号",
+      "hideMode" : 1,
+      "name" : "sequences",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "SEQUENCES",
+        "codeName" : "sequences"
+      },
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "hideDefault" : true
+    } ],
+    "getPSDEGridDataItems" : [ {
+      "dataType" : 25,
+      "name" : "dynadashboardname",
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDNAME",
+        "codeName" : "dyna_dashboard_name"
+      }
+    }, {
+      "dataType" : 6,
+      "name" : "sequences",
+      "getPSAppDEField" : {
+        "name" : "SEQUENCES",
+        "codeName" : "sequences"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDID",
+        "codeName" : "dyna_dashboard_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfdataaccaction",
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDID",
+        "codeName" : "dyna_dashboard_id"
+      },
+      "dataAccessAction" : true
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDNAME",
+        "codeName" : "dyna_dashboard_name"
+      }
+    } ],
+    "getPSDEGridEditItems" : [ {
+      "caption" : "动态数据看板标识",
+      "codeName" : "srfkey",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "DYNADASHBOARDID",
+        "codeName" : "dyna_dashboard_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "srfkey"
+      },
+      "allowEmpty" : true
+    } ],
+    "pagingSize" : 100,
+    "getRemovePSControlAction" : {
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      }
+    },
+    "sortMode" : "REMOTE",
+    "hasWFDataItems" : false,
+    "enableColFilter" : false,
+    "enableCustomized" : true,
+    "enableGroup" : false,
+    "enableItemPrivilege" : true,
+    "enablePagingBar" : false,
+    "enableRowEdit" : false,
+    "enableRowEditOrder" : true,
+    "enableRowNew" : false,
+    "forceFit" : false,
+    "hideHeader" : false,
+    "noSort" : false,
+    "singleSelect" : true,
+    "name" : "grid",
+    "modelid" : "15bc5a1fd3df5fcb82394dbd64c48e89",
+    "modeltype" : "PSDEGRID"
+  }, {
+    "codeName" : "usr06216958_search_form",
+    "controlType" : "SEARCHFORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard/PSSEARCHFORMS/usr06216958_search_form.json",
+    "logicName" : "效能度量仪表盘管理表格视图_搜索表单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionType" : "FILTERACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGet"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGetDraft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "search",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterSearch"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "搜索表单处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "SEARCHFORM"
+    },
+    "getPSDEFormPages" : [ {
+      "caption" : "常规条件",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "searchButtonStyle" : "DEFAULT",
+    "tabHeaderPos" : "TOP",
+    "enableAdvanceSearch" : false,
+    "enableAutoSearch" : false,
+    "enableFilterSave" : false,
+    "noTabHeader" : true,
+    "name" : "searchform",
+    "modelid" : "362984e7eeb8a2d3580c62d0d449dcc7",
+    "modeltype" : "PSDEFORM_SEARCHFORM"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.DYNADASHBOARD"
+    },
+    "caption" : "仪表盘管理",
+    "codeName" : "insight_view_grid_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "insight_view_grid_view",
+  "getPSDEViewId" : "663409c1360ea82da8dc0ed273b9d208",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEGRIDVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "title" : "效能度量仪表盘管理表格",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEGRIDVIEW",
+  "width" : 650,
+  "xDataControlName" : "grid",
+  "enableDP" : true,
+  "enableExport" : true,
+  "enableFilter" : true,
+  "enableImport" : true,
+  "enableQuickSearch" : true,
+  "enableRowEdit" : false,
+  "enableSearch" : true,
+  "rowEditDefault" : false,
+  "modelid" : "8c5f77a98c4ecaaea0d97f3be845ea28",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "dyna_dashboards",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "insight_view",
+    "majorDEName" : "INSIGHT_VIEW",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+    },
+    "minorDECodeName" : "dyna_dashboard",
+    "minorDEName" : "DYNADASHBOARD",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "name" : "DERCUSTOM_INSIGHT_VIEW_DYNADASHBOARD_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

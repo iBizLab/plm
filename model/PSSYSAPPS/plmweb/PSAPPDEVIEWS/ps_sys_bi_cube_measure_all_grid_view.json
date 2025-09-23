@@ -1,0 +1,667 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.PSSYSBICUBEMEASURE"
+  },
+  "caption" : "BI指标",
+  "codeName" : "ps_sys_bi_cube_measure_all_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_all_grid_view.json",
+  "gridRowActiveMode" : 0,
+  "name" : "PSSysBICubeMeasureall_grid_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Insight.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "GridView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "getNewDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewMsgGroup" : {
+    "modelref" : true,
+    "id" : "UsrVMGroup0715319095"
+  },
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "智能报表立方体指标编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.PSSYSBICUBEMEASURE.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "智能报表立方体指标数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.PSSYSBICUBEMEASURE.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "all_grid_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "BI指标全部表格视图_工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.NEW"
+      },
+      "caption" : "新建指标",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.NEW"
+        },
+        "caption" : "新建",
+        "codeName" : "New",
+        "fullCodeName" : "New",
+        "name" : "表格界面_新建操作",
+        "getPSSysImage" : {
+          "glyph" : "xf0f6@FontAwesome",
+          "cssClass" : "fa fa-file-text-o"
+        },
+        "predefinedType" : "GRIDVIEW_NEWACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.NEW"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "New",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "新建指标",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.NEW"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "grid",
+    "modelid" : "24179a3b122db03ad647c323eac9434c",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "aggMode" : "NONE",
+    "codeName" : "all_grid_view_grid",
+    "columnEnableFilter" : 2,
+    "columnEnableLink" : 2,
+    "controlType" : "GRID",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure/PSGRIDS/all_grid_view_grid.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "FetchDefault"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "logicName" : "BI指标全部表格视图_表格",
+    "getOrderValuePSAppDEField" : {
+      "name" : "ORDERVALUE",
+      "codeName" : "OrderValue"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionName" : "GetDraft",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "GetDraft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FetchDefault"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "数据表格处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "GRID"
+    },
+    "getPSDEGridColumns" : [ {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "立方体指标名称",
+      "codeName" : "pssysbicubemeasurename",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "pssysbicubemeasurename",
+      "excelCaption" : "立方体指标名称",
+      "name" : "pssysbicubemeasurename",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASURENAME",
+        "codeName" : "PSSysBICubeMeasureName"
+      },
+      "width" : 200,
+      "widthUnit" : "STAR",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "数据集",
+      "codeName" : "pssysbicubeid",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "pssysbicubeid",
+      "excelCaption" : "数据集",
+      "name" : "pssysbicubeid",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEID",
+        "codeName" : "PSSysBICubeId"
+      },
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "指标公式",
+      "codeName" : "measureformula",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "measureformula",
+      "excelCaption" : "指标公式",
+      "name" : "measureformula",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "MEASUREFORMULA",
+        "codeName" : "MeasureFormula"
+      },
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "CENTER",
+      "caption" : "操作",
+      "codeName" : "uagridcolumn1",
+      "columnType" : "UAGRIDCOLUMN",
+      "name" : "uagridcolumn1",
+      "noPrivDisplayMode" : 1,
+      "getPSDEUIActionGroup" : {
+        "codeName" : "Usr0710636553",
+        "name" : "指标配置表格行为组",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        },
+        "getPSUIActionGroupDetails" : [ {
+          "actionLevel" : 200,
+          "detailType" : "DEUIACTION",
+          "name" : "u2c73efc",
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "编辑",
+            "codeName" : "edit_info",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_sys_bi_cube_measure_edit_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "PSSysBICubeMeasure_edit_info",
+            "name" : "编辑指标",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "refreshMode" : 1,
+            "tooltip" : "编辑",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "edit_info",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "edit_info@PSSysBICubeMeasure"
+          },
+          "tooltip" : "编辑",
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 200,
+          "detailType" : "DEUIACTION",
+          "name" : "u3fb51b6",
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "删除",
+            "codeName" : "delete",
+            "confirmMsg" : "确定删除指标吗？",
+            "fullCodeName" : "PSSysBICubeMeasure_delete",
+            "name" : "删除指标",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "Remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "timeout" : 60000,
+            "tooltip" : "删除",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "delete",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "id" : "delete@PSSysBICubeMeasure"
+          },
+          "tooltip" : "删除",
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "uniqueTag" : "PSSysBICubeMeasure__Usr0710636553"
+      },
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableSort" : false
+    } ],
+    "getPSDEGridDataItems" : [ {
+      "dataType" : 25,
+      "name" : "pssysbicubemeasurename",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASURENAME",
+        "codeName" : "PSSysBICubeMeasureName"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "pssysbicubeid",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEID",
+        "codeName" : "PSSysBICubeId"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "measureformula",
+      "getPSAppDEField" : {
+        "name" : "MEASUREFORMULA",
+        "codeName" : "MeasureFormula"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASUREID",
+        "codeName" : "PSSysBICubeMeasureId"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfdataaccaction",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASUREID",
+        "codeName" : "PSSysBICubeMeasureId"
+      },
+      "dataAccessAction" : true
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASURENAME",
+        "codeName" : "PSSysBICubeMeasureName"
+      }
+    } ],
+    "getPSDEGridEditItems" : [ {
+      "caption" : "智能报表指标标识",
+      "codeName" : "srfkey",
+      "enableCond" : 0,
+      "ignoreInput" : 0,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "PSSYSBICUBEMEASUREID",
+        "codeName" : "PSSysBICubeMeasureId"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "srfkey"
+      },
+      "allowEmpty" : true
+    } ],
+    "pagingSize" : 100,
+    "getRemovePSControlAction" : {
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+      }
+    },
+    "sortMode" : "REMOTE",
+    "hasWFDataItems" : false,
+    "enableColFilter" : false,
+    "enableCustomized" : true,
+    "enableGroup" : false,
+    "enablePagingBar" : false,
+    "enableRowEdit" : false,
+    "enableRowEditOrder" : false,
+    "enableRowNew" : false,
+    "forceFit" : false,
+    "hideHeader" : false,
+    "noSort" : false,
+    "singleSelect" : true,
+    "name" : "grid",
+    "modelid" : "a15aba6205aacf1538407ee08abf633e",
+    "modeltype" : "PSDEGRID"
+  }, {
+    "codeName" : "all_grid_view_search_form",
+    "controlType" : "SEARCHFORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure/PSSEARCHFORMS/all_grid_view_search_form.json",
+    "logicName" : "BI指标全部表格视图_搜索表单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionType" : "FILTERACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGet"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGetDraft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "search",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterSearch"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "搜索表单处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "SEARCHFORM"
+    },
+    "getPSDEFormPages" : [ {
+      "caption" : "常规条件",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "searchButtonStyle" : "DEFAULT",
+    "tabHeaderPos" : "TOP",
+    "enableAdvanceSearch" : false,
+    "enableAutoSearch" : false,
+    "enableFilterSave" : false,
+    "noTabHeader" : true,
+    "name" : "searchform",
+    "modelid" : "7cd6b30611ab81daa6c88318ff830f3e",
+    "modeltype" : "PSDEFORM_SEARCHFORM"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.PSSYSBICUBEMEASURE"
+    },
+    "caption" : "BI指标",
+    "codeName" : "all_grid_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "all_grid_view",
+  "getPSDEViewId" : "62e9687dd79e1487ec064b535e652a56",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEGRIDVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSSysBICubeMeasure.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "BI指标表格",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEGRIDVIEW",
+  "xDataControlName" : "grid",
+  "enableDP" : true,
+  "enableExport" : true,
+  "enableFilter" : true,
+  "enableImport" : true,
+  "enableQuickSearch" : true,
+  "enableRowEdit" : false,
+  "enableSearch" : true,
+  "rowEditDefault" : false,
+  "modelid" : "89cc89c9ec1e61ccbf951f3fe9f80eb4",
+  "modeltype" : "PSAPPDEVIEW"
+}
