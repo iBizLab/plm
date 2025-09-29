@@ -1,0 +1,122 @@
+package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_product_ticket;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product productcreate_product_ticketdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_ticket_type productcreate_product_ticketproduct_ticket_param;
+                global cn.ibizlab.plm.core.base.domain.recent productcreate_product_ticketrecent;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_product_ticketticket_type_filter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_product_ticketticket_type_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_product_ticketticket_type_page;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iticket_typeService ticket_typeservice;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_ticket_typeService product_ticket_typeservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IproductService iBzSysProductDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "productcreate_product_ticketbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[查询is_system为1的数据]
+            rule "prepareparam3"
+            ruleflow-group "productcreate_product_ticketprepareparam3"
+            when
+            then
+                            productcreate_product_ticketticket_type_filter.set("n_is_system_eq","1");
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询工单类型数据]
+            rule "dedataset1"
+            ruleflow-group "productcreate_product_ticketdedataset1"
+            when
+            then
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "productcreate_product_ticketloopsubcall1"
+            when
+            then
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "productcreate_product_ticketresetparam1"
+            when
+            then
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置工单类型参数]
+            rule "prepareparam2"
+            ruleflow-group "productcreate_product_ticketprepareparam2"
+            when
+            then
+                            productcreate_product_ticketproduct_ticket_param.set("tickettypeid",productcreate_product_ticketticket_type_obj.get("id"));
+                            productcreate_product_ticketproduct_ticket_param.set("productid",productcreate_product_ticketdefault.get("id"));
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建产品工单类型]
+            rule "deaction2"
+            ruleflow-group "productcreate_product_ticketdeaction2"
+            when
+            then
+                        product_ticket_typeservice.create(productcreate_product_ticketproduct_ticket_param);
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "productcreate_product_ticketend1"
+            when
+            then
+                        update(productcreate_product_ticketdefault);//更新fact中变量值
+                        update(productcreate_product_ticketproduct_ticket_param);//更新fact中变量值
+                        update(productcreate_product_ticketrecent);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_filter);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_obj);//更新fact中变量值
+                        update(productcreate_product_ticketticket_type_page);//更新fact中变量值
+            end

@@ -1,0 +1,76 @@
+package cn.ibizlab.plm.prodmgmt.logic.product_taglogic.get_con_product_tag;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_tag product_tagget_con_product_tagdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket product_tagget_con_product_tagfilter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket product_tagget_con_product_tagticket_page;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_tagService iBzSysProduct_tagDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "product_tagget_con_product_tagbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "product_tagget_con_product_tagprepareparam2"
+            when
+            then
+                            product_tagget_con_product_tagfilter.set("n_tags_like",product_tagget_con_product_tagdefault.get("id"));
+                            product_tagget_con_product_tagfilter.set("size","1");
+                        update(product_tagget_con_product_tagdefault);//更新fact中变量值
+                        update(product_tagget_con_product_tagfilter);//更新fact中变量值
+                        update(product_tagget_con_product_tagticket_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工单数量]
+            rule "dedataset1"
+            ruleflow-group "product_tagget_con_product_tagdedataset1"
+            when
+            then
+                        update(product_tagget_con_product_tagdefault);//更新fact中变量值
+                        update(product_tagget_con_product_tagfilter);//更新fact中变量值
+                        update(product_tagget_con_product_tagticket_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[传递工单数量]
+            rule "prepareparam1"
+            ruleflow-group "product_tagget_con_product_tagprepareparam1"
+            when
+            then
+                            product_tagget_con_product_tagdefault.set("num",product_tagget_con_product_tagticket_page.get("total"));
+                        update(product_tagget_con_product_tagdefault);//更新fact中变量值
+                        update(product_tagget_con_product_tagfilter);//更新fact中变量值
+                        update(product_tagget_con_product_tagticket_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加工单数量提醒内容]
+            rule "rawsfcode1"
+            ruleflow-group "product_tagget_con_product_tagrawsfcode1"
+            when
+            then
+                        update(product_tagget_con_product_tagdefault);//更新fact中变量值
+                        update(product_tagget_con_product_tagfilter);//更新fact中变量值
+                        update(product_tagget_con_product_tagticket_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "product_tagget_con_product_tagend1"
+            when
+            then
+                        update(product_tagget_con_product_tagdefault);//更新fact中变量值
+                        update(product_tagget_con_product_tagfilter);//更新fact中变量值
+                        update(product_tagget_con_product_tagticket_page);//更新fact中变量值
+            end
