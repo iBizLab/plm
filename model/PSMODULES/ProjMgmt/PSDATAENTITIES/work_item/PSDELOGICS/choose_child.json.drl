@@ -1,0 +1,125 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchoose_childdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchoose_childfor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchoose_childparent_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchoose_childsrfactionparam;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchoose_childupdate_obj;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemchoose_childbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置父工作项id]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchoose_childprepareparam2"
+            when
+            then
+                            work_itemchoose_childparent_work_item.set("id",work_itemchoose_childdefault.get("pid"));
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取父工作项内容]
+            rule "deaction2"
+            ruleflow-group "work_itemchoose_childdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(work_itemchoose_childparent_work_item.getId()),work_itemchoose_childparent_work_item);
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定子工作项]
+            rule "bindparam1"
+            ruleflow-group "work_itemchoose_childbindparam1"
+            when
+            then
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemchoose_childloopsubcall1"
+            when
+            then
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立更新对象]
+            rule "renewparam1"
+            ruleflow-group "work_itemchoose_childrenewparam1"
+            when
+            then
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置子工作项标识]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemchoose_childrawsfcode1"
+            when
+            then
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要更新的父工作项标识]
+            rule "prepareparam1"
+            ruleflow-group "work_itemchoose_childprepareparam1"
+            when
+            then
+                            work_itemchoose_childupdate_obj.set("pid",work_itemchoose_childparent_work_item.get("id"));
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新子工作项的父标识]
+            rule "deaction3"
+            ruleflow-group "work_itemchoose_childdeaction3"
+            when
+            then
+                        work_itemservice.update(work_itemchoose_childupdate_obj);
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end

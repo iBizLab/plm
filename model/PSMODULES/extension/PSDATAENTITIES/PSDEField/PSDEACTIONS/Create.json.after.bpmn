@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.extension.psdefield.create.afterLogic" isClosed="false" isExecutable="true" name="extension_psdefield_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.extension.psdefield.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.extension.domain.PSDEField"/>
+                            <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDEFieldService))" name="psdefieldService" type="service"/>
+                    <tns:metaData express="" name="et" type="entity"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="5b457698d99df93edf02f7b0abdbcbc1" id="5b457698d99df93edf02f7b0abdbcbc1" implementation="http://www.jboss.org/drools/rule" name="psdefieldapply"/>
+                        <sequenceFlow id="begin_5b457698d99df93edf02f7b0abdbcbc1" sourceRef="begin" targetRef="5b457698d99df93edf02f7b0abdbcbc1"/>
+                            <sequenceFlow id="5b457698d99df93edf02f7b0abdbcbc1_prepareparam1_end" sourceRef="5b457698d99df93edf02f7b0abdbcbc1" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>
