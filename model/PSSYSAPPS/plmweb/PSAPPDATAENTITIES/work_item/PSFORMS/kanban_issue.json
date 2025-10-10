@@ -82,6 +82,7 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
       },
+      "timer" : 60000,
       "uniqueTag" : "work_item_re_counters"
     },
     "tag" : "80c6a87f18f8c72574d69d7391fa7db1",
@@ -13687,6 +13688,20 @@
                   "name" : "engine"
                 } ],
                 "getPSAppViewLogics" : [ {
+                  "eventNames" : "onLoadSuccess",
+                  "logicTrigger" : "CTRLEVENT",
+                  "logicType" : "APPDEUILOGIC",
+                  "name" : "LOADSUCCESS",
+                  "getPSAppDEUILogic" : {
+                    "modelref" : true,
+                    "id" : "get_deliverable_total"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+                  },
+                  "getPSViewCtrlName" : "grid"
+                }, {
                   "eventNames" : "onMounted",
                   "logicTrigger" : "VIEWEVENT",
                   "logicType" : "SCRIPT",
