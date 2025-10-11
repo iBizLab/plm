@@ -1,0 +1,277 @@
+{
+  "codeName" : "create_product_ticket",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/create_product_ticket.json",
+  "logicName" : "生成产品工单类型",
+  "memo" : "产品建立时将工单类型中is_system=1的数据同步至产品工单类型中",
+  "name" : "生成产品工单类型",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 346,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 130,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 306,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "查询is_system为1的数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_is_system_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket_type_filter"
+      },
+      "name" : "直接值[1] ==> ticket_type_filter[n_is_system_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 390
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ticket_type_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "leftPos" : 306,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询工单类型数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ticket_type_page"
+    },
+    "topPos" : 558
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ticket_type_obj"
+    },
+    "leftPos" : 306,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "循环结束",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ticket_type_page"
+    },
+    "topPos" : 760
+  }, {
+    "codeName" : "RESETPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "product_ticket_param"
+    },
+    "leftPos" : 526,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      }
+    } ],
+    "topPos" : 760
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 745,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置工单类型参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TICKET_TYPE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "product_ticket_param"
+      },
+      "name" : "ticket_type_obj[ID] ==> product_ticket_param[TICKET_TYPE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket_type_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRODUCT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "product_ticket_param"
+      },
+      "name" : "Default[ID] ==> product_ticket_param[PRODUCT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 760
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "product_ticket_param"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
+    },
+    "leftPos" : 745,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建产品工单类型",
+    "topPos" : 939
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 346,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 980
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "product_ticket_param",
+    "logicName" : "产品工单类型变量",
+    "name" : "产品工单类型变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "recent",
+    "logicName" : "最近访问数据",
+    "name" : "最近访问数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket_type_filter",
+    "logicName" : "工单类型过滤器",
+    "name" : "工单类型过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "ticket_type_obj",
+    "logicName" : "工单类型变量",
+    "name" : "工单类型变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket_type_page",
+    "logicName" : "工单类型分页结果",
+    "name" : "工单类型分页结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,660 @@
+{
+  "codeName" : "create_plan_snapshot",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDELOGICS/create_plan_snapshot.json",
+  "logicName" : "新建规划快照",
+  "memo" : "新建规划快照",
+  "name" : "新建规划快照",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 220,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 100
+  }, {
+    "codeName" : "PREPAREPARAM8",
+    "leftPos" : 180,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置快照类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "选择同时建立基线",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "set_baseline",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[set_baseline] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "未选择同时建立基线",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "set_baseline",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[set_baseline] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[plan] ==> Default[TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "plan",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 230
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 64,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置基线状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[1] ==> Default[STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 413
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 326,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置快照状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[3] ==> Default[STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "3",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 413
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建规划快照",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 563
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 190,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "传入项目标识至查询过滤器",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_project_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "Default[OWNER_ID] ==> work_item_filter[n_project_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[10000] ==> work_item_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "10000",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 678
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "plan_snapshot"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取指定项目下的所有工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_page"
+    },
+    "topPos" : 775
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_page"
+    },
+    "topPos" : 886
+  }, {
+    "codeName" : "RESETPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置关联对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      }
+    } ],
+    "topPos" : 1009
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 190,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "将工作项标识赋值于关联对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "工作项存在版本标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "CUR_VERSION_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[CUR_VERSION_ID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM2"
+      },
+      "name" : "工作项不存在版本标识",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TARGET_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "for_temp_obj[ID] ==> relation[TARGET_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "Default[ID] ==> relation[PRINCIPAL_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TARGET_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "直接值[work_item] ==> relation[TARGET_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "work_item",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "直接值[baseline] ==> relation[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "baseline",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 1107
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 20,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "关联对象版本标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TARGET_VERSION_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "for_temp_obj[CUR_VERSION_ID] ==> relation[TARGET_VERSION_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CUR_VERSION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 1240
+  }, {
+    "codeName" : "RESETPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version"
+    },
+    "leftPos" : 336,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置版本对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM2"
+      }
+    } ],
+    "topPos" : 1240
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 336,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备初始化版本属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version"
+      },
+      "name" : "for_temp_obj[ID] ==> version[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "DESCRIPTION",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version"
+      },
+      "name" : "直接值[初始化创建] ==> version[DESCRIPTION]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "初始化创建",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version"
+      },
+      "name" : "直接值[WORK_ITEM] ==> version[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "WORK_ITEM",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version"
+      },
+      "name" : "直接值[v1] ==> version[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "v1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 1340
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version/PSDEACTIONS/fix_commit.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "leftPos" : 336,
+    "logicNodeType" : "DEACTION",
+    "name" : "修复初始化版本",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version"
+    },
+    "topPos" : 1430
+  }, {
+    "codeName" : "PREPAREPARAM7",
+    "leftPos" : 336,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "关联对象版本标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TARGET_VERSION_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation"
+      },
+      "name" : "version[ID] ==> relation[TARGET_VERSION_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 1534
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立快照关联工作项数据",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation"
+    },
+    "topPos" : 1631
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "工作项循环临时变量",
+    "name" : "工作项循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "relation",
+    "logicName" : "关联对象",
+    "name" : "关联对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "version",
+    "logicName" : "初始版本对象",
+    "name" : "初始版本对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item_filter",
+    "logicName" : "工作项查询过滤器",
+    "name" : "工作项查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "work_item_page",
+    "logicName" : "工作项分页查询结果变量",
+    "name" : "工作项分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
