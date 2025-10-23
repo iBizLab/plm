@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pagefinish_add_attention" isClosed="false" isExecutable="true" name="wiki_article_page_finish_add_attention_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pagefinish_add_attention">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pagefinish_add_attentiondefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagefinish_add_attentionpage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attention()" name="article_pagefinish_add_attentionattention" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="article_pagefinish_add_attentionfor_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="article_pagefinish_add_attentionsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IattentionService))" name="attentionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pagefinish_add_attentiondefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagefinish_add_attentionpage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagefinish_add_attentionattention" type="cn.ibizlab.plm.core.base.domain.attention" />
+                            <tns:global identifier="article_pagefinish_add_attentionfor_obj" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="article_pagefinish_add_attentionsrfactionparam" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagefinish_add_attentionbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取列表"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagefinish_add_attentionloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagefinish_add_attentionend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagefinish_add_attentionprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagefinish_add_attentiondeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建关注人"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

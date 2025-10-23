@@ -1,0 +1,390 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "main",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlStyle" : "ATTACHMENT_GRID",
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment/PSGRIDS/main.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "customCond" : "SRFNAVPARAM.N_OWNER_ID_EQ=%principal_id%",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchDefault"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "主表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "名称",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "名称",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "附件预览",
+      "codeName" : "attachment_preview",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "attachment_attachment_preview",
+      "name" : "附件预览",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "attachment_preview"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf002@FontAwesome",
+        "cssClass" : "fa fa-search"
+      },
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "attachment_preview",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "globalUIAction" : true,
+      "id" : "attachment_preview@attachment"
+    },
+    "width" : 250,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "caption" : "上传时间",
+    "codeName" : "update_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_time",
+    "excelCaption" : "上传时间",
+    "name" : "update_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 160,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "所属数据标识",
+    "codeName" : "owner_id",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "owner_id",
+    "excelCaption" : "所属数据标识",
+    "hideMode" : 1,
+    "name" : "owner_id",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true,
+    "hideDefault" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "所属数据对象",
+    "codeName" : "owner_type",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "owner_type",
+    "excelCaption" : "所属数据对象",
+    "hideMode" : 1,
+    "name" : "owner_type",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "OWNER_TYPE",
+      "codeName" : "owner_type"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true,
+    "hideDefault" : true
+  }, {
+    "align" : "RIGHT",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr0110180768",
+      "name" : "附件表格操作列（表格）",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "actionLevel" : 250,
+        "caption" : "下载",
+        "detailType" : "DEUIACTION",
+        "name" : "uf50d99f",
+        "getPSSysImage" : {
+          "glyph" : "xf019@FontAwesome",
+          "cssClass" : "fa fa-download"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "下载",
+          "codeName" : "download",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "attachment_download",
+          "name" : "附件下载",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "fileid",
+            "name" : "fileid",
+            "value" : "file_id",
+            "rawValue" : false
+          }, {
+            "key" : "filename",
+            "name" : "filename",
+            "value" : "name",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf019@FontAwesome",
+            "cssClass" : "fa fa-download"
+          },
+          "getPSSysPFPlugin" : {
+            "pluginType" : "DEUIACTION",
+            "pluginCode" : "FILE_DOWNLOAD",
+            "runtimeObject" : true
+          },
+          "tooltip" : "下载当前附件",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "download",
+          "uIActionType" : "DEUIACTION",
+          "id" : "download@attachment"
+        },
+        "tooltip" : "下载当前附件",
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "删除",
+        "detailType" : "DEUIACTION",
+        "name" : "u345ff05",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "删除",
+          "codeName" : "delete_grid",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "attachment_delete_grid",
+          "name" : "附件删除（表格）",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "remove_attachment_grid"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "delete_grid",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "id" : "delete_grid@attachment"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "attachment__Usr0110180768"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "update_time",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "owner_id",
+    "getPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "owner_type",
+    "getPSAppDEField" : {
+      "name" : "OWNER_TYPE",
+      "codeName" : "owner_type"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "file_id",
+    "getPSAppDEField" : {
+      "name" : "FILE_ID",
+      "codeName" : "file_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "所属数据标识",
+    "codeName" : "owner_id",
+    "createDV" : "srfowner_id",
+    "createDVT" : "APPDATA",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "owner_id",
+    "getPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "maxLength" : 100,
+      "name" : "owner_id"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "所属数据对象",
+    "codeName" : "owner_type",
+    "createDV" : "srfowner_type",
+    "createDVT" : "APPDATA",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "owner_type",
+    "getPSAppDEField" : {
+      "name" : "OWNER_TYPE",
+      "codeName" : "owner_type"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "maxLength" : 100,
+      "name" : "owner_type"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "ATTACHMENT_GRID",
+    "runtimeObject" : true
+  },
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "cfd9a8326a808dcbc944fc3e65d57936",
+  "modeltype" : "PSDEGRID"
+}

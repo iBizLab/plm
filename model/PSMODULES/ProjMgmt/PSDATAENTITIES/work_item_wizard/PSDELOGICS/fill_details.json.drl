@@ -1,0 +1,69 @@
+package cn.ibizlab.plm.projmgmt.logic.work_item_wizardlogic.fill_details;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard work_item_wizardfill_detailsdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_item_wizardfill_detailswork_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_item_wizardfill_detailswork_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_item_wizardfill_detailswork_items;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_wizardService iBzSysWork_item_wizardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_item_wizardfill_detailsbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备查询过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "work_item_wizardfill_detailsprepareparam1"
+            when
+            then
+                            work_item_wizardfill_detailswork_item_filter.set("n_id_in",work_item_wizardfill_detailsdefault.get("work_item"));
+                        update(work_item_wizardfill_detailsdefault);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item_filter);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项集合]
+            rule "dedataset1"
+            ruleflow-group "work_item_wizardfill_detailsdedataset1"
+            when
+            then
+                        update(work_item_wizardfill_detailsdefault);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item_filter);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[封装属性]
+            rule "rawsfcode1"
+            ruleflow-group "work_item_wizardfill_detailsrawsfcode1"
+            when
+            then
+                        update(work_item_wizardfill_detailsdefault);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item_filter);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_item_wizardfill_detailsend1"
+            when
+            then
+                        update(work_item_wizardfill_detailsdefault);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_item_filter);//更新fact中变量值
+                        update(work_item_wizardfill_detailswork_items);//更新fact中变量值
+            end
