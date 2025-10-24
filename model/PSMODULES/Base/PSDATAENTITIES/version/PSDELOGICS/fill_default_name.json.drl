@@ -1,0 +1,59 @@
+package cn.ibizlab.plm.base.logic.versionlogic.fill_default_name;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.version versionfill_default_namedefault;
+                global cn.ibizlab.plm.core.base.domain.version versionfill_default_namecur_version;
+        global cn.ibizlab.plm.core.base.service.IversionService iBzSysVersionDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "versionfill_default_namebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取当前版本]
+            rule "rawsqlcall1"
+            ruleflow-group "versionfill_default_namerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",versionfill_default_namedefault.get("ownerid"));
+        param.put("param1",versionfill_default_namedefault.get("ownertype"));
+    String strSql="select IDENTIFIER, `NAME` from `version` where owner_id = #{et.param0} and owner_type = #{et.param1} order by IDENTIFIER desc limit 1 ";
+                        java.util.List<JSONObject> entities=iBzSysVersionDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    versionfill_default_namecur_version.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(versionfill_default_namedefault);//更新fact中变量值
+                        update(versionfill_default_namecur_version);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充默认版本名称]
+            rule "rawsfcode1"
+            ruleflow-group "versionfill_default_namerawsfcode1"
+            when
+            then
+                        update(versionfill_default_namedefault);//更新fact中变量值
+                        update(versionfill_default_namecur_version);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "versionfill_default_nameend1"
+            when
+            then
+                        update(versionfill_default_namedefault);//更新fact中变量值
+                        update(versionfill_default_namecur_version);//更新fact中变量值
+            end

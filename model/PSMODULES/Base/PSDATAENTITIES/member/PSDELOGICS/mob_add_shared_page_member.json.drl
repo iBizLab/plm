@@ -1,0 +1,109 @@
+package cn.ibizlab.plm.base.logic.memberlogic.mob_add_shared_page_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.member membermob_add_shared_page_memberdefault;
+                global cn.ibizlab.plm.core.base.domain.member membermob_add_shared_page_membermember;
+                global cn.ibizlab.plm.core.base.domain.member membermob_add_shared_page_membermembers;
+                global cn.ibizlab.plm.core.base.domain.user membermob_add_shared_page_memberuser;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+        global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "membermob_add_shared_page_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "membermob_add_shared_page_memberprepareparam1"
+            when
+            then
+                            membermob_add_shared_page_membermembers.set("",membermob_add_shared_page_memberdefault.get("srfactionparam"));
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加共享页面成员]
+            rule "rawsfcode1"
+            ruleflow-group "membermob_add_shared_page_memberrawsfcode1"
+            when
+            then
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加共享成员逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "membermob_add_shared_page_memberdebugparam1"
+            when
+            then
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "membermob_add_shared_page_memberloopsubcall1"
+            when
+            then
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "membermob_add_shared_page_memberend1"
+            when
+            then
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "membermob_add_shared_page_memberprepareparam2"
+            when
+            then
+                            membermob_add_shared_page_membermember.set("ownertype","PAGE");
+                            membermob_add_shared_page_membermember.set("roleid",membermob_add_shared_page_memberdefault.get("check_type"));
+                            membermob_add_shared_page_membermember.set("ownersubtype","SHARED");
+                            membermob_add_shared_page_membermember.set("ownerid",membermob_add_shared_page_memberdefault.get("shared_page"));
+                            membermob_add_shared_page_membermember.set("userid",membermob_add_shared_page_memberuser.get("id"));
+                            membermob_add_shared_page_membermember.set("name",membermob_add_shared_page_memberuser.get("displayname"));
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "membermob_add_shared_page_memberdeaction1"
+            when
+            then
+                        memberservice.save(membermob_add_shared_page_membermember);
+                        update(membermob_add_shared_page_memberdefault);//更新fact中变量值
+                        update(membermob_add_shared_page_membermember);//更新fact中变量值
+                        update(membermob_add_shared_page_membermembers);//更新fact中变量值
+                        update(membermob_add_shared_page_memberuser);//更新fact中变量值
+            end

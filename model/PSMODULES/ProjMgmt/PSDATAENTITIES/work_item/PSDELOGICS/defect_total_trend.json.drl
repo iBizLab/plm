@@ -1,0 +1,69 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.defect_total_trend;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemdefect_total_trenddefault;
+                global java.util.Map work_itemdefect_total_trendresult;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemdefect_total_trendbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemdefect_total_trendend1"
+            when
+            then
+                        update(work_itemdefect_total_trenddefault);//更新fact中变量值
+                        update(work_itemdefect_total_trendresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询每日新增缺陷累计]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemdefect_total_trendrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemdefect_total_trenddefault.get("n_project_id_eq"));
+        param.put("param1",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param2",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param3",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param4",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param5",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param6",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param7",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param8",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param9",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param10",work_itemdefect_total_trenddefault.get("n_project_id_eq"));
+        param.put("param11",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param12",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param13",work_itemdefect_total_trenddefault.get("n_sprint_id_eq"));
+        param.put("param14",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param15",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param16",work_itemdefect_total_trenddefault.get("n_priority_eq"));
+        param.put("param17",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param18",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param19",work_itemdefect_total_trenddefault.get("n_severity_eq"));
+        param.put("param20",work_itemdefect_total_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param21",work_itemdefect_total_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param22",work_itemdefect_total_trenddefault.get("n_create_time_ltandeq"));
+    String strSql="SELECT     date_series.date AS filter_type,     (         SELECT COUNT(*)         FROM work_item wi                  JOIN work_item_state wis ON wi.state = wis.ID         WHERE DATE(wi.CREATE_TIME) <= date_series.date           AND wi.WORK_ITEM_TYPE_ID LIKE '%bug%'           AND wi.PROJECT_ID = #{et.param0}           AND ((#{et.param1} IS NULL OR #{et.param2} = '') OR SPRINT_ID = #{et.param3})           AND ((#{et.param4} IS NULL OR #{et.param5} = '') OR FIND_IN_SET(PRIORITY, #{et.param6}))           AND ((#{et.param7} IS NULL OR #{et.param8} = '') OR FIND_IN_SET(SEVERITY, #{et.param9}))           AND wi.is_deleted = 0     ) AS count,     (         SELECT COUNT(*)         FROM work_item wi                  JOIN work_item_state wis ON wi.state = wis.ID         WHERE DATE(wi.CREATE_TIME) <= date_series.date           AND wi.WORK_ITEM_TYPE_ID LIKE '%bug%'           AND wi.PROJECT_ID = #{et.param10}           AND ((#{et.param11} IS NULL OR #{et.param12} = '') OR SPRINT_ID = #{et.param13})           AND ((#{et.param14} IS NULL OR #{et.param15} = '') OR FIND_IN_SET(PRIORITY, #{et.param16}))           AND ((#{et.param17} IS NULL OR #{et.param18} = '') OR FIND_IN_SET(SEVERITY, #{et.param19}))           AND wi.is_deleted = 0           AND wis.TYPE <> 'completed'     ) AS count2 FROM     (SELECT #{et.param20} + INTERVAL seq.seq DAY AS date      FROM          (SELECT a.i + b.i*10 + c.i*100 AS seq           FROM (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a                    CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b                    CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c          ) seq      WHERE #{et.param21} + INTERVAL seq.seq DAY <= #{et.param22}     ) date_series ORDER BY date_series.date;";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                work_itemdefect_total_trendresult.putAll(entity);
+                            }
+                        update(work_itemdefect_total_trenddefault);//更新fact中变量值
+                        update(work_itemdefect_total_trendresult);//更新fact中变量值
+            end
