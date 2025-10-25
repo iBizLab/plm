@@ -15,32 +15,32 @@ root {
 
 state "start" as start  <<start>>
 state "end" as end <<end>>
-state "[条件组]OR" as c4d2cd1bb90fd7a18519312ff2326466 [[$./end_at#ac4d2cd1bb90fd7a18519312ff2326466 {"[条件组]OR"}]] {
-state " " as c4d2cd1bb90fd7a18519312ff2326466_entry  <<entryPoint>>
-state "(END_AT) 值为空(Nil)" as 6ec0ca3551ecb69ebd354f64dc0ca4b5 [[$./end_at#a6ec0ca3551ecb69ebd354f64dc0ca4b5 {"[常规条件] 值为空(Nil)"}]]
-state "[条件组]OR" as e51251fab050a045433cc0f01171828b [[$./end_at#ae51251fab050a045433cc0f01171828b {"[条件组]OR"}]] {
-state " " as e51251fab050a045433cc0f01171828b_entry  <<entryPoint>>
-state "(START_AT) 值为空(Nil)" as 0ce317ade6c0b86df0f4ad1b7cdcff1f [[$./end_at#a0ce317ade6c0b86df0f4ad1b7cdcff1f {"[常规条件] 值为空(Nil)"}]]
-state "(END_AT) 大于等于(>=) 数据对象属性 (START_AT)" as 207718f7c06f3a60dbb5d3e90cab6cf3 [[$./end_at#a207718f7c06f3a60dbb5d3e90cab6cf3 {"[常规条件] 大于等于(>=) 数据对象属性 (START_AT)"}]]
-state " " as e51251fab050a045433cc0f01171828b_exit  <<exitPoint>>
+state "[条件组]OR" as 998c8e15574f23221e433a5d52ab8f28 [[$./end_at#a998c8e15574f23221e433a5d52ab8f28 {"[条件组]OR"}]] {
+state " " as 998c8e15574f23221e433a5d52ab8f28_entry  <<entryPoint>>
+state "(END_AT) 值为空(Nil)" as de62a9e02524ec3d95d164d76b6fd4e6 [[$./end_at#ade62a9e02524ec3d95d164d76b6fd4e6 {"[常规条件] 值为空(Nil)"}]]
+state "[条件组]OR" as 775ae966e05989a446f42b21f6e106ef [[$./end_at#a775ae966e05989a446f42b21f6e106ef {"[条件组]OR"}]] {
+state " " as 775ae966e05989a446f42b21f6e106ef_entry  <<entryPoint>>
+state "(START_AT) 值为空(Nil)" as b949bda3a0e06b912952b7841cc8aa10 [[$./end_at#ab949bda3a0e06b912952b7841cc8aa10 {"[常规条件] 值为空(Nil)"}]]
+state "(END_AT) 大于等于(>=) 数据对象属性 (START_AT)" as c678be8cf925fd1b084d8d0a473551ae [[$./end_at#ac678be8cf925fd1b084d8d0a473551ae {"[常规条件] 大于等于(>=) 数据对象属性 (START_AT)"}]]
+state " " as 775ae966e05989a446f42b21f6e106ef_exit  <<exitPoint>>
 }
-state " " as c4d2cd1bb90fd7a18519312ff2326466_exit  <<exitPoint>>
+state " " as 998c8e15574f23221e433a5d52ab8f28_exit  <<exitPoint>>
 }
 
 
-start --> c4d2cd1bb90fd7a18519312ff2326466_entry 
-c4d2cd1bb90fd7a18519312ff2326466_entry --> 6ec0ca3551ecb69ebd354f64dc0ca4b5 
-6ec0ca3551ecb69ebd354f64dc0ca4b5 --> c4d2cd1bb90fd7a18519312ff2326466_exit  : yes
-6ec0ca3551ecb69ebd354f64dc0ca4b5 -[#red]-> e51251fab050a045433cc0f01171828b_entry  : no
+start --> 998c8e15574f23221e433a5d52ab8f28_entry 
+998c8e15574f23221e433a5d52ab8f28_entry --> de62a9e02524ec3d95d164d76b6fd4e6 
+de62a9e02524ec3d95d164d76b6fd4e6 --> 998c8e15574f23221e433a5d52ab8f28_exit  : yes
+de62a9e02524ec3d95d164d76b6fd4e6 -[#red]-> 775ae966e05989a446f42b21f6e106ef_entry  : no
 
-e51251fab050a045433cc0f01171828b_entry --> 0ce317ade6c0b86df0f4ad1b7cdcff1f 
-0ce317ade6c0b86df0f4ad1b7cdcff1f --> e51251fab050a045433cc0f01171828b_exit  : yes
-0ce317ade6c0b86df0f4ad1b7cdcff1f -[#red]-> 207718f7c06f3a60dbb5d3e90cab6cf3  : no
+775ae966e05989a446f42b21f6e106ef_entry --> b949bda3a0e06b912952b7841cc8aa10 
+b949bda3a0e06b912952b7841cc8aa10 --> 775ae966e05989a446f42b21f6e106ef_exit  : yes
+b949bda3a0e06b912952b7841cc8aa10 -[#red]-> c678be8cf925fd1b084d8d0a473551ae  : no
 
-207718f7c06f3a60dbb5d3e90cab6cf3 --> e51251fab050a045433cc0f01171828b_exit  : yes
-207718f7c06f3a60dbb5d3e90cab6cf3 -[#red]-> end  : no
-e51251fab050a045433cc0f01171828b_exit --> c4d2cd1bb90fd7a18519312ff2326466_exit 
-c4d2cd1bb90fd7a18519312ff2326466_exit --> end 
+c678be8cf925fd1b084d8d0a473551ae --> 775ae966e05989a446f42b21f6e106ef_exit  : yes
+c678be8cf925fd1b084d8d0a473551ae -[#red]-> end  : no
+775ae966e05989a446f42b21f6e106ef_exit --> 998c8e15574f23221e433a5d52ab8f28_exit 
+998c8e15574f23221e433a5d52ab8f28_exit --> end 
 
 
 @enduml
@@ -48,7 +48,19 @@ c4d2cd1bb90fd7a18519312ff2326466_exit --> end
 
 #### 条件说明
 
-##### (END_AT) 大于等于(>=) 数据对象属性 (START_AT) :id=a207718f7c06f3a60dbb5d3e90cab6cf3
+##### (END_AT) 值为空(Nil) :id=ade62a9e02524ec3d95d164d76b6fd4e6
+
+
+
+`END_AT(结束时间)` ISNULL 
+
+##### (START_AT) 值为空(Nil) :id=ab949bda3a0e06b912952b7841cc8aa10
+
+
+
+`START_AT(开始时间)` ISNULL 
+
+##### (END_AT) 大于等于(>=) 数据对象属性 (START_AT) :id=ac678be8cf925fd1b084d8d0a473551ae
 
 
 
@@ -57,18 +69,6 @@ c4d2cd1bb90fd7a18519312ff2326466_exit --> end
 > [!ATTENTION|label:规则信息|icon:fa fa-warning]
 > 结束时间必须大于等于开始时间
 
-
-##### (END_AT) 值为空(Nil) :id=a6ec0ca3551ecb69ebd354f64dc0ca4b5
-
-
-
-`END_AT(结束时间)` ISNULL 
-
-##### (START_AT) 值为空(Nil) :id=a0ce317ade6c0b86df0f4ad1b7cdcff1f
-
-
-
-`START_AT(开始时间)` ISNULL 
 
 
 

@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [表格界面_新建项目](module/ProjMgmt/project_member#界面行为)
   * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [移除成员](module/ProjMgmt/project_member#界面行为)
+  * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [表格界面_新建项目](module/ProjMgmt/project_member#界面行为)
 
 ### 关联界面逻辑
   * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [新建项目默认临时成员](module/ProjMgmt/project_member/uilogic/create_default_temp_members)

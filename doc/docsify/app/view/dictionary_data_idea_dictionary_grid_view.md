@@ -18,8 +18,8 @@
 
 
 ### 关联界面行为
-  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [数据字典删除](module/Base/dictionary_data#界面行为)
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [需求字典新建](module/Base/dictionary_data#界面行为)
+  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [数据字典删除](module/Base/dictionary_data#界面行为)
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_编辑操作](module/Base/dictionary_data#界面行为)
 
 ### 关联界面逻辑

@@ -19,13 +19,13 @@
 
 
 ### 关联界面行为
+  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [删除状态](module/ProjMgmt/work_item_state#界面行为)
   * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [表格界面_新建操作](module/ProjMgmt/work_item_state#界面行为)
   * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [编辑状态](module/ProjMgmt/work_item_state#界面行为)
-  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [删除状态](module/ProjMgmt/work_item_state#界面行为)
 
 ### 关联界面逻辑
-  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)
   * [需求(IDEA)](module/ProdMgmt/idea) : [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
+  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)
 
 ### 关联视图
   * [新建状态(work_item_state_quick_create_view)](app/view/work_item_state_quick_create_view)
