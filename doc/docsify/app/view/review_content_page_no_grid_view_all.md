@@ -20,13 +20,14 @@
 
 ### 关联界面行为
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [评审内容版本比对](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [提交评审](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [快速评审](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [完成当前阶段评审](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [设置评审结果](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [表格界面_保存行](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [开始当前阶段评审](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [提交评审](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [设置评审结果](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [表格界面_保存行](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [快速评审](module/TestMgmt/review_content#界面行为)
 
 ### 关联界面逻辑
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)

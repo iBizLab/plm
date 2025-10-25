@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template) : [表格界面_新建操作_子数据](module/ProdMgmt/idea_template#界面行为)
   * [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template) : [打开需求模板编辑](module/ProdMgmt/idea_template#界面行为)
+  * [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template) : [表格界面_新建操作_子数据](module/ProdMgmt/idea_template#界面行为)
   * [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template) : [删除模板](module/ProdMgmt/idea_template#界面行为)
 
 ### 关联视图

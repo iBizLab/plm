@@ -3,6 +3,7 @@
   "caption" : "产品管理",
   "codeName" : "product_tree_exp_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tree_exp_view.json",
+  "dynaSysMode" : 1,
   "name" : "producttree_exp_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -61,6 +62,7 @@
   "getPSControls" : [ {
     "codeName" : "tree_exp_view_treeexpbar",
     "controlType" : "TREEEXPBAR",
+    "dynaSysMode" : 1,
     "name" : "treeexpbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -251,6 +253,63 @@
         "id" : "treeexpbar_tree"
       },
       "getPSControls" : [ {
+        "codeName" : "tree_exp_view_node1_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "产品配置树节点菜单",
+        "name" : "node_1_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_1_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "actionLevel" : 200,
+          "caption" : "产品配置",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_1_cm_deuiaction1"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "产品配置",
+            "codeName" : "open_global_setting",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_config_tree_exp_view.json",
+              "viewType" : "DETREEEXPVIEW"
+            },
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "product_open_global_setting",
+            "name" : "打开产品配置",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/product_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_5%3Anode/product_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/product_in_progress_grid_view/-`",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_global_setting",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_global_setting@product"
+          },
+          "tooltip" : "产品配置",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "modelid" : "80136b8bdeb0711c612a52f71d5c6980",
+        "modeltype" : "PSDETOOLBAR"
+      }, {
         "codeName" : "tree_exp_view_node6_cm",
         "controlType" : "CONTEXTMENU",
         "logicName" : "星标产品树节点菜单",
@@ -358,63 +417,6 @@
           "showIcon" : true
         } ],
         "modelid" : "00f4b816e2735ad19fa5ea1e39cc454a",
-        "modeltype" : "PSDETOOLBAR"
-      }, {
-        "codeName" : "tree_exp_view_node1_cm",
-        "controlType" : "CONTEXTMENU",
-        "logicName" : "产品配置树节点菜单",
-        "name" : "node_1_cm",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-        },
-        "getPSControlParam" : {
-          "id" : "node_1_cm"
-        },
-        "getPSDEToolbarItems" : [ {
-          "actionLevel" : 200,
-          "caption" : "产品配置",
-          "groupExtractMode" : "ITEM",
-          "itemType" : "DEUIACTION",
-          "name" : "deuiaction1",
-          "noPrivDisplayMode" : 2,
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "node_1_cm_deuiaction1"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "NONE",
-            "caption" : "产品配置",
-            "codeName" : "open_global_setting",
-            "dataAccessAction" : "UPDATE",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_config_tree_exp_view.json",
-              "viewType" : "DETREEEXPVIEW"
-            },
-            "frontProcessType" : "OTHER",
-            "fullCodeName" : "product_open_global_setting",
-            "name" : "打开产品配置",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "UPDATE"
-            },
-            "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/product_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_5%3Anode/product_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/product_in_progress_grid_view/-`",
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "open_global_setting",
-            "uIActionType" : "DEUIACTION",
-            "id" : "open_global_setting@product"
-          },
-          "tooltip" : "产品配置",
-          "uIActionTarget" : "NONE",
-          "showCaption" : true,
-          "showIcon" : true
-        } ],
-        "modelid" : "80136b8bdeb0711c612a52f71d5c6980",
         "modeltype" : "PSDETOOLBAR"
       } ],
       "getPSDETreeNodeRSs" : [ {

@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [编辑界面_保存并退出操作](module/extension/PSCorePrdFunc#界面行为)
   * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [编辑界面_刷新操作](module/extension/PSCorePrdFunc#界面行为)
+  * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [编辑界面_保存并退出操作](module/extension/PSCorePrdFunc#界面行为)
 
 ### 关联界面逻辑
   * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)

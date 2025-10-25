@@ -5338,7 +5338,6 @@
             "caption" : "需求",
             "codeName" : "tabpanel1_idea",
             "counterId" : "run_re_idea",
-            "counterMode" : 1,
             "dRItemTag" : "idea",
             "detailStyle" : "DEFAULT",
             "detailType" : "TABPAGE",
@@ -6839,7 +6838,6 @@
             "caption" : "工作项",
             "codeName" : "tabpanel1_work_item",
             "counterId" : "run_re_work_item",
-            "counterMode" : 1,
             "dRItemTag" : "work_item",
             "detailStyle" : "DEFAULT",
             "detailType" : "TABPAGE",
@@ -8495,7 +8493,6 @@
             "caption" : "缺陷",
             "codeName" : "tabpanel1_bug",
             "counterId" : "run_re_bug",
-            "counterMode" : 1,
             "dRItemTag" : "bug",
             "detailStyle" : "DEFAULT",
             "detailType" : "TABPAGE",
@@ -8936,7 +8933,7 @@
                     "logicTrigger" : "VIEWEVENT",
                     "logicType" : "SCRIPT",
                     "name" : "viewmounted",
-                    "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                    "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                   }, {
                     "eventNames" : "onLoadSuccess",
                     "logicTrigger" : "VIEWEVENT",
@@ -10450,7 +10447,6 @@
             "caption" : "结果附件",
             "codeName" : "tabpanel1_attachment",
             "counterId" : "run_re_attachment",
-            "counterMode" : 1,
             "dRItemTag" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "TABPAGE",
@@ -11595,7 +11591,6 @@
             "caption" : "执行结果",
             "codeName" : "tabpanel1_result",
             "counterId" : "run_re_run_history",
-            "counterMode" : 1,
             "dRItemTag" : "result",
             "detailStyle" : "DEFAULT",
             "detailType" : "TABPAGE",

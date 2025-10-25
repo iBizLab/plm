@@ -24,14 +24,14 @@ view.layoutPanel.panelItems.list.state.visible = false;
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加依赖关系](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [依赖类型变更](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [取消依赖](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加依赖关系](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [关联(RELATION)](module/Base/relation) : [依赖类型值变更](module/Base/relation/uilogic/dependency_onchange)
   * [关联(RELATION)](module/Base/relation) : [打开依赖工作项](module/Base/relation/uilogic/open_dependency)
+  * [关联(RELATION)](module/Base/relation) : [依赖类型值变更](module/Base/relation/uilogic/dependency_onchange)
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)

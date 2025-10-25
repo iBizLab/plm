@@ -267,14 +267,9 @@
 |CONTROL.DEFORM.DEPARTMENT.MAIN.GROUPPANEL.GROUP1|部门基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPARTMENT.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPENDENCY.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
-|CONTROL.DEFORM.DEPENDENCY.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
-|CONTROL.DEFORM.DEPENDENCY.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPENDENCY.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPENDENCY.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
-|CONTROL.DEFORM.DEPENDENCY.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPENDENCY.MAIN.GROUPPANEL.GROUP1|依赖基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
-|CONTROL.DEFORM.DEPENDENCY.MAIN.GROUPPANEL.GROUP1|依赖基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
-|CONTROL.DEFORM.DEPENDENCY.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DEPENDENCY.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DICTIONARY.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.DICTIONARY.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |

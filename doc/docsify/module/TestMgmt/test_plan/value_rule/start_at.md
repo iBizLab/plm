@@ -15,32 +15,32 @@ root {
 
 state "start" as start  <<start>>
 state "end" as end <<end>>
-state "[条件组]OR" as 0769f98d31d3f05855dab5eace0b2387 [[$./start_at#a0769f98d31d3f05855dab5eace0b2387 {"[条件组]OR"}]] {
-state " " as 0769f98d31d3f05855dab5eace0b2387_entry  <<entryPoint>>
-state "(START_AT) 值为空(Nil)" as f7dc3281e0a20903328def1424a10429 [[$./start_at#af7dc3281e0a20903328def1424a10429 {"[常规条件] 值为空(Nil)"}]]
-state "[条件组]OR" as dee929f145faef2e7f36c08280edf20f [[$./start_at#adee929f145faef2e7f36c08280edf20f {"[条件组]OR"}]] {
-state " " as dee929f145faef2e7f36c08280edf20f_entry  <<entryPoint>>
-state "(END_AT) 值为空(Nil)" as fc6a01f1ead9313059a096823d7e4895 [[$./start_at#afc6a01f1ead9313059a096823d7e4895 {"[常规条件] 值为空(Nil)"}]]
-state "(START_AT) 小于等于(<=) 数据对象属性 (END_AT)" as 59dc8499c147a39ebe91139da7d79aff [[$./start_at#a59dc8499c147a39ebe91139da7d79aff {"[常规条件] 小于等于(<=) 数据对象属性 (END_AT)"}]]
-state " " as dee929f145faef2e7f36c08280edf20f_exit  <<exitPoint>>
+state "[条件组]OR" as 5182887e641db47160e9ccb69acdb4e1 [[$./start_at#a5182887e641db47160e9ccb69acdb4e1 {"[条件组]OR"}]] {
+state " " as 5182887e641db47160e9ccb69acdb4e1_entry  <<entryPoint>>
+state "(START_AT) 值为空(Nil)" as 523c76ba9adbde0437aedaa7446b56ce [[$./start_at#a523c76ba9adbde0437aedaa7446b56ce {"[常规条件] 值为空(Nil)"}]]
+state "[条件组]OR" as affff01ea6e19d3df069beac60c11640 [[$./start_at#aaffff01ea6e19d3df069beac60c11640 {"[条件组]OR"}]] {
+state " " as affff01ea6e19d3df069beac60c11640_entry  <<entryPoint>>
+state "(END_AT) 值为空(Nil)" as b0b9dff62a3c6201ff0ab16df4e79700 [[$./start_at#ab0b9dff62a3c6201ff0ab16df4e79700 {"[常规条件] 值为空(Nil)"}]]
+state "(START_AT) 小于等于(<=) 数据对象属性 (END_AT)" as 188afc9af45aab53cc41831775713eac [[$./start_at#a188afc9af45aab53cc41831775713eac {"[常规条件] 小于等于(<=) 数据对象属性 (END_AT)"}]]
+state " " as affff01ea6e19d3df069beac60c11640_exit  <<exitPoint>>
 }
-state " " as 0769f98d31d3f05855dab5eace0b2387_exit  <<exitPoint>>
+state " " as 5182887e641db47160e9ccb69acdb4e1_exit  <<exitPoint>>
 }
 
 
-start --> 0769f98d31d3f05855dab5eace0b2387_entry 
-0769f98d31d3f05855dab5eace0b2387_entry --> f7dc3281e0a20903328def1424a10429 
-f7dc3281e0a20903328def1424a10429 --> 0769f98d31d3f05855dab5eace0b2387_exit  : yes
-f7dc3281e0a20903328def1424a10429 -[#red]-> dee929f145faef2e7f36c08280edf20f_entry  : no
+start --> 5182887e641db47160e9ccb69acdb4e1_entry 
+5182887e641db47160e9ccb69acdb4e1_entry --> 523c76ba9adbde0437aedaa7446b56ce 
+523c76ba9adbde0437aedaa7446b56ce --> 5182887e641db47160e9ccb69acdb4e1_exit  : yes
+523c76ba9adbde0437aedaa7446b56ce -[#red]-> affff01ea6e19d3df069beac60c11640_entry  : no
 
-dee929f145faef2e7f36c08280edf20f_entry --> fc6a01f1ead9313059a096823d7e4895 
-fc6a01f1ead9313059a096823d7e4895 --> dee929f145faef2e7f36c08280edf20f_exit  : yes
-fc6a01f1ead9313059a096823d7e4895 -[#red]-> 59dc8499c147a39ebe91139da7d79aff  : no
+affff01ea6e19d3df069beac60c11640_entry --> b0b9dff62a3c6201ff0ab16df4e79700 
+b0b9dff62a3c6201ff0ab16df4e79700 --> affff01ea6e19d3df069beac60c11640_exit  : yes
+b0b9dff62a3c6201ff0ab16df4e79700 -[#red]-> 188afc9af45aab53cc41831775713eac  : no
 
-59dc8499c147a39ebe91139da7d79aff --> dee929f145faef2e7f36c08280edf20f_exit  : yes
-59dc8499c147a39ebe91139da7d79aff -[#red]-> end  : no
-dee929f145faef2e7f36c08280edf20f_exit --> 0769f98d31d3f05855dab5eace0b2387_exit 
-0769f98d31d3f05855dab5eace0b2387_exit --> end 
+188afc9af45aab53cc41831775713eac --> affff01ea6e19d3df069beac60c11640_exit  : yes
+188afc9af45aab53cc41831775713eac -[#red]-> end  : no
+affff01ea6e19d3df069beac60c11640_exit --> 5182887e641db47160e9ccb69acdb4e1_exit 
+5182887e641db47160e9ccb69acdb4e1_exit --> end 
 
 
 @enduml
@@ -48,19 +48,13 @@ dee929f145faef2e7f36c08280edf20f_exit --> 0769f98d31d3f05855dab5eace0b2387_exit
 
 #### 条件说明
 
-##### (START_AT) 值为空(Nil) :id=af7dc3281e0a20903328def1424a10429
+##### (START_AT) 值为空(Nil) :id=a523c76ba9adbde0437aedaa7446b56ce
 
 
 
 `START_AT(计划开始)` ISNULL 
 
-##### (END_AT) 值为空(Nil) :id=afc6a01f1ead9313059a096823d7e4895
-
-
-
-`END_AT(计划结束)` ISNULL 
-
-##### (START_AT) 小于等于(<=) 数据对象属性 (END_AT) :id=a59dc8499c147a39ebe91139da7d79aff
+##### (START_AT) 小于等于(<=) 数据对象属性 (END_AT) :id=a188afc9af45aab53cc41831775713eac
 
 
 
@@ -69,6 +63,12 @@ dee929f145faef2e7f36c08280edf20f_exit --> 0769f98d31d3f05855dab5eace0b2387_exit
 > [!ATTENTION|label:规则信息|icon:fa fa-warning]
 > 开始时间必须小于等于发布时间
 
+
+##### (END_AT) 值为空(Nil) :id=ab0b9dff62a3c6201ff0ab16df4e79700
+
+
+
+`END_AT(计划结束)` ISNULL 
 
 
 

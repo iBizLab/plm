@@ -880,12 +880,12 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[6]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
+|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[30]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |

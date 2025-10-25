@@ -18,9 +18,9 @@
 
 
 ### 关联界面行为
-  * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [删除属性](module/extension/PSDEField#界面行为)
-  * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [表格界面_新建操作](module/extension/PSDEField#界面行为)
   * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [编辑属性](module/extension/PSDEField#界面行为)
+  * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [表格界面_新建操作](module/extension/PSDEField#界面行为)
+  * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [删除属性](module/extension/PSDEField#界面行为)
 
 ### 关联界面逻辑
   * [实体属性(PSDEFIELD)](module/extension/PSDEField) : [判断操作列是否禁用](module/extension/PSDEField/uilogic/judge_column_state)

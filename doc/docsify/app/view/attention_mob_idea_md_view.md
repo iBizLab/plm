@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [关注(ATTENTION)](module/Base/attention) : [取消关注](module/Base/attention#界面行为)
   * [关注(ATTENTION)](module/Base/attention) : [添加需求关注（移动端）](module/Base/attention#界面行为)
+  * [关注(ATTENTION)](module/Base/attention) : [取消关注](module/Base/attention#界面行为)
 
 ### 关联视图
   * [人员选择(product_member_mob_more_mem_selected)](app/view/product_member_mob_more_mem_selected)

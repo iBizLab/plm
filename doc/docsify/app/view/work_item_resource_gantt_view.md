@@ -33,8 +33,8 @@ Object.assign(viewParam, {
 
 
 ### 关联界面行为
-  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [全局资源成员设置(设置回显数据)](module/Base/addon_resource#界面行为)
   * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [打开全局容量设置](module/Base/addon_resource#界面行为)
+  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [全局资源成员设置(设置回显数据)](module/Base/addon_resource#界面行为)
 
 ### 关联视图
   * [容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)

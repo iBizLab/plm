@@ -513,6 +513,14 @@ public class FieldChangeDENotifyRuntimeEx extends DENotifyRuntime{
 }
 
 ```
+### DynaDataEntityRuntime :id=GLOBAL_DATAENTITYRUNTIME
+全局实体运行时插件
+
+```net.ibizsys.central.plugin.util.dataentity.DynaDataEntityRuntime```
+
+```groovy
+null
+```
 ### NestedDataImportRuntimeEx :id=NestedDataImportRuntimeEx
 
 

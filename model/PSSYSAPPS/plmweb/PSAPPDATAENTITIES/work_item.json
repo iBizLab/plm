@@ -8650,6 +8650,27 @@
     "stringLength" : 60,
     "userTag4" : "INTENAL"
   }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
     "codeName" : "cur_version_name",
     "logicName" : "当前版本名称",
     "name" : "CUR_VERSION_NAME",
@@ -33168,6 +33189,10 @@
           "id" : "DEUIACTION1"
         }
       } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
       "topPos" : 208
     }, {
       "codeName" : "VIEWCTRLINVOKE2",
@@ -36750,7 +36775,7 @@
       } ],
       "topPos" : 446
     }, {
-      "code" : "const form = uiLogic.form.details;\r\nconst srfreadonly = context.srfreadonly;\r\nif(srfreadonly === true || srfreadonly === 'true'){\r\n    // 工时按钮\r\n    form.grouppanel1.state.visible=false; \r\n    // 基线按钮\r\n    form.grouppanel12.state.visible=false;\r\n    // 附件按钮\r\n    form.grouppanel11.state.actionGroupState.uaa6fcf7.visible=false;\r\n}\r\nconst _type = uiLogic.form.state.data.work_item_sub_type;\r\nif (!_type) {\r\n    // 子工作项分页\r\n    form.tabpanel1_child.state.visible = false;\r\n}\r\n",
+      "code" : "const form = uiLogic.form.details;\r\nconst srfreadonly = context.srfreadonly;\r\nif(srfreadonly === true || srfreadonly === 'true'){\r\n    // 工时按钮\r\n    form.grouppanel1.state.visible=false; \r\n    // 基线按钮\r\n    form.grouppanel12.state.visible=false;\r\n    // 附件按钮\r\n    form.grouppanel11.state.actionGroupState.uaa6fcf7.visible=false;\r\n}\r\nconst _type = uiLogic.form.state.data.work_item_sub_type;\r\nform.tabpanel1_child.state.visible = !!_type;\r\n",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -36830,7 +36855,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 1010
+      "topPos" : 1010,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "work_item",

@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [配置](module/ProdMgmt/ticket#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
