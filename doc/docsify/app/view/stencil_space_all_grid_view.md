@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
-  * [页面模板(STENCIL)](module/Wiki/stencil) : [表格界面_新建操作_通用](module/Wiki/stencil#界面行为)
   * [页面模板(STENCIL)](module/Wiki/stencil) : [表格界面_编辑操作](module/Wiki/stencil#界面行为)
   * [页面模板(STENCIL)](module/Wiki/stencil) : [删除](module/Wiki/stencil#界面行为)
+  * [页面模板(STENCIL)](module/Wiki/stencil) : [表格界面_新建操作_通用](module/Wiki/stencil#界面行为)
 
 ### 关联视图
   * [页面模板(stencil_model_edit_view)](app/view/stencil_model_edit_view)

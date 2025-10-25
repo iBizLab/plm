@@ -14,15 +14,15 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建阶段（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建史诗（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建任务（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建需求（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建特性（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建事务（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建任务（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建需求（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建史诗（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（移动端hybrid）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
   * [工作项(work_item_mob_common_edit_view)](app/view/work_item_mob_common_edit_view)

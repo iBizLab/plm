@@ -13,17 +13,17 @@
 
 
 ### 关联界面行为
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [打开项目导航页](module/Base/portfolio#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [取消星标](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [打开项目配置(全局)](module/ProjMgmt/project#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [更多设置（项目集）](module/Base/portfolio#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [根据类型打开项目主视图](module/ProjMgmt/project#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [取消星标](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [项目集信息](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [设置星标](module/Base/portfolio#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [根据类型打开项目主视图](module/ProjMgmt/project#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [项目集成员](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [编辑基本信息（项目集）](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [更多设置（项目集）](module/Base/portfolio#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [打开项目导航页](module/Base/portfolio#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [项目集成员](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [打开项目集主视图](module/Base/portfolio#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [取消星标](module/ProjMgmt/project#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [设置星标](module/Base/portfolio#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [打开项目配置(全局)](module/ProjMgmt/project#界面行为)
 
 ### 关联界面逻辑
   * [项目(PROJECT)](module/ProjMgmt/project) : [刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)

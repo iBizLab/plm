@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [发布阶段(STAGE)](module/ProjMgmt/stage) : [表格界面_新建操作](module/ProjMgmt/stage#界面行为)
   * [发布阶段(STAGE)](module/ProjMgmt/stage) : [删除阶段](module/ProjMgmt/stage#界面行为)
+  * [发布阶段(STAGE)](module/ProjMgmt/stage) : [表格界面_新建操作](module/ProjMgmt/stage#界面行为)
   * [发布阶段(STAGE)](module/ProjMgmt/stage) : [编辑阶段](module/ProjMgmt/stage#界面行为)
 
 ### 关联视图

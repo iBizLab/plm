@@ -14,9 +14,9 @@
 
 
 ### 关联界面行为
+  * [空间(SPACE)](module/Wiki/space) : [项目关联空间](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [树界面_刷新全部操作](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [产品关联空间](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [项目关联空间](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [取消关联（其他实体关联）](module/Wiki/space#界面行为)
 
 ### 关联界面逻辑

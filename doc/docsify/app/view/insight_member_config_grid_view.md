@@ -15,10 +15,10 @@
 
 
 ### 关联界面行为
-  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [选择职位](module/Insight/insight_member#界面行为)
-  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [设置角色](module/Insight/insight_member#界面行为)
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [添加效能度量成员](module/Insight/insight_member#界面行为)
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [表格界面_删除操作](module/Insight/insight_member#界面行为)
+  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [选择职位](module/Insight/insight_member#界面行为)
+  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [设置角色](module/Insight/insight_member#界面行为)
 
 ### 关联视图
   * [职位选择(insight_member_choose_position_option_view)](app/view/insight_member_choose_position_option_view)

@@ -1085,6 +1085,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
+|TIMERTASK|定时作业|timertask||
 |EVENTHOOK|事件处理|eventhook||
 |FIELDCHANGEHOOK|属性变化处理|fieldchangehook||
 |WEBHOOK|收到WebHook|webhook||

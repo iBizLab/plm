@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
-  * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [表格界面_新建操作](module/Team/discuss_member#界面行为)
   * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [设置角色](module/Team/discuss_member#界面行为)
   * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [表格界面_删除操作](module/Team/discuss_member#界面行为)
+  * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [表格界面_新建操作](module/Team/discuss_member#界面行为)
   * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [职位变更](module/Team/discuss_member#界面行为)
 
 ### 关联视图

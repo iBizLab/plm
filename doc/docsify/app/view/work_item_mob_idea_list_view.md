@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（移动端scrum）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建特性（移动端scrum）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（移动端scrum）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建史诗（移动端scrum）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图

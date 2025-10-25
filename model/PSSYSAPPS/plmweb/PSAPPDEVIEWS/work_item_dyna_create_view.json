@@ -1576,7 +1576,6 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
           },
-          "timer" : 60000,
           "uniqueTag" : "work_item_re_counters"
         },
         "tag" : "80c6a87f18f8c72574d69d7391fa7db1",
@@ -1719,15 +1718,6 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "remaining_update",
-        "name" : "剩余工时表单项更新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
-        "customCode" : true,
-        "showBusyIndicator" : false
-      }, {
         "codeName" : "estimated_update",
         "name" : "预估工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
@@ -1736,6 +1726,15 @@
           "name" : "workload_schedule"
         } ],
         "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
+        "codeName" : "remaining_update",
+        "name" : "剩余工时表单项更新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "workload_schedule"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
         "customCode" : true,
         "showBusyIndicator" : false
       } ],
@@ -6963,7 +6962,6 @@
               "caption" : "产品需求",
               "codeName" : "tabpanel1_product_idea",
               "counterId" : "work_item_re_idea",
-              "counterMode" : 1,
               "dRItemTag" : "product_idea",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -7369,7 +7367,7 @@
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
                       "name" : "viewmounted",
-                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                      "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                     }, {
                       "eventNames" : "onLoadSuccess",
                       "logicTrigger" : "VIEWEVENT",
@@ -8947,7 +8945,6 @@
               "caption" : "子工作项",
               "codeName" : "tabpanel1_child",
               "counterId" : "work_item_re_children",
-              "counterMode" : 1,
               "dRItemTag" : "child",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -9378,7 +9375,7 @@
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
                       "name" : "viewmounted",
-                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                      "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                     }, {
                       "eventNames" : "onLoadSuccess",
                       "logicTrigger" : "VIEWEVENT",
@@ -10356,7 +10353,6 @@
               "caption" : "依赖",
               "codeName" : "tabpanel1_dependency",
               "counterId" : "dependency",
-              "counterMode" : 1,
               "dRItemTag" : "dependency",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -12715,7 +12711,6 @@
               "caption" : "关联",
               "codeName" : "tabpanel1_relation",
               "counterId" : "work_item_re_work_item",
-              "counterMode" : 1,
               "dRItemTag" : "relation",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -14780,7 +14775,6 @@
               "caption" : "交付物",
               "codeName" : "tabpanel1_deliverable",
               "counterId" : "work_item_deliverable",
-              "counterMode" : 1,
               "dRItemTag" : "deliverable",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -15838,7 +15832,6 @@
               "caption" : "工单",
               "codeName" : "tabpanel1_ticket",
               "counterId" : "work_item_re_ticket",
-              "counterMode" : 1,
               "dRItemTag" : "ticket",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -16248,7 +16241,7 @@
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
                       "name" : "viewmounted",
-                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                      "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                     }, {
                       "eventNames" : "onLoadSuccess",
                       "logicTrigger" : "VIEWEVENT",
@@ -17774,7 +17767,6 @@
               "caption" : "测试",
               "codeName" : "tabpanel1_test_case",
               "counterId" : "work_item_re_test_case",
-              "counterMode" : 1,
               "dRItemTag" : "test_case",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -18168,7 +18160,7 @@
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
                       "name" : "viewmounted",
-                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                      "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                     }, {
                       "eventNames" : "onLoadSuccess",
                       "logicTrigger" : "VIEWEVENT",
@@ -19665,7 +19657,6 @@
               "caption" : "版本记录",
               "codeName" : "tabpanel1_version",
               "counterId" : "work_item_version",
-              "counterMode" : 1,
               "dRItemTag" : "version",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPAGE",
@@ -19932,22 +19923,21 @@
                       "eventNames" : "onMounted",
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
-                      "name" : "VIEWMOUNTED",
-                      "scriptCode" : "// 初始化默认隐藏表格\r\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\r\nview.layoutPanel.panelItems.grid.state.visible = false;"
+                      "name" : "viewmounted",
+                      "scriptCode" : "console.log(\"VIEWMOUNTED\");\nconst choose_data = view.layoutPanel.panelItems.choose_data;\nif(choose_data){\n  \tchoose_data.state.visible = view.context.srfshowchoose || false;\n}\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n// 初始化隐藏发送和清空按钮\nconst  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;\nif(button_calluilogic1){\n  button_calluilogic1.state.visible = false;\n}\nconst button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;\nif(button_calluilogic){\n  button_calluilogic.state.visible = false;\n}"
                     }, {
                       "eventNames" : "onLoadSuccess",
-                      "logicTrigger" : "CTRLEVENT",
+                      "logicTrigger" : "VIEWEVENT",
                       "logicType" : "APPDEUILOGIC",
-                      "name" : "GET_TOTAL",
+                      "name" : "onloadsuccess",
                       "getPSAppDEUILogic" : {
                         "modelref" : true,
-                        "id" : "get_version_total"
+                        "id" : "get_grid_total"
                       },
                       "getPSAppDataEntity" : {
                         "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-                      },
-                      "getPSViewCtrlName" : "grid"
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+                      }
                     }, {
                       "logicTrigger" : "CUSTOM",
                       "logicType" : "APPUILOGIC",
@@ -21481,6 +21471,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "project_type",
                     "logicType" : "SINGLE",
+                    "name" : "project_type等于(=) kanban",
                     "value" : "kanban"
                   } ],
                   "relatedDetailNames" : [ "project_type" ],
@@ -21661,6 +21652,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_group",
                     "logicType" : "SINGLE",
+                    "name" : "work_item_type_group等于(=) requirement",
                     "value" : "requirement"
                   } ],
                   "relatedDetailNames" : [ "work_item_type_group" ],
@@ -21788,6 +21780,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_group",
                     "logicType" : "SINGLE",
+                    "name" : "work_item_type_group等于(=) task",
                     "value" : "task"
                   } ],
                   "relatedDetailNames" : [ "work_item_type_group" ],
@@ -21851,6 +21844,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_group",
                     "logicType" : "SINGLE",
+                    "name" : "work_item_type_group等于(=) bug",
                     "value" : "bug"
                   } ],
                   "relatedDetailNames" : [ "work_item_type_group" ],
@@ -22137,6 +22131,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "project_type",
                   "logicType" : "SINGLE",
+                  "name" : "project_type等于(=) scrum",
                   "value" : "scrum"
                 } ],
                 "relatedDetailNames" : [ "project_type" ],
@@ -22594,11 +22589,13 @@
                       "condOP" : "EQ",
                       "dEFDName" : "is_archived",
                       "logicType" : "SINGLE",
+                      "name" : "is_archived等于(=) 0",
                       "value" : "0"
                     }, {
                       "condOP" : "EQ",
                       "dEFDName" : "is_deleted",
                       "logicType" : "SINGLE",
+                      "name" : "is_deleted等于(=) 0",
                       "value" : "0"
                     } ],
                     "relatedDetailNames" : [ "is_archived", "is_deleted" ],
@@ -22981,6 +22978,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "workload_schedule",
                 "logicType" : "SINGLE",
+                "name" : "workload_schedule等于(=) -1",
                 "value" : "-1"
               } ],
               "relatedDetailNames" : [ "workload_schedule" ],
@@ -23810,6 +23808,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "workload_schedule",
                 "logicType" : "SINGLE",
+                "name" : "workload_schedule等于(=) -1",
                 "value" : "-1"
               } ],
               "relatedDetailNames" : [ "workload_schedule" ],
@@ -24637,7 +24636,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "id",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "id值为空(Nil)"
               } ],
               "relatedDetailNames" : [ "id" ],
               "notMode" : false

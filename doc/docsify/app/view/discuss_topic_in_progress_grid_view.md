@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [进行中_删除](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [设置管理员](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [进行中_删除](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [进行中_归档](module/Team/discuss_topic#界面行为)
 
 ### 关联视图

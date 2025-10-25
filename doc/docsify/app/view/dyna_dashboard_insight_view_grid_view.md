@@ -18,16 +18,16 @@
 
 
 ### 关联界面行为
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [表格界面_编辑操作](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [新建仪表盘_管理](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [删除仪表盘](module/Base/dyna_dashboard#界面行为)
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [打开新建仪表盘（测试）](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [表格界面_编辑操作](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [列表导航加载完成](module/Base/dyna_dashboard#界面行为)
 
 ### 关联界面逻辑
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [仪表盘操作列](module/Base/dyna_dashboard/uilogic/control_del)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)
 
 ### 关联视图
   * [动态数据看板(dyna_dashboard_edit_view)](app/view/dyna_dashboard_edit_view)

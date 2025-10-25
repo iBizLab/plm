@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.258`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.259`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -266,7 +266,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.220`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.274`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 

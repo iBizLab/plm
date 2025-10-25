@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [版本对比（基线列表）](module/TestMgmt/baseline_test_case#界面行为)
   * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [返回](module/TestMgmt/baseline_test_case#界面行为)
+  * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [版本对比（基线列表）](module/TestMgmt/baseline_test_case#界面行为)
 
 ### 关联视图
   * [基线用例(baseline_test_case_edit_view)](app/view/baseline_test_case_edit_view)

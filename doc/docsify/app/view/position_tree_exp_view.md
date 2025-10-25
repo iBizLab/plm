@@ -13,15 +13,15 @@
 
 
 ### 关联界面行为
-  * [职位(POSITION)](module/Base/position) : [编辑](module/Base/position#界面行为)
-  * [职位(POSITION)](module/Base/position) : [删除](module/Base/position#界面行为)
-  * [职位(POSITION)](module/Base/position) : [删除](module/Base/position#界面行为)
-  * [职位(POSITION)](module/Base/position) : [编辑](module/Base/position#界面行为)
-  * [职位(POSITION)](module/Base/position) : [树界面_刷新全部操作](module/Base/position#界面行为)
-  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
-  * [类别(CATEGORY)](module/Base/category) : [编辑](module/Base/category#界面行为)
-  * [职位(POSITION)](module/Base/position) : [新建职位](module/Base/position#界面行为)
   * [职位(POSITION)](module/Base/position) : [新建分组](module/Base/position#界面行为)
+  * [职位(POSITION)](module/Base/position) : [编辑](module/Base/position#界面行为)
+  * [职位(POSITION)](module/Base/position) : [删除](module/Base/position#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
+  * [职位(POSITION)](module/Base/position) : [新建职位](module/Base/position#界面行为)
+  * [职位(POSITION)](module/Base/position) : [删除](module/Base/position#界面行为)
+  * [职位(POSITION)](module/Base/position) : [树界面_刷新全部操作](module/Base/position#界面行为)
+  * [职位(POSITION)](module/Base/position) : [编辑](module/Base/position#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [编辑](module/Base/category#界面行为)
 
 ### 关联视图
   * [成员管理(user_grid_view)](app/view/user_grid_view)

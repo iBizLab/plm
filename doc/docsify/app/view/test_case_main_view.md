@@ -43,20 +43,20 @@ if (form) {
 
 
 ### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联缺陷（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_下一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [最小化](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联缺陷（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_下一个记录](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联需求（工具栏）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_上一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)

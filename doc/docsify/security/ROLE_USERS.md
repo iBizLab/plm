@@ -59,6 +59,7 @@
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-user_r">只读用户（读）</a>|
 |[测试库(LIBRARY)](module/TestMgmt/library)|<a href ="#/module/TestMgmt/library#library-admin_rw">管理员（读写）</a>|
 |[企业用户(USER)](module/Base/user)|<a href ="#/module/Base/user#user-all_r">全部数据（读）</a>|
+|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|<a href ="#/module/ProdMgmt/product_tag#product_tag-all_r">全部数据（读）</a>|
 |[执行用例(RUN)](module/TestMgmt/run)|<a href ="#/module/TestMgmt/run#run-user_r">操作角色(读)</a>|
 |[工时(WORKLOAD)](module/Base/workload)|<a href ="#/module/Base/workload#workload-user_w">操作用户(写)</a>|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|<a href ="#/module/Base/dictionary_data#dictionary_data-all_r">全部数据（读）</a>|

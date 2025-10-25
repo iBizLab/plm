@@ -1330,18 +1330,6 @@
     "name" : "BOARD"
   }, {
     "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/branch.json",
-    "name" : "BRANCH"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/branch_ref_commit.json",
-    "name" : "BRANCH_REF_COMMIT"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/build.json",
-    "name" : "BUILD"
-  }, {
-    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/case_history.json",
     "name" : "CASE_HISTORY"
   }, {
@@ -1356,10 +1344,6 @@
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json",
     "name" : "COMMENT"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/commit.json",
-    "name" : "COMMIT"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/common_flow.json",
@@ -1594,10 +1578,6 @@
     "name" : "PROJECT_TAG"
   }, {
     "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/pull_request.json",
-    "name" : "PULL_REQUEST"
-  }, {
-    "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json",
     "name" : "RECENT"
   }, {
@@ -1612,10 +1592,6 @@
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json",
     "name" : "RELEASE"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/repository.json",
-    "name" : "REPOSITORY"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/resource_member.json",
@@ -1676,10 +1652,6 @@
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json",
     "name" : "RUN_HISTORY"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSDATAENTITIES/scm_review.json",
-    "name" : "SCM_REVIEW"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/search_attachment.json",
@@ -2161,7 +2133,6 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
-    "timer" : 60000,
     "uniqueTag" : "work_item_re_counters"
   }, {
     "codeName" : "product_add_on_counters",
@@ -2276,9 +2247,6 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSSYSERMAPS/projmgmt_kanban.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/DevOps/PSSYSERMAPS/DevOps.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSSYSERMAPS/test_mgmt.json"
@@ -5006,6 +4974,16 @@
     "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.notify\r\n\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.dataentity.notify.DENotifyRuntime\r\nimport net.ibizsys.central.util.SearchGroupCond\r\nimport net.ibizsys.model.util.JsonUtils\r\nimport net.ibizsys.psmodel.core.util.Conditions\r\nimport net.ibizsys.psmodel.core.util.DataTypeUtils\r\nimport net.ibizsys.runtime.util.IEntity\r\nimport net.ibizsys.runtime.util.ISearchCond\r\nimport net.ibizsys.runtime.util.ISearchFieldCond\r\nimport org.springframework.util.StringUtils\r\n\r\n@CompileStatic\r\npublic class FieldChangeDENotifyRuntimeEx extends DENotifyRuntime{\r\n    @Override\r\n    protected void onSend(IEntity iEntity, Map<String, Object> params) throws Throwable {\r\n        Object eventData = params.get(NOTIFY_PARAM_EVENTDATA);\r\n        // 自定义条件\r\n        String strsearchCond = this.getPSDENotify().getCustomCond();\r\n         if(StringUtils.hasLength(strsearchCond)){\r\n             SearchGroupCond searchGroupCond = SearchGroupCond.from(JsonUtils.asMap(strsearchCond),true);\r\n             if(!testDomainField((IEntity)eventData,searchGroupCond)) {\r\n                 return;\r\n             }\r\n        }\r\n        super.onSend(iEntity,params)\r\n    }\r\n\r\n    protected boolean testDomainField(IEntity entity, SearchGroupCond searchGroupCond) throws Exception {\r\n        Boolean testResult = true;\r\n        if(StringUtils.hasLength(this.getPSDENotify().getUserTag())){\r\n            if (!this.getPSDENotify().getUserTag().equals(entity.get(\"work_item_type_id\"))) {\r\n                return false;\r\n            }\r\n        }\r\n        String groupType = searchGroupCond.getCondOp();\r\n        Boolean andMode = groupType.equals(\"AND\")?true:false;\r\n        List<ISearchCond> searchConds = searchGroupCond.getSearchConds();\r\n        for (ISearchCond searchCond : searchConds) {\r\n            if(searchCond instanceof ISearchFieldCond) {\r\n                Object value = entity.get(searchCond.getFieldName()) ;\r\n                if(!testSingleDomainField(value,searchCond.getCondOp(),searchCond.getValue())) {\r\n                    if(andMode) {\r\n                        testResult = testResult && false;\r\n                        break;\r\n                    }else {\r\n                        testResult = testResult || false;\r\n                    }\r\n\r\n                }else {\r\n                    if(!andMode) {\r\n                        testResult = testResult || true;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return testResult;\r\n    }\r\n\r\n    protected boolean testSingleDomainField(Object value, String strCondition,Object condValue){\r\n        if (Conditions.EQ.equals(strCondition) || Conditions.ABSEQ.equals(strCondition)) {\r\n            if (value instanceof String) {\r\n                return ((String) value).equalsIgnoreCase(condValue.toString());\r\n            }\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) == 0;\r\n        }\r\n\r\n        if (Conditions.GT.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) > 0;\r\n        }\r\n\r\n        if (Conditions.GTANDEQ.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) >= 0;\r\n        }\r\n\r\n        if (Conditions.LT.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) < 0;\r\n        }\r\n\r\n        if (Conditions.LTANDEQ.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) <= 0;\r\n        }\r\n\r\n        if (Conditions.NOTEQ.equals(strCondition)) {\r\n            if (value instanceof String) {\r\n                return !((String) value).equalsIgnoreCase(condValue.toString());\r\n            }\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) != 0;\r\n        }\r\n\r\n        if (Conditions.IN.equals(strCondition)) {\r\n            return  Arrays.stream((condValue.toString()).split(\",\")).filter({ cond -> !cond.isEmpty() && cond.equals((String) value) }).count() > 0;\r\n        }\r\n\r\n        if (Conditions.NOTIN.equals(strCondition)) {\r\n            return  Arrays.stream((condValue.toString()).split(\",\")).filter({ cond -> !cond.isEmpty() && cond.equals((String) value) }).count() <= 0;\r\n        }\r\n\r\n        if (Conditions.LIKE.equals(strCondition)) {\r\n            return value.toString().toUpperCase().indexOf(condValue.toString().toUpperCase()) != -1;\r\n        }\r\n        if(Conditions.ISNOTNULL.equals(strCondition)) {\r\n            return value != null;\r\n        }\r\n        if(Conditions.ISNULL.equals(strCondition)) {\r\n            return value == null;\r\n        }\r\n        return false;\r\n    }\r\n}\r\n",
     "runtimeObject" : true
   }, {
+    "codeName" : "GLOBAL_DATAENTITYRUNTIME",
+    "dynaModelFilePath" : "PSSYSSFPLUGINS/GLOBAL_DATAENTITYRUNTIME.json",
+    "memo" : "全局实体运行时插件",
+    "name" : "DynaDataEntityRuntime",
+    "pluginCode" : "GLOBAL_DATAENTITYRUNTIME",
+    "pluginType" : "USER",
+    "rTObjectName" : "net.ibizsys.central.plugin.util.dataentity.DynaDataEntityRuntime",
+    "rTObjectSource" : 1,
+    "runtimeObject" : true
+  }, {
     "codeName" : "NestedDataImportRuntimeEx",
     "dynaModelFilePath" : "PSSYSSFPLUGINS/NestedDataImportRuntimeEx.json",
     "name" : "NestedDataImportRuntimeEx",
@@ -7049,6 +7027,16 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
       }
     }, {
+      "name" : "默认用户权限-PRODUCT_TAG[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_tag/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_tag.json"
+      }
+    }, {
       "name" : "默认用户权限-RUN[操作角色(读)]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -8052,7 +8040,7 @@
     "dynaModelFilePath" : "PSSYSUSERROLES/ANON_USERS.json",
     "name" : "匿名用户",
     "getPSSysUserRoleDatas" : [ {
-      "name" : "匿名用户-PAGE[只读用户(读)]",
+      "name" : "匿名用户-PAGE[只读共享(读)]",
       "getPSDEUserRole" : {
         "modelref" : true,
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHARED_R.json"
@@ -9629,28 +9617,6 @@
     "name" : "模型扩展",
     "utilType" : "EXTENSION"
   }, {
-    "getAllPSDataEntities" : [ {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/branch.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/branch_ref_commit.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/build.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/commit.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/pull_request.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/repository.json"
-    }, {
-      "modelref" : true,
-      "path" : "PSMODULES/DevOps/PSDATAENTITIES/scm_review.json"
-    } ],
     "codeName" : "DevOps",
     "dynaModelFilePath" : "PSMODULES/DevOps.json",
     "memo" : "DevOps数据集成",
@@ -9681,6 +9647,7 @@
   "logicName" : "产品生命周期管理系统",
   "memo" : "iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。",
   "name" : "iBizPLM",
+  "getPSDevSlnSysId" : "28F7326A-7C72-4C2D-A497-A16372ABBADC",
   "vCName" : "trunk",
   "id" : "PSSYSTEM.json"
 }

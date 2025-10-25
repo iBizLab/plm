@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_帮助操作](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_新建操作](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_帮助操作](module/ProjMgmt/work_item#界面行为)
 
 <script>
  const { createApp } = Vue

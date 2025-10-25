@@ -15,11 +15,11 @@
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [关联客户未知（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [关联客户非常重要（移动端）](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [关联客户一般（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [关联客户未知（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [关联客户不重要（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [关联客户重要（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [关联客户一般（移动端）](module/Base/relation#界面行为)
 
 ### 关联视图
   * [选择客户(customer_mob_mpick_up_view)](app/view/customer_mob_mpick_up_view)

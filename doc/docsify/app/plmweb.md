@@ -5,6 +5,7 @@
 <el-row>
   <el-menu :ellipsis="false" class="el-menu-demo" mode="horizontal" @select="handleSelect">
     <el-menu-item index="menuitem1" @click="itemClick('#/app/view/workspace_tab_exp_view')">工作台</el-menu-item>
+    <el-menu-item index="menuslot1" disabled>null</el-menu-item>
     <el-menu-item index="menuitem2" @click="itemClick('#/app/view/product_tree_exp_view')">产品管理</el-menu-item>
     <el-menu-item index="menuitem3" @click="itemClick('#/app/view/project_tree_exp_view')">项目管理</el-menu-item>
     <el-menu-item index="menuitem4" @click="itemClick('#/app/view/library_tree_exp_view')">测试管理</el-menu-item>

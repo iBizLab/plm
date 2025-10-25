@@ -27,8 +27,8 @@
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [表格界面_新建操作](module/TestMgmt/test_plan#界面行为)
 
 ### 关联界面逻辑
-  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [计算表格列行为状态(library)](module/TestMgmt/test_plan/uilogic/calc_column_action_state)
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [计算表格列行为状态(library)](module/TestMgmt/test_plan/uilogic/calc_column_action_state)
 
 ### 关联视图
   * [全部用例(run_all_grid_view)](app/view/run_all_grid_view)

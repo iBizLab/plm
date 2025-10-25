@@ -14256,6 +14256,10 @@
           "id" : "DEUIACTION1"
         }
       } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
       "topPos" : 208
     }, {
       "code" : "// 计算新建默认值\r\nconst defaultData = uiLogic.grid.calcDefaultValue({}, true);\r\nuiLogic.attach = uiLogic.files.map(item => \r\n    {\r\n        return {\r\n            name: item.name,\r\n            file_id: item.id,\r\n            id: item.uuid,\r\n            ...defaultData,\r\n        }\r\n    }\r\n)",
@@ -16495,7 +16499,13 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const total = uiLogic.ctrl.state.total;\r\nuiLogic.view.layoutPanel.state.data.total = total;\r\nif(!total){\r\n    view.layoutPanel.panelItems.grid.state.visible = false;\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true;\r\n}",
+      "codeName" : "END1",
+      "leftPos" : 390,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 421
+    }, {
+      "code" : "console.log('获取表格总条数');\r\nconst total = uiLogic.ctrl.state.total;\r\nuiLogic.view.layoutPanel.state.data.total = total;\r\nif(!total){\r\n    view.layoutPanel.panelItems.grid.state.visible = false;\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true;\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 360,
       "logicNodeType" : "RAWJSCODE",
@@ -16513,19 +16523,12 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 390,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 421
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "CTRL",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
+      "codeName" : "VIEW",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -16533,10 +16536,11 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "VIEW",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
+      "codeName" : "CTRL",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
