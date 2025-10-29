@@ -4,7 +4,7 @@
   "codeName" : "psde_field_quick_cfg_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_field_quick_cfg_view.json",
   "funcViewMode" : "EDITVIEW",
-  "height" : 590,
+  "height" : 80,
   "memo" : "系统自动添加",
   "name" : "PSDEFieldquick_cfg_view",
   "openMode" : "POPUPMODAL",
@@ -389,27 +389,6 @@
         "codeName" : "ordervalue"
       }
     }, {
-      "id" : "usertag",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "USERTAG",
-        "codeName" : "UserTag"
-      }
-    }, {
-      "id" : "usertag2",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "USERTAG2",
-        "codeName" : "UserTag2"
-      }
-    }, {
-      "id" : "pscodelistid",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "PSCODELISTID",
-        "codeName" : "pscodelistid"
-      }
-    }, {
       "id" : "memo",
       "dataType" : 21,
       "getPSAppDEField" : {
@@ -600,7 +579,7 @@
           "infoGroupMode" : false,
           "showCaption" : false
         }, {
-          "caption" : "属性名称",
+          "caption" : "实体属性名称",
           "codeName" : "psdefieldname",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
@@ -888,365 +867,6 @@
           },
           "allowEmpty" : true,
           "showCaption" : true
-        }, {
-          "caption" : "支持界面排序",
-          "codeName" : "usertag",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "usertag",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "USERTAG",
-            "codeName" : "UserTag"
-          },
-          "getPSEditor" : {
-            "editorType" : "SWITCH",
-            "name" : "usertag"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "只读模式",
-          "codeName" : "usertag2",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "usertag2",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "USERTAG2",
-            "codeName" : "UserTag2"
-          },
-          "getPSEditor" : {
-            "editorType" : "CHECKBOXLIST",
-            "name" : "usertag2",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/DEFReadOnlyMode.json"
-            }
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "needCodeListConfig" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "代码表配置",
-          "codeName" : "grouppanel3",
-          "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel3",
-          "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "groupOP" : "OR",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "psdatatypeid",
-                "logicType" : "SINGLE",
-                "value" : "SSCODELIST"
-              }, {
-                "condOP" : "EQ",
-                "dEFDName" : "psdatatypeid",
-                "logicType" : "SINGLE",
-                "value" : "SMCODELIST"
-              } ],
-              "notMode" : false
-            } ],
-            "relatedDetailNames" : [ "psdatatypeid" ],
-            "notMode" : false
-          } ],
-          "getPSDEFormDetails" : [ {
-            "caption" : "业务动态代码表",
-            "codeName" : "pscodelistid",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "pscodelistid",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "PSCODELISTID",
-              "codeName" : "pscodelistid"
-            },
-            "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 100,
-              "name" : "pscodelistid"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
-          }, {
-            "codeName" : "codelistmodel",
-            "contentType" : "REPEATER",
-            "detailStyle" : "STYLE3",
-            "detailType" : "MDCTRL",
-            "fieldName" : "codelistmodel",
-            "name" : "codelistmodel",
-            "getPSDEFormDetails" : [ {
-              "caption" : "数值代码项",
-              "codeName" : "numberitem",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "numberitem",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "DROPDOWNLIST",
-                "name" : "numberitem",
-                "getPSAppCodeList" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList50.json"
-                },
-                "singleSelect" : true
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 8,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "needCodeListConfig" : true,
-              "repeatContent" : true,
-              "showCaption" : true
-            }, {
-              "caption" : "无值显示空白",
-              "codeName" : "novalueempty",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "novalueempty",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "DROPDOWNLIST",
-                "name" : "novalueempty",
-                "getPSAppCodeList" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList50.json"
-                },
-                "singleSelect" : true
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 8,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "needCodeListConfig" : true,
-              "repeatContent" : true,
-              "showCaption" : true
-            }, {
-              "caption" : "无值显示内容",
-              "codeName" : "emptytext",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "emptytext",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "emptytext"
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "repeatContent" : true,
-              "showCaption" : true
-            }, {
-              "buildInActions" : 7,
-              "caption" : "代码项",
-              "codeName" : "pscodeitems",
-              "contentType" : "REPEATER",
-              "detailStyle" : "STYLE2",
-              "detailType" : "MDCTRL",
-              "fieldName" : "pscodeitems",
-              "name" : "pscodeitems",
-              "getPSDEFormDetails" : [ {
-                "caption" : "标题",
-                "codeName" : "pscodeitemname",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "pscodeitemname",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "TEXTBOX",
-                  "name" : "pscodeitemname"
-                },
-                "getPSLayoutPos" : {
-                  "colLG" : 6,
-                  "colMD" : 6,
-                  "colSM" : 6,
-                  "colXS" : 6,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "repeatContent" : true,
-                "showCaption" : true
-              }, {
-                "caption" : "代码项值",
-                "codeName" : "codeitemvalue",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "codeitemvalue",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "TEXTBOX",
-                  "name" : "codeitemvalue"
-                },
-                "getPSLayoutPos" : {
-                  "colLG" : 6,
-                  "colMD" : 6,
-                  "colSM" : 6,
-                  "colXS" : 6,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "repeatContent" : true,
-                "showCaption" : true
-              }, {
-                "caption" : "颜色",
-                "codeName" : "color",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "color",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "COLORPICKER",
-                  "name" : "color"
-                },
-                "getPSLayoutPos" : {
-                  "colLG" : 6,
-                  "colMD" : 6,
-                  "colSM" : 6,
-                  "colXS" : 6,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "repeatContent" : true,
-                "showCaption" : true
-              }, {
-                "caption" : "文本样式",
-                "codeName" : "pssyscssname",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "pssyscssname",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "TEXTBOX",
-                  "name" : "pssyscssname"
-                },
-                "getPSLayoutPos" : {
-                  "colLG" : 6,
-                  "colMD" : 6,
-                  "colSM" : 6,
-                  "colXS" : 6,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "repeatContent" : true,
-                "showCaption" : true
-              } ],
-              "getPSLayout" : {
-                "childColMD" : 24,
-                "columnCount" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "infoGroupMode" : false,
-              "repeatContent" : true,
-              "showCaption" : true
-            } ],
-            "getPSLayout" : {
-              "childColMD" : 24,
-              "columnCount" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "resetItemName" : "psdatatypeid",
-            "resetItemNames" : [ "psdatatypeid" ],
-            "infoGroupMode" : false,
-            "showCaption" : true
-          } ],
-          "getPSLayout" : {
-            "childColMD" : 24,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 24,
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "infoGroupMode" : false,
-          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColLG" : 12,
@@ -1260,6 +880,278 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "代码表配置",
+        "codeName" : "grouppanel3",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel3",
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "psdatatypeid",
+              "logicType" : "SINGLE",
+              "value" : "SSCODELIST"
+            }, {
+              "condOP" : "EQ",
+              "dEFDName" : "psdatatypeid",
+              "logicType" : "SINGLE",
+              "value" : "SMCODELIST"
+            } ],
+            "notMode" : false
+          } ],
+          "relatedDetailNames" : [ "psdatatypeid" ],
+          "notMode" : false
+        } ],
+        "getPSDEFormDetails" : [ {
+          "codeName" : "codelistmodel",
+          "contentType" : "REPEATER",
+          "detailStyle" : "STYLE3",
+          "detailType" : "MDCTRL",
+          "fieldName" : "codelistmodel",
+          "name" : "codelistmodel",
+          "getPSDEFormDetails" : [ {
+            "caption" : "数值代码项",
+            "codeName" : "numberitem",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "numberitem",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST",
+              "name" : "numberitem",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList50.json"
+              },
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 8,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "无值显示空白",
+            "codeName" : "novalueempty",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "novalueempty",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST",
+              "name" : "novalueempty",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList50.json"
+              },
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 8,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "无值显示内容",
+            "codeName" : "emptytext",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "emptytext",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "emptytext"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "buildInActions" : 7,
+            "caption" : "代码项",
+            "codeName" : "pscodeitems",
+            "contentType" : "REPEATER",
+            "detailStyle" : "STYLE2",
+            "detailType" : "MDCTRL",
+            "fieldName" : "pscodeitems",
+            "name" : "pscodeitems",
+            "getPSDEFormDetails" : [ {
+              "caption" : "标题",
+              "codeName" : "pscodeitemname",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "pscodeitemname",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "pscodeitemname"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 6,
+                "colMD" : 6,
+                "colSM" : 6,
+                "colXS" : 6,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "代码项值",
+              "codeName" : "codeitemvalue",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "codeitemvalue",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "codeitemvalue"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 6,
+                "colMD" : 6,
+                "colSM" : 6,
+                "colXS" : 6,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "颜色",
+              "codeName" : "color",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "color",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "COLORPICKER",
+                "name" : "color"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 6,
+                "colMD" : 6,
+                "colSM" : 6,
+                "colXS" : 6,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "文本样式",
+              "codeName" : "pssyscssname",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "pssyscssname",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "pssyscssname"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 6,
+                "colMD" : 6,
+                "colSM" : 6,
+                "colXS" : 6,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "repeatContent" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "psdatatypeid",
+          "resetItemNames" : [ "psdatatypeid" ],
+          "infoGroupMode" : false,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
       }, {
         "caption" : "备注",
         "codeName" : "memo",
@@ -1410,7 +1302,7 @@
   "title" : "实体属性编辑视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
-  "width" : 800,
+  "width" : 80,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
