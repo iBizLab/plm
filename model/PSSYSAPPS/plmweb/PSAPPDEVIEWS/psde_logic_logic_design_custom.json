@@ -1149,6 +1149,13 @@
         "codeName" : "TimerPolicy"
       }
     }, {
+      "id" : "fieldeventname",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "EVENTS",
+        "codeName" : "Events"
+      }
+    }, {
       "id" : "last_start_at",
       "dataType" : 5,
       "getPSAppDEField" : {
@@ -1347,6 +1354,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "logicsubtype",
                   "logicType" : "SINGLE",
+                  "name" : "logicsubtype等于(=) EVENTHOOK",
                   "value" : "EVENTHOOK"
                 } ],
                 "relatedDetailNames" : [ "logicsubtype" ],
@@ -1392,6 +1400,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "logicsubtype",
                   "logicType" : "SINGLE",
+                  "name" : "logicsubtype等于(=) ATTACHTODEDATASET",
                   "value" : "ATTACHTODEDATASET"
                 } ],
                 "relatedDetailNames" : [ "logicsubtype" ],
@@ -1432,6 +1441,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "logicsubtype",
                   "logicType" : "SINGLE",
+                  "name" : "logicsubtype等于(=) ATTACHTODEACTION",
                   "value" : "ATTACHTODEACTION"
                 } ],
                 "relatedDetailNames" : [ "logicsubtype" ],
@@ -1472,6 +1482,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "logicsubtype",
                   "logicType" : "SINGLE",
+                  "name" : "logicsubtype等于(=) TIMERTASK",
                   "value" : "TIMERTASK"
                 } ],
                 "relatedDetailNames" : [ "logicsubtype" ],
@@ -1487,6 +1498,52 @@
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "监控事件",
+              "codeName" : "fieldeventname",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 3,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "fieldeventname",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "EVENTS",
+                "codeName" : "Events"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "logicsubtype",
+                  "logicType" : "SINGLE",
+                  "name" : "logicsubtype等于(=) FIELDCHANGEHOOK",
+                  "value" : "FIELDCHANGEHOOK"
+                } ],
+                "relatedDetailNames" : [ "logicsubtype" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "fieldeventname",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__enable_action.json"
+                },
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "convertToCodeItemText" : true,
               "showCaption" : true
             } ],
             "getPSLayout" : {
@@ -1563,6 +1620,7 @@
               "condOP" : "EQ",
               "dEFDName" : "logicsubtype",
               "logicType" : "SINGLE",
+              "name" : "logicsubtype等于(=) WEBHOOK",
               "value" : "WEBHOOK"
             } ],
             "relatedDetailNames" : [ "logicsubtype" ],
