@@ -1662,7 +1662,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const url = window.location;\r\nvar file_name = uiLogic.default.name;\r\nvar file_id = uiLogic.default.id;\r\nvar file_preview_address = ibiz.env.customParams.file_preview_address;\r\n\r\nif (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {\r\n    const windowInfo = getCurrentWindowInfo(url);\r\n\r\n    let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;\r\n    const app = ibiz.hub.getApp(context.srfappid);\r\n    const OSSCat = app.model.userParam?.DefaultOSSCat;\r\n    uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');\r\n\r\n    var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;\r\n\r\n    var b64Encoded = ibiz.util.base64.encode(filedownloadurl);\r\n    var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);\r\n\r\n    window.open(previewUrl);\r\n} else {\r\n  util.message.error('无附件预览服务，请联系管理员添加!');\r\n}\r\n\r\nfunction getCurrentWindowInfo(url) {\r\n    const protocol = url.protocol;\r\n    const host = url.hostname; \r\n    const port = url.port || (protocol === \"https:\" ? \"443\" : \"80\"); \r\n    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);\r\n    if (isIPAddress) {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    } else {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    }\r\n}",
+      "code" : "const url = window.location;\r\nvar file_name = uiLogic.default.name;\r\nvar file_id = uiLogic.default.file_id;\r\nvar file_preview_address = ibiz.env.customParams.file_preview_address;\r\n\r\nif (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {\r\n    const windowInfo = getCurrentWindowInfo(url);\r\n\r\n    let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;\r\n    const app = ibiz.hub.getApp(context.srfappid);\r\n    const OSSCat = app.model.userParam?.DefaultOSSCat;\r\n    uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');\r\n\r\n    var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;\r\n\r\n    var b64Encoded = ibiz.util.base64.encode(filedownloadurl);\r\n    var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);\r\n\r\n    window.open(previewUrl);\r\n} else {\r\n  util.message.error('无附件预览服务，请联系管理员添加!');\r\n}\r\n\r\nfunction getCurrentWindowInfo(url) {\r\n    const protocol = url.protocol;\r\n    const host = url.hostname; \r\n    const port = url.port || (protocol === \"https:\" ? \"443\" : \"80\"); \r\n    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);\r\n    if (isIPAddress) {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    } else {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    }\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 507,
       "logicNodeType" : "RAWJSCODE",
@@ -1680,13 +1680,14 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 198
     }, {
       "codeName" : "END1",
       "leftPos" : 942,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
