@@ -380,6 +380,9 @@
       "name" : "TEMPLATE_MODEL",
       "codeName" : "template_model"
     }, {
+      "name" : "APP_TAG",
+      "codeName" : "app_tag"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -1354,6 +1357,13 @@
     "phisicalDEField" : false,
     "uIAssistDEField" : true
   }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "APP_TAG",
+      "dBType" : "MYSQL5",
+      "name" : "APP_TAG",
+      "queryCodeExp" : "t1.`APP_TAG`",
+      "standardColumnName" : "`APP_TAG`"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
@@ -1401,20 +1411,25 @@
       "enableFront" : true
     } ],
     "codeName" : "app_tag",
-    "dEFType" : 5,
+    "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "应用标记",
     "name" : "APP_TAG",
     "orderValue" : 270,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "APP_TAG"
+    },
     "serviceCodeName" : "app_tag",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "phisicalDEField" : false,
-    "uIAssistDEField" : true
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -2240,9 +2255,10 @@
         "id" : "group_data"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 292
+      "topPos" : 292,
+      "parallelOutput" : true
     }, {
-      "code" : "var _default = logic.getParam('Default');\r\nvar groupdata = logic.getParam('group_data');\r\nif( _default.get(\"group\")!=null){\r\n    groupdata.set(\"groupname\", _default.codeitem(\"group\").text);\r\n    groupdata.set(\"groupcodename\", _default.get(\"group\"));\r\n}\r\nif( _default.get(\"id\")!=null){\r\n    var appportletid = \"plmweb.\";\r\n    var appportletcodename = \"uxbireport__\"+_default.get(\"id\").replace(\".\", \"__\");\r\n    appportletid = appportletid + appportletcodename;\r\n    groupdata.set(\"psappportletid\",appportletid.toLowerCase());\r\n    groupdata.set(\"codename\",appportletcodename.toLowerCase());\r\n    groupdata.set(\"psappportletname\",_default.get(\"name\"));\r\n    _default.set(\"ctrl_id\",appportletid.toLowerCase());\r\n}\r\n",
+      "code" : "var _default = logic.getParam('Default');\r\nvar groupdata = logic.getParam('group_data');\r\nif( _default.get(\"group\")!=null){\r\n    groupdata.set(\"groupname\", _default.codeitem(\"group\").text);\r\n    groupdata.set(\"groupcodename\", _default.get(\"group\"));\r\n}\r\nif( _default.get(\"id\")!=null){\r\n    var appportletid = \"plmweb.\";\r\n    if(_default.get(\"app_tag\")){\r\n        appportletid = _default.get(\"app_tag\") + \".\";\r\n    }\r\n    var appportletcodename = \"uxbireport__\"+_default.get(\"id\").replace(\".\", \"__\");\r\n    appportletid = appportletid + appportletcodename;\r\n    groupdata.set(\"psappportletid\",appportletid.toLowerCase());\r\n    groupdata.set(\"codename\",appportletcodename.toLowerCase());\r\n    groupdata.set(\"psappportletname\",_default.get(\"name\"));\r\n    _default.set(\"ctrl_id\",appportletid.toLowerCase());\r\n}\r\n",
       "codeName" : "RAWSFCODE1",
       "codeType" : "JavaScript",
       "leftPos" : 459,
