@@ -2418,6 +2418,81 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/my_submit/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "my_submit",
+    "logicName" : "我提交的工单",
+    "name" : "my_submit",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TICKET",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "SUBMITTER_ID",
+            "name" : "(SUBMITTER_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "SUBMITTER_ID",
+              "codeName" : "submitter_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "CREATE_MAN",
+            "name" : "(CREATE_MAN) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "CREATE_MAN",
+              "codeName" : "create_man"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          } ]
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "My_submitInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "My_submitResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/my_summary_ticket/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "my_summary_ticket",
@@ -4163,6 +4238,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "My_filterResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "my_submit",
+    "logicName" : "我提交的工单",
+    "name" : "my_submit",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_submit"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "My_submitInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "My_submitResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ticket_dto"
@@ -14536,10 +14637,10 @@
     "systemReserved" : true
   }, {
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/MY_RW.json",
-    "name" : "我关注的工单（读写）",
+    "name" : "我提交的工单（读写）",
     "getPSDEDataSet" : {
       "modelref" : true,
-      "id" : "my_attention"
+      "id" : "my_submit"
     },
     "getPSDEUserRoleOPPrivs" : [ {
       "dataAccessAction" : "UPDATE",
