@@ -2246,46 +2246,13 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/my_private/PSDEDQCODES/MYSQL5.json"
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/my_visible/PSDEDQCODES/MYSQL5.json"
     } ],
-    "codeName" : "my_private",
+    "codeName" : "my_visible",
     "dEFGroupType" : "FIELDS",
-    "logicName" : "我参与的非公开项目",
-    "name" : "my_private",
+    "logicName" : "我的可见项目",
+    "name" : "my_visible",
     "getPSDEDQMain" : {
-      "getChildPSDEDQJoins" : [ {
-        "getDERPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
-        },
-        "getJoinPSDER" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDERS/DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID.json"
-        },
-        "getJoinPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
-        },
-        "joinType" : "1N",
-        "name" : "PROJECT_MEMBER存在1:N（EXISTS (SELECT)）DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID",
-        "getPSDEDQGroupCondition" : {
-          "condOp" : "AND",
-          "condType" : "GROUP",
-          "name" : "连接条件",
-          "getPSDEDQConditions" : [ {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "srfpersonid",
-            "fieldName" : "USER_ID",
-            "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
-            "getPSDEField" : {
-              "name" : "USER_ID",
-              "codeName" : "user_id"
-            },
-            "getPSVARTypeId" : "SESSIONCONTEXT"
-          } ]
-        }
-      } ],
       "getJoinPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
@@ -2299,18 +2266,47 @@
         "getPSDEDQConditions" : [ {
           "condOp" : "EQ",
           "condType" : "SINGLE",
-          "condValue" : "private",
-          "fieldName" : "VISIBILITY",
-          "name" : "(VISIBILITY) 等于(=) private",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
           "getPSDEField" : {
-            "name" : "VISIBILITY",
-            "codeName" : "visibility"
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
           }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_ARCHIVED",
+          "name" : "(IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_ARCHIVED",
+            "codeName" : "is_archived"
+          }
+        }, {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "public",
+            "fieldName" : "VISIBILITY",
+            "name" : "(VISIBILITY) 等于(=) public",
+            "getPSDEField" : {
+              "name" : "VISIBILITY",
+              "codeName" : "visibility"
+            }
+          }, {
+            "condType" : "CUSTOM",
+            "condition" : "EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 \n WHERE \n t1.`ID` = t11.`PROJECT_ID` AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )",
+            "name" : "项目成员中有我的"
+          } ]
         } ]
       }
     },
     "getPSDEDataQueryInput" : {
-      "name" : "My_privateInput",
+      "name" : "My_visibleInput",
       "getPSDEFilterDTO" : {
         "modelref" : true,
         "id" : "project_filter_dto"
@@ -2318,7 +2314,7 @@
       "type" : "DTO"
     },
     "getPSDEDataQueryReturn" : {
-      "name" : "My_privateResult",
+      "name" : "My_visibleResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "project_extend_def_group_dto"
@@ -2592,60 +2588,6 @@
       },
       "type" : "DTOS"
     }
-  }, {
-    "getAllPSDEDataQueryCodes" : [ {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/public_extend/PSDEDQCODES/MYSQL5.json"
-    } ],
-    "codeName" : "public_extend",
-    "dEFGroupType" : "FIELDS",
-    "logicName" : "公开项目（指定属性组）",
-    "name" : "public_extend",
-    "getPSDEDQMain" : {
-      "getJoinPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-      },
-      "joinType" : "MAIN",
-      "name" : "PROJECT",
-      "getPSDEDQGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "连接条件",
-        "getPSDEDQConditions" : [ {
-          "condOp" : "EQ",
-          "condType" : "SINGLE",
-          "condValue" : "public",
-          "fieldName" : "VISIBILITY",
-          "name" : "(VISIBILITY) 等于(=) public",
-          "getPSDEField" : {
-            "name" : "VISIBILITY",
-            "codeName" : "visibility"
-          }
-        } ]
-      }
-    },
-    "getPSDEDataQueryInput" : {
-      "name" : "Public_extendInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "project_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataQueryReturn" : {
-      "name" : "Public_extendResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "project_extend_def_group_dto"
-      },
-      "type" : "DTOS"
-    },
-    "getPSDEFGroup" : {
-      "modelref" : true,
-      "id" : "extendDEFGroup"
-    },
-    "viewLevel" : 100
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -3595,10 +3537,7 @@
     "name" : "my_visible",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
-      "id" : "my_private"
-    }, {
-      "modelref" : true,
-      "id" : "public_extend"
+      "id" : "my_visible"
     } ],
     "getPSDEDataSetInput" : {
       "name" : "My_visibleInput",

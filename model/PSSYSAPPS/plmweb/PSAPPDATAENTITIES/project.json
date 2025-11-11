@@ -7922,20 +7922,30 @@
       "getPSDEDQConditions" : [ {
         "condOp" : "EQ",
         "condType" : "SINGLE",
-        "condValue" : "private",
-        "fieldName" : "VISIBILITY",
-        "name" : "(VISIBILITY) 等于(=) private"
-      } ]
-    }, {
-      "condOp" : "AND",
-      "condType" : "GROUP",
-      "name" : "连接条件",
-      "getPSDEDQConditions" : [ {
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
         "condOp" : "EQ",
         "condType" : "SINGLE",
-        "condValue" : "public",
-        "fieldName" : "VISIBILITY",
-        "name" : "(VISIBILITY) 等于(=) public"
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "public",
+          "fieldName" : "VISIBILITY",
+          "name" : "(VISIBILITY) 等于(=) public"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 \n WHERE \n t1.`ID` = t11.`PROJECT_ID` AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )",
+          "name" : "项目成员中有我的"
+        } ]
       } ]
     } ],
     "getPSDEDataSet" : {
