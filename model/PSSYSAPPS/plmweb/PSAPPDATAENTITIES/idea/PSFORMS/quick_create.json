@@ -350,7 +350,7 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 0,
+        "ignoreInput" : 4,
         "itemHeight" : 470.0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
@@ -360,6 +360,33 @@
           "name" : "DESCRIPTION",
           "codeName" : "description"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "format_type",
+            "logicType" : "SINGLE",
+            "name" : "format_type等于(=) HTML",
+            "value" : "HTML"
+          } ],
+          "relatedDetailNames" : [ "format_type" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "format_type",
+            "logicType" : "SINGLE",
+            "name" : "format_type等于(=) HTML",
+            "value" : "HTML"
+          } ],
+          "relatedDetailNames" : [ "format_type" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorHeight" : 450.0,
           "editorParams" : {
@@ -392,6 +419,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "resetItemName" : "format_type",
+        "resetItemNames" : [ "format_type" ],
         "allowEmpty" : true,
         "showCaption" : true
       }, {
