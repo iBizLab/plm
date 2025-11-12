@@ -30,8 +30,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询活跃总人数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="赋值活跃总人数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取图表默认数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="计算图表数据"/>
+                        <endEvent id="rawsfcode_01_end" name="end"/>
+                        <sequenceFlow id="rawsfcode_01_end_line" sourceRef="rawsfcode_01" targetRef="rawsfcode_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="计算图表所需数据"/>
                         <endEvent id="rawsfcode2_end" name="end"/>
                         <sequenceFlow id="rawsfcode2_end_line" sourceRef="rawsfcode2" targetRef="rawsfcode2_end"/>
@@ -48,11 +50,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset1_rawsfcode_01" sourceRef="dedataset1" targetRef="rawsfcode_01">
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode_01_end1" sourceRef="rawsfcode_01" targetRef="end1">
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

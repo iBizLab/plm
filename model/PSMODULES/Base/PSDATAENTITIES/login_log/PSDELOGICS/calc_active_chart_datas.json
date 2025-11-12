@@ -181,7 +181,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE_01"
+        "id" : "LOOPSUBCALL1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -195,12 +195,21 @@
     },
     "topPos" : -180
   }, {
+    "code" : "// 从逻辑参数获取数据集\r\nvar echart_page = logic.getParam('echart_page');\r\n\r\n// 活跃总人数\r\nvar user_total = logic.getParam('user_total');\r\nvar total = user_total.get('total');\r\n// 检查数据集是否存在且为非空\r\nif (echart_page && echart_page.length > 0) {\r\n    // 遍历数据集中的每一行\r\n    for (var i = 0; i < echart_page.length; i++) {\r\n        // 获取当前行数据对象\r\n        var currentRow = echart_page[i];\r\n        \r\n        // 以下为对每行数据的处理逻辑示例\r\n        var active_members = currentRow.get('active_members');\r\n        var auth_time = currentRow.get('auth_time');\r\n        \r\n        // 计算活跃率\r\n        var active_rate = ((active_members / total) * 100).toFixed(2);\r\n        \r\n        // 设置活跃率到当前行\r\n        currentRow.set(\"active_rate\", active_rate);\r\n        \r\n        // 处理authtime，截取日期部分\r\n        if (auth_time) {\r\n            var newdate = String(auth_time).split(' ')[0];\r\n            currentRow.set(\"auth_time\", newdate);\r\n        }\r\n        \r\n        // 将处理后的行数据赋值给echart_obj参数\r\n        logic.setParam('echart_obj', currentRow);\r\n    }\r\n}\r\n",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "JavaScript",
+    "leftPos" : 1450,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算图表数据",
+    "topPos" : -380,
+    "parallelOutput" : true
+  }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "echart_obj"
     },
-    "leftPos" : 1330,
+    "leftPos" : 1510,
     "logicNodeType" : "LOOPSUBCALL",
     "name" : "循环子调用",
     "getPSDELogicLinks" : [ {
@@ -214,43 +223,33 @@
         "id" : "LOOPSUBCALL1"
       },
       "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "结束循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
     } ],
     "getSrcPSDELogicParam" : {
       "modelref" : true,
       "id" : "echart_page"
     },
-    "topPos" : -4
-  }, {
-    "code" : "// 从逻辑参数获取数据集\r\nvar echart_page = logic.getParam('echart_page');\r\n\r\n// 活跃总人数\r\nvar user_total = logic.getParam('user_total');\r\nvar total = user_total.get('total');\r\n\r\n// 检查数据集是否存在且为非空\r\nif (echart_page && echart_page.length > 0) {\r\n    // 遍历数据集中的每一行\r\n    for (var i = 0; i < echart_page.length; i++) {\r\n        // 获取当前行数据对象\r\n        var currentRow = echart_page[i];\r\n        \r\n        // 以下为对每行数据的处理逻辑示例\r\n        var active_members = currentRow.get('active_members');\r\n        var auth_time = currentRow.get('auth_time');\r\n        \r\n        // 计算活跃率\r\n        var active_rate = ((active_members / total) * 100).toFixed(2);\r\n        \r\n        // 设置活跃率到当前行\r\n        currentRow.set(\"active_rate\", active_rate);\r\n        \r\n        // 处理authtime，截取日期部分\r\n        if (auth_time) {\r\n            var newdate = String(auth_time).split(' ')[0];\r\n            currentRow.set(\"auth_time\", newdate);\r\n        }\r\n        \r\n        // 将处理后的行数据赋值给echart_obj参数\r\n        logic.setParam('echart_obj', currentRow);\r\n    }\r\n}\r\n",
-    "codeName" : "RAWSFCODE_01",
-    "codeType" : "JavaScript",
-    "leftPos" : 1494,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "计算图表数据",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE_01"
-      }
-    } ],
-    "topPos" : -180,
-    "parallelOutput" : true
+    "topPos" : -180
   }, {
     "code" : "var echart_obj = logic.getParam('echart_obj');\r\n//活跃总人数\r\nvar user_total = logic.getParam('user_total');\r\nvar total = user_total.get('total');\r\n//活跃人数\r\nvar active_members = echart_obj.get('active_members');\r\n//计算活跃率\r\nvar active_rate = ((active_members / total) * 100).toFixed(2); \r\n//补充活跃率\r\nechart_obj.set(\"active_rate\",active_rate);\r\n\r\n//处理authtime\r\nvar newdate = String(echart_obj.get('auth_time')).split(' ')[0]; \r\nechart_obj.set(\"auth_time\",newdate);",
     "codeName" : "RAWSFCODE2",
     "codeType" : "JavaScript",
-    "leftPos" : 1534,
+    "leftPos" : 1510,
     "logicNodeType" : "RAWSFCODE",
     "name" : "计算图表所需数据",
-    "topPos" : -4
+    "topPos" : -54
   }, {
     "codeName" : "END1",
-    "leftPos" : 1680,
+    "leftPos" : 1860,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
