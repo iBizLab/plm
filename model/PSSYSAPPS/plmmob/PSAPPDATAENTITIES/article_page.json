@@ -3356,6 +3356,18 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -3369,18 +3381,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[REVIEW_RESULT_STATE][评审结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[REVIEW_RESULT_STATE][评审结果]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "review_result_state",
     "logicName" : "评审结果",
@@ -8561,6 +8561,56 @@
       "topPos" : -70,
       "parallelOutput" : true
     }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 161,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "页面信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "name" : "Default ==> page_info",
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 60
+    }, {
+      "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 161,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 680
+    }, {
       "codeName" : "DEUIACTION2",
       "getDstPSAppDEUIAction" : {
         "modelref" : true,
@@ -8590,6 +8640,39 @@
         }
       } ],
       "topPos" : 548
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置发布状态到当前视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "is_published",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "page_info[is_published] ==> view[is_published]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "is_published",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 420
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -8650,37 +8733,6 @@
       } ],
       "topPos" : 170
     }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 161,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "页面信息",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_info"
-        },
-        "name" : "Default ==> page_info",
-        "paramAction" : "COPYPARAM",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 60
-    }, {
       "code" : "if (uiLogic.form) {\r\n    uiLogic.form.state.modified = false;\r\n}",
       "codeName" : "RAWJSCODE3",
       "leftPos" : 400,
@@ -8700,69 +8752,12 @@
         }
       } ],
       "topPos" : 302
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置发布状态到当前视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "is_published",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "name" : "page_info[is_published] ==> view[is_published]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "is_published",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_info"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 420
-    }, {
-      "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 161,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 680
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "page_info",
-      "logicName" : "页面信息",
-      "name" : "页面信息",
       "entityParam" : true
     }, {
       "codeName" : "form",
@@ -8774,6 +8769,11 @@
       "logicName" : "当前视图",
       "name" : "当前视图",
       "activeViewParam" : true
+    }, {
+      "codeName" : "page_info",
+      "logicName" : "页面信息",
+      "name" : "页面信息",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -9115,7 +9115,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u731331d",
+      "name" : "ucf4600c",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -9143,7 +9143,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "新建子页面",
       "detailType" : "DEUIACTION",
-      "name" : "u0b0c6f2",
+      "name" : "ubc2c5b2",
       "getPSSysImage" : {
         "glyph" : "xf196@FontAwesome",
         "cssClass" : "fa fa-plus-square-o"
@@ -9162,7 +9162,7 @@
     }, {
       "caption" : "新建子分组",
       "detailType" : "DEUIACTION",
-      "name" : "u0910f08",
+      "name" : "ud0c64b7",
       "getPSSysImage" : {
         "glyph" : "xf07c@FontAwesome",
         "cssClass" : "fa fa-folder-open"
@@ -9181,7 +9181,7 @@
     }, {
       "caption" : "收藏",
       "detailType" : "DEUIACTION",
-      "name" : "u8e10da8",
+      "name" : "u4686fff",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -9201,7 +9201,7 @@
     }, {
       "caption" : "重命名",
       "detailType" : "DEUIACTION",
-      "name" : "u7ca07fa",
+      "name" : "uc720d73",
       "getPSSysImage" : {
         "glyph" : "xf0ec@FontAwesome",
         "cssClass" : "fa fa-exchange"
@@ -9220,7 +9220,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "uf14befb",
+      "name" : "uce48881",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

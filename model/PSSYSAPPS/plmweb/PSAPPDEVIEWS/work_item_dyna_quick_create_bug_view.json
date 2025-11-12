@@ -56,7 +56,7 @@
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "dyna_quick_create_bug_view",
-  "getPSDEViewId" : "B0412D4A-EEAC-4C79-AACC-5C15484A5262",
+  "getPSDEViewId" : "1026091fe1de5fd21028621178c74457",
   "getPSSysCss" : {
     "cssName" : "new_create_style"
   },
@@ -271,7 +271,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "79D517AE-8254-4699-A968-26178E8C800A",
+    "modelid" : "b72159d2cfe9b1327a9870999e5899f3",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -465,6 +465,16 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "set_default_entry",
+        "name" : "选择看板后填充默认看板栏",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_default_entry"
+        },
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "entry_id"
+        } ]
+      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -484,16 +494,6 @@
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\n\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    ctrl.context,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
         "customCode" : true
-      }, {
-        "codeName" : "set_default_entry",
-        "name" : "选择看板后填充默认看板栏",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_default_entry"
-        },
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "entry_id"
-        } ]
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -1303,7 +1303,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -1352,7 +1352,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -1548,7 +1548,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -2630,7 +2630,7 @@
                   "getPSUIActionGroupDetails" : [ {
                     "caption" : "跳转至成员设置",
                     "detailType" : "DEUIACTION",
-                    "name" : "uc5eeb4c",
+                    "name" : "uc0c6a4c",
                     "getPSSysImage" : {
                       "glyph" : "xf0f0@FontAwesome",
                       "cssClass" : "fa fa-user-md"
@@ -3662,9 +3662,9 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_id"
         }, {
-          "name" : "work_item_type_name"
-        }, {
           "name" : "project_type"
+        }, {
+          "name" : "work_item_type_name"
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
         "customCode" : true
@@ -4404,7 +4404,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -4453,7 +4453,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -4649,7 +4649,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -5504,7 +5504,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "跳转至成员设置",
                   "detailType" : "DEUIACTION",
-                  "name" : "uc5eeb4c",
+                  "name" : "uc0c6a4c",
                   "getPSSysImage" : {
                     "glyph" : "xf0f0@FontAwesome",
                     "cssClass" : "fa fa-user-md"
@@ -6084,24 +6084,24 @@
           "name" : "entry_id"
         } ]
       }, {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
-        "customCode" : true
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_name"
         } ],
         "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        }, {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
+        } ],
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -6856,7 +6856,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -6905,7 +6905,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -7101,7 +7101,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -8067,7 +8067,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "跳转至成员设置",
                   "detailType" : "DEUIACTION",
-                  "name" : "uc5eeb4c",
+                  "name" : "uc0c6a4c",
                   "getPSSysImage" : {
                     "glyph" : "xf0f0@FontAwesome",
                     "cssClass" : "fa fa-user-md"
@@ -8648,11 +8648,11 @@
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        }, {
           "name" : "project_type"
         }, {
           "name" : "work_item_type_id"
+        }, {
+          "name" : "work_item_type_name"
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
         "customCode" : true
@@ -9384,7 +9384,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -9433,7 +9433,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -9629,7 +9629,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -10465,7 +10465,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "跳转至成员设置",
                   "detailType" : "DEUIACTION",
-                  "name" : "uc5eeb4c",
+                  "name" : "uc0c6a4c",
                   "getPSSysImage" : {
                     "glyph" : "xf0f0@FontAwesome",
                     "cssClass" : "fa fa-user-md"
@@ -11035,18 +11035,6 @@
         "id" : "_FORM_HYBRID_BUG"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
-        "customCode" : true
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -11064,6 +11052,18 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
         } ]
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -11817,7 +11817,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -11866,7 +11866,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -12062,7 +12062,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -13039,7 +13039,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "跳转至成员设置",
                   "detailType" : "DEUIACTION",
-                  "name" : "uc5eeb4c",
+                  "name" : "uc0c6a4c",
                   "getPSSysImage" : {
                     "glyph" : "xf0f0@FontAwesome",
                     "cssClass" : "fa fa-user-md"
@@ -13469,7 +13469,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "328dedec35c2e7834dbe34a386991df1",
+  "modelid" : "aa7e991e3e346d56543afbc40fc6549c",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

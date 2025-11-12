@@ -123,15 +123,6 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "remaining_update",
-    "name" : "剩余工时表单项更新",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "workload_schedule"
-    } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
-    "customCode" : true,
-    "showBusyIndicator" : false
-  }, {
     "codeName" : "estimated_update",
     "name" : "预估工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
@@ -140,6 +131,15 @@
       "name" : "workload_schedule"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
+    "codeName" : "remaining_update",
+    "name" : "剩余工时表单项更新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
     "customCode" : true,
     "showBusyIndicator" : false
   } ],
@@ -681,7 +681,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "跳转至成员设置",
               "detailType" : "DEUIACTION",
-              "name" : "uc5eeb4c",
+              "name" : "uc0c6a4c",
               "getPSSysImage" : {
                 "glyph" : "xf0f0@FontAwesome",
                 "cssClass" : "fa fa-user-md"
@@ -1399,7 +1399,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u73b8ba5",
+                      "name" : "uac70740",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -1448,7 +1448,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u44d00e2",
+                      "name" : "u5fe079a",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -1645,7 +1645,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "uaa6fcf7",
+                "name" : "u4a451b3",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -2315,7 +2315,7 @@
                                   "getPSUIActionGroupDetails" : [ {
                                     "caption" : "置顶",
                                     "detailType" : "DEUIACTION",
-                                    "name" : "u97e6419",
+                                    "name" : "ue90f623",
                                     "getPSSysImage" : {
                                       "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741120326\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4339\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M576 452.266667v422.4h-85.333333v-422.4l-89.6 89.6L341.333333 477.866667l192-192 192 192-59.733333 59.733333-89.6-85.333333z m213.333333-217.6h-512v-85.333334h512v85.333334z\" fill=\"#444444\" p-id=\"4340\"></path></svg>"
                                     },
@@ -2349,7 +2349,7 @@
                                   }, {
                                     "caption" : "取消置顶",
                                     "detailType" : "DEUIACTION",
-                                    "name" : "uaa719ea",
+                                    "name" : "ufe397ef",
                                     "getPSSysImage" : {
                                       "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741189924\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8698\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M228.43 433.23l70.893 63.016-47.261 39.385-78.77-63.016 55.139-39.384z m141.785-118.153L512 196.923l330.83 267.815-78.768 63.016-196.924-165.416v141.785L456.862 393.846v-23.63l-15.754 7.876-70.893-63.015z m196.923 441.108V1024H456.862V653.785l110.276 102.4zM39.385 86.646V0h945.23v86.646H39.385zM102.4 252.062l63.015-70.893 748.308 716.8-63.015 70.893-748.308-716.8z\" p-id=\"8699\"></path></svg>"
                                     },
@@ -2383,7 +2383,7 @@
                                   }, {
                                     "caption" : "删除",
                                     "detailType" : "DEUIACTION",
-                                    "name" : "ue61f196",
+                                    "name" : "u3493a9e",
                                     "getPSSysImage" : {
                                       "glyph" : "xf014@FontAwesome",
                                       "cssClass" : "fa fa-trash-o"
@@ -2751,6 +2751,17 @@
                         "id" : "LIST"
                       },
                       "getPSDEListDataItems" : [ {
+                        "dataType" : 25,
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "pcreate_man",
+                        "getPSAppDEField" : {
+                          "name" : "PCREATE_MAN",
+                          "codeName" : "pcreate_man"
+                        }
+                      }, {
                         "dataType" : 5,
                         "format" : "YYYY-MM-DD HH:mm:ss",
                         "name" : "create_time",
@@ -2760,10 +2771,10 @@
                         }
                       }, {
                         "dataType" : 21,
-                        "name" : "content",
+                        "name" : "pcontent",
                         "getPSAppDEField" : {
-                          "name" : "CONTENT",
-                          "codeName" : "content"
+                          "name" : "PCONTENT",
+                          "codeName" : "pcontent"
                         }
                       }, {
                         "dataType" : 25,
@@ -2778,35 +2789,24 @@
                         }
                       }, {
                         "dataType" : 25,
-                        "name" : "id",
-                        "getPSAppDEField" : {
-                          "name" : "ID",
-                          "codeName" : "id"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "pcreate_man",
-                        "getPSAppDEField" : {
-                          "name" : "PCREATE_MAN",
-                          "codeName" : "pcreate_man"
-                        }
-                      }, {
-                        "dataType" : 25,
                         "name" : "pid",
                         "getPSAppDEField" : {
                           "name" : "PID",
                           "codeName" : "pid"
                         }
                       }, {
-                        "dataType" : 21,
-                        "name" : "pcontent",
+                        "dataType" : 25,
+                        "name" : "id",
                         "getPSAppDEField" : {
-                          "name" : "PCONTENT",
-                          "codeName" : "pcontent"
+                          "name" : "ID",
+                          "codeName" : "id"
+                        }
+                      }, {
+                        "dataType" : 21,
+                        "name" : "content",
+                        "getPSAppDEField" : {
+                          "name" : "CONTENT",
+                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 25,
@@ -4739,18 +4739,11 @@
                       "id" : "LIST"
                     },
                     "getPSDEListDataItems" : [ {
-                      "dataType" : 21,
-                      "name" : "auditinfo",
-                      "getPSAppDEField" : {
-                        "name" : "AUDITINFO",
-                        "codeName" : "audit_info"
-                      }
-                    }, {
                       "dataType" : 25,
-                      "name" : "objecttype",
+                      "name" : "audittype",
                       "getPSAppDEField" : {
-                        "name" : "OBJECTTYPE",
-                        "codeName" : "object_type"
+                        "name" : "AUDITTYPE",
+                        "codeName" : "audit_type"
                       }
                     }, {
                       "dataType" : 5,
@@ -4762,6 +4755,13 @@
                       }
                     }, {
                       "dataType" : 25,
+                      "name" : "objecttype",
+                      "getPSAppDEField" : {
+                        "name" : "OBJECTTYPE",
+                        "codeName" : "object_type"
+                      }
+                    }, {
+                      "dataType" : 25,
                       "name" : "oppersonname",
                       "getPSAppDEField" : {
                         "name" : "OPPERSONNAME",
@@ -4769,17 +4769,17 @@
                       }
                     }, {
                       "dataType" : 25,
-                      "name" : "audittype",
-                      "getPSAppDEField" : {
-                        "name" : "AUDITTYPE",
-                        "codeName" : "audit_type"
-                      }
-                    }, {
-                      "dataType" : 25,
                       "name" : "oppersonid",
                       "getPSAppDEField" : {
                         "name" : "OPPERSONID",
                         "codeName" : "op_person_id"
+                      }
+                    }, {
+                      "dataType" : 21,
+                      "name" : "auditinfo",
+                      "getPSAppDEField" : {
+                        "name" : "AUDITINFO",
+                        "codeName" : "audit_info"
                       }
                     }, {
                       "dataType" : 25,
@@ -5806,7 +5806,7 @@
                         "getPSUIActionGroupDetails" : [ {
                           "caption" : "新建",
                           "detailType" : "DEUIACTION",
-                          "name" : "uc95d0ba",
+                          "name" : "u068bb2d",
                           "getPSSysImage" : {
                             "glyph" : "xf067@FontAwesome",
                             "cssClass" : "fa fa-plus"
@@ -6387,7 +6387,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "取消关联",
                         "detailType" : "DEUIACTION",
-                        "name" : "ua71fcf1",
+                        "name" : "u0f749a7",
                         "getPSSysImage" : {
                           "glyph" : "xf127@FontAwesome",
                           "cssClass" : "fa fa-unlink"
@@ -7817,7 +7817,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "新建",
                         "detailType" : "DEUIACTION",
-                        "name" : "ub171561",
+                        "name" : "u9fa843d",
                         "getPSSysImage" : {
                           "glyph" : "xf067@FontAwesome",
                           "cssClass" : "fa fa-plus"
@@ -8406,7 +8406,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "取消关联",
                         "detailType" : "DEUIACTION",
-                        "name" : "u0a620b7",
+                        "name" : "u345ce3d",
                         "getPSSysImage" : {
                           "glyph" : "xf127@FontAwesome",
                           "cssClass" : "fa fa-unlink"
@@ -8684,7 +8684,7 @@
                         "getPSUIActionGroupDetails" : [ {
                           "caption" : "跳转至成员设置",
                           "detailType" : "DEUIACTION",
-                          "name" : "uc5eeb4c",
+                          "name" : "uc0c6a4c",
                           "getPSSysImage" : {
                             "glyph" : "xf0f0@FontAwesome",
                             "cssClass" : "fa fa-user-md"
@@ -10384,20 +10384,6 @@
                       "codeName" : "id"
                     }
                   }, {
-                    "dataType" : 25,
-                    "name" : "relation_type",
-                    "getPSAppDEField" : {
-                      "name" : "RELATION_TYPE",
-                      "codeName" : "relation_type"
-                    }
-                  }, {
-                    "dataType" : 25,
-                    "name" : "principal_id",
-                    "getPSAppDEField" : {
-                      "name" : "PRINCIPAL_ID",
-                      "codeName" : "principal_id"
-                    }
-                  }, {
                     "dataType" : 21,
                     "name" : "work_item",
                     "getPSAppDEField" : {
@@ -10412,11 +10398,25 @@
                       "codeName" : "target_id"
                     }
                   }, {
+                    "dataType" : 25,
+                    "name" : "principal_id",
+                    "getPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    }
+                  }, {
                     "dataType" : 21,
                     "name" : "principal_work_item",
                     "getPSAppDEField" : {
                       "name" : "PRINCIPAL_WORK_ITEM",
                       "codeName" : "principal_work_item"
+                    }
+                  }, {
+                    "dataType" : 25,
+                    "name" : "relation_type",
+                    "getPSAppDEField" : {
+                      "name" : "RELATION_TYPE",
+                      "codeName" : "relation_type"
                     }
                   }, {
                     "dataType" : 25,
@@ -11575,7 +11575,7 @@
                         "getPSUIActionGroupDetails" : [ {
                           "caption" : "新建",
                           "detailType" : "DEUIACTION",
-                          "name" : "u5d97054",
+                          "name" : "u9436730",
                           "getPSSysImage" : {
                             "glyph" : "xf067@FontAwesome",
                             "cssClass" : "fa fa-plus"
@@ -12222,7 +12222,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "取消关联",
                         "detailType" : "DEUIACTION",
-                        "name" : "ua71fcf1",
+                        "name" : "u0f749a7",
                         "getPSSysImage" : {
                           "glyph" : "xf127@FontAwesome",
                           "cssClass" : "fa fa-unlink"
@@ -14117,7 +14117,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "提交",
                         "detailType" : "DEUIACTION",
-                        "name" : "ud9ceb13",
+                        "name" : "uf687d4f",
                         "getPSSysImage" : {
                           "glyph" : "xf093@FontAwesome",
                           "cssClass" : "fa fa-upload"
@@ -14153,7 +14153,7 @@
                       }, {
                         "caption" : "删除",
                         "detailType" : "DEUIACTION",
-                        "name" : "u0d3e2ae",
+                        "name" : "u867def2",
                         "getPSSysImage" : {
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
@@ -14677,7 +14677,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "新建",
                         "detailType" : "DEUIACTION",
-                        "name" : "u71bc0ed",
+                        "name" : "uda910e2",
                         "getPSSysImage" : {
                           "glyph" : "xf067@FontAwesome",
                           "cssClass" : "fa fa-plus"
@@ -15237,7 +15237,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "取消关联",
                         "detailType" : "DEUIACTION",
-                        "name" : "ua71fcf1",
+                        "name" : "u0f749a7",
                         "getPSSysImage" : {
                           "glyph" : "xf127@FontAwesome",
                           "cssClass" : "fa fa-unlink"
@@ -16612,7 +16612,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "新建",
                         "detailType" : "DEUIACTION",
-                        "name" : "ua2b3bbd",
+                        "name" : "u8b4fd55",
                         "getPSSysImage" : {
                           "glyph" : "xf067@FontAwesome",
                           "cssClass" : "fa fa-plus"
@@ -17128,7 +17128,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "取消关联",
                         "detailType" : "DEUIACTION",
-                        "name" : "ub9d9aa3",
+                        "name" : "u24268ab",
                         "getPSSysImage" : {
                           "glyph" : "xf127@FontAwesome",
                           "cssClass" : "fa fa-unlink"
@@ -18818,7 +18818,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "编辑版本",
                         "detailType" : "DEUIACTION",
-                        "name" : "u75cf0ed",
+                        "name" : "uba45bee",
                         "getPSSysImage" : {
                           "glyph" : "xf044@FontAwesome",
                           "cssClass" : "fa fa-edit"
@@ -18862,7 +18862,7 @@
                       }, {
                         "caption" : "恢复版本",
                         "detailType" : "DEUIACTION",
-                        "name" : "udd14231",
+                        "name" : "ud82edf0",
                         "getPSSysImage" : {
                           "glyph" : "xf021@FontAwesome",
                           "cssClass" : "fa fa-refresh"
@@ -18913,7 +18913,7 @@
                       }, {
                         "caption" : "版本对比",
                         "detailType" : "DEUIACTION",
-                        "name" : "u55ff28f",
+                        "name" : "ubdf1b29",
                         "getPSSysImage" : {
                           "glyph" : "xf0ec@FontAwesome",
                           "cssClass" : "fa fa-exchange"

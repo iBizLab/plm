@@ -82,6 +82,48 @@
     } ],
     "topPos" : 90
   }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : -380,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置关系过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_PRINCIPAL_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reltion_filter"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> reltion_filter[N_PRINCIPAL_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_PRINCIPAL_TYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reltion_filter"
+      },
+      "name" : "直接值[REVIEW] ==> reltion_filter[N_PRINCIPAL_TYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "REVIEW",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 90
+  }, {
     "code" : "var review_detail = logic.getParam(\"review_detail\");\r\nreview_detail.set(\"submitted_at\", new Date());",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
@@ -216,6 +258,35 @@
     } ],
     "topPos" : 90
   }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 443,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知第一评审人（测试用例）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      }
+    } ],
+    "topPos" : -48
+  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 665,
     "logicNodeType" : "PREPAREPARAM",
@@ -260,48 +331,6 @@
       "name" : "直接值[20] ==> review_detail[STATE]",
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "20",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 90
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : -380,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置关系过滤器参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "N_PRINCIPAL_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reltion_filter"
-      },
-      "name" : "Default[PRINCIPAL_ID] ==> reltion_filter[N_PRINCIPAL_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRINCIPAL_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "N_PRINCIPAL_TYPE_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reltion_filter"
-      },
-      "name" : "直接值[REVIEW] ==> reltion_filter[N_PRINCIPAL_TYPE_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "REVIEW",
       "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 90
@@ -624,35 +653,6 @@
       "id" : "reviewer_list"
     },
     "topPos" : 302
-  }, {
-    "codeName" : "DENOTIFY2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "review_detail"
-    },
-    "getDstPSDENotify" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_review_notify.json"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-    },
-    "leftPos" : 443,
-    "logicNodeType" : "DENOTIFY",
-    "name" : "通知第一评审人（测试用例）",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DENOTIFY2"
-      }
-    } ],
-    "topPos" : -48
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
