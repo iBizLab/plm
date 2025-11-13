@@ -53,11 +53,19 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
     },
     "getPSAppViewRefs" : [ {
-      "name" : "EXPITEM:node",
+      "name" : "EXPITEM:ai_agent",
       "realTitle" : "智能体表格视图",
       "getRefPSAppView" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:ai_model",
+      "realTitle" : "AI大模型表格视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_model_grid_view.json",
         "viewType" : "DEGRIDVIEW"
       }
     } ],
@@ -219,12 +227,36 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
-          "id" : "node"
+          "id" : "ai_agent"
         },
         "name" : "智能引擎（node_1）-智能体（node）",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ai_model"
+        },
+        "name" : " AI大模型（node_2）- AI大模型（node_3）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "name" : "默认根节点（ROOT）- AI大模型（node_2）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
         },
         "parentValueLevel" : 1,
         "searchMode" : 3
@@ -259,7 +291,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_grid_view.json",
           "viewType" : "DEGRIDVIEW"
         },
-        "nodeType" : "node",
+        "nodeType" : "ai_agent",
         "text" : "智能体",
         "treeNodeType" : "STATIC",
         "hasPSDETreeNodeRSs" : false,
@@ -277,12 +309,39 @@
         "rootNode" : false,
         "selectFirstOnly" : false,
         "selected" : false,
-        "id" : "node"
+        "id" : "ai_agent"
       }, {
         "counterMode" : 0,
-        "name" : "智能引擎",
+        "name" : " AI大模型",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_model_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "ai_model",
+        "text" : " AI大模型",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ai_model"
+      }, {
+        "counterMode" : 0,
+        "name" : "智能体",
         "nodeType" : "node_1",
-        "text" : "智能引擎",
+        "text" : "智能体",
         "treeNodeType" : "STATIC",
         "hasPSDETreeNodeRSs" : true,
         "appendPNodeId" : false,
@@ -300,6 +359,28 @@
         "selectFirstOnly" : false,
         "selected" : false,
         "id" : "node_1"
+      }, {
+        "counterMode" : 0,
+        "name" : " AI大模型",
+        "nodeType" : "node_2",
+        "text" : " AI大模型",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_2"
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "TREE_RENDER",
