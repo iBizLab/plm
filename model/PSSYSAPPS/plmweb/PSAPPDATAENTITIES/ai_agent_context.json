@@ -5,7 +5,7 @@
     "name" : "DEFAULT",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
     },
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
@@ -51,7 +51,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
@@ -62,7 +62,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/CheckKey.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/CheckKey.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -85,7 +85,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -94,13 +94,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Create.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Create.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -131,13 +131,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Get.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Get.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -162,7 +162,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
@@ -170,13 +170,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/GetDraft.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/GetDraft.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -210,7 +210,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Remove.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Remove.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -236,7 +236,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -245,13 +245,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Save.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Save.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -274,7 +274,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -283,13 +283,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Update.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Update.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -304,6 +304,44 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "READ",
+    "codeName" : "fill_with_agent",
+    "methodType" : "DEACTION",
+    "name" : "fill_with_agent",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_with_agent"
+    },
+    "requestMethod" : "GET",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_with_agent",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
     "codeName" : "FetchDefault",
@@ -315,7 +353,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentFilterDTO"
+        "id" : "ai_agent_contextFilterDTO"
       },
       "type" : "DTO"
     },
@@ -323,7 +361,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "PAGE"
     },
@@ -343,6 +381,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchdefault",
     "builtinMethod" : false
+  }, {
+    "codeName" : "FetchFull_info",
+    "dataSetName" : "full_info",
+    "dataSetTag" : "full_info",
+    "methodType" : "FETCH",
+    "name" : "FetchFull_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "full_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchFull_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchfull_info",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -350,7 +426,7 @@
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT.ID"
+          "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.ID"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
@@ -367,7 +443,7 @@
       "name" : "[ID][标识]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT.ID"
+          "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.ID"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
@@ -380,34 +456,20 @@
     } ],
     "codeName" : "id",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.AI_AGENT.ID"
+      "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.ID"
     },
-    "logicName" : "智能体标识",
+    "logicName" : "智能体业务上下文标识",
     "name" : "ID",
     "stdDataType" : 25,
     "stringLength" : 100,
     "keyField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT.NAME"
+          "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.NAME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
@@ -418,12 +480,26 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "name",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.AI_AGENT.NAME"
+      "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.NAME"
     },
-    "logicName" : "智能体名称",
+    "logicName" : "名称",
     "name" : "NAME",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -431,6 +507,21 @@
     "majorField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CREATE_MAN][建立人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_MAN][建立人]移动端默认",
       "getPSDEFFormItem" : {
@@ -447,21 +538,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_MAN][建立人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "create_man",
     "getLNPSLanguageRes" : {
@@ -517,6 +593,21 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_MAN][更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -533,21 +624,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "update_man",
     "getLNPSLanguageRes" : {
@@ -560,6 +636,21 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -576,21 +667,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "update_time",
     "getLNPSLanguageRes" : {
@@ -603,24 +679,20 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[GENERATION_MODE][生成模式]",
+      "name" : "默认",
       "getPSDEFFormItem" : {
-        "codeName" : "Default",
         "editorType" : "DROPDOWNLIST",
-        "name" : "[GENERATION_MODE][生成模式]",
+        "name" : "默认",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
-      "codeName" : "MobileDefault",
-      "name" : "[GENERATION_MODE][生成模式]移动端默认",
+      "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
         "editorType" : "MOBDROPDOWNLIST",
-        "name" : "[GENERATION_MODE][生成模式]移动端默认",
+        "name" : "移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
@@ -636,80 +708,11 @@
     "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[AI_MODEL_ID][模型标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[AI_MODEL_ID][模型标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[AI_MODEL_ID][模型标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[AI_MODEL_ID][模型标识]移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "ai_model_id",
-    "logicName" : "模型标识",
-    "name" : "AI_MODEL_ID",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "code_name",
-    "logicName" : "代码标识",
-    "name" : "CODE_NAME",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
         "editorType" : "DROPDOWNLIST_100",
         "name" : "默认",
         "uIMode" : "DEFAULT",
-        "allowEmpty" : false,
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
@@ -719,17 +722,69 @@
         "editorType" : "MOBSWITCH",
         "name" : "移动端默认",
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "is_default",
-    "logicName" : "是否默认Agent",
-    "name" : "IS_DEFAULT",
+    "codeName" : "enable_suggested_questions",
+    "logicName" : "启用问题建议",
+    "name" : "ENABLE_SUGGESTED_QUESTIONS",
     "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "active",
+    "logicName" : "有效",
+    "name" : "ACTIVE",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "ARRAY",
+        "name" : "默认",
+        "stringLength" : 1000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBARRAY",
+        "name" : "移动端默认",
+        "stringLength" : 1000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "suggested_questions",
+    "logicName" : "预置建议问题",
+    "name" : "SUGGESTED_QUESTIONS",
+    "stdDataType" : 21,
+    "stringLength" : 1000
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
@@ -750,9 +805,9 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "sequence",
-    "logicName" : "排序",
-    "name" : "SEQUENCE",
+    "codeName" : "memory_max_turns",
+    "logicName" : "记忆对话轮数",
+    "name" : "MEMORY_MAX_TURNS",
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -794,6 +849,159 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "maxValueString" : "32767",
+        "minValueString" : "1",
+        "name" : "默认",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "maxValueString" : "32767",
+        "minValueString" : "1",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "max_input_tokens",
+    "logicName" : "最大输入token数",
+    "maxValueString" : "32767",
+    "minValueString" : "1",
+    "name" : "MAX_INPUT_TOKENS",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "maxValueString" : "1.0",
+        "minValueString" : "0.0",
+        "name" : "默认",
+        "precision" : 2,
+        "scale" : 2,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "maxValueString" : "1.0",
+        "minValueString" : "0.0",
+        "name" : "移动端默认",
+        "precision" : 2,
+        "scale" : 2,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "top_p",
+    "logicName" : "概率核采样",
+    "maxValueString" : "1.0",
+    "minValueString" : "0.0",
+    "name" : "TOP_P",
+    "precision" : 2,
+    "scale" : 2,
+    "stdDataType" : 6
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "trimming_strategy",
+    "logicName" : "截断策略",
+    "name" : "TRIMMING_STRATEGY",
+    "stdDataType" : 25,
+    "stringLength" : 60
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "code_name",
+    "logicName" : "代码标识",
+    "name" : "CODE_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "memory_mode",
+    "logicName" : "记忆模式",
+    "name" : "MEMORY_MODE",
+    "stdDataType" : 25,
+    "stringLength" : 60
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
         "editorType" : "TEXTAREA_10",
         "name" : "默认",
         "stringLength" : 1048576,
@@ -815,6 +1023,59 @@
     "codeName" : "default_system_prompt",
     "logicName" : "默认系统提示词",
     "name" : "DEFAULT_SYSTEM_PROMPT",
+    "stdDataType" : 21,
+    "stringLength" : 1048576
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "enable_tools",
+    "logicName" : "调用工具",
+    "name" : "ENABLE_TOOLS",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTAREA_10",
+        "name" : "默认",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXTAREA",
+        "name" : "移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "custom_suggestion_prompt",
+    "logicName" : "自定义建议提示词",
+    "name" : "CUSTOM_SUGGESTION_PROMPT",
     "stdDataType" : 21,
     "stringLength" : 1048576
   }, {
@@ -890,9 +1151,9 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "active",
-    "logicName" : "有效",
-    "name" : "ACTIVE",
+    "codeName" : "stream",
+    "logicName" : "流式输出",
+    "name" : "STREAM",
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -921,175 +1182,6 @@
     "name" : "WELCOME_MESSAGE",
     "stdDataType" : 21,
     "stringLength" : 1048576
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "ARRAY",
-        "name" : "默认",
-        "stringLength" : 1000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBARRAY",
-        "name" : "移动端默认",
-        "stringLength" : 1000,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "suggested_questions",
-    "logicName" : "预置建议问题",
-    "name" : "SUGGESTED_QUESTIONS",
-    "stdDataType" : 21,
-    "stringLength" : 1000
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST",
-        "name" : "默认",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端默认",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "memory_mode",
-    "logicName" : "记忆模式",
-    "name" : "MEMORY_MODE",
-    "stdDataType" : 25,
-    "stringLength" : 200
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "memory_max_turns",
-    "logicName" : "记忆对话轮数",
-    "name" : "MEMORY_MAX_TURNS",
-    "stdDataType" : 9
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBSWITCH",
-        "name" : "移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "enable_suggested_questions",
-    "logicName" : "启用问题建议",
-    "name" : "ENABLE_SUGGESTED_QUESTIONS",
-    "stdDataType" : 9
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
-        "stringLength" : 1048576,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "custom_suggestion_prompt",
-    "logicName" : "自定义建议提示词",
-    "name" : "CUSTOM_SUGGESTION_PROMPT",
-    "stdDataType" : 21,
-    "stringLength" : 1048576
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "maxValueString" : "1.0",
-        "minValueString" : "0.0",
-        "name" : "默认",
-        "precision" : 2,
-        "scale" : 2,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXT",
-        "maxValueString" : "1.0",
-        "minValueString" : "0.0",
-        "name" : "移动端默认",
-        "precision" : 2,
-        "scale" : 2,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "top_p",
-    "logicName" : "概率核采样",
-    "maxValueString" : "1.0",
-    "minValueString" : "0.0",
-    "name" : "TOP_P",
-    "precision" : 2,
-    "scale" : 2,
-    "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
@@ -1123,6 +1215,7 @@
         "editorType" : "DROPDOWNLIST_100",
         "name" : "默认",
         "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
@@ -1132,120 +1225,76 @@
         "editorType" : "MOBSWITCH",
         "name" : "移动端默认",
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "stream",
-    "logicName" : "流式输出",
-    "name" : "STREAM",
+    "codeName" : "is_default",
+    "logicName" : "是否默认Agent",
+    "name" : "IS_DEFAULT",
     "stdDataType" : 9
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBSWITCH",
-        "name" : "移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "enable_tools",
-    "logicName" : "调用工具",
-    "name" : "ENABLE_TOOLS",
-    "stdDataType" : 9
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST",
-        "name" : "默认",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端默认",
-        "stringLength" : 60,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "trimming_strategy",
-    "logicName" : "截断策略",
-    "name" : "TRIMMING_STRATEGY",
-    "stdDataType" : 25,
-    "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
         "editorType" : "TEXTBOX",
-        "maxValueString" : "32767",
-        "minValueString" : "1",
         "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
         "editorType" : "MOBTEXT",
-        "maxValueString" : "32767",
-        "minValueString" : "1",
         "name" : "移动端默认",
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "max_input_tokens",
-    "logicName" : "最大输入token数",
-    "maxValueString" : "32767",
-    "minValueString" : "1",
-    "name" : "MAX_INPUT_TOKENS",
+    "codeName" : "sequence",
+    "logicName" : "排序",
+    "name" : "SEQUENCE",
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[AI_MODEL_NAME][模型名称]移动端默认",
+      "name" : "默认",
       "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBPICKER",
-        "name" : "[AI_MODEL_NAME][模型名称]移动端默认",
+        "editorType" : "PICKER",
+        "name" : "默认",
         "refLinkPSDEViewCodeName" : "RedirectView",
         "refMPickupPSDEViewCodeName" : "MPickupView",
         "getRefPSDEACMode" : {
           "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACMODES/Default.json"
         },
         "getRefPSDataEntity" : {
           "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBPICKER",
+        "name" : "移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
         },
         "refPickupPSDEViewCodeName" : "PickupView",
         "stringLength" : 200,
@@ -1254,13 +1303,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[AI_MODEL_NAME][模型名称]",
+    } ],
+    "codeName" : "ai_agent_name",
+    "logicName" : "智能体名称",
+    "name" : "AI_AGENT_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
       "getPSDEFFormItem" : {
-        "codeName" : "Default",
         "editorType" : "PICKER",
-        "name" : "[AI_MODEL_NAME][模型名称]",
+        "name" : "默认",
         "refLinkPSDEViewCodeName" : "RedirectView",
         "refMPickupPSDEViewCodeName" : "MPickupView",
         "getRefPSDEACMode" : {
@@ -1276,19 +1330,111 @@
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBPICKER",
+        "name" : "移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
     } ],
     "codeName" : "ai_model_name",
     "logicName" : "模型名称",
     "name" : "AI_MODEL_NAME",
     "stdDataType" : 25,
     "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "ai_model_id",
+    "logicName" : "模型标识",
+    "name" : "AI_MODEL_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "ai_agent_id",
+    "logicName" : "智能体标识",
+    "name" : "AI_AGENT_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
-    "codeName" : "ai_agentDTO",
-    "name" : "ai_agentDTO",
+    "codeName" : "ai_agent_contextDTO",
+    "name" : "ai_agent_contextDTO",
     "getPSAppDEMethodDTOFields" : [ {
       "codeName" : "id",
-      "logicName" : "智能体标识",
+      "logicName" : "智能体业务上下文标识",
       "name" : "id",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -1300,7 +1446,7 @@
       "allowEmpty" : false
     }, {
       "codeName" : "name",
-      "logicName" : "智能体名称",
+      "logicName" : "名称",
       "name" : "name",
       "getPSAppDEField" : {
         "name" : "NAME",
@@ -1380,6 +1526,28 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "ai_agent_id",
+      "logicName" : "智能体标识",
+      "name" : "ai_agent_id",
+      "getPSAppDEField" : {
+        "name" : "AI_AGENT_ID",
+        "codeName" : "ai_agent_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "ai_agent_name",
+      "logicName" : "智能体名称",
+      "name" : "ai_agent_name",
+      "getPSAppDEField" : {
+        "name" : "AI_AGENT_NAME",
+        "codeName" : "ai_agent_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "codeName" : "ai_model_id",
@@ -1492,8 +1660,7 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
+      "type" : "SIMPLE"
     }, {
       "codeName" : "memory_max_turns",
       "logicName" : "记忆对话轮数",
@@ -1615,55 +1782,24 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 21,
       "type" : "SIMPLE"
-    }, {
-      "codeName" : "ai_agent_knowledge_rels",
-      "name" : "ai_agent_knowledge_rels",
-      "getRefPSAppDEDataSet" : {
-        "modelref" : true,
-        "id" : "FetchDefault"
-      },
-      "getRefPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_agent_knowledge_relDTO"
-      },
-      "getRefPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_knowledge_rel.json"
-      },
-      "getRefPickupPSAppDEField" : {
-        "name" : "AI_AGENT_ID",
-        "codeName" : "ai_agent_id"
-      },
-      "sourceType" : "DER",
-      "type" : "DTOS"
-    }, {
-      "codeName" : "ai_agent_tool_rels",
-      "name" : "ai_agent_tool_rels",
-      "getRefPSAppDEDataSet" : {
-        "modelref" : true,
-        "id" : "FetchDefault"
-      },
-      "getRefPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_agent_tool_relDTO"
-      },
-      "getRefPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_tool_rel.json"
-      },
-      "getRefPickupPSAppDEField" : {
-        "name" : "AI_AGENT_ID",
-        "codeName" : "ai_agent_id"
-      },
-      "sourceType" : "DER",
-      "type" : "DTOS"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
-    "codeName" : "ai_agentFilterDTO",
-    "name" : "ai_agentFilterDTO",
+    "codeName" : "ai_agent_contextFilterDTO",
+    "name" : "ai_agent_contextFilterDTO",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "N_AI_AGENT_ID_EQ",
+      "logicName" : "智能体标识",
+      "name" : "N_AI_AGENT_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "AI_AGENT_ID",
+        "codeName" : "ai_agent_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "N_AI_MODEL_ID_EQ",
       "logicName" : "模型标识",
       "name" : "N_AI_MODEL_ID_EQ",
@@ -1675,41 +1811,8 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_AI_MODEL_NAME_EQ",
-      "logicName" : "模型名称",
-      "name" : "N_AI_MODEL_NAME_EQ",
-      "getPSAppDEField" : {
-        "name" : "AI_MODEL_NAME",
-        "codeName" : "ai_model_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "N_AI_MODEL_NAME_LIKE",
-      "logicName" : "模型名称",
-      "name" : "N_AI_MODEL_NAME_LIKE",
-      "getPSAppDEField" : {
-        "name" : "AI_MODEL_NAME",
-        "codeName" : "ai_model_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "N_GENERATION_MODE_EQ",
-      "logicName" : "生成模式",
-      "name" : "N_GENERATION_MODE_EQ",
-      "getPSAppDEField" : {
-        "name" : "GENERATION_MODE",
-        "codeName" : "generation_mode"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "codeName" : "N_ID_EQ",
-      "logicName" : "智能体标识",
+      "logicName" : "智能体业务上下文标识",
       "name" : "N_ID_EQ",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -1720,7 +1823,7 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "N_NAME_LIKE",
-      "logicName" : "智能体名称",
+      "logicName" : "名称",
       "name" : "N_NAME_LIKE",
       "getPSAppDEField" : {
         "name" : "NAME",
@@ -1742,7 +1845,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
@@ -1753,7 +1856,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/CheckKey.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/CheckKey.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1776,7 +1879,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -1785,13 +1888,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Create.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Create.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1822,13 +1925,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Get.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Get.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1853,7 +1956,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
@@ -1861,13 +1964,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/GetDraft.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/GetDraft.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1901,7 +2004,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Remove.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Remove.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1927,7 +2030,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -1936,13 +2039,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Save.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Save.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1965,7 +2068,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO",
       "output" : true
@@ -1974,13 +2077,13 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Update.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Update.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1996,6 +2099,44 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "READ",
+    "codeName" : "fill_with_agent",
+    "methodType" : "DEACTION",
+    "name" : "fill_with_agent",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_with_agent"
+    },
+    "requestMethod" : "GET",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_with_agent",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "codeName" : "FetchDefault",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -2005,7 +2146,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentFilterDTO"
+        "id" : "ai_agent_contextFilterDTO"
       },
       "type" : "DTO"
     },
@@ -2013,7 +2154,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agentDTO"
+        "id" : "ai_agent_contextDTO"
       },
       "type" : "PAGE"
     },
@@ -2032,6 +2173,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchdefault",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchFull_info",
+    "dataSetName" : "full_info",
+    "dataSetTag" : "full_info",
+    "methodType" : "FETCH",
+    "name" : "FetchFull_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_contextDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "full_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchFull_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchfull_info",
     "builtinMethod" : false
   }, {
     "codeName" : "FilterCreate",
@@ -2071,32 +2250,16 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_pickup_view.json",
-    "viewType" : "DEPICKUPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_tree_exp_view.json",
-    "viewType" : "DETREEEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_pickup_grid_view.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_edit_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_quick_create_view.json",
-    "viewType" : "DEOPTVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_main_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_main_view.json",
-    "viewType" : "DEEDITVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_multi_data_view.json",
+    "viewType" : "DEMDCUSTOMVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -2111,35 +2274,35 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
-  "codeName" : "ai_agent",
-  "dEAPICodeName" : "ai_agent",
-  "dEAPICodeName2" : "ai_agents",
-  "dEAPITag" : "AI_AGENT",
+  "codeName" : "ai_agent_context",
+  "dEAPICodeName" : "ai_agent_context",
+  "dEAPICodeName2" : "ai_agent_contexts",
+  "dEAPITag" : "AI_AGENT_CONTEXT",
   "dataAccCtrlArch" : 1,
   "dataAccCtrlMode" : 1,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json",
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {
     "name" : "ID",
     "codeName" : "id"
   },
   "getLNPSLanguageRes" : {
-    "lanResTag" : "DE.LNAME.AI_AGENT"
+    "lanResTag" : "DE.LNAME.AI_AGENT_CONTEXT"
   },
-  "logicName" : "智能体",
+  "logicName" : "智能体业务上下文",
   "getMajorPSAppDEField" : {
     "name" : "NAME",
     "codeName" : "name"
   },
-  "name" : "AI_AGENT",
-  "getPSDEName" : "AI_AGENT",
+  "name" : "AI_AGENT_CONTEXT",
+  "getPSDEName" : "AI_AGENT_CONTEXT",
   "getPSDEServiceAPI" : {
     "modelref" : true,
-    "id" : "ai_agent"
+    "id" : "ai_agent_context"
   },
   "getPSDataEntity" : {
     "modelref" : true,
-    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
   },
   "getPSSysServiceAPI" : {
     "modelref" : true,
