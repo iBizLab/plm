@@ -1,0 +1,66 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.set_executor;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runset_executordefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runset_executorfor_temp_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runset_executorsrfactionparam;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runset_executorbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取选中数据]
+            rule "bindparam1"
+            ruleflow-group "runset_executorbindparam1"
+            when
+            then
+                        update(runset_executordefault);//更新fact中变量值
+                        update(runset_executorfor_temp_obj);//更新fact中变量值
+                        update(runset_executorsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runset_executorloopsubcall1"
+            when
+            then
+                        update(runset_executordefault);//更新fact中变量值
+                        update(runset_executorfor_temp_obj);//更新fact中变量值
+                        update(runset_executorsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充执行人]
+            rule "prepareparam2"
+            ruleflow-group "runset_executorprepareparam2"
+            when
+            then
+                            runset_executordefault.set("executorid",runset_executorfor_temp_obj.get("executorid"));
+                            runset_executordefault.set("executorname",runset_executorfor_temp_obj.get("executorname"));
+                        update(runset_executordefault);//更新fact中变量值
+                        update(runset_executorfor_temp_obj);//更新fact中变量值
+                        update(runset_executorsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更执行人]
+            rule "deaction1"
+            ruleflow-group "runset_executordeaction1"
+            when
+            then
+                        runservice.update(runset_executordefault);
+                        update(runset_executordefault);//更新fact中变量值
+                        update(runset_executorfor_temp_obj);//更新fact中变量值
+                        update(runset_executorsrfactionparam);//更新fact中变量值
+            end

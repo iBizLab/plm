@@ -1,0 +1,137 @@
+{
+  "codeName" : "update_idea_progress",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/update_idea_progress.json",
+  "logicName" : "更新需求进度",
+  "memo" : "根据id更新需求的进度",
+  "name" : "更新需求进度",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
+    },
+    "leftPos" : 305,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取进度",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select cast((sum(if(t2.TYPE = 'completed', 1, 0)) * 100) / count(1) as decimal(10, 2)) progress\r\nfrom work_item t1\r\n         inner join work_item_state t2 on t1.STATE = t2.ID\r\nwhere t1.id in (select target_id\r\n                from relation\r\n                where PRINCIPAL_ID = ?\r\n                  and PRINCIPAL_TYPE = 'idea'\r\n                  and TARGET_TYPE = 'work_item')",
+    "topPos" : 208,
+    "fillDstLogicParam" : true,
+    "ignoreResetDstLogicParam" : false
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 478,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "name" : "Default[ID] ==> idea[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "leftPos" : 700,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新",
+    "topPos" : 208
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "idea",
+    "logicName" : "idea",
+    "name" : "idea",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.search_commentadvanced_search" isClosed="false" isExecutable="true" name="base_search_comment_advanced_search_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.search_commentadvanced_search">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="search_commentadvanced_searchdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="search_commentadvanced_searchcustomer" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_comment()" name="search_commentadvanced_searchfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="search_commentadvanced_searchidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="search_commentadvanced_searchpage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_comment()" name="search_commentadvanced_searchresult_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="search_commentadvanced_searchrun" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="search_commentadvanced_searchtest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="search_commentadvanced_searchticket" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="search_commentadvanced_searchwork_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_commentService))" name="search_commentservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_commentService))" name="iBzSysSearch_commentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="search_commentadvanced_searchdefault" type="cn.ibizlab.plm.core.base.domain.search_comment" />
+                            <tns:global identifier="search_commentadvanced_searchcustomer" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
+                            <tns:global identifier="search_commentadvanced_searchfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.search_comment" />
+                            <tns:global identifier="search_commentadvanced_searchidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="search_commentadvanced_searchpage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="search_commentadvanced_searchresult_page" type="cn.ibizlab.plm.core.base.domain.search_comment" />
+                            <tns:global identifier="search_commentadvanced_searchrun" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="search_commentadvanced_searchtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="search_commentadvanced_searchticket" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="search_commentadvanced_searchwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充工作项展示属性"/>
+                        <endEvent id="prepareparam1_end" name="end"/>
+                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="关联查询"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充产品需求展示属性"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam3" id="bindparam3" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充工单展示属性"/>
+                        <endEvent id="prepareparam3_end" name="end"/>
+                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam4" id="bindparam4" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="填充客户展示属性"/>
+                        <endEvent id="prepareparam4_end" name="end"/>
+                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam5" id="bindparam5" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="填充测试用例展示属性"/>
+                        <endEvent id="prepareparam5_end" name="end"/>
+                        <sequenceFlow id="prepareparam5_end_line" sourceRef="prepareparam5" targetRef="prepareparam5_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam6" id="bindparam6" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="填充页面展示属性"/>
+                        <endEvent id="prepareparam6_end" name="end"/>
+                        <sequenceFlow id="prepareparam6_end_line" sourceRef="prepareparam6" targetRef="prepareparam6_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchbindparam7" id="bindparam7" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_commentadvanced_searchprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="填充执行用例展示属性"/>
+                        <endEvent id="prepareparam7_end" name="end"/>
+                        <sequenceFlow id="prepareparam7_end_line" sourceRef="prepareparam7" targetRef="prepareparam7_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam1" sourceRef="bindparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_prepareparam2" sourceRef="bindparam2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam1" sourceRef="gateway-loopsubcall1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam2" sourceRef="gateway-loopsubcall1" targetRef="bindparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam3" sourceRef="gateway-loopsubcall1" targetRef="bindparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","TICKET")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam4" sourceRef="gateway-loopsubcall1" targetRef="bindparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","CUSTOMER")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam5" sourceRef="gateway-loopsubcall1" targetRef="bindparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam6" sourceRef="gateway-loopsubcall1" targetRef="bindparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchfor_temp_obj.get("principalType"),"EQ","PAGE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam7" sourceRef="gateway-loopsubcall1" targetRef="bindparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_commentadvanced_searchdefault:search_comment();
+                                            $search_commentadvanced_searchcustomer:customer();
+                                            $search_commentadvanced_searchfor_temp_obj:search_comment();
+                                            $search_commentadvanced_searchidea:idea();
+                                            $search_commentadvanced_searchpage:article_page();
+                                            $search_commentadvanced_searchresult_page:search_comment();
+                                            $search_commentadvanced_searchrun:run();
+                                            $search_commentadvanced_searchtest_case:test_case();
+                                            $search_commentadvanced_searchticket:ticket();
+                                            $search_commentadvanced_searchwork_item:work_item();
+                                    eval($search_commentadvanced_searchdefault==search_commentadvanced_searchdefault && $search_commentadvanced_searchcustomer==search_commentadvanced_searchcustomer && $search_commentadvanced_searchfor_temp_obj==search_commentadvanced_searchfor_temp_obj && $search_commentadvanced_searchidea==search_commentadvanced_searchidea && $search_commentadvanced_searchpage==search_commentadvanced_searchpage && $search_commentadvanced_searchresult_page==search_commentadvanced_searchresult_page && $search_commentadvanced_searchrun==search_commentadvanced_searchrun && $search_commentadvanced_searchtest_case==search_commentadvanced_searchtest_case && $search_commentadvanced_searchticket==search_commentadvanced_searchticket && $search_commentadvanced_searchwork_item==search_commentadvanced_searchwork_item);
+                                eval((RuleUtils.test($search_commentadvanced_searchdefault.get("principalType"),"EQ","RUN")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam3_prepareparam3" sourceRef="bindparam3" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam4_prepareparam4" sourceRef="bindparam4" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam5_prepareparam5" sourceRef="bindparam5" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam6_prepareparam6" sourceRef="bindparam6" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam7_prepareparam7" sourceRef="bindparam7" targetRef="prepareparam7">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+        </process>
+    </definitions>
