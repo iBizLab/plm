@@ -229,7 +229,7 @@
     "name" : "计算图表所需数据",
     "topPos" : 170
   }, {
-    "code" : "// 从逻辑参数获取数据集\r\ndef echart_page = logic.param('echart_page').getReal()\r\n\r\n// 活跃总人数\r\ndef user_total = logic.param('user_total').getReal()\r\ndef total = user_total.get('total')\r\n\r\nechart_page.eachWithIndex { currentRow, i ->\r\n     // 计算活跃率\r\n    def active_members = currentRow.get('active_members') ?: 0 \r\n    def active_rate = total > 0 ?  (active_members.toDouble() / total.toDouble() * 100).round(2) :  \"0.00\"\r\n    currentRow.set(\"active_rate\", active_rate)  \r\n\r\n    // 日期格式化\r\n   def formatter = java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd\")\r\n   def newdate = java.time.LocalDate.parse( currentRow.get('auth_time').toString().split(' ')[0], formatter)\r\n   currentRow.set(\"auth_time\", newdate)\r\n\r\n}\r\n\r\n ",
+    "code" : "// 从逻辑参数获取数据集\r\ndef echart_page = logic.param('echart_page').getReal()\r\n\r\n// 活跃总人数\r\ndef user_total = logic.param('user_total').getReal()\r\ndef total = user_total.get('total')\r\n\r\nechart_page.eachWithIndex { currentRow, i ->\r\n     // 计算活跃率\r\n    def active_members = currentRow.get('active_members') ?: 0 \r\n    def active_rate = total > 0 ?  (active_members.toDouble() / total.toDouble() * 100).round(2) :  \"0.00\"\r\n    currentRow.set(\"active_rate\", active_rate)  \r\n}\r\n\r\n ",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 1510,
