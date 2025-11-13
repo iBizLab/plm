@@ -4,11 +4,11 @@
     "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_SOURCE"
   },
   "caption" : "知识库源",
-  "codeName" : "ai_knowledge_source_pickup_grid_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_pickup_grid_view.json",
+  "codeName" : "ai_knowledge_source_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_grid_view.json",
+  "funcViewMode" : "MDATAVIEW",
   "gridRowActiveMode" : 1,
-  "memo" : "系统自动添加",
-  "name" : "ai_knowledge_sourcePickupGridView",
+  "name" : "ai_knowledge_sourceGridView",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_source.json"
@@ -19,8 +19,91 @@
   },
   "getPSAppViewEngines" : [ {
     "engineCat" : "VIEW",
-    "engineType" : "PickupGridView",
+    "engineType" : "GridView",
     "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "getNewDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_quick_create_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_quick_create_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "知识库源",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_quick_create_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "知识库源编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "OPENDATA",
+    "realTitle" : "知识库源",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_source_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
@@ -378,6 +461,21 @@
     "modelid" : "9d6705b76386ee172599430ae3f2717f",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
+    "codeName" : "grid_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工具栏模板（默认表格界面）",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_source.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "xDataControlName" : "grid",
+    "modelid" : "ec6fbb681f5e3e6783c2af57e5eefaaa",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -388,18 +486,18 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 0,
+    "quickSearchMode" : 1,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : false,
+    "enableQuickSearch" : true,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_SOURCE"
     },
     "caption" : "知识库源",
-    "codeName" : "pickup_grid_view_captionbar",
+    "codeName" : "grid_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -408,11 +506,11 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "PickupGridView",
-  "getPSDEViewId" : "b54d8b6134543d6b1f2a44e1b7c6b450",
+  "getPSDEViewCodeName" : "GridView",
+  "getPSDEViewId" : "cc4e8b54b7bdc3001e377519c346a96b",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
-    "controlStyle" : "APPDEPICKUPGRIDVIEW",
+    "controlStyle" : "APPDEGRIDVIEW",
     "controlType" : "VIEWLAYOUTPANEL",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
@@ -424,19 +522,18 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "知识库源选择表格视图",
+  "title" : "知识库源表格视图",
   "viewStyle" : "DEFAULT",
-  "viewType" : "DEPICKUPGRIDVIEW",
+  "viewType" : "DEGRIDVIEW",
   "xDataControlName" : "grid",
   "enableDP" : true,
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
+  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
-  "expandSearchForm" : true,
-  "pickupMode" : true,
   "rowEditDefault" : false,
-  "modelid" : "16464c79bb2b7314b1668a016eebff40",
+  "modelid" : "9c8b76a3bf13702e33959268c9204c7f",
   "modeltype" : "PSAPPDEVIEW"
 }
