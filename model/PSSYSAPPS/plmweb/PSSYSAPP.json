@@ -5927,6 +5927,64 @@
     } ],
     "enableCache" : true
   }, {
+    "codeListTag" : "ai__api_auth_type_codelist",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__api_auth_type_codelist",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_auth_type_codelist.json",
+    "emptyText" : "未定义",
+    "name" : "认证方式",
+    "getPSCodeItems" : [ {
+      "codeName" : "none",
+      "text" : "无认证",
+      "value" : "none",
+      "default" : true
+    }, {
+      "codeName" : "api_key",
+      "text" : "API Key",
+      "value" : "api_key"
+    }, {
+      "codeName" : "bearer_token",
+      "text" : "Bearer Token",
+      "value" : "bearer_token"
+    }, {
+      "codeName" : "oauth2",
+      "text" : "OAuth2",
+      "value" : "oauth2"
+    }, {
+      "codeName" : "basic_auth",
+      "text" : "Basic Auth",
+      "value" : "basic_auth"
+    } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "ai__api_method_codelist",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__api_method_codelist",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_method_codelist.json",
+    "emptyText" : "未定义",
+    "name" : "HTTP 方法",
+    "getPSCodeItems" : [ {
+      "codeName" : "get",
+      "text" : "GET",
+      "value" : "GET",
+      "default" : true
+    }, {
+      "codeName" : "post",
+      "text" : "POST",
+      "value" : "POST"
+    }, {
+      "codeName" : "put",
+      "text" : "PUT",
+      "value" : "PUT"
+    }, {
+      "codeName" : "delete",
+      "text" : "DELETE",
+      "value" : "DELETE"
+    } ],
+    "enableCache" : true
+  }, {
     "codeListTag" : "ai__credential_type",
     "codeListType" : "STATIC",
     "codeName" : "ai__credential_type",
@@ -6122,6 +6180,25 @@
       "codeName" : "failed",
       "text" : "失败",
       "value" : "3"
+    } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "ai__tool_type_codelist",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__tool_type_codelist",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__tool_type_codelist.json",
+    "emptyText" : "未定义",
+    "name" : "Tool类型",
+    "getPSCodeItems" : [ {
+      "codeName" : "api",
+      "text" : "HTTP 接口",
+      "value" : "api",
+      "default" : true
+    }, {
+      "codeName" : "mcp",
+      "text" : "MCP服务",
+      "value" : "mcp"
     } ],
     "enableCache" : true
   }, {
@@ -62594,6 +62671,13 @@
     "name" : "work_item_typeglobal_setting_mixed"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_edit_view.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "ai_tool",
+    "view" : "EditView",
+    "name" : "ai_toolEditView"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
     "viewType" : "DEEDITVIEW",
     "resource" : "library",
@@ -62739,6 +62823,13 @@
     "resource" : "ticket",
     "view" : "archived_grid_view",
     "name" : "ticketarchived_grid_view"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_main_view.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "ai_tool",
+    "view" : "main_view",
+    "name" : "ai_toolmain_view"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_release_relation_grid_view.json",
@@ -64169,6 +64260,13 @@
     "resource" : "library",
     "view" : "archived_grid_view",
     "name" : "libraryarchived_grid_view"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_grid_view.json",
+    "viewType" : "DEGRIDVIEW",
+    "resource" : "ai_tool",
+    "view" : "GridView",
+    "name" : "ai_toolGridView"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_logic_test_auto_rules_edit_view.json",
@@ -66495,6 +66593,13 @@
     "resource" : "work_item",
     "view" : "scrum_backlog_state_report_view",
     "name" : "work_itemscrum_backlog_state_report_view"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_quick_create_view.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "ai_tool",
+    "view" : "quick_create_view",
+    "name" : "ai_toolquick_create_view"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_redirect_view.json",
@@ -82730,6 +82835,14 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_model_grid_view.json",
             "viewType" : "DEGRIDVIEW"
           }
+        }, {
+          "name" : "EXPITEM:ai_tool",
+          "realTitle" : "AI调用工具表格视图",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_grid_view.json",
+            "viewType" : "DEGRIDVIEW"
+          }
         } ],
         "getPSControlHandler" : {
           "enableDEFieldPrivilege" : false,
@@ -82925,6 +83038,18 @@
           }, {
             "getChildPSDETreeNode" : {
               "modelref" : true,
+              "id" : "ai_tool"
+            },
+            "name" : "AI调用工具（node_3）-AI调用工具（ai_tool）",
+            "getParentPSDETreeNode" : {
+              "modelref" : true,
+              "id" : "node_3"
+            },
+            "parentValueLevel" : 1,
+            "searchMode" : 3
+          }, {
+            "getChildPSDETreeNode" : {
+              "modelref" : true,
               "id" : "ai_knowledge_source"
             },
             "name" : "知识库（node）-知识库源（ai_knowledge_source）",
@@ -82964,6 +83089,18 @@
               "id" : "node"
             },
             "name" : "默认根节点（ROOT）-知识库（node）",
+            "getParentPSDETreeNode" : {
+              "modelref" : true,
+              "id" : "ROOT"
+            },
+            "parentValueLevel" : 1,
+            "searchMode" : 3
+          }, {
+            "getChildPSDETreeNode" : {
+              "modelref" : true,
+              "id" : "node_3"
+            },
+            "name" : "默认根节点（ROOT）-AI调用工具（node_3）",
             "getParentPSDETreeNode" : {
               "modelref" : true,
               "id" : "ROOT"
@@ -83130,6 +83267,33 @@
             "id" : "ai_model"
           }, {
             "counterMode" : 0,
+            "name" : "AI调用工具",
+            "getNavPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_grid_view.json",
+              "viewType" : "DEGRIDVIEW"
+            },
+            "nodeType" : "ai_tool",
+            "text" : "AI调用工具",
+            "treeNodeType" : "STATIC",
+            "hasPSDETreeNodeRSs" : false,
+            "appendPNodeId" : false,
+            "disableSelect" : false,
+            "enableCheck" : false,
+            "enableEditData" : false,
+            "enableNewData" : false,
+            "enableQuickCreate" : false,
+            "enableQuickSearch" : false,
+            "enableRemoveData" : false,
+            "enableViewData" : false,
+            "expandFirstOnly" : false,
+            "expanded" : false,
+            "rootNode" : false,
+            "selectFirstOnly" : false,
+            "selected" : false,
+            "id" : "ai_tool"
+          }, {
+            "counterMode" : 0,
             "name" : "知识库",
             "nodeType" : "node",
             "text" : "知识库",
@@ -83194,6 +83358,28 @@
             "selectFirstOnly" : false,
             "selected" : false,
             "id" : "node_2"
+          }, {
+            "counterMode" : 0,
+            "name" : "AI调用工具",
+            "nodeType" : "node_3",
+            "text" : "AI调用工具",
+            "treeNodeType" : "STATIC",
+            "hasPSDETreeNodeRSs" : true,
+            "appendPNodeId" : false,
+            "disableSelect" : false,
+            "enableCheck" : false,
+            "enableEditData" : false,
+            "enableNewData" : false,
+            "enableQuickCreate" : false,
+            "enableQuickSearch" : false,
+            "enableRemoveData" : false,
+            "enableViewData" : false,
+            "expandFirstOnly" : false,
+            "expanded" : true,
+            "rootNode" : false,
+            "selectFirstOnly" : false,
+            "selected" : false,
+            "id" : "node_3"
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "TREE_RENDER",

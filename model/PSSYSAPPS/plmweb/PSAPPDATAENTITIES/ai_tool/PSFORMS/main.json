@@ -14,11 +14,11 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document/PSFORMS/main.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool/PSFORMS/main.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -28,7 +28,7 @@
     "name" : "loaddraftfrom",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "getGetDraftPSControlAction" : {
@@ -44,7 +44,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "getGetPSControlAction" : {
@@ -60,25 +60,14 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "logicName" : "主编辑表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
   },
-  "getPSDEFormItemUpdates" : [ {
-    "codeName" : "fill_file_info",
-    "name" : "fill_file_info",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "file_type"
-    }, {
-      "name" : "size"
-    } ],
-    "scriptCode" : "const fileData = data.file ? JSON.parse(data.file)?.[0] : null;\r\ndata.size = fileData?.size ?? null;\r\ndata.file_type = fileData?.ext?.replace(/^\\./, '') ?? null;",
-    "customCode" : true
-  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -131,91 +120,53 @@
       "codeName" : "name"
     }
   }, {
-    "id" : "kb_name",
+    "id" : "tool_type",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "KB_NAME",
-      "codeName" : "kb_name"
+      "name" : "TOOL_TYPE",
+      "codeName" : "tool_type"
     }
   }, {
-    "id" : "type",
+    "id" : "api_auth_type",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "TYPE",
-      "codeName" : "type"
+      "name" : "API_AUTH_TYPE",
+      "codeName" : "api_auth_type"
     }
   }, {
-    "id" : "status",
+    "id" : "api_url",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "STATUS",
-      "codeName" : "status"
+      "name" : "API_URL",
+      "codeName" : "api_url"
     }
   }, {
-    "id" : "file",
+    "id" : "api_method",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "FILE",
-      "codeName" : "file"
+      "name" : "API_METHOD",
+      "codeName" : "api_method"
     }
   }, {
-    "id" : "file_type",
+    "id" : "api_headers",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "FILE_TYPE",
-      "codeName" : "file_type"
+      "name" : "API_HEADERS",
+      "codeName" : "api_headers"
     }
   }, {
-    "id" : "size",
-    "dataType" : 6,
-    "getPSAppDEField" : {
-      "name" : "SIZE",
-      "codeName" : "size"
-    }
-  }, {
-    "id" : "meta_data",
+    "id" : "input_schema",
     "dataType" : 21,
     "getPSAppDEField" : {
-      "name" : "META_DATA",
-      "codeName" : "meta_data"
+      "name" : "INPUT_SCHEMA",
+      "codeName" : "input_schema"
     }
   }, {
-    "id" : "parser_config",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "PARSER_CONFIG",
-      "codeName" : "parser_config"
-    }
-  }, {
-    "id" : "chunk_method",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "CHUNK_METHOD",
-      "codeName" : "chunk_method"
-    }
-  }, {
-    "id" : "chunk_num",
-    "dataType" : 6,
-    "getPSAppDEField" : {
-      "name" : "CHUNK_NUM",
-      "codeName" : "chunk_num"
-    }
-  }, {
-    "id" : "active",
+    "id" : "timeout",
     "dataType" : 9,
     "getPSAppDEField" : {
-      "name" : "ACTIVE",
-      "codeName" : "active"
-    }
-  }, {
-    "id" : "kb_id",
-    "hidden" : true,
-    "dataType" : 25,
-    "createDVT" : "APPDATA",
-    "createDV" : "ai_knowledge_base",
-    "getPSAppDEField" : {
-      "name" : "KB_ID",
-      "codeName" : "kb_id"
+      "name" : "TIMEOUT",
+      "codeName" : "timeout"
     }
   }, {
     "id" : "id",
@@ -228,7 +179,7 @@
   } ],
   "getPSDEFormPages" : [ {
     "getCapPSLanguageRes" : {
-      "lanResTag" : "CONTROL.DEFORM.AI_KB_DOCUMENT.MAIN.FORMPAGE.FORMPAGE1"
+      "lanResTag" : "CONTROL.DEFORM.AI_TOOL.MAIN.FORMPAGE.FORMPAGE1"
     },
     "caption" : "基本信息",
     "codeName" : "formpage1",
@@ -237,18 +188,18 @@
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.AI_KB_DOCUMENT.MAIN.GROUPPANEL.GROUP1"
+        "lanResTag" : "CONTROL.DEFORM.AI_TOOL.MAIN.GROUPPANEL.GROUP1"
       },
-      "caption" : "知识库文档基本信息",
+      "caption" : "AI调用工具基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_KB_DOCUMENT.NAME"
+          "lanResTag" : "DEF.LNAME.AI_TOOL.NAME"
         },
-        "caption" : "知识库文档名称",
+        "caption" : "AI调用工具名称",
         "codeName" : "name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
@@ -270,6 +221,7 @@
           "editorType" : "TEXTAREA",
           "maxLength" : 200,
           "name" : "name",
+          "placeHolder" : "工具名称",
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
@@ -278,8 +230,8 @@
         },
         "allowEmpty" : true
       }, {
-        "caption" : "知识库名称",
-        "codeName" : "kb_name",
+        "caption" : "工具类型",
+        "codeName" : "tool_type",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -287,77 +239,51 @@
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "kb_name",
+        "name" : "tool_type",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "KB_NAME",
-          "codeName" : "kb_name"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "PICKUPVIEW" : "TRUE"
-          },
-          "editorType" : "PICKER",
-          "handlerType" : "PickupText",
-          "name" : "kb_name",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "FetchDefault"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-          },
-          "getPSEditorItems" : [ {
-            "name" : "kb_id"
-          } ],
-          "getPickupPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_pickup_view.json",
-            "viewType" : "DEPICKUPVIEW"
-          },
-          "valueItemName" : "kb_id",
-          "enableAC" : true,
-          "enablePickupView" : true,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "valueItemName" : "kb_id",
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "文档类型",
-        "codeName" : "type",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "type",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "TYPE",
-          "codeName" : "type"
+          "name" : "TOOL_TYPE",
+          "codeName" : "tool_type"
         },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
-          "name" : "type",
+          "name" : "tool_type",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_kb_document_type.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__tool_type_codelist.json"
+          },
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 16,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "认证方式",
+        "codeName" : "api_auth_type",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 80,
+        "name" : "api_auth_type",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "API_AUTH_TYPE",
+          "codeName" : "api_auth_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "DROPDOWNLIST",
+          "name" : "api_auth_type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_auth_type_codelist.json"
           },
           "singleSelect" : true
         },
@@ -370,8 +296,8 @@
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
-        "caption" : "状态",
-        "codeName" : "status",
+        "caption" : "接口地址",
+        "codeName" : "api_url",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -379,18 +305,46 @@
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "status",
+        "name" : "api_url",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "STATUS",
-          "codeName" : "status"
+          "name" : "API_URL",
+          "codeName" : "api_url"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 500,
+          "name" : "api_url"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 16,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "HTTP 方法",
+        "codeName" : "api_method",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 80,
+        "name" : "api_method",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "API_METHOD",
+          "codeName" : "api_method"
         },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
-          "name" : "status",
+          "name" : "api_method",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__slice_status.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_method_codelist.json"
           },
           "singleSelect" : true
         },
@@ -403,8 +357,8 @@
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
-        "caption" : "上传文件",
-        "codeName" : "file",
+        "caption" : "请求头",
+        "codeName" : "api_headers",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -412,117 +366,19 @@
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "file",
+        "name" : "api_headers",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "FILE",
-          "codeName" : "file"
-        },
-        "getPSDEFormItemUpdate" : {
-          "modelref" : true,
-          "id" : "fill_file_info"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "infomap" : "filesize:size;fileext:ext",
-            "MAXFILECNT" : "1"
-          },
-          "editorType" : "FILEUPLOADER_ONE",
-          "maxFileCount" : 1,
-          "maxFileSize" : -1,
-          "minFileCount" : 0,
-          "name" : "file"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "文件类型",
-        "codeName" : "file_type",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 0,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "file_type",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "FILE_TYPE",
-          "codeName" : "file_type"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "file_type",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/filetype.json"
-          },
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "内容大小",
-        "codeName" : "size",
-        "dataType" : 6,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 0,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "size",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "SIZE",
-          "codeName" : "size"
-        },
-        "getPSEditor" : {
-          "editorType" : "NUMBER",
-          "name" : "size"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "文档元数据",
-        "codeName" : "meta_data",
-        "dataType" : 21,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "meta_data",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "META_DATA",
-          "codeName" : "meta_data"
+          "name" : "API_HEADERS",
+          "codeName" : "api_headers"
         },
         "getPSEditor" : {
           "editorParams" : {
             "ISAUTO" : "true"
           },
           "editorType" : "TEXTAREA",
-          "maxLength" : 1048576,
-          "name" : "meta_data",
+          "maxLength" : 2000,
+          "name" : "api_headers",
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
@@ -532,20 +388,20 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
-        "caption" : "解析配置",
-        "codeName" : "parser_config",
+        "caption" : "输入参数 Schema",
+        "codeName" : "input_schema",
         "dataType" : 21,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "parser_config",
+        "labelWidth" : 137,
+        "name" : "input_schema",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "PARSER_CONFIG",
-          "codeName" : "parser_config"
+          "name" : "INPUT_SCHEMA",
+          "codeName" : "input_schema"
         },
         "getPSEditor" : {
           "editorParams" : {
@@ -553,73 +409,18 @@
           },
           "editorType" : "TEXTAREA",
           "maxLength" : 1048576,
-          "name" : "parser_config",
+          "name" : "input_schema",
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : true,
+        "allowEmpty" : false,
         "showCaption" : true
       }, {
-        "caption" : "切片方法",
-        "codeName" : "chunk_method",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "chunk_method",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CHUNK_METHOD",
-          "codeName" : "chunk_method"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "maxLength" : 100,
-          "name" : "chunk_method"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "切片数量",
-        "codeName" : "chunk_num",
-        "dataType" : 6,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "chunk_num",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CHUNK_NUM",
-          "codeName" : "chunk_num"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "chunk_num"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "是否启用",
-        "codeName" : "active",
+        "caption" : "超时时间",
+        "codeName" : "timeout",
         "dataType" : 9,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -627,51 +428,26 @@
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "active",
+        "name" : "timeout",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "ACTIVE",
-          "codeName" : "active"
+          "name" : "TIMEOUT",
+          "codeName" : "timeout"
         },
         "getPSEditor" : {
-          "editorType" : "CHECKBOX",
-          "name" : "active"
+          "editorParams" : {
+            "ISAUTO" : "true"
+          },
+          "editorType" : "NUMBER",
+          "name" : "timeout"
         },
         "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : false,
-        "showCaption" : true
-      }, {
-        "caption" : "知识库标识",
-        "codeName" : "kb_id",
-        "createDV" : "ai_knowledge_base",
-        "createDVT" : "APPDATA",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "kb_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "KB_ID",
-          "codeName" : "kb_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "kb_id"
-        },
-        "getPSLayoutPos" : {
+          "colLG" : 16,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
-        "hidden" : true
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -686,9 +462,9 @@
       "showCaption" : false
     }, {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.AI_KB_DOCUMENT.ID"
+        "lanResTag" : "DEF.LNAME.AI_TOOL.ID"
       },
-      "caption" : "知识库文档标识",
+      "caption" : "AI调用工具标识",
       "codeName" : "id",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
@@ -739,7 +515,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "tabHeaderPos" : "TOP",
@@ -756,10 +532,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     }
   },
   "noTabHeader" : true,
-  "modelid" : "25b6b1e083d6590bb97c3e108711bcb4",
+  "modelid" : "514b37489569e90be2bc456034da6991",
   "modeltype" : "PSDEFORM_EDITFORM"
 }
