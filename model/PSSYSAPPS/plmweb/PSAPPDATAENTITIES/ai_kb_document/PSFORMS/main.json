@@ -72,9 +72,11 @@
     "codeName" : "fill_file_info",
     "name" : "fill_file_info",
     "getPSDEFIUpdateDetails" : [ {
+      "name" : "file_type"
+    }, {
       "name" : "size"
     } ],
-    "scriptCode" : "if(data.file !=null){\r\n  const data1 = JSON.parse(data.file);\r\n  data.size = data1?.[0]?.size ?? null;  \r\n}else{\r\n   data.size=null;\r\n}",
+    "scriptCode" : "const fileData = data.file ? JSON.parse(data.file)?.[0] : null;\r\ndata.size = fileData?.size ?? null;\r\ndata.file_type = fileData?.ext?.replace(/^\\./, '') ?? null;",
     "customCode" : true
   } ],
   "getPSDEFormItems" : [ {
@@ -136,6 +138,13 @@
       "codeName" : "kb_name"
     }
   }, {
+    "id" : "type",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    }
+  }, {
     "id" : "status",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -150,11 +159,11 @@
       "codeName" : "file"
     }
   }, {
-    "id" : "type",
+    "id" : "file_type",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "TYPE",
-      "codeName" : "type"
+      "name" : "FILE_TYPE",
+      "codeName" : "file_type"
     }
   }, {
     "id" : "size",
@@ -328,6 +337,39 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
+        "caption" : "文档类型",
+        "codeName" : "type",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 0,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "type",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "TYPE",
+          "codeName" : "type"
+        },
+        "getPSEditor" : {
+          "editorType" : "DROPDOWNLIST",
+          "name" : "type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_kb_document_type.json"
+          },
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 6,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
         "caption" : "状态",
         "codeName" : "status",
         "dataType" : 25,
@@ -402,27 +444,27 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
-        "caption" : "文档类型",
-        "codeName" : "type",
+        "caption" : "文件类型",
+        "codeName" : "file_type",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
-        "enableCond" : 0,
+        "enableCond" : 3,
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "type",
+        "name" : "file_type",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "TYPE",
-          "codeName" : "type"
+          "name" : "FILE_TYPE",
+          "codeName" : "file_type"
         },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
-          "name" : "type",
+          "name" : "file_type",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_kb_document_type.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/filetype.json"
           },
           "singleSelect" : true
         },
@@ -572,7 +614,7 @@
           "name" : "chunk_num"
         },
         "getPSLayoutPos" : {
-          "colLG" : 12,
+          "colLG" : 6,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
@@ -599,7 +641,7 @@
           "name" : "active"
         },
         "getPSLayoutPos" : {
-          "colLG" : 12,
+          "colLG" : 6,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
