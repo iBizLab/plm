@@ -1,17 +1,18 @@
 {
   "accUserMode" : 2,
   "getCapPSLanguageRes" : {
-    "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+    "lanResTag" : "DE.LNAME.AI_TOOL"
   },
-  "caption" : "知识库",
-  "codeName" : "ai_knowledge_base_pickup_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_pickup_view.json",
-  "funcViewMode" : "PICKUPVIEW",
-  "memo" : "系统自动添加",
-  "name" : "ai_knowledge_basePickupView",
+  "caption" : "AI调用工具",
+  "codeName" : "ai_tool_m_pickup_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_m_pickup_view.json",
+  "funcViewMode" : "MPICKUPVIEW",
+  "height" : 700,
+  "name" : "ai_toolMPickupView",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
   },
   "getPSAppModule" : {
     "modelref" : true,
@@ -19,26 +20,215 @@
   },
   "getPSAppViewEngines" : [ {
     "engineCat" : "VIEW",
-    "engineType" : "PickupView",
+    "engineType" : "MPickupView",
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "pickup_view_pickupviewpanel",
+    "codeName" : "simplelist",
+    "controlType" : "LIST",
+    "getCreatePSControlAction" : {
+      "modelref" : true,
+      "id" : "create",
+      "actionName" : "Create",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "name" : "create",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Create"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      }
+    },
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool/PSLISTS/simplelist.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "FetchDefault"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      }
+    },
+    "getGetPSControlAction" : {
+      "modelref" : true,
+      "id" : "load",
+      "actionName" : "Get",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Get"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "logicName" : "simplelist",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FetchDefault"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "列表控件处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "SIMPLELIST"
+    },
+    "getPSDEListDataItems" : [ {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    } ],
+    "pagingSize" : 1000,
+    "getRemovePSControlAction" : {
+      "modelref" : true,
+      "id" : "remove",
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      }
+    },
+    "getUpdatePSControlAction" : {
+      "modelref" : true,
+      "id" : "update",
+      "actionName" : "Update",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Update"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      }
+    },
+    "hasWFDataItems" : false,
+    "enableGroup" : false,
+    "enableRowEdit" : false,
+    "enableRowEditGroup" : false,
+    "enableRowEditOrder" : false,
+    "enableRowNew" : false,
+    "noSort" : false,
+    "showHeader" : true,
+    "singleSelect" : false,
+    "name" : "simplelist",
+    "modelid" : "0b0c6b2841aab27685a86dcee38322be",
+    "modeltype" : "PSDELIST"
+  }, {
+    "codeName" : "m_pickup_view_pickupviewpanel",
     "controlType" : "PICKUPVIEWPANEL",
     "getEmbeddedPSAppDEView" : {
       "accUserMode" : 2,
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+        "lanResTag" : "DE.LNAME.AI_TOOL"
       },
-      "caption" : "知识库",
-      "codeName" : "ai_knowledge_base_pickup_grid_view",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_pickup_grid_view.json",
+      "caption" : "AI调用工具",
+      "codeName" : "ai_tool_pickup_grid_view",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_tool_pickup_grid_view.json",
       "gridRowActiveMode" : 1,
-      "memo" : "系统自动添加",
-      "name" : "ai_knowledge_basePickupGridView",
+      "name" : "ai_toolPickupGridView",
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
       },
       "getPSAppModule" : {
         "modelref" : true,
@@ -55,7 +245,7 @@
         "columnEnableFilter" : 2,
         "columnEnableLink" : 2,
         "controlType" : "GRID",
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSGRIDS/m_pickup.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool/PSGRIDS/m_pickup.json",
         "getFetchPSControlAction" : {
           "modelref" : true,
           "id" : "fetch",
@@ -67,7 +257,7 @@
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
           }
         },
         "groupMode" : "NONE",
@@ -79,7 +269,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
         },
         "getPSControlHandler" : {
           "getPSHandlerActions" : [ {
@@ -93,7 +283,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionName" : "Create",
@@ -106,7 +296,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionName" : "Update",
@@ -119,7 +309,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionName" : "Remove",
@@ -132,7 +322,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionName" : "GetDraft",
@@ -145,7 +335,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionType" : "DEDATASET",
@@ -156,7 +346,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           } ],
           "userDRAction" : "READ",
@@ -172,20 +362,37 @@
           "align" : "LEFT",
           "cLConvertMode" : "NONE",
           "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.NAME"
+            "lanResTag" : "DEF.LNAME.AI_TOOL.NAME"
           },
-          "caption" : "知识库名称",
+          "caption" : "工具名称",
           "codeName" : "name",
           "columnType" : "DEFGRIDCOLUMN",
           "dataItemName" : "name",
-          "excelCaption" : "知识库名称",
+          "excelCaption" : "工具名称",
           "name" : "name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "NAME",
             "codeName" : "name"
           },
-          "width" : 300,
+          "width" : 200,
+          "widthUnit" : "PX",
+          "enableSort" : true
+        }, {
+          "align" : "LEFT",
+          "cLConvertMode" : "NONE",
+          "caption" : "接口地址",
+          "codeName" : "api_url",
+          "columnType" : "DEFGRIDCOLUMN",
+          "dataItemName" : "api_url",
+          "excelCaption" : "接口地址",
+          "name" : "api_url",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "API_URL",
+            "codeName" : "api_url"
+          },
+          "width" : 200,
           "widthUnit" : "PX",
           "enableSort" : true
         } ],
@@ -195,6 +402,13 @@
           "getPSAppDEField" : {
             "name" : "NAME",
             "codeName" : "name"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "api_url",
+          "getPSAppDEField" : {
+            "name" : "API_URL",
+            "codeName" : "api_url"
           }
         }, {
           "dataType" : 25,
@@ -213,13 +427,6 @@
           "dataAccessAction" : true
         }, {
           "dataType" : 25,
-          "name" : "source_id",
-          "getPSAppDEField" : {
-            "name" : "SOURCE_ID",
-            "codeName" : "source_id"
-          }
-        }, {
-          "dataType" : 25,
           "name" : "srfmajortext",
           "getPSAppDEField" : {
             "name" : "NAME",
@@ -227,7 +434,7 @@
           }
         } ],
         "getPSDEGridEditItems" : [ {
-          "caption" : "知识库标识",
+          "caption" : "AI调用工具标识",
           "codeName" : "srfkey",
           "enableCond" : 3,
           "ignoreInput" : 0,
@@ -255,7 +462,7 @@
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
           }
         },
         "sortMode" : "REMOTE",
@@ -272,17 +479,17 @@
         "noSort" : false,
         "singleSelect" : false,
         "name" : "grid",
-        "modelid" : "8a57f9816746d6994f7efba4e78e022a",
+        "modelid" : "2170de60d55cb83134d664c8f4eb9194",
         "modeltype" : "PSDEGRID"
       }, {
         "codeName" : "default",
         "controlType" : "SEARCHFORM",
         "defaultLabelWidth" : 130,
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSSEARCHFORMS/default.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool/PSSEARCHFORMS/default.json",
         "logicName" : "默认搜索表单",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
         },
         "getPSControlHandler" : {
           "getPSHandlerActions" : [ {
@@ -294,7 +501,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionType" : "FILTERACTION",
@@ -305,7 +512,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           }, {
             "actionType" : "FILTERACTION",
@@ -316,7 +523,7 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
             }
           } ],
           "enableDEFieldPrivilege" : false,
@@ -337,7 +544,7 @@
         } ],
         "getPSDEFormPages" : [ {
           "getCapPSLanguageRes" : {
-            "lanResTag" : "CONTROL.DEFORM.AI_KNOWLEDGE_BASE.DEFAULT.FORMPAGE.FORMPAGE1"
+            "lanResTag" : "CONTROL.DEFORM.AI_TOOL.DEFAULT.FORMPAGE.FORMPAGE1"
           },
           "caption" : "常规条件",
           "codeName" : "formpage1",
@@ -346,9 +553,9 @@
           "name" : "formpage1",
           "getPSDEFormDetails" : [ {
             "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFSFITEM.AI_KNOWLEDGE_BASE.N_NAME_LIKE"
+              "lanResTag" : "CONTROL.DEFSFITEM.AI_TOOL.N_NAME_LIKE"
             },
-            "caption" : "知识库名称",
+            "caption" : "工具名称",
             "codeName" : "n_name_like",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
@@ -393,14 +600,14 @@
         "enableFilterSave" : false,
         "noTabHeader" : true,
         "name" : "searchform",
-        "modelid" : "46072e36c0e9247af1888d2bdf2f4b52",
+        "modelid" : "b7ad4c79b8fbc7949becd7900adbab9e",
         "modeltype" : "PSDEFORM_SEARCHFORM"
       }, {
         "controlType" : "SEARCHBAR",
         "name" : "searchbar",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
         },
         "getPSControlParam" : {
           "id" : "searchbar"
@@ -414,20 +621,20 @@
         "mobileSearchBar" : false
       }, {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+          "lanResTag" : "DE.LNAME.AI_TOOL"
         },
-        "caption" : "知识库",
+        "caption" : "AI调用工具",
         "codeName" : "pickup_grid_view_captionbar",
         "controlType" : "CAPTIONBAR",
         "name" : "captionbar",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
         },
         "getPSControlParam" : { }
       } ],
       "getPSDEViewCodeName" : "PickupGridView",
-      "getPSDEViewId" : "08ad0244ba419bc535da0bd2b401289e",
+      "getPSDEViewId" : "362709923cfe149277237aabe7d824f5",
       "getPSViewLayoutPanel" : {
         "codeName" : "layoutpanel",
         "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -435,14 +642,14 @@
         "name" : "layoutpanel",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
         },
         "getPSControlParam" : { },
         "layoutBodyOnly" : true,
         "layoutPanel" : true,
         "useDefaultLayout" : true
       },
-      "title" : "知识库选择表格视图",
+      "title" : "AI调用工具选择表格视图",
       "viewStyle" : "DEFAULT",
       "viewType" : "DEPICKUPGRIDVIEW",
       "xDataControlName" : "grid",
@@ -455,53 +662,53 @@
       "expandSearchForm" : true,
       "pickupMode" : true,
       "rowEditDefault" : false,
-      "modelid" : "45f1e2597d0b5969959e2f75510984bc",
+      "modelid" : "5949a86116224e8897746d5943c272f6",
       "modeltype" : "PSAPPDEVIEW"
     },
     "name" : "pickupviewpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     },
     "getPSControlParam" : {
       "id" : "PICKUPVIEWPANEL"
     }
   }, {
     "getCapPSLanguageRes" : {
-      "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+      "lanResTag" : "DE.LNAME.AI_TOOL"
     },
-    "caption" : "知识库",
-    "codeName" : "pickup_view_captionbar",
+    "caption" : "AI调用工具",
+    "codeName" : "m_pickup_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "PickupView",
-  "getPSDEViewId" : "403125643e14a89a89f43db9c4b3625d",
+  "getPSDEViewCodeName" : "MPickupView",
+  "getPSDEViewId" : "d8478ea9197afde1b96b61ac5db43a73",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
-    "controlStyle" : "APPDEPICKUPVIEW",
+    "controlStyle" : "APPDEMPICKUPVIEW",
     "controlType" : "VIEWLAYOUTPANEL",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
     },
     "getPSControlParam" : { },
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
-  "title" : "知识库数据选择视图",
+  "title" : "AI调用工具数据多项选择视图",
   "viewStyle" : "DEFAULT",
-  "viewType" : "DEPICKUPVIEW",
+  "viewType" : "DEMPICKUPVIEW",
+  "width" : 1200,
   "enableDP" : true,
   "showCaptionBar" : false,
-  "modelid" : "d981fc7d4ac49d2d832041d34c05f0c1",
+  "modelid" : "5bd4055d83db0c66d946527f9056ef55",
   "modeltype" : "PSAPPDEVIEW"
 }
