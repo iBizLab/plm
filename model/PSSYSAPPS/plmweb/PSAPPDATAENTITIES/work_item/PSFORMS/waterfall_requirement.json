@@ -318,7 +318,31 @@
       "codeName" : "end_at"
     }
   }, {
+    "id" : "format_type",
+    "hidden" : true,
+    "dataType" : 25,
+    "createDV" : "HTML",
+    "updateDV" : "HTML",
+    "getPSAppDEField" : {
+      "name" : "FORMAT_TYPE",
+      "codeName" : "format_type"
+    }
+  }, {
     "id" : "description",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }
+  }, {
+    "id" : "formitem1",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }
+  }, {
+    "id" : "formitem",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "DESCRIPTION",
@@ -854,12 +878,40 @@
             "modelState" : 540672,
             "name" : "description_container",
             "getPSDEFormDetails" : [ {
+              "caption" : "内容格式",
+              "codeName" : "format_type",
+              "createDV" : "HTML",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "format_type",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "FORMAT_TYPE",
+                "codeName" : "format_type"
+              },
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "format_type"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "updateDV" : "HTML",
+              "allowEmpty" : true,
+              "hidden" : true
+            }, {
               "codeName" : "description",
               "dataType" : 21,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 0,
+              "ignoreInput" : 4,
               "labelCssStyle" : ".ibiz-form-group__caption",
               "labelPos" : "TOP",
               "labelWidth" : 130,
@@ -869,6 +921,33 @@
                 "name" : "DESCRIPTION",
                 "codeName" : "description"
               },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) HTML",
+                  "value" : "HTML"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              }, {
+                "groupOP" : "AND",
+                "logicCat" : "ITEMENABLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) HTML",
+                  "value" : "HTML"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
               "getPSEditor" : {
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
@@ -919,6 +998,125 @@
               "allowEmpty" : true,
               "emptyCaption" : true,
               "showCaption" : true
+            }, {
+              "caption" : "描述",
+              "codeName" : "formitem1",
+              "dataType" : 21,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 4,
+              "itemHeight" : 450.0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "formitem1",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "DESCRIPTION",
+                "codeName" : "description"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) MD",
+                  "value" : "MD"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              }, {
+                "groupOP" : "AND",
+                "logicCat" : "ITEMENABLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) MD",
+                  "value" : "MD"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorHeight" : 450.0,
+                "editorType" : "MARKDOWN",
+                "maxLength" : 1048576,
+                "mode" : "EDIT",
+                "name" : "formitem1",
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true
+            }, {
+              "caption" : "描述",
+              "codeName" : "formitem",
+              "dataType" : 21,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 4,
+              "itemHeight" : 600.0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "formitem",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "DESCRIPTION",
+                "codeName" : "description"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) EXCEL",
+                  "value" : "EXCEL"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              }, {
+                "groupOP" : "AND",
+                "logicCat" : "ITEMENABLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "format_type",
+                  "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) EXCEL",
+                  "value" : "EXCEL"
+                } ],
+                "relatedDetailNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorHeight" : 600.0,
+                "editorStyle" : "LUCKYSHEET",
+                "editorType" : "TEXTAREA",
+                "maxLength" : 1048576,
+                "name" : "formitem",
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "LUCKYSHEET",
+                  "runtimeObject" : true
+                },
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true
             } ],
             "getPSLayout" : {
               "childColMD" : 24,
