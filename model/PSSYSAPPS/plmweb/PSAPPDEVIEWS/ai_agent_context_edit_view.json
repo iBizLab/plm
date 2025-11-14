@@ -3,11 +3,13 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.AI_AGENT_CONTEXT"
   },
-  "caption" : "智能体上下文",
-  "codeName" : "ai_agent_context_main_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_main_view.json",
-  "funcViewMode" : "MAINVIEW",
-  "name" : "ai_agent_contextmain_view",
+  "caption" : "智能体业务上下文",
+  "codeName" : "ai_agent_context_edit_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_edit_view.json",
+  "funcViewMode" : "EDITVIEW",
+  "height" : 90,
+  "name" : "ai_agent_contextEditView",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
@@ -22,62 +24,116 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "main_view_toolbar1",
+    "codeName" : "edit_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（嵌入编辑表单，只有一个新建按钮）",
-    "name" : "toolbar1",
+    "logicName" : "工具栏模板（嵌入编辑表单，只有一个保存按钮）",
+    "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
     },
     "getPSControlParam" : {
-      "id" : "TOOLBAR1"
+      "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDNEW"
+        "lanResTag" : "TBB.TEXT.*.SAVE"
       },
-      "caption" : "新建",
+      "caption" : "保存",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
-      "name" : "deuiaction2",
+      "name" : "tbitem1",
       "noPrivDisplayMode" : 2,
       "getPSAppViewUIAction" : {
         "modelref" : true,
-        "id" : "toolbar1_deuiaction2"
+        "id" : "toolbar_tbitem1"
       },
       "getPSSysImage" : {
-        "cssClass" : "sx-tb-saveandnew"
+        "glyph" : "xf0c7@FontAwesome",
+        "cssClass" : "fa fa-save"
       },
       "getPSUIAction" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDNEW"
+          "lanResTag" : "TBB.TEXT.*.SAVE"
         },
-        "caption" : "保存并新建",
-        "codeName" : "SaveAndNew",
-        "fullCodeName" : "SaveAndNew",
-        "name" : "编辑界面_保存并新建操作",
+        "caption" : "保存",
+        "codeName" : "Save",
+        "fullCodeName" : "Save",
+        "name" : "编辑界面_保存操作",
         "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandnew"
+          "glyph" : "xf0c7@FontAwesome",
+          "cssClass" : "fa fa-save"
         },
-        "predefinedType" : "EDITVIEW_SAVEANDNEWACTION",
+        "predefinedType" : "EDITVIEW_SAVEACTION",
         "timeout" : 60000,
         "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDNEW"
+          "lanResTag" : "TBB.TOOLTIP.*.SAVE"
         },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndNew",
+        "uIActionTag" : "Save",
         "uIActionType" : "DEUIACTION"
       },
-      "tooltip" : "新建",
+      "tooltip" : "保存",
       "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDNEW"
+        "lanResTag" : "TBB.TOOLTIP.*.SAVE"
       },
       "showCaption" : true,
-      "showIcon" : false
+      "showIcon" : true
+    }, {
+      "groupExtractMode" : "ITEM",
+      "itemType" : "ITEMS",
+      "name" : "deuiaction1",
+      "getPSUIActionGroup" : {
+        "codeName" : "Auto46490933",
+        "name" : "编辑界面默认行为组",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
+        "getPSUIActionGroupDetails" : [ {
+          "caption" : "查看完整配置",
+          "detailType" : "DEUIACTION",
+          "name" : "u3235882",
+          "getPSSysImage" : {
+            "glyph" : "xf002@FontAwesome",
+            "cssClass" : "fa fa-search"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "查看完整配置",
+            "codeName" : "open_info_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_agent_context_open_info_view",
+            "name" : "打开完整信息视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf002@FontAwesome",
+              "cssClass" : "fa fa-search"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_info_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_info_view@ai_agent_context"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "uniqueTag" : "ai_agent_context__Auto46490933"
+      },
+      "showCaption" : true,
+      "showIcon" : true
     } ],
     "xDataControlName" : "form",
-    "modelid" : "6a271f6ceebaa5b850a3e67f7ec201b2",
+    "modelid" : "25823041a044e2dfc60cdebdb06ebd82",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "main",
@@ -1611,173 +1667,7 @@
     "modelid" : "bc700246757000fd859a82d77afcd395",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
-    "codeName" : "main_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（默认主视图）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "caption" : "更多",
-      "itemType" : "ITEMS",
-      "name" : "items1",
-      "getPSDEToolbarItems" : [ {
-        "groupExtractMode" : "ITEM",
-        "itemType" : "ITEMS",
-        "name" : "deuiaction2",
-        "getPSUIActionGroup" : {
-          "codeName" : "Auto94538916",
-          "name" : "通用编辑页面删除界面行为组",
-          "getPSUIActionGroupDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.EDITVIEW.REMOVEANDCLOSE"
-            },
-            "caption" : "删除并关闭",
-            "detailType" : "DEUIACTION",
-            "name" : "ue05dfd0",
-            "getPSSysImage" : {
-              "glyph" : "xf00d@FontAwesome",
-              "cssClass" : "fa fa-remove"
-            },
-            "getPSUIAction" : {
-              "actionTarget" : "SINGLEKEY",
-              "getCapPSLanguageRes" : {
-                "lanResTag" : "TBB.TEXT.EDITVIEW.REMOVEANDCLOSE"
-              },
-              "caption" : "删除并关闭",
-              "codeName" : "RemoveAndExit",
-              "fullCodeName" : "RemoveAndExit",
-              "name" : "编辑界面_删除并退出操作",
-              "getPSSysImage" : {
-                "glyph" : "xf00d@FontAwesome",
-                "cssClass" : "fa fa-remove"
-              },
-              "predefinedType" : "EDITVIEW_REMOVEANDEXITACTION",
-              "timeout" : 60000,
-              "getTooltipPSLanguageRes" : {
-                "lanResTag" : "TBB.TOOLTIP.EDITVIEW.REMOVEANDCLOSE"
-              },
-              "uIActionMode" : "SYS",
-              "uIActionTag" : "RemoveAndExit",
-              "uIActionType" : "DEUIACTION"
-            },
-            "getTooltipPSLanguageRes" : {
-              "lanResTag" : "TBB.TOOLTIP.EDITVIEW.REMOVEANDCLOSE"
-            },
-            "addSeparator" : false,
-            "showCaption" : true,
-            "showIcon" : true
-          } ]
-        },
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "getPSSysImage" : {
-        "glyph" : "xf013@FontAwesome",
-        "cssClass" : "fa fa-cog"
-      },
-      "tooltip" : "更多",
-      "showCaption" : false,
-      "showIcon" : true
-    }, {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.SAVE"
-      },
-      "caption" : "保存",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "toolbar_save",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_toolbar_save"
-      },
-      "getPSControlLogics" : [ {
-        "itemName" : "toolbar_save",
-        "logicTag" : "toolbar",
-        "logicType" : "SCRIPT",
-        "name" : "logic",
-        "scriptCode" : "data.id == null || view.getController(\"form\").state.modified || ibiz.uiDomainManager.get(view.context.srfsessionid).dataModification",
-        "triggerType" : "ITEMVISIBLE"
-      } ],
-      "getPSSysImage" : {
-        "glyph" : "xf0ee@FontAwesome",
-        "cssClass" : "fa fa-cloud-upload"
-      },
-      "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.SAVE"
-        },
-        "caption" : "保存",
-        "codeName" : "Save",
-        "fullCodeName" : "Save",
-        "name" : "编辑界面_保存操作",
-        "getPSSysImage" : {
-          "glyph" : "xf0c7@FontAwesome",
-          "cssClass" : "fa fa-save"
-        },
-        "predefinedType" : "EDITVIEW_SAVEACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.SAVE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "Save",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "保存",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.*.SAVE"
-      },
-      "showCaption" : false,
-      "showIcon" : true
-    }, {
-      "caption" : "取消变更",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "toolbar_cancel",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_toolbar_cancel"
-      },
-      "getPSControlLogics" : [ {
-        "itemName" : "toolbar_cancel",
-        "logicTag" : "toolbar",
-        "logicType" : "SCRIPT",
-        "name" : "logic2",
-        "scriptCode" : "data.id == null || view.getController(\"form\").state.modified || ibiz.uiDomainManager.get(view.context.srfsessionid).dataModification",
-        "triggerType" : "ITEMVISIBLE"
-      } ],
-      "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-times"
-      },
-      "getPSUIAction" : {
-        "caption" : "取消变更",
-        "codeName" : "CancelChanges",
-        "fullCodeName" : "CancelChanges",
-        "name" : "取消变更",
-        "predefinedType" : "DATA_CANCELCHANGES",
-        "timeout" : 60000,
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "CancelChanges",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "取消变更",
-      "showCaption" : false,
-      "showIcon" : true
-    } ],
-    "xDataControlName" : "form",
-    "modelid" : "8f5624914fcfc7bbc63de650a6b2aa59",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
-    "codeName" : "main_view_datainfobar",
+    "codeName" : "edit_view_datainfobar",
     "controlType" : "DATAINFOBAR",
     "name" : "datainfobar",
     "getPSAppDataEntity" : {
@@ -1791,8 +1681,8 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.AI_AGENT_CONTEXT"
     },
-    "caption" : "智能体上下文",
-    "codeName" : "main_view_captionbar",
+    "caption" : "智能体业务上下文",
+    "codeName" : "edit_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -1801,8 +1691,8 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "main_view",
-  "getPSDEViewId" : "fc0c52c1f264d40cbd83b6f856be3124",
+  "getPSDEViewCodeName" : "EditView",
+  "getPSDEViewId" : "01a5a46b0e20cf3c9e44955448e08d31",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEEDITVIEW",
@@ -1817,12 +1707,13 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "智能体上下文",
+  "title" : "智能体业务上下文编辑视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
+  "width" : 90,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "664f8e1a55025cf3a1b6bb44108007f2",
+  "modelid" : "dc349ad4dddbfb42f580fdbe516cb68c",
   "modeltype" : "PSAPPDEVIEW"
 }
