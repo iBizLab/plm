@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.insight.logic.insight_memberlogic.change_role;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.insight.domain.insight_member insight_memberchange_roledefault;
+                global cn.ibizlab.plm.core.insight.domain.insight_member insight_memberchange_rolefor_temp_obj;
+                global cn.ibizlab.plm.core.insight.domain.insight_member insight_memberchange_rolesrfactionparam;
+                    global cn.ibizlab.plm.core.insight.service.Iinsight_memberService insight_memberservice;
+        global cn.ibizlab.plm.core.insight.service.Iinsight_memberService iBzSysInsight_memberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "insight_memberchange_rolebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取传递成员的参数]
+            rule "bindparam1"
+            ruleflow-group "insight_memberchange_rolebindparam1"
+            when
+            then
+                        update(insight_memberchange_roledefault);//更新fact中变量值
+                        update(insight_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(insight_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取传递的成员状态]
+            rule "prepareparam2"
+            ruleflow-group "insight_memberchange_roleprepareparam2"
+            when
+            then
+                            insight_memberchange_roledefault.set("roleid",insight_memberchange_rolefor_temp_obj.get("roleid"));
+                        update(insight_memberchange_roledefault);//更新fact中变量值
+                        update(insight_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(insight_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更成员状态]
+            rule "deaction1"
+            ruleflow-group "insight_memberchange_roledeaction1"
+            when
+            then
+                        insight_memberservice.update(insight_memberchange_roledefault);
+                        update(insight_memberchange_roledefault);//更新fact中变量值
+                        update(insight_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(insight_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环id列表进行操作]
+            rule "loopsubcall1"
+            ruleflow-group "insight_memberchange_roleloopsubcall1"
+            when
+            then
+                        update(insight_memberchange_roledefault);//更新fact中变量值
+                        update(insight_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(insight_memberchange_rolesrfactionparam);//更新fact中变量值
+            end

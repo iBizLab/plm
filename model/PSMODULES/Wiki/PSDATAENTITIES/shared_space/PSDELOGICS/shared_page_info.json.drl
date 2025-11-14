@@ -1,0 +1,64 @@
+package cn.ibizlab.plm.wiki.logic.shared_spacelogic.shared_page_info;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.shared_space shared_spaceshared_page_infodefault;
+                    global cn.ibizlab.plm.core.wiki.service.Ishared_spaceService shared_spaceservice;
+        global cn.ibizlab.plm.core.wiki.service.Ishared_spaceService iBzSysShared_spaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "shared_spaceshared_page_infobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取共享空间信息]
+            rule "deaction1"
+            ruleflow-group "shared_spaceshared_page_infodeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(shared_spaceservice.get(shared_spaceshared_page_infodefault.getId()),shared_spaceshared_page_infodefault);
+                        update(shared_spaceshared_page_infodefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取密码信息]
+            rule "rawsqlcall1"
+            ruleflow-group "shared_spaceshared_page_inforawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",shared_spaceshared_page_infodefault.get("id"));
+    String strSql="select `ACCESS_PASSWORD` from `space` where id = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysShared_spaceDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    shared_spaceshared_page_infodefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(shared_spaceshared_page_infodefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[访问密码解密]
+            rule "delogic1"
+            ruleflow-group "shared_spaceshared_page_infodelogic1"
+            when
+            then
+                        update(shared_spaceshared_page_infodefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "shared_spaceshared_page_infoend1"
+            when
+            then
+                        update(shared_spaceshared_page_infodefault);//更新fact中变量值
+            end
