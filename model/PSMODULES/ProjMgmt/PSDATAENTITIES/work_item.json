@@ -1547,6 +1547,9 @@
       "name" : "IDENTIFIER",
       "codeName" : "identifier"
     }, {
+      "name" : "FORMAT_TYPE",
+      "codeName" : "format_type"
+    }, {
       "name" : "IS_ARCHIVED",
       "codeName" : "is_archived"
     }, {
@@ -14230,6 +14233,89 @@
     "enableQuickSearch" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "FORMAT_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "FORMAT_TYPE",
+      "queryCodeExp" : "t1.`FORMAT_TYPE`",
+      "standardColumnName" : "`FORMAT_TYPE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "FORMAT_TYPE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "format_type",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "HTML",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "内容格式",
+    "name" : "FORMAT_TYPE",
+    "orderValue" : 160,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/CodeList54.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "FORMAT_TYPE"
+    },
+    "serviceCodeName" : "format_type",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_ARCHIVED",
       "dBType" : "MYSQL5",
       "name" : "IS_ARCHIVED",
@@ -23104,6 +23190,12 @@
       "queryCodeExp" : "t1.`USER_TAG`",
       "standardColumnName" : "`USER_TAG`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_USER_TAG_EQ",
+      "name" : "N_USER_TAG_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
@@ -23178,6 +23270,12 @@
       "name" : "USER_TAG2",
       "queryCodeExp" : "t1.`USER_TAG2`",
       "standardColumnName" : "`USER_TAG2`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_USER_TAG2_EQ",
+      "name" : "N_USER_TAG2_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
@@ -47019,6 +47117,18 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "HTML",
+      "logicName" : "内容格式",
+      "name" : "format_type",
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "0",
       "logicName" : "是否已归档",
       "name" : "is_archived",
@@ -49492,6 +49602,36 @@
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_USER_TAG2_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_USER_TAG_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "logicName" : "原始状态",

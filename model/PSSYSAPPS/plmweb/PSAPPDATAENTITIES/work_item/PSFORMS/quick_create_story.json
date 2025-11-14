@@ -90,9 +90,24 @@
     "logicTag" : "form",
     "logicType" : "SCRIPT",
     "name" : "executors_onchange",
-    "scriptCode" : "console.log('执行人发生变化!', ctrl)\r\nvar assignee_id = ctrl.details.assignee_id;\r\nvar assignee_name = ctrl.details.assignee_name;\r\nvar estimated_workload = ctrl.details.estimated_workload;\r\nvar remaining_workload = ctrl.details.remaining_workload;\r\nvar executors = ctrl.details.executors.value;\r\nvar total_estimated_workload = 0;\r\nif(executors != null && executors != undefined && executors.length > 0){\r\n    // 默认取第一个执行人作为负责人\r\n    var first_executor = executors[0];\r\n    if(first_executor.user_id != null){\r\n        assignee_id.setDataValue(first_executor.user_id)\r\n    }\r\n    if(first_executor.user_name != null){\r\n        assignee_name.setDataValue(first_executor.user_name)\r\n    }\r\n    for (var i = 0; i < executors.length; i++) {\r\n        var executor_estimated_workload = executors[i].estimated_workload;\r\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\r\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\r\n        }\r\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\r\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\r\n            assignee_id.setDataValue(executors[i].user_id)\r\n            assignee_name.setDataValue(executors[i].user_name)\r\n        }\r\n    }\r\n    estimated_workload.setDataValue(total_estimated_workload)\r\n    remaining_workload.setDataValue(total_estimated_workload)\r\n} else {\r\n    assignee_id.setDataValue(null)\r\n    assignee_name.setDataValue(null)\r\n    estimated_workload.setDataValue(null)\r\n}\r\n"
+    "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
+  }, {
+    "eventNames" : "onChange",
+    "itemName" : "work_item_type_name",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "work_item_type_change",
+    "scriptCode" : "//console.log('工作项类型发生变化!', ctrl)\nvar ctxpid =context.pid\nvar pid = ctrl.details.pid;\nvar pname = ctrl.details.pname;\nif(ctxpid==null)\n{\n    pid.setDataValue(null)\n    pname.setDataValue(null)\n}\n"
   } ],
   "getPSDEFormItemUpdates" : [ {
+    "codeName" : "calc_parent_work_item_type",
+    "name" : "计算父工作项类型",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "work_item_type_name"
+    } ],
+    "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+    "customCode" : true
+  }, {
     "codeName" : "set_default_entry",
     "name" : "选择看板后填充默认看板栏",
     "getPSAppDEMethod" : {
@@ -103,24 +118,16 @@
       "name" : "entry_id"
     } ]
   }, {
-    "codeName" : "calc_parent_work_item_type",
-    "name" : "计算父工作项类型",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    } ],
-    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-    "customCode" : true
-  }, {
     "codeName" : "set_type_bug",
     "name" : "设置缺陷类型",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "project_type"
+      "name" : "work_item_type_id"
     }, {
       "name" : "work_item_type_name"
     }, {
-      "name" : "work_item_type_id"
+      "name" : "project_type"
     } ],
-    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\n\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    ctrl.context,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\n\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    ctrl.context,\n    params,\n);\n\nreturn res.data\n",
     "customCode" : true
   } ],
   "getPSDEFormItemVRs" : [ {
@@ -270,7 +277,30 @@
       "codeName" : "title"
     }
   }, {
+    "id" : "format_type",
+    "dataType" : 25,
+    "createDV" : "HTML",
+    "updateDV" : "HTML",
+    "getPSAppDEField" : {
+      "name" : "FORMAT_TYPE",
+      "codeName" : "format_type"
+    }
+  }, {
     "id" : "description",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }
+  }, {
+    "id" : "formitem",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }
+  }, {
+    "id" : "formitem1",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "DESCRIPTION",
@@ -371,12 +401,11 @@
     "hidden" : true,
     "dataType" : 25
   }, {
-    "id" : "project_name",
+    "id" : "dynamic_new",
+    "hidden" : true,
     "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "PROJECT_NAME",
-      "codeName" : "project_name"
-    }
+    "createDVT" : "APPDATA",
+    "createDV" : "dynamicnew"
   }, {
     "id" : "checkid",
     "hidden" : true,
@@ -384,11 +413,18 @@
     "createDVT" : "APPDATA",
     "createDV" : "project"
   }, {
-    "id" : "dynamic_new",
+    "id" : "ctxpid",
     "hidden" : true,
     "dataType" : 25,
     "createDVT" : "APPDATA",
-    "createDV" : "dynamicnew"
+    "createDV" : "pid"
+  }, {
+    "id" : "project_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PROJECT_NAME",
+      "codeName" : "project_name"
+    }
   }, {
     "id" : "work_item_type_name",
     "dataType" : 25,
@@ -581,6 +617,39 @@
         "allowEmpty" : false,
         "showCaption" : true
       }, {
+        "caption" : "内容格式",
+        "codeName" : "format_type",
+        "createDV" : "HTML",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "format_type",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "FORMAT_TYPE",
+          "codeName" : "format_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "RADIOBUTTONLIST",
+          "name" : "format_type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+          }
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "HTML",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
         "caption" : "描述",
         "codeName" : "description_group",
         "detailStyle" : "DEFAULT",
@@ -593,18 +662,45 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
-          "ignoreInput" : 0,
-          "itemHeight" : 450.0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+          "ignoreInput" : 4,
+          "itemHeight" : 620.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
           "name" : "description",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "DESCRIPTION",
             "codeName" : "description"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) HTML",
+              "value" : "HTML"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) HTML",
+              "value" : "HTML"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
-            "editorHeight" : 450.0,
+            "editorHeight" : 600.0,
             "editorParams" : {
               "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
               "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
@@ -635,7 +731,129 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "描述",
+          "codeName" : "formitem",
+          "dataType" : 21,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 4,
+          "itemHeight" : 620.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "formitem",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) MD",
+              "value" : "MD"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) MD",
+              "value" : "MD"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorHeight" : 600.0,
+            "editorType" : "MARKDOWN",
+            "maxLength" : 1048576,
+            "mode" : "EDIT",
+            "name" : "formitem",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "描述",
+          "codeName" : "formitem1",
+          "dataType" : 21,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 4,
+          "itemHeight" : 620.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "formitem1",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) EXCEL",
+              "value" : "EXCEL"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "name" : "format_type等于(=) EXCEL",
+              "value" : "EXCEL"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorHeight" : 600.0,
+            "editorStyle" : "LUCKYSHEET",
+            "editorType" : "TEXTAREA",
+            "maxLength" : 1048576,
+            "name" : "formitem1",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "LUCKYSHEET",
+              "runtimeObject" : true
+            },
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -647,7 +865,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : true
+        "showCaption" : false
       }, {
         "actionGroupExtractMode" : "ITEM",
         "caption" : "附件",
@@ -1215,337 +1433,443 @@
         "infoGroupMode" : false,
         "showCaption" : true
       }, {
-        "caption" : "看板标识",
-        "codeName" : "board_id",
-        "dataType" : 25,
+        "codeName" : "grouppanel1",
         "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "board_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "BOARD_ID",
-          "codeName" : "board_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "board_id"
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "caption" : "看板标识",
+          "codeName" : "board_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "board_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "BOARD_ID",
+            "codeName" : "board_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "board_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "project_name",
+          "resetItemNames" : [ "project_name" ],
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "看板栏标识",
+          "codeName" : "entry_id",
+          "createDV" : "entry_id",
+          "createDVT" : "CONTEXT",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "entry_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ENTRY_ID",
+            "codeName" : "entry_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "entry_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "board_id",
+          "resetItemNames" : [ "board_id" ],
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "父标识",
+          "codeName" : "pid",
+          "createDV" : "pid",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "pid",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "PID",
+            "codeName" : "pid"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "pid"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "工作项类型分组",
+          "codeName" : "work_item_type_group",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "work_item_type_group",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "WORK_ITEM_TYPE_GROUP",
+            "codeName" : "work_item_type_group"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "work_item_type_group"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "项目类型",
+          "codeName" : "project_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "project_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "PROJECT_TYPE",
+            "codeName" : "project_type"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "project_type"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "测试计划ID",
+          "codeName" : "test_plan_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "test_plan_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "TEST_PLAN_ID",
+            "codeName" : "test_plan_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "test_plan_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "测试计划缺陷过滤项",
+          "codeName" : "work_item_type_group_bug",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "work_item_type_group_bug",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "work_item_type_group_bug"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "项目标识",
+          "codeName" : "project_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "project_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "project_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "迭代标识",
+          "codeName" : "sprint_id",
+          "createDV" : "sprint",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "sprint_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SPRINT_ID",
+            "codeName" : "sprint_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "sprint_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "工作项类型",
+          "codeName" : "work_item_type_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "work_item_type_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "WORK_ITEM_TYPE_ID",
+            "codeName" : "work_item_type_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "work_item_type_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "父工作项类型",
+          "codeName" : "n_work_item_type_id_in",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "n_work_item_type_id_in",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "n_work_item_type_id_in"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "用例标识",
+          "codeName" : "test_case",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "test_case",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "test_case"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "执行用例标识",
+          "codeName" : "run_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "run_id",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "run_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "动态新建",
+          "codeName" : "dynamic_new",
+          "createDV" : "dynamicnew",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "dynamic_new",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "dynamic_new"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "上下文Id",
+          "codeName" : "checkid",
+          "createDV" : "project",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "checkid",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "checkid"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "上下文pid",
+          "codeName" : "ctxpid",
+          "createDV" : "pid",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "ctxpid",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "ctxpid"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        } ],
+        "getPSLayout" : {
+          "childColLG" : 6,
+          "childColMD" : 6,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "resetItemName" : "project_name",
-        "resetItemNames" : [ "project_name" ],
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "看板栏标识",
-        "codeName" : "entry_id",
-        "createDV" : "entry_id",
-        "createDVT" : "CONTEXT",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "entry_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "ENTRY_ID",
-          "codeName" : "entry_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "entry_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "board_id",
-        "resetItemNames" : [ "board_id" ],
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "父标识",
-        "codeName" : "pid",
-        "createDV" : "pid",
-        "createDVT" : "APPDATA",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "pid",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "pid"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "工作项类型分组",
-        "codeName" : "work_item_type_group",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "work_item_type_group",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "WORK_ITEM_TYPE_GROUP",
-          "codeName" : "work_item_type_group"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "work_item_type_group"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "项目类型",
-        "codeName" : "project_type",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "project_type",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PROJECT_TYPE",
-          "codeName" : "project_type"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "project_type"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "测试计划ID",
-        "codeName" : "test_plan_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "test_plan_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "TEST_PLAN_ID",
-          "codeName" : "test_plan_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "test_plan_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "测试计划缺陷过滤项",
-        "codeName" : "work_item_type_group_bug",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "work_item_type_group_bug",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "work_item_type_group_bug"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "项目标识",
-        "codeName" : "project_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "project_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PROJECT_ID",
-          "codeName" : "project_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "project_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "迭代标识",
-        "codeName" : "sprint_id",
-        "createDV" : "sprint",
-        "createDVT" : "APPDATA",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "sprint_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "SPRINT_ID",
-          "codeName" : "sprint_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "sprint_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "工作项类型",
-        "codeName" : "work_item_type_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "work_item_type_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "WORK_ITEM_TYPE_ID",
-          "codeName" : "work_item_type_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "work_item_type_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "父工作项类型",
-        "codeName" : "n_work_item_type_id_in",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "n_work_item_type_id_in",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "n_work_item_type_id_in"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "用例标识",
-        "codeName" : "test_case",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "test_case",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "test_case"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "执行用例标识",
-        "codeName" : "run_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "run_id",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "run_id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
+        "infoGroupMode" : false,
+        "showCaption" : false
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -1648,54 +1972,6 @@
         "valueItemName" : "project_id",
         "allowEmpty" : false,
         "showCaption" : true
-      }, {
-        "caption" : "上下文Id",
-        "codeName" : "checkid",
-        "createDV" : "project",
-        "createDVT" : "APPDATA",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "checkid",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "checkid"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "动态新建",
-        "codeName" : "dynamic_new",
-        "createDV" : "dynamicnew",
-        "createDVT" : "APPDATA",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "dynamic_new",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "dynamic_new"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
       }, {
         "caption" : "工作项类型",
         "codeName" : "work_item_type_name",
@@ -1911,8 +2187,13 @@
             "dEFDName" : "project_name",
             "logicType" : "SINGLE",
             "name" : "project_name值不为空(NotNil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dEFDName" : "ctxpid",
+            "logicType" : "SINGLE",
+            "name" : "ctxpid值为空(Nil)"
           } ],
-          "relatedDetailNames" : [ "project_name" ],
+          "relatedDetailNames" : [ "project_name", "ctxpid" ],
           "notMode" : false
         } ],
         "getPSEditor" : {
@@ -2484,7 +2765,7 @@
         },
         "getPSControlAttributes" : [ {
           "attrName" : "disabledDate",
-          "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+          "attrValue" : "(time) => {\n    if (!data.end_at) {\n        return false;\n    }\n    const end_at = new Date(data.end_at);\n    // 比对天\n    time.setHours(0, 0, 0, 0);\n    end_at.setHours(0, 0, 0, 0);\n    return time.getTime() > end_at.getTime();\n}",
           "name" : "start_at_disabledDate"
         } ],
         "getPSEditor" : {
@@ -2523,7 +2804,7 @@
         },
         "getPSControlAttributes" : [ {
           "attrName" : "disabledDate",
-          "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+          "attrValue" : "(time) => {\n    if (!data.start_at) {\n        return false;\n    }\n    const start_at = new Date(data.start_at);\n    // 比对天\n    start_at.setHours(0, 0, 0, 0);\n    time.setHours(0, 0, 0, 0);\n    return time.getTime() < start_at.getTime();\n}",
           "name" : "end_at_disabledDate"
         } ],
         "getPSEditor" : {
