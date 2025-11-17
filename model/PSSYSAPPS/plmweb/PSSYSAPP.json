@@ -184948,6 +184948,72 @@
           "id" : "Begin"
         }
       }, {
+        "codeName" : "fill_work_item_sub_type",
+        "defaultParamName" : "Default",
+        "logicName" : "填充子工作项类型",
+        "memo" : "子工作项新建默认填充首个子工作项类型",
+        "name" : "填充子工作项类型",
+        "getPSDEUILogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "code" : "console.log('测试');\r\nconsole.log(view);",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 583,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "topPos" : 208
+        }, {
+          "codeName" : "DEBUGPARAM1",
+          "getDstPSDEUILogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "leftPos" : 334,
+          "logicNodeType" : "DEBUGPARAM",
+          "name" : "调试逻辑参数",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM1"
+            }
+          } ],
+          "topPos" : 208
+        } ],
+        "getPSDEUILogicParams" : [ {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "default" : true,
+          "entityParam" : true
+        } ],
+        "getStartPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
         "codeName" : "full_screen",
         "defaultParamName" : "Default",
         "logicName" : "门户全屏",
