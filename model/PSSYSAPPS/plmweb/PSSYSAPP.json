@@ -185103,44 +185103,6 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
-          "code" : "console.log('测试');\r\nconsole.log(view);\r\nconsole.log(view.context.work_item_sub_type.split(',')[0]);\r\nuiLogic.work_item_type = view.context.work_item_sub_type.split(',')[0];\r\nconsole.log(uiLogic.work_item_type);",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 583,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "DEBUGPARAM2"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
-          "topPos" : 208
-        }, {
-          "code" : "console.log(uiLogic.work_item_type);\r\nview.layoutPanel.panelItems.form.control.data.work_item_type_id = uiLogic.work_item_type.id;\r\nview.layoutPanel.panelItems.form.control.data.work_item_type_name = uiLogic.work_item_type.name;\r\nconsole.log(view);",
-          "codeName" : "RAWJSCODE2",
-          "leftPos" : 1090,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "END1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE2"
-            }
-          } ],
-          "topPos" : 208
-        }, {
           "codeName" : "DEACTION1",
           "getDstPSAppDEAction" : {
             "modelref" : true,
@@ -185152,7 +185114,7 @@
           },
           "getDstPSDEUILogicParam" : {
             "modelref" : true,
-            "id" : "work_item_type"
+            "id" : "ctx"
           },
           "leftPos" : 840,
           "logicNodeType" : "DEACTION",
@@ -185174,6 +185136,12 @@
             "id" : "work_item_type"
           },
           "topPos" : 208
+        }, {
+          "codeName" : "END1",
+          "leftPos" : 1332,
+          "logicNodeType" : "END",
+          "name" : "结束",
+          "topPos" : 200
         }, {
           "codeName" : "DEBUGPARAM1",
           "getDstPSDEUILogicParam" : {
@@ -185197,16 +185165,29 @@
           } ],
           "topPos" : 208
         }, {
-          "codeName" : "END1",
-          "leftPos" : 1332,
-          "logicNodeType" : "END",
-          "name" : "结束",
-          "topPos" : 200
+          "code" : "console.log('测试');\r\nconsole.log(view);\r\nconsole.log(view.context.work_item_sub_type.split(',')[0]);\r\nuiLogic.ctx.work_item_type = view.context.work_item_sub_type.split(',')[0];\r\nconsole.log(uiLogic.ctx);",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 583,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM2"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
         }, {
           "codeName" : "DEBUGPARAM2",
           "getDstPSDEUILogicParam" : {
             "modelref" : true,
-            "id" : "work_item_type"
+            "id" : "ctx"
           },
           "leftPos" : 780,
           "logicNodeType" : "DEBUGPARAM",
@@ -185224,18 +185205,42 @@
             }
           } ],
           "topPos" : 390
+        }, {
+          "code" : "console.log(uiLogic.work_item_type);\r\nview.layoutPanel.panelItems.form.control.data.work_item_type_id = uiLogic.work_item_type.id;\r\nview.layoutPanel.panelItems.form.control.data.work_item_type_name = uiLogic.work_item_type.name;\r\nconsole.log(view);",
+          "codeName" : "RAWJSCODE2",
+          "leftPos" : 1090,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "END1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            }
+          } ],
+          "topPos" : 208
         } ],
         "getPSDEUILogicParams" : [ {
+          "codeName" : "work_item_type",
+          "logicName" : "work_item_type",
+          "name" : "work_item_type",
+          "entityParam" : true
+        }, {
+          "codeName" : "ctx",
+          "logicName" : "work_item_type",
+          "name" : "work_item_type",
+          "navContextParam" : true
+        }, {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",
           "default" : true,
           "entityParam" : true
-        }, {
-          "codeName" : "work_item_type",
-          "logicName" : "work_item_type",
-          "name" : "work_item_type",
-          "navContextParam" : true
         } ],
         "getStartPSDEUILogicNode" : {
           "modelref" : true,
