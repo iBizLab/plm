@@ -2180,66 +2180,56 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 406,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取表格部件",
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "attach"
+      },
+      "leftPos" : 780,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "VIEWCTRLINVOKE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "DEACTION1"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
+      "topPos" : 380
+    }, {
+      "code" : "uiLogic.attach = { data: uiLogic.default, silent: true };",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 662,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "grid"
+          "id" : "DEACTION1"
         },
-        "name" : "view[getController('form').details.attachments.mdController] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "getController('form').details.attachments.mdController",
-        "getSrcPSDEUILogicParam" : {
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "params"
-        },
-        "name" : "Default[id] ==> params[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "form"
-        },
-        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.form.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
+          "id" : "RAWJSCODE1"
+        }
       } ],
       "topPos" : 208
     }, {
-      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    '确认删除文件',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
+      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    '确认删除文件？',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 256,
       "logicNodeType" : "RAWJSCODE",
@@ -2274,6 +2264,12 @@
         }
       } ],
       "topPos" : 64
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1768,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
@@ -2372,60 +2368,64 @@
       } ],
       "topPos" : 390
     }, {
-      "code" : "uiLogic.attach = { data: uiLogic.default, silent: true };",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 662,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件数据",
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 406,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取表格部件",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "Remove"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "attach"
-      },
-      "leftPos" : 780,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "topPos" : 380
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1768,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[getController('form').details.attachments.mdController] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "getController('form').details.attachments.mdController",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "params"
+        },
+        "name" : "Default[id] ==> params[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 1220,
@@ -2462,11 +2462,6 @@
       "name" : "表格",
       "ctrlParam" : true
     }, {
-      "codeName" : "attach",
-      "logicName" : "附件数据",
-      "name" : "附件数据",
-      "entityParam" : true
-    }, {
       "codeName" : "params",
       "logicName" : "视图参数",
       "name" : "视图参数",
@@ -2476,6 +2471,11 @@
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "attach",
+      "logicName" : "附件数据",
+      "name" : "附件数据",
       "entityParam" : true
     }, {
       "codeName" : "view",
@@ -2518,13 +2518,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1268,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    'runtime.controller.common.control.confirmDataDeletion',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
+      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    '确认删除文件？',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 270,
       "logicNodeType" : "RAWJSCODE",
@@ -2558,25 +2552,6 @@
         }
       } ],
       "topPos" : 74
-    }, {
-      "code" : "uiLogic.attach = { data: data, silent: true };",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 662,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
     }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
@@ -2650,18 +2625,33 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1268,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.attach = { data: data, silent: true };",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 662,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "attach",
       "logicName" : "附件数据",
       "name" : "附件数据",
@@ -2672,6 +2662,16 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "ctrlParam" : true
     }, {
       "codeName" : "params",
       "logicName" : "视图参数",
