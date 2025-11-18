@@ -41,6 +41,50 @@
     },
     "defaultMode" : true,
     "enablePagingBar" : false
+  }, {
+    "aCType" : "CHATCOMPLETION",
+    "codeName" : "ai_debug",
+    "logicName" : "ai_debug",
+    "name" : "ai_debug",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    } ],
+    "pagingSize" : 50,
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getValuePSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "defaultMode" : false,
+    "enableBackend" : true,
+    "enablePagingBar" : false
   } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
@@ -2249,6 +2293,45 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "调试",
+    "codeName" : "ai_debug",
+    "frontProcessType" : "CHAT",
+    "fullCodeName" : "ai_agent_context_ai_debug",
+    "name" : "调试",
+    "getPSAppDEACMode" : {
+      "modelref" : true,
+      "id" : "ai_debug"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "ai_debug",
+    "uIActionType" : "DEUIACTION",
+    "id" : "ai_debug@ai_agent_context"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "打开调试页面",
+    "codeName" : "open_debug_view",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_debug_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_agent_context_open_debug_view",
+    "name" : "打开调试页面",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_debug_view",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_debug_view@ai_agent_context"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "查看完整配置",
     "codeName" : "open_info_view",
@@ -2276,6 +2359,10 @@
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_quick_create_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_debug_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
