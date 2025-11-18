@@ -2450,6 +2450,26 @@
     "uIActionType" : "DEUIACTION",
     "id" : "ai_debug@ai_agent_context"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "调试",
+    "codeName" : "debug_context",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_agent_context_debug_context",
+    "name" : "调试逻辑",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "debug_context"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "debug_context",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "debug_context@ai_agent_context"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "打开调试页面",
     "codeName" : "open_debug_view",
@@ -2493,6 +2513,90 @@
     "uIActionTag" : "open_info_view",
     "uIActionType" : "DEUIACTION",
     "id" : "open_info_view@ai_agent_context"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "debug_context",
+    "defaultParamName" : "Default",
+    "logicName" : "debug_context",
+    "name" : "debug_context",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 194,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 180,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION_01",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
+        "modelref" : true,
+        "id" : "ai_debug@ai_agent_context"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 310,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 530,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n        \n        // 检查context_data是否存在且为字符串\n        if (target.context_debug_data && typeof target.context_debug_data === 'string') {\n            try {\n                // 将JSON字符串解析为对象\n                const contextObj = JSON.parse(target.context_debug_data);\n                console.log('解析后的context_data对象:', contextObj);\n                \n                // 将解析后的对象合并到uiLogic.default中\n                // 使用Object.assign进行浅合并\n                Object.assign(uiLogic.default, contextObj);\n                \n                console.log('合并后的uiLogic.default:', uiLogic.default);\n                \n            } catch (parseError) {\n                console.error('JSON解析错误:', parseError);\n                console.error('无效的JSON字符串:', target.context_debug_data);\n            }\n        }\n",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 250,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 370,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
