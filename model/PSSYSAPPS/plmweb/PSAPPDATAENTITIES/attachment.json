@@ -1958,67 +1958,10 @@
       "topPos" : 50,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 390,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 650
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 200,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表格隐藏",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "state.keepAlive",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.keepAlive]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[false] ==> grid[state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 440
-    }, {
       "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 530,
+      "leftPos" : 730,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "设置表格显示",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
       "getPSDEUILogicNodeParams" : [ {
         "dstFieldName" : "state.keepAlive",
         "getDstPSDEUILogicParam" : {
@@ -2043,24 +1986,32 @@
       } ],
       "topPos" : 440
     }, {
-      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 460,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "上下文中srfreadonly禁用删除附件行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 50,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置表格隐藏",
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "state.keepAlive",
+        "getDstPSDEUILogicParam" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "grid"
         },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
+        "name" : "直接值[true] ==> grid[state.keepAlive]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "state.visible",
+        "getDstPSDEUILogicParam" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
+          "id" : "grid"
+        },
+        "name" : "直接值[false] ==> grid[state.visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 550
+      "topPos" : 340
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 350,
@@ -2069,7 +2020,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "RAWJSCODE3"
         },
         "linkMode" : 0,
         "name" : "表格存在数据",
@@ -2094,7 +2045,7 @@
       }, {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "表格不存在数据",
@@ -2132,11 +2083,75 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 220
+    }, {
+      "code" : "uiLogic.grid.state.keepAlive = true;\r\nuiLogic.grid.state.visible = false;",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置表格隐藏",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 440
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 390,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 650
+    }, {
+      "code" : "uiLogic.grid.state.keepAlive = true;\r\nuiLogic.grid.state.visible = true;",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 540,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置表格显示",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 440
+    }, {
+      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 460,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "上下文中srfreadonly禁用删除附件行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 550
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "重复器表格",
-      "name" : "重复器表格",
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
       "entityParam" : true
     }, {
       "codeName" : "form",
@@ -2144,10 +2159,9 @@
       "name" : "表单",
       "ctrlParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
+      "codeName" : "grid",
+      "logicName" : "重复器表格",
+      "name" : "重复器表格",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
