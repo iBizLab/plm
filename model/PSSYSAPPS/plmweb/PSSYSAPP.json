@@ -15428,7 +15428,7 @@
     "openMode" : "INDEXVIEWTAB",
     "getPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_test_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
@@ -64003,6 +64003,13 @@
     "name" : "roleGridView"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_test_edit_view.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "category",
+    "view" : "TestEditView",
+    "name" : "categoryTestEditView"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_advanced_search_grid_view.json",
     "viewType" : "DEGRIDVIEW",
     "resource" : "test_case",
@@ -84520,11 +84527,10 @@
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.CATEGORY"
       },
-      "caption" : "类别",
-      "codeName" : "category_edit_view",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_edit_view.json",
-      "funcViewMode" : "EDITVIEW",
-      "name" : "categoryEditView",
+      "caption" : "测试视图",
+      "codeName" : "category_test_edit_view",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_test_edit_view.json",
+      "name" : "categoryTestEditView",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
@@ -84539,9 +84545,9 @@
         "name" : "engine"
       } ],
       "getPSControls" : [ {
-        "codeName" : "edit_view_toolbar",
+        "codeName" : "test_edit_view_toolbar",
         "controlType" : "TOOLBAR",
-        "logicName" : "工具栏模板（默认编辑界面）",
+        "logicName" : "测试视图_工具栏",
         "name" : "toolbar",
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -84550,60 +84556,11 @@
         "getPSControlParam" : {
           "id" : "TOOLBAR"
         },
-        "getPSDEToolbarItems" : [ {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-          },
-          "caption" : "保存",
-          "groupExtractMode" : "ITEM",
-          "itemType" : "DEUIACTION",
-          "name" : "deuiaction1",
-          "noPrivDisplayMode" : 2,
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "toolbar_deuiaction1"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf0c7@FontAwesome",
-            "cssClass" : "fa fa-save"
-          },
-          "getPSUIAction" : {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-            },
-            "caption" : "保存并关闭",
-            "codeName" : "SaveAndExit",
-            "dataAccessAction" : "SUBDATA",
-            "fullCodeName" : "SaveAndExit",
-            "name" : "编辑界面_保存并退出操作",
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "SUBDATA"
-            },
-            "getPSSysImage" : {
-              "cssClass" : "sx-tb-saveandclose"
-            },
-            "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
-            "timeout" : 60000,
-            "getTooltipPSLanguageRes" : {
-              "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-            },
-            "uIActionMode" : "SYS",
-            "uIActionTag" : "SaveAndExit",
-            "uIActionType" : "DEUIACTION"
-          },
-          "tooltip" : "保存",
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-          },
-          "showCaption" : true,
-          "showIcon" : true
-        } ],
         "xDataControlName" : "form",
-        "modelid" : "48c8f789be8a5522d3003293c1cf2ffb",
+        "modelid" : "ECCECA8A-C75E-4CD3-A6E3-41F2F5AAF073",
         "modeltype" : "PSDETOOLBAR"
       }, {
-        "codeName" : "main",
+        "codeName" : "test_edit_view_form",
         "controlType" : "FORM",
         "getCreatePSControlAction" : {
           "modelref" : true,
@@ -84622,7 +84579,7 @@
           }
         },
         "defaultLabelWidth" : 130,
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category/PSFORMS/main.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category/PSFORMS/test_edit_view_form.json",
         "getGetDraftFromPSControlAction" : {
           "modelref" : true,
           "id" : "loaddraftfrom",
@@ -84667,7 +84624,7 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
           }
         },
-        "logicName" : "主编辑表单",
+        "logicName" : "测试视图_表单",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
@@ -84815,6 +84772,34 @@
             "codeName" : "owner_subtype"
           }
         }, {
+          "id" : "create_man",
+          "dataType" : 25,
+          "getPSAppDEField" : {
+            "name" : "CREATE_MAN",
+            "codeName" : "create_man"
+          }
+        }, {
+          "id" : "create_time",
+          "dataType" : 5,
+          "getPSAppDEField" : {
+            "name" : "CREATE_TIME",
+            "codeName" : "create_time"
+          }
+        }, {
+          "id" : "update_man",
+          "dataType" : 25,
+          "getPSAppDEField" : {
+            "name" : "UPDATE_MAN",
+            "codeName" : "update_man"
+          }
+        }, {
+          "id" : "update_time",
+          "dataType" : 5,
+          "getPSAppDEField" : {
+            "name" : "UPDATE_TIME",
+            "codeName" : "update_time"
+          }
+        }, {
           "id" : "id",
           "hidden" : true,
           "dataType" : 25,
@@ -84824,18 +84809,12 @@
           }
         } ],
         "getPSDEFormPages" : [ {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "CONTROL.DEFORM.CATEGORY.MAIN.FORMPAGE.FORMPAGE1"
-          },
           "caption" : "基本信息",
           "codeName" : "formpage1",
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMPAGE",
           "name" : "formpage1",
           "getPSDEFormDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFORM.CATEGORY.MAIN.GROUPPANEL.GROUP1"
-            },
             "caption" : "类别基本信息",
             "codeName" : "group1",
             "detailStyle" : "DEFAULT",
@@ -84952,23 +84931,150 @@
           },
           "infoGroupMode" : false
         }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "CONTROL.DEFORM.CATEGORY.MAIN.FORMPAGE.FORMPAGE2"
-          },
           "caption" : "其它",
           "codeName" : "formpage2",
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMPAGE",
           "name" : "formpage2",
           "getPSDEFormDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFORM.CATEGORY.MAIN.GROUPPANEL.GROUP2"
-            },
             "caption" : "操作信息",
             "codeName" : "group2",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "name" : "group2",
+            "getPSDEFormDetails" : [ {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.CREATE_MAN"
+              },
+              "caption" : "建立人",
+              "codeName" : "create_man",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 3,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "create_man",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "CREATE_MAN",
+                "codeName" : "create_man"
+              },
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "create_man",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                },
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "convertToCodeItemText" : true,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.CREATE_TIME"
+              },
+              "caption" : "建立时间",
+              "codeName" : "create_time",
+              "dataType" : 5,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 3,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "create_time",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "CREATE_TIME",
+                "codeName" : "create_time"
+              },
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "create_time",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+              },
+              "caption" : "更新人",
+              "codeName" : "update_man",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 3,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "update_man",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "UPDATE_MAN",
+                "codeName" : "update_man"
+              },
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "update_man",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                },
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "convertToCodeItemText" : true,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+              },
+              "caption" : "更新时间",
+              "codeName" : "update_time",
+              "dataType" : 5,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 3,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "update_time",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "UPDATE_TIME",
+                "codeName" : "update_time"
+              },
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "update_time",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+              "allowEmpty" : true,
+              "showCaption" : true
+            } ],
             "getPSLayout" : {
               "childColMD" : 24,
               "columnCount" : 24,
@@ -85028,10 +85134,10 @@
         },
         "noTabHeader" : false,
         "name" : "form",
-        "modelid" : "322f1470c04081078315bee83b43c46d",
+        "modelid" : "BD4E91B1-DF28-49F2-BEE8-3CE7CF4F1788",
         "modeltype" : "PSDEFORM_EDITFORM"
       }, {
-        "codeName" : "edit_view_datainfobar",
+        "codeName" : "test_edit_view_datainfobar",
         "controlType" : "DATAINFOBAR",
         "name" : "datainfobar",
         "getPSAppDataEntity" : {
@@ -85045,8 +85151,8 @@
         "getCapPSLanguageRes" : {
           "lanResTag" : "DE.LNAME.CATEGORY"
         },
-        "caption" : "类别",
-        "codeName" : "edit_view_captionbar",
+        "caption" : "测试视图",
+        "codeName" : "test_edit_view_captionbar",
         "controlType" : "CAPTIONBAR",
         "name" : "captionbar",
         "getPSAppDataEntity" : {
@@ -85055,8 +85161,8 @@
         },
         "getPSControlParam" : { }
       } ],
-      "getPSDEViewCodeName" : "EditView",
-      "getPSDEViewId" : "4eb86c767d6f29b9d42765480bd2d6ca",
+      "getPSDEViewCodeName" : "TestEditView",
+      "getPSDEViewId" : "CDB0E493-BA91-47EC-9234-3AAF15756C06",
       "getPSViewLayoutPanel" : {
         "codeName" : "layoutpanel",
         "controlStyle" : "APPDEEDITVIEW",
@@ -85071,16 +85177,13 @@
         "layoutPanel" : true,
         "useDefaultLayout" : true
       },
-      "title" : "类别编辑视图",
-      "getTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.CATEGORY.EDITVIEW"
-      },
+      "title" : "测试视图",
       "viewStyle" : "DEFAULT",
       "viewType" : "DEEDITVIEW",
       "xDataControlName" : "form",
       "enableDP" : true,
       "showDataInfoBar" : true,
-      "modelid" : "58a167daf3a27e2ca1a6460d04882f1b",
+      "modelid" : "768d950351be9857009c64e8252875cc",
       "modeltype" : "PSAPPDEVIEW"
     } ],
     "getPSAppDataEntities" : [ {
@@ -207473,6 +207576,10 @@
       "getAllPSAppViews" : [ {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_edit_view.json",
+        "viewType" : "DEEDITVIEW"
+      }, {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_test_edit_view.json",
         "viewType" : "DEEDITVIEW"
       }, {
         "modelref" : true,
