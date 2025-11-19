@@ -25,6 +25,13 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onBeforeLoadDraft",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "onBeforeLoadDraft",
+    "getPSViewCtrlName" : "form",
+    "scriptCode" : "const srfdefdata = viewParam.srfdefdata;\n// 置空父项数据\nif (srfdefdata) {\n  srfdefdata.pid = undefined;\n  srfdefdata.ptitle = undefined;\n}"
+  }, {
     "eventNames" : "onLoadDraftSuccess",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "APPDEUILOGIC",
