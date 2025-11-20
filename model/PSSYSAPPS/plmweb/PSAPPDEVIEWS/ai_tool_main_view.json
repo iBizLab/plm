@@ -411,6 +411,55 @@
         "codeName" : "api_auth_type"
       }
     }, {
+      "id" : "api_key",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "API_KEY",
+        "codeName" : "api_key"
+      }
+    }, {
+      "id" : "access_key",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "ACCESS_KEY",
+        "codeName" : "access_key"
+      }
+    }, {
+      "id" : "secret_key",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "SECRET_KEY",
+        "codeName" : "secret_key"
+      }
+    }, {
+      "id" : "client_id",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "CLIENT_ID",
+        "codeName" : "client_id"
+      }
+    }, {
+      "id" : "token_url",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "TOKEN_URL",
+        "codeName" : "token_url"
+      }
+    }, {
+      "id" : "client_secret",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "CLIENT_SECRET",
+        "codeName" : "client_secret"
+      }
+    }, {
+      "id" : "bearer_token",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "BEARER_TOKEN",
+        "codeName" : "bearer_token"
+      }
+    }, {
       "id" : "api_url",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -571,6 +620,341 @@
           },
           "allowEmpty" : true,
           "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "API Key",
+          "codeName" : "grouppanel4",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel4",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "api_auth_type",
+              "logicType" : "SINGLE",
+              "name" : "api_auth_type等于(=) api_key",
+              "value" : "api_key"
+            } ],
+            "relatedDetailNames" : [ "api_auth_type" ],
+            "notMode" : false
+          } ],
+          "getPSDEFormDetails" : [ {
+            "caption" : "api密钥",
+            "codeName" : "api_key",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "api_key",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "API_KEY",
+              "codeName" : "api_key"
+            },
+            "getPSEditor" : {
+              "editorType" : "PASSWORD",
+              "maxLength" : 200,
+              "name" : "api_key"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "Access Key/Secret",
+          "codeName" : "grouppanel1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel1",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "api_auth_type",
+              "logicType" : "SINGLE",
+              "name" : "api_auth_type等于(=) access_key_secret",
+              "value" : "access_key_secret"
+            } ],
+            "relatedDetailNames" : [ "api_auth_type" ],
+            "notMode" : false
+          } ],
+          "getPSDEFormDetails" : [ {
+            "caption" : "访问密钥",
+            "codeName" : "access_key",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "access_key",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "ACCESS_KEY",
+              "codeName" : "access_key"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "PASSWORD",
+              "maxLength" : 1048576,
+              "name" : "access_key"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "安全密钥",
+            "codeName" : "secret_key",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "secret_key",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SECRET_KEY",
+              "codeName" : "secret_key"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "PASSWORD",
+              "maxLength" : 1048576,
+              "name" : "secret_key"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "OAuth2 Client",
+          "codeName" : "grouppanel2",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel2",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "api_auth_type",
+              "logicType" : "SINGLE",
+              "name" : "api_auth_type等于(=) oauth2",
+              "value" : "oauth2"
+            } ],
+            "relatedDetailNames" : [ "api_auth_type" ],
+            "notMode" : false
+          } ],
+          "getPSDEFormDetails" : [ {
+            "caption" : "客户端ID",
+            "codeName" : "client_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "client_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "CLIENT_ID",
+              "codeName" : "client_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "maxLength" : 200,
+              "name" : "client_id"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "令牌地址",
+            "codeName" : "token_url",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "token_url",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOKEN_URL",
+              "codeName" : "token_url"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "TEXTAREA",
+              "maxLength" : 2000,
+              "name" : "token_url",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "客户端密钥",
+            "codeName" : "client_secret",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "client_secret",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "CLIENT_SECRET",
+              "codeName" : "client_secret"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "PASSWORD",
+              "maxLength" : 1048576,
+              "name" : "client_secret"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "Bearer Token",
+          "codeName" : "grouppanel3",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel3",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "api_auth_type",
+              "logicType" : "SINGLE",
+              "name" : "api_auth_type等于(=) bearer_token",
+              "value" : "bearer_token"
+            } ],
+            "relatedDetailNames" : [ "api_auth_type" ],
+            "notMode" : false
+          } ],
+          "getPSDEFormDetails" : [ {
+            "caption" : "Bearer令牌",
+            "codeName" : "bearer_token",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "bearer_token",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "BEARER_TOKEN",
+              "codeName" : "bearer_token"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "PASSWORD",
+              "maxLength" : 1048576,
+              "name" : "bearer_token"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
           "showCaption" : true
         }, {
           "caption" : "接口地址",
