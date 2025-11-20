@@ -5978,9 +5978,9 @@
       "text" : "OAuth2",
       "value" : "oauth2"
     }, {
-      "codeName" : "basic_auth",
-      "text" : "Basic Auth",
-      "value" : "basic_auth"
+      "codeName" : "access_key_secret",
+      "text" : "Access Key/Secret",
+      "value" : "access_key_secret"
     } ],
     "enableCache" : true
   }, {
@@ -6180,6 +6180,28 @@
       "codeName" : "stt",
       "text" : "语音识别",
       "value" : "stt"
+    } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "ai__msg_sender_type",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__msg_sender_type",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__msg_sender_type.json",
+    "emptyText" : "未定义",
+    "name" : "消息发送方类型",
+    "getPSCodeItems" : [ {
+      "codeName" : "user",
+      "text" : "用户",
+      "value" : "user"
+    }, {
+      "codeName" : "agent",
+      "text" : "AI智能体",
+      "value" : "agent"
+    }, {
+      "codeName" : "system",
+      "text" : "系统通知",
+      "value" : "system"
     } ],
     "enableCache" : true
   }, {
@@ -83037,6 +83059,14 @@
             "viewType" : "DEGRIDVIEW"
           }
         }, {
+          "name" : "EXPITEM:ai_agent_conversation",
+          "realTitle" : "智能体会话表格视图",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_conversation_grid_view.json",
+            "viewType" : "DEGRIDVIEW"
+          }
+        }, {
           "name" : "EXPITEM:ai_credential",
           "realTitle" : "AI凭证表格视图",
           "getRefPSAppView" : {
@@ -83340,6 +83370,18 @@
             },
             "parentValueLevel" : 1,
             "searchMode" : 3
+          }, {
+            "getChildPSDETreeNode" : {
+              "modelref" : true,
+              "id" : "ai_agent_conversation"
+            },
+            "name" : "默认根节点（ROOT）-智能体会话（ai_agent_conversation）",
+            "getParentPSDETreeNode" : {
+              "modelref" : true,
+              "id" : "ROOT"
+            },
+            "parentValueLevel" : 1,
+            "searchMode" : 3
           } ],
           "getPSDETreeNodes" : [ {
             "counterMode" : 0,
@@ -83417,6 +83459,33 @@
             "selectFirstOnly" : false,
             "selected" : false,
             "id" : "ai_agent_context"
+          }, {
+            "counterMode" : 0,
+            "name" : "智能体会话",
+            "getNavPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_conversation_grid_view.json",
+              "viewType" : "DEGRIDVIEW"
+            },
+            "nodeType" : "ai_agent_conversation",
+            "text" : "智能体会话",
+            "treeNodeType" : "STATIC",
+            "hasPSDETreeNodeRSs" : false,
+            "appendPNodeId" : false,
+            "disableSelect" : false,
+            "enableCheck" : false,
+            "enableEditData" : false,
+            "enableNewData" : false,
+            "enableQuickCreate" : false,
+            "enableQuickSearch" : false,
+            "enableRemoveData" : false,
+            "enableViewData" : false,
+            "expandFirstOnly" : false,
+            "expanded" : false,
+            "rootNode" : false,
+            "selectFirstOnly" : false,
+            "selected" : false,
+            "id" : "ai_agent_conversation"
           }, {
             "counterMode" : 0,
             "name" : "AI凭证",
