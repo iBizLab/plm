@@ -963,6 +963,14 @@
     "existingModel" : false
   }, {
     "getAllPSSysDBColumns" : [ {
+      "codeName" : "AI_AGENT_CONTEXT_ID",
+      "length" : 100,
+      "logicName" : "智能体业务上下文标识",
+      "name" : "AI_AGENT_CONTEXT_ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
       "codeName" : "AI_AGENT_ID",
       "length" : 100,
       "logicName" : "智能体标识",
@@ -1002,6 +1010,30 @@
       "stdDataType" : 25,
       "nullable" : true
     }, {
+      "codeName" : "SESSION_ID",
+      "length" : 100,
+      "logicName" : "外部会话ID",
+      "name" : "SESSION_ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "STATUS",
+      "length" : 60,
+      "logicName" : "会话状态",
+      "name" : "STATUS",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "TITLE",
+      "length" : 200,
+      "logicName" : "会话标题",
+      "name" : "TITLE",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
       "codeName" : "UPDATE_MAN",
       "length" : 100,
       "logicName" : "更新人",
@@ -1016,23 +1048,136 @@
       "scale" : 0,
       "stdDataType" : 5,
       "nullable" : true
+    }, {
+      "codeName" : "USER_ID",
+      "length" : 100,
+      "logicName" : "用户ID",
+      "name" : "USER_ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
     } ],
     "getAllPSSysDBIndices" : [ {
       "getAllPSSysDBIndexColumns" : [ {
-        "name" : "AI_AGENT_ID",
+        "name" : "AI_AGENT_CONTEXT_ID",
         "getPSSysDBColumn" : {
           "modelref" : true,
-          "id" : "AI_AGENT_ID"
+          "id" : "AI_AGENT_CONTEXT_ID"
         }
       } ],
-      "codeName" : "IF_F17F89A3A51014D",
+      "codeName" : "IF_F2ACBCBF412E59B",
       "indexType" : "NORMAL",
-      "name" : "DER1N_AI_AGENT_CONVERSATION_AI_AGENT_AI_AGENT_ID",
+      "name" : "DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID",
       "sourceType" : "DER"
     } ],
     "codeName" : "AI_AGENT_CONVERSATION",
     "logicName" : "智能体会话",
     "name" : "AI_AGENT_CONVERSATION",
+    "autoExtendModel" : true,
+    "existingModel" : false
+  }, {
+    "getAllPSSysDBColumns" : [ {
+      "codeName" : "CREATE_MAN",
+      "length" : 100,
+      "logicName" : "创建人",
+      "name" : "CREATE_MAN",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "CREATE_TIME",
+      "logicName" : "创建时间",
+      "name" : "CREATE_TIME",
+      "scale" : 0,
+      "stdDataType" : 5,
+      "nullable" : true
+    }, {
+      "codeName" : "ENABLE",
+      "logicName" : "逻辑有效标识",
+      "name" : "ENABLE",
+      "scale" : 0,
+      "stdDataType" : 9,
+      "nullable" : true
+    }, {
+      "codeName" : "FEEDBACK_CONTENT",
+      "length" : 2000,
+      "logicName" : "反馈内容",
+      "name" : "FEEDBACK_CONTENT",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "FEEDBACK_TYPE",
+      "length" : 60,
+      "logicName" : "反馈类型",
+      "name" : "FEEDBACK_TYPE",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "ID",
+      "length" : 100,
+      "logicName" : "标识",
+      "name" : "ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "pKey" : true
+    }, {
+      "codeName" : "MESSAGE_ID",
+      "length" : 100,
+      "logicName" : "消息标识",
+      "name" : "MESSAGE_ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "NAME",
+      "length" : 200,
+      "logicName" : "名称",
+      "name" : "NAME",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "UPDATE_MAN",
+      "length" : 100,
+      "logicName" : "更新人",
+      "name" : "UPDATE_MAN",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "UPDATE_TIME",
+      "logicName" : "更新时间",
+      "name" : "UPDATE_TIME",
+      "scale" : 0,
+      "stdDataType" : 5,
+      "nullable" : true
+    }, {
+      "codeName" : "USER_ID",
+      "length" : 100,
+      "logicName" : "用户标识",
+      "name" : "USER_ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    } ],
+    "getAllPSSysDBIndices" : [ {
+      "getAllPSSysDBIndexColumns" : [ {
+        "name" : "MESSAGE_ID",
+        "getPSSysDBColumn" : {
+          "modelref" : true,
+          "id" : "MESSAGE_ID"
+        }
+      } ],
+      "codeName" : "IF_F22DBC4D1DF200E",
+      "indexType" : "NORMAL",
+      "name" : "DER1N_AI_AGENT_FEEDBACK_AI_AGENT_MESSAGE_MESSAGE_ID",
+      "sourceType" : "DER"
+    } ],
+    "codeName" : "AI_AGENT_FEEDBACK",
+    "logicName" : "智能体回复反馈",
+    "name" : "AI_AGENT_FEEDBACK",
     "autoExtendModel" : true,
     "existingModel" : false
   }, {
@@ -1127,6 +1272,105 @@
     "codeName" : "AI_AGENT_KNOWLEDGE_REL",
     "logicName" : "智能体知识库引用",
     "name" : "AI_AGENT_KNOWLEDGE_REL",
+    "autoExtendModel" : true,
+    "existingModel" : false
+  }, {
+    "getAllPSSysDBColumns" : [ {
+      "codeName" : "CONTENT",
+      "length" : 1048576,
+      "logicName" : "消息内容",
+      "name" : "CONTENT",
+      "scale" : 0,
+      "stdDataType" : 21,
+      "nullable" : true
+    }, {
+      "codeName" : "CONTENT_TYPE",
+      "length" : 100,
+      "logicName" : "内容类型",
+      "name" : "CONTENT_TYPE",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "CREATE_MAN",
+      "length" : 100,
+      "logicName" : "创建人",
+      "name" : "CREATE_MAN",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "CREATE_TIME",
+      "logicName" : "创建时间",
+      "name" : "CREATE_TIME",
+      "scale" : 0,
+      "stdDataType" : 5,
+      "nullable" : true
+    }, {
+      "codeName" : "ENABLE",
+      "logicName" : "逻辑有效标识",
+      "name" : "ENABLE",
+      "scale" : 0,
+      "stdDataType" : 9,
+      "nullable" : true
+    }, {
+      "codeName" : "ID",
+      "length" : 100,
+      "logicName" : "标识",
+      "name" : "ID",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "pKey" : true
+    }, {
+      "codeName" : "METADATA",
+      "length" : 1048576,
+      "logicName" : "消息元数据",
+      "name" : "METADATA",
+      "scale" : 0,
+      "stdDataType" : 21,
+      "nullable" : true
+    }, {
+      "codeName" : "NAME",
+      "length" : 200,
+      "logicName" : "名称",
+      "name" : "NAME",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "SENDER_TYPE",
+      "length" : 60,
+      "logicName" : "发送者类型",
+      "name" : "SENDER_TYPE",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "SEQUENCE",
+      "logicName" : "消息序号",
+      "name" : "SEQUENCE",
+      "scale" : 0,
+      "stdDataType" : 9,
+      "nullable" : true
+    }, {
+      "codeName" : "UPDATE_MAN",
+      "length" : 100,
+      "logicName" : "更新人",
+      "name" : "UPDATE_MAN",
+      "scale" : 0,
+      "stdDataType" : 25,
+      "nullable" : true
+    }, {
+      "codeName" : "UPDATE_TIME",
+      "logicName" : "更新时间",
+      "name" : "UPDATE_TIME",
+      "scale" : 0,
+      "stdDataType" : 5,
+      "nullable" : true
+    } ],
+    "codeName" : "AI_AGENT_MESSAGE",
+    "logicName" : "智能体会话消息",
+    "name" : "AI_AGENT_MESSAGE",
     "autoExtendModel" : true,
     "existingModel" : false
   }, {
