@@ -130,15 +130,6 @@
     "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar executors = ctrl.state.data.executors;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    var first_executor = executors[0];\n    console.log('执行人1', first_executor)\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        console.log('执行人', executors[i]);\n        var executor_estimated_workload = executors[i].estimated_workload;\n        \n        console.log('执行人工时b', Number(executor_estimated_workload));\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload);\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    console.log('合计工时', total_estimated_workload);\n    estimated_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "remaining_update",
-    "name" : "剩余工时表单项更新",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "workload_schedule"
-    } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar actual_workload = form_data.actual_workload;\nvar estimated_workload = form_data.estimated_workload; \nvar remaining_workload = form_data.remaining_workload;  \nvar estimated = 0; // 预估工时\nif(estimated_workload){\n\testimated = Number(estimated_workload);\n}\nvar actual = 0; // 已登记的实际工时\nif(actual_workload){\n\tactual = Number(actual_workload);\n}\nvar remaining = 0;\nif(remaining_workload){\n\tremaining = Number(remaining_workload);\n}\n// 计算工时进度\nif((actual + remaining) != 0){\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\n\tform_data.workload_schedule = schedule;\n}\n",
-    "customCode" : true,
-    "showBusyIndicator" : false
-  }, {
     "codeName" : "estimated_update",
     "name" : "预估工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
@@ -147,6 +138,15 @@
       "name" : "workload_schedule"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar actual_workload = form_data.actual_workload;\nvar estimated_workload = form_data.estimated_workload;  \nvar estimated = 0; // 预估工时\nif(estimated_workload){\n\testimated = Number(estimated_workload);\n}\nvar actual = 0; // 已登记的实际工时\nvar remaining = 0; // 剩余工时\nif(actual_workload){\n\tactual = Number(actual_workload);\n\tif(estimated_workload){\n\t\t// 计算剩余工时\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\n\t\tform_data.remaining_workload = remaining;\n\t}\n} else {\n\tremaining = estimated;\n\tform_data.remaining_workload = estimated_workload;\n}\n// 计算工时进度\nif((actual + remaining) != 0){\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\n\tform_data.workload_schedule = schedule;\n}",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
+    "codeName" : "remaining_update",
+    "name" : "剩余工时表单项更新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar actual_workload = form_data.actual_workload;\nvar estimated_workload = form_data.estimated_workload; \nvar remaining_workload = form_data.remaining_workload;  \nvar estimated = 0; // 预估工时\nif(estimated_workload){\n\testimated = Number(estimated_workload);\n}\nvar actual = 0; // 已登记的实际工时\nif(actual_workload){\n\tactual = Number(actual_workload);\n}\nvar remaining = 0;\nif(remaining_workload){\n\tremaining = Number(remaining_workload);\n}\n// 计算工时进度\nif((actual + remaining) != 0){\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\n\tform_data.workload_schedule = schedule;\n}\n",
     "customCode" : true,
     "showBusyIndicator" : false
   } ],
@@ -1370,6 +1370,9 @@
                   } ],
                   "getPSEditor" : {
                     "editorHeight" : 450.0,
+                    "editorParams" : {
+                      "showmode" : "manual"
+                    },
                     "editorType" : "MARKDOWN",
                     "maxLength" : 1048576,
                     "mode" : "EDIT",

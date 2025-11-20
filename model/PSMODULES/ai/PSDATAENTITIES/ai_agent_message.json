@@ -206,9 +206,6 @@
       "name" : "NAME",
       "codeName" : "name"
     }, {
-      "name" : "ENABLE",
-      "codeName" : "enable"
-    }, {
       "name" : "CREATE_MAN",
       "codeName" : "create_man"
     }, {
@@ -235,6 +232,9 @@
     }, {
       "name" : "SENDER_TYPE",
       "codeName" : "sender_type"
+    }, {
+      "name" : "CONVERSATION_ID",
+      "codeName" : "conversation_id"
     } ],
     "codeName" : "Table",
     "name" : "AI_AGENT_MESSAGE",
@@ -536,78 +536,6 @@
     "valueFormat" : "%1$s",
     "enableQuickSearch" : true,
     "majorDEField" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "ENABLE",
-      "dBType" : "MYSQL5",
-      "name" : "ENABLE",
-      "queryCodeExp" : "t1.`ENABLE`",
-      "standardColumnName" : "`ENABLE`"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[ENABLE][逻辑有效标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT_MESSAGE.ENABLE"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ENABLE][逻辑有效标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT_MESSAGE.ENABLE"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组"
-      },
-      "ruleInfo" : "默认规则",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "enable",
-    "dEFType" : 1,
-    "dataType" : "YESNO",
-    "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.AI_AGENT_MESSAGE.ENABLE"
-    },
-    "logicName" : "逻辑有效标识",
-    "name" : "ENABLE",
-    "orderValue" : 3,
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "ENABLE"
-    },
-    "serviceCodeName" : "enable",
-    "stdDataType" : 9,
-    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_MAN",
@@ -1172,6 +1100,111 @@
     "dynaStorageDEField" : true,
     "queryColumn" : false
   }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONVERSATION_TITLE",
+      "dBType" : "MYSQL5",
+      "name" : "CONVERSATION_TITLE",
+      "queryCodeExp" : "t11.`TITLE`",
+      "standardColumnName" : "`CONVERSATION_TITLE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONVERSATION_TITLE",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "conversation_title",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "会话标题",
+    "name" : "CONVERSATION_TITLE",
+    "orderValue" : 280,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDERS/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "serviceCodeName" : "conversation_title",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
+  }, {
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
@@ -1593,6 +1626,230 @@
     "valueFormat" : "%1$s",
     "allowEmpty" : false
   }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONVERSATION_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "CONVERSATION_NAME",
+      "queryCodeExp" : "t11.`NAME`",
+      "standardColumnName" : "`CONVERSATION_NAME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "PICKER",
+        "name" : "默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBPICKER",
+        "name" : "移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONVERSATION_NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "conversation_name",
+    "dEFType" : 3,
+    "dataType" : "PICKUPTEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "会话名称",
+    "name" : "CONVERSATION_NAME",
+    "orderValue" : 1000,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDERS/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "serviceCodeName" : "conversation_name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "getValuePSDEField" : {
+      "name" : "CONVERSATION_ID",
+      "codeName" : "conversation_id"
+    },
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONVERSATION_ID",
+      "dBType" : "MYSQL5",
+      "name" : "CONVERSATION_ID",
+      "queryCodeExp" : "t1.`CONVERSATION_ID`",
+      "standardColumnName" : "`CONVERSATION_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CONVERSATION_ID_EQ",
+      "name" : "N_CONVERSATION_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONVERSATION_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "conversation_id",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "会话标识",
+    "name" : "CONVERSATION_ID",
+    "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDERS/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CONVERSATION_ID"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "serviceCodeName" : "conversation_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
+  }, {
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
@@ -1754,16 +2011,6 @@
       "stringLength" : 200,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "逻辑有效标识",
-      "name" : "enable",
-      "getPSDEField" : {
-        "name" : "ENABLE",
-        "codeName" : "enable"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 9,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "创建人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -1848,6 +2095,17 @@
       "stringLength" : 1048576,
       "type" : "DTOS"
     }, {
+      "logicName" : "会话标题",
+      "name" : "conversation_title",
+      "getPSDEField" : {
+        "name" : "CONVERSATION_TITLE",
+        "codeName" : "conversation_title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "消息内容",
       "name" : "content",
       "getPSDEField" : {
@@ -1871,6 +2129,28 @@
       "stringLength" : 100,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "logicName" : "会话标识",
+      "name" : "conversation_id",
+      "getPSDEField" : {
+        "name" : "CONVERSATION_ID",
+        "codeName" : "conversation_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "会话名称",
+      "name" : "conversation_name",
+      "getPSDEField" : {
+        "name" : "CONVERSATION_NAME",
+        "codeName" : "conversation_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "输入token数",
       "name" : "input_tokens",
@@ -1952,6 +2232,21 @@
   }, {
     "name" : "ai_agent_messageFilterDTO",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "会话标识",
+      "name" : "N_CONVERSATION_ID_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CONVERSATION_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CONVERSATION_ID",
+        "codeName" : "conversation_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "N_ID_EQ",
       "getPSDEFSearchMode" : {
@@ -2120,6 +2415,37 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "AI_AGENT_MESSAGE",
+    "enableFKey" : true
+  } ],
+  "getMinorPSDERs" : [ {
+    "codeName" : "AI_AGENT_CONVERSATION",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDERS/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID.json",
+    "fKeyName" : "F23D1E52E7003E021F",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message.json"
+    },
+    "name" : "DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "CONVERSATION_ID",
+      "codeName" : "conversation_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "CONVERSATION_NAME",
+      "codeName" : "conversation_name"
+    },
+    "pickupDEFName" : "CONVERSATION_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "AI_AGENT_CONVERSATION",
     "enableFKey" : true
   } ],
   "name" : "AI_AGENT_MESSAGE",
