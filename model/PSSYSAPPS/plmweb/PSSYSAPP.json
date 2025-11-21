@@ -186664,7 +186664,7 @@
         "name" : "自定义确定",
         "getPSDEUILogicNodes" : [ {
           "codeName" : "Begin",
-          "leftPos" : 70,
+          "leftPos" : 520,
           "logicNodeType" : "BEGIN",
           "name" : "开始",
           "getPSDEUILogicLinks" : [ {
@@ -186682,31 +186682,39 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
-          "code" : "console.log('测试');\r\nconsole.log(view);",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 219,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "PREPAREJSPARAM1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
-          "topPos" : 208
-        }, {
           "code" : "view.layoutPanel.panelItems.form.control.data.title = null;",
           "codeName" : "RAWJSCODE3",
           "leftPos" : 1150,
           "logicNodeType" : "RAWJSCODE",
           "name" : "清除表单",
           "topPos" : 208
+        }, {
+          "codeName" : "PREPAREJSPARAM2",
+          "leftPos" : 670,
+          "logicNodeType" : "PREPAREJSPARAM",
+          "name" : "绑定数据",
+          "getPSDEUILogicNodeParams" : [ {
+            "dstFieldName" : "state.data",
+            "getDstPSDEUILogicParam" : {
+              "modelref" : true,
+              "id" : "form"
+            },
+            "name" : "work_item ==> form[state.data]",
+            "paramAction" : "SETPARAMVALUE",
+            "getSrcPSDEUILogicParam" : {
+              "modelref" : true,
+              "id" : "work_item"
+            },
+            "srcValueType" : "SRCDLPARAM"
+          } ],
+          "topPos" : 50
+        }, {
+          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+          "codeName" : "RAWJSCODE2",
+          "leftPos" : 1150,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "通知刷新",
+          "topPos" : 360
         }, {
           "codeName" : "PREPAREJSPARAM1",
           "leftPos" : 440,
@@ -186738,19 +186746,32 @@
             },
             "srcValueType" : "SRCDLPARAM"
           } ],
-          "topPos" : 208
+          "topPos" : 50
         }, {
-          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
-          "codeName" : "RAWJSCODE2",
-          "leftPos" : 1150,
+          "code" : "view.state.isLoading = false;\r\nview.closeView();",
+          "codeName" : "RAWJSCODE4",
+          "leftPos" : 900,
           "logicNodeType" : "RAWJSCODE",
-          "name" : "通知刷新",
+          "name" : "关闭视图",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE4"
+            }
+          } ],
           "topPos" : 360
         }, {
-          "codeName" : "PREPAREJSPARAM2",
+          "code" : "console.log('测试');\r\nconsole.log(view);\r\nuiLogic.default.work_item = view.layoutPanel.panelItems.form.control.data;",
+          "codeName" : "RAWJSCODE1",
           "leftPos" : 670,
-          "logicNodeType" : "PREPAREJSPARAM",
-          "name" : "绑定数据",
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
           "getPSDEUILogicLinks" : [ {
             "getDstPSDEUILogicNode" : {
               "modelref" : true,
@@ -186760,22 +186781,8 @@
             "name" : "连接名称",
             "getSrcPSDEUILogicNode" : {
               "modelref" : true,
-              "id" : "PREPAREJSPARAM2"
+              "id" : "RAWJSCODE1"
             }
-          } ],
-          "getPSDEUILogicNodeParams" : [ {
-            "dstFieldName" : "state.data",
-            "getDstPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "form"
-            },
-            "name" : "work_item ==> form[state.data]",
-            "paramAction" : "SETPARAMVALUE",
-            "getSrcPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "work_item"
-            },
-            "srcValueType" : "SRCDLPARAM"
           } ],
           "topPos" : 208
         }, {
@@ -186855,47 +186862,28 @@
             "id" : "work_item"
           },
           "topPos" : 208
-        }, {
-          "code" : "view.state.isLoading = false;\r\nview.closeView();",
-          "codeName" : "RAWJSCODE4",
-          "leftPos" : 900,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "关闭视图",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE2"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE4"
-            }
-          } ],
-          "topPos" : 360
         } ],
         "getPSDEUILogicParams" : [ {
+          "codeName" : "view",
+          "logicName" : "当前视图对象",
+          "name" : "当前视图对象",
+          "activeViewParam" : true
+        }, {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",
           "default" : true,
           "entityParam" : true
         }, {
-          "codeName" : "form",
-          "logicName" : "指定部件对象",
-          "name" : "指定部件对象",
-          "ctrlParam" : true
-        }, {
           "codeName" : "work_item",
           "logicName" : "work_item",
           "name" : "work_item",
           "entityParam" : true
         }, {
-          "codeName" : "view",
-          "logicName" : "当前视图对象",
-          "name" : "当前视图对象",
-          "activeViewParam" : true
+          "codeName" : "form",
+          "logicName" : "指定部件对象",
+          "name" : "指定部件对象",
+          "ctrlParam" : true
         } ],
         "getStartPSDEUILogicNode" : {
           "modelref" : true,
