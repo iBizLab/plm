@@ -150375,14 +150375,14 @@
           }
         }, {
           "dataType" : 25,
-          "name" : "actual_workload",
+          "name" : "name",
           "getPSAppDEField" : {
-            "name" : "ACTUAL_WORKLOAD",
-            "codeName" : "actual_workload"
+            "name" : "TITLE",
+            "codeName" : "title"
           },
           "getPSDEField" : {
-            "name" : "ACTUAL_WORKLOAD",
-            "codeName" : "actual_workload"
+            "name" : "TITLE",
+            "codeName" : "title"
           }
         }, {
           "dataType" : 25,
@@ -150394,6 +150394,17 @@
           "getPSDEField" : {
             "name" : "ESTIMATED_WORKLOAD",
             "codeName" : "estimated_workload"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "actual_workload",
+          "getPSAppDEField" : {
+            "name" : "ACTUAL_WORKLOAD",
+            "codeName" : "actual_workload"
+          },
+          "getPSDEField" : {
+            "name" : "ACTUAL_WORKLOAD",
+            "codeName" : "actual_workload"
           }
         } ],
         "pagingSize" : 50,
@@ -186873,12 +186884,50 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
-          "code" : "view.layoutPanel.panelItems.form.control.data.title = null;\r\nview.layoutPanel.panelItems.form.control.data.start_at = null;\r\nview.layoutPanel.panelItems.form.control.data.end_at = null;\r\nview.layoutPanel.panelItems.form.control.data.description = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_from = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_type = null;\r\nview.layoutPanel.panelItems.form.control.data.risk = null;\r\nview.layoutPanel.panelItems.form.control.data.reappear_probability = null;\r\nview.layoutPanel.panelItems.form.control.data.severity = null;\r\nview.layoutPanel.panelItems.form.control.data.job_type = null;\r\nview.layoutPanel.panelItems.form.control.data.attachments = null;\r\nview.layoutPanel.panelItems.form.control.state.modified = false;",
-          "codeName" : "RAWJSCODE3",
+          "code" : "view.layoutPanel.panelItems.form.control.state.modified = false;\r\nview.state.isLoading = false;\r\nview.closeView();",
+          "codeName" : "RAWJSCODE4",
+          "leftPos" : 1150,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "关闭视图",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE4"
+            }
+          } ],
+          "topPos" : 370
+        }, {
+          "code" : "uiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 670,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEACTION1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
+        }, {
+          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+          "codeName" : "RAWJSCODE2",
           "leftPos" : 1430,
           "logicNodeType" : "RAWJSCODE",
-          "name" : "清除表单",
-          "topPos" : 208
+          "name" : "通知刷新",
+          "topPos" : 370
         }, {
           "code" : "ibiz.message.success('新建成功');",
           "codeName" : "RAWJSCODE5",
@@ -186942,23 +186991,11 @@
           } ],
           "topPos" : 208
         }, {
-          "code" : "console.log('测试');\r\nconsole.log(view);\r\nuiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 670,
+          "code" : "view.layoutPanel.panelItems.form.control.data.title = null;\r\nview.layoutPanel.panelItems.form.control.data.start_at = null;\r\nview.layoutPanel.panelItems.form.control.data.end_at = null;\r\nview.layoutPanel.panelItems.form.control.data.description = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_from = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_type = null;\r\nview.layoutPanel.panelItems.form.control.data.risk = null;\r\nview.layoutPanel.panelItems.form.control.data.reappear_probability = null;\r\nview.layoutPanel.panelItems.form.control.data.severity = null;\r\nview.layoutPanel.panelItems.form.control.data.job_type = null;\r\nview.layoutPanel.panelItems.form.control.data.attachments = null;\r\nview.layoutPanel.panelItems.form.control.state.modified = false;",
+          "codeName" : "RAWJSCODE3",
+          "leftPos" : 1430,
           "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "DEACTION1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
+          "name" : "清除表单",
           "topPos" : 208
         }, {
           "codeName" : "DEACTION1",
@@ -186994,54 +187031,23 @@
             "id" : "work_item"
           },
           "topPos" : 208
-        }, {
-          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
-          "codeName" : "RAWJSCODE2",
-          "leftPos" : 1430,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "通知刷新",
-          "topPos" : 370
-        }, {
-          "code" : "view.layoutPanel.panelItems.form.control.state.modified = false;\r\nview.state.isLoading = false;\r\nview.closeView();",
-          "codeName" : "RAWJSCODE4",
-          "leftPos" : 1150,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "关闭视图",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE2"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE4"
-            }
-          } ],
-          "topPos" : 370
         } ],
         "getPSDEUILogicParams" : [ {
-          "codeName" : "view",
-          "logicName" : "当前视图对象",
-          "name" : "当前视图对象",
-          "activeViewParam" : true
-        }, {
-          "codeName" : "work_item",
-          "logicName" : "work_item",
-          "name" : "work_item",
-          "entityParam" : true
-        }, {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",
           "default" : true,
           "entityParam" : true
         }, {
-          "codeName" : "form",
-          "logicName" : "指定部件对象",
-          "name" : "指定部件对象",
-          "ctrlParam" : true
+          "codeName" : "work_item",
+          "logicName" : "work_item",
+          "name" : "work_item",
+          "entityParam" : true
+        }, {
+          "codeName" : "view",
+          "logicName" : "当前视图对象",
+          "name" : "当前视图对象",
+          "activeViewParam" : true
         } ],
         "getStartPSDEUILogicNode" : {
           "modelref" : true,

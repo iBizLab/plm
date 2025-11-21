@@ -177,22 +177,22 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "duration_updateform",
+      "name" : "时长表单项更新",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "workload_schedule"
+      }, {
+        "name" : "remaining_workload"
+      } ],
+      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "update_workload_kind",
       "name" : "更新标识",
       "getPSDEFIUpdateDetails" : [ {
         "name" : "workload_kind"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar principal_type = form_data.principal_type;\r\n\r\nif (principal_type == 'IDEA') {\r\n    form_data.workload_kind = '产品需求';\r\n}\r\nif (principal_type == 'WORK_ITEM') {\r\n    form_data.workload_kind = '工作项';\r\n}\r\nif (principal_type == 'TEST_CASE') {\r\n    form_data.workload_kind = '测试用例';\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "duration_updateform",
-      "name" : "时长表单项更新",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "remaining_workload"
-      }, {
-        "name" : "workload_schedule"
-      } ],
-      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {
@@ -321,6 +321,14 @@
         "codeName" : "principal_type"
       }
     }, {
+      "id" : "name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
       "id" : "type_id",
       "hidden" : true,
       "dataType" : 25,
@@ -395,7 +403,6 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "fieldName" : "name",
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
@@ -485,7 +492,6 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "fieldName" : "name",
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
@@ -575,7 +581,6 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "fieldName" : "name",
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
@@ -1016,6 +1021,35 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "principal_type"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "caption" : "事项",
+        "codeName" : "name",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "name",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "name"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
