@@ -3,13 +3,12 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.SYS_TODO"
   },
-  "caption" : "待办",
-  "codeName" : "sys_todo_grid_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_grid_view.json",
-  "funcViewMode" : "MDATAVIEW",
-  "gridRowActiveMode" : 1,
+  "caption" : "已办结事项",
+  "codeName" : "sys_todo_finish_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_finish_grid_view.json",
+  "gridRowActiveMode" : 0,
   "memo" : "系统自动添加",
-  "name" : "SysTodoGridView",
+  "name" : "SysTodofinish_grid_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
@@ -75,8 +74,14 @@
       "editMode" : true
     }
   } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_todosubtype_eq",
+    "name" : "n_todosubtype_eq",
+    "value" : "Finish",
+    "rawValue" : true
+  } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
+    "name" : "NEWDATA",
     "realTitle" : "待办编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.SYS_TODO.EDITVIEW"
@@ -87,7 +92,7 @@
       "viewType" : "DEEDITVIEW"
     }
   }, {
-    "name" : "NEWDATA",
+    "name" : "EDITDATA",
     "realTitle" : "待办编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.SYS_TODO.EDITVIEW"
@@ -100,11 +105,11 @@
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
-    "codeName" : "main",
+    "codeName" : "todo",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
     "controlType" : "GRID",
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSGRIDS/main.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSGRIDS/todo.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -112,7 +117,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "FetchDefault"
+        "id" : "FetchCurUser"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -120,7 +125,7 @@
       }
     },
     "groupMode" : "NONE",
-    "logicName" : "主表格",
+    "logicName" : "待办表格",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
@@ -196,7 +201,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "FetchDefault"
+          "id" : "FetchCurUser"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -543,106 +548,8 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "3f00d52fc14a8330913671b688c0ece0",
+    "modelid" : "765e27803b4e0d8d2c48fdbc22ae569f",
     "modeltype" : "PSDEGRID"
-  }, {
-    "codeName" : "default",
-    "controlType" : "SEARCHFORM",
-    "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSSEARCHFORMS/default.json",
-    "logicName" : "默认搜索表单",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-    },
-    "getPSControlHandler" : {
-      "getPSHandlerActions" : [ {
-        "actionType" : "FILTERACTION",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGet"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "loaddraft",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGetDraft"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "search",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterSearch"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      } ],
-      "enableDEFieldPrivilege" : false,
-      "id" : "搜索表单处理器"
-    },
-    "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "SEARCHFORM"
-    },
-    "getPSDEFormPages" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.SYS_TODO.DEFAULT.FORMPAGE.FORMPAGE1"
-      },
-      "caption" : "常规条件",
-      "codeName" : "formpage1",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage1",
-      "getPSLayout" : {
-        "childColMD" : 24,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    } ],
-    "getPSLayout" : {
-      "childColMD" : 24,
-      "columnCount" : 24,
-      "layout" : "TABLE_24COL"
-    },
-    "searchButtonStyle" : "DEFAULT",
-    "tabHeaderPos" : "TOP",
-    "enableAdvanceSearch" : false,
-    "enableAutoSearch" : false,
-    "enableFilterSave" : false,
-    "noTabHeader" : true,
-    "name" : "searchform",
-    "modelid" : "1dbcb419c8b29e94c439f08f48cabcdb",
-    "modeltype" : "PSDEFORM_SEARCHFORM"
-  }, {
-    "codeName" : "grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（默认表格界面）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "xDataControlName" : "grid",
-    "modelid" : "ec6fbb681f5e3e6783c2af57e5eefaaa",
-    "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
@@ -664,8 +571,8 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.SYS_TODO"
     },
-    "caption" : "待办",
-    "codeName" : "grid_view_captionbar",
+    "caption" : "已办结事项",
+    "codeName" : "finish_grid_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -674,8 +581,8 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "GridView",
-  "getPSDEViewId" : "a4a993081261932284ba7f6d4eb5f36e",
+  "getPSDEViewCodeName" : "finish_grid_view",
+  "getPSDEViewId" : "c5c5aecb36c65d2bc3f85f4d5aa7990c",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -690,11 +597,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
-  "title" : "待办表格视图",
-  "getTitlePSLanguageRes" : {
-    "lanResTag" : "PAGE.TITLE.SYS_TODO.GRIDVIEW"
-  },
+  "title" : "已办结事项",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",
   "xDataControlName" : "grid",
@@ -706,6 +609,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "48390fac23dac2aa943e424dd380e81a",
+  "modelid" : "e01fd175045272f86908c9a5764e030f",
   "modeltype" : "PSAPPDEVIEW"
 }
