@@ -6297,24 +6297,6 @@
     } ],
     "enableCache" : true
   }, {
-    "codeListTag" : "biztype",
-    "codeListType" : "STATIC",
-    "codeName" : "biztype",
-    "dynaInstMode" : 0,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/biztype.json",
-    "emptyText" : "未定义",
-    "name" : "业务对象",
-    "getPSCodeItems" : [ {
-      "codeName" : "part",
-      "text" : "零件",
-      "value" : "part"
-    }, {
-      "codeName" : "document",
-      "text" : "文档",
-      "value" : "document"
-    } ],
-    "enableCache" : true
-  }, {
     "codeListTag" : "ebsx__ebsx__CodeListTodoState",
     "codeListType" : "STATIC",
     "codeName" : "ebsx__ebsx__CodeListTodoState",
@@ -181968,6 +181950,27 @@
         "globalUIAction" : true,
         "id" : "open_summary_task@work_item"
       }, {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "确定",
+        "codeName" : "panel_custom_work_button_okaction_click",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "work_item_panel_custom_work_button_okaction_click",
+        "name" : "确定",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "custom_confirm"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "panel_custom_work_button_okaction_click",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "uILogicType" : "DELOGIC",
+        "id" : "panel_custom_work_button_okaction_click@work_item"
+      }, {
         "actionTarget" : "NONE",
         "caption" : "成员设置",
         "codeName" : "project_resource_member",
@@ -186644,6 +186647,104 @@
           "name" : "relation",
           "entityParam" : true
         }, {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "default" : true,
+          "entityParam" : true
+        } ],
+        "getStartPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "codeName" : "custom_confirm",
+        "defaultParamName" : "Default",
+        "logicName" : "自定义确定",
+        "name" : "自定义确定",
+        "getPSDEUILogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+          "codeName" : "RAWJSCODE2",
+          "leftPos" : 720,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "通知刷新",
+          "topPos" : 350
+        }, {
+          "codeName" : "RAWJSCODE3",
+          "leftPos" : 500,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "清除表单",
+          "topPos" : 208
+        }, {
+          "codeName" : "DEACTION1",
+          "getDstPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getDstPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getDstPSDEUILogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "leftPos" : 500,
+          "logicNodeType" : "DEACTION",
+          "name" : "创建工作项",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEACTION1"
+            }
+          } ],
+          "topPos" : 350
+        }, {
+          "code" : "console.log('测试');\r\nconsole.log(view);",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 319,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE3"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
+        } ],
+        "getPSDEUILogicParams" : [ {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",

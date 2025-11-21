@@ -25,10 +25,13 @@
     "cssName" : "new_create_style"
   },
   "getPSViewLayoutPanel" : {
-    "codeName" : "usr1122272397",
+    "getAllPSPanelFields" : [ {
+      "id" : "is_nexted"
+    } ],
+    "codeName" : "custom_work",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
-    "logicName" : "dyna_scrum_qucik_create_view选项操作视图布局面",
+    "logicName" : "工作项自定义布局面板",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -189,17 +192,29 @@
           "layout" : "FLEX"
         },
         "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
           "caption" : "确定",
-          "codeName" : "Ok",
-          "fullCodeName" : "Ok",
-          "name" : "视图_确定",
-          "predefinedType" : "VIEW_OKACTION",
-          "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "Ok",
-          "uIActionType" : "DEUIACTION"
+          "codeName" : "panel_custom_work_button_okaction_click",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "work_item_panel_custom_work_button_okaction_click",
+          "name" : "确定",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "custom_confirm"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "panel_custom_work_button_okaction_click",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "uILogicType" : "DELOGIC",
+          "id" : "panel_custom_work_button_okaction_click@work_item"
         },
         "tooltip" : "确定",
+        "uIActionTarget" : "SINGLEDATA",
         "showCaption" : true
       }, {
         "actionType" : "UIACTION",
@@ -229,13 +244,26 @@
         },
         "tooltip" : "取消",
         "showCaption" : true
+      }, {
+        "caption" : "文本框",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "FIELD",
+        "name" : "is_nexted",
+        "getPSEditor" : {
+          "editorType" : "CHECKBOX",
+          "name" : "is_nexted"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        }
       } ]
     } ],
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "752a87c7333836b202a76fa748fd44ba",
+    "modelid" : "861bd237a6460224a09e155ee2e135a8",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
