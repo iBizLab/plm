@@ -1027,15 +1027,15 @@
     "getPSCodeItems" : [ {
       "codeName" : "work_item",
       "text" : "工作项",
-      "value" : "work_item"
+      "value" : "WORK_ITEM"
     }, {
       "codeName" : "idea",
       "text" : "产品需求",
-      "value" : "idea"
+      "value" : "IDEA"
     }, {
       "codeName" : "test_case",
       "text" : "测试用例",
-      "value" : "test_case"
+      "value" : "TEST_CASE"
     } ],
     "enableCache" : true
   }, {
@@ -67283,7 +67283,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW",
     "resource" : "SysTodo",
-    "view" : "RedirectView",
+    "view" : "redirect_view",
     "name" : "SysTodoRedirectView"
   }, {
     "modelref" : true,
@@ -149406,6 +149406,70 @@
           "codeName" : "id"
         },
         "defaultMode" : true,
+        "enablePagingBar" : false
+      }, {
+        "codeName" : "fill_workload",
+        "logicName" : "填充工时",
+        "name" : "fill_workload",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEACModeDataItems" : [ {
+          "dataType" : 25,
+          "name" : "value",
+          "getPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "getPSDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "text",
+          "getPSAppDEField" : {
+            "name" : "TITLE",
+            "codeName" : "title"
+          },
+          "getPSDEField" : {
+            "name" : "TITLE",
+            "codeName" : "title"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "actual_workload",
+          "getPSAppDEField" : {
+            "name" : "ACTUAL_WORKLOAD",
+            "codeName" : "actual_workload"
+          },
+          "getPSDEField" : {
+            "name" : "ACTUAL_WORKLOAD",
+            "codeName" : "actual_workload"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "estimated_workload",
+          "getPSAppDEField" : {
+            "name" : "ESTIMATED_WORKLOAD",
+            "codeName" : "estimated_workload"
+          },
+          "getPSDEField" : {
+            "name" : "ESTIMATED_WORKLOAD",
+            "codeName" : "estimated_workload"
+          }
+        } ],
+        "pagingSize" : 50,
+        "getTextPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "getValuePSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "defaultMode" : false,
         "enablePagingBar" : false
       } ],
       "getAllPSAppDEActions" : [ {
