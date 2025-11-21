@@ -5878,6 +5878,32 @@
     } ],
     "enableCache" : true
   }, {
+    "cacheTimeout" : 1000,
+    "codeListTag" : "ai__ai_agent_context_dynamic",
+    "codeListType" : "DYNAMIC",
+    "codeName" : "ai__ai_agent_context_dynamic",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_agent_context_dynamic.json",
+    "emptyText" : "未定义",
+    "name" : "智能体选择",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "FetchFull_info"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getValuePSAppDEField" : {
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
+    },
+    "enableCache" : true
+  }, {
     "codeListTag" : "ai__ai_conversation_status",
     "codeListType" : "STATIC",
     "codeName" : "ai__ai_conversation_status",
@@ -7262,6 +7288,42 @@
       "text" : "用户自定义4",
       "value" : "USER4"
     } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "extension__DELogicSysAIChatAgentType",
+    "codeListType" : "STATIC",
+    "codeName" : "extension__DELogicSysAIChatAgentType",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__DELogicSysAIChatAgentType.json",
+    "emptyText" : "未定义",
+    "name" : "实体逻辑系统AI聊天代理类型",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogicNode.json"
+    },
+    "getPSCodeItems" : [ {
+      "codeName" : "default",
+      "memo" : "同步调用聊天请求",
+      "text" : "默认",
+      "value" : "DEFAULT"
+    }, {
+      "codeName" : "chatcategory",
+      "text" : "交谈问题分类",
+      "value" : "CHATCATEGORY"
+    }, {
+      "codeName" : "chatoutput",
+      "text" : "交谈输出（等待输入）",
+      "value" : "CHATOUTPUT"
+    }, {
+      "codeName" : "chataggregation",
+      "text" : "交谈聚合",
+      "value" : "CHATAGGREGATION"
+    }, {
+      "codeName" : "chataggregationoutput",
+      "text" : "交谈聚合（等待输入）",
+      "value" : "CHATAGGREGATIONOUTPUT"
+    } ],
+    "userTag2" : "DELogicSysAIChatAgentType",
     "enableCache" : true
   }, {
     "codeListTag" : "extension__DENotifySubType",
@@ -61842,6 +61904,13 @@
     "name" : "article_pageother_re_sapce_page_grid_view"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicnodedesignview_sysaichatagent.json",
+    "viewType" : "DEEDITVIEW",
+    "priority" : 20,
+    "resource" : "PSDELogicNode",
+    "view" : "DesignView_SysAIChatAgent"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_edit_view.json",
     "viewType" : "DEEDITVIEW",
     "resource" : "idea",
@@ -83683,7 +83752,7 @@
             },
             "nodeType" : "ai_credential",
             "getPSSysImage" : {
-              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1763688971491\" class=\"icon\" viewBox=\"0 0 1275 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"39014\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"249.0234375\" height=\"200\"><path d=\"M763.870968 553.290323m-227.096774 0a227.096774 227.096774 0 1 0 454.193548 0 227.096774 227.096774 0 1 0-454.193548 0Z\" fill=\"#FFEEC8\" p-id=\"39015\"></path><path d=\"M280.774194 57.806452h202.32258v41.290322H280.774194zM1094.193548 966.193548h-908.387096c-70.193548 0-123.870968-53.677419-123.870968-123.870967v-578.064516c0-70.193548 53.677419-123.870968 123.870968-123.870968h908.387096c70.193548 0 123.870968 53.677419 123.870968 123.870968v578.064516c0 66.064516-57.806452 123.870968-123.870968 123.870967z m-908.387096-784.516129c-45.419355 0-82.580645 37.16129-82.580646 82.580646v578.064516c0 45.419355 37.16129 82.580645 82.580646 82.580645h908.387096c45.419355 0 82.580645-37.16129 82.580646-82.580645v-578.064516c0-45.419355-37.16129-82.580645-82.580646-82.580646h-908.387096z\" fill=\"#FFB449\" p-id=\"39016\"></path><path d=\"M640 780.387097c-123.870968 0-227.096774-103.225806-227.096774-227.096774s103.225806-227.096774 227.096774-227.096775 227.096774 103.225806 227.096774 227.096775-103.225806 227.096774-227.096774 227.096774z m0-412.903226c-103.225806 0-185.806452 82.580645-185.806452 185.806452s82.580645 185.806452 185.806452 185.806451 185.806452-82.580645 185.806452-185.806451-86.709677-185.806452-185.806452-185.806452z\" fill=\"#FFB449\" p-id=\"39017\"></path><path d=\"M1032.258065 326.193548m-61.935484 0a61.935484 61.935484 0 1 0 123.870967 0 61.935484 61.935484 0 1 0-123.870967 0Z\" fill=\"#FFB449\" p-id=\"39018\"></path></svg>",
+              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1763715254392\" class=\"icon\" viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"30882\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200.1953125\" height=\"200\"><path d=\"M702.300885 546.737463c86.088496 0 155.563422 69.474926 155.563422 155.563422v9.061947l163.115044 40.778761c3.020649-16.613569 4.530973-33.227139 4.530973-49.840708 0-178.218289-143.480826-321.699115-321.699115-321.699115-60.412979 0-116.294985 16.613569-163.115044 45.309734l-80.047197-80.047197 67.964601-67.964602c31.716814-31.716814 31.716814-84.578171 0-116.294985-31.716814-31.716814-84.578171-31.716814-116.294985 0l-70.985251 66.454277-42.289085-42.289085c27.185841-7.551622 48.330383-33.227139 48.330383-63.433629 0-36.247788-30.20649-66.454277-66.454277-66.454277-30.20649 0-55.882006 19.634218-63.433628 48.330383L166.135693 52.861357 138.949853 25.675516C107.233038-6.041298 55.882006-6.041298 24.165192 25.675516s-31.716814 83.067847 0 114.784661l400.235988 400.235988c-10.572271 16.613569-18.123894 34.737463-25.675516 54.371682l163.115044 40.778761c25.675516-51.351032 78.536873-89.109145 140.460177-89.109145z\" fill=\"#e7772c\" p-id=\"30883\" data-spm-anchor-id=\"a313x.search_index.0.i11.2d7c3a81BwcsiD\" class=\"\"></path><path d=\"M702.300885 1024c160.094395 0 293.00295-117.80531 317.168142-271.858407l-161.60472-40.778761c-4.530973 81.557522-72.495575 146.501475-154.053098 146.501475-86.088496 0-155.563422-69.474926-155.563421-155.563422 0-24.165192 6.041298-45.309735 15.103244-66.454277l-163.115044-40.778761c-12.082596 33.227139-18.123894 69.474926-18.123894 107.233038-1.510324 178.218289 143.480826 321.699115 320.188791 321.699115z\" fill=\"#e7772c\" p-id=\"30884\" data-spm-anchor-id=\"a313x.search_index.0.i10.2d7c3a81BwcsiD\" class=\"\"></path></svg>",
               "height" : 20,
               "width" : 20
             },
@@ -186682,25 +186751,12 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
-          "codeName" : "PREPAREJSPARAM2",
-          "leftPos" : 670,
-          "logicNodeType" : "PREPAREJSPARAM",
-          "name" : "绑定数据",
-          "getPSDEUILogicNodeParams" : [ {
-            "dstFieldName" : "state.data",
-            "getDstPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "form"
-            },
-            "name" : "work_item ==> form[state.data]",
-            "paramAction" : "SETPARAMVALUE",
-            "getSrcPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "work_item"
-            },
-            "srcValueType" : "SRCDLPARAM"
-          } ],
-          "topPos" : 50
+          "code" : "view.layoutPanel.panelItems.form.control.data.title = null;\r\nview.layoutPanel.panelItems.form.control.data.start_at = null;\r\nview.layoutPanel.panelItems.form.control.data.end_at = null;\r\nview.layoutPanel.panelItems.form.control.data.description = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_from = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_type = null;\r\nview.layoutPanel.panelItems.form.control.data.risk = null;",
+          "codeName" : "RAWJSCODE3",
+          "leftPos" : 1150,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "清除表单",
+          "topPos" : 208
         }, {
           "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
           "codeName" : "RAWJSCODE2",
@@ -186709,12 +186765,43 @@
           "name" : "通知刷新",
           "topPos" : 360
         }, {
-          "code" : "view.layoutPanel.panelItems.form.control.data.title = null;",
-          "codeName" : "RAWJSCODE3",
-          "leftPos" : 1150,
+          "code" : "console.log('测试');\r\nconsole.log(view);\r\nuiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 670,
           "logicNodeType" : "RAWJSCODE",
-          "name" : "清除表单",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEACTION1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
           "topPos" : 208
+        }, {
+          "code" : "view.layoutPanel.panelItems.form.control.state.modified = false;\r\nview.state.isLoading = false;\r\nview.closeView();",
+          "codeName" : "RAWJSCODE4",
+          "leftPos" : 900,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "关闭视图",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE4"
+            }
+          } ],
+          "topPos" : 360
         }, {
           "codeName" : "DEACTION1",
           "getDstPSAppDEAction" : {
@@ -186792,87 +186879,17 @@
             "id" : "work_item"
           },
           "topPos" : 208
-        }, {
-          "code" : "view.state.isLoading = false;\r\nview.closeView();",
-          "codeName" : "RAWJSCODE4",
-          "leftPos" : 900,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "关闭视图",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE2"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE4"
-            }
-          } ],
-          "topPos" : 360
-        }, {
-          "code" : "console.log('测试');\r\nconsole.log(view);\r\nuiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 670,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "DEACTION1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
-          "topPos" : 208
-        }, {
-          "codeName" : "PREPAREJSPARAM1",
-          "leftPos" : 440,
-          "logicNodeType" : "PREPAREJSPARAM",
-          "name" : "绑定表单",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "PREPAREJSPARAM2"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "PREPAREJSPARAM1"
-            }
-          } ],
-          "getPSDEUILogicNodeParams" : [ {
-            "getDstPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "form"
-            },
-            "name" : "view[layoutPanel.panelItems.form.control] ==> form",
-            "paramAction" : "SETPARAMVALUE",
-            "srcFieldName" : "layoutPanel.panelItems.form.control",
-            "getSrcPSDEUILogicParam" : {
-              "modelref" : true,
-              "id" : "view"
-            },
-            "srcValueType" : "SRCDLPARAM"
-          } ],
-          "topPos" : 50
         } ],
         "getPSDEUILogicParams" : [ {
-          "codeName" : "work_item",
-          "logicName" : "work_item",
-          "name" : "work_item",
-          "entityParam" : true
-        }, {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",
           "default" : true,
+          "entityParam" : true
+        }, {
+          "codeName" : "work_item",
+          "logicName" : "work_item",
+          "name" : "work_item",
           "entityParam" : true
         }, {
           "codeName" : "view",

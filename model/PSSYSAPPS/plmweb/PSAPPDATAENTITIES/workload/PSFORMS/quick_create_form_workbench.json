@@ -72,9 +72,9 @@
     "codeName" : "duration_updateform",
     "name" : "时长表单项更新",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "remaining_workload"
-    }, {
       "name" : "workload_schedule"
+    }, {
+      "name" : "remaining_workload"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
     "customCode" : true
@@ -201,10 +201,6 @@
     "id" : "principal_id",
     "hidden" : true,
     "dataType" : 25,
-    "createDVT" : "APPDATA",
-    "createDV" : "principal_id",
-    "updateDVT" : "APPDATA",
-    "updateDV" : "principal_id",
     "getPSAppDEField" : {
       "name" : "PRINCIPAL_ID",
       "codeName" : "principal_id"
@@ -288,7 +284,7 @@
           "layout" : "TABLE_12COL"
         },
         "valueItemName" : "principal_type",
-        "allowEmpty" : true,
+        "allowEmpty" : false,
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
@@ -316,18 +312,6 @@
             "codeName" : "name"
           },
           "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "principal_type",
-              "logicType" : "SINGLE",
-              "value" : "WORK_ITEM"
-            } ],
-            "relatedDetailNames" : [ "principal_type" ],
-            "notMode" : false
-          }, {
             "groupOP" : "AND",
             "logicCat" : "ITEMBLANK",
             "logicType" : "GROUP",
@@ -400,8 +384,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "principal_type",
-          "resetItemNames" : [ "principal_type" ],
           "valueItemName" : "principal_id",
           "allowEmpty" : false,
           "showCaption" : true
@@ -425,18 +407,6 @@
             "codeName" : "name"
           },
           "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "principal_type",
-              "logicType" : "SINGLE",
-              "value" : "TEST_CASE"
-            } ],
-            "relatedDetailNames" : [ "principal_type" ],
-            "notMode" : false
-          }, {
             "groupOP" : "AND",
             "logicCat" : "ITEMBLANK",
             "logicType" : "GROUP",
@@ -509,8 +479,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "principal_type",
-          "resetItemNames" : [ "principal_type" ],
           "valueItemName" : "principal_id",
           "allowEmpty" : false,
           "showCaption" : true
@@ -534,18 +502,6 @@
             "codeName" : "name"
           },
           "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "principal_type",
-              "logicType" : "SINGLE",
-              "value" : "IDEA"
-            } ],
-            "relatedDetailNames" : [ "principal_type" ],
-            "notMode" : false
-          }, {
             "groupOP" : "AND",
             "logicCat" : "ITEMBLANK",
             "logicType" : "GROUP",
@@ -618,8 +574,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "principal_type",
-          "resetItemNames" : [ "principal_type" ],
           "valueItemName" : "principal_id",
           "allowEmpty" : false,
           "showCaption" : true
@@ -910,8 +864,6 @@
     }, {
       "caption" : "工时主体标识",
       "codeName" : "principal_id",
-      "createDV" : "principal_id",
-      "createDVT" : "APPDATA",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMITEM",
@@ -933,8 +885,6 @@
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
-      "updateDV" : "principal_id",
-      "updateDVT" : "APPDATA",
       "allowEmpty" : true,
       "hidden" : true
     }, {
