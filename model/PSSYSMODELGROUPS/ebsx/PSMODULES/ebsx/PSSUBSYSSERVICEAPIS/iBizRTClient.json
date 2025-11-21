@@ -2475,6 +2475,10 @@
       "length" : 100,
       "logicName" : "业务对象",
       "name" : "BIZTYPE",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/biztype.json"
+      },
       "scale" : 0,
       "stdDataType" : 25
     }, {
@@ -2630,7 +2634,7 @@
       "name" : "TODOSTATE",
       "getPSCodeList" : {
         "modelref" : true,
-        "path" : "PSCODELISTS/CodeListTodoState.json"
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSCODELISTS/CodeListTodoState.json"
       },
       "scale" : 0,
       "stdDataType" : 25
@@ -2704,6 +2708,36 @@
       "requestParamType" : "ENTITY",
       "uniqueTag" : "SYS_TODO__DEACTION__CREATE",
       "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "DelUndo",
+      "keyField" : "TODOID",
+      "methodType" : "DEACTION",
+      "name" : "DelUndo",
+      "getPSDECodeName" : "SysTodo",
+      "getPSDELogicName" : "待办",
+      "getPSDEName" : "SYS_TODO",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysTodo"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysTodoDTO"
+        },
+        "type" : "DTOS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "TODOID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_TODO__DEACTION__DELUNDO",
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Get",

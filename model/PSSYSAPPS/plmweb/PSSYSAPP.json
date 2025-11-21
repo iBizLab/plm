@@ -1017,6 +1017,28 @@
     } ],
     "enableCache" : true
   }, {
+    "codeListTag" : "Base__workload_kind",
+    "codeListType" : "STATIC",
+    "codeName" : "Base__workload_kind",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__workload_kind.json",
+    "emptyText" : "未定义",
+    "name" : "工时种类",
+    "getPSCodeItems" : [ {
+      "codeName" : "work_item",
+      "text" : "工作项",
+      "value" : "work_item"
+    }, {
+      "codeName" : "idea",
+      "text" : "需求",
+      "value" : "idea"
+    }, {
+      "codeName" : "test_case",
+      "text" : "测试用例",
+      "value" : "test_case"
+    } ],
+    "enableCache" : true
+  }, {
     "cacheTimeout" : 1000,
     "codeListTag" : "Base__workload_type",
     "codeListType" : "DYNAMIC",
@@ -6272,6 +6294,24 @@
       "codeName" : "summarize_oldest",
       "text" : "摘要保留早期",
       "value" : "summarize_oldest"
+    } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "biztype",
+    "codeListType" : "STATIC",
+    "codeName" : "biztype",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/biztype.json",
+    "emptyText" : "未定义",
+    "name" : "业务对象",
+    "getPSCodeItems" : [ {
+      "codeName" : "part",
+      "text" : "零件",
+      "value" : "part"
+    }, {
+      "codeName" : "document",
+      "text" : "文档",
+      "value" : "document"
     } ],
     "enableCache" : true
   }, {
@@ -68585,6 +68625,13 @@
     "resource" : "PSDENotify",
     "view" : "event_hook_grid_view",
     "name" : "PSDENotifyevent_hook_grid_view"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_quick_create_view_workbench.json",
+    "viewType" : "DEOPTVIEW",
+    "resource" : "workload",
+    "view" : "quick_create_view_workbench",
+    "name" : "workloadquick_create_view_workbench"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_archived_grid_view.json",
@@ -147052,6 +147099,32 @@
         "uILogicAttachMode" : "REPLACE",
         "id" : "parent_dimension@workload"
       }, {
+        "actionTarget" : "NONE",
+        "caption" : "登记工时",
+        "codeName" : "record_working_hours",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_quick_create_view_workbench.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "workload_record_working_hours",
+        "name" : "工作台登记工时",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "record_working_hours",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "record_working_hours@workload"
+      }, {
         "actionTarget" : "SINGLEKEY",
         "caption" : "工作类别总登记时长链接跳转",
         "codeName" : "workload_type_duration_link",
@@ -148990,6 +149063,10 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_view.json",
         "viewType" : "DETABEXPVIEW"
+      }, {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_quick_create_view_workbench.json",
+        "viewType" : "DEOPTVIEW"
       }, {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_drill_detail_grid_view.json",
