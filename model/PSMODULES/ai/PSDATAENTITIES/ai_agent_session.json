@@ -406,7 +406,7 @@
     "dataType" : "GUID",
     "importOrder" : 1000,
     "length" : 100,
-    "logicName" : "智能体业务上下文标识",
+    "logicName" : "智能体会话标识",
     "name" : "ID",
     "orderValue" : 1,
     "serviceCodeName" : "id",
@@ -484,6 +484,220 @@
     "valueFormat" : "%1$s",
     "enableQuickSearch" : true,
     "majorDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONTEXT_ID",
+      "dBType" : "MYSQL5",
+      "name" : "CONTEXT_ID",
+      "queryCodeExp" : "t1.`CONTEXT_ID`",
+      "standardColumnName" : "`CONTEXT_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CONTEXT_ID_EQ",
+      "name" : "N_CONTEXT_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CONTEXT_ID][上下文标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[CONTEXT_ID][上下文标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CONTEXT_ID][上下文标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[CONTEXT_ID][上下文标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONTEXT_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "context_id",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "智能体业务上下文标识",
+    "name" : "CONTEXT_ID",
+    "orderValue" : 150,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_session/PSDERS/DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "serviceCodeName" : "context_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONTEXT_CODE_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "CONTEXT_CODE_NAME",
+      "queryCodeExp" : "t11.`CODE_NAME`",
+      "standardColumnName" : "`CONTEXT_CODE_NAME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CONTEXT_CODE_NAME][上下文标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_CODE_NAME][上下文标记]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CONTEXT_CODE_NAME][上下文标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_CODE_NAME][上下文标记]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONTEXT_CODE_NAME",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "context_code_name",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "上下文标记",
+    "name" : "CONTEXT_CODE_NAME",
+    "orderValue" : 160,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_session/PSDERS/DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "serviceCodeName" : "context_code_name",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
@@ -775,7 +989,7 @@
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_agent_sessionDTO",
     "getPSDEMethodDTOFields" : [ {
-      "logicName" : "智能体业务上下文标识",
+      "logicName" : "智能体会话标识",
       "name" : "id",
       "getPSDEField" : {
         "name" : "ID",
@@ -796,6 +1010,28 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "智能体业务上下文标识",
+      "name" : "context_id",
+      "getPSDEField" : {
+        "name" : "CONTEXT_ID",
+        "codeName" : "context_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "上下文标记",
+      "name" : "context_code_name",
+      "getPSDEField" : {
+        "name" : "CONTEXT_CODE_NAME",
+        "codeName" : "context_code_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "调试数据",
@@ -838,6 +1074,21 @@
     "name" : "ai_agent_sessionFilterDTO",
     "getPSDEFilterDTOFields" : [ {
       "logicName" : "智能体业务上下文标识",
+      "name" : "N_CONTEXT_ID_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CONTEXT_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CONTEXT_ID",
+        "codeName" : "context_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "智能体会话标识",
       "name" : "N_ID_EQ",
       "getPSDEFSearchMode" : {
         "modelref" : true,
@@ -978,6 +1229,32 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSDERs" : [ {
+    "codeName" : "context",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_session/PSDERS/DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID.json",
+    "fKeyName" : "F8EE087A7F29D6A228",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_session.json"
+    },
+    "name" : "DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "CONTEXT_ID",
+      "codeName" : "context_id"
+    },
+    "pickupDEFName" : "CONTEXT_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "context"
+  } ],
   "name" : "AI_AGENT_SESSION",
   "getPSSysDBScheme" : {
     "modelref" : true,

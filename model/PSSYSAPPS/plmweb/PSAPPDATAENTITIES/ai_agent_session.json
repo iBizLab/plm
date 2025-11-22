@@ -372,7 +372,7 @@
       "mobileMode" : true
     } ],
     "codeName" : "id",
-    "logicName" : "智能体业务上下文标识",
+    "logicName" : "智能体会话标识",
     "name" : "ID",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -406,6 +406,92 @@
     "stringLength" : 200,
     "enableQuickSearch" : true,
     "majorField" : true
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CONTEXT_ID][上下文标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[CONTEXT_ID][上下文标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CONTEXT_ID][上下文标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[CONTEXT_ID][上下文标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "context_id",
+    "logicName" : "智能体业务上下文标识",
+    "name" : "CONTEXT_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CONTEXT_CODE_NAME][上下文标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_CODE_NAME][上下文标记]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CONTEXT_CODE_NAME][上下文标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_CODE_NAME][上下文标记]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "context_code_name",
+    "logicName" : "上下文标记",
+    "name" : "CONTEXT_CODE_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
@@ -493,7 +579,7 @@
     "name" : "ai_agent_sessionDTO",
     "getPSAppDEMethodDTOFields" : [ {
       "codeName" : "id",
-      "logicName" : "智能体业务上下文标识",
+      "logicName" : "智能体会话标识",
       "name" : "id",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -510,6 +596,28 @@
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "context_id",
+      "logicName" : "智能体业务上下文标识",
+      "name" : "context_id",
+      "getPSAppDEField" : {
+        "name" : "CONTEXT_ID",
+        "codeName" : "context_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "context_code_name",
+      "logicName" : "上下文标记",
+      "name" : "context_code_name",
+      "getPSAppDEField" : {
+        "name" : "CONTEXT_CODE_NAME",
+        "codeName" : "context_code_name"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -554,8 +662,19 @@
     "codeName" : "ai_agent_sessionFilterDTO",
     "name" : "ai_agent_sessionFilterDTO",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "N_ID_EQ",
+      "codeName" : "N_CONTEXT_ID_EQ",
       "logicName" : "智能体业务上下文标识",
+      "name" : "N_CONTEXT_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "CONTEXT_ID",
+        "codeName" : "context_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_ID_EQ",
+      "logicName" : "智能体会话标识",
       "name" : "N_ID_EQ",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -924,6 +1043,11 @@
       "name" : "SRFAIAPPENDCURDATA",
       "value" : "true",
       "rawValue" : true
+    }, {
+      "key" : "SRFACTCODE",
+      "name" : "SRFACTCODE",
+      "value" : "CONTEXT_CODE_NAME",
+      "rawValue" : false
     }, {
       "key" : "AI_AGENT_CONTEXT",
       "name" : "AI_AGENT_CONTEXT",
