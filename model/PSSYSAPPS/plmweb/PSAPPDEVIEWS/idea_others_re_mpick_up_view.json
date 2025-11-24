@@ -1013,6 +1013,9 @@
             }
           } ],
           "getPSDEFormPages" : [ {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMPAGE.FORMPAGE1"
+            },
             "caption" : "常规条件",
             "codeName" : "formpage1",
             "detailStyle" : "DEFAULT",
@@ -1020,9 +1023,9 @@
             "name" : "formpage1",
             "getPSDEFormDetails" : [ {
               "getCapPSLanguageRes" : {
-                "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_IDENTIFIER_LIKE"
+                "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_IDENTIFIER_LIKE"
               },
-              "caption" : "编号(%)",
+              "caption" : "编号",
               "codeName" : "n_identifier_like",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
@@ -1043,14 +1046,14 @@
                 "placeHolder" : "编号"
               },
               "getPSLayoutPos" : {
-                "colLG" : 4,
-                "colMD" : 4,
+                "colLG" : 5,
+                "colMD" : 5,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true
             }, {
               "getCapPSLanguageRes" : {
-                "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_TITLE_LIKE"
+                "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_TITLE_LIKE"
               },
               "caption" : "标题",
               "codeName" : "n_title_like",
@@ -1073,8 +1076,8 @@
                 "placeHolder" : "标题"
               },
               "getPSLayoutPos" : {
-                "colLG" : 4,
-                "colMD" : 4,
+                "colLG" : 5,
+                "colMD" : 5,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true
@@ -1108,8 +1111,8 @@
                 "singleSelect" : true
               },
               "getPSLayoutPos" : {
-                "colLG" : 4,
-                "colMD" : 4,
+                "colLG" : 5,
+                "colMD" : 5,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
@@ -1141,8 +1144,8 @@
                 "singleSelect" : true
               },
               "getPSLayoutPos" : {
-                "colLG" : 4,
-                "colMD" : 4,
+                "colLG" : 5,
+                "colMD" : 5,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
@@ -1254,16 +1257,16 @@
                 "name" : "n_assignee_id_eq"
               },
               "getPSLayoutPos" : {
-                "colLG" : 4,
-                "colMD" : 4,
+                "colLG" : 5,
+                "colMD" : 5,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
-              "childColLG" : 4,
-              "childColMD" : 4,
+              "childColLG" : 5,
+              "childColMD" : 5,
               "columnCount" : 24,
               "layout" : "TABLE_24COL"
             },
@@ -1383,6 +1386,7 @@
       }
     }, {
       "codeName" : "others_re_mpick_up_view_treeexpbar",
+      "controlStyle" : "TREEEXPBAR_DEFAULT_EXPAND",
       "controlType" : "TREEEXPBAR",
       "name" : "treeexpbar",
       "getPSAppDataEntity" : {
@@ -1449,6 +1453,9 @@
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
+        "ctrlParams" : {
+          "DEFAULT_EXPAND" : "root:node@${context.curproduct}"
+        },
         "id" : "TREEEXPBAR"
       },
       "getPSControls" : [ {
@@ -1583,6 +1590,9 @@
         "getPSControlParam" : {
           "autoLoad" : true,
           "showBusyIndicator" : true,
+          "ctrlParams" : {
+            "DEFAULT_EXPAND" : "root:node@${context.curproduct}"
+          },
           "id" : "treeexpbar_tree"
         },
         "getPSDEDataImport" : {
@@ -1921,8 +1931,8 @@
           "enableQuickSearch" : true,
           "enableRemoveData" : false,
           "enableViewData" : false,
-          "expandFirstOnly" : false,
-          "expanded" : false,
+          "expandFirstOnly" : true,
+          "expanded" : true,
           "rootNode" : false,
           "selectFirstOnly" : false,
           "selected" : false,
@@ -2195,6 +2205,11 @@
         "modelid" : "7574d1b3b078feab27e0fd6b0d79826b",
         "modeltype" : "PSDETREEVIEW"
       } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "CUSTOM",
+        "pluginCode" : "TREEEXPBAR_DEFAULT_EXPAND",
+        "runtimeObject" : true
+      },
       "xDataControlName" : "treeexpbar_tree",
       "enableCounter" : true,
       "enableSearch" : true,

@@ -178,11 +178,8 @@
     },
     "getPSDEFormItemUpdates" : [ {
       "codeName" : "update_workload_kind",
+      "memo" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar workload_kind = form_data.workload_kind;\n\nif (workload_kind == '产品需求') {\n    form_data.work_item_tag = null;\n    form_data.test_case_tag = null;\n}\nif (workload_kind == '工作项') {\n    form_data.idea_tag = null;\n    form_data.test_case_tag = null;\n}\nif (workload_kind == '测试用例') {\n    form_data.work_item_tag = null;\n    form_data.idea_tag = null;\n}",
       "name" : "更新标识",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "workload_kind"
-      } ],
-      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar principal_type = form_data.principal_type;\r\n\r\nif (principal_type == 'IDEA') {\r\n    form_data.workload_kind = '产品需求';\r\n}\r\nif (principal_type == 'WORK_ITEM') {\r\n    form_data.workload_kind = '工作项';\r\n}\r\nif (principal_type == 'TEST_CASE') {\r\n    form_data.workload_kind = '测试用例';\r\n}",
       "customCode" : true
     }, {
       "codeName" : "duration_updateform",
@@ -243,13 +240,13 @@
       "id" : "workload_kind",
       "dataType" : 25
     }, {
-      "id" : "work_item",
+      "id" : "work_item_tag",
       "dataType" : 25
     }, {
-      "id" : "test_case",
+      "id" : "test_case_tag",
       "dataType" : 25
     }, {
-      "id" : "idea",
+      "id" : "idea_tag",
       "dataType" : 25
     }, {
       "id" : "estimated_workload",
@@ -398,7 +395,7 @@
           "name" : "grouppanel1",
           "getPSDEFormDetails" : [ {
             "caption" : "事项",
-            "codeName" : "work_item",
+            "codeName" : "work_item_tag",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -406,7 +403,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "work_item",
+            "name" : "work_item_tag",
             "noPrivDisplayMode" : 1,
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -443,7 +440,7 @@
                 "PICKUPVIEW" : "FALSE"
               },
               "editorType" : "PICKEREX_TRIGGER",
-              "name" : "work_item",
+              "name" : "work_item_tag",
               "getPSAppDEACMode" : {
                 "modelref" : true,
                 "id" : "fill_workload"
@@ -486,7 +483,7 @@
             "showCaption" : true
           }, {
             "caption" : "事项",
-            "codeName" : "test_case",
+            "codeName" : "test_case_tag",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -494,7 +491,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "test_case",
+            "name" : "test_case_tag",
             "noPrivDisplayMode" : 1,
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -531,7 +528,7 @@
                 "PICKUPVIEW" : "FALSE"
               },
               "editorType" : "PICKEREX_TRIGGER",
-              "name" : "test_case",
+              "name" : "test_case_tag",
               "getPSAppDEACMode" : {
                 "modelref" : true,
                 "id" : "fill_workload"
@@ -574,7 +571,7 @@
             "showCaption" : true
           }, {
             "caption" : "事项",
-            "codeName" : "idea",
+            "codeName" : "idea_tag",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -582,7 +579,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "idea",
+            "name" : "idea_tag",
             "noPrivDisplayMode" : 1,
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -619,7 +616,7 @@
                 "PICKUPVIEW" : "FALSE"
               },
               "editorType" : "PICKEREX_TRIGGER",
-              "name" : "idea",
+              "name" : "idea_tag",
               "getPSAppDEACMode" : {
                 "modelref" : true,
                 "id" : "fill_workload"
