@@ -36714,13 +36714,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 1430,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "topPos" : 370
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -36755,25 +36748,6 @@
       },
       "topPos" : 208
     }, {
-      "code" : "uiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 670,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "code" : "view.layoutPanel.panelItems.form.control.state.modified = false;\r\nview.state.isLoading = false;\r\nview.closeView();",
       "codeName" : "RAWJSCODE4",
       "leftPos" : 1150,
@@ -36792,6 +36766,33 @@
         }
       } ],
       "topPos" : 370
+    }, {
+      "code" : "view.layoutPanel.panelItems.form.control.data.title = null;\r\nview.layoutPanel.panelItems.form.control.data.start_at = null;\r\nview.layoutPanel.panelItems.form.control.data.end_at = null;\r\nview.layoutPanel.panelItems.form.control.data.description = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_from = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_type = null;\r\nview.layoutPanel.panelItems.form.control.data.risk = null;\r\nview.layoutPanel.panelItems.form.control.data.reappear_probability = null;\r\nview.layoutPanel.panelItems.form.control.data.severity = null;\r\nview.layoutPanel.panelItems.form.control.data.job_type = null;\r\nview.layoutPanel.panelItems.form.control.data.attachments = null;\r\nview.layoutPanel.panelItems.form.control.details.attachments.mdController.state.items = [];\r\nview.layoutPanel.panelItems.form.control.state.modified = false;",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 1430,
+      "logicNodeType" : "RAWJSCODE",
+      "memo" : "app.deService.clearTempCacheByRs(\n    {\n        srfappid: context.srfappid,\n        srfsessionid: context.srfsessionid,\n    },\n    'attachment',\n);",
+      "name" : "清除表单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE6"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "return (async function() { \r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.attachment');\r\n    const list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    list.forEach(item => {\r\n        service.local.delete(context, item.id);\r\n    })\r\n    } \r\n)();\r\n",
+      "codeName" : "RAWJSCODE6",
+      "leftPos" : 1670,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "删除附件临时数据",
+      "topPos" : 208
     }, {
       "code" : "ibiz.message.success('新建成功');",
       "codeName" : "RAWJSCODE5",
@@ -36855,12 +36856,31 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "view.layoutPanel.panelItems.form.control.data.title = null;\r\nview.layoutPanel.panelItems.form.control.data.start_at = null;\r\nview.layoutPanel.panelItems.form.control.data.end_at = null;\r\nview.layoutPanel.panelItems.form.control.data.description = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_from = null;\r\nview.layoutPanel.panelItems.form.control.data.backlog_type = null;\r\nview.layoutPanel.panelItems.form.control.data.risk = null;\r\nview.layoutPanel.panelItems.form.control.data.reappear_probability = null;\r\nview.layoutPanel.panelItems.form.control.data.severity = null;\r\nview.layoutPanel.panelItems.form.control.data.job_type = null;\r\nview.layoutPanel.panelItems.form.control.data.attachments = null;\r\nview.layoutPanel.panelItems.form.control.details.attachments.mdController.state.items = [];\r\nview.layoutPanel.panelItems.form.control.state.modified = false;\r\n\r\napp.deService.clearTempCacheByRs(\r\n    {\r\n        srfappid: context.srfappid,\r\n        srfsessionid: context.srfsessionid,\r\n    },\r\n    'attachment',\r\n);",
-      "codeName" : "RAWJSCODE3",
+      "code" : "uiLogic.work_item = view.layoutPanel.panelItems.form.control.data;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 670,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+      "codeName" : "RAWJSCODE2",
       "leftPos" : 1430,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "清除表单",
-      "topPos" : 208
+      "name" : "通知刷新",
+      "topPos" : 370
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -36869,15 +36889,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "work_item",
-      "logicName" : "work_item",
-      "name" : "work_item",
-      "entityParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "work_item",
+      "logicName" : "work_item",
+      "name" : "work_item",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
