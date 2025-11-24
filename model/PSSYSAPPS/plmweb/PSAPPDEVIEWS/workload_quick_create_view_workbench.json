@@ -177,34 +177,18 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "reset",
-      "name" : "重置事项",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "workload_kind"
-      } ],
-      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar workload_kind = form_data.workload_kind;\r\nif (workload_kind == '产品需求') {\r\n    form_data.work_item_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '工作项') {\r\n    form_data.idea_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '测试用例') {\r\n    form_data.work_item_tag = null;\r\n    form_data.idea_tag = null;\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "update_tese_case",
       "name" : "更新测试用例标识",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "test_case_tag"
+        "name" : "principal_id"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar tese_case_tag_id = form_data.tese_case_tag_id;\r\nvar tese_case_tag = form_data.tese_case_tag;\r\nif (tese_case_tag != null) {\r\n    form_data.principal_id = tese_case_tag_id;\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "update_work_item",
-      "name" : "更新工作项标识",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_tag"
-      } ],
-      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar work_item_tag_id = form_data.work_item_tag_id;\r\nvar work_item_tag = form_data.work_item_tag;\r\nif (work_item_tag != null) {\r\n    form_data.principal_id = work_item_tag_id;\r\n}",
       "customCode" : true
     }, {
       "codeName" : "update_idea",
       "name" : "更新需求标识",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "idea_tag"
+        "name" : "principal_id"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar idea_tag_id = form_data.idea_tag_id;\r\nvar idea_tag = form_data.idea_tag;\r\nif (idea_tag != null) {\r\n    form_data.principal_id = idea_tag_id;\r\n}",
       "customCode" : true
@@ -212,11 +196,31 @@
       "codeName" : "duration_updateform",
       "name" : "时长表单项更新",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "remaining_workload"
-      }, {
         "name" : "workload_schedule"
+      }, {
+        "name" : "remaining_workload"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+      "customCode" : true
+    }, {
+      "codeName" : "update_work_item",
+      "name" : "更新工作项标识",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "principal_id"
+      } ],
+      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar work_item_tag_id = form_data.work_item_tag_id;\r\nvar work_item_tag = form_data.work_item_tag;\r\nif (work_item_tag != null) {\r\n    form_data.principal_id = work_item_tag_id;\r\n}",
+      "customCode" : true
+    }, {
+      "codeName" : "reset",
+      "name" : "重置事项",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "idea_tag"
+      }, {
+        "name" : "work_item_tag"
+      }, {
+        "name" : "test_case_tag"
+      } ],
+      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar workload_kind = form_data.workload_kind;\r\nif (workload_kind == '产品需求') {\r\n    form_data.work_item_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '工作项') {\r\n    form_data.idea_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '测试用例') {\r\n    form_data.work_item_tag = null;\r\n    form_data.idea_tag = null;\r\n}",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {

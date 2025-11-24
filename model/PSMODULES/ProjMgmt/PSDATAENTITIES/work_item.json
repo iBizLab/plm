@@ -410,6 +410,56 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "READ",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIFullInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIFullInfo.json",
+    "logicName" : "获取完整AI数据信息",
+    "name" : "GetAIFullInfo",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetAIFullInfoInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIFullInfoResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "builtinAction" : true
+  }, {
+    "actionMode" : "READ",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIInfo.json",
+    "logicName" : "获取AI数据信息",
+    "name" : "GetAIInfo",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetAIInfoInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIInfoResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -11013,6 +11063,1310 @@
         "codeName" : "finisher"
       },
       "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_full_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIFULLINFO",
+    "name" : "AI完整数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "orderValue" : 90,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "identifier",
+      "logicName" : "编号",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "orderValue" : 160,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/CodeList54.json"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_archived",
+      "logicName" : "是否已归档",
+      "orderValue" : 170,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_deleted",
+      "logicName" : "是否已删除",
+      "orderValue" : 180,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "orderValue" : 180,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "start_at",
+      "logicName" : "开始时间",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "end_at",
+      "logicName" : "截止时间",
+      "orderValue" : 200,
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "orderValue" : 210,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_state2.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "orderValue" : 220,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_leaf",
+      "logicName" : "是否叶子节点",
+      "orderValue" : 240,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_LEAF",
+        "codeName" : "is_leaf"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "backlog_type",
+      "logicName" : "需求类型",
+      "orderValue" : 290,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "BACKLOG_TYPE",
+        "codeName" : "backlog_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "backlog_from",
+      "logicName" : "需求来源",
+      "orderValue" : 300,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/demand_sources.json"
+      },
+      "getPSDEField" : {
+        "name" : "BACKLOG_FROM",
+        "codeName" : "backlog_from"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_name",
+      "logicName" : "负责人",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_id",
+      "logicName" : "负责人",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_id",
+      "logicName" : "当前版本标识",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_ID",
+        "codeName" : "cur_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "reappear_probability",
+      "logicName" : "复现概率",
+      "orderValue" : 320,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/reproduction_probability.json"
+      },
+      "getPSDEField" : {
+        "name" : "REAPPEAR_PROBABILITY",
+        "codeName" : "reappear_probability"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "severity",
+      "logicName" : "严重程度",
+      "orderValue" : 330,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/severity.json"
+      },
+      "getPSDEField" : {
+        "name" : "SEVERITY",
+        "codeName" : "severity"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "risk",
+      "logicName" : "风险",
+      "orderValue" : 340,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/risk.json"
+      },
+      "getPSDEField" : {
+        "name" : "RISK",
+        "codeName" : "risk"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_type",
+      "logicName" : "项目类型",
+      "orderValue" : 350,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "PROJECT_TYPE",
+        "codeName" : "project_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_type_group",
+      "logicName" : "工作项类型分组",
+      "orderValue" : 360,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_type_group.json"
+      },
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_TYPE_GROUP",
+        "codeName" : "work_item_type_group"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "orderValue" : 370,
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "entry_status",
+      "logicName" : "看板栏状态",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "ENTRY_STATUS",
+        "codeName" : "entry_status"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "entry_position",
+      "logicName" : "所在看板栏位置",
+      "orderValue" : 390,
+      "getPSDEField" : {
+        "name" : "ENTRY_POSITION",
+        "codeName" : "entry_position"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_num",
+      "logicName" : "统计数",
+      "orderValue" : 400,
+      "getPSDEField" : {
+        "name" : "REP_NUM",
+        "codeName" : "rep_num"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "solution_way",
+      "logicName" : "解决办法",
+      "orderValue" : 400,
+      "getPSDEField" : {
+        "name" : "SOLUTION_WAY",
+        "codeName" : "solution_way"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_type_sequence",
+      "logicName" : "工作项类型序号",
+      "orderValue" : 410,
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_TYPE_SEQUENCE",
+        "codeName" : "work_item_type_sequence"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "completed_at",
+      "logicName" : "完成时间",
+      "orderValue" : 420,
+      "getPSDEField" : {
+        "name" : "COMPLETED_AT",
+        "codeName" : "completed_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "workload_schedule",
+      "logicName" : "工时进度",
+      "orderValue" : 430,
+      "getPSDEField" : {
+        "name" : "WORKLOAD_SCHEDULE",
+        "codeName" : "workload_schedule"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "estimated_workload",
+      "logicName" : "预估工时",
+      "orderValue" : 440,
+      "getPSDEField" : {
+        "name" : "ESTIMATED_WORKLOAD",
+        "codeName" : "estimated_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "job_type",
+      "logicName" : "任务类别",
+      "orderValue" : 450,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/task_category.json"
+      },
+      "getPSDEField" : {
+        "name" : "JOB_TYPE",
+        "codeName" : "job_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "review_result_state",
+      "logicName" : "评审结果",
+      "orderValue" : 460,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "test_plan_id",
+      "logicName" : "测试计划ID",
+      "orderValue" : 460,
+      "getPSDEField" : {
+        "name" : "TEST_PLAN_ID",
+        "codeName" : "test_plan_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "remaining_workload",
+      "logicName" : "剩余工时",
+      "orderValue" : 470,
+      "getPSDEField" : {
+        "name" : "REMAINING_WORKLOAD",
+        "codeName" : "remaining_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attachments",
+      "logicName" : "附件",
+      "orderValue" : 480,
+      "getPSDEField" : {
+        "name" : "ATTACHMENTS",
+        "codeName" : "attachments"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "actual_workload",
+      "logicName" : "实际工时",
+      "orderValue" : 490,
+      "getPSDEField" : {
+        "name" : "ACTUAL_WORKLOAD",
+        "codeName" : "actual_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "deliverable",
+      "logicName" : "交付物",
+      "orderValue" : 500,
+      "getPSDEField" : {
+        "name" : "DELIVERABLE",
+        "codeName" : "deliverable"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attention_count",
+      "logicName" : "关注数",
+      "orderValue" : 510,
+      "getPSDEField" : {
+        "name" : "ATTENTION_COUNT",
+        "codeName" : "attention_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "p_work_item_type_id",
+      "logicName" : "父工作项类型",
+      "orderValue" : 510,
+      "getPSDEField" : {
+        "name" : "P_WORK_ITEM_TYPE_ID",
+        "codeName" : "p_work_item_type_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "comment_count",
+      "logicName" : "评论数",
+      "orderValue" : 520,
+      "getPSDEField" : {
+        "name" : "COMMENT_COUNT",
+        "codeName" : "comment_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_identifier",
+      "logicName" : "项目标识",
+      "orderValue" : 520,
+      "getPSDEField" : {
+        "name" : "PROJECT_IDENTIFIER",
+        "codeName" : "project_identifier"
+      },
+      "stringLength" : 15,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions",
+      "logicName" : "关注",
+      "orderValue" : 530,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ATTENTIONS",
+        "codeName" : "attentions"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_group_value",
+      "logicName" : "报表分组属性",
+      "orderValue" : 540,
+      "getPSDEField" : {
+        "name" : "REP_GROUP_VALUE",
+        "codeName" : "rep_group_value"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_percent_value",
+      "logicName" : "报表百分值",
+      "orderValue" : 550,
+      "getPSDEField" : {
+        "name" : "REP_PERCENT_VALUE",
+        "codeName" : "rep_percent_value"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_value_1",
+      "logicName" : "报表值1",
+      "orderValue" : 560,
+      "getPSDEField" : {
+        "name" : "REP_VALUE_1",
+        "codeName" : "rep_value_1"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_value_3",
+      "logicName" : "报表值3",
+      "orderValue" : 560,
+      "getPSDEField" : {
+        "name" : "REP_VALUE_3",
+        "codeName" : "rep_value_3"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_value_2",
+      "logicName" : "报表值2",
+      "orderValue" : 570,
+      "getPSDEField" : {
+        "name" : "REP_VALUE_2",
+        "codeName" : "rep_value_2"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state_type",
+      "logicName" : "工作项状态类型",
+      "orderValue" : 580,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/state_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_name",
+      "logicName" : "当前版本名称",
+      "orderValue" : 590,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_NAME",
+        "codeName" : "cur_version_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "choose_version_id",
+      "logicName" : "选择版本标识",
+      "orderValue" : 600,
+      "getPSDEField" : {
+        "name" : "CHOOSE_VERSION_ID",
+        "codeName" : "choose_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "choose_version_name",
+      "logicName" : "选择版本名称",
+      "orderValue" : 610,
+      "getPSDEField" : {
+        "name" : "CHOOSE_VERSION_NAME",
+        "codeName" : "choose_version_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions_imp",
+      "logicName" : "关注人",
+      "orderValue" : 620,
+      "getPSDEField" : {
+        "name" : "ATTENTIONS_IMP",
+        "codeName" : "attentions_imp"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sprint_status",
+      "logicName" : "迭代状态",
+      "orderValue" : 630,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/sprint_status.json"
+      },
+      "getPSDEField" : {
+        "name" : "SPRINT_STATUS",
+        "codeName" : "sprint_status"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "release_status",
+      "logicName" : "发布阶段",
+      "orderValue" : 640,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/cur_release_stage.json"
+      },
+      "getPSDEField" : {
+        "name" : "RELEASE_STATUS",
+        "codeName" : "release_status"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_sub_type",
+      "logicName" : "工作项下级类型",
+      "orderValue" : 650,
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_SUB_TYPE",
+        "codeName" : "work_item_sub_type"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "rep_date",
+      "logicName" : "统计日期字段",
+      "orderValue" : 660,
+      "getPSDEField" : {
+        "name" : "REP_DATE",
+        "codeName" : "rep_date"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "recent_create_days",
+      "logicName" : "最近创建日期",
+      "orderValue" : 670,
+      "getPSDEField" : {
+        "name" : "RECENT_CREATE_DAYS",
+        "codeName" : "recent_create_days"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sequence",
+      "logicName" : "序号",
+      "orderValue" : 680,
+      "getPSDEField" : {
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_idea",
+      "logicName" : "关联产品需求数",
+      "orderValue" : 690,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_IDEA",
+        "codeName" : "relation_total_idea"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_test_case",
+      "logicName" : "关联测试用例数",
+      "orderValue" : 700,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_TEST_CASE",
+        "codeName" : "relation_total_test_case"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_ticket",
+      "logicName" : "关联工单数",
+      "orderValue" : 710,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_TICKET",
+        "codeName" : "relation_total_ticket"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_work_item",
+      "logicName" : "关联工作项数",
+      "orderValue" : 720,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_WORK_ITEM",
+        "codeName" : "relation_total_work_item"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_origin_state",
+      "logicName" : "原始状态",
+      "orderValue" : 730,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_origin_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_ORIGIN_STATE",
+        "codeName" : "work_item_origin_state"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_overtime",
+      "logicName" : "是否超时",
+      "orderValue" : 740,
+      "getPSDEField" : {
+        "name" : "IS_OVERTIME",
+        "codeName" : "is_overtime"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "executors",
+      "logicName" : "执行人",
+      "orderValue" : 750,
+      "getPSDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "multiple_people",
+      "logicName" : "多人任务",
+      "orderValue" : 760,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "actual_start_at",
+      "logicName" : "实际开始时间",
+      "orderValue" : 770,
+      "getPSDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "actual_end_at",
+      "logicName" : "实际结束时间",
+      "orderValue" : 780,
+      "getPSDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "finisher",
+      "logicName" : "完成人",
+      "orderValue" : 790,
+      "getPSDEField" : {
+        "name" : "FINISHER",
+        "codeName" : "finisher"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "overdue_time",
+      "logicName" : "逾期天数",
+      "orderValue" : 800,
+      "getPSDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "deliverable_imp",
+      "logicName" : "交付物",
+      "orderValue" : 810,
+      "getPSDEField" : {
+        "name" : "DELIVERABLE_IMP",
+        "codeName" : "deliverable_imp"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_is_deleted",
+      "logicName" : "项目是否删除",
+      "orderValue" : 820,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "PROJECT_IS_DELETED",
+        "codeName" : "project_is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_is_archived",
+      "logicName" : "项目是否归档",
+      "orderValue" : 830,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "PROJECT_IS_ARCHIVED",
+        "codeName" : "project_is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "dependencies",
+      "logicName" : "依赖",
+      "orderValue" : 840,
+      "getPSDEField" : {
+        "name" : "DEPENDENCIES",
+        "codeName" : "dependencies"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : false
+    }, {
+      "codeName" : "Board_id",
+      "logicName" : "看板标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "BOARD_ID",
+        "codeName" : "Board_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Board_name",
+      "logicName" : "看板名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "BOARD_NAME",
+        "codeName" : "Board_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Entry_id",
+      "logicName" : "看板栏标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ENTRY_ID",
+        "codeName" : "Entry_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Pid",
+      "logicName" : "父标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PID",
+        "codeName" : "Pid"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Ptitle",
+      "logicName" : "父工作项",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PTITLE",
+        "codeName" : "Ptitle"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Swimlane_id",
+      "logicName" : "泳道标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SWIMLANE_ID",
+        "codeName" : "Swimlane_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Top_id",
+      "logicName" : "顶级工作项标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "TOP_ID",
+        "codeName" : "Top_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      },
+      "logicName" : "建立人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "entry_name",
+      "logicName" : "看板栏名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ENTRY_NAME",
+        "codeName" : "entry_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_id",
+      "logicName" : "项目",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_name",
+      "logicName" : "所属项目",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "release_id",
+      "logicName" : "项目发布标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "RELEASE_ID",
+        "codeName" : "release_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "release_name",
+      "logicName" : "项目发布名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "RELEASE_NAME",
+        "codeName" : "release_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sprint_id",
+      "logicName" : "迭代标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SPRINT_ID",
+        "codeName" : "sprint_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sprint_name",
+      "logicName" : "迭代名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SPRINT_NAME",
+        "codeName" : "sprint_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "top_title",
+      "logicName" : "顶级工作项标题",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "TOP_TITLE",
+        "codeName" : "top_title"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_type_id",
+      "logicName" : "工作项类型",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_TYPE_ID",
+        "codeName" : "work_item_type_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_type_name",
+      "logicName" : "工作项类型",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_TYPE_NAME",
+        "codeName" : "work_item_type_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "user_tag",
+      "logicName" : "用户标记",
+      "orderValue" : 8000,
+      "getPSDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "user_tag2",
+      "logicName" : "用户标记2",
+      "orderValue" : 8500,
+      "getPSDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIINFO",
+    "name" : "AI数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "orderValue" : 100,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "orderValue" : 200,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "project_name",
+      "logicName" : "所属项目",
+      "orderValue" : 300,
+      "getPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "work_item_type_name",
+      "logicName" : "工作项类型",
+      "orderValue" : 400,
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_TYPE_NAME",
+        "codeName" : "work_item_type_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "orderValue" : 500,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/CodeList54.json"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "orderValue" : 600,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "orderValue" : 700,
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "severity",
+      "logicName" : "严重程度",
+      "orderValue" : 800,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/severity.json"
+      },
+      "getPSDEField" : {
+        "name" : "SEVERITY",
+        "codeName" : "severity"
+      },
+      "stringLength" : 60,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     } ]
