@@ -1,5 +1,5 @@
 {
-  "codeName" : "project_type_list",
+  "codeName" : "list_choose",
   "controlType" : "LIST",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,10 +14,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     }
   },
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSLISTS/project_type_list.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket/PSLISTS/list_choose.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
     "id" : "fetch",
@@ -25,11 +25,11 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_project_type"
+      "id" : "fetch_default"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     }
   },
   "getGetPSControlAction" : {
@@ -45,33 +45,24 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     }
   },
   "groupMode" : "NONE",
   "getItemPSLayoutPanel" : {
     "getAllPSPanelFields" : [ {
-      "id" : "name",
-      "viewFieldName" : "name"
+      "id" : "title",
+      "viewFieldName" : "TITLE"
     } ],
-    "codeName" : "usr1121855880",
+    "codeName" : "usr1225787442",
     "controlType" : "PANEL",
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSPANELS/usr1121855880.json",
-    "hookEventNames" : [ "ONCLICK" ],
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket/PSPANELS/usr1225787442.json",
     "layoutMode" : "TABLE_24COL",
-    "logicName" : "project_type_list_列表项面板",
+    "logicName" : "simplelist_列表项面板",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     },
-    "getPSControlLogics" : [ {
-      "eventNames" : "onClick",
-      "itemName" : "name",
-      "logicTag" : "list_itempanel",
-      "logicType" : "SCRIPT",
-      "name" : "logic",
-      "scriptCode" : "console.log('测试2');\r\nconsole.log(view);\r\nview.parentView.params.type = view.layoutPanel.panelItems.list.control.state.selectedData[0].id;"
-    } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
       "childColMD" : 24,
@@ -94,10 +85,10 @@
         "caption" : "文本(动态)",
         "itemStyle" : "DEFAULT",
         "itemType" : "FIELD",
-        "name" : "name",
+        "name" : "title",
         "getPSEditor" : {
           "editorType" : "SPAN",
-          "name" : "name",
+          "name" : "title",
           "predefinedType" : "FIELD_TEXT_DYNAMIC",
           "renderMode" : "TEXT_DYNAMIC",
           "enableLinkView" : false
@@ -106,19 +97,37 @@
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "viewFieldName" : "name"
+        "viewFieldName" : "TITLE"
       } ]
     } ],
-    "name" : "list_itempanel",
-    "modelid" : "390261EC-7E74-4F0C-8256-59CF0629344D",
+    "name" : "simplelist_itempanel",
+    "modelid" : "eb3d08a33562859e5a0bafe3618b6627",
     "modeltype" : "PSSYSVIEWPANEL"
   },
-  "logicName" : "project_type_list",
+  "logicName" : "list_choose",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+  },
+  "getPSDEDataImport" : {
+    "modelref" : true,
+    "id" : "import_ticket"
   },
   "getPSDEListDataItems" : [ {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  }, {
     "dataType" : 25,
     "name" : "srfkey",
     "getPSAppDEField" : {
@@ -129,16 +138,33 @@
     "dataType" : 25,
     "name" : "srfmajortext",
     "getPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
+      "name" : "TITLE",
+      "codeName" : "title"
     }
   }, {
     "dataType" : 25,
-    "name" : "state",
+    "name" : "product_id",
     "getPSAppDEField" : {
-      "name" : "STATE",
-      "codeName" : "state"
+      "name" : "PRODUCT_ID",
+      "codeName" : "product_id"
     }
+  }, {
+    "dataType" : 25,
+    "name" : "customer_id",
+    "getPSAppDEField" : {
+      "name" : "CUSTOMER_ID",
+      "codeName" : "customer_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "assignee_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmstag"
   } ],
   "pagingSize" : 1000,
   "getRemovePSControlAction" : {
@@ -154,7 +180,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     }
   },
   "getUpdatePSControlAction" : {
@@ -170,7 +196,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     }
   },
   "hasWFDataItems" : false,
@@ -181,7 +207,7 @@
   "enableRowNew" : false,
   "noSort" : false,
   "showHeader" : true,
-  "singleSelect" : true,
-  "modelid" : "43A51073-12AE-4BAE-A78F-2762EB916387",
+  "singleSelect" : false,
+  "modelid" : "0a641c555422560095c2f6dfe4a8f072",
   "modeltype" : "PSDELIST"
 }
