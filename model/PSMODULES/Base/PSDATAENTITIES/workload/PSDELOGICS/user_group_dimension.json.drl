@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.user_group_dimension;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloaduser_group_dimensiondefault;
+                global cn.ibizlab.plm.core.base.domain.workload workloaduser_group_dimensionresult_page;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloaduser_group_dimensionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置分页参数]
+            rule "prepareparam1"
+            ruleflow-group "workloaduser_group_dimensionprepareparam1"
+            when
+            then
+                            workloaduser_group_dimensiondefault.set("size","10000");
+                        update(workloaduser_group_dimensiondefault);//更新fact中变量值
+                        update(workloaduser_group_dimensionresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询团队工时记录]
+            rule "dedataset1"
+            ruleflow-group "workloaduser_group_dimensiondedataset1"
+            when
+            then
+                        update(workloaduser_group_dimensiondefault);//更新fact中变量值
+                        update(workloaduser_group_dimensionresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloaduser_group_dimensionend1"
+            when
+            then
+                        update(workloaduser_group_dimensiondefault);//更新fact中变量值
+                        update(workloaduser_group_dimensionresult_page);//更新fact中变量值
+            end
