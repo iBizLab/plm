@@ -194,46 +194,6 @@
         },
         "getPSPanelItems" : [ {
           "actionType" : "UIACTION",
-          "buttonStyle" : "DEFAULT",
-          "caption" : "按钮",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "BUTTON",
-          "name" : "button_calluilogic",
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "layoutpanel_button_calluilogic"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "caption" : "按钮",
-            "codeName" : "panel_custom_work_button_calluilogic_click",
-            "frontProcessType" : "OTHER",
-            "fullCodeName" : "work_item_panel_custom_work_button_calluilogic_click",
-            "name" : "按钮",
-            "getPSAppDEUILogic" : {
-              "modelref" : true,
-              "id" : "close_view"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-            },
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "panel_custom_work_button_calluilogic_click",
-            "uIActionType" : "DEUIACTION",
-            "uILogicAttachMode" : "REPLACE",
-            "uILogicType" : "DELOGIC",
-            "id" : "panel_custom_work_button_calluilogic_click@work_item"
-          },
-          "tooltip" : "按钮",
-          "uIActionTarget" : "SINGLEDATA",
-          "showCaption" : true
-        }, {
-          "actionType" : "UIACTION",
           "buttonStyle" : "INFO",
           "caption" : "取消",
           "itemStyle" : "INFO",
@@ -248,29 +208,29 @@
             "layout" : "FLEX"
           },
           "getPSUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "caption" : "取消",
-            "codeName" : "panel_custom_work_button_cancelaction_click",
+            "actionTarget" : "NONE",
+            "caption" : "关闭视图",
+            "codeName" : "close_view",
             "frontProcessType" : "OTHER",
-            "fullCodeName" : "work_item_panel_custom_work_button_cancelaction_click",
-            "name" : "取消",
+            "fullCodeName" : "work_item_close_view",
+            "name" : "关闭视图",
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "close_view"
+              "id" : "refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
             },
+            "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nview.state.isLoading = false;\r\nview.closeView();",
             "uIActionMode" : "FRONT",
-            "uIActionTag" : "panel_custom_work_button_cancelaction_click",
+            "uIActionTag" : "close_view",
             "uIActionType" : "DEUIACTION",
-            "uILogicAttachMode" : "REPLACE",
-            "uILogicType" : "DELOGIC",
-            "id" : "panel_custom_work_button_cancelaction_click@work_item"
+            "uILogicAttachMode" : "AFTER",
+            "id" : "close_view@work_item"
           },
           "tooltip" : "取消",
-          "uIActionTarget" : "SINGLEDATA",
+          "uIActionTarget" : "NONE",
           "showCaption" : true
         }, {
           "actionType" : "UIACTION",

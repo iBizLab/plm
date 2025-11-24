@@ -25462,6 +25462,27 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "clac_children_work_item_type@work_item"
   }, {
+    "actionTarget" : "NONE",
+    "caption" : "关闭视图",
+    "codeName" : "close_view",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_close_view",
+    "name" : "关闭视图",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "refresh"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nview.state.isLoading = false;\r\nview.closeView();",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "close_view",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "id" : "close_view@work_item"
+  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "复制编号",
     "codeName" : "copy_identifier",
@@ -31983,48 +32004,6 @@
     "id" : "open_summary_task@work_item"
   }, {
     "actionTarget" : "SINGLEDATA",
-    "caption" : "按钮",
-    "codeName" : "panel_custom_work_button_calluilogic_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "work_item_panel_custom_work_button_calluilogic_click",
-    "name" : "按钮",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "close_view"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "panel_custom_work_button_calluilogic_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "panel_custom_work_button_calluilogic_click@work_item"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "取消",
-    "codeName" : "panel_custom_work_button_cancelaction_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "work_item_panel_custom_work_button_cancelaction_click",
-    "name" : "取消",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "close_view"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "panel_custom_work_button_cancelaction_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "panel_custom_work_button_cancelaction_click@work_item"
-  }, {
-    "actionTarget" : "SINGLEDATA",
     "caption" : "确定",
     "codeName" : "panel_custom_work_button_okaction_click",
     "frontProcessType" : "OTHER",
@@ -36546,87 +36525,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "close_view",
-    "defaultParamName" : "Default",
-    "logicName" : "关闭视图",
-    "memo" : "关闭视图",
-    "name" : "关闭视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 561,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 210
-    }, {
-      "code" : "console.log('测试');\r\nconsole.log(view);",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 180,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 390
-    }, {
-      "code" : "\r\nview.state.isLoading = false;\r\nview.closeView();\r\n\r\nibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 339,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 218
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "create_relation",
     "defaultParamName" : "Default",
     "logicName" : "建立关联数据",
@@ -39770,6 +39668,67 @@
       "name" : "门户部件",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "通知刷新",
+    "name" : "通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 667,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 366,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
