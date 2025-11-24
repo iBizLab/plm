@@ -271,6 +271,9 @@
           "codeName" : "name"
         }
       }, {
+        "id" : "type_name",
+        "dataType" : 25
+      }, {
         "id" : "type",
         "dataType" : 25,
         "getPSAppDEField" : {
@@ -785,10 +788,42 @@
               "allowEmpty" : false,
               "showCaption" : true
             }, {
+              "caption" : "项目类型",
+              "codeName" : "type_name",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "type_name",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "PICKUPVIEW",
+                "name" : "type_name",
+                "getPSEditorItems" : [ {
+                  "name" : "type"
+                } ],
+                "getPickupPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_project_type_list_view.json",
+                  "viewType" : "DELISTVIEW"
+                },
+                "valueItemName" : "type"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "valueItemName" : "type",
+              "allowEmpty" : false,
+              "showCaption" : true
+            }, {
               "getCapPSLanguageRes" : {
                 "lanResTag" : "DEF.LNAME.TYPE"
               },
-              "caption" : "项目类型",
+              "caption" : "类型",
               "codeName" : "type",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
@@ -804,19 +839,20 @@
                 "codeName" : "type"
               },
               "getPSEditor" : {
-                "editorType" : "PICKUPVIEW",
+                "editorType" : "DROPDOWNLIST",
                 "name" : "type",
-                "getPickupPSAppView" : {
+                "getPSAppCodeList" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_project_type_list_view.json",
-                  "viewType" : "DELISTVIEW"
-                }
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_type.json"
+                },
+                "singleSelect" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : false,
+              "needCodeListConfig" : true,
               "showCaption" : true
             }, {
               "caption" : "可见范围",
