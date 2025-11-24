@@ -31983,6 +31983,27 @@
     "id" : "open_summary_task@work_item"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "取消",
+    "codeName" : "panel_custom_work_button_cancelaction_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_panel_custom_work_button_cancelaction_click",
+    "name" : "取消",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "close_view"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "panel_custom_work_button_cancelaction_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "panel_custom_work_button_cancelaction_click@work_item"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "确定",
     "codeName" : "panel_custom_work_button_okaction_click",
     "frontProcessType" : "OTHER",
@@ -36491,6 +36512,68 @@
       "logicNodeType" : "RAWJSCODE",
       "name" : "更新上下文信息",
       "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "close_view",
+    "defaultParamName" : "Default",
+    "logicName" : "关闭视图",
+    "memo" : "关闭视图",
+    "name" : "关闭视图",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 210,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 561,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 210
+    }, {
+      "code" : "view.state.isLoading = false;\r\nview.closeView();\r\n\r\nibiz.mc.command.create.send({ srfdecodename: 'work_item'});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 339,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "关闭视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 218
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
