@@ -105,6 +105,16 @@
     "hidden" : true,
     "dataType" : 25
   }, {
+    "id" : "name",
+    "hidden" : true,
+    "dataType" : 25,
+    "createDV" : "调试数据",
+    "updateDV" : "调试数据",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
     "id" : "context_debug_data",
     "dataType" : 21,
     "createDV" : "{ \"identifier\": \"2978\",  \"title\": \"【PC端】执行用例与测试用例版本关联\",  \"id\": \"14\",  \"description\": \"<p>1、执行用例与测试用例版本关联</p><p>2、执行用例中增加版本更新检查功能</p>\", \"project_name\": \"软件生命周期管理系统（桌面端）\"}",
@@ -164,6 +174,34 @@
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
+        "caption" : "名称",
+        "codeName" : "name",
+        "createDV" : "调试数据",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "name",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "name"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "调试数据",
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
         "caption" : "上下文数据对象",
         "codeName" : "context_debug_data",
         "createDV" : "{ \"identifier\": \"2978\",  \"title\": \"【PC端】执行用例与测试用例版本关联\",  \"id\": \"14\",  \"description\": \"<p>1、执行用例与测试用例版本关联</p><p>2、执行用例中增加版本更新检查功能</p>\", \"project_name\": \"软件生命周期管理系统（桌面端）\"}",
@@ -240,6 +278,68 @@
         "uIActionTarget" : "SINGLEDATA",
         "showCaption" : true
       }, {
+        "actionType" : "UIACTION",
+        "caption" : "确认结果",
+        "codeName" : "button1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "BUTTON",
+        "name" : "button1",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "form_button1"
+        },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "name",
+            "logicType" : "SINGLE",
+            "name" : "name等于(=) 回填",
+            "value" : "回填"
+          } ],
+          "relatedDetailNames" : [ "name" ],
+          "notMode" : false
+        } ],
+        "getPSLayoutPos" : {
+          "colLG" : 2,
+          "colMD" : 2,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0e7@FontAwesome",
+          "cssClass" : "fa fa-bolt"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "确认采纳",
+          "codeName" : "accept",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_agent_session_accept",
+          "name" : "确认结果",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "debug_feedback"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0e7@FontAwesome",
+            "cssClass" : "fa fa-bolt"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "accept",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "id" : "accept@ai_agent_session"
+        },
+        "tooltip" : "确认结果",
+        "uIActionTarget" : "SINGLEDATA",
+        "showCaption" : true
+      }, {
         "caption" : "调试返回1",
         "codeName" : "debug_callback_1",
         "dataType" : 21,
@@ -256,9 +356,14 @@
           "codeName" : "debug_callback_1"
         },
         "getPSEditor" : {
-          "editorType" : "TEXTAREA",
+          "editorParams" : {
+            "ISAUTO" : "true",
+            "AC" : "true"
+          },
+          "editorType" : "CODE",
           "maxLength" : 1048576,
           "name" : "debug_callback_1",
+          "enableAC" : true,
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
@@ -284,9 +389,14 @@
           "codeName" : "debug_callback_2"
         },
         "getPSEditor" : {
-          "editorType" : "TEXTAREA",
+          "editorParams" : {
+            "ISAUTO" : "true",
+            "AC" : "true"
+          },
+          "editorType" : "CODE",
           "maxLength" : 1048576,
           "name" : "debug_callback_2",
+          "enableAC" : true,
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
