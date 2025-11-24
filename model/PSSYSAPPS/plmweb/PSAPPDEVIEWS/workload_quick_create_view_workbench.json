@@ -177,11 +177,6 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "update_workload_kind",
-      "memo" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar workload_kind = form_data.workload_kind;\n\nif (workload_kind == '产品需求') {\n    form_data.work_item_tag = null;\n    form_data.test_case_tag = null;\n}\nif (workload_kind == '工作项') {\n    form_data.idea_tag = null;\n    form_data.test_case_tag = null;\n}\nif (workload_kind == '测试用例') {\n    form_data.work_item_tag = null;\n    form_data.idea_tag = null;\n}",
-      "name" : "更新标识",
-      "customCode" : true
-    }, {
       "codeName" : "duration_updateform",
       "name" : "时长表单项更新",
       "getPSDEFIUpdateDetails" : [ {
@@ -190,6 +185,14 @@
         "name" : "workload_schedule"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+      "customCode" : true
+    }, {
+      "codeName" : "update_workload_kind",
+      "name" : "更新标识",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_tag"
+      } ],
+      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar work_item_tag_id = form_data.work_item_tag_id;\r\nform_data.principal_id = work_item_tag_id;",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {
@@ -238,7 +241,8 @@
       "dataType" : 25
     }, {
       "id" : "workload_kind",
-      "dataType" : 25
+      "dataType" : 25,
+      "createDV" : "产品需求"
     }, {
       "id" : "work_item_tag",
       "dataType" : 25
@@ -326,6 +330,18 @@
         "codeName" : "name"
       }
     }, {
+      "id" : "work_item_tag_id",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "test_case_tag_id",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "idea_tag_id",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
       "id" : "type_id",
       "hidden" : true,
       "dataType" : 25,
@@ -357,6 +373,7 @@
         "getPSDEFormDetails" : [ {
           "caption" : "事项类型",
           "codeName" : "workload_kind",
+          "createDV" : "产品需求",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -430,6 +447,10 @@
               "relatedDetailNames" : [ "principal_type" ],
               "notMode" : false
             } ],
+            "getPSDEFormItemUpdate" : {
+              "modelref" : true,
+              "id" : "update_workload_kind"
+            },
             "getPSEditor" : {
               "editorParams" : {
                 "SRFNAVPARAM.N_IS_ARCHIVED_EQ" : "0",
@@ -454,7 +475,7 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
               "getPSEditorItems" : [ {
-                "name" : "principal_id"
+                "name" : "work_item_tag_id"
               } ],
               "getPSNavigateParams" : [ {
                 "key" : "n_is_archived_eq",
@@ -467,7 +488,7 @@
                 "value" : "0",
                 "rawValue" : true
               } ],
-              "valueItemName" : "principal_id",
+              "valueItemName" : "work_item_tag_id",
               "enableAC" : true,
               "enablePickupView" : false,
               "forceSelection" : true,
@@ -478,7 +499,9 @@
               "colMD" : 12,
               "layout" : "TABLE_12COL"
             },
-            "valueItemName" : "principal_id",
+            "resetItemName" : "workload_kind",
+            "resetItemNames" : [ "workload_kind" ],
+            "valueItemName" : "work_item_tag_id",
             "allowEmpty" : false,
             "showCaption" : true
           }, {
@@ -542,7 +565,7 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
               },
               "getPSEditorItems" : [ {
-                "name" : "principal_id"
+                "name" : "test_case_tag_id"
               } ],
               "getPSNavigateParams" : [ {
                 "key" : "n_is_archived_eq",
@@ -555,7 +578,7 @@
                 "value" : "0",
                 "rawValue" : true
               } ],
-              "valueItemName" : "principal_id",
+              "valueItemName" : "test_case_tag_id",
               "enableAC" : true,
               "enablePickupView" : false,
               "forceSelection" : true,
@@ -566,7 +589,9 @@
               "colMD" : 12,
               "layout" : "TABLE_12COL"
             },
-            "valueItemName" : "principal_id",
+            "resetItemName" : "workload_kind",
+            "resetItemNames" : [ "workload_kind" ],
+            "valueItemName" : "test_case_tag_id",
             "allowEmpty" : false,
             "showCaption" : true
           }, {
@@ -630,7 +655,7 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
               },
               "getPSEditorItems" : [ {
-                "name" : "principal_id"
+                "name" : "idea_tag_id"
               } ],
               "getPSNavigateParams" : [ {
                 "key" : "n_is_archived_eq",
@@ -643,7 +668,7 @@
                 "value" : "0",
                 "rawValue" : true
               } ],
-              "valueItemName" : "principal_id",
+              "valueItemName" : "idea_tag_id",
               "enableAC" : true,
               "enablePickupView" : false,
               "forceSelection" : true,
@@ -654,7 +679,9 @@
               "colMD" : 12,
               "layout" : "TABLE_12COL"
             },
-            "valueItemName" : "principal_id",
+            "resetItemName" : "workload_kind",
+            "resetItemNames" : [ "workload_kind" ],
+            "valueItemName" : "idea_tag_id",
             "allowEmpty" : false,
             "showCaption" : true
           } ],
@@ -1044,6 +1071,72 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "name"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "工作项标识",
+        "codeName" : "work_item_tag_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "work_item_tag_id",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "work_item_tag_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "测试用例标识",
+        "codeName" : "test_case_tag_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "test_case_tag_id",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "test_case_tag_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "需求标识",
+        "codeName" : "idea_tag_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "idea_tag_id",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "idea_tag_id"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
