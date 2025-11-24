@@ -69,12 +69,36 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
   },
   "getPSDEFormItemUpdates" : [ {
+    "codeName" : "reset",
+    "name" : "重置事项",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_kind"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar workload_kind = form_data.workload_kind;\r\nif (workload_kind == '产品需求') {\r\n    form_data.work_item_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '工作项') {\r\n    form_data.idea_tag = null;\r\n    form_data.test_case_tag = null;\r\n}\r\nif (workload_kind == '测试用例') {\r\n    form_data.work_item_tag = null;\r\n    form_data.idea_tag = null;\r\n}",
+    "customCode" : true
+  }, {
+    "codeName" : "update_tese_case",
+    "name" : "更新测试用例标识",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "test_case_tag"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar tese_case_tag_id = form_data.tese_case_tag_id;\r\nvar tese_case_tag = form_data.tese_case_tag;\r\nif (tese_case_tag != null) {\r\n    form_data.principal_id = tese_case_tag_id;\r\n}",
+    "customCode" : true
+  }, {
     "codeName" : "update_work_item",
     "name" : "更新工作项标识",
     "getPSDEFIUpdateDetails" : [ {
       "name" : "work_item_tag"
     } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar work_item_tag_id = form_data.work_item_tag_id;\r\nform_data.principal_id = work_item_tag_id;",
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar work_item_tag_id = form_data.work_item_tag_id;\r\nvar work_item_tag = form_data.work_item_tag;\r\nif (work_item_tag != null) {\r\n    form_data.principal_id = work_item_tag_id;\r\n}",
+    "customCode" : true
+  }, {
+    "codeName" : "update_idea",
+    "name" : "更新需求标识",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "idea_tag"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar idea_tag_id = form_data.idea_tag_id;\r\nvar idea_tag = form_data.idea_tag;\r\nif (idea_tag != null) {\r\n    form_data.principal_id = idea_tag_id;\r\n}",
     "customCode" : true
   }, {
     "codeName" : "duration_updateform",
@@ -276,6 +300,10 @@
         "labelWidth" : 130,
         "name" : "workload_kind",
         "noPrivDisplayMode" : 1,
+        "getPSDEFormItemUpdate" : {
+          "modelref" : true,
+          "id" : "reset"
+        },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
           "name" : "workload_kind",
@@ -391,8 +419,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "workload_kind",
-          "resetItemNames" : [ "workload_kind" ],
           "valueItemName" : "work_item_tag_id",
           "allowEmpty" : false,
           "showCaption" : true
@@ -433,6 +459,10 @@
             "relatedDetailNames" : [ "principal_type" ],
             "notMode" : false
           } ],
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "update_tese_case"
+          },
           "getPSEditor" : {
             "editorParams" : {
               "SRFNAVPARAM.N_IS_ARCHIVED_EQ" : "0",
@@ -481,8 +511,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "workload_kind",
-          "resetItemNames" : [ "workload_kind" ],
           "valueItemName" : "test_case_tag_id",
           "allowEmpty" : false,
           "showCaption" : true
@@ -523,6 +551,10 @@
             "relatedDetailNames" : [ "principal_type" ],
             "notMode" : false
           } ],
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "update_idea"
+          },
           "getPSEditor" : {
             "editorParams" : {
               "SRFNAVPARAM.N_IS_ARCHIVED_EQ" : "0",
@@ -571,8 +603,6 @@
             "colMD" : 12,
             "layout" : "TABLE_12COL"
           },
-          "resetItemName" : "workload_kind",
-          "resetItemNames" : [ "workload_kind" ],
           "valueItemName" : "idea_tag_id",
           "allowEmpty" : false,
           "showCaption" : true
