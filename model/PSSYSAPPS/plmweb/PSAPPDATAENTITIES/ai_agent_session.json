@@ -32,6 +32,50 @@
         "codeName" : "name"
       }
     } ],
+    "getPSDEUIActionGroup" : {
+      "name" : "AI界面行为组",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "确认采纳",
+        "detailType" : "DEUIACTION",
+        "name" : "u7ec36ee",
+        "getPSSysImage" : {
+          "glyph" : "xf0e7@FontAwesome",
+          "cssClass" : "fa fa-bolt"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "确认采纳",
+          "codeName" : "msg_footer_accept",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_agent_session_msg_footer_accept",
+          "name" : "确认采纳",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "debug_feedback"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0e7@FontAwesome",
+            "cssClass" : "fa fa-bolt"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "msg_footer_accept",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "id" : "msg_footer_accept@ai_agent_session"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ]
+    },
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "NAME",
@@ -1089,6 +1133,30 @@
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
     "id" : "debug_context@ai_agent_session"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "确认采纳",
+    "codeName" : "msg_footer_accept",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_agent_session_msg_footer_accept",
+    "name" : "确认采纳",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "debug_feedback"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0e7@FontAwesome",
+      "cssClass" : "fa fa-bolt"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "msg_footer_accept",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "msg_footer_accept@ai_agent_session"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "debug_context",
@@ -1160,6 +1228,50 @@
         }
       } ],
       "topPos" : 370,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "debug_feedback",
+    "defaultParamName" : "Default",
+    "logicName" : "debug_feedback",
+    "name" : "debug_feedback",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.info(uiLogic.default);\nvar answer = uiLogic.default.msg.realcontent;\nconsole.info(answer);\nconsole.info(view);",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 330,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
@@ -1261,5 +1373,32 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "name" : "AI界面行为组",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "确认采纳",
+      "detailType" : "DEUIACTION",
+      "name" : "u7ec36ee",
+      "getPSSysImage" : {
+        "glyph" : "xf0e7@FontAwesome",
+        "cssClass" : "fa fa-bolt"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+        },
+        "modelref" : true,
+        "id" : "msg_footer_accept@ai_agent_session"
+      }
+    } ]
+  } ]
 }
