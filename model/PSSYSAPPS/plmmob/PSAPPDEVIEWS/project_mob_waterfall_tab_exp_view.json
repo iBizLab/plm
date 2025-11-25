@@ -1,0 +1,368 @@
+{
+  "accUserMode" : 2,
+  "caption" : "项目",
+  "codeName" : "project_mob_waterfall_tab_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_waterfall_tab_exp_view.json",
+  "name" : "projectmob_waterfall_tab_exp_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "MobTabExpView",
+    "name" : "engine"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "mob_wt_tab_exp_view_dr",
+    "controlType" : "DRTAB",
+    "dataRelationTag" : "mob_wt_tab_exp_view_DR",
+    "editItemCaption" : "项目",
+    "name" : "tabexppanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "tabexppanel"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TABEXPPANEL"
+    },
+    "getPSDEDRTabPages" : [ {
+      "caption" : "概览",
+      "name" : "overview",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_over_view.json",
+        "viewType" : "DEMOBPORTALVIEW"
+      }
+    }, {
+      "caption" : "规划",
+      "name" : "plan",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_plan_md_view.json",
+        "viewType" : "DEMOBMDVIEW"
+      }
+    }, {
+      "caption" : "里程碑",
+      "name" : "milestone",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_milestone_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    }, {
+      "caption" : "交付物",
+      "name" : "deliverable",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/deliverable_mob_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    }, {
+      "caption" : "工作项",
+      "name" : "work_item",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_scrum_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    }, {
+      "caption" : "需求",
+      "name" : "idea",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_idea_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    }, {
+      "caption" : "缺陷",
+      "name" : "bug",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_bug_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    }, {
+      "caption" : "发布",
+      "name" : "release",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/release_mob_list_view.json",
+        "viewType" : "DEMOBLISTVIEW"
+      }
+    } ],
+    "uniqueTag" : "project_mob_waterfall_tab_exp_view__tabexppanel",
+    "modelid" : "3d6960e29b32243a681ae56ed8f8a198",
+    "modeltype" : "PSDEDRTAB"
+  }, {
+    "codeName" : "mob_waterfall_tab_exp_view_righttoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "项目移动端分页导航视图_工具栏",
+    "name" : "righttoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : {
+      "id" : "RIGHTTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "设置",
+      "itemType" : "ITEMS",
+      "name" : "items1",
+      "getPSDEToolbarItems" : [ {
+        "caption" : "项目成员",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "righttoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0c0@FontAwesome",
+          "cssClass" : "fa fa-users"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "项目成员",
+          "codeName" : "mob_project_member",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_list_view.json",
+            "viewType" : "DEMOBLISTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "project_mob_project_member",
+          "name" : "项目成员（移动端）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "SRFSESSIONID",
+            "name" : "SRFSESSIONID",
+            "rawValue" : true
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf0c0@FontAwesome",
+            "cssClass" : "fa fa-users"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "mob_project_member",
+          "uIActionType" : "DEUIACTION",
+          "id" : "mob_project_member@project"
+        },
+        "tooltip" : "项目成员",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "项目设置",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "righttoolbar_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "项目设置",
+          "codeName" : "mob_setting",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_setting_view.json",
+            "viewType" : "DEMOBEDITVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "project_mob_setting",
+          "name" : "项目设置（移动端）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "mob_setting",
+          "uIActionType" : "DEUIACTION",
+          "id" : "mob_setting@project"
+        },
+        "tooltip" : "项目设置",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "高级设置",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "righttoolbar_deuiaction3"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"16\" height=\"16\">\r\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" \r\n\t\tfill-opacity=\".9\" fill-rule=\"evenodd\" ></path>\r\n</svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "高级设置",
+          "codeName" : "mob_advanced_setting",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_advanced_setting_view.json",
+            "viewType" : "DEMOBEDITVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "project_mob_advanced_setting",
+          "name" : "高级设置（移动端）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"16\" height=\"16\">\r\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" \r\n\t\tfill-opacity=\".9\" fill-rule=\"evenodd\" ></path>\r\n</svg>"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "mob_advanced_setting",
+          "uIActionType" : "DEUIACTION",
+          "id" : "mob_advanced_setting@project"
+        },
+        "tooltip" : "高级设置",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "回收站",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction4",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "righttoolbar_deuiaction4"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "回收站",
+          "codeName" : "mob_recycle_bin",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_recycle_bin_md_view.json",
+            "viewType" : "DEMOBMDVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "project_mob_recycle_bin",
+          "name" : "回收站（移动端）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "mob_recycle_bin",
+          "uIActionType" : "DEUIACTION",
+          "id" : "mob_recycle_bin@project"
+        },
+        "tooltip" : "回收站",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "getPSSysCss" : {
+        "cssName" : "right_button_style"
+      },
+      "getPSSysImage" : {
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg fill=\"currentColor\" t=\"1729244594960\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4341\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"20\" height=\"20\"><path d=\"M469.333333 60.693333a85.333333 85.333333 0 0 1 85.333334 0l326.826666 188.714667a85.333333 85.333333 0 0 1 42.666667 73.898667v377.386666a85.333333 85.333333 0 0 1-42.666667 73.898667L554.666667 963.306667a85.333333 85.333333 0 0 1-85.333334 0L142.506667 774.592a85.333333 85.333333 0 0 1-42.666667-73.898667v-377.386666a85.333333 85.333333 0 0 1 42.666667-73.898667z m42.666667 73.898667L185.173333 323.306667v377.386666L512 889.408l326.826667-188.714667v-377.386666L512 134.592zM512 341.333333a170.666667 170.666667 0 1 1 0 341.333334 170.666667 170.666667 0 0 1 0-341.333334z m0 85.333334a85.333333 85.333333 0 1 0 0 170.666666 85.333333 85.333333 0 0 0 0-170.666666z\"  p-id=\"4342\"></path></svg>"
+      },
+      "tooltip" : "设置",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "toolbarStyle" : "MOBNAVRIGHTMENU",
+    "modelid" : "e6bcd86c5ab0084818e757e7006e50de",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "caption" : "项目",
+    "codeName" : "mob_waterfall_tab_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "mob_waterfall_tab_exp_view",
+  "getPSDEViewId" : "48dae171c31d5e2038aaaf0ed96df445",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEMOBTABEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "tabLayout" : "TOP",
+  "title" : "项目",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBTABEXPVIEW",
+  "enableDP" : true,
+  "enablePullDownRefresh" : false,
+  "enableQuickSearch" : false,
+  "enableSearch" : false,
+  "expandSearchForm" : false,
+  "loadDefault" : true,
+  "showDataInfoBar" : true,
+  "modelid" : "21c69fd53e00cbb55fe1522e67ded27e",
+  "modeltype" : "PSAPPDEVIEW"
+}

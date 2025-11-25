@@ -1,0 +1,274 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.idea_copy;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_copydefault;
+                global cn.ibizlab.plm.core.base.domain.attachment ideaidea_copyattachment;
+                global cn.ibizlab.plm.core.base.domain.attachment ideaidea_copyattachments;
+                global cn.ibizlab.plm.core.base.domain.attention ideaidea_copyattention;
+                global cn.ibizlab.plm.core.base.domain.attention ideaidea_copyattentions;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_copyfor_temp_obj;
+                global java.util.Map ideaidea_copyid;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_copyidea_new;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_copysrfactionparam;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_copytemp_obj;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
+                    global cn.ibizlab.plm.core.base.service.IattachmentService attachmentservice;
+                    global cn.ibizlab.plm.core.base.service.IattentionService attentionservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaidea_copybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定需求参数列表]
+            rule "bindparam1"
+            ruleflow-group "ideaidea_copybindparam1"
+            when
+            then
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置id参数]
+            rule "prepareparam3"
+            ruleflow-group "ideaidea_copyprepareparam3"
+            when
+            then
+                            ideaidea_copyid.set("",ideaidea_copydefault.get("id"));
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideaidea_copyloopsubcall1"
+            when
+            then
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取需求]
+            rule "deaction2"
+            ruleflow-group "ideaidea_copydeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(ideaidea_copyid.getId()),ideaidea_copyid);
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置需求信息]
+            rule "prepareparam1"
+            ruleflow-group "ideaidea_copyprepareparam1"
+            when
+            then
+                            ideaidea_copyidea_new.set("",ideaidea_copytemp_obj.get(""));
+                                ideaidea_copyidea_new.set("attentions",null);
+                            ideaidea_copyattachments.set("",ideaidea_copytemp_obj.get("attachments"));
+                            ideaidea_copyidea_new.set("productid",ideaidea_copyfor_temp_obj.get("target_product_id"));
+                                ideaidea_copyidea_new.set("attachments",null);
+                            ideaidea_copyidea_new.set("categoryid",ideaidea_copyfor_temp_obj.get("categoryid"));
+                                ideaidea_copyidea_new.set("id",null);
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建需求]
+            rule "deaction1"
+            ruleflow-group "ideaidea_copydeaction1"
+            when
+            then
+                        ideaservice.create(ideaidea_copyidea_new);
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "ideaidea_copyloopsubcall2"
+            when
+            then
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[置空附件id及owner_id]
+            rule "prepareparam2"
+            ruleflow-group "ideaidea_copyprepareparam2"
+            when
+            then
+                                ideaidea_copyattachment.set("id",null);
+                            ideaidea_copyattachment.set("ownerid",ideaidea_copyidea_new.get("id"));
+                            ideaidea_copyattachment.set("ownertype","IDEA");
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建附件并绑定]
+            rule "deaction3"
+            ruleflow-group "ideaidea_copydeaction3"
+            when
+            then
+                        attachmentservice.create(ideaidea_copyattachment);
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideaidea_copyend1"
+            when
+            then
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关注信息参数]
+            rule "prepareparam4"
+            ruleflow-group "ideaidea_copyprepareparam4"
+            when
+            then
+                                ideaidea_copyattention.set("id",null);
+                                ideaidea_copyattention.set("name",curuser.getSessionParams().get("srfusername"));
+                            ideaidea_copyattention.set("ownersubtype","IDEA");
+                                ideaidea_copyattention.set("userid",curuser.getSessionParams().get("srfpersonid"));
+                            ideaidea_copyattention.set("ownerid",ideaidea_copyidea_new.get("id"));
+                            ideaidea_copyattention.set("ownertype","IDEA");
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建关注信息]
+            rule "deaction4"
+            ruleflow-group "ideaidea_copydeaction4"
+            when
+            then
+                        attentionservice.create(ideaidea_copyattention);
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "ideaidea_copyend2"
+            when
+            then
+                        update(ideaidea_copydefault);//更新fact中变量值
+                        update(ideaidea_copyattachment);//更新fact中变量值
+                        update(ideaidea_copyattachments);//更新fact中变量值
+                        update(ideaidea_copyattention);//更新fact中变量值
+                        update(ideaidea_copyattentions);//更新fact中变量值
+                        update(ideaidea_copyfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_copyid);//更新fact中变量值
+                        update(ideaidea_copyidea_new);//更新fact中变量值
+                        update(ideaidea_copysrfactionparam);//更新fact中变量值
+                        update(ideaidea_copytemp_obj);//更新fact中变量值
+            end

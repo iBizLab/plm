@@ -1,0 +1,44 @@
+package cn.ibizlab.plm.team.logic.discuss_topiclogic.un_favorite;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_topic discuss_topicun_favoritedefault;
+                global cn.ibizlab.plm.core.team.domain.discuss_topic discuss_topicun_favoriteupdateobj;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_topicService iBzSysDiscuss_topicDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_topicun_favoritebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[删除星标数据]
+            rule "rawsqlcall1"
+            ruleflow-group "discuss_topicun_favoriterawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",curuser.getSessionParams().get("srfuserid"));
+        param.put("param1",discuss_topicun_favoritedefault.get("owner_id"));
+    String strSql="delete from `favorite` where create_man = #{et.param0} and owner_id = #{et.param1}";
+                        iBzSysDiscuss_topicDefaultService.execute(strSql,param);//SQL调用
+                        update(discuss_topicun_favoritedefault);//更新fact中变量值
+                        update(discuss_topicun_favoriteupdateobj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "discuss_topicun_favoriteend1"
+            when
+            then
+                        update(discuss_topicun_favoritedefault);//更新fact中变量值
+                        update(discuss_topicun_favoriteupdateobj);//更新fact中变量值
+            end
