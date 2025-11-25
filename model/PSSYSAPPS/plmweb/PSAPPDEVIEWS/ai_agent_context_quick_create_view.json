@@ -125,6 +125,34 @@
           "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
+        }, {
+          "caption" : "打开调试页面",
+          "detailType" : "DEUIACTION",
+          "name" : "u8f8c17a",
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "打开调试页面",
+            "codeName" : "open_debug_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_session_debug_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_agent_context_open_debug_view",
+            "name" : "打开调试页面",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_debug_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_debug_view@ai_agent_context"
+          },
+          "addSeparator" : true,
+          "showCaption" : true,
+          "showIcon" : true
         } ],
         "uniqueTag" : "ai_agent_context__Auto46490933"
       },
@@ -380,6 +408,13 @@
         "codeName" : "is_default"
       }
     }, {
+      "id" : "description",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
       "id" : "default_system_prompt",
       "dataType" : 21,
       "getPSAppDEField" : {
@@ -507,6 +542,13 @@
       "getPSAppDEField" : {
         "name" : "STREAM",
         "codeName" : "stream"
+      }
+    }, {
+      "id" : "context_debug_data",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "CONTEXT_DEBUG_DATA",
+        "codeName" : "context_debug_data"
       }
     }, {
       "id" : "ai_agent_id",
@@ -728,6 +770,39 @@
           "allowEmpty" : false,
           "showCaption" : true
         }, {
+          "caption" : "描述",
+          "codeName" : "description",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemHeight" : 200.0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "description",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSEditor" : {
+            "editorHeight" : 200.0,
+            "editorParams" : {
+              "HEIGHT" : "200"
+            },
+            "editorType" : "TEXTAREA_10",
+            "maxLength" : 2000,
+            "name" : "description",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
           "caption" : "默认系统提示词",
           "codeName" : "default_system_prompt",
           "dataType" : 21,
@@ -749,8 +824,9 @@
               "AC" : "true",
               "language" : "markdown"
             },
-            "editorType" : "CODE",
+            "editorType" : "MARKDOWN",
             "maxLength" : 1048576,
+            "mode" : "EDIT",
             "name" : "default_system_prompt",
             "getPSAppDEACMode" : {
               "modelref" : true,
@@ -837,46 +913,6 @@
             },
             "valueItemName" : "ai_model_id",
             "allowEmpty" : true,
-            "showCaption" : true
-          }, {
-            "actionType" : "UIACTION",
-            "caption" : "调试",
-            "codeName" : "btn_begin_debug",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "BUTTON",
-            "name" : "btn_begin_debug",
-            "getPSAppViewUIAction" : {
-              "modelref" : true,
-              "id" : "form_btn_begin_debug"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 3,
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "getPSUIAction" : {
-              "actionTarget" : "NONE",
-              "caption" : "打开调试页面",
-              "codeName" : "open_debug_view",
-              "getFrontPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_session_debug_view.json",
-                "viewType" : "DEEDITVIEW"
-              },
-              "frontProcessType" : "WIZARD",
-              "fullCodeName" : "ai_agent_context_open_debug_view",
-              "name" : "打开调试页面",
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
-              },
-              "uIActionMode" : "FRONT",
-              "uIActionTag" : "open_debug_view",
-              "uIActionType" : "DEUIACTION",
-              "id" : "open_debug_view@ai_agent_context"
-            },
-            "tooltip" : "调试",
-            "uIActionTarget" : "NONE",
             "showCaption" : true
           }, {
             "codeName" : "grouppanel9",
@@ -1077,9 +1113,15 @@
                 "ISAUTO" : "true",
                 "language" : "markdown"
               },
-              "editorType" : "CODE",
+              "editorStyle" : "AI_PARAMS",
+              "editorType" : "TEXTAREA",
               "maxLength" : 1048576,
               "name" : "welcome_message",
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "AI_PARAMS",
+                "runtimeObject" : true
+              },
               "showMaxLength" : true
             },
             "getPSLayoutPos" : {
@@ -1163,10 +1205,12 @@
           }, {
             "caption" : "自定义建议提示词",
             "codeName" : "custom_suggestion_prompt",
+            "contentHeight" : 500.0,
             "dataType" : 21,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
+            "height" : 500.0,
             "ignoreInput" : 0,
             "labelPos" : "NONE",
             "labelWidth" : 0,
@@ -1206,6 +1250,8 @@
             "getPSLayoutPos" : {
               "colLG" : 24,
               "colMD" : 24,
+              "height" : 500,
+              "heightMode" : "PX",
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true
@@ -1547,6 +1593,34 @@
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "调试数据",
+            "codeName" : "context_debug_data",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "context_debug_data",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "CONTEXT_DEBUG_DATA",
+              "codeName" : "context_debug_data"
+            },
+            "getPSEditor" : {
+              "editorType" : "CODE",
+              "maxLength" : 1048576,
+              "name" : "context_debug_data",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
