@@ -1,0 +1,262 @@
+package cn.ibizlab.plm.prodmgmt.logic.productlogic.auto_create_guideline;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product productauto_create_guidelinedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline productauto_create_guidelinefor_obj_guideline;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage productauto_create_guidelinefor_obj_review_stage;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline productauto_create_guidelineguideline;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline productauto_create_guidelineguideline_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline productauto_create_guidelineguideline_pages;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline productauto_create_guidelinenew_guideline;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage productauto_create_guidelinenew_review_stage;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage productauto_create_guidelinereview_stage_list;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage productauto_create_guidelinestage_arr;
+                    global cn.ibizlab.plm.core.testmgmt.service.IguidelineService guidelineservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IproductService iBzSysProductDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "productauto_create_guidelinebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置过滤参数]
+            rule "prepareparam1"
+            ruleflow-group "productauto_create_guidelineprepareparam1"
+            when
+            then
+                            productauto_create_guidelineguideline_filter.set("n_object_type_eq","PRODUCT");
+                            productauto_create_guidelineguideline_filter.set("n_scope_id_isnull","1");
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询产品全局流程规则]
+            rule "dedataset1"
+            ruleflow-group "productauto_create_guidelinededataset1"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "productauto_create_guidelineloopsubcall1"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定阶段用于后续循环，设置新建流程准则参数]
+            rule "prepareparam2"
+            ruleflow-group "productauto_create_guidelineprepareparam2"
+            when
+            then
+                            productauto_create_guidelinereview_stage_list.set("",productauto_create_guidelinefor_obj_guideline.get("reviewstage"));
+                            productauto_create_guidelinenew_guideline.set("isenabled",productauto_create_guidelinefor_obj_guideline.get("isenabled"));
+                            productauto_create_guidelinenew_guideline.set("name",productauto_create_guidelinefor_obj_guideline.get("name"));
+                            productauto_create_guidelinenew_guideline.set("subjecttype",productauto_create_guidelinefor_obj_guideline.get("subjecttype"));
+                            productauto_create_guidelinenew_guideline.set("objecttype",productauto_create_guidelinefor_obj_guideline.get("objecttype"));
+                            productauto_create_guidelinenew_guideline.set("scopeid",productauto_create_guidelinedefault.get("id"));
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "productauto_create_guidelineloopsubcall2"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[将阶段数据设置进guideline]
+            rule "prepareparam3"
+            ruleflow-group "productauto_create_guidelineprepareparam3"
+            when
+            then
+                            productauto_create_guidelinenew_guideline.set("reviewstage",productauto_create_guidelinestage_arr.get(""));
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接guideline_id]
+            rule "rawsfcode1"
+            ruleflow-group "productauto_create_guidelinerawsfcode1"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "productauto_create_guidelineend1"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[置空阶段的所属id与id]
+            rule "prepareparam4"
+            ruleflow-group "productauto_create_guidelineprepareparam4"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建属于产品的流程准则]
+            rule "deaction1"
+            ruleflow-group "productauto_create_guidelinedeaction1"
+            when
+            then
+                        guidelineservice.create(productauto_create_guidelinenew_guideline);
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置阶段至流程准则]
+            rule "prepareparam5"
+            ruleflow-group "productauto_create_guidelineprepareparam5"
+            when
+            then
+                            productauto_create_guidelinestage_arr.set("",productauto_create_guidelinefor_obj_review_stage.get(""));
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "productauto_create_guidelinerenewparam1"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "productauto_create_guidelinerenewparam2"
+            when
+            then
+                        update(productauto_create_guidelinedefault);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelineguideline);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(productauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(productauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(productauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(productauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(productauto_create_guidelinestage_arr);//更新fact中变量值
+            end

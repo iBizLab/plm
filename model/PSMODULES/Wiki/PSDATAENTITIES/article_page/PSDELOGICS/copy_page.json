@@ -1,0 +1,816 @@
+{
+  "codeName" : "copy_page",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/copy_page.json",
+  "logicName" : "复制页面",
+  "memo" : "复制页面，会调用复制子页面处理逻辑",
+  "name" : "复制页面",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置待复制页面ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_id"
+      },
+      "name" : "Default[id] ==> page_id",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 328
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定视图数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "srfactionparam",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 442
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_tmp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 557
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 387,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置待复制页面数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_page_id"
+      },
+      "name" : "for_tmp_obj[parent_id] ==> target_page_id",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "parent_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_space_id"
+      },
+      "name" : "for_tmp_obj[space_id] ==> target_space_id",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "space_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "is_child"
+      },
+      "name" : "for_tmp_obj[is_child] ==> is_child",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "is_child",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 557
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_id"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 625,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取待复制的页面",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_tmp_obj"
+    },
+    "topPos" : 557
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 842,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置待保存的页面",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "FORMAT_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[FORMAT_TYPE] ==> page_obj[FORMAT_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "FORMAT_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PUBLISH_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "expression" : "new Date()",
+      "name" : "[new Date()] ==> page_obj[PUBLISH_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "EXPRESSION"
+    }, {
+      "dstFieldName" : "PUBLISH_MAN",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> page_obj[PUBLISH_MAN]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    }, {
+      "dstFieldName" : "IS_PUBLISHED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[IS_PUBLISHED] ==> page_obj[IS_PUBLISHED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_PUBLISHED",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PUBLISHED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[PUBLISHED] ==> page_obj[PUBLISHED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PUBLISHED",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "IS_DELETED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[IS_DELETED] ==> page_obj[IS_DELETED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_DELETED",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PUBLISH_CONTENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[PUBLISH_CONTENT] ==> page_obj[PUBLISH_CONTENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PUBLISH_CONTENT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[TYPE] ==> page_obj[TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "IS_ARCHIVED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[IS_ARCHIVED] ==> page_obj[IS_ARCHIVED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_ARCHIVED",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "IS_LOCK",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[IS_LOCK] ==> page_obj[IS_LOCK]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_LOCK",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PUBLISH_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[PUBLISH_NAME] ==> page_obj[PUBLISH_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PUBLISH_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CONTENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[CONTENT] ==> page_obj[CONTENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CONTENT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "SPACE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "target_space_id ==> page_obj[SPACE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_space_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "target_page_id ==> page_obj[PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_page_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[NAME] ==> page_obj[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "IS_LEAF",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "name" : "for_tmp_obj[IS_LEAF] ==> page_obj[IS_LEAF]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_LEAF",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachments"
+      },
+      "name" : "for_tmp_obj[ATTACHMENTS] ==> attachments",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "ATTACHMENTS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 557
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 1070,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存页面",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "name" : "存在附件",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "attachments"
+          },
+          "logicType" : "SINGLE",
+          "name" : "attachments 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "复制子页面",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "is_child"
+          },
+          "logicType" : "SINGLE",
+          "name" : "is_child 等于(=) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_obj"
+    },
+    "topPos" : 557
+  }, {
+    "codeName" : "LOOPSUBCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "attachment"
+    },
+    "leftPos" : 1330,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "复制子页面",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "is_child"
+          },
+          "logicType" : "SINGLE",
+          "name" : "is_child 等于(=) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "attachments"
+    },
+    "topPos" : 557
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 1536,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置附件数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment"
+      },
+      "name" : "空值（NULL） ==> attachment[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment"
+      },
+      "name" : "page_obj[ID] ==> attachment[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment"
+      },
+      "name" : "直接值[PAGE] ==> attachment[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "PAGE",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 557
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attachment/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "attachment"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
+    },
+    "leftPos" : 1740,
+    "logicNodeType" : "DEACTION",
+    "name" : "新建附件数据",
+    "topPos" : 557
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 743
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 1070,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备子页面复制参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "old_parent_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "child_data"
+      },
+      "name" : "page_id ==> child_data[old_parent_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "new_parent_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "child_data"
+      },
+      "name" : "page_obj[ID] ==> child_data[new_parent_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "new_space_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "child_data"
+      },
+      "name" : "target_space_id ==> child_data[new_space_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_space_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 751
+  }, {
+    "codeName" : "DELOGIC1",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/copy_child_page.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "child_data"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 1070,
+    "logicNodeType" : "DELOGIC",
+    "name" : "复制子页面",
+    "topPos" : 880
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "attachment",
+    "logicName" : "附件",
+    "name" : "附件",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "attachments",
+    "logicName" : "附件",
+    "name" : "附件",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attachment.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "child_data",
+    "logicName" : "子页面复制参数",
+    "name" : "子页面复制参数",
+    "entityParam" : true
+  }, {
+    "codeName" : "for_tmp_obj",
+    "logicName" : "循环变量",
+    "name" : "循环变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "is_child",
+    "logicName" : "是否包含子页面",
+    "name" : "是否包含子页面",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "page_id",
+    "logicName" : "待复制页面id",
+    "name" : "待复制页面id",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "page_obj",
+    "logicName" : "页面对象",
+    "name" : "页面对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "srfactionparam",
+    "logicName" : "视图数据",
+    "name" : "视图数据",
+    "entityListParam" : true
+  }, {
+    "codeName" : "target_page_id",
+    "logicName" : "目标页面id",
+    "name" : "目标页面id",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "target_space_id",
+    "logicName" : "目标空间id",
+    "name" : "目标空间id",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
