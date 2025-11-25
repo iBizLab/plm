@@ -14,22 +14,22 @@
       "name" : "value",
       "getPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "getPSDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       }
     }, {
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
         "name" : "NAME",
-        "codeName" : "name"
+        "codeName" : "_name"
       },
       "getPSDEField" : {
         "name" : "NAME",
-        "codeName" : "name"
+        "codeName" : "_name"
       }
     } ],
     "getPSDEUIActionGroup" : {
@@ -79,11 +79,11 @@
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "NAME",
-      "codeName" : "name"
+      "codeName" : "_name"
     },
     "getValuePSAppDEField" : {
       "name" : "ID",
-      "codeName" : "id"
+      "codeName" : "_id"
     },
     "defaultMode" : false,
     "enableBackend" : true,
@@ -169,7 +169,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -246,7 +246,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -415,7 +415,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "id",
+    "codeName" : "_id",
     "logicName" : "智能体会话标识",
     "name" : "ID",
     "stdDataType" : 25,
@@ -425,8 +425,19 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
+        "editorType" : "PICKER",
         "name" : "默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
         "stringLength" : 200,
         "uIMode" : "DEFAULT"
       },
@@ -434,8 +445,19 @@
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBPICKER",
         "name" : "移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -443,7 +465,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "name",
+    "codeName" : "_name",
     "logicName" : "名称",
     "name" : "NAME",
     "stdDataType" : 25,
@@ -540,8 +562,16 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
+        "editorType" : "SPAN",
         "name" : "默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
         "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
@@ -549,8 +579,16 @@
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXTAREA",
+        "editorType" : "SPAN",
         "name" : "移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -622,24 +660,24 @@
     "codeName" : "ai_agent_sessionDTO",
     "name" : "ai_agent_sessionDTO",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "id",
+      "codeName" : "_id",
       "logicName" : "智能体会话标识",
-      "name" : "id",
+      "name" : "_id",
       "getPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "name",
+      "codeName" : "_name",
       "logicName" : "名称",
-      "name" : "name",
+      "name" : "_name",
       "getPSAppDEField" : {
         "name" : "NAME",
-        "codeName" : "name"
+        "codeName" : "_name"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -722,7 +760,7 @@
       "name" : "N_ID_EQ",
       "getPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -811,7 +849,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -888,7 +926,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "ID",
-        "codeName" : "id"
+        "codeName" : "_id"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -1112,16 +1150,6 @@
       "value" : "true",
       "rawValue" : true
     }, {
-      "key" : "AI_AGENT_CONTEXT",
-      "name" : "AI_AGENT_CONTEXT",
-      "value" : "id",
-      "rawValue" : false
-    }, {
-      "key" : "SRFAIAGENTTAG",
-      "name" : "SRFAIAGENTTAG",
-      "value" : "CONTEXT_CODE_NAME",
-      "rawValue" : false
-    }, {
       "key" : "AUTOQUESTION",
       "name" : "AUTOQUESTION",
       "value" : "true",
@@ -1130,6 +1158,11 @@
     "getPSNavigateParams" : [ {
       "key" : "srfaiagenttag",
       "name" : "srfaiagenttag",
+      "value" : "CONTEXT_CODE_NAME",
+      "rawValue" : false
+    }, {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
       "value" : "CONTEXT_CODE_NAME",
       "rawValue" : false
     } ],
@@ -1234,7 +1267,7 @@
       "topPos" : 530,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n        \n        // 检查context_data是否存在且为字符串\n        if (target.context_debug_data && typeof target.context_debug_data === 'string') {\n            try {\n                // 将JSON字符串解析为对象\n                const contextObj = JSON.parse(target.context_debug_data);\n                console.log('解析后的context_data对象:', contextObj);\n                //const _id = uiLogic.default.id;\n                \n                // 将解析后的对象合并到uiLogic.default中\n                // 使用Object.assign进行浅合并\n                Object.assign(uiLogic.default, contextObj);\n\n                //uiLogic.default.id = _id; \n                uiLogic.default.srfaiagenttag=target.context_code_name;\n                console.log('合并后的uiLogic.default:', uiLogic.default);\n                \n                \n            } catch (parseError) {\n                console.error('JSON解析错误:', parseError);\n                console.error('无效的JSON字符串:', target.context_debug_data);\n            }\n        }\n",
+      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n        \n        // 检查context_data是否存在且为字符串\n        if (target.context_debug_data && typeof target.context_debug_data === 'string') {\n            try {\n                // 将JSON字符串解析为对象\n                const contextObj = JSON.parse(target.context_debug_data);\n                console.log('解析后的context_data对象:', contextObj);\n                //const _id = uiLogic.default.id;\n                \n                // 将解析后的对象合并到uiLogic.default中\n                // 使用Object.assign进行浅合并\n                Object.assign(uiLogic.default, contextObj);\n\n                //uiLogic.default.id = _id; \n                uiLogic.default._id = uiLogic.default.context_id + (target?.id || crypto.randomUUID());\n                console.log('合并后的uiLogic.default:', uiLogic.default);\n                \n                \n            } catch (parseError) {\n                console.error('JSON解析错误:', parseError);\n                console.error('无效的JSON字符串:', target.context_debug_data);\n            }\n        }\n",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 250,
       "logicNodeType" : "RAWJSCODE",
@@ -1338,7 +1371,7 @@
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {
     "name" : "ID",
-    "codeName" : "id"
+    "codeName" : "_id"
   },
   "getLNPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.AI_AGENT_SESSION"
@@ -1346,7 +1379,7 @@
   "logicName" : "智能体会话",
   "getMajorPSAppDEField" : {
     "name" : "NAME",
-    "codeName" : "name"
+    "codeName" : "_name"
   },
   "getMinorPSAppDERSs" : [ {
     "actionRSMode" : 1,
@@ -1369,6 +1402,10 @@
       "name" : "CONTEXT_ID",
       "codeName" : "context_id"
     },
+    "getParentTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "_name"
+    },
     "rSMode" : 2
   } ],
   "name" : "AI_AGENT_SESSION",
@@ -1387,7 +1424,7 @@
   },
   "getQuickSearchPSAppDEFields" : [ {
     "name" : "NAME",
-    "codeName" : "name"
+    "codeName" : "_name"
   } ],
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
