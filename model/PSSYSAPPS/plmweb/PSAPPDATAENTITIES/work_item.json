@@ -33994,7 +33994,109 @@
       } ],
       "topPos" : 20
     }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif (choose != null && choose != '') {\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n}",
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'work_item'})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 1029
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 238
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 380,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "pid",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "dto"
+        },
+        "name" : "ctx[work_item] ==> dto[pid]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "work_item",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 510
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "choose_child"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 380,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新父标识",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 650
+    }, {
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif (choose != null && choose != '') {\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -34052,127 +34154,6 @@
       } ],
       "topPos" : 350
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "choose_child"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 380,
-      "logicNodeType" : "DEACTION",
-      "name" : "更新父标识",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 650
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'work_item'})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 1029
-    }, {
-      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "隐藏下拉框并清空下拉框内容",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 800
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 380,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "pid",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "dto"
-        },
-        "name" : "ctx[work_item] ==> dto[pid]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "work_item",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 510
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.grid.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 238
-    }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
         "modelref" : true,
@@ -34199,22 +34180,41 @@
         }
       } ],
       "topPos" : 920
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框并清空下拉框内容",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 800
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "表格对象",
-      "name" : "表格对象",
-      "ctrlParam" : true
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "视图对象",
       "name" : "视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "dto",
-      "logicName" : "传入后台对象",
-      "name" : "传入后台对象",
-      "entityParam" : true
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",

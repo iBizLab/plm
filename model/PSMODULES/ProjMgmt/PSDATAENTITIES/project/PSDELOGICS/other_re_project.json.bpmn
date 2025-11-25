@@ -18,7 +18,6 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectother_re_projectprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充关联参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectother_re_projectdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectother_re_projectdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectother_re_projectdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="生成正向关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectother_re_projectthrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
                         <endEvent id="throwexception1_end" name="end"/>
@@ -46,11 +45,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_debugparam1" sourceRef="prepareparam1" targetRef="debugparam1">
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_deaction1" sourceRef="debugparam1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_deaction2" sourceRef="deaction1" targetRef="deaction2">
                     </sequenceFlow>
