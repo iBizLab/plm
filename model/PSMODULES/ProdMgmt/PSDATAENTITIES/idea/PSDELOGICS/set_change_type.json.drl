@@ -53,6 +53,19 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
                         update(ideaset_change_typeversion_pages_results);//更新fact中变量值
             end
 
+            //逻辑处理节点[实体数据集]
+            rule "dedataset4"
+            ruleflow-group "ideaset_change_typededataset4"
+            when
+            then
+                        update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
+                        update(ideaset_change_typefor_obj);//更新fact中变量值
+                        update(ideaset_change_typepage_results);//更新fact中变量值
+                        update(ideaset_change_typeversion_filter);//更新fact中变量值
+                        update(ideaset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam1"
             ruleflow-group "ideaset_change_typedebugparam1"
@@ -92,11 +105,13 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
                         update(ideaset_change_typeversion_pages_results);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "ideaset_change_typedebugparam2"
+            //逻辑处理节点[设置版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "ideaset_change_typeprepareparam1"
             when
             then
+                            ideaset_change_typeversion_filter.set("n_owner_id_eq",ideaset_change_typefor_obj.get("id"));
+                            ideaset_change_typeversion_filter.set("size","2");
                         update(ideaset_change_typedefault);//更新fact中变量值
                         update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
@@ -121,21 +136,6 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
                                     ideaset_change_typepage_results.set(String.valueOf(entry.getKey()),entry.getValue());
                                     }
                             }
-                        update(ideaset_change_typedefault);//更新fact中变量值
-                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
-                        update(ideaset_change_typefor_obj);//更新fact中变量值
-                        update(ideaset_change_typepage_results);//更新fact中变量值
-                        update(ideaset_change_typeversion_filter);//更新fact中变量值
-                        update(ideaset_change_typeversion_pages_results);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置版本过滤器]
-            rule "prepareparam1"
-            ruleflow-group "ideaset_change_typeprepareparam1"
-            when
-            then
-                            ideaset_change_typeversion_filter.set("n_owner_id_eq",ideaset_change_typefor_obj.get("id"));
-                            ideaset_change_typeversion_filter.set("size","2");
                         update(ideaset_change_typedefault);//更新fact中变量值
                         update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值

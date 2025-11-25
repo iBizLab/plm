@@ -2775,7 +2775,7 @@
           } ]
         }, {
           "condType" : "CUSTOM",
-          "condition" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'TEST_CASE')",
+          "condition" : "not exists(select 1 from `relation` t2 where t1.id = t2.target_id and t2.principal_id = ctx.webcontext.add_review and t2.principal_type = 'TEST_CASE')",
           "name" : "未添加"
         } ]
       }
@@ -16866,7 +16866,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 50
+      "topPos" : 10
     }, {
       "codeName" : "DEDATASET4",
       "getDstPSDEDataSet" : {
@@ -16899,7 +16899,40 @@
         "modelref" : true,
         "id" : "page_results"
       },
-      "topPos" : 50
+      "topPos" : 10
+    }, {
+      "codeName" : "DEDATASET5",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "not_add"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 672,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET5"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 97
     }, {
       "codeName" : "DEBUGPARAM3",
       "getDstPSDELogicParam" : {
@@ -17093,6 +17126,40 @@
           "modelref" : true,
           "id" : "DEBUGPARAM3"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET5"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "add_tag",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[add_tag] 值不为空(NotNil)"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "add_review",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[add_review] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
       } ],
       "topPos" : 208,
       "parallelOutput" : true
@@ -17132,7 +17199,7 @@
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
         "modelref" : true,
-        "id" : "not_add"
+        "id" : "normal"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
