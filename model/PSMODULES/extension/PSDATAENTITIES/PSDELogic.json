@@ -26,6 +26,16 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
+    "getBeforePSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "BEFORE",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDELOGICS/initLogic.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/Create.json",
@@ -5031,6 +5041,37 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/extend_log.json"
       },
       "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "initLogic",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDELOGICS/initLogic.json",
+    "logicName" : "初始化规则",
+    "name" : "初始化规则",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+      },
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
