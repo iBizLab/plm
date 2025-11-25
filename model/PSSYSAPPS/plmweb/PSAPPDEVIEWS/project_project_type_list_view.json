@@ -20,6 +20,34 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onSelectionChange",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "LOGIC",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "select_project_type"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSViewCtrlName" : "list"
+  }, {
+    "eventNames" : "onLoadSuccess",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "DEFAULT",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "default_data"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSViewCtrlName" : "list"
+  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
@@ -147,21 +175,12 @@
       "codeName" : "usr1121855880",
       "controlType" : "PANEL",
       "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSPANELS/usr1121855880.json",
-      "hookEventNames" : [ "ONCLICK" ],
       "layoutMode" : "TABLE_24COL",
       "logicName" : "project_type_list_列表项面板",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
       },
-      "getPSControlLogics" : [ {
-        "eventNames" : "onClick",
-        "itemName" : "name",
-        "logicTag" : "list_itempanel",
-        "logicType" : "SCRIPT",
-        "name" : "logic",
-        "scriptCode" : "console.log('测试2');\r\nconsole.log(view);\r\nvar list = [];\r\nlist = view.layoutPanel.panelItems.list.control.state.selectedData;\r\nconsole.log(list);\r\nview.parentView.params.type = list[0].id;"
-      } ],
       "getPSControlParam" : { },
       "getPSLayout" : {
         "childColMD" : 24,
