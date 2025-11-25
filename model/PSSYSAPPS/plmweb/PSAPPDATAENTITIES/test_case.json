@@ -13055,33 +13055,6 @@
       } ],
       "topPos" : 20
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 590,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "表格刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        }
-      } ],
-      "topPos" : 670
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 590,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -13114,7 +13087,34 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 590,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 670
+    }, {
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -13204,6 +13204,13 @@
       } ],
       "topPos" : 410
     }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 752
+    }, {
       "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 590,
@@ -13236,13 +13243,6 @@
         }
       } ],
       "topPos" : 528
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 752
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "view",
@@ -13255,15 +13255,15 @@
       "name" : "表格对象",
       "ctrlParam" : true
     }, {
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "dto",
-      "logicName" : "传入后台对象",
-      "name" : "传入后台对象",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
