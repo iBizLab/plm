@@ -12858,11 +12858,6 @@
       "name" : "srfaiagent",
       "value" : "writer",
       "rawValue" : true
-    }, {
-      "key" : "srfmode",
-      "name" : "srfmode",
-      "value" : "ai_write",
-      "rawValue" : true
     } ],
     "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
     "uIActionMode" : "FRONT",
@@ -12882,8 +12877,8 @@
       "value" : "true",
       "rawValue" : true
     }, {
-      "key" : "srfmode",
-      "name" : "srfmode",
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
       "value" : "ai_rich",
       "rawValue" : true
     } ],
@@ -12905,8 +12900,8 @@
       "value" : "true",
       "rawValue" : true
     }, {
-      "key" : "srfmode",
-      "name" : "srfmode",
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
       "value" : "ai_short",
       "rawValue" : true
     } ],
@@ -12928,8 +12923,8 @@
       "value" : "true",
       "rawValue" : true
     }, {
-      "key" : "srfmode",
-      "name" : "srfmode",
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
       "value" : "summary_generate",
       "rawValue" : true
     } ],
@@ -104639,13 +104634,37 @@
           } ],
           "topPos" : 208
         }, {
+          "code" : "console.log('测试2');\r\nconsole.log(view);\r\n\r\n//uiLogic.list.state.selectedData.push(items[i]);",
           "codeName" : "RAWJSCODE1",
           "leftPos" : 705,
           "logicNodeType" : "RAWJSCODE",
           "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "END1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
           "topPos" : 208
+        }, {
+          "codeName" : "END1",
+          "leftPos" : 1290,
+          "logicNodeType" : "END",
+          "name" : "结束",
+          "topPos" : 200
         } ],
         "getPSDEUILogicParams" : [ {
+          "codeName" : "list",
+          "logicName" : "指定部件对象",
+          "name" : "指定部件对象",
+          "ctrlParam" : true
+        }, {
           "codeName" : "Default",
           "logicName" : "传入变量",
           "name" : "传入变量",
@@ -105304,6 +105323,31 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
+          "codeName" : "END1",
+          "leftPos" : 1351,
+          "logicNodeType" : "END",
+          "name" : "结束",
+          "topPos" : 200
+        }, {
+          "code" : "console.log('测试1');\r\nconsole.log(view);\r\nuiLogic.default;",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 748,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "END1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
+        }, {
           "codeName" : "DEBUGPARAM1",
           "getDstPSDEUILogicParam" : {
             "modelref" : true,
@@ -105324,12 +105368,6 @@
               "id" : "DEBUGPARAM1"
             }
           } ],
-          "topPos" : 208
-        }, {
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 748,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
           "topPos" : 208
         } ],
         "getPSDEUILogicParams" : [ {
@@ -150531,11 +150569,6 @@
                 "name" : "srfaiagent",
                 "value" : "writer",
                 "rawValue" : true
-              }, {
-                "key" : "srfmode",
-                "name" : "srfmode",
-                "value" : "ai_write",
-                "rawValue" : true
               } ],
               "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
               "uIActionMode" : "FRONT",
@@ -150563,8 +150596,8 @@
                 "value" : "true",
                 "rawValue" : true
               }, {
-                "key" : "srfmode",
-                "name" : "srfmode",
+                "key" : "srfaiagent",
+                "name" : "srfaiagent",
                 "value" : "summary_generate",
                 "rawValue" : true
               } ],
@@ -150600,8 +150633,8 @@
                     "value" : "true",
                     "rawValue" : true
                   }, {
-                    "key" : "srfmode",
-                    "name" : "srfmode",
+                    "key" : "srfaiagent",
+                    "name" : "srfaiagent",
                     "value" : "ai_short",
                     "rawValue" : true
                   } ],
@@ -150631,8 +150664,8 @@
                     "value" : "true",
                     "rawValue" : true
                   }, {
-                    "key" : "srfmode",
-                    "name" : "srfmode",
+                    "key" : "srfaiagent",
+                    "name" : "srfaiagent",
                     "value" : "ai_rich",
                     "rawValue" : true
                   } ],
@@ -151977,7 +152010,7 @@
         },
         "builtinMethod" : false
       }, {
-        "actionMode" : "UPDATE",
+        "actionMode" : "GETDRAFT",
         "codeName" : "others_relation_work_item",
         "methodType" : "DEACTION",
         "name" : "others_relation_work_item",
@@ -151987,8 +152020,7 @@
             "modelref" : true,
             "id" : "work_item_dto"
           },
-          "type" : "DTO",
-          "output" : true
+          "type" : "DTO"
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
@@ -152010,11 +152042,10 @@
           "modelref" : true,
           "id" : "others_relation_work_item"
         },
-        "requestMethod" : "PUT",
+        "requestMethod" : "POST",
         "requestParamType" : "ENTITY",
         "requestPath" : "/others_relation_work_item",
-        "builtinMethod" : false,
-        "needResourceKey" : true
+        "builtinMethod" : false
       }, {
         "actionMode" : "UPDATE",
         "codeName" : "plan_work_item",
@@ -167477,7 +167508,7 @@
         },
         "builtinMethod" : false
       }, {
-        "actionMode" : "UPDATE",
+        "actionMode" : "GETDRAFT",
         "codeName" : "others_relation_work_item",
         "methodType" : "DEACTION",
         "name" : "others_relation_work_item",
@@ -167487,8 +167518,7 @@
             "modelref" : true,
             "id" : "work_item_dto"
           },
-          "type" : "DTO",
-          "output" : true
+          "type" : "DTO"
         },
         "getPSAppDEMethodReturn" : {
           "name" : "返回对象",
@@ -167510,11 +167540,10 @@
           "modelref" : true,
           "id" : "others_relation_work_item"
         },
-        "requestMethod" : "PUT",
+        "requestMethod" : "POST",
         "requestParamType" : "ENTITY",
         "requestPath" : "/others_relation_work_item",
-        "builtinMethod" : false,
-        "needResourceKey" : true
+        "builtinMethod" : false
       }, {
         "actionMode" : "UPDATE",
         "codeName" : "plan_work_item",
