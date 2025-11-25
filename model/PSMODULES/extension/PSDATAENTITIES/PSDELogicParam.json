@@ -692,6 +692,111 @@
     "serviceCodeName" : "OriginEntityFlag",
     "stdDataType" : 9,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PSDELOGICID",
+      "dBType" : "MYSQL5",
+      "name" : "PSDELOGICID",
+      "queryCodeExp" : "t1.`PSDELOGICID`",
+      "standardColumnName" : "`PSDELOGICID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PSDELOGICID_EQ",
+      "name" : "N_PSDELOGICID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PSDELOGICID][实体处理逻辑标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PSDELOGICID][实体处理逻辑标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PSDELOGICID][实体处理逻辑标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[PSDELOGICID][实体处理逻辑标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PSDELOGICID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "PSDELogicId",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "实体处理逻辑标识",
+    "name" : "PSDELOGICID",
+    "orderValue" : 1000,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogicParam/PSDERS/DER1N_PSDELOGICPARAM_PSDELOGIC_PSDELOGICID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "PSDELOGICID",
+      "codeName" : "PSDELogicId"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "PSDELOGICID",
+      "codeName" : "PSDELogicId"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "serviceCodeName" : "PSDELogicId",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "PSDELogicParamDTO",
@@ -741,6 +846,17 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "实体处理逻辑标识",
+      "name" : "PSDELogicId",
+      "getPSDEField" : {
+        "name" : "PSDELOGICID",
+        "codeName" : "PSDELogicId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "实体逻辑参数标识",
       "name" : "PSDELogicParamId",
       "getPSDEField" : {
@@ -771,6 +887,21 @@
   }, {
     "name" : "PSDELogicParamFilterDTO",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "实体处理逻辑标识",
+      "name" : "N_PSDELOGICID_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_PSDELOGICID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "PSDELOGICID",
+        "codeName" : "PSDELogicId"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "实体逻辑参数标识",
       "name" : "N_PSDELOGICPARAMID_EQ",
       "getPSDEFSearchMode" : {
@@ -899,6 +1030,32 @@
     "name" : "PSDELOGICPARAMNAME",
     "codeName" : "PSDELogicParamName"
   },
+  "getMinorPSDERs" : [ {
+    "codeName" : "PSDELOGIC",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDELogicParam/PSDERS/DER1N_PSDELOGICPARAM_PSDELOGIC_PSDELOGICID.json",
+    "fKeyName" : "F8515FB8B1896D9177",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogicParam.json"
+    },
+    "name" : "DER1N_PSDELOGICPARAM_PSDELOGIC_PSDELOGICID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "PSDELOGICID",
+      "codeName" : "PSDELogicId"
+    },
+    "pickupDEFName" : "PSDELOGICID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "PSDELOGIC"
+  } ],
   "name" : "PSDELOGICPARAM",
   "getPSSysDBScheme" : {
     "modelref" : true,
