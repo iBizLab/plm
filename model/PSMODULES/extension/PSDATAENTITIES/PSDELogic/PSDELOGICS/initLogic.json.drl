@@ -21,22 +21,6 @@ package cn.ibizlab.plm.extension.logic.psdelogiclogic.initlogic;
             then
             end
 
-            //逻辑处理节点[准备默认变量参数]
-            rule "prepareparam_01"
-            ruleflow-group "psdelogicinitlogicprepareparam_01"
-            when
-            then
-                            psdelogicinitlogicdelogicparam.set("psdelogicparamid","default");
-                            psdelogicinitlogicdelogicparam.set("psdelogicparamname","DEFAULT");
-                            psdelogicinitlogicdelogicparam.set("defaultparam","1");
-                            psdelogicinitlogicdelogicparam.set("globalparam","0");
-                            psdelogicinitlogicdelogicparam.set("logicname","默认变量");
-                            psdelogicinitlogicdelogicparam.set("originentityflag","1");
-                        update(psdelogicinitlogicdefault);//更新fact中变量值
-                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
-                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
-            end
-
             //逻辑处理节点[附加到数组参数]
             rule "appendparam_01"
             ruleflow-group "psdelogicinitlogicappendparam_01"
@@ -52,6 +36,22 @@ package cn.ibizlab.plm.extension.logic.psdelogiclogic.initlogic;
             ruleflow-group "psdelogicinitlogicrenewparam_01"
             when
             then
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备默认变量参数]
+            rule "prepareparam_01"
+            ruleflow-group "psdelogicinitlogicprepareparam_01"
+            when
+            then
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamid","default");
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamname","DEFAULT");
+                            psdelogicinitlogicdelogicparam.set("defaultparam","1");
+                            psdelogicinitlogicdelogicparam.set("globalparam","0");
+                            psdelogicinitlogicdelogicparam.set("logicname","默认变量");
+                            psdelogicinitlogicdelogicparam.set("originentityflag","1");
                         update(psdelogicinitlogicdefault);//更新fact中变量值
                         update(psdelogicinitlogicdelogicparam);//更新fact中变量值
                         update(psdelogicinitlogicdelogicparams);//更新fact中变量值
