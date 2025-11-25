@@ -635,6 +635,63 @@
     "stdDataType" : 9,
     "valueFormat" : "%1$s",
     "allowEmpty" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ORIGINENTITYFLAG",
+      "dBType" : "MYSQL5",
+      "name" : "ORIGINENTITYFLAG",
+      "queryCodeExp" : "t1.`ORIGINENTITYFLAG`",
+      "standardColumnName" : "`ORIGINENTITYFLAG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "OriginEntityFlag",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "logicName" : "原始数据对象",
+    "name" : "ORIGINENTITYFLAG",
+    "orderValue" : 1000,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "serviceCodeName" : "OriginEntityFlag",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "PSDELogicParamDTO",
@@ -673,6 +730,16 @@
       "stringLength" : 60,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "logicName" : "原始数据对象",
+      "name" : "OriginEntityFlag",
+      "getPSDEField" : {
+        "name" : "ORIGINENTITYFLAG",
+        "codeName" : "OriginEntityFlag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "实体逻辑参数标识",
       "name" : "PSDELogicParamId",

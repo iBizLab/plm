@@ -6,12 +6,37 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="psdelogicinitlogicdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDELogicParam()" name="psdelogicinitlogicdelogicparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDELogicParam()" name="psdelogicinitlogicdelogicparams" type="refentity"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDELogicService))" name="iBzSysPsdelogicDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="psdelogicinitlogicdefault" type="cn.ibizlab.plm.core.extension.domain.PSDELogic" />
+                            <tns:global identifier="psdelogicinitlogicdelogicparam" type="cn.ibizlab.plm.core.extension.domain.PSDELogicParam" />
+                            <tns:global identifier="psdelogicinitlogicdelogicparams" type="cn.ibizlab.plm.core.extension.domain.PSDELogicParam" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <endEvent id="begin_end" name="end"/>
-                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备默认变量参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicappendparam_01" id="appendparam_01" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicrenewparam_01" id="renewparam_01" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备事件变量参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicappendparam_02" id="appendparam_02" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="设置预置变量参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicinitlogicend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_appendparam_01" sourceRef="prepareparam_01" targetRef="appendparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="appendparam_01_renewparam_01" sourceRef="appendparam_01" targetRef="renewparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam_01_prepareparam_02" sourceRef="renewparam_01" targetRef="prepareparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_appendparam_02" sourceRef="prepareparam_02" targetRef="appendparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="appendparam_02_prepareparam_03" sourceRef="appendparam_02" targetRef="prepareparam_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_03_end_01" sourceRef="prepareparam_03" targetRef="end_01">
+                    </sequenceFlow>
         </process>
     </definitions>
