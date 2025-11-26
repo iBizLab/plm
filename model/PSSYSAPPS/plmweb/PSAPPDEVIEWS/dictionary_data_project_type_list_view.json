@@ -30,9 +30,10 @@
     "scriptCode" : "view.evt.emit('onSelectionChange', { data });"
   }, {
     "eventNames" : "onLoadSuccess",
-    "logicTrigger" : "VIEWEVENT",
+    "logicTrigger" : "CTRLEVENT",
     "logicType" : "SCRIPT",
     "name" : "LOGIC2",
+    "getPSViewCtrlName" : "list",
     "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\n\r\nlist.forEach(item => {\r\n  if (item.id == 'scrum') {\r\n    view.layoutPanel.panelItems.list.control.state.selectedData.push(item);\r\n  }\r\n});"
   }, {
     "logicTrigger" : "CUSTOM",
@@ -244,8 +245,7 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX",
-              "widthMode" : "FULL"
+              "layout" : "FLEX"
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
