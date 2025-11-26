@@ -52,7 +52,7 @@
     },
     "leftPos" : -260,
     "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
+    "name" : "调试逻辑参数web_ctx",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -66,7 +66,7 @@
     } ],
     "topPos" : -310
   }, {
-    "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
+    "code" : "def _usercontext = sys.user();\r\nprintln(\"######上下文#######\"+_usercontext);\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",
     "codeType" : "Groovy",
     "leftPos" : 31,
@@ -90,7 +90,7 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[srfreadonly] 值为空(Nil)"
+          "name" : "Default[srfreadonly] 值为空(Nil) "
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -135,7 +135,8 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 150
+    "topPos" : 160,
+    "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 284,
@@ -466,7 +467,8 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : -220
+    "topPos" : -220,
+    "parallelOutput" : true
   }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
     "codeName" : "RAWSFCODE4",
@@ -524,7 +526,7 @@
     "codeName" : "web_ctx",
     "logicName" : "web_ctx",
     "name" : "web_ctx",
-    "webContextParam" : true
+    "appContextParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,

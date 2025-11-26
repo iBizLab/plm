@@ -44,14 +44,15 @@
   } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
-    "codeName" : "CheckKey",
+    "actionTag" : "CheckKey",
+    "codeName" : "check_key",
     "methodType" : "DEACTION",
     "name" : "CheckKey",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -70,22 +71,23 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "CheckKey"
+      "id" : "check_key"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/checkkey",
+    "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
     "actionMode" : "CREATE",
-    "codeName" : "Create",
+    "actionTag" : "Create",
+    "codeName" : "create",
     "methodType" : "DEACTION",
     "name" : "Create",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -94,7 +96,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -116,7 +118,46 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "READ",
-    "codeName" : "Get",
+    "codeName" : "fill_with_agent",
+    "methodType" : "DEACTION",
+    "name" : "fill_with_agent",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_with_agent"
+    },
+    "requestMethod" : "GET",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_with_agent",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "READ",
+    "actionTag" : "Get",
+    "codeName" : "get",
     "methodType" : "DEACTION",
     "name" : "Get",
     "getPSAppDEMethodInput" : {
@@ -131,7 +172,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -155,14 +196,15 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "GETDRAFT",
-    "codeName" : "GetDraft",
+    "actionTag" : "GetDraft",
+    "codeName" : "get_draft",
     "methodType" : "DEACTION",
     "name" : "GetDraft",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -170,7 +212,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -184,16 +226,17 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "GetDraft"
+      "id" : "get_draft"
     },
     "requestMethod" : "GET",
     "requestParamType" : "NONE",
-    "requestPath" : "/getdraft",
+    "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
     "actionMode" : "DELETE",
+    "actionTag" : "Remove",
     "batchActionMode" : 1,
-    "codeName" : "Remove",
+    "codeName" : "remove",
     "methodType" : "DEACTION",
     "name" : "Remove",
     "getPSAppDEMethodInput" : {
@@ -229,14 +272,15 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "SAVE",
-    "codeName" : "Save",
+    "actionTag" : "Save",
+    "codeName" : "save",
     "methodType" : "DEACTION",
     "name" : "Save",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -245,7 +289,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -259,7 +303,7 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "Save"
+      "id" : "save"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
@@ -267,14 +311,15 @@
     "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
-    "codeName" : "Update",
+    "actionTag" : "Update",
+    "codeName" : "update",
     "methodType" : "DEACTION",
     "name" : "Update",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -283,7 +328,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -304,56 +349,18 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
-  }, {
-    "actionMode" : "READ",
-    "codeName" : "fill_with_agent",
-    "methodType" : "DEACTION",
-    "name" : "fill_with_agent",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_agent_contextDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "READ"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "fill_with_agent"
-    },
-    "requestMethod" : "GET",
-    "requestParamType" : "ENTITY",
-    "requestPath" : "/fill_with_agent",
-    "builtinMethod" : false,
-    "needResourceKey" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
-    "codeName" : "FetchDefault",
+    "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
     "methodType" : "FETCH",
-    "name" : "FetchDefault",
+    "name" : "fetch_default",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextFilterDTO"
+        "id" : "ai_agent_context_filter_dto"
       },
       "type" : "DTO"
     },
@@ -361,7 +368,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "PAGE"
     },
@@ -375,23 +382,23 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "FetchDefault"
+      "id" : "fetch_default"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/fetchdefault",
+    "requestPath" : "/fetch_default",
     "builtinMethod" : false
   }, {
-    "codeName" : "FetchFull_info",
+    "codeName" : "fetch_full_info",
     "dataSetName" : "full_info",
     "dataSetTag" : "full_info",
     "methodType" : "FETCH",
-    "name" : "FetchFull_info",
+    "name" : "fetch_full_info",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextFilterDTO"
+        "id" : "ai_agent_context_filter_dto"
       },
       "type" : "DTO"
     },
@@ -399,7 +406,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "PAGE"
     },
@@ -413,11 +420,11 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "FetchFull_info"
+      "id" : "fetch_full_info"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/fetchfull_info",
+    "requestPath" : "/fetch_full_info",
     "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
@@ -1488,8 +1495,8 @@
     "stringLength" : 100
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
-    "codeName" : "ai_agent_contextDTO",
-    "name" : "ai_agent_contextDTO",
+    "codeName" : "ai_agent_context_dto",
+    "name" : "ai_agent_context_dto",
     "getPSAppDEMethodDTOFields" : [ {
       "codeName" : "id",
       "logicName" : "智能体业务上下文标识",
@@ -1866,12 +1873,12 @@
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
-    "codeName" : "ai_agent_contextFilterDTO",
-    "name" : "ai_agent_contextFilterDTO",
+    "codeName" : "ai_agent_context_filter_dto",
+    "name" : "ai_agent_context_filter_dto",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "N_AI_AGENT_ID_EQ",
+      "codeName" : "n_ai_agent_id_eq",
       "logicName" : "智能体标识",
-      "name" : "N_AI_AGENT_ID_EQ",
+      "name" : "n_ai_agent_id_eq",
       "getPSAppDEField" : {
         "name" : "AI_AGENT_ID",
         "codeName" : "ai_agent_id"
@@ -1880,9 +1887,9 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_AI_MODEL_ID_EQ",
+      "codeName" : "n_ai_model_id_eq",
       "logicName" : "模型标识",
-      "name" : "N_AI_MODEL_ID_EQ",
+      "name" : "n_ai_model_id_eq",
       "getPSAppDEField" : {
         "name" : "AI_MODEL_ID",
         "codeName" : "ai_model_id"
@@ -1891,9 +1898,9 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_ID_EQ",
+      "codeName" : "n_id_eq",
       "logicName" : "智能体业务上下文标识",
-      "name" : "N_ID_EQ",
+      "name" : "n_id_eq",
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "id"
@@ -1902,9 +1909,9 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_NAME_LIKE",
+      "codeName" : "n_name_like",
       "logicName" : "名称",
-      "name" : "N_NAME_LIKE",
+      "name" : "n_name_like",
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
@@ -1918,14 +1925,15 @@
   } ],
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CHECKKEY",
-    "codeName" : "CheckKey",
+    "actionTag" : "CheckKey",
+    "codeName" : "check_key",
     "methodType" : "DEACTION",
     "name" : "CheckKey",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -1944,22 +1952,23 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "CheckKey"
+      "id" : "check_key"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/checkkey",
+    "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
     "actionMode" : "CREATE",
-    "codeName" : "Create",
+    "actionTag" : "Create",
+    "codeName" : "create",
     "methodType" : "DEACTION",
     "name" : "Create",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -1968,7 +1977,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -1990,7 +1999,46 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "READ",
-    "codeName" : "Get",
+    "codeName" : "fill_with_agent",
+    "methodType" : "DEACTION",
+    "name" : "fill_with_agent",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_with_agent"
+    },
+    "requestMethod" : "GET",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_with_agent",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "READ",
+    "actionTag" : "Get",
+    "codeName" : "get",
     "methodType" : "DEACTION",
     "name" : "Get",
     "getPSAppDEMethodInput" : {
@@ -2005,7 +2053,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -2029,14 +2077,15 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "GETDRAFT",
-    "codeName" : "GetDraft",
+    "actionTag" : "GetDraft",
+    "codeName" : "get_draft",
     "methodType" : "DEACTION",
     "name" : "GetDraft",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -2044,7 +2093,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -2058,16 +2107,17 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "GetDraft"
+      "id" : "get_draft"
     },
     "requestMethod" : "GET",
     "requestParamType" : "NONE",
-    "requestPath" : "/getdraft",
+    "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
     "actionMode" : "DELETE",
+    "actionTag" : "Remove",
     "batchActionMode" : 1,
-    "codeName" : "Remove",
+    "codeName" : "remove",
     "methodType" : "DEACTION",
     "name" : "Remove",
     "getPSAppDEMethodInput" : {
@@ -2103,14 +2153,15 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "SAVE",
-    "codeName" : "Save",
+    "actionTag" : "Save",
+    "codeName" : "save",
     "methodType" : "DEACTION",
     "name" : "Save",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -2119,7 +2170,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -2133,7 +2184,7 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "Save"
+      "id" : "save"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
@@ -2141,14 +2192,15 @@
     "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
-    "codeName" : "Update",
+    "actionTag" : "Update",
+    "codeName" : "update",
     "methodType" : "DEACTION",
     "name" : "Update",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO",
       "output" : true
@@ -2157,7 +2209,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "DTO"
     },
@@ -2179,54 +2231,16 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "READ",
-    "codeName" : "fill_with_agent",
-    "methodType" : "DEACTION",
-    "name" : "fill_with_agent",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_agent_contextDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/fill_with_agent.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "READ"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "fill_with_agent"
-    },
-    "requestMethod" : "GET",
-    "requestParamType" : "ENTITY",
-    "requestPath" : "/fill_with_agent",
-    "builtinMethod" : false,
-    "needResourceKey" : true
-  }, {
-    "codeName" : "FetchDefault",
+    "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
     "methodType" : "FETCH",
-    "name" : "FetchDefault",
+    "name" : "fetch_default",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextFilterDTO"
+        "id" : "ai_agent_context_filter_dto"
       },
       "type" : "DTO"
     },
@@ -2234,7 +2248,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "PAGE"
     },
@@ -2248,23 +2262,23 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "FetchDefault"
+      "id" : "fetch_default"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/fetchdefault",
+    "requestPath" : "/fetch_default",
     "builtinMethod" : false
   }, {
-    "codeName" : "FetchFull_info",
+    "codeName" : "fetch_full_info",
     "dataSetName" : "full_info",
     "dataSetTag" : "full_info",
     "methodType" : "FETCH",
-    "name" : "FetchFull_info",
+    "name" : "fetch_full_info",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextFilterDTO"
+        "id" : "ai_agent_context_filter_dto"
       },
       "type" : "DTO"
     },
@@ -2272,7 +2286,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_agent_contextDTO"
+        "id" : "ai_agent_context_dto"
       },
       "type" : "PAGE"
     },
@@ -2286,11 +2300,11 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "FetchFull_info"
+      "id" : "fetch_full_info"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/fetchfull_info",
+    "requestPath" : "/fetch_full_info",
     "builtinMethod" : false
   }, {
     "codeName" : "FilterCreate",
