@@ -183,6 +183,16 @@
         "layout" : "FLEX"
       },
       "showCaption" : true
+    }, {
+      "caption" : "工具栏",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CTRLPOS",
+      "name" : "tab_toolbar",
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "showCaption" : true
     } ],
     "layoutBodyOnly" : false,
     "layoutPanel" : true,
@@ -1363,7 +1373,7 @@
     }, {
       "codeName" : "calendar_work_item_management_grid_view_toolbar",
       "controlType" : "TOOLBAR",
-      "logicName" : "工时日历_工具栏",
+      "logicName" : "工时管理工具栏",
       "name" : "toolbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -1373,65 +1383,52 @@
         "id" : "TOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
-        "caption" : "更多",
-        "itemType" : "ITEMS",
-        "name" : "items1",
-        "getPSDEToolbarItems" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.EXPORT"
+        },
+        "caption" : "导出",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf1c3@FontAwesome",
+          "cssClass" : "fa fa-file-excel-o"
+        },
+        "getPSUIAction" : {
           "getCapPSLanguageRes" : {
             "lanResTag" : "TBB.TEXT.*.EXPORT"
           },
           "caption" : "导出",
-          "groupExtractMode" : "ITEM",
-          "itemType" : "DEUIACTION",
-          "name" : "deuiaction1",
-          "noPrivDisplayMode" : 2,
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "toolbar_deuiaction1"
-          },
+          "codeName" : "ExportExcel",
+          "fullCodeName" : "ExportExcel",
+          "name" : "表格界面_导出操作（Excel）",
           "getPSSysImage" : {
             "glyph" : "xf1c3@FontAwesome",
             "cssClass" : "fa fa-file-excel-o"
           },
-          "getPSUIAction" : {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.*.EXPORT"
-            },
-            "caption" : "导出",
-            "codeName" : "ExportExcel",
-            "fullCodeName" : "ExportExcel",
-            "name" : "表格界面_导出操作（Excel）",
-            "getPSSysImage" : {
-              "glyph" : "xf1c3@FontAwesome",
-              "cssClass" : "fa fa-file-excel-o"
-            },
-            "predefinedType" : "GRIDVIEW_EXPORTACTION",
-            "timeout" : 60000,
-            "getTooltipPSLanguageRes" : {
-              "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
-            },
-            "uIActionMode" : "SYS",
-            "uIActionTag" : "ExportExcel",
-            "uIActionType" : "DEUIACTION"
-          },
-          "tooltip" : "导出",
+          "predefinedType" : "GRIDVIEW_EXPORTACTION",
+          "timeout" : 60000,
           "getTooltipPSLanguageRes" : {
             "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
           },
-          "showCaption" : true,
-          "showIcon" : true
-        } ],
-        "getPSSysImage" : {
-          "glyph" : "xf0ca@FontAwesome",
-          "cssClass" : "fa fa-list-ul"
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "ExportExcel",
+          "uIActionType" : "DEUIACTION"
         },
-        "tooltip" : "更多",
-        "showCaption" : false,
+        "tooltip" : "导出",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+        },
+        "showCaption" : true,
         "showIcon" : true
       } ],
-      "toolbarStyle" : "USER",
       "xDataControlName" : "grid",
-      "modelid" : "1caa28e37cd29023f9d644f5b0378f0f",
+      "modelid" : "2069ac496c0fa376e7de57aab55bb10a",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "getCapPSLanguageRes" : {
