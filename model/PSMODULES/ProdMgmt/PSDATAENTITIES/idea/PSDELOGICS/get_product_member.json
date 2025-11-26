@@ -7,31 +7,9 @@
   "name" : "获取产品成员",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -450,
+    "leftPos" : -320,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "Begin"
-      }
-    } ],
-    "topPos" : -80,
-    "parallelOutput" : true
-  }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : -360,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -81,7 +59,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "Begin"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -117,10 +95,21 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "Begin"
       }
     } ],
-    "topPos" : -72
+    "topPos" : -80,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "none"
+    },
+    "leftPos" : -140,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "topPos" : -180
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",
@@ -482,6 +471,11 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
     },
     "entityPageParam" : true
+  }, {
+    "codeName" : "none",
+    "logicName" : "none",
+    "name" : "none",
+    "entityParam" : true
   }, {
     "codeName" : "user",
     "logicName" : "当前登录人",
