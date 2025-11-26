@@ -3712,6 +3712,147 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/workload_case/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "workload_case",
+    "logicName" : "工时登记用例",
+    "name" : "workload_case",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getChildPSDEDQJoins" : [ {
+          "getDERPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+          },
+          "getJoinPSDER" : {
+            "modelref" : true,
+            "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDERS/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID.json"
+          },
+          "getJoinPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+          },
+          "joinType" : "1N",
+          "name" : "LIBRARY_MEMBER存在1:N（EXISTS (SELECT)）DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID",
+          "getPSDEDQGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "连接条件",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "OR",
+              "getPSDEDQConditions" : [ {
+                "condOp" : "EQ",
+                "condType" : "SINGLE",
+                "condValue" : "admin",
+                "fieldName" : "ROLE_ID",
+                "name" : "(ROLE_ID) 等于(=) admin",
+                "getPSDEField" : {
+                  "name" : "ROLE_ID",
+                  "codeName" : "role_id"
+                }
+              }, {
+                "condOp" : "EQ",
+                "condType" : "SINGLE",
+                "condValue" : "user",
+                "fieldName" : "ROLE_ID",
+                "name" : "(ROLE_ID) 等于(=) user",
+                "getPSDEField" : {
+                  "name" : "ROLE_ID",
+                  "codeName" : "role_id"
+                }
+              } ]
+            } ]
+          }
+        } ],
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDERS/DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+        },
+        "joinType" : "N1",
+        "name" : "LIBRARY相关N:1（INNER JOIN）DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID"
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_CASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_ARCHIVED",
+          "name" : "(IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_ARCHIVED",
+            "codeName" : "is_archived"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "LIBRARY_IS_ARCHIVED",
+          "name" : "(LIBRARY_IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "LIBRARY_IS_ARCHIVED",
+            "codeName" : "library_is_archived"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "LIBRARY_IS_DELETED",
+          "name" : "(LIBRARY_IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "LIBRARY_IS_DELETED",
+            "codeName" : "library_is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Workload_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Workload_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -5100,6 +5241,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Work_item_relation_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "workload_case",
+    "logicName" : "工时登记用例",
+    "name" : "workload_case",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "workload_case"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Workload_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Workload_caseResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_case_dto"

@@ -160823,6 +160823,89 @@
         "stringLength" : 200
       } ],
       "getAllPSAppDELogics" : [ {
+        "codeName" : "display_version",
+        "defaultParamName" : "Default",
+        "logicName" : "版本数据",
+        "name" : "版本数据",
+        "getPSDELogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDELogicLinks" : [ {
+            "getDstPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM_02"
+            },
+            "name" : "连接名称",
+            "getSrcPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "codeName" : "DEBUGPARAM_02",
+          "getDstPSDELogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "leftPos" : 160,
+          "logicNodeType" : "DEBUGPARAM",
+          "name" : "调试逻辑参数default",
+          "getPSDELogicLinks" : [ {
+            "getDstPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM_01"
+            },
+            "name" : "连接名称",
+            "getSrcPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM_02"
+            }
+          } ],
+          "topPos" : 352,
+          "parallelOutput" : true
+        }, {
+          "codeName" : "DEBUGPARAM_01",
+          "getDstPSDELogicParam" : {
+            "modelref" : true,
+            "id" : "web_ctx"
+          },
+          "leftPos" : 160,
+          "logicNodeType" : "DEBUGPARAM",
+          "name" : "调试逻辑参数web_ctx",
+          "topPos" : 460,
+          "parallelOutput" : true
+        } ],
+        "getPSDELogicParams" : [ {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "getParamPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getParamPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+          },
+          "default" : true,
+          "entityParam" : true
+        }, {
+          "codeName" : "web_ctx",
+          "logicName" : "web_ctx",
+          "name" : "web_ctx",
+          "appContextParam" : true
+        } ],
+        "getStartPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        },
+        "enableBackend" : false,
+        "enableFront" : true
+      }, {
         "codeName" : "fill_bi_form_default",
         "defaultParamName" : "DEFAULT",
         "logicName" : "填充BI报表默认值",

@@ -251,6 +251,15 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/display_version.json"
+      },
+      "internalLogic" : true
     } ],
     "codeName" : "Get",
     "dataAccessAction" : "READ",
@@ -35763,6 +35772,86 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "display_version",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/display_version.json",
+    "logicName" : "版本数据",
+    "name" : "版本数据",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_02",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数default",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_02"
+        }
+      } ],
+      "topPos" : 352,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "web_ctx"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数web_ctx",
+      "topPos" : 460,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "web_ctx",
+      "logicName" : "web_ctx",
+      "name" : "web_ctx",
+      "appContextParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "fill_actual_time",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/fill_actual_time.json",
@@ -37872,9 +37961,9 @@
     "codeName" : "get_project_member",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/get_project_member.json",
-    "logicName" : "获取项目成员",
+    "logicName" : "获取项目成员及权限",
     "memo" : "获取项目成员信息，用于判断当前用户权限",
-    "name" : "获取项目成员",
+    "name" : "获取项目成员及权限",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : -490,

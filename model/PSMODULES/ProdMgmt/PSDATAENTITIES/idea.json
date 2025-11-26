@@ -3688,6 +3688,147 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDATAQUERIES/workload_idea/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "workload_idea",
+    "logicName" : "工时登记需求",
+    "name" : "workload_idea",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getChildPSDEDQJoins" : [ {
+          "getDERPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+          },
+          "getJoinPSDER" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member/PSDERS/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID.json"
+          },
+          "getJoinPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+          },
+          "joinType" : "1N",
+          "name" : "PRODUCT_MEMBER存在1:N（EXISTS (SELECT)）DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID",
+          "getPSDEDQGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "连接条件",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "OR",
+              "getPSDEDQConditions" : [ {
+                "condOp" : "EQ",
+                "condType" : "SINGLE",
+                "condValue" : "admin",
+                "fieldName" : "ROLE_ID",
+                "name" : "(ROLE_ID) 等于(=) admin",
+                "getPSDEField" : {
+                  "name" : "ROLE_ID",
+                  "codeName" : "role_id"
+                }
+              }, {
+                "condOp" : "EQ",
+                "condType" : "SINGLE",
+                "condValue" : "user",
+                "fieldName" : "ROLE_ID",
+                "name" : "(ROLE_ID) 等于(=) user",
+                "getPSDEField" : {
+                  "name" : "ROLE_ID",
+                  "codeName" : "role_id"
+                }
+              } ]
+            } ]
+          }
+        } ],
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDERS/DER1N_IDEA_PRODUCT_PRODUCT_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "joinType" : "N1",
+        "name" : "PRODUCT相关N:1（INNER JOIN）DER1N_IDEA_PRODUCT_PRODUCT_ID"
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "IDEA",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_ARCHIVED",
+          "name" : "(IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_ARCHIVED",
+            "codeName" : "is_archived"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "PRODUCT_IS_DELETED",
+          "name" : "(PRODUCT_IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "PRODUCT_IS_DELETED",
+            "codeName" : "product_is_deleted"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "PRODUCT_IS_ARCHIVED",
+          "name" : "(PRODUCT_IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "PRODUCT_IS_ARCHIVED",
+            "codeName" : "product_is_archived"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Workload_ideaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Workload_ideaResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -4733,6 +4874,33 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "UserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "workload_idea",
+    "logicName" : "工时登记需求",
+    "name" : "workload_idea",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "workload_idea"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Workload_ideaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Workload_ideaResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "idea_dto"
