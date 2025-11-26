@@ -1,18 +1,20 @@
 {
   "accUserMode" : 2,
-  "caption" : "项目类型",
-  "codeName" : "project_project_type_list_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_project_type_list_view.json",
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.DICTIONARY"
+  },
+  "caption" : "项目类型字典",
+  "codeName" : "dictionary_data_project_type_list_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_project_type_list_view.json",
   "mDCtrlActiveMode" : 0,
-  "memo" : "系统自动添加",
-  "name" : "projectproject_type_list_view",
+  "name" : "dictionary_dataproject_type_list_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
   },
   "getPSAppModule" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
   "getPSAppViewEngines" : [ {
     "engineCat" : "VIEW",
@@ -30,7 +32,7 @@
     "eventNames" : "onLoadSuccess",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "SCRIPT",
-    "name" : "DEFAULT",
+    "name" : "LOGIC2",
     "getPSViewCtrlName" : "list",
     "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\n\r\nlist.forEach(item => {\r\n  if (item.id == 'scrum') {\r\n    view.layoutPanel.panelItems.list.control.state.selectedData.push(items);\r\n  }\r\n});"
   }, {
@@ -44,14 +46,14 @@
       "getNewDataPSAppView" : {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -70,14 +72,14 @@
       "getOpenDataPSAppView" : {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -87,23 +89,29 @@
   } ],
   "getPSAppViewRefs" : [ {
     "name" : "NEWDATA",
-    "realTitle" : "项目编辑视图",
+    "realTitle" : "数据字典编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.DICTIONARY.EDITVIEW"
+    },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
     "name" : "EDITDATA",
-    "realTitle" : "项目编辑视图",
+    "realTitle" : "数据字典编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.DICTIONARY.EDITVIEW"
+    },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "project_type_list",
+    "codeName" : "project_type_list_view_list",
     "controlType" : "LIST",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -118,10 +126,10 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       }
     },
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSLISTS/project_type_list.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data/PSLISTS/project_type_list_view_list.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -133,7 +141,7 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       }
     },
     "getGetPSControlAction" : {
@@ -149,23 +157,29 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       }
     },
     "groupMode" : "NONE",
     "getItemPSLayoutPanel" : {
       "getAllPSPanelFields" : [ {
+        "id" : "icon",
+        "viewFieldName" : "icon"
+      }, {
         "id" : "name",
         "viewFieldName" : "name"
+      }, {
+        "id" : "description",
+        "viewFieldName" : "description"
       } ],
-      "codeName" : "usr1121855880",
+      "codeName" : "usr1126428953",
       "controlType" : "PANEL",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSPANELS/usr1121855880.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data/PSPANELS/usr1126428953.json",
       "layoutMode" : "TABLE_24COL",
-      "logicName" : "project_type_list_列表项面板",
+      "logicName" : "List_列表项面板",
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       },
       "getPSControlParam" : { },
       "getPSLayout" : {
@@ -186,32 +200,104 @@
           "layout" : "TABLE_24COL"
         },
         "getPSPanelItems" : [ {
-          "caption" : "文本(动态)",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "FIELD",
-          "name" : "name",
-          "getPSEditor" : {
-            "editorType" : "SPAN",
-            "name" : "name",
-            "predefinedType" : "FIELD_TEXT_DYNAMIC",
-            "renderMode" : "TEXT_DYNAMIC",
-            "enableLinkView" : false
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "name"
+          "getPSPanelItems" : [ {
+            "caption" : "图片(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "icon",
+            "getPSEditor" : {
+              "editorParams" : {
+                "MAXCOUNT" : "1"
+              },
+              "editorType" : "PICTURE_ONE",
+              "maxFileCount" : 1,
+              "maxFileSize" : -1,
+              "minFileCount" : 0,
+              "name" : "icon",
+              "predefinedType" : "FIELD_IMAGE"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "icon"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "widthMode" : "FULL"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "name",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "name",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "name"
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "description",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "description",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "description"
+            } ]
+          } ]
         } ]
       } ],
       "name" : "list_itempanel",
-      "modelid" : "390261EC-7E74-4F0C-8256-59CF0629344D",
+      "modelid" : "1665FCD4-327B-43F7-B603-9204B7099B0E",
       "modeltype" : "PSSYSVIEWPANEL"
     },
-    "logicName" : "project_type_list",
+    "logicName" : "List",
+    "getOrderValuePSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
     },
     "getPSControlHandler" : {
       "getPSHandlerActions" : [ {
@@ -225,7 +311,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         }
       }, {
         "actionName" : "Create",
@@ -238,7 +324,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         }
       }, {
         "actionName" : "Update",
@@ -251,7 +337,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         }
       }, {
         "actionName" : "Remove",
@@ -264,7 +350,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         }
       }, {
         "actionType" : "DEDATASET",
@@ -275,7 +361,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         }
       } ],
       "userDRAction" : "READ",
@@ -301,13 +387,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "state",
-      "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
-      }
     } ],
     "pagingSize" : 1000,
     "getRemovePSControlAction" : {
@@ -323,7 +402,7 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       }
     },
     "getUpdatePSControlAction" : {
@@ -339,7 +418,7 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       }
     },
     "hasWFDataItems" : false,
@@ -350,16 +429,16 @@
     "enableRowNew" : false,
     "noSort" : false,
     "showHeader" : true,
-    "singleSelect" : true,
+    "singleSelect" : false,
     "name" : "list",
-    "modelid" : "43A51073-12AE-4BAE-A78F-2762EB916387",
+    "modelid" : "D780A452-0D76-4D6C-AB26-E12D68E7FB18",
     "modeltype" : "PSDELIST"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
     },
     "getPSControlParam" : {
       "id" : "searchbar"
@@ -372,18 +451,21 @@
     "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
-    "caption" : "项目类型",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.DICTIONARY"
+    },
+    "caption" : "项目类型字典",
     "codeName" : "project_type_list_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
     },
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "project_type_list_view",
-  "getPSDEViewId" : "8FF159D5-99E9-4434-96FB-20CA70D07F4E",
+  "getPSDEViewId" : "443B367E-D191-4C3B-8127-BDD9360008D2",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDELISTVIEW",
@@ -391,15 +473,14 @@
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
     },
     "getPSControlParam" : { },
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
-  "title" : "项目类型",
+  "title" : "项目类型字典",
   "viewStyle" : "DEFAULT",
   "viewType" : "DELISTVIEW",
   "xDataControlName" : "list",
@@ -407,6 +488,6 @@
   "enableFilter" : true,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "07bb9b2530fb5732e51680660404770d",
+  "modelid" : "d79b1a1c441150c844122db5f57944a7",
   "modeltype" : "PSAPPDEVIEW"
 }

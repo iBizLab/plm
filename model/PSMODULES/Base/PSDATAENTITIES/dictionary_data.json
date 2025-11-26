@@ -291,11 +291,17 @@
       "name" : "COLOR",
       "codeName" : "color"
     }, {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }, {
       "name" : "STYLE",
       "codeName" : "style"
     }, {
       "name" : "CATALOG",
       "codeName" : "catalog"
+    }, {
+      "name" : "ICON",
+      "codeName" : "icon"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -634,6 +640,54 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Idea_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/project_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "project_type",
+    "logicName" : "项目类型",
+    "name" : "project_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "project_type",
+          "fieldName" : "TYPE",
+          "name" : "(TYPE) 等于(=) project_type",
+          "getPSDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Project_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -1579,6 +1633,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "project_type",
+    "logicName" : "项目类型",
+    "name" : "project_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "project_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Project_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "release_stage",
     "logicName" : "发布阶段",
     "name" : "release_stage",
@@ -2379,6 +2459,93 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DESCRIPTION",
+      "dBType" : "MYSQL5",
+      "name" : "DESCRIPTION",
+      "queryCodeExp" : "t1.`DESCRIPTION`",
+      "standardColumnName" : "`DESCRIPTION`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[DESCRIPTION][描述]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[DESCRIPTION][描述]移动端默认",
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DESCRIPTION",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "description",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT_1000",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.DESCRIPTION"
+    },
+    "length" : 2000,
+    "logicName" : "描述",
+    "name" : "DESCRIPTION",
+    "orderValue" : 180,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "DESCRIPTION"
+    },
+    "serviceCodeName" : "description",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "STYLE",
       "dBType" : "MYSQL5",
       "name" : "STYLE",
@@ -2561,6 +2728,84 @@
     "serviceCodeName" : "catalog",
     "stdDataType" : 25,
     "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ICON",
+      "dBType" : "MYSQL5",
+      "name" : "ICON",
+      "queryCodeExp" : "t1.`ICON`",
+      "standardColumnName" : "`ICON`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ICON][图标]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[ICON][图标]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ICON][图标]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[ICON][图标]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ICON",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "icon",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "图标",
+    "name" : "ICON",
+    "orderValue" : 210,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ICON"
+    },
+    "serviceCodeName" : "icon",
+    "stdDataType" : 21,
+    "stringLength" : 100,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -3193,6 +3438,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "0",
       "logicName" : "是否系统默认",
       "name" : "is_system",
@@ -3224,6 +3480,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "图标",
+      "name" : "icon",
+      "getPSDEField" : {
+        "name" : "ICON",
+        "codeName" : "icon"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "建立人",
@@ -3491,6 +3758,12 @@
     "logicName" : "测试用例字典表格视图",
     "name" : "测试用例字典表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_type_list_view",
+    "logicName" : "项目类型字典列表视图",
+    "name" : "项目类型字典列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
