@@ -35,7 +35,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM3"
+        "id" : "DEBUGPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -44,6 +44,27 @@
       }
     } ],
     "topPos" : -190
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "web_ctx"
+    },
+    "leftPos" : -260,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : -310
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",
@@ -499,6 +520,11 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
     },
     "entityPageParam" : true
+  }, {
+    "codeName" : "web_ctx",
+    "logicName" : "web_ctx",
+    "name" : "web_ctx",
+    "webContextParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,
