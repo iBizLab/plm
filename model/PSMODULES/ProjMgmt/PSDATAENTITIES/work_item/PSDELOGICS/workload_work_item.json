@@ -34,13 +34,114 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE3"
+        "id" : "PREPAREPARAM3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEBUGPARAM1"
       }
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 71,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 150
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 284,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "获取产品ID并设置过滤参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_PROJECT_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[project_id] ==> filter[N_PROJECT_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "project_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_USER_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : -170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_IS_DELETED_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[0] ==> work_item_filter[N_IS_DELETED_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "N_IS_ARCHIVED_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[0] ==> work_item_filter[N_IS_ARCHIVED_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "N_PROJECT_IS_ARCHIVED_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[0] ==> work_item_filter[N_PROJECT_IS_ARCHIVED_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : -72
   }, {
@@ -101,59 +202,6 @@
         "modelref" : true,
         "id" : "RAWSFCODE3"
       }
-    } ],
-    "topPos" : -72
-  }, {
-    "codeName" : "END2",
-    "leftPos" : 71,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 150
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 284,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "获取产品ID并设置过滤参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "N_PROJECT_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "Default[project_id] ==> filter[N_PROJECT_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "project_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "N_USER_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfpersonid",
-      "srcValueType" : "SESSION"
     } ],
     "topPos" : -72
   }, {
@@ -385,6 +433,15 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
     },
     "entityPageParam" : true
+  }, {
+    "codeName" : "work_item_filter",
+    "logicName" : "work_item_filter",
+    "name" : "work_item_filter",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,
