@@ -6839,6 +6839,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_work_item_type",
     "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_workload_work_item",
+    "dataSetName" : "workload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload_work_item",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -20454,6 +20492,44 @@
     "requestPath" : "/fetch_work_item_type",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_workload_work_item",
+    "dataSetName" : "workload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload_work_item",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempAdvanced_search",
     "dataSetTag" : "advanced_search",
     "dataSetType" : "DATAQUERY",
@@ -23859,6 +23935,66 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "work_item_type"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempWorkload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Workload_work_itemInput",
+      "name" : "Workload_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Workload_work_itemResult",
+      "name" : "Workload_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "PROJECT_IS_ARCHIVED",
+        "name" : "(PROJECT_IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "PROJECT_IS_DELETED",
+        "name" : "(PROJECT_IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false

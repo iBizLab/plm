@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "PREPAREPARAM3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -24,49 +24,7 @@
     "topPos" : -80,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : -410,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : -190
-  }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "web_ctx"
-    },
-    "leftPos" : -260,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数web_ctx",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : -310
-  }, {
-    "code" : "def _usercontext = sys.user();\r\nprintln(\"######上下文#######\"+_usercontext);\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
+    "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",
     "codeType" : "Groovy",
     "leftPos" : 31,
@@ -125,18 +83,6 @@
       }
     } ],
     "topPos" : -72
-  }, {
-    "codeName" : "END2",
-    "leftPos" : 71,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 160,
-    "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 284,
@@ -256,7 +202,7 @@
     "topPos" : -72
   }, {
     "codeName" : "PREPAREPARAM3",
-    "leftPos" : -290,
+    "leftPos" : -340,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "空",
     "getPSDELogicLinks" : [ {
@@ -347,7 +293,7 @@
         "id" : "PREPAREPARAM3"
       }
     } ],
-    "topPos" : -72
+    "topPos" : -80
   }, {
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 492,
@@ -440,6 +386,37 @@
     } ],
     "topPos" : -72
   }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+    "codeName" : "RAWSFCODE4",
+    "codeType" : "JavaScript",
+    "leftPos" : -340,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE4"
+      }
+    } ],
+    "topPos" : 156
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 71,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 160,
+    "parallelOutput" : true
+  }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
     "codeName" : "RAWSFCODE2",
     "leftPos" : 756,
@@ -469,25 +446,6 @@
     "returnType" : "LOGICPARAM",
     "topPos" : -220,
     "parallelOutput" : true
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
-    "codeName" : "RAWSFCODE4",
-    "codeType" : "JavaScript",
-    "leftPos" : -290,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE4"
-      }
-    } ],
-    "topPos" : 158
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -522,11 +480,6 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
     },
     "entityPageParam" : true
-  }, {
-    "codeName" : "web_ctx",
-    "logicName" : "web_ctx",
-    "name" : "web_ctx",
-    "appContextParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,

@@ -9,7 +9,6 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project_member()" name="work_itemget_project_memberfilter" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="work_itemget_project_memberfor_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project_member()" name="work_itemget_project_membermembers" type="refentity"/>
-                                <tns:metaData express="new HashMap()" name="work_itemget_project_memberweb_ctx" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iproject_memberService))" name="project_memberservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
@@ -18,27 +17,21 @@
                             <tns:global identifier="work_itemget_project_membermembers" type="cn.ibizlab.plm.core.projmgmt.domain.project_member" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数web_ctx"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
-                        <endEvent id="end2_end" name="end"/>
-                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取产品ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为项目成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_debugparam2" sourceRef="debugparam1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_prepareparam3" sourceRef="debugparam2" targetRef="prepareparam3">
+                    <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-rawsfcode3_prepareparam2" sourceRef="gateway-rawsfcode3" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -46,8 +39,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_memberdefault.get("srfreadonly"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -58,8 +50,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_memberdefault.get("srfreadonly"),"EQ","false")))
                                 ]]>
                             </conditionExpression>
@@ -72,8 +63,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_membermembers.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -84,8 +74,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_membermembers.get("size"),"EQ","1")))
                                 ]]>
                             </conditionExpression>
@@ -96,8 +85,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval(((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("projectIsArchived"),"EQ","1"))))
                                 ]]>
                             </conditionExpression>
@@ -108,8 +96,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","0"))&&(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -120,8 +107,7 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_memberfor_obj.get("role_id"),"NOTEQ","reader")))
                                 ]]>
                             </conditionExpression>
@@ -132,17 +118,16 @@
                                             $work_itemget_project_memberfilter:project_member();
                                             $work_itemget_project_memberfor_obj:Map();
                                             $work_itemget_project_membermembers:project_member();
-                                            $work_itemget_project_memberweb_ctx:Map();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers && );
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
                                 eval((RuleUtils.test($work_itemget_project_memberfor_obj.get("role_id"),"EQ","reader")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
-                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode4_end2" sourceRef="rawsfcode4" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-rawsfcode3" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode3_end_line"></exclusiveGateway>
                             <sequenceFlow id="rawsfcode3_gateway-rawsfcode3_gatewayline" sourceRef="rawsfcode3" targetRef="gateway-rawsfcode3"></sequenceFlow>

@@ -10,6 +10,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                 global java.util.Map work_itemworkload_work_itemfor_obj;
                 global cn.ibizlab.plm.core.projmgmt.domain.project_member work_itemworkload_work_itemmembers;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemworkload_work_itemwork_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemworkload_work_itemwork_item_page;
                     global cn.ibizlab.plm.core.projmgmt.service.Iproject_memberService project_memberservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -34,6 +35,20 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "work_itemworkload_work_itemrawsfcode3"
+            when
+            then
+                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
+                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
+                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
+                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -46,6 +61,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[获取产品id并设置过滤参数]
@@ -60,6 +76,33 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为项目成员]
+            rule "dedataset3"
+            ruleflow-group "work_itemworkload_work_itemdedataset3"
+            when
+            then
+                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
+                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
+                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
+                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "work_itemworkload_work_itemend6"
+            when
+            then
+                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
+                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
+                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
+                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[准备参数]
@@ -75,30 +118,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
-            end
-
-            //逻辑处理节点[判断系统管理员身份]
-            rule "rawsfcode3"
-            ruleflow-group "work_itemworkload_work_itemrawsfcode3"
-            when
-            then
-                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
-                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
-                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
-                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
-                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
-            end
-
-            //逻辑处理节点[查询当前用户是否为项目成员]
-            rule "dedataset3"
-            ruleflow-group "work_itemworkload_work_itemdedataset3"
-            when
-            then
-                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
-                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
-                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
-                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
-                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[绑定用户数据到for_obj]
@@ -112,6 +132,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[只读权限]
@@ -124,6 +145,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
 
             //逻辑处理节点[非只读权限]
@@ -136,16 +158,5 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.workload_work_item;
                         update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
                         update(work_itemworkload_work_itemmembers);//更新fact中变量值
                         update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
-            end
-
-            //逻辑处理节点[结束]
-            rule "end6"
-            ruleflow-group "work_itemworkload_work_itemend6"
-            when
-            then
-                        update(work_itemworkload_work_itemdefault);//更新fact中变量值
-                        update(work_itemworkload_work_itemfilter);//更新fact中变量值
-                        update(work_itemworkload_work_itemfor_obj);//更新fact中变量值
-                        update(work_itemworkload_work_itemmembers);//更新fact中变量值
-                        update(work_itemworkload_work_itemwork_item_filter);//更新fact中变量值
+                        update(work_itemworkload_work_itemwork_item_page);//更新fact中变量值
             end
