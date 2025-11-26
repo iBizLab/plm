@@ -150056,20 +150056,17 @@
         "codeName" : "fill_workload",
         "getItemPSLayoutPanel" : {
           "getAllPSPanelFields" : [ {
-            "id" : "icon",
-            "viewFieldName" : "icon"
-          }, {
             "id" : "show_identifier",
             "viewFieldName" : "SHOW_IDENTIFIER"
           }, {
             "id" : "title",
             "viewFieldName" : "title"
           } ],
-          "codeName" : "workload",
+          "codeName" : "workload_work_item",
           "controlType" : "PANEL",
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSPANELS/workload.json",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSPANELS/workload_work_item.json",
           "layoutMode" : "TABLE_24COL",
-          "logicName" : "工时事项布局面板",
+          "logicName" : "工时工作项布局面板",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -150111,44 +150108,27 @@
                 "spacingTop" : "INNERSMALL"
               },
               "getPSPanelItems" : [ {
-                "caption" : "单项数据容器",
-                "dataRegionType" : "SINGLEDATA",
-                "dataSourceType" : "CUSTOM",
+                "caption" : "图片",
+                "contentType" : "IMAGE",
                 "itemStyle" : "DEFAULT",
-                "itemType" : "CONTAINER",
-                "name" : "container_singledata",
-                "getPSLayout" : {
-                  "layout" : "FLEX"
-                },
+                "itemType" : "RAWITEM",
+                "name" : "static_image",
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
-                "getPSPanelItems" : [ {
-                  "caption" : "图片(动态)",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "FIELD",
-                  "name" : "icon",
-                  "getPSEditor" : {
-                    "editorParams" : {
-                      "RAWCONTENT" : "TRUE",
-                      "MAXCOUNT" : "1"
-                    },
-                    "editorType" : "PICTURE_ONE_RAW",
-                    "maxFileCount" : 1,
-                    "maxFileSize" : -1,
-                    "minFileCount" : 0,
-                    "name" : "icon",
-                    "rawContent" : true
+                "getPSRawItem" : {
+                  "contentType" : "IMAGE",
+                  "name" : "static_image",
+                  "getPSSysImage" : {
+                    "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>工作项</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-677, -654)\">\n            <g id=\"工作项\" transform=\"translate(677, 654)\">\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M12.1359375,3 C12.26875,3 12.396875,3.053125 12.490625,3.146875 L15.853125,6.5109375 C15.946875,6.6046875 16,6.73125 16,6.8640625 L16,16.5 C16,16.7765625 15.7765625,17 15.5,17 L5.5,17 C5.2234375,17 5,16.7765625 5,16.5 L5,3.5 C5,3.2234375 5.2234375,3 5.5,3 L12.1359375,3 Z M13.6251979,8 L12.7626979,8 C12.6814479,8 12.6064479,8.0390625 12.5595729,8.103125 L10.2017604,11.35 L9.1908229,9.959375 C9.1439479,9.8953125 9.0673854,9.85625 8.9876979,9.85625 L8.1251979,9.85625 C8.0236354,9.85625 7.9642604,9.971875 8.0236354,10.0546875 L9.9986354,12.7734375 C10.0986354,12.9109375 10.3048854,12.9109375 10.4048854,12.7734375 L13.7267604,8.2 C13.7861354,8.1171875 13.7267604,8.0015625 13.6251979,8 Z M11.90625,4.153125 L11.90625,7.09375 L14.846875,7.09375 L11.90625,4.153125 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
                   },
-                  "getPSLayoutPos" : {
-                    "grow" : -1,
-                    "layout" : "FLEX"
-                  },
-                  "viewFieldName" : "icon"
-                } ],
-                "predefinedType" : "CONTAINER_SINGLEDATA",
-                "scriptCode" : "{icon:\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+57y66Zm3PC90aXRsZT4KICAgIDxnIGlkPSLpobXpnaItMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IueUu+advyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTY2NiwgLTYxNykiPgogICAgICAgICAgICA8ZyBpZD0i57y66Zm3IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NjYsIDYxNykiPgogICAgICAgICAgICAgICAgPHJlY3QgaWQ9IuefqeW9oiIgZmlsbD0iI0ZGODc3QiIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iMyI+PC9yZWN0PgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE2LjY4NzUsMTAgTDE0LjM3NSwxMCBMMTQuMzc1LDguNDM3NSBDMTUuNTc1LDguNDM3NSAxNi41NDY4NzUsNy40NjU2MjUgMTYuNTQ2ODc1LDYuMjY1NjI1IEMxNi41NDY4NzUsNi4xOTY4NzUgMTYuNDkwNjI1LDYuMTQwNjI1IDE2LjQyMTg3NSw2LjE0MDYyNSBMMTUuNDg0Mzc1LDYuMTQwNjI1IEMxNS40MTU2MjUsNi4xNDA2MjUgMTUuMzU5Mzc1LDYuMTk2ODc1IDE1LjM1OTM3NSw2LjI2NTYyNSBDMTUuMzU5Mzc1LDYuODA5Mzc1IDE0LjkxODc1LDcuMjUgMTQuMzc1LDcuMjUgTDUuNjI1LDcuMjUgQzUuMDgxMjUsNy4yNSA0LjY0MDYyNSw2LjgwOTM3NSA0LjY0MDYyNSw2LjI2NTYyNSBDNC42NDA2MjUsNi4xOTY4NzUgNC41ODQzNzUsNi4xNDA2MjUgNC41MTU2MjUsNi4xNDA2MjUgTDMuNTc4MTI1LDYuMTQwNjI1IEMzLjUwOTM3NSw2LjE0MDYyNSAzLjQ1MzEyNSw2LjE5Njg3NSAzLjQ1MzEyNSw2LjI2NTYyNSBDMy40NTMxMjUsNy40NjU2MjUgNC40MjUsOC40Mzc1IDUuNjI1LDguNDM3NSBMNS42MjUsMTAgTDMuMzEyNSwxMCBDMy4yNDM3NSwxMCAzLjE4NzUsMTAuMDU2MjUgMy4xODc1LDEwLjEyNSBMMy4xODc1LDExIEMzLjE4NzUsMTEuMDY4NzUgMy4yNDM3NSwxMS4xMjUgMy4zMTI1LDExLjEyNSBMNS42MjUsMTEuMTI1IEw1LjYyNSwxMi42MjUgQzUuNjI1LDEyLjcyNjU2MjUgNS42MjgxMjUsMTIuODI4MTI1IDUuNjM1OTM3NSwxMi45MjY1NjI1IEM0LjU2NDA2MjUsMTMuMzg0Mzc1IDMuODEyNSwxNC40NDg0Mzc1IDMuODEyNSwxNS42ODc1IEMzLjgxMjUsMTUuNzU2MjUgMy44Njg3NSwxNS44MTI1IDMuOTM3NSwxNS44MTI1IEw0LjgxMjUsMTUuODEyNSBDNC44ODEyNSwxNS44MTI1IDQuOTM3NSwxNS43NTYyNSA0LjkzNzUsMTUuNjg3NSBDNC45Mzc1LDE0Ljk5Njg3NSA1LjMxMDkzNzUsMTQuMzkyMTg3NSA1Ljg2ODc1LDE0LjA2NzE4NzUgQzUuOTYyNSwxNC4zMzU5Mzc1IDYuMDgxMjUsMTQuNTkyMTg3NSA2LjIyMzQzNzUsMTQuODMyODEyNSBDNi42MDMxMjUsMTUuNDgxMjUgNy4xNDUzMTI1LDE2LjAyMzQzNzUgNy43OTM3NSwxNi40MDMxMjUgQzguMjQ1MzEyNSwxNi42NjcxODc1IDguNzQ2ODc1LDE2Ljg1MzEyNSA5LjI4MjgxMjUsMTYuOTQyMTg3NSBDOS4zNTE1NjI1LDE2Ljk0MjE4NzUgOS40MDc4MTI1LDE2Ljg4NTkzNzUgOS40MDc4MTI1LDE2LjgxNzE4NzUgTDkuNDA3ODEyNSw5LjU2MjUgQzkuNDA3ODEyNSw5LjQ5Mzc1IDkuNDY0MDYyNSw5LjQzNzUgOS41MzI4MTI1LDkuNDM3NSBMMTAuNDcwMzEyNSw5LjQzNzUgQzEwLjUzOTA2MjUsOS40Mzc1IDEwLjU5NTMxMjUsOS40OTM3NSAxMC41OTUzMTI1LDkuNTYyNSBMMTAuNTk1MzEyNSwxNi44MTU2MjUgQzEwLjU5NTMxMjUsMTYuODg0Mzc1IDEwLjY1MTU2MjUsMTYuOTQwNjI1IDEwLjcyMDMxMjUsMTYuOTQwNjI1IEMxMS4yNTYyNSwxNi44NTE1NjI1IDExLjc1NzgxMjUsMTYuNjY1NjI1IDEyLjIwOTM3NSwxNi40MDE1NjI1IEMxMi44NTc4MTI1LDE2LjAyMTg3NSAxMy40LDE1LjQ3OTY4NzUgMTMuNzc5Njg3NSwxNC44MzEyNSBDMTMuOTIxODc1LDE0LjU4OTA2MjUgMTQuMDQwNjI1LDE0LjMzMjgxMjUgMTQuMTM0Mzc1LDE0LjA2NTYyNSBDMTQuNjg5MDYyNSwxNC4zOTIxODc1IDE1LjA2MjUsMTQuOTk2ODc1IDE1LjA2MjUsMTUuNjg3NSBDMTUuMDYyNSwxNS43NTYyNSAxNS4xMTg3NSwxNS44MTI1IDE1LjE4NzUsMTUuODEyNSBMMTYuMDYyNSwxNS44MTI1IEMxNi4xMzEyNSwxNS44MTI1IDE2LjE4NzUsMTUuNzU2MjUgMTYuMTg3NSwxNS42ODc1IEMxNi4xODc1LDE0LjQ0ODQzNzUgMTUuNDM1OTM3NSwxMy4zODQzNzUgMTQuMzY0MDYyNSwxMi45MjY1NjI1IEMxNC4zNzAzMTI1LDEyLjgyNjU2MjUgMTQuMzc1LDEyLjcyNjU2MjUgMTQuMzc1LDEyLjYyNSBMMTQuMzc1LDExLjEyNSBMMTYuNjg3NSwxMS4xMjUgQzE2Ljc1NjI1LDExLjEyNSAxNi44MTI1LDExLjA2ODc1IDE2LjgxMjUsMTEgTDE2LjgxMjUsMTAuMTI1IEMxNi44MTI1LDEwLjA1NjI1IDE2Ljc1NjI1LDEwIDE2LjY4NzUsMTAgWiBNNi43NSw2LjM3NSBMMTMuMjUsNi4zNzUgQzEzLjMxODc1LDYuMzc1IDEzLjM3NSw2LjMxODc1IDEzLjM3NSw2LjI1IEMxMy4zNzUsNS42MjUgMTMuMjM3NSw1LjA1MTU2MjUgMTIuOTcwMzEyNSw0LjU2MDkzNzUgQzEyLjcwMTU2MjUsNC4wNjg3NSAxMi4zMDYyNSwzLjY3MzQzNzUgMTEuODE0MDYyNSwzLjQwNDY4NzUgQzExLjMyMzQzNzUsMy4xMzc1IDEwLjc1LDMgMTAuMTI1LDMgTDkuODc1LDMgQzkuMjUsMyA4LjY3NjU2MjUsMy4xMzc1IDguMTg1OTM3NSwzLjQwNDY4NzUgQzcuNjkzNzUsMy42NzM0Mzc1IDcuMjk4NDM3NSw0LjA2ODc1IDcuMDI5Njg3NSw0LjU2MDkzNzUgQzYuNzYyNSw1LjA1MTU2MjUgNi42MjUsNS42MjUgNi42MjUsNi4yNSBDNi42MjUsNi4zMTg3NSA2LjY4MTI1LDYuMzc1IDYuNzUsNi4zNzUgWiIgaWQ9IuW9oueKtiIgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJub256ZXJvIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==\"}"
+                  "predefinedType" : "STATIC_IMAGE"
+                },
+                "getPSSysImage" : {
+                  "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>工作项</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-677, -654)\">\n            <g id=\"工作项\" transform=\"translate(677, 654)\">\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M12.1359375,3 C12.26875,3 12.396875,3.053125 12.490625,3.146875 L15.853125,6.5109375 C15.946875,6.6046875 16,6.73125 16,6.8640625 L16,16.5 C16,16.7765625 15.7765625,17 15.5,17 L5.5,17 C5.2234375,17 5,16.7765625 5,16.5 L5,3.5 C5,3.2234375 5.2234375,3 5.5,3 L12.1359375,3 Z M13.6251979,8 L12.7626979,8 C12.6814479,8 12.6064479,8.0390625 12.5595729,8.103125 L10.2017604,11.35 L9.1908229,9.959375 C9.1439479,9.8953125 9.0673854,9.85625 8.9876979,9.85625 L8.1251979,9.85625 C8.0236354,9.85625 7.9642604,9.971875 8.0236354,10.0546875 L9.9986354,12.7734375 C10.0986354,12.9109375 10.3048854,12.9109375 10.4048854,12.7734375 L13.7267604,8.2 C13.7861354,8.1171875 13.7267604,8.0015625 13.6251979,8 Z M11.90625,4.153125 L11.90625,7.09375 L14.846875,7.09375 L11.90625,4.153125 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+                },
+                "showCaption" : true
               }, {
                 "caption" : "文本(动态)",
                 "itemStyle" : "DEFAULT",
@@ -160878,7 +160858,7 @@
           "getPSDELogicLinks" : [ {
             "getDstPSDELogicNode" : {
               "modelref" : true,
-              "id" : "DEBUGPARAM_02"
+              "id" : "PREPAREPARAM_01"
             },
             "name" : "连接名称",
             "getSrcPSDELogicNode" : {
@@ -160889,6 +160869,43 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
+          "codeName" : "PREPAREPARAM_01",
+          "leftPos" : 160,
+          "logicNodeType" : "PREPAREPARAM",
+          "name" : "准备参数",
+          "getPSDELogicLinks" : [ {
+            "getDstPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "DEBUGPARAM_02"
+            },
+            "name" : "连接名称",
+            "getSrcPSDELogicNode" : {
+              "modelref" : true,
+              "id" : "PREPAREPARAM_01"
+            }
+          } ],
+          "getPSDELogicNodeParams" : [ {
+            "dstFieldName" : "TEST1",
+            "getDstPSDELogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "paramAction" : "SETPARAMVALUE",
+            "srcFieldName" : "srfreadonly",
+            "srcValueType" : "VIEWPARAM"
+          }, {
+            "dstFieldName" : "TEST2",
+            "getDstPSDELogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "paramAction" : "SETPARAMVALUE",
+            "srcFieldName" : "srfreadonly",
+            "srcValueType" : "WEBCONTEXT"
+          } ],
+          "topPos" : 335,
+          "parallelOutput" : true
+        }, {
           "codeName" : "DEBUGPARAM_02",
           "getDstPSDELogicParam" : {
             "modelref" : true,
@@ -160896,7 +160913,7 @@
           },
           "leftPos" : 160,
           "logicNodeType" : "DEBUGPARAM",
-          "name" : "调试逻辑参数default",
+          "name" : "调试逻辑参数##########default",
           "getPSDELogicLinks" : [ {
             "getDstPSDELogicNode" : {
               "modelref" : true,
@@ -160908,7 +160925,7 @@
               "id" : "DEBUGPARAM_02"
             }
           } ],
-          "topPos" : 352,
+          "topPos" : 482,
           "parallelOutput" : true
         }, {
           "codeName" : "DEBUGPARAM_01",
@@ -160919,7 +160936,7 @@
           "leftPos" : 160,
           "logicNodeType" : "DEBUGPARAM",
           "name" : "调试逻辑参数#######web_ctx",
-          "topPos" : 460,
+          "topPos" : 650,
           "parallelOutput" : true
         } ],
         "getPSDELogicParams" : [ {
