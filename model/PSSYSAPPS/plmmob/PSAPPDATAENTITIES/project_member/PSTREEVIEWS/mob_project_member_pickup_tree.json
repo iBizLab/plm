@@ -1,0 +1,695 @@
+{
+  "codeName" : "mob_project_member_pickup_tree",
+  "controlStyle" : "MOB_PERSONAL_PICKER_TREE",
+  "controlType" : "TREEVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member/PSTREEVIEWS/mob_project_member_pickup_tree.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    }
+  },
+  "logicName" : "项目成员树选择视图（移动端）_树视图",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+  },
+  "getPSDETreeNodeRSs" : [ {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "dept"
+    },
+    "name" : "部门 - 根部门",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_1"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_5"
+    },
+    "name" : "团队 - 团队(动态)",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_3"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_6"
+    },
+    "name" : "团队(动态) - 团队人员",
+    "parentFilter" : "owner_id",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_5"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "根部门 - 子部门",
+    "getParentPSAppDEField" : {
+      "name" : "PARENT_ID",
+      "codeName" : "parent_id"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "department",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/department/PSDERS/DER1N_DEPARTMENT_DEPARTMENT_PARENT_ID.json",
+      "fKeyName" : "F06E20ECDBBDADD3C0",
+      "logicName" : "父部门",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 16,
+      "minorCodeName" : "departments",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "minorServiceCodeName" : "departments",
+      "name" : "DER1N_DEPARTMENT_DEPARTMENT_PARENT_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "PARENT_ID",
+        "codeName" : "Parent_id"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "PNAME",
+        "codeName" : "pname"
+      },
+      "pickupDEFName" : "PARENT_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "department",
+      "enableFKey" : true,
+      "recursiveRS" : true
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "dept"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "子部门 - 子部门",
+    "getParentPSAppDEField" : {
+      "name" : "PARENT_ID",
+      "codeName" : "parent_id"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "department",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/department/PSDERS/DER1N_DEPARTMENT_DEPARTMENT_PARENT_ID.json",
+      "fKeyName" : "F06E20ECDBBDADD3C0",
+      "logicName" : "父部门",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 16,
+      "minorCodeName" : "departments",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "minorServiceCodeName" : "departments",
+      "name" : "DER1N_DEPARTMENT_DEPARTMENT_PARENT_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "PARENT_ID",
+        "codeName" : "Parent_id"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "PNAME",
+        "codeName" : "pname"
+      },
+      "pickupDEFName" : "PARENT_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "department",
+      "enableFKey" : true,
+      "recursiveRS" : true
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "member"
+    },
+    "name" : "根部门 - 部门人员",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "department",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDERS/DER1N_USER_DEPARTMENT_DEPARTMENT_ID.json",
+      "fKeyName" : "FF55A3C8BB38F4F97F",
+      "logicName" : "用户-部门",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 0,
+      "minorCodeName" : "users",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "minorServiceCodeName" : "users",
+      "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "DEPARTMENT_NAME",
+        "codeName" : "department_name"
+      },
+      "pickupDEFName" : "DEPARTMENT_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "department"
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "dept"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "member"
+    },
+    "name" : "子部门 - 部门人员",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "department",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDERS/DER1N_USER_DEPARTMENT_DEPARTMENT_ID.json",
+      "fKeyName" : "FF55A3C8BB38F4F97F",
+      "logicName" : "用户-部门",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 0,
+      "minorCodeName" : "users",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "minorServiceCodeName" : "users",
+      "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "DEPARTMENT_NAME",
+        "codeName" : "department_name"
+      },
+      "pickupDEFName" : "DEPARTMENT_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "department"
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_1"
+    },
+    "name" : "默认根节点 - 部门",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_3"
+    },
+    "name" : "默认根节点 - 团队",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  } ],
+  "getPSDETreeNodes" : [ {
+    "counterMode" : 0,
+    "name" : "默认根节点",
+    "nodeType" : "ROOT",
+    "nodeValue" : "root",
+    "text" : "默认根节点",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : true,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "ROOT"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "根部门",
+    "nodeType" : "dept",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_root"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" width=\"1em\" focusable=\"false\"><g stroke-width=\"1\" fill-rule=\"evenodd\"><path d=\"M9 1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-.39l-.016 2.138H11.5a2.1 2.1 0 0 1 2.095 1.95l.005.15V11h.4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a.9.9 0 0 0-.787-.893l-.113-.007h-7a.9.9 0 0 0-.893.787l-.007.113V11H4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a2.1 2.1 0 0 1 1.95-2.094l.15-.006h2.894L7.41 5H7a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h2zm4.8 11.2h-1.6v1.6h1.6v-1.6zm-10 0H2.2v1.6h1.6v-1.6zm5-10H7.2v1.6h1.6V2.2z\"></path></g></svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "dept"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "部门人员",
+    "nodeType" : "member",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "DISPLAY_NAME",
+      "codeName" : "display_name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : true,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "member"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "子部门",
+    "nodeType" : "node",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" width=\"1em\" focusable=\"false\"><g stroke-width=\"1\" fill-rule=\"evenodd\"><path d=\"M9 1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-.39l-.016 2.138H11.5a2.1 2.1 0 0 1 2.095 1.95l.005.15V11h.4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a.9.9 0 0 0-.787-.893l-.113-.007h-7a.9.9 0 0 0-.893.787l-.007.113V11H4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a2.1 2.1 0 0 1 1.95-2.094l.15-.006h2.894L7.41 5H7a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h2zm4.8 11.2h-1.6v1.6h1.6v-1.6zm-10 0H2.2v1.6h1.6v-1.6zm5-10H7.2v1.6h1.6V2.2z\"></path></g></svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node"
+  }, {
+    "counterMode" : 0,
+    "name" : "部门",
+    "nodeType" : "node_1",
+    "text" : "部门",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_1"
+  }, {
+    "counterMode" : 0,
+    "name" : "成员",
+    "nodeType" : "node_2",
+    "text" : "成员",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_2"
+  }, {
+    "counterMode" : 0,
+    "name" : "团队",
+    "nodeType" : "node_3",
+    "text" : "团队",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_3"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "maxSize" : -1,
+    "name" : "成员人员",
+    "nodeType" : "node_4",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : true,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_4"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIconPSAppDEField" : {
+      "name" : "AVATAR",
+      "codeName" : "avatar"
+    },
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "团队(动态)",
+    "nodeType" : "node_5",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/group.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"24\" height=\"24\">\n  <path d=\"M12.878125,10.9359375 C12.48125,10.5390625 12.0234375,10.221875 11.528125,9.9921875 C12.2359375,9.41875 12.6875,8.54375 12.6875,7.5625 C12.6875,5.83125 11.24375,4.4109375 9.5125,4.4375 C7.8078125,4.4640625 6.434375,5.853125 6.434375,7.5625 C6.434375,8.54375 6.8875,9.41875 7.59375,9.9921875 C7.0984375,10.221875 6.6421875,10.5375 6.24375,10.9359375 C5.390625,11.790625 4.90625,12.91875 4.87496822,14.121875 C4.8734375,14.1921875 4.9296875,14.25 5,14.25 L5.875,14.25 C5.9421875,14.25 5.9984375,14.196875 6,14.1296875 C6.0296875,13.2234375 6.396875,12.375 7.0421875,11.73125 C7.715625,11.0578125 8.6109375,10.6875 9.5625,10.6875 C10.5140625,10.6875 11.409375,11.0578125 12.0828125,11.73125 C12.7265625,12.375 13.09375,13.2234375 13.125,14.1296875 C13.1265625,14.196875 13.1828125,14.25 13.25,14.25 L14.125,14.25 C14.1953125,14.25 14.2515625,14.1921875 14.2500318,14.121875 C14.21875,12.91875 13.734375,11.790625 12.878125,10.9359375 Z M9.5625,9.5625 C9.028125,9.5625 8.525,9.3546875 8.1484375,8.9765625 C7.765625,8.59375 7.55625,8.084375 7.5625,7.5421875 C7.5671875,7.0296875 7.771875,6.534375 8.1296875,6.1671875 C8.5046875,5.7828125 9.00625,5.56875 9.5421875,5.5625 C10.071875,5.5578125 10.5859375,5.7640625 10.9640625,6.134375 C11.3515625,6.5140625 11.5640625,7.021875 11.5640625,7.5625 C11.5640625,8.096875 11.35625,8.5984375 10.978125,8.9765625 C10.6,9.3546875 10.096875,9.5625 9.5625,9.5625 L9.5625,9.5625 Z M5.6484375,7.975 C5.634375,7.8390625 5.6265625,7.7015625 5.6265625,7.5625 C5.6265625,7.3140625 5.65,7.071875 5.69375,6.8359375 C5.7046875,6.7796875 5.675,6.721875 5.6234375,6.6984375 C5.4109375,6.603125 5.215625,6.471875 5.046875,6.30625 C4.64375,5.9125 4.4265625,5.3796875 4.4421875,4.815625 C4.45625,4.3140625 4.6578125,3.8375 5.009375,3.478125 C5.3953125,3.0828125 5.9140625,2.8671875 6.465625,2.8734375 C6.9640625,2.878125 7.4453125,3.0703125 7.809375,3.4109375 C7.9328125,3.5265625 8.0390625,3.6546875 8.128125,3.7921875 C8.159375,3.840625 8.2203125,3.8609375 8.2734375,3.8421875 C8.5484375,3.746875 8.8390625,3.6796875 9.1375,3.6484375 C9.225,3.6390625 9.275,3.5453125 9.2359375,3.4671875 C8.728125,2.4625 7.690625,1.76875 6.490625,1.75 C4.7578125,1.7234375 3.3140625,3.14375 3.3140625,4.8734375 C3.3140625,5.8546875 3.765625,6.7296875 4.4734375,7.303125 C3.9765625,7.5328125 3.51875,7.85 3.121875,8.246875 C2.265625,9.1015625 1.78125,10.2296875 1.74996822,11.434375 C1.7484375,11.5046875 1.8046875,11.5625 1.875,11.5625 L2.7515625,11.5625 C2.81875,11.5625 2.875,11.509375 2.8765625,11.4421875 C2.90625,10.5359375 3.2734375,9.6875 3.91875,9.04375 C4.378125,8.584375 4.940625,8.265625 5.5546875,8.1109375 C5.615625,8.0953125 5.65625,8.0375 5.6484375,7.975 L5.6484375,7.975 Z\" fill=\"#47B8F3\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_5"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "maxSize" : -1,
+    "name" : "团队人员",
+    "nodeType" : "node_6",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/member.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : true,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_6"
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "MOB_PERSONAL_PICKER_TREE",
+    "runtimeObject" : true
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    }
+  },
+  "treeGridMode" : 0,
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+    }
+  },
+  "enableRootSelect" : false,
+  "outputIconDefault" : true,
+  "rootVisible" : false,
+  "modelid" : "51f2e0e31d06cb65f84ef190d2b962e4",
+  "modeltype" : "PSDETREEVIEW"
+}

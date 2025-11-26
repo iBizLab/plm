@@ -1,0 +1,341 @@
+{
+  "codeName" : "move_child_page",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/move_child_page.json",
+  "logicName" : "移动子页面",
+  "memo" : "移动子页面至知识空间",
+  "name" : "移动子页面",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置父页面id和空间id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent_id"
+      },
+      "name" : "Default[parent_id] ==> parent_id",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "parent_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_id"
+      },
+      "name" : "Default[space_id] ==> space_id",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "space_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_PARENT_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_filter"
+      },
+      "name" : "Default[parent_id] ==> page_filter[N_PARENT_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "parent_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 328
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取父页面的所有子页面",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "move_pages"
+    },
+    "topPos" : 443
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_tmp_obj"
+    },
+    "leftPos" : 161,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "move_pages"
+    },
+    "topPos" : 553
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置空间id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "SPACE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "name" : "space_id ==> for_tmp_obj[SPACE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "name" : " ==> for_tmp_obj[IDENTIFIER]",
+      "getPSSysSequence" : {
+        "modelref" : true,
+        "path" : "PSSYSSEQUENCES/seq_page_id.json"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "SEQUENCE"
+    } ],
+    "topPos" : 662
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_tmp_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新子页面",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 780
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置递归参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "parent_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "child_data"
+      },
+      "name" : "for_tmp_obj[ID] ==> child_data[parent_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "space_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "child_data"
+      },
+      "name" : "space_id ==> child_data[space_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_id"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 885
+  }, {
+    "codeName" : "DELOGIC1",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/move_child_page.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "child_data"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DELOGIC",
+    "name" : "实体处理逻辑",
+    "topPos" : 1001
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "child_data",
+    "logicName" : "子页面参数",
+    "name" : "子页面参数",
+    "entityParam" : true
+  }, {
+    "codeName" : "for_tmp_obj",
+    "logicName" : "循环变量",
+    "name" : "循环变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "move_pages",
+    "logicName" : "子页面数据",
+    "name" : "子页面数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "page_filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "parent_id",
+    "logicName" : "父页面id",
+    "name" : "父页面id",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "space_id",
+    "logicName" : "空间id",
+    "name" : "空间id",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
