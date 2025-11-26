@@ -37882,6 +37882,54 @@
       "topPos" : -80,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -150,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_ARCHIVED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+            "paramValue" : "0"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_DELETED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_DELETED] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : -200,
+      "parallelOutput" : true
+    }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
       "codeName" : "RAWSFCODE3",
       "codeType" : "Groovy",
@@ -37940,7 +37988,19 @@
           "id" : "RAWSFCODE3"
         }
       } ],
-      "topPos" : -72
+      "topPos" : -80
+    }, {
+      "codeName" : "END2",
+      "leftPos" : 71,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 160,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 284,
@@ -38117,39 +38177,41 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE3"
+          "id" : "DEBUGPARAM_01"
         },
         "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_ARCHIVED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
-            "paramValue" : "0"
-          }, {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_DELETED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_DELETED] 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "PREPAREPARAM3"
         }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "TEST1",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfreadonly",
+        "srcValueType" : "WEBCONTEXT"
+      }, {
+        "dstFieldName" : "TEST2",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfreadonly",
+        "srcValueType" : "VIEWPARAM"
+      }, {
+        "dstFieldName" : "TEST3",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfreadonly",
+        "srcValueType" : "DATACONTEXT"
       } ],
       "topPos" : -80
     }, {
@@ -38244,37 +38306,6 @@
       } ],
       "topPos" : -72
     }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
-      "codeName" : "RAWSFCODE4",
-      "codeType" : "JavaScript",
-      "leftPos" : -340,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "只读权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE4"
-        }
-      } ],
-      "topPos" : 156
-    }, {
-      "codeName" : "END2",
-      "leftPos" : 71,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 160,
-      "parallelOutput" : true
-    }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
       "codeName" : "RAWSFCODE2",
       "leftPos" : 756,
@@ -38304,6 +38335,25 @@
       "returnType" : "LOGICPARAM",
       "topPos" : -220,
       "parallelOutput" : true
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE4",
+      "codeType" : "JavaScript",
+      "leftPos" : -340,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE4"
+        }
+      } ],
+      "topPos" : 156
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
