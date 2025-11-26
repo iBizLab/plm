@@ -72,10 +72,10 @@
     }, {
       "format" : "%1$s",
       "dataType" : 25,
-      "name" : "actual_workload",
+      "name" : "name",
       "getPSDEField" : {
-        "name" : "ACTUAL_WORKLOAD",
-        "codeName" : "actual_workload"
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "format" : "%1$s",
@@ -88,13 +88,14 @@
     }, {
       "format" : "%1$s",
       "dataType" : 25,
-      "name" : "name",
+      "name" : "actual_workload",
       "getPSDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
+        "name" : "ACTUAL_WORKLOAD",
+        "codeName" : "actual_workload"
       }
     } ],
-    "pagingSize" : 50,
+    "pagingMode" : 3,
+    "pagingSize" : 10,
     "defaultMode" : false,
     "enablePagingBar" : false,
     "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACMODES/fill_workload.json"
@@ -37887,7 +37888,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : -150,
+      "leftPos" : -190,
       "logicNodeType" : "DEBUGPARAM",
       "name" : "调试逻辑参数",
       "getPSDELogicLinks" : [ {
@@ -37927,7 +37928,7 @@
           "id" : "DEBUGPARAM_01"
         }
       } ],
-      "topPos" : -200,
+      "topPos" : -210,
       "parallelOutput" : true
     }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
@@ -38184,16 +38185,6 @@
           "modelref" : true,
           "id" : "PREPAREPARAM3"
         }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "TEST3",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "srfreadonly",
-        "srcValueType" : "DATACONTEXT"
       } ],
       "topPos" : -82
     }, {
