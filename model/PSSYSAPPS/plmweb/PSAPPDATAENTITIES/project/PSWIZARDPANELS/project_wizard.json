@@ -211,13 +211,10 @@
       }
     }, {
       "id" : "type_name",
-      "hidden" : true,
       "dataType" : 25
     }, {
       "id" : "type",
       "dataType" : 25,
-      "createDV" : "scrum",
-      "updateDV" : "scrum",
       "getPSAppDEField" : {
         "name" : "TYPE",
         "codeName" : "type"
@@ -742,31 +739,36 @@
             "name" : "type_name",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "HIDDEN",
+              "editorType" : "PICKUPVIEW",
               "name" : "type_name",
               "getPSEditorItems" : [ {
                 "name" : "type"
-              } ]
+              } ],
+              "getPickupPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_project_type_list_view.json",
+                "viewType" : "DELISTVIEW"
+              },
+              "valueItemName" : "type"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "valueItemName" : "type",
-            "allowEmpty" : true,
-            "hidden" : true
+            "allowEmpty" : false,
+            "showCaption" : true
           }, {
             "getCapPSLanguageRes" : {
               "lanResTag" : "DEF.LNAME.TYPE"
             },
             "caption" : "项目类型",
             "codeName" : "type",
-            "createDV" : "scrum",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
+            "ignoreInput" : 3,
             "labelPos" : "TOP",
             "labelWidth" : 130,
             "name" : "type",
@@ -776,21 +778,16 @@
               "codeName" : "type"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST",
-              "name" : "type",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_type.json"
-              },
-              "singleSelect" : true
+              "editorType" : "TEXTBOX",
+              "maxLength" : 60,
+              "name" : "type"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "updateDV" : "scrum",
             "allowEmpty" : false,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "可见范围",
