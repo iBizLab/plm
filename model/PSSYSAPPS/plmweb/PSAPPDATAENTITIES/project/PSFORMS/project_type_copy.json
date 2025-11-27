@@ -1,8 +1,8 @@
 {
-  "codeName" : "wizard_copy",
+  "codeName" : "project_type_copy",
   "controlType" : "FORM",
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/wizard_copy.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/project_type_copy.json",
   "formFuncMode" : "WIZARDFORM",
   "getGetPSControlAction" : {
     "modelref" : true,
@@ -20,38 +20,21 @@
     }
   },
   "hookEventNames" : [ "SAVE", "LOAD" ],
-  "logicName" : "复制表单",
+  "logicName" : "项目类型（复制）",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
   },
   "getPSControlLogics" : [ {
     "eventNames" : "SAVE",
-    "logicTag" : "wizardpanel_form_fill_info",
+    "logicTag" : "wizardpanel_form_project_type",
     "logicType" : "CUSTOM",
     "name" : "wizardpanel_formsave"
   }, {
     "eventNames" : "LOAD",
-    "logicTag" : "wizardpanel_form_fill_info",
+    "logicTag" : "wizardpanel_form_project_type",
     "logicType" : "CUSTOM",
     "name" : "wizardpanel_formload"
-  } ],
-  "getPSDEFormItemVRs" : [ {
-    "checkMode" : 1,
-    "name" : "表单项值规则",
-    "getPSDEFormItemName" : "identifier",
-    "getPSSysValueRule" : {
-      "codeName" : "UsrValueRule0312488358",
-      "dynaModelFilePath" : "PSSYSVALUERULES/UsrValueRule0312488358.json",
-      "name" : "大写字母和数字",
-      "regExCode" : "^[A-Z0-9]{1,15}$",
-      "ruleInfo" : "请填写大写字母和数字",
-      "ruleType" : "REGEX",
-      "uniqueTag" : "UsrValueRule0312488358",
-      "enableBackend" : true,
-      "enableFront" : true
-    },
-    "valueRuleType" : "SYSVALUERULE"
   } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -98,27 +81,8 @@
     "hidden" : true,
     "dataType" : 25
   }, {
-    "id" : "scope_id",
-    "hidden" : true,
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "SCOPE_ID",
-      "codeName" : "scope_id"
-    }
-  }, {
-    "id" : "scope_type",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "SCOPE_TYPE",
-      "codeName" : "scope_type"
-    }
-  }, {
-    "id" : "name",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    }
+    "id" : "type_name",
+    "dataType" : 25
   }, {
     "id" : "type",
     "hidden" : true,
@@ -126,29 +90,6 @@
     "getPSAppDEField" : {
       "name" : "TYPE",
       "codeName" : "type"
-    }
-  }, {
-    "id" : "visibility",
-    "dataType" : 25,
-    "createDV" : "private",
-    "updateDV" : "private",
-    "getPSAppDEField" : {
-      "name" : "VISIBILITY",
-      "codeName" : "visibility"
-    }
-  }, {
-    "id" : "identifier",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    }
-  }, {
-    "id" : "description",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "DESCRIPTION",
-      "codeName" : "description"
     }
   }, {
     "id" : "id",
@@ -196,6 +137,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) scrum",
               "value" : "scrum"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -241,6 +183,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) kanban",
               "value" : "kanban"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -286,6 +229,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) waterfall",
               "value" : "waterfall"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -331,6 +275,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) hybrid",
               "value" : "hybrid"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -377,6 +322,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) scrum",
               "value" : "scrum"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -411,6 +357,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) kanban",
               "value" : "kanban"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -445,6 +392,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) waterfall",
               "value" : "waterfall"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -479,6 +427,7 @@
               "condOP" : "EQ",
               "dEFDName" : "type",
               "logicType" : "SINGLE",
+              "name" : "type等于(=) hybrid",
               "value" : "hybrid"
             } ],
             "relatedDetailNames" : [ "type" ],
@@ -512,13 +461,13 @@
         "infoGroupMode" : false,
         "showCaption" : false
       }, {
-        "codeName" : "grouppanel2",
+        "codeName" : "project_type",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "name" : "grouppanel2",
+        "name" : "project_type",
         "getPSDEFormDetails" : [ {
-          "caption" : "所属对象",
-          "codeName" : "scope_id",
+          "caption" : "项目类型",
+          "codeName" : "type_name",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -526,107 +475,16 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "scope_id",
+          "name" : "type_name",
           "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "SCOPE_ID",
-            "codeName" : "scope_id"
-          },
           "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "scope_id"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true
-        }, {
-          "caption" : "所属",
-          "codeName" : "scope_type",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "scope_type",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "SCOPE_TYPE",
-            "codeName" : "scope_type"
-          },
-          "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
-              "enablePerson" : "false",
-              "PICKUPVIEW" : "TRUE"
-            },
-            "editorStyle" : "TEAM_PICKER",
-            "editorType" : "PICKER",
-            "handlerType" : "PickupText",
-            "name" : "scope_type",
-            "getPSAppDEACMode" : {
+            "editorType" : "PICKUPVIEW",
+            "name" : "type_name",
+            "getPickupPSAppView" : {
               "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
-            },
-            "getPSEditorItems" : [ {
-              "name" : "scope_id"
-            } ],
-            "getPSSysPFPlugin" : {
-              "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "TEAM_PICKER",
-              "runtimeObject" : true
-            },
-            "valueItemName" : "scope_id",
-            "enableAC" : true,
-            "enablePickupView" : true,
-            "forceSelection" : true,
-            "showTrigger" : true,
-            "singleSelect" : true
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "valueItemName" : "scope_id",
-          "allowEmpty" : false,
-          "showCaption" : true
-        }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.NAME"
-          },
-          "caption" : "项目名称",
-          "codeName" : "name",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "name",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "NAME",
-            "codeName" : "name"
-          },
-          "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 200,
-            "name" : "name",
-            "placeHolder" : "输入项目名称"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_copy_project_type_list_view.json",
+              "viewType" : "DELISTVIEW"
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -663,118 +521,6 @@
           },
           "allowEmpty" : false,
           "hidden" : true
-        }, {
-          "caption" : "可见范围",
-          "codeName" : "visibility",
-          "createDV" : "private",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "visibility",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "VISIBILITY",
-            "codeName" : "visibility"
-          },
-          "getPSEditor" : {
-            "editorType" : "DROPDOWNLIST",
-            "name" : "visibility",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
-            },
-            "singleSelect" : true
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "updateDV" : "private",
-          "allowEmpty" : false,
-          "needCodeListConfig" : true,
-          "showCaption" : true
-        }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.IDENTIFIER"
-          },
-          "caption" : "项目标识",
-          "codeName" : "identifier",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "identifier",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "IDENTIFIER",
-            "codeName" : "identifier"
-          },
-          "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 15,
-            "name" : "identifier",
-            "getPSSysValueRule" : {
-              "codeName" : "UsrValueRule0312488358",
-              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPVALUERULES/UsrValueRule0312488358.json",
-              "name" : "大写字母和数字",
-              "regExCode" : "^[A-Z0-9]{1,15}$",
-              "ruleInfo" : "请填写大写字母和数字",
-              "ruleType" : "REGEX",
-              "uniqueTag" : "UsrValueRule0312488358",
-              "enableFront" : true
-            },
-            "placeHolder" : "大写字母和数字，15个字符范围内"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : false,
-          "showCaption" : true
-        }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.DESCRIPTION"
-          },
-          "caption" : "描述",
-          "codeName" : "description",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "itemHeight" : 220.0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "description",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "DESCRIPTION",
-            "codeName" : "description"
-          },
-          "getPSEditor" : {
-            "editorHeight" : 200.0,
-            "editorParams" : {
-              "HEIGHT" : "200"
-            },
-            "editorType" : "TEXTAREA_10",
-            "maxLength" : 2000,
-            "name" : "description",
-            "placeHolder" : "输入项目描述",
-            "showMaxLength" : true
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -839,18 +585,16 @@
     "infoGroupMode" : false
   } ],
   "getPSDEWizardForm" : {
-    "formTag" : "fill_info",
-    "goFinishEnableScriptCode" : "data.scope_type !== \"organization\"",
-    "goNextEnableScriptCode" : "data.scope_type === \"organization\"",
-    "name" : "fill_info",
-    "getPSDEFormName" : "复制表单",
+    "formTag" : "project_type",
+    "name" : "project_type",
+    "getPSDEFormName" : "项目类型（复制）",
     "getPSDEWizardStep" : {
       "modelref" : true,
-      "id" : "项目信息"
+      "id" : "项目类型"
     },
-    "stepActions" : [ "PREV", "NEXT" ],
-    "stepTag" : "fill_info",
-    "firstForm" : false
+    "stepActions" : [ "NEXT" ],
+    "stepTag" : "project_type",
+    "firstForm" : true
   },
   "getPSLayout" : {
     "childColMD" : 24,
@@ -874,6 +618,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "e789247f2b6892b74a405b53e3f8302e",
+  "modelid" : "34f043ab013fbc9e69b3b386fe9dee65",
   "modeltype" : "PSDEFORM_EDITFORM"
 }
