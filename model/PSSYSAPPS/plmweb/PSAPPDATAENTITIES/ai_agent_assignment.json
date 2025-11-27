@@ -1396,13 +1396,9 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "ai_agent_assignment_run",
     "name" : "执行",
-    "getNextPSUIAction" : {
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
-      },
+    "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "run_context@ai_agent_session"
+      "id" : "run"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -1414,13 +1410,98 @@
       "value" : "CONTEXT_CODE_NAME",
       "rawValue" : false
     } ],
-    "scriptCode" : "console.log(\"执行智能体\");\nif(view && view.parentView) {\n    const contextObj = view.parentView.state.srfactiveviewdata;\n    if(contextObj) {\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(data, contextObj);\n        }\n        else {\n            data.list = contextObj;\n        }\n    }\n}",
+    "scriptCode" : "console.log(\"执行智能体\");\n",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "run",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
     "closeEditView" : true,
     "closePopupView" : true,
     "id" : "run@ai_agent_assignment"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "run",
+    "defaultParamName" : "Default",
+    "logicName" : "run",
+    "name" : "run",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION_01",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+        },
+        "modelref" : true,
+        "id" : "run@ai_agent_assignment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 240,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 510,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(\"执行智能体\");\nif(view && view.parentView) {\n    const contextObj = view.parentView.state.srfactiveviewdata;\n    if(contextObj) {\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.default, contextObj);\n        }\n        else {\n            uiLogic.default.list = contextObj;\n        }\n    }\n}",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 370,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
