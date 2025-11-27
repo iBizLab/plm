@@ -121,6 +121,50 @@
         "codeName" : "_name"
       }
     } ],
+    "getPSDEUIActionGroup" : {
+      "name" : "AI界面行为组",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "确认采纳",
+        "detailType" : "DEUIACTION",
+        "name" : "u7ec36ee",
+        "getPSSysImage" : {
+          "glyph" : "xf0e7@FontAwesome",
+          "cssClass" : "fa fa-bolt"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "确认采纳",
+          "codeName" : "msg_footer_accept",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_agent_session_msg_footer_accept",
+          "name" : "采纳",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "accept_feedback"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0e7@FontAwesome",
+            "cssClass" : "fa fa-bolt"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "msg_footer_accept",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "id" : "msg_footer_accept@ai_agent_session"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ]
+    },
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "NAME",
@@ -1289,13 +1333,13 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
     },
     "getPSNavigateContexts" : [ {
+      "key" : "AI_AGENT_SESSION",
+      "name" : "AI_AGENT_SESSION",
+      "value" : "_id",
+      "rawValue" : false
+    }, {
       "key" : "SRFAIAPPENDCURDATA",
       "name" : "SRFAIAPPENDCURDATA",
-      "value" : "true",
-      "rawValue" : true
-    }, {
-      "key" : "AUTOQUESTION",
-      "name" : "AUTOQUESTION",
       "value" : "true",
       "rawValue" : true
     } ],
@@ -1304,6 +1348,11 @@
       "name" : "srfaiagent",
       "value" : "CONTEXT_CODE_NAME",
       "rawValue" : false
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
     } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "run",
