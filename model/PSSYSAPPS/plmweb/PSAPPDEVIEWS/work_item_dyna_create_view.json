@@ -31131,24 +31131,24 @@
         "id" : "_FORM_SCRUM_EPIC"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "project_type"
-        } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
-        "customCode" : true
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_name"
         } ],
         "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "customCode" : true
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -31580,12 +31580,10 @@
                 "editorParams" : {
                   "defaulttype" : "HTML",
                   "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
-                  "ac" : "true",
-                  "AC" : "TRUE",
-                  "PICKUPVIEW" : "TRUE"
+                  "ac" : "true"
                 },
-                "editorType" : "PICKER",
-                "handlerType" : "PickupText",
+                "editorType" : "TEXTAREA",
+                "maxLength" : 1048576,
                 "name" : "description",
                 "getPSAppDEACMode" : {
                   "modelref" : true,
@@ -31602,147 +31600,8 @@
                 "getPSEditorItems" : [ {
                   "name" : "format_type"
                 } ],
-                "getPSUIActionGroup" : {
-                  "codeName" : "ai_inline_action",
-                  "name" : "行内AI聊天界面行为组",
-                  "getPSUIActionGroupDetails" : [ {
-                    "caption" : "AI写作",
-                    "detailType" : "DEUIACTION",
-                    "name" : "ue3a6309",
-                    "getPSUIAction" : {
-                      "actionTarget" : "NONE",
-                      "caption" : "AI写作",
-                      "codeName" : "inline_ai_write",
-                      "frontProcessType" : "OTHER",
-                      "fullCodeName" : "inline_ai_write",
-                      "name" : "AI写作",
-                      "getPSNavigateParams" : [ {
-                        "key" : "srfaiagent",
-                        "name" : "srfaiagent",
-                        "value" : "TextAgent_Writing",
-                        "rawValue" : true
-                      } ],
-                      "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
-                      "uIActionMode" : "FRONT",
-                      "uIActionTag" : "inline_ai_write",
-                      "uIActionType" : "DEUIACTION",
-                      "globalUIAction" : true
-                    },
-                    "addSeparator" : false,
-                    "showCaption" : true,
-                    "showIcon" : true
-                  }, {
-                    "caption" : "摘要生成",
-                    "detailType" : "DEUIACTION",
-                    "name" : "ue970058",
-                    "getPSUIAction" : {
-                      "actionTarget" : "NONE",
-                      "caption" : "摘要生成",
-                      "codeName" : "inline_summary_generate",
-                      "frontProcessType" : "OTHER",
-                      "fullCodeName" : "inline_summary_generate",
-                      "name" : "摘要生成",
-                      "getPSNavigateParams" : [ {
-                        "key" : "srfaiagent",
-                        "name" : "srfaiagent",
-                        "value" : "TextAgent_Summarization",
-                        "rawValue" : true
-                      }, {
-                        "key" : "autoquestion",
-                        "name" : "autoquestion",
-                        "value" : "true",
-                        "rawValue" : true
-                      } ],
-                      "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
-                      "uIActionMode" : "FRONT",
-                      "uIActionTag" : "inline_summary_generate",
-                      "uIActionType" : "DEUIACTION",
-                      "globalUIAction" : true
-                    },
-                    "addSeparator" : false,
-                    "showCaption" : true,
-                    "showIcon" : true
-                  }, {
-                    "detailType" : "DEUIACTIONGROUP",
-                    "name" : "u51bb5ea",
-                    "getRefPSUIActionGroup" : {
-                      "codeName" : "inline_text_optimizate",
-                      "name" : "文本优化",
-                      "getPSUIActionGroupDetails" : [ {
-                        "caption" : "更简短",
-                        "detailType" : "DEUIACTION",
-                        "name" : "u409f0a0",
-                        "getPSUIAction" : {
-                          "actionTarget" : "NONE",
-                          "caption" : "更简短",
-                          "codeName" : "inline_more_short",
-                          "frontProcessType" : "OTHER",
-                          "fullCodeName" : "inline_more_short",
-                          "name" : "更简短",
-                          "getPSNavigateParams" : [ {
-                            "key" : "srfaiagent",
-                            "name" : "srfaiagent",
-                            "value" : "TextAgent_Shortening",
-                            "rawValue" : true
-                          }, {
-                            "key" : "autoquestion",
-                            "name" : "autoquestion",
-                            "value" : "true",
-                            "rawValue" : true
-                          } ],
-                          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
-                          "uIActionMode" : "FRONT",
-                          "uIActionTag" : "inline_more_short",
-                          "uIActionType" : "DEUIACTION",
-                          "globalUIAction" : true
-                        },
-                        "addSeparator" : false,
-                        "showCaption" : true,
-                        "showIcon" : true
-                      }, {
-                        "caption" : "更丰富",
-                        "detailType" : "DEUIACTION",
-                        "name" : "u7b027a8",
-                        "getPSUIAction" : {
-                          "actionTarget" : "NONE",
-                          "caption" : "更丰富",
-                          "codeName" : "inline_more_rich",
-                          "frontProcessType" : "OTHER",
-                          "fullCodeName" : "inline_more_rich",
-                          "name" : "更丰富",
-                          "getPSNavigateParams" : [ {
-                            "key" : "srfaiagent",
-                            "name" : "srfaiagent",
-                            "value" : "TextAgent_Enhancement",
-                            "rawValue" : true
-                          }, {
-                            "key" : "autoquestion",
-                            "name" : "autoquestion",
-                            "value" : "true",
-                            "rawValue" : true
-                          } ],
-                          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
-                          "uIActionMode" : "FRONT",
-                          "uIActionTag" : "inline_more_rich",
-                          "uIActionType" : "DEUIACTION",
-                          "globalUIAction" : true
-                        },
-                        "addSeparator" : false,
-                        "showCaption" : true,
-                        "showIcon" : true
-                      } ]
-                    },
-                    "addSeparator" : false,
-                    "showCaption" : true,
-                    "showIcon" : true
-                  } ]
-                },
-                "valueItemName" : "format_type",
                 "enableAC" : true,
-                "enablePickupView" : true,
-                "forceSelection" : true,
-                "showTrigger" : true,
-                "singleSelect" : true
+                "showMaxLength" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
