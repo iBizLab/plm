@@ -25,16 +25,17 @@
     "eventNames" : "onSelectionChange",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "SCRIPT",
+    "memo" : "// 获取所有临时数据\nconst serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\nconst service = await serviceUtil.getService(context, 'plmweb.project');\nconst list = service.local.getList();\n// 遍历临时数据删除\nlist.forEach(item => {\n    service.local.delete(context, item.id);\n})",
     "name" : "LOGIC",
     "getPSViewCtrlName" : "list",
-    "scriptCode" : "// 获取所有临时数据\r\nconst serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\nconst service = await serviceUtil.getService(context, 'plmweb.project');\r\nconst list = service.local.getList();\r\n// 遍历临时数据删除\r\nlist.forEach(item => {\r\n    service.local.delete(context, item.id);\r\n})\r\nview.evt.emit('onSelectionChange', { data });"
+    "scriptCode" : "return (async function() { \r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.project');\r\n    const list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    list.forEach(item => {\r\n        service.local.delete(context, item.id);\r\n    })\r\n    view.evt.emit('onSelectionChange', { data });\r\n    } \r\n)();"
   }, {
     "eventNames" : "onLoadSuccess",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "SCRIPT",
     "name" : "LOGIC2",
     "getPSViewCtrlName" : "list",
-    "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\n\r\nlist.forEach(item => {\r\n  if (item.id == 'scrum' && select_list.size == 0) {\r\n    view.layoutPanel.panelItems.list.control.state.selectedData.push(item);\r\n\r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.project');\r\n    const list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    list.forEach(item => {\r\n        service.local.delete(context, item.id);\r\n    })\r\n\r\n    view.evt.emit('onSelectionChange', { data });\r\n  }\r\n});"
+    "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\n\r\nlist.forEach(item => {\r\n  if (item.id == 'scrum' && select_list.size == 0) {\r\n    view.layoutPanel.panelItems.list.control.state.selectedData.push(item);\r\n    return (async function() { \r\n      // 获取所有临时数据\r\n      const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n      const service = await serviceUtil.getService(context, 'plmweb.project');\r\n      const list = service.local.getList();\r\n      // 遍历临时数据删除\r\n      list.forEach(item => {\r\n          service.local.delete(context, item.id);\r\n      })\r\n      view.evt.emit('onSelectionChange', { data });\r\n    })();\r\n  }\r\n});"
   }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
