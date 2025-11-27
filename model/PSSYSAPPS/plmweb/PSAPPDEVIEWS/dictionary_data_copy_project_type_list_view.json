@@ -27,7 +27,7 @@
     "logicType" : "SCRIPT",
     "name" : "LOGIC",
     "getPSViewCtrlName" : "list",
-    "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\nlist.forEach(item => {\r\n  if (item.id == 'scrum' && select_list.length == 0) {\r\n    view.layoutPanel.panelItems.list.control.state.selectedData.push(item);\r\n    view.evt.emit('onSelectionChange', { data });\r\n  }\r\n});"
+    "scriptCode" : "console.log('测试');\r\nconsole.log(view);\r\nlet list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\n\r\nreturn (async function() { \r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.project');\r\n    const data_list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    data_list.forEach(item => {\r\n      list.forEach(it => {\r\n        if (it.id == item.type) {\r\n          view.layoutPanel.panelItems.list.control.state.selectedData.push(it);\r\n          view.evt.emit('onSelectionChange', { data });\r\n        }\r\n      });\r\n    })\r\n    } \r\n)();"
   }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
