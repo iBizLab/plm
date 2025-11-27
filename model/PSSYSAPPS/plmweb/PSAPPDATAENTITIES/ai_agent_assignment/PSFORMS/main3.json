@@ -161,111 +161,128 @@
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_AGENT_ASSIGNMENT.NAME"
-        },
-        "caption" : "名称",
-        "codeName" : "name",
-        "dataType" : 25,
+        "codeName" : "grouppanel1",
         "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "name",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "TRIGGER" : "TRUE",
-            "PICKUPVIEW" : "FALSE"
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.AI_AGENT_ASSIGNMENT.NAME"
           },
-          "editorType" : "PICKEREX_TRIGGER",
-          "handlerType" : "PickupText",
+          "caption" : "名称",
+          "codeName" : "name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
           "name" : "name",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
           },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_default"
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
+            },
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
+            "name" : "name",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "context_id"
+            } ],
+            "placeHolder" : "请选择智能体",
+            "valueItemName" : "context_id",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
           },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+          "getPSLayoutPos" : {
+            "grow" : 1,
+            "layout" : "FLEX"
           },
-          "getPSEditorItems" : [ {
-            "name" : "context_id"
-          } ],
-          "placeHolder" : "请选择智能体",
           "valueItemName" : "context_id",
-          "enableAC" : true,
-          "enablePickupView" : false,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
+          "allowEmpty" : false
+        }, {
+          "actionType" : "UIACTION",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+          },
+          "caption" : "确定",
+          "codeName" : "btn_ok",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "BUTTON",
+          "name" : "btn_ok",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_btn_ok"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf00c@FontAwesome",
+            "cssClass" : "fa fa-check"
+          },
+          "getPSUIAction" : {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+            },
+            "caption" : "保存并关闭",
+            "codeName" : "SaveAndExit",
+            "dataAccessAction" : "SUBDATA",
+            "fullCodeName" : "SaveAndExit",
+            "name" : "编辑界面_保存并退出操作",
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
+            },
+            "getPSSysImage" : {
+              "cssClass" : "sx-tb-saveandclose"
+            },
+            "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
+            "timeout" : 60000,
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "SaveAndExit",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "确定",
+          "showCaption" : false
+        } ],
+        "getPSLayout" : {
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "valueItemName" : "context_id",
-        "allowEmpty" : false
-      }, {
-        "actionType" : "UIACTION",
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-        },
-        "caption" : "确定",
-        "codeName" : "btn_ok",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "BUTTON",
-        "name" : "btn_ok",
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "form_btn_ok"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 4,
-          "colMD" : 4,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf00c@FontAwesome",
-          "cssClass" : "fa fa-check"
-        },
-        "getPSUIAction" : {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-          },
-          "caption" : "保存并关闭",
-          "codeName" : "SaveAndExit",
-          "dataAccessAction" : "SUBDATA",
-          "fullCodeName" : "SaveAndExit",
-          "name" : "编辑界面_保存并退出操作",
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "SUBDATA"
-          },
-          "getPSSysImage" : {
-            "cssClass" : "sx-tb-saveandclose"
-          },
-          "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
-          "timeout" : 60000,
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-          },
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "SaveAndExit",
-          "uIActionType" : "DEUIACTION"
-        },
-        "tooltip" : "确定",
+        "infoGroupMode" : false,
         "showCaption" : false
       }, {
         "caption" : "引用标记",
