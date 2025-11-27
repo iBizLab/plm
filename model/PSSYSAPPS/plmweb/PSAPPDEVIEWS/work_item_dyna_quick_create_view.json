@@ -495,12 +495,16 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
         "getPSDEFIUpdateDetails" : [ {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
+        }, {
           "name" : "work_item_type_name"
         } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\n\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    ctrl.context,\n    params,\n);\n\nreturn res.data\n",
         "customCode" : true
       }, {
         "codeName" : "set_default_entry",
@@ -513,16 +517,12 @@
           "name" : "entry_id"
         } ]
       }, {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_id"
-        }, {
           "name" : "work_item_type_name"
-        }, {
-          "name" : "project_type"
         } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\n\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    ctrl.context,\n    params,\n);\n\nreturn res.data\n",
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
