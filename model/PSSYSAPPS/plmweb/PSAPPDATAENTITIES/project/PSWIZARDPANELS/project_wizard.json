@@ -882,7 +882,6 @@
       }
     }, {
       "id" : "type",
-      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "TYPE",
@@ -1415,15 +1414,21 @@
               "codeName" : "type"
             },
             "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "type"
+              "editorType" : "DROPDOWNLIST",
+              "name" : "type",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_type.json"
+              },
+              "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : false,
-            "hidden" : true
+            "needCodeListConfig" : true,
+            "showCaption" : true
           }, {
             "caption" : "可见范围",
             "codeName" : "visibility",
