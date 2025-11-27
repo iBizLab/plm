@@ -55,7 +55,7 @@
           "name" : "采纳",
           "getPSAppDEUILogic" : {
             "modelref" : true,
-            "id" : "debug_feedback"
+            "id" : "accept_feedback"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -1128,7 +1128,7 @@
     "name" : "确认结果",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "debug_feedback"
+      "id" : "accept_feedback"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -1170,11 +1170,6 @@
       "rawValue" : true
     } ],
     "getPSNavigateParams" : [ {
-      "key" : "srfaiagenttag",
-      "name" : "srfaiagenttag",
-      "value" : "CONTEXT_CODE_NAME",
-      "rawValue" : false
-    }, {
       "key" : "srfaiagent",
       "name" : "srfaiagent",
       "value" : "CONTEXT_CODE_NAME",
@@ -1213,7 +1208,7 @@
     "name" : "采纳",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "debug_feedback"
+      "id" : "accept_feedback"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -1230,6 +1225,50 @@
     "id" : "msg_footer_accept@ai_agent_session"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "accept_feedback",
+    "defaultParamName" : "Default",
+    "logicName" : "accept_feedback",
+    "name" : "accept_feedback",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.info(uiLogic.default);\nvar answer = null;\nvar formController = view.getController(\"form\");\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n\n        if(ret.success && ret.data) {\n            if(ret.data_type == 'jsonobject' && formController) {\n                Object.entries(ret.data).forEach(([key, value]) => {\n                    // 调用表单控制器设置数据\n                    try {\n                        formController.setDataValue(key, value);\n                        console.log(`已设置表单字段: ${key} =`, value);\n                    } catch (error) {\n                    }\n                });\n            }\n\n            if(formController) {\n                try {\n                    formController.setDataValue(\"debug_callback_2\",ret.data);\n\n                } catch (error) {\n                }\n            }\n        }\n        else if(formController) {\n            try {\n                    formController.setDataValue(\"description\",answer);\n\n                } catch (error) {\n                }\n            try {\n                    formController.setDataValue(\"content\",answer);\n\n                } catch (error) {\n                }\n        }\n\n        \n    }\n\n    if(formController) {\n        try {\n            formController.setDataValue(\"debug_callback_1\",answer);\n        } catch (error) {\n        }\n    }\n}",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 330,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "debug_context",
     "defaultParamName" : "Default",
     "logicName" : "debug_context",
@@ -1281,7 +1320,7 @@
       "topPos" : 530,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n        \n        // 检查context_data是否存在且为字符串\n        if (target.context_debug_data && typeof target.context_debug_data === 'string') {\n            try {\n                // 将JSON字符串解析为对象\n                const contextObj = JSON.parse(target.context_debug_data);\n                console.log('解析后的context_data对象:', contextObj);\n                //const _id = uiLogic.default.id;\n                \n                // 将解析后的对象合并到uiLogic.default中\n                // 使用Object.assign进行浅合并\n                Object.assign(uiLogic.default, contextObj);\n\n                //uiLogic.default.id = _id; \n               uiLogic.default._id = uiLogic.default.context_id + '-'+(target?.id || (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)));\n                console.log('合并后的uiLogic.default:', uiLogic.default);\n                \n                \n            } catch (parseError) {\n                console.error('JSON解析错误:', parseError);\n                console.error('无效的JSON字符串:', target.context_debug_data);\n            }\n        }\n",
+      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n\n// 检查context_data是否存在且为字符串\nif (target.context_debug_data && typeof target.context_debug_data === 'string') {\n    try {\n        // 将JSON字符串解析为对象\n        const contextObj = JSON.parse(target.context_debug_data);\n        console.log('解析后的context_data对象:', contextObj);\n        //const _id = uiLogic.default.id;\n\n        // 将解析后的对象合并到uiLogic.default中\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.default, contextObj);\n        }\n    } catch (parseError) {\n        console.error('JSON解析错误:', parseError);\n        console.error('无效的JSON字符串:', target.context_debug_data);\n    }\n\n}       \n //uiLogic.default.id = _id; \nuiLogic.default._id = uiLogic.default.context_id + '-' + uiLogic.context.srfnavctrlid + '-' + (target?.id || (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)));\nconsole.log('合并后的uiLogic.default:', uiLogic.default);\n",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 250,
       "logicNodeType" : "RAWJSCODE",
@@ -1322,50 +1361,6 @@
       "name" : "view",
       "activeViewParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "debug_feedback",
-    "defaultParamName" : "Default",
-    "logicName" : "debug_feedback",
-    "name" : "debug_feedback",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE_01"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "code" : "console.info(uiLogic.default);\nvar answer = null;\nvar formController = view.getController(\"form\");\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n\n        if(ret.success && ret.data) {\n            if(ret.data_type == 'jsonobject' && formController) {\n                Object.entries(ret.data).forEach(([key, value]) => {\n                    // 调用表单控制器设置数据\n                    try {\n                        formController.setDataValue(key, value);\n                        console.log(`已设置表单字段: ${key} =`, value);\n                    } catch (error) {\n                    }\n                });\n            }\n\n            if(formController) {\n                try {\n                    formController.setDataValue(\"debug_callback_2\",ret.data);\n\n                } catch (error) {\n                }\n            }\n        }\n        else if(formController) {\n            try {\n                    formController.setDataValue(\"description\",answer);\n\n                } catch (error) {\n                }\n            try {\n                    formController.setDataValue(\"content\",answer);\n\n                } catch (error) {\n                }\n        }\n\n        \n    }\n\n    if(formController) {\n        try {\n            formController.setDataValue(\"debug_callback_1\",answer);\n        } catch (error) {\n        }\n    }\n}",
-      "codeName" : "RAWJSCODE_01",
-      "leftPos" : 220,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "topPos" : 330,
-      "parallelOutput" : true
-    } ],
-    "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
