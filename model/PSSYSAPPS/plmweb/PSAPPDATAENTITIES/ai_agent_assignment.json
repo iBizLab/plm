@@ -1323,12 +1323,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
     },
-    "getPSNavigateParams" : [ {
-      "key" : "n_use_tag_eq",
-      "name" : "n_use_tag_eq",
-      "value" : "srfnavctrlid",
-      "rawValue" : false
-    } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "ai",
     "uIActionType" : "DEUIACTION",
@@ -1420,7 +1414,7 @@
       "value" : "CONTEXT_CODE_NAME",
       "rawValue" : false
     } ],
-    "scriptCode" : "console.log(\"执行智能体\")",
+    "scriptCode" : "console.log(\"执行智能体\");\nif(view && view.parentView) {\n    const contextObj = view.parentView.state.srfactiveviewdata;\n    if(contextObj) {\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(data, contextObj);\n        }\n        else {\n            data.list = contextObj;\n        }\n    }\n}",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "run",
     "uIActionType" : "DEUIACTION",
