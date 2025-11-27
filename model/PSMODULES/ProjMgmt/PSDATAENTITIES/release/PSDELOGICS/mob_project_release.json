@@ -1,0 +1,156 @@
+{
+  "codeName" : "mob_project_release",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/mob_project_release.json",
+  "logicName" : "项目下发布（移动端）",
+  "name" : "项目下发布（移动端）",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 490,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 450,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置过滤器",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_PROJECT_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[project] ==> filter[N_PROJECT_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "project",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 360
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "leftPos" : 450,
+    "logicNodeType" : "DEDATASET",
+    "name" : "项目下发布",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "release_page_result"
+    },
+    "topPos" : 490
+  }, {
+    "code" : "def release_page_result = logic.param('release_page_result').getReal()\r\nrelease_page_result.each { release ->\r\n    def all_work_items = release.get('all_work_items')\r\n    def completed_work_items = release.get('completed_work_items')\r\n    def schedule = 0\r\n    if (all_work_items != 0 && completed_work_items != 0) {\r\n        schedule = Math.round(completed_work_items / all_work_items * 100)\r\n    }\r\n    release.set('schedule', schedule)\r\n    release.set('schedule_text', schedule + \"%\")\r\n}\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 450,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "设置进度",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 610
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 490,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "release_page_result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 770
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "release_page_result",
+    "logicName" : "发布分页结果",
+    "name" : "发布分页结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.releasechange_stage" isClosed="false" isExecutable="true" name="projmgmt_release_change_stage_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.releasechange_stage">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="releasechange_stagedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagecurrent_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagefirst_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagelast_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagestage_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagestage_transitions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagestages" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="releasechange_stagetarget_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.release()" name="releasechange_stageupdate_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IstageService))" name="stageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IreleaseService))" name="iBzSysReleaseDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="releasechange_stagedefault" type="cn.ibizlab.plm.core.projmgmt.domain.release" />
+                            <tns:global identifier="releasechange_stagecurrent_stage" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagefirst_stage" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagelast_stage" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagestage_filter" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagestage_transitions" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagestages" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stagetarget_stage" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="releasechange_stageupdate_obj" type="cn.ibizlab.plm.core.projmgmt.domain.release" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stagebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定发布阶段列表参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置发布更新对象的标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备阶段查询参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stagededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询发布阶段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stagerawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="修改发布当前阶段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="releasechange_stageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam1" sourceRef="bindparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_rawsfcode2" sourceRef="dedataset1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_end1" sourceRef="rawsfcode2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

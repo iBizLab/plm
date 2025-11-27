@@ -1,0 +1,59 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.program_analyze;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseprogram_analyzedefault;
+                global java.util.Map test_caseprogram_analyzeresult;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_caseprogram_analyzebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_caseprogram_analyzeend1"
+            when
+            then
+                        update(test_caseprogram_analyzedefault);//更新fact中变量值
+                        update(test_caseprogram_analyzeresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例规划分析]
+            rule "rawsqlcall1"
+            ruleflow-group "test_caseprogram_analyzerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_caseprogram_analyzedefault.get("n_test_library_id_eq"));
+        param.put("param1",test_caseprogram_analyzedefault.get("n_type_eq"));
+        param.put("param2",test_caseprogram_analyzedefault.get("n_type_eq"));
+        param.put("param3",test_caseprogram_analyzedefault.get("n_type_eq"));
+        param.put("param4",test_caseprogram_analyzedefault.get("n_level_eq"));
+        param.put("param5",test_caseprogram_analyzedefault.get("n_level_eq"));
+        param.put("param6",test_caseprogram_analyzedefault.get("n_level_eq"));
+        param.put("param7",test_caseprogram_analyzedefault.get("n_state_eq"));
+        param.put("param8",test_caseprogram_analyzedefault.get("n_state_eq"));
+        param.put("param9",test_caseprogram_analyzedefault.get("n_state_eq"));
+        param.put("param10",test_caseprogram_analyzedefault.get("n_maintenance_id_eq"));
+        param.put("param11",test_caseprogram_analyzedefault.get("n_maintenance_id_eq"));
+        param.put("param12",test_caseprogram_analyzedefault.get("n_maintenance_id_eq"));
+    String strSql="SELECT     times_ranges.times_range as filter_type,     COALESCE(cases_count, 0) AS count FROM (          SELECT '10' AS times_range          UNION ALL SELECT '20'          UNION ALL SELECT '30'          UNION ALL SELECT '40'          UNION ALL SELECT '50'          UNION ALL SELECT '60'      ) times_ranges          LEFT JOIN (     SELECT         CASE             WHEN plan_count = 0 THEN 10-- '0次'             WHEN plan_count = 1 THEN 20 -- '1次'             WHEN plan_count = 2 THEN 30 -- 2次'             WHEN plan_count BETWEEN 3 AND 5 THEN 40 -- '3~5次'             WHEN plan_count BETWEEN 6 AND 10 THEN 50 -- '6~10次'             WHEN plan_count > 10 THEN 60 -- '10次以上'             END AS times_range,         COUNT(*) AS cases_count     FROM (              SELECT                  tc.ID AS test_case_id,                  COUNT(DISTINCT tp.ID) AS plan_count              FROM                  test_case tc                      LEFT JOIN run r ON tc.ID = r.case_id                      LEFT JOIN test_plan tp ON r.plan_id = tp.ID              WHERE                      tc.TEST_LIBRARY_ID = #{et.param0}                      AND((#{et.param1} IS NULL OR #{et.param2} = '') OR FIND_IN_SET(tc.TYPE, #{et.param3})) -- 用例类型                      AND((#{et.param4} IS NULL OR #{et.param5} = '') OR FIND_IN_SET(tc.LEVEL, #{et.param6})) -- 重要程度                      AND((#{et.param7} IS NULL OR #{et.param8} = '') OR FIND_IN_SET(tc.STATE, #{et.param9})) -- 评审状态                      AND((#{et.param10} IS NULL OR #{et.param11} = '') OR FIND_IN_SET(tc.MAINTENANCE_ID, #{et.param12})) -- 维护人ID              GROUP BY                  tc.ID          ) AS plan_counts     GROUP BY         times_range ) counted_cases ON times_ranges.times_range = counted_cases.times_range ORDER BY     FIELD(times_ranges.times_range, '10', '20', '30', '40', '50', '60');";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                test_caseprogram_analyzeresult.putAll(entity);
+                            }
+                        update(test_caseprogram_analyzedefault);//更新fact中变量值
+                        update(test_caseprogram_analyzeresult);//更新fact中变量值
+            end

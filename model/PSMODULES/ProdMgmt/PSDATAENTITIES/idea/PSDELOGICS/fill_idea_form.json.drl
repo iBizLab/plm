@@ -1,0 +1,67 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.fill_idea_form;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideafill_idea_formdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideafill_idea_formdraft_data;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideafill_idea_formfill_obj;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideafill_idea_formbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideafill_idea_formend1"
+            when
+            then
+                        update(ideafill_idea_formdefault);//更新fact中变量值
+                        update(ideafill_idea_formdraft_data);//更新fact中变量值
+                        update(ideafill_idea_formfill_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "ideafill_idea_formprepareparam1"
+            when
+            then
+                            ideafill_idea_formfill_obj.set("id",ideafill_idea_formdefault.get("fill_id"));
+                        update(ideafill_idea_formdefault);//更新fact中变量值
+                        update(ideafill_idea_formdraft_data);//更新fact中变量值
+                        update(ideafill_idea_formfill_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "ideafill_idea_formdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(ideafill_idea_formfill_obj.getId()),ideafill_idea_formfill_obj);
+                        update(ideafill_idea_formdefault);//更新fact中变量值
+                        update(ideafill_idea_formdraft_data);//更新fact中变量值
+                        update(ideafill_idea_formfill_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "ideafill_idea_formprepareparam2"
+            when
+            then
+                            ideafill_idea_formdefault.set("title",ideafill_idea_formfill_obj.get("title"));
+                            ideafill_idea_formdefault.set("description",ideafill_idea_formfill_obj.get("description"));
+                        update(ideafill_idea_formdefault);//更新fact中变量值
+                        update(ideafill_idea_formdraft_data);//更新fact中变量值
+                        update(ideafill_idea_formfill_obj);//更新fact中变量值
+            end
