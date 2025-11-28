@@ -308,7 +308,7 @@
       "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\n    const { name } = evt;\n    const data = ctrl.state.data;\n    if (['project_id', 'work_item_type_id'].includes(name) && data.work_item_type_id) {\n        view.redrawView({\n            context: { project: data.project_id, dynamicnew: true },\n            params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },\n            isReloadModel: true,\n        });\n    }\n});"
     } ],
     "getPSControls" : [ {
-      "codeName" : "quick_create_story",
+      "codeName" : "quick_create_work_item",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
         "modelref" : true,
@@ -327,7 +327,7 @@
         }
       },
       "defaultLabelWidth" : 130,
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSFORMS/quick_create_story.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSFORMS/quick_create_work_item.json",
       "dynaSysMode" : 1,
       "getGetDraftFromPSControlAction" : {
         "modelref" : true,
@@ -374,7 +374,7 @@
         }
       },
       "hookEventNames" : [ "ONCHANGE" ],
-      "logicName" : "快速建立（工作项）",
+      "logicName" : "快速新建（工作项）",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -493,18 +493,6 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "work_item_type_name"
-        }, {
-          "name" : "project_type"
-        } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\n\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    ctrl.context,\n    params,\n);\n\nreturn res.data\n",
-        "customCode" : true
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -522,6 +510,18 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
         } ]
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "work_item_type_name"
+        }, {
+          "name" : "project_type"
+        } ],
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\n\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    ctrl.context,\n    params,\n);\n\nreturn res.data\n",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -1021,17 +1021,28 @@
               "getPSEditor" : {
                 "editorParams" : {
                   "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]"
+                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "ac" : "true",
+                  "codelistid" : "plmweb.codelist54"
                 },
-                "editorType" : "RADIOBUTTONLIST",
+                "editorType" : "HTMLEDITOR",
                 "name" : "description",
-                "getPSAppCodeList" : {
+                "getPSAppDEACMode" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+                  "id" : "AIChat"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
                 },
                 "getPSEditorItems" : [ {
                   "name" : "format_type"
-                } ]
+                } ],
+                "enableAC" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -1043,7 +1054,6 @@
               },
               "valueItemName" : "format_type",
               "allowEmpty" : true,
-              "needCodeListConfig" : true,
               "showCaption" : true
             }, {
               "caption" : "内容格式",
@@ -2135,12 +2145,12 @@
                   "condOP" : "ISNULL",
                   "dEFDName" : "checkid",
                   "logicType" : "SINGLE",
-                  "name" : "checkid值为空(Nil)"
+                  "name" : "checkid 值为空(Nil)"
                 }, {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "dynamic_new",
                   "logicType" : "SINGLE",
-                  "name" : "dynamic_new值不为空(NotNil)"
+                  "name" : "dynamic_new 值不为空(NotNil)"
                 } ],
                 "notMode" : false
               } ],
@@ -2215,7 +2225,7 @@
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
                 "logicType" : "SINGLE",
-                "name" : "project_name值不为空(NotNil)"
+                "name" : "project_name 值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "project_name" ],
               "notMode" : false
@@ -2306,7 +2316,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "project_type",
                 "logicType" : "SINGLE",
-                "name" : "project_type等于(=) kanban",
+                "name" : "project_type 等于(=) kanban",
                 "value" : "kanban"
               } ],
               "relatedDetailNames" : [ "project_type" ],
@@ -2392,7 +2402,7 @@
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
                 "logicType" : "SINGLE",
-                "name" : "work_item_type_name不等于(<>) 史诗",
+                "name" : "work_item_type_name 不等于(<>) 史诗",
                 "value" : "史诗"
               } ],
               "relatedDetailNames" : [ "work_item_type_name" ],
@@ -2405,12 +2415,12 @@
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
                 "logicType" : "SINGLE",
-                "name" : "project_name值不为空(NotNil)"
+                "name" : "project_name 值不为空(NotNil)"
               }, {
                 "condOP" : "ISNULL",
                 "dEFDName" : "ctxpid",
                 "logicType" : "SINGLE",
-                "name" : "ctxpid值为空(Nil)"
+                "name" : "ctxpid 值为空(Nil)"
               } ],
               "relatedDetailNames" : [ "project_name", "ctxpid" ],
               "notMode" : false
@@ -2495,19 +2505,19 @@
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) scrum_task",
+                    "name" : "work_item_type_id 等于(=) scrum_task",
                     "value" : "scrum_task"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) waterfall_task",
+                    "name" : "work_item_type_id 等于(=) waterfall_task",
                     "value" : "waterfall_task"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) kanban_task",
+                    "name" : "work_item_type_id 等于(=) kanban_task",
                     "value" : "kanban_task"
                   } ],
                   "notMode" : false
@@ -2564,7 +2574,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "multiple_people",
                     "logicType" : "SINGLE",
-                    "name" : "multiple_people等于(=) 1",
+                    "name" : "multiple_people 等于(=) 1",
                     "value" : "1"
                   } ],
                   "relatedDetailNames" : [ "multiple_people" ],
@@ -2658,12 +2668,12 @@
                     "condOP" : "ISNULL",
                     "dEFDName" : "multiple_people",
                     "logicType" : "SINGLE",
-                    "name" : "multiple_people值为空(Nil)"
+                    "name" : "multiple_people 值为空(Nil)"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "multiple_people",
                     "logicType" : "SINGLE",
-                    "name" : "multiple_people等于(=) 0",
+                    "name" : "multiple_people 等于(=) 0",
                     "value" : "0"
                   } ],
                   "notMode" : false
@@ -2678,7 +2688,7 @@
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "project_name",
                   "logicType" : "SINGLE",
-                  "name" : "project_name值不为空(NotNil)"
+                  "name" : "project_name 值不为空(NotNil)"
                 } ],
                 "relatedDetailNames" : [ "project_name" ],
                 "notMode" : false
@@ -2840,7 +2850,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "multiple_people",
                   "logicType" : "SINGLE",
-                  "name" : "multiple_people等于(=) 1",
+                  "name" : "multiple_people 等于(=) 1",
                   "value" : "1"
                 }, {
                   "groupOP" : "OR",
@@ -2850,19 +2860,19 @@
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) scrum_task",
+                    "name" : "work_item_type_id 等于(=) scrum_task",
                     "value" : "scrum_task"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) kanban_task",
+                    "name" : "work_item_type_id 等于(=) kanban_task",
                     "value" : "kanban_task"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "work_item_type_id",
                     "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) waterfall_task",
+                    "name" : "work_item_type_id 等于(=) waterfall_task",
                     "value" : "waterfall_task"
                   } ],
                   "notMode" : false
@@ -3090,7 +3100,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
                 "logicType" : "SINGLE",
-                "name" : "work_item_type_group等于(=) requirement",
+                "name" : "work_item_type_group 等于(=) requirement",
                 "value" : "requirement"
               } ],
               "relatedDetailNames" : [ "work_item_type_group" ],
@@ -3275,7 +3285,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
                 "logicType" : "SINGLE",
-                "name" : "work_item_type_group等于(=) task",
+                "name" : "work_item_type_group 等于(=) task",
                 "value" : "task"
               } ],
               "relatedDetailNames" : [ "work_item_type_group" ],
@@ -3340,7 +3350,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
                 "logicType" : "SINGLE",
-                "name" : "work_item_type_group等于(=) bug",
+                "name" : "work_item_type_group 等于(=) bug",
                 "value" : "bug"
               } ],
               "relatedDetailNames" : [ "work_item_type_group" ],
@@ -6736,17 +6746,28 @@
               "getPSEditor" : {
                 "editorParams" : {
                   "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]"
+                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "ac" : "true",
+                  "codelistid" : "plmweb.codelist54"
                 },
-                "editorType" : "RADIOBUTTONLIST",
+                "editorType" : "HTMLEDITOR",
                 "name" : "description",
-                "getPSAppCodeList" : {
+                "getPSAppDEACMode" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+                  "id" : "AIChat"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
                 },
                 "getPSEditorItems" : [ {
                   "name" : "format_type"
-                } ]
+                } ],
+                "enableAC" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -6758,7 +6779,6 @@
               },
               "valueItemName" : "format_type",
               "allowEmpty" : true,
-              "needCodeListConfig" : true,
               "showCaption" : true
             }, {
               "caption" : "内容格式",
@@ -9318,17 +9338,28 @@
               "getPSEditor" : {
                 "editorParams" : {
                   "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]"
+                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "ac" : "true",
+                  "codelistid" : "plmweb.codelist54"
                 },
-                "editorType" : "RADIOBUTTONLIST",
+                "editorType" : "HTMLEDITOR",
                 "name" : "description",
-                "getPSAppCodeList" : {
+                "getPSAppDEACMode" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+                  "id" : "AIChat"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
                 },
                 "getPSEditorItems" : [ {
                   "name" : "format_type"
-                } ]
+                } ],
+                "enableAC" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -9340,7 +9371,6 @@
               },
               "valueItemName" : "format_type",
               "allowEmpty" : true,
-              "needCodeListConfig" : true,
               "showCaption" : true
             }, {
               "caption" : "内容格式",
@@ -11805,17 +11835,28 @@
               "getPSEditor" : {
                 "editorParams" : {
                   "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]"
+                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "ac" : "true",
+                  "codelistid" : "plmweb.codelist54"
                 },
-                "editorType" : "RADIOBUTTONLIST",
+                "editorType" : "HTMLEDITOR",
                 "name" : "description",
-                "getPSAppCodeList" : {
+                "getPSAppDEACMode" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+                  "id" : "AIChat"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
                 },
                 "getPSEditorItems" : [ {
                   "name" : "format_type"
-                } ]
+                } ],
+                "enableAC" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -11827,7 +11868,6 @@
               },
               "valueItemName" : "format_type",
               "allowEmpty" : true,
-              "needCodeListConfig" : true,
               "showCaption" : true
             }, {
               "caption" : "内容格式",
