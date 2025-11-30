@@ -1489,10 +1489,10 @@
         "modelref" : true,
         "id" : "aicontext"
       },
-      "topPos" : 510,
+      "topPos" : 500,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(\"执行智能体\");\n Object.assign(uiLogic.aicontext, uiLogic.default);\nuiLogic.aicontext._name=uiLogic.aicontext.name;\nif(view && view.parentView) {\n    const contextObj = view.parentView.state.srfactiveviewdata;\n    if(contextObj) {\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.aicontext, contextObj);\n        }\n        else {\n            uiLogic.aicontext.list = contextObj;\n        }\n    }\n}",
+      "code" : "console.log(\"执行智能体\");\n Object.assign(uiLogic.aicontext, uiLogic.default);\nuiLogic.aicontext._name=uiLogic.aicontext.name;\nuiLogic.context.ai_agent_context=uiLogic.aicontext.context_id;\nif(view && view.parentView) {\n    const contextObj = view.parentView.state.srfactiveviewdata;\n    if(contextObj) {\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.aicontext, contextObj);\n        }\n        else {\n            uiLogic.aicontext.list = contextObj;\n        }\n    }\n}",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 220,
       "logicNodeType" : "RAWJSCODE",
@@ -1523,6 +1523,11 @@
       "logicName" : "aicontext",
       "name" : "aicontext",
       "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "context",
+      "name" : "context",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
