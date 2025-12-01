@@ -1,0 +1,78 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.sprint_member_chart;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemsprint_member_chartdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemsprint_member_chartfor_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemsprint_member_chartwork_item_page;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemsprint_member_chartbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备工作项查询过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemsprint_member_chartprepareparam1"
+            when
+            then
+                            work_itemsprint_member_chartdefault.set("n_sprint_id_eq",work_itemsprint_member_chartdefault.get("sprint"));
+                            work_itemsprint_member_chartdefault.set("n_is_deleted_eq","0");
+                            work_itemsprint_member_chartdefault.set("n_project_id_eq",work_itemsprint_member_chartdefault.get("project"));
+                            work_itemsprint_member_chartdefault.set("size","1000");
+                        update(work_itemsprint_member_chartdefault);//更新fact中变量值
+                        update(work_itemsprint_member_chartfor_obj);//更新fact中变量值
+                        update(work_itemsprint_member_chartwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询此迭代中的工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemsprint_member_chartdedataset1"
+            when
+            then
+                        update(work_itemsprint_member_chartdefault);//更新fact中变量值
+                        update(work_itemsprint_member_chartfor_obj);//更新fact中变量值
+                        update(work_itemsprint_member_chartwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemsprint_member_chartloopsubcall1"
+            when
+            then
+                        update(work_itemsprint_member_chartdefault);//更新fact中变量值
+                        update(work_itemsprint_member_chartfor_obj);//更新fact中变量值
+                        update(work_itemsprint_member_chartwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[负责人名称置为未分配]
+            rule "prepareparam2"
+            ruleflow-group "work_itemsprint_member_chartprepareparam2"
+            when
+            then
+                            work_itemsprint_member_chartfor_obj.set("assigneename","未分配");
+                        update(work_itemsprint_member_chartdefault);//更新fact中变量值
+                        update(work_itemsprint_member_chartfor_obj);//更新fact中变量值
+                        update(work_itemsprint_member_chartwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemsprint_member_chartend1"
+            when
+            then
+                        update(work_itemsprint_member_chartdefault);//更新fact中变量值
+                        update(work_itemsprint_member_chartfor_obj);//更新fact中变量值
+                        update(work_itemsprint_member_chartwork_item_page);//更新fact中变量值
+            end

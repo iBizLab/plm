@@ -1,0 +1,92 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.mob_idea_attention;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideamob_idea_attentiondefault;
+                global cn.ibizlab.plm.core.base.domain.attention ideamob_idea_attentionattention;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ideamob_idea_attentionfor_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideamob_idea_attentionidea;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ideamob_idea_attentionsrfactionparam;
+                    global cn.ibizlab.plm.core.base.service.IattentionService attentionservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideamob_idea_attentionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取列表]
+            rule "bindparam1"
+            ruleflow-group "ideamob_idea_attentionbindparam1"
+            when
+            then
+                        update(ideamob_idea_attentiondefault);//更新fact中变量值
+                        update(ideamob_idea_attentionattention);//更新fact中变量值
+                        update(ideamob_idea_attentionfor_obj);//更新fact中变量值
+                        update(ideamob_idea_attentionidea);//更新fact中变量值
+                        update(ideamob_idea_attentionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideamob_idea_attentionloopsubcall1"
+            when
+            then
+                        update(ideamob_idea_attentiondefault);//更新fact中变量值
+                        update(ideamob_idea_attentionattention);//更新fact中变量值
+                        update(ideamob_idea_attentionfor_obj);//更新fact中变量值
+                        update(ideamob_idea_attentionidea);//更新fact中变量值
+                        update(ideamob_idea_attentionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideamob_idea_attentionend1"
+            when
+            then
+                        update(ideamob_idea_attentiondefault);//更新fact中变量值
+                        update(ideamob_idea_attentionattention);//更新fact中变量值
+                        update(ideamob_idea_attentionfor_obj);//更新fact中变量值
+                        update(ideamob_idea_attentionidea);//更新fact中变量值
+                        update(ideamob_idea_attentionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置参数]
+            rule "prepareparam1"
+            ruleflow-group "ideamob_idea_attentionprepareparam1"
+            when
+            then
+                            ideamob_idea_attentionattention.set("ownerid",ideamob_idea_attentiondefault.get("id"));
+                            ideamob_idea_attentionattention.set("ownersubtype","IDEA");
+                            ideamob_idea_attentionattention.set("ownertype","IDEA");
+                            ideamob_idea_attentionattention.set("type","40");
+                            ideamob_idea_attentionattention.set("userid",ideamob_idea_attentionfor_obj.get("userid"));
+                            ideamob_idea_attentionattention.set("name",ideamob_idea_attentionfor_obj.get("name"));
+                        update(ideamob_idea_attentiondefault);//更新fact中变量值
+                        update(ideamob_idea_attentionattention);//更新fact中变量值
+                        update(ideamob_idea_attentionfor_obj);//更新fact中变量值
+                        update(ideamob_idea_attentionidea);//更新fact中变量值
+                        update(ideamob_idea_attentionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建关注人]
+            rule "deaction1"
+            ruleflow-group "ideamob_idea_attentiondeaction1"
+            when
+            then
+                        attentionservice.create(ideamob_idea_attentionattention);
+                        update(ideamob_idea_attentiondefault);//更新fact中变量值
+                        update(ideamob_idea_attentionattention);//更新fact中变量值
+                        update(ideamob_idea_attentionfor_obj);//更新fact中变量值
+                        update(ideamob_idea_attentionidea);//更新fact中变量值
+                        update(ideamob_idea_attentionsrfactionparam);//更新fact中变量值
+            end

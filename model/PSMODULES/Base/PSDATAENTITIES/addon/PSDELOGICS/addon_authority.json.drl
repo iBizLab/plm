@@ -1,0 +1,57 @@
+package cn.ibizlab.plm.base.logic.addonlogic.addon_authority;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.addon addonaddon_authoritydefault;
+                global cn.ibizlab.plm.core.base.domain.addon addonaddon_authorityaddons;
+                global cn.ibizlab.plm.core.base.domain.addon addonaddon_authorityfilter;
+                global java.util.Map addonaddon_authorityresult;
+                    global cn.ibizlab.plm.core.base.service.IaddonService addonservice;
+        global cn.ibizlab.plm.core.base.service.IaddonService iBzSysAddonDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "addonaddon_authoritybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "addonaddon_authorityend1"
+            when
+            then
+                        update(addonaddon_authoritydefault);//更新fact中变量值
+                        update(addonaddon_authorityaddons);//更新fact中变量值
+                        update(addonaddon_authorityfilter);//更新fact中变量值
+                        update(addonaddon_authorityresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取组件列表]
+            rule "dedataset1"
+            ruleflow-group "addonaddon_authoritydedataset1"
+            when
+            then
+                        update(addonaddon_authoritydefault);//更新fact中变量值
+                        update(addonaddon_authorityaddons);//更新fact中变量值
+                        update(addonaddon_authorityfilter);//更新fact中变量值
+                        update(addonaddon_authorityresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构建计数器结果]
+            rule "rawsfcode1"
+            ruleflow-group "addonaddon_authorityrawsfcode1"
+            when
+            then
+                        update(addonaddon_authoritydefault);//更新fact中变量值
+                        update(addonaddon_authorityaddons);//更新fact中变量值
+                        update(addonaddon_authorityfilter);//更新fact中变量值
+                        update(addonaddon_authorityresult);//更新fact中变量值
+            end
