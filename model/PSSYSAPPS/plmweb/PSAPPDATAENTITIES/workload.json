@@ -1,5 +1,39 @@
 {
   "getAllPSAppDEActions" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "ai_add_estimated_workload",
+    "methodType" : "DEACTION",
+    "name" : "ai_add_estimated_workload",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "ai_add_estimated_workload"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/ai_add_estimated_workload",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -3603,6 +3637,40 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "ai_add_estimated_workload",
+    "methodType" : "DEACTION",
+    "name" : "ai_add_estimated_workload",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "ai_add_estimated_workload"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/ai_add_estimated_workload",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -7120,13 +7188,13 @@
     "name" : "自定义导出",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 90,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -7138,15 +7206,9 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 930,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
       "code" : "console.log('测试');\r\nconsole.log(view);\r\nlet myMap = view.ctx.controllersMap;\r\nconst lastKey = [...myMap.keys()].pop();\r\nconst lastValue = myMap.get(lastKey);\r\nuiLogic.grid = lastValue.layoutPanel.panelItems.grid.control;\r\nconsole.log(uiLogic.grid);",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 390,
+      "leftPos" : 470,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
@@ -7169,7 +7231,11 @@
         "id" : "grid"
       },
       "invokeMethod" : "exportData",
-      "leftPos" : 650,
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "params"
+      },
+      "leftPos" : 700,
       "logicNodeType" : "VIEWCTRLINVOKE",
       "name" : "视图部件调用",
       "getPSDEUILogicLinks" : [ {
@@ -7185,12 +7251,62 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 930,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 256,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "startPage",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "params"
+        },
+        "name" : "直接值[0] ==> params[startPage]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "endPage",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "params"
+        },
+        "name" : "直接值[0] ==> params[endPage]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
+      "codeName" : "grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "params",
+      "logicName" : "params",
+      "name" : "params",
+      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -7198,10 +7314,10 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "ctrlParam" : true
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
