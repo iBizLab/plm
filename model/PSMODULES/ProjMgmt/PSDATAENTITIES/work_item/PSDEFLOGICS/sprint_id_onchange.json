@@ -1,0 +1,289 @@
+{
+  "codeName" : "sprint_id_onchange",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/sprint_id_onchange.json",
+  "logicName" : "迭代变更触发逻辑",
+  "logicSubType" : "DEFIELD",
+  "memo" : "迭代变更触发逻辑，记录迭代移入移出记录",
+  "name" : "迭代变更触发逻辑",
+  "getPSDEField" : {
+    "name" : "SPRINT_ID",
+    "codeName" : "sprint_id"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "移出迭代",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "sprint_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[sprint_id] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "移入迭代",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "SPRINT_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[SPRINT_ID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 64,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充移出变更记录属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "SPRINT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_out"
+      },
+      "name" : "Last[sprint_id] ==> shift_out[SPRINT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "sprint_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "WORK_ITEM_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_out"
+      },
+      "name" : "Default[ID] ==> shift_out[WORK_ITEM_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_out"
+      },
+      "name" : "直接值[2] ==> shift_out[TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "2",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SPRINT_STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_out"
+      },
+      "name" : "Last[sprint_status] ==> shift_out[SPRINT_STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "sprint_status",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 385
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 296,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充移入变更记录属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "SPRINT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_in"
+      },
+      "name" : "Default[SPRINT_ID] ==> shift_in[SPRINT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SPRINT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "SPRINT_STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_in"
+      },
+      "name" : "Default[SPRINT_STATUS] ==> shift_in[SPRINT_STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SPRINT_STATUS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_in"
+      },
+      "name" : "直接值[1] ==> shift_in[TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "WORK_ITEM_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shift_in"
+      },
+      "name" : "Default[ID] ==> shift_in[WORK_ITEM_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 385
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "shift_out"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "leftPos" : 64,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存迭代移出记录",
+    "topPos" : 501
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "shift_in"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "leftPos" : 296,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存迭代移入记录",
+    "topPos" : 501
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "Last",
+    "logicName" : "变更前工作项",
+    "name" : "变更前工作项",
+    "lastParam" : true
+  }, {
+    "codeName" : "shift_in",
+    "logicName" : "移入迭代变更记录",
+    "name" : "移入迭代变更记录",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "shift_out",
+    "logicName" : "移出迭代变更记录",
+    "name" : "移出迭代变更记录",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
