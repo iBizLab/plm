@@ -76,7 +76,7 @@
     }, {
       "name" : "size"
     } ],
-    "scriptCode" : "const fileData = data.file ? JSON.parse(data.file)?.[0] : null;\r\ndata.size = fileData?.size ?? null;\r\ndata.file_type = fileData?.ext?.replace(/^\\./, '') ?? null;",
+    "scriptCode" : "const fileData = data.file ? JSON.parse(data.file)?.[0] : null;\ndata.size = fileData?.size ?? null;\ndata.file_type = fileData?.ext?.replace(/^\\./, '') ?? null;",
     "customCode" : true
   } ],
   "getPSDEFormItems" : [ {
@@ -173,25 +173,18 @@
       "codeName" : "size"
     }
   }, {
-    "id" : "meta_data",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "META_DATA",
-      "codeName" : "meta_data"
-    }
-  }, {
-    "id" : "parser_config",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "PARSER_CONFIG",
-      "codeName" : "parser_config"
-    }
-  }, {
     "id" : "chunk_method",
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "CHUNK_METHOD",
       "codeName" : "chunk_method"
+    }
+  }, {
+    "id" : "meta_data",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "META_DATA",
+      "codeName" : "meta_data"
     }
   }, {
     "id" : "chunk_num",
@@ -418,6 +411,20 @@
           "name" : "FILE",
           "codeName" : "file"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "type",
+            "logicType" : "SINGLE",
+            "name" : "type等于(=) file",
+            "value" : "file"
+          } ],
+          "relatedDetailNames" : [ "type" ],
+          "notMode" : false
+        } ],
         "getPSDEFormItemUpdate" : {
           "modelref" : true,
           "id" : "fill_file_info"
@@ -456,6 +463,20 @@
           "name" : "FILE_TYPE",
           "codeName" : "file_type"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "type",
+            "logicType" : "SINGLE",
+            "name" : "type等于(=) file",
+            "value" : "file"
+          } ],
+          "relatedDetailNames" : [ "type" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
           "name" : "file_type",
@@ -501,6 +522,319 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
+        "caption" : "切片策略",
+        "codeName" : "grouppanel1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "caption" : "切片方法",
+          "codeName" : "chunk_method",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "chunk_method",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CHUNK_METHOD",
+            "codeName" : "chunk_method"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "chunk_method",
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "codeName" : "parser_config",
+          "contentType" : "REPEATER",
+          "detailStyle" : "STYLE3",
+          "detailType" : "MDCTRL",
+          "name" : "parser_config",
+          "getPSAppDEField" : {
+            "name" : "PARSER_CONFIG",
+            "codeName" : "parser_config"
+          },
+          "getPSDEFormDetails" : [ {
+            "caption" : "块大小",
+            "codeName" : "chunk_size",
+            "createDV" : "512",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "chunk_size",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "NUMBER",
+              "name" : "chunk_size"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "512",
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "分隔符",
+            "codeName" : "separator",
+            "createDV" : "\n",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "separator",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "separator"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "\n",
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "保留分隔符",
+            "codeName" : "keep_separator",
+            "createDV" : "1",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "keep_separator",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "keep_separator"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "1",
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "块重叠",
+            "codeName" : "chunk_overlap",
+            "createDV" : "30",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "chunk_overlap",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "chunk_overlap"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "30",
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "单文档最大块数",
+            "codeName" : "max_chunk_count_per_doc",
+            "createDV" : "1000",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "max_chunk_count_per_doc",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "max_chunk_count_per_doc"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "1000",
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "文本预处理规则",
+            "codeName" : "pre_process_rules",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "pre_process_rules",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "CHECKBOXLIST",
+              "name" : "pre_process_rules",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
+              }
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "自定义脱敏规则",
+            "codeName" : "grouppanel2",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel2",
+            "getPSDEFormDetails" : [ {
+              "buildInActions" : 7,
+              "codeName" : "mdctrl2",
+              "contentType" : "REPEATER",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "MDCTRL",
+              "name" : "mdctrl2",
+              "getPSDEFormDetails" : [ {
+                "caption" : "匹配规则",
+                "codeName" : "pattern",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
+                "name" : "pattern",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "TEXTBOX",
+                  "name" : "pattern",
+                  "placeHolder" : "正则式"
+                },
+                "getPSLayoutPos" : {
+                  "colLG" : 12,
+                  "colMD" : 12,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "repeatContent" : true,
+                "showCaption" : true
+              }, {
+                "caption" : "替换文本",
+                "codeName" : "replacement",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
+                "name" : "replacement",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "TEXTBOX",
+                  "name" : "replacement"
+                },
+                "getPSLayoutPos" : {
+                  "colLG" : 12,
+                  "colMD" : 12,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "repeatContent" : true,
+                "showCaption" : true
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "infoGroupMode" : false,
+              "repeatContent" : true,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "repeatContent" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
+      }, {
         "caption" : "文档元数据",
         "codeName" : "meta_data",
         "dataType" : 21,
@@ -530,66 +864,6 @@
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "解析配置",
-        "codeName" : "parser_config",
-        "dataType" : 21,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "parser_config",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PARSER_CONFIG",
-          "codeName" : "parser_config"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
-          "editorType" : "TEXTAREA",
-          "maxLength" : 1048576,
-          "name" : "parser_config",
-          "showMaxLength" : true
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "切片方法",
-        "codeName" : "chunk_method",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "chunk_method",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CHUNK_METHOD",
-          "codeName" : "chunk_method"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "chunk_method",
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "切片数量",
