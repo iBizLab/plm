@@ -1,6 +1,6 @@
 {
   "getAllPSAppDEActions" : [ {
-    "actionMode" : "CUSTOM",
+    "actionMode" : "CREATE",
     "codeName" : "ai_add_estimated_workload",
     "methodType" : "DEACTION",
     "name" : "ai_add_estimated_workload",
@@ -10,15 +10,24 @@
         "modelref" : true,
         "id" : "workload_dto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -27,8 +36,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/ai_add_estimated_workload",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -3633,7 +3641,7 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
-    "actionMode" : "CUSTOM",
+    "actionMode" : "CREATE",
     "codeName" : "ai_add_estimated_workload",
     "methodType" : "DEACTION",
     "name" : "ai_add_estimated_workload",
@@ -3643,15 +3651,24 @@
         "modelref" : true,
         "id" : "workload_dto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -3660,8 +3677,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/ai_add_estimated_workload",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -5370,6 +5386,10 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "workload_ai_add_estimated_workload",
     "name" : "AI登记预估工时",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "ai_add_estimated_workload"
+    },
     "getPSAppDEUILogic" : {
       "modelref" : true,
       "id" : "ai_add_estimated_workload"
@@ -5380,10 +5400,12 @@
     },
     "refreshMode" : 1,
     "successMsg" : "登记成功",
-    "uIActionMode" : "FRONT",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
     "uIActionTag" : "ai_add_estimated_workload",
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
+    "enableConfirm" : true,
     "globalUIAction" : true,
     "reloadData" : true,
     "id" : "ai_add_estimated_workload@workload"
