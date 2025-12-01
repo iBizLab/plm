@@ -146644,6 +146644,26 @@
         "uIActionType" : "DEUIACTION",
         "id" : "calendar_link_log_view@workload"
       }, {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "自定义导出",
+        "codeName" : "custom_export",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "workload_custom_export",
+        "name" : "自定义导出",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "custom_export"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "custom_export",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "id" : "custom_export@workload"
+      }, {
         "actionTarget" : "SINGLEKEY",
         "caption" : "删除",
         "codeName" : "delere",
@@ -148234,6 +148254,77 @@
           "name" : "传入变量",
           "default" : true,
           "entityParam" : true
+        } ],
+        "getStartPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "codeName" : "custom_export",
+        "defaultParamName" : "Default",
+        "logicName" : "自定义导出",
+        "name" : "自定义导出",
+        "getPSDEUILogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "code" : "console.log('测试');\r\nconsole.log(view);",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 400,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "END1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
+        }, {
+          "codeName" : "END1",
+          "leftPos" : 701,
+          "logicNodeType" : "END",
+          "name" : "结束",
+          "topPos" : 200
+        } ],
+        "getPSDEUILogicParams" : [ {
+          "codeName" : "grid",
+          "logicName" : "表格",
+          "name" : "表格",
+          "ctrlParam" : true
+        }, {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "default" : true,
+          "entityParam" : true
+        }, {
+          "codeName" : "view",
+          "logicName" : "当前视图对象",
+          "name" : "当前视图对象",
+          "activeViewParam" : true
         } ],
         "getStartPSDEUILogicNode" : {
           "modelref" : true,
