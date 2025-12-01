@@ -1,43 +1,5 @@
 {
   "getAllPSAppDEActions" : [ {
-    "actionMode" : "CREATE",
-    "codeName" : "ai_add_estimated_workload",
-    "methodType" : "DEACTION",
-    "name" : "ai_add_estimated_workload",
-    "getPSAppDEMethodInput" : {
-      "name" : "输入对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "workload_dto"
-      },
-      "type" : "DTO",
-      "output" : true
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "workload_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "CREATE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "ai_add_estimated_workload"
-    },
-    "requestMethod" : "POST",
-    "requestParamType" : "ENTITY",
-    "requestPath" : "/ai_add_estimated_workload",
-    "builtinMethod" : false
-  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -3641,44 +3603,6 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
-    "actionMode" : "CREATE",
-    "codeName" : "ai_add_estimated_workload",
-    "methodType" : "DEACTION",
-    "name" : "ai_add_estimated_workload",
-    "getPSAppDEMethodInput" : {
-      "name" : "输入对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "workload_dto"
-      },
-      "type" : "DTO",
-      "output" : true
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "workload_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_add_estimated_workload.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "CREATE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "ai_add_estimated_workload"
-    },
-    "requestMethod" : "POST",
-    "requestParamType" : "ENTITY",
-    "requestPath" : "/ai_add_estimated_workload",
-    "builtinMethod" : false
-  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -6774,7 +6698,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "console.info(uiLogic.default);",
+      "code" : "console.info(uiLogic.default);\r\nvar answer = null;\r\nvar formController = view.getController(\"form\");\r\nif(!formController) {\r\n    formController = view.parentView.getController(\"form\");\r\n}\r\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\r\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\r\n    answer = lastAns.realcontent;\r\n}\r\nelse if(uiLogic.default.msg) {\r\n    answer = uiLogic.default.msg.realcontent;\r\n}\r\n if(answer) {\r\n     if (answer && typeof answer == 'string') {\r\n        var ret ={\r\n                success: false,\r\n                data: null,\r\n                data_type: 'unknown',\r\n                raw_content: null,\r\n                message: '未找到有效的JSON或JSONArray内容'\r\n            };\r\n       // 定义匹配模式，按优先级排序\r\n        const patterns = [\r\n            {\r\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\r\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\r\n            },\r\n            {\r\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\r\n                cleanFn: (content) => content.replace(/```/g, '').trim()\r\n            },\r\n            {\r\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\r\n                cleanFn: (content) => content.trim()\r\n            },\r\n            {\r\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\r\n                cleanFn: (content) => content.trim()\r\n            }\r\n        ];\r\n\r\n        for (const { pattern, cleanFn } of patterns) {\r\n            const match = answer.match(pattern);\r\n            if (match) {\r\n                try {\r\n                    let content = match[0];\r\n                    content = cleanFn(content);\r\n                    \r\n                    // 解析JSON\r\n                    const parsed = JSON.parse(content);\r\n                    \r\n                    // 判断类型\r\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\r\n                    ret = {\r\n                            success: true,\r\n                            data: parsed,\r\n                            data_type: jspn_type,\r\n                            raw_content: content,\r\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\r\n                        };\r\n                    break;\r\n                } catch (error) {\r\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\r\n                    continue;\r\n                }\r\n            }\r\n        }\r\n        console.info(ret);\r\n        if(ret.success && ret.data) {\r\n            if(ret.data_type == 'jsonobject' && formController) {\r\n                Object.entries(ret.data).forEach(([key, value]) => {\r\n                    // 调用表单控制器设置数据\r\n                    try {\r\n                        formController.setDataValue(key, value);\r\n                        console.log(`已设置表单字段: ${key} =`, value);\r\n                    } catch (error) {\r\n                    }\r\n                });\r\n            }\r\n\r\n            if(formController) {\r\n                try {\r\n                    formController.setDataValue(\"debug_callback_2\",ret.data);\r\n\r\n                } catch (error) {\r\n                }\r\n            }\r\n        }\r\n \r\n\r\n        \r\n    }\r\n\r\n \r\n}",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
