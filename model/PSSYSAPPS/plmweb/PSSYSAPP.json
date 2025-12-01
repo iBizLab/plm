@@ -146530,12 +146530,13 @@
         "builtinMethod" : true
       } ],
       "getAllPSAppDEUIActions" : [ {
-        "actionTarget" : "NONE",
+        "actionTarget" : "SINGLEDATA",
         "caption" : "AI登记预估工时",
         "codeName" : "ai_add_estimated_workload",
+        "frontProcessType" : "OTHER",
         "fullCodeName" : "workload_ai_add_estimated_workload",
         "name" : "AI登记预估工时",
-        "getPSAppDEMethod" : {
+        "getPSAppDEUILogic" : {
           "modelref" : true,
           "id" : "ai_add_estimated_workload"
         },
@@ -146545,11 +146546,10 @@
         },
         "refreshMode" : 1,
         "successMsg" : "登记成功",
-        "timeout" : 60000,
-        "uIActionMode" : "BACKEND",
+        "uIActionMode" : "FRONT",
         "uIActionTag" : "ai_add_estimated_workload",
         "uIActionType" : "DEUIACTION",
-        "enableConfirm" : true,
+        "uILogicAttachMode" : "REPLACE",
         "reloadData" : true,
         "id" : "ai_add_estimated_workload@workload"
       }, {
@@ -147900,6 +147900,50 @@
         "id" : "workload_type_duration_link@workload"
       } ],
       "getAllPSAppDEUILogics" : [ {
+        "codeName" : "ai_add_estimated_workload",
+        "defaultParamName" : "Default",
+        "logicName" : "AI登记预估工时",
+        "name" : "AI登记预估工时",
+        "getPSDEUILogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE_01"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "code" : "console.info(uiLogic.default);",
+          "codeName" : "RAWJSCODE_01",
+          "leftPos" : 160,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "topPos" : 381,
+          "parallelOutput" : true
+        } ],
+        "getPSDEUILogicParams" : [ {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "default" : true,
+          "entityParam" : true
+        } ],
+        "getStartPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
         "codeName" : "back",
         "defaultParamName" : "Default",
         "logicName" : "返回",
