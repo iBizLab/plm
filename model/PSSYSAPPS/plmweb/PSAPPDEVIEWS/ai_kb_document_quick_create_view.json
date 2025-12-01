@@ -260,6 +260,22 @@
         "codeName" : "status"
       }
     }, {
+      "id" : "source_id",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SOURCE_ID",
+        "codeName" : "source_id"
+      }
+    }, {
+      "id" : "source_type",
+      "dataType" : 25,
+      "createDV" : "page",
+      "updateDV" : "page",
+      "getPSAppDEField" : {
+        "name" : "SOURCE_TYPE",
+        "codeName" : "source_type"
+      }
+    }, {
       "id" : "file",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -502,6 +518,110 @@
           },
           "allowEmpty" : true,
           "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "源标识",
+          "codeName" : "source_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "source_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SOURCE_ID",
+            "codeName" : "source_id"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "type",
+              "logicType" : "SINGLE",
+              "name" : "type等于(=) space",
+              "value" : "space"
+            } ],
+            "relatedDetailNames" : [ "type" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
+            },
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
+            "name" : "source_id",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_normal"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "source_id"
+            } ],
+            "valueItemName" : "source_id",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 12,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "source_id",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "源类型",
+          "codeName" : "source_type",
+          "createDV" : "page",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 3,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "source_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SOURCE_TYPE",
+            "codeName" : "source_type"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "source_type",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__recent_visite.json"
+            },
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "page",
+          "allowEmpty" : true,
+          "convertToCodeItemText" : true,
           "showCaption" : true
         }, {
           "caption" : "上传文件",
