@@ -148284,28 +148284,40 @@
           "topPos" : 200,
           "parallelOutput" : true
         }, {
-          "codeName" : "VIEWCTRLINVOKE1",
-          "getInvokeCtrl" : {
-            "modelref" : true,
-            "id" : "grid"
-          },
-          "invokeMethod" : "exportData",
-          "leftPos" : 400,
-          "logicNodeType" : "VIEWCTRLINVOKE",
-          "name" : "视图部件调用",
-          "topPos" : 350
-        }, {
           "codeName" : "END1",
-          "leftPos" : 701,
+          "leftPos" : 930,
           "logicNodeType" : "END",
           "name" : "结束",
           "topPos" : 200
         }, {
           "code" : "console.log('测试');\r\nconsole.log(view);\r\nlet myMap = view.ctx.controllersMap;\r\nconst lastKey = [...myMap.keys()].pop();\r\nconst lastValue = myMap.get(lastKey);\r\nuiLogic.grid = lastValue.layoutPanel.panelItems.grid.control;\r\nconsole.log(uiLogic.grid);",
           "codeName" : "RAWJSCODE1",
-          "leftPos" : 400,
+          "leftPos" : 390,
           "logicNodeType" : "RAWJSCODE",
           "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "VIEWCTRLINVOKE1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 208
+        }, {
+          "codeName" : "VIEWCTRLINVOKE1",
+          "getInvokeCtrl" : {
+            "modelref" : true,
+            "id" : "grid"
+          },
+          "invokeMethod" : "exportData",
+          "leftPos" : 650,
+          "logicNodeType" : "VIEWCTRLINVOKE",
+          "name" : "视图部件调用",
           "getPSDEUILogicLinks" : [ {
             "getDstPSDEUILogicNode" : {
               "modelref" : true,
@@ -148315,7 +148327,7 @@
             "name" : "连接名称",
             "getSrcPSDEUILogicNode" : {
               "modelref" : true,
-              "id" : "RAWJSCODE1"
+              "id" : "VIEWCTRLINVOKE1"
             }
           } ],
           "topPos" : 208
