@@ -430,6 +430,63 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEDATAQUERIES/filter/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "filter",
+    "logicName" : "业务过滤",
+    "name" : "filter",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_AGENT_CONTEXT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condType" : "CUSTOM",
+            "condition" : "FIND_IN_SET(#{ctx.webcontext.srfaiagentscope}, t1.`SCOPES`) > 0;",
+            "name" : "数组包含"
+          }, {
+            "condOp" : "ISNULL",
+            "condType" : "SINGLE",
+            "fieldName" : "SCOPES",
+            "name" : "(SCOPES) 值为空(Nil) 网页请求上下文 ",
+            "getPSDEField" : {
+              "name" : "SCOPES",
+              "codeName" : "scopes"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "FilterInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "FilterResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -460,6 +517,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "业务过滤",
+    "name" : "filter",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "filter"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "FilterInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "FilterResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_context_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
