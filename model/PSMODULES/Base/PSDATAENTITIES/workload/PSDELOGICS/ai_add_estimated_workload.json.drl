@@ -7,9 +7,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloaddefault;
                 global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloaddata;
+                global cn.ibizlab.plm.core.base.domain.workload_type workloadai_add_estimated_workloadfilter;
                 global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloadtemp;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadai_add_estimated_workloadwork_item;
+                global cn.ibizlab.plm.core.base.domain.workload_type workloadai_add_estimated_workloadworkload_type_page;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.Iworkload_typeService workload_typeservice;
                     global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
         global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -31,8 +34,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[准备参数]
@@ -43,8 +48,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
                             workloadai_add_estimated_workloadwork_item.set("id",workloadai_add_estimated_workloaddefault.get("principalid"));
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[获取工作项]
@@ -55,8 +62,23 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(workloadai_add_estimated_workloadwork_item.getId()),workloadai_add_estimated_workloadwork_item);
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工时种类]
+            rule "dedataset1"
+            ruleflow-group "workloadai_add_estimated_workloaddedataset1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[绑定参数]
@@ -66,8 +88,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[循环子调用]
@@ -77,8 +101,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[准备参数]
@@ -92,8 +118,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
                             workloadai_add_estimated_workloadtemp.set("workload_kind","工作项");
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[计算剩余工时]
@@ -103,8 +131,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[登记工时]
@@ -114,8 +144,10 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -125,6 +157,8 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
             then
                         update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
                         update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
                         update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
                         update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
             end

@@ -7,21 +7,27 @@
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="workloadai_add_estimated_workloaddefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadai_add_estimated_workloaddata" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload_type()" name="workloadai_add_estimated_workloadfilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadai_add_estimated_workloadtemp" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadai_add_estimated_workloadwork_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload_type()" name="workloadai_add_estimated_workloadworkload_type_page" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iworkload_typeService))" name="workload_typeservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="workloadai_add_estimated_workloaddefault" type="cn.ibizlab.plm.core.base.domain.workload" />
                             <tns:global identifier="workloadai_add_estimated_workloaddata" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadai_add_estimated_workloadfilter" type="cn.ibizlab.plm.core.base.domain.workload_type" />
                             <tns:global identifier="workloadai_add_estimated_workloadtemp" type="cn.ibizlab.plm.core.base.domain.workload" />
                             <tns:global identifier="workloadai_add_estimated_workloadwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadai_add_estimated_workloadworkload_type_page" type="cn.ibizlab.plm.core.base.domain.workload_type" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取工时种类"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
@@ -36,9 +42,11 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $workloadai_add_estimated_workloaddefault:workload();
                                             $workloadai_add_estimated_workloaddata:workload();
+                                            $workloadai_add_estimated_workloadfilter:workload_type();
                                             $workloadai_add_estimated_workloadtemp:workload();
                                             $workloadai_add_estimated_workloadwork_item:work_item();
-                                    eval($workloadai_add_estimated_workloaddefault==workloadai_add_estimated_workloaddefault && $workloadai_add_estimated_workloaddata==workloadai_add_estimated_workloaddata && $workloadai_add_estimated_workloadtemp==workloadai_add_estimated_workloadtemp && $workloadai_add_estimated_workloadwork_item==workloadai_add_estimated_workloadwork_item);
+                                            $workloadai_add_estimated_workloadworkload_type_page:workload_type();
+                                    eval($workloadai_add_estimated_workloaddefault==workloadai_add_estimated_workloaddefault && $workloadai_add_estimated_workloaddata==workloadai_add_estimated_workloaddata && $workloadai_add_estimated_workloadfilter==workloadai_add_estimated_workloadfilter && $workloadai_add_estimated_workloadtemp==workloadai_add_estimated_workloadtemp && $workloadai_add_estimated_workloadwork_item==workloadai_add_estimated_workloadwork_item && $workloadai_add_estimated_workloadworkload_type_page==workloadai_add_estimated_workloadworkload_type_page);
                                 eval((RuleUtils.test($workloadai_add_estimated_workloaddefault.get("success"),"EQ","true")))
                                 ]]>
                             </conditionExpression>
@@ -47,7 +55,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_bindparam1" sourceRef="deaction1" targetRef="bindparam1">
+                    <sequenceFlow id="deaction1_dedataset1" sourceRef="deaction1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_bindparam1" sourceRef="dedataset1" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
