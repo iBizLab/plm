@@ -1104,6 +1104,80 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PARSER_CONFIG",
+      "dBType" : "MYSQL5",
+      "name" : "PARSER_CONFIG",
+      "standardColumnName" : "`PARSER_CONFIG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PARSER_CONFIG][解析配置]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PARSER_CONFIG][解析配置]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PARSER_CONFIG][解析配置]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[PARSER_CONFIG][解析配置]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PARSER_CONFIG",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "parser_config",
+    "dEFType" : 1,
+    "dataType" : "ONE2ONEDATA",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "解析配置",
+    "name" : "PARSER_CONFIG",
+    "orderValue" : 220,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy/PSDERS/DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT_WIZARD.json"
+    },
+    "serviceCodeName" : "parser_config",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CUSTOM_CHUNK",
       "dBType" : "MYSQL5",
       "name" : "CUSTOM_CHUNK",
@@ -1366,6 +1440,28 @@
       "stdDataType" : 25,
       "stringLength" : 60,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "解析配置",
+      "name" : "parser_config",
+      "getPSDEField" : {
+        "name" : "PARSER_CONFIG",
+        "codeName" : "parser_config"
+      },
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy/PSDERS/DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT_WIZARD.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunking_strategy_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTO"
     }, {
       "logicName" : "自定义切片",
       "name" : "custom_chunk",
@@ -1636,6 +1732,10 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy.json"
     },
     "name" : "DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT_WIZARD",
+    "getOne2XDataPSDEField" : {
+      "name" : "PARSER_CONFIG",
+      "codeName" : "parser_config"
+    },
     "orderValue" : 100,
     "pickupDEFName" : "ID",
     "getPickupPSDEField" : {
