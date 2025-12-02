@@ -220890,7 +220890,7 @@
               "id" : "Begin"
             }
           } ],
-          "topPos" : -70,
+          "topPos" : -140,
           "parallelOutput" : true
         }, {
           "codeName" : "PREPAREJSPARAM1",
@@ -220900,7 +220900,7 @@
           "getPSDEUILogicLinks" : [ {
             "getDstPSDEUILogicNode" : {
               "modelref" : true,
-              "id" : "DEACTION1"
+              "id" : "RAWJSCODE2"
             },
             "linkMode" : 0,
             "name" : "连接名称",
@@ -220922,7 +220922,7 @@
             },
             "srcValueType" : "SRCDLPARAM"
           } ],
-          "topPos" : 60
+          "topPos" : -50
         }, {
           "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
           "codeName" : "RAWJSCODE1",
@@ -221047,12 +221047,24 @@
           "topPos" : 771,
           "parallelOutput" : true
         }, {
-          "code" : "const page_info = uiLogic.page_info;\r\nif(page_info.format_type === \"MD\"){\r\n    page_info.content = page_info.formitem;\r\n}\r\nif(page_info.format_type === \"EXCEL\"){\r\n    page_info.content = page_info.formitem1;\r\n}",
+          "code" : "const page_info = uiLogic.page_info;\r\nif(page_info.format_type === \"MD\"  &&  page_info.content===null){\r\n    page_info.content = page_info.formitem;\r\n}\r\nif(page_info.format_type === \"EXCEL\" &&  page_info.content===null){\r\n    page_info.content = page_info.formitem1;\r\n}",
           "codeName" : "RAWJSCODE2",
-          "leftPos" : -30,
+          "leftPos" : 161,
           "logicNodeType" : "RAWJSCODE",
           "name" : "注入脚本代码",
-          "topPos" : 180
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "DEACTION1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE2"
+            }
+          } ],
+          "topPos" : 50
         }, {
           "code" : "if (uiLogic.form) {\r\n    uiLogic.form.state.modified = false;\r\n}",
           "codeName" : "RAWJSCODE3",
