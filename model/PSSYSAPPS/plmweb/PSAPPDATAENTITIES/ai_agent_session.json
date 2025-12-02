@@ -1687,7 +1687,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "console.info(uiLogic.default);\nvar answer = null;\n\nvar formController = view.getController(\"form\");\nif(!formController) {\n    formController = view.parentView.getController(\"form\");\n}\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            principal_id : view.parentView.context.work_item,\n                            register_date : new Date(),\n                            duration : 0,\n                            name : 'unknown',\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n       \n       console.info(ret);\n\n        if(ret.success && ret.data) {\n            uiLogic.result=ret;\n        }\n    }\n}",
+      "code" : "console.info(uiLogic.default);\nvar answer = null;\n\nvar formController = view.getController(\"form\");\nif(!formController) {\n    formController = view.parentView.getController(\"form\");\n}\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n    if (ibiz.util.jsonUtil) {\n        console.log('jsonUtil解析数据：',  ibiz.util.jsonUtil.parseJson(answer));\n    }\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            principal_id : view.parentView.context.work_item,\n                            register_date : new Date(),\n                            duration : 0,\n                            name : 'unknown',\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n       \n       console.info(ret);\n\n        if(ret.success && ret.data) {\n            uiLogic.result=ret;\n        }\n    }\n}",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -1707,14 +1707,6 @@
       "topPos" : 381,
       "parallelOutput" : true
     }, {
-      "code" : "view.parentView.call('Refresh');",
-      "codeName" : "RAWJSCODE_02",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新父页面",
-      "topPos" : 610,
-      "parallelOutput" : true
-    }, {
       "codeName" : "DEACTION_01",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -1731,18 +1723,6 @@
       "leftPos" : 160,
       "logicNodeType" : "DEACTION",
       "name" : "AI登记预估工时",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE_02"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION_01"
-        }
-      } ],
       "topPos" : 503,
       "parallelOutput" : true
     } ],
