@@ -8632,7 +8632,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "DEACTION1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -8751,7 +8751,7 @@
         "modelref" : true,
         "id" : "page_info"
       },
-      "leftPos" : 160,
+      "leftPos" : 161,
       "logicNodeType" : "DEACTION",
       "name" : "发布页面",
       "getPSDEUILogicLinks" : [ {
@@ -8770,36 +8770,25 @@
         "modelref" : true,
         "id" : "page_info"
       },
-      "topPos" : 302
+      "topPos" : 180
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 771
+      "topPos" : 771,
+      "parallelOutput" : true
     }, {
       "code" : "const page_info = uiLogic.page_info;\r\nif(page_info.format_type === \"MD\"){\r\n    page_info.content = page_info.formitem;\r\n}\r\nif(page_info.format_type === \"EXCEL\"){\r\n    page_info.content = page_info.formitem1;\r\n}",
       "codeName" : "RAWJSCODE2",
-      "leftPos" : 161,
+      "leftPos" : -30,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 170
+      "topPos" : 180
     }, {
       "code" : "if (uiLogic.form) {\r\n    uiLogic.form.state.modified = false;\r\n}",
       "codeName" : "RAWJSCODE3",
-      "leftPos" : 400,
+      "leftPos" : 161,
       "logicNodeType" : "RAWJSCODE",
       "memo" : "由于是自定义逻辑保存，所以此处应该手动改变状态",
       "name" : "设置表单是否变更",
