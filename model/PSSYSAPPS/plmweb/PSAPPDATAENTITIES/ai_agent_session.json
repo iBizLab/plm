@@ -1714,7 +1714,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -1723,38 +1723,74 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 330,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 159,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 740
+    }, {
+      "code" : "const messages = uiLogic.default.data.messages;\r\n\r\nconst inputString = messages[2];\r\n\r\n// 使用正则表达式提取 name 和 content\r\nconst regex = /\"name\": \"(.*?)\",\\s*\"content\": \"(.*?)\"/s;\r\nconst match = inputString.match(regex);\r\n\r\nif (match) {\r\n  const result = {\r\n    name: match[1],\r\n    content: match[2].replace(/\\\\n/g, '\\n')  // 将 \\n 替换为实际换行符\r\n  };\r\n  console.log(result);\r\n  uiLogic.result = result;\r\n} else {\r\n  console.log(\"无法提取数据\");\r\n}\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "DEUIACTION1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 330
-    }, {
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
       "topPos" : 463
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "quick_new_page@article_page"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 590
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
