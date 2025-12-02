@@ -940,6 +940,88 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SYNC_FREQUENCY",
+      "dBType" : "MYSQL5",
+      "name" : "SYNC_FREQUENCY",
+      "queryCodeExp" : "t1.`SYNC_FREQUENCY`",
+      "standardColumnName" : "`SYNC_FREQUENCY`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_SYNC_FREQUENCY_EQ",
+      "name" : "N_SYNC_FREQUENCY_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SYNC_FREQUENCY][同步频率]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[SYNC_FREQUENCY][同步频率]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SYNC_FREQUENCY][同步频率]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[SYNC_FREQUENCY][同步频率]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SYNC_FREQUENCY",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "sync_frequency",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "同步频率",
+    "name" : "SYNC_FREQUENCY",
+    "orderValue" : 170,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/KBSyncFrequency.json"
+    },
+    "serviceCodeName" : "sync_frequency",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "SPACE_SELECTION",
       "dBType" : "MYSQL5",
       "name" : "SPACE_SELECTION",
@@ -1019,6 +1101,149 @@
     "serviceCodeName" : "space_selection",
     "stdDataType" : 25,
     "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CUSTOM_CHUNK",
+      "dBType" : "MYSQL5",
+      "name" : "CUSTOM_CHUNK",
+      "queryCodeExp" : "t1.`CUSTOM_CHUNK`",
+      "standardColumnName" : "`CUSTOM_CHUNK`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CUSTOM_CHUNK][自定义切片]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[CUSTOM_CHUNK][自定义切片]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CUSTOM_CHUNK][自定义切片]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[CUSTOM_CHUNK][自定义切片]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "custom_chunk",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "logicName" : "自定义切片",
+    "name" : "CUSTOM_CHUNK",
+    "orderValue" : 320,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/custom_chunk.json"
+    },
+    "serviceCodeName" : "custom_chunk",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHUNK_METHOD",
+      "dBType" : "MYSQL5",
+      "name" : "CHUNK_METHOD",
+      "queryCodeExp" : "t1.`CHUNK_METHOD`",
+      "standardColumnName" : "`CHUNK_METHOD`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CHUNK_METHOD_EQ",
+      "name" : "N_CHUNK_METHOD_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CHUNK_METHOD][切片方法]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[CHUNK_METHOD][切片方法]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CHUNK_METHOD][切片方法]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[CHUNK_METHOD][切片方法]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CHUNK_METHOD",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "chunk_method",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "切片方法",
+    "name" : "CHUNK_METHOD",
+    "orderValue" : 1000,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/chunkingstrategy.json"
+    },
+    "serviceCodeName" : "chunk_method",
+    "stdDataType" : 25,
+    "stringLength" : 100,
     "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMethodDTOs" : [ {
@@ -1120,6 +1345,17 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "同步频率",
+      "name" : "sync_frequency",
+      "getPSDEField" : {
+        "name" : "SYNC_FREQUENCY",
+        "codeName" : "sync_frequency"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "选择空间",
       "name" : "space_selection",
       "getPSDEField" : {
@@ -1130,6 +1366,27 @@
       "stdDataType" : 25,
       "stringLength" : 60,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "自定义切片",
+      "name" : "custom_chunk",
+      "getPSDEField" : {
+        "name" : "CUSTOM_CHUNK",
+        "codeName" : "custom_chunk"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "切片方法",
+      "name" : "chunk_method",
+      "getPSDEField" : {
+        "name" : "CHUNK_METHOD",
+        "codeName" : "chunk_method"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -1137,6 +1394,21 @@
   }, {
     "name" : "ai_kb_document_wizard_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "切片方法",
+      "name" : "n_chunk_method_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CHUNK_METHOD_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CHUNK_METHOD",
+        "codeName" : "chunk_method"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "n_id_eq",
       "getPSDEFSearchMode" : {
@@ -1191,6 +1463,21 @@
       "getPSDEField" : {
         "name" : "SPACE_SELECTION",
         "codeName" : "space_selection"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "同步频率",
+      "name" : "n_sync_frequency_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_SYNC_FREQUENCY_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "SYNC_FREQUENCY",
+        "codeName" : "sync_frequency"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -1262,10 +1549,34 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "data_source",
+    "logicName" : "数据来源",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "数据来源",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "file_selection",
+    "logicName" : "选择文件",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "选择文件",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "chunk_settings",
+    "logicName" : "切片设置",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "切片设置",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
