@@ -189,6 +189,15 @@
       "codeName" : "size"
     }
   }, {
+    "id" : "custom_chunk",
+    "dataType" : 9,
+    "createDV" : "0",
+    "updateDV" : "0",
+    "getPSAppDEField" : {
+      "name" : "CUSTOM_CHUNK",
+      "codeName" : "custom_chunk"
+    }
+  }, {
     "id" : "chunk_method",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -648,6 +657,43 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel1",
         "getPSDEFormDetails" : [ {
+          "caption" : "自定义切片",
+          "codeName" : "custom_chunk",
+          "createDV" : "0",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemWidth" : 230.0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "custom_chunk",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CUSTOM_CHUNK",
+            "codeName" : "custom_chunk"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "custom_chunk",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__custom_chunk.json"
+            },
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 8,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "0",
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
           "caption" : "切片方法",
           "codeName" : "chunk_method",
           "dataType" : 25,
@@ -663,13 +709,32 @@
             "name" : "CHUNK_METHOD",
             "codeName" : "chunk_method"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "custom_chunk",
+              "logicType" : "SINGLE",
+              "name" : "custom_chunk等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "custom_chunk" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST",
             "name" : "chunk_method",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__chunkingstrategy.json"
+            },
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
+            "colLG" : 8,
+            "colMD" : 8,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -685,6 +750,20 @@
             "name" : "PARSER_CONFIG",
             "codeName" : "parser_config"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "custom_chunk",
+              "logicType" : "SINGLE",
+              "name" : "custom_chunk等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "custom_chunk" ],
+            "notMode" : false
+          } ],
           "getPSDEFormDetails" : [ {
             "caption" : "块大小",
             "codeName" : "chunk_size",
@@ -703,8 +782,8 @@
               "name" : "chunk_size"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "512",
@@ -714,7 +793,7 @@
           }, {
             "caption" : "分隔符",
             "codeName" : "separator",
-            "createDV" : "\n",
+            "createDV" : "\\n",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -729,8 +808,8 @@
               "name" : "separator"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "\n",
@@ -755,8 +834,8 @@
               "name" : "keep_separator"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "1",
@@ -781,8 +860,8 @@
               "name" : "chunk_overlap"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "30",
@@ -807,7 +886,8 @@
               "name" : "max_chunk_count_per_doc"
             },
             "getPSLayoutPos" : {
-              "colMD" : 24,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "1000",
@@ -873,7 +953,7 @@
                   "placeHolder" : "正则式"
                 },
                 "getPSLayoutPos" : {
-                  "colLG" : 12,
+                  "colLG" : 8,
                   "colMD" : 12,
                   "layout" : "TABLE_24COL"
                 },
@@ -897,7 +977,7 @@
                   "name" : "replacement"
                 },
                 "getPSLayoutPos" : {
-                  "colLG" : 12,
+                  "colLG" : 16,
                   "colMD" : 12,
                   "layout" : "TABLE_24COL"
                 },

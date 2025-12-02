@@ -245,6 +245,9 @@
       "name" : "FILE_TYPE",
       "codeName" : "file_type"
     }, {
+      "name" : "CUSTOM_CHUNK",
+      "codeName" : "custom_chunk"
+    }, {
       "name" : "KB_ID",
       "codeName" : "kb_id"
     }, {
@@ -1627,6 +1630,71 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CUSTOM_CHUNK",
+      "dBType" : "MYSQL5",
+      "name" : "CUSTOM_CHUNK",
+      "queryCodeExp" : "t1.`CUSTOM_CHUNK`",
+      "standardColumnName" : "`CUSTOM_CHUNK`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "custom_chunk",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "logicName" : "自定义切片",
+    "name" : "CUSTOM_CHUNK",
+    "orderValue" : 320,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/custom_chunk.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CUSTOM_CHUNK"
+    },
+    "serviceCodeName" : "custom_chunk",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "KB_ID",
       "dBType" : "MYSQL5",
       "name" : "KB_ID",
@@ -1802,6 +1870,10 @@
     "logicName" : "切片方法",
     "name" : "CHUNK_METHOD",
     "orderValue" : 1000,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/chunkingstrategy.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1825,7 +1897,7 @@
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
+        "editorType" : "HIDDEN",
         "name" : "默认",
         "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
@@ -1834,7 +1906,7 @@
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXTAREA",
+        "editorType" : "HIDDEN",
         "name" : "移动端默认",
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
@@ -1870,7 +1942,7 @@
     } ],
     "codeName" : "parser_config",
     "dEFType" : 1,
-    "dataType" : "LONGTEXT",
+    "dataType" : "ONE2ONEDATA",
     "importOrder" : 1000,
     "length" : 1048576,
     "logicName" : "解析配置",
@@ -1879,6 +1951,10 @@
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy/PSDERS/DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT.json"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
@@ -2378,6 +2454,16 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "自定义切片",
+      "name" : "custom_chunk",
+      "getPSDEField" : {
+        "name" : "CUSTOM_CHUNK",
+        "codeName" : "custom_chunk"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "1",
       "logicName" : "是否启用",
       "name" : "active",
@@ -2429,10 +2515,21 @@
         "name" : "PARSER_CONFIG",
         "codeName" : "parser_config"
       },
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy/PSDERS/DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunking_strategy_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy.json"
+      },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 21,
       "stringLength" : 1048576,
-      "type" : "SIMPLE"
+      "type" : "DTO"
     }, {
       "logicName" : "文档同步标识",
       "name" : "sync_id",
@@ -2771,6 +2868,10 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunking_strategy.json"
     },
     "name" : "DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT",
+    "getOne2XDataPSDEField" : {
+      "name" : "PARSER_CONFIG",
+      "codeName" : "parser_config"
+    },
     "orderValue" : 100,
     "pickupDEFName" : "ID",
     "getPickupPSDEField" : {

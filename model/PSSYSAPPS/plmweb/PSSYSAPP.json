@@ -6106,6 +6106,28 @@
     } ],
     "enableCache" : true
   }, {
+    "codeListTag" : "ai__chunkingstrategy",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__chunkingstrategy",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__chunkingstrategy.json",
+    "emptyText" : "未定义",
+    "name" : "切片策略",
+    "getPSCodeItems" : [ {
+      "codeName" : "fixed",
+      "text" : "固定长度",
+      "value" : "fixed"
+    }, {
+      "codeName" : "paragraph",
+      "text" : "按段落",
+      "value" : "paragraph"
+    }, {
+      "codeName" : "qa",
+      "text" : "Q&A",
+      "value" : "qa"
+    } ],
+    "enableCache" : true
+  }, {
     "codeListTag" : "ai__credential_type",
     "codeListType" : "STATIC",
     "codeName" : "ai__credential_type",
@@ -6137,6 +6159,30 @@
       "codeName" : "custom",
       "text" : "Custom",
       "value" : "custom"
+    } ],
+    "enableCache" : true
+  }, {
+    "codeListTag" : "ai__custom_chunk",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__custom_chunk",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__custom_chunk.json",
+    "emptyText" : "未定义",
+    "name" : "自定义切片",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+    },
+    "getPSCodeItems" : [ {
+      "codeName" : "item_0",
+      "color" : "rgba(44, 44, 44, 1)",
+      "text" : "使用知识库默认",
+      "value" : "0"
+    }, {
+      "codeName" : "item_1",
+      "color" : "rgba(24, 160, 251, 1)",
+      "text" : "是",
+      "value" : "1"
     } ],
     "enableCache" : true
   }, {
@@ -13715,6 +13761,11 @@
     "codeName" : "baseline"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json",
+    "name" : "AI_KB_DOCUMENT_SYNC",
+    "codeName" : "ai_kb_document_sync"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json",
     "name" : "DICTIONARY",
     "codeName" : "dictionary_data"
@@ -14080,6 +14131,11 @@
     "codeName" : "page_version"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunking_strategy.json",
+    "name" : "AI_KB_CHUNKING_STRATEGY",
+    "codeName" : "ai_kb_chunking_strategy"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_setting.json",
     "name" : "NOTIFY_SETTING",
     "codeName" : "notify_setting"
@@ -14243,6 +14299,11 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json",
     "name" : "AI_KNOWLEDGE_BASE",
     "codeName" : "ai_knowledge_base"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json",
+    "name" : "AI_AGENT_ASSIGNMENT",
+    "codeName" : "ai_agent_assignment"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDEMSLogic.json",
@@ -14438,11 +14499,6 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json",
     "name" : "TEST_CASE",
     "codeName" : "test_case"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json",
-    "name" : "AI_AGENT_ASSIGNMENT",
-    "codeName" : "ai_agent_assignment"
   } ],
   "getAllPSAppEditorStyleRefs" : [ {
     "codeName" : "AI_PARAMS",
@@ -15950,6 +16006,23 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMENUS/plm_menu.json",
     "name" : "plmmenu",
     "controlType" : "APPMENU"
+  } ],
+  "getAllPSAppMethodDTOs" : [ {
+    "codeName" : "redaction_ruleDTO",
+    "name" : "redaction_ruleDTO",
+    "getPSAppMethodDTOFields" : [ {
+      "codeName" : "pattern",
+      "name" : "pattern",
+      "sourceType" : "DYNAMODELATTR",
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "replacement",
+      "name" : "replacement",
+      "sourceType" : "DYNAMODELATTR",
+      "type" : "SIMPLE"
+    } ],
+    "sourceType" : "DYNAMODEL",
+    "type" : "DEFAULT"
   } ],
   "getAllPSAppModules" : [ {
     "modelref" : true,
