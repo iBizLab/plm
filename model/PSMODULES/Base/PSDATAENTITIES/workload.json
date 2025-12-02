@@ -5520,7 +5520,7 @@
       } ],
       "topPos" : 622
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\ndef work_item = logic.param('work_item').getReal()\r\ndef temp = logic.param('temp').getReal()\r\n\r\ndef remaining_workload = (work_item.get('estimated_workload') ?: 0) + temp.get('duration') - (work_item.get('actual_workload') ?: 0)\r\nremaining_workload = (remaining_workload < 0) ? 0 : remaining_workload\r\ntemp.set('remaining_workload', remaining_workload)\r\n\r\n//获取代码表运行时，参数为代码表所在代码名__代码表代码名 eg:Base__State\r\ndef codelist = sys.codelist('Base__workload_category')\r\n//获取全部代码项\r\ndef items = codelist.getPSCodeItems()\r\n//循环处理\r\nitems.each { i ->\r\n    if (i.text == temp.get('type_name')) {\r\n        temp.set('type_id', i.value)\r\n    }\r\n}",
+      "code" : "def _default = logic.param('Default').getReal()\r\ndef work_item = logic.param('work_item').getReal()\r\ndef temp = logic.param('temp').getReal()\r\n\r\ndef remaining_workload = (work_item.get('estimated_workload') ?: 0) + temp.get('duration') - (work_item.get('actual_workload') ?: 0)\r\nremaining_workload = (remaining_workload < 0) ? 0 : remaining_workload\r\ntemp.set('remaining_workload', remaining_workload)\r\n\r\n//获取代码表运行时，参数为代码表所在代码名__代码表代码名 eg:Base__State\r\ndef codelist = sys.codelist('Base__workload_category')\r\n//获取全部代码项\r\ndef items = codelist.getPSCodeItems()\r\n//循环处理\r\nitems.each { i ->\r\n    print(i)\r\n    print(temp.get('type_name'))\r\n    if (i.text == temp.get('type_name')) {\r\n        temp.set('type_id', i.value)\r\n    }\r\n}",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 650,
