@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pagesave_to_stencil" isClosed="false" isExecutable="true" name="wiki_article_page_save_to_stencil_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pagesave_to_stencil">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pagesave_to_stencildefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagesave_to_stencilfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagesave_to_stencilsrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.stencil()" name="article_pagesave_to_stencilstencil_info" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IstencilService))" name="stencilservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pagesave_to_stencildefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagesave_to_stencilstencil_info" type="cn.ibizlab.plm.core.wiki.domain.stencil" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencilprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置为空间可见模板"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencilend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencildeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建模板"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencilprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取页面数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencilloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencildebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="输出当前循环数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagesave_to_stencilprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置为组织可见模板"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_loopsubcall1" sourceRef="prepareparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam2" sourceRef="gateway-debugparam2" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagesave_to_stencildefault:article_page();
+                                            $article_pagesave_to_stencilfor_temp_obj:Map();
+                                            $article_pagesave_to_stencilsrfactionparam:Map();
+                                            $article_pagesave_to_stencilstencil_info:stencil();
+                                    eval($article_pagesave_to_stencildefault==article_pagesave_to_stencildefault && $article_pagesave_to_stencilstencil_info==article_pagesave_to_stencilstencil_info);
+                                eval((RuleUtils.test($article_pagesave_to_stencilfor_temp_obj.get("stencil_scope"),"EQ","space_stencil")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagesave_to_stencildefault:article_page();
+                                            $article_pagesave_to_stencilfor_temp_obj:Map();
+                                            $article_pagesave_to_stencilsrfactionparam:Map();
+                                            $article_pagesave_to_stencilstencil_info:stencil();
+                                    eval($article_pagesave_to_stencildefault==article_pagesave_to_stencildefault && $article_pagesave_to_stencilstencil_info==article_pagesave_to_stencilstencil_info);
+                                eval((RuleUtils.test($article_pagesave_to_stencilfor_temp_obj.get("stencil_scope"),"EQ","org_stencil")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
+                            <endEvent id="gateway-debugparam2_end" name="end"/>
+        </process>
+    </definitions>
