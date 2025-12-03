@@ -9185,7 +9185,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 170,
+      "topPos" : 100,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM2",
@@ -9248,7 +9248,15 @@
         "srcValue" : "main_space",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 310
+      "topPos" : 240
+    }, {
+      "codeName" : "THROWEXCEPTION1",
+      "errorCode" : 0,
+      "errorInfo" : "未标记主知识库",
+      "leftPos" : 437,
+      "logicNodeType" : "THROWEXCEPTION",
+      "name" : "抛出异常",
+      "topPos" : 362
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -9272,6 +9280,48 @@
           "id" : "BINDPARAM1"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "relation_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "relation_page[size] 不等于(<>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "THROWEXCEPTION1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "relation_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "relation_page[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET1"
@@ -9281,7 +9331,7 @@
         "modelref" : true,
         "id" : "relation_page"
       },
-      "topPos" : 420
+      "topPos" : 370
     }, {
       "codeName" : "BINDPARAM1",
       "getDstPSDELogicParam" : {

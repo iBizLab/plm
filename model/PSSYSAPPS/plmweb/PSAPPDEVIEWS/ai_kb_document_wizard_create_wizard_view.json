@@ -503,9 +503,6 @@
           "codeName" : "page_selection"
         }
       }, {
-        "id" : "formitem",
-        "dataType" : 25
-      }, {
         "id" : "id",
         "hidden" : true,
         "dataType" : 25,
@@ -549,6 +546,9 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Wiki__space_list.json"
               },
+              "getPSEditorItems" : [ {
+                "name" : "space_selection"
+              } ],
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
@@ -556,6 +556,7 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "valueItemName" : "space_selection",
             "allowEmpty" : true,
             "needCodeListConfig" : true,
             "showCaption" : true
@@ -611,25 +612,31 @@
             "getPSEditor" : {
               "editorParams" : {
                 "multiple" : "true",
-                "srfnavparam.space_id" : "06a0f1f9-bf17-825f-606e-30c02ada17ac"
+                "srfnavparam.space_id" : "%space_selection%"
               },
               "editorType" : "PICKUPVIEW",
               "name" : "page_selection",
               "getPSEditorItems" : [ {
-                "name" : "formitem"
+                "name" : "page_selection",
+                "getPSNavigateParams" : [ {
+                  "key" : "space_id",
+                  "name" : "space_id",
+                  "value" : "space_selection",
+                  "rawValue" : false
+                } ]
               } ],
               "getPSNavigateParams" : [ {
                 "key" : "space_id",
                 "name" : "space_id",
-                "value" : "06a0f1f9-bf17-825f-606e-30c02ada17ac",
-                "rawValue" : true
+                "value" : "space_selection",
+                "rawValue" : false
               } ],
               "getPickupPSAppView" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_ai_kb_doc_page_pick_up_tree_view.json",
                 "viewType" : "DEPICKUPTREEVIEW"
               },
-              "valueItemName" : "formitem"
+              "valueItemName" : "page_selection"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -637,30 +644,8 @@
             },
             "resetItemName" : "space_selection",
             "resetItemNames" : [ "space_selection" ],
-            "valueItemName" : "formitem",
+            "valueItemName" : "page_selection",
             "allowEmpty" : true
-          }, {
-            "caption" : "选取值",
-            "codeName" : "formitem",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "formitem",
-            "noPrivDisplayMode" : 1,
-            "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "name" : "formitem"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
