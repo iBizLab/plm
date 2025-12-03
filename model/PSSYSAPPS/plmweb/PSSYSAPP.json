@@ -65346,13 +65346,6 @@
     "name" : "userquick_cfg_view"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_ai_kb_doc_page_tree_exp_view.json",
-    "viewType" : "DETREEEXPVIEW",
-    "resource" : "article_page",
-    "view" : "ai_kb_doc_page_tree_exp_view",
-    "name" : "article_pageai_kb_doc_page_tree_exp_view"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_kanban_backlog_property_report_view.json",
     "viewType" : "DECHARTVIEW",
     "resource" : "work_item",
@@ -67480,6 +67473,13 @@
     "resource" : "idea",
     "view" : "not_add_pick_up_grid_view_review",
     "name" : "ideanot_add_pick_up_grid_view_review"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_ai_kb_doc_page_pick_up_tree_view.json",
+    "viewType" : "DEPICKUPTREEVIEW",
+    "resource" : "article_page",
+    "view" : "ai_kb_doc_page_pick_up_tree_view",
+    "name" : "article_pageai_kb_doc_page_pick_up_tree_view"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_move_space_view.json",
@@ -111758,6 +111758,43 @@
         "requestPath" : "/get_draft",
         "builtinMethod" : false
       }, {
+        "actionMode" : "GETDRAFT",
+        "codeName" : "mark_main_space",
+        "methodType" : "DEACTION",
+        "name" : "mark_main_space",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "space_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "space_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEACTIONS/mark_main_space.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "mark_main_space"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/mark_main_space",
+        "builtinMethod" : false
+      }, {
         "actionMode" : "CUSTOM",
         "codeName" : "move_out_category",
         "methodType" : "DEACTION",
@@ -114838,6 +114875,43 @@
         "requestPath" : "/get_draft",
         "builtinMethod" : false
       }, {
+        "actionMode" : "GETDRAFT",
+        "codeName" : "mark_main_space",
+        "methodType" : "DEACTION",
+        "name" : "mark_main_space",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "space_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "space_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEACTIONS/mark_main_space.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "mark_main_space"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/mark_main_space",
+        "builtinMethod" : false
+      }, {
         "actionMode" : "CUSTOM",
         "codeName" : "move_out_category",
         "methodType" : "DEACTION",
@@ -117225,6 +117299,49 @@
         "uIActionType" : "DEUIACTION",
         "enableConfirm" : true,
         "id" : "in_progress_into_deleted@space"
+      }, {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "标记主知识库",
+        "codeName" : "mark_main_space",
+        "fullCodeName" : "space_mark_main_space",
+        "name" : "标记主知识库",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "mark_main_space"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "target_type",
+          "name" : "target_type",
+          "value" : "target_type",
+          "rawValue" : false
+        }, {
+          "key" : "principal_id",
+          "name" : "principal_id",
+          "value" : "principal_id",
+          "rawValue" : false
+        }, {
+          "key" : "principal_type",
+          "name" : "principal_type",
+          "value" : "principal_type",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf123@FontAwesome",
+          "cssClass" : "fa fa-star-half-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "标记成功",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "mark_main_space",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "mark_main_space@space"
       }, {
         "actionTarget" : "SINGLEKEY",
         "caption" : "更多设置",
