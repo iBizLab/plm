@@ -6,6 +6,7 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.wiki.domain.article_page article_pageai_create_pagedefault;
+                global cn.ibizlab.plm.core.base.domain.relation article_pageai_create_pagefilter;
                 global cn.ibizlab.plm.core.wiki.domain.article_page article_pageai_create_pagepage;
                     global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
         global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
@@ -27,6 +28,21 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
             when
             then
                         update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "article_pageai_create_pageprepareparam2"
+            when
+            then
+                            article_pageai_create_pagefilter.set("n_principal_id_eq","");
+                            article_pageai_create_pagefilter.set("n_target_type_eq","space");
+                            article_pageai_create_pagefilter.set("n_principal_type_eq","project");
+                            article_pageai_create_pagefilter.set("n_relation_type_eq","main_space");
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
                         update(article_pageai_create_pagepage);//更新fact中变量值
             end
 
@@ -54,6 +70,7 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
                             article_pageai_create_pagepage.set("type","1");
                             article_pageai_create_pagepage.set("content",article_pageai_create_pagedefault.get("content"));
                         update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
                         update(article_pageai_create_pagepage);//更新fact中变量值
             end
 
@@ -64,6 +81,7 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
             then
                         article_pageservice.publish_page(article_pageai_create_pagepage);
                         update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
                         update(article_pageai_create_pagepage);//更新fact中变量值
             end
 
@@ -73,5 +91,6 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
             when
             then
                         update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
                         update(article_pageai_create_pagepage);//更新fact中变量值
             end
