@@ -7654,6 +7654,54 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "get_re_space",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDELOGICS/get_re_space.json",
+    "logicName" : "获取关联的空间",
+    "name" : "获取关联的空间",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "topPos" : 371
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "get_space_member_one",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDELOGICS/get_space_member_one.json",
