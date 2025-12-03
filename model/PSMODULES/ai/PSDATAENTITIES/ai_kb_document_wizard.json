@@ -1402,6 +1402,76 @@
     "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SELECTED_PAGE",
+      "dBType" : "MYSQL5",
+      "name" : "SELECTED_PAGE",
+      "standardColumnName" : "`SELECTED_PAGE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SELECTED_PAGE][已选择页面]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[SELECTED_PAGE][已选择页面]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SELECTED_PAGE][已选择页面]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[SELECTED_PAGE][已选择页面]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SELECTED_PAGE",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "selected_page",
+    "dEFType" : 1,
+    "dataType" : "ONE2MANYOBJ",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "已选择页面",
+    "name" : "SELECTED_PAGE",
+    "orderValue" : 240,
+    "serviceCodeName" : "selected_page",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CUSTOM_CHUNK",
       "dBType" : "MYSQL5",
       "name" : "CUSTOM_CHUNK",
@@ -1697,6 +1767,16 @@
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTO"
+    }, {
+      "logicName" : "已选择页面",
+      "name" : "selected_page",
+      "getPSDEField" : {
+        "name" : "SELECTED_PAGE",
+        "codeName" : "selected_page"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTOS"
     }, {
       "logicName" : "自定义切片",
       "name" : "custom_chunk",
