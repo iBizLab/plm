@@ -1,0 +1,54 @@
+package cn.ibizlab.plm.base.logic.dyna_dashboardlogic.only_get;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.dyna_dashboard dyna_dashboardonly_getdefault;
+        global cn.ibizlab.plm.core.base.service.Idyna_dashboardService iBzSysDyna_dashboardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "dyna_dashboardonly_getbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "dyna_dashboardonly_getend1"
+            when
+            then
+                        update(dyna_dashboardonly_getdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "dyna_dashboardonly_getdebugparam1"
+            when
+            then
+                        update(dyna_dashboardonly_getdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "dyna_dashboardonly_getrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",dyna_dashboardonly_getdefault.get("dynadashboardid"));
+    String strSql="SELECT t1.`APPID`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYNADASHBOARDID`, t1.`DYNADASHBOARDNAME`, t1.`EXAMPLE_CHART`, t1.`IS_SYSTEM`, t1.`MODELID`, t1.`OWNER_ID`, t1.`OWNER_TYPE`, t1.`SEQUENCES`, t1.`TYPE`, t1.`UPDATE_MAN`, t1.`UPDATE_TIME`, t1.`USERID` FROM `DYNADASHBOARD` t1  WHERE t1.DYNADASHBOARDID = #{et.param0} ";
+                        java.util.List<JSONObject> entities=iBzSysDyna_dashboardDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    dyna_dashboardonly_getdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(dyna_dashboardonly_getdefault);//更新fact中变量值
+            end

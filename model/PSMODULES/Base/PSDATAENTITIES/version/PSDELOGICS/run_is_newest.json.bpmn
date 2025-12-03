@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.versionrun_is_newest" isClosed="false" isExecutable="true" name="base_version_run_is_newest_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.versionrun_is_newest">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="versionrun_is_newestdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="versionrun_is_newestfilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="versionrun_is_newestfor_run" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="versionrun_is_newestrun_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="iBzSysVersionDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="versionrun_is_newestdefault" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="versionrun_is_newestfilter" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="versionrun_is_newestfor_run" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="versionrun_is_newestrun_page" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询执行用例数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="输出循环执行用例结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置是否最新版本参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="versionrun_is_newestdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam1" sourceRef="gateway-begin" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $versionrun_is_newestdefault:version();
+                                            $versionrun_is_newestfilter:run();
+                                            $versionrun_is_newestfor_run:run();
+                                            $versionrun_is_newestrun_page:run();
+                                    eval($versionrun_is_newestdefault==versionrun_is_newestdefault && $versionrun_is_newestfilter==versionrun_is_newestfilter && $versionrun_is_newestfor_run==versionrun_is_newestfor_run && $versionrun_is_newestrun_page==versionrun_is_newestrun_page);
+                                eval((RuleUtils.test($versionrun_is_newestdefault.get("ownerType"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_prepareparam2" sourceRef="debugparam2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

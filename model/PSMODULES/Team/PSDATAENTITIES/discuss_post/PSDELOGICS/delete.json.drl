@@ -1,0 +1,52 @@
+package cn.ibizlab.plm.team.logic.discuss_postlogic.delete;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postdeletedefault;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postdeleteupdate_obj;
+                    global cn.ibizlab.plm.core.team.service.Idiscuss_postService discuss_postservice;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_postService iBzSysDiscuss_postDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_postdeletebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam2"
+            ruleflow-group "discuss_postdeleteprepareparam2"
+            when
+            then
+                            discuss_postdeleteupdate_obj.set("isdeleted","1");
+                            discuss_postdeleteupdate_obj.set("id",discuss_postdeletedefault.get("id"));
+                        update(discuss_postdeletedefault);//更新fact中变量值
+                        update(discuss_postdeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新删除状态]
+            rule "deaction1"
+            ruleflow-group "discuss_postdeletedeaction1"
+            when
+            then
+                        discuss_postservice.update(discuss_postdeleteupdate_obj);
+                        update(discuss_postdeletedefault);//更新fact中变量值
+                        update(discuss_postdeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "discuss_postdeleteend1"
+            when
+            then
+                        update(discuss_postdeletedefault);//更新fact中变量值
+                        update(discuss_postdeleteupdate_obj);//更新fact中变量值
+            end
