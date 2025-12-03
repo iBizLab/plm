@@ -20,7 +20,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 200,
+    "topPos" : 100,
     "parallelOutput" : true
   }, {
     "codeName" : "DEBUGPARAM1",
@@ -42,7 +42,7 @@
         "id" : "DEBUGPARAM1"
       }
     } ],
-    "topPos" : 310
+    "topPos" : 200
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 160,
@@ -104,7 +104,7 @@
       "srcValue" : "main_space",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 420
+    "topPos" : 310
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -125,7 +125,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "LOOPSUBCALL1"
+        "id" : "BINDPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -137,7 +137,33 @@
       "modelref" : true,
       "id" : "relation_page"
     },
-    "topPos" : 530
+    "topPos" : 420
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "data"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "data",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 541
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -341,12 +367,12 @@
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "Default[name] ==> page[NAME]",
+      "name" : "data[name] ==> page[NAME]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "name",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "data"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
@@ -433,12 +459,12 @@
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "Default[name] ==> page[title]",
+      "name" : "data[name] ==> page[title]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "name",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "data"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
@@ -457,12 +483,12 @@
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "Default[content] ==> page[CONTENT]",
+      "name" : "data[content] ==> page[CONTENT]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "content",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "data"
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
@@ -501,6 +527,15 @@
       "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "data",
+    "logicName" : "data",
+    "name" : "data",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
     "entityParam" : true
   }, {
     "codeName" : "filter",

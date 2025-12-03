@@ -6,6 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="article_pageai_create_pagedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageai_create_pagedata" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagefilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageai_create_pagepage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagerelation_page" type="refentity"/>
@@ -17,6 +18,7 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="article_pageai_create_pagedefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pageai_create_pagedata" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="article_pageai_create_pagefilter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="article_pageai_create_pagepage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="article_pageai_create_pagerelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
@@ -27,6 +29,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
@@ -43,7 +46,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    <sequenceFlow id="dedataset1_bindparam1" sourceRef="dedataset1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
                     </sequenceFlow>
