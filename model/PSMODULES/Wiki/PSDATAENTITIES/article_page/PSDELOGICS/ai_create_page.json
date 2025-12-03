@@ -34,7 +34,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "PREPAREPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -42,21 +42,37 @@
         "id" : "DEBUGPARAM1"
       }
     } ],
-    "topPos" : 351
+    "topPos" : 310
   }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 650,
+    "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "N_PRINCIPAL_ID_EQ",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "filter"
       },
-      "name" : "直接值[undefined] ==> filter[N_PRINCIPAL_ID_EQ]",
+      "name" : "Default[project] ==> filter[N_PRINCIPAL_ID_EQ]",
       "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "SRCVALUE"
+      "srcFieldName" : "project",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "N_TARGET_TYPE_EQ",
       "getDstPSDELogicParam" : {
@@ -88,10 +104,144 @@
       "srcValue" : "main_space",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 400
+    "topPos" : 420
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation_page"
+    },
+    "topPos" : 530
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation_page"
+    },
+    "topPos" : 660
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 397,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space"
+      },
+      "name" : "temp[TARGET_ID] ==> space[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 660
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "leftPos" : 620,
+    "logicNodeType" : "DEACTION",
+    "name" : "实体行为",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space"
+    },
+    "topPos" : 660
   }, {
     "codeName" : "PREPAREPARAM1",
-    "leftPos" : 160,
+    "leftPos" : 850,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
     "getPSDELogicLinks" : [ {
@@ -225,40 +375,58 @@
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "直接值[plm_space] ==> page[space]",
+      "name" : "space[id] ==> page[space]",
       "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "plm_space",
-      "srcValueType" : "SRCVALUE"
+      "srcFieldName" : "id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space"
+      },
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "SPACE_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "直接值[plm_space] ==> page[SPACE_ID]",
+      "name" : "space[ID] ==> page[SPACE_ID]",
       "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space"
+      },
       "srcValue" : "plm_space",
-      "srcValueType" : "SRCVALUE"
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "SPACE_IDENTIFIER",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "直接值[PLM] ==> page[SPACE_IDENTIFIER]",
+      "name" : "space[IDENTIFIER] ==> page[SPACE_IDENTIFIER]",
       "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "PLM",
-      "srcValueType" : "SRCVALUE"
+      "srcFieldName" : "IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space"
+      },
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "SPACE_NAME",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "page"
       },
-      "name" : "直接值[产品生命周期管理系统] ==> page[SPACE_NAME]",
+      "name" : "space[NAME] ==> page[SPACE_NAME]",
       "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space"
+      },
       "srcValue" : "产品生命周期管理系统",
-      "srcValueType" : "SRCVALUE"
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "title",
       "getDstPSDELogicParam" : {
@@ -298,7 +466,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 472
+    "topPos" : 660
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -313,27 +481,16 @@
       "modelref" : true,
       "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
     },
-    "leftPos" : 160,
+    "leftPos" : 1080,
     "logicNodeType" : "DEACTION",
     "name" : "实体行为",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
-    "topPos" : 641
+    "topPos" : 660
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 848
+    "topPos" : 810
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -361,6 +518,33 @@
     "getParamPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "relation_page",
+    "logicName" : "relation_page",
+    "name" : "relation_page",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "space",
+    "logicName" : "space",
+    "name" : "space",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "temp",
+    "logicName" : "temp",
+    "name" : "temp",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
     "entityParam" : true
   } ],

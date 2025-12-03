@@ -8,30 +8,52 @@
                                 <tns:metaData express="" name="article_pageai_create_pagedefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagefilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageai_create_pagepage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagerelation_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space()" name="article_pageai_create_pagespace" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagetemp" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IspaceService))" name="spaceservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="article_pageai_create_pagedefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="article_pageai_create_pagefilter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="article_pageai_create_pagepage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pageai_create_pagerelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="article_pageai_create_pagespace" type="cn.ibizlab.plm.core.wiki.domain.space" />
+                            <tns:global identifier="article_pageai_create_pagetemp" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam2_end" name="end"/>
-                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
+                    <sequenceFlow id="debugparam1_prepareparam2" sourceRef="debugparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>
