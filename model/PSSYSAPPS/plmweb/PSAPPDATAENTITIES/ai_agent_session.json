@@ -1541,31 +1541,31 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.message.success('创建成功');",
+      "code" : "ibiz.message.success('预估工时登记成功');",
       "codeName" : "RAWJSCODE3",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "topPos" : 740
     }, {
-      "code" : "view.parentView.call(\"Refresh\");",
-      "codeName" : "RAWJSCODE_02",
+      "code" : "console.info(uiLogic.default);\nvar answer = null;\n\nvar formController = view.getController(\"form\");\nif(!formController) {\n    formController = view.parentView.getController(\"form\");\n}\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n    if (ibiz.util.jsonUtil) {\n        console.log('jsonUtil解析数据：',  ibiz.util.jsonUtil.parseJson(answer));\n    }\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            principal_id : view.parentView.context.work_item,\n                            register_date : new Date(),\n                            duration : 0,\n                            name : 'unknown',\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n       \n       console.info(ret);\n\n        if(ret.success && ret.data) {\n            uiLogic.result=ret;\n        }\n    }\n}",
+      "codeName" : "RAWJSCODE_01",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新父页面",
+      "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "DEACTION_01"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "RAWJSCODE_01"
         }
       } ],
-      "topPos" : 627,
+      "topPos" : 381,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -1599,24 +1599,24 @@
       "topPos" : 503,
       "parallelOutput" : true
     }, {
-      "code" : "console.info(uiLogic.default);\nvar answer = null;\n\nvar formController = view.getController(\"form\");\nif(!formController) {\n    formController = view.parentView.getController(\"form\");\n}\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n    if (ibiz.util.jsonUtil) {\n        console.log('jsonUtil解析数据：',  ibiz.util.jsonUtil.parseJson(answer));\n    }\n     if (answer && typeof answer == 'string') {\n        var ret ={\n                success: false,\n                data: null,\n                data_type: 'unknown',\n                raw_content: null,\n                message: '未找到有效的JSON或JSONArray内容'\n            };\n       // 定义匹配模式，按优先级排序\n        const patterns = [\n            {\n                pattern: /```json\\s*([\\s\\S]*?)\\s*```/,  // Markdown JSON代码块\n                cleanFn: (content) => content.replace(/```json|```/g, '').trim()\n            },\n            {\n                pattern: /```\\s*([\\s\\S]*?)\\s*```/,      // 普通代码块\n                cleanFn: (content) => content.replace(/```/g, '').trim()\n            },\n            {\n                pattern: /\\{[\\s\\S]*?\\}(?=\\s*[\\n\\r]|$)/, // 独立JSON对象\n                cleanFn: (content) => content.trim()\n            },\n            {\n                pattern: /\\[[\\s\\S]*?\\](?=\\s*[\\n\\r]|$)/,  // 独立JSON数组\n                cleanFn: (content) => content.trim()\n            }\n        ];\n\n        for (const { pattern, cleanFn } of patterns) {\n            const match = answer.match(pattern);\n            if (match) {\n                try {\n                    let content = match[0];\n                    content = cleanFn(content);\n                    \n                    // 解析JSON\n                    const parsed = JSON.parse(content);\n                    \n                    // 判断类型\n                    const jspn_type = Array.isArray(parsed) ? 'jsonarray' : 'jsonobject';\n                    ret = {\n                            success: true,\n                            principal_id : view.parentView.context.work_item,\n                            register_date : new Date(),\n                            duration : 0,\n                            name : 'unknown',\n                            data: parsed,\n                            data_type: jspn_type,\n                            raw_content: content,\n                            message: `成功提取${jspn_type === 'jsonarray' ? 'JSON数组' : 'JSON对象'}`\n                        };\n                    break;\n                } catch (error) {\n                    // 当前模式匹配但解析失败，继续尝试下一个模式\n                    continue;\n                }\n            }\n        }\n       \n       console.info(ret);\n\n        if(ret.success && ret.data) {\n            uiLogic.result=ret;\n        }\n    }\n}",
-      "codeName" : "RAWJSCODE_01",
+      "code" : "view.parentView.call(\"Refresh\");",
+      "codeName" : "RAWJSCODE_02",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "刷新父页面",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION_01"
+          "id" : "RAWJSCODE3"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_01"
+          "id" : "RAWJSCODE_02"
         }
       } ],
-      "topPos" : 381,
+      "topPos" : 627,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
@@ -1690,32 +1690,6 @@
       } ],
       "topPos" : 588
     }, {
-      "code" : "console.log('测试');\r\nconsole.log(view);\r\n//const messages = uiLogic.default.data.messages;\r\n//messages[1].allcontent;\r\nconst inputString = uiLogic.default.allcontent;\r\nconst regex = /\"name\": \"(.*?)\",\\s*\"content\": \"(.*?)\"/s;\r\nconst match = inputString.match(regex);\r\nconsole.info(match);\r\nif (match) {\r\n  const result = {\r\n    name: match[1],\r\n    project:view.parentView.context.project,\r\n    content: match[2].replace(/\\\\n/g, '\\n')\r\n  };\r\n  console.info(result);\r\n  uiLogic.result = result;\r\n} else {\r\n  console.log(\"无法提取数据\");\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 740,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "topPos" : 460
-    }, {
-      "code" : "ibiz.message.success('创建成功');",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 720
-    }, {
       "codeName" : "END1",
       "leftPos" : 200,
       "logicNodeType" : "END",
@@ -1741,6 +1715,32 @@
         }
       } ],
       "topPos" : 450
+    }, {
+      "code" : "console.log('测试');\r\nconsole.log(view);\r\n//const messages = uiLogic.default.data.messages;\r\n//messages[1].allcontent;\r\nconst inputString = uiLogic.default.allcontent;\r\nconst regex = /\"name\": \"(.*?)\",\\s*\"content\": \"(.*?)\"/s;\r\nconst match = inputString.match(regex);\r\nconsole.info(match);\r\nif (match) {\r\n  const result = {\r\n    name: match[1],\r\n    project:view.parentView.context.project,\r\n    content: match[2].replace(/\\\\n/g, '\\n')\r\n  };\r\n  console.info(result);\r\n  uiLogic.result = result;\r\n} else {\r\n  console.log(\"无法提取数据\");\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 740,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 460
+    }, {
+      "code" : "ibiz.message.success('知识页面已成功创建并同步至项目主知识库');",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 720
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "result",
