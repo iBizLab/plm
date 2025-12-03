@@ -1,0 +1,201 @@
+{
+  "codeName" : "data_processing",
+  "controlType" : "FORM",
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_wizard/PSFORMS/data_processing.json",
+  "formFuncMode" : "WIZARDFORM",
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "GetTemp",
+    "actionType" : "DEACTION",
+    "name" : "load",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_wizard.json"
+    }
+  },
+  "hookEventNames" : [ "SAVE", "LOAD" ],
+  "logicName" : "数据处理",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_wizard.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "SAVE",
+    "logicTag" : "wizardpanel_form_data_processing",
+    "logicType" : "CUSTOM",
+    "name" : "wizardpanel_formsave"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "wizardpanel_form_data_processing",
+    "logicType" : "CUSTOM",
+    "name" : "wizardpanel_formload"
+  } ],
+  "getPSDEFormItems" : [ {
+    "id" : "srfupdatedate",
+    "hidden" : true,
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
+    "id" : "srforikey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfkey",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "id" : "srfmajortext",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "id" : "srftempmode",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfuf",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfdeid",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfsourcekey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "基本信息",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "codeName" : "grouppanel2",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "grouppanel2",
+      "getPSDEFormDetails" : [ {
+        "codeName" : "rawitem1",
+        "contentType" : "RAW",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "RAWITEM",
+        "name" : "rawitem1",
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSRawItem" : {
+          "caption" : "以下文件会同步到知识库中，点击「确定」开始同步",
+          "contentType" : "RAW",
+          "name" : "rawitem1",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0
+        },
+        "rawContent" : "以下文件会同步到知识库中，点击「确定」开始同步",
+        "rawItemHeight" : -1.0,
+        "rawItemWidth" : -1.0,
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : false
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_DOCUMENT_WIZARD.ID"
+      },
+      "caption" : "标识",
+      "codeName" : "id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSDEWizardForm" : {
+    "formTag" : "data_processing",
+    "name" : "数据处理",
+    "getPSDEFormName" : "数据处理",
+    "getPSDEWizardStep" : {
+      "modelref" : true,
+      "id" : "数据处理"
+    },
+    "stepActions" : [ "PREV", "FINISH" ],
+    "stepTag" : "data_processing",
+    "firstForm" : false
+  },
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "tabHeaderPos" : "TOP",
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "UpdateTemp",
+    "actionType" : "DEACTION",
+    "name" : "update",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_wizard.json"
+    }
+  },
+  "noTabHeader" : true,
+  "modelid" : "b5f859f8c1fd275f1305d43ff0545540",
+  "modeltype" : "PSDEFORM_EDITFORM"
+}
