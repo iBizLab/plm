@@ -14,12 +14,15 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spacerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spacerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spaceend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
+                    <sequenceFlow id="rawsqlcall1_rawsfcode1" sourceRef="rawsqlcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>
