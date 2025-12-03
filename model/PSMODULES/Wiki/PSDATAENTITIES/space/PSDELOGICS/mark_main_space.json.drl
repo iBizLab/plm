@@ -34,7 +34,7 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.mark_main_space;
             then
     Map param =new HashMap();
         param.put("param0",spacemark_main_spacedefault.get("principal_id"));
-    String strSql="UPDATE relation SET RELATION_TYPE = '' WHERE PRINCIPAL_ID = #{et.param0} AND PRINCIPAL_TYPE = 'project' AND TARGET_TYPE = 'space';";
+    String strSql="UPDATE relation SET RELATION_TYPE = NULL WHERE PRINCIPAL_ID = #{et.param0} AND PRINCIPAL_TYPE = 'project' AND TARGET_TYPE = 'space';";
                         iBzSysSpaceDefaultService.execute(strSql,param);//SQL调用
                         update(spacemark_main_spacedefault);//更新fact中变量值
             end
