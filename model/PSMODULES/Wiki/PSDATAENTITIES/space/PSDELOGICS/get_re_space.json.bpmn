@@ -6,15 +6,20 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="spaceget_re_spacedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space()" name="spaceget_re_spacepage" type="refentity"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IspaceService))" name="iBzSysSpaceDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="spaceget_re_spacedefault" type="cn.ibizlab.plm.core.wiki.domain.space" />
+                            <tns:global identifier="spaceget_re_spacepage" type="cn.ibizlab.plm.core.wiki.domain.space" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spacerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <endEvent id="rawsqlcall1_end" name="end"/>
-                        <sequenceFlow id="rawsqlcall1_end_line" sourceRef="rawsqlcall1" targetRef="rawsqlcall1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spacerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_re_spaceend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

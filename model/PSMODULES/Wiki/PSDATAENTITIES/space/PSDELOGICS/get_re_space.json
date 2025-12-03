@@ -24,10 +24,66 @@
     "parallelOutput" : true
   }, {
     "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
     "leftPos" : 160,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "直接SQL调用",
-    "topPos" : 371
+    "name" : "获取关联数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[principal_type]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "principal_type",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[target_type]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "target_type",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[principal_id]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "principal_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tt1.ID,\r\n\tt1.`NAME`,\r\n\tt2.RELATION_TYPE \r\nFROM\r\n\tspace t1\r\n\tJOIN relation t2 ON t2.TARGET_ID = t1.ID \r\nWHERE\r\n\tt1.IS_DELETED = 0 \r\n\tAND t1.IS_ARCHIVED = 0 \r\n\tAND t2.PRINCIPAL_TYPE = ? \r\n\tAND t2.TARGET_TYPE = ? \r\n\tAND t2.PRINCIPAL_ID = ?;",
+    "topPos" : 371,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 521
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -39,6 +95,15 @@
     },
     "default" : true,
     "filterParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "page",
+    "name" : "page",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "entityListParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,
