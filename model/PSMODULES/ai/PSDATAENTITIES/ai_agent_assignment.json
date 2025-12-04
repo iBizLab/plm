@@ -573,6 +573,12 @@
       "queryCodeExp" : "t1.`CREATE_MAN`",
       "standardColumnName" : "`CREATE_MAN`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CREATE_MAN_EQ",
+      "name" : "N_CREATE_MAN_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_MAN][创建人]移动端默认",
@@ -998,6 +1004,9 @@
     "getDupCheckPSDEFields" : [ {
       "name" : "USE_TAG",
       "codeName" : "use_tag"
+    }, {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
     } ],
     "importOrder" : 1000,
     "length" : 100,
@@ -1035,7 +1044,6 @@
     "serviceCodeName" : "context_id",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "unionKeyValue" : "KEY1",
     "valueFormat" : "%1$s",
     "allowEmpty" : false,
     "linkDEField" : true
@@ -1342,7 +1350,6 @@
     "serviceCodeName" : "use_tag",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "unionKeyValue" : "KEY2",
     "valueFormat" : "%1$s",
     "allowEmpty" : false
   }, {
@@ -1416,6 +1423,115 @@
     "serviceCodeName" : "system_flag",
     "stdDataType" : 9,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONTEXT_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "CONTEXT_NAME",
+      "queryCodeExp" : "t11.`NAME`",
+      "standardColumnName" : "`CONTEXT_NAME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CONTEXT_NAME][智能体上下文名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_NAME][智能体上下文名称]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CONTEXT_NAME][智能体上下文名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CONTEXT_NAME][智能体上下文名称]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONTEXT_NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "context_name",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "智能体上下文名称",
+    "name" : "CONTEXT_NAME",
+    "orderValue" : 210,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_assignment/PSDERS/DER1N_AI_AGENT_ASSIGNMENT_AI_AGENT_CONTEXT_CONTEXT_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "serviceCodeName" : "context_name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_agent_assignment_dto",
@@ -1551,6 +1667,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "智能体上下文名称",
+      "name" : "context_name",
+      "getPSDEField" : {
+        "name" : "CONTEXT_NAME",
+        "codeName" : "context_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -1567,6 +1694,21 @@
       "getPSDEField" : {
         "name" : "CONTEXT_ID",
         "codeName" : "context_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "创建人",
+      "name" : "n_create_man_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CREATE_MAN_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -1672,6 +1814,55 @@
     "userDRAction" : "READ",
     "allData" : true,
     "systemReserved" : true
+  }, {
+    "customCond" : "[('CREATE_MAN','=',#{srf.sessioncontext.srfpersonid})]",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_assignment/PSDEUSERROLES/CURDRAFTMAN_RW.json",
+    "name" : "我创建的（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    } ],
+    "roleTag" : "CURDRAFTMAN_RW",
+    "userDRAction" : "READ"
+  }, {
+    "customCond" : "[('SYSTEM_FLAG','=',1)]",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_assignment/PSDEUSERROLES/SYSTEM_R.json",
+    "name" : "系统的（读）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "SYSTEM_R",
+    "userDRAction" : "READ"
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "EditView",
@@ -1836,13 +2027,6 @@
   "storageMode" : 1,
   "systemTag" : "iBizPLM",
   "tableName" : "AI_AGENT_ASSIGNMENT",
-  "getUnionKeyValuePSDEFields" : [ {
-    "name" : "CONTEXT_ID",
-    "codeName" : "context_id"
-  }, {
-    "name" : "USE_TAG",
-    "codeName" : "use_tag"
-  } ],
   "getViewPSDEDataQuery" : {
     "modelref" : true,
     "id" : "View"
