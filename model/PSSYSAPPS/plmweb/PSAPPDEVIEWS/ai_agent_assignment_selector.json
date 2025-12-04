@@ -24,12 +24,6 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
-    "eventNames" : "onCreated",
-    "logicTrigger" : "VIEWEVENT",
-    "logicType" : "SCRIPT",
-    "name" : "init",
-    "scriptCode" : "view.params.n_use_tag_eq=view.parentView.model.codeName;"
-  }, {
     "eventNames" : "onSelectionChange",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "APPDEUIACTION",
@@ -70,6 +64,12 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
     },
     "getPSViewCtrlName" : "list"
+  }, {
+    "eventNames" : "onCreated",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "INIT",
+    "scriptCode" : "view.params.n_use_tag_eq=view.parentView.model.codeName;\r\nconsole.log('parentData父视图数据为：', view.parentData)"
   }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
