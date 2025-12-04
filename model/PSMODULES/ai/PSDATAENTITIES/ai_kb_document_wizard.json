@@ -1690,50 +1690,17 @@
       "topPos" : 222,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION_01",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
-      },
-      "leftPos" : 300,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建知识库文档同步",
-      "topPos" : 380,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEACTION_02",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-      },
-      "leftPos" : 290,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建知识库文档",
-      "topPos" : 500,
-      "parallelOutput" : true
-    }, {
+      "code" : "def defaultObj = logic.param('default').getReal(); \r\ndef docSync = logic.param('doc_sync').getReal(); \r\ndef doc = logic.param('doc').getReal(); \r\n\r\ndef importMethod=defaultObj[\"import_method\"];\r\nprintln(\"importMethod数据\"+importMethod);\r\nif(importMethod == \"space_manual\"){\r\n\r\n}\r\nif(importMethod == \"space_auto_sync\"){\r\n\r\n}\r\nif(importMethod == \"local_upload\"){\r\n\r\n}",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "leftPos" : 340,
       "logicNodeType" : "RAWSFCODE",
       "name" : "创建知识库文档",
-      "topPos" : 630,
+      "topPos" : 390,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {

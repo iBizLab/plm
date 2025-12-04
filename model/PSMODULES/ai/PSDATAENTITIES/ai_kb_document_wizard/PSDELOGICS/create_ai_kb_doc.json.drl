@@ -8,8 +8,6 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_wizardlogic.create_ai_kb_doc;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard ai_kb_document_wizardcreate_ai_kb_docdefault;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_wizardcreate_ai_kb_docdoc;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_wizardcreate_ai_kb_docdoc_sync;
-                    global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService ai_kb_document_syncservice;
-                    global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_document_wizardService iBzSysAi_kb_document_wizardDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -38,28 +36,6 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_wizardlogic.create_ai_kb_doc;
             ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docend_01"
             when
             then
-                        update(ai_kb_document_wizardcreate_ai_kb_docdefault);//更新fact中变量值
-                        update(ai_kb_document_wizardcreate_ai_kb_docdoc);//更新fact中变量值
-                        update(ai_kb_document_wizardcreate_ai_kb_docdoc_sync);//更新fact中变量值
-            end
-
-            //逻辑处理节点[创建知识库文档同步]
-            rule "deaction_01"
-            ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docdeaction_01"
-            when
-            then
-                        ai_kb_document_syncservice.create(ai_kb_document_wizardcreate_ai_kb_docdefault);
-                        update(ai_kb_document_wizardcreate_ai_kb_docdefault);//更新fact中变量值
-                        update(ai_kb_document_wizardcreate_ai_kb_docdoc);//更新fact中变量值
-                        update(ai_kb_document_wizardcreate_ai_kb_docdoc_sync);//更新fact中变量值
-            end
-
-            //逻辑处理节点[创建知识库文档]
-            rule "deaction_02"
-            ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docdeaction_02"
-            when
-            then
-                        ai_kb_documentservice.create(ai_kb_document_wizardcreate_ai_kb_docdefault);
                         update(ai_kb_document_wizardcreate_ai_kb_docdefault);//更新fact中变量值
                         update(ai_kb_document_wizardcreate_ai_kb_docdoc);//更新fact中变量值
                         update(ai_kb_document_wizardcreate_ai_kb_docdoc_sync);//更新fact中变量值
