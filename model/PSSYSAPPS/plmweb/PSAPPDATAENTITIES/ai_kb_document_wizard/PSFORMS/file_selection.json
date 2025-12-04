@@ -36,6 +36,12 @@
     "logicType" : "CUSTOM",
     "name" : "wizardpanel_formload"
   } ],
+  "getPSDEFormItemUpdates" : [ {
+    "codeName" : "change_page",
+    "name" : "change_page",
+    "scriptCode" : "console.log(\"change_page\",data);\r\nlet temp_page_selection = data.temp_page_selection;\r\nlet array = temp_page_selection.split(',').map(item => item.trim()).map(value => {\r\n    return {\r\n        ai_kb_doc_name: value\r\n    };\r\n});\r\nconsole.log(array);\r\ndata.selected_page=array;",
+    "customCode" : true
+  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -94,6 +100,9 @@
       "name" : "SYNC_FREQUENCY",
       "codeName" : "sync_frequency"
     }
+  }, {
+    "id" : "temp_page_selection",
+    "dataType" : 25
   }, {
     "id" : "page_selection",
     "dataType" : 25,
@@ -193,8 +202,8 @@
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
-        "caption" : "选择页面",
-        "codeName" : "page_selection",
+        "caption" : "临时页面选择",
+        "codeName" : "temp_page_selection",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -202,11 +211,11 @@
         "ignoreInput" : 0,
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "page_selection",
+        "name" : "temp_page_selection",
         "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PAGE_SELECTION",
-          "codeName" : "page_selection"
+        "getPSDEFormItemUpdate" : {
+          "modelref" : true,
+          "id" : "change_page"
         },
         "getPSEditor" : {
           "editorParams" : {
@@ -214,7 +223,7 @@
             "srfnavparam.space_id" : "%space_selection%"
           },
           "editorType" : "PICKUPVIEW",
-          "name" : "page_selection",
+          "name" : "temp_page_selection",
           "getPSEditorItems" : [ {
             "name" : "page_selection",
             "getPSNavigateParams" : [ {
@@ -236,6 +245,54 @@
             "viewType" : "DEPICKUPTREEVIEW"
           },
           "valueItemName" : "page_selection"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "resetItemName" : "space_selection",
+        "resetItemNames" : [ "space_selection" ],
+        "valueItemName" : "page_selection",
+        "allowEmpty" : true
+      }, {
+        "caption" : "选择页面",
+        "codeName" : "page_selection",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "page_selection",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PAGE_SELECTION",
+          "codeName" : "page_selection"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "multiple" : "true",
+            "srfnavparam.space_id" : "%space_selection%"
+          },
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "page_selection",
+          "getPSEditorItems" : [ {
+            "name" : "page_selection",
+            "getPSNavigateParams" : [ {
+              "key" : "space_id",
+              "name" : "space_id",
+              "value" : "space_selection",
+              "rawValue" : false
+            } ]
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "space_id",
+            "name" : "space_id",
+            "value" : "space_selection",
+            "rawValue" : false
+          } ]
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
