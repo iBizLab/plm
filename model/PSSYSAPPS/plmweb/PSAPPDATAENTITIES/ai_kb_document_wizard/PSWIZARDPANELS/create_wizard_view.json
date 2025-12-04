@@ -443,15 +443,15 @@
         "codeName" : "sync_frequency"
       }
     }, {
+      "id" : "temp_page_selection",
+      "dataType" : 25
+    }, {
       "id" : "page_selection",
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "PAGE_SELECTION",
         "codeName" : "page_selection"
       }
-    }, {
-      "id" : "formitem1",
-      "dataType" : 25
     }, {
       "id" : "id",
       "hidden" : true,
@@ -544,6 +544,53 @@
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
+          "caption" : "临时页面选择",
+          "codeName" : "temp_page_selection",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "temp_page_selection",
+          "noPrivDisplayMode" : 1,
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "change_page"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "multiple" : "true",
+              "srfnavparam.space_id" : "%space_selection%"
+            },
+            "editorType" : "PICKUPVIEW",
+            "name" : "temp_page_selection",
+            "getPSEditorItems" : [ {
+              "name" : "page_selection"
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "space_id",
+              "name" : "space_id",
+              "value" : "space_selection",
+              "rawValue" : false
+            } ],
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_ai_kb_doc_page_pick_up_tree_view.json",
+              "viewType" : "DEPICKUPTREEVIEW"
+            },
+            "valueItemName" : "page_selection"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "space_selection",
+          "resetItemNames" : [ "space_selection" ],
+          "valueItemName" : "page_selection",
+          "allowEmpty" : true
+        }, {
           "caption" : "选择页面",
           "codeName" : "page_selection",
           "dataType" : 25,
@@ -559,70 +606,16 @@
             "name" : "PAGE_SELECTION",
             "codeName" : "page_selection"
           },
-          "getPSDEFormItemUpdate" : {
-            "modelref" : true,
-            "id" : "change_page"
-          },
-          "getPSEditor" : {
-            "editorParams" : {
-              "multiple" : "true",
-              "srfnavparam.space_id" : "%space_selection%"
-            },
-            "editorType" : "PICKUPVIEW",
-            "name" : "page_selection",
-            "getPSEditorItems" : [ {
-              "name" : "formitem1"
-            }, {
-              "name" : "page_selection",
-              "getPSNavigateParams" : [ {
-                "key" : "space_id",
-                "name" : "space_id",
-                "value" : "space_selection",
-                "rawValue" : false
-              } ]
-            } ],
-            "getPSNavigateParams" : [ {
-              "key" : "space_id",
-              "name" : "space_id",
-              "value" : "space_selection",
-              "rawValue" : false
-            } ],
-            "getPickupPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_ai_kb_doc_page_pick_up_tree_view.json",
-              "viewType" : "DEPICKUPTREEVIEW"
-            },
-            "valueItemName" : "formitem1"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "resetItemName" : "space_selection",
-          "resetItemNames" : [ "space_selection" ],
-          "valueItemName" : "formitem1",
-          "allowEmpty" : true
-        }, {
-          "codeName" : "formitem1",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "formitem1",
-          "noPrivDisplayMode" : 1,
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
-            "name" : "formitem1"
+            "maxLength" : 100,
+            "name" : "page_selection"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "showCaption" : true
+          "allowEmpty" : true
         }, {
           "buildInActions" : 1,
           "codeName" : "mdctrl1",
