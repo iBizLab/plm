@@ -331,6 +331,33 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CREATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "create_ai_kb_doc",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEACTIONS/create_ai_kb_doc.json",
+    "logicName" : "创建知识库文档",
+    "name" : "create_ai_kb_doc",
+    "getPSDEActionInput" : {
+      "name" : "Create_ai_kb_docInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_wizard_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Create_ai_kb_docResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/create_ai_kb_doc.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -1613,6 +1640,78 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s"
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "create_ai_kb_doc",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/create_ai_kb_doc.json",
+    "logicName" : "创建知识库文档",
+    "name" : "创建知识库文档",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 360,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "查看向导数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 220,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 596,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 222,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_kb_document_wizard_dto",
