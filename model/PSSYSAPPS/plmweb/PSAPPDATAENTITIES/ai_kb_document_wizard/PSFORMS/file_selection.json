@@ -96,6 +96,8 @@
   }, {
     "id" : "sync_frequency",
     "dataType" : 25,
+    "createDV" : "daily",
+    "updateDV" : "daily",
     "getPSAppDEField" : {
       "name" : "SYNC_FREQUENCY",
       "codeName" : "sync_frequency"
@@ -166,12 +168,13 @@
           "layout" : "TABLE_24COL"
         },
         "valueItemName" : "space_selection",
-        "allowEmpty" : true,
+        "allowEmpty" : false,
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "同步频率",
         "codeName" : "sync_frequency",
+        "createDV" : "daily",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -199,7 +202,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : true,
+        "updateDV" : "daily",
+        "allowEmpty" : false,
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
@@ -248,7 +252,7 @@
         "resetItemName" : "space_selection",
         "resetItemNames" : [ "space_selection" ],
         "valueItemName" : "selection_page_ids",
-        "allowEmpty" : true
+        "allowEmpty" : false
       }, {
         "caption" : "选择页面",
         "codeName" : "selection_page_ids",
@@ -275,6 +279,66 @@
         },
         "allowEmpty" : true,
         "hidden" : true
+      }, {
+        "buildInActions" : 1,
+        "codeName" : "mdctrl1",
+        "contentType" : "REPEATER",
+        "detailStyle" : "STYLE2",
+        "detailType" : "MDCTRL",
+        "name" : "mdctrl1",
+        "getPSAppDEField" : {
+          "name" : "SELECTED_PAGE_NAME",
+          "codeName" : "selected_page_name"
+        },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "mdctrl1",
+            "logicType" : "SINGLE",
+            "name" : "mdctrl1等于(=) 默认不显示",
+            "value" : "默认不显示"
+          } ],
+          "relatedDetailNames" : [ "mdctrl1" ],
+          "notMode" : false
+        } ],
+        "getPSDEFormDetails" : [ {
+          "caption" : "知识库文档名称",
+          "codeName" : "ai_kb_doc_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "ai_kb_doc_name",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "ai_kb_doc_name"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,

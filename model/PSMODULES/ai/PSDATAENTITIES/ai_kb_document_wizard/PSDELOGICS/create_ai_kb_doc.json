@@ -51,6 +51,52 @@
     "name" : "结束",
     "topPos" : 222,
     "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_01",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+    },
+    "leftPos" : 300,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建知识库文档同步",
+    "topPos" : 380,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_02",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "leftPos" : 290,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建知识库文档",
+    "topPos" : 500,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 340,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "创建知识库文档",
+    "topPos" : 630,
+    "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -61,6 +107,24 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "doc",
+    "logicName" : "doc",
+    "name" : "doc",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "doc_sync",
+    "logicName" : "doc_sync",
+    "name" : "doc_sync",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+    },
     "entityParam" : true
   } ],
   "getStartPSDELogicNode" : {
