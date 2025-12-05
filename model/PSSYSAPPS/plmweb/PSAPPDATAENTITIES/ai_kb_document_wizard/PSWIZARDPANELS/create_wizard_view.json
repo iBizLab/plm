@@ -463,6 +463,14 @@
         "codeName" : "selection_page_ids"
       }
     }, {
+      "id" : "import_method",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "IMPORT_METHOD",
+        "codeName" : "import_method"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -567,6 +575,33 @@
           "labelWidth" : 130,
           "name" : "temp_page_selection",
           "noPrivDisplayMode" : 1,
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "import_method",
+              "logicType" : "SINGLE",
+              "name" : "import_method等于(=) space_manual",
+              "value" : "space_manual"
+            } ],
+            "relatedDetailNames" : [ "import_method" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMBLANK",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "NOTEQ",
+              "dEFDName" : "import_method",
+              "logicType" : "SINGLE",
+              "name" : "import_method不等于(<>) space_manual",
+              "value" : "space_manual"
+            } ],
+            "relatedDetailNames" : [ "import_method" ],
+            "notMode" : false
+          } ],
           "getPSDEFormItemUpdate" : {
             "modelref" : true,
             "id" : "change_page"
@@ -689,6 +724,32 @@
           },
           "infoGroupMode" : false,
           "showCaption" : true
+        }, {
+          "caption" : "导入方式",
+          "codeName" : "import_method",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "import_method",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "IMPORT_METHOD",
+            "codeName" : "import_method"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "import_method"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
