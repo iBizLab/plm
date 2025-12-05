@@ -1295,6 +1295,33 @@
     "id" : "debug_context@ai_agent_session"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "执行JENKINS",
+    "codeName" : "jenkinsrun",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_agent_session_jenkinsrun",
+    "name" : "执行JENKINS",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "jenkins_build"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0e7@FontAwesome",
+      "cssClass" : "fa fa-bolt"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "jenkinsrun",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "jenkinsrun@ai_agent_session"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "确认采纳",
     "codeName" : "msg_footer_accept",
     "frontProcessType" : "OTHER",
@@ -1670,6 +1697,73 @@
       "logicName" : "context",
       "name" : "context",
       "navContextParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "jenkins_build",
+    "defaultParamName" : "Default",
+    "logicName" : "jenkins_build",
+    "name" : "jenkins_build",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 330,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 910,
+      "parallelOutput" : true
+    }, {
+      "code" : "var answer = null;\nvar formController = view.getController(\"form\");\nif(!formController) {\n    formController = view.parentView.getController(\"form\");\n}\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n     if (answer && typeof answer == 'string') {\n        var ret =ibiz.util.jsonUtil.parseJson(answer);\n        ret.project = view.parentView.context.project;\n        if(ret.success && ret.data) {\n            if(ret.data_type == 'jsonobject' && formController) {\n                Object.entries(ret.data).forEach(([key, value]) => {\n                    if(key==\"jobname\"){\n                        const jenkinsUrl = 'http://172.16.240.22:8080/';\n                        const username = 'admin';\n                        const passwordOrToken = '117f599a3ff312582f93471cea8ff5f789';\n                        const jobName = value;\n\n                        (async () => {\n                            let result = null;\n                            const credentials = btoa(`${username}:${passwordOrToken}`);\n                            const headers = { 'Authorization': `Basic ${credentials}` };\n                            const baseUrl = jenkinsUrl.replace(/\\/$/, '');\n                            \n                            // 触发构建\n                            const trigger = await fetch(`${baseUrl}/job/${encodeURIComponent(jobName)}/build`, {\n                                method: 'POST',\n                                headers: { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }\n                            });\n                            \n                            if (!trigger.ok) throw new Error(`触发失败: ${trigger.status}`);\n                            \n                            // 获取队列位置\n                            const queueUrl = trigger.headers.get('Location');\n                            if (!queueUrl) throw new Error('无队列信息');\n                            const queueFullUrl = queueUrl.startsWith('http') ? queueUrl : `${baseUrl}${queueUrl}`;\n                                \n                            ibiz.message.success('Jenkins 任务创建成功');\n                        })();                        \n                    }\n                });\n            }\n  }\n }\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 180,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 670
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
