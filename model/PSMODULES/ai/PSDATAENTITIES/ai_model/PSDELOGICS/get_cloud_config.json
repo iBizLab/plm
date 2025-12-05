@@ -90,6 +90,32 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
+        "id" : "PREPAREPARAM_06"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "LIKE",
+          "dstFieldName" : "MODEL_CAPABILITY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CAPABILITY] 文本包含(%) streaming",
+          "paramValue" : "streaming"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
         "id" : "PREPAREPARAM_01"
       },
       "name" : "禁用时",
@@ -128,7 +154,7 @@
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_02",
-    "leftPos" : 584,
+    "leftPos" : 614,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "设置流和vlm",
     "getPSDELogicLinks" : [ {
@@ -151,17 +177,8 @@
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "true",
       "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "stream",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "map"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "true",
-      "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 168,
+    "topPos" : 110,
     "parallelOutput" : true
   }, {
     "codeName" : "END_01",
@@ -174,6 +191,23 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_06",
+    "leftPos" : 570,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "stream",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 200,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_05",
