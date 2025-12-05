@@ -76089,6 +76089,39 @@
       "enableTestMethod" : false
     }, {
       "actionType" : "DEACTION",
+      "codeName" : "ai_save_workload",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "ai_save_workload",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_save_workload.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "workload_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "workload_dto"
+        },
+        "type" : "DTO"
+      },
+      "parentKeyMode" : "DEFAULT",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/ai_save_workload",
+      "tempDataMode" : 0,
+      "uniqueTag" : "WORKLOAD__DEACTION__AI_SAVE_WORKLOAD",
+      "enableTestMethod" : false
+    }, {
+      "actionType" : "DEACTION",
       "codeName" : "check_key",
       "dataAccessAction" : "CREATE",
       "methodType" : "DEACTION",
@@ -120440,14 +120473,30 @@
       "keyField" : false,
       "majorField" : false
     }, {
+      "codeName" : "executor_tag",
+      "codeName2" : "executor_tag",
+      "logicName" : "执行器标记",
+      "name" : "EXECUTOR_TAG",
+      "orderValue" : 310,
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
       "codeName" : "task_type",
       "codeName2" : "task_type",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.TASK_TYPE"
+      },
       "logicName" : "任务类型",
       "name" : "TASK_TYPE",
       "orderValue" : 1220,
       "stdDataType" : 25,
       "stringLength" : 60,
-      "allowEmpty" : false,
+      "allowEmpty" : true,
       "enableCreate" : true,
       "enableModify" : true,
       "keyField" : false,
@@ -120455,6 +120504,9 @@
     }, {
       "codeName" : "status",
       "codeName2" : "status",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.STATUS"
+      },
       "logicName" : "任务状态",
       "name" : "STATUS",
       "orderValue" : 1300,
@@ -120468,6 +120520,9 @@
     }, {
       "codeName" : "retry_count",
       "codeName2" : "retry_count",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.RETRY_COUNT"
+      },
       "logicName" : "已重试次数",
       "name" : "RETRY_COUNT",
       "orderValue" : 1400,
@@ -120480,11 +120535,14 @@
     }, {
       "codeName" : "max_retry",
       "codeName2" : "max_retry",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.MAX_RETRY"
+      },
       "logicName" : "最大重试次数",
       "name" : "MAX_RETRY",
       "orderValue" : 1500,
       "stdDataType" : 9,
-      "allowEmpty" : false,
+      "allowEmpty" : true,
       "enableCreate" : true,
       "enableModify" : true,
       "keyField" : false,
@@ -120492,6 +120550,9 @@
     }, {
       "codeName" : "payload",
       "codeName2" : "payload",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.PAYLOAD"
+      },
       "logicName" : "任务执行参数",
       "name" : "PAYLOAD",
       "orderValue" : 1600,
@@ -120505,6 +120566,9 @@
     }, {
       "codeName" : "result_message",
       "codeName2" : "result_message",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.RESULT_MESSAGE"
+      },
       "logicName" : "执行信息",
       "name" : "RESULT_MESSAGE",
       "orderValue" : 1700,
@@ -120518,6 +120582,9 @@
     }, {
       "codeName" : "scheduled_at",
       "codeName2" : "scheduled_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.SCHEDULED_AT"
+      },
       "logicName" : "计划执行时间",
       "name" : "SCHEDULED_AT",
       "orderValue" : 1800,
@@ -120530,6 +120597,9 @@
     }, {
       "codeName" : "result",
       "codeName2" : "result",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.RESULT"
+      },
       "logicName" : "执行结果",
       "name" : "RESULT",
       "orderValue" : 1800,
@@ -120543,6 +120613,9 @@
     }, {
       "codeName" : "started_at",
       "codeName2" : "started_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.STARTED_AT"
+      },
       "logicName" : "实际开始时间",
       "name" : "STARTED_AT",
       "orderValue" : 1900,
@@ -120555,6 +120628,9 @@
     }, {
       "codeName" : "finished_at",
       "codeName2" : "finished_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.FINISHED_AT"
+      },
       "logicName" : "执行完成时间",
       "name" : "FINISHED_AT",
       "orderValue" : 1900,
@@ -120567,6 +120643,9 @@
     }, {
       "codeName" : "description",
       "codeName2" : "description",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.DESCRIPTION"
+      },
       "logicName" : "描述",
       "name" : "DESCRIPTION",
       "orderValue" : 2000,
@@ -120580,6 +120659,9 @@
     }, {
       "codeName" : "principal_name",
       "codeName2" : "principal_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_NAME"
+      },
       "logicName" : "任务主体名称",
       "name" : "PRINCIPAL_NAME",
       "orderValue" : 2160,
@@ -120593,6 +120675,9 @@
     }, {
       "codeName" : "principal_id",
       "codeName2" : "principal_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_ID"
+      },
       "logicName" : "任务主体标识",
       "name" : "PRINCIPAL_ID",
       "orderValue" : 2160,
@@ -120606,6 +120691,9 @@
     }, {
       "codeName" : "principal_type",
       "codeName2" : "principal_type",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_TYPE"
+      },
       "logicName" : "任务主体类型",
       "name" : "PRINCIPAL_TYPE",
       "orderValue" : 2170,
@@ -120972,12 +121060,15 @@
     }, {
       "codeName" : "task_type",
       "codeName2" : "task_type",
-      "logicName" : "任务类型标识",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+      },
+      "logicName" : "任务类型",
       "name" : "TASK_TYPE",
       "orderValue" : 1220,
       "stdDataType" : 25,
       "stringLength" : 60,
-      "allowEmpty" : false,
+      "allowEmpty" : true,
       "enableCreate" : true,
       "enableModify" : true,
       "keyField" : false,
@@ -120985,6 +121076,9 @@
     }, {
       "codeName" : "status",
       "codeName2" : "status",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STATUS"
+      },
       "logicName" : "任务状态",
       "name" : "STATUS",
       "orderValue" : 1300,
@@ -120998,6 +121092,9 @@
     }, {
       "codeName" : "retry_count",
       "codeName2" : "retry_count",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RETRY_COUNT"
+      },
       "logicName" : "已重试次数",
       "name" : "RETRY_COUNT",
       "orderValue" : 1400,
@@ -121010,6 +121107,9 @@
     }, {
       "codeName" : "max_retry",
       "codeName2" : "max_retry",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.MAX_RETRY"
+      },
       "logicName" : "最大重试次数",
       "name" : "MAX_RETRY",
       "orderValue" : 1500,
@@ -121022,6 +121122,9 @@
     }, {
       "codeName" : "payload",
       "codeName2" : "payload",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.PAYLOAD"
+      },
       "logicName" : "任务执行参数",
       "name" : "PAYLOAD",
       "orderValue" : 1600,
@@ -121035,6 +121138,9 @@
     }, {
       "codeName" : "result_message",
       "codeName2" : "result_message",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT_MESSAGE"
+      },
       "logicName" : "执行信息",
       "name" : "RESULT_MESSAGE",
       "orderValue" : 1700,
@@ -121048,6 +121154,9 @@
     }, {
       "codeName" : "scheduled_at",
       "codeName2" : "scheduled_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.SCHEDULED_AT"
+      },
       "logicName" : "计划执行时间",
       "name" : "SCHEDULED_AT",
       "orderValue" : 1800,
@@ -121060,6 +121169,9 @@
     }, {
       "codeName" : "result",
       "codeName2" : "result",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT"
+      },
       "logicName" : "执行结果",
       "name" : "RESULT",
       "orderValue" : 1800,
@@ -121073,6 +121185,9 @@
     }, {
       "codeName" : "started_at",
       "codeName2" : "started_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STARTED_AT"
+      },
       "logicName" : "实际开始时间",
       "name" : "STARTED_AT",
       "orderValue" : 1900,
@@ -121085,6 +121200,9 @@
     }, {
       "codeName" : "finished_at",
       "codeName2" : "finished_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.FINISHED_AT"
+      },
       "logicName" : "执行完成时间",
       "name" : "FINISHED_AT",
       "orderValue" : 1900,
@@ -121097,6 +121215,9 @@
     }, {
       "codeName" : "description",
       "codeName2" : "description",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.DESCRIPTION"
+      },
       "logicName" : "描述",
       "name" : "DESCRIPTION",
       "orderValue" : 2000,
@@ -121110,6 +121231,9 @@
     }, {
       "codeName" : "principal_name",
       "codeName2" : "principal_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_NAME"
+      },
       "logicName" : "任务主体名称",
       "name" : "PRINCIPAL_NAME",
       "orderValue" : 2160,
@@ -121123,6 +121247,9 @@
     }, {
       "codeName" : "principal_id",
       "codeName2" : "principal_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_ID"
+      },
       "logicName" : "任务主体标识",
       "name" : "PRINCIPAL_ID",
       "orderValue" : 2160,
@@ -121136,6 +121263,9 @@
     }, {
       "codeName" : "principal_type",
       "codeName2" : "principal_type",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRINCIPAL_TYPE"
+      },
       "logicName" : "任务主体类型",
       "name" : "PRINCIPAL_TYPE",
       "orderValue" : 2170,
@@ -121487,6 +121617,9 @@
     }, {
       "codeName" : "executor_type",
       "codeName2" : "executor_type",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_TYPE"
+      },
       "logicName" : "执行器类型",
       "name" : "EXECUTOR_TYPE",
       "orderValue" : 100,
@@ -121500,6 +121633,9 @@
     }, {
       "codeName" : "executor_subtype",
       "codeName2" : "executor_subtype",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_SUBTYPE"
+      },
       "logicName" : "执行器子类型",
       "name" : "EXECUTOR_SUBTYPE",
       "orderValue" : 130,
@@ -121513,6 +121649,9 @@
     }, {
       "codeName" : "executor_tag",
       "codeName2" : "executor_tag",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_TAG"
+      },
       "logicName" : "执行器标记",
       "name" : "EXECUTOR_TAG",
       "orderValue" : 140,
@@ -121526,6 +121665,9 @@
     }, {
       "codeName" : "executor_config",
       "codeName2" : "executor_config",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_CONFIG"
+      },
       "logicName" : "执行器配置",
       "name" : "EXECUTOR_CONFIG",
       "orderValue" : 200,
@@ -121539,6 +121681,9 @@
     }, {
       "codeName" : "code",
       "codeName2" : "code",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.CODE"
+      },
       "logicName" : "执行代码",
       "name" : "CODE",
       "orderValue" : 250,
@@ -121552,6 +121697,9 @@
     }, {
       "codeName" : "retryable",
       "codeName2" : "retryable",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.RETRYABLE"
+      },
       "logicName" : "是否允许重试",
       "name" : "RETRYABLE",
       "orderValue" : 300,
@@ -121564,6 +121712,9 @@
     }, {
       "codeName" : "max_retry",
       "codeName2" : "max_retry",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.MAX_RETRY"
+      },
       "logicName" : "默认最大重试次数",
       "name" : "MAX_RETRY",
       "orderValue" : 400,
@@ -121576,6 +121727,9 @@
     }, {
       "codeName" : "timeout_sec",
       "codeName2" : "timeout_sec",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.TIMEOUT_SEC"
+      },
       "logicName" : "任务超时时间（秒）",
       "name" : "TIMEOUT_SEC",
       "orderValue" : 500,
@@ -121588,6 +121742,9 @@
     }, {
       "codeName" : "description",
       "codeName2" : "description",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.DESCRIPTION"
+      },
       "logicName" : "详细说明",
       "name" : "DESCRIPTION",
       "orderValue" : 7000,
@@ -183510,6 +183667,35 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/ai_add_estimated_workload",
       "uniqueTag" : "WORKLOAD__DEACTION__AI_ADD_ESTIMATED_WORKLOAD"
+    }, {
+      "codeName" : "ai_save_workload",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "ai_save_workload",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/ai_save_workload.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "workload_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "workload_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/ai_save_workload",
+      "uniqueTag" : "WORKLOAD__DEACTION__AI_SAVE_WORKLOAD"
     }, {
       "codeName" : "check_key",
       "dataAccessAction" : "CREATE",

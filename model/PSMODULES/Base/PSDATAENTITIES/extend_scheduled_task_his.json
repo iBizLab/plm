@@ -643,24 +643,46 @@
       "queryCodeExp" : "t1.`TASK_TYPE`",
       "standardColumnName" : "`TASK_TYPE`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_TASK_TYPE_EQ",
+      "name" : "N_TASK_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[TASK_TYPE][标识]",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+        },
+        "codeName" : "Default",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "[TASK_TYPE][标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+        },
         "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[TASK_TYPE][标识]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[TASK_TYPE][标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+        },
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -693,25 +715,48 @@
     } ],
     "codeName" : "task_type",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "PICKUP",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+    },
     "length" : 60,
-    "logicName" : "任务类型标识",
+    "logicName" : "任务类型",
     "name" : "TASK_TYPE",
     "orderValue" : 1220,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his/PSDERS/DER1N_EXTEND_SCHEDULED_TASK_HIS_EXTEND_TASK_TYPE_TASK_TYPE.json"
+    },
     "getPSSysDBColumn" : {
       "modelref" : true,
       "id" : "TASK_TYPE"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
     },
     "serviceCodeName" : "task_type",
     "stdDataType" : 25,
     "stringLength" : 60,
     "valueFormat" : "%1$s",
-    "allowEmpty" : false
+    "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "STATUS",
@@ -720,22 +765,22 @@
       "queryCodeExp" : "t1.`STATUS`",
       "standardColumnName" : "`STATUS`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_STATUS_EQ",
+      "name" : "N_STATUS_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[STATUS][任务状态]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST",
-        "name" : "默认",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STATUS"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端默认",
+        "name" : "[STATUS][任务状态]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
@@ -744,6 +789,22 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[STATUS][任务状态]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STATUS"
+        },
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[STATUS][任务状态]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -774,6 +835,9 @@
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STATUS"
+    },
     "length" : 60,
     "logicName" : "任务状态",
     "name" : "STATUS",
@@ -804,19 +868,29 @@
       "standardColumnName" : "`RETRY_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[RETRY_COUNT][已重试次数]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RETRY_COUNT"
+        },
+        "codeName" : "Default",
         "editorType" : "TEXTBOX",
-        "name" : "默认",
+        "name" : "[RETRY_COUNT][已重试次数]",
         "uIMode" : "DEFAULT",
         "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[RETRY_COUNT][已重试次数]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RETRY_COUNT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[RETRY_COUNT][已重试次数]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
         "mobileMode" : true
@@ -842,6 +916,9 @@
     "dEFType" : 1,
     "dataType" : "INT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RETRY_COUNT"
+    },
     "logicName" : "已重试次数",
     "name" : "RETRY_COUNT",
     "orderValue" : 1400,
@@ -866,19 +943,29 @@
       "standardColumnName" : "`MAX_RETRY`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[MAX_RETRY][最大重试次数]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.MAX_RETRY"
+        },
+        "codeName" : "Default",
         "editorType" : "TEXTBOX",
-        "name" : "默认",
+        "name" : "[MAX_RETRY][最大重试次数]",
         "uIMode" : "DEFAULT",
         "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[MAX_RETRY][最大重试次数]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.MAX_RETRY"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[MAX_RETRY][最大重试次数]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
         "mobileMode" : true
@@ -904,6 +991,9 @@
     "dEFType" : 1,
     "dataType" : "INT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.MAX_RETRY"
+    },
     "logicName" : "最大重试次数",
     "name" : "MAX_RETRY",
     "orderValue" : 1500,
@@ -928,19 +1018,29 @@
       "standardColumnName" : "`PAYLOAD`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[PAYLOAD][任务执行参数]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.PAYLOAD"
+        },
+        "codeName" : "Default",
         "editorType" : "TEXTAREA_10",
-        "name" : "默认",
+        "name" : "[PAYLOAD][任务执行参数]",
         "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[PAYLOAD][任务执行参数]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.PAYLOAD"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[PAYLOAD][任务执行参数]移动端默认",
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -977,6 +1077,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.PAYLOAD"
+    },
     "length" : 1048576,
     "logicName" : "任务执行参数",
     "name" : "PAYLOAD",
@@ -1003,25 +1106,35 @@
       "standardColumnName" : "`RESULT_MESSAGE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[RESULT_MESSAGE][执行信息]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT_MESSAGE"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[RESULT_MESSAGE][执行信息]移动端默认",
         "stringLength" : 2000,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RESULT_MESSAGE][执行信息]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT_MESSAGE"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[RESULT_MESSAGE][执行信息]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1052,6 +1165,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT_1000",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT_MESSAGE"
+    },
     "length" : 2000,
     "logicName" : "执行信息",
     "name" : "RESULT_MESSAGE",
@@ -1077,20 +1193,15 @@
       "standardColumnName" : "`SCHEDULED_AT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "DATEPICKER",
-        "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.SCHEDULED_AT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDATE",
-        "name" : "移动端默认",
+        "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -1098,6 +1209,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCHEDULED_AT][计划执行时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.SCHEDULED_AT"
+        },
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[SCHEDULED_AT][计划执行时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1118,6 +1244,9 @@
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.SCHEDULED_AT"
+    },
     "logicName" : "计划执行时间",
     "name" : "SCHEDULED_AT",
     "orderValue" : 1800,
@@ -1142,19 +1271,29 @@
       "standardColumnName" : "`RESULT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[RESULT][执行结果]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT"
+        },
+        "codeName" : "Default",
         "editorType" : "TEXTAREA_10",
-        "name" : "默认",
+        "name" : "[RESULT][执行结果]",
         "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[RESULT][执行结果]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[RESULT][执行结果]移动端默认",
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -1191,6 +1330,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.RESULT"
+    },
     "length" : 1048576,
     "logicName" : "执行结果",
     "name" : "RESULT",
@@ -1217,19 +1359,29 @@
       "standardColumnName" : "`STARTED_AT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[STARTED_AT][实际开始时间]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STARTED_AT"
+        },
+        "codeName" : "Default",
         "editorType" : "DATEPICKER",
-        "name" : "默认",
+        "name" : "[STARTED_AT][实际开始时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[STARTED_AT][实际开始时间]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STARTED_AT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDATE",
-        "name" : "移动端默认",
+        "name" : "[STARTED_AT][实际开始时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "mobileMode" : true
@@ -1256,6 +1408,9 @@
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.STARTED_AT"
+    },
     "logicName" : "实际开始时间",
     "name" : "STARTED_AT",
     "orderValue" : 1900,
@@ -1279,19 +1434,29 @@
       "standardColumnName" : "`FINISHED_AT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[FINISHED_AT][执行完成时间]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.FINISHED_AT"
+        },
+        "codeName" : "Default",
         "editorType" : "DATEPICKER",
-        "name" : "默认",
+        "name" : "[FINISHED_AT][执行完成时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[FINISHED_AT][执行完成时间]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.FINISHED_AT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDATE",
-        "name" : "移动端默认",
+        "name" : "[FINISHED_AT][执行完成时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "mobileMode" : true
@@ -1318,6 +1483,9 @@
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.FINISHED_AT"
+    },
     "logicName" : "执行完成时间",
     "name" : "FINISHED_AT",
     "orderValue" : 1900,
@@ -1341,25 +1509,35 @@
       "standardColumnName" : "`DESCRIPTION`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.DESCRIPTION"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[DESCRIPTION][描述]移动端默认",
         "stringLength" : 2000,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1390,6 +1568,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT_1000",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.DESCRIPTION"
+    },
     "length" : 2000,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
@@ -1415,25 +1596,35 @@
       "standardColumnName" : "`PRINCIPAL_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[PRINCIPAL_NAME][任务主体名称]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_NAME"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[PRINCIPAL_NAME][任务主体名称]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PRINCIPAL_NAME][任务主体名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PRINCIPAL_NAME][任务主体名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1464,6 +1655,9 @@
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.PRINCIPAL_NAME"
+    },
     "length" : 100,
     "logicName" : "任务主体名称",
     "name" : "PRINCIPAL_NAME",
@@ -1490,25 +1684,35 @@
       "standardColumnName" : "`PRINCIPAL_ID`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[PRINCIPAL_ID][任务主体标识]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_ID"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[PRINCIPAL_ID][任务主体标识]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PRINCIPAL_ID][任务主体标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PRINCIPAL_ID][任务主体标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1539,6 +1743,9 @@
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.PRINCIPAL_ID"
+    },
     "length" : 100,
     "logicName" : "任务主体标识",
     "name" : "PRINCIPAL_ID",
@@ -1565,19 +1772,29 @@
       "standardColumnName" : "`PRINCIPAL_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[PRINCIPAL_TYPE][任务主体类型]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_TYPE"
+        },
+        "codeName" : "Default",
         "editorType" : "TEXTBOX",
-        "name" : "默认",
+        "name" : "[PRINCIPAL_TYPE][任务主体类型]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[PRINCIPAL_TYPE][任务主体类型]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.PRINCIPAL_TYPE"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[PRINCIPAL_TYPE][任务主体类型]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -1614,6 +1831,9 @@
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.PRINCIPAL_TYPE"
+    },
     "length" : 100,
     "logicName" : "任务主体类型",
     "name" : "PRINCIPAL_TYPE",
@@ -2020,7 +2240,7 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "任务类型标识",
+      "logicName" : "任务类型",
       "name" : "task_type",
       "getPSDEField" : {
         "name" : "TASK_TYPE",
@@ -2029,8 +2249,7 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 60,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
+      "type" : "SIMPLE"
     }, {
       "logicName" : "任务状态",
       "name" : "status",
@@ -2264,6 +2483,36 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "任务状态",
+      "name" : "n_status_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_STATUS_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "任务类型",
+      "name" : "n_task_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_TASK_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "TASK_TYPE",
+        "codeName" : "task_type"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFILTER",
@@ -2378,6 +2627,33 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSDERs" : [ {
+    "codeName" : "EXTEND_TASK_TYPE",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his/PSDERS/DER1N_EXTEND_SCHEDULED_TASK_HIS_EXTEND_TASK_TYPE_TASK_TYPE.json",
+    "fKeyName" : "F68D75BDB204332DAE",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his.json"
+    },
+    "name" : "DER1N_EXTEND_SCHEDULED_TASK_HIS_EXTEND_TASK_TYPE_TASK_TYPE",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "TASK_TYPE",
+      "codeName" : "task_type"
+    },
+    "pickupDEFName" : "TASK_TYPE",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "extend_task_type",
+    "enableFKey" : true
+  } ],
   "name" : "EXTEND_SCHEDULED_TASK_HIS",
   "getPSSysDBScheme" : {
     "modelref" : true,
