@@ -233,9 +233,6 @@
       "name" : "DESCRIPTION",
       "codeName" : "description"
     }, {
-      "name" : "ENABLE",
-      "codeName" : "enable"
-    }, {
       "name" : "CREATE_MAN",
       "codeName" : "create_man"
     }, {
@@ -564,11 +561,12 @@
           "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_TYPE"
         },
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "DROPDOWNLIST",
         "name" : "[EXECUTOR_TYPE][执行器类型]",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
@@ -579,12 +577,13 @@
           "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_TYPE"
         },
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBDROPDOWNLIST",
         "name" : "[EXECUTOR_TYPE][执行器类型]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
-        "mobileMode" : true
+        "mobileMode" : true,
+        "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
@@ -616,7 +615,7 @@
     } ],
     "codeName" : "executor_type",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "SSCODELIST",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_TYPE"
@@ -658,11 +657,12 @@
           "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_SUBTYPE"
         },
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBDROPDOWNLIST",
         "name" : "[EXECUTOR_SUBTYPE][执行器子类型]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
+        "mobileMode" : true,
+        "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
@@ -674,10 +674,11 @@
           "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_SUBTYPE"
         },
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "DROPDOWNLIST",
         "name" : "[EXECUTOR_SUBTYPE][执行器子类型]",
         "stringLength" : 60,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     } ],
@@ -708,7 +709,7 @@
     } ],
     "codeName" : "executor_subtype",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "SSCODELIST",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.EXECUTOR_SUBTYPE"
@@ -1005,7 +1006,8 @@
       "dBType" : "MYSQL5",
       "name" : "RETRYABLE",
       "queryCodeExp" : "t1.`RETRYABLE`",
-      "standardColumnName" : "`RETRYABLE`"
+      "standardColumnName" : "`RETRYABLE`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1057,6 +1059,7 @@
     "codeName" : "retryable",
     "dEFType" : 1,
     "dataType" : "YESNO",
+    "defaultValue" : "1",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.RETRYABLE"
@@ -1086,7 +1089,8 @@
       "dBType" : "MYSQL5",
       "name" : "MAX_RETRY",
       "queryCodeExp" : "t1.`MAX_RETRY`",
-      "standardColumnName" : "`MAX_RETRY`"
+      "standardColumnName" : "`MAX_RETRY`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1136,6 +1140,7 @@
     "codeName" : "max_retry",
     "dEFType" : 1,
     "dataType" : "INT",
+    "defaultValue" : "3",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.MAX_RETRY"
@@ -1161,7 +1166,8 @@
       "dBType" : "MYSQL5",
       "name" : "TIMEOUT_SEC",
       "queryCodeExp" : "t1.`TIMEOUT_SEC`",
-      "standardColumnName" : "`TIMEOUT_SEC`"
+      "standardColumnName" : "`TIMEOUT_SEC`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1211,6 +1217,7 @@
     "codeName" : "timeout_sec",
     "dEFType" : 1,
     "dataType" : "INT",
+    "defaultValue" : "10",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.TIMEOUT_SEC"
@@ -1316,78 +1323,6 @@
     "serviceCodeName" : "description",
     "stdDataType" : 25,
     "stringLength" : 2000,
-    "valueFormat" : "%1$s"
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "ENABLE",
-      "dBType" : "MYSQL5",
-      "name" : "ENABLE",
-      "queryCodeExp" : "t1.`ENABLE`",
-      "standardColumnName" : "`ENABLE`"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[ENABLE][逻辑有效标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.ENABLE"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ENABLE][逻辑有效标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.ENABLE"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组"
-      },
-      "ruleInfo" : "默认规则",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "enable",
-    "dEFType" : 1,
-    "dataType" : "YESNO",
-    "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.EXTEND_TASK_TYPE.ENABLE"
-    },
-    "logicName" : "逻辑有效标识",
-    "name" : "ENABLE",
-    "orderValue" : 9000,
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "ENABLE"
-    },
-    "serviceCodeName" : "enable",
-    "stdDataType" : 9,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -1825,6 +1760,7 @@
       "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
       "logicName" : "是否允许重试",
       "name" : "retryable",
       "getPSDEField" : {
@@ -1836,6 +1772,7 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
+      "defaultValue" : "3",
       "logicName" : "默认最大重试次数",
       "name" : "max_retry",
       "getPSDEField" : {
@@ -1847,6 +1784,7 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
+      "defaultValue" : "10",
       "logicName" : "任务超时时间（秒）",
       "name" : "timeout_sec",
       "getPSDEField" : {
@@ -1867,16 +1805,6 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 2000,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "逻辑有效标识",
-      "name" : "enable",
-      "getPSDEField" : {
-        "name" : "ENABLE",
-        "codeName" : "enable"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "logicName" : "创建人",
