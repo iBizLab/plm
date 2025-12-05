@@ -1,0 +1,59 @@
+{
+  "codeName" : "format_type",
+  "dEFLogicMode" : "COMPUTE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEFLOGICS/format_type.json",
+  "logicName" : "识别内容格式",
+  "logicSubType" : "DEFIELD",
+  "memo" : "识别评论内容格式",
+  "name" : "识别内容格式",
+  "getPSDEField" : {
+    "name" : "CONTENT",
+    "codeName" : "content"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 300,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('default').getReal()\r\ndef _content = _default.get('content').trim()\r\n\r\nif(_content != null){\r\n\r\n    // 去除空白字符减少误判\r\n    def trimmed = content.trim()\r\n    \r\n    // HTML 特征检查\r\n    boolean hasHtmlTags = trimmed =~ /<(?i)(html|head|body|div|p|a|img|table|ul|ol|li)[\\s>]/\r\n    boolean hasHtmlDoctype = trimmed =~ /<!DOCTYPE\\s+html/i\r\n    boolean hasHtmlComments = trimmed =~ /<!--.*?-->/\r\n    boolean hasHtmlSelfClosing = trimmed =~ /<(br|hr|img|input|meta|link)[\\s>]/i\r\n    \r\n    // Markdown 特征检查\r\n    boolean hasMdHeaders = trimmed =~ /^#{1,6}\\s+\\w/\r\n    boolean hasMdLinks = trimmed =~ /\\[.*?\\]\\(.*?\\)/\r\n    boolean hasMdImages = trimmed =~ /!\\[.*?\\]\\(.*?\\)/\r\n    boolean hasMdLists = trimmed =~ /^(\\s*[-*+]\\s+|\\s*\\d+\\.\\s+)/\r\n    boolean hasMdCodeBlocks = trimmed =~ /```[\\s\\S]*?```|~~~[\\s\\S]*?~~~/\r\n    boolean hasMdBlockquotes = trimmed =~ /^>\\s+/\r\n    boolean hasMdHorizontalRule = trimmed =~ /^(\\s*[*_-]\\s*){3,}/\r\n    \r\n    // 计算特征数量\r\n    def htmlFeatures = [hasHtmlTags, hasHtmlDoctype, hasHtmlComments, hasHtmlSelfClosing].count { it }\r\n    def mdFeatures = [hasMdHeaders, hasMdLinks, hasMdImages, hasMdLists, hasMdCodeBlocks, hasMdBlockquotes, hasMdHorizontalRule].count { it }\r\n    \r\n    println \"HTML 特征数: $htmlFeatures, MD 特征数: $mdFeatures\"\r\n    \r\n    if (mdFeatures > htmlFeatures) {\r\n         _default.set('format_type', \"MD\")\r\n    } else {\r\n         _default.set('format_type', \"HTML\")\r\n    }\r\n\r\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "JavaScript",
+    "leftPos" : 260,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "判断内容格式",
+    "topPos" : 300,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
