@@ -64,6 +64,32 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
+        "id" : "PREPAREPARAM_05"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "API_BASE_URL",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[API_BASE_URL] 等于(=) https://api.deepseek.com",
+          "paramValue" : "https://api.deepseek.com"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
         "id" : "PREPAREPARAM_01"
       },
       "name" : "禁用时",
@@ -148,6 +174,23 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_05",
+    "leftPos" : 556,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置aitype",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "aitype",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "deepseek",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 288,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_01",
