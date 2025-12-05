@@ -181,56 +181,130 @@
             "codeName" : "name"
           },
           "getPSDEUIActionGroup" : {
-            "codeName" : "ai_grid_action",
-            "name" : "智能协同通用表格操作列",
+            "codeName" : "Usr1205441240",
+            "name" : "主表格操作列",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
             "getPSUIActionGroupDetails" : [ {
-              "getCapPSLanguageRes" : {
-                "lanResTag" : "TBB.TEXT.*.REMOVE"
+              "caption" : "查看",
+              "detailType" : "DEUIACTION",
+              "name" : "u71f4713",
+              "getPSSysImage" : {
+                "glyph" : "xf002@FontAwesome",
+                "cssClass" : "fa fa-search"
               },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEKEY",
+                "caption" : "查看",
+                "codeName" : "check",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
+                  "viewType" : "DEEDITVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "ai_agent_context_check",
+                "name" : "查看",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf002@FontAwesome",
+                  "cssClass" : "fa fa-search"
+                },
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "check",
+                "uIActionType" : "DEUIACTION",
+                "id" : "check@ai_agent_context"
+              },
+              "addSeparator" : false,
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "编辑",
+              "detailType" : "DEUIACTION",
+              "name" : "u0ca499d",
+              "getPSSysImage" : {
+                "glyph" : "xf044@FontAwesome",
+                "cssClass" : "fa fa-edit"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEKEY",
+                "caption" : "编辑",
+                "codeName" : "edit",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_edit_view.json",
+                  "viewType" : "DEEDITVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "ai_agent_context_edit",
+                "name" : "编辑",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf044@FontAwesome",
+                  "cssClass" : "fa fa-edit"
+                },
+                "refreshMode" : 1,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "edit",
+                "uIActionType" : "DEUIACTION",
+                "reloadData" : true,
+                "id" : "edit@ai_agent_context"
+              },
+              "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
+              "addSeparator" : false,
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
               "caption" : "删除",
               "detailType" : "DEUIACTION",
-              "name" : "u31c0ac2",
+              "name" : "u25fa91a",
               "getPSSysImage" : {
                 "glyph" : "xf014@FontAwesome",
                 "cssClass" : "fa fa-trash-o"
               },
               "getPSUIAction" : {
                 "actionTarget" : "MULTIKEY",
-                "noPrivDisplayMode" : 1,
-                "getCapPSLanguageRes" : {
-                  "lanResTag" : "TBB.TEXT.*.REMOVE"
-                },
                 "caption" : "删除",
-                "codeName" : "Remove",
-                "dataAccessAction" : "DELETE",
-                "fullCodeName" : "Remove",
-                "name" : "表格界面_删除操作",
-                "getPSDEOPPriv" : {
+                "codeName" : "delete",
+                "confirmMsg" : "是否确认删除此数据？",
+                "fullCodeName" : "ai_agent_context_delete",
+                "name" : "删除",
+                "getPSAppDEMethod" : {
                   "modelref" : true,
-                  "id" : "DELETE"
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
                 },
                 "getPSSysImage" : {
                   "glyph" : "xf014@FontAwesome",
                   "cssClass" : "fa fa-trash-o"
                 },
-                "predefinedType" : "GRIDVIEW_REMOVEACTION",
+                "refreshMode" : 1,
+                "successMsg" : "删除成功",
                 "timeout" : 60000,
-                "tooltip" : "删除",
-                "getTooltipPSLanguageRes" : {
-                  "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-                },
-                "uIActionMode" : "SYS",
-                "uIActionTag" : "Remove",
-                "uIActionType" : "DEUIACTION"
+                "uIActionMode" : "BACKEND",
+                "uIActionTag" : "delete",
+                "uIActionType" : "DEUIACTION",
+                "enableConfirm" : true,
+                "reloadData" : true,
+                "id" : "delete@ai_agent_context"
               },
-              "tooltip" : "删除",
-              "getTooltipPSLanguageRes" : {
-                "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-              },
+              "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
               "addSeparator" : false,
               "showCaption" : true,
               "showIcon" : true
-            } ]
+            } ],
+            "uniqueTag" : "ai_agent_context__Usr1205441240"
           },
           "width" : 100,
           "widthUnit" : "STAR",

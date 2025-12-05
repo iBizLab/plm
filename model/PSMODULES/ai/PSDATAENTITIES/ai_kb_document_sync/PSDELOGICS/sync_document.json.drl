@@ -6,9 +6,13 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.sync_document;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncsync_documentdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard ai_kb_document_syncsync_documentai_kb_doc_wizard;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_syncsync_documentkb_doc;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_documentpage;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_documentpage_filter;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_documentpages;
                     global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -30,6 +34,9 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.sync_document;
                             ai_kb_document_syncsync_documentpage_filter.set("n_space_id_eq",ai_kb_document_syncsync_documentdefault.get("sourceid"));
                             ai_kb_document_syncsync_documentpage_filter.set("size","1000");
                         update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
                         update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
             end
@@ -40,6 +47,66 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.sync_document;
             when
             then
                         update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall_01"
+            ruleflow-group "ai_kb_document_syncsync_documentloopsubcall_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "ai_kb_document_syncsync_documentprepareparam_02"
+            when
+            then
+                            ai_kb_document_syncsync_documentkb_doc.set("parserconfig",ai_kb_document_syncsync_documentai_kb_doc_wizard.get("parserconfig"));
+                            ai_kb_document_syncsync_documentkb_doc.set("customchunk",ai_kb_document_syncsync_documentai_kb_doc_wizard.get("customchunk"));
+                            ai_kb_document_syncsync_documentkb_doc.set("chunkmethod",ai_kb_document_syncsync_documentai_kb_doc_wizard.get("chunkmethod"));
+                            ai_kb_document_syncsync_documentkb_doc.set("kbid",ai_kb_document_syncsync_documentdefault.get("aiknowledgebaseid"));
+                        update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_document_syncsync_documentend_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建知识库文档]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_document_syncsync_documentdeaction_01"
+            when
+            then
+                        ai_kb_documentservice.create(ai_kb_document_syncsync_documentkb_doc);
+                        update(ai_kb_document_syncsync_documentdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentkb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_documentpage);//更新fact中变量值
                         update(ai_kb_document_syncsync_documentpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncsync_documentpages);//更新fact中变量值
             end

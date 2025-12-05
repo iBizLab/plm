@@ -2522,6 +2522,84 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "查看",
+    "codeName" : "check",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_agent_context_check",
+    "name" : "查看",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf002@FontAwesome",
+      "cssClass" : "fa fa-search"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "check",
+    "uIActionType" : "DEUIACTION",
+    "id" : "check@ai_agent_context"
+  }, {
+    "actionTarget" : "MULTIKEY",
+    "caption" : "删除",
+    "codeName" : "delete",
+    "confirmMsg" : "是否确认删除此数据？",
+    "fullCodeName" : "ai_agent_context_delete",
+    "name" : "删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "delete",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "delete@ai_agent_context"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "edit",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_agent_context_edit",
+    "name" : "编辑",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "edit",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "edit@ai_agent_context"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "打开调试页面",
     "codeName" : "open_debug_view",
@@ -2700,6 +2778,74 @@
         },
         "modelref" : true,
         "id" : "open_debug_view@ai_agent_context"
+      }
+    } ]
+  }, {
+    "codeName" : "Usr1205441240",
+    "name" : "主表格操作列",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uniqueTag" : "ai_agent_context__Usr1205441240",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "查看",
+      "detailType" : "DEUIACTION",
+      "name" : "u71f4713",
+      "getPSSysImage" : {
+        "glyph" : "xf002@FontAwesome",
+        "cssClass" : "fa fa-search"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
+        "modelref" : true,
+        "id" : "check@ai_agent_context"
+      }
+    }, {
+      "caption" : "编辑",
+      "detailType" : "DEUIACTION",
+      "name" : "u0ca499d",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
+        "modelref" : true,
+        "id" : "edit@ai_agent_context"
+      }
+    }, {
+      "caption" : "删除",
+      "detailType" : "DEUIACTION",
+      "name" : "u25fa91a",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
+        "modelref" : true,
+        "id" : "delete@ai_agent_context"
       }
     } ]
   } ]

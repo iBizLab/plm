@@ -7,7 +7,7 @@
   "codeName" : "ai_agent_context_grid_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_grid_view.json",
   "funcViewMode" : "MDATAVIEW",
-  "gridRowActiveMode" : 1,
+  "gridRowActiveMode" : 0,
   "name" : "ai_agent_contextGridView",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -106,6 +106,66 @@
     }
   } ],
   "getPSControls" : [ {
+    "codeName" : "grid_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工具栏模板（表格界面，只有一个新建按钮）",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.NEW"
+      },
+      "caption" : "新建",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf0f6@FontAwesome",
+        "cssClass" : "fa fa-file-text-o"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.NEW"
+        },
+        "caption" : "新建",
+        "codeName" : "New",
+        "fullCodeName" : "New",
+        "name" : "表格界面_新建操作",
+        "getPSSysImage" : {
+          "glyph" : "xf0f6@FontAwesome",
+          "cssClass" : "fa fa-file-text-o"
+        },
+        "predefinedType" : "GRIDVIEW_NEWACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.NEW"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "New",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "新建",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.NEW"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "grid",
+    "modelid" : "cd9eb7eb8c0facf6084ba1508d888eea",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "aggMode" : "NONE",
     "codeName" : "main",
     "columnEnableFilter" : 2,
@@ -237,56 +297,130 @@
         "codeName" : "name"
       },
       "getPSDEUIActionGroup" : {
-        "codeName" : "ai_grid_action",
-        "name" : "智能协同通用表格操作列",
+        "codeName" : "Usr1205441240",
+        "name" : "主表格操作列",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+        },
         "getPSUIActionGroupDetails" : [ {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.*.REMOVE"
+          "caption" : "查看",
+          "detailType" : "DEUIACTION",
+          "name" : "u71f4713",
+          "getPSSysImage" : {
+            "glyph" : "xf002@FontAwesome",
+            "cssClass" : "fa fa-search"
           },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "查看",
+            "codeName" : "check",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_agent_context_check",
+            "name" : "查看",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf002@FontAwesome",
+              "cssClass" : "fa fa-search"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "check",
+            "uIActionType" : "DEUIACTION",
+            "id" : "check@ai_agent_context"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "编辑",
+          "detailType" : "DEUIACTION",
+          "name" : "u0ca499d",
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "编辑",
+            "codeName" : "edit",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_edit_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_agent_context_edit",
+            "name" : "编辑",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "refreshMode" : 1,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "edit",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "edit@ai_agent_context"
+          },
+          "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
           "caption" : "删除",
           "detailType" : "DEUIACTION",
-          "name" : "u31c0ac2",
+          "name" : "u25fa91a",
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
           },
           "getPSUIAction" : {
             "actionTarget" : "MULTIKEY",
-            "noPrivDisplayMode" : 1,
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.*.REMOVE"
-            },
             "caption" : "删除",
-            "codeName" : "Remove",
-            "dataAccessAction" : "DELETE",
-            "fullCodeName" : "Remove",
-            "name" : "表格界面_删除操作",
-            "getPSDEOPPriv" : {
+            "codeName" : "delete",
+            "confirmMsg" : "是否确认删除此数据？",
+            "fullCodeName" : "ai_agent_context_delete",
+            "name" : "删除",
+            "getPSAppDEMethod" : {
               "modelref" : true,
-              "id" : "DELETE"
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
             },
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
             },
-            "predefinedType" : "GRIDVIEW_REMOVEACTION",
+            "refreshMode" : 1,
+            "successMsg" : "删除成功",
             "timeout" : 60000,
-            "tooltip" : "删除",
-            "getTooltipPSLanguageRes" : {
-              "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-            },
-            "uIActionMode" : "SYS",
-            "uIActionTag" : "Remove",
-            "uIActionType" : "DEUIACTION"
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "delete",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "delete@ai_agent_context"
           },
-          "tooltip" : "删除",
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-          },
+          "visibleScriptCode" : "data.create_man === ibiz.appData.context?.srfuserid",
           "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
-        } ]
+        } ],
+        "uniqueTag" : "ai_agent_context__Usr1205441240"
       },
       "width" : 100,
       "widthUnit" : "STAR",
@@ -549,66 +683,6 @@
     "name" : "grid",
     "modelid" : "bc700246757000fd859a82d77afcd395",
     "modeltype" : "PSDEGRID"
-  }, {
-    "codeName" : "grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（表格界面，只有一个新建按钮）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.NEW"
-      },
-      "caption" : "新建",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction1"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf0f6@FontAwesome",
-        "cssClass" : "fa fa-file-text-o"
-      },
-      "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.NEW"
-        },
-        "caption" : "新建",
-        "codeName" : "New",
-        "fullCodeName" : "New",
-        "name" : "表格界面_新建操作",
-        "getPSSysImage" : {
-          "glyph" : "xf0f6@FontAwesome",
-          "cssClass" : "fa fa-file-text-o"
-        },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.NEW"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "New",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "新建",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.*.NEW"
-      },
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "xDataControlName" : "grid",
-    "modelid" : "cd9eb7eb8c0facf6084ba1508d888eea",
-    "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "default",
     "controlType" : "SEARCHFORM",

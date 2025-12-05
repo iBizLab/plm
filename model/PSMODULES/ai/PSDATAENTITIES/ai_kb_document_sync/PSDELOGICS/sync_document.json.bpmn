@@ -6,23 +6,59 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_document_syncsync_documentdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard()" name="ai_kb_document_syncsync_documentai_kb_doc_wizard" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_document_syncsync_documentkb_doc" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="ai_kb_document_syncsync_documentpage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="ai_kb_document_syncsync_documentpage_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="ai_kb_document_syncsync_documentpages" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_documentService))" name="ai_kb_documentservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService))" name="iBzSysAi_kb_document_syncDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_document_syncsync_documentdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync" />
+                            <tns:global identifier="ai_kb_document_syncsync_documentai_kb_doc_wizard" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard" />
+                            <tns:global identifier="ai_kb_document_syncsync_documentkb_doc" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
+                            <tns:global identifier="ai_kb_document_syncsync_documentpage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="ai_kb_document_syncsync_documentpage_filter" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="ai_kb_document_syncsync_documentpages" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentdedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="查询空间下的页面"/>
-                        <endEvent id="dedataset_01_end" name="end"/>
-                        <sequenceFlow id="dedataset_01_end_line" sourceRef="dedataset_01" targetRef="dedataset_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentloopsubcall_01" id="loopsubcall_01" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam_02_end" name="end"/>
+                        <sequenceFlow id="prepareparam_02_end_line" sourceRef="prepareparam_02" targetRef="prepareparam_02_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="创建知识库文档"/>
+                        <endEvent id="deaction_01_end" name="end"/>
+                        <sequenceFlow id="deaction_01_end_line" sourceRef="deaction_01" targetRef="deaction_01_end"/>
                     <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset_01_loopsubcall_01" sourceRef="gateway-dedataset_01" targetRef="loopsubcall_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_document_syncsync_documentdefault:ai_kb_document_sync();
+                                            $ai_kb_document_syncsync_documentai_kb_doc_wizard:ai_kb_document_wizard();
+                                            $ai_kb_document_syncsync_documentkb_doc:ai_kb_document();
+                                            $ai_kb_document_syncsync_documentpage:article_page();
+                                            $ai_kb_document_syncsync_documentpage_filter:article_page();
+                                            $ai_kb_document_syncsync_documentpages:article_page();
+                                    eval($ai_kb_document_syncsync_documentdefault==ai_kb_document_syncsync_documentdefault && $ai_kb_document_syncsync_documentai_kb_doc_wizard==ai_kb_document_syncsync_documentai_kb_doc_wizard && $ai_kb_document_syncsync_documentkb_doc==ai_kb_document_syncsync_documentkb_doc && $ai_kb_document_syncsync_documentpage==ai_kb_document_syncsync_documentpage && $ai_kb_document_syncsync_documentpage_filter==ai_kb_document_syncsync_documentpage_filter && $ai_kb_document_syncsync_documentpages==ai_kb_document_syncsync_documentpages);
+                                eval((RuleUtils.test($ai_kb_document_syncsync_documentpages.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall_01_prepareparam_02" sourceRef="loopsubcall_01" targetRef="prepareparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall_01_end_01" sourceRef="loopsubcall_01" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset_01_end_line" sourceRef="gateway-dedataset_01" targetRef="gateway-dedataset_01_end"/>
+                            <endEvent id="gateway-dedataset_01_end" name="end"/>
         </process>
     </definitions>
