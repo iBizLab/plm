@@ -101,6 +101,14 @@
       "codeName" : "import_method"
     }
   }, {
+    "id" : "space_selection",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SPACE_SELECTION",
+      "codeName" : "space_selection"
+    }
+  }, {
     "id" : "id",
     "hidden" : true,
     "dataType" : 25,
@@ -233,11 +241,11 @@
         "showCaption" : true
       }, {
         "codeName" : "druipart1",
-        "contentHeight" : 400.0,
+        "contentHeight" : 500.0,
         "dRItemTag" : "DRItem2",
         "detailStyle" : "DEFAULT",
         "detailType" : "DRUIPART",
-        "height" : 400.0,
+        "height" : 500.0,
         "name" : "druipart1",
         "getPSAppView" : {
           "accUserMode" : 2,
@@ -314,6 +322,12 @@
               "editMode" : true
             }
           } ],
+          "getPSAppViewNavParams" : [ {
+            "key" : "n_space_id_eq",
+            "name" : "n_space_id_eq",
+            "value" : "space_selection",
+            "rawValue" : false
+          } ],
           "getPSAppViewRefs" : [ {
             "name" : "NEWDATA",
             "realTitle" : "页面编辑视图",
@@ -351,7 +365,7 @@
               "name" : "fetch",
               "getPSAppDEMethod" : {
                 "modelref" : true,
-                "id" : "fetch_default"
+                "id" : "fetch_normal"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -439,7 +453,7 @@
                 "name" : "fetch",
                 "getPSAppDEMethod" : {
                   "modelref" : true,
-                  "id" : "fetch_default"
+                  "id" : "fetch_normal"
                 },
                 "getPSAppDataEntity" : {
                   "modelref" : true,
@@ -536,7 +550,7 @@
               },
               "allowEmpty" : true
             } ],
-            "pagingMode" : 1,
+            "pagingMode" : 2,
             "pagingSize" : 20,
             "getRemovePSControlAction" : {
               "actionName" : "Remove",
@@ -555,9 +569,9 @@
             "sortMode" : "REMOTE",
             "hasWFDataItems" : false,
             "enableColFilter" : false,
-            "enableCustomized" : true,
+            "enableCustomized" : false,
             "enableGroup" : false,
-            "enablePagingBar" : true,
+            "enablePagingBar" : false,
             "enableRowEdit" : false,
             "enableRowEditOrder" : false,
             "enableRowNew" : false,
@@ -775,10 +789,16 @@
         } ],
         "getPSLayoutPos" : {
           "colMD" : 24,
-          "height" : 400,
+          "height" : 500,
           "heightMode" : "PX",
           "layout" : "TABLE_24COL"
         },
+        "getPSNavigateContexts" : [ {
+          "key" : "SPACE_SELECTION",
+          "name" : "SPACE_SELECTION",
+          "value" : "space_selection",
+          "rawValue" : false
+        } ],
         "parentDataJO" : {
           "srfparentdename" : "AI_KB_DOCUMENT_WIZARD",
           "SRFPARENTTYPE" : "CUSTOM"
@@ -805,6 +825,32 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "import_method"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "选择空间",
+        "codeName" : "space_selection",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "space_selection",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "SPACE_SELECTION",
+          "codeName" : "space_selection"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "space_selection"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,

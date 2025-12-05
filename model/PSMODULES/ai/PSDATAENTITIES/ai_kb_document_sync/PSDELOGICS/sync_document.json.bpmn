@@ -31,8 +31,9 @@
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="创建知识库文档"/>
-                        <endEvent id="deaction_01_end" name="end"/>
-                        <sequenceFlow id="deaction_01_end_line" sourceRef="deaction_01" targetRef="deaction_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentrenewparam_01" id="renewparam_01" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <endEvent id="renewparam_01_end" name="end"/>
+                        <sequenceFlow id="renewparam_01_end_line" sourceRef="renewparam_01" targetRef="renewparam_01_end"/>
                     <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
@@ -55,6 +56,8 @@
                     <sequenceFlow id="loopsubcall_01_end_01" sourceRef="loopsubcall_01" targetRef="end_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_deaction_01" sourceRef="prepareparam_02" targetRef="deaction_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_01_renewparam_01" sourceRef="deaction_01" targetRef="renewparam_01">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>
