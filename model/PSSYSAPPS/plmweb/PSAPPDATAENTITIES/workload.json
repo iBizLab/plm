@@ -5403,6 +5403,29 @@
     "reloadData" : true,
     "id" : "ai_add_estimated_workload@workload"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "AI评估工时",
+    "codeName" : "ai_estimated",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "workload_ai_estimated",
+    "name" : "AI评估工时",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "ai_estimated"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "ai_estimated",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "ai_estimated@workload"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "返回",
     "codeName" : "back",
@@ -6750,6 +6773,126 @@
     "id" : "workload_type_duration_link@workload"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "ai_estimated",
+    "defaultParamName" : "Default",
+    "logicName" : "AI登记预估工时",
+    "name" : "AI登记预估工时",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "list"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "AI登记预估工时",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "topPos" : 503,
+      "parallelOutput" : true
+    }, {
+      "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\n\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n\nuiLogic.list = [];\nuiLogic.result = 0;\n\nif (answer && typeof answer == 'string') {\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\n    if (ret.success && ret.data) {\n        if (ret.data_type == 'jsonarray' && _entity_tag) {\n            const principal_id = realView.context[_entity_tag];\n            const register_date = new Date();   \n            ret.data.forEach(entity => {\n                entity.principal_id = principal_id;\n                entity.register_date = register_date;\n                entity.principal_type= _entity_tag;\n                uiLogic.list.push(entity);\n                uiLogic.result = uiLogic.result+1;\n            });\n        }\n\n    }\n\n}\n",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 432,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "GT",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "result"
+            },
+            "logicType" : "SINGLE",
+            "name" : "result 大于(>) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      } ],
+      "topPos" : 381
+    }, {
+      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('预估工时登记成功');",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "刷新父页面",
+      "topPos" : 627,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "list",
+      "logicName" : "list",
+      "name" : "list",
+      "entityListParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "stdDataType" : 9,
+      "simpleParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "back",
     "defaultParamName" : "Default",
     "logicName" : "返回",
