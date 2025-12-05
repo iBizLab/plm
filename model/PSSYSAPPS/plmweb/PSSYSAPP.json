@@ -217106,7 +217106,7 @@
           "topPos" : 510,
           "parallelOutput" : true
         }, {
-          "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\n\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n\nuiLogic.entity = {};\n\nif (answer && typeof answer == 'string') {\n\n    if (ret.success && ret.data) {\n        if (ret.data_type == 'jsonobject') {\n            uiLogic.entity = ret.data;\n            uiLogic.entity.project = realView.context.project ? realView.context.project : realView.context.product;\n\n        }\n    }\n}\n",
+          "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\n\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n\nuiLogic.entity = {};\n\nif (answer && typeof answer == 'string') {\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\n    if (ret.success && ret.data) {\n        if (ret.data_type == 'jsonobject') {\n            uiLogic.entity = ret.data;\n            uiLogic.entity.project = realView.context.project ? realView.context.project : realView.context.product;\n        }\n    }\n}\n",
           "codeName" : "RAWJSCODE_01",
           "leftPos" : 363,
           "logicNodeType" : "RAWJSCODE",
@@ -217130,6 +217130,15 @@
                 },
                 "logicType" : "SINGLE",
                 "name" : "entity[content] 值不为空(NotNil) "
+              }, {
+                "condOP" : "ISNOTNULL",
+                "dstFieldName" : "project",
+                "getDstLogicParam" : {
+                  "modelref" : true,
+                  "id" : "entity"
+                },
+                "logicType" : "SINGLE",
+                "name" : "entity[project] 值不为空(NotNil) "
               } ]
             },
             "getSrcPSDEUILogicNode" : {
@@ -217140,7 +217149,7 @@
           "topPos" : 380,
           "parallelOutput" : true
         }, {
-          "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('评论成功');",
+          "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('已添加到知识空间');",
           "codeName" : "RAWJSCODE_02",
           "leftPos" : 410,
           "logicNodeType" : "RAWJSCODE",
