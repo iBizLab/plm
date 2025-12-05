@@ -20,6 +20,17 @@ package cn.ibizlab.plm.ai.logic.ai_modellogic.get_cloud_config;
             then
             end
 
+            //逻辑处理节点[设置流和vlm]
+            rule "prepareparam_02"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_02"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("descossimage","true");
+                            ai_modelget_cloud_configmap.set("stream","true");
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end_01"
             ruleflow-group "ai_modelget_cloud_configend_01"
@@ -35,6 +46,27 @@ package cn.ibizlab.plm.ai.logic.ai_modellogic.get_cloud_config;
             when
             then
                             ai_modelget_cloud_configmap.set("disabled","1");
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置tools]
+            rule "prepareparam_04"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_04"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("tools","true");
+                            ai_modelget_cloud_configmap.set("toolmaxcalls","5");
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置think]
+            rule "prepareparam_03"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_03"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("think","true");
                         update(ai_modelget_cloud_configdefault);//更新fact中变量值
                         update(ai_modelget_cloud_configmap);//更新fact中变量值
             end
