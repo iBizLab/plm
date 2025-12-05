@@ -27,8 +27,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentdedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="查询空间下的页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentloopsubcall_01" id="loopsubcall_01" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam_02_end" name="end"/>
-                        <sequenceFlow id="prepareparam_02_end_line" sourceRef="prepareparam_02" targetRef="prepareparam_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncsync_documentend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
@@ -55,6 +53,8 @@
                     <sequenceFlow id="loopsubcall_01_prepareparam_02" sourceRef="loopsubcall_01" targetRef="prepareparam_02">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_01_end_01" sourceRef="loopsubcall_01" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_deaction_01" sourceRef="prepareparam_02" targetRef="deaction_01">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>

@@ -7,7 +7,6 @@
   "codeName" : "ai_agent_context_info_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_context_info_view.json",
   "name" : "ai_agent_contextinfo_view",
-  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
@@ -22,7 +21,7 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "main",
+    "codeName" : "info_form",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -41,7 +40,7 @@
       }
     },
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context/PSFORMS/main.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context/PSFORMS/info_form.json",
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
@@ -86,7 +85,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
       }
     },
-    "logicName" : "主编辑表单",
+    "logicName" : "信息表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
@@ -179,14 +178,14 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "compute",
-      "name" : "compute_temperature_top_p",
-      "scriptCode" : "const modeConfigs = {\n  precise: { temperature: 0.1, top_p: 0.7 },\n  balanced: { temperature: 1, top_p: 0.7 },\n  creative: { temperature: 1, top_p: 0.8 }\n};\n\nconst config = modeConfigs[data.generation_mode];\nif (config) {\n  data.temperature = config.temperature;\n  data.top_p = config.top_p;\n}",
-      "customCode" : true
-    }, {
       "codeName" : "compute_generation_mode",
       "name" : "compute_generation_mode",
       "scriptCode" : "data.generation_mode='custom';",
+      "customCode" : true
+    }, {
+      "codeName" : "compute",
+      "name" : "compute_temperature_top_p",
+      "scriptCode" : "const modeConfigs = {\n  precise: { temperature: 0.1, top_p: 0.7 },\n  balanced: { temperature: 1, top_p: 0.7 },\n  creative: { temperature: 1, top_p: 0.8 }\n};\n\nconst config = modeConfigs[data.generation_mode];\nif (config) {\n  data.temperature = config.temperature;\n  data.top_p = config.top_p;\n}",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {
@@ -284,7 +283,7 @@
       }
     }, {
       "id" : "enable_suggested_questions",
-      "dataType" : 9,
+      "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ENABLE_SUGGESTED_QUESTIONS",
         "codeName" : "enable_suggested_questions"
@@ -298,7 +297,7 @@
       }
     }, {
       "id" : "enable_tools",
-      "dataType" : 9,
+      "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ENABLE_TOOLS",
         "codeName" : "enable_tools"
@@ -404,14 +403,14 @@
       }
     }, {
       "id" : "enable_thinking",
-      "dataType" : 9,
+      "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ENABLE_THINKING",
         "codeName" : "enable_thinking"
       }
     }, {
       "id" : "stream",
-      "dataType" : 9,
+      "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "STREAM",
         "codeName" : "stream"
@@ -424,28 +423,12 @@
         "codeName" : "context_debug_data"
       }
     }, {
-      "id" : "ai_agent_id",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "AI_AGENT_ID",
-        "codeName" : "ai_agent_id"
-      }
-    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "id"
-      }
-    }, {
-      "id" : "ai_model_id",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "AI_MODEL_ID",
-        "codeName" : "ai_model_id"
       }
     } ],
     "getPSDEFormPages" : [ {
@@ -518,46 +501,15 @@
             "codeName" : "ai_agent_name"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "PICKUPVIEW" : "TRUE"
-            },
-            "editorType" : "PICKER",
-            "handlerType" : "PickupText",
+            "editorType" : "SPAN",
             "name" : "ai_agent_name",
-            "getPSAppDEACMode" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
-            },
-            "getPSEditorItems" : [ {
-              "name" : "ai_agent_id"
-            } ],
-            "getPickupPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_pickup_view.json",
-              "viewType" : "DEPICKUPVIEW"
-            },
-            "valueItemName" : "ai_agent_id",
-            "enableAC" : true,
-            "enablePickupView" : true,
-            "forceSelection" : true,
-            "showTrigger" : true,
-            "singleSelect" : true
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
             "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
-          "valueItemName" : "ai_agent_id",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -577,16 +529,16 @@
             "codeName" : "code_name"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
-            "name" : "code_name"
+            "editorType" : "SPAN",
+            "name" : "code_name",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
             "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false,
+          "allowEmpty" : true,
           "showCaption" : true
         }, {
           "caption" : "描述",
@@ -679,7 +631,7 @@
             "dataType" : 21,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 3,
+            "enableCond" : 0,
             "height" : 500.0,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
@@ -727,10 +679,12 @@
               "codeName" : "suggested_questions"
             },
             "getPSEditor" : {
-              "editorType" : "ARRAY",
+              "editorType" : "SPAN",
               "name" : "suggested_questions",
               "placeHolder" : "继承自模版，如需修改清输入自定义建议提示词...",
-              "valueType" : "SIMPLES"
+              "valueType" : "SIMPLES",
+              "array" : true,
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -748,7 +702,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         }, {
           "caption" : "提问建议",
@@ -759,12 +713,11 @@
           "getPSDEFormDetails" : [ {
             "caption" : "启用问题建议",
             "codeName" : "enable_suggested_questions",
-            "dataType" : 9,
+            "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
-            "itemWidth" : 230.0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "enable_suggested_questions",
@@ -774,15 +727,14 @@
               "codeName" : "enable_suggested_questions"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST_100",
-              "editorWidth" : 100.0,
+              "editorType" : "SPAN",
               "name" : "enable_suggested_questions",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 4,
@@ -790,7 +742,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "自定义建议提示词",
@@ -799,7 +751,7 @@
             "dataType" : 21,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 3,
+            "enableCond" : 0,
             "height" : 500.0,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
@@ -856,7 +808,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         }, {
           "caption" : "调用工具",
@@ -867,12 +819,11 @@
           "getPSDEFormDetails" : [ {
             "caption" : "调用工具",
             "codeName" : "enable_tools",
-            "dataType" : 9,
+            "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
-            "itemWidth" : 230.0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "enable_tools",
@@ -882,15 +833,14 @@
               "codeName" : "enable_tools"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST_100",
-              "editorWidth" : 100.0,
+              "editorType" : "SPAN",
               "name" : "enable_tools",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
@@ -898,7 +848,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "最大工具调用次数",
@@ -931,9 +881,10 @@
               "notMode" : false
             } ],
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
+              "editorType" : "SPAN",
               "name" : "tool_max_calls",
-              "placeHolder" : "继承自模版"
+              "placeHolder" : "继承自模版",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
@@ -998,7 +949,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         }, {
           "caption" : "大模型",
@@ -1028,47 +979,16 @@
                 "codeName" : "ai_model_name"
               },
               "getPSEditor" : {
-                "editorParams" : {
-                  "AC" : "TRUE",
-                  "PICKUPVIEW" : "TRUE"
-                },
-                "editorType" : "PICKER",
-                "handlerType" : "PickupText",
+                "editorType" : "SPAN",
                 "name" : "ai_model_name",
-                "getPSAppDEACMode" : {
-                  "modelref" : true,
-                  "id" : "Default"
-                },
-                "getPSAppDEDataSet" : {
-                  "modelref" : true,
-                  "id" : "fetch_default"
-                },
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
-                },
-                "getPSEditorItems" : [ {
-                  "name" : "ai_model_id"
-                } ],
-                "getPickupPSAppView" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_model_pickup_view.json",
-                  "viewType" : "DEPICKUPVIEW"
-                },
                 "placeHolder" : "继承自模版",
-                "valueItemName" : "ai_model_id",
-                "enableAC" : true,
-                "enablePickupView" : true,
-                "forceSelection" : true,
-                "showTrigger" : true,
-                "singleSelect" : true
+                "enableLinkView" : false
               },
               "getPSLayoutPos" : {
                 "colLG" : 12,
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "valueItemName" : "ai_model_id",
               "allowEmpty" : true,
               "showCaption" : true
             }, {
@@ -1077,7 +997,7 @@
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
-              "enableCond" : 3,
+              "enableCond" : 0,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
               "labelWidth" : 77,
@@ -1212,7 +1132,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "infoGroupMode" : false,
+              "infoGroupMode" : true,
               "showCaption" : false
             } ],
             "getPSLayout" : {
@@ -1224,7 +1144,7 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "infoGroupMode" : false,
+            "infoGroupMode" : true,
             "showCaption" : false
           } ],
           "getPSLayout" : {
@@ -1236,7 +1156,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         }, {
           "caption" : "记忆",
@@ -1251,7 +1171,7 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "memory_mode",
@@ -1261,14 +1181,14 @@
               "codeName" : "memory_mode"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST",
+              "editorType" : "SPAN",
               "name" : "memory_mode",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__memory_mode.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
@@ -1276,7 +1196,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "记忆对话轮数",
@@ -1316,7 +1236,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         }, {
           "caption" : "高级",
@@ -1374,8 +1294,9 @@
               "codeName" : "sequence"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "name" : "sequence"
+              "editorType" : "SPAN",
+              "name" : "sequence",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
@@ -1391,7 +1312,7 @@
             "dataType" : 9,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 3,
+            "enableCond" : 0,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
@@ -1418,7 +1339,7 @@
             "dataType" : 9,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 3,
+            "enableCond" : 0,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
@@ -1456,11 +1377,10 @@
               "codeName" : "max_input_tokens"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxValue" : 32767.0,
-              "minValue" : 1.0,
+              "editorType" : "SPAN",
               "name" : "max_input_tokens",
-              "placeHolder" : "继承自模版"
+              "placeHolder" : "继承自模版",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
@@ -1476,7 +1396,7 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "trimming_strategy",
@@ -1486,14 +1406,14 @@
               "codeName" : "trimming_strategy"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST",
+              "editorType" : "SPAN",
               "name" : "trimming_strategy",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__trimming_strategy.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
@@ -1501,17 +1421,16 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "启用思考链",
             "codeName" : "enable_thinking",
-            "dataType" : 9,
+            "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
-            "itemWidth" : 230.0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "enable_thinking",
@@ -1521,15 +1440,14 @@
               "codeName" : "enable_thinking"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST_100",
-              "editorWidth" : 100.0,
+              "editorType" : "SPAN",
               "name" : "enable_thinking",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
@@ -1537,17 +1455,16 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "流式输出",
             "codeName" : "stream",
-            "dataType" : 9,
+            "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 0,
-            "itemWidth" : 230.0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
             "name" : "stream",
@@ -1557,15 +1474,14 @@
               "codeName" : "stream"
             },
             "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST_100",
-              "editorWidth" : 100.0,
+              "editorType" : "SPAN",
               "name" : "stream",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
               },
               "placeHolder" : "继承自模版",
-              "singleSelect" : true
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
@@ -1573,7 +1489,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "needCodeListConfig" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "调试数据",
@@ -1613,7 +1529,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "infoGroupMode" : true,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -1626,35 +1542,8 @@
           "colMD" : 22,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : false,
+        "infoGroupMode" : true,
         "showCaption" : false
-      }, {
-        "caption" : "智能体标识",
-        "codeName" : "ai_agent_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "ai_agent_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "AI_AGENT_ID",
-          "codeName" : "ai_agent_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "ai_agent_id"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 22,
-          "colMD" : 22,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.AI_AGENT_CONTEXT.ID"
@@ -1685,33 +1574,6 @@
         },
         "allowEmpty" : true,
         "hidden" : true
-      }, {
-        "caption" : "模型标识",
-        "codeName" : "ai_model_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "ai_model_id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "AI_MODEL_ID",
-          "codeName" : "ai_model_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "ai_model_id"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 22,
-          "colMD" : 22,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColLG" : 22,
@@ -1719,7 +1581,7 @@
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
       },
-      "infoGroupMode" : false
+      "infoGroupMode" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,
@@ -1759,9 +1621,10 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
       }
     },
+    "infoFormMode" : true,
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "bc700246757000fd859a82d77afcd395",
+    "modelid" : "ba1c9a4840e0532c42a356d648258573",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "info_view_datainfobar",
