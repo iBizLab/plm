@@ -12,11 +12,11 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case workloadai_save_workloadtest_case;
                 global cn.ibizlab.plm.core.base.domain.workload workloadai_save_workloadu_workload;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadai_save_workloadwork_item;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
                     global cn.ibizlab.plm.core.base.service.Iextend_storageService extend_storageservice;
                     global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
-                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
         global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -65,6 +65,21 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
+            //逻辑处理节点[获取需求]
+            rule "deaction3"
+            ruleflow-group "workloadai_save_workloaddeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(workloadai_save_workloadidea.getId()),workloadai_save_workloadidea);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取工作项]
             rule "deaction4"
             ruleflow-group "workloadai_save_workloaddeaction4"
@@ -100,15 +115,9 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
             ruleflow-group "workloadai_save_workloadprepareparam3"
             when
             then
-                            workloadai_save_workloaddefault.set("identifier",workloadai_save_workloadwork_item.get("identifier"));
                             workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
                             workloadai_save_workloadactual.set("ownertype","WORK_ITEM");
                             workloadai_save_workloadremaining.set("ownertype","WORK_ITEM");
-                            workloadai_save_workloaddefault.set("principaltype","WORK_ITEM");
-                            workloadai_save_workloaddefault.set("recentparent",workloadai_save_workloadwork_item.get("projectid"));
-                            workloadai_save_workloaddefault.set("recentparentidentifier",workloadai_save_workloadwork_item.get("projectidentifier"));
-                            workloadai_save_workloaddefault.set("recentparentname",workloadai_save_workloadwork_item.get("projectname"));
-                            workloadai_save_workloaddefault.set("name",workloadai_save_workloadwork_item.get("title"));
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -123,15 +132,9 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
             ruleflow-group "workloadai_save_workloadprepareparam4"
             when
             then
-                            workloadai_save_workloaddefault.set("identifier",workloadai_save_workloadidea.get("identifier"));
                             workloadai_save_workloadactual.set("ownertype","IDEA");
                             workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
                             workloadai_save_workloadremaining.set("ownertype","IDEA");
-                            workloadai_save_workloaddefault.set("recentparent",workloadai_save_workloadidea.get("productid"));
-                            workloadai_save_workloaddefault.set("recentparentname",workloadai_save_workloadidea.get("productname"));
-                            workloadai_save_workloaddefault.set("recentparentidentifier",workloadai_save_workloadidea.get("productidentifier"));
-                            workloadai_save_workloaddefault.set("name",workloadai_save_workloadidea.get("title"));
-                            workloadai_save_workloaddefault.set("principaltype","IDEA");
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -146,15 +149,9 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
             ruleflow-group "workloadai_save_workloadprepareparam5"
             when
             then
-                            workloadai_save_workloaddefault.set("identifier",workloadai_save_workloadtest_case.get("identifier"));
                             workloadai_save_workloadactual.set("ownertype","TEST_CASE");
                             workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
                             workloadai_save_workloadremaining.set("ownertype","TEST_CASE");
-                            workloadai_save_workloaddefault.set("recentparentidentifier",workloadai_save_workloadtest_case.get("libraryidentifier"));
-                            workloadai_save_workloaddefault.set("recentparent",workloadai_save_workloadtest_case.get("testlibraryid"));
-                            workloadai_save_workloaddefault.set("name",workloadai_save_workloadtest_case.get("testlibraryname"));
-                            workloadai_save_workloaddefault.set("name",workloadai_save_workloadtest_case.get("title"));
-                            workloadai_save_workloaddefault.set("principaltype","TEST_CASE");
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -192,11 +189,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[计算用例剩余工时]
-            rule "rawsfcode3"
-            ruleflow-group "workloadai_save_workloadrawsfcode3"
+            //逻辑处理节点[更新剩余工时]
+            rule "deaction6"
+            ruleflow-group "workloadai_save_workloaddeaction6"
             when
             then
+                        extend_storageservice.save(workloadai_save_workloadremaining);
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -206,12 +204,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[更新剩余工时]
-            rule "deaction6"
-            ruleflow-group "workloadai_save_workloaddeaction6"
+            //逻辑处理节点[工时为0时置为null]
+            rule "prepareparam6"
+            ruleflow-group "workloadai_save_workloadprepareparam6"
             when
             then
-                        extend_storageservice.save(workloadai_save_workloadremaining);
+                                workloadai_save_workloadactual.set("decimalvalue",null);
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -262,21 +260,6 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[填充父工作项标识]
-            rule "prepareparam7"
-            ruleflow-group "workloadai_save_workloadprepareparam7"
-            when
-            then
-                            workloadai_save_workloadu_workload.set("principalid",workloadai_save_workloadwork_item.get("pid"));
-                        update(workloadai_save_workloaddefault);//更新fact中变量值
-                        update(workloadai_save_workloadactual);//更新fact中变量值
-                        update(workloadai_save_workloadidea);//更新fact中变量值
-                        update(workloadai_save_workloadremaining);//更新fact中变量值
-                        update(workloadai_save_workloadtest_case);//更新fact中变量值
-                        update(workloadai_save_workloadu_workload);//更新fact中变量值
-                        update(workloadai_save_workloadwork_item);//更新fact中变量值
-            end
-
             //逻辑处理节点[自动计算父工时]
             rule "delogic1"
             ruleflow-group "workloadai_save_workloaddelogic1"
@@ -291,12 +274,11 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取需求]
-            rule "deaction3"
-            ruleflow-group "workloadai_save_workloaddeaction3"
+            //逻辑处理节点[计算用例剩余工时]
+            rule "rawsfcode3"
+            ruleflow-group "workloadai_save_workloadrawsfcode3"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(workloadai_save_workloadidea.getId()),workloadai_save_workloadidea);
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
@@ -306,12 +288,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
                         update(workloadai_save_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[工时为0时置为null]
-            rule "prepareparam6"
-            ruleflow-group "workloadai_save_workloadprepareparam6"
+            //逻辑处理节点[填充父工作项标识]
+            rule "prepareparam7"
+            ruleflow-group "workloadai_save_workloadprepareparam7"
             when
             then
-                                workloadai_save_workloadactual.set("decimalvalue",null);
+                            workloadai_save_workloadu_workload.set("principalid",workloadai_save_workloadwork_item.get("pid"));
                         update(workloadai_save_workloaddefault);//更新fact中变量值
                         update(workloadai_save_workloadactual);//更新fact中变量值
                         update(workloadai_save_workloadidea);//更新fact中变量值
