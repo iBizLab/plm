@@ -6,7 +6,6 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="article_pageai_create_pagedefault" type="entity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageai_create_pagedata" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagefilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageai_create_pagepage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="article_pageai_create_pagerelation_page" type="refentity"/>
@@ -18,7 +17,6 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="article_pageai_create_pagedefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
-                            <tns:global identifier="article_pageai_create_pagedata" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="article_pageai_create_pagefilter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="article_pageai_create_pagepage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
                             <tns:global identifier="article_pageai_create_pagerelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
@@ -26,7 +24,6 @@
                             <tns:global identifier="article_pageai_create_pagetemp" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pagethrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
@@ -42,22 +39,19 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageai_create_pageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="bindparam1_prepareparam2" sourceRef="bindparam1" targetRef="prepareparam2">
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pageai_create_pagedefault:article_page();
-                                            $article_pageai_create_pagedata:article_page();
                                             $article_pageai_create_pagefilter:relation();
                                             $article_pageai_create_pagepage:article_page();
                                             $article_pageai_create_pagerelation_page:relation();
                                             $article_pageai_create_pagespace:space();
                                             $article_pageai_create_pagetemp:relation();
-                                    eval($article_pageai_create_pagedefault==article_pageai_create_pagedefault && $article_pageai_create_pagedata==article_pageai_create_pagedata && $article_pageai_create_pagefilter==article_pageai_create_pagefilter && $article_pageai_create_pagepage==article_pageai_create_pagepage && $article_pageai_create_pagerelation_page==article_pageai_create_pagerelation_page && $article_pageai_create_pagespace==article_pageai_create_pagespace && $article_pageai_create_pagetemp==article_pageai_create_pagetemp);
+                                    eval($article_pageai_create_pagedefault==article_pageai_create_pagedefault && $article_pageai_create_pagefilter==article_pageai_create_pagefilter && $article_pageai_create_pagepage==article_pageai_create_pagepage && $article_pageai_create_pagerelation_page==article_pageai_create_pagerelation_page && $article_pageai_create_pagespace==article_pageai_create_pagespace && $article_pageai_create_pagetemp==article_pageai_create_pagetemp);
                                 eval((RuleUtils.test($article_pageai_create_pagerelation_page.get("size"),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -65,13 +59,12 @@
                     <sequenceFlow id="gateway-dedataset1_throwexception1" sourceRef="gateway-dedataset1" targetRef="throwexception1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pageai_create_pagedefault:article_page();
-                                            $article_pageai_create_pagedata:article_page();
                                             $article_pageai_create_pagefilter:relation();
                                             $article_pageai_create_pagepage:article_page();
                                             $article_pageai_create_pagerelation_page:relation();
                                             $article_pageai_create_pagespace:space();
                                             $article_pageai_create_pagetemp:relation();
-                                    eval($article_pageai_create_pagedefault==article_pageai_create_pagedefault && $article_pageai_create_pagedata==article_pageai_create_pagedata && $article_pageai_create_pagefilter==article_pageai_create_pagefilter && $article_pageai_create_pagepage==article_pageai_create_pagepage && $article_pageai_create_pagerelation_page==article_pageai_create_pagerelation_page && $article_pageai_create_pagespace==article_pageai_create_pagespace && $article_pageai_create_pagetemp==article_pageai_create_pagetemp);
+                                    eval($article_pageai_create_pagedefault==article_pageai_create_pagedefault && $article_pageai_create_pagefilter==article_pageai_create_pagefilter && $article_pageai_create_pagepage==article_pageai_create_pagepage && $article_pageai_create_pagerelation_page==article_pageai_create_pagerelation_page && $article_pageai_create_pagespace==article_pageai_create_pagespace && $article_pageai_create_pagetemp==article_pageai_create_pagetemp);
                                 eval((RuleUtils.test($article_pageai_create_pagerelation_page.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
