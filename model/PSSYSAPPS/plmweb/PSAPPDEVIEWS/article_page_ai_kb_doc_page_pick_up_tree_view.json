@@ -107,8 +107,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
         }
       },
-      "hookEventNames" : [ "ONFILTERNODE", "ONBACK" ],
-      "logicName" : "cs知识库文档页面树视图_树视图",
+      "logicName" : "知识库文档页面树视图_树视图",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
@@ -178,138 +177,11 @@
         "enableDEFieldPrivilege" : false,
         "id" : "树视图处理器"
       },
-      "getPSControlLogics" : [ {
-        "eventNames" : "onFilterNode",
-        "logicTag" : "tree",
-        "logicType" : "SCRIPT",
-        "name" : "logic",
-        "scriptCode" : "const tree = view.getController('treeexpbar_tree');\r\n// 隐藏搜索栏与底部工具栏\r\nif (tree) {\r\n    const toolbar = tree.layoutPanel.panelItems.toolbar;\r\n    if (toolbar) {\r\n        toolbar.state.visible = false;\r\n    }\r\n    const searchbar = tree.layoutPanel.panelItems.searchbar;\r\n    if (searchbar) {\r\n        searchbar.state.visible = false;\r\n    }\r\n}"
-      }, {
-        "eventNames" : "onBack",
-        "logicTag" : "tree",
-        "logicType" : "SCRIPT",
-        "name" : "logic2",
-        "scriptCode" : "const tree = view.getController('treeexpbar_tree');\r\n// 显示搜索栏与底部工具栏\r\nif (tree) {\r\n    const toolbar = tree.layoutPanel.panelItems.toolbar;\r\n    if (toolbar) {\r\n        toolbar.state.visible = true;\r\n    }\r\n    const searchbar = tree.layoutPanel.panelItems.searchbar;\r\n    if (searchbar) {\r\n        searchbar.state.visible = true;\r\n    }\r\n}"
-      } ],
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
         "id" : "TREE"
       },
-      "getPSControlRenders" : [ {
-        "name" : "layout",
-        "getPSLayoutPanel" : {
-          "codeName" : "tree_layout",
-          "controlType" : "PANEL",
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page/PSPANELS/tree_layout.json",
-          "layoutMode" : "FLEX",
-          "logicName" : "部件-分页树部件布局面板",
-          "memo" : "部件-分页树部件布局面板",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-          },
-          "getPSControlParam" : { },
-          "getPSLayout" : {
-            "layout" : "FLEX"
-          },
-          "getRootPSPanelItems" : [ {
-            "caption" : "容器",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "CONTAINER",
-            "name" : "control_header",
-            "getPSLayout" : {
-              "layout" : "FLEX"
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX",
-              "shrink" : 0
-            },
-            "getPSPanelItems" : [ {
-              "caption" : "容器",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CONTAINER",
-              "name" : "control_searchbar",
-              "getPSLayout" : {
-                "layout" : "FLEX"
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSPanelItems" : [ {
-                "caption" : "搜索栏",
-                "itemStyle" : "DEFAULT",
-                "itemType" : "CTRLPOS",
-                "name" : "searchbar",
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
-                },
-                "showCaption" : true
-              } ]
-            } ]
-          }, {
-            "caption" : "容器",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "CONTAINER",
-            "name" : "control_tree",
-            "getPSLayout" : {
-              "layout" : "FLEX"
-            },
-            "getPSLayoutPos" : {
-              "grow" : 1,
-              "layout" : "FLEX"
-            },
-            "getPSPanelItems" : [ {
-              "caption" : "树视图",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CTRLPOS",
-              "name" : "tree",
-              "getPSLayoutPos" : {
-                "grow" : 1,
-                "layout" : "FLEX"
-              },
-              "showCaption" : true
-            }, {
-              "caption" : "容器",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CONTAINER",
-              "name" : "container",
-              "getPSLayout" : {
-                "align" : "center",
-                "dir" : "row",
-                "layout" : "FLEX",
-                "vAlign" : "center"
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX",
-                "shrink" : 0
-              },
-              "getPSPanelItems" : [ {
-                "caption" : "控件占位",
-                "itemStyle" : "DEFAULT",
-                "itemType" : "CTRLPOS",
-                "name" : "toolbar",
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX",
-                  "shrink" : 0,
-                  "widthMode" : "FULL"
-                },
-                "showCaption" : true
-              } ]
-            } ]
-          } ],
-          "layoutPanel" : true,
-          "name" : "layout",
-          "modelid" : "11bddd0b35b4bd9bf3232da68248b0a0",
-          "modeltype" : "PSSYSVIEWPANEL"
-        },
-        "renderType" : "LAYOUTPANEL"
-      } ],
       "getPSControls" : [ {
         "codeName" : "ai_kb_doc_page_pick_up_tree_view_node4_cm",
         "controlType" : "CONTEXTMENU",
