@@ -1948,7 +1948,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
+          "id" : "RAWJSCODE_02"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -1958,48 +1958,6 @@
         }
       } ],
       "topPos" : 270,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 150,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET_01"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "n_space_id_eq",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_filter"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "SPACE_SELECTION",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "size",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_filter"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "1000",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 410,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2015,7 +1973,7 @@
         "modelref" : true,
         "id" : "page_filter"
       },
-      "leftPos" : 360,
+      "leftPos" : 340,
       "logicNodeType" : "DEDATASET",
       "name" : "查询选择空间下的页面",
       "getPSDEUILogicLinks" : [ {
@@ -2034,6 +1992,26 @@
         "modelref" : true,
         "id" : "pages"
       },
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "code" : "const _default =  uiLogic.default;\r\nconst _page_filter =  uiLogic.page_filter;\r\n_page_filter.n_space_id_eq=_default.space_selection;\r\n_page_filter.size=1000;",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 122,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "构造查询参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
       "topPos" : 410,
       "parallelOutput" : true
     }, {
