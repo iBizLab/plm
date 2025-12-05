@@ -60,14 +60,14 @@
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
           "condOP" : "EQ",
-          "dstFieldName" : "workload_kind",
+          "dstFieldName" : "PRINCIPAL_TYPE",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[workload_kind] 等于(=) 产品需求",
-          "paramValue" : "产品需求"
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -86,14 +86,14 @@
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
           "condOP" : "EQ",
-          "dstFieldName" : "workload_kind",
+          "dstFieldName" : "PRINCIPAL_TYPE",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[workload_kind] 等于(=) 工作项",
-          "paramValue" : "工作项"
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -112,14 +112,14 @@
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
           "condOP" : "EQ",
-          "dstFieldName" : "workload_kind",
+          "dstFieldName" : "PRINCIPAL_TYPE",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[workload_kind] 等于(=) 测试用例",
-          "paramValue" : "测试用例"
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -224,39 +224,6 @@
     } ],
     "topPos" : 160
   }, {
-    "codeName" : "DEACTION3",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/Get.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "idea"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-    },
-    "leftPos" : -90,
-    "logicNodeType" : "DEACTION",
-    "name" : "获取需求",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION3"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "idea"
-    },
-    "topPos" : 330
-  }, {
     "codeName" : "DEACTION4",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -287,6 +254,39 @@
     "getRetPSDELogicParam" : {
       "modelref" : true,
       "id" : "work_item"
+    },
+    "topPos" : 330
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "leftPos" : -90,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取需求",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
     },
     "topPos" : 330
   }, {
@@ -520,6 +520,25 @@
     } ],
     "topPos" : 560
   }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef test_case = logic.param('test_case').getReal()\r\ndef remaining = logic.param('remaining').getReal()\r\n\r\ndef remaining_workload = (test_case.get('estimated_workload') ?: 0) + _default.get('duration') - (test_case.get('actual_workload') ?: 0)\r\nremaining_workload = (remaining_workload < 0) ? 0 : remaining_workload\r\nremaining.set('decimal_value', remaining_workload)",
+    "codeName" : "RAWSFCODE3",
+    "codeType" : "Groovy",
+    "leftPos" : 433,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算用例剩余工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      }
+    } ],
+    "topPos" : 560
+  }, {
     "codeName" : "DEACTION6",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -717,43 +736,6 @@
     },
     "topPos" : 1150
   }, {
-    "codeName" : "DELOGIC1",
-    "getDstPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/workload_auto_cal.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "u_workload"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DELOGIC",
-    "name" : "自动计算父工时",
-    "topPos" : 1519
-  }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\ndef test_case = logic.param('test_case').getReal()\r\ndef remaining = logic.param('remaining').getReal()\r\n\r\ndef remaining_workload = (test_case.get('estimated_workload') ?: 0) + _default.get('duration') - (test_case.get('actual_workload') ?: 0)\r\nremaining_workload = (remaining_workload < 0) ? 0 : remaining_workload\r\nremaining.set('decimal_value', remaining_workload)",
-    "codeName" : "RAWSFCODE3",
-    "codeType" : "Groovy",
-    "leftPos" : 433,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "计算用例剩余工时",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE3"
-      }
-    } ],
-    "topPos" : 560
-  }, {
     "codeName" : "PREPAREPARAM7",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
@@ -785,6 +767,24 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 1371
+  }, {
+    "codeName" : "DELOGIC1",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/workload_auto_cal.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "u_workload"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DELOGIC",
+    "name" : "自动计算父工时",
+    "topPos" : 1519
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
