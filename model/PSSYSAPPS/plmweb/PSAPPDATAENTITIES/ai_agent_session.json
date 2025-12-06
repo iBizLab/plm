@@ -1297,9 +1297,9 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
     },
     "getPSNavigateContexts" : [ {
-      "key" : "AI_AGENT_SESSION",
-      "name" : "AI_AGENT_SESSION",
-      "value" : "_id",
+      "key" : "SESSIONID",
+      "name" : "SESSIONID",
+      "value" : "_sessionid",
       "rawValue" : false
     }, {
       "key" : "SRFAIAPPENDCURDATA",
@@ -1307,12 +1307,22 @@
       "value" : "true",
       "rawValue" : true
     }, {
+      "key" : "AI_AGENT_SESSION",
+      "name" : "AI_AGENT_SESSION",
+      "value" : "_id",
+      "rawValue" : false
+    }, {
       "key" : "AI_AGENT_CONTEXT",
       "name" : "AI_AGENT_CONTEXT",
       "value" : "context_id",
       "rawValue" : false
     } ],
     "getPSNavigateParams" : [ {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    }, {
       "key" : "srfenableaiagentchange",
       "name" : "srfenableaiagentchange",
       "value" : "false",
@@ -1323,14 +1333,14 @@
       "value" : "CONTEXT_CODE_NAME",
       "rawValue" : false
     }, {
-      "key" : "autoquestion",
-      "name" : "autoquestion",
-      "value" : "true",
-      "rawValue" : true
-    }, {
       "key" : "srfaiagentscope",
       "name" : "srfaiagentscope",
       "value" : "_entity_tag",
+      "rawValue" : false
+    }, {
+      "key" : "sessionid",
+      "name" : "sessionid",
+      "value" : "_sessionid",
       "rawValue" : false
     } ],
     "uIActionMode" : "FRONT",
@@ -1558,7 +1568,7 @@
       "topPos" : 530,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n\n// 检查context_data是否存在且为字符串\nif (target.context_debug_data && typeof target.context_debug_data === 'string') {\n    try {\n        // 将JSON字符串解析为对象\n        const contextObj = JSON.parse(target.context_debug_data);\n        console.log('解析后的context_data对象:', contextObj);\n        //const _id = uiLogic.default.id;\n\n        // 将解析后的对象合并到uiLogic.default中\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.default, contextObj);\n        }\n    } catch (parseError) {\n        console.error('JSON解析错误:', parseError);\n        console.error('无效的JSON字符串:', target.context_debug_data);\n    }\n\n}       \n //uiLogic.default.id = _id; \nuiLogic.default._id = \"temp@\"+uiLogic.default.context_id + '-' + uiLogic.context.srfviewid + '-' + (target?.id || (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)));\nconsole.log('合并后的uiLogic.default:', uiLogic.default);\nuiLogic.view.closeView();\n\n",
+      "code" : "console.log(uiLogic.default);\n\nconst target = uiLogic.default;\n\n// 检查context_data是否存在且为字符串\nif (target.context_debug_data && typeof target.context_debug_data === 'string') {\n    try {\n        // 将JSON字符串解析为对象\n        const contextObj = JSON.parse(target.context_debug_data);\n        console.log('解析后的context_data对象:', contextObj);\n        //const _id = uiLogic.default.id;\n\n        // 将解析后的对象合并到uiLogic.default中\n        // 使用Object.assign进行浅合并\n        if (!Array.isArray(contextObj)) {\n            Object.assign(uiLogic.default, contextObj);\n        }\n    } catch (parseError) {\n        console.error('JSON解析错误:', parseError);\n        console.error('无效的JSON字符串:', target.context_debug_data);\n    }\n\n}       \n //uiLogic.default.id = _id; \nuiLogic.default._id =uiLogic.default.context_id + '-' + uiLogic.context.srfviewid + '-' + (target?.id || (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)));\nuiLogic.default._sessionid=\"temp@\"+uiLogic.default._id;\nconsole.log('合并后的uiLogic.default:', uiLogic.default);\nuiLogic.view.closeView();\n\n",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 250,
       "logicNodeType" : "RAWJSCODE",
