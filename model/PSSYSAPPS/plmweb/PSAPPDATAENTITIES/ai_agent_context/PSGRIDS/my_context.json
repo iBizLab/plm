@@ -174,7 +174,7 @@
       } ],
       "uniqueTag" : "ai_agent_context__my_context"
     },
-    "width" : 100,
+    "width" : 200,
     "widthUnit" : "STAR",
     "enableSort" : true
   }, {
@@ -210,28 +210,6 @@
     },
     "width" : 250,
     "widthUnit" : "PX",
-    "enableSort" : true
-  }, {
-    "align" : "LEFT",
-    "cLConvertMode" : "FRONT",
-    "caption" : "默认Agent",
-    "codeName" : "is_default",
-    "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "is_default",
-    "excelCaption" : "默认Agent",
-    "name" : "is_default",
-    "noPrivDisplayMode" : 1,
-    "getPSAppCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
-    },
-    "getPSAppDEField" : {
-      "name" : "IS_DEFAULT",
-      "codeName" : "is_default"
-    },
-    "width" : 200,
-    "widthUnit" : "PX",
-    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -283,7 +261,9 @@
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
-    }
+    },
+    "scriptCode" : "data.system_flag === 1 ? data.name + '<span style=\"border-radius: 18px;background-color: #f5f5f5;color: #666;height: 24px;line-height: 24px;padding-left: 12px;padding-right: 12px;font-size: .75rem;font-weight: 400;display: inline-flex;align-items: center;border: 1px solid transparent;margin-left: .5rem !important;\">系统</span>':data.name",
+    "customCode" : true
   }, {
     "dataType" : 25,
     "name" : "code_name",
@@ -300,13 +280,6 @@
     }
   }, {
     "dataType" : 9,
-    "name" : "is_default",
-    "getPSAppDEField" : {
-      "name" : "IS_DEFAULT",
-      "codeName" : "is_default"
-    }
-  }, {
-    "dataType" : 9,
     "name" : "active",
     "getPSAppDEField" : {
       "name" : "ACTIVE",
@@ -319,6 +292,13 @@
     "getPSAppDEField" : {
       "name" : "UPDATE_TIME",
       "codeName" : "update_time"
+    }
+  }, {
+    "dataType" : 9,
+    "name" : "system_flag",
+    "getPSAppDEField" : {
+      "name" : "SYSTEM_FLAG",
+      "codeName" : "system_flag"
     }
   }, {
     "dataType" : 25,
@@ -358,21 +338,6 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
-    "caption" : "默认Agent",
-    "codeName" : "is_default",
-    "enableCond" : 3,
-    "ignoreInput" : 0,
-    "name" : "is_default",
-    "getPSAppDEField" : {
-      "name" : "IS_DEFAULT",
-      "codeName" : "is_default"
-    },
-    "getPSEditor" : {
-      "editorType" : "CHECKBOX",
-      "name" : "is_default"
-    },
-    "allowEmpty" : false
-  }, {
     "caption" : "有效",
     "codeName" : "active",
     "enableCond" : 3,
