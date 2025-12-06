@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refuse#begin {开始}]]
-state "通知刷新" as RAWJSCODE4  [[$./refuse#rawjscode4 {通知刷新}]]
-state "实体行为" as DEACTION1  [[$./refuse#deaction1 {实体行为}]]
-state "控制表单状态" as RAWJSCODE2  [[$./refuse#rawjscode2 {控制表单状态}]]
-state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
 state "拒绝评审意见必填" as RAWJSCODE5  [[$./refuse#rawjscode5 {拒绝评审意见必填}]]
+state "实体行为" as DEACTION1  [[$./refuse#deaction1 {实体行为}]]
 state "控制表单状态" as RAWJSCODE3  [[$./refuse#rawjscode3 {控制表单状态}]]
+state "通知刷新" as RAWJSCODE4  [[$./refuse#rawjscode4 {通知刷新}]]
+state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
+state "控制表单状态" as RAWJSCODE2  [[$./refuse#rawjscode2 {控制表单状态}]]
 state "结束" as END1 <<end>> [[$./refuse#end1 {结束}]]
 
 
@@ -173,13 +173,13 @@ util.message.error('请填写拒绝评审意见!');
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|父表单|parent_form|数据对象||
-|下一条内容|next_content|数据对象||
-|当前视图对象|view|当前视图对象||
 |评审内容|review_content|数据对象||
-|父视图|parentView|数据对象||
-|评审内容表格视图|grid_view|数据对象||
-|评审内容表格|content_grid|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前表单|form|部件对象||
+|当前视图对象|view|当前视图对象||
+|评审内容表格视图|grid_view|数据对象||
+|下一条内容|next_content|数据对象||
+|父视图|parentView|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|父表单|parent_form|数据对象||
+|评审内容表格|content_grid|数据对象||

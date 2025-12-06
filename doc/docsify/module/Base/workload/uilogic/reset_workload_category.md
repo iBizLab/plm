@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./reset_workload_category#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./reset_workload_category#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./reset_workload_category#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./reset_workload_category#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1

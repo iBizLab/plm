@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_change_type#begin {"开始"}]]
-state "准备计划参数" as PREPAREPARAM5  [[$./set_change_type#prepareparam5 {"准备计划参数"}]]
-state "获取计划用例" as DEDATASET4  [[$./set_change_type#dedataset4 {"获取计划用例"}]]
 state "调试逻辑参数" as DEBUGPARAM3  [[$./set_change_type#debugparam3 {"调试逻辑参数"}]]
 state "准备基线参数" as PREPAREPARAM4  [[$./set_change_type#prepareparam4 {"准备基线参数"}]]
+state "准备计划参数" as PREPAREPARAM5  [[$./set_change_type#prepareparam5 {"准备计划参数"}]]
+state "获取计划用例" as DEDATASET4  [[$./set_change_type#dedataset4 {"获取计划用例"}]]
+state "实体数据集" as DEDATASET5  [[$./set_change_type#dedataset5 {"实体数据集"}]]
 state "查询用例分页数据" as DEDATASET1  [[$./set_change_type#dedataset1 {"查询用例分页数据"}]]
 state "获取评审测试用例" as RAWSQLCALL1  [[$./set_change_type#rawsqlcall1 {"获取评审测试用例"}]]
-state "调试逻辑参数" as DEBUGPARAM4  [[$./set_change_type#debugparam4 {"调试逻辑参数"}]]
 state "获取基线用例" as DEDATASET3  [[$./set_change_type#dedataset3 {"获取基线用例"}]]
 state "结束" as END1 <<end>> [[$./set_change_type#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_change_type#loopsubcall1 {"循环子调用"}]] #green {
@@ -48,14 +48,15 @@ DEBUGPARAM2 --> PREPAREPARAM3 : [[$./set_change_type#debugparam2-prepareparam3{�
 PREPAREPARAM3 --> RAWSFCODE2
 RAWSFCODE2 --> END1
 DEBUGPARAM3 --> RAWSQLCALL1 : [[$./set_change_type#debugparam3-rawsqlcall1{连接名称} 连接名称]]
-RAWSQLCALL1 --> DEBUGPARAM4
-DEBUGPARAM4 --> LOOPSUBCALL1
+RAWSQLCALL1 --> LOOPSUBCALL1
 DEBUGPARAM3 --> PREPAREPARAM4 : [[$./set_change_type#debugparam3-prepareparam4{连接名称} 连接名称]]
 PREPAREPARAM4 --> DEDATASET3
 DEDATASET3 --> LOOPSUBCALL1
 DEBUGPARAM3 --> PREPAREPARAM5 : [[$./set_change_type#debugparam3-prepareparam5{连接名称} 连接名称]]
 PREPAREPARAM5 --> DEDATASET4
 DEDATASET4 --> LOOPSUBCALL1
+DEBUGPARAM3 --> DEDATASET5 : [[$./set_change_type#debugparam3-dedataset5{连接名称} 连接名称]]
+DEDATASET5 --> LOOPSUBCALL1
 
 
 @enduml
@@ -89,6 +90,14 @@ DEDATASET4 --> LOOPSUBCALL1
 
 
 调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 数据集合 [测试计划用例(test_plan_test_case)](module/TestMgmt/test_case#数据集合) ，查询参数为`plan_filter(计划过滤器)`
+
+将执行结果返回给参数`page_results(分页查询结果)`
+
+#### 实体数据集 :id=DEDATASET5<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+
+
+
+调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 数据集合 [未添加用例（评审）(not_add)](module/TestMgmt/test_case#数据集合) ，查询参数为`Default(传入变量)`
 
 将执行结果返回给参数`page_results(分页查询结果)`
 
@@ -159,14 +168,6 @@ DEDATASET4 --> LOOPSUBCALL1
 2. `Default(传入变量).n_test_library_id_eq`
 
 重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`page_results(分页查询结果)`的详细信息
-
 
 #### 查询符合条件的版本 :id=DEDATASET2<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -253,7 +254,7 @@ if (version_pages_results) {
 ### 连接条件说明
 #### 连接名称 :id=DEBUGPARAM3-DEDATASET1
 
-`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL AND `Default(传入变量).test_plan` ISNULL
+`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL AND `Default(传入变量).test_plan` ISNULL AND `Default(传入变量).add_tag` ISNULL AND `Default(传入变量).add_review` ISNULL
 #### 未评审 :id=DEBUGPARAM2-PREPAREPARAM2
 
 `for_obj(循环临时变量).REVIEW_RESULT_STATE(评审结果)` EQ `1`
@@ -269,6 +270,9 @@ if (version_pages_results) {
 #### 连接名称 :id=DEBUGPARAM3-PREPAREPARAM5
 
 (`Default(传入变量).tag` EQ `test_plan` OR `Default(传入变量).test_plan` ISNOTNULL)
+#### 连接名称 :id=DEBUGPARAM3-DEDATASET5
+
+`Default(传入变量).add_tag` ISNOTNULL AND `Default(传入变量).add_review` ISNOTNULL
 
 
 ### 实体逻辑参数

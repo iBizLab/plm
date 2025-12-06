@@ -58,6 +58,7 @@ t1.`UPDATE_TIME`
 FROM `STENCIL` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
+/*ALIAS.sp=t11*/
 WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21 
  WHERE 
  t11.`ID` = t21.`SPACE_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )

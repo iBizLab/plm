@@ -14,7 +14,7 @@
 
 ### 关联视图
   * [实体处理逻辑(psdelogiceditview)](app/view/psdelogiceditview)
-  * [自动规则模板信息(psdelogictemplate_info_view)](app/view/psdelogictemplate_info_view)
+  * [自动规则模板(psdelogictemplate_info_view)](app/view/psdelogictemplate_info_view)
 
 <script>
  const { createApp } = Vue

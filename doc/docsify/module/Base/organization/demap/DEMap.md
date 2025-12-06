@@ -16,15 +16,15 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
+`SORT(排序)` <i class="fa fa-angle-double-right"/></i> `SHOWORDER(排序)`
+* `属性等价`
 `NAME(名称)` <i class="fa fa-angle-double-right"/></i> `ORGNAME(名称)`
-* `属性等价`
-`PNAME(名称)` <i class="fa fa-angle-double-right"/></i> `PORGNAME(上级单位)`
-* `属性等价`
-`PID(父标识)` <i class="fa fa-angle-double-right"/></i> `PORGID(上级单位)`
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `ORGID(单位标识)`
 * `属性等价`
-`SORT(排序)` <i class="fa fa-angle-double-right"/></i> `SHOWORDER(排序)`
+`PID(父标识)` <i class="fa fa-angle-double-right"/></i> `PORGID(上级单位)`
+* `属性等价`
+`PNAME(名称)` <i class="fa fa-angle-double-right"/></i> `PORGNAME(上级单位)`
 * `属性等价`
 `ENABLE(逻辑有效标志)` <i class="fa fa-angle-double-right"/></i> `ENABLE(逻辑有效)`
 

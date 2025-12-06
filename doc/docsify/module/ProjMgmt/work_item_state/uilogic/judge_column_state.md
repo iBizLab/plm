@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./judge_column_state#begin {开始}]]
-state "结束" as END1 <<end>> [[$./judge_column_state#end1 {结束}]]
 state "判断操作列是否禁用" as RAWJSCODE1  [[$./judge_column_state#rawjscode1 {判断操作列是否禁用}]]
+state "结束" as END1 <<end>> [[$./judge_column_state#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -70,5 +70,5 @@ RAWJSCODE1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格|Grid|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表格|Grid|当前部件对象||

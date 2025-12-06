@@ -869,18 +869,13 @@ Integer
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/review_contents/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/review_contents/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`UPDATE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
 
 
 
@@ -2563,10 +2558,10 @@ Integer
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/reviews/{pkey}/review_contents/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/reviews/{pkey}/review_contents/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2575,7 +2570,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|评审主键|
-|key|String|标识|
 
 
 
@@ -3645,10 +3639,10 @@ Integer
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/review_wizards/{pkey}/review_contents/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/review_wizards/{pkey}/review_contents/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -3657,7 +3651,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|评审向导主键|
-|key|String|标识|
 
 
 
@@ -4727,10 +4720,10 @@ Integer
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/test_cases/{pkey}/review_contents/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/test_cases/{pkey}/review_contents/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -4739,7 +4732,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|用例主键|
-|key|String|标识|
 
 
 

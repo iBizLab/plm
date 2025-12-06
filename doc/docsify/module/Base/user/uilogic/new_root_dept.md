@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./new_root_dept#begin {开始}]]
 state "界面行为" as DEUIACTION1  [[$./new_root_dept#deuiaction1 {界面行为}]]
-state "结束" as END1 <<end>> [[$./new_root_dept#end1 {结束}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./new_root_dept#viewctrlinvoke1 {视图部件调用}]]
+state "结束" as END1 <<end>> [[$./new_root_dept#end1 {结束}]]
 
 
 Begin --> DEUIACTION1
@@ -59,5 +59,5 @@ VIEWCTRLINVOKE1 --> END1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |树部件|treeexpbar_tree|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |默认值对象|defaultValue|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

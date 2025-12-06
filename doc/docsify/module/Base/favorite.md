@@ -103,10 +103,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `CREATE`
 * `UPDATE`
-* `DELETE`
 * `READ`
+* `CREATE`
+* `DELETE`
 
 
 

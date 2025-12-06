@@ -61,9 +61,9 @@ editor.setValue(uiLogic.default.content);
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
-|评论部件控制器|comments_controller|部件对象||
 |评论|comment|数据对象||
-|当前部件对象|ctrl|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文变量|ctx|导航视图参数绑定参数||
+|评论部件控制器|comments_controller|部件对象||
+|当前部件对象|ctrl|当前部件对象||
+|view|view|当前视图对象||

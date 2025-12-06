@@ -140,11 +140,13 @@
 | 交付物下载 | download | 下载 |单项数据|用户自定义||
 | 添加控件显示 | show_add_input | 添加交付目标 |无数据|用户自定义||
 | 删除（表单中） | del_form | 删除 |单项数据（主键）|用户自定义||
+| 编辑（表单中） | edit_form | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑交付目标](app/view/deliverable_target_edit_view)</details>||
 | 删除 | del_grid | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[主表单保存](module/Base/deliverable/uilogic/main_form_save)|main_form_save||
 |[删除（表单中）](module/Base/deliverable/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
 |[提交](module/Base/deliverable/uilogic/submit)|submit|瀑布项目主视图 → 交付物分页表格 → 表格行操作|
 |[提交（表单中）](module/Base/deliverable/uilogic/submit_form)|submit_form|瀑布项目 → 工作项详情 → 交付物分页 → 表格行操作|

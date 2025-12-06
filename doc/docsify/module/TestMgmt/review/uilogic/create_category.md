@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_category#begin {开始}]]
-state "用例参数" as PREPAREJSPARAM1  [[$./create_category#preparejsparam1 {用例参数}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./create_category#viewctrlinvoke1 {视图部件调用}]]
 state "需求参数" as PREPAREJSPARAM2  [[$./create_category#preparejsparam2 {需求参数}]]
 state "通用参数" as PREPAREJSPARAM3  [[$./create_category#preparejsparam3 {通用参数}]]
+state "用例参数" as PREPAREJSPARAM1  [[$./create_category#preparejsparam1 {用例参数}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./create_category#begin-preparejsparam1{测试库} 测试库]]
@@ -80,8 +80,8 @@ PREPAREJSPARAM2 --> PREPAREJSPARAM3
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|节点参数|node_param|数据对象||
 |树部件|treeexpbar_tree|部件对象||
 |默认值对象|defaultValue|数据对象||
-|上下文对象|context|导航视图参数绑定参数||
+|节点参数|node_param|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文对象|context|导航视图参数绑定参数||

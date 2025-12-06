@@ -715,22 +715,17 @@ Integer
 
 ```
 
-## 关联产品
+## 其他实体关联产品
 
 <el-row>
 <div style="width: 80px">
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/products/{key}/other_re_product" type="info" :closable="false" ></el-alert>
+<el-alert title="/products/other_re_product" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`UPDATE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
 
 
 
@@ -779,23 +774,43 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "identifier" : null,
+  "visibility" : null,
+  "color" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
+}
+
+```
 
 ## 其他实体关联空间
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/products/{key}/other_re_space" type="info" :closable="false" ></el-alert>
+<el-alert title="/products/other_re_space" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`UPDATE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
 
 
 

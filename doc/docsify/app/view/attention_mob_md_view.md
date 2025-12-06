@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [关注(ATTENTION)](module/Base/attention) : [添加测试库关注（移动端）](module/Base/attention#界面行为)
   * [关注(ATTENTION)](module/Base/attention) : [取消关注](module/Base/attention#界面行为)
+  * [关注(ATTENTION)](module/Base/attention) : [添加测试库关注（移动端）](module/Base/attention#界面行为)
 
 ### 关联视图
   * [测试库成员(library_member_mob_attention_mdpickup_view)](app/view/library_member_mob_attention_mdpickup_view)

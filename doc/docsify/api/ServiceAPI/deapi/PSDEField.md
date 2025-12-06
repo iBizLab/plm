@@ -17,6 +17,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">systemflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|系统建立模式|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">pscodelistid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码表|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|排序|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
@@ -46,6 +50,10 @@
 ```json
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -81,6 +89,10 @@
 
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -136,6 +148,10 @@
 
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -210,6 +226,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">systemflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|系统建立模式|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">pscodelistid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码表|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|排序|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
@@ -239,6 +259,10 @@
 ```json
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -274,6 +298,10 @@
 
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -322,6 +350,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">systemflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|系统建立模式|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">pscodelistid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码表|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|排序|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
@@ -351,6 +383,10 @@
 ```json
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -404,6 +440,10 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">systemflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|系统建立模式|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">pscodelistid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码表|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|排序|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
@@ -433,6 +473,10 @@ Integer
 ```json
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -468,6 +512,10 @@ Integer
 
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -521,6 +569,10 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">systemflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|系统建立模式|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">pscodelistid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码表|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|排序|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
@@ -550,6 +602,10 @@ Integer
 ```json
 {
   "dynamodelflag" : null,
+  "systemflag" : null,
+  "memo" : null,
+  "pscodelistid" : null,
+  "ordervalue" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
@@ -650,6 +706,10 @@ Integer
 [
   {
     "dynamodelflag" : null,
+    "systemflag" : null,
+    "memo" : null,
+    "pscodelistid" : null,
+    "ordervalue" : null,
     "allowempty" : null,
     "codename" : null,
     "createdate" : null,
