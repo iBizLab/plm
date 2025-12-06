@@ -1,0 +1,84 @@
+{
+  "codeName" : "mob_discuss_post_status",
+  "controlType" : "SEARCHFORM",
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post/PSSEARCHFORMS/mob_discuss_post_status.json",
+  "logicName" : "讨论状态过滤搜索表单（移动端）",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "n_status_eq",
+    "dataType" : 25,
+    "createDV" : "1",
+    "updateDV" : "1",
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "常规条件",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "状态",
+      "codeName" : "n_status_eq",
+      "createDV" : "1",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "n_status_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "getPSEditor" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "n_status_eq",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Team__discuss_status.json"
+        },
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "updateDV" : "1",
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "getPSSysCss" : {
+    "cssName" : "mob_discuss_post_status_style"
+  },
+  "searchButtonStyle" : "DEFAULT",
+  "tabHeaderPos" : "TOP",
+  "enableAdvanceSearch" : false,
+  "enableAutoSearch" : true,
+  "enableFilterSave" : false,
+  "noTabHeader" : true,
+  "modelid" : "15869ac8f394f3e52c7042b14e9ffd4e",
+  "modeltype" : "PSDEFORM_SEARCHFORM"
+}

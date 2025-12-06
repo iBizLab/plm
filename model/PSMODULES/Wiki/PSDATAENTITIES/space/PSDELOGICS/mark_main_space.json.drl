@@ -1,0 +1,53 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.mark_main_space;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space spacemark_main_spacedefault;
+        global cn.ibizlab.plm.core.wiki.service.IspaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spacemark_main_spacebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[清除主标记]
+            rule "rawsqlcall1"
+            ruleflow-group "spacemark_main_spacerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",spacemark_main_spacedefault.get("principal_id"));
+    String strSql="UPDATE relation SET RELATION_TYPE = NULL WHERE PRINCIPAL_ID = #{et.param0} AND (PRINCIPAL_TYPE = 'project' OR PRINCIPAL_TYPE = 'product') AND TARGET_TYPE = 'space';";
+                        iBzSysSpaceDefaultService.execute(strSql,param);//SQL调用
+                        update(spacemark_main_spacedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[标记主知识库]
+            rule "rawsqlcall2"
+            ruleflow-group "spacemark_main_spacerawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",spacemark_main_spacedefault.get("principal_id"));
+        param.put("param1",spacemark_main_spacedefault.get("id"));
+    String strSql="UPDATE relation SET RELATION_TYPE = 'main_space' WHERE PRINCIPAL_ID = #{et.param0} AND TARGET_ID = #{et.param1} AND (PRINCIPAL_TYPE = 'project' OR PRINCIPAL_TYPE = 'product') AND TARGET_TYPE = 'space';";
+                        iBzSysSpaceDefaultService.execute(strSql,param);//SQL调用
+                        update(spacemark_main_spacedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spacemark_main_spaceend1"
+            when
+            then
+                        update(spacemark_main_spacedefault);//更新fact中变量值
+            end

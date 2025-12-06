@@ -1,0 +1,127 @@
+package cn.ibizlab.plm.projmgmt.logic.releaselogic.change_stage;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.release releasechange_stagedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagecurrent_stage;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagefirst_stage;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagelast_stage;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagestage_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagestage_transitions;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagestages;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage releasechange_stagetarget_stage;
+                global cn.ibizlab.plm.core.projmgmt.domain.release releasechange_stageupdate_obj;
+                    global cn.ibizlab.plm.core.projmgmt.service.IstageService stageservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IreleaseService iBzSysReleaseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "releasechange_stagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定发布阶段列表参数]
+            rule "bindparam1"
+            ruleflow-group "releasechange_stagebindparam1"
+            when
+            then
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置发布更新对象的标识]
+            rule "prepareparam1"
+            ruleflow-group "releasechange_stageprepareparam1"
+            when
+            then
+                            releasechange_stageupdate_obj.set("id",releasechange_stagedefault.get("release"));
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备阶段查询参数]
+            rule "prepareparam2"
+            ruleflow-group "releasechange_stageprepareparam2"
+            when
+            then
+                            releasechange_stagestage_filter.set("release",releasechange_stagedefault.get("release"));
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询发布阶段]
+            rule "dedataset1"
+            ruleflow-group "releasechange_stagededataset1"
+            when
+            then
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修改发布当前阶段]
+            rule "rawsfcode2"
+            ruleflow-group "releasechange_stagerawsfcode2"
+            when
+            then
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "releasechange_stageend1"
+            when
+            then
+                        update(releasechange_stagedefault);//更新fact中变量值
+                        update(releasechange_stagecurrent_stage);//更新fact中变量值
+                        update(releasechange_stagefirst_stage);//更新fact中变量值
+                        update(releasechange_stagelast_stage);//更新fact中变量值
+                        update(releasechange_stagestage_filter);//更新fact中变量值
+                        update(releasechange_stagestage_transitions);//更新fact中变量值
+                        update(releasechange_stagestages);//更新fact中变量值
+                        update(releasechange_stagetarget_stage);//更新fact中变量值
+                        update(releasechange_stageupdate_obj);//更新fact中变量值
+            end
