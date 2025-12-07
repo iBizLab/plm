@@ -1,4 +1,4 @@
-## 需求关联需求 <!-- {docsify-ignore-all} -->
+## 需求关联需求值变更 <!-- {docsify-ignore-all} -->
 
    值变更时触发，需求关联需求，调用处理逻辑生成正反向数据
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./idea_relation_idea#begin {开始}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./idea_relation_idea#preparejsparam1 {绑定表格部件}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./idea_relation_idea#rawjscode3 {触发计数器刷新}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./idea_relation_idea#viewctrlinvoke1 {表格刷新}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./idea_relation_idea#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
-state "进行关联操作" as DEACTION1  [[$./idea_relation_idea#deaction1 {进行关联操作}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./idea_relation_idea#viewctrlinvoke1 {表格刷新}]]
 state "获取选中列表" as RAWJSCODE2  [[$./idea_relation_idea#rawjscode2 {获取选中列表}]]
+state "进行关联操作" as DEACTION1  [[$./idea_relation_idea#deaction1 {进行关联操作}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./idea_relation_idea#rawjscode3 {触发计数器刷新}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./idea_relation_idea#preparejsparam1 {绑定表格部件}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -58,7 +58,15 @@ RAWJSCODE2 --> RAWJSCODE1 : [[$./idea_relation_idea#rawjscode2-rawjscode1{选中
 ```javascript
 let choose = uiLogic.default.choose_data;
 if(choose != null && choose != ''){
-    uiLogic.dto.srfactionparam = JSON.parse(choose);
+    const srfactionparam = JSON.parse(choose);
+    // 将 owner_id 替换为 target_id
+    if (srfactionparam && Array.isArray(srfactionparam)) {
+        srfactionparam.forEach(item => {
+            item.target_id = item.owner_id
+            delete item.owner_id
+        })
+    }
+    uiLogic.dto.srfactionparam = srfactionparam;
     uiLogic.dto.principal_id = view.context.principal_id;
     uiLogic.dto.principal_type = view.context.principal_type;
     uiLogic.dto.target_type = view.context.target_type;

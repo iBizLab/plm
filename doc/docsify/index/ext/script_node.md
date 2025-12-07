@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[231]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[240]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -12,6 +12,85 @@ var result = logic.getParam('result');
 for(var i=0 ;i<addons.size;i++){
     var addon = addons.get(i);
     result.set(addon.get('ddon_type'),addon.get('is_enabled'));
+}
+```
+#### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents)
+
+节点：触发刷新信号
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def system_id = sys.deploySystemId
+//合成当前系统AI工厂reload信号标识
+def reload_tag = "reloadsignal-$system_id-sysaifactory-ai-ibizplmintelligence"
+def config = [:]
+config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()
+//发布配置
+net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)
+
+```
+#### [知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard)的处理逻辑[创建知识库文档(create_ai_kb_doc)](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc)
+
+节点：创建知识库文档
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal(); 
+def doc_runtime = sys.dataentity('ai_kb_document')
+def doc_sync_runtime = sys.dataentity('ai_kb_document_sync')
+def page_list = sys.codelist('Wiki__page_list')
+def space_list = sys.codelist('Wiki__space_list')
+
+def import_method=_default["import_method"];
+def kb_id=_default["kb_id"]
+def space_selection=_default["space_selection"]
+def sync_frequency=_default["sync_frequency"]
+def parser_config=_default["parser_config"]
+def custom_chunk=_default["custom_chunk"]
+def chunk_method=_default["chunk_method"]
+
+//手动从空间导入
+if(import_method == "space_manual"){
+    def selection_page_ids=_default["selection_page_ids"]
+    if(selection_page_ids){
+        //创建文档
+        selection_page_ids.split(',').each { String page_id ->
+            def new_doc=doc_runtime.entity()
+            def  page_name=page_list.getText(page_id)  
+            new_doc.set("name",page_name)
+            new_doc.set("source_id",page_id)
+            new_doc.set("source_type","page")
+            new_doc.set("parser_config",parser_config)
+            new_doc.set("type","space")
+            new_doc.set("custom_chunk",custom_chunk)
+            new_doc.set("chunk_method",chunk_method)
+            new_doc.set("active",1)
+            new_doc.set("kb_id",kb_id)
+            new_doc.set("status",0)
+            doc_runtime.create(new_doc)
+        }
+    }
+}
+
+//自动从空间同步
+if(import_method == "space_auto_sync"){
+    //创建文档同步
+    def new_doc_sync=doc_sync_runtime.entity()
+    def  space_name=space_list.getText(space_selection)  
+    new_doc_sync.set("name",space_name)
+    new_doc_sync.set("ai_knowledge_base_id",kb_id)
+    new_doc_sync.set("source_id",space_selection)
+    new_doc_sync.set("source_type","space")
+    new_doc_sync.set("sync_frequency",sync_frequency)
+    new_doc_sync.set("parser_config",parser_config)
+    new_doc_sync.set("custom_chunk",custom_chunk)
+    new_doc_sync.set("chunk_method",chunk_method)
+    doc_sync_runtime.create(new_doc_sync)
+}
+
+//上传本地文件
+if(import_method == "local_upload"){
+
 }
 ```
 #### [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)的处理逻辑[获取过滤条件(fill_search_conds)](module/ebsx/app_view_theme/logic/fill_search_conds)
@@ -168,6 +247,75 @@ if(work_item_for_temp.get("cur_version_id")){
         version_id_in = work_item_for_temp.get("cur_version_id");
     }
     work_item_versions.set("version_id_in", version_id_in);
+}
+```
+#### [评论(COMMENT)](module/Base/comment)的处理逻辑[识别内容格式(format_type)](module/Base/comment/logic/format_type)
+
+节点：判断内容格式
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def _content = _default.get('content').trim()
+
+
+if(_content != null){
+
+     // 检查 HTML（使用更简单的匹配）
+    boolean isHtml = false
+    boolean isMarkdown = false
+    
+    // 检查 HTML 标签
+    if (_content.contains("</") && _content.contains(">")) {
+        // 检查成对的标签
+        def tags = ["html", "body", "head", "div", "p", "span", "table", "ul", "ol"]
+        tags.each { tag ->
+            if (_content.contains("<${tag}") && _content.contains("</${tag}>")) {
+                isHtml = true
+            }
+        }
+        
+        // 检查自闭合标签
+        def selfClosing = ["br", "hr", "img", "input", "meta", "link"]
+        selfClosing.each { tag ->
+            if (_content.contains("<${tag}") && _content.contains("/>")) {
+                isHtml = true
+            }
+        }
+    }
+    
+    // 检查 HTML 文档声明
+    if (_content.toLowerCase().contains("<!doctype html")) {
+        isHtml = true
+    }
+    
+
+    // 链接 [_content](url)
+    if (_content.contains("[") && _content.contains("](") && _content.contains(")")) {
+        isMarkdown = true
+    }
+    
+    // 列表
+    if (_content.contains("- ") || _content.contains("* ") || _content.contains("1. ")) {
+        isMarkdown = true
+    }
+    
+    // 代码块
+    if (_content.contains("```") || _content.contains("~~~")) {
+        isMarkdown = true
+    }
+    
+    println "评论1#######:$_default"
+    
+    // 返回结果
+    if (isHtml && isMarkdown) {
+        _default.set('format_type', "HTML")
+    } else if (isMarkdown) {
+          _default.set('format_type', "MD")
+    } else {
+         _default.set('format_type', "HTML")
+    }
+    println "评论2#######:$_default"
 }
 ```
 #### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify)
@@ -935,6 +1083,9 @@ if( _default.get("group")!=null){
 }
 if( _default.get("id")!=null){
     var appportletid = "plmweb.";
+    if(_default.get("app_tag")){
+        appportletid = _default.get("app_tag") + ".";
+    }
     var appportletcodename = "uxbireport__"+_default.get("id").replace(".", "__");
     appportletid = appportletid + appportletcodename;
     groupdata.set("psappportletid",appportletid.toLowerCase());
@@ -1214,6 +1365,28 @@ var todays =  todayDateStr + ' 23:59:59';
 
 logic.setParam('starttime',beforefiftyday);
 logic.setParam('endtime',todays)
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员图表数据(calc_active_chart_datas)](module/Base/login_log/logic/calc_active_chart_datas)
+
+节点：计算图表数据
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+// 从逻辑参数获取数据集
+def echart_page = logic.param('echart_page').getReal()
+
+// 活跃总人数
+def user_total = logic.param('user_total').getReal()
+def total = user_total.get('total')
+
+echart_page.eachWithIndex { currentRow, i ->
+     // 计算活跃率
+    def active_members = currentRow.get('active_members') ?: 0 
+    def active_rate = total > 0 ?  (active_members.toDouble() / total.toDouble() * 100).round(2) :  "0.00"
+    currentRow.set("active_rate", active_rate)  
+}
+
+ 
 ```
 #### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员图表数据(calc_active_chart_datas)](module/Base/login_log/logic/calc_active_chart_datas)
 
@@ -2495,12 +2668,12 @@ def for_temp_obj = logic.param('for_temp_obj').getReal()
 def dependency = logic.param('dependency').getReal()
 
 
-// PC端 使用owner_id   mob端 使用id 
+// PC端 target_id   mob端 使用id 
 if(for_temp_obj.get('id') != null){
     dependency.set('principal_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    dependency.set('principal_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    dependency.set('principal_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -2517,12 +2690,12 @@ def for_temp_obj = logic.param('for_temp_obj').getReal()
 def dependency = logic.param('dependency').getReal()
 
 
-// PC端 使用owner_id   mob端 使用id 
+// PC端 使用target_id   mob端 使用id 
 if(for_temp_obj.get('id') != null){
     dependency.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    dependency.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    dependency.set('target_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -2839,9 +3012,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -3256,6 +3429,22 @@ home_page.set("publish_content", "<p><span style=\"font-size: 19px;\"><strong>�
     + "<p><span style=\"color: rgb(140, 140, 140); font-size: 16px;\">2、为了使您的文档更有层次，建议使用左侧的页面树，定义好目录结构</span></p>"
     + "<p><br></p>");
 ```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取关联的空间(get_re_space)](module/Wiki/space/logic/get_re_space)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def page = logic.param('page').getReal()
+
+page.each { item ->
+    if (item.get('relation_type') == 'main_space') {
+        item.set('user_tag', '<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="design-iconfont" width="20" height="20"><title>֪主知识库</title><path d="M17.5,15 L5,15 C4.53976667,15 4.16666667,15.3730833 4.16666667,15.8333333 C4.16666667,16.2935833 4.53976667,16.6666667 5,16.6666667 L17.5,16.6666667 L17.5,18.3333333 L5,18.3333333 C3.61929167,18.3333333 2.5,17.2140833 2.5,15.8333333 L2.5,3.33333333 C2.5,2.41285833 3.24619167,1.66666667 4.16666667,1.66666667 L17.5,1.66666667 L17.5,15 Z M13.3333333,7.5 L13.3333333,5.83333333 L6.66666667,5.83333333 L6.66666667,7.5 L13.3333333,7.5 Z" fill="orange" fill-rule="nonzero"></path></svg>')
+    } else {
+        item.set('user_tag', '<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="design-iconfont" width="20" height="20"><title>֪知识库</title><path d="M17.5,15 L5,15 C4.53976667,15 4.16666667,15.3730833 4.16666667,15.8333333 C4.16666667,16.2935833 4.53976667,16.6666667 5,16.6666667 L17.5,16.6666667 L17.5,18.3333333 L5,18.3333333 C3.61929167,18.3333333 2.5,17.2140833 2.5,15.8333333 L2.5,3.33333333 C2.5,2.41285833 3.24619167,1.66666667 4.16666667,1.66666667 L17.5,1.66666667 L17.5,15 Z M13.3333333,7.5 L13.3333333,5.83333333 L6.66666667,5.83333333 L6.66666667,7.5 L13.3333333,7.5 Z" fill="#56ABFB" fill-rule="nonzero"></path></svg>')
+    }
+}
+```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取快速新建空间集合(quick_create)](module/Wiki/space/logic/quick_create)
 
 节点：判断系统管理员身份
@@ -3431,9 +3620,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -3576,9 +3765,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -3755,6 +3944,69 @@ def strThemeModel = _default.get("theme_model")
 def themeModel = deRuntime.deserializeEntity(strThemeModel);
 _default.set("search_conds",themeModel.get("searchconds"))
 ```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[AI登记工时并更新剩余工时(ai_save_workload)](module/Base/workload/logic/ai_save_workload)
+
+节点：计算需求剩余工时
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def idea = logic.param('idea').getReal()
+def remaining = logic.param('remaining').getReal()
+
+def remaining_workload = (idea.get('estimated_workload') ?: 0) + _default.get('duration') - (idea.get('actual_workload') ?: 0)
+remaining_workload = (remaining_workload < 0) ? 0 : remaining_workload
+remaining.set('decimal_value', remaining_workload)
+```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[AI登记工时并更新剩余工时(ai_save_workload)](module/Base/workload/logic/ai_save_workload)
+
+节点：计算工作项剩余工时
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def work_item = logic.param('work_item').getReal()
+def remaining = logic.param('remaining').getReal()
+
+def remaining_workload = (work_item.get('estimated_workload') ?: 0) + _default.get('duration') - (work_item.get('actual_workload') ?: 0)
+remaining_workload = (remaining_workload < 0) ? 0 : remaining_workload
+remaining.set('decimal_value', remaining_workload)
+```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[AI登记工时并更新剩余工时(ai_save_workload)](module/Base/workload/logic/ai_save_workload)
+
+节点：计算用例剩余工时
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def test_case = logic.param('test_case').getReal()
+def remaining = logic.param('remaining').getReal()
+
+def remaining_workload = (test_case.get('estimated_workload') ?: 0) + _default.get('duration') - (test_case.get('actual_workload') ?: 0)
+remaining_workload = (remaining_workload < 0) ? 0 : remaining_workload
+remaining.set('decimal_value', remaining_workload)
+```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[AI登记预估工时(ai_add_estimated_workload)](module/Base/workload/logic/ai_add_estimated_workload)
+
+节点：计算剩余工时
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def work_item = logic.param('work_item').getReal()
+def temp = logic.param('temp').getReal()
+def workload_type_page = logic.param('workload_type_page').getReal()
+
+def remaining_workload = (work_item.get('estimated_workload') ?: 0) + temp.get('duration') - (work_item.get('actual_workload') ?: 0)
+remaining_workload = (remaining_workload < 0) ? 0 : remaining_workload
+temp.set('remaining_workload', remaining_workload)
+
+workload_type_page.each { i ->
+    if (i.get('name') == temp.get('type_name')) {
+        temp.set('type_id', i.get('id'))
+    }
+}
+```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove)
 
 节点：计算剩余工时
@@ -3885,9 +4137,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 
@@ -3895,16 +4147,19 @@ if(for_temp_obj.get('owner_id') != null){
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[变更状态(change_state)](module/ProjMgmt/work_item/logic/change_state)
 
-节点：设置工作项类型id
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+节点：设置工作项类型ID
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
 
-```javascript
-var _default = logic.getParam("default");
-var old_work_item_type_id = _default.get("work_item_type_id");
+```groovy
+def _default = logic.param("default").getReal()
 
-var first_value = old_work_item_type_id.split(';')[0];
+def old_work_item_type_id = _default?.get("work_item_type_id")
 
-_default.set("work_item_type_id", first_value);
+if (old_work_item_type_id) {
+    def first_value = old_work_item_type_id.split(',')[0]
+
+    _default?.set("work_item_type_id", first_value)
+}
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item)
 
@@ -4335,7 +4590,7 @@ if(test_plan.get("project_type") != null){
     Default.set("work_item_type_id", test_plan.get("project_type") + "_bug");
 }
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员及权限(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
 
 节点：非只读权限
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
@@ -4344,7 +4599,7 @@ if(test_plan.get("project_type") != null){
 var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", false);
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员及权限(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
 
 节点：判断系统管理员身份
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
@@ -4357,7 +4612,7 @@ if(srfreadonly == true){
     _default.set("srfreadonly",false);
 }
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员及权限(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
 
 节点：只读权限
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
@@ -4367,7 +4622,7 @@ var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员及权限(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
 
 节点：只读权限
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
@@ -4567,12 +4822,12 @@ def for_temp_obj = logic.param('for_temp_obj').getReal()
 def update_obj = logic.param('update_obj').getReal()
 
 
-// PC端 使用owner_id   mob端 使用id 
+// PC端 使用target_id   mob端 使用id 
 if(for_temp_obj.get('id') != null){
     update_obj.set('id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    update_obj.set('id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    update_obj.set('id', for_temp_obj.get('target_id'))
 }
 
 

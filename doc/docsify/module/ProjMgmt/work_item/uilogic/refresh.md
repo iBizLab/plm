@@ -1,4 +1,4 @@
-## 刷新 <!-- {docsify-ignore-all} -->
+## 通知刷新 <!-- {docsify-ignore-all} -->
 
    
 
@@ -15,10 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh#begin {开始}]]
+state "结束" as END1 <<end>> [[$./refresh#end1 {结束}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./refresh#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
+RAWJSCODE1 --> END1
 
 
 @enduml
@@ -32,6 +34,11 @@ Begin --> RAWJSCODE1
 
 
 
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+
 #### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
@@ -39,8 +46,7 @@ Begin --> RAWJSCODE1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'work_item', srfkey: context.principal_id});
-
+ibiz.mc.command.create.send({ srfdecodename: 'work_item'});
 ```
 
 

@@ -90,7 +90,7 @@
 |删除|delete|[实体处理逻辑](module/ProdMgmt/product/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProdMgmt/product/logic/favorite "设置星标")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/product/logic/nothing "无操作")|默认|不支持||||
-|关联产品|other_re_product|[实体处理逻辑](module/ProdMgmt/product/logic/other_re_product "其他实体关联产品")|默认|不支持||||
+|其他实体关联产品|other_re_product|[实体处理逻辑](module/ProdMgmt/product/logic/other_re_product "其他实体关联产品")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProdMgmt/product/logic/product_re_space "产品关联空间")|默认|不支持||||
 |产品计数器|product_counters|[实体处理逻辑](module/ProdMgmt/product/logic/product_counters "产品关联分页计数器")|默认|不支持||||
 |产品首页组件计数|product_index_addon_counter|[实体处理逻辑](module/ProdMgmt/product/logic/product_addon_authority "产品组件权限计数器")|默认|不支持||||

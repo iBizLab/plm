@@ -273,6 +273,7 @@
 |[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/query/my_summary_case)|my_summary_case|否|否 |否 ||
 |[正常状态(normal)](module/TestMgmt/test_case/query/normal)|normal|否|否 |否 ||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/query/nosuite_test_case)|nosuite_test_case|否|否 |否 ||
+|[未添加用例(not_add)](module/TestMgmt/test_case/query/not_add)|not_add|否|否 |否 ||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/query/not_add_case)|not_add_case|否|否 |否 ||
 |[未关联的用例(not_exsists_relation)](module/TestMgmt/test_case/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
 |[用例通知维护人(notify_assignee)](module/TestMgmt/test_case/query/notify_assignee)|notify_assignee|否|否 |否 ||
@@ -286,6 +287,7 @@
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/query/test_case_maneuver_context)|test_case_maneuver_context|否|否 |否 ||
 |[测试计划用例(test_plan_test_case)](module/TestMgmt/test_case/query/test_plan_test_case)|test_plan_test_case|否|否 |否 ||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/query/work_item_relation_test_case)|work_item_relation_test_case|否|否 |否 ||
+|[工时登记用例(workload_case)](module/TestMgmt/test_case/query/workload_case)|workload_case|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -319,6 +321,7 @@
 |[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/dataset/my_summary_case)|my_summary_case|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/test_case/dataset/normal)|normal|数据查询|否|||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/dataset/nosuite_test_case)|nosuite_test_case|数据查询|否|||
+|[未添加用例（评审）(not_add)](module/TestMgmt/test_case/dataset/not_add)|not_add|数据查询|否|||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/dataset/not_add_case)|not_add_case|数据查询|否|||
 |[未关联的用例(not_exsists_relation)](module/TestMgmt/test_case/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
 |[用例通知维护人(notify_assignee)](module/TestMgmt/test_case/dataset/notify_assignee)|notify_assignee|数据查询|否|||
@@ -332,6 +335,7 @@
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/dataset/test_case_maneuver_context)|test_case_maneuver_context|[实体逻辑](module/TestMgmt/test_case/logic/test_case_maneuver_context)|否|||
 |[测试计划用例(test_plan_test_case)](module/TestMgmt/test_case/dataset/test_plan_test_case)|test_plan_test_case|数据查询|否|||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/dataset/work_item_relation_test_case)|work_item_relation_test_case|数据查询|否|||
+|[工时登记用例(workload_case)](module/TestMgmt/test_case/dataset/workload_case)|workload_case|数据查询|否|||
 
 ## 数据权限
 
@@ -380,8 +384,8 @@
 |------------| -----   |  -------- | -------- |-------- |-------- |
 |[测试用例取消分配维护人通知](module/TestMgmt/test_case/notify/maintainer_cancel_notify)|maintainer_cancel_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(取消分配维护人)](index/notify_index#test_case_maintainer_cancel)|维护人 ||
 |[测试用例分配维护人通知](module/TestMgmt/test_case/notify/maintainer_notify)|maintainer_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(分配维护人)](index/notify_index#test_case_maintainer)|维护人 ||
-|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|负责人 关注人员 ||
-|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|关注人员 维护人 ||
+|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|关注人员 负责人 ||
+|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|维护人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -489,7 +493,7 @@
 |[关联工作项（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联缺陷（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_bug)|toolbar_link_bug|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
+|[工作项关联用例值变更](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
 |[已删除用例显示隐藏](module/TestMgmt/test_case/uilogic/deleted_visible)|deleted_visible|已删除用例显示隐藏|
 |[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
@@ -505,7 +509,7 @@
 |[门户全屏](module/TestMgmt/test_case/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/test_case/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/test_case/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联用例](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
+|[需求关联用例值变更](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
 
 ## 导入模式
 

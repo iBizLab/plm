@@ -11,11 +11,13 @@
   * [ebsx系统管理](module/ebsx)
   * [模型扩展](module/extension)
   * [DevOps数据集成](module/DevOps)
+  * [智能](module/ai)
 
 * <i class="fa-solid fa-cube"></i> 智能报表
   * [智能报表](bi_scheme/BIScheme/BIScheme)
 
 * <i class="fa-brands fa-gg"></i> 服务接口
+  * [MCP服务接口](api/_mcp/_mcp)
   * [服务接口](api/ServiceAPI/ServiceAPI)
   * [运行时扩展代理接口](api/_dynamodelapi/_dynamodelapi)
 

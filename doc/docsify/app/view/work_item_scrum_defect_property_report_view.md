@@ -11,8 +11,12 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [导出报表PDF](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [AI+无数据](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [导出报表excel](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [导出报表PDF](module/ProjMgmt/work_item#界面行为)
+
+### 关联视图
+  * [智能体选择器(ai_agent_assignment_selector)](app/view/ai_agent_assignment_selector)
 
 <script>
  const { createApp } = Vue

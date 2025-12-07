@@ -20,9 +20,11 @@
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -35,9 +37,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -56,9 +60,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -97,9 +103,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -157,9 +165,11 @@
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -172,9 +182,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -193,9 +205,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -227,9 +241,11 @@
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -242,9 +258,11 @@
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -281,9 +299,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -296,9 +316,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -317,9 +339,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -356,9 +380,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -371,9 +397,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -392,9 +420,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -426,9 +456,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">val</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|值|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">catalog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -441,9 +473,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -462,9 +496,11 @@ Integer
   "type" : null,
   "val" : null,
   "color" : null,
+  "description" : null,
   "is_system" : null,
   "style" : null,
   "catalog" : null,
+  "icon" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -525,9 +561,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -588,9 +626,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -651,9 +691,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -714,9 +756,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -777,9 +821,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -840,9 +886,76 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 项目类型
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/dictionary_data/fetch_project_type" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_catalog_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">n_catalog_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|字典目录|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
+|<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_catalog_eq" : null,
+  "n_catalog_like" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_style_eq" : null,
+  "n_type_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "sequence" : null,
+    "type" : null,
+    "val" : null,
+    "color" : null,
+    "description" : null,
+    "is_system" : null,
+    "style" : null,
+    "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -903,9 +1016,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -966,9 +1081,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1029,9 +1146,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1092,9 +1211,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1155,9 +1276,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1218,9 +1341,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1281,9 +1406,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1344,9 +1471,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1407,9 +1536,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1470,9 +1601,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1533,9 +1666,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1596,9 +1731,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1659,9 +1796,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1722,9 +1861,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1785,9 +1926,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1848,9 +1991,11 @@ Integer
     "type" : null,
     "val" : null,
     "color" : null,
+    "description" : null,
     "is_system" : null,
     "style" : null,
     "catalog" : null,
+    "icon" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

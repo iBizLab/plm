@@ -11,7 +11,7 @@
 
 
 ### 关联视图
-  * [工作项(work_item_pick_up_grid_view)](app/view/work_item_pick_up_grid_view)
+  * [工作项(work_item_pick_up_grid_view_workload)](app/view/work_item_pick_up_grid_view_workload)
 
 <script>
  const { createApp } = Vue

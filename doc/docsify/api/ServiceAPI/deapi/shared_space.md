@@ -352,7 +352,7 @@ Integer
 
 <el-row>
 <div style="width: 80px">
-<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/shared_spaces/{key}/closed_shared" type="info" :closable="false" ></el-alert>
@@ -402,24 +402,6 @@ Integer
 ```
 
 
-##### 响应示例： {docsify-ignore}
-```json
-
-{
-  "is_shared" : null,
-  "shared_pages" : null,
-  "expiration_date" : null,
-  "access_password" : null,
-  "show_title" : null,
-  "show_logo" : null,
-  "scope_type" : null,
-  "shared_by" : null,
-  "shared_time" : null,
-  "id" : null,
-  "name" : null,
-}
-
-```
 
 ## 获取共享空间草稿
 

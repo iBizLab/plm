@@ -47,12 +47,12 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工作项关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_self_change)
   * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工作项关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_self_change)
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)

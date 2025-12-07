@@ -5,5 +5,5 @@ const panel = view.layoutPanel.panelItems.choose_data;
 if (panel) {
     panel.state.visible = false;
 }
-uiLogic.default.choose_data = null;
+uiLogic.default.choose_relation_data = null;
 ```

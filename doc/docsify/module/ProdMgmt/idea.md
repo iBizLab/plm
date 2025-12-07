@@ -26,6 +26,7 @@
 |当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
+|内容格式|FORMAT_TYPE|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |需求来源|IDEA_FROM|单项选择(文本值)|60|是||
 |需求类型|IDEA_TYPE|单项选择(文本值)|60|是||
@@ -384,6 +385,7 @@
 |[过滤器默认查询(my_filter)](module/ProdMgmt/idea/query/my_filter)|my_filter|否|否 |否 ||
 |[我的事项需求(my_summary_idea)](module/ProdMgmt/idea/query/my_summary_idea)|my_summary_idea|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/idea/query/normal)|normal|否|否 |否 |状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
+|[未添加的需求(not_add_idea)](module/ProdMgmt/idea/query/not_add_idea)|not_add_idea|否|否 |否 ||
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/query/not_exsists_relation)|not_exsists_relation|否|否 |否 |多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/query/notify_assignee)|notify_assignee|否|否 |否 |查询指定属性组（负责人相关）|
 |[计划关联需求(plan_relation_idea)](module/ProdMgmt/idea/query/plan_relation_idea)|plan_relation_idea|否|否 |否 |计划关联需求表格调用|
@@ -392,6 +394,7 @@
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/query/recent_idea)|recent_idea|否|否 |否 |最近浏览的且未关联当前主体且非归档非删除的数据|
 |[关联需求(relation_idea)](module/ProdMgmt/idea/query/relation_idea)|relation_idea|否|否 |否 ||
 |[普通用户(user)](module/ProdMgmt/idea/query/user)|user|否|否 |否 ||
+|[工时登记需求(workload_idea)](module/ProdMgmt/idea/query/workload_idea)|workload_idea|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -419,6 +422,7 @@
 |[过滤器默认查询(my_filter)](module/ProdMgmt/idea/dataset/my_filter)|my_filter|数据查询|否|||
 |[我的事项需求(my_summary_idea)](module/ProdMgmt/idea/dataset/my_summary_idea)|my_summary_idea|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/idea/dataset/normal)|normal|数据查询|否||状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
+|[未添加的需求(not_add_idea)](module/ProdMgmt/idea/dataset/not_add_idea)|not_add_idea|数据查询|否|||
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否||多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/dataset/notify_assignee)|notify_assignee|数据查询|否||查询指定属性组（负责人相关）|
 |[计划关联需求(plan_relation_idea)](module/ProdMgmt/idea/dataset/plan_relation_idea)|plan_relation_idea|数据查询|否||计划关联需求表格调用|
@@ -428,6 +432,7 @@
 |[关联需求(relation_idea)](module/ProdMgmt/idea/dataset/relation_idea)|relation_idea|数据查询|否|||
 |[评审数据(review_data)](module/ProdMgmt/idea/dataset/review_data)|review_data|[实体逻辑](module/ProdMgmt/idea/logic/set_change_type)|否|||
 |[普通用户(user)](module/ProdMgmt/idea/dataset/user)|user|数据查询|否|||
+|[工时登记需求(workload_idea)](module/ProdMgmt/idea/dataset/workload_idea)|workload_idea|数据查询|否|||
 
 ## 数据权限
 
@@ -519,7 +524,7 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[产品需求归档/激活通知](module/ProdMgmt/idea/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[需求通知模板(归档/激活需求)](index/notify_index#idea_archived_or_activate)|负责人 关注人员 ||
+|[产品需求归档/激活通知](module/ProdMgmt/idea/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[需求通知模板(归档/激活需求)](index/notify_index#idea_archived_or_activate)|关注人员 负责人 ||
 |[产品需求取消分配负责人通知](module/ProdMgmt/idea/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[需求通知模板(取消分配负责人)](index/notify_index#idea_assignee_cancel)|负责人 ||
 |[产品需求分配负责人通知](module/ProdMgmt/idea/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[需求通知模板(分配负责人)](index/notify_index#idea_assignee)|负责人 ||
 |[产品需求负责人变更通知](module/ProdMgmt/idea/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[需求通知模板(负责人变更通知)](index/notify_index#idea_assignee_onchange)|关注人员 ||
@@ -675,8 +680,8 @@
 |[关闭评论区](module/ProdMgmt/idea/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|
 |[删除类别或分组](module/ProdMgmt/idea/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[刷新需求表格](module/ProdMgmt/idea/uilogic/refresh_idea_grid)|refresh_idea_grid|刷新需求表格|
-|[工作项关联需求](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
-|[工单关联需求](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
+|[工作项关联需求值变更](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
+|[工单关联需求值变更](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
 |[已归档或已删除需求显示隐藏](module/ProdMgmt/idea/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除需求显示隐藏|
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建子模块](module/ProdMgmt/idea/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
@@ -691,7 +696,7 @@
 |[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
+|[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|
@@ -704,7 +709,7 @@
 |[门户全屏](module/ProdMgmt/idea/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
+|[需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
 |[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 ## 导入模式

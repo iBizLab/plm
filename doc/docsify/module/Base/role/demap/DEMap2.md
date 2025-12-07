@@ -16,13 +16,13 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
-* `属性等价`
-`DCSYSTEMID(租户系统标识)` <i class="fa fa-angle-double-right"/></i> `DEPLOY_SYSTEM_ID(部署系统标识)`
-* `属性等价`
 `NAME(角色名称)` <i class="fa fa-angle-double-right"/></i> `NAME(名称)`
 * `属性等价`
 `AUTHORITY(角色标识)` <i class="fa fa-angle-double-right"/></i> `AUTHORITY(角色代码标记)`
+* `属性等价`
+`ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
+* `属性等价`
+`DCSYSTEMID(租户系统标识)` <i class="fa fa-angle-double-right"/></i> `DEPLOY_SYSTEM_ID(部署系统标识)`
 * `属性等价`
 `CREATE_TIME(建立时间)` <i class="fa fa-angle-double-right"/></i> `CREATE_TIME(创建时间)`
 * `属性等价`

@@ -15,13 +15,15 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_attachment_grid#begin {开始}]]
+state "注入脚本代码" as RAWJSCODE2  [[$./remove_attachment_grid#rawjscode2 {注入脚本代码}]]
 state "表格行删除" as VIEWCTRLINVOKE1  [[$./remove_attachment_grid#viewctrlinvoke1 {表格行删除}]]
-state "设置附件数据" as RAWJSCODE1  [[$./remove_attachment_grid#rawjscode1 {设置附件数据}]]
-state "结束" as END1 <<end>> [[$./remove_attachment_grid#end1 {结束}]]
 state "获取表格部件" as PREPAREJSPARAM1  [[$./remove_attachment_grid#preparejsparam1 {获取表格部件}]]
+state "结束" as END1 <<end>> [[$./remove_attachment_grid#end1 {结束}]]
+state "设置附件数据" as RAWJSCODE1  [[$./remove_attachment_grid#rawjscode1 {设置附件数据}]]
 
 
-Begin --> PREPAREJSPARAM1
+Begin --> RAWJSCODE2
+RAWJSCODE2 --> PREPAREJSPARAM1 : [[$./remove_attachment_grid#rawjscode2-preparejsparam1{连接名称} 连接名称]]
 PREPAREJSPARAM1 --> RAWJSCODE1
 RAWJSCODE1 --> VIEWCTRLINVOKE1
 VIEWCTRLINVOKE1 --> END1
@@ -32,6 +34,25 @@ VIEWCTRLINVOKE1 --> END1
 
 
 ### 处理步骤说明
+
+#### 注入脚本代码 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+del = await ibiz.confirm.error({
+    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),
+    desc: ibiz.i18n.t(
+    '确认删除文件？',
+    ),
+});
+
+if (del) {
+    uiLogic.default.is_delete = true;
+}
+```
 
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
@@ -65,6 +86,10 @@ uiLogic.attach = { data: data, silent: true };
 
 
 调用`grid(表格)`的方法`remove`，参数为`attach(附件数据)`
+### 连接条件说明
+#### 连接名称 :id=RAWJSCODE2-PREPAREJSPARAM1
+
+```Default(传入变量).is_delete``` EQ ```true```
 
 
 ### 实体逻辑参数
@@ -73,6 +98,6 @@ uiLogic.attach = { data: data, silent: true };
 | --------| --------| --------  | --------   |
 |附件数据|attach|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|视图参数|params|||
 |当前视图对象|view|当前视图对象||
 |表格|grid|部件对象||
+|视图参数|params|||

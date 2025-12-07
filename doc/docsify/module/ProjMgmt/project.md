@@ -74,6 +74,43 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 
 </el-tab-pane>
+<el-tab-pane label="扩展属性组" name="field_group_extendDEFGroup">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|可见范围|VISIBILITY|单项选择(文本值)|60|否||
+|项目状态|STATE|外键值|100|是||
+|开始时间|START_AT|日期型||是||
+|结束时间|END_AT|日期型||是||
+|主题色|COLOR|文本，可指定长度|100|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|否||
+|项目标识|IDENTIFIER|文本，可指定长度|100|否||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|是否星标|IS_FAVORITE|文本，可指定长度|200|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|是否本地配置|IS_LOCAL_CONFIGURE|是否逻辑||是||
+|成员|MEMBERS|一对多关系数据集合|1048576|是||
+|负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
+|负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
+|已完成工作项数|COMPLETED_WORK_ITEMS|数值||是||
+|全部工作项数|ALL_WORK_ITEMS|数值||是||
+|进度|SCHEDULE|数值||是||
+|实际开始时间|ACTUAL_START_AT|日期型||是||
+|实际结束时间|ACTUAL_END_AT|日期型||是||
+|预计工时|EXPECTED_TIME|文本，可指定长度|100|是||
+|消耗工时|CONSUME_TIME|文本，可指定长度|100|是||
+|状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#project_state_type "项目状态类型")|60|是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目名称|NAME|文本，可指定长度|200|否||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+
+</el-tab-pane>
 <el-tab-pane label="重定向属性组" name="field_group_redirctDEFGroup">
 
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
@@ -180,7 +217,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |混合项目组件计数器|hybrid_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/hybrid_project_addon_authority "hybrid项目组件权限计数器")|默认|不支持||||
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
-|关联项目|other_re_project|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_project "其他实体关联项目")|默认|不支持||||
+|其他实体关联项目|other_re_project|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_project "其他实体关联项目")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_space "其他实体关联空间")|默认|不支持||||
 |刷新项目状态|project_automatic_change_state|[实体处理逻辑](module/ProjMgmt/project/logic/project_automatic_change_state "项目自动变更状态")|默认|不支持||||
 |移动项目|project_move|[实体处理逻辑](module/ProjMgmt/project/logic/project_move "移动项目")|默认|不支持||||
@@ -251,6 +288,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[已删除(deleted)](module/ProjMgmt/project/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProjMgmt/project/query/favorite)|favorite|否|否 |否 ||
 |[查询星标（管理用户）(favorite_user)](module/ProjMgmt/project/query/favorite_user)|favorite_user|否|否 |否 ||
+|[我的可见项目(my_visible)](module/ProjMgmt/project/query/my_visible)|my_visible|否|否 |否 ||
 |[未关联的项目(no_relation)](module/ProjMgmt/project/query/no_relation)|no_relation|否|否 |否 ||
 |[正常状态(normal)](module/ProjMgmt/project/query/normal)|normal|否|否 |否 ||
 |[产品关联项目(product_re_project)](module/ProjMgmt/project/query/product_re_project)|product_re_project|否|否 |否 ||
@@ -278,9 +316,11 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[查询星标(favorite)](module/ProjMgmt/project/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/ProjMgmt/project/dataset/main)|main|数据查询|否|||
 |[主查询（移动端）(mob_main)](module/ProjMgmt/project/dataset/mob_main)|mob_main|数据查询|否|||
+|[我的可见项目(my_visible)](module/ProjMgmt/project/dataset/my_visible)|my_visible|数据查询|否|||
 |[未关联的项目(no_relation)](module/ProjMgmt/project/dataset/no_relation)|no_relation|数据查询|否|||
 |[正常状态(normal)](module/ProjMgmt/project/dataset/normal)|normal|数据查询|否|||
 |[产品关联项目(product_re_project)](module/ProjMgmt/project/dataset/product_re_project)|product_re_project|数据查询|否|||
+|[项目类型(project_type)](module/ProjMgmt/project/dataset/project_type)|project_type|代码表|否|||
 |[快速新建查询(quick)](module/ProjMgmt/project/dataset/quick)|quick|[实体逻辑](module/ProjMgmt/project/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/ProjMgmt/project/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/project/dataset/reader)|reader|数据查询|否|||
@@ -299,23 +339,23 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `MANAGE_PSDELOGIC`
-* `SUBDATA`
-* `MANAGE_PSDEFIELD`
-* `COPY`
-* `READ_PSDELOGIC`
-* `READ_PSDEFIELD`
-* `READ`
-* `UPDATE`
-* `MANAGE_PSDENOTIFY`
-* `MANAGE_PSDEMSLOGIC`
 * `END`
-* `READ_PSDENOTIFY`
+* `UPDATE`
+* `READ_PSDELOGIC`
+* `COPY`
 * `MANAGE_PSDEFORM`
-* `DELETE`
-* `READ_PSDEFORM`
-* `READ_PSDEMSLOGIC`
+* `MANAGE_PSDEMSLOGIC`
+* `READ_PSDENOTIFY`
+* `READ_PSDEFIELD`
+* `MANAGE_PSDEFIELD`
 * `BEGIN`
+* `READ`
+* `READ_PSDEFORM`
+* `SUBDATA`
+* `MANAGE_PSDENOTIFY`
+* `READ_PSDEMSLOGIC`
+* `DELETE`
+* `MANAGE_PSDELOGIC`
 
 
 
@@ -327,14 +367,14 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `SUBDATA`
 * `DELETE`
-* `BEGIN`
-* `END`
-* `UPDATE`
-* `COPY`
-* `CREATE`
+* `SUBDATA`
 * `READ`
+* `COPY`
+* `END`
+* `CREATE`
+* `UPDATE`
+* `BEGIN`
 
 
 
@@ -371,15 +411,15 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ_PSDENOTIFY`
 * `READ_PSDELOGIC`
-* `BEGIN`
 * `READ`
+* `READ_PSDENOTIFY`
 * `COPY`
-* `SUBDATA`
-* `READ_PSDEFIELD`
-* `READ_PSDEMSLOGIC`
 * `READ_PSDEFORM`
+* `SUBDATA`
+* `BEGIN`
+* `READ_PSDEMSLOGIC`
+* `READ_PSDEFIELD`
 * `END`
 
 

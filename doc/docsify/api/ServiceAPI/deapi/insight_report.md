@@ -25,6 +25,7 @@
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -44,6 +45,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -69,6 +71,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -114,6 +117,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -178,6 +182,7 @@
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -197,6 +202,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -222,6 +228,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -260,6 +267,7 @@
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -279,6 +287,7 @@
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -327,6 +336,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -346,6 +356,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -390,6 +401,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -409,6 +421,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -448,6 +461,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -467,6 +481,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -492,6 +507,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -530,6 +546,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -549,6 +566,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -574,6 +592,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -617,6 +636,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -636,6 +656,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -680,6 +701,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -699,6 +721,7 @@ Integer
   "template_model" : null,
   "group_data" : null,
   "ctrl_id" : null,
+  "app_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -771,6 +794,7 @@ Integer
     "template_model" : null,
     "group_data" : null,
     "ctrl_id" : null,
+    "app_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -842,6 +866,7 @@ Integer
     "template_model" : null,
     "group_data" : null,
     "ctrl_id" : null,
+    "app_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -913,6 +938,7 @@ Integer
     "template_model" : null,
     "group_data" : null,
     "ctrl_id" : null,
+    "app_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1119,6 +1145,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1201,6 +1228,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1240,6 +1268,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1280,6 +1309,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1320,6 +1350,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1359,6 +1390,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1398,6 +1430,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1438,6 +1471,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|
@@ -1478,6 +1512,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">template_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模板模型|
 |<el-row justify="space-between"><el-col :span="20">group_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|分组数据|
 |<el-row justify="space-between"><el-col :span="20">ctrl_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|报表部件标识|
+|<el-row justify="space-between"><el-col :span="20">app_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标记|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">view_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视图标识|

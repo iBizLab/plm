@@ -1,4 +1,4 @@
-# 实体处理逻辑(psdelogicquick_cfg_view)  <!-- {docsify-ignore-all} -->
+# 自动化规则(psdelogicquick_cfg_view)  <!-- {docsify-ignore-all} -->
 
 
 

@@ -112,12 +112,14 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#workload_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#workload_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|AI登记预估工时|ai_add_estimated_workload|[实体处理逻辑](module/Base/workload/logic/ai_add_estimated_workload "AI登记预估工时")|默认|不支持||||
+|AI登记工时并更新剩余工时|ai_save_workload|[实体处理逻辑](module/Base/workload/logic/ai_save_workload "AI登记工时并更新剩余工时")|默认|不支持||||
 |登记工时并更新剩余工时|create_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/Base/workload/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |填充工时数据|fill_workload_data|[实体处理逻辑](module/Base/workload/logic/fill_workload_data "填充工时数据")|默认|不支持||||
@@ -128,6 +130,8 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[AI登记工时并更新剩余工时](module/Base/workload/logic/ai_save_workload)|ai_save_workload|无||保存实际登记工时记录，并计算重置剩余工时属性|
+|[AI登记预估工时](module/Base/workload/logic/ai_add_estimated_workload)|ai_add_estimated_workload|无|||
 |[产品需求维度工时日历查询](module/Base/workload/logic/idea_dimension)|idea_dimension|无||首页工作台工时日历：产品/产品需求维度查询数据使用|
 |[产品需求维度管理工时日历查询](module/Base/workload/logic/idea_management_dimension)|idea_management_dimension|无||工时管理菜单中工时日历：产品/产品需求维度查询数据使用|
 |[人员维度工时日历查询](module/Base/workload/logic/member_dimension)|member_dimension|无||工时管理菜单中工时日历：人员维度查询数据使用|
@@ -243,10 +247,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
-* `CREATE`
-* `UPDATE`
 * `READ`
+* `UPDATE`
+* `CREATE`
+* `DELETE`
 
 
 
@@ -322,6 +326,8 @@
 | --------| --------| -------- |------------|------------|------------|
 | 打开工作类别管理工时记录 | open_management_type_link | 打开工作类别管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_type_of_link_management_grid_view)</details>|工时管理->工时日历->工作类别维度->工时时长链接|
 | 打开产品主视图 | open_product_main_view | 打开产品主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_main_view)</details>||
+| AI登记预估工时 | ai_add_estimated_workload | AI登记预估工时 |单项数据|<details><summary>后台调用</summary>[ai_add_estimated_workload](#行为)||
+| 自定义导出 | custom_export | 自定义导出 |无数据|用户自定义||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 工时明细返回主表单 | back | 返回 |无数据|用户自定义||
 | 工时日历时长链接（管理） | calendar_duration_management_link | 工时日历时长链接（管理） |单项数据（主键）|用户自定义||
@@ -334,6 +340,8 @@
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 成员总登记时长链接跳转 | member_duration_link | 成员总登记时长链接跳转 |单项数据（主键）|用户自定义||
 | 工时打开对应事项详情视图 | open_main_view | 工时打开对应事项详情视图 |单项数据|用户自定义|工时日志->事项列链接->打开对应工作项/产品需求/测试用例详情视图|
+| AI评估工时 | ai_estimated | AI评估工时 |单项数据|用户自定义||
+| 工作台登记工时 | record_working_hours | 登记工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view_workbench)</details>||
 | 打开所属下的工时日志（管理） | open_management_parent_link | 打开所属下的工时日志（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->项目/产品/测试用例维度->工时时长链接|
 | 工作类别总登记时长链接跳转 | workload_type_duration_link | 工作类别总登记时长链接跳转 |单项数据（主键）|用户自定义||
 | 工时日历时长链接 | calendar_duration_link | 工时日历时长链接 |单项数据（主键）|用户自定义||
@@ -356,6 +364,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[AI登记预估工时](module/Base/workload/uilogic/ai_estimated)|ai_estimated||
 |[工时打开对应事项详情视图](module/Base/workload/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例详情主视图|
 |[工时日历打开工时日志视图](module/Base/workload/uilogic/calendar_link_log_view)|calendar_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
 |[工时日历打开工时日志视图（管理）](module/Base/workload/uilogic/calendar_management_link_log_view)|calendar_management_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
@@ -369,6 +378,7 @@
 |[打开所属工时记录列表视图(管理)](module/Base/workload/uilogic/open_parent_with_log_grid)|open_parent_with_log_grid|工时管理，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表|
 |[打开测试库主视图](module/Base/workload/uilogic/open_library_main_view)|open_library_main_view|打开测试库主视图|
 |[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
+|[自定义导出](module/Base/workload/uilogic/custom_export)|custom_export||
 |[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
 |[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
 |[重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)|reset_workload_category||

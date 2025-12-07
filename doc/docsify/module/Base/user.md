@@ -146,10 +146,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ`
-* `DELETE`
 * `UPDATE`
+* `READ`
 * `CREATE`
+* `DELETE`
 
 
 

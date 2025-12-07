@@ -295,6 +295,7 @@
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的(my_created)](module/ProdMgmt/ticket/query/my_created)|my_created|否|否 |否 ||
 |[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/query/my_filter)|my_filter|否|否 |否 ||
+|[我提交的工单(my_submit)](module/ProdMgmt/ticket/query/my_submit)|my_submit|否|否 |否 ||
 |[我的事项工单(my_summary_ticket)](module/ProdMgmt/ticket/query/my_summary_ticket)|my_summary_ticket|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/ticket/query/normal)|normal|否|否 |否 |非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
@@ -332,6 +333,7 @@
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/dataset/my_attention)|my_attention|数据查询|否|||
 |[我创建的(my_created)](module/ProdMgmt/ticket/dataset/my_created)|my_created|数据查询|否|||
 |[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/dataset/my_filter)|my_filter|数据查询|否|||
+|[我提交的工单(my_submit)](module/ProdMgmt/ticket/dataset/my_submit)|my_submit|数据查询|否|||
 |[我的事项工单(my_summary_ticket)](module/ProdMgmt/ticket/dataset/my_summary_ticket)|my_summary_ticket|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/ticket/dataset/normal)|normal|数据查询|否||非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
@@ -392,6 +394,19 @@
 
 
 
+##### 我提交的工单（读写） :id=ticket-MY_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我提交的工单(my_submit)](module/ProdMgmt/ticket#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `READ(产品(READ))`
+
+
+
 ##### 只读用户(读) :id=ticket-USER_R
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -435,12 +450,12 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[工单归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archived_or_activate)|关注人员 负责人 ||
+|[工单归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archived_or_activate)|负责人 关注人员 ||
 |[工单取消分配负责人通知](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[工单通知模板(取消分配负责人)](index/notify_index#ticket_assignee_cancel)|负责人 ||
 |[工单分配负责人通知](module/ProdMgmt/ticket/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[工单通知模板(分配负责人)](index/notify_index#ticket_assignee)|负责人 ||
-|[工单负责人变更通知](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工单通知模板(负责人变更)](index/notify_index#ticket_assignee_onchange)|负责人 关注人员 ||
-|[工单删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove_or_recover)|关注人员 负责人 ||
-|[工单状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|关注人员 负责人 ||
+|[工单负责人变更通知](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工单通知模板(负责人变更)](index/notify_index#ticket_assignee_onchange)|关注人员 负责人 ||
+|[工单删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove_or_recover)|负责人 关注人员 ||
+|[工单状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|负责人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -544,7 +559,7 @@
 |[关联工单值变更](module/ProdMgmt/ticket/uilogic/relation_ticket_change)|relation_ticket_change|关联工单值变更时，调用处理逻辑，生成正反向关联数据|
 |[关联工单（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)|customer_add_change|客户添加工单值变更，触发工单的客户属性变更|
-|[工作项关联工单](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
+|[工作项关联工单值变更](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
 |[工单只读用户判断](module/ProdMgmt/ticket/uilogic/ticket_readonly_recognize)|ticket_readonly_recognize|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[已归档或已删除工单显示隐藏](module/ProdMgmt/ticket/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工单显示隐藏|
 |[建立双向关联数据](module/ProdMgmt/ticket/uilogic/create_double_relation)|create_double_relation|建立双向关联数据|
@@ -558,7 +573,7 @@
 |[门户全屏](module/ProdMgmt/ticket/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/ticket/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/ticket/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联工单](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
+|[需求关联工单值变更](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
 
 ## 导入模式
 

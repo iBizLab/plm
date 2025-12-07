@@ -143,10 +143,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE(效能视图(SUBDATA))`
-* `CREATE(效能视图(SUBDATA))`
 * `UPDATE(效能视图(SUBDATA))`
 * `READ`
+* `CREATE(效能视图(SUBDATA))`
+* `DELETE(效能视图(SUBDATA))`
 
 
 

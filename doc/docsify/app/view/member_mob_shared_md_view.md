@@ -18,8 +18,8 @@ view.layoutPanel.panelItems.check_type.setDataValue('reader');
 
 
 ### 关联界面行为
-  * [成员(MEMBER)](module/Base/member) : [移动端添加共享成员（test）](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [删除页面共享成员](module/Base/member#界面行为)
+  * [成员(MEMBER)](module/Base/member) : [移动端添加共享成员（test）](module/Base/member#界面行为)
 
 ### 关联界面逻辑
   * [成员(MEMBER)](module/Base/member) : [成员权限值变更](module/Base/member/uilogic/member_role_change)
