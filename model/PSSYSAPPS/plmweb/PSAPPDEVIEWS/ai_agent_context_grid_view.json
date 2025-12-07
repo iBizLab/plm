@@ -378,7 +378,6 @@
             "id" : "edit@ai_agent_context"
           },
           "tooltip" : "编辑",
-          "visibleScriptCode" : "(data.create_man === ibiz.appData.context?.srfuserid) && (data.system_flag !== 1)",
           "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
@@ -421,7 +420,6 @@
             "id" : "delete@ai_agent_context"
           },
           "tooltip" : "删除",
-          "visibleScriptCode" : "(data.create_man === ibiz.appData.context?.srfuserid) && (data.system_flag !== 1)",
           "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
@@ -537,7 +535,9 @@
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
-      }
+      },
+      "scriptCode" : "data.system_flag === 1 ? data.name + '<span style=\"border-radius: 18px;background-color: #f5f5f5;color: #666;height: 24px;line-height: 24px;padding-left: 12px;padding-right: 12px;font-size: .75rem;font-weight: 400;display: inline-flex;align-items: center;border: 1px solid transparent;margin-left: .5rem !important;\">系统</span>':data.name",
+      "customCode" : true
     }, {
       "dataType" : 25,
       "name" : "code_name",
@@ -573,6 +573,13 @@
       "getPSAppDEField" : {
         "name" : "UPDATE_TIME",
         "codeName" : "update_time"
+      }
+    }, {
+      "dataType" : 9,
+      "name" : "system_flag",
+      "getPSAppDEField" : {
+        "name" : "SYSTEM_FLAG",
+        "codeName" : "system_flag"
       }
     }, {
       "dataType" : 25,
