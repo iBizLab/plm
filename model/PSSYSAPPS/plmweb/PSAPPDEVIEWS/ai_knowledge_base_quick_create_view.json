@@ -892,7 +892,7 @@
             "getPSControls" : [ {
               "codeName" : "nested_grid_view_toolbar",
               "controlType" : "TOOLBAR",
-              "logicName" : "工具栏模板（默认表格界面2）",
+              "logicName" : "嵌入知识库表格视图工具栏",
               "name" : "toolbar",
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -908,11 +908,11 @@
                 "caption" : "新建",
                 "groupExtractMode" : "ITEM",
                 "itemType" : "DEUIACTION",
-                "name" : "tbitem5",
+                "name" : "deuiaction1",
                 "noPrivDisplayMode" : 2,
                 "getPSAppViewUIAction" : {
                   "modelref" : true,
-                  "id" : "toolbar_tbitem5"
+                  "id" : "toolbar_deuiaction1"
                 },
                 "getPSSysImage" : {
                   "glyph" : "xf0f6@FontAwesome",
@@ -946,54 +946,40 @@
                 "showCaption" : true,
                 "showIcon" : true
               }, {
-                "getCapPSLanguageRes" : {
-                  "lanResTag" : "TBB.TEXT.*.VIEW"
-                },
-                "caption" : "查看",
+                "caption" : "同步设置",
                 "groupExtractMode" : "ITEM",
                 "itemType" : "DEUIACTION",
-                "name" : "tbitem11",
+                "name" : "deuiaction3",
                 "noPrivDisplayMode" : 2,
                 "getPSAppViewUIAction" : {
                   "modelref" : true,
-                  "id" : "toolbar_tbitem11"
-                },
-                "getPSSysImage" : {
-                  "glyph" : "xf044@FontAwesome",
-                  "cssClass" : "fa fa-edit"
+                  "id" : "toolbar_deuiaction3"
                 },
                 "getPSUIAction" : {
-                  "actionTarget" : "SINGLEKEY",
-                  "getCapPSLanguageRes" : {
-                    "lanResTag" : "TBB.TEXT.*.VIEW"
+                  "actionTarget" : "NONE",
+                  "caption" : "同步设置",
+                  "codeName" : "open_doc_sync_grid_view",
+                  "getFrontPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_sync_grid_view.json",
+                    "viewType" : "DEGRIDVIEW"
                   },
-                  "caption" : "查看",
-                  "codeName" : "View",
-                  "fullCodeName" : "View",
-                  "name" : "表格界面_查看操作",
-                  "getPSSysImage" : {
-                    "glyph" : "xf044@FontAwesome",
-                    "cssClass" : "fa fa-edit"
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "ai_kb_document_open_doc_sync_grid_view",
+                  "name" : "打开知识库文档同步表格视图",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
                   },
-                  "predefinedType" : "GRIDVIEW_VIEWACTION",
-                  "timeout" : 60000,
-                  "getTooltipPSLanguageRes" : {
-                    "lanResTag" : "TBB.TOOLTIP.*.VIEW"
-                  },
-                  "uIActionMode" : "SYS",
-                  "uIActionTag" : "View",
-                  "uIActionType" : "DEUIACTION"
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "open_doc_sync_grid_view",
+                  "uIActionType" : "DEUIACTION",
+                  "id" : "open_doc_sync_grid_view@ai_kb_document"
                 },
-                "tooltip" : "查看",
-                "getTooltipPSLanguageRes" : {
-                  "lanResTag" : "TBB.TOOLTIP.*.VIEW"
-                },
-                "uIActionTarget" : "SINGLEKEY",
+                "tooltip" : "同步设置",
+                "uIActionTarget" : "NONE",
                 "showCaption" : true,
                 "showIcon" : true
-              }, {
-                "itemType" : "SEPERATOR",
-                "name" : "tbitem15"
               }, {
                 "getCapPSLanguageRes" : {
                   "lanResTag" : "TBB.TEXT.*.REMOVE"
@@ -1001,11 +987,11 @@
                 "caption" : "删除",
                 "groupExtractMode" : "ITEM",
                 "itemType" : "DEUIACTION",
-                "name" : "tbitem8",
+                "name" : "deuiaction2",
                 "noPrivDisplayMode" : 1,
                 "getPSAppViewUIAction" : {
                   "modelref" : true,
-                  "id" : "toolbar_tbitem8"
+                  "id" : "toolbar_deuiaction2"
                 },
                 "getPSSysImage" : {
                   "glyph" : "xf014@FontAwesome",
@@ -1049,7 +1035,7 @@
                 "showIcon" : true
               } ],
               "xDataControlName" : "grid",
-              "modelid" : "cb449b79f428bc05a3672298f52e0c8a",
+              "modelid" : "e9f9cd20c2fc5eca710de978af39ade4",
               "modeltype" : "PSDETOOLBAR"
             }, {
               "aggMode" : "NONE",
@@ -1538,9 +1524,9 @@
             "viewType" : "DEGRIDVIEW",
             "xDataControlName" : "grid",
             "enableDP" : true,
-            "enableExport" : false,
-            "enableFilter" : false,
-            "enableImport" : false,
+            "enableExport" : true,
+            "enableFilter" : true,
+            "enableImport" : true,
             "enableQuickSearch" : true,
             "enableRowEdit" : false,
             "enableSearch" : true,
