@@ -50,7 +50,7 @@
     "getPSDEFIUpdateDetails" : [ {
       "name" : "selection_file_ids"
     } ],
-    "scriptCode" : "let file_ids=\"\";\r\nif(data.temp_selection_file){\r\n   file_ids=data.temp_selection_file;\r\n}\r\nreturn {selection_file_ids: file_ids}",
+    "scriptCode" : "let file_ids=\"\";\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n   file_ids=data.temp_selection_file;\r\n   let files = file_ids.map(file_id => {\r\n    return {\r\n        ai_kb_doc_name2: file_id.name,\r\n        file_size: 0\r\n    };\r\n});\r\n}\r\nreturn {selection_file_ids: file_ids,selected_file_name:files}",
     "customCode" : true
   } ],
   "getPSDEFormItems" : [ {
