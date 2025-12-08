@@ -113,6 +113,14 @@
     "hidden" : true,
     "dataType" : 25
   }, {
+    "id" : "task_type1",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "TASK_TYPE",
+      "codeName" : "task_type"
+    }
+  }, {
     "id" : "name",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -120,12 +128,11 @@
       "codeName" : "name"
     }
   }, {
-    "id" : "task_type",
-    "hidden" : true,
+    "id" : "task_type_name",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "TASK_TYPE",
-      "codeName" : "task_type"
+      "name" : "TASK_TYPE_NAME",
+      "codeName" : "task_type_name"
     }
   }, {
     "id" : "scheduled_at",
@@ -226,6 +233,14 @@
       "name" : "ID",
       "codeName" : "id"
     }
+  }, {
+    "id" : "task_type",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "TASK_TYPE",
+      "codeName" : "task_type"
+    }
   } ],
   "getPSDEFormPages" : [ {
     "caption" : "基本信息",
@@ -240,6 +255,36 @@
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+        },
+        "caption" : "任务类型",
+        "codeName" : "task_type1",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "task_type1",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "TASK_TYPE",
+          "codeName" : "task_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "task_type1"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.NAME"
         },
@@ -272,10 +317,10 @@
         "showCaption" : true
       }, {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE_NAME"
         },
         "caption" : "任务类型",
-        "codeName" : "task_type",
+        "codeName" : "task_type_name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -283,23 +328,51 @@
         "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "task_type",
+        "name" : "task_type_name",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "TASK_TYPE",
-          "codeName" : "task_type"
+          "name" : "TASK_TYPE_NAME",
+          "codeName" : "task_type_name"
         },
         "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "task_type"
+          "editorParams" : {
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "PICKUPVIEW" : "FALSE"
+          },
+          "editorType" : "PICKEREX_TRIGGER",
+          "handlerType" : "PickupText",
+          "name" : "task_type_name",
+          "getPSAppDEACMode" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_task_type.json"
+          },
+          "getPSEditorItems" : [ {
+            "name" : "task_type"
+          } ],
+          "valueItemName" : "task_type",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colLG" : 12,
           "colMD" : 12,
           "layout" : "TABLE_24COL"
         },
+        "valueItemName" : "task_type",
         "allowEmpty" : true,
-        "hidden" : true
+        "showCaption" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.SCHEDULED_AT"
@@ -830,6 +903,35 @@
       "getPSEditor" : {
         "editorType" : "HIDDEN",
         "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK_HIS.TASK_TYPE"
+      },
+      "caption" : "任务类型",
+      "codeName" : "task_type",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "task_type",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "TASK_TYPE",
+        "codeName" : "task_type"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "task_type"
       },
       "getPSLayoutPos" : {
         "colMD" : 24,

@@ -117,6 +117,16 @@
       "codeName" : "selection_page_ids"
     }
   }, {
+    "id" : "temp_selection_file",
+    "dataType" : 25
+  }, {
+    "id" : "selection_file_ids",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SELECTION_FILE_IDS",
+      "codeName" : "selection_file_ids"
+    }
+  }, {
     "id" : "import_method",
     "hidden" : true,
     "dataType" : 25,
@@ -141,10 +151,36 @@
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
       "caption" : "数据来源表单",
-      "codeName" : "group1",
+      "codeName" : "space_group",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
-      "name" : "group1",
+      "name" : "space_group",
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "getPSDEFDLogics" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "import_method",
+            "logicType" : "SINGLE",
+            "name" : "import_method等于(=) space_manual",
+            "value" : "space_manual"
+          }, {
+            "condOP" : "EQ",
+            "dEFDName" : "import_method",
+            "logicType" : "SINGLE",
+            "name" : "import_method等于(=) space_auto_sync",
+            "value" : "space_auto_sync"
+          } ],
+          "notMode" : false
+        } ],
+        "relatedDetailNames" : [ "import_method" ],
+        "notMode" : false
+      } ],
       "getPSDEFormDetails" : [ {
         "caption" : "选择空间",
         "codeName" : "space_selection",
@@ -316,6 +352,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "resetItemName" : "temp_page_selection",
+        "resetItemNames" : [ "temp_page_selection" ],
         "allowEmpty" : true,
         "hidden" : true
       }, {
@@ -378,32 +416,6 @@
         },
         "infoGroupMode" : false,
         "showCaption" : true
-      }, {
-        "caption" : "导入方式",
-        "codeName" : "import_method",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "import_method",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "IMPORT_METHOD",
-          "codeName" : "import_method"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "import_method"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -416,6 +428,196 @@
       },
       "infoGroupMode" : false,
       "showCaption" : false
+    }, {
+      "codeName" : "local_upload_group",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "local_upload_group",
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "getPSDEFDLogics" : [ {
+          "condOP" : "EQ",
+          "dEFDName" : "import_method",
+          "logicType" : "SINGLE",
+          "name" : "import_method等于(=) local_upload",
+          "value" : "local_upload"
+        } ],
+        "relatedDetailNames" : [ "import_method" ],
+        "notMode" : false
+      } ],
+      "getPSDEFormDetails" : [ {
+        "caption" : "上传文件",
+        "codeName" : "temp_selection_file",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "temp_selection_file",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "FILEEXTS" : "",
+            "MAXFILESIZE" : "",
+            "MINFILECNT" : "",
+            "MAXFILECNT" : ""
+          },
+          "editorType" : "FILEUPLOADER",
+          "maxFileCount" : -1,
+          "maxFileSize" : -1,
+          "minFileCount" : 0,
+          "name" : "temp_selection_file",
+          "getPSEditorItems" : [ {
+            "name" : "selection_file_ids"
+          } ],
+          "valueItemName" : "selection_file_ids"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "valueItemName" : "selection_file_ids",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "选择文件",
+        "codeName" : "selection_file_ids",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "selection_file_ids",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "SELECTION_FILE_IDS",
+          "codeName" : "selection_file_ids"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "selection_file_ids"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "resetItemName" : "temp_selection_file",
+        "resetItemNames" : [ "temp_selection_file" ],
+        "allowEmpty" : true
+      }, {
+        "buildInActions" : 4,
+        "codeName" : "selected_file_name",
+        "contentType" : "REPEATER",
+        "detailStyle" : "STYLE2",
+        "detailType" : "MDCTRL",
+        "name" : "selected_file_name",
+        "getPSAppDEField" : {
+          "name" : "SELECTED_FILE_NAME",
+          "codeName" : "selected_file_name"
+        },
+        "getPSDEFormDetails" : [ {
+          "caption" : "文档名称",
+          "codeName" : "ai_kb_doc_name2",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "ai_kb_doc_name2",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "ai_kb_doc_name2"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "文件大小",
+          "codeName" : "file_size",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "file_size",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "file_size"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : true
+    }, {
+      "caption" : "导入方式",
+      "codeName" : "import_method",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "import_method",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "IMPORT_METHOD",
+        "codeName" : "import_method"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "import_method"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.AI_KB_DOCUMENT_WIZARD.ID"
