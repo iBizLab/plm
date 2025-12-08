@@ -48,9 +48,11 @@
     "codeName" : "fill_selection_file_ids",
     "name" : "fill_selection_file_ids",
     "getPSDEFIUpdateDetails" : [ {
+      "name" : "selected_file_name"
+    }, {
       "name" : "selection_file_ids"
     } ],
-    "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file_id => {\r\n    return {\r\n        ai_kb_doc_name2: file_id.name,\r\n        file_size: 0\r\n    };\r\n});\r\n}\r\nreturn {\r\n    selection_file_ids: file_ids,\r\n    selected_file_name: files\r\n}",
+    "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file_id => {\r\n    return {\r\n        ai_kb_doc_name2: file_id.name,\r\n        file_size: 0\r\n    };\r\n});\r\n}\r\nreturn {\r\n    selection_file_ids: data.temp_selection_file,\r\n    selected_file_name: files\r\n}",
     "customCode" : true
   } ],
   "getPSDEFormItems" : [ {
