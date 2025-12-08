@@ -44,6 +44,14 @@
     } ],
     "scriptCode" : "console.log(\"change_page\",data);\r\nlet temp_page_selection = data.temp_page_selection;\r\nlet pages = temp_page_selection.split(',').map(item => item.trim()).map(value => {\r\n    return {\r\n        ai_kb_doc_name: value\r\n    };\r\n});\r\ndata.selected_page_name=pages;",
     "customCode" : true
+  }, {
+    "codeName" : "fill_selection_file_ids",
+    "name" : "fill_selection_file_ids",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "selection_file_ids"
+    } ],
+    "scriptCode" : "let file_ids=\"\";\r\nif(data.temp_selection_file){\r\n   file_ids=data.temp_selection_file;\r\n}\r\nreturn {selection_file_ids: file_ids}",
+    "customCode" : true
   } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -455,10 +463,14 @@
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
         "name" : "temp_selection_file",
         "noPrivDisplayMode" : 1,
+        "getPSDEFormItemUpdate" : {
+          "modelref" : true,
+          "id" : "fill_selection_file_ids"
+        },
         "getPSEditor" : {
           "editorParams" : {
             "FILEEXTS" : "",
@@ -481,8 +493,7 @@
           "layout" : "TABLE_24COL"
         },
         "valueItemName" : "selection_file_ids",
-        "allowEmpty" : true,
-        "showCaption" : true
+        "allowEmpty" : true
       }, {
         "caption" : "选择文件",
         "codeName" : "selection_file_ids",
