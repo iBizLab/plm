@@ -520,18 +520,30 @@
         "getPSEditor" : {
           "editorParams" : {
             "defaulttype" : "HTML",
-            "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]"
+            "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+            "ac" : "true",
+            "codelistid" : "plmweb.codelist54",
+            "srfaiagent" : "TextAgent_Writing"
           },
-          "editorType" : "RADIOBUTTONLIST",
+          "editorType" : "HTMLEDITOR",
           "name" : "content",
-          "getPSAppCodeList" : {
+          "getPSAppDEACMode" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList54.json"
+            "id" : "AIChat"
+          },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
           },
           "getPSEditorItems" : [ {
             "name" : "format_type"
           } ],
-          "placeHolder" : "请输入内容"
+          "placeHolder" : "请输入内容",
+          "enableAC" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
@@ -543,7 +555,6 @@
         },
         "valueItemName" : "format_type",
         "allowEmpty" : true,
-        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "空间标识",
