@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.insight.insight_view.create.afterLogic" isClosed="false" isExecutable="true" name="insight_insight_view_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.insight.insight_view.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.insight.domain.insight_view"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.insight.service.logic.insight_viewauto_create_members" id="8d140ba336b35c0e5d58b78387bfa8b1" name="auto_create_members.json.bpmn"/>
+                        <sequenceFlow id="begin_8d140ba336b35c0e5d58b78387bfa8b1" sourceRef="begin" targetRef="8d140ba336b35c0e5d58b78387bfa8b1"/>
+                            <sequenceFlow id="8d140ba336b35c0e5d58b78387bfa8b1_prepareparam1_end" sourceRef="8d140ba336b35c0e5d58b78387bfa8b1" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

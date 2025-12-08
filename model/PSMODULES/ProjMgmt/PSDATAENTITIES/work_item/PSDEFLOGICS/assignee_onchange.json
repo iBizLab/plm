@@ -1,0 +1,237 @@
+{
+  "codeName" : "assignee_onchange",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/assignee_onchange.json",
+  "logicName" : "工作项负责人变更附加逻辑",
+  "logicSubType" : "DEFIELD",
+  "memo" : "工作项负责人变更时触发相应的通知消息",
+  "name" : "工作项负责人变更附加逻辑",
+  "getPSDEField" : {
+    "name" : "ASSIGNEE_ID",
+    "codeName" : "assignee_id"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 320,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -320,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 156,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置更新人和更新时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "UPDATE_MAN",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "name" : "Default[UPDATE_MAN] ==> Last[UPDATE_MAN]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "UPDATE_MAN",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "UPDATE_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "name" : "Default[UPDATE_TIME] ==> Last[UPDATE_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "UPDATE_TIME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 140
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Last"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/cancel_assignee_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 156,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "工作项取消分配通知",
+    "topPos" : 310
+  }, {
+    "codeName" : "DENOTIFY3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/assignee_onchange_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 280,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "变更负责人通知",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "重新分配负责人",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[ASSIGNEE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "变更前负责人不等于当前操作用户",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[ASSIGNEE_ID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[ASSIGNEE_ID] 不等于(<>) UPDATE_MAN",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "UPDATE_MAN",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      }
+    } ],
+    "topPos" : -120,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/allocation_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 436,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "工作项分配通知",
+    "topPos" : 310
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "Last",
+    "logicName" : "变更前",
+    "name" : "变更前",
+    "lastParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
