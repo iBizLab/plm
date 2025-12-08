@@ -1506,7 +1506,7 @@
                 "dataType" : 21,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
-                "enableCond" : 3,
+                "enableCond" : 0,
                 "ignoreInput" : 12,
                 "labelPos" : "NONE",
                 "labelWidth" : 0,
@@ -1517,20 +1517,14 @@
                   "codeName" : "info"
                 },
                 "getPSEditor" : {
-                  "contentType" : "MARKDOWN",
                   "editorParams" : {
-                    "contenttype" : "MARKDOWN",
-                    "TITLE" : "name",
-                    "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                    "tocpos" : "fixed"
                   },
-                  "editorStyle" : "ANCHO_HTML",
-                  "editorType" : "RAW",
+                  "editorType" : "MARKDOWN",
+                  "maxLength" : 1048576,
+                  "mode" : "EDIT",
                   "name" : "info",
-                  "getPSSysPFPlugin" : {
-                    "pluginType" : "EDITOR_CUSTOMSTYLE",
-                    "pluginCode" : "ANCHO_HTML",
-                    "runtimeObject" : true
-                  }
+                  "showMaxLength" : true
                 },
                 "getPSLayoutPos" : {
                   "colMD" : 24,
