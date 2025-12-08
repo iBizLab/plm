@@ -456,7 +456,7 @@
         }, {
           "name" : "selection_file_ids"
         } ],
-        "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file => {\r\n    return {\r\n        ai_kb_doc_name2: file.name,\r\n        file_size: file.size\r\n    };\r\n});\r\n}\r\nreturn {\r\n    selection_file_ids: data.temp_selection_file,\r\n    selected_file_name: files\r\n}",
+        "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file => {\r\n    return {\r\n        ai_kb_doc_name2: file.name,\r\n        file_size: file.size\r\n        };\r\n    });\r\n\r\n    return {\r\n        selection_file_ids: file_ids,\r\n        selected_file_name: files \r\n        }\r\n}\r\n\r\n",
         "customCode" : true
       } ],
       "getPSDEFormItems" : [ {
@@ -535,6 +535,7 @@
         "dataType" : 25
       }, {
         "id" : "selection_file_ids",
+        "hidden" : true,
         "dataType" : 25,
         "getPSAppDEField" : {
           "name" : "SELECTION_FILE_IDS",
@@ -787,12 +788,12 @@
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
-                "dEFDName" : "mdctrl1",
+                "dEFDName" : "selected_page_name",
                 "logicType" : "SINGLE",
-                "name" : "mdctrl1等于(=) 默认不显示",
-                "value" : "默认不显示"
+                "name" : "selected_page_name等于(=) 不显示重复器",
+                "value" : "不显示重复器"
               } ],
-              "relatedDetailNames" : [ "mdctrl1" ],
+              "relatedDetailNames" : [ "selected_page_name" ],
               "notMode" : false
             } ],
             "getPSDEFormDetails" : [ {
@@ -873,6 +874,20 @@
             "labelWidth" : 0,
             "name" : "temp_selection_file",
             "noPrivDisplayMode" : 1,
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMBLANK",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "import_method",
+                "logicType" : "SINGLE",
+                "name" : "import_method不等于(<>) local_upload",
+                "value" : "local_upload"
+              } ],
+              "relatedDetailNames" : [ "import_method" ],
+              "notMode" : false
+            } ],
             "getPSDEFormItemUpdate" : {
               "modelref" : true,
               "id" : "fill_selection_file"
@@ -900,7 +915,7 @@
               "layout" : "TABLE_24COL"
             },
             "valueItemName" : "selection_file_ids",
-            "allowEmpty" : true
+            "allowEmpty" : false
           }, {
             "caption" : "选择文件",
             "codeName" : "selection_file_ids",
@@ -909,8 +924,8 @@
             "detailType" : "FORMITEM",
             "enableCond" : 3,
             "ignoreInput" : 0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
             "name" : "selection_file_ids",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -918,8 +933,7 @@
               "codeName" : "selection_file_ids"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 4000,
+              "editorType" : "HIDDEN",
               "name" : "selection_file_ids"
             },
             "getPSLayoutPos" : {
@@ -928,7 +942,8 @@
             },
             "resetItemName" : "temp_selection_file",
             "resetItemNames" : [ "temp_selection_file" ],
-            "allowEmpty" : true
+            "allowEmpty" : true,
+            "hidden" : true
           }, {
             "buildInActions" : 4,
             "codeName" : "selected_file_name",
@@ -2628,29 +2643,6 @@
               "getPSEditor" : {
                 "editorType" : "TEXTBOX",
                 "name" : "ai_kb_doc_name2"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "repeatContent" : true,
-              "showCaption" : true
-            }, {
-              "caption" : "文件大小",
-              "codeName" : "file_size",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "file_size",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "file_size"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
