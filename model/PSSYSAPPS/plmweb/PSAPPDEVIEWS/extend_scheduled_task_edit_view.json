@@ -286,6 +286,14 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "task_type",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "TASK_TYPE",
+        "codeName" : "task_type"
+      }
+    }, {
       "id" : "name",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -293,11 +301,11 @@
         "codeName" : "name"
       }
     }, {
-      "id" : "task_type",
+      "id" : "task_type_name",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "TASK_TYPE",
-        "codeName" : "task_type"
+        "name" : "TASK_TYPE_NAME",
+        "codeName" : "task_type_name"
       }
     }, {
       "id" : "scheduled_at",
@@ -406,6 +414,35 @@
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.TASK_TYPE"
+        },
+        "caption" : "任务类型",
+        "codeName" : "task_type",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "task_type",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "TASK_TYPE",
+          "codeName" : "task_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "task_type"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
         "caption" : "扩展计划任务基本信息",
         "codeName" : "group1",
         "detailStyle" : "DEFAULT",
@@ -443,11 +480,8 @@
           "allowEmpty" : true,
           "showCaption" : true
         }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.TASK_TYPE"
-          },
           "caption" : "任务类型",
-          "codeName" : "task_type",
+          "codeName" : "task_type_name",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -455,11 +489,11 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "task_type",
+          "name" : "task_type_name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "TASK_TYPE",
-            "codeName" : "task_type"
+            "name" : "TASK_TYPE_NAME",
+            "codeName" : "task_type_name"
           },
           "getPSEditor" : {
             "editorParams" : {
@@ -469,7 +503,7 @@
             },
             "editorType" : "PICKEREX_TRIGGER",
             "handlerType" : "PickupText",
-            "name" : "task_type",
+            "name" : "task_type_name",
             "getPSAppDEACMode" : {
               "modelref" : true,
               "id" : "Default"
