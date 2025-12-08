@@ -391,14 +391,14 @@
       "scriptCode" : "console.log(\"change_page\",data);\r\nlet temp_page_selection = data.temp_page_selection;\r\nlet pages = temp_page_selection.split(',').map(item => item.trim()).map(value => {\r\n    return {\r\n        ai_kb_doc_name: value\r\n    };\r\n});\r\ndata.selected_page_name=pages;",
       "customCode" : true
     }, {
-      "codeName" : "fill_selection_file_ids",
-      "name" : "fill_selection_file_ids",
+      "codeName" : "fill_selection_file",
+      "name" : "fill_selection_file",
       "getPSDEFIUpdateDetails" : [ {
         "name" : "selected_file_name"
       }, {
         "name" : "selection_file_ids"
       } ],
-      "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file_id => {\r\n    return {\r\n        ai_kb_doc_name2: file_id.name,\r\n        file_size: 0\r\n    };\r\n});\r\n}\r\nreturn {\r\n    selection_file_ids: data.temp_selection_file,\r\n    selected_file_name: files\r\n}",
+      "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.temp_selection_file){\r\n   console.log(1234,data.temp_selection_file)\r\n    file_ids = JSON.parse(data.temp_selection_file);\r\n    files = file_ids.map(file => {\r\n    return {\r\n        ai_kb_doc_name2: file.name,\r\n        file_size: file.size\r\n    };\r\n});\r\n}\r\nreturn {\r\n    selection_file_ids: data.temp_selection_file,\r\n    selected_file_name: files\r\n}",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {
@@ -817,11 +817,12 @@
           "noPrivDisplayMode" : 1,
           "getPSDEFormItemUpdate" : {
             "modelref" : true,
-            "id" : "fill_selection_file_ids"
+            "id" : "fill_selection_file"
           },
           "getPSEditor" : {
             "editorParams" : {
               "FILEEXTS" : "",
+              "infomap" : "filesize:size;",
               "MAXFILESIZE" : "",
               "MINFILECNT" : "",
               "MAXFILECNT" : ""
@@ -860,7 +861,7 @@
           },
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
-            "maxLength" : 100,
+            "maxLength" : 4000,
             "name" : "selection_file_ids"
           },
           "getPSLayoutPos" : {
@@ -2528,6 +2529,89 @@
           },
           "needSave" : false,
           "refreshItemsSetParamOnly" : false,
+          "showCaption" : true
+        }, {
+          "buildInActions" : 4,
+          "codeName" : "selected_file_name",
+          "contentType" : "REPEATER",
+          "detailStyle" : "STYLE2",
+          "detailType" : "MDCTRL",
+          "name" : "selected_file_name",
+          "getPSAppDEField" : {
+            "name" : "SELECTED_FILE_NAME",
+            "codeName" : "selected_file_name"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "import_method",
+              "logicType" : "SINGLE",
+              "name" : "import_method等于(=) local_upload",
+              "value" : "local_upload"
+            } ],
+            "relatedDetailNames" : [ "import_method" ],
+            "notMode" : false
+          } ],
+          "getPSDEFormDetails" : [ {
+            "caption" : "文档名称",
+            "codeName" : "ai_kb_doc_name2",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "ai_kb_doc_name2",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "ai_kb_doc_name2"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "文件大小",
+            "codeName" : "file_size",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "file_size",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "file_size"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "repeatContent" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
           "showCaption" : true
         }, {
           "caption" : "导入方式",
