@@ -3555,14 +3555,17 @@
                   "getPSDEFDLogics" : [ {
                     "groupOP" : "AND",
                     "logicType" : "GROUP",
+                    "name" : "AND [取反]",
                     "getPSDEFDLogics" : [ {
                       "condOP" : "ISNULL",
                       "dEFDName" : "curstage_id",
-                      "logicType" : "SINGLE"
+                      "logicType" : "SINGLE",
+                      "name" : "curstage_id值为空(Nil)"
                     }, {
                       "condOP" : "EQ",
                       "dEFDName" : "state",
                       "logicType" : "SINGLE",
+                      "name" : "state等于(=) 20",
                       "value" : "20"
                     } ],
                     "notMode" : true
@@ -5516,11 +5519,13 @@
                   "getPSDEFDLogics" : [ {
                     "condOP" : "ISNULL",
                     "dEFDName" : "curstage_id",
-                    "logicType" : "SINGLE"
+                    "logicType" : "SINGLE",
+                    "name" : "curstage_id值为空(Nil)"
                   }, {
                     "condOP" : "EQ",
                     "dEFDName" : "state",
                     "logicType" : "SINGLE",
+                    "name" : "state等于(=) 20",
                     "value" : "20"
                   } ],
                   "relatedDetailNames" : [ "curstage_id", "state" ],
@@ -5606,6 +5611,7 @@
                       "MAXHEIGHT" : "450",
                       "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                       "enableEdit" : "true",
+                      "srfaiagent" : "TextAgent_Writing",
                       "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                       "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                       "enableFullScreen" : "true",
@@ -5616,17 +5622,31 @@
                       "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
                       "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                       "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+                      "ac" : "true",
                       "QUOTEURL" : "`recents/fetch_recent_access`"
                     },
                     "editorStyle" : "COLLAPSE",
                     "editorType" : "HTMLEDITOR",
                     "name" : "description",
+                    "getPSAppDEACMode" : {
+                      "modelref" : true,
+                      "id" : "AIChat"
+                    },
+                    "getPSAppDEDataSet" : {
+                      "modelref" : true,
+                      "id" : "fetch_default"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    },
                     "getPSSysPFPlugin" : {
                       "pluginType" : "EDITOR_CUSTOMSTYLE",
                       "pluginCode" : "COMMENT",
                       "runtimeObject" : true
                     },
-                    "placeHolder" : "输入描述"
+                    "placeHolder" : "输入描述",
+                    "enableAC" : true
                   },
                   "getPSLayoutPos" : {
                     "colMD" : 24,
@@ -10025,7 +10045,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "choosed_content",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "choosed_content值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "choosed_content" ],
               "notMode" : false
