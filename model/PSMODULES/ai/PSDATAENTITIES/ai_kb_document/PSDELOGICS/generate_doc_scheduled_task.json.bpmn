@@ -8,23 +8,32 @@
                                 <tns:metaData express="" name="ai_kb_documentgenerate_doc_scheduled_taskdefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_documentgenerate_doc_scheduled_taskdoc" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_documentgenerate_doc_scheduled_taskdoc_pages" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_scheduled_task()" name="ai_kb_documentgenerate_doc_scheduled_tasktask" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_scheduled_taskService))" name="extend_scheduled_taskservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_documentService))" name="iBzSysAi_kb_documentDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_documentgenerate_doc_scheduled_taskdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
                             <tns:global identifier="ai_kb_documentgenerate_doc_scheduled_taskdoc" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
                             <tns:global identifier="ai_kb_documentgenerate_doc_scheduled_taskdoc_pages" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
+                            <tns:global identifier="ai_kb_documentgenerate_doc_scheduled_tasktask" type="cn.ibizlab.plm.core.base.domain.extend_scheduled_task" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentgenerate_doc_scheduled_taskrawsqlcall_01" id="rawsqlcall_01" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentgenerate_doc_scheduled_taskloopsubcall_01" id="loopsubcall_01" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentgenerate_doc_scheduled_taskprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam_01_end" name="end"/>
-                        <sequenceFlow id="prepareparam_01_end_line" sourceRef="prepareparam_01" targetRef="prepareparam_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentgenerate_doc_scheduled_taskrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造任务名称"/>
+                        <endEvent id="rawsfcode_01_end" name="end"/>
+                        <sequenceFlow id="rawsfcode_01_end_line" sourceRef="rawsfcode_01" targetRef="rawsfcode_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentgenerate_doc_scheduled_taskdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="创建文档同步任务"/>
+                        <endEvent id="deaction_01_end" name="end"/>
+                        <sequenceFlow id="deaction_01_end_line" sourceRef="deaction_01" targetRef="deaction_01_end"/>
                     <sequenceFlow id="begin_rawsqlcall_01" sourceRef="begin" targetRef="rawsqlcall_01">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall_01_loopsubcall_01" sourceRef="rawsqlcall_01" targetRef="loopsubcall_01">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_01_prepareparam_01" sourceRef="loopsubcall_01" targetRef="prepareparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_rawsfcode_01" sourceRef="prepareparam_01" targetRef="rawsfcode_01">
                     </sequenceFlow>
         </process>
     </definitions>

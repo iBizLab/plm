@@ -341,7 +341,7 @@
       "logicType" : "SCRIPT",
       "name" : "ONBEFORELOADDRAFT",
       "getPSViewCtrlName" : "form",
-      "scriptCode" : "const srfdefdata = viewParam.srfdefdata;\n// 置空父项数据\nif (srfdefdata) {\n  srfdefdata.pid = undefined;\n  srfdefdata.ptitle = undefined;\n}"
+      "scriptCode" : "\nconst srfdefdata = viewParam.srfdefdata;\n// 置空父项数据\nif (srfdefdata) {\n  srfdefdata.pid = undefined;\n  srfdefdata.ptitle = undefined;\n  if(srfdefdata.format_type) {\n    viewParam.format_type = srfdefdata.format_type;\n  }\n}\n"
     }, {
       "eventNames" : "onLoadDraftSuccess",
       "logicTrigger" : "CTRLEVENT",
@@ -365,6 +365,68 @@
       "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\n  const { name } = evt;\n  const data = ctrl.state.data;\n  if (['project_id', 'work_item_type_id'].includes(name) && data.work_item_type_id) {\n\tview.redrawView({\n\t  context: { project: data.project_id, dynamicnew: true },\n\t  params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },\n\t  isReloadModel: true,\n\t});\n  }\n});"
     } ],
     "getPSControls" : [ {
+      "codeName" : "dyna_scrum_quick_create_view_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "AI通用工具栏",
+      "name" : "toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+      },
+      "getPSControlParam" : {
+        "id" : "TOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "WARNING",
+        "caption" : "AI+",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf123@FontAwesome",
+          "cssClass" : "fa fa-star-half-full"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "buttonStyle" : "WARNING",
+          "caption" : "AI+",
+          "codeName" : "ai_nodata",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
+            "viewType" : "DELISTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "ai_agent_assignment_ai_nodata",
+          "name" : "AI+无数据",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf123@FontAwesome",
+            "cssClass" : "fa fa-star-half-full"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "ai_nodata",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "ai_nodata@ai_agent_assignment"
+        },
+        "tooltip" : "AI+",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "xDataControlName" : "form",
+      "modelid" : "514893fb34893a7093696d54919e7f54",
+      "modeltype" : "PSDETOOLBAR"
+    }, {
       "codeName" : "quick_create_work_item",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
@@ -16469,68 +16531,6 @@
       "name" : "_form_scrum_task",
       "modelid" : "7b34c841f31ec30c42e622050dc3bd44",
       "modeltype" : "PSDEFORM_EDITFORM"
-    }, {
-      "codeName" : "dyna_scrum_quick_create_view_toolbar",
-      "controlType" : "TOOLBAR",
-      "logicName" : "AI通用工具栏",
-      "name" : "toolbar",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
-      },
-      "getPSControlParam" : {
-        "id" : "TOOLBAR"
-      },
-      "getPSDEToolbarItems" : [ {
-        "buttonStyle" : "WARNING",
-        "caption" : "AI+",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "toolbar_deuiaction1"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf123@FontAwesome",
-          "cssClass" : "fa fa-star-half-full"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "buttonStyle" : "WARNING",
-          "caption" : "AI+",
-          "codeName" : "ai_nodata",
-          "getFrontPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
-            "viewType" : "DELISTVIEW"
-          },
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "ai_agent_assignment_ai_nodata",
-          "name" : "AI+无数据",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf123@FontAwesome",
-            "cssClass" : "fa fa-star-half-full"
-          },
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "ai_nodata",
-          "uIActionType" : "DEUIACTION",
-          "globalUIAction" : true,
-          "id" : "ai_nodata@ai_agent_assignment"
-        },
-        "tooltip" : "AI+",
-        "uIActionTarget" : "NONE",
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "xDataControlName" : "form",
-      "modelid" : "514893fb34893a7093696d54919e7f54",
-      "modeltype" : "PSDETOOLBAR"
     }, {
       "codeName" : "dyna_scrum_quick_create_view_datainfobar",
       "controlType" : "DATAINFOBAR",

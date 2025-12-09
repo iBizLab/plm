@@ -8,6 +8,8 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdefault;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdoc;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdoc_pages;
+                global cn.ibizlab.plm.core.base.domain.extend_scheduled_task ai_kb_documentgenerate_doc_scheduled_tasktask;
+                    global cn.ibizlab.plm.core.base.service.Iextend_scheduled_taskService extend_scheduled_taskservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService iBzSysAi_kb_documentDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -41,6 +43,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
                         update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_tasktask);//更新fact中变量值
             end
 
             //逻辑处理节点[循环子调用]
@@ -51,6 +54,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
                         update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_tasktask);//更新fact中变量值
             end
 
             //逻辑处理节点[准备参数]
@@ -58,7 +62,38 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
             ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskprepareparam_01"
             when
             then
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("tasktype","SYNC_DOCUMENT");
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("scheduledat",ai_kb_documentgenerate_doc_scheduled_taskdoc.get("scheduledat"));
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("status","pending");
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("retrycount","0");
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("principaltype","AI_KB_DOCUMENT");
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("principalname","知识库文档");
+                            ai_kb_documentgenerate_doc_scheduled_tasktask.set("principalid",ai_kb_documentgenerate_doc_scheduled_taskdoc.get("id"));
                         update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
                         update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_tasktask);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构造任务名称]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskrawsfcode_01"
+            when
+            then
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_tasktask);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建文档同步任务]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskdeaction_01"
+            when
+            then
+                        extend_scheduled_taskservice.create(ai_kb_documentgenerate_doc_scheduled_tasktask);
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_tasktask);//更新fact中变量值
             end
