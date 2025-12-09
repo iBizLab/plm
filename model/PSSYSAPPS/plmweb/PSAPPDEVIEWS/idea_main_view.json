@@ -64,6 +64,11 @@
     "getAllPSPanelFields" : [ {
       "id" : "field_textbox"
     }, {
+      "id" : "field_textbox_md"
+    }, {
+      "id" : "format_type",
+      "hidden" : true
+    }, {
       "id" : "attentions",
       "viewFieldName" : "ATTENTIONS"
     } ],
@@ -397,7 +402,51 @@
                   "getPSLayoutPos" : {
                     "grow" : 10,
                     "layout" : "FLEX"
-                  }
+                  },
+                  "getPSPanelItemGroupLogics" : [ {
+                    "groupOP" : "AND",
+                    "logicCat" : "PANELVISIBLE",
+                    "logicType" : "GROUP",
+                    "getPSPanelItemLogics" : [ {
+                      "condOp" : "NOTEQ",
+                      "dstModelField" : "format_type",
+                      "logicType" : "SINGLE",
+                      "name" : "format_type 不等于(<>) MD",
+                      "value" : "MD"
+                    } ],
+                    "relatedItemNames" : [ "format_type" ],
+                    "notMode" : false
+                  } ]
+                }, {
+                  "caption" : "文本框",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "FIELD",
+                  "name" : "field_textbox_md",
+                  "getPSEditor" : {
+                    "editorType" : "MARKDOWN",
+                    "mode" : "EDIT",
+                    "name" : "field_textbox_md",
+                    "predefinedType" : "FIELD_TEXTBOX",
+                    "showMaxLength" : true
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : 10,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItemGroupLogics" : [ {
+                    "groupOP" : "AND",
+                    "logicCat" : "PANELVISIBLE",
+                    "logicType" : "GROUP",
+                    "getPSPanelItemLogics" : [ {
+                      "condOp" : "EQ",
+                      "dstModelField" : "format_type",
+                      "logicType" : "SINGLE",
+                      "name" : "format_type 等于(=) MD",
+                      "value" : "MD"
+                    } ],
+                    "relatedItemNames" : [ "format_type" ],
+                    "notMode" : false
+                  } ]
                 }, {
                   "actionType" : "UIACTION",
                   "buttonStyle" : "INFO",
@@ -550,6 +599,20 @@
                   "rawItemHeight" : 48.0,
                   "showCaption" : true
                 } ]
+              }, {
+                "caption" : "文本(动态)",
+                "itemType" : "FIELD",
+                "name" : "format_type",
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "format_type",
+                  "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "hidden" : true
               } ]
             } ],
             "predefinedType" : "PANELPART",

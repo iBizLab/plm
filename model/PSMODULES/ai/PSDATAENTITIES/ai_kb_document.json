@@ -26,6 +26,16 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/generate_doc_scheduled.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json",
@@ -2380,7 +2390,7 @@
     "name" : "生成文档执行计划",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 240,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -2394,7 +2404,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 282,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_01",
@@ -2456,11 +2466,27 @@
       "topPos" : 280,
       "parallelOutput" : true
     }, {
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 * * *',\r\n    'weekly': '0 0 * * 1', \r\n    'monthly': '0 0 1 * *'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "leftPos" : 670,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "构造任务名称",
+      "name" : "构造定时器策略",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
       "topPos" : 280,
       "parallelOutput" : true
     }, {
@@ -2477,10 +2503,10 @@
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
       },
-      "leftPos" : 470,
+      "leftPos" : 670,
       "logicNodeType" : "DEACTION",
       "name" : "创建文档执行计划",
-      "topPos" : 510,
+      "topPos" : 440,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
