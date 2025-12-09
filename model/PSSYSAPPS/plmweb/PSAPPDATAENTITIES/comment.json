@@ -3143,7 +3143,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[content] 值不为空(NotNil)"
+            "name" : "Default[content] 值不为空(NotNil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {
@@ -3151,7 +3151,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200
+      "topPos" : 80
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -3205,6 +3205,19 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "comment_md"
+        },
+        "name" : "parentView[layoutPanel.panelItems.field_textbox_md.editor] ==> comment_md",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.field_textbox_md.editor",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
         "dstFieldName" : "edit_comment_id",
         "getDstPSDEUILogicParam" : {
           "modelref" : true,
@@ -3218,10 +3231,22 @@
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "format_type"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.format_type",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 340
+      "topPos" : 300
     }, {
-      "code" : "uiLogic.comment.toggleCollapse(true);\r\nuiLogic.comment.setValue(uiLogic.default.content);\r\nuiLogic.comment.reply.value = null;",
+      "code" : "if(uiLogic.default.format_type=='MD')\n{\n    uiLogic.comment_md.toggleCollapse(true);\n    uiLogic.comment_md.setValue(uiLogic.default.content);\n}\nelse\n{\n    uiLogic.comment.toggleCollapse(true);\n    uiLogic.comment.setValue(uiLogic.default.content);\n    uiLogic.comment.reply.value = null;\n}\n\nuiLogic.format_type=uiLogic.default.format_type;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -3229,9 +3254,24 @@
       "topPos" : 480
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "format_type",
+      "logicName" : "format_type",
+      "name" : "format_type",
+      "entityParam" : true
+    }, {
       "codeName" : "comment",
       "logicName" : "评论对象",
       "name" : "评论对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "comment_id",
+      "logicName" : "评论id存储对象",
+      "name" : "评论id存储对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "comment_md",
+      "logicName" : "评论对象MD",
+      "name" : "评论对象MD",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -3249,11 +3289,6 @@
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
-    }, {
-      "codeName" : "comment_id",
-      "logicName" : "评论id存储对象",
-      "name" : "评论id存储对象",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
