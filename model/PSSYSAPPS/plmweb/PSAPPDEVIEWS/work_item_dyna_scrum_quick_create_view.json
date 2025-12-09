@@ -6399,6 +6399,14 @@
         "id" : "_FORM_SCRUM_EPIC"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "customCode" : true
+      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -6409,14 +6417,6 @@
           "name" : "project_type"
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
-        "customCode" : true
-      }, {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -6583,7 +6583,7 @@
           "codeName" : "format_type"
         }
       }, {
-        "id" : "formitem",
+        "id" : "html_description",
         "hidden" : true,
         "dataType" : 21,
         "getPSAppDEField" : {
@@ -6591,7 +6591,7 @@
           "codeName" : "description"
         }
       }, {
-        "id" : "formitem1",
+        "id" : "md_description",
         "hidden" : true,
         "dataType" : 21,
         "getPSAppDEField" : {
@@ -6599,7 +6599,7 @@
           "codeName" : "description"
         }
       }, {
-        "id" : "formitem2",
+        "id" : "excel_description",
         "hidden" : true,
         "dataType" : 21,
         "getPSAppDEField" : {
@@ -6936,7 +6936,7 @@
               "hidden" : true
             }, {
               "caption" : "描述",
-              "codeName" : "formitem",
+              "codeName" : "html_description",
               "dataType" : 21,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -6944,7 +6944,7 @@
               "ignoreInput" : 4,
               "labelPos" : "NONE",
               "labelWidth" : 0,
-              "name" : "formitem",
+              "name" : "html_description",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
                 "name" : "DESCRIPTION",
@@ -6965,7 +6965,7 @@
               } ],
               "getPSEditor" : {
                 "editorType" : "HIDDEN",
-                "name" : "formitem"
+                "name" : "html_description"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -6975,7 +6975,7 @@
               "hidden" : true
             }, {
               "caption" : "描述",
-              "codeName" : "formitem1",
+              "codeName" : "md_description",
               "dataType" : 21,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -6983,7 +6983,7 @@
               "ignoreInput" : 4,
               "labelPos" : "NONE",
               "labelWidth" : 0,
-              "name" : "formitem1",
+              "name" : "md_description",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
                 "name" : "DESCRIPTION",
@@ -7004,7 +7004,7 @@
               } ],
               "getPSEditor" : {
                 "editorType" : "HIDDEN",
-                "name" : "formitem1"
+                "name" : "md_description"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -7014,7 +7014,7 @@
               "hidden" : true
             }, {
               "caption" : "描述",
-              "codeName" : "formitem2",
+              "codeName" : "excel_description",
               "dataType" : 21,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -7022,7 +7022,7 @@
               "ignoreInput" : 4,
               "labelPos" : "NONE",
               "labelWidth" : 0,
-              "name" : "formitem2",
+              "name" : "excel_description",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
                 "name" : "DESCRIPTION",
@@ -7043,7 +7043,7 @@
               } ],
               "getPSEditor" : {
                 "editorType" : "HIDDEN",
-                "name" : "formitem2"
+                "name" : "excel_description"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
