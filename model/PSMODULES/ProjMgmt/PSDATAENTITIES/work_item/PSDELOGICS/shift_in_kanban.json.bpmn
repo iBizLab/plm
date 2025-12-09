@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemshift_in_kanban" isClosed="false" isExecutable="true" name="projmgmt_work_item_shift_in_kanban_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemshift_in_kanban">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemshift_in_kanbandefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.entry()" name="work_itemshift_in_kanbanentry" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.entry()" name="work_itemshift_in_kanbanentry_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.entry()" name="work_itemshift_in_kanbanentry_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemshift_in_kanbanfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemshift_in_kanbansrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IentryService))" name="entryservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemshift_in_kanbandefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemshift_in_kanbanentry" type="cn.ibizlab.plm.core.projmgmt.domain.entry" />
+                            <tns:global identifier="work_itemshift_in_kanbanentry_filter" type="cn.ibizlab.plm.core.projmgmt.domain.entry" />
+                            <tns:global identifier="work_itemshift_in_kanbanentry_page" type="cn.ibizlab.plm.core.projmgmt.domain.entry" />
+                            <tns:global identifier="work_itemshift_in_kanbanfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemshift_in_kanbansrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbanbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选择数据对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbanbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="默认移入至首个看板栏"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbanprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充看板栏标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbanprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备看板过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbandedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取指定看板下的看板栏"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbandeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="移入看板"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemshift_in_kanbanloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_prepareparam3" sourceRef="bindparam2" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_bindparam2" sourceRef="gateway-dedataset1" targetRef="bindparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemshift_in_kanbandefault:work_item();
+                                            $work_itemshift_in_kanbanentry:entry();
+                                            $work_itemshift_in_kanbanentry_filter:entry();
+                                            $work_itemshift_in_kanbanentry_page:entry();
+                                            $work_itemshift_in_kanbanfor_temp_obj:work_item();
+                                            $work_itemshift_in_kanbansrfactionparam:work_item();
+                                    eval($work_itemshift_in_kanbandefault==work_itemshift_in_kanbandefault && $work_itemshift_in_kanbanentry==work_itemshift_in_kanbanentry && $work_itemshift_in_kanbanentry_filter==work_itemshift_in_kanbanentry_filter && $work_itemshift_in_kanbanentry_page==work_itemshift_in_kanbanentry_page && $work_itemshift_in_kanbanfor_temp_obj==work_itemshift_in_kanbanfor_temp_obj && $work_itemshift_in_kanbansrfactionparam==work_itemshift_in_kanbansrfactionparam);
+                                eval((RuleUtils.test($work_itemshift_in_kanbanentry_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_deaction1" sourceRef="gateway-dedataset1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemshift_in_kanbandefault:work_item();
+                                            $work_itemshift_in_kanbanentry:entry();
+                                            $work_itemshift_in_kanbanentry_filter:entry();
+                                            $work_itemshift_in_kanbanentry_page:entry();
+                                            $work_itemshift_in_kanbanfor_temp_obj:work_item();
+                                            $work_itemshift_in_kanbansrfactionparam:work_item();
+                                    eval($work_itemshift_in_kanbandefault==work_itemshift_in_kanbandefault && $work_itemshift_in_kanbanentry==work_itemshift_in_kanbanentry && $work_itemshift_in_kanbanentry_filter==work_itemshift_in_kanbanentry_filter && $work_itemshift_in_kanbanentry_page==work_itemshift_in_kanbanentry_page && $work_itemshift_in_kanbanfor_temp_obj==work_itemshift_in_kanbanfor_temp_obj && $work_itemshift_in_kanbansrfactionparam==work_itemshift_in_kanbansrfactionparam);
+                                eval((RuleUtils.test($work_itemshift_in_kanbanentry_page.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,101 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.fill_stage_reviewer;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewfill_stage_reviewerdefault;
+                global cn.ibizlab.plm.core.base.domain.member reviewfill_stage_reviewerfilter;
+                global cn.ibizlab.plm.core.base.domain.group reviewfill_stage_reviewergroup_obj;
+                global cn.ibizlab.plm.core.base.domain.member reviewfill_stage_reviewermember_page;
+                global cn.ibizlab.plm.core.base.domain.member reviewfill_stage_reviewerreviewer;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewfill_stage_reviewerbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewfill_stage_reviewerend1"
+            when
+            then
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置过滤参数及用户id]
+            rule "prepareparam1"
+            ruleflow-group "reviewfill_stage_reviewerprepareparam1"
+            when
+            then
+                            reviewfill_stage_reviewerfilter.set("n_owner_id_eq",reviewfill_stage_reviewerdefault.get("reviewer"));
+                                reviewfill_stage_reviewerdefault.set("cur_user_id",curuser.getSessionParams().get("srfpersonid"));
+                            reviewfill_stage_reviewerfilter.set("n_owner_type_eq","GROUP");
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询成员表]
+            rule "dedataset1"
+            ruleflow-group "reviewfill_stage_reviewerdedataset1"
+            when
+            then
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环符合条件的成员信息]
+            rule "loopsubcall1"
+            ruleflow-group "reviewfill_stage_reviewerloopsubcall1"
+            when
+            then
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "reviewfill_stage_reviewerdebugparam2"
+            when
+            then
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "reviewfill_stage_reviewerprepareparam2"
+            when
+            then
+                            reviewfill_stage_reviewerdefault.set("cur_reviewer_id",reviewfill_stage_reviewerreviewer.get("userid"));
+                        update(reviewfill_stage_reviewerdefault);//更新fact中变量值
+                        update(reviewfill_stage_reviewerfilter);//更新fact中变量值
+                        update(reviewfill_stage_reviewergroup_obj);//更新fact中变量值
+                        update(reviewfill_stage_reviewermember_page);//更新fact中变量值
+                        update(reviewfill_stage_reviewerreviewer);//更新fact中变量值
+            end

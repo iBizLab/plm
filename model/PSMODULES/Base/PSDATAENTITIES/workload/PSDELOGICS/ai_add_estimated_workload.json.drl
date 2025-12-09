@@ -1,0 +1,165 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.ai_add_estimated_workload;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloaddefault;
+                global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloaddata;
+                global cn.ibizlab.plm.core.base.domain.workload_type workloadai_add_estimated_workloadfilter;
+                global cn.ibizlab.plm.core.base.domain.workload workloadai_add_estimated_workloadtemp;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadai_add_estimated_workloadwork_item;
+                global cn.ibizlab.plm.core.base.domain.workload_type workloadai_add_estimated_workloadworkload_type_page;
+                    global cn.ibizlab.plm.core.base.service.Iworkload_typeService workload_typeservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadai_add_estimated_workloadbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam_01"
+            ruleflow-group "workloadai_add_estimated_workloaddebugparam_01"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "workloadai_add_estimated_workloadprepareparam2"
+            when
+            then
+                            workloadai_add_estimated_workloadwork_item.set("id",workloadai_add_estimated_workloaddefault.get("principalid"));
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工时种类]
+            rule "dedataset1"
+            ruleflow-group "workloadai_add_estimated_workloaddedataset1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "workloadai_add_estimated_workloadbindparam1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "workloadai_add_estimated_workloadloopsubcall1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项]
+            rule "deaction1"
+            ruleflow-group "workloadai_add_estimated_workloaddeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(workloadai_add_estimated_workloadwork_item.getId()),workloadai_add_estimated_workloadwork_item);
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadai_add_estimated_workloadprepareparam1"
+            when
+            then
+                            workloadai_add_estimated_workloadtemp.set("principalid",workloadai_add_estimated_workloaddefault.get("principalid"));
+                            workloadai_add_estimated_workloadtemp.set("name",workloadai_add_estimated_workloadwork_item.get("title"));
+                            workloadai_add_estimated_workloadtemp.set("registerdate",workloadai_add_estimated_workloaddefault.get("registerdate"));
+                            workloadai_add_estimated_workloadtemp.set("category","ESTIMATED_WORKLOAD");
+                            workloadai_add_estimated_workloadtemp.set("workload_kind","工作项");
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算剩余工时]
+            rule "rawsfcode1"
+            ruleflow-group "workloadai_add_estimated_workloadrawsfcode1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[登记工时]
+            rule "delogic1"
+            ruleflow-group "workloadai_add_estimated_workloaddelogic1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadai_add_estimated_workloadend1"
+            when
+            then
+                        update(workloadai_add_estimated_workloaddefault);//更新fact中变量值
+                        update(workloadai_add_estimated_workloaddata);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadfilter);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadtemp);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadwork_item);//更新fact中变量值
+                        update(workloadai_add_estimated_workloadworkload_type_page);//更新fact中变量值
+            end

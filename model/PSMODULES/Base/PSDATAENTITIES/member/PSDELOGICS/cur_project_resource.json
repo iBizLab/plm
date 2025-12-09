@@ -1,0 +1,299 @@
+{
+  "codeName" : "cur_project_resource",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/member/PSDELOGICS/cur_project_resource.json",
+  "logicName" : "获取当前项目下资源成员",
+  "memo" : "获取当前项目下资源成员",
+  "name" : "获取当前项目下资源成员",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "存在当前项目标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "project_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[project_id] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 50,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置资源组件查询过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "Default[project_id] ==> addon_resource_filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "project_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_addon_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "直接值[resource] ==> addon_resource_filter[n_addon_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "resource",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_owner_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "直接值[project] ==> addon_resource_filter[n_owner_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "project",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 190
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取当前项目下的资源组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      },
+      "name" : "当前项目下存在资源组件",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_page"
+    },
+    "topPos" : 278
+  }, {
+    "codeName" : "BINDPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定资源组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "存在资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "未设置资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_page"
+    },
+    "topPos" : 426
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "member_page"
+    },
+    "leftPos" : 430,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "members",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "topPos" : 580
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "member_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 800
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "addon_resource",
+    "logicName" : "资源组件",
+    "name" : "资源组件",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "addon_resource_filter",
+    "logicName" : "资源组件查询过滤器",
+    "name" : "资源组件查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "addon_resource_page",
+    "logicName" : "资源组件分页查询结果变量",
+    "name" : "资源组件分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "member_page",
+    "logicName" : "资源成员结果变量",
+    "name" : "资源成员结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

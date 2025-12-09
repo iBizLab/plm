@@ -1,0 +1,30 @@
+package cn.ibizlab.plm.base.logic.addon_resourcelogic.empty;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.addon_resource addon_resourceemptydefault;
+                global cn.ibizlab.plm.core.base.domain.addon_resource addon_resourceemptypage;
+        global cn.ibizlab.plm.core.base.service.Iaddon_resourceService iBzSysAddon_resourceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "addon_resourceemptybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "addon_resourceemptyend1"
+            when
+            then
+                        update(addon_resourceemptydefault);//更新fact中变量值
+                        update(addon_resourceemptypage);//更新fact中变量值
+            end
