@@ -218,6 +218,9 @@
       "name" : "UPDATE_TIME",
       "codeName" : "update_time"
     }, {
+      "name" : "SYNC_FREQUENCY",
+      "codeName" : "sync_frequency"
+    }, {
       "name" : "SOURCE_TYPE",
       "codeName" : "source_type"
     }, {
@@ -247,6 +250,9 @@
     }, {
       "name" : "CUSTOM_CHUNK",
       "codeName" : "custom_chunk"
+    }, {
+      "name" : "SCHEDULED_AT",
+      "codeName" : "scheduled_at"
     }, {
       "name" : "KB_ID",
       "codeName" : "kb_id"
@@ -915,6 +921,96 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SYNC_FREQUENCY",
+      "dBType" : "MYSQL5",
+      "name" : "SYNC_FREQUENCY",
+      "queryCodeExp" : "t1.`SYNC_FREQUENCY`",
+      "standardColumnName" : "`SYNC_FREQUENCY`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_SYNC_FREQUENCY_EQ",
+      "name" : "N_SYNC_FREQUENCY_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SYNC_FREQUENCY][同步频率]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[SYNC_FREQUENCY][同步频率]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SYNC_FREQUENCY][同步频率]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[SYNC_FREQUENCY][同步频率]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SYNC_FREQUENCY",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "sync_frequency",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "同步频率",
+    "name" : "SYNC_FREQUENCY",
+    "orderValue" : 170,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/KBSyncFrequency.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SYNC_FREQUENCY"
+    },
+    "serviceCodeName" : "sync_frequency",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SOURCE_TYPE",
@@ -1695,6 +1791,72 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SCHEDULED_AT",
+      "dBType" : "MYSQL5",
+      "name" : "SCHEDULED_AT",
+      "queryCodeExp" : "t1.`SCHEDULED_AT`",
+      "standardColumnName" : "`SCHEDULED_AT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCHEDULED_AT][计划执行时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[SCHEDULED_AT][计划执行时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "scheduled_at",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "logicName" : "计划执行时间",
+    "name" : "SCHEDULED_AT",
+    "orderValue" : 330,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SCHEDULED_AT"
+    },
+    "serviceCodeName" : "scheduled_at",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "KB_ID",
       "dBType" : "MYSQL5",
       "name" : "KB_ID",
@@ -2279,6 +2441,38 @@
     "valueFormat" : "%1$s",
     "linkDEField" : true
   } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "generate_doc_scheduled_task",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/generate_doc_scheduled_task.json",
+    "logicName" : "生成文档同步任务",
+    "name" : "生成文档同步任务",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_kb_document_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -2356,6 +2550,17 @@
       "type" : "SIMPLE",
       "allowEmpty" : false,
       "readOnly" : true
+    }, {
+      "logicName" : "同步频率",
+      "name" : "sync_frequency",
+      "getPSDEField" : {
+        "name" : "SYNC_FREQUENCY",
+        "codeName" : "sync_frequency"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "源类型",
       "name" : "source_type",
@@ -2462,6 +2667,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "计划执行时间",
+      "name" : "scheduled_at",
+      "getPSDEField" : {
+        "name" : "SCHEDULED_AT",
+        "codeName" : "scheduled_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",
@@ -2662,6 +2878,21 @@
       "getPSDEField" : {
         "name" : "STATUS",
         "codeName" : "status"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "同步频率",
+      "name" : "n_sync_frequency_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_SYNC_FREQUENCY_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "SYNC_FREQUENCY",
+        "codeName" : "sync_frequency"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",

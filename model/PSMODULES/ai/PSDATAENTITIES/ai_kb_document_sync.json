@@ -259,6 +259,9 @@
       "name" : "SOURCE_ID",
       "codeName" : "source_id"
     }, {
+      "name" : "SCHEDULED_AT",
+      "codeName" : "scheduled_at"
+    }, {
       "name" : "AI_KNOWLEDGE_BASE_ID",
       "codeName" : "ai_knowledge_base_id"
     } ],
@@ -1156,6 +1159,72 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SCHEDULED_AT",
+      "dBType" : "MYSQL5",
+      "name" : "SCHEDULED_AT",
+      "queryCodeExp" : "t1.`SCHEDULED_AT`",
+      "standardColumnName" : "`SCHEDULED_AT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SCHEDULED_AT][计划执行时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[SCHEDULED_AT][计划执行时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[SCHEDULED_AT][计划执行时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "scheduled_at",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "logicName" : "计划执行时间",
+    "name" : "SCHEDULED_AT",
+    "orderValue" : 330,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SCHEDULED_AT"
+    },
+    "serviceCodeName" : "scheduled_at",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "AI_KNOWLEDGE_BASE_ID",
       "dBType" : "MYSQL5",
       "name" : "AI_KNOWLEDGE_BASE_ID",
@@ -1269,6 +1338,37 @@
     "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "generate_space_scheduled_task",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/generate_space_scheduled_task.json",
+    "logicName" : "生成空间同步任务",
+    "name" : "生成空间同步任务",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "prepare_create",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/prepare_create.json",
@@ -2012,6 +2112,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "计划执行时间",
+      "name" : "scheduled_at",
+      "getPSDEField" : {
+        "name" : "SCHEDULED_AT",
+        "codeName" : "scheduled_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
       "type" : "SIMPLE"
     }, {
       "logicName" : "知识库标识",
