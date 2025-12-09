@@ -2373,11 +2373,11 @@
     "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
-    "codeName" : "generate_doc_scheduled_task",
+    "codeName" : "generate_doc_scheduled",
     "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/generate_doc_scheduled_task.json",
-    "logicName" : "生成文档同步任务",
-    "name" : "生成文档同步任务",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/generate_doc_scheduled.json",
+    "logicName" : "生成文档执行计划",
+    "name" : "生成文档执行计划",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 200,
@@ -2386,7 +2386,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSQLCALL_01"
+          "id" : "PREPAREPARAM_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -2397,60 +2397,8 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "RAWSQLCALL_01",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_pages"
-      },
-      "leftPos" : 330,
-      "logicNodeType" : "RAWSQLCALL",
-      "name" : "直接SQL调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL_01"
-        }
-      } ],
-      "sql" : "SELECT * FROM `ai_kb_document` doc \nWHERE doc.SYNC_ID IS NULL \n  AND doc.scheduled_at = DATE_FORMAT(CURDATE(), '%Y-%m-%d 00:00:00')",
-      "topPos" : 210,
-      "fillDstLogicParam" : true,
-      "ignoreResetDstLogicParam" : false,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "LOOPSUBCALL_01",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "leftPos" : 561,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_01"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_pages"
-      },
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
       "codeName" : "PREPAREPARAM_01",
-      "leftPos" : 561,
+      "leftPos" : 430,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备参数",
       "getPSDELogicLinks" : [ {
@@ -2468,47 +2416,16 @@
         "dstFieldName" : "TASK_TYPE",
         "getDstPSDELogicParam" : {
           "modelref" : true,
-          "id" : "task"
+          "id" : "extend_schedule"
         },
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "SYNC_DOCUMENT",
         "srcValueType" : "SRCVALUE"
       }, {
-        "dstFieldName" : "SCHEDULED_AT",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "task"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "SCHEDULED_AT",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "doc"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "STATUS",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "task"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "pending",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "RETRY_COUNT",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "task"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "0",
-        "srcValueType" : "SRCVALUE"
-      }, {
         "dstFieldName" : "PRINCIPAL_TYPE",
         "getDstPSDELogicParam" : {
           "modelref" : true,
-          "id" : "task"
+          "id" : "extend_schedule"
         },
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "AI_KB_DOCUMENT",
@@ -2517,7 +2434,7 @@
         "dstFieldName" : "PRINCIPAL_NAME",
         "getDstPSDELogicParam" : {
           "modelref" : true,
-          "id" : "task"
+          "id" : "extend_schedule"
         },
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "知识库文档",
@@ -2526,44 +2443,44 @@
         "dstFieldName" : "PRINCIPAL_ID",
         "getDstPSDELogicParam" : {
           "modelref" : true,
-          "id" : "task"
+          "id" : "extend_schedule"
         },
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "ID",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
-          "id" : "doc"
+          "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 350,
+      "topPos" : 280,
       "parallelOutput" : true
     }, {
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
-      "leftPos" : 750,
+      "leftPos" : 670,
       "logicNodeType" : "RAWSFCODE",
       "name" : "构造任务名称",
-      "topPos" : 350,
+      "topPos" : 280,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEACTIONS/Create.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule/PSDEACTIONS/Create.json"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "task"
+        "id" : "extend_schedule"
       },
       "getDstPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
       },
-      "leftPos" : 340,
+      "leftPos" : 470,
       "logicNodeType" : "DEACTION",
-      "name" : "创建文档同步任务",
-      "topPos" : 550,
+      "name" : "创建文档执行计划",
+      "topPos" : 510,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2577,30 +2494,12 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "doc",
-      "logicName" : "doc",
-      "name" : "doc",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-      },
-      "entityParam" : true
-    }, {
-      "codeName" : "doc_pages",
-      "logicName" : "doc_pages",
-      "name" : "doc_pages",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-      },
-      "entityPageParam" : true
-    }, {
-      "codeName" : "task",
+      "codeName" : "extend_schedule",
       "logicName" : "task",
       "name" : "task",
       "getParamPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
       },
       "entityParam" : true
     } ],

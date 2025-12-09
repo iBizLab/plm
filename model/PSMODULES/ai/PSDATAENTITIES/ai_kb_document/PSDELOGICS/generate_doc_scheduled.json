@@ -1,0 +1,138 @@
+{
+  "codeName" : "generate_doc_scheduled",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/generate_doc_scheduled.json",
+  "logicName" : "生成文档执行计划",
+  "name" : "生成文档执行计划",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 430,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TASK_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "extend_schedule"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "SYNC_DOCUMENT",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "extend_schedule"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "AI_KB_DOCUMENT",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "extend_schedule"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "知识库文档",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "extend_schedule"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 280,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 670,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "构造任务名称",
+    "topPos" : 280,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_01",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "extend_schedule"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
+    },
+    "leftPos" : 470,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建文档执行计划",
+    "topPos" : 510,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "extend_schedule",
+    "logicName" : "task",
+    "name" : "task",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
