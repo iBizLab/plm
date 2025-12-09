@@ -2452,7 +2452,77 @@
       "leftPos" : 200,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
       "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSQLCALL_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_pages"
+      },
+      "leftPos" : 330,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        }
+      } ],
+      "sql" : "SELECT * FROM `ai_kb_document` doc \nWHERE doc.SYNC_ID IS NULL \n  AND doc.scheduled_at = DATE_FORMAT(CURDATE(), '%Y-%m-%d 00:00:00')",
+      "topPos" : 210,
+      "fillDstLogicParam" : true,
+      "ignoreResetDstLogicParam" : false,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "LOOPSUBCALL_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc"
+      },
+      "leftPos" : 561,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_01"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_pages"
+      },
+      "topPos" : 210,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 561,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "topPos" : 350,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2465,6 +2535,24 @@
       },
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "doc",
+      "logicName" : "doc",
+      "name" : "doc",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "doc_pages",
+      "logicName" : "doc_pages",
+      "name" : "doc_pages",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,

@@ -13326,10 +13326,6 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "ai_agent_session_jenkinsrun",
     "name" : "执行JENKINS",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "jenkins_build"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
@@ -13339,10 +13335,10 @@
       "cssClass" : "fa fa-bolt"
     },
     "refreshMode" : 1,
+    "scriptCode" : "let answer = null;\r\nconst item = data[0];\r\nconst result = {};\r\nif (item.data && item.data.messages && item.data.messages.length > 0) {\r\n  const lastAns = item.data.messages[item.data.messages.length - 1];\r\n  answer = lastAns.realcontent;\r\n} else if (item.msg) {\r\n  answer = item.msg.realcontent;\r\n}\r\nif (answer) {\r\n  if (answer && typeof answer == 'string') {\r\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\r\n    ret.project = view.parentView.context.project;\r\n    if (ret.success && ret.data) {\r\n      if (ret.data_type == 'jsonobject') {\r\n        // API配置\r\n        const apiUrl = 'http://172.16.240.30:8000';\r\n\r\n        console.log('原始ret.data:', ret.data);\r\n\r\n        // 直接使用ret.data作为参数\r\n        // 确保有task_type字段\r\n        if (!ret.data.task_type) {\r\n          throw new Error('参数中缺少task_type字段');\r\n        }\r\n\r\n        // 构建请求数据 - 直接传递ret.data\r\n        const requestData = {\r\n          task_type: ret.data.task_type,\r\n          params: {},\r\n          timeout: ret.data.timeout || 300,\r\n          callback_url: ret.data.callback_url || null,\r\n        };\r\n\r\n        // 将所有其他参数复制到params中\r\n        Object.entries(ret.data).forEach(([key, value]) => {\r\n          if (\r\n            key !== 'task_type' &&\r\n            key !== 'timeout' &&\r\n            key !== 'callback_url'\r\n          ) {\r\n            requestData.params[key] = value;\r\n          }\r\n        });\r\n\r\n        console.log('API请求数据:', requestData);\r\n\r\n        // 调用API\r\n        const response = await fetch(`${apiUrl}/api/v1/jobs`, {\r\n          method: 'POST',\r\n          headers: {\r\n            'Content-Type': 'application/json',\r\n            Accept: 'application/json',\r\n          },\r\n          body: JSON.stringify(requestData),\r\n        });\r\n\r\n        if (!response.ok) {\r\n          const errorText = await response.text();\r\n          throw new Error(`API请求失败: ${response.status} - ${errorText}`);\r\n        }\r\n\r\n        const json = await response.json();\r\n\r\n        console.log('API返回结果:', json);\r\n        // 将结果返回\r\n        result.data = [\r\n          {\r\n            type: 'DEFAULT',\r\n            role: 'ASSISTANT',\r\n            content: json.message,\r\n          },\r\n        ];\r\n        ibiz.message.success(`任务已提交到调度系统，任务ID: ${json.task_id}`);\r\n      }\r\n    }\r\n  }\r\n}\r\nreturn result\r\n",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "jenkinsrun",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true,
     "reloadData" : true,
     "id" : "jenkinsrun@ai_agent_session"
@@ -86379,10 +86375,6 @@
               "frontProcessType" : "OTHER",
               "fullCodeName" : "ai_agent_session_jenkinsrun",
               "name" : "执行JENKINS",
-              "getPSAppDEUILogic" : {
-                "modelref" : true,
-                "id" : "jenkins_build"
-              },
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
@@ -86392,10 +86384,10 @@
                 "cssClass" : "fa fa-bolt"
               },
               "refreshMode" : 1,
+              "scriptCode" : "let answer = null;\r\nconst item = data[0];\r\nconst result = {};\r\nif (item.data && item.data.messages && item.data.messages.length > 0) {\r\n  const lastAns = item.data.messages[item.data.messages.length - 1];\r\n  answer = lastAns.realcontent;\r\n} else if (item.msg) {\r\n  answer = item.msg.realcontent;\r\n}\r\nif (answer) {\r\n  if (answer && typeof answer == 'string') {\r\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\r\n    ret.project = view.parentView.context.project;\r\n    if (ret.success && ret.data) {\r\n      if (ret.data_type == 'jsonobject') {\r\n        // API配置\r\n        const apiUrl = 'http://172.16.240.30:8000';\r\n\r\n        console.log('原始ret.data:', ret.data);\r\n\r\n        // 直接使用ret.data作为参数\r\n        // 确保有task_type字段\r\n        if (!ret.data.task_type) {\r\n          throw new Error('参数中缺少task_type字段');\r\n        }\r\n\r\n        // 构建请求数据 - 直接传递ret.data\r\n        const requestData = {\r\n          task_type: ret.data.task_type,\r\n          params: {},\r\n          timeout: ret.data.timeout || 300,\r\n          callback_url: ret.data.callback_url || null,\r\n        };\r\n\r\n        // 将所有其他参数复制到params中\r\n        Object.entries(ret.data).forEach(([key, value]) => {\r\n          if (\r\n            key !== 'task_type' &&\r\n            key !== 'timeout' &&\r\n            key !== 'callback_url'\r\n          ) {\r\n            requestData.params[key] = value;\r\n          }\r\n        });\r\n\r\n        console.log('API请求数据:', requestData);\r\n\r\n        // 调用API\r\n        const response = await fetch(`${apiUrl}/api/v1/jobs`, {\r\n          method: 'POST',\r\n          headers: {\r\n            'Content-Type': 'application/json',\r\n            Accept: 'application/json',\r\n          },\r\n          body: JSON.stringify(requestData),\r\n        });\r\n\r\n        if (!response.ok) {\r\n          const errorText = await response.text();\r\n          throw new Error(`API请求失败: ${response.status} - ${errorText}`);\r\n        }\r\n\r\n        const json = await response.json();\r\n\r\n        console.log('API返回结果:', json);\r\n        // 将结果返回\r\n        result.data = [\r\n          {\r\n            type: 'DEFAULT',\r\n            role: 'ASSISTANT',\r\n            content: json.message,\r\n          },\r\n        ];\r\n        ibiz.message.success(`任务已提交到调度系统，任务ID: ${json.task_id}`);\r\n      }\r\n    }\r\n  }\r\n}\r\nreturn result\r\n",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "jenkinsrun",
               "uIActionType" : "DEUIACTION",
-              "uILogicAttachMode" : "REPLACE",
               "globalUIAction" : true,
               "reloadData" : true,
               "id" : "jenkinsrun@ai_agent_session"

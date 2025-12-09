@@ -6,6 +6,8 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdoc;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentgenerate_doc_scheduled_taskdoc_pages;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService iBzSysAi_kb_documentDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -17,4 +19,46 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.generate_doc_scheduled_task;
             ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskbegin"
             when
             then
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall_01"
+            ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskrawsqlcall_01"
+            when
+            then
+                        Map param = null;
+                        String strSql="SELECT * FROM `ai_kb_document` doc  WHERE doc.SYNC_ID IS NULL    AND doc.scheduled_at = DATE_FORMAT(CURDATE(), '%Y-%m-%d 00:00:00')";
+                        java.util.List<JSONObject> entities=iBzSysAi_kb_documentDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    cn.ibizlab.plm.core.ai.domain.ai_kb_document targetEntity =new cn.ibizlab.plm.core.ai.domain.ai_kb_document();
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    targetEntity.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                                    org.springframework.cglib.beans.BeanCopier copier= org.springframework.cglib.beans.BeanCopier.create(targetEntity.getClass(),ai_kb_documentgenerate_doc_scheduled_taskdoc_pages.getClass(), false);
+                                    copier.copy(targetEntity,ai_kb_documentgenerate_doc_scheduled_taskdoc_pages,null);
+                            }
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall_01"
+            ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskloopsubcall_01"
+            when
+            then
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_documentgenerate_doc_scheduled_taskprepareparam_01"
+            when
+            then
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdefault);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc);//更新fact中变量值
+                        update(ai_kb_documentgenerate_doc_scheduled_taskdoc_pages);//更新fact中变量值
             end

@@ -1255,10 +1255,6 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "ai_agent_session_jenkinsrun",
     "name" : "执行JENKINS",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "jenkins_build"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
@@ -1268,10 +1264,10 @@
       "cssClass" : "fa fa-bolt"
     },
     "refreshMode" : 1,
+    "scriptCode" : "let answer = null;\r\nconst item = data[0];\r\nconst result = {};\r\nif (item.data && item.data.messages && item.data.messages.length > 0) {\r\n  const lastAns = item.data.messages[item.data.messages.length - 1];\r\n  answer = lastAns.realcontent;\r\n} else if (item.msg) {\r\n  answer = item.msg.realcontent;\r\n}\r\nif (answer) {\r\n  if (answer && typeof answer == 'string') {\r\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\r\n    ret.project = view.parentView.context.project;\r\n    if (ret.success && ret.data) {\r\n      if (ret.data_type == 'jsonobject') {\r\n        // API配置\r\n        const apiUrl = 'http://172.16.240.30:8000';\r\n\r\n        console.log('原始ret.data:', ret.data);\r\n\r\n        // 直接使用ret.data作为参数\r\n        // 确保有task_type字段\r\n        if (!ret.data.task_type) {\r\n          throw new Error('参数中缺少task_type字段');\r\n        }\r\n\r\n        // 构建请求数据 - 直接传递ret.data\r\n        const requestData = {\r\n          task_type: ret.data.task_type,\r\n          params: {},\r\n          timeout: ret.data.timeout || 300,\r\n          callback_url: ret.data.callback_url || null,\r\n        };\r\n\r\n        // 将所有其他参数复制到params中\r\n        Object.entries(ret.data).forEach(([key, value]) => {\r\n          if (\r\n            key !== 'task_type' &&\r\n            key !== 'timeout' &&\r\n            key !== 'callback_url'\r\n          ) {\r\n            requestData.params[key] = value;\r\n          }\r\n        });\r\n\r\n        console.log('API请求数据:', requestData);\r\n\r\n        // 调用API\r\n        const response = await fetch(`${apiUrl}/api/v1/jobs`, {\r\n          method: 'POST',\r\n          headers: {\r\n            'Content-Type': 'application/json',\r\n            Accept: 'application/json',\r\n          },\r\n          body: JSON.stringify(requestData),\r\n        });\r\n\r\n        if (!response.ok) {\r\n          const errorText = await response.text();\r\n          throw new Error(`API请求失败: ${response.status} - ${errorText}`);\r\n        }\r\n\r\n        const json = await response.json();\r\n\r\n        console.log('API返回结果:', json);\r\n        // 将结果返回\r\n        result.data = [\r\n          {\r\n            type: 'DEFAULT',\r\n            role: 'ASSISTANT',\r\n            content: json.message,\r\n          },\r\n        ];\r\n        ibiz.message.success(`任务已提交到调度系统，任务ID: ${json.task_id}`);\r\n      }\r\n    }\r\n  }\r\n}\r\nreturn result\r\n",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "jenkinsrun",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true,
     "reloadData" : true,
     "id" : "jenkinsrun@ai_agent_session"
@@ -1643,78 +1639,6 @@
       "logicName" : "context",
       "name" : "context",
       "navContextParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "jenkins_build",
-    "defaultParamName" : "Default",
-    "logicName" : "jenkins_build",
-    "name" : "jenkins_build",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 330,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "result"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 910,
-      "parallelOutput" : true
-    }, {
-      "code" : "var answer = null;\nconsole.log('测试');\nif(uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length>0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length-1];\n    answer = lastAns.realcontent;\n}\nelse if(uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n if(answer) {\n     if (answer && typeof answer == 'string') {\n        var ret =ibiz.util.jsonUtil.parseJson(answer);\n        ret.project = view.parentView.context.project;\n        if(ret.success && ret.data) {\n            if(ret.data_type == 'jsonobject' ) {\n                // API配置\n                const apiUrl = 'http://172.16.240.30:8000';\n                \n                console.log('原始ret.data:', ret.data);\n\n                // 直接使用ret.data作为参数\n                // 确保有task_type字段\n                if (!ret.data.task_type) {\n                    throw new Error('参数中缺少task_type字段');\n                }\n\n                // 构建请求数据 - 直接传递ret.data\n                const requestData = {\n                    task_type: ret.data.task_type,\n                    params: {},\n                    timeout: ret.data.timeout || 300,\n                    callback_url: ret.data.callback_url || null\n                };\n\n                // 将所有其他参数复制到params中\n                Object.entries(ret.data).forEach(([key, value]) => {\n                    if (key !== 'task_type' && key !== 'timeout' && key !== 'callback_url') {\n                        requestData.params[key] = value;\n                    }\n                });\n\n                console.log('API请求数据:', requestData);\n\n                // 调用API\n                const response = await fetch(`${apiUrl}/api/v1/jobs`, {\n                    method: 'POST',\n                    headers: {\n                        'Content-Type': 'application/json',\n                        'Accept': 'application/json'\n                    },\n                    body: JSON.stringify(requestData)\n                });\n\n                if (!response.ok) {\n                    const errorText = await response.text();\n                    throw new Error(`API请求失败: ${response.status} - ${errorText}`);\n                }\n\n                const result = await response.json();\n                \n                console.log('API返回结果:', result);\n                // 将结果返回\n                uiLogic.result = {\n                    type:  'DEFAULT',\n                    role:  'ASSISTANT',\n                    content: result.message\n                };\n                ibiz.message.success(`任务已提交到调度系统，任务ID: ${result.task_id}`);\n            }\n        }\n    }\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 670
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "result",
-      "logicName" : "result",
-      "name" : "result",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
