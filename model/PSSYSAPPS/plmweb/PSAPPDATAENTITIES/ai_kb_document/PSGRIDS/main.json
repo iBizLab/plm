@@ -53,6 +53,94 @@
       "name" : "NAME",
       "codeName" : "name"
     },
+    "getPSDEUIActionGroup" : {
+      "codeName" : "doc_grid_action",
+      "name" : "知识库文档操作列",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "知识库文档",
+        "detailType" : "DEUIACTION",
+        "name" : "u62cb8c8",
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "知识库文档",
+          "codeName" : "open_edit_view",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "ai_kb_document_open_edit_view",
+          "name" : "打开知识库文档编辑视图",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_edit_view",
+          "uIActionType" : "DEUIACTION",
+          "id" : "open_edit_view@ai_kb_document"
+        },
+        "uIActionParamJO" : {
+          "srfnavctx.sync_id" : "%sync_id%"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.REMOVE"
+        },
+        "caption" : "删除",
+        "detailType" : "DEUIACTION",
+        "name" : "uaf20dcb",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.REMOVE"
+          },
+          "caption" : "删除",
+          "codeName" : "Remove",
+          "dataAccessAction" : "DELETE",
+          "fullCodeName" : "Remove",
+          "name" : "表格界面_删除操作",
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "DELETE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "predefinedType" : "GRIDVIEW_REMOVEACTION",
+          "timeout" : 60000,
+          "tooltip" : "删除",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Remove",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "删除",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "ai_kb_document__doc_grid_action"
+    },
     "width" : 100,
     "widthUnit" : "STAR",
     "enableLinkView" : true,
