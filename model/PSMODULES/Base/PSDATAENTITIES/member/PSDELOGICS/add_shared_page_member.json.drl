@@ -1,0 +1,36 @@
+package cn.ibizlab.plm.base.logic.memberlogic.add_shared_page_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.member memberadd_shared_page_memberdefault;
+        global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "memberadd_shared_page_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[添加共享页面成员]
+            rule "rawsfcode1"
+            ruleflow-group "memberadd_shared_page_memberrawsfcode1"
+            when
+            then
+                        update(memberadd_shared_page_memberdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "memberadd_shared_page_memberend1"
+            when
+            then
+                        update(memberadd_shared_page_memberdefault);//更新fact中变量值
+            end

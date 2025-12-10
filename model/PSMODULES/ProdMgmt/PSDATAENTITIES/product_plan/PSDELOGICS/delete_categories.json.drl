@@ -1,0 +1,61 @@
+package cn.ibizlab.plm.prodmgmt.logic.product_planlogic.delete_categories;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_plan product_plandelete_categoriesdefault;
+                global java.util.Map product_plandelete_categoriesfilter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_plan product_plandelete_categoriesplan_filter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_plan product_plandelete_categoriesproduct_plan_pages;
+        global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_planService iBzSysProduct_planDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "product_plandelete_categoriesbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "product_plandelete_categoriesend1"
+            when
+            then
+                        update(product_plandelete_categoriesdefault);//更新fact中变量值
+                        update(product_plandelete_categoriesfilter);//更新fact中变量值
+                        update(product_plandelete_categoriesplan_filter);//更新fact中变量值
+                        update(product_plandelete_categoriesproduct_plan_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "product_plandelete_categoriesdebugparam1"
+            when
+            then
+                        update(product_plandelete_categoriesdefault);//更新fact中变量值
+                        update(product_plandelete_categoriesfilter);//更新fact中变量值
+                        update(product_plandelete_categoriesplan_filter);//更新fact中变量值
+                        update(product_plandelete_categoriesproduct_plan_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除类别]
+            rule "rawsqlcall1"
+            ruleflow-group "product_plandelete_categoriesrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",product_plandelete_categoriesdefault.get("id"));
+        param.put("param1",product_plandelete_categoriesdefault.get("id"));
+    String strSql="UPDATE product_plan SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', #{et.param0}, ','), ',')) WHERE FIND_IN_SET(#{et.param1}, categories) > 0 ;";
+                        iBzSysProduct_planDefaultService.execute(strSql,param);//SQL调用
+                        update(product_plandelete_categoriesdefault);//更新fact中变量值
+                        update(product_plandelete_categoriesfilter);//更新fact中变量值
+                        update(product_plandelete_categoriesplan_filter);//更新fact中变量值
+                        update(product_plandelete_categoriesproduct_plan_pages);//更新fact中变量值
+            end

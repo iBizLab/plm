@@ -1,0 +1,36 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_document_wizardlogic.create_ai_kb_doc;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard ai_kb_document_wizardcreate_ai_kb_docdefault;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_document_wizardService iBzSysAi_kb_document_wizardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[创建知识库文档]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docrawsfcode_01"
+            when
+            then
+                        update(ai_kb_document_wizardcreate_ai_kb_docdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_document_wizardcreate_ai_kb_docend_01"
+            when
+            then
+                        update(ai_kb_document_wizardcreate_ai_kb_docdefault);//更新fact中变量值
+            end

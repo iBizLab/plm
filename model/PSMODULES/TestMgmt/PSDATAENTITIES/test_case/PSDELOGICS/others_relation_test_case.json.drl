@@ -1,0 +1,141 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.others_relation_test_case;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseothers_relation_test_casedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseothers_relation_test_casefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation test_caseothers_relation_test_caseforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.relation test_caseothers_relation_test_casereverse_relation_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseothers_relation_test_caseselectdata;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_caseothers_relation_test_casebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定关联列表]
+            rule "bindparam1"
+            ruleflow-group "test_caseothers_relation_test_casebindparam1"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "test_caseothers_relation_test_caseloopsubcall1"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立正向关联参数]
+            rule "renewparam1"
+            ruleflow-group "test_caseothers_relation_test_caserenewparam1"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立反向关联参数]
+            rule "renewparam2"
+            ruleflow-group "test_caseothers_relation_test_caserenewparam2"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关联标识]
+            rule "rawsfcode1"
+            ruleflow-group "test_caseothers_relation_test_caserawsfcode1"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_caseothers_relation_test_caseend1"
+            when
+            then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "test_caseothers_relation_test_caseprepareparam1"
+            when
+            then
+                            test_caseothers_relation_test_caseforward_relation_obj.set("principalid",test_caseothers_relation_test_casedefault.get("principal_id"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("targetid",test_caseothers_relation_test_casedefault.get("principal_id"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("target_type"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("principal_type"));
+                            test_caseothers_relation_test_caseforward_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("principal_type"));
+                            test_caseothers_relation_test_caseforward_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("target_type"));
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "test_caseothers_relation_test_casedeaction1"
+            when
+            then
+                        relationservice.save(test_caseothers_relation_test_caseforward_relation_obj);
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "test_caseothers_relation_test_casedeaction2"
+            when
+            then
+                        relationservice.save(test_caseothers_relation_test_casereverse_relation_obj);
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
