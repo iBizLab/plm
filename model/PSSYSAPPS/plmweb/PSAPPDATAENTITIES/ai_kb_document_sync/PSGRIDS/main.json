@@ -4,6 +4,20 @@
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
   "controlType" : "GRID",
+  "getCreatePSControlAction" : {
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
+    }
+  },
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync/PSGRIDS/main.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
@@ -13,6 +27,34 @@
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
+    }
+  },
+  "getGetDraftPSControlAction" : {
+    "actionName" : "GetDraft",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraft",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get_draft"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -65,6 +107,7 @@
     },
     "width" : 200,
     "widthUnit" : "PX",
+    "enableRowEdit" : true,
     "enableSort" : false
   }, {
     "align" : "RIGHT",
@@ -171,6 +214,27 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
+    "caption" : "同步频率",
+    "codeName" : "sync_frequency",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "sync_frequency",
+    "getPSAppDEField" : {
+      "name" : "SYNC_FREQUENCY",
+      "codeName" : "sync_frequency"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "sync_frequency",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__KBSyncFrequency.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 3,
@@ -203,14 +267,28 @@
     }
   },
   "sortMode" : "REMOTE",
+  "getUpdatePSControlAction" : {
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
+    }
+  },
   "hasWFDataItems" : false,
   "enableColFilter" : false,
   "enableCustomized" : false,
   "enableGroup" : false,
   "enablePagingBar" : false,
-  "enableRowEdit" : false,
+  "enableRowEdit" : true,
   "enableRowEditOrder" : false,
-  "enableRowNew" : false,
+  "enableRowNew" : true,
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : true,
