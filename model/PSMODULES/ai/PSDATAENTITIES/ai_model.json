@@ -1995,6 +1995,32 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
+          "id" : "PREPAREPARAM_07"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "MODEL_CATEGORY",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[MODEL_CATEGORY] 等于(=) vision",
+            "paramValue" : "vision"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
           "id" : "PREPAREPARAM_01"
         },
         "name" : "禁用时",
@@ -2033,7 +2059,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_02",
-      "leftPos" : 614,
+      "leftPos" : 670,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置流和vlm",
       "getPSDELogicLinks" : [ {
@@ -2057,11 +2083,11 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 110,
+      "topPos" : 70,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 1070,
+      "leftPos" : 1100,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -2069,11 +2095,28 @@
         "id" : "map"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 170,
+      "topPos" : 72,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_07",
+      "leftPos" : 710,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备多模态类型",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "aitype",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "map"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "QWENVL",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 210,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_06",
-      "leftPos" : 570,
+      "leftPos" : 740,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备参数",
       "getPSDELogicNodeParams" : [ {
@@ -2086,24 +2129,7 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREPARAM_05",
-      "leftPos" : 556,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置aitype",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "aitype",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "map"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "deepseek",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 288,
+      "topPos" : 307,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_01",
@@ -2144,6 +2170,23 @@
         },
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "5",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 390,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_05",
+      "leftPos" : 616,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置aitype",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "aitype",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "map"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "deepseek",
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 390,

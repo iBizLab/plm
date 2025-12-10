@@ -39,22 +39,22 @@ package cn.ibizlab.plm.ai.logic.ai_modellogic.get_cloud_config;
                         update(ai_modelget_cloud_configmap);//更新fact中变量值
             end
 
+            //逻辑处理节点[准备多模态类型]
+            rule "prepareparam_07"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_07"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("aitype","QWENVL");
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
             //逻辑处理节点[准备参数]
             rule "prepareparam_06"
             ruleflow-group "ai_modelget_cloud_configprepareparam_06"
             when
             then
                             ai_modelget_cloud_configmap.set("stream","true");
-                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
-                        update(ai_modelget_cloud_configmap);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置aitype]
-            rule "prepareparam_05"
-            ruleflow-group "ai_modelget_cloud_configprepareparam_05"
-            when
-            then
-                            ai_modelget_cloud_configmap.set("aitype","deepseek");
                         update(ai_modelget_cloud_configdefault);//更新fact中变量值
                         update(ai_modelget_cloud_configmap);//更新fact中变量值
             end
@@ -76,6 +76,16 @@ package cn.ibizlab.plm.ai.logic.ai_modellogic.get_cloud_config;
             then
                             ai_modelget_cloud_configmap.set("tools","true");
                             ai_modelget_cloud_configmap.set("toolmaxcalls","5");
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置aitype]
+            rule "prepareparam_05"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_05"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("aitype","deepseek");
                         update(ai_modelget_cloud_configdefault);//更新fact中变量值
                         update(ai_modelget_cloud_configmap);//更新fact中变量值
             end
