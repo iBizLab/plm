@@ -117,53 +117,51 @@
     "name" : "uagridcolumn1",
     "noPrivDisplayMode" : 1,
     "getPSDEUIActionGroup" : {
-      "codeName" : "Auto83146635",
-      "name" : "通用表格界面删除界面行为组",
+      "codeName" : "grid_action",
+      "name" : "知识库文档同步操作列",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
+      },
       "getPSUIActionGroupDetails" : [ {
-        "actionLevel" : 200,
         "detailType" : "DEUIACTION",
-        "name" : "u2812de3",
+        "name" : "u76ac07a",
         "getPSSysImage" : {
           "glyph" : "xf014@FontAwesome",
           "cssClass" : "fa fa-trash-o"
         },
         "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "noPrivDisplayMode" : 1,
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.*.REMOVE"
-          },
+          "actionTarget" : "SINGLEKEY",
           "caption" : "删除",
-          "codeName" : "Remove",
-          "dataAccessAction" : "DELETE",
-          "fullCodeName" : "Remove",
-          "name" : "表格界面_删除操作",
-          "getPSDEOPPriv" : {
+          "codeName" : "custom_remove",
+          "fullCodeName" : "ai_kb_document_sync_custom_remove",
+          "name" : "删除文档同步数据",
+          "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "DELETE"
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
           },
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
           },
-          "predefinedType" : "GRIDVIEW_REMOVEACTION",
+          "refreshMode" : 2,
           "timeout" : 60000,
-          "tooltip" : "删除",
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-          },
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "Remove",
-          "uIActionType" : "DEUIACTION"
-        },
-        "tooltip" : "删除",
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "custom_remove",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "custom_remove@ai_kb_document_sync"
         },
         "addSeparator" : false,
         "showCaption" : false,
         "showIcon" : true
-      } ]
+      } ],
+      "uniqueTag" : "ai_kb_document_sync__grid_action"
     },
     "width" : 100,
     "widthUnit" : "PX",
