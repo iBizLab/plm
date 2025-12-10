@@ -353,6 +353,14 @@
         "codeName" : "kb_id"
       }
     }, {
+      "id" : "sync_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SYNC_ID",
+        "codeName" : "sync_id"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -1227,6 +1235,25 @@
             "name" : "SYNC_FREQUENCY",
             "codeName" : "sync_frequency"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "ISNULL",
+              "dEFDName" : "sync_id",
+              "logicType" : "SINGLE",
+              "name" : "sync_id值为空(Nil)"
+            }, {
+              "condOP" : "EQ",
+              "dEFDName" : "type",
+              "logicType" : "SINGLE",
+              "name" : "type等于(=) space",
+              "value" : "space"
+            } ],
+            "relatedDetailNames" : [ "sync_id", "type" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST",
             "name" : "sync_frequency",
@@ -1292,6 +1319,32 @@
           "getPSEditor" : {
             "editorType" : "HIDDEN",
             "name" : "kb_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "文档同步标识",
+          "codeName" : "sync_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "sync_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SYNC_ID",
+            "codeName" : "sync_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "sync_id"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
