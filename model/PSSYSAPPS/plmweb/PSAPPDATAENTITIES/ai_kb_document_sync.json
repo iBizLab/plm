@@ -1217,6 +1217,10 @@
       "modelref" : true,
       "id" : "remove"
     },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "refresh_doc_sync_grid"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_sync.json"
@@ -1234,6 +1238,57 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "remove_doc_snyc@ai_kb_document_sync"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "refresh_doc_sync_grid",
+    "defaultParamName" : "Default",
+    "logicName" : "刷新文档同步表格",
+    "name" : "刷新文档同步表格",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "if (uiLogic.grid) {\r\n    uiLogic.grid.refresh();\r\n}",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 390,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "刷新表格",
+      "topPos" : 230,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "grid",
+      "logicName" : "grid",
+      "name" : "grid",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
