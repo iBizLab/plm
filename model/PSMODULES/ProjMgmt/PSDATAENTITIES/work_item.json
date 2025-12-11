@@ -8215,6 +8215,39 @@
     "enableFront" : true,
     "enableTempData" : true
   }, {
+    "codeName" : "ai_info",
+    "logicName" : "获取工作项信息（AI调用）",
+    "memo" : "未删除",
+    "name" : "ai_info",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "common"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ai_infoInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ai_infoResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "usually"
+    },
+    "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "codeName" : "archived",
     "logicName" : "已归档",
     "majorSortDir" : "DESC",
@@ -12486,6 +12519,22 @@
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "orderValue" : 210,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_state2.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
       "codeName" : "priority",
       "logicName" : "优先级",
       "orderValue" : 220,
@@ -12598,6 +12647,20 @@
         "codeName" : "project_id"
       },
       "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
       "allowEmpty" : false,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
