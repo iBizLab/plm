@@ -1,0 +1,200 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.baseline_plan_page;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagebaseline_plan_pagedefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagebaseline_plan_pagefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.version article_pagebaseline_plan_pagefor_temp_version_obj;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagebaseline_plan_pagepage;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagebaseline_plan_pagepage_versions;
+                global cn.ibizlab.plm.core.base.domain.version article_pagebaseline_plan_pageversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version article_pagebaseline_plan_pageversion_page;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagebaseline_plan_pagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[选择页面数据集]
+            rule "dedataset1"
+            ruleflow-group "article_pagebaseline_plan_pagededataset1"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "article_pagebaseline_plan_pageloopsubcall1"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "article_pagebaseline_plan_pagerawsfcode1"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置当前版本]
+            rule "prepareparam4"
+            ruleflow-group "article_pagebaseline_plan_pageprepareparam4"
+            when
+            then
+                                article_pagebaseline_plan_pagefor_temp_obj.set("curversionname",null);
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "article_pagebaseline_plan_pageprepareparam1"
+            when
+            then
+                            article_pagebaseline_plan_pageversion_filter.set("n_id_in",article_pagebaseline_plan_pagepage_versions.get("version_id_in"));
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取版本数据]
+            rule "dedataset2"
+            ruleflow-group "article_pagebaseline_plan_pagededataset2"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "article_pagebaseline_plan_pageloopsubcall2"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "article_pagebaseline_plan_pageloopsubcall3"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充当前版本名称]
+            rule "prepareparam2"
+            ruleflow-group "article_pagebaseline_plan_pageprepareparam2"
+            when
+            then
+                            article_pagebaseline_plan_pagefor_temp_obj.set("curversionname",article_pagebaseline_plan_pagefor_temp_version_obj.get("name"));
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall4"
+            ruleflow-group "article_pagebaseline_plan_pageloopsubcall4"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置当前版本]
+            rule "prepareparam3"
+            ruleflow-group "article_pagebaseline_plan_pageprepareparam3"
+            when
+            then
+                            article_pagebaseline_plan_pagefor_temp_obj.set("curversionname","v1");
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagebaseline_plan_pageend1"
+            when
+            then
+                        update(article_pagebaseline_plan_pagedefault);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagefor_temp_version_obj);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage);//更新fact中变量值
+                        update(article_pagebaseline_plan_pagepage_versions);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_filter);//更新fact中变量值
+                        update(article_pagebaseline_plan_pageversion_page);//更新fact中变量值
+            end

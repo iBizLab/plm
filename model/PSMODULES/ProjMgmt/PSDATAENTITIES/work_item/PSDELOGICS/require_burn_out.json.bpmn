@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemrequire_burn_out" isClosed="false" isExecutable="true" name="projmgmt_work_item_require_burn_out_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemrequire_burn_out">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemrequire_burn_outdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.sprint_alteration()" name="work_itemrequire_burn_outchange_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.sprint_alteration()" name="work_itemrequire_burn_outchange_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemrequire_burn_outresult_list" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemrequire_burn_outresult_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.sprint()" name="work_itemrequire_burn_outsprint" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemrequire_burn_outwork_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemrequire_burn_outwork_item_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IsprintService))" name="sprintservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Isprint_alterationService))" name="sprint_alterationservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemrequire_burn_outdefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemrequire_burn_outchange_filter" type="cn.ibizlab.plm.core.projmgmt.domain.sprint_alteration" />
+                            <tns:global identifier="work_itemrequire_burn_outchange_page" type="cn.ibizlab.plm.core.projmgmt.domain.sprint_alteration" />
+                            <tns:global identifier="work_itemrequire_burn_outresult_list" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemrequire_burn_outresult_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemrequire_burn_outsprint" type="cn.ibizlab.plm.core.projmgmt.domain.sprint" />
+                            <tns:global identifier="work_itemrequire_burn_outwork_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemrequire_burn_outwork_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin1" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充迭代标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取迭代"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询迭代变更记录"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取迭代下的已完成工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="根据迭代日期，计算统计数量"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定返回结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrequire_burn_outend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin1_prepareparam1" sourceRef="begin1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_dedataset1" sourceRef="deaction1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_dedataset2" sourceRef="dedataset1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_rawsfcode2" sourceRef="dedataset2" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_bindparam1" sourceRef="rawsfcode2" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_end1" sourceRef="bindparam1" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>
