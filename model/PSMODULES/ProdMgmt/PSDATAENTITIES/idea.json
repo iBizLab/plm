@@ -285,6 +285,51 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIFullInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/GetAIFullInfo.json",
+    "logicName" : "获取完整AI数据信息",
+    "name" : "GetAIFullInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIFullInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIFullInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true,
+    "enableAudit" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/GetAIInfo.json",
+    "logicName" : "获取AI数据信息",
+    "name" : "GetAIInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -5098,6 +5143,946 @@
         "codeName" : "state"
       },
       "stringLength" : 60,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_full_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIFULLINFO",
+    "name" : "AI完整数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "identifier",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IDEA.IDENTIFIER"
+      },
+      "logicName" : "编号",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.TITLE"
+      },
+      "logicName" : "标题",
+      "orderValue" : 120,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.STATE"
+      },
+      "logicName" : "状态",
+      "orderValue" : 140,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 60,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRIORITY"
+      },
+      "logicName" : "优先级",
+      "orderValue" : 150,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "orderValue" : 160,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/CodeList54.json"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "suite",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.SUITE"
+      },
+      "logicName" : "模块",
+      "orderValue" : 160,
+      "getPSDEField" : {
+        "name" : "SUITE",
+        "codeName" : "suite"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "plan_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PLAN_AT"
+      },
+      "logicName" : "计划时间",
+      "orderValue" : 170,
+      "getPSDEField" : {
+        "name" : "PLAN_AT",
+        "codeName" : "plan_at"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "plan_at_from",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PLAN_AT_FROM"
+      },
+      "logicName" : "计划开始时间",
+      "orderValue" : 180,
+      "getPSDEField" : {
+        "name" : "PLAN_AT_FROM",
+        "codeName" : "plan_at_from"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "plan_at_to",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PLAN_AT_TO"
+      },
+      "logicName" : "计划结束时间",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "PLAN_AT_TO",
+        "codeName" : "plan_at_to"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "plan_at_granularity",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PLAN_AT_GRANULARITY"
+      },
+      "logicName" : "计划时间周期单位",
+      "orderValue" : 200,
+      "getPSDEField" : {
+        "name" : "PLAN_AT_GRANULARITY",
+        "codeName" : "plan_at_granularity"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "real_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.REAL_AT"
+      },
+      "logicName" : "实际时间",
+      "orderValue" : 210,
+      "getPSDEField" : {
+        "name" : "REAL_AT",
+        "codeName" : "real_at"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "real_at_from",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.REAL_AT_FROM"
+      },
+      "logicName" : "实际开始时间",
+      "orderValue" : 220,
+      "getPSDEField" : {
+        "name" : "REAL_AT_FROM",
+        "codeName" : "real_at_from"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "real_at_to",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.REAL_AT_TO"
+      },
+      "logicName" : "实际结束时间",
+      "orderValue" : 230,
+      "getPSDEField" : {
+        "name" : "REAL_AT_TO",
+        "codeName" : "real_at_to"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "real_at_granularity",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.REAL_AT_GRANULARITY"
+      },
+      "logicName" : "计划时间周期单位",
+      "orderValue" : 240,
+      "getPSDEField" : {
+        "name" : "REAL_AT_GRANULARITY",
+        "codeName" : "real_at_granularity"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "progress",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PROGRESS"
+      },
+      "logicName" : "进度",
+      "orderValue" : 260,
+      "getPSDEField" : {
+        "name" : "PROGRESS",
+        "codeName" : "progress"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.DESCRIPTION"
+      },
+      "logicName" : "描述",
+      "orderValue" : 270,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_archived",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IS_ARCHIVED"
+      },
+      "logicName" : "是否已归档",
+      "orderValue" : 290,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_deleted",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IS_DELETED"
+      },
+      "logicName" : "是否已删除",
+      "orderValue" : 300,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ASSIGNEE_NAME"
+      },
+      "logicName" : "负责人",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "product_identifier",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRODUCT_IDENTIFIER"
+      },
+      "logicName" : "产品标识",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "PRODUCT_IDENTIFIER",
+        "codeName" : "product_identifier"
+      },
+      "stringLength" : 15,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ASSIGNEE_ID"
+      },
+      "logicName" : "负责人",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_id",
+      "logicName" : "当前版本标识",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_ID",
+        "codeName" : "cur_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "section_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.SECTION_NAME"
+      },
+      "logicName" : "子产品名称",
+      "orderValue" : 330,
+      "getPSDEField" : {
+        "name" : "SECTION_NAME",
+        "codeName" : "section_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attachments",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ATTACHMENTS"
+      },
+      "logicName" : "附件",
+      "orderValue" : 340,
+      "getPSDEField" : {
+        "name" : "ATTACHMENTS",
+        "codeName" : "attachments"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "section_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.SECTION_ID"
+      },
+      "logicName" : "子产品标识",
+      "orderValue" : 350,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_section2.json"
+      },
+      "getPSDEField" : {
+        "name" : "SECTION_ID",
+        "codeName" : "section_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ATTENTIONS"
+      },
+      "logicName" : "关注",
+      "orderValue" : 360,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ATTENTIONS",
+        "codeName" : "attentions"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "show_identifier",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
+      },
+      "logicName" : "编号",
+      "orderValue" : 370,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "categories",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CATEGORIES"
+      },
+      "logicName" : "类别路径",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "idea_from",
+      "logicName" : "需求来源",
+      "orderValue" : 390,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/demand_sources.json"
+      },
+      "getPSDEField" : {
+        "name" : "IDEA_FROM",
+        "codeName" : "idea_from"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "idea_type",
+      "logicName" : "需求类型",
+      "orderValue" : 400,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "IDEA_TYPE",
+        "codeName" : "idea_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_idea",
+      "logicName" : "关联产品需求数",
+      "orderValue" : 410,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_IDEA",
+        "codeName" : "relation_total_idea"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_ticket",
+      "logicName" : "关联工单数",
+      "orderValue" : 420,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_TICKET",
+        "codeName" : "relation_total_ticket"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "workload_schedule",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.WORKLOAD_SCHEDULE"
+      },
+      "logicName" : "工时进度",
+      "orderValue" : 430,
+      "getPSDEField" : {
+        "name" : "WORKLOAD_SCHEDULE",
+        "codeName" : "workload_schedule"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "estimated_workload",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ESTIMATED_WORKLOAD"
+      },
+      "logicName" : "预估工时",
+      "orderValue" : 440,
+      "getPSDEField" : {
+        "name" : "ESTIMATED_WORKLOAD",
+        "codeName" : "estimated_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_work_item",
+      "logicName" : "关联工作项数",
+      "orderValue" : 450,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_WORK_ITEM",
+        "codeName" : "relation_total_work_item"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_test_case",
+      "logicName" : "关联测试用例数",
+      "orderValue" : 460,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_TEST_CASE",
+        "codeName" : "relation_total_test_case"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "review_result_state",
+      "logicName" : "评审结果",
+      "orderValue" : 460,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "remaining_workload",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.REMAINING_WORKLOAD"
+      },
+      "logicName" : "剩余工时",
+      "orderValue" : 470,
+      "getPSDEField" : {
+        "name" : "REMAINING_WORKLOAD",
+        "codeName" : "remaining_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "relation_total_customer",
+      "logicName" : "关联客户数",
+      "orderValue" : 480,
+      "getPSDEField" : {
+        "name" : "RELATION_TOTAL_CUSTOMER",
+        "codeName" : "relation_total_customer"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "actual_workload",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ACTUAL_WORKLOAD"
+      },
+      "logicName" : "实际工时",
+      "orderValue" : 490,
+      "getPSDEField" : {
+        "name" : "ACTUAL_WORKLOAD",
+        "codeName" : "actual_workload"
+      },
+      "precision" : 1,
+      "scale" : 1,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Category_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CATEGORY_ID"
+      },
+      "logicName" : "类别标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CATEGORY_ID",
+        "codeName" : "Category_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Category_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CATEGORY_NAME"
+      },
+      "logicName" : "名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CATEGORY_NAME",
+        "codeName" : "Category_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRODUCT_ID"
+      },
+      "logicName" : "产品",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRODUCT_NAME"
+      },
+      "logicName" : "所属产品",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      },
+      "logicName" : "建立人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "logicName" : "名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIINFO",
+    "name" : "AI数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "identifier",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IDEA.IDENTIFIER"
+      },
+      "logicName" : "编号",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.TITLE"
+      },
+      "logicName" : "标题",
+      "orderValue" : 120,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.STATE"
+      },
+      "logicName" : "状态",
+      "orderValue" : 140,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 60,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRIORITY"
+      },
+      "logicName" : "优先级",
+      "orderValue" : 150,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "orderValue" : 160,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/CodeList54.json"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "plan_at",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PLAN_AT"
+      },
+      "logicName" : "计划时间",
+      "orderValue" : 170,
+      "getPSDEField" : {
+        "name" : "PLAN_AT",
+        "codeName" : "plan_at"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.DESCRIPTION"
+      },
+      "logicName" : "描述",
+      "orderValue" : 270,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "categories",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CATEGORIES"
+      },
+      "logicName" : "类别路径",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "idea_type",
+      "logicName" : "需求类型",
+      "orderValue" : 400,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "IDEA_TYPE",
+        "codeName" : "idea_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRODUCT_ID"
+      },
+      "logicName" : "产品",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.PRODUCT_NAME"
+      },
+      "logicName" : "所属产品",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
       "allowEmpty" : false,
       "enableUserInsert" : true,
       "enableUserUpdate" : true

@@ -254,6 +254,50 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIFullInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/GetAIFullInfo.json",
+    "logicName" : "获取完整AI数据信息",
+    "name" : "GetAIFullInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIFullInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIFullInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/GetAIInfo.json",
+    "logicName" : "获取AI数据信息",
+    "name" : "GetAIInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -3871,6 +3915,745 @@
         "codeName" : "space_name"
       },
       "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_full_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIFULLINFO",
+    "name" : "AI完整数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "identifier",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IDEA.IDENTIFIER"
+      },
+      "logicName" : "编号",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_shared",
+      "logicName" : "是否开启共享",
+      "orderValue" : 120,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_SHARED",
+        "codeName" : "is_shared"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "expiration_date",
+      "logicName" : "共享有效期",
+      "orderValue" : 140,
+      "getPSDEField" : {
+        "name" : "EXPIRATION_DATE",
+        "codeName" : "expiration_date"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "access_password",
+      "logicName" : "访问密码",
+      "orderValue" : 150,
+      "getPSDEField" : {
+        "name" : "ACCESS_PASSWORD",
+        "codeName" : "access_password"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "正文格式",
+      "orderValue" : 160,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/CodeList54.json"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sequence",
+      "logicName" : "序号",
+      "orderValue" : 160,
+      "getPSDEField" : {
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "content",
+      "logicName" : "正文",
+      "orderValue" : 170,
+      "getPSDEField" : {
+        "name" : "CONTENT",
+        "codeName" : "content"
+      },
+      "stringLength" : 16777215,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "orderValue" : 200,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSCODELISTS/page_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_favorite",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IS_FAVORITE"
+      },
+      "logicName" : "是否星标",
+      "orderValue" : 230,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_FAVORITE",
+        "codeName" : "is_favorite"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_leaf",
+      "logicName" : "是否叶子节点",
+      "orderValue" : 240,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_LEAF",
+        "codeName" : "is_leaf"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "categories",
+      "logicName" : "类别路径",
+      "orderValue" : 250,
+      "getPSDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "space_identifier",
+      "logicName" : "空间编号",
+      "orderValue" : 250,
+      "getPSDEField" : {
+        "name" : "SPACE_IDENTIFIER",
+        "codeName" : "space_identifier"
+      },
+      "stringLength" : 15,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attachments",
+      "logicName" : "附件",
+      "orderValue" : 260,
+      "getPSDEField" : {
+        "name" : "ATTACHMENTS",
+        "codeName" : "attachments"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_archived",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IS_ARCHIVED"
+      },
+      "logicName" : "是否已归档",
+      "orderValue" : 290,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_deleted",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.IS_DELETED"
+      },
+      "logicName" : "是否已删除",
+      "orderValue" : 300,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions",
+      "logicName" : "关注",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "ATTENTIONS",
+        "codeName" : "attentions"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_id",
+      "logicName" : "当前版本标识",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_ID",
+        "codeName" : "cur_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_name",
+      "logicName" : "当前版本名称",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_NAME",
+        "codeName" : "cur_version_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "publish_time",
+      "logicName" : "发布时间",
+      "orderValue" : 330,
+      "getPSDEField" : {
+        "name" : "PUBLISH_TIME",
+        "codeName" : "publish_time"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_published",
+      "logicName" : "是否发布",
+      "orderValue" : 340,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_PUBLISHED",
+        "codeName" : "is_published"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "publish_man",
+      "logicName" : "发布人",
+      "orderValue" : 350,
+      "getPSDEField" : {
+        "name" : "PUBLISH_MAN",
+        "codeName" : "publish_man"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "publish_content",
+      "logicName" : "发布正文",
+      "orderValue" : 360,
+      "getPSDEField" : {
+        "name" : "PUBLISH_CONTENT",
+        "codeName" : "publish_content"
+      },
+      "stringLength" : 16777215,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "orderValue" : 370,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "publish_name",
+      "logicName" : "发布主题",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "PUBLISH_NAME",
+        "codeName" : "publish_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "published",
+      "logicName" : "发布状态",
+      "orderValue" : 390,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "PUBLISHED",
+        "codeName" : "published"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_lock",
+      "logicName" : "是否锁定",
+      "orderValue" : 400,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_LOCK",
+        "codeName" : "is_lock"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "icon",
+      "logicName" : "图标",
+      "orderValue" : 410,
+      "getPSDEField" : {
+        "name" : "ICON",
+        "codeName" : "icon"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_shared_subset",
+      "logicName" : "是否同时共享子页面",
+      "orderValue" : 420,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_SHARED_SUBSET",
+        "codeName" : "is_shared_subset"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "read_shared",
+      "logicName" : "共享只读能力",
+      "orderValue" : 430,
+      "getPSDEField" : {
+        "name" : "READ_SHARED",
+        "codeName" : "read_shared"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "shared_by",
+      "logicName" : "共享人",
+      "orderValue" : 440,
+      "getPSDEField" : {
+        "name" : "SHARED_BY",
+        "codeName" : "shared_by"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "shared_time",
+      "logicName" : "共享时间",
+      "orderValue" : 450,
+      "getPSDEField" : {
+        "name" : "SHARED_TIME",
+        "codeName" : "shared_time"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "review_result_state",
+      "logicName" : "评审结果",
+      "orderValue" : 460,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attention_count",
+      "logicName" : "关注数",
+      "orderValue" : 510,
+      "getPSDEField" : {
+        "name" : "ATTENTION_COUNT",
+        "codeName" : "attention_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "comment_count",
+      "logicName" : "评论数",
+      "orderValue" : 520,
+      "getPSDEField" : {
+        "name" : "COMMENT_COUNT",
+        "codeName" : "comment_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "choose_version_id",
+      "logicName" : "选择版本标识",
+      "orderValue" : 600,
+      "getPSDEField" : {
+        "name" : "CHOOSE_VERSION_ID",
+        "codeName" : "choose_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "choose_version_name",
+      "logicName" : "选择版本名称",
+      "orderValue" : 610,
+      "getPSDEField" : {
+        "name" : "CHOOSE_VERSION_NAME",
+        "codeName" : "choose_version_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "recent_create_days",
+      "logicName" : "最近创建日期",
+      "orderValue" : 670,
+      "getPSDEField" : {
+        "name" : "RECENT_CREATE_DAYS",
+        "codeName" : "recent_create_days"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      },
+      "logicName" : "建立人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "logicName" : "主题",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "parent_id",
+      "logicName" : "父页面标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PARENT_ID",
+        "codeName" : "parent_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "space_id",
+      "logicName" : "空间标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SPACE_ID",
+        "codeName" : "space_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "space_name",
+      "logicName" : "空间名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SPACE_NAME",
+        "codeName" : "space_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "orderValue" : 1000,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "user_tag",
+      "logicName" : "用户标记",
+      "orderValue" : 8000,
+      "getPSDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "user_tag2",
+      "logicName" : "用户标记2",
+      "orderValue" : 8500,
+      "getPSDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIINFO",
+    "name" : "AI数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "content",
+      "logicName" : "正文",
+      "orderValue" : 170,
+      "getPSDEField" : {
+        "name" : "CONTENT",
+        "codeName" : "content"
+      },
+      "stringLength" : 16777215,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "orderValue" : 200,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSCODELISTS/page_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "categories",
+      "logicName" : "类别路径",
+      "orderValue" : 250,
+      "getPSDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "publish_man",
+      "logicName" : "发布人",
+      "orderValue" : 350,
+      "getPSDEField" : {
+        "name" : "PUBLISH_MAN",
+        "codeName" : "publish_man"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "logicName" : "主题",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "space_name",
+      "logicName" : "空间名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SPACE_NAME",
+        "codeName" : "space_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     } ]

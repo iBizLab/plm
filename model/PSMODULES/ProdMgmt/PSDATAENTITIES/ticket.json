@@ -250,6 +250,51 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIFullInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIFullInfo.json",
+    "logicName" : "获取完整AI数据信息",
+    "name" : "GetAIFullInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIFullInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIFullInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true,
+    "enableAudit" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetAIInfo",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIInfo.json",
+    "logicName" : "获取AI数据信息",
+    "name" : "GetAIInfo",
+    "getPSDEActionInput" : {
+      "name" : "GetAIInfoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetAIInfoResult",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "builtinAction" : true
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -4733,6 +4778,689 @@
         "codeName" : "Product_name"
       },
       "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_full_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIFULLINFO",
+    "name" : "AI完整数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 1,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "logicName" : "名称",
+      "orderValue" : 2,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 3,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      },
+      "logicName" : "建立人",
+      "orderValue" : 4,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 5,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "orderValue" : 6,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_id",
+      "logicName" : "产品标识",
+      "orderValue" : 9,
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_name",
+      "logicName" : "所属产品",
+      "orderValue" : 10,
+      "getPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "customer_id",
+      "logicName" : "客户标识",
+      "orderValue" : 11,
+      "getPSDEField" : {
+        "name" : "CUSTOMER_ID",
+        "codeName" : "customer_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "customer_name",
+      "logicName" : "客户",
+      "orderValue" : 12,
+      "getPSDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "customer_name"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "identifier",
+      "logicName" : "编号",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "orderValue" : 120,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "orderValue" : 140,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 60,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "orderValue" : 150,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/base_ticket_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "solution",
+      "logicName" : "解决方案",
+      "orderValue" : 160,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/solutions.json"
+      },
+      "getPSDEField" : {
+        "name" : "SOLUTION",
+        "codeName" : "solution"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "orderValue" : 170,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "channel",
+      "logicName" : "渠道",
+      "orderValue" : 180,
+      "getPSDEField" : {
+        "name" : "CHANNEL",
+        "codeName" : "channel"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "submitted_at",
+      "logicName" : "提交时间",
+      "orderValue" : 210,
+      "getPSDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "submitted_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_archived",
+      "logicName" : "是否已归档",
+      "orderValue" : 230,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "is_deleted",
+      "logicName" : "是否已删除",
+      "orderValue" : 240,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "estimated_at",
+      "logicName" : "预计时间",
+      "orderValue" : 300,
+      "getPSDEField" : {
+        "name" : "ESTIMATED_AT",
+        "codeName" : "estimated_at"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_name",
+      "logicName" : "负责人",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "assignee_id",
+      "logicName" : "负责人标识",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "submitter_id",
+      "logicName" : "提交人标识",
+      "orderValue" : 330,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "SUBMITTER_ID",
+        "codeName" : "submitter_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "submitter_name",
+      "logicName" : "提交人",
+      "orderValue" : 340,
+      "getPSDEField" : {
+        "name" : "SUBMITTER_NAME",
+        "codeName" : "submitter_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attachments",
+      "logicName" : "附件",
+      "orderValue" : 350,
+      "getPSDEField" : {
+        "name" : "ATTACHMENTS",
+        "codeName" : "attachments"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "orderValue" : 360,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "product_identifier",
+      "logicName" : "产品标识",
+      "orderValue" : 370,
+      "getPSDEField" : {
+        "name" : "PRODUCT_IDENTIFIER",
+        "codeName" : "product_identifier"
+      },
+      "stringLength" : 15,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions",
+      "logicName" : "关注",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "ATTENTIONS",
+        "codeName" : "attentions"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "REP_NUM",
+      "logicName" : "工单数",
+      "orderValue" : 390,
+      "getPSDEField" : {
+        "name" : "REP_NUM",
+        "codeName" : "REP_NUM"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "solution_way",
+      "logicName" : "解决办法",
+      "orderValue" : 400,
+      "getPSDEField" : {
+        "name" : "SOLUTION_WAY",
+        "codeName" : "solution_way"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attention_count",
+      "logicName" : "关注数",
+      "orderValue" : 410,
+      "getPSDEField" : {
+        "name" : "ATTENTION_COUNT",
+        "codeName" : "attention_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "comment_count",
+      "logicName" : "评论数",
+      "orderValue" : 420,
+      "getPSDEField" : {
+        "name" : "COMMENT_COUNT",
+        "codeName" : "comment_count"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "product_is_deleted",
+      "logicName" : "产品是否删除",
+      "orderValue" : 430,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRODUCT_IS_DELETED",
+        "codeName" : "product_is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "product_is_archived",
+      "logicName" : "产品是否归档",
+      "orderValue" : 440,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRODUCT_IS_ARCHIVED",
+        "codeName" : "product_is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "attentions_imp",
+      "logicName" : "关注人",
+      "orderValue" : 620,
+      "getPSDEField" : {
+        "name" : "ATTENTIONS_IMP",
+        "codeName" : "attentions_imp"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "recent_create_days",
+      "logicName" : "最近创建日期",
+      "orderValue" : 670,
+      "getPSDEField" : {
+        "name" : "RECENT_CREATE_DAYS",
+        "codeName" : "recent_create_days"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "ai_info",
+    "groupType" : "FIELDS",
+    "logicMode" : "AIINFO",
+    "name" : "AI数据信息",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "orderValue" : 1,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_id",
+      "logicName" : "产品标识",
+      "orderValue" : 2,
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "orderValue" : 3,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "orderValue" : 4,
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "identifier",
+      "logicName" : "编号",
+      "orderValue" : 5,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Product_name",
+      "logicName" : "所属产品",
+      "orderValue" : 6,
+      "getPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "orderValue" : 7,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "orderValue" : 8,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "orderValue" : 9,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "orderValue" : 10,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 60,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "orderValue" : 150,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/base_ticket_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "submitted_at",
+      "logicName" : "提交时间",
+      "orderValue" : 210,
+      "getPSDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "submitted_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "estimated_at",
+      "logicName" : "预计时间",
+      "orderValue" : 300,
+      "getPSDEField" : {
+        "name" : "ESTIMATED_AT",
+        "codeName" : "estimated_at"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stringLength" : 2000,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     } ]
