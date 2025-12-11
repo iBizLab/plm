@@ -2374,6 +2374,47 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 200,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "content",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "result"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "未找到主数据，无法添加评论",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 526,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_02",
+      "leftPos" : 210,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 660,
+      "parallelOutput" : true
+    }, {
       "codeName" : "DEACTION_01",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -2405,9 +2446,21 @@
       "topPos" : 510,
       "parallelOutput" : true
     }, {
+      "codeName" : "END_01",
+      "leftPos" : 496,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 762,
+      "parallelOutput" : true
+    }, {
       "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\nvar from = \"from: AI智能体\\n\";\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n    if(uiLogic.default.data.caption) {\n        from = \"from: \"+uiLogic.default.data.caption+\"\\n\";\n    }\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n    if(uiLogic.default.topic && uiLogic.default.topic.caption) {\n        from = \"from: \"+uiLogic.default.topic.caption+\"\\n\";\n    }\n}\n\nuiLogic.entity = {};\n\nif (answer && typeof answer == 'string') {\n\n    uiLogic.entity.principal_id = realView.context[_entity_tag];\n    var principal_type = _entity_tag.toUpperCase();\n    if(principal_type === 'ARTICLE_PAGE' ) {\n        principal_type = 'PAGE';\n    }\n    uiLogic.entity.principal_type= principal_type;\n    uiLogic.entity.owner_type= principal_type;\n    var html_content = from + answer; \n\n    uiLogic.entity.content = html_content;\n            \n}\n",
       "codeName" : "RAWJSCODE_01",
-      "leftPos" : 363,
+      "leftPos" : 360,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
@@ -2444,19 +2497,47 @@
           "modelref" : true,
           "id" : "RAWJSCODE_01"
         }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        },
+        "linkMode" : 1,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "defaultLink" : true
       } ],
-      "topPos" : 380,
-      "parallelOutput" : true
+      "topPos" : 380
     }, {
-      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('评论成功');",
+      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('评论成功');\nuiLogic.result={content: \"已添加到评论\"};",
       "codeName" : "RAWJSCODE_02",
       "leftPos" : 410,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
       "topPos" : 630,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
+    }, {
       "codeName" : "entity",
       "logicName" : "entity",
       "name" : "entity",
