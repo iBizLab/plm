@@ -97,16 +97,6 @@
             },
             "showCaption" : true
           } ]
-        }, {
-          "caption" : "搜索栏",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "searchbar",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "showCaption" : true
         } ]
       }, {
         "caption" : "容器",
@@ -760,7 +750,6 @@
         "dataType" : 25
       }, {
         "id" : "n_show_identifier_like",
-        "hidden" : true,
         "dataType" : 25,
         "getPSAppDEField" : {
           "name" : "SHOW_IDENTIFIER",
@@ -768,7 +757,6 @@
         }
       }, {
         "id" : "n_name_like",
-        "hidden" : true,
         "dataType" : 25,
         "getPSAppDEField" : {
           "name" : "NAME",
@@ -776,7 +764,6 @@
         }
       }, {
         "id" : "create_man",
-        "hidden" : true,
         "dataType" : 25
       }, {
         "id" : "n_register_date_gtandeq",
@@ -826,7 +813,7 @@
           "noPrivDisplayMode" : 1,
           "getPSControlAttributes" : [ {
             "attrName" : "shortcuts",
-            "attrValue" : "[\r\n    {\r\n    text: '最近7天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 6);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '最近30天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 29);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本周',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const currentDay = end_at.getDay();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 计算本周的开始日期 (周一)\r\n        start_at.setDate(\r\n        end_at.getDate() - currentDay + (currentDay === 0 ? -6 : 1),\r\n        );\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本月',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 将日期设置为本月第一天\r\n        start_at.setDate(1);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n]",
+            "attrValue" : "[\n    {\n    text: '最近7天',\n    value: () => {\n        const end_at = new Date();\n        const start_at = new Date();\n        start_at.setDate(end_at.getDate() - 6);\n        return [start_at, end_at];\n    },\n    },\n    {\n    text: '最近30天',\n    value: () => {\n        const end_at = new Date();\n        const start_at = new Date();\n        start_at.setDate(end_at.getDate() - 29);\n        return [start_at, end_at];\n    },\n    },\n    {\n    text: '本周',\n    value: () => {\n        const end_at = new Date();\n        const currentDay = end_at.getDay();\n        const start_at = new Date(end_at);\n\n        // 计算本周的开始日期 (周一)\n        start_at.setDate(\n        end_at.getDate() - currentDay + (currentDay === 0 ? -6 : 1),\n        );\n        return [start_at, end_at];\n    },\n    },\n    {\n    text: '本月',\n    value: () => {\n        const end_at = new Date();\n        const start_at = new Date(end_at);\n\n        // 将日期设置为本月第一天\n        start_at.setDate(1);\n        return [start_at, end_at];\n    },\n    },\n]",
             "name" : "date_range_shortcuts"
           } ],
           "getPSEditor" : {
@@ -868,7 +855,7 @@
             "codeName" : "show_identifier"
           },
           "getPSEditor" : {
-            "editorType" : "HIDDEN",
+            "editorType" : "TEXTBOX",
             "name" : "n_show_identifier_like",
             "placeHolder" : "编号"
           },
@@ -879,8 +866,7 @@
             "colXS" : 8,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "hidden" : true
+          "allowEmpty" : true
         }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "CONTROL.DEFSFITEM.WORKLOAD.N_NAME_LIKE"
@@ -901,7 +887,7 @@
             "codeName" : "name"
           },
           "getPSEditor" : {
-            "editorType" : "HIDDEN",
+            "editorType" : "TEXTBOX",
             "name" : "n_name_like",
             "placeHolder" : "事项"
           },
@@ -912,8 +898,7 @@
             "colXS" : 8,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "hidden" : true
+          "allowEmpty" : true
         }, {
           "caption" : "表单项",
           "codeName" : "create_man",
@@ -927,11 +912,39 @@
           "name" : "create_man",
           "noPrivDisplayMode" : 1,
           "getPSEditor" : {
-            "editorType" : "HIDDEN",
+            "editorParams" : {
+              "URL" : "/users/fetch_default",
+              "SRFNAVPARAM.n_status_eq" : "1",
+              "ISSHOWTAB" : "false",
+              "USERMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+              "AC" : "TRUE",
+              "USERMETHOD" : "get",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
+            },
+            "editorStyle" : "PERSONEL_SELECT_ALL",
+            "editorType" : "PICKEREX_TRIGGER",
             "name" : "create_man",
             "getPSEditorItems" : [ {
               "name" : "n_create_man_eq"
-            } ]
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "n_status_eq",
+              "name" : "n_status_eq",
+              "value" : "1",
+              "rawValue" : true
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "PERSON_SELECT",
+              "runtimeObject" : true
+            },
+            "valueItemName" : "n_create_man_eq",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 3,
@@ -941,8 +954,7 @@
             "layout" : "TABLE_24COL"
           },
           "valueItemName" : "n_create_man_eq",
-          "allowEmpty" : true,
-          "hidden" : true
+          "allowEmpty" : true
         }, {
           "caption" : "工作日期（大于）",
           "codeName" : "n_register_date_gtandeq",
@@ -1118,212 +1130,22 @@
       "modelid" : "2069ac496c0fa376e7de57aab55bb10a",
       "modeltype" : "PSDETOOLBAR"
     }, {
-      "codeName" : "member_calendar_searchbar",
       "controlType" : "SEARCHBAR",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSSEARCHBARS/member_calendar_searchbar.json",
-      "logicName" : "人员工时日历_搜索栏",
+      "name" : "searchbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
       },
       "getPSControlParam" : {
-        "id" : "SEARCHBAR"
+        "id" : "searchbar"
       },
-      "getPSSearchBarFilters" : [ {
-        "caption" : "登记人",
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "user_id",
-        "getPSAppDEField" : {
-          "name" : "CREATE_MAN",
-          "codeName" : "create_man"
-        },
-        "getPSDEFSearchMode" : {
-          "codeName" : "N_CREATE_MAN_IN",
-          "name" : "N_CREATE_MAN_IN",
-          "stdDataType" : 25,
-          "valueOP" : "IN",
-          "array" : true
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "ISSHOWTAB" : "false",
-            "ISADDSYMBOL" : "true",
-            "MULTIPLE" : "true",
-            "AC" : "TRUE",
-            "SRFNAVPARAM.n_status_eq" : "1",
-            "TRIGGER" : "TRUE",
-            "URL" : "/users/fetch_workload",
-            "PICKUPVIEW" : "FALSE",
-            "USERMETHOD" : "post",
-            "USERMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}"
-          },
-          "editorStyle" : "PERSONEL_SELECT_WORKLOAD",
-          "editorType" : "PICKEREX_TRIGGER",
-          "name" : "user_id",
-          "getPSNavigateParams" : [ {
-            "key" : "n_status_eq",
-            "name" : "n_status_eq",
-            "value" : "1",
-            "rawValue" : true
-          } ],
-          "getPSSysPFPlugin" : {
-            "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "PERSON_SELECT",
-            "runtimeObject" : true
-          },
-          "valueItemName" : "create_man",
-          "enableAC" : true,
-          "enablePickupView" : false,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
-        },
-        "valueItemName" : "create_man",
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "showCaption" : false
-      }, {
-        "caption" : "事项",
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "name",
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "name"
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "showCaption" : false
-      }, {
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "workload_type",
-        "getPSAppDEField" : {
-          "name" : "TYPE_ID",
-          "codeName" : "type_id"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "workload_type",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__workload_type.json"
-          },
-          "singleSelect" : true
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "needCodeListConfig" : true,
-        "showCaption" : false
-      }, {
-        "caption" : "项目",
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "project_id",
-        "getPSAppDEField" : {
-          "name" : "RECENT_PARENT",
-          "codeName" : "recent_parent"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "project_id",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__UsrCodeList0122047845.json"
-          },
-          "singleSelect" : true
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "needCodeListConfig" : true,
-        "showCaption" : false
-      }, {
-        "caption" : "产品",
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "product_id",
-        "getPSAppDEField" : {
-          "name" : "RECENT_PARENT",
-          "codeName" : "recent_parent"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "product_id",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_list.json"
-          },
-          "singleSelect" : true
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "needCodeListConfig" : true,
-        "showCaption" : false
-      }, {
-        "caption" : "测试库",
-        "dataType" : 25,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "library_id",
-        "getPSAppDEField" : {
-          "name" : "RECENT_PARENT",
-          "codeName" : "recent_parent"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "library_id",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__library_list.json"
-          },
-          "singleSelect" : true
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "needCodeListConfig" : true,
-        "showCaption" : false
-      } ],
-      "getPSSearchBarGroups" : [ {
-        "caption" : "全部人员",
-        "itemType" : "GROUP",
-        "name" : "all",
-        "width" : 0.0,
-        "addSeparator" : false,
-        "defaultGroup" : true
-      } ],
-      "quickGroupCount" : 4,
-      "quickSearchMode" : 1,
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 0,
       "quickSearchWidth" : 0,
-      "searchBarStyle" : "SEARCHBAR2",
-      "enableFilter" : true,
-      "enableGroup" : true,
-      "enableQuickSearch" : true,
-      "mobileSearchBar" : false,
-      "name" : "searchbar",
-      "modelid" : "6bddd4bb5fb019442cb32c7bb453ead8",
-      "modeltype" : "PSSYSSEARCHBAR"
+      "enableFilter" : false,
+      "enableGroup" : false,
+      "enableQuickSearch" : false,
+      "mobileSearchBar" : false
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.WORKLOAD"
