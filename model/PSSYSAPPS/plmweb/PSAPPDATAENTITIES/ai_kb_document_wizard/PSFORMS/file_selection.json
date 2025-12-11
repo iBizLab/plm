@@ -116,10 +116,14 @@
       "codeName" : "sync_frequency"
     }
   }, {
-    "id" : "temp_page_selection",
-    "dataType" : 25
-  }, {
     "id" : "selection_page_ids",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SELECTION_PAGE_IDS",
+      "codeName" : "selection_page_ids"
+    }
+  }, {
+    "id" : "selection_page_ids2",
     "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -266,7 +270,7 @@
         "showCaption" : true
       }, {
         "caption" : "选择页面",
-        "codeName" : "temp_page_selection",
+        "codeName" : "selection_page_ids",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -274,8 +278,12 @@
         "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "temp_page_selection",
+        "name" : "selection_page_ids",
         "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "SELECTION_PAGE_IDS",
+          "codeName" : "selection_page_ids"
+        },
         "getPSDEFDGroupLogics" : [ {
           "groupOP" : "AND",
           "logicCat" : "PANELVISIBLE",
@@ -313,9 +321,15 @@
             "srfnavparam.space_id" : "%space_selection%"
           },
           "editorType" : "PICKUPVIEW",
-          "name" : "temp_page_selection",
+          "name" : "selection_page_ids",
           "getPSEditorItems" : [ {
-            "name" : "selection_page_ids"
+            "name" : "selection_page_ids",
+            "getPSNavigateParams" : [ {
+              "key" : "space_id",
+              "name" : "space_id",
+              "value" : "space_selection",
+              "rawValue" : false
+            } ]
           } ],
           "getPSNavigateParams" : [ {
             "key" : "space_id",
@@ -341,7 +355,7 @@
         "showCaption" : true
       }, {
         "caption" : "选择页面",
-        "codeName" : "selection_page_ids",
+        "codeName" : "selection_page_ids2",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -349,7 +363,7 @@
         "ignoreInput" : 0,
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "selection_page_ids",
+        "name" : "selection_page_ids2",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
           "name" : "SELECTION_PAGE_IDS",
@@ -357,7 +371,7 @@
         },
         "getPSEditor" : {
           "editorType" : "HIDDEN",
-          "name" : "selection_page_ids"
+          "name" : "selection_page_ids2"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
