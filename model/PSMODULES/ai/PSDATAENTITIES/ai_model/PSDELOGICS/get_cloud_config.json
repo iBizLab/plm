@@ -223,6 +223,17 @@
     "leftPos" : 710,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备多模态类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_07"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "aitype",
       "getDstPSDELogicParam" : {
@@ -234,6 +245,19 @@
       "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 210,
+    "parallelOutput" : true
+  }, {
+    "code" : "net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(\"cloud-oss\",\"aiimage:\\n  agent: ${sys.getDeploySystemId()}-ai--vl\");",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 902,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "发布oss配置代码",
+    "topPos" : 226,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_06",
