@@ -6871,6 +6871,59 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END_02",
+      "leftPos" : 470,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 669,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 180,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 770,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 450,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "content",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "result"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "预估工时登记未成功",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 530,
+      "parallelOutput" : true
+    }, {
       "codeName" : "DEACTION_01",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -6924,7 +6977,7 @@
               "id" : "resultcnt"
             },
             "logicType" : "SINGLE",
-            "name" : "result 大于(>) 0",
+            "name" : "resultcnt 大于(>) 0",
             "paramValue" : "0",
             "value" : "0"
           } ]
@@ -6933,6 +6986,18 @@
           "modelref" : true,
           "id" : "RAWJSCODE4"
         }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        },
+        "linkMode" : 1,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        },
+        "defaultLink" : true
       } ],
       "topPos" : 380
     }, {
@@ -6941,6 +7006,18 @@
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "刷新父页面",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
       "topPos" : 627,
       "parallelOutput" : true
     } ],

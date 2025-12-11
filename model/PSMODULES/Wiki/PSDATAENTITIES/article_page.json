@@ -3156,6 +3156,44 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "ai_info",
+    "logicName" : "查询知识空间的页面信息（AI调用）",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "memo" : "查询全部知识空间的页面实体信息，排序可以指定create_time或update_time，模糊搜索可以根据name/content来LIKE匹配",
+    "name" : "ai_info",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "normal"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ai_infoInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "article_page_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ai_infoResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "pageSize" : 5,
+    "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "all_shared_pages",
     "logicName" : "全部共享页面查询",
     "majorSortDir" : "ASC",
@@ -20560,6 +20598,127 @@
     "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
+    "name" : "article_page_ai_info_dto",
+    "getPSDEMethodDTOFields" : [ {
+      "logicName" : "正文",
+      "name" : "content",
+      "getPSDEField" : {
+        "name" : "CONTENT",
+        "codeName" : "content"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 21,
+      "stringLength" : 16777215,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "类型",
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "类别路径",
+      "name" : "categories",
+      "getPSDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "发布人",
+      "name" : "publish_man",
+      "getPSDEField" : {
+        "name" : "PUBLISH_MAN",
+        "codeName" : "publish_man"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "编号",
+      "name" : "show_identifier",
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "logicName" : "主题",
+      "name" : "name",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "logicName" : "空间名称",
+      "name" : "space_name",
+      "getPSDEField" : {
+        "name" : "SPACE_NAME",
+        "codeName" : "space_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
+  }, {
     "name" : "article_page_dto",
     "getPSDEMethodDTOFields" : [ {
       "logicName" : "编号",
