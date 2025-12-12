@@ -17252,7 +17252,7 @@
     "name" : "发布页面",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -510,
+      "leftPos" : -520,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -17266,7 +17266,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 210,
       "parallelOutput" : true
     }, {
       "codeName" : "DEBUGPARAM1",
@@ -17327,7 +17327,7 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[ID] 值为空(Nil)"
+              "name" : "Default[ID] 值为空(Nil) "
             } ]
           } ]
         },
@@ -17353,7 +17353,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[ID] 值不为空(NotNil)"
+            "name" : "Default[ID] 值不为空(NotNil) "
           }, {
             "condOP" : "NOTEQ",
             "dstFieldName" : "ID",
@@ -17494,7 +17494,7 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[PUBLISHED] 值为空(Nil)"
+              "name" : "Default[PUBLISHED] 值为空(Nil) "
             } ]
           } ]
         },
@@ -17531,7 +17531,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "RAWSFCODE_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -17549,7 +17549,27 @@
         "paramAction" : "SETPARAMVALUE",
         "srcValueType" : "NULLVALUE"
       } ],
-      "topPos" : 397
+      "topPos" : 357
+    }, {
+      "code" : "def _default = logic.param('Default').getReal() \r\ndef _identifier= _default.get('identifier')\r\n\r\ntry{\r\n    _default.set('sequence', _identifier*100)\r\n} catch (Exception e)  {\r\n    log.error(\"设置默认sequence失败: ${e.message}\", e)\r\n    _default.set('sequence', 1)\r\n}",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "JavaScript",
+      "leftPos" : 72,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置默认排序值",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 459,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 72,
@@ -17587,7 +17607,7 @@
         "srcValue" : "1",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 510
+      "topPos" : 560
     }, {
       "codeName" : "DEACTION2",
       "getDstPSDEAction" : {
@@ -17627,7 +17647,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 780
+      "topPos" : 780,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
