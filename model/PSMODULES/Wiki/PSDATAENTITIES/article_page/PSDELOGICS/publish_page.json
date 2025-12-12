@@ -306,7 +306,7 @@
     } ],
     "topPos" : 357
   }, {
-    "code" : "def _default = logic.param('Default').getReal() \r\ndef _identifier= _default.get('identifier')\r\n\r\ntry{\r\n    _default.set('sequence', _identifier*100)\r\n} catch (Exception e)  {\r\n    log.error(\"设置默认sequence失败: ${e.message}\", e)\r\n    _default.set('sequence', 1)\r\n}",
+    "code" : "def _default = logic.param('Default').getReal() \r\ndef _identifier= _default.get('identifier')\r\n\r\npringln(\"=============\"+_identifier)\r\n\r\ntry{\r\n    _default.set('sequence', _identifier.toInteger()*100)\r\n} catch (Exception e)  {\r\n    log.error(\"设置默认sequence失败: ${e.message}\", e)\r\n    _default.set('sequence', 1)\r\n}",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 72,
