@@ -15,6 +15,13 @@
       "name" : "NAME",
       "codeName" : "name"
     }
+  }, {
+    "id" : "n_report_flag_eq",
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "REPORT_FLAG",
+      "codeName" : "report_flag"
+    }
   } ],
   "getPSDEFormPages" : [ {
     "caption" : "常规条件",
@@ -47,13 +54,48 @@
         "placeHolder" : "请输入查询姓名"
       },
       "getPSLayoutPos" : {
-        "colMD" : 24,
+        "colLG" : 8,
+        "colMD" : 8,
         "layout" : "TABLE_24COL"
       },
       "allowEmpty" : true
+    }, {
+      "caption" : "统计标识(=)",
+      "codeName" : "n_report_flag_eq",
+      "dataType" : 9,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "n_report_flag_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "n_report_flag_eq",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__user_report_flag.json"
+        },
+        "placeHolder" : "选择统计状态",
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 8,
+        "colMD" : 8,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
     } ],
     "getPSLayout" : {
-      "childColMD" : 24,
+      "childColLG" : 8,
+      "childColMD" : 8,
       "columnCount" : 24,
       "layout" : "TABLE_24COL"
     },
