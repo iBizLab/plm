@@ -247,6 +247,20 @@
         "codeName" : "Events"
       }
     }, {
+      "id" : "mcpserverid",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "MCPSERVERID",
+        "codeName" : "McpServerId"
+      }
+    }, {
+      "id" : "toolspecification",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "TOOLSPECIFICATION",
+        "codeName" : "ToolSpecification"
+      }
+    }, {
       "id" : "codename",
       "hidden" : true,
       "dataType" : 25,
@@ -497,6 +511,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) EVENTHOOK",
                 "value" : "EVENTHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -509,6 +524,7 @@
                 "condOP" : "NOTEQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype不等于(<>) EVENTHOOK",
                 "value" : "EVENTHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -521,6 +537,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) EVENTHOOK",
                 "value" : "EVENTHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -568,6 +585,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) FIELDCHANGEHOOK",
                 "value" : "FIELDCHANGEHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -580,6 +598,7 @@
                 "condOP" : "NOTEQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype不等于(<>) FIELDCHANGEHOOK",
                 "value" : "FIELDCHANGEHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -592,6 +611,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "logicsubtype",
                 "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) FIELDCHANGEHOOK",
                 "value" : "FIELDCHANGEHOOK"
               } ],
               "relatedDetailNames" : [ "logicsubtype" ],
@@ -624,6 +644,143 @@
             "valueItemName" : "eventmodel",
             "allowEmpty" : false,
             "needCodeListConfig" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "MCP服务标识",
+            "codeName" : "mcpserverid",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 100,
+            "name" : "mcpserverid",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "MCPSERVERID",
+              "codeName" : "McpServerId"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            }, {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMBLANK",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype不等于(<>) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            }, {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMENABLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "maxLength" : 200,
+              "name" : "mcpserverid"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : false,
+            "showCaption" : true
+          }, {
+            "caption" : "MCP工具规格说明",
+            "codeName" : "toolspecification",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemHeight" : 120.0,
+            "labelPos" : "TOP",
+            "labelWidth" : 100,
+            "name" : "toolspecification",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOOLSPECIFICATION",
+              "codeName" : "ToolSpecification"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            }, {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMBLANK",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype不等于(<>) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            }, {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMENABLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "logicsubtype",
+                "logicType" : "SINGLE",
+                "name" : "logicsubtype等于(=) MCPTOOL",
+                "value" : "MCPTOOL"
+              } ],
+              "relatedDetailNames" : [ "logicsubtype" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorHeight" : 100.0,
+              "editorType" : "TEXTAREA",
+              "maxLength" : 1048576,
+              "name" : "toolspecification",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : false,
             "showCaption" : true
           } ],
           "getPSLayout" : {
@@ -823,6 +980,7 @@
               "condOP" : "EQ",
               "dEFDName" : "logicsubtype",
               "logicType" : "SINGLE",
+              "name" : "logicsubtype等于(=) DEFIELDHOOK",
               "value" : "DEFIELDHOOK"
             } ],
             "relatedDetailNames" : [ "logicsubtype" ],
