@@ -1,0 +1,190 @@
+package cn.ibizlab.plm.extension.logic.psdelogiclogic.get_last_run_info;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.extension.domain.PSDELogic psdelogicget_last_run_infodefault;
+                global java.util.Map psdelogicget_last_run_infocontext;
+                global cn.ibizlab.plm.core.base.domain.extend_log psdelogicget_last_run_infolog_statistics;
+                global cn.ibizlab.plm.core.base.domain.extend_log psdelogicget_last_run_infologic_log;
+                global cn.ibizlab.plm.core.base.domain.extend_log psdelogicget_last_run_infologic_log_filter;
+                global cn.ibizlab.plm.core.base.domain.extend_log psdelogicget_last_run_infologic_log_filter2;
+                global cn.ibizlab.plm.core.base.domain.extend_log psdelogicget_last_run_infologs;
+                    global cn.ibizlab.plm.core.extension.service.IPSDELogicService psdelogicservice;
+                    global cn.ibizlab.plm.core.base.service.Iextend_logService extend_logservice;
+        global cn.ibizlab.plm.core.extension.service.IPSDELogicService iBzSysPsdelogicDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "psdelogicget_last_run_infobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置上下文]
+            rule "prepareparam1"
+            ruleflow-group "psdelogicget_last_run_infoprepareparam1"
+            when
+            then
+                            psdelogicget_last_run_infocontext.set("psdelogic",psdelogicget_last_run_infodefault.get("psdelogicid"));
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取逻辑内容]
+            rule "deaction1"
+            ruleflow-group "psdelogicget_last_run_infodeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdelogicservice.get(psdelogicget_last_run_infocontext.getPsdelogicid()),psdelogicget_last_run_infocontext);
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[过滤参数设置]
+            rule "prepareparam2"
+            ruleflow-group "psdelogicget_last_run_infoprepareparam2"
+            when
+            then
+                            psdelogicget_last_run_infologic_log_filter.set("n_owner_id_eq",psdelogicget_last_run_infocontext.get("psdelogic"));
+                            psdelogicget_last_run_infologic_log_filter.set("sort","start_at,desc");
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取日志]
+            rule "dedataset1"
+            ruleflow-group "psdelogicget_last_run_infodedataset1"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取最后一次日志信息]
+            rule "bindparam1"
+            ruleflow-group "psdelogicget_last_run_infobindparam1"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置状态]
+            rule "prepareparam3"
+            ruleflow-group "psdelogicget_last_run_infoprepareparam3"
+            when
+            then
+                            psdelogicget_last_run_infodefault.set("laststartat",psdelogicget_last_run_infologic_log.get("startat"));
+                            psdelogicget_last_run_infodefault.set("laststate",psdelogicget_last_run_infologic_log.get("state"));
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "psdelogicget_last_run_infoend2"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[过滤参数设置]
+            rule "prepareparam4"
+            ruleflow-group "psdelogicget_last_run_infoprepareparam4"
+            when
+            then
+                            psdelogicget_last_run_infologic_log_filter2.set("size","1000");
+                            psdelogicget_last_run_infologic_log_filter2.set("n_owner_id_eq",psdelogicget_last_run_infocontext.get("psdelogic"));
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "psdelogicget_last_run_infoend1"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取成功失败条数]
+            rule "dedataset2"
+            ruleflow-group "psdelogicget_last_run_infodedataset2"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算值]
+            rule "rawsfcode1"
+            ruleflow-group "psdelogicget_last_run_inforawsfcode1"
+            when
+            then
+                        update(psdelogicget_last_run_infodefault);//更新fact中变量值
+                        update(psdelogicget_last_run_infocontext);//更新fact中变量值
+                        update(psdelogicget_last_run_infolog_statistics);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter);//更新fact中变量值
+                        update(psdelogicget_last_run_infologic_log_filter2);//更新fact中变量值
+                        update(psdelogicget_last_run_infologs);//更新fact中变量值
+            end

@@ -1,0 +1,256 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcreate_plan_snapshotdefault;
+                global cn.ibizlab.plm.core.base.domain.baseline work_itemcreate_plan_snapshotbaseline;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcreate_plan_snapshotfilter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcreate_plan_snapshotfor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcreate_plan_snapshotpage;
+                global cn.ibizlab.plm.core.base.domain.relation work_itemcreate_plan_snapshotrelation;
+                global cn.ibizlab.plm.core.base.domain.baseline work_itemcreate_plan_snapshotsrfactionparam;
+                global cn.ibizlab.plm.core.base.domain.version work_itemcreate_plan_snapshotversion;
+                    global cn.ibizlab.plm.core.base.service.IbaselineService baselineservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemcreate_plan_snapshotbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置基线状态]
+            rule "prepareparam7"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam7"
+            when
+            then
+                            work_itemcreate_plan_snapshotbaseline.set("status","1");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置快照状态]
+            rule "prepareparam6"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam6"
+            when
+            then
+                            work_itemcreate_plan_snapshotbaseline.set("status","3");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[新建快照]
+            rule "deaction3"
+            ruleflow-group "work_itemcreate_plan_snapshotdeaction3"
+            when
+            then
+                        baselineservice.create(work_itemcreate_plan_snapshotbaseline);
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[传入项目标识至查询过滤器]
+            rule "prepareparam1"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam1"
+            when
+            then
+                            work_itemcreate_plan_snapshotfilter.set("n_project_id_eq",work_itemcreate_plan_snapshotdefault.get("projectid"));
+                            work_itemcreate_plan_snapshotfilter.set("size","10000");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取指定项目下的所有工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemcreate_plan_snapshotdedataset1"
+            when
+            then
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关联对象版本标识]
+            rule "prepareparam3"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam3"
+            when
+            then
+                            work_itemcreate_plan_snapshotrelation.set("targetversionid",work_itemcreate_plan_snapshotfor_temp_obj.get("curversionid"));
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemcreate_plan_snapshotloopsubcall1"
+            when
+            then
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置关联对象]
+            rule "resetparam2"
+            ruleflow-group "work_itemcreate_plan_snapshotresetparam2"
+            when
+            then
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[将工作项标识赋值于关联对象]
+            rule "prepareparam2"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam2"
+            when
+            then
+                            work_itemcreate_plan_snapshotrelation.set("targetid",work_itemcreate_plan_snapshotfor_temp_obj.get("id"));
+                            work_itemcreate_plan_snapshotrelation.set("targettype","work_item");
+                            work_itemcreate_plan_snapshotrelation.set("principaltype","baseline");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立关联数据]
+            rule "deaction2"
+            ruleflow-group "work_itemcreate_plan_snapshotdeaction2"
+            when
+            then
+                        relationservice.save(work_itemcreate_plan_snapshotrelation);
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置版本参数]
+            rule "resetparam1"
+            ruleflow-group "work_itemcreate_plan_snapshotresetparam1"
+            when
+            then
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充初始化版本属性]
+            rule "prepareparam4"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam4"
+            when
+            then
+                            work_itemcreate_plan_snapshotversion.set("ownerid",work_itemcreate_plan_snapshotfor_temp_obj.get("id"));
+                            work_itemcreate_plan_snapshotversion.set("name","v1");
+                            work_itemcreate_plan_snapshotversion.set("description","初始化创建");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修复初始化版本]
+            rule "deaction1"
+            ruleflow-group "work_itemcreate_plan_snapshotdeaction1"
+            when
+            then
+                        versionservice.fix_commit(work_itemcreate_plan_snapshotversion);
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关联对象版本标识]
+            rule "prepareparam5"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam5"
+            when
+            then
+                            work_itemcreate_plan_snapshotrelation.set("targetversionid",work_itemcreate_plan_snapshotversion.get("id"));
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end

@@ -1,0 +1,202 @@
+{
+  "codeName" : "get_shared_title",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDELOGICS/get_shared_title.json",
+  "logicName" : "获取共享空间标题",
+  "memo" : "获取共享空间顶部标题",
+  "name" : "获取共享空间标题",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 190,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 20,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 150,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "将视图参数传递至请求上下文",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "article_page",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ctx"
+      },
+      "name" : "当前视图参数[shared_space] ==> ctx[article_page]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "shared_space",
+      "srcValueType" : "VIEWPARAM"
+    } ],
+    "topPos" : 214
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+    },
+    "leftPos" : 150,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取共享空间信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "展示空间名称不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "SHOW_TITLE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "result"
+          },
+          "logicType" : "SINGLE",
+          "name" : "result[SHOW_TITLE] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "展示空间名称为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "SHOW_TITLE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[SHOW_TITLE] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "topPos" : 350
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 350,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "将空间名称赋值给展示空间名称",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "SHOW_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "result[NAME] ==> result[SHOW_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 520
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 190,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 710
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "ctx",
+    "logicName" : "导航上下文变量",
+    "name" : "导航上下文变量",
+    "appContextParam" : true
+  }, {
+    "codeName" : "result",
+    "logicName" : "结果",
+    "name" : "结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : false,
+  "enableFront" : true
+}

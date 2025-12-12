@@ -1,0 +1,135 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.program_plan;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseprogram_plandefault;
+                global cn.ibizlab.plm.core.base.domain.attention test_caseprogram_planattention_info;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseprogram_planfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation test_caseprogram_planrelationobj;
+                global cn.ibizlab.plm.core.base.domain.relation test_caseprogram_planrelationobj2;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseprogram_planselect_create_data;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseprogram_planselectdata;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+                    global cn.ibizlab.plm.core.base.service.IattentionService attentionservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_caseprogram_planbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "test_caseprogram_planbindparam1"
+            when
+            then
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "test_caseprogram_planloopsubcall1"
+            when
+            then
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置创建数据对象]
+            rule "prepareparam1"
+            ruleflow-group "test_caseprogram_planprepareparam1"
+            when
+            then
+                            test_caseprogram_planselect_create_data.set("",test_caseprogram_planfor_temp_obj.get(""));
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建执行用例]
+            rule "deaction1"
+            ruleflow-group "test_caseprogram_plandeaction1"
+            when
+            then
+                        runservice.create(test_caseprogram_planselect_create_data);
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置默认关注信息]
+            rule "prepareparam2"
+            ruleflow-group "test_caseprogram_planprepareparam2"
+            when
+            then
+                            test_caseprogram_planattention_info.set("ownerid",test_caseprogram_planselect_create_data.get("id"));
+                                test_caseprogram_planattention_info.set("name",curuser.getSessionParams().get("srfpersonname"));
+                            test_caseprogram_planattention_info.set("userid",test_caseprogram_planselect_create_data.get("createman"));
+                            test_caseprogram_planattention_info.set("ownersubtype","RUN");
+                            test_caseprogram_planattention_info.set("ownertype","RUN");
+                            test_caseprogram_planattention_info.set("type","40");
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存关注信息]
+            rule "deaction2"
+            ruleflow-group "test_caseprogram_plandeaction2"
+            when
+            then
+                        attentionservice.save(test_caseprogram_planattention_info);
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_caseprogram_planend1"
+            when
+            then
+                        update(test_caseprogram_plandefault);//更新fact中变量值
+                        update(test_caseprogram_planattention_info);//更新fact中变量值
+                        update(test_caseprogram_planfor_temp_obj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj);//更新fact中变量值
+                        update(test_caseprogram_planrelationobj2);//更新fact中变量值
+                        update(test_caseprogram_planselect_create_data);//更新fact中变量值
+                        update(test_caseprogram_planselectdata);//更新fact中变量值
+            end
