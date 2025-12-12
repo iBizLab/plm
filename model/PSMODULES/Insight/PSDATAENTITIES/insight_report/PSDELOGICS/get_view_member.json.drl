@@ -1,0 +1,124 @@
+package cn.ibizlab.plm.insight.logic.insight_reportlogic.get_view_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportget_view_memberdefault;
+                global cn.ibizlab.plm.core.insight.domain.insight_member insight_reportget_view_memberfilter;
+                global java.util.Map insight_reportget_view_memberfor_obj;
+                global cn.ibizlab.plm.core.insight.domain.insight_member insight_reportget_view_membermembers;
+                global java.util.Map insight_reportget_view_memberuser;
+                    global cn.ibizlab.plm.core.insight.service.Iinsight_memberService insight_memberservice;
+        global cn.ibizlab.plm.core.insight.service.Iinsight_reportService iBzSysInsight_reportDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "insight_reportget_view_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "insight_reportget_view_memberend2"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取视图id并设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "insight_reportget_view_memberprepareparam2"
+            when
+            then
+                            insight_reportget_view_memberfilter.set("n_owner_id_eq",insight_reportget_view_memberdefault.get("viewid"));
+                                insight_reportget_view_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为视图成员]
+            rule "dedataset3"
+            ruleflow-group "insight_reportget_view_memberdedataset3"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "insight_reportget_view_memberprepareparam5"
+            when
+            then
+                            insight_reportget_view_memberfor_obj.set("",insight_reportget_view_membermembers.get("0"));
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "insight_reportget_view_memberrawsfcode1"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "insight_reportget_view_memberrawsfcode2"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "insight_reportget_view_memberend6"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "insight_reportget_view_memberrawsfcode3"
+            when
+            then
+                        update(insight_reportget_view_memberdefault);//更新fact中变量值
+                        update(insight_reportget_view_memberfilter);//更新fact中变量值
+                        update(insight_reportget_view_memberfor_obj);//更新fact中变量值
+                        update(insight_reportget_view_membermembers);//更新fact中变量值
+                        update(insight_reportget_view_memberuser);//更新fact中变量值
+            end

@@ -1,0 +1,162 @@
+{
+  "codeName" : "add_reply",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDELOGICS/add_reply.json",
+  "logicName" : "添加回复",
+  "memo" : "添加回复",
+  "name" : "添加回复",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充回复内容",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CONTENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "create_obj"
+      },
+      "name" : "Default[CONTENT] ==> create_obj[CONTENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CONTENT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "POST_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "create_obj"
+      },
+      "name" : "Default[POST_ID] ==> create_obj[POST_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "POST_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 347
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "create_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "添加回复",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 459
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "讨论热度+5",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[POST_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "POST_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update discuss_post t1 set t1.heat = t1.heat + 5 \r\nwhere t1.id = ?",
+    "topPos" : 581
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 735
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "create_obj",
+    "logicName" : "新建对象",
+    "name" : "新建对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

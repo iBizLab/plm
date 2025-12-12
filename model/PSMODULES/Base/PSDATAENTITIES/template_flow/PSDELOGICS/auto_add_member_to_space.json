@@ -1,0 +1,430 @@
+{
+  "codeName" : "auto_add_member_to_space",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template_flow/PSDELOGICS/auto_add_member_to_space.json",
+  "logicName" : "自动将新团队成员加入团队空间",
+  "logicSubType" : "EVENTHOOK",
+  "memo" : "新成员加入团队后，自动加入到该团队的空间。",
+  "name" : "自动将新团队成员加入团队空间",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 600,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -70,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取团队成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 48
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 560,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置空间过滤条件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_scope_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_filter"
+      },
+      "name" : "Default[owner_id] ==> space_filter[n_scope_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "owner_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_filter"
+      },
+      "name" : "直接值[1000] ==> space_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1000",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 170
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取符合条件的空间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      },
+      "name" : "存在符合条件的空间",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "spaces"
+          },
+          "logicType" : "SINGLE",
+          "name" : "spaces[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "不存在符合条件的空间",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "spaces"
+          },
+          "logicType" : "SINGLE",
+          "name" : "spaces[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "spaces"
+    },
+    "topPos" : 302
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 860,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 410
+  }, {
+    "codeName" : "DEBUGPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "spaces"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "查看OK空间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      }
+    } ],
+    "topPos" : 468
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_temp"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "逐空间执行",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "结束循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "spaces"
+    },
+    "topPos" : 607,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RESETPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_member"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置空间成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      }
+    } ],
+    "topPos" : 760
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 560,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置空间成员属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "USER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member"
+      },
+      "name" : "Default[USER_ID] ==> space_member[USER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ROLE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member"
+      },
+      "name" : "Default[ROLE_ID] ==> space_member[ROLE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ROLE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member"
+      },
+      "name" : "Default[NAME] ==> space_member[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "SPACE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member"
+      },
+      "name" : "space_temp[id] ==> space_member[SPACE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 880
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_member"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "查看空间成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : 1020
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_member"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "DEACTION",
+    "name" : "添加空间成员",
+    "topPos" : 1180
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/template_flow.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "space_filter",
+    "logicName" : "空间筛选",
+    "name" : "空间筛选",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "space_member",
+    "logicName" : "space_member",
+    "name" : "space_member",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "space_temp",
+    "logicName" : "循环空间",
+    "name" : "循环空间",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "spaces",
+    "logicName" : "空间集合",
+    "name" : "空间集合",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "userTag2" : "知识管理",
+  "enableBackend" : true,
+  "enableFront" : false
+}

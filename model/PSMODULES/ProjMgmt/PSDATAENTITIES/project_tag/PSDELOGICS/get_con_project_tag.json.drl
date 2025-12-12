@@ -1,0 +1,76 @@
+package cn.ibizlab.plm.projmgmt.logic.project_taglogic.get_con_project_tag;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project_tag project_tagget_con_project_tagdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item project_tagget_con_project_tagfilter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item project_tagget_con_project_tagwork_item_page;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iproject_tagService iBzSysProject_tagDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "project_tagget_con_project_tagbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "project_tagget_con_project_tagprepareparam1"
+            when
+            then
+                            project_tagget_con_project_tagfilter.set("n_tags_like",project_tagget_con_project_tagdefault.get("id"));
+                            project_tagget_con_project_tagfilter.set("size","1");
+                        update(project_tagget_con_project_tagdefault);//更新fact中变量值
+                        update(project_tagget_con_project_tagfilter);//更新fact中变量值
+                        update(project_tagget_con_project_tagwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询工作项数量]
+            rule "dedataset1"
+            ruleflow-group "project_tagget_con_project_tagdedataset1"
+            when
+            then
+                        update(project_tagget_con_project_tagdefault);//更新fact中变量值
+                        update(project_tagget_con_project_tagfilter);//更新fact中变量值
+                        update(project_tagget_con_project_tagwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备工作项数量参数]
+            rule "prepareparam2"
+            ruleflow-group "project_tagget_con_project_tagprepareparam2"
+            when
+            then
+                            project_tagget_con_project_tagdefault.set("num",project_tagget_con_project_tagwork_item_page.get("total"));
+                        update(project_tagget_con_project_tagdefault);//更新fact中变量值
+                        update(project_tagget_con_project_tagfilter);//更新fact中变量值
+                        update(project_tagget_con_project_tagwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加工作项数量提醒内容]
+            rule "rawsfcode1"
+            ruleflow-group "project_tagget_con_project_tagrawsfcode1"
+            when
+            then
+                        update(project_tagget_con_project_tagdefault);//更新fact中变量值
+                        update(project_tagget_con_project_tagfilter);//更新fact中变量值
+                        update(project_tagget_con_project_tagwork_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "project_tagget_con_project_tagend1"
+            when
+            then
+                        update(project_tagget_con_project_tagdefault);//更新fact中变量值
+                        update(project_tagget_con_project_tagfilter);//更新fact中变量值
+                        update(project_tagget_con_project_tagwork_item_page);//更新fact中变量值
+            end

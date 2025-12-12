@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.extensions.service.logic.before" isClosed="false" isExecutable="true" name="ai_ai_kb_document_sync_remove_beforeLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.extensions.service.logic.before">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.ai.service.logic.ai_kb_document_syncsync_remove_doc_chunk" id="2ee38672c6d84576cade288299c213a8_@_@_66f61ba2-f758-e6d0-28c1-52c08d88ed9c" name="sync_remove_doc_chunk.json.bpmn"/>
+                        <sequenceFlow id="begin_2ee38672c6d84576cade288299c213a8_@_@_66f61ba2-f758-e6d0-28c1-52c08d88ed9c" sourceRef="begin" targetRef="2ee38672c6d84576cade288299c213a8_@_@_66f61ba2-f758-e6d0-28c1-52c08d88ed9c"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.ai.service.logic.ai_kb_document_syncremove_space_scheduled" id="2ee38672c6d84576cade288299c213a8_@_@_58b245ed-2f1b-a69e-2f8d-d4eb8b2d7368" name="remove_space_scheduled.json.bpmn"/>
+                        <sequenceFlow id="2ee38672c6d84576cade288299c213a8_@_@_66f61ba2-f758-e6d0-28c1-52c08d88ed9c_2ee38672c6d84576cade288299c213a8_@_@_58b245ed-2f1b-a69e-2f8d-d4eb8b2d7368" sourceRef="2ee38672c6d84576cade288299c213a8_@_@_66f61ba2-f758-e6d0-28c1-52c08d88ed9c" targetRef="2ee38672c6d84576cade288299c213a8_@_@_58b245ed-2f1b-a69e-2f8d-d4eb8b2d7368"/>
+                            <sequenceFlow id="2ee38672c6d84576cade288299c213a8_@_@_58b245ed-2f1b-a69e-2f8d-d4eb8b2d7368_prepareparam1_end" sourceRef="2ee38672c6d84576cade288299c213a8_@_@_58b245ed-2f1b-a69e-2f8d-d4eb8b2d7368" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>
