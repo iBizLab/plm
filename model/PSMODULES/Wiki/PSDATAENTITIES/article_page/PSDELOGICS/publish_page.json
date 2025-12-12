@@ -306,7 +306,7 @@
     } ],
     "topPos" : 357
   }, {
-    "code" : "def _default = logic.param('Default').getReal() \r\ndef _identifier= _default.get('identifier')\r\n\r\npringln(\"=============\"+_identifier)\r\n\r\ntry{\r\n    _default.set('sequence', _identifier.toInteger()*100)\r\n} catch (Exception e)  {\r\n    log.error(\"设置默认sequence失败: ${e.message}\", e)\r\n    _default.set('sequence', 1)\r\n}",
+    "code" : "def _default = logic.param('Default').getReal() \r\ndef _identifier= _default.get('identifier')\r\n\r\ntry{\r\n    _default.set('sequence', _identifier.toInteger()*100)\r\n} catch (Exception e)  {\r\n    log.error(\"设置默认sequence失败: ${e.message}\", e)\r\n    _default.set('sequence', 1)\r\n}",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 72,
@@ -333,7 +333,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION2"
+        "id" : "DEBUGPARAM_01"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -364,6 +364,28 @@
     } ],
     "topPos" : 560
   }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 72,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数2",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      }
+    } ],
+    "topPos" : 649,
+    "parallelOutput" : true
+  }, {
     "codeName" : "DEACTION2",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -391,7 +413,7 @@
         "id" : "DEACTION2"
       }
     } ],
-    "topPos" : 660
+    "topPos" : 750
   }, {
     "codeName" : "END2",
     "leftPos" : 112,
@@ -402,7 +424,7 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 780,
+    "topPos" : 850,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
