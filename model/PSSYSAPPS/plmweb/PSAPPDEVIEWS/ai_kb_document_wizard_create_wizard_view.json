@@ -1876,18 +1876,6 @@
         "hidden" : true,
         "dataType" : 25
       }, {
-        "id" : "kb_id",
-        "hidden" : true,
-        "dataType" : 25,
-        "createDVT" : "APPDATA",
-        "createDV" : "ai_knowledge_base",
-        "updateDVT" : "APPDATA",
-        "updateDV" : "ai_knowledge_base",
-        "getPSAppDEField" : {
-          "name" : "KB_ID",
-          "codeName" : "kb_id"
-        }
-      }, {
         "id" : "import_method",
         "hidden" : true,
         "dataType" : 25,
@@ -1902,6 +1890,18 @@
         "getPSAppDEField" : {
           "name" : "SPACE_SELECTION",
           "codeName" : "space_selection"
+        }
+      }, {
+        "id" : "kb_id",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "ai_knowledge_base",
+        "updateDVT" : "APPDATA",
+        "updateDV" : "ai_knowledge_base",
+        "getPSAppDEField" : {
+          "name" : "KB_ID",
+          "codeName" : "kb_id"
         }
       }, {
         "id" : "id",
@@ -1924,36 +1924,6 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel2",
           "getPSDEFormDetails" : [ {
-            "caption" : "知识库标识",
-            "codeName" : "kb_id",
-            "createDV" : "ai_knowledge_base",
-            "createDVT" : "APPDATA",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "kb_id",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "KB_ID",
-              "codeName" : "kb_id"
-            },
-            "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "kb_id"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "updateDV" : "ai_knowledge_base",
-            "updateDVT" : "APPDATA",
-            "allowEmpty" : true,
-            "hidden" : true
-          }, {
             "codeName" : "rawitem1",
             "contentType" : "RAW",
             "detailStyle" : "DEFAULT",
@@ -1975,52 +1945,71 @@
             "rawItemWidth" : -1.0,
             "showCaption" : true
           }, {
-            "codeName" : "mdctrl1",
-            "contentType" : "REPEATER",
-            "detailStyle" : "STYLE2",
-            "detailType" : "MDCTRL",
-            "name" : "mdctrl1",
-            "getPSAppDEField" : {
-              "name" : "SELECTED_PAGE_NAME",
-              "codeName" : "selected_page_name"
-            },
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "import_method",
-                "logicType" : "SINGLE",
-                "name" : "import_method等于(=) space_manual",
-                "value" : "space_manual"
-              } ],
-              "relatedDetailNames" : [ "import_method" ],
-              "notMode" : false
-            } ],
+            "codeName" : "space_manual_group",
+            "contentHeight" : 500.0,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "height" : 500.0,
+            "name" : "space_manual_group",
             "getPSDEFormDetails" : [ {
-              "caption" : "知识库文档名称",
-              "codeName" : "ai_kb_doc_name",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "ai_kb_doc_name",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "SPAN",
+              "codeName" : "mdctrl1",
+              "contentType" : "REPEATER",
+              "detailStyle" : "STYLE2",
+              "detailType" : "MDCTRL",
+              "name" : "mdctrl1",
+              "getPSAppDEField" : {
+                "name" : "SELECTED_PAGE_NAME",
+                "codeName" : "selected_page_name"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "import_method",
+                  "logicType" : "SINGLE",
+                  "name" : "import_method等于(=) space_manual",
+                  "value" : "space_manual"
+                } ],
+                "relatedDetailNames" : [ "import_method" ],
+                "notMode" : false
+              } ],
+              "getPSDEFormDetails" : [ {
+                "caption" : "知识库文档名称",
+                "codeName" : "ai_kb_doc_name",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
                 "name" : "ai_kb_doc_name",
-                "enableLinkView" : false
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "SPAN",
+                  "name" : "ai_kb_doc_name",
+                  "enableLinkView" : false
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "repeatContent" : true,
+                "showCaption" : true
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "allowEmpty" : true,
-              "repeatContent" : true,
+              "infoGroupMode" : false,
               "showCaption" : true
             } ],
             "getPSLayout" : {
@@ -2030,10 +2019,12 @@
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
+              "height" : 500,
+              "heightMode" : "PX",
               "layout" : "TABLE_24COL"
             },
             "infoGroupMode" : false,
-            "showCaption" : true
+            "showCaption" : false
           }, {
             "codeName" : "druipart1",
             "contentHeight" : 500.0,
@@ -2620,52 +2611,71 @@
             "refreshItemsSetParamOnly" : false,
             "showCaption" : true
           }, {
-            "codeName" : "selected_file_name",
-            "contentType" : "REPEATER",
-            "detailStyle" : "STYLE2",
-            "detailType" : "MDCTRL",
-            "name" : "selected_file_name",
-            "getPSAppDEField" : {
-              "name" : "SELECTED_FILE_NAME",
-              "codeName" : "selected_file_name"
-            },
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "import_method",
-                "logicType" : "SINGLE",
-                "name" : "import_method等于(=) local_upload",
-                "value" : "local_upload"
-              } ],
-              "relatedDetailNames" : [ "import_method" ],
-              "notMode" : false
-            } ],
+            "codeName" : "local_upload_group",
+            "contentHeight" : 500.0,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "height" : 500.0,
+            "name" : "local_upload_group",
             "getPSDEFormDetails" : [ {
-              "caption" : "知识库文档名称",
-              "codeName" : "ai_kb_doc_name2",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "ai_kb_doc_name2",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "SPAN",
+              "codeName" : "selected_file_name",
+              "contentType" : "REPEATER",
+              "detailStyle" : "STYLE2",
+              "detailType" : "MDCTRL",
+              "name" : "selected_file_name",
+              "getPSAppDEField" : {
+                "name" : "SELECTED_FILE_NAME",
+                "codeName" : "selected_file_name"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "import_method",
+                  "logicType" : "SINGLE",
+                  "name" : "import_method等于(=) local_upload",
+                  "value" : "local_upload"
+                } ],
+                "relatedDetailNames" : [ "import_method" ],
+                "notMode" : false
+              } ],
+              "getPSDEFormDetails" : [ {
+                "caption" : "知识库文档名称",
+                "codeName" : "ai_kb_doc_name2",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
                 "name" : "ai_kb_doc_name2",
-                "enableLinkView" : false
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "SPAN",
+                  "name" : "ai_kb_doc_name2",
+                  "enableLinkView" : false
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "repeatContent" : true,
+                "showCaption" : true
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "allowEmpty" : true,
-              "repeatContent" : true,
+              "infoGroupMode" : false,
               "showCaption" : true
             } ],
             "getPSLayout" : {
@@ -2675,10 +2685,12 @@
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
+              "height" : 500,
+              "heightMode" : "PX",
               "layout" : "TABLE_24COL"
             },
             "infoGroupMode" : false,
-            "showCaption" : true
+            "showCaption" : false
           }, {
             "caption" : "导入方式",
             "codeName" : "import_method",
@@ -2730,6 +2742,36 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "知识库标识",
+            "codeName" : "kb_id",
+            "createDV" : "ai_knowledge_base",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "kb_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "KB_ID",
+              "codeName" : "kb_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "kb_id"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "ai_knowledge_base",
+            "updateDVT" : "APPDATA",
             "allowEmpty" : true,
             "hidden" : true
           } ],
