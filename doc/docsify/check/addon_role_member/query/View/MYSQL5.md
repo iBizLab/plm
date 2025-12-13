@@ -1,0 +1,15 @@
+```sql
+SELECT
+t1.`ADDON_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_OBJ_ID`
+FROM `ADDON_ROLE_MEMBER` t1 
+
+
+```

@@ -1,0 +1,17 @@
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+WHERE ( t1.`OWNER_TYPE` = 'all'  AND  t1.`ADDON_TYPE` = 'resource' )
+```

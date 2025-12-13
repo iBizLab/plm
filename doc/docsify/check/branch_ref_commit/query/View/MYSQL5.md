@@ -1,0 +1,15 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`META_ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`SHA`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BRANCH_REF_COMMIT` t1 
+
+
+```

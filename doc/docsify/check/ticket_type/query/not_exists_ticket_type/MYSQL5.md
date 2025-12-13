@@ -1,0 +1,16 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET_TYPE` t1 
+
+WHERE NOT(EXISTS(SELECT * FROM `PRODUCT_TICKET_TYPE` t11 
+ WHERE 
+ t1.`ID` = t11.`TICKET_TYPE_ID`  AND  ( t11.`PRODUCT_ID` = #{ctx.webcontext.product} ) ))
+```
