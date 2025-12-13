@@ -93,6 +93,11 @@ $ docker compose -f docker-compose.yml --env-file .env up -d
 
 了解更多请参考 [deploy/compose/README.md](deploy/compose/README.md)
 
+
+### 智能协同（AI）
+**AI数据初始化**： 执行AI数据初始化脚本 ![AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip)   
+
+
 ### 技术架构
 
 iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使用Spring Boot/Cloud。
