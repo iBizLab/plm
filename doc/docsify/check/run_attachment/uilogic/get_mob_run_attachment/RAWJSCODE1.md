@@ -1,6 +1,0 @@
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-const total = uiLogic.ctrl.state.rows.length;
-uiLogic.view.layoutPanel.state.data.total = "共" + total;
-```
