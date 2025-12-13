@@ -95,8 +95,8 @@ $ docker compose -f docker-compose.yml --env-file .env up -d
 
 
 ### 智能协同（AI）
-**AI数据初始化**： 执行AI数据初始化脚本 ![AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip)   
-
+**AI数据初始化**： 执行AI初始化数据脚本 
+- [AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip)   
 
 ### 技术架构
 
