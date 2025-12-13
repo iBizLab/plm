@@ -94,7 +94,8 @@ $ docker compose -f docker-compose.yml --env-file .env up -d
 了解更多请参考 [deploy/compose/README.md](deploy/compose/README.md)
 
 
-### AI应用前准备事项
+### AI功能启用前准备工作
+
 
 **1. AI数据初始化**： 
 
