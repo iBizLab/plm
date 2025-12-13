@@ -96,7 +96,9 @@ $ docker compose -f docker-compose.yml --env-file .env up -d
 
 ### AI应用前准备事项
 
-- **AI数据初始化**： 获取并执行AI初始化数据脚本 -> [AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip)   
+- **AI数据初始化**： 获取并在PLM数据库中执行AI初始化数据脚本 -> [AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip)   
+- **AI凭证注册**：
+- **AI大模型注册**：
 
 ### 技术架构
 
