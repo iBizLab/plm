@@ -93,6 +93,28 @@ $ docker compose -f docker-compose.yml --env-file .env up -d
 
 了解更多请参考 [deploy/compose/README.md](deploy/compose/README.md)
 
+
+### AI功能启用前准备工作
+
+
+**1. AI数据初始化**： 
+
+下载数据包：[AI初始化数据包](./sample/iBizPLM-AI初始化数据包.zip) ，并在PLM数据库中执行数据初始化脚本。
+
+**2. AI凭证注册**：
+
+访问iBizPLM桌面端，进入菜单：智能协同->AI凭证，填写凭证信息。
+> [!CAUTION]填写完成后，请点击页面的“保存”按钮，以完成AI凭证的注册。
+
+**3. AI大模型注册**：
+
+访问iBizPLM桌面端，进入菜单：智能协同->AI大模型，配置大模型参数。
+> [!CAUTION]配置完成后，请点击页面的“保存”按钮，以完成AI大模型的注册。
+
+完成上述步骤后，您可继续设置专属智能体，即可开始使用iBizPLM AI+功能。
+
+AI应用详见：[iBizPLM AI+](./AI.md)
+
 ### 技术架构
 
 iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使用Spring Boot/Cloud。
@@ -313,6 +335,16 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 - 自动化-配置
 
 ![自动化-配置](./sample/自动化-配置.png)
+
+#### 智能协同（AI）一览
+
+- 智能体
+
+![全局智能体](./sample/全局智能体.png)
+
+- AI助手
+
+![AI助手](./sample/AI助手.png)
 
 #### 应用市场一览
 - 应用市场-首页
