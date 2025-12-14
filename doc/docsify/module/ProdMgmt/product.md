@@ -27,6 +27,52 @@
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 
 
+###### 属性组
+
+<el-row>
+<el-tabs v-model="show_field_group">
+
+<el-tab-pane label="AI完整数据信息" name="field_group_ai_full_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|产品名称|NAME|文本，可指定长度|200|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|产品标识|IDENTIFIER|文本，可指定长度|100|否||
+|可见范围|VISIBILITY|单项选择(文本值)|60|否||
+|主题色|COLOR|文本，可指定长度|100|是||
+|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|是否星标|IS_FAVORITE|文本，可指定长度|200|是||
+|产品成员|MEMBERS|一对多关系数据集合|1048576|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
+
+</el-tab-pane>
+<el-tab-pane label="AI数据信息" name="field_group_ai_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|产品名称|NAME|文本，可指定长度|200|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|产品标识|IDENTIFIER|文本，可指定长度|100|否||
+|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|产品成员|MEMBERS|一对多关系数据集合|1048576|是||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
 ## 关系
 
 <el-row>
@@ -72,6 +118,8 @@
 |CreateTemp|CreateTemp|内置方法|默认|不支持||||
 |CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#product_Get)|||
+|获取完整AI数据信息|GetAIFullInfo|内置方法|默认|不支持||||
+|获取AI数据信息|GetAIInfo|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |GetDraftTemp|GetDraftTemp|内置方法|默认|不支持||||
 |GetDraftTempMajor|GetDraftTempMajor|内置方法|默认|不支持||||
@@ -90,7 +138,7 @@
 |删除|delete|[实体处理逻辑](module/ProdMgmt/product/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProdMgmt/product/logic/favorite "设置星标")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/product/logic/nothing "无操作")|默认|不支持||||
-|关联产品|other_re_product|[实体处理逻辑](module/ProdMgmt/product/logic/other_re_product "其他实体关联产品")|默认|不支持||||
+|其他实体关联产品|other_re_product|[实体处理逻辑](module/ProdMgmt/product/logic/other_re_product "其他实体关联产品")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProdMgmt/product/logic/product_re_space "产品关联空间")|默认|不支持||||
 |产品计数器|product_counters|[实体处理逻辑](module/ProdMgmt/product/logic/product_counters "产品关联分页计数器")|默认|不支持||||
 |产品首页组件计数|product_index_addon_counter|[实体处理逻辑](module/ProdMgmt/product/logic/product_addon_authority "产品组件权限计数器")|默认|不支持||||
@@ -157,6 +205,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProdMgmt/product/dataset/Default)|DEFAULT|数据查询|是|||
 |[管理员(admin)](module/ProdMgmt/product/dataset/admin)|admin|数据查询|否|||
+|[查询产品信息（AI调用）(ai_info)](module/ProdMgmt/product/dataset/ai_info)|ai_info|数据查询|否||查询全部产品信息，排序可以指定create_time或update_time，模糊搜索可以根据name/description来LIKE匹配|
 |[已归档(archived)](module/ProdMgmt/product/dataset/archived)|archived|数据查询|否|||
 |[当前产品(cur_product)](module/ProdMgmt/product/dataset/cur_product)|cur_product|数据查询|否|||
 |[特定用户(customer_user)](module/ProdMgmt/product/dataset/customer_user)|customer_user|数据查询|否|||
@@ -384,7 +433,7 @@
     data() {
       return {
 show_der:'major',
-
+show_field_group:'field_group_ai_full_info',
 
       }
     },

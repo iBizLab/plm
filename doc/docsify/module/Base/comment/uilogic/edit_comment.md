@@ -53,6 +53,8 @@ PREPAREJSPARAM1 --> RAWJSCODE1
 uiLogic.comment.toggleCollapse(true);
 uiLogic.comment.setValue(uiLogic.default.content);
 uiLogic.comment.reply.value = null;
+
+
 ```
 
 ### 连接条件说明
@@ -66,7 +68,7 @@ uiLogic.comment.reply.value = null;
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |评论对象|comment|数据对象||
+|评论id存储对象|comment_id|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |父视图对象|parentView|数据对象||
 |当前视图对象|view|当前视图对象||
-|评论id存储对象|comment_id|数据对象||

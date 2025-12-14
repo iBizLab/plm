@@ -42,12 +42,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdenotify2" id="denotify2" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（测试用例）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（需求）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置提交人、状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段的状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置关系过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdenotify3" id="denotify3" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（工作项）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
@@ -99,8 +99,6 @@
                     <sequenceFlow id="denotify1_prepareparam1" sourceRef="denotify1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_debugparam2" sourceRef="bindparam1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction1_loopsubcall1" sourceRef="deaction1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam2_loopsubcall2" sourceRef="debugparam2" targetRef="loopsubcall2">
                     </sequenceFlow>
@@ -209,6 +207,8 @@
                     <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_loopsubcall1" sourceRef="deaction1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
                     </sequenceFlow>

@@ -3,7 +3,6 @@
   "codeName" : "others_relation_view_pickup_grid_view_grid",
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
-  "controlStyle" : "CHECKBOX_GRID",
   "controlType" : "GRID",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSGRIDS/others_relation_view_pickup_grid_view_grid.json",
   "getFetchPSControlAction" : {
@@ -37,6 +36,23 @@
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "identifier",
+    "excelCaption" : "编号",
+    "name" : "identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
     "caption" : "标题",
     "codeName" : "title",
     "columnType" : "DEFGRIDCOLUMN",
@@ -51,8 +67,75 @@
     "width" : 150,
     "widthUnit" : "STAR",
     "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "类型",
+    "codeName" : "work_item_type_id",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "work_item_type_id",
+    "excelCaption" : "类型",
+    "name" : "work_item_type_id",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "work_item_type_id"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "状态",
+    "codeName" : "state",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "state_text",
+    "excelCaption" : "状态",
+    "name" : "state",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__scrum_state.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    },
+    "width" : 160,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "负责人",
+    "codeName" : "assignee_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "assignee_name",
+    "excelCaption" : "负责人",
+    "name" : "assignee_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
   } ],
   "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    }
+  }, {
     "dataType" : 25,
     "name" : "title",
     "getPSAppDEField" : {
@@ -61,10 +144,45 @@
     }
   }, {
     "dataType" : 25,
+    "name" : "work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "work_item_type_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state_text",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    }
+  }, {
+    "dataType" : 25,
     "name" : "id",
     "getPSAppDEField" : {
       "name" : "ID",
       "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "assignee_id"
     }
   }, {
     "dataType" : 25,
@@ -83,20 +201,6 @@
     "dataAccessAction" : true
   }, {
     "dataType" : 25,
-    "name" : "state",
-    "getPSAppDEField" : {
-      "name" : "STATE",
-      "codeName" : "state"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "assignee_id",
-    "getPSAppDEField" : {
-      "name" : "ASSIGNEE_ID",
-      "codeName" : "assignee_id"
-    }
-  }, {
-    "dataType" : 25,
     "name" : "project_id",
     "getPSAppDEField" : {
       "name" : "PROJECT_ID",
@@ -105,13 +209,6 @@
   }, {
     "dataType" : 25,
     "name" : "srfdatatype",
-    "getPSAppDEField" : {
-      "name" : "WORK_ITEM_TYPE_ID",
-      "codeName" : "work_item_type_id"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "work_item_type_id",
     "getPSAppDEField" : {
       "name" : "WORK_ITEM_TYPE_ID",
       "codeName" : "work_item_type_id"
@@ -177,6 +274,82 @@
     "name" : "srfmstag"
   } ],
   "getPSDEGridEditItems" : [ {
+    "caption" : "状态",
+    "codeName" : "state",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "srfnavparam.state" : "%state%",
+        "srfnavparam.project_id" : "%project_id%",
+        "srfnavparam.work_item_type_id" : "%work_item_type_id%",
+        "type" : "round",
+        "alwaysLoad" : "true"
+      },
+      "editorType" : "DROPDOWNLIST",
+      "name" : "state",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__scrum_state.json"
+      },
+      "getPSEditorItems" : [ {
+        "name" : "state",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "state",
+          "name" : "state",
+          "value" : "state",
+          "rawValue" : false
+        }, {
+          "key" : "project_id",
+          "name" : "project_id",
+          "value" : "project_id",
+          "rawValue" : false
+        }, {
+          "key" : "work_item_type_id",
+          "name" : "work_item_type_id",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        } ]
+      } ],
+      "getPSNavigateParams" : [ {
+        "key" : "state",
+        "name" : "state",
+        "value" : "state",
+        "rawValue" : false
+      }, {
+        "key" : "project_id",
+        "name" : "project_id",
+        "value" : "project_id",
+        "rawValue" : false
+      }, {
+        "key" : "work_item_type_id",
+        "name" : "work_item_type_id",
+        "value" : "work_item_type_id",
+        "rawValue" : false
+      } ],
+      "singleSelect" : true
+    },
+    "valueItemName" : "state",
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 3,
@@ -192,11 +365,6 @@
     },
     "allowEmpty" : true
   } ],
-  "getPSSysPFPlugin" : {
-    "pluginType" : "GRID_RENDER",
-    "pluginCode" : "CHECKBOX_GRID",
-    "runtimeObject" : true
-  },
   "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {

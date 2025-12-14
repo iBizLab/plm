@@ -29,11 +29,12 @@ view.layoutPanel.panelItems.grid.state.visible = false;
 
 ### 关联界面行为
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [添加控件显示](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除（表单中）](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑（表单中）](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [取消](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [确定](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除（表单中）](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [交付物下载](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交（表单中）](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [确定](module/Base/deliverable#界面行为)
 
 ### 关联界面逻辑
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [计算表格列行为状态](module/Base/deliverable/uilogic/calc_column_action_state)
@@ -42,6 +43,7 @@ view.layoutPanel.panelItems.grid.state.visible = false;
 ### 关联视图
   * [交付物(deliverable_edit_view)](app/view/deliverable_edit_view)
   * [交付物(deliverable_redirect_view)](app/view/deliverable_redirect_view)
+  * [编辑交付目标(deliverable_target_edit_view)](app/view/deliverable_target_edit_view)
 
 <script>
  const { createApp } = Vue

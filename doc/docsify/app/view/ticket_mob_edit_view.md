@@ -13,10 +13,10 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [打开评论列表](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [打开工单关注列表（移动端）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [打开工单关注列表（移动端）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [打开评论列表](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [附件(attachment_mob_md_view)](app/view/attachment_mob_md_view)

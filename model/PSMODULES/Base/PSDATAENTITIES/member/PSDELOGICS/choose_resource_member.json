@@ -28,7 +28,7 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[user_group] 值不为空(NotNil)"
+          "name" : "Default[user_group] 值不为空(NotNil) "
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -57,7 +57,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[n_department_id_eq] 值不为空(NotNil)"
+            "name" : "Default[n_department_id_eq] 值不为空(NotNil) "
           }, {
             "condOP" : "ISNOTNULL",
             "dstFieldName" : "department",
@@ -66,7 +66,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[department] 值不为空(NotNil)"
+            "name" : "Default[department] 值不为空(NotNil) "
           } ]
         } ]
       },
@@ -78,7 +78,7 @@
     "topPos" : 160,
     "parallelOutput" : true
   }, {
-    "code" : "def _default = logic.param('default').getReal()\r\ndef user_filter = logic.param('user_filter').getReal()\r\nuser_filter.setPageable(_default.getPageable())\r\n",
+    "code" : "def _default = logic.param('default').getReal()\ndef user_filter = logic.param('user_filter').getReal()\nuser_filter.setPageable(_default.getPageable())\n",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
     "leftPos" : 300,
@@ -287,7 +287,7 @@
     },
     "topPos" : 590
   }, {
-    "code" : "var group_page = logic.getParam(\"group_page\");\r\nvar user_filter = logic.getParam(\"user_filter\");\r\nvar user_ids = \"\";\r\nfor (var i = 0; i < group_page.length; i++) {\r\n    if(i>0){\r\n        user_ids = user_ids+\",\";\r\n    }\r\n    var _group_member = group_page.get(i);\r\n    user_ids = user_ids + _group_member.get(\"user_id\");\r\n}\r\nif(user_ids != \"\"){\r\n    user_filter.in(\"id\",user_ids);\r\n}",
+    "code" : "var group_page = logic.getParam(\"group_page\");\nvar user_filter = logic.getParam(\"user_filter\");\nvar user_ids = \"\";\nfor (var i = 0; i < group_page.length; i++) {\n    if(i>0){\n        user_ids = user_ids+\",\";\n    }\n    var _group_member = group_page.get(i);\n    user_ids = user_ids + _group_member.get(\"user_id\");\n}\nif(user_ids != \"\"){\n    user_filter.in(\"id\",user_ids);\n}",
     "codeName" : "RAWSFCODE3",
     "codeType" : "JavaScript",
     "leftPos" : 599,
@@ -368,6 +368,17 @@
         "id" : "LOOPSUBCALL1"
       },
       "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "循环部门成员结果",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
     } ],
     "getSrcPSDELogicParam" : {
       "modelref" : true,
@@ -419,7 +430,8 @@
       "id" : "user_page"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 1050
+    "topPos" : 1050,
+    "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

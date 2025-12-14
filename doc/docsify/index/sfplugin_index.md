@@ -3,7 +3,10 @@
 |  对象      |  实体  |  类型  | 插件  |备注|
 |  --------  | ----- | -----    |-----    |----    |
 |项目工作项代码表||PSCodeListImpl|[MSLogicCodeListRuntimeEx](#UsrSFPlugin0623056576)||
+|AI凭证同步组件||PSSysUtilImpl|[CredentialDESyncUtilRuntime](#CredentialDESyncUtilRuntime)||
+|AI模型同步组件||PSSysUtilImpl|[AIAgentDESyncUtilRuntime](#AIAgentDESyncUtilRuntime)||
 |SysDEBIReportProxyUtilRuntime||PSSysUtilImpl|[SysDEBIReportProxyUtilRuntime](#UsrSFPlugin0702700490)||
+|SysMcpServerUtil||PSSysUtilImpl|[SysMcpServerUtilRuntime](#SysMcpServerUtilRuntime)||
 |SysPSDEModelUtilRuntime||PSSysUtilImpl|[PLMSysPSDEModelUtilRuntime](#PLMSysPSDEModelUtilRuntime)||
 |用户导入增强||PSSysTranslatorImpl|[One2ManyUserImpTransRuntime](#UsrSFPlugin0424744613)|参数名               说明                                   默认值<br>username       指定从用户实体对象中获取值名称名称             display_name<br>userdename     指定用户数据实体名称                          user<br>one2manyfield  指定转换器属性映射的1对多集合属性名称          attentions<br>one2manyuserid 指定映射的1对多集合属性中存储用户标识属性名称   user_id|
 |结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
@@ -11,6 +14,7 @@
 |@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)|评论@转换器|
 |用例步骤导入增强||PSSysTranslatorImpl|[One2ManyCaseStepImpTransRuntime](#UsrSFPlugin0515997865)|用例步骤导入增强|
 |工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
+|智能体业务上下文(AI_AGENT_CONTEXT)||PSDataEntityImpl|[AIAgentContextDERuntime](#AIAgentContextDERuntime)||
 |填充产品需求版本数据(fill_version_data)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充测试用例版本数据(fill_version_data)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
@@ -42,6 +46,142 @@
 |敏捷工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |瀑布工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 
+### AIAgentContextDERuntime :id=AIAgentContextDERuntime
+
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.AIAgentContextDERuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity
+
+import net.ibizsys.central.cloud.core.dataentity.DataEntityRuntime
+import net.ibizsys.central.dataentity.IDataEntityRuntime
+import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.central.util.ISearchContextDTO
+import net.ibizsys.model.dataentity.IPSDataEntity
+import net.ibizsys.model.dataentity.action.IPSDEAction
+import net.ibizsys.model.dataentity.ds.IPSDEDataSet
+import net.ibizsys.runtime.IDynaInstRuntime
+import net.ibizsys.runtime.util.IEntityBase
+import net.ibizsys.runtime.util.ISearchContextBase
+import org.springframework.util.StringUtils
+
+public class AIAgentContextDERuntime extends DataEntityRuntime {
+
+    private IDataEntityRuntime AIAgentDERuntime = null;
+
+    protected IDataEntityRuntime getAIAgentDERuntimeDERuntime() {
+        if(this.AIAgentDERuntime == null) {
+            this.AIAgentDERuntime = this.getSystemRuntime().getDataEntityRuntime("AI_AGENT");
+        }
+        return this.AIAgentDERuntime;
+    }
+
+    @Override
+    protected void translateEntitiesAfterProceed(ISearchContextBase arg0, List<? extends IEntityBase> list, String strDataSetName, IPSDEDataSet iPSDEDataSet, IPSDataEntity iPSDataEntity, IDynaInstRuntime iDynaInstRuntime, Object actionData) throws Throwable {
+        super.translateEntitiesAfterProceed(arg0, list, strDataSetName, iPSDEDataSet, iPSDataEntity, iDynaInstRuntime, actionData);
+        Map<String,List<IEntityBase>> cacheDtoMap = new LinkedHashMap<>();
+        for(IEntityBase item : list) {
+            IEntityDTO aiAgentContextDTO = null;
+            if (item instanceof IEntityDTO) {
+                aiAgentContextDTO = (IEntityDTO) item;
+            }
+
+            if (aiAgentContextDTO == null) {
+                return;
+            }
+            if (StringUtils.hasLength(aiAgentContextDTO.get("ai_agent_id"))) {
+                String agentId = aiAgentContextDTO.get("ai_agent_id") as String;
+                if(!cacheDtoMap.containsKey(agentId)){
+                    List<IEntityBase> dtoList = new ArrayList<>();
+                    cacheDtoMap.put(agentId,dtoList);
+                    dtoList.add(aiAgentContextDTO)
+                }else {
+                    cacheDtoMap.get(agentId).add(aiAgentContextDTO)
+                }
+            }
+        }
+        for (Map.Entry<String, List<String>> entry : cacheDtoMap.entrySet()) {
+            String agentId = entry.getKey();
+
+            List<IEntityBase> dtoList = entry.getValue();
+            List<String> idList = new ArrayList<>();
+            for(IEntityBase item : dtoList) {
+                IEntityDTO aiAgentContextDTO = null;
+                if (item instanceof IEntityDTO) {
+                    aiAgentContextDTO = (IEntityDTO) item;
+                }
+                if (aiAgentContextDTO == null) {
+                    return;
+                }
+                idList.add(aiAgentContextDTO.get("ai_agent_id") as String);
+            }
+
+            IDataEntityRuntime iDataEntityRuntime = this.getAIAgentDERuntimeDERuntime();
+            ISearchContextDTO iSearchContextDTO =  iDataEntityRuntime.createSearchContext();
+            iSearchContextDTO.all().in(iDataEntityRuntime.getKeyPSDEField().getCodeName(),idList)
+            List<IEntityDTO> resList = iDataEntityRuntime.selectDataSet("full_info",iSearchContextDTO);
+            for(IEntityDTO item : resList) {
+                for(IEntityBase item2 : dtoList) {
+                    IEntityDTO aiAgentContextDTO = null;
+                    if (item2 instanceof IEntityDTO) {
+                        aiAgentContextDTO = (IEntityDTO) item2;
+                    }
+                    if (aiAgentContextDTO == null) {
+                        return;
+                    }
+                    if (item.getId().equals(aiAgentContextDTO.get("ai_agent_id"))) {
+                        Iterator<Map.Entry<String, Object>> it = aiAgentContextDTO.any().entrySet().iterator();
+                        while (it.hasNext()) {
+                            Map.Entry<String, Object> itentry = it.next();
+                            Object value = itentry.getValue();
+
+                            if (value == null) {
+                                it.remove();
+                            }
+                        }
+                        item.copyToIf(aiAgentContextDTO)
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void translateEntityAfterProceed(Object arg0, Object objRet, String strActionName, IPSDEAction iPSDEAction, IPSDataEntity iPSDataEntity, IDynaInstRuntime iDynaInstRuntime, Object actionData) throws Throwable {
+        super.translateEntityAfterProceed(arg0, objRet, strActionName, iPSDEAction, iPSDataEntity, iDynaInstRuntime, actionData)
+        if (objRet instanceof IEntityDTO && "fill_with_agent".equalsIgnoreCase(strActionName)) {
+            IEntityDTO aiAgentContextDTO = (IEntityDTO) objRet;
+            if (StringUtils.hasLength(aiAgentContextDTO.get("ai_agent_id"))) {
+                IDataEntityRuntime iDataEntityRuntime = this.getAIAgentDERuntimeDERuntime();
+                ISearchContextDTO iSearchContextDTO =  iDataEntityRuntime.createSearchContext();
+                iSearchContextDTO.all().in(iDataEntityRuntime.getKeyPSDEField().getCodeName(),aiAgentContextDTO.get("ai_agent_id"))
+                List<IEntityDTO> resList = iDataEntityRuntime.selectDataSet("full_info",iSearchContextDTO);
+                for(IEntityDTO item : resList) {
+                    Iterator<Map.Entry<String, Object>> it = aiAgentContextDTO.any().entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry<String, Object> itentry = it.next();
+                        Object value = itentry.getValue();
+
+                        if (value == null) {
+                            it.remove();
+                        }
+                    }
+                    item.copyToIf(aiAgentContextDTO)
+                }
+            }
+        }
+    }
+}
+```
+### AIAgentDESyncUtilRuntime :id=AIAgentDESyncUtilRuntime
+
+
+```net.ibizsys.central.plugin.util.sysutil.AIAgentDESyncUtilRuntime```
+
+```groovy
+null
+```
 ### BoardCopyDEActionRuntime :id=BoardCopyDEActionRuntime
 看板拷贝增强插件
 
@@ -132,6 +272,14 @@ public class BoardCopyDEActionRuntime extends CopyDEActionRuntime {
         }
     }
 }
+```
+### CredentialDESyncUtilRuntime :id=CredentialDESyncUtilRuntime
+
+
+```net.ibizsys.central.plugin.util.sysutil.CredentialDESyncUtilRuntime```
+
+```groovy
+null
 ```
 ### DynaFieldDEDataImportRuntimeEx :id=DynaFieldDEDataImportRuntimeEx
 支持动态属性导入
@@ -740,6 +888,138 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
     }
 }
 ```
+### PLMAIAgentLogicNodeRuntime :id=PLMAIAgentLogicNodeRuntime
+AI智能体交互逻辑节点
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.logic.PLMAIAgentLogicNodeRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.logic;
+
+import groovy.transform.CompileStatic
+import net.ibizsys.central.cloud.core.IServiceSystemRuntime
+import net.ibizsys.central.cloud.core.ai.ISysAIChatAgentRuntime
+import net.ibizsys.central.cloud.core.ai.ISysAIFactoryRuntime
+import net.ibizsys.central.cloud.core.dataentity.logic.DELogicSysAIChatAgentNodeRuntime
+import net.ibizsys.central.cloud.core.util.ChatMessagesBuilder
+import net.ibizsys.central.cloud.core.util.domain.ChatCompletionRequest
+import net.ibizsys.central.cloud.core.util.domain.ChatCompletionResult
+import net.ibizsys.central.cloud.core.util.domain.ChatCompletionResultEx
+import net.ibizsys.central.cloud.core.util.domain.ChatMessage
+import net.ibizsys.central.dataentity.logic.IDELogicParamRuntime
+import net.ibizsys.central.dataentity.logic.IDELogicRuntimeContext
+import net.ibizsys.central.dataentity.logic.IDELogicSession
+import net.ibizsys.model.dataentity.logic.IPSDELogicNode
+import net.ibizsys.model.dataentity.logic.IPSDESysAIChatAgentLogic
+import net.ibizsys.model.util.JsonUtils
+import net.ibizsys.runtime.util.Entity
+import org.springframework.util.ObjectUtils
+
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+@CompileStatic
+class PLMAIAgentLogicNodeRuntime extends DELogicSysAIChatAgentNodeRuntime {
+
+
+	@Override
+	protected void onExecute(IDELogicRuntimeContext iDELogicRuntimeContext, IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+		super.onExecute(iDELogicRuntimeContext,iDELogicSession,iPSDELogicNode);
+	}
+
+	@Override
+	protected void onExecuteChatDefault(IDELogicRuntimeContext iDELogicRuntimeContext, IDELogicSession iDELogicSession, IPSDESysAIChatAgentLogic iPSDESysAIChatAgentLogic, Map<String, Object> params) throws Throwable {
+		IServiceSystemRuntime iServiceSystemRuntime = (IServiceSystemRuntime)iDELogicRuntimeContext.getSystemRuntime();
+		ISysAIFactoryRuntime iSysAIFactoryRuntime = iServiceSystemRuntime.getSysAIFactoryRuntime(iPSDESysAIChatAgentLogic.getPSSysAIFactoryMust().getId(), false);
+		ISysAIChatAgentRuntime iSysAIChatAgentRuntime = iSysAIFactoryRuntime.getAIChatAgentRuntime(iPSDESysAIChatAgentLogic.getPSSysAIChatAgentMust().getCodeName(), false);
+		IDELogicParamRuntime iDELogicParamRuntime = iDELogicRuntimeContext.getDELogicRuntime().getDELogicParamRuntime(iPSDESysAIChatAgentLogic.getDstPSDELogicParamMust().getCodeName(), false);
+
+		ChatCompletionResult chatCompletionResult = null;
+		ChatCompletionRequest chatCompletionRequest = null;
+		Object objParam = iDELogicParamRuntime.getParamObject(iDELogicSession);
+		if(objParam instanceof ChatCompletionRequest || objParam instanceof String) {
+			chatCompletionRequest = new ChatCompletionRequest();
+			if(objParam instanceof ChatCompletionRequest) {
+				ChatCompletionRequest chatCompletionRequest2 = (ChatCompletionRequest)objParam;
+				//放入历史消息
+				if(iPSDESysAIChatAgentLogic.getHistoryCount() > 0 && !ObjectUtils.isEmpty(chatCompletionRequest2.getMessages()) && chatCompletionRequest2.getMessages().size() > iPSDESysAIChatAgentLogic.getHistoryCount()) {
+					List<ChatMessage> list = chatCompletionRequest2.getMessages().subList(chatCompletionRequest2.getMessages().size() - iPSDESysAIChatAgentLogic.getHistoryCount(), chatCompletionRequest2.getMessages().size());
+					chatCompletionRequest.setMessages(list);
+				}
+				else {
+					chatCompletionRequest.setMessages(chatCompletionRequest2.getMessages());
+				}
+			}
+			else
+			if(objParam instanceof String) {
+				chatCompletionRequest.setMessages(new ChatMessagesBuilder().user(objParam.toString()).build());
+			}
+
+			//指定智能体
+			Map<String, String> options = JsonUtils.asMap(iPSDESysAIChatAgentLogic.getNodeParams());
+			if(options.get("aiagenttag")!=null){
+				chatCompletionRequest.set("srfaiagenttag",options.get("aiagenttag"));
+			}
+			chatCompletionResult = iSysAIChatAgentRuntime.chatCompletion(new Entity() , chatCompletionRequest, new LinkedHashMap<String, Object>(), true, false);
+		}
+		else {
+			chatCompletionRequest = new ChatCompletionRequest();
+			chatCompletionRequest.from(objParam)
+			//指定智能体
+			Map<String, String> options = JsonUtils.asMap(iPSDESysAIChatAgentLogic.getNodeParams());
+			if(options.get("aiagenttag")!=null){
+				chatCompletionRequest.set("srfaiagenttag",options.get("aiagenttag"));
+			}
+			chatCompletionResult = iSysAIChatAgentRuntime.chatCompletion(objParam , chatCompletionRequest, new LinkedHashMap<String, Object>(), true, true);
+		}
+
+		Object objRet = this.getRealResult(chatCompletionResult, chatCompletionRequest, objParam, iDELogicRuntimeContext, iDELogicSession, iPSDESysAIChatAgentLogic);
+
+		iDELogicSession.setLastReturn(objRet);
+
+		if(iPSDESysAIChatAgentLogic.getRetPSDELogicParam() != null) {
+			IDELogicParamRuntime retDELogicParamRuntime = iDELogicRuntimeContext.getDELogicRuntime().getDELogicParamRuntime(iPSDESysAIChatAgentLogic.getRetPSDELogicParam().getCodeName(), false);
+			retDELogicParamRuntime.bind(iDELogicSession, objRet);
+		}
+	}
+
+	protected Object getRealResult(ChatCompletionResult chatCompletionResult, ChatCompletionRequest chatCompletionRequest, Object objParam, IDELogicRuntimeContext iDELogicRuntimeContext, IDELogicSession iDELogicSession, IPSDESysAIChatAgentLogic iPSDESysAIChatAgentLogic) throws Exception {
+		java.lang.Object realResult = super.getRealResult(chatCompletionResult,chatCompletionRequest,objParam,iDELogicRuntimeContext,iDELogicSession,iPSDESysAIChatAgentLogic);
+		if (realResult) {
+			if (realResult instanceof String) {
+				List<Map<String, Object>>  patterns = [
+						[p: /```json\s*([\s\S]*?)\s*```/, c: { String it -> it.replace('```json', '').replace('```', '').trim() } as Closure<String>],
+						[p: /```\s*([\s\S]*?)\s*```/,     c: { String it -> it.replace('```', '').trim() } as Closure<String>],
+						[p: /\{[\s\S]*?\}(?=\s*[\n\r]|$)/, c: { String it -> it.trim() } as Closure<String>],
+						[p: /\[[\s\S]*?\](?=\s*[\n\r]|$)/, c: { String it -> it.trim() } as Closure<String>]
+				] as List<Map<String, Object>>;
+
+				groovy.json.JsonSlurper slurper = new groovy.json.JsonSlurper()
+
+				for (Map<String, Object> e : patterns) {
+					Pattern pattern = Pattern.compile ((String)e.get('p'))
+					Matcher m = pattern.matcher(realResult)
+					if (m.find()) {
+						String raw = m.group(0)
+						Closure<String> cleanFn = (Closure<String>) e.get('c')
+						String clean = cleanFn.call(raw)
+
+						if (clean && !clean.isEmpty()) {
+							try {
+								Object data = slurper.parseText(clean)
+								return data
+							} catch (groovy.json.JsonException ignored) {
+								// 继续尝试下一个模式
+							}
+						}
+					}
+				}
+			}
+		}
+		return realResult;
+	}
+}
+```
 ### PLMSysPSDEModelUtilRuntime :id=PLMSysPSDEModelUtilRuntime
 
 
@@ -1059,6 +1339,14 @@ public class ProjectCopyDEActionRuntime extends CopyDEActionRuntime {
         }
     }
 }
+```
+### SysMcpServerUtilRuntime :id=SysMcpServerUtilRuntime
+
+
+```net.ibizsys.central.plugin.ai.sysutil.SysMcpServerUtilRuntime```
+
+```groovy
+null
 ```
 ### SysAtContentTranslatorRuntime :id=UsrSFPlugin0201416283
 评论@转换器

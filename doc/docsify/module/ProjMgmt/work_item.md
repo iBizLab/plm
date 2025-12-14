@@ -40,6 +40,7 @@
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |执行人|EXECUTORS|一对多关系数据集合|1048576|是||
 |完成人|FINISHER|文本，可指定长度|100|是||
+|内容格式|FORMAT_TYPE|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
@@ -96,6 +97,8 @@
 |顶级工作项标题|TOP_TITLE|外键值文本|500|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 |工时进度|WORKLOAD_SCHEDULE|数值||是||
 |原始状态|WORK_ITEM_ORIGIN_STATE|外键值附加数据|100|是||
 |工作项下级类型|WORK_ITEM_SUB_TYPE|外键值附加数据|200|是||
@@ -152,6 +155,132 @@
 |项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
 |工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
 |完成人|FINISHER|文本，可指定长度|100|是||
+
+</el-tab-pane>
+<el-tab-pane label="AI完整数据信息" name="field_group_ai_full_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|内容格式|FORMAT_TYPE|单项选择(文本值)|60|是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|标题|TITLE|文本，可指定长度|500|否||
+|开始时间|START_AT|日期型||是||
+|截止时间|END_AT|日期型||是||
+|状态|STATE|外键值|100|否||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
+|风险|RISK|单项选择(文本值)|60|是||
+|项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
+|工作项类型分组|WORK_ITEM_TYPE_GROUP|[外键值附加数据](index/dictionary_index#work_item_type_group "工作项类型分组")|60|是||
+|标签|TAGS|长文本，长度1000|2000|是||
+|看板栏状态|ENTRY_STATUS|文本，可指定长度|100|是||
+|所在看板栏位置|ENTRY_POSITION|整型||是||
+|统计数|REP_NUM|数值||是||
+|解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
+|工作项类型序号|WORK_ITEM_TYPE_SEQUENCE|外键值附加数据||是||
+|完成时间|COMPLETED_AT|日期时间型||是||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|任务类别|JOB_TYPE|单项选择(文本值)|60|是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
+|测试计划ID|TEST_PLAN_ID|文本，可指定长度|100|是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
+|父工作项类型|P_WORK_ITEM_TYPE_ID|外键值附加数据|100|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
+|项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|报表分组属性|REP_GROUP_VALUE|文本，可指定长度|100|是||
+|报表百分值|REP_PERCENT_VALUE|浮点||是||
+|报表值1|REP_VALUE_1|整型||是||
+|报表值3|REP_VALUE_3|整型||是||
+|报表值2|REP_VALUE_2|整型||是||
+|工作项状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#state_type "工作项状态类型")|60|是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|迭代状态|SPRINT_STATUS|[外键值附加数据](index/dictionary_index#sprint_status "迭代状态")|60|是||
+|发布阶段|RELEASE_STATUS|外键值附加数据|60|是||
+|工作项下级类型|WORK_ITEM_SUB_TYPE|外键值附加数据|200|是||
+|统计日期字段|REP_DATE|日期型||是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|序号|SEQUENCE|数值||是||
+|关联产品需求数|RELATION_TOTAL_IDEA|数值||是||
+|关联测试用例数|RELATION_TOTAL_TEST_CASE|数值||是||
+|关联工单数|RELATION_TOTAL_TICKET|数值||是||
+|关联工作项数|RELATION_TOTAL_WORK_ITEM|数值||是||
+|原始状态|WORK_ITEM_ORIGIN_STATE|外键值附加数据|100|是||
+|是否超时|IS_OVERTIME|整型||是||
+|执行人|EXECUTORS|一对多关系数据集合|1048576|是||
+|多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
+|实际开始时间|ACTUAL_START_AT|日期时间型||是||
+|实际结束时间|ACTUAL_END_AT|日期时间型||是||
+|完成人|FINISHER|文本，可指定长度|100|是||
+|逾期天数|OVERDUE_TIME|文本，可指定长度|200|是||
+|交付物|DELIVERABLE_IMP|文本，可指定长度|100|是||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
+|项目是否归档|PROJECT_IS_ARCHIVED|外键值附加数据||是||
+|依赖|DEPENDENCIES|一对多关系数据集合|1048576|是||
+|看板标识|BOARD_ID|外键值|100|是||
+|看板名称|BOARD_NAME|外键值文本|200|是||
+|看板栏标识|ENTRY_ID|外键值|100|是||
+|父标识|PID|外键值|100|是||
+|父工作项|PTITLE|外键值文本|500|是||
+|泳道标识|SWIMLANE_ID|外键值|100|是||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|看板栏名称|ENTRY_NAME|外键值文本|200|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目|PROJECT_ID|外键值|100|否||
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|项目发布标识|RELEASE_ID|外键值|100|是||
+|项目发布名称|RELEASE_NAME|外键值文本|200|是||
+|迭代标识|SPRINT_ID|外键值|100|是||
+|迭代名称|SPRINT_NAME|外键值文本|200|是||
+|顶级工作项标题|TOP_TITLE|外键值文本|500|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
+|工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
+
+</el-tab-pane>
+<el-tab-pane label="AI数据信息" name="field_group_ai_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|状态|STATE|外键值|100|否||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
+|内容格式|FORMAT_TYPE|单项选择(文本值)|60|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+|标签|TAGS|长文本，长度1000|2000|是||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目|PROJECT_ID|外键值|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
 
 </el-tab-pane>
 <el-tab-pane label="负责人" name="field_group_assignee">
@@ -507,6 +636,8 @@
 |复制|Copy|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Create)|||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Get)|||
+|获取完整AI数据信息|GetAIFullInfo|内置方法|默认|不支持||||
+|获取AI数据信息|GetAIInfo|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_GetDraft)|||
 |GetTemp|GetTemp|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
@@ -549,7 +680,7 @@
 |移出发布|shift_out_release|[实体处理逻辑](module/ProjMgmt/work_item/logic/shift_out_release "移出发布")|默认|不支持||||
 |移出迭代|shift_out_sprint|[实体处理逻辑](module/ProjMgmt/work_item/logic/shift_out_sprint "移出迭代")|默认|不支持||||
 |工作项关联分页计数器|work_item_re_counters|[实体处理逻辑](module/ProjMgmt/work_item/logic/work_item_re_counters "工作项关联分页计数器")|默认|不支持||||
-|工作项只读用户判断|work_item_readonly_recognize|[实体处理逻辑](module/ProjMgmt/work_item/logic/get_project_member "获取项目成员")|默认|不支持||||
+|工作项只读用户判断|work_item_readonly_recognize|[实体处理逻辑](module/ProjMgmt/work_item/logic/get_project_member "获取项目成员及权限")|默认|不支持||||
 |获取测试计划对应项目|work_item_test_plan_project|[实体处理逻辑](module/ProjMgmt/work_item/logic/work_item_test_plan_project "获取测试计划对应项目")|默认|不支持||||
 |获取工作项类型|work_item_type_id|[实体处理逻辑](module/ProjMgmt/work_item/logic/get_work_item_type "获取工作项类型")|默认|不支持||||
 
@@ -612,7 +743,7 @@
 |[获取工作项类型](module/ProjMgmt/work_item/logic/get_work_item_type)|get_work_item_type|无||链接跳转工作项主视图前，获取工作项类型|
 |[获取测试计划对应项目](module/ProjMgmt/work_item/logic/work_item_test_plan_project)|work_item_test_plan_project|无||获取测试计划对应项目|
 |[获取草稿](module/ProjMgmt/work_item/logic/custom_draft)|custom_draft|无|||
-|[获取项目成员](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前用户权限|
+|[获取项目成员及权限](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前用户权限|
 |[规划工作项](module/ProjMgmt/work_item/logic/plan_work_item)|plan_work_item|无||规划选中工作项至指定发布|
 |[设置初始排序值](module/ProjMgmt/work_item/logic/set_sequence)|set_sequence|无||设置初始排序值|
 |[设置执行人](module/ProjMgmt/work_item/logic/setting_executors)|setting_executors|无||设置执行人|
@@ -746,12 +877,14 @@
 |[项目集工作下的工作项(under_work)](module/ProjMgmt/work_item/query/under_work)|under_work|否|否 |否 ||
 |[项目集工作下的资源工作项(under_work_resource)](module/ProjMgmt/work_item/query/under_work_resource)|under_work_resource|否|否 |否 ||
 |[获取指定工作项的类型(work_item_type)](module/ProjMgmt/work_item/query/work_item_type)|work_item_type|否|否 |否 ||
+|[工时登记工作项(workload_work_item)](module/ProjMgmt/work_item/query/workload_work_item)|workload_work_item|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/work_item/dataset/Default)|DEFAULT|数据查询|是|||
 |[高级搜索(advanced_search)](module/ProjMgmt/work_item/dataset/advanced_search)|advanced_search|数据查询|否|||
+|[查询工作项信息（AI调用）(ai_info)](module/ProjMgmt/work_item/dataset/ai_info)|ai_info|数据查询|否||查询全部工作项信息，可以根据project_id查询特定项目的工作项信息，也可以根据work_item_type_name分类查询需求/阶段/里程碑/史诗/特性/用户故事/任务/缺陷，排序可以指定create_time或update_time，模糊搜索可以根据title/description来LIKE匹配|
 |[已归档(archived)](module/ProjMgmt/work_item/dataset/archived)|archived|数据查询|否|||
 |[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/dataset/backlog_accumulate_flow)|backlog_accumulate_flow|[实体逻辑](module/ProjMgmt/work_item/logic/backlog_accumulate_flow)|否|||
 |[需求年龄报告(backlog_age_report)](module/ProjMgmt/work_item/dataset/backlog_age_report)|backlog_age_report|[实体逻辑](module/ProjMgmt/work_item/logic/backlog_age_report)|否|||
@@ -832,6 +965,7 @@
 |[项目集工作下的资源工作项(under_work_resource)](module/ProjMgmt/work_item/dataset/under_work_resource)|under_work_resource|数据查询|否|||
 |[工作项分布(work_item_distribution)](module/ProjMgmt/work_item/dataset/work_item_distribution)|work_item_distribution|[实体逻辑](module/ProjMgmt/work_item/logic/kanban_work_item_distribution)|否|||
 |[获取指定工作项的类型(work_item_type)](module/ProjMgmt/work_item/dataset/work_item_type)|work_item_type|数据查询|否|||
+|[工时登记工作项(workload_work_item)](module/ProjMgmt/work_item/dataset/workload_work_item)|workload_work_item|数据查询|否|||
 
 ## 数据权限
 
@@ -883,8 +1017,8 @@
 |[工作项取消负责人通知](module/ProjMgmt/work_item/notify/cancel_assignee_notify)|cancel_assignee_notify|[默认消息队列](index/notify_index)|[工作项通知模板(取消分配负责人)](index/notify_index#work_item_assignee_cancel)|负责人 ||
 |[工作项创建时分配通知](module/ProjMgmt/work_item/notify/create_notify)|create_notify|[默认消息队列](index/notify_index)|[工作项通知模板(分配负责人)](index/notify_index#work_item_assignee)|负责人 ||
 |[工作项归档/激活通知](module/ProjMgmt/work_item/notify/is_archived_notify)|is_archived_notify|[默认消息队列](index/notify_index)|[工作项通知模板(归档/激活工作项)](index/notify_index#work_item_archived_or_activate)|关注对象 负责人 ||
-|[工作项删除/恢复通知](module/ProjMgmt/work_item/notify/is_deleted_notify)|is_deleted_notify|[默认消息队列](index/notify_index)|[工作项通知模板(删除/恢复工作项)](index/notify_index#work_item_remove_or_recover)|关注人员 负责人 ||
-|[工作项状态变换通知](module/ProjMgmt/work_item/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[工作项通知模板（状态变更）](index/notify_index#work_item_state_onchange)|执行人 负责人 关注人员 ||
+|[工作项删除/恢复通知](module/ProjMgmt/work_item/notify/is_deleted_notify)|is_deleted_notify|[默认消息队列](index/notify_index)|[工作项通知模板(删除/恢复工作项)](index/notify_index#work_item_remove_or_recover)|负责人 关注人员 ||
+|[工作项状态变换通知](module/ProjMgmt/work_item/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[工作项通知模板（状态变更）](index/notify_index#work_item_state_onchange)|执行人 关注人员 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -940,9 +1074,11 @@
 |N_OVERDUE_TIME_GTANDEQ|逾期天数|GTANDEQ||
 |N_OVERDUE_TIME_LT|逾期天数|LT||
 |N_PID_EQ|父标识|EQ||
+|N_PID_ISNULL|父标识|ISNULL||
 |N_PRIORITY_EQ|优先级|EQ||
 |N_PROJECT_ID_EQ|项目|EQ||
 |N_PROJECT_ID_IN|项目|IN||
+|N_PROJECT_IS_ARCHIVED_EQ|项目是否归档|EQ||
 |N_PROJECT_NAME_EQ|所属项目|EQ||
 |N_PROJECT_NAME_LIKE|所属项目|LIKE||
 |N_PTITLE_EQ|父工作项|EQ||
@@ -978,6 +1114,10 @@
 |N_TOP_TITLE_LIKE|顶级工作项标题|LIKE||
 |N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
 |N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG_ISNULL|用户标记|ISNULL||
+|N_USER_TAG2_EQ|用户标记2|EQ||
+|N_USER_TAG2_ISNULL|用户标记2|ISNULL||
 |N_WORK_ITEM_ORIGIN_STATE_EQ|原始状态|EQ||
 |N_WORK_ITEM_TYPE_GROUP_EQ|工作项类型分组|EQ||
 |N_WORK_ITEM_TYPE_ID_EQ|工作项类型|EQ||
@@ -1149,6 +1289,7 @@
 | 新建史诗（移动端hybrid） | mob_create_hybrid_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建里程碑（hybrid动态） | dyna_new_hybrid_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_hybrid_quick_create_view)</details>||
 | 归档 | archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 关闭视图 | close_view | 关闭视图 |无数据|用户自定义||
 | 变更状态 | change_state | 变更状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 导出报表PDF | export_report_pdf | 导出为PDF |无数据|用户自定义||
@@ -1163,6 +1304,7 @@
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | 归档(工具栏) | toolbar_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 确定 | panel_custom_work_button_okaction_click | 确定 |单项数据|用户自定义||
 | 新建需求（waterfall动态） | new_dyna_waterfall_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_waterfall_quick_create_view)</details>||
 | 新建阶段（waterfall） | new_waterfall_stage | 新建阶段 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 添加工作项结果关系（移动端） | mob_add_is_caused_by | 结果 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
@@ -1204,17 +1346,18 @@
 |[刷新关联子工作项列表（移动端）](module/ProjMgmt/work_item/uilogic/mob_refresh_child_list)|mob_refresh_child_list||
 |[图表全屏（移动端）](module/ProjMgmt/work_item/uilogic/mob_full_screen)|mob_full_screen||
 |[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|chart_show_count|仪表盘图表显示总数<br>|
+|[填充子工作项类型](module/ProjMgmt/work_item/uilogic/fill_work_item_sub_type)|fill_work_item_sub_type|子工作项新建默认填充首个子工作项类型|
 |[子工作项刷新计数器](module/ProjMgmt/work_item/uilogic/child_refresh_counter)|child_refresh_counter|关联数据变更后，触发计数器刷新|
 |[导出为图片（甘特图）](module/ProjMgmt/work_item/uilogic/export_gantt_image)|export_gantt_image|甘特图导出为图片|
 |[导出报表PDF](module/ProjMgmt/work_item/uilogic/export_report_pdf)|export_report_pdf||
 |[导出报表excel](module/ProjMgmt/work_item/uilogic/export_report_excel)|export_report_excel||
 |[工作项关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_self_change)|relation_self_change|工作项关联工作项值变更时，调用处理逻辑，生成正反向关联数据|
-|[工单关联工作项](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
+|[工单关联工作项值变更](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
 |[已归档或已删除工作项显示隐藏](module/ProjMgmt/work_item/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工作项显示隐藏|
 |[建立关联数据](module/ProjMgmt/work_item/uilogic/create_relation)|create_relation|新建执行后触发，建立关联数据|
 |[我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)|my_assign_chart_jump||
 |[打开BI报表设计界面](module/ProjMgmt/work_item/uilogic/open_bi_report_design)|open_bi_report_design|打开bi报表设计界面，后续需删除|
-|[执行用例关联工作项(缺陷)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
+|[执行用例关联工作项(缺陷)值变更](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
 |[新建事务（hybrid）工具栏](module/ProjMgmt/work_item/uilogic/new_hybrid_kanban_issue_toolbar)|new_hybrid_kanban_issue_toolbar|在混合看板新建工作项时，添加entry_id|
 |[新建任务（hybrid）工具栏](module/ProjMgmt/work_item/uilogic/new_hybrid_kanban_task_toolbar)|new_hybrid_kanban_task_toolbar|在混合看板新建工作项时，添加entry_id|
 |[新建任务（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_task_toolbar)|new_kanban_task_toolbar|看板项目工作项分页新建任务类型工作项|
@@ -1236,7 +1379,8 @@
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)|before_state_change_grid|检测变更状态前选中的数据是否为同一类型，不同则禁用|
-|[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[用例关联工作项值变更](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[自定义确定](module/ProjMgmt/work_item/uilogic/custom_confirm)|custom_confirm||
 |[获取工作项工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)|mob_get_workload_schedule|获取工时信息，并计算工时进度（移动端）|
 |[获取工作项总条数](module/ProjMgmt/work_item/uilogic/get_work_item_total)|get_work_item_total|获取工作项的总条数信息|
@@ -1251,11 +1395,12 @@
 |[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|
 |[选择下拉框区域展示](module/ProjMgmt/work_item/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
-|[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
+|[通知刷新](module/ProjMgmt/work_item/uilogic/notify_refresh)|notify_refresh||
+|[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh_mob)|notify_refresh_mob|通知页面刷新|
 |[门户全屏](module/ProjMgmt/work_item/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProjMgmt/work_item/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProjMgmt/work_item/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
+|[需求关联工作项值变更](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
 
 ## 导入模式
 

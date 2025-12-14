@@ -13,9 +13,9 @@
 
 
 ### 关联界面行为
-  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
-  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [新建目录](module/Wiki/space#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
 
 ### 关联视图
   * [全部空间(space_category_grid_view)](app/view/space_category_grid_view)

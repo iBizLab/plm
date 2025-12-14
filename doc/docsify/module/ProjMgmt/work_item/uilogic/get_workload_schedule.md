@@ -90,10 +90,7 @@ if(srfreadonly === true || srfreadonly === 'true'){
     form.grouppanel11.state.actionGroupState.uaa6fcf7.visible=false;
 }
 const _type = uiLogic.form.state.data.work_item_sub_type;
-if (!_type) {
-    // 子工作项分页
-    form.tabpanel1_child.state.visible = false;
-}
+form.tabpanel1_child.state.visible = !!_type;
 
 ```
 

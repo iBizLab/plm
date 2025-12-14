@@ -16,16 +16,16 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./create_double_relation#begin {开始}]]
 state "提取客户ID" as RAWJSCODE4  [[$./create_double_relation#rawjscode4 {提取客户ID}]]
+state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
+state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
+state "关联客户" as DEACTION3  [[$./create_double_relation#deaction3 {关联客户}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
+state "更新srfdecodename" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {更新srfdecodename}]]
+state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
 state "绑定表格部件" as PREPAREJSPARAM2  [[$./create_double_relation#preparejsparam2 {绑定表格部件}]]
 state "填充测试用例属性" as PREPAREJSPARAM3  [[$./create_double_relation#preparejsparam3 {填充测试用例属性}]]
-state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
-state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
-state "更新srfdecodename" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {更新srfdecodename}]]
-state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
-state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
 state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
-state "关联客户" as DEACTION3  [[$./create_double_relation#deaction3 {关联客户}]]
+state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
 
 
 Begin --> RAWJSCODE4
@@ -169,10 +169,10 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
-|正向关联对象|relation|数据对象||
-|反向关联对象|relation2|数据对象||
-|ctx|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格对象|grid|部件对象||
+|正向关联对象|relation|数据对象||
 |传入后台对象|dto|数据对象||
+|ctx|ctx|导航视图参数绑定参数||
+|反向关联对象|relation2|数据对象||

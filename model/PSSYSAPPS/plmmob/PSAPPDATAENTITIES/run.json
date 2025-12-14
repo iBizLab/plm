@@ -288,7 +288,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "other_relation_run",
     "methodType" : "DEACTION",
     "name" : "other_relation_run",
@@ -298,8 +298,7 @@
         "modelref" : true,
         "id" : "run_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -321,11 +320,10 @@
       "modelref" : true,
       "id" : "other_relation_run"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_relation_run",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "program_plan",
@@ -2418,6 +2416,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2429,6 +2428,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2439,6 +2439,7 @@
     "logicName" : "预估工时",
     "name" : "ESTIMATED_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2449,6 +2450,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2460,6 +2462,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2470,6 +2473,7 @@
     "logicName" : "工时进度",
     "name" : "WORKLOAD_SCHEDULE",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2480,6 +2484,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[REMAINING_WORKLOAD][剩余工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2491,6 +2496,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[REMAINING_WORKLOAD][剩余工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2501,6 +2507,7 @@
     "logicName" : "剩余工时",
     "name" : "REMAINING_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2511,6 +2518,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ACTUAL_WORKLOAD][实际工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2522,6 +2530,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ACTUAL_WORKLOAD][实际工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2532,6 +2541,7 @@
     "logicName" : "实际工时",
     "name" : "ACTUAL_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2886,6 +2896,25 @@
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -2906,25 +2935,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[REVIEW_RESULT_STATE][评审结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[REVIEW_RESULT_STATE][评审结果]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-        },
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "review_result_state",
     "logicName" : "评审结果",
@@ -5224,7 +5234,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "other_relation_run",
     "methodType" : "DEACTION",
     "name" : "other_relation_run",
@@ -5234,8 +5244,7 @@
         "modelref" : true,
         "id" : "run_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5257,11 +5266,10 @@
       "modelref" : true,
       "id" : "other_relation_run"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_relation_run",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "program_plan",

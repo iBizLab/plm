@@ -14,12 +14,12 @@
 
 ### 关联界面行为
   * [企业用户(USER)](module/Base/user) : [编辑组织](module/Base/user#界面行为)
+  * [企业用户(USER)](module/Base/user) : [新建下级部门](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [编辑部门](module/Base/user#界面行为)
+  * [企业用户(USER)](module/Base/user) : [新建下级部门](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [新建下级部门](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [编辑部门](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [删除部门](module/Base/user#界面行为)
-  * [企业用户(USER)](module/Base/user) : [新建下级部门](module/Base/user#界面行为)
-  * [企业用户(USER)](module/Base/user) : [新建下级部门](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [删除部门](module/Base/user#界面行为)
 
 ### 关联视图

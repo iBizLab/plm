@@ -210,7 +210,7 @@
     "builtinMethod" : false,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "customer_choose_ticket",
     "methodType" : "DEACTION",
     "name" : "customer_choose_ticket",
@@ -220,8 +220,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -243,11 +242,10 @@
       "modelref" : true,
       "id" : "customer_choose_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/customer_choose_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "customer_del_ticket",
@@ -385,6 +383,80 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
@@ -526,7 +598,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_ticket",
     "methodType" : "DEACTION",
     "name" : "others_relation_ticket",
@@ -536,8 +608,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -559,11 +630,10 @@
       "modelref" : true,
       "id" : "others_relation_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "product_ticket_re_counters",
@@ -1296,6 +1366,44 @@
     "requestPath" : "/fetch_advanced_search",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -1978,6 +2086,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_my_filter",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_submit",
+    "dataSetName" : "my_submit",
+    "dataSetTag" : "my_submit",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_submit",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_submit"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_submit"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_submit",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_my_summary_ticket",
@@ -3998,6 +4144,175 @@
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
+    "codeName" : "ticket_ai_info_dto",
+    "name" : "ticket_ai_info_dto",
+    "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "product_id",
+      "logicName" : "产品标识",
+      "name" : "product_id",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "create_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 21,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "product_name",
+      "logicName" : "所属产品",
+      "name" : "product_name",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "product_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "id",
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "name" : "priority",
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "update_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "name" : "type",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "submitted_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "提交时间",
+      "name" : "submitted_at",
+      "getPSAppDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "submitted_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "estimated_at",
+      "logicName" : "预计时间",
+      "name" : "estimated_at",
+      "getPSAppDEField" : {
+        "name" : "ESTIMATED_AT",
+        "codeName" : "estimated_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "name" : "tags",
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "name" : "show_identifier",
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
+  }, {
     "codeName" : "ticket_assignee_dto",
     "name" : "ticket_assignee_dto",
     "getPSAppDEMethodDTOFields" : [ {
@@ -5515,7 +5830,7 @@
     "builtinMethod" : false,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "customer_choose_ticket",
     "methodType" : "DEACTION",
     "name" : "customer_choose_ticket",
@@ -5525,8 +5840,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5548,11 +5862,10 @@
       "modelref" : true,
       "id" : "customer_choose_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/customer_choose_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "customer_del_ticket",
@@ -5690,6 +6003,80 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
@@ -5831,7 +6218,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_ticket",
     "methodType" : "DEACTION",
     "name" : "others_relation_ticket",
@@ -5841,8 +6228,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5864,11 +6250,10 @@
       "modelref" : true,
       "id" : "others_relation_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "product_ticket_re_counters",
@@ -6202,6 +6587,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_advanced_search",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_archived",
@@ -6886,6 +7309,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_my_filter",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_submit",
+    "dataSetName" : "my_submit",
+    "dataSetTag" : "my_submit",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_submit",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_submit"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_submit"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_submit",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_my_summary_ticket",
@@ -8122,7 +8583,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "uef56f7c",
+      "name" : "ufc02f19",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8147,7 +8608,7 @@
       "actionLevel" : 200,
       "caption" : "恢复",
       "detailType" : "DEUIACTION",
-      "name" : "u24ed628",
+      "name" : "uaa4e88b",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"

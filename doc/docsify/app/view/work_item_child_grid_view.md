@@ -15,8 +15,11 @@
   * [计算子工作项类型(上下文)](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type_context)
 * `onMounted`
 ```javascript
-view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;
-
+console.log("VIEWMOUNTED");
+const choose_data = view.layoutPanel.panelItems.choose_data;
+if(choose_data){
+  	choose_data.state.visible = view.context.srfshowchoose || false;
+}
 // 初始化默认隐藏表格
 view.layoutPanel.panelItems.grid.state.keepAlive = true;
 view.layoutPanel.panelItems.grid.state.visible = false;
@@ -34,10 +37,15 @@ if (form) {
         }
     });
 }
-
 // 初始化隐藏发送和清空按钮
-view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
-view.layoutPanel.panelItems.button_calluilogic.state.visible = false
+const  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;
+if(button_calluilogic1){
+  button_calluilogic1.state.visible = false;
+}
+const button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;
+if(button_calluilogic){
+  button_calluilogic.state.visible = false;
+}
 ```
   * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
@@ -49,8 +57,8 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [取消关联（子工作项）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联子工作项表格行为列状态](module/ProjMgmt/work_item/uilogic/relation_child_grid_action)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联子工作项表格行为列状态](module/ProjMgmt/work_item/uilogic/relation_child_grid_action)
 
 ### 关联视图
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)

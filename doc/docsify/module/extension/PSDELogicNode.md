@@ -7,16 +7,25 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|智能体标识|AIAGENTTAG|文本，可指定长度|100|是||
 |代码名称|CODENAME|文本，可指定长度|60|否||
 |内容|CONTENT|文本，可指定长度|100|是||
+|操作参数|DSTPSDLPARAMID|文本，可指定长度|100|是||
+|操作参数|DSTPSDLPARAMNAME|文本，可指定长度|100|是||
+|输入流参数|ISPSDLPARAMID|文本，可指定长度|100|是||
+|输入流参数|ISPSDLPARAMNAME|文本，可指定长度|100|是||
+|逻辑节点子类型|LOGICNODESUBTYPE|文本，可指定长度|40|是||
 |逻辑节点类型|LOGICNODETYPE|[单项选择(文本值)](index/dictionary_index#DELogicNodeType3 "实体逻辑处理节点类型(设计)3")|40|否||
 |排序属性|ORDERVALUE|整型||是||
+|输出流参数|OSPSDLPARAMID|文本，可指定长度|100|是||
+|输出流参数|OSPSDLPARAMNAME|文本，可指定长度|100|是||
 |循环后续处理|PARALLELOUTPUT|是否逻辑||是||
 |参数1|PARAM1|文本，可指定长度|100|是||
 |参数10|PARAM10|是否逻辑||是||
 |参数11|PARAM11|文本，可指定长度|100|是||
 |参数12|PARAM12|文本，可指定长度|100|是||
 |参数13|PARAM13|文本，可指定长度|100|是||
+|参数4|PARAM4|长文本，没有长度限制|1048576|是||
 |参数7|PARAM7|整型||是||
 |参数8|PARAM8|整型||是||
 |参数9|PARAM9|是否逻辑||是||
@@ -26,6 +35,16 @@
 |实体处理逻辑|PSDELOGICNAME|外键值文本|200|否||
 |实体处理逻辑节点标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICNODEID|全局唯一标识，文本类型，用户不可见|100|否||
 |逻辑处理名称|PSDELOGICNODENAME|文本，可指定长度|200|否||
+|系统AI交谈代理标识|PSSYSAICHATAGENTID|文本，可指定长度|100|是||
+|系统AI交谈代理名称|PSSYSAICHATAGENTNAME|文本，可指定长度|100|是||
+|系统AI工厂标识|PSSYSAIFACTORYID|文本，可指定长度|100|是||
+|系统AI工厂|PSSYSAIFACTORYNAME|文本，可指定长度|100|是||
+|消息模板|PSSYSMSGTEMPLID|文本，可指定长度|100|是||
+|消息模板|PSSYSMSGTEMPLNAME|文本，可指定长度|100|是||
+|返回绑定参数|RETPSDLPARAMID|文本，可指定长度|100|是||
+|返回绑定参数|RETPSDLPARAMNAME|文本，可指定长度|100|是||
+|源参数|SRCPSDLPARAMID|文本，可指定长度|100|是||
+|源参数|SRCPSDLPARAMNAME|文本，可指定长度|100|是||
 |标题|TITLE|文本，可指定长度|100|是||
 |工作项类型|WORK_ITEM_TYPE_ID|文本，可指定长度|100|是||
 |工作项类型|WORK_ITEM_TYPE_NAME|文本，可指定长度|100|是||

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./reset_product_id#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./reset_product_id#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./reset_product_id#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./reset_product_id#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -56,5 +56,5 @@ uiLogic.ctx.product=uiLogic.default.product_id;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|ctx|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|ctx|ctx|导航视图参数绑定参数||

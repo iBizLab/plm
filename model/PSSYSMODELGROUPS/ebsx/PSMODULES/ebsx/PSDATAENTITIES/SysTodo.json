@@ -192,6 +192,31 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "batchActionMode" : 1,
+    "codeName" : "DelUndo",
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo/PSDEACTIONS/DelUndo.json",
+    "logicName" : "删除草稿",
+    "name" : "DelUndo",
+    "getPSDEActionInput" : {
+      "name" : "DelUndoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "SysTodoDTO"
+      },
+      "type" : "DTOS"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "DelUndoResult",
+      "type" : "VOID"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "DelUndo"
+    },
+    "batchAction" : true
+  }, {
     "actionMode" : "READ",
     "actionType" : "USERCUSTOM",
     "codeName" : "GetLinkUrl",
@@ -1219,10 +1244,11 @@
       "name" : "[BIZTYPE][业务对象]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "DROPDOWNLIST",
         "name" : "[BIZTYPE][业务对象]",
         "stringLength" : 100,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
@@ -1230,11 +1256,12 @@
       "name" : "[BIZTYPE][业务对象]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBDROPDOWNLIST",
         "name" : "[BIZTYPE][业务对象]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
+        "mobileMode" : true,
+        "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
@@ -1266,12 +1293,16 @@
     } ],
     "codeName" : "BizType",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "SSCODELIST",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "业务对象",
     "name" : "BIZTYPE",
     "orderValue" : 1000,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/workflow_type.json"
+    },
     "serviceCodeName" : "BizType",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -1481,6 +1512,12 @@
       "name" : "DCSYSTEMID",
       "queryCodeExp" : "t1.`DCSYSTEMID`",
       "standardColumnName" : "`DCSYSTEMID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_DCSYSTEMID_EQ",
+      "name" : "N_DCSYSTEMID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2100,6 +2137,12 @@
       "name" : "TODOSUBTYPE",
       "queryCodeExp" : "t1.`TODOSUBTYPE`",
       "standardColumnName" : "`TODOSUBTYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_TODOSUBTYPE_EQ",
+      "name" : "N_TODOSUBTYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2812,7 +2855,7 @@
     "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
-      "path" : "PSCODELISTS/CodeListTodoState.json"
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSCODELISTS/CodeListTodoState.json"
     },
     "serviceCodeName" : "TodoState",
     "stdDataType" : 25,
@@ -3282,6 +3325,21 @@
   }, {
     "name" : "SysTodoFilterDTO",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "租户系统标识",
+      "name" : "N_DCSYSTEMID_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DCSYSTEMID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "DCSYSTEMID",
+        "codeName" : "DCSystemId"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标题",
       "name" : "N_TITLE_LIKE",
       "getPSDEFSearchMode" : {
@@ -3292,6 +3350,7 @@
         "name" : "TITLE",
         "codeName" : "Title"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3306,6 +3365,7 @@
         "name" : "TODOID",
         "codeName" : "TodoId"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3320,6 +3380,22 @@
         "name" : "TODOSTATE",
         "codeName" : "TodoState"
       },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "待办子类",
+      "name" : "N_TODOSUBTYPE_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_TODOSUBTYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "TODOSUBTYPE",
+        "codeName" : "TodoSubType"
+      },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3334,6 +3410,7 @@
         "name" : "TODOURLTYPE",
         "codeName" : "TodoUrlType"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3356,6 +3433,12 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "done_grid_view",
+    "logicName" : "已处理事项",
+    "name" : "已处理事项",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "待办实体编辑视图（左右关系）",
     "name" : "待办实体编辑视图（左右关系）",
@@ -3369,17 +3452,17 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "todo_grid_view",
+    "logicName" : "待处理事项",
+    "name" : "待处理事项",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupView",
     "logicName" : "待办实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
     "name" : "待办实体数据选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "全部待办数据实体表格视图",
-    "name" : "全部待办数据实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "MPickupView",
@@ -3396,17 +3479,35 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "RedirectView",
+    "codeName" : "redirect_view",
     "logicName" : "待办实体数据重定向视图",
     "modelTag" : "REDIRECTVIEW",
     "name" : "待办实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "finish_grid_view",
+    "logicName" : "已办结事项",
+    "name" : "已办结事项",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "todo_tree_exp_view",
+    "logicName" : "待办任务树导航视图",
+    "name" : "待办任务树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupGridView",
     "logicName" : "待办实体选择表格视图（部件视图）",
     "name" : "待办实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "undo_grid_view",
+    "logicName" : "未提交事项",
+    "name" : "未提交事项",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

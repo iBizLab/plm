@@ -1541,6 +1541,18 @@
       }
     } ],
     "getPSDEMapFields" : [ {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDEField" : {
+        "name" : "SHOWORDER",
+        "codeName" : "ShowOrder"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "SORT",
+      "getSrcPSDEField" : {
+        "name" : "SORT",
+        "codeName" : "sort"
+      }
+    }, {
       "dstFieldName" : "ORGNAME",
       "getDstPSDEField" : {
         "name" : "ORGNAME",
@@ -1551,30 +1563,6 @@
       "getSrcPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
-      }
-    }, {
-      "dstFieldName" : "PORGNAME",
-      "getDstPSDEField" : {
-        "name" : "PORGNAME",
-        "codeName" : "ParentOrgName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "PNAME",
-      "getSrcPSDEField" : {
-        "name" : "PNAME",
-        "codeName" : "pname"
-      }
-    }, {
-      "dstFieldName" : "PORGID",
-      "getDstPSDEField" : {
-        "name" : "PORGID",
-        "codeName" : "ParentOrgId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "PID",
-      "getSrcPSDEField" : {
-        "name" : "PID",
-        "codeName" : "Pid"
       }
     }, {
       "dstFieldName" : "ORGID",
@@ -1589,16 +1577,28 @@
         "codeName" : "id"
       }
     }, {
-      "dstFieldName" : "SHOWORDER",
+      "dstFieldName" : "PORGID",
       "getDstPSDEField" : {
-        "name" : "SHOWORDER",
-        "codeName" : "ShowOrder"
+        "name" : "PORGID",
+        "codeName" : "ParentOrgId"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "SORT",
+      "srcFieldName" : "PID",
       "getSrcPSDEField" : {
-        "name" : "SORT",
-        "codeName" : "sort"
+        "name" : "PID",
+        "codeName" : "Pid"
+      }
+    }, {
+      "dstFieldName" : "PORGNAME",
+      "getDstPSDEField" : {
+        "name" : "PORGNAME",
+        "codeName" : "ParentOrgName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "PNAME",
+      "getSrcPSDEField" : {
+        "name" : "PNAME",
+        "codeName" : "pname"
       }
     }, {
       "dstFieldName" : "ENABLE",
@@ -1729,17 +1729,6 @@
     "getPSDEMapDataSets" : [ {
       "getDstPSDEDataSet" : {
         "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "PSDEMAPDS",
-      "getSrcPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "enableDQCond" : true
-    }, {
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
         "id" : "Nav"
       },
       "name" : "PSDEMAPDS",
@@ -1748,18 +1737,29 @@
         "id" : "root"
       },
       "enableDQCond" : true
+    }, {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "PSDEMAPDS",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "enableDQCond" : true
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "PARENT_ID",
+      "dstFieldName" : "ID",
       "getDstPSDEField" : {
-        "name" : "PARENT_ID",
-        "codeName" : "parent_id"
+        "name" : "ID",
+        "codeName" : "id"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "PID",
+      "srcFieldName" : "ID",
       "getSrcPSDEField" : {
-        "name" : "PID",
-        "codeName" : "Pid"
+        "name" : "ID",
+        "codeName" : "id"
       }
     }, {
       "dstFieldName" : "ORGANIZATION_NAME",
@@ -1786,30 +1786,6 @@
         "codeName" : "description"
       }
     }, {
-      "dstFieldName" : "PARENT_NAME",
-      "getDstPSDEField" : {
-        "name" : "PARENT_NAME",
-        "codeName" : "parent_name"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "PNAME",
-      "getSrcPSDEField" : {
-        "name" : "PNAME",
-        "codeName" : "pname"
-      }
-    }, {
-      "dstFieldName" : "ID",
-      "getDstPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ID",
-      "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
       "dstFieldName" : "ORGANIZATION_NUMBER",
       "getDstPSDEField" : {
         "name" : "ORGANIZATION_NUMBER",
@@ -1820,6 +1796,30 @@
       "getSrcPSDEField" : {
         "name" : "ORGANIZATION_NUMBER",
         "codeName" : "organization_number"
+      }
+    }, {
+      "dstFieldName" : "PARENT_ID",
+      "getDstPSDEField" : {
+        "name" : "PARENT_ID",
+        "codeName" : "parent_id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "PID",
+      "getSrcPSDEField" : {
+        "name" : "PID",
+        "codeName" : "Pid"
+      }
+    }, {
+      "dstFieldName" : "PARENT_NAME",
+      "getDstPSDEField" : {
+        "name" : "PARENT_NAME",
+        "codeName" : "parent_name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "PNAME",
+      "getSrcPSDEField" : {
+        "name" : "PNAME",
+        "codeName" : "pname"
       }
     }, {
       "dstFieldName" : "CREATE_TIME",
@@ -2035,6 +2035,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2049,6 +2050,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2063,6 +2065,7 @@
         "name" : "PID",
         "codeName" : "Pid"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2077,6 +2080,7 @@
         "name" : "PNAME",
         "codeName" : "pname"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2091,6 +2095,7 @@
         "name" : "PNAME",
         "codeName" : "pname"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2180,6 +2185,12 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "org_option_view",
+    "logicName" : "组织选项操作视图",
+    "name" : "组织选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "组织实体编辑视图",
     "modelTag" : "EDITVIEW",
@@ -2212,12 +2223,6 @@
     "modelTag" : "PICKUPVIEW",
     "name" : "组织实体数据选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "org_option_view",
-    "logicName" : "组织选项操作视图",
-    "name" : "组织选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "org_option_view_Form",

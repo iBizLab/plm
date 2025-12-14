@@ -1,5 +1,128 @@
 # 行为附加 <!-- {docsify-ignore-all} -->
 
+## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md)  :id=ai_agent_context
+
+#### [Create](module/ai/ai_agent_context#行为) :id=ai_agent_context_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents.md)
+
+
+#### [Remove](module/ai/ai_agent_context#行为) :id=ai_agent_context_Remove
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents.md)
+
+
+#### [Update](module/ai/ai_agent_context#行为) :id=ai_agent_context_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents.md)
+
+
+
+## [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session.md)  :id=ai_agent_session
+
+#### [Get](module/ai/ai_agent_session#行为) :id=ai_agent_session_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [get_info](module/ai/ai_agent_session/logic/get_info.md)
+
+
+
+## [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document.md)  :id=ai_kb_document
+
+#### [Create](module/ai/ai_kb_document#行为) :id=ai_kb_document_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成文档执行计划(generate_doc_scheduled)](module/ai/ai_kb_document/logic/generate_doc_scheduled.md)
+
+
+#### [Remove](module/ai/ai_kb_document#行为) :id=ai_kb_document_Remove
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除文档执行计划(remove_doc_scheduled)](module/ai/ai_kb_document/logic/remove_doc_scheduled.md)
+
+
+
+## [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync.md)  :id=ai_kb_document_sync
+
+#### [Create](module/ai/ai_kb_document_sync#行为) :id=ai_kb_document_sync_Create
+
+
+<p class="panel-title"><b>数据准备</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [准备建立(prepare_create)](module/ai/ai_kb_document_sync/logic/prepare_create.md)
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [同步创建知识库文档(sync_create_doc)](module/ai/ai_kb_document_sync/logic/sync_create_doc.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成空间执行计划(generate_space_scheduled)](module/ai/ai_kb_document_sync/logic/generate_space_scheduled.md)
+
+
+#### [Remove](module/ai/ai_kb_document_sync#行为) :id=ai_kb_document_sync_Remove
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [同步删除文档和分块(sync_remove_doc_chunk)](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk.md)
+
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除空间执行计划(remove_space_scheduled)](module/ai/ai_kb_document_sync/logic/remove_space_scheduled.md)
+
+
+
+
+
 ## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md)  :id=app_view_theme
 
 #### [Get](module/ebsx/app_view_theme#行为) :id=app_view_theme_Get
@@ -736,13 +859,13 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [创建项目流程准则(auto_create_guideline)](module/ProjMgmt/project/logic/auto_create_guideline.md)
-
-> [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/project/logic/create_recent.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建人员(auto_create_members)](module/ProjMgmt/project/logic/auto_create_members.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [创建项目流程准则(auto_create_guideline)](module/ProjMgmt/project/logic/auto_create_guideline.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成默认看板(create_default_board)](module/ProjMgmt/project/logic/create_default_board.md)
@@ -844,6 +967,19 @@
 
 
 ## [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic.md)  :id=PSDELogic
+
+#### [Create](module/extension/PSDELogic#行为) :id=PSDELogic_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [初始化规则(initLogic)](module/extension/PSDELogic/logic/initLogic.md)
+
+
+
 
 #### [Get](module/extension/PSDELogic#行为) :id=PSDELogic_Get
 
@@ -1046,10 +1182,10 @@
 > 执行处理逻辑 [生成最近访问(create_recent)](module/Wiki/space/logic/create_recent.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [自动创建主页(auto_create_home_page)](module/Wiki/space/logic/auto_create_home_page.md)
+> 执行处理逻辑 [创建空间流程准则(auto_create_guideline)](module/Wiki/space/logic/auto_create_guideline.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [创建空间流程准则(auto_create_guideline)](module/Wiki/space/logic/auto_create_guideline.md)
+> 执行处理逻辑 [自动创建主页(auto_create_home_page)](module/Wiki/space/logic/auto_create_home_page.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建人员(auto_create_members)](module/Wiki/space/logic/auto_create_members.md)
@@ -1285,6 +1421,18 @@
 
 ## [工时(WORKLOAD)](module/Base/workload.md)  :id=workload
 
+#### [Create](module/Base/workload#行为) :id=workload_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [AI登记工时并更新剩余工时(ai_save_workload)](module/Base/workload/logic/ai_save_workload.md)
+
+
 #### [Remove](module/Base/workload#行为) :id=workload_Remove
 
 
@@ -1336,7 +1484,7 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member.md)
+> 执行处理逻辑 [获取项目成员及权限(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/work_item/logic/create_recent.md)

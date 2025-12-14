@@ -9,10 +9,10 @@
 
 
 ### 关联界面行为
+  * [企业用户(USER)](module/Base/user) : [打开密码修改页](module/Base/user#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [打开搜索页](module/Wiki/space#界面行为)
   * [企业用户(USER)](module/Base/user) : [应用登出](module/Base/user#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [打开用户设置](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [打开搜索页](module/Wiki/space#界面行为)
-  * [企业用户(USER)](module/Base/user) : [打开密码修改页](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [打开用户基本信息](module/Base/user#界面行为)
 
 ### 关联视图

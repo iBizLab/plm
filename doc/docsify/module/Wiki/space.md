@@ -42,6 +42,7 @@
 |[DER1N_SPACE_MEMBER_SPACE_SPACE_ID](der/DER1N_SPACE_MEMBER_SPACE_SPACE_ID)|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|1:N关系||
 |[DER1N_STENCIL_SPACE_SPACE_ID](der/DER1N_STENCIL_SPACE_SPACE_ID)|[页面模板(STENCIL)](module/Wiki/stencil)|1:N关系||
 |[DERCUSTOM_ADDON_SPACE_OWNER_ID](der/DERCUSTOM_ADDON_SPACE_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
+|[DERCUSTOM_AI_KB_DOCUMENT_SYNC_SPACE](der/DERCUSTOM_AI_KB_DOCUMENT_SYNC_SPACE)|[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)|自定义关系||
 |[DERCUSTOM_BASELINE_SPACE_OWNER_ID](der/DERCUSTOM_BASELINE_SPACE_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_GUIDELINE_SPACE_SPACE_ID](der/DERCUSTOM_GUIDELINE_SPACE_SPACE_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[关联(RELATION)](module/Base/relation)|自定义关系||
@@ -85,6 +86,7 @@
 |取消关联|del_relation|[实体处理逻辑](module/Wiki/space/logic/del_relation "取消关联")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Wiki/space/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Wiki/space/logic/favorite "设置星标")|默认|不支持||||
+|标记主空间|mark_main_space|[实体处理逻辑](module/Wiki/space/logic/mark_main_space "标记主空间")|默认|不支持||||
 |移出分类|move_out_category|[实体处理逻辑](module/Wiki/space/logic/move_out_category "移出分类")|默认|不支持||||
 |移动空间|move_space|[实体处理逻辑](module/Wiki/space/logic/move_space "移动空间")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/space/logic/nothing "无操作")|默认|不支持||||
@@ -112,6 +114,7 @@
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/Wiki/space/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||空间删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/Wiki/space/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||空间归档或激活时触发相应的通知消息|
+|[标记主空间](module/Wiki/space/logic/mark_main_space)|mark_main_space|无|||
 |[激活](module/Wiki/space/logic/activate)|activate|无||激活已归档状态空间，修改空间的归档属性|
 |[生成最近访问](module/Wiki/space/logic/create_recent)|create_recent|无||在用户对空间数据进行了get或update操作时生成相应的访问记录|
 |[移出分类](module/Wiki/space/logic/move_out_category)|move_out_category|无||将空间移除分类|
@@ -119,6 +122,7 @@
 |[空间组件权限计数器](module/Wiki/space/logic/space_addon_authority)|space_addon_authority|无||获取空间组件权限|
 |[自动创建主页](module/Wiki/space/logic/auto_create_home_page)|auto_create_home_page|无||附加在实体的CREATE行为后，自动生成模板化的主页|
 |[自动创建人员](module/Wiki/space/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员，若选择个人，则添加个人为所属成员。|
+|[获取关联的空间](module/Wiki/space/logic/get_re_space)|get_re_space|无|||
 |[获取快速新建空间集合](module/Wiki/space/logic/quick_create)|quick_create|无||用于获取可快速新建的空间集合|
 |[获取知识空间成员](module/Wiki/space/logic/get_space_member_one)|get_space_member_one|无||获取知识空间成员信息，用于判断当前用户权限|
 |[设置星标](module/Wiki/space/logic/favorite)|favorite|无||设置为星标产品|
@@ -167,7 +171,7 @@
 |[未存在目录中的空间(no_category_space)](module/Wiki/space/dataset/no_category_space)|no_category_space|数据查询|否|||
 |[未关联的空间(no_re_space)](module/Wiki/space/dataset/no_re_space)|no_re_space|数据查询|否|||
 |[正常状态(normal)](module/Wiki/space/dataset/normal)|normal|数据查询|否|||
-|[关联的空间(other_re_space)](module/Wiki/space/dataset/other_re_space)|other_re_space|数据查询|否|||
+|[关联的空间(other_re_space)](module/Wiki/space/dataset/other_re_space)|other_re_space|[实体逻辑](module/Wiki/space/logic/get_re_space)|否|||
 |[快速新建查询(quick)](module/Wiki/space/dataset/quick)|quick|[实体逻辑](module/Wiki/space/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/Wiki/space/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/Wiki/space/dataset/reader)|reader|数据查询|否|||
@@ -306,6 +310,7 @@
 | 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||
 | 新建空间 | create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建空间](app/view/space_create_wizard_view)</details>||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 标记主知识库 | mark_main_space | 标记主知识库 |单项数据（主键）|<details><summary>后台调用</summary>[mark_main_space](#行为)||
 | 添加空间成员 | add_space_member | 添加成员 |无数据|系统预定义||
 | 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/space_mob_advanced_set_view)</details>||
 | 移动端进行中_归档 | mob_in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||

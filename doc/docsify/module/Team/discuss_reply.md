@@ -129,9 +129,9 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `UPDATE(讨论(UPDATE))`
-* `DELETE`
-* `READ`
 * `CREATE(讨论(CREATE))`
+* `READ`
+* `DELETE`
 
 
 

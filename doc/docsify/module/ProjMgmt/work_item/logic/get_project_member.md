@@ -1,4 +1,4 @@
-## 获取项目成员 <!-- {docsify-ignore-all} -->
+## 获取项目成员及权限 <!-- {docsify-ignore-all} -->
 
    获取项目成员信息，用于判断当前用户权限
 
@@ -15,22 +15,24 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_project_member#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM_01  [[$./get_project_member#debugparam_01 {"调试逻辑参数"}]]
 state "判断系统管理员身份" as RAWSFCODE3  [[$./get_project_member#rawsfcode3 {"判断系统管理员身份"}]]
 state "结束" as END2 <<end>> [[$./get_project_member#end2 {"结束"}]]
 state "获取产品ID并设置过滤参数" as PREPAREPARAM2  [[$./get_project_member#prepareparam2 {"获取产品ID并设置过滤参数"}]]
 state "查询当前用户是否为项目成员" as DEDATASET3  [[$./get_project_member#dedataset3 {"查询当前用户是否为项目成员"}]]
+state "空" as PREPAREPARAM3  [[$./get_project_member#prepareparam3 {"空"}]]
 state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_project_member#prepareparam5 {"绑定用户数据到for_obj"}]]
 state "只读权限" as RAWSFCODE1  [[$./get_project_member#rawsfcode1 {"只读权限"}]]
-state "结束" as END6 <<end>> [[$./get_project_member#end6 {"结束"}]]
-state "空" as PREPAREPARAM3  [[$./get_project_member#prepareparam3 {"空"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_project_member#rawsfcode2 {"非只读权限"}]]
+state "结束" as END6 <<end>> [[$./get_project_member#end6 {"结束"}]]
 state "只读权限" as RAWSFCODE4  [[$./get_project_member#rawsfcode4 {"只读权限"}]]
 
 
 Begin --> PREPAREPARAM3
 PREPAREPARAM3 --> RAWSFCODE4 : [[$./get_project_member#prepareparam3-rawsfcode4{已归档已删除} 已归档已删除]]
 RAWSFCODE4 --> END2
-PREPAREPARAM3 --> RAWSFCODE3 : [[$./get_project_member#prepareparam3-rawsfcode3{连接名称} 连接名称]]
+PREPAREPARAM3 --> DEBUGPARAM_01
+DEBUGPARAM_01 --> RAWSFCODE3 : [[$./get_project_member#debugparam_01-rawsfcode3{连接名称} 连接名称]]
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_project_member#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> RAWSFCODE1 : [[$./get_project_member#dedataset3-rawsfcode1{不在项目中的成员} 不在项目中的成员]]
@@ -71,11 +73,14 @@ defaultObj.set("srfreadonly", false);
 
 返回 `Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+#### 调试逻辑参数 :id=DEBUGPARAM_01<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
 
-*- N/A*
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 空 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -83,6 +88,11 @@ defaultObj.set("srfreadonly", false);
 
     无
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 判断系统管理员身份 :id=RAWSFCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -125,12 +135,6 @@ var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", true);
 ```
 
-#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `Default(传入变量)`
-
 #### 只读权限 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -143,12 +147,18 @@ var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", true);
 ```
 
+#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
+
 
 ### 连接条件说明
 #### 已归档已删除 :id=PREPAREPARAM3-RAWSFCODE4
 
 (`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1` OR `Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).project_is_archived(项目是否归档)` EQ `1`)
-#### 连接名称 :id=PREPAREPARAM3-RAWSFCODE3
+#### 连接名称 :id=DEBUGPARAM_01-RAWSFCODE3
 
 `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `0` AND `Default(传入变量).IS_DELETED(是否已删除)` EQ `0`
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2

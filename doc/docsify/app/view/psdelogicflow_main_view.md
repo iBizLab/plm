@@ -6,6 +6,12 @@
 #### CAPTIONBAR(captionbar)
 #### 数据关系分页部件(tabexppanel)
 
+## 视图界面逻辑
+* `onCloseView`
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'PSDELogic'})
+```
+
 
 ### 关联界面行为
   * [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic) : [打开全部日志](module/extension/PSDELogic#界面行为)

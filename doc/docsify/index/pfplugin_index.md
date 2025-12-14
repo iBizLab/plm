@@ -1,5 +1,14 @@
 # 应用插件 <!-- {docsify-ignore-all} -->
 
+### AI参数编辑器 :id=AI_PARAMS
+
+
+插件标识：`AI_PARAMS`
+
+运行对象：`AI_PARAMS`
+
+远程仓库：`@ibiz-template-ai/prompt-template@0.1.8-alpha.357`
+
 ### BI报表面板 :id=BI_REPORT_PANEL
 
 
@@ -17,7 +26,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.259`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.303`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -26,7 +35,7 @@
 
 运行对象：`IBizLuckySheet`
 
-远程仓库：`@ibiz-template-plm/lucky-sheet-editor@0.0.3-dev.125`
+远程仓库：`@ibiz-template-plm/lucky-sheet-editor@0.0.3-alpha.291`
 
 ### cron表达式编辑器 :id=CronEditor
 
@@ -36,6 +45,15 @@
 运行对象：`IBizCronEditor`
 
 远程仓库：`@ibiz-template-plugins/cron-editor@0.0.1-dev.4`
+
+### odoo风格搜索栏 :id=ODOO_SEARCH_BAR
+
+
+插件标识：`ODOO_SEARCH_BAR`
+
+运行对象：`IBizStyleSearchBarControl`
+
+远程仓库：`@ibiz-template-odoo/odoo-search-bar@0.1.8-alpha.336`
 
 ### x6设计节点 :id=X6DesignNode
 
@@ -109,6 +127,24 @@
 运行对象：`registerChangePasswordProvider`
 
 远程仓库：`@ibiz-template-plugin/change-password@0.0.3-dev.60`
+
+### 全局AI助手按钮 :id=AI_ASSISTANT_BUTTON
+
+
+插件标识：`AI_ASSISTANT_BUTTON`
+
+运行对象：`IBizAssistantButton`
+
+远程仓库：`@ibiz-template-ai/ai-assistant-button@0.1.8-alpha.372`
+
+### 全局AI助手界面行为 :id=AI_ASSISTANT_UI_ACTION
+
+
+插件标识：`AI_ASSISTANT_UI_ACTION`
+
+运行对象：`AI_ASSISTANT_UI_ACTION`
+
+远程仓库：`@ibiz-template-ai/ai_assistant_uiaction@0.1.8-alpha.380`
 
 ### 共享校验页面 :id=SHARED_CHECK_PAGE
 
@@ -223,6 +259,11 @@
 
 远程仓库：`@ibiz-template-plm/drbar-ex@0.0.3-alpha.241`
 
+### 复合内容控件 :id=COMPOSITE_FORM_ITEM_EX
+
+
+插件标识：`COMPOSITE_FORM_ITEM_EX`
+
 ### 多数据列表树（移动端） :id=MOB_MDCTRL_TREE
 
 
@@ -266,7 +307,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.274`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.288`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 
@@ -509,7 +550,7 @@
 
 运行对象：`AutoRules`
 
-远程仓库：`@ibiz-template-plm/auto-rules@0.0.3-dev.215`
+远程仓库：`@ibiz-template-plm/auto-rules@0.0.3-alpha.281`
 
 ### 自定义图表（标签） :id=CUSTOM_LABEL
 
@@ -545,7 +586,7 @@
 
 运行对象：`IBizGridPersonalInfoColumn`
 
-远程仓库：`@ibiz-template-plm/grid-personal-info-column@0.0.3-alpha.160`
+远程仓库：`@ibiz-template-plm/grid-personal-info-column@0.0.3-alpha.286`
 
 ### 表格列变更版本 :id=COLUMN_CHANGE_VERSION
 
@@ -599,7 +640,7 @@
 
 运行对象：`IBizCommentItemRawItem`
 
-远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.230`
+远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.287`
 
 ### 评论回复列表 :id=COMMENT_LIST
 
@@ -627,7 +668,7 @@
 
 运行对象：`IBizResourceGanttControl`
 
-远程仓库：`@ibiz-template-plm/resource-gantt@0.0.3-alpha.60`
+远程仓库：`@ibiz-template-plm/resource-gantt@0.0.3-alpha.304`
 
 ### 跟踪树表格 :id=TRACK_TREE_GRID
 
@@ -645,7 +686,7 @@
 
 运行对象：`ROUTE_DRBAR`
 
-远程仓库：`@ibiz-template-plm/route-drbar@0.0.3-alpha.158`
+远程仓库：`@ibiz-template-plm/route-drbar@0.0.3-alpha.276`
 
 ### 路由drtab :id=ROUTE_DRTAB
 
@@ -654,7 +695,7 @@
 
 运行对象：`ROUTE_DRTAB`
 
-远程仓库：`@ibiz-template-plm/route-drbar@0.0.3-alpha.158`
+远程仓库：`@ibiz-template-plm/route-drbar@0.0.3-alpha.276`
 
 ### 过渡时间线 :id=TRANSITION_TIME_LINE
 

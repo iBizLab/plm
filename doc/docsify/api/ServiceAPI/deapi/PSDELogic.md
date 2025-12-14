@@ -37,6 +37,8 @@
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -86,6 +88,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -141,6 +145,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -216,6 +222,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -310,6 +318,8 @@
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -359,6 +369,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -414,6 +426,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -482,6 +496,8 @@
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -531,6 +547,8 @@
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -604,6 +622,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -653,6 +673,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -708,6 +730,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -776,6 +800,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -825,6 +851,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -880,6 +908,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -953,6 +983,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -1002,6 +1034,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -1076,6 +1110,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -1125,6 +1161,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -1199,6 +1237,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
 |<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">mcpserverid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP服务标识|
+|<el-row justify="space-between"><el-col :span="20">toolspecification</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|MCP工具规格说明|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
@@ -1248,6 +1288,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -1324,6 +1366,8 @@ Integer
   "success_rate" : null,
   "failure_per" : null,
   "failure_rate" : null,
+  "mcpserverid" : null,
+  "toolspecification" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -1429,6 +1473,8 @@ Integer
     "success_rate" : null,
     "failure_per" : null,
     "failure_rate" : null,
+    "mcpserverid" : null,
+    "toolspecification" : null,
     "codename" : null,
     "createdate" : null,
     "createman" : null,

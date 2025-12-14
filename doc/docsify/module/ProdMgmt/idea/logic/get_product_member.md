@@ -27,10 +27,9 @@ state "结束" as END6 <<end>> [[$./get_product_member#end6 {"结束"}]]
 state "只读权限" as RAWSFCODE4  [[$./get_product_member#rawsfcode4 {"只读权限"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWSFCODE4 : [[$./get_product_member#debugparam1-rawsfcode4{已归档已删除} 已归档已删除]]
+Begin --> RAWSFCODE4 : [[$./get_product_member#begin-rawsfcode4{已归档已删除} 已归档已删除]]
 RAWSFCODE4 --> END2
-DEBUGPARAM1 --> RAWSFCODE3 : [[$./get_product_member#debugparam1-rawsfcode3{连接名称} 连接名称]]
+Begin --> RAWSFCODE3 : [[$./get_product_member#begin-rawsfcode3{连接名称} 连接名称]]
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_product_member#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> RAWSFCODE1 : [[$./get_product_member#dedataset3-rawsfcode1{不在产品中的成员} 不在产品中的成员]]
@@ -71,19 +70,19 @@ defaultObj.set("srfreadonly", false);
 
 返回 `Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
 
 > [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
+> 调试输出参数`none`的详细信息
 
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 判断系统管理员身份 :id=RAWSFCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -146,10 +145,10 @@ defaultObj.set("srfreadonly", true);
 
 
 ### 连接条件说明
-#### 已归档已删除 :id=DEBUGPARAM1-RAWSFCODE4
+#### 已归档已删除 :id=Begin-RAWSFCODE4
 
 (`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1` OR `Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).product_is_archived(产品是否归档)` EQ `1`)
-#### 连接名称 :id=DEBUGPARAM1-RAWSFCODE3
+#### 连接名称 :id=Begin-RAWSFCODE3
 
 `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `0` AND `Default(传入变量).IS_DELETED(是否已删除)` EQ `0`
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2
@@ -180,4 +179,5 @@ defaultObj.set("srfreadonly", true);
 |过滤器|filter|过滤器|||
 |循环临时变量|for_obj|数据对象|||
 |成员|members|分页查询|||
+|none|none|数据对象|||
 |当前登录人|user|数据对象|||

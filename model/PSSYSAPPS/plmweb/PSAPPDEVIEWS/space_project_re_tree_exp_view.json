@@ -21,7 +21,7 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
-    "eventNames" : "onViewMounted",
+    "eventNames" : "onMounted",
     "logicTrigger" : "VIEWEVENT",
     "logicType" : "APPDEUILOGIC",
     "name" : "CUR_USER_ROLE",
@@ -352,6 +352,76 @@
           "uIActionTarget" : "SINGLEKEY",
           "showCaption" : true,
           "showIcon" : true
+        }, {
+          "caption" : "标记主知识库",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_cm_deuiaction2"
+          },
+          "getPSControlLogics" : [ {
+            "itemName" : "deuiaction2",
+            "logicTag" : "node_cm",
+            "logicType" : "SCRIPT",
+            "name" : "deuiaction2",
+            "scriptCode" : "!data.relation_type",
+            "triggerType" : "ITEMVISIBLE"
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf123@FontAwesome",
+            "cssClass" : "fa fa-star-half-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "标记主知识库",
+            "codeName" : "mark_main_space",
+            "fullCodeName" : "space_mark_main_space",
+            "name" : "标记主知识库",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "mark_main_space"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "target_type",
+              "name" : "target_type",
+              "value" : "target_type",
+              "rawValue" : false
+            }, {
+              "key" : "principal_id",
+              "name" : "principal_id",
+              "value" : "principal_id",
+              "rawValue" : false
+            }, {
+              "key" : "principal_type",
+              "name" : "principal_type",
+              "value" : "principal_type",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf123@FontAwesome",
+              "cssClass" : "fa fa-star-half-o"
+            },
+            "refreshMode" : 2,
+            "successMsg" : "标记成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "mark_main_space",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "mark_main_space@space"
+          },
+          "tooltip" : "标记主知识库",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
         } ],
         "modelid" : "5cafc780a3a37505559a09de9e4b756e",
         "modeltype" : "PSDETOOLBAR"
@@ -361,7 +431,7 @@
           "modelref" : true,
           "id" : "node_6"
         },
-        "name" : "默认根节点 - 附件",
+        "name" : "默认根节点 - 全部附件",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "ROOT"
@@ -1065,6 +1135,10 @@
       }, {
         "counterMode" : 0,
         "dataSourceType" : "DEDATASET",
+        "getIconPSAppDEField" : {
+          "name" : "USER_TAG",
+          "codeName" : "user_tag"
+        },
         "getIdPSAppDEField" : {
           "name" : "ID",
           "codeName" : "id"
@@ -1164,12 +1238,79 @@
             "uIActionTarget" : "SINGLEKEY",
             "showCaption" : true,
             "showIcon" : true
+          }, {
+            "caption" : "标记主知识库",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_cm_deuiaction2"
+            },
+            "getPSControlLogics" : [ {
+              "itemName" : "deuiaction2",
+              "logicTag" : "node_cm",
+              "logicType" : "SCRIPT",
+              "name" : "deuiaction2",
+              "scriptCode" : "!data.relation_type",
+              "triggerType" : "ITEMVISIBLE"
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf123@FontAwesome",
+              "cssClass" : "fa fa-star-half-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "标记主知识库",
+              "codeName" : "mark_main_space",
+              "fullCodeName" : "space_mark_main_space",
+              "name" : "标记主知识库",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "mark_main_space"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "target_type",
+                "name" : "target_type",
+                "value" : "target_type",
+                "rawValue" : false
+              }, {
+                "key" : "principal_id",
+                "name" : "principal_id",
+                "value" : "principal_id",
+                "rawValue" : false
+              }, {
+                "key" : "principal_type",
+                "name" : "principal_type",
+                "value" : "principal_type",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "glyph" : "xf123@FontAwesome",
+                "cssClass" : "fa fa-star-half-o"
+              },
+              "refreshMode" : 2,
+              "successMsg" : "标记成功",
+              "timeout" : 60000,
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "mark_main_space",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "mark_main_space@space"
+            },
+            "tooltip" : "标记主知识库",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : true,
+            "showIcon" : true
           } ],
           "modelid" : "5cafc780a3a37505559a09de9e4b756e",
           "modeltype" : "PSDETOOLBAR"
-        },
-        "getPSSysImage" : {
-          "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>知识库</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"产品生命周期管理系统\" transform=\"translate(-1024, -330)\" fill-rule=\"nonzero\">\n            <g id=\"book-2-fill\" transform=\"translate(1024, 330)\">\n                <path d=\"M17.5,15 L5,15 C4.53976667,15 4.16666667,15.3730833 4.16666667,15.8333333 C4.16666667,16.2935833 4.53976667,16.6666667 5,16.6666667 L17.5,16.6666667 L17.5,18.3333333 L5,18.3333333 C3.61929167,18.3333333 2.5,17.2140833 2.5,15.8333333 L2.5,3.33333333 C2.5,2.41285833 3.24619167,1.66666667 4.16666667,1.66666667 L17.5,1.66666667 L17.5,15 Z M13.3333333,7.5 L13.3333333,5.83333333 L6.66666667,5.83333333 L6.66666667,7.5 L13.3333333,7.5 Z\" id=\"形状\" fill=\"#56ABFB\"></path>\n                <rect id=\"矩形\" fill=\"#000000\" opacity=\"0\" x=\"0\" y=\"0\" width=\"20\" height=\"20\"></rect>\n            </g>\n        </g>\n    </g>\n</svg>"
         },
         "getTextPSAppDEField" : {
           "name" : "NAME",

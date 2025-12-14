@@ -3,7 +3,7 @@
 ```javascript
 const url = window.location;
 var file_name = uiLogic.default.name;
-var file_id = uiLogic.default.id;
+var file_id = uiLogic.default.file_id;
 var file_preview_address = ibiz.env.customParams.file_preview_address;
 
 if (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {

@@ -14,10 +14,10 @@
 
 
 ### 关联界面行为
-  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [回复下删除评论](module/Team/discuss_reply#界面行为)
-  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [删除回复](module/Team/discuss_reply#界面行为)
-  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [编辑](module/Team/discuss_reply#界面行为)
   * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [评论](module/Team/discuss_reply#界面行为)
+  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [编辑](module/Team/discuss_reply#界面行为)
+  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [删除回复](module/Team/discuss_reply#界面行为)
+  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [回复下删除评论](module/Team/discuss_reply#界面行为)
 
 ### 关联界面逻辑
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [编辑回复下评论](module/Team/discuss_post/uilogic/edit_reply_comment)

@@ -665,6 +665,37 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[FORMAT_TYPE][内容格式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[FORMAT_TYPE][内容格式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[FORMAT_TYPE][内容格式]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[FORMAT_TYPE][内容格式]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "format_type",
+    "logicName" : "内容格式",
+    "name" : "FORMAT_TYPE",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[IS_TOP][是否置顶]移动端默认",
       "getPSDEFFormItem" : {
@@ -1066,6 +1097,17 @@
       "getPSAppDEField" : {
         "name" : "PCREATE_MAN",
         "codeName" : "pcreate_man"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "name" : "format_type",
+      "getPSAppDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1743,6 +1785,29 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "add_comment_client@comment"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "AI评论",
+    "codeName" : "ai_comment",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "comment_ai_comment",
+    "name" : "AI评论",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "ai_comment"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "ai_comment",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "ai_comment@comment"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "清空",
     "codeName" : "clear_comment",
@@ -2278,6 +2343,210 @@
       "codeName" : "panelItems",
       "logicName" : "panelItems",
       "name" : "panelItems",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "ai_comment",
+    "defaultParamName" : "Default",
+    "logicName" : "ai添加评论",
+    "name" : "ai添加评论",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 200,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "content",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "result"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "未找到主数据，无法添加评论",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 526,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_02",
+      "leftPos" : 210,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 660,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "entity"
+      },
+      "leftPos" : 390,
+      "logicNodeType" : "DEACTION",
+      "name" : "新增评论",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "topPos" : 510,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 496,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 762,
+      "parallelOutput" : true
+    }, {
+      "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\nvar from = \"from: AI智能体\\n\";\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n    if(uiLogic.default.data.caption) {\n        from = \"from: \"+uiLogic.default.data.caption+\"\\n\";\n    }\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n    if(uiLogic.default.topic && uiLogic.default.topic.caption) {\n        from = \"from: \"+uiLogic.default.topic.caption+\"\\n\";\n    }\n}\n\nuiLogic.entity = {};\n\nif (answer && typeof answer == 'string') {\n\n    uiLogic.entity.principal_id = realView.context[_entity_tag];\n    var principal_type = _entity_tag.toUpperCase();\n    if(principal_type === 'ARTICLE_PAGE' ) {\n        principal_type = 'PAGE';\n    }\n    uiLogic.entity.principal_type= principal_type;\n    uiLogic.entity.owner_type= principal_type;\n    var html_content = from + answer; \n\n    uiLogic.entity.content = html_content;\n            \n}\n",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 360,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "content",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "entity"
+            },
+            "logicType" : "SINGLE",
+            "name" : "entity[content] 值不为空(NotNil) "
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "principal_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "entity"
+            },
+            "logicType" : "SINGLE",
+            "name" : "entity[principal_id] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        },
+        "linkMode" : 1,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "defaultLink" : true
+      } ],
+      "topPos" : 380
+    }, {
+      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('评论成功');\nuiLogic.result={content: \"已添加到评论\"};",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 410,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
+      "topPos" : 630,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
+    }, {
+      "codeName" : "entity",
+      "logicName" : "entity",
+      "name" : "entity",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -2955,7 +3224,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[content] 值不为空(NotNil)"
+            "name" : "Default[content] 值不为空(NotNil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {
@@ -2963,7 +3232,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200
+      "topPos" : 80
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -3031,9 +3300,9 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 340
+      "topPos" : 300
     }, {
-      "code" : "uiLogic.comment.toggleCollapse(true);\r\nuiLogic.comment.setValue(uiLogic.default.content);\r\nuiLogic.comment.reply.value = null;",
+      "code" : "uiLogic.comment.toggleCollapse(true);\nuiLogic.comment.setValue(uiLogic.default.content);\nuiLogic.comment.reply.value = null;\n\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -3044,6 +3313,11 @@
       "codeName" : "comment",
       "logicName" : "评论对象",
       "name" : "评论对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "comment_id",
+      "logicName" : "评论id存储对象",
+      "name" : "评论id存储对象",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -3061,11 +3335,6 @@
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
-    }, {
-      "codeName" : "comment_id",
-      "logicName" : "评论id存储对象",
-      "name" : "评论id存储对象",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5890,7 +6159,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "置顶",
       "detailType" : "DEUIACTION",
-      "name" : "u97e6419",
+      "name" : "ue90f623",
       "getPSSysImage" : {
         "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741120326\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4339\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M576 452.266667v422.4h-85.333333v-422.4l-89.6 89.6L341.333333 477.866667l192-192 192 192-59.733333 59.733333-89.6-85.333333z m213.333333-217.6h-512v-85.333334h512v85.333334z\" fill=\"#444444\" p-id=\"4340\"></path></svg>"
       },
@@ -5909,7 +6178,7 @@
     }, {
       "caption" : "取消置顶",
       "detailType" : "DEUIACTION",
-      "name" : "uaa719ea",
+      "name" : "ufe397ef",
       "getPSSysImage" : {
         "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741189924\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8698\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M228.43 433.23l70.893 63.016-47.261 39.385-78.77-63.016 55.139-39.384z m141.785-118.153L512 196.923l330.83 267.815-78.768 63.016-196.924-165.416v141.785L456.862 393.846v-23.63l-15.754 7.876-70.893-63.015z m196.923 441.108V1024H456.862V653.785l110.276 102.4zM39.385 86.646V0h945.23v86.646H39.385zM102.4 252.062l63.015-70.893 748.308 716.8-63.015 70.893-748.308-716.8z\" p-id=\"8699\"></path></svg>"
       },
@@ -5928,7 +6197,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "ue61f196",
+      "name" : "u3493a9e",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

@@ -354,7 +354,10 @@
           "hidden" : true,
           "viewFieldName" : "IS_TOP"
         }, {
-          "id" : "field_text_dynamic2",
+          "id" : "html_content",
+          "viewFieldName" : "CONTENT"
+        }, {
+          "id" : "md_content",
           "viewFieldName" : "CONTENT"
         }, {
           "id" : "pcreate_man",
@@ -362,6 +365,10 @@
         }, {
           "id" : "pcontent",
           "viewFieldName" : "PCONTENT"
+        }, {
+          "id" : "format_type",
+          "hidden" : true,
+          "viewFieldName" : "FORMAT_TYPE"
         } ],
         "codeName" : "usr0103471499",
         "controlType" : "PANEL",
@@ -578,12 +585,12 @@
                 "logicType" : "GROUP",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "NOTEQ",
-                  "dstModelField" : "FIELD_TEXT_DYNAMIC2",
+                  "dstModelField" : "HTML_CONTENT",
                   "logicType" : "SINGLE",
-                  "name" : "逻辑项",
+                  "name" : "HTML_CONTENT 不等于(<>) <p><del>该评论已删除</del></p>",
                   "value" : "<p><del>该评论已删除</del></p>"
                 } ],
-                "relatedItemNames" : [ "field_text_dynamic2" ],
+                "relatedItemNames" : [ "html_content" ],
                 "notMode" : false
               } ],
               "getPSPanelItems" : [ {
@@ -612,7 +619,7 @@
                   "getPSUIActionGroupDetails" : [ {
                     "caption" : "置顶",
                     "detailType" : "DEUIACTION",
-                    "name" : "u97e6419",
+                    "name" : "ue90f623",
                     "getPSSysImage" : {
                       "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741120326\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4339\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M576 452.266667v422.4h-85.333333v-422.4l-89.6 89.6L341.333333 477.866667l192-192 192 192-59.733333 59.733333-89.6-85.333333z m213.333333-217.6h-512v-85.333334h512v85.333334z\" fill=\"#444444\" p-id=\"4340\"></path></svg>"
                     },
@@ -646,7 +653,7 @@
                   }, {
                     "caption" : "取消置顶",
                     "detailType" : "DEUIACTION",
-                    "name" : "uaa719ea",
+                    "name" : "ufe397ef",
                     "getPSSysImage" : {
                       "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741189924\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8698\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M228.43 433.23l70.893 63.016-47.261 39.385-78.77-63.016 55.139-39.384z m141.785-118.153L512 196.923l330.83 267.815-78.768 63.016-196.924-165.416v141.785L456.862 393.846v-23.63l-15.754 7.876-70.893-63.015z m196.923 441.108V1024H456.862V653.785l110.276 102.4zM39.385 86.646V0h945.23v86.646H39.385zM102.4 252.062l63.015-70.893 748.308 716.8-63.015 70.893-748.308-716.8z\" p-id=\"8699\"></path></svg>"
                     },
@@ -680,7 +687,7 @@
                   }, {
                     "caption" : "删除",
                     "detailType" : "DEUIACTION",
-                    "name" : "ue61f196",
+                    "name" : "u3493a9e",
                     "getPSSysImage" : {
                       "glyph" : "xf014@FontAwesome",
                       "cssClass" : "fa fa-trash-o"
@@ -738,7 +745,7 @@
                   "logicTag" : "list_itempanel",
                   "logicType" : "SCRIPT",
                   "name" : "logic",
-                  "scriptCode" : "data.create_man === context.srfuserid",
+                  "scriptCode" : "data.create_man === context.srfuserid&&data.format_type!=='MD'",
                   "triggerType" : "ITEMVISIBLE"
                 } ],
                 "getPSLayoutPos" : {
@@ -835,7 +842,7 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "field_text_dynamic2",
+              "name" : "html_content",
               "getPSEditor" : {
                 "contentType" : "HTML",
                 "editorParams" : {
@@ -846,7 +853,7 @@
                 },
                 "editorStyle" : "COMMENT_ITEM",
                 "editorType" : "RAW",
-                "name" : "field_text_dynamic2",
+                "name" : "html_content",
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
                   "pluginCode" : "COMMENT_ITEM",
@@ -858,6 +865,57 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "FORMAT_TYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "FORMAT_TYPE 不等于(<>) MD",
+                  "value" : "MD"
+                } ],
+                "relatedItemNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "CONTENT"
+            }, {
+              "caption" : "文本(动态)",
+              "fieldStates" : 3,
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "md_content",
+              "getPSEditor" : {
+                "editorParams" : {
+                  "disabledirectory" : "true",
+                  "READONLY" : "TRUE"
+                },
+                "editorType" : "MARKDOWN",
+                "mode" : "EDIT",
+                "name" : "md_content",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "readOnly" : true,
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "FORMAT_TYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "FORMAT_TYPE 等于(=) MD",
+                  "value" : "MD"
+                } ],
+                "relatedItemNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
               "viewFieldName" : "CONTENT"
             }, {
               "caption" : "容器",
@@ -963,6 +1021,21 @@
               }
             } ]
           } ]
+        }, {
+          "caption" : "文本(动态)",
+          "itemType" : "FIELD",
+          "name" : "format_type",
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "format_type",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "viewFieldName" : "FORMAT_TYPE",
+          "hidden" : true
         } ],
         "name" : "list_itempanel",
         "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -1056,11 +1129,15 @@
           "codeName" : "create_time"
         }
       }, {
-        "dataType" : 21,
-        "name" : "content",
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "name" : "pcreate_man",
         "getPSAppDEField" : {
-          "name" : "CONTENT",
-          "codeName" : "content"
+          "name" : "PCREATE_MAN",
+          "codeName" : "pcreate_man"
         }
       }, {
         "dataType" : 25,
@@ -1075,6 +1152,13 @@
         }
       }, {
         "dataType" : 25,
+        "name" : "pid",
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        }
+      }, {
+        "dataType" : 25,
         "name" : "id",
         "getPSAppDEField" : {
           "name" : "ID",
@@ -1082,21 +1166,10 @@
         }
       }, {
         "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-        },
-        "name" : "pcreate_man",
+        "name" : "format_type",
         "getPSAppDEField" : {
-          "name" : "PCREATE_MAN",
-          "codeName" : "pcreate_man"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "pid",
-        "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
+          "name" : "FORMAT_TYPE",
+          "codeName" : "format_type"
         }
       }, {
         "dataType" : 21,
@@ -1104,6 +1177,13 @@
         "getPSAppDEField" : {
           "name" : "PCONTENT",
           "codeName" : "pcontent"
+        }
+      }, {
+        "dataType" : 21,
+        "name" : "content",
+        "getPSAppDEField" : {
+          "name" : "CONTENT",
+          "codeName" : "content"
         }
       }, {
         "dataType" : 25,

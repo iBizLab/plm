@@ -21,7 +21,7 @@
 
 ### 关联视图
   * [基线工作项(baseline_work_item_edit_view)](app/view/baseline_work_item_edit_view)
-  * [工作项(work_item_baseline_mpick_up_view)](app/view/work_item_baseline_mpick_up_view)
+  * [选择工作项(work_item_baseline_mpick_up_view)](app/view/work_item_baseline_mpick_up_view)
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>

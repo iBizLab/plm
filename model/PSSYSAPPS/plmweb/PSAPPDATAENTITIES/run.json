@@ -288,7 +288,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "other_relation_run",
     "methodType" : "DEACTION",
     "name" : "other_relation_run",
@@ -298,8 +298,7 @@
         "modelref" : true,
         "id" : "run_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -321,11 +320,10 @@
       "modelref" : true,
       "id" : "other_relation_run"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_relation_run",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "program_plan",
@@ -2418,6 +2416,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2429,6 +2428,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2439,6 +2439,7 @@
     "logicName" : "预估工时",
     "name" : "ESTIMATED_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2449,6 +2450,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2460,6 +2462,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2470,6 +2473,7 @@
     "logicName" : "工时进度",
     "name" : "WORKLOAD_SCHEDULE",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2480,6 +2484,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[REMAINING_WORKLOAD][剩余工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2491,6 +2496,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[REMAINING_WORKLOAD][剩余工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2501,6 +2507,7 @@
     "logicName" : "剩余工时",
     "name" : "REMAINING_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2511,6 +2518,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ACTUAL_WORKLOAD][实际工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -2522,6 +2530,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ACTUAL_WORKLOAD][实际工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -2532,6 +2541,7 @@
     "logicName" : "实际工时",
     "name" : "ACTUAL_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -2886,6 +2896,25 @@
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -2906,25 +2935,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[REVIEW_RESULT_STATE][评审结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[REVIEW_RESULT_STATE][评审结果]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-        },
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "review_result_state",
     "logicName" : "评审结果",
@@ -5224,7 +5234,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "other_relation_run",
     "methodType" : "DEACTION",
     "name" : "other_relation_run",
@@ -5234,8 +5244,7 @@
         "modelref" : true,
         "id" : "run_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5257,11 +5266,10 @@
       "modelref" : true,
       "id" : "other_relation_run"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_relation_run",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "program_plan",
@@ -8058,7 +8066,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "全部通过",
       "detailType" : "DEUIACTION",
-      "name" : "u2565776",
+      "name" : "u7a372f8",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8082,7 +8090,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "打开关联用例",
       "detailType" : "DEUIACTION",
-      "name" : "u77de18c",
+      "name" : "u7a1cb94",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8106,7 +8114,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u4617ac0",
+      "name" : "u95b7064",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8130,7 +8138,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "ud897aad",
+      "name" : "ucfdee6c",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8154,7 +8162,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "uf6e0a0b",
+      "name" : "u72ccab4",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8178,7 +8186,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u1155af1",
+      "name" : "ucc7191c",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -8203,7 +8211,7 @@
       "actionLevel" : 50,
       "caption" : "全屏",
       "detailType" : "DEUIACTION",
-      "name" : "u4b1bf40",
+      "name" : "u0943973",
       "getPSSysImage" : {
         "glyph" : "xf0b2@FontAwesome",
         "cssClass" : "fa fa-arrows-alt"
@@ -8223,7 +8231,7 @@
       "actionLevel" : 50,
       "caption" : "刷新",
       "detailType" : "DEUIACTION",
-      "name" : "u9e5f9d7",
+      "name" : "uea3ac87",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -8243,7 +8251,7 @@
       "actionLevel" : 50,
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u0722d26",
+      "name" : "ub137988",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -8271,7 +8279,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "重置为未测",
       "detailType" : "DEUIACTION",
-      "name" : "u43bed7e",
+      "name" : "u4d5c188",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -8290,7 +8298,7 @@
     }, {
       "caption" : "移出",
       "detailType" : "DEUIACTION",
-      "name" : "uc7d3b80",
+      "name" : "u879a3a7",
       "getPSSysImage" : {
         "glyph" : "xf122@FontAwesome",
         "cssClass" : "fa fa-mail-reply-all"

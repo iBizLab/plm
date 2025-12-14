@@ -20,12 +20,14 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |[ebsx系统管理](module/ebsx)|ebsx|ebsx模型组[^ebsx]|ebsx部门及人员业务实体的映射。|
 |[模型扩展](module/extension)|extension||主要包含模型扩展类实体。|
 |[DevOps数据集成](module/DevOps)|DevOps||DevOps数据集成|
+|[智能](module/ai)|ai|||
 
 
 #### 服务接口
 
 |  中文名col200      |   代码名col200 |   备注col600  |
 |  --------   |------------  |  -----   |
+|[MCP服务接口](api/_mcp/_mcp)|_mcp||
 |[服务接口](api/ServiceAPI/ServiceAPI)|ServiceAPI||
 |[运行时扩展代理接口](api/_dynamodelapi/_dynamodelapi)|_dynamodelapi||
 

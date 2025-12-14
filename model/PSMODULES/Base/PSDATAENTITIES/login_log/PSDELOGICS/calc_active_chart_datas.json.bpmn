@@ -34,6 +34,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="计算图表所需数据"/>
                         <endEvent id="rawsfcode2_end" name="end"/>
                         <sequenceFlow id="rawsfcode2_end_line" sourceRef="rawsfcode2" targetRef="rawsfcode2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="计算图表数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -47,11 +48,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    <sequenceFlow id="dedataset1_rawsfcode_01" sourceRef="dedataset1" targetRef="rawsfcode_01">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    <sequenceFlow id="rawsfcode_01_end1" sourceRef="rawsfcode_01" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

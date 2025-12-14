@@ -106,6 +106,15 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
+    "codeName" : "remaining_update",
+    "name" : "剩余工时表单项更新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
     "codeName" : "estimated_update",
     "name" : "预估工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
@@ -114,15 +123,6 @@
       "name" : "workload_schedule"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nconsole.log('form_data',form_data);\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-    "customCode" : true,
-    "showBusyIndicator" : false
-  }, {
-    "codeName" : "remaining_update",
-    "name" : "剩余工时表单项更新",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "workload_schedule"
-    } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
     "customCode" : true,
     "showBusyIndicator" : false
   } ],
@@ -1441,7 +1441,7 @@
                                 "actionLevel" : 250,
                                 "caption" : "下载",
                                 "detailType" : "DEUIACTION",
-                                "name" : "u1e2ba6d",
+                                "name" : "uad47c9e",
                                 "getPSSysImage" : {
                                   "glyph" : "xf019@FontAwesome",
                                   "cssClass" : "fa fa-download"
@@ -1490,7 +1490,7 @@
                               }, {
                                 "caption" : "删除",
                                 "detailType" : "DEUIACTION",
-                                "name" : "u38dbf91",
+                                "name" : "u106c7b5",
                                 "getPSSysImage" : {
                                   "glyph" : "xf014@FontAwesome",
                                   "cssClass" : "fa fa-trash-o"
@@ -2561,7 +2561,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "estimated_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colLG" : 18,
@@ -2624,6 +2625,11 @@
                     "modelref" : true,
                     "id" : "UPDATE"
                   },
+                  "getPSNavigateContexts" : [ {
+                    "key" : "WORKLOAD",
+                    "name" : "WORKLOAD",
+                    "rawValue" : true
+                  } ],
                   "getPSNavigateParams" : [ {
                     "key" : "estimated_workload",
                     "name" : "estimated_workload",
@@ -2758,7 +2764,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "actual_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colLG" : 18,
@@ -2821,6 +2828,11 @@
                     "modelref" : true,
                     "id" : "UPDATE"
                   },
+                  "getPSNavigateContexts" : [ {
+                    "key" : "WORKLOAD",
+                    "name" : "WORKLOAD",
+                    "rawValue" : true
+                  } ],
                   "getPSNavigateParams" : [ {
                     "key" : "estimated_workload",
                     "name" : "estimated_workload",
@@ -2960,7 +2972,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "remaining_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -2992,6 +3005,7 @@
                 "editorType" : "MOBSLIDER",
                 "name" : "workload_schedule",
                 "precision" : 1,
+                "scale" : 1,
                 "stepValue" : 1.0
               },
               "getPSLayoutPos" : {
@@ -4031,7 +4045,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -5969,7 +5983,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "u0a620b7",
+                      "name" : "u345ce3d",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -7739,7 +7753,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消依赖",
                       "detailType" : "DEUIACTION",
-                      "name" : "u9b92cfb",
+                      "name" : "u4bbbc09",
                       "getPSSysImage" : {
                         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
                       },
@@ -9599,7 +9613,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -11784,7 +11798,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"

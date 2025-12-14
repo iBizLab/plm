@@ -16,6 +16,11 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "WORKLOAD",
+    "name" : "WORKLOAD",
+    "rawValue" : true
+  } ],
   "getPSDEViewCodeName" : "log_grid_view",
   "getPSDEViewId" : "7424cb3f499db1757d5a72e3a7885235",
   "getPSSysCss" : {
@@ -64,8 +69,7 @@
         "getPSLayoutPos" : {
           "grow" : -1,
           "heightMode" : "FULL",
-          "layout" : "FLEX",
-          "widthMode" : "FULL"
+          "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
           "itemStyle" : "DEFAULT",
@@ -91,6 +95,16 @@
             },
             "showCaption" : true
           } ]
+        }, {
+          "caption" : "搜索栏",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "searchbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "showCaption" : true
         } ]
       }, {
         "caption" : "容器",
@@ -233,15 +247,6 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "EDITDATA",
-      "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "修改实际工时视图",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_update_view.json",
-        "viewType" : "DEOPTVIEW"
-      }
-    }, {
       "name" : "NEWDATA",
       "realTitle" : "工时编辑视图",
       "getRealTitlePSLanguageRes" : {
@@ -251,6 +256,15 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
         "viewType" : "DEEDITVIEW"
+      }
+    }, {
+      "name" : "EDITDATA",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "修改实际工时视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_update_view.json",
+        "viewType" : "DEOPTVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -474,7 +488,7 @@
           "codeName" : "duration"
         },
         "valueFormat" : "#0.0",
-        "width" : 200,
+        "width" : 150,
         "widthUnit" : "PX",
         "enableSort" : true
       }, {
@@ -530,7 +544,7 @@
           "codeName" : "description"
         },
         "width" : 200,
-        "widthUnit" : "PX",
+        "widthUnit" : "STAR",
         "enableSort" : false
       }, {
         "align" : "LEFT",
@@ -977,62 +991,79 @@
       "modelid" : "598d45a6023c73995458e6822fae89ea",
       "modeltype" : "PSDEFORM_SEARCHFORM"
     }, {
-      "codeName" : "log_grid_view_toolbar",
+      "codeName" : "log_grid_view_tab_toolbar",
       "controlType" : "TOOLBAR",
       "logicName" : "工时日历_工具栏",
-      "name" : "toolbar",
+      "name" : "tab_toolbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
       },
       "getPSControlParam" : {
-        "id" : "TOOLBAR"
+        "ctrlParams" : {
+          "TELEPORTFLAG" : "true"
+        },
+        "id" : "TAB_TOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.EXPORT"
-        },
-        "caption" : "导出",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "toolbar_deuiaction1"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf1c3@FontAwesome",
-          "cssClass" : "fa fa-file-excel-o"
-        },
-        "getPSUIAction" : {
+        "buttonStyle" : "STYLE2",
+        "caption" : "更多",
+        "itemType" : "ITEMS",
+        "name" : "items1",
+        "getPSDEToolbarItems" : [ {
           "getCapPSLanguageRes" : {
             "lanResTag" : "TBB.TEXT.*.EXPORT"
           },
           "caption" : "导出",
-          "codeName" : "ExportExcel",
-          "fullCodeName" : "ExportExcel",
-          "name" : "表格界面_导出操作（Excel）",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "tab_toolbar_deuiaction1"
+          },
           "getPSSysImage" : {
             "glyph" : "xf1c3@FontAwesome",
             "cssClass" : "fa fa-file-excel-o"
           },
-          "predefinedType" : "GRIDVIEW_EXPORTACTION",
-          "timeout" : 60000,
+          "getPSUIAction" : {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.EXPORT"
+            },
+            "caption" : "导出",
+            "codeName" : "ExportExcel",
+            "fullCodeName" : "ExportExcel",
+            "name" : "表格界面_导出操作（Excel）",
+            "getPSSysImage" : {
+              "glyph" : "xf1c3@FontAwesome",
+              "cssClass" : "fa fa-file-excel-o"
+            },
+            "predefinedType" : "GRIDVIEW_EXPORTACTION",
+            "timeout" : 60000,
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "ExportExcel",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "导出",
           "getTooltipPSLanguageRes" : {
             "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
           },
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "ExportExcel",
-          "uIActionType" : "DEUIACTION"
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
         },
-        "tooltip" : "导出",
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
-        },
-        "showCaption" : true,
+        "tooltip" : "更多",
+        "showCaption" : false,
         "showIcon" : true
       } ],
+      "toolbarStyle" : "USER",
       "xDataControlName" : "grid",
       "modelid" : "1caa28e37cd29023f9d644f5b0378f0f",
       "modeltype" : "PSDETOOLBAR"

@@ -337,7 +337,7 @@
     "pluginCode" : "COMMENT_ITEM",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizCommentItemRawItem",
-    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.230",
+    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.287",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -633,6 +633,34 @@
     "uIActionTag" : "Refresh",
     "uIActionType" : "DEUIACTION"
   }, {
+    "actionTarget" : "MULTIKEY",
+    "noPrivDisplayMode" : 1,
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "TBB.TEXT.*.REMOVE"
+    },
+    "caption" : "删除",
+    "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
+    "fullCodeName" : "Remove",
+    "name" : "表格界面_删除操作",
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "DELETE"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "predefinedType" : "GRIDVIEW_REMOVEACTION",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "getTooltipPSLanguageRes" : {
+      "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+    },
+    "uIActionMode" : "SYS",
+    "uIActionTag" : "Remove",
+    "uIActionType" : "DEUIACTION"
+  }, {
     "caption" : "移除全部",
     "codeName" : "RemoveAll",
     "fullCodeName" : "RemoveAll",
@@ -641,6 +669,27 @@
     "timeout" : 60000,
     "uIActionMode" : "SYS",
     "uIActionTag" : "RemoveAll",
+    "uIActionType" : "DEUIACTION"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "TBB.TEXT.EDITVIEW.REMOVEANDCLOSE"
+    },
+    "caption" : "删除并关闭",
+    "codeName" : "RemoveAndExit",
+    "fullCodeName" : "RemoveAndExit",
+    "name" : "编辑界面_删除并退出操作",
+    "getPSSysImage" : {
+      "glyph" : "xf00d@FontAwesome",
+      "cssClass" : "fa fa-remove"
+    },
+    "predefinedType" : "EDITVIEW_REMOVEANDEXITACTION",
+    "timeout" : 60000,
+    "getTooltipPSLanguageRes" : {
+      "lanResTag" : "TBB.TOOLTIP.EDITVIEW.REMOVEANDCLOSE"
+    },
+    "uIActionMode" : "SYS",
+    "uIActionTag" : "RemoveAndExit",
     "uIActionType" : "DEUIACTION"
   }, {
     "caption" : "删除数据",
@@ -778,6 +827,93 @@
     "scriptCode" : "if (ctrl) { ctrl.showEffectiveCtrl() }",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "hight_light_filter",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "AI写作",
+    "codeName" : "inline_ai_write",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_ai_write",
+    "name" : "AI写作",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Writing",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_ai_write",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "更丰富",
+    "codeName" : "inline_more_rich",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_more_rich",
+    "name" : "更丰富",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Enhancement",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_more_rich",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "更简短",
+    "codeName" : "inline_more_short",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_more_short",
+    "name" : "更简短",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Shortening",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_more_short",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "摘要生成",
+    "codeName" : "inline_summary_generate",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_summary_generate",
+    "name" : "摘要生成",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Summarization",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_summary_generate",
     "uIActionType" : "DEUIACTION",
     "globalUIAction" : true
   }, {

@@ -1,9 +1,9 @@
 {
   "accUserMode" : 2,
-  "caption" : "实体处理逻辑",
+  "caption" : "自动化规则",
   "codeName" : "psdelogicquick_cfg_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicquick_cfg_view.json",
-  "height" : 500,
+  "height" : 550,
   "name" : "psdelogicquick_cfg_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -225,13 +225,6 @@
         "codeName" : "PSDELogicName"
       }
     }, {
-      "id" : "applyflag",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "APPLYFLAG",
-        "codeName" : "applyflag"
-      }
-    }, {
       "id" : "logicsubtype",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -339,49 +332,15 @@
             "codeName" : "PSDELogicName"
           },
           "getPSEditor" : {
-            "editorType" : "SPAN",
-            "name" : "psdelogicname",
-            "enableLinkView" : false
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "psdelogicname"
           },
           "getPSLayoutPos" : {
-            "colLG" : 20,
-            "colMD" : 20,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "codeName" : "applyflag",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 3,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "applyflag",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "APPLYFLAG",
-            "codeName" : "applyflag"
-          },
-          "getPSEditor" : {
-            "editorType" : "SPAN",
-            "name" : "applyflag",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__extension_status.json"
-            },
-            "enableLinkView" : false
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 4,
-            "colMD" : 4,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "convertToCodeItemText" : true,
-          "emptyCaption" : true,
+          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "codeName" : "grouppanel1",
@@ -746,6 +705,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
+          "itemHeight" : 140.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "memo",
@@ -755,9 +715,11 @@
             "codeName" : "Memo"
           },
           "getPSEditor" : {
-            "editorType" : "SPAN",
+            "editorHeight" : 120.0,
+            "editorType" : "TEXTAREA",
+            "maxLength" : 2000,
             "name" : "memo",
-            "enableLinkView" : false
+            "showMaxLength" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 24,
@@ -952,7 +914,7 @@
       "id" : "datainfobar"
     }
   }, {
-    "caption" : "实体处理逻辑",
+    "caption" : "自动化规则",
     "codeName" : "quick_cfg_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",

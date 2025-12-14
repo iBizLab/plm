@@ -16,23 +16,23 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`ACTIVE_MEMBERS(活跃成员数)` <i class="fa fa-angle-double-right"/></i> `ACTIVE_MEMBERS(活跃成员数)`
-* `属性等价`
-`USER_ID(用户标识)` <i class="fa fa-angle-double-right"/></i> `USERID(用户全局标识)`
-* `属性等价`
-`USER_NAME(用户名称)` <i class="fa fa-angle-double-right"/></i> `PERSONNAME(用户名称)`
-* `属性等价`
-`ID(标识)` <i class="fa fa-angle-double-right"/></i> `LOGID(标识)`
-* `属性等价`
 `AUTHCODE(认证结果)` <i class="fa fa-angle-double-right"/></i> `AUTHCODE(认证结果)`
 * `属性等价`
 `LOGIN_METHOD(登录方式)` <i class="fa fa-angle-double-right"/></i> `AUTHAGENT(认证方式)`
+* `属性等价`
+`ACTIVE_MEMBERS(活跃成员数)` <i class="fa fa-angle-double-right"/></i> `ACTIVE_MEMBERS(活跃成员数)`
 * `属性等价`
 `USER_AGENT(客户端)` <i class="fa fa-angle-double-right"/></i> `USERAGENT(客户端)`
 * `属性等价`
 `AUTHTIME(登录时间)` <i class="fa fa-angle-double-right"/></i> `AUTHTIME(认证时间)`
 * `属性等价`
+`USER_NAME(用户名称)` <i class="fa fa-angle-double-right"/></i> `PERSONNAME(用户名称)`
+* `属性等价`
+`ID(标识)` <i class="fa fa-angle-double-right"/></i> `LOGID(标识)`
+* `属性等价`
 `IP(IP地址)` <i class="fa fa-angle-double-right"/></i> `IPADDR(IP地址)`
+* `属性等价`
+`USER_ID(用户标识)` <i class="fa fa-angle-double-right"/></i> `USERID(用户全局标识)`
 * `属性等价`
 `NAME(名称)` <i class="fa fa-angle-double-right"/></i> `USERNAME(用户全局名)`
 
@@ -65,10 +65,10 @@
 <p class="panel-title"><b>集合映射</b></p>
 
 * `默认`
-`DISTINCT_USERID(排重用户)` <i class="fa fa-angle-double-right"/></i> `distinct_userid(排重用户)` 
+`ECHARTS_DATAS(获取活跃人员图表数据)` <i class="fa fa-angle-double-right"/></i> `group_by_data(日期分组集合)` 
 * `默认`
 `CUR_USER(当前用户)` <i class="fa fa-angle-double-right"/></i> `cur_user(当前用户)` 并且 `启用查询条件`
 * `默认`
-`ECHARTS_DATAS(获取活跃人员图表数据)` <i class="fa fa-angle-double-right"/></i> `group_by_data(日期分组集合)` 
+`DISTINCT_USERID(排重用户)` <i class="fa fa-angle-double-right"/></i> `distinct_userid(排重用户)` 
 * `默认`
 `DEFAULT(数据集)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 

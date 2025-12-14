@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [成员(MEMBER)](module/Base/member) : [视图_确定](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [视图_取消](module/Base/member#界面行为)
+  * [成员(MEMBER)](module/Base/member) : [视图_确定](module/Base/member#界面行为)
 
 ### 关联视图
   * [成员(member_mob_share_pickup_view_pickup_md_view)](app/view/member_mob_share_pickup_view_pickup_md_view)

@@ -21,10 +21,8 @@
                             <tns:global identifier="reviewadd_review_contentselectdata" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定关联列表参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立正向参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立反向参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充需求属性值"/>
@@ -39,9 +37,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
                         <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
-                    <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_bindparam1" sourceRef="debugparam2" targetRef="bindparam1">
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -55,11 +51,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_debugparam1" sourceRef="loopsubcall1" targetRef="debugparam1">
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_renewparam1" sourceRef="debugparam1" targetRef="renewparam1">
                     </sequenceFlow>
                     <sequenceFlow id="renewparam1_renewparam2" sourceRef="renewparam1" targetRef="renewparam2">
                     </sequenceFlow>
@@ -71,7 +65,7 @@
                                             $reviewadd_review_contentreverse_relation_obj:relation();
                                             $reviewadd_review_contentselectdata:review();
                                     eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
-                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","IDEA")))
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("add_tag"),"EQ","IDEA")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -83,7 +77,7 @@
                                             $reviewadd_review_contentreverse_relation_obj:relation();
                                             $reviewadd_review_contentselectdata:review();
                                     eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
-                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","TEST_CASE")))
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("add_tag"),"EQ","TEST_CASE")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -95,7 +89,7 @@
                                             $reviewadd_review_contentreverse_relation_obj:relation();
                                             $reviewadd_review_contentselectdata:review();
                                     eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
-                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","WORK_ITEM")))
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("add_tag"),"EQ","WORK_ITEM")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -107,7 +101,7 @@
                                             $reviewadd_review_contentreverse_relation_obj:relation();
                                             $reviewadd_review_contentselectdata:review();
                                     eval($reviewadd_review_contentdefault==reviewadd_review_contentdefault && $reviewadd_review_contentfor_temp_obj==reviewadd_review_contentfor_temp_obj && $reviewadd_review_contentforward_relation_obj==reviewadd_review_contentforward_relation_obj && $reviewadd_review_contentreverse_relation_obj==reviewadd_review_contentreverse_relation_obj && $reviewadd_review_contentselectdata==reviewadd_review_contentselectdata);
-                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("tag"),"EQ","PAGE")))
+                                eval((RuleUtils.test($reviewadd_review_contentdefault.get("add_tag"),"EQ","PAGE")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>

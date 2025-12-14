@@ -748,7 +748,7 @@
                       "logicTag" : "itemlayoutpanel",
                       "logicType" : "SCRIPT",
                       "name" : "logic2",
-                      "scriptCode" : "data.funcstate == 0 || data.funcstate == 2",
+                      "scriptCode" : "data.funcstate == 0 || data.funcstate == 2 || data.funcstate == 4",
                       "triggerType" : "ITEMVISIBLE"
                     } ],
                     "getPSLayoutPos" : {
@@ -793,6 +793,11 @@
                         "name" : "n_pscoreprdid_eq",
                         "value" : "srfv2systemid",
                         "rawValue" : false
+                      }, {
+                        "key" : "reload",
+                        "name" : "reload",
+                        "value" : "false",
+                        "rawValue" : true
                       } ],
                       "refreshMode" : 1,
                       "successMsg" : "安装成功！",
@@ -818,7 +823,7 @@
                       "logicTag" : "itemlayoutpanel",
                       "logicType" : "SCRIPT",
                       "name" : "logic3",
-                      "scriptCode" : "data.funcstate == 1",
+                      "scriptCode" : "data.funcstate == 1 || data.funcstate == 3",
                       "triggerType" : "ITEMVISIBLE"
                     } ],
                     "getPSLayoutPos" : {
@@ -835,7 +840,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "caption" : "卸载",
                         "detailType" : "DEUIACTION",
-                        "name" : "u01c1392",
+                        "name" : "u053177c",
                         "getPSUIAction" : {
                           "actionTarget" : "SINGLEKEY",
                           "caption" : "卸载",
@@ -861,6 +866,11 @@
                             "name" : "n_pscoreprdid_eq",
                             "value" : "srfv2systemid",
                             "rawValue" : false
+                          }, {
+                            "key" : "reload",
+                            "name" : "reload",
+                            "value" : "false",
+                            "rawValue" : true
                           } ],
                           "refreshMode" : 1,
                           "successMsg" : "卸载成功！",
@@ -878,7 +888,7 @@
                       }, {
                         "caption" : "安装特定版本",
                         "detailType" : "DEUIACTION",
-                        "name" : "u82d5972",
+                        "name" : "u61a7cdb",
                         "getPSUIAction" : {
                           "actionTarget" : "SINGLEDATA",
                           "caption" : "安装特定版本",
@@ -936,6 +946,28 @@
                       "notMode" : false
                     } ],
                     "tooltip" : "更新",
+                    "uIActionTarget" : "NONE",
+                    "showCaption" : true
+                  }, {
+                    "actionType" : "NONE",
+                    "buttonStyle" : "DEFAULT",
+                    "caption" : "重新加载",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "BUTTON",
+                    "name" : "reload",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "reload",
+                      "logicTag" : "itemlayoutpanel",
+                      "logicType" : "SCRIPT",
+                      "name" : "logic1",
+                      "scriptCode" : "data.funcstate == 3 || data.funcstate == 4",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "tooltip" : "重新加载",
                     "uIActionTarget" : "NONE",
                     "showCaption" : true
                   } ]

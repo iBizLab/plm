@@ -1,4 +1,4 @@
-# 自动规则模板信息(psdelogictemplate_info_view)  <!-- {docsify-ignore-all} -->
+# 自动规则模板(psdelogictemplate_info_view)  <!-- {docsify-ignore-all} -->
 
 
 

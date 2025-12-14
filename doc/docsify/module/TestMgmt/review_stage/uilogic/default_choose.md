@@ -15,18 +15,18 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./default_choose#begin {开始}]]
-state "设置表单是否编辑" as RAWJSCODE7  [[$./default_choose#rawjscode7 {设置表单是否编辑}]]
+state "取消选中值" as RAWJSCODE2  [[$./default_choose#rawjscode2 {取消选中值}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./default_choose#preparejsparam2 {准备参数}]]
+state "注入脚本代码" as RAWJSCODE4  [[$./default_choose#rawjscode4 {注入脚本代码}]]
 state "结束" as END2 <<end>> [[$./default_choose#end2 {结束}]]
+state "设置表单是否编辑" as RAWJSCODE7  [[$./default_choose#rawjscode7 {设置表单是否编辑}]]
 state "准备参数" as PREPAREJSPARAM3  [[$./default_choose#preparejsparam3 {准备参数}]]
-state "准备参数" as PREPAREJSPARAM4  [[$./default_choose#preparejsparam4 {准备参数}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./default_choose#debugparam1 {调试逻辑参数}]]
 state "结束" as END1 <<end>> [[$./default_choose#end1 {结束}]]
 state "绑定父级页面/表单" as PREPAREJSPARAM1  [[$./default_choose#preparejsparam1 {绑定父级页面/表单}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./default_choose#preparejsparam2 {准备参数}]]
-state "设置选中值" as RAWJSCODE3  [[$./default_choose#rawjscode3 {设置选中值}]]
-state "注入脚本代码" as RAWJSCODE4  [[$./default_choose#rawjscode4 {注入脚本代码}]]
-state "取消选中值" as RAWJSCODE2  [[$./default_choose#rawjscode2 {取消选中值}]]
+state "准备参数" as PREPAREJSPARAM4  [[$./default_choose#preparejsparam4 {准备参数}]]
 state "实体行为" as DEACTION1  [[$./default_choose#deaction1 {实体行为}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./default_choose#debugparam1 {调试逻辑参数}]]
+state "设置选中值" as RAWJSCODE3  [[$./default_choose#rawjscode3 {设置选中值}]]
 state "设置选中值" as RAWJSCODE1  [[$./default_choose#rawjscode1 {设置选中值}]]
 
 
@@ -219,9 +219,9 @@ curstage_id.setDataValue(null);
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |当前视图对象|view|当前视图对象||
+|列表对象|list|部件对象||
 |上下文|ctx|导航视图参数绑定参数||
+|评审信息|review_info|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |父视图对象|parent_view|数据对象||
-|评审信息|review_info|数据对象||
-|列表对象|list|部件对象||
 |父表单|parent_form|数据对象||

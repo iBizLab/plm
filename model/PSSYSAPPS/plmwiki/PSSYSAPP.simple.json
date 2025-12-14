@@ -13,7 +13,7 @@
     "pluginCode" : "COMMENT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizHtmlComment",
-    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.259",
+    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.303",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -26,7 +26,7 @@
     "pluginCode" : "LUCKYSHEET",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizLuckySheet",
-    "rTObjectRepo" : "@ibiz-template-plm/lucky-sheet-editor@0.0.3-dev.125",
+    "rTObjectRepo" : "@ibiz-template-plm/lucky-sheet-editor@0.0.3-alpha.291",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -136,7 +136,7 @@
     "pluginCode" : "COMMENT_ITEM",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizCommentItemRawItem",
-    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.230",
+    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.287",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -345,6 +345,34 @@
     "uIActionTag" : "Refresh",
     "uIActionType" : "DEUIACTION"
   }, {
+    "actionTarget" : "MULTIKEY",
+    "noPrivDisplayMode" : 1,
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "TBB.TEXT.*.REMOVE"
+    },
+    "caption" : "删除",
+    "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
+    "fullCodeName" : "Remove",
+    "name" : "表格界面_删除操作",
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "DELETE"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "predefinedType" : "GRIDVIEW_REMOVEACTION",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "getTooltipPSLanguageRes" : {
+      "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+    },
+    "uIActionMode" : "SYS",
+    "uIActionTag" : "Remove",
+    "uIActionType" : "DEUIACTION"
+  }, {
     "caption" : "移除全部",
     "codeName" : "RemoveAll",
     "fullCodeName" : "RemoveAll",
@@ -353,6 +381,27 @@
     "timeout" : 60000,
     "uIActionMode" : "SYS",
     "uIActionTag" : "RemoveAll",
+    "uIActionType" : "DEUIACTION"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "TBB.TEXT.EDITVIEW.REMOVEANDCLOSE"
+    },
+    "caption" : "删除并关闭",
+    "codeName" : "RemoveAndExit",
+    "fullCodeName" : "RemoveAndExit",
+    "name" : "编辑界面_删除并退出操作",
+    "getPSSysImage" : {
+      "glyph" : "xf00d@FontAwesome",
+      "cssClass" : "fa fa-remove"
+    },
+    "predefinedType" : "EDITVIEW_REMOVEANDEXITACTION",
+    "timeout" : 60000,
+    "getTooltipPSLanguageRes" : {
+      "lanResTag" : "TBB.TOOLTIP.EDITVIEW.REMOVEANDCLOSE"
+    },
+    "uIActionMode" : "SYS",
+    "uIActionTag" : "RemoveAndExit",
     "uIActionType" : "DEUIACTION"
   }, {
     "caption" : "删除数据",
@@ -446,6 +495,93 @@
     "scriptCode" : "if (ctrl) { ctrl.showEffectiveCtrl() }",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "hight_light_filter",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "AI写作",
+    "codeName" : "inline_ai_write",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_ai_write",
+    "name" : "AI写作",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Writing",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_ai_write",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "更丰富",
+    "codeName" : "inline_more_rich",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_more_rich",
+    "name" : "更丰富",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Enhancement",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_more_rich",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "更简短",
+    "codeName" : "inline_more_short",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_more_short",
+    "name" : "更简短",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Shortening",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_more_short",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "摘要生成",
+    "codeName" : "inline_summary_generate",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "inline_summary_generate",
+    "name" : "摘要生成",
+    "getPSNavigateParams" : [ {
+      "key" : "srfaiagent",
+      "name" : "srfaiagent",
+      "value" : "TextAgent_Summarization",
+      "rawValue" : true
+    }, {
+      "key" : "autoquestion",
+      "name" : "autoquestion",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "inline_summary_generate",
     "uIActionType" : "DEUIACTION",
     "globalUIAction" : true
   } ],
@@ -3423,7 +3559,7 @@
                           "actionLevel" : 200,
                           "caption" : "下载",
                           "detailType" : "DEUIACTION",
-                          "name" : "u5832788",
+                          "name" : "u69ec7c3",
                           "getPSSysImage" : {
                             "glyph" : "xf019@FontAwesome",
                             "cssClass" : "fa fa-download"
@@ -5747,7 +5883,8 @@
                     "getPSDEFDLogics" : [ {
                       "condOP" : "ISNOTNULL",
                       "dEFDName" : "icon",
-                      "logicType" : "SINGLE"
+                      "logicType" : "SINGLE",
+                      "name" : "icon值不为空(NotNil)"
                     } ],
                     "relatedDetailNames" : [ "icon" ],
                     "notMode" : false
@@ -5834,6 +5971,7 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) HTML",
                       "value" : "HTML"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
@@ -5846,6 +5984,7 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) HTML",
                       "value" : "HTML"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
@@ -5900,6 +6039,7 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) MD",
                       "value" : "MD"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
@@ -5912,6 +6052,7 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) MD",
                       "value" : "MD"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
@@ -5919,6 +6060,9 @@
                   } ],
                   "getPSEditor" : {
                     "editorHeight" : 1.0,
+                    "editorParams" : {
+                      "tocpos" : "fixed"
+                    },
                     "editorType" : "MARKDOWN",
                     "maxLength" : 16777215,
                     "mode" : "EDIT",
@@ -5938,6 +6082,7 @@
                   "detailType" : "FORMITEM",
                   "enableCond" : 0,
                   "ignoreInput" : 12,
+                  "itemHeight" : 600.0,
                   "labelPos" : "NONE",
                   "labelWidth" : 0,
                   "name" : "formitem",
@@ -5954,6 +6099,7 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) EXCEL",
                       "value" : "EXCEL"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
@@ -5966,12 +6112,14 @@
                       "condOP" : "EQ",
                       "dEFDName" : "format_type",
                       "logicType" : "SINGLE",
+                      "name" : "format_type等于(=) EXCEL",
                       "value" : "EXCEL"
                     } ],
                     "relatedDetailNames" : [ "format_type" ],
                     "notMode" : false
                   } ],
                   "getPSEditor" : {
+                    "editorHeight" : 600.0,
                     "editorStyle" : "LUCKYSHEET",
                     "editorType" : "TEXTAREA",
                     "maxLength" : 16777215,
@@ -6035,7 +6183,8 @@
                   "getPSDEFDLogics" : [ {
                     "condOP" : "ISNOTNULL",
                     "dEFDName" : "attachments",
-                    "logicType" : "SINGLE"
+                    "logicType" : "SINGLE",
+                    "name" : "attachments值不为空(NotNil)"
                   } ],
                   "relatedDetailNames" : [ "attachments" ],
                   "notMode" : false
@@ -6317,7 +6466,7 @@
                           "actionLevel" : 200,
                           "caption" : "下载",
                           "detailType" : "DEUIACTION",
-                          "name" : "u5832788",
+                          "name" : "u69ec7c3",
                           "getPSSysImage" : {
                             "glyph" : "xf019@FontAwesome",
                             "cssClass" : "fa fa-download"

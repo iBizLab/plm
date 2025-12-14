@@ -1831,14 +1831,53 @@
       "modelref" : true,
       "id" : "UPDATE"
     },
+    "getPSNavigateContexts" : [ {
+      "key" : "WORK_ITEM",
+      "name" : "WORK_ITEM",
+      "value" : "owner_id",
+      "rawValue" : false
+    } ],
     "getPSSysImage" : {
       "glyph" : "xf044@FontAwesome",
       "cssClass" : "fa fa-edit"
     },
+    "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "edit",
     "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
     "id" : "edit@deliverable"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "edit_form",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_target_edit_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "deliverable_edit_form",
+    "name" : "编辑（表单中）",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "main_form_save"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "edit_form",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "reloadData" : true,
+    "id" : "edit_form@deliverable"
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "确定",
@@ -2640,12 +2679,6 @@
       "topPos" : 300,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 210,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 731
-    }, {
       "code" : "console.log('')\r\nuiLogic.view.layoutPanel.panelItems.total.data.total = uiLogic.view.layoutPanel.panelItems.grid.control.state.items.length;\r\nif(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}\r\n",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 170,
@@ -2671,12 +2704,24 @@
       "logicNodeType" : "RAWJSCODE",
       "name" : "触发计数器刷新",
       "topPos" : 630
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 210,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 731
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "VIEW",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "CTRL",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2688,12 +2733,6 @@
       "logicName" : "交付物列表",
       "name" : "交付物列表",
       "entityListParam" : true
-    }, {
-      "codeName" : "CTRL",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2742,6 +2781,117 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "main_form_save",
+    "defaultParamName" : "Default",
+    "logicName" : "主表单保存",
+    "name" : "主表单保存",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 100,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 670,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "autoSave",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 434,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "调用主表单自动保存",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 230,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[parentView.layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "parentView.layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "主表单对象",
+      "name" : "主表单对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -3305,7 +3455,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 250,
       "detailType" : "DEUIACTION",
-      "name" : "ubeb5c67",
+      "name" : "u66d27dc",
       "getPSSysImage" : {
         "glyph" : "xf093@FontAwesome",
         "cssClass" : "fa fa-upload"
@@ -3325,7 +3475,7 @@
     }, {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u73b6741",
+      "name" : "u151a4bf",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -3344,7 +3494,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u87b84dd",
+      "name" : "ua72ad99",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -3372,7 +3522,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "提交",
       "detailType" : "DEUIACTION",
-      "name" : "ud9ceb13",
+      "name" : "u487e442",
       "getPSSysImage" : {
         "glyph" : "xf093@FontAwesome",
         "cssClass" : "fa fa-upload"
@@ -3389,9 +3539,28 @@
         "id" : "submit_form@deliverable"
       }
     }, {
+      "caption" : "编辑",
+      "detailType" : "DEUIACTION",
+      "name" : "udc55502",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "addSeparator" : true,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+        },
+        "modelref" : true,
+        "id" : "edit_form@deliverable"
+      }
+    }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u0d3e2ae",
+      "name" : "u6ab79f5",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

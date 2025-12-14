@@ -10,8 +10,12 @@
 
 
 ### 关联界面行为
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [添加选中数据（数据选择）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_取消](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [移除选中数据（数据选择）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [添加全部数据（数据选择）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_确定](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [移除全部数据（数据选择）](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [全部工单(ticket_all_grid_view)](app/view/ticket_all_grid_view)

@@ -3252,6 +3252,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_relation_type_eq",
+      "logicName" : "关联类型",
+      "name" : "n_relation_type_eq",
+      "getPSAppDEField" : {
+        "name" : "RELATION_TYPE",
+        "codeName" : "relation_type"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_target_id_eq",
       "logicName" : "目标主体标识",
       "name" : "n_target_id_eq",
@@ -5377,9 +5388,9 @@
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "add_dependency",
     "defaultParamName" : "Default",
-    "logicName" : "工作项添加依赖关系",
+    "logicName" : "工作项添加依赖关系值变更",
     "memo" : "工作项添加依赖关系",
-    "name" : "工作项添加依赖关系",
+    "name" : "工作项添加依赖关系值变更",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 630,
@@ -5399,7 +5410,41 @@
       } ],
       "topPos" : 20
     }, {
-      "code" : "let choose = uiLogic.default.choose_relation_data;\r\nlet choose_type = uiLogic.ctrl.panelItems.choose_data.data.choose_type;\r\nif (choose != null && choose != '') {\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n}\r\n// 依赖类型\r\nif (choose_type != null && choose_type != '') {\r\n    uiLogic.dto.relation_type = choose_type;\r\n}",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "list"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 590,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "列表刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 750
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 920
+    }, {
+      "code" : "let choose = uiLogic.default.choose_relation_data;\r\nlet choose_type = uiLogic.ctrl.panelItems.choose_data.data.choose_type;\r\nif (choose != null && choose != '') {\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n}\r\n// 依赖类型\r\nif (choose_type != null && choose_type != '') {\r\n    uiLogic.dto.relation_type = choose_type;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -5453,36 +5498,6 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 380
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "add_dependency"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 890,
-      "logicNodeType" : "DEACTION",
-      "name" : "进行关联操作",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
         }
       } ],
       "topPos" : 380
@@ -5552,41 +5567,42 @@
       } ],
       "topPos" : 528
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 920
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
         "modelref" : true,
-        "id" : "list"
+        "id" : "add_dependency"
       },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
+      "getDstPSAppDataEntity" : {
         "modelref" : true,
-        "id" : "Default"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
       },
-      "leftPos" : 590,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "列表刷新",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 890,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "DEACTION1"
         }
       } ],
-      "topPos" : 750
+      "topPos" : 380
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "list",
+      "logicName" : "列表对象",
+      "name" : "列表对象",
+      "ctrlParam" : true
+    }, {
       "codeName" : "dto",
       "logicName" : "传入后台对象",
       "name" : "传入后台对象",
@@ -5597,15 +5613,15 @@
       "name" : "视图对象",
       "activeViewParam" : true
     }, {
+      "codeName" : "viewctx",
+      "logicName" : "viewctx",
+      "name" : "viewctx",
+      "navContextParam" : true
+    }, {
       "codeName" : "ctrl",
       "logicName" : "ctrl",
       "name" : "ctrl",
       "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
-      "codeName" : "list",
-      "logicName" : "列表对象",
-      "name" : "列表对象",
       "ctrlParam" : true
     }, {
       "codeName" : "Default",
@@ -5613,11 +5629,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "viewctx",
-      "logicName" : "viewctx",
-      "name" : "viewctx",
-      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6795,7 +6806,7 @@
     "name" : "选择下拉框区域展示",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 190,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -6810,7 +6821,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 210,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM1",
@@ -7271,7 +7282,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "ua71fcf1",
+      "name" : "u0f749a7",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"
@@ -7300,7 +7311,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "u1a5c2b0",
+      "name" : "u500ecee",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"
@@ -7329,7 +7340,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "u0a52fb1",
+      "name" : "ufd17bf6",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"
@@ -7358,7 +7369,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "ub9d9aa3",
+      "name" : "u24268ab",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"

@@ -79,6 +79,86 @@
 |状态|STATE|单项选择(文本值)|60|否||
 
 </el-tab-pane>
+<el-tab-pane label="AI完整数据信息" name="field_group_ai_full_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_test_case_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|重要程度|LEVEL|单项选择(文本值)|60|是||
+|用例类型|TYPE|单项选择(文本值)|60|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|60|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+|前置条件|PRECONDITION|长文本，没有长度限制|1048576|是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|状态|STATE|单项选择(文本值)|60|否||
+|步骤|STEPS|一对多关系数据集合|1048576|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|维护人|MAINTENANCE_ID|外键值|100|是||
+|维护人|MAINTENANCE_NAME|外键值文本|100|是||
+|测试计划名称|TEST_PLAN_NAME|文本，可指定长度|100|是||
+|执行时间|EXECUTED_AT|日期时间型||是||
+|执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
+|执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|模块路径|SUITES|外键值附加数据|500|是||
+|目标测试库|TARGET_LIBRARY_ID|文本，可指定长度|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|目标模板|TARGET_TEMPLATE|文本，可指定长度|100|是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|最新执行结果|LATEST_EXECUTED|一对多动态对象|1048576|是||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|步骤|STEPS_IMP|文本，可指定长度|100|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
+|步骤描述|STEP_DESC_IMP|文本，可指定长度|100|是||
+|预期结果|STEP_VALUE_IMP|文本，可指定长度|100|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
+|测试库是否归档|LIBRARY_IS_ARCHIVED|外键值附加数据||是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|用例模块标识|SUITE_ID|外键值|100|是||
+|所属模块|SUITE_NAME|外键值文本|200|是||
+|测试库|TEST_LIBRARY_ID|外键值|100|是||
+|所属测试库|TEST_LIBRARY_NAME|外键值文本|200|是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|名称|NAME|文本，可指定长度|200|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+
+</el-tab-pane>
+<el-tab-pane label="AI数据信息" name="field_group_ai_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标题|TITLE|文本，可指定长度|500|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_test_case_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|状态|STATE|单项选择(文本值)|60|否||
+|用例类型|TYPE|单项选择(文本值)|60|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|60|是||
+|前置条件|PRECONDITION|长文本，没有长度限制|1048576|是||
+|步骤|STEPS|一对多关系数据集合|1048576|是||
+|测试计划名称|TEST_PLAN_NAME|文本，可指定长度|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|测试库|TEST_LIBRARY_ID|外键值|100|是||
+|所属测试库|TEST_LIBRARY_NAME|外键值文本|200|是||
+
+</el-tab-pane>
 <el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
 
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
@@ -179,6 +259,8 @@
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#test_case_Create)|||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#test_case_Get)|||
+|获取完整AI数据信息|GetAIFullInfo|内置方法|默认|不支持||||
+|获取AI数据信息|GetAIInfo|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
@@ -273,6 +355,7 @@
 |[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/query/my_summary_case)|my_summary_case|否|否 |否 ||
 |[正常状态(normal)](module/TestMgmt/test_case/query/normal)|normal|否|否 |否 ||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/query/nosuite_test_case)|nosuite_test_case|否|否 |否 ||
+|[未添加用例(not_add)](module/TestMgmt/test_case/query/not_add)|not_add|否|否 |否 ||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/query/not_add_case)|not_add_case|否|否 |否 ||
 |[未关联的用例(not_exsists_relation)](module/TestMgmt/test_case/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
 |[用例通知维护人(notify_assignee)](module/TestMgmt/test_case/query/notify_assignee)|notify_assignee|否|否 |否 ||
@@ -286,6 +369,7 @@
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/query/test_case_maneuver_context)|test_case_maneuver_context|否|否 |否 ||
 |[测试计划用例(test_plan_test_case)](module/TestMgmt/test_case/query/test_plan_test_case)|test_plan_test_case|否|否 |否 ||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/query/work_item_relation_test_case)|work_item_relation_test_case|否|否 |否 ||
+|[工时登记用例(workload_case)](module/TestMgmt/test_case/query/workload_case)|workload_case|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -294,6 +378,7 @@
 |[执行结果分布(ImplementationResults)](module/TestMgmt/test_case/dataset/ImplementationResults)|ImplementationResults|数据查询|否|||
 |[用例维护人分布(PersonDistributions)](module/TestMgmt/test_case/dataset/PersonDistributions)|PersonDistributions|数据查询|否|||
 |[高级搜索(advanced_search)](module/TestMgmt/test_case/dataset/advanced_search)|advanced_search|数据查询|否|||
+|[查询用例信息（AI调用）(ai_info)](module/TestMgmt/test_case/dataset/ai_info)|ai_info|数据查询|否||查询全部用例信息，排序可以指定create_time或update_time，可以根据title or precondition or description来LIKE匹配|
 |[评审结果分布(assessmentResult)](module/TestMgmt/test_case/dataset/assessmentResult)|assessmentResult|数据查询|否|||
 |[基线选择用例(baseline_choose_case)](module/TestMgmt/test_case/dataset/baseline_choose_case)|baseline_choose_case|数据查询|否||基线选择用例|
 |[基线规划用例(baseline_plan_case)](module/TestMgmt/test_case/dataset/baseline_plan_case)|baseline_plan_case|[实体逻辑](module/TestMgmt/test_case/logic/baseline_plan_case)|否|||
@@ -319,6 +404,7 @@
 |[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/dataset/my_summary_case)|my_summary_case|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/test_case/dataset/normal)|normal|数据查询|否|||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/dataset/nosuite_test_case)|nosuite_test_case|数据查询|否|||
+|[未添加用例（评审）(not_add)](module/TestMgmt/test_case/dataset/not_add)|not_add|数据查询|否|||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/dataset/not_add_case)|not_add_case|数据查询|否|||
 |[未关联的用例(not_exsists_relation)](module/TestMgmt/test_case/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
 |[用例通知维护人(notify_assignee)](module/TestMgmt/test_case/dataset/notify_assignee)|notify_assignee|数据查询|否|||
@@ -332,6 +418,7 @@
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/dataset/test_case_maneuver_context)|test_case_maneuver_context|[实体逻辑](module/TestMgmt/test_case/logic/test_case_maneuver_context)|否|||
 |[测试计划用例(test_plan_test_case)](module/TestMgmt/test_case/dataset/test_plan_test_case)|test_plan_test_case|数据查询|否|||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/dataset/work_item_relation_test_case)|work_item_relation_test_case|数据查询|否|||
+|[工时登记用例(workload_case)](module/TestMgmt/test_case/dataset/workload_case)|workload_case|数据查询|否|||
 
 ## 数据权限
 
@@ -380,8 +467,8 @@
 |------------| -----   |  -------- | -------- |-------- |-------- |
 |[测试用例取消分配维护人通知](module/TestMgmt/test_case/notify/maintainer_cancel_notify)|maintainer_cancel_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(取消分配维护人)](index/notify_index#test_case_maintainer_cancel)|维护人 ||
 |[测试用例分配维护人通知](module/TestMgmt/test_case/notify/maintainer_notify)|maintainer_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(分配维护人)](index/notify_index#test_case_maintainer)|维护人 ||
-|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|负责人 关注人员 ||
-|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|关注人员 维护人 ||
+|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|关注人员 负责人 ||
+|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|维护人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -489,7 +576,7 @@
 |[关联工作项（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联缺陷（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_bug)|toolbar_link_bug|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
+|[工作项关联用例值变更](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
 |[已删除用例显示隐藏](module/TestMgmt/test_case/uilogic/deleted_visible)|deleted_visible|已删除用例显示隐藏|
 |[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
@@ -505,7 +592,7 @@
 |[门户全屏](module/TestMgmt/test_case/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/test_case/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/test_case/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联用例](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
+|[需求关联用例值变更](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
 
 ## 导入模式
 

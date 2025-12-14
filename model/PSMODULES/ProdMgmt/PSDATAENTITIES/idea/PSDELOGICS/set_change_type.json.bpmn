@@ -24,12 +24,12 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置基线过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询基线需求分页数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询需求分页数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取评审需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置版本过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取评审需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询符合条件的版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置变更类型为新增"/>
@@ -45,6 +45,8 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset3_loopsubcall1" sourceRef="dedataset3" targetRef="loopsubcall1">
                     </sequenceFlow>
+                    <sequenceFlow id="dedataset4_loopsubcall1" sourceRef="dedataset4" targetRef="loopsubcall1">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam1_dedataset1" sourceRef="gateway-debugparam1" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ideaset_change_typedefault:idea();
@@ -54,7 +56,7 @@
                                             $ideaset_change_typeversion_filter:version();
                                             $ideaset_change_typeversion_pages_results:version();
                                     eval($ideaset_change_typedefault==ideaset_change_typedefault && $ideaset_change_typefor_obj==ideaset_change_typefor_obj && $ideaset_change_typepage_results==ideaset_change_typepage_results && $ideaset_change_typeversion_filter==ideaset_change_typeversion_filter && $ideaset_change_typeversion_pages_results==ideaset_change_typeversion_pages_results);
-                                eval((RuleUtils.test($ideaset_change_typedefault.get("review"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("tag"),"ISNULL","")))
+                                eval((RuleUtils.test($ideaset_change_typedefault.get("review"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("tag"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("add_review"),"ISNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("add_tag"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -84,15 +86,26 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_dedataset4" sourceRef="gateway-debugparam1" targetRef="dedataset4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
+                                            $ideaset_change_typefor_obj:idea();
+                                            $ideaset_change_typepage_results:idea();
+                                            $ideaset_change_typeversion_filter:version();
+                                            $ideaset_change_typeversion_pages_results:version();
+                                    eval($ideaset_change_typedefault==ideaset_change_typedefault && $ideaset_change_typefor_obj==ideaset_change_typefor_obj && $ideaset_change_typepage_results==ideaset_change_typepage_results && $ideaset_change_typeversion_filter==ideaset_change_typeversion_filter && $ideaset_change_typeversion_pages_results==ideaset_change_typeversion_pages_results);
+                                eval((RuleUtils.test($ideaset_change_typedefault.get("add_review"),"ISNOTNULL",""))&&(RuleUtils.test($ideaset_change_typedefault.get("add_tag"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam2_loopsubcall1" sourceRef="debugparam2" targetRef="loopsubcall1">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_debugparam2" sourceRef="rawsqlcall1" targetRef="debugparam2">
-                    </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_loopsubcall1" sourceRef="rawsqlcall1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset2_debugparam3" sourceRef="dedataset2" targetRef="debugparam3">
                     </sequenceFlow>

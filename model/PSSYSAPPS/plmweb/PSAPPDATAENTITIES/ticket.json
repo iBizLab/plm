@@ -255,7 +255,7 @@
     "builtinMethod" : false,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "customer_choose_ticket",
     "methodType" : "DEACTION",
     "name" : "customer_choose_ticket",
@@ -265,8 +265,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -288,11 +287,10 @@
       "modelref" : true,
       "id" : "customer_choose_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/customer_choose_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "customer_del_ticket",
@@ -430,6 +428,80 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
@@ -571,7 +643,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_ticket",
     "methodType" : "DEACTION",
     "name" : "others_relation_ticket",
@@ -581,8 +653,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -604,11 +675,10 @@
       "modelref" : true,
       "id" : "others_relation_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "product_ticket_re_counters",
@@ -1341,6 +1411,44 @@
     "requestPath" : "/fetch_advanced_search",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -2023,6 +2131,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_my_filter",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_submit",
+    "dataSetName" : "my_submit",
+    "dataSetTag" : "my_submit",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_submit",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_submit"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_submit"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_submit",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_my_summary_ticket",
@@ -4043,6 +4189,175 @@
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
+    "codeName" : "ticket_ai_info_dto",
+    "name" : "ticket_ai_info_dto",
+    "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "product_id",
+      "logicName" : "产品标识",
+      "name" : "product_id",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "create_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 21,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "product_name",
+      "logicName" : "所属产品",
+      "name" : "product_name",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "product_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "id",
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "name" : "priority",
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "update_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "type",
+      "logicName" : "类型",
+      "name" : "type",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "submitted_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "提交时间",
+      "name" : "submitted_at",
+      "getPSAppDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "submitted_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "estimated_at",
+      "logicName" : "预计时间",
+      "name" : "estimated_at",
+      "getPSAppDEField" : {
+        "name" : "ESTIMATED_AT",
+        "codeName" : "estimated_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "name" : "tags",
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "name" : "show_identifier",
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
+  }, {
     "codeName" : "ticket_assignee_dto",
     "name" : "ticket_assignee_dto",
     "getPSAppDEMethodDTOFields" : [ {
@@ -5560,7 +5875,7 @@
     "builtinMethod" : false,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "customer_choose_ticket",
     "methodType" : "DEACTION",
     "name" : "customer_choose_ticket",
@@ -5570,8 +5885,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5593,11 +5907,10 @@
       "modelref" : true,
       "id" : "customer_choose_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/customer_choose_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "customer_del_ticket",
@@ -5735,6 +6048,80 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
@@ -5876,7 +6263,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_ticket",
     "methodType" : "DEACTION",
     "name" : "others_relation_ticket",
@@ -5886,8 +6273,7 @@
         "modelref" : true,
         "id" : "ticket_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -5909,11 +6295,10 @@
       "modelref" : true,
       "id" : "others_relation_ticket"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_ticket",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "product_ticket_re_counters",
@@ -6247,6 +6632,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_advanced_search",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_archived",
@@ -6931,6 +7354,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_my_filter",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_submit",
+    "dataSetName" : "my_submit",
+    "dataSetTag" : "my_submit",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_submit",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_submit"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_submit"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_submit",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_my_summary_ticket",
@@ -9935,52 +10396,6 @@
       } ],
       "topPos" : 20
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 590,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "表格刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        }
-      } ],
-      "topPos" : 840
-    }, {
-      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "隐藏下拉框并清空下拉框内容",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 528
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -10010,38 +10425,6 @@
         }
       } ],
       "topPos" : 723
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.grid.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 590,
@@ -10076,14 +10459,7 @@
       } ],
       "topPos" : 617
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 954
-    }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -10115,13 +10491,93 @@
         }
       } ],
       "topPos" : 320
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框并清空下拉框内容",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 528
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 590,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 840
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 954
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "dto",
-      "logicName" : "传入后台对象",
-      "name" : "传入后台对象",
-      "entityParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "视图对象",
       "name" : "视图对象",
@@ -10137,6 +10593,11 @@
       "logicName" : "表格对象",
       "name" : "表格对象",
       "ctrlParam" : true
+    }, {
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
     }, {
       "codeName" : "ctx",
       "logicName" : "上下文参数",
@@ -10353,9 +10814,9 @@
   }, {
     "codeName" : "idea_relation_ticket",
     "defaultParamName" : "Default",
-    "logicName" : "需求关联工单",
+    "logicName" : "需求关联工单值变更",
     "memo" : "值变更时触发，需求关联工单，调用处理逻辑生成正反向数据",
-    "name" : "需求关联工单",
+    "name" : "需求关联工单值变更",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 630,
@@ -10374,6 +10835,101 @@
         }
       } ],
       "topPos" : 20
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "others_relation_idea"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 410
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框并清空下拉框内容",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "选中数据不为空",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 528
     }, {
       "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
       "codeName" : "RAWJSCODE3",
@@ -10409,70 +10965,7 @@
       } ],
       "topPos" : 670
     }, {
-      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "隐藏下拉框并清空下拉框内容",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "选中数据不为空",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "srfactionparam",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "dto"
-            },
-            "logicType" : "SINGLE",
-            "name" : "dto[srfactionparam] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 528
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "others_relation_idea"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 820,
-      "logicNodeType" : "DEACTION",
-      "name" : "进行关联操作",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 410
-    }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n\r\n}",
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -10531,45 +11024,8 @@
         }
       } ],
       "topPos" : 320
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.grid.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "dto",
-      "logicName" : "传入后台对象",
-      "name" : "传入后台对象",
-      "entityParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -10581,15 +11037,20 @@
       "name" : "表格对象",
       "ctrlParam" : true
     }, {
-      "codeName" : "viewctx",
-      "logicName" : "viewctx",
-      "name" : "viewctx",
-      "navContextParam" : true
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "视图对象",
       "name" : "视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "viewctx",
+      "logicName" : "viewctx",
+      "name" : "viewctx",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -10733,46 +11194,34 @@
       } ],
       "topPos" : 20
     }, {
-      "codeName" : "PREPAREJSPARAM1",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "RAWJSCODE3"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "VIEWCTRLINVOKE1"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.grid.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
+      "topPos" : 670
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 770
-    }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n    uiLogic.viewctx.product = view.context.curproduct;\r\n}",
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n    uiLogic.viewctx.product = view.context.curproduct;\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -10832,6 +11281,36 @@
       } ],
       "topPos" : 320
     }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "others_relation_ticket"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 410
+    }, {
       "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 590,
@@ -10865,83 +11344,65 @@
       } ],
       "topPos" : 528
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
+      "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 590,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "表格刷新",
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "topPos" : 670
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "others_relation_ticket"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 820,
-      "logicNodeType" : "DEACTION",
-      "name" : "进行关联操作",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 410
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 770
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "视图对象",
+      "name" : "视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "grid",
       "logicName" : "表格对象",
       "name" : "表格对象",
       "ctrlParam" : true
-    }, {
-      "codeName" : "viewctx",
-      "logicName" : "viewctx",
-      "name" : "viewctx",
-      "navContextParam" : true
     }, {
       "codeName" : "dto",
       "logicName" : "传入后台对象",
       "name" : "传入后台对象",
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "视图对象",
-      "name" : "视图对象",
-      "activeViewParam" : true
+      "codeName" : "viewctx",
+      "logicName" : "viewctx",
+      "name" : "viewctx",
+      "navContextParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -12009,9 +12470,9 @@
   }, {
     "codeName" : "work_item_relation_ticket",
     "defaultParamName" : "Default",
-    "logicName" : "工作项关联工单",
+    "logicName" : "工作项关联工单值变更",
     "memo" : "值变更时触发，工单关联工单，调用处理逻辑生成正反向数据",
-    "name" : "工作项关联工单",
+    "name" : "工作项关联工单值变更",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 630,
@@ -12030,13 +12491,6 @@
         }
       } ],
       "topPos" : 20
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 770
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -12068,37 +12522,32 @@
       } ],
       "topPos" : 410
     }, {
-      "codeName" : "PREPAREJSPARAM1",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "RAWJSCODE3"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "VIEWCTRLINVOKE1"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.grid.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
+      "topPos" : 670
     }, {
       "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
       "codeName" : "RAWJSCODE1",
@@ -12133,34 +12582,46 @@
       } ],
       "topPos" : 528
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
+      "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 590,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "表格刷新",
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "topPos" : 670
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
     }, {
-      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n\r\n}",
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 770
+    }, {
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    const srfactionparam = JSON.parse(choose);\r\n    // 将 owner_id 替换为 target_id\r\n    if (srfactionparam && Array.isArray(srfactionparam)) {\r\n        srfactionparam.forEach(item => {\r\n            item.target_id = item.owner_id\r\n            delete item.owner_id\r\n        })\r\n    }\r\n    uiLogic.dto.srfactionparam = srfactionparam;\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -12226,16 +12687,6 @@
       "name" : "传入后台对象",
       "entityParam" : true
     }, {
-      "codeName" : "grid",
-      "logicName" : "表格对象",
-      "name" : "表格对象",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "viewctx",
-      "logicName" : "viewctx",
-      "name" : "viewctx",
-      "navContextParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "视图对象",
       "name" : "视图对象",
@@ -12246,6 +12697,16 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "viewctx",
+      "logicName" : "viewctx",
+      "name" : "viewctx",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -12600,7 +13061,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "添加附件",
       "detailType" : "DEUIACTION",
-      "name" : "ufce83c9",
+      "name" : "uc53a5f2",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
@@ -12628,7 +13089,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "uef56f7c",
+      "name" : "ufc02f19",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -12653,7 +13114,7 @@
       "actionLevel" : 50,
       "caption" : "全屏",
       "detailType" : "DEUIACTION",
-      "name" : "ud47a89c",
+      "name" : "uf37665c",
       "getPSSysImage" : {
         "glyph" : "xf0b2@FontAwesome",
         "cssClass" : "fa fa-arrows-alt"
@@ -12673,7 +13134,7 @@
       "actionLevel" : 50,
       "caption" : "刷新",
       "detailType" : "DEUIACTION",
-      "name" : "ua721a09",
+      "name" : "u549c403",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -12693,7 +13154,7 @@
       "actionLevel" : 50,
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u1139cb5",
+      "name" : "ubaf9b91",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -12722,7 +13183,7 @@
       "actionLevel" : 200,
       "caption" : "恢复",
       "detailType" : "DEUIACTION",
-      "name" : "u24ed628",
+      "name" : "uaa4e88b",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"

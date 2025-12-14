@@ -345,7 +345,7 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "choose_child",
     "methodType" : "DEACTION",
     "name" : "choose_child",
@@ -355,8 +355,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -378,11 +377,10 @@
       "modelref" : true,
       "id" : "choose_child"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/choose_child",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "COPY",
     "actionTag" : "Copy",
@@ -819,6 +817,80 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
     "methodType" : "DEACTION",
@@ -1036,7 +1108,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_work_item",
     "methodType" : "DEACTION",
     "name" : "others_relation_work_item",
@@ -1046,8 +1118,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -1069,13 +1140,12 @@
       "modelref" : true,
       "id" : "others_relation_work_item"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_work_item",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "plan_work_item",
     "methodType" : "DEACTION",
     "name" : "plan_work_item",
@@ -1085,8 +1155,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -1108,11 +1177,10 @@
       "modelref" : true,
       "id" : "plan_work_item"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/plan_work_item",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "project_resource_setting",
@@ -3686,6 +3754,44 @@
     "requestPath" : "/fetch_advanced_search",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -6771,6 +6877,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_work_item_type",
     "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_workload_work_item",
+    "dataSetName" : "workload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload_work_item",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -6836,6 +6980,35 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "enableQuickSearch" : true
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "format_type",
+    "logicName" : "内容格式",
+    "name" : "FORMAT_TYPE",
+    "stdDataType" : 25,
+    "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -7810,6 +7983,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -7821,6 +7995,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -7831,6 +8006,7 @@
     "logicName" : "工时进度",
     "name" : "WORKLOAD_SCHEDULE",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -7841,6 +8017,7 @@
         "editorType" : "NUMBER",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT",
         "valueFormat" : "#0.0"
       },
@@ -7853,6 +8030,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -7863,6 +8041,7 @@
     "logicName" : "预估工时",
     "name" : "ESTIMATED_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -7931,18 +8110,6 @@
     "userTag4" : "INTENAL"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[REVIEW_RESULT_STATE][评审结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[REVIEW_RESULT_STATE][评审结果]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -7956,6 +8123,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "review_result_state",
     "logicName" : "评审结果",
@@ -7971,6 +8150,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[REMAINING_WORKLOAD][剩余工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -7984,6 +8164,7 @@
         "editorType" : "NUMBER",
         "name" : "[REMAINING_WORKLOAD][剩余工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT",
         "valueFormat" : "#0.0"
       },
@@ -7993,6 +8174,7 @@
     "logicName" : "剩余工时",
     "name" : "REMAINING_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -8034,6 +8216,7 @@
         "editorType" : "RAW",
         "name" : "[ACTUAL_WORKLOAD][实际工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT",
         "valueFormat" : "#0.0"
       },
@@ -8046,6 +8229,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ACTUAL_WORKLOAD][实际工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -8056,6 +8240,7 @@
     "logicName" : "实际工时",
     "name" : "ACTUAL_WORKLOAD",
     "precision" : 1,
+    "scale" : 1,
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -9326,6 +9511,17 @@
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[DEPENDENCIES][依赖]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[DEPENDENCIES][依赖]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[DEPENDENCIES][依赖]移动端默认",
       "getPSDEFFormItem" : {
@@ -9338,17 +9534,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[DEPENDENCIES][依赖]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[DEPENDENCIES][依赖]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "dependencies",
     "logicName" : "依赖",
@@ -10388,6 +10573,60 @@
     "name" : "RELEASE_NAME",
     "stdDataType" : 25,
     "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "user_tag",
+    "logicName" : "用户标记",
+    "name" : "USER_TAG",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "user_tag2",
+    "logicName" : "用户标记2",
+    "name" : "USER_TAG2",
+    "stdDataType" : 25,
+    "stringLength" : 200
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "fill_bi_form_default",
@@ -10458,6 +10697,185 @@
     "enableFront" : true
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
+    "codeName" : "work_item_ai_info_dto",
+    "name" : "work_item_ai_info_dto",
+    "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "name" : "show_identifier",
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "name" : "priority",
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "project_name",
+      "logicName" : "所属项目",
+      "name" : "project_name",
+      "getPSAppDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "assignee_name",
+      "logicName" : "负责人",
+      "name" : "assignee_name",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "work_item_type_name",
+      "logicName" : "工作项类型",
+      "name" : "work_item_type_name",
+      "getPSAppDEField" : {
+        "name" : "WORK_ITEM_TYPE_NAME",
+        "codeName" : "work_item_type_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "name" : "format_type",
+      "getPSAppDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "description",
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 21,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "name" : "tags",
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "severity",
+      "logicName" : "严重程度",
+      "name" : "severity",
+      "getPSAppDEField" : {
+        "name" : "SEVERITY",
+        "codeName" : "severity"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "create_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "id",
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "project_id",
+      "logicName" : "项目",
+      "name" : "project_id",
+      "getPSAppDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "update_time",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
+  }, {
     "codeName" : "work_item_assignee_dto",
     "name" : "work_item_assignee_dto",
     "getPSAppDEMethodDTOFields" : [ {
@@ -11312,6 +11730,17 @@
       "getPSAppDEField" : {
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "format_type",
+      "logicName" : "内容格式",
+      "name" : "format_type",
+      "getPSAppDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -12442,6 +12871,28 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "user_tag",
+      "logicName" : "用户标记",
+      "name" : "user_tag",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "user_tag2",
+      "logicName" : "用户标记2",
+      "name" : "user_tag2",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
@@ -13015,6 +13466,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_pid_isnull",
+      "logicName" : "父标识",
+      "name" : "n_pid_isnull",
+      "getPSAppDEField" : {
+        "name" : "PID",
+        "codeName" : "pid"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_priority_eq",
       "logicName" : "优先级",
       "name" : "n_priority_eq",
@@ -13047,6 +13509,17 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
+    }, {
+      "codeName" : "n_project_is_archived_eq",
+      "logicName" : "项目是否归档",
+      "name" : "n_project_is_archived_eq",
+      "getPSAppDEField" : {
+        "name" : "PROJECT_IS_ARCHIVED",
+        "codeName" : "project_is_archived"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "codeName" : "n_project_name_eq",
       "logicName" : "所属项目",
@@ -13436,6 +13909,50 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_eq",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_isnull",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_isnull",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_eq",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_isnull",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_isnull",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "codeName" : "n_work_item_origin_state_eq",
@@ -15588,7 +16105,7 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "choose_child",
     "methodType" : "DEACTION",
     "name" : "choose_child",
@@ -15598,8 +16115,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -15621,11 +16137,10 @@
       "modelref" : true,
       "id" : "choose_child"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/choose_child",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "COPY",
     "actionTag" : "Copy",
@@ -16062,6 +16577,80 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "GetAIFullInfo",
+    "codeName" : "get_ai_full_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIFullInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIFullInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_full_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_full_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UNKNOWN",
+    "actionTag" : "GetAIInfo",
+    "codeName" : "get_ai_info",
+    "methodType" : "DEACTION",
+    "name" : "GetAIInfo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetAIInfo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_ai_info"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "POST",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_ai_info",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "READ",
     "codeName" : "get_attention",
     "methodType" : "DEACTION",
@@ -16279,7 +16868,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "others_relation_work_item",
     "methodType" : "DEACTION",
     "name" : "others_relation_work_item",
@@ -16289,8 +16878,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -16312,13 +16900,12 @@
       "modelref" : true,
       "id" : "others_relation_work_item"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_work_item",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "plan_work_item",
     "methodType" : "DEACTION",
     "name" : "plan_work_item",
@@ -16328,8 +16915,7 @@
         "modelref" : true,
         "id" : "work_item_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -16351,11 +16937,10 @@
       "modelref" : true,
       "id" : "plan_work_item"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/plan_work_item",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "GETDRAFT",
     "codeName" : "project_resource_setting",
@@ -17036,6 +17621,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_advanced_search",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_ai_info",
+    "dataSetName" : "ai_info",
+    "dataSetTag" : "ai_info",
+    "methodType" : "FETCH",
+    "name" : "fetch_ai_info",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_ai_info"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_archived",
@@ -20124,6 +20747,44 @@
     "requestPath" : "/fetch_work_item_type",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_workload_work_item",
+    "dataSetName" : "workload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload_work_item",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempAdvanced_search",
     "dataSetTag" : "advanced_search",
     "dataSetType" : "DATAQUERY",
@@ -20166,6 +20827,49 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "advanced_search"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempAi_info",
+    "dataSetTag" : "ai_info",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "查询全部工作项信息，可以根据project_id查询特定项目的工作项信息，也可以根据work_item_type_name分类查询需求/阶段/里程碑/史诗/特性/用户故事/任务/缺陷，排序可以指定create_time或update_time，模糊搜索可以根据title/description来LIKE匹配",
+    "methodType" : "FETCHTEMP",
+    "name" : "ai_info",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Ai_infoInput",
+      "name" : "Ai_infoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Ai_infoResult",
+      "name" : "Ai_infoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_ai_info_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ai_info"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -23533,6 +24237,66 @@
     "tempDataMode" : 2,
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempWorkload_work_item",
+    "dataSetTag" : "workload_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "workload_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Workload_work_itemInput",
+      "name" : "Workload_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Workload_work_itemResult",
+      "name" : "Workload_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "PROJECT_IS_ARCHIVED",
+        "name" : "(PROJECT_IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "PROJECT_IS_DELETED",
+        "name" : "(PROJECT_IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -23801,6 +24565,11 @@
       "modelref" : true,
       "id" : "UPDATE"
     },
+    "getPSNavigateContexts" : [ {
+      "key" : "WORKLOAD",
+      "name" : "WORKLOAD",
+      "rawValue" : true
+    } ],
     "getPSNavigateParams" : [ {
       "key" : "estimated_workload",
       "name" : "estimated_workload",
@@ -24103,6 +24872,11 @@
       "modelref" : true,
       "id" : "UPDATE"
     },
+    "getPSNavigateContexts" : [ {
+      "key" : "WORKLOAD",
+      "name" : "WORKLOAD",
+      "rawValue" : true
+    } ],
     "getPSNavigateParams" : [ {
       "key" : "estimated_workload",
       "name" : "estimated_workload",
@@ -25263,7 +26037,7 @@
     },
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "notify_refresh"
+      "id" : "notify_refresh_mob"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -26387,7 +27161,7 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "notify_refresh",
+    "codeName" : "notify_refresh_mob",
     "defaultParamName" : "Default",
     "logicName" : "通知刷新（移动端）",
     "memo" : "通知页面刷新",
@@ -26416,7 +27190,8 @@
       "leftPos" : 680,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "code" : "ibiz.mc.command.create.send({ srfdecodename: 'work_item'})",
       "codeName" : "RAWJSCODE1",
@@ -26857,7 +27632,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "u0a620b7",
+      "name" : "u345ce3d",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"
@@ -26884,7 +27659,7 @@
     "uniqueTag" : "work_item__Usr1012135938",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "uaf3b518",
+      "name" : "ud5b49a0",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\">\n  <path d=\"M645.82501221 415.30163575l208.70617675-207.98602296-0.71520995 117.86462403c-0.28674316 9.77563477 7.61682129 18.3968811 17.3908081 18.11013794h12.50546265c9.77563477-0.28756714 17.96594238-6.03643799 18.11013793-15.95544434l0.57595825-175.50247193c0-0.14419555 0.28674316-9.34222412 0.28674317-9.34222411 0.14419555-4.88534546-1.00689697-9.34222412-4.16931153-12.50546265-3.16241455-3.16241455-7.47097778-5.17373657-12.50546264-5.03118897l-8.91210937 0.14419556c-0.14337158 0-0.28344727 0-0.4284668 0.14419556l-174.06628418-0.72097779c-9.77563477 0.28756714-17.96594238 8.34027099-18.11013794 18.25598144v12.50546265c1.43948364 11.64193726 10.63504028 18.39852906 20.40985108 18.11013795l114.7013855 0.28756713-208.13021851 207.26998902c-9.48724365 9.48724365-9.48724365 24.86508179 0 34.35067749 9.48724365 9.63061523 24.86755372 9.63061523 34.35397338 0h-0.00329589zM382.78430175 611.35897827l-208.84872436 207.27163696 0.71932984-117.29443359c0.28756714-9.77151489-7.62011719-18.39358521-17.39410401-18.11013794h-13.22149658c-9.77563477 0.28756714-17.96594238 6.03726196-18.11013794 15.95626831l-0.57595825 175.64666748c0 0.14419555-0.28674316 9.34222412-0.28674316 9.34222413-0.14419555 4.89111328 1.00689697 9.34222412 4.16519164 12.50546264 3.16241455 3.16241455 7.47592163 5.17373657 12.50546265 5.03118897l8.9112854-0.14419556c0.14419555 0 0.28756714 0 0.43258667-0.14419556l174.78561401 0.72015381c9.77151489-0.28756714 17.96594238-8.33615112 18.11013794-18.25598144v-12.50463867c-1.43865967-11.64193726-10.63751221-18.39852906-20.41397094-18.11013794l-114.70220948-0.28756714 207.98684693-207.26504517c9.48724365-9.48724365 9.48724365-24.86837768 0-34.35397339-9.33892823-9.63061523-24.57421875-9.63061523-34.06311036 0.00082398v0zM902.39834594 874.82815552l-0.43176269-175.64666748c-0.28756714-9.77645874-8.34027099-15.66870117-18.11096192-15.95626832h-12.50463867c-9.77645874-0.28344727-17.53665161 8.34027099-17.39492797 18.11013794l0.7201538 117.8687439-208.84954833-207.84512328c-9.48724365-9.48724365-24.86755372-9.48724365-34.35397339-1e-8-9.48312378 9.48641968-9.48312378 24.86755372 0 34.35397339l207.98931885 207.26422119-114.70138551 0.28756714c-9.77563477-0.28756714-18.82946777 6.61157227-20.41314696 18.11013794v12.50546264c0.28674316 9.77563477 8.34027099 17.96594238 18.11013794 18.25598146l174.06710815-0.72015382c0.14337158 0 0.28674316 0.14419555 0.43176269 0.14419556l8.91210938 0.14419555c4.88452148 0.14337158 9.34222412-1.72457886 12.50463867-5.03118896 3.16241455-3.16241455 4.31103516-7.61599732 4.16601562-12.50546265 0 0-0.14419555-9.19885254-0.14419555-9.34222412h0.00411987zM209.00970459 173.68179321l114.70138549-0.28756714c9.77151489 0.28756714 18.82617188-6.61157227 20.40985109-18.11013794v-12.5071106c-0.28756714-9.77563477-8.33615112-17.96594238-18.11013794-18.25598144l-174.92651368 0.72015381c-0.14419555 0-0.28756714-0.14419555-0.43258667-0.14419555l-8.91046142-0.14419557c-4.89111328-0.14337158-9.34222412 1.72457886-12.50546265 5.03118898-3.16241455 3.16241455-4.31515503 7.61599732-4.16519165 12.50546264 0 0 0.28674316 9.19885254 0.28674316 9.34222413l0.4284668 175.64666747c0.14419555 9.77233887 8.34027099 15.66870117 18.11013794 15.95214844h13.22561645c9.77563477 0.28674316 17.53582763-8.33615112 17.38998414-18.11013794l-0.57513429-117.28948974 208.70947266 207.41500854c9.48229981 9.48724365 24.86425781 9.48724365 34.34985351 0 9.48724365-9.48724365 9.48724365-24.86755372 0-34.35397339l-207.98684691-207.40759278zM209.00970459 173.68179321z\" fill=\"#272636\"></path>\n</svg>"
       },
@@ -26913,7 +27688,7 @@
       "actionLevel" : 200,
       "caption" : "恢复",
       "detailType" : "DEUIACTION",
-      "name" : "u304ad8f",
+      "name" : "ua35c2e4",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"

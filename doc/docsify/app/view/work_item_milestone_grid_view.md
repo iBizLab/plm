@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（waterfall动态）](module/ProjMgmt/work_item#界面行为)
-  * 编辑界面_刷新操作(Refresh)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（hybrid动态）](module/ProjMgmt/work_item#界面行为)
+  * 编辑界面_刷新操作(Refresh)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（waterfall动态）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_导出操作（Excel）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图

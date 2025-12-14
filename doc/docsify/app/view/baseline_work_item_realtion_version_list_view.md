@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [返回](module/ProjMgmt/baseline_work_item#界面行为)
   * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [版本对比（基线列表）](module/ProjMgmt/baseline_work_item#界面行为)
+  * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [返回](module/ProjMgmt/baseline_work_item#界面行为)
 
 ### 关联视图
   * [基线工作项(baseline_work_item_edit_view)](app/view/baseline_work_item_edit_view)

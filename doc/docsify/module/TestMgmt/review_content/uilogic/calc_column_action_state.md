@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_column_action_state#begin {开始}]]
-state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
 state "计算表格列行为状态" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {计算表格列行为状态}]]
+state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1

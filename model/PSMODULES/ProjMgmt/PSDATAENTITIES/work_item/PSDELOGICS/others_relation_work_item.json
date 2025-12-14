@@ -158,11 +158,12 @@
     } ],
     "topPos" : 150
   }, {
-    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('target_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))\r\n}\r\n\r\n\r\n",
     "codeName" : "RAWSFCODE1",
     "codeType" : "Groovy",
     "leftPos" : 836,
     "logicNodeType" : "RAWSFCODE",
+    "memo" : "if(for_temp_obj.get('owner_id') != null){\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))\n    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))\n}\n",
     "name" : "关联标识",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
@@ -636,7 +637,8 @@
     "leftPos" : 460,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 694
+    "topPos" : 694,
+    "parallelOutput" : true
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {

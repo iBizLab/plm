@@ -884,6 +884,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -903,6 +904,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -960,6 +962,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -979,6 +982,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1036,6 +1040,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1055,6 +1060,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1112,6 +1118,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1131,6 +1138,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1188,6 +1196,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1207,6 +1216,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1264,6 +1274,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1283,6 +1294,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1340,6 +1352,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1359,6 +1372,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1416,6 +1430,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1435,6 +1450,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1492,6 +1508,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1511,6 +1528,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1568,6 +1586,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1587,6 +1606,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -1644,6 +1664,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -1663,6 +1684,7 @@ Integer
   "n_position_id_eq" : null,
   "n_position_name_eq" : null,
   "n_position_name_like" : null,
+  "n_report_flag_eq" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
   "n_user_id_notin" : null,
@@ -2316,6 +2338,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2352,6 +2375,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2388,6 +2412,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2424,6 +2449,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2460,6 +2486,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2496,6 +2523,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2532,6 +2560,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2568,6 +2597,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2604,6 +2634,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2640,6 +2671,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -2676,6 +2708,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3345,6 +3378,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3381,6 +3415,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3417,6 +3452,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3453,6 +3489,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3489,6 +3526,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3525,6 +3563,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3561,6 +3600,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3597,6 +3637,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3633,6 +3674,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3669,6 +3711,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -3705,6 +3748,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4374,6 +4418,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4410,6 +4455,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4446,6 +4492,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4482,6 +4529,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4518,6 +4566,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4554,6 +4603,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4590,6 +4640,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4626,6 +4677,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4662,6 +4714,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4698,6 +4751,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
@@ -4734,6 +4788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_position_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位标识|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_position_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
+|<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计标识|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|

@@ -10,6 +10,7 @@
 
 
 ### 关联视图
+  * [我的智能体(ai_agent_context_my_view)](app/view/ai_agent_context_my_view)
   * [登录日志(login_log_grid_view)](app/view/login_log_grid_view)
   * [通知设置(notify_setting_config_view)](app/view/notify_setting_config_view)
   * [帐号设置(user_account_view)](app/view/user_account_view)

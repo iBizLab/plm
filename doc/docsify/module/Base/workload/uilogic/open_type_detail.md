@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_type_detail#begin {开始}]]
-state "获取搜索表单的日期范围条件" as RAWJSCODE1  [[$./open_type_detail#rawjscode1 {获取搜索表单的日期范围条件}]]
 state "打开工作类别工时记录列表视图" as DEUIACTION1  [[$./open_type_detail#deuiaction1 {打开工作类别工时记录列表视图}]]
+state "获取搜索表单的日期范围条件" as RAWJSCODE1  [[$./open_type_detail#rawjscode1 {获取搜索表单的日期范围条件}]]
 
 
 Begin --> RAWJSCODE1

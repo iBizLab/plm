@@ -27,7 +27,11 @@
 |[动态看板部件配置(DYNA_PORTLET_SETTING)](module/Base/dyna_portlet_setting)|dyna_portlet_setting|主实体|无存储||否|否|自控制|否|动态看板部件配置信息|
 |[执行人(EXECUTOR)](module/Base/executor)|executor|主实体|SQL|EXECUTOR|是|否|附属主实体控制|否||
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|extend_log|主实体|SQL|EXTEND_LOG|否|否|自控制|否|记录扩展日志|
+|[扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule)|extend_schedule|主实体|SQL|EXTEND_SCHEDULE|否|否|自控制|否||
+|[扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task)|extend_scheduled_task|主实体|SQL|EXTEND_SCHEDULED_TASK|否|否|自控制|否||
+|[扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)](module/Base/extend_scheduled_task_his)|extend_scheduled_task_his|主实体|SQL|EXTEND_SCHEDULED_TASK_HIS|否|否|自控制|否||
 |[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)|extend_storage|主实体|SQL|EXTEND_STORAGE|是|否|自控制|否|记录扩展存储|
+|[扩展任务类型(EXTEND_TASK_TYPE)](module/Base/extend_task_type)|extend_task_type|主实体|SQL|EXTEND_TASK_TYPE|否|否|自控制|否||
 |[收藏(FAVORITE)](module/Base/favorite)|favorite|主实体|SQL|FAVORITE|是|否|自控制|否|用户自定义的收藏记录，方便快速访问常用的实体或页面。|
 |[团队(GROUP)](module/Base/group)|group|主实体|SQL|USER_GROUP|否|否|自控制|否|记录团队信息。|
 |[洞察力(INSIGHT)](module/Base/insight)|insight|主实体|SQL|INSIGHT|否|否|自控制|否|用于存储报表标识类型等，通过重定向视图导向对应的报表视图，可使用view://机制|

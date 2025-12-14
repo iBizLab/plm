@@ -836,6 +836,52 @@
         "id" : "TOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "WARNING",
+        "caption" : "AI+",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction18",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction18"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf123@FontAwesome",
+          "cssClass" : "fa fa-star-half-full"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "buttonStyle" : "WARNING",
+          "caption" : "AI+",
+          "codeName" : "ai",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
+            "viewType" : "DELISTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "ai_agent_assignment_ai",
+          "name" : "AI+",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf123@FontAwesome",
+            "cssClass" : "fa fa-star-half-full"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "ai",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "ai@ai_agent_assignment"
+        },
+        "tooltip" : "AI+",
+        "uIActionTarget" : "SINGLEDATA",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
         "caption" : "编辑",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
@@ -2079,7 +2125,8 @@
                 "getPSDEFDLogics" : [ {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "icon",
-                  "logicType" : "SINGLE"
+                  "logicType" : "SINGLE",
+                  "name" : "icon值不为空(NotNil)"
                 } ],
                 "relatedDetailNames" : [ "icon" ],
                 "notMode" : false
@@ -2166,6 +2213,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) HTML",
                   "value" : "HTML"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -2178,6 +2226,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) HTML",
                   "value" : "HTML"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -2232,6 +2281,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) MD",
                   "value" : "MD"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -2244,6 +2294,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) MD",
                   "value" : "MD"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -2251,6 +2302,9 @@
               } ],
               "getPSEditor" : {
                 "editorHeight" : 1.0,
+                "editorParams" : {
+                  "tocpos" : "fixed"
+                },
                 "editorType" : "MARKDOWN",
                 "maxLength" : 16777215,
                 "mode" : "EDIT",
@@ -2270,6 +2324,7 @@
               "detailType" : "FORMITEM",
               "enableCond" : 0,
               "ignoreInput" : 12,
+              "itemHeight" : 600.0,
               "labelPos" : "NONE",
               "labelWidth" : 0,
               "name" : "formitem",
@@ -2286,6 +2341,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) EXCEL",
                   "value" : "EXCEL"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -2298,12 +2354,14 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) EXCEL",
                   "value" : "EXCEL"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
                 "notMode" : false
               } ],
               "getPSEditor" : {
+                "editorHeight" : 600.0,
                 "editorStyle" : "LUCKYSHEET",
                 "editorType" : "TEXTAREA",
                 "maxLength" : 16777215,
@@ -2367,7 +2425,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "attachments",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "attachments值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "attachments" ],
               "notMode" : false
@@ -2649,7 +2708,7 @@
                       "actionLevel" : 200,
                       "caption" : "下载",
                       "detailType" : "DEUIACTION",
-                      "name" : "u5832788",
+                      "name" : "u69ec7c3",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -3176,7 +3235,10 @@
           "hidden" : true,
           "viewFieldName" : "PID"
         }, {
-          "id" : "field_text_dynamic1",
+          "id" : "html_content",
+          "viewFieldName" : "CONTENT"
+        }, {
+          "id" : "md_content",
           "viewFieldName" : "CONTENT"
         }, {
           "id" : "pcreate_man",
@@ -3184,6 +3246,10 @@
         }, {
           "id" : "pcontent",
           "viewFieldName" : "PCONTENT"
+        }, {
+          "id" : "format_type",
+          "hidden" : true,
+          "viewFieldName" : "FORMAT_TYPE"
         } ],
         "codeName" : "usr0228764297",
         "controlType" : "PANEL",
@@ -3345,12 +3411,12 @@
                 "logicType" : "GROUP",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "NOTEQ",
-                  "dstModelField" : "FIELD_TEXT_DYNAMIC1",
+                  "dstModelField" : "HTML_CONTENT",
                   "logicType" : "SINGLE",
-                  "name" : "逻辑项",
+                  "name" : "HTML_CONTENT 不等于(<>) <p><del>该评论已删除</del></p>",
                   "value" : "<p><del>该评论已删除</del></p>"
                 } ],
-                "relatedItemNames" : [ "field_text_dynamic1" ],
+                "relatedItemNames" : [ "html_content" ],
                 "notMode" : false
               } ],
               "getPSPanelItems" : [ {
@@ -3429,7 +3495,7 @@
                   "logicTag" : "list_itempanel",
                   "logicType" : "SCRIPT",
                   "name" : "logic",
-                  "scriptCode" : "data.create_man === context.srfuserid",
+                  "scriptCode" : "data.create_man === context.srfuserid&&data.format_type!=='MD'",
                   "triggerType" : "ITEMVISIBLE"
                 } ],
                 "getPSLayoutPos" : {
@@ -3525,7 +3591,7 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "field_text_dynamic1",
+              "name" : "html_content",
               "getPSEditor" : {
                 "contentType" : "HTML",
                 "editorParams" : {
@@ -3536,7 +3602,7 @@
                 },
                 "editorStyle" : "COMMENT_ITEM",
                 "editorType" : "RAW",
-                "name" : "field_text_dynamic1",
+                "name" : "html_content",
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
                   "pluginCode" : "COMMENT_ITEM",
@@ -3548,6 +3614,57 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "FORMAT_TYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "FORMAT_TYPE 不等于(<>) MD",
+                  "value" : "MD"
+                } ],
+                "relatedItemNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "CONTENT"
+            }, {
+              "caption" : "文本(动态)",
+              "fieldStates" : 3,
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "md_content",
+              "getPSEditor" : {
+                "editorParams" : {
+                  "disabledirectory" : "true",
+                  "READONLY" : "TRUE"
+                },
+                "editorType" : "MARKDOWN",
+                "mode" : "EDIT",
+                "name" : "md_content",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "readOnly" : true,
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "FORMAT_TYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "FORMAT_TYPE 等于(=) MD",
+                  "value" : "MD"
+                } ],
+                "relatedItemNames" : [ "format_type" ],
+                "notMode" : false
+              } ],
               "viewFieldName" : "CONTENT"
             }, {
               "caption" : "容器",
@@ -3650,6 +3767,21 @@
               }
             } ]
           } ]
+        }, {
+          "caption" : "文本(动态)",
+          "itemType" : "FIELD",
+          "name" : "format_type",
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "format_type",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "FORMAT_TYPE",
+          "hidden" : true
         } ],
         "layoutPanel" : true,
         "name" : "list_itempanel",
@@ -3758,13 +3890,6 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "pid",
-        "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
-        }
-      }, {
-        "dataType" : 25,
         "getFrontPSCodeList" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
@@ -3773,6 +3898,35 @@
         "getPSAppDEField" : {
           "name" : "CREATE_MAN",
           "codeName" : "create_man"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "name" : "create_time",
+        "getPSAppDEField" : {
+          "name" : "CREATE_TIME",
+          "codeName" : "create_time"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "format_type",
+        "getPSAppDEField" : {
+          "name" : "FORMAT_TYPE",
+          "codeName" : "format_type"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "id",
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      }, {
+        "dataType" : 21,
+        "name" : "pcontent",
+        "getPSAppDEField" : {
+          "name" : "PCONTENT",
+          "codeName" : "pcontent"
         }
       }, {
         "dataType" : 25,
@@ -3786,26 +3940,11 @@
           "codeName" : "pcreate_man"
         }
       }, {
-        "dataType" : 21,
-        "name" : "pcontent",
-        "getPSAppDEField" : {
-          "name" : "PCONTENT",
-          "codeName" : "pcontent"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD HH:mm:ss",
-        "name" : "create_time",
-        "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "create_time"
-        }
-      }, {
         "dataType" : 25,
-        "name" : "id",
+        "name" : "pid",
         "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
+          "name" : "PID",
+          "codeName" : "pid"
         }
       }, {
         "dataType" : 25,

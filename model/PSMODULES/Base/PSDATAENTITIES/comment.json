@@ -1131,6 +1131,72 @@
     "linkDEField" : true,
     "phisicalDEField" : false
   }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[FORMAT_TYPE][内容格式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[FORMAT_TYPE][内容格式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[FORMAT_TYPE][内容格式]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[FORMAT_TYPE][内容格式]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "FORMAT_TYPE",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "format_type",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "内容格式",
+    "name" : "FORMAT_TYPE",
+    "orderValue" : 250,
+    "serviceCodeName" : "format_type",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_TOP",
       "dBType" : "MYSQL5",
@@ -1370,6 +1436,10 @@
       "enableFront" : true
     } ],
     "codeName" : "name",
+    "getComputePSDEFLogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEFLOGICS/format_type.json"
+    },
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
@@ -2343,6 +2413,59 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "format_type",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEFLOGICS/format_type.json",
+    "logicName" : "识别内容格式",
+    "logicSubType" : "DEFIELD",
+    "memo" : "识别评论内容格式",
+    "name" : "识别内容格式",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 300,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 170,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _content = _default.get('content').trim()\r\n\r\n\r\nif(_content != null){\r\n\r\n     // 检查 HTML（使用更简单的匹配）\r\n    boolean isHtml = false\r\n    boolean isMarkdown = false\r\n    \r\n    // 检查 HTML 标签\r\n    if (_content.contains(\"</\") && _content.contains(\">\")) {\r\n        // 检查成对的标签\r\n        def tags = [\"html\", \"body\", \"head\", \"div\", \"p\", \"span\", \"table\", \"ul\", \"ol\"]\r\n        tags.each { tag ->\r\n            if (_content.contains(\"<${tag}\") && _content.contains(\"</${tag}>\")) {\r\n                isHtml = true\r\n            }\r\n        }\r\n        \r\n        // 检查自闭合标签\r\n        def selfClosing = [\"br\", \"hr\", \"img\", \"input\", \"meta\", \"link\"]\r\n        selfClosing.each { tag ->\r\n            if (_content.contains(\"<${tag}\") && _content.contains(\"/>\")) {\r\n                isHtml = true\r\n            }\r\n        }\r\n    }\r\n    \r\n    // 检查 HTML 文档声明\r\n    if (_content.toLowerCase().contains(\"<!doctype html\")) {\r\n        isHtml = true\r\n    }\r\n    \r\n\r\n    // 链接 [_content](url)\r\n    if (_content.contains(\"[\") && _content.contains(\"](\") && _content.contains(\")\")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    // 列表\r\n    if (_content.contains(\"- \") || _content.contains(\"* \") || _content.contains(\"1. \")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    // 代码块\r\n    if (_content.contains(\"```\") || _content.contains(\"~~~\")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    println \"评论1#######:$_default\"\r\n    \r\n    // 返回结果\r\n    if (isHtml && isMarkdown) {\r\n        _default.set('format_type', \"HTML\")\r\n    } else if (isMarkdown) {\r\n          _default.set('format_type', \"MD\")\r\n    } else {\r\n         _default.set('format_type', \"HTML\")\r\n    }\r\n    println \"评论2#######:$_default\"\r\n}",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 260,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "判断内容格式",
+      "topPos" : 300,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "no_top",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDELOGICS/no_top.json",
@@ -2634,6 +2757,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "内容格式",
+      "name" : "format_type",
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "0",
       "logicName" : "是否置顶",
       "name" : "is_top",
@@ -2747,6 +2881,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2762,6 +2897,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -2777,6 +2913,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -2792,6 +2929,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -2806,6 +2944,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2820,6 +2959,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2834,6 +2974,7 @@
         "name" : "OWNER_TYPE",
         "codeName" : "owner_type"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2848,6 +2989,7 @@
         "name" : "PID",
         "codeName" : "Pid"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2862,6 +3004,7 @@
         "name" : "PRINCIPAL_ID",
         "codeName" : "principal_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -2877,17 +3020,17 @@
     "name" : "客户评论通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "关注人员",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_attention.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "负责人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_customer_assignee.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "关注人员",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_attention.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
