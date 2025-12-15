@@ -22,6 +22,13 @@
     "engineType" : "WizardView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onCloseView",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGIC",
+    "scriptCode" : "return (async function() { \r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.ai_kb_document_wizard');\r\n    const list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    list.forEach(item => {\r\n        service.local.delete(context, item.id);\r\n    })\r\n})();\r\n"
+  } ],
   "getPSControls" : [ {
     "codeName" : "create_wizard_view",
     "controlType" : "WIZARDPANEL",
