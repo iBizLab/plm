@@ -158,10 +158,12 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "im_method",
+      "dataType" : 25
+    }, {
       "id" : "import_method",
+      "hidden" : true,
       "dataType" : 25,
-      "createDV" : "space_manual",
-      "updateDV" : "space_manual",
       "getPSAppDEField" : {
         "name" : "IMPORT_METHOD",
         "codeName" : "import_method"
@@ -189,8 +191,34 @@
         "name" : "group1",
         "getPSDEFormDetails" : [ {
           "caption" : "导入方式",
+          "codeName" : "im_method",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "im_method",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "PICKUPVIEW",
+            "name" : "im_method",
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_import_method_list_view.json",
+              "viewType" : "DELISTVIEW"
+            }
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "导入方式",
           "codeName" : "import_method",
-          "createDV" : "space_manual",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -205,21 +233,15 @@
             "codeName" : "import_method"
           },
           "getPSEditor" : {
-            "editorType" : "RADIOBUTTONLIST",
-            "name" : "import_method",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__import_method.json"
-            }
+            "editorType" : "HIDDEN",
+            "name" : "import_method"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "updateDV" : "space_manual",
           "allowEmpty" : false,
-          "needCodeListConfig" : true,
-          "showCaption" : true
+          "hidden" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,

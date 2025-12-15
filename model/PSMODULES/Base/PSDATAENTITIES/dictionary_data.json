@@ -409,6 +409,54 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ai_kb_doc_import_method/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ai_kb_doc_import_method",
+    "logicName" : "知识库文档导入方式",
+    "name" : "ai_kb_doc_import_method",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_kb_doc_import_method",
+          "fieldName" : "TYPE",
+          "name" : "(TYPE) 等于(=) ai_kb_doc_import_method",
+          "getPSDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ai_kb_doc_import_methodInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ai_kb_doc_import_methodResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "idea",
@@ -1500,6 +1548,37 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "ai_kb_doc_import_method",
+    "logicName" : "知识库文档导入方式",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "name" : "ai_kb_doc_import_method",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ai_kb_doc_import_method"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ai_kb_doc_import_methodInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ai_kb_doc_import_methodResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -3824,6 +3903,12 @@
     "logicName" : "实体选项操作视图（编辑阶段）",
     "name" : "实体选项操作视图（编辑阶段）",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "import_method_list_view",
+    "logicName" : "知识库文档导入方式字典列表视图",
+    "name" : "知识库文档导入方式字典列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
