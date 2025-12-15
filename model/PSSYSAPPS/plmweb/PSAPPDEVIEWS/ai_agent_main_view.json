@@ -348,7 +348,7 @@
     "getPSDEFormItemUpdates" : [ {
       "codeName" : "compute",
       "name" : "compute_temperature_top_p",
-      "scriptCode" : "const modeConfigs = {\r\n  precise: { temperature: 0.1, top_p: 0.7 },\r\n  balanced: { temperature: 1, top_p: 0.7 },\r\n  creative: { temperature: 1, top_p: 0.8 }\r\n};\r\n\r\nconst config = modeConfigs[data.generation_mode];\r\nif (config) {\r\n  data.temperature = config.temperature;\r\n  data.top_p = config.top_p;\r\n}",
+      "scriptCode" : "const modeConfigs = {\n  precise: { temperature: 0.1, top_p: 0.7 },\n  balanced: { temperature: 1, top_p: 0.7 },\n  creative: { temperature: 1, top_p: 0.8 }\n};\n\nconst config = modeConfigs[data.generation_mode];\nif (config) {\n  data.temperature = config.temperature;\n  data.top_p = config.top_p;\n}",
       "customCode" : true
     }, {
       "codeName" : "compute_generation_mode",
@@ -469,6 +469,7 @@
     }, {
       "id" : "welcome_message",
       "dataType" : 21,
+      "createDV" : "<user>  </user>",
       "getPSAppDEField" : {
         "name" : "WELCOME_MESSAGE",
         "codeName" : "welcome_message"
@@ -728,8 +729,9 @@
             "editorParams" : {
               "ISAUTO" : "true"
             },
-            "editorType" : "TEXTAREA",
+            "editorType" : "MARKDOWN",
             "maxLength" : 1048576,
+            "mode" : "EDIT",
             "name" : "default_system_prompt",
             "showMaxLength" : true
           },
@@ -983,6 +985,7 @@
           "getPSDEFormDetails" : [ {
             "caption" : "欢迎消息模板",
             "codeName" : "welcome_message",
+            "createDV" : "<user>  </user>",
             "dataType" : 21,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -1001,15 +1004,10 @@
                 "ISAUTO" : "true",
                 "appCodeListId" : "ai__ai_message_role"
               },
-              "editorStyle" : "AI_PARAMS",
-              "editorType" : "TEXTAREA",
+              "editorType" : "MARKDOWN",
               "maxLength" : 1048576,
+              "mode" : "EDIT",
               "name" : "welcome_message",
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "AI_PARAMS",
-                "runtimeObject" : true
-              },
               "showMaxLength" : true
             },
             "getPSLayoutPos" : {
@@ -1098,8 +1096,8 @@
             "detailType" : "FORMITEM",
             "enableCond" : 3,
             "ignoreInput" : 0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
             "name" : "custom_suggestion_prompt",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -1124,18 +1122,20 @@
               "editorParams" : {
                 "ISAUTO" : "true"
               },
-              "editorType" : "TEXTAREA",
+              "editorType" : "MARKDOWN",
               "maxLength" : 1048576,
+              "mode" : "EDIT",
               "name" : "custom_suggestion_prompt",
               "placeHolder" : "输入自定义建议提示词...",
               "showMaxLength" : true
             },
             "getPSLayoutPos" : {
-              "colLG" : 20,
+              "colLG" : 24,
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "allowEmpty" : true
+            "allowEmpty" : true,
+            "showCaption" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
