@@ -158,10 +158,12 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "im_method",
+      "dataType" : 25
+    }, {
       "id" : "import_method",
+      "hidden" : true,
       "dataType" : 25,
-      "createDV" : "space_manual",
-      "updateDV" : "space_manual",
       "getPSAppDEField" : {
         "name" : "IMPORT_METHOD",
         "codeName" : "import_method"
@@ -183,14 +185,44 @@
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
         "caption" : "数据来源表单",
-        "codeName" : "group1",
+        "codeName" : "import_method_group",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "name" : "group1",
+        "name" : "import_method_group",
         "getPSDEFormDetails" : [ {
           "caption" : "导入方式",
+          "codeName" : "im_method",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "im_method",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "PICKUPVIEW",
+            "name" : "im_method",
+            "getPSEditorItems" : [ {
+              "name" : "import_method"
+            } ],
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_import_method_list_view.json",
+              "viewType" : "DELISTVIEW"
+            },
+            "valueItemName" : "import_method"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "import_method",
+          "allowEmpty" : false
+        }, {
+          "caption" : "导入方式",
           "codeName" : "import_method",
-          "createDV" : "space_manual",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -205,21 +237,15 @@
             "codeName" : "import_method"
           },
           "getPSEditor" : {
-            "editorType" : "RADIOBUTTONLIST",
-            "name" : "import_method",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__import_method.json"
-            }
+            "editorType" : "HIDDEN",
+            "name" : "import_method"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "updateDV" : "space_manual",
           "allowEmpty" : false,
-          "needCodeListConfig" : true,
-          "showCaption" : true
+          "hidden" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -977,7 +1003,7 @@
             "enableCond" : 3,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
-            "labelWidth" : 130,
+            "labelWidth" : 1,
             "name" : "ai_kb_doc_name2",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
@@ -1001,7 +1027,7 @@
             "enableCond" : 3,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
-            "labelWidth" : 1,
+            "labelWidth" : 130,
             "name" : "file_size",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
@@ -2943,7 +2969,7 @@
                 "name" : "fetch",
                 "getPSAppDEMethod" : {
                   "modelref" : true,
-                  "id" : "fetch_normal"
+                  "id" : "fetch_only_page"
                 },
                 "getPSAppDataEntity" : {
                   "modelref" : true,
@@ -3031,7 +3057,7 @@
                   "name" : "fetch",
                   "getPSAppDEMethod" : {
                     "modelref" : true,
-                    "id" : "fetch_normal"
+                    "id" : "fetch_only_page"
                   },
                   "getPSAppDataEntity" : {
                     "modelref" : true,
