@@ -29,16 +29,6 @@ RAWJSCODE1 --> END1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 const url = window.location;
@@ -84,7 +74,7 @@ function getCurrentWindowInfo(url) {
 ```javascript
 const url = window.location;
 var file_name = uiLogic.default.name;
-var file_id = uiLogic.default.id;
+var file_id = uiLogic.default.file_id;
 var file_preview_address = ibiz.env.customParams.file_preview_address;
 
 if (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {
@@ -117,6 +107,16 @@ function getCurrentWindowInfo(url) {
     }
 }
 ```
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

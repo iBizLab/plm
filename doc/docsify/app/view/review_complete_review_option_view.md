@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [评审(REVIEW)](module/TestMgmt/review) : [视图_确定](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [视图_取消](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [视图_确定](module/TestMgmt/review#界面行为)
 
 <script>
  const { createApp } = Vue

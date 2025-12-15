@@ -221,10 +221,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `UPDATE(测试库(SUBDATA))`
+* `CREATE`
 * `READ`
 * `DELETE`
-* `CREATE`
+* `UPDATE(测试库(SUBDATA))`
 
 
 

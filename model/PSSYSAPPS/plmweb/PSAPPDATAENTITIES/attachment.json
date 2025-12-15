@@ -1894,7 +1894,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const url = window.location;\r\nvar file_name = uiLogic.default.name;\r\nvar file_id = uiLogic.default.id;\r\nvar file_preview_address = ibiz.env.customParams.file_preview_address;\r\n\r\nif (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {\r\n    const windowInfo = getCurrentWindowInfo(url);\r\n\r\n    let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;\r\n    const app = ibiz.hub.getApp(context.srfappid);\r\n    const OSSCat = app.model.userParam?.DefaultOSSCat;\r\n    uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');\r\n\r\n    var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;\r\n\r\n    var b64Encoded = ibiz.util.base64.encode(filedownloadurl);\r\n    var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);\r\n\r\n    window.open(previewUrl);\r\n} else {\r\n  util.message.error('无附件预览服务，请联系管理员添加!');\r\n}\r\n\r\nfunction getCurrentWindowInfo(url) {\r\n    const protocol = url.protocol;\r\n    const host = url.hostname; \r\n    const port = url.port || (protocol === \"https:\" ? \"443\" : \"80\"); \r\n    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);\r\n    if (isIPAddress) {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    } else {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    }\r\n}",
+      "code" : "const url = window.location;\r\nvar file_name = uiLogic.default.name;\r\nvar file_id = uiLogic.default.file_id;\r\nvar file_preview_address = ibiz.env.customParams.file_preview_address;\r\n\r\nif (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {\r\n    const windowInfo = getCurrentWindowInfo(url);\r\n\r\n    let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;\r\n    const app = ibiz.hub.getApp(context.srfappid);\r\n    const OSSCat = app.model.userParam?.DefaultOSSCat;\r\n    uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');\r\n\r\n    var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;\r\n\r\n    var b64Encoded = ibiz.util.base64.encode(filedownloadurl);\r\n    var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);\r\n\r\n    window.open(previewUrl);\r\n} else {\r\n  util.message.error('无附件预览服务，请联系管理员添加!');\r\n}\r\n\r\nfunction getCurrentWindowInfo(url) {\r\n    const protocol = url.protocol;\r\n    const host = url.hostname; \r\n    const port = url.port || (protocol === \"https:\" ? \"443\" : \"80\"); \r\n    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);\r\n    if (isIPAddress) {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    } else {\r\n        return  protocol +\"//\" + host + \":\" + port ;\r\n    }\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 507,
       "logicNodeType" : "RAWJSCODE",
@@ -1912,13 +1912,14 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 198
     }, {
       "codeName" : "END1",
       "leftPos" : 942,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -1957,110 +1958,6 @@
       "topPos" : 50,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 390,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 650
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 200,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表格隐藏",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "state.keepAlive",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.keepAlive]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[false] ==> grid[state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 440
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 530,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表格显示",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "state.keepAlive",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.keepAlive]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "true",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 440
-    }, {
-      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 460,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "上下文中srfreadonly禁用删除附件行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 550
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 350,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2068,7 +1965,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "RAWJSCODE3"
         },
         "linkMode" : 0,
         "name" : "表格存在数据",
@@ -2093,7 +1990,7 @@
       }, {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "表格不存在数据",
@@ -2131,17 +2028,80 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 220
+    }, {
+      "code" : "uiLogic.grid.state.keepAlive = true;\r\nuiLogic.grid.state.visible = true;",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 540,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置表格显示",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 440
+    }, {
+      "code" : "uiLogic.grid.state.keepAlive = true;\r\nuiLogic.grid.state.visible = false;",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置表格隐藏",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 440
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 390,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 650
+    }, {
+      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 460,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "上下文中srfreadonly禁用删除附件行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 550
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "重复器表格",
-      "name" : "重复器表格",
-      "entityParam" : true
-    }, {
       "codeName" : "form",
       "logicName" : "表单",
       "name" : "表单",
       "ctrlParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "重复器表格",
+      "name" : "重复器表格",
+      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2167,7 +2127,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2178,94 +2138,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 1220,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表单静默保存",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "silent",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[true] ==> Default[silent]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 390
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 406,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取表格部件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "view[getController('form').details.attachments.mdController] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "getController('form').details.attachments.mdController",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "params"
-        },
-        "name" : "Default[id] ==> params[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "form"
-        },
-        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems.form.control",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -2297,39 +2169,6 @@
       } ],
       "topPos" : 380
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1768,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "VIEWCTRLINVOKE2",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "save",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 1520,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
-        }
-      } ],
-      "topPos" : 390
-    }, {
       "code" : "uiLogic.attach = { data: uiLogic.default, silent: true };",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 662,
@@ -2348,6 +2187,48 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    '确认删除文件？',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 256,
+      "logicNodeType" : "RAWJSCODE",
+      "memo" : "del = await ibiz.confirm.error({\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\n    desc: ibiz.i18n.t(\n    'runtime.controller.common.control.confirmDataDeletion',\n    ),\n});\n\nif (del) {\n    uiLogic.default.is_delete = true;\n}",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "is_delete",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[is_delete] 等于(=) true",
+            "paramValue" : "true",
+            "value" : "true"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 64
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1768,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
@@ -2418,17 +2299,138 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "VIEWCTRLINVOKE2",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "save",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 1520,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        }
+      } ],
+      "topPos" : 390
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 406,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[getController('form').details.attachments.mdController] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "getController('form').details.attachments.mdController",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "params"
+        },
+        "name" : "Default[id] ==> params[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 1220,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置表单静默保存",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "silent",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[true] ==> Default[silent]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 390
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "form",
-      "logicName" : "主表单对象",
-      "name" : "主表单对象",
+      "codeName" : "grid",
+      "logicName" : "表格",
+      "name" : "表格",
       "ctrlParam" : true
     }, {
       "codeName" : "params",
       "logicName" : "视图参数",
       "name" : "视图参数",
       "viewNavDataParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     }, {
       "codeName" : "attach",
       "logicName" : "附件数据",
@@ -2440,15 +2442,9 @@
       "name" : "当前视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "表格",
-      "name" : "表格",
+      "codeName" : "form",
+      "logicName" : "主表单对象",
+      "name" : "主表单对象",
       "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -2469,7 +2465,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2480,6 +2476,41 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "code" : "del = await ibiz.confirm.error({\r\n    title: ibiz.i18n.t('runtime.controller.common.control.dataDeletion'),\r\n    desc: ibiz.i18n.t(\r\n    '确认删除文件？',\r\n    ),\r\n});\r\n\r\nif (del) {\r\n    uiLogic.default.is_delete = true;\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 270,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "is_delete",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[is_delete] 等于(=) true",
+            "paramValue" : "true",
+            "value" : "true"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 74
     }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
@@ -2507,31 +2538,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "code" : "uiLogic.attach = { data: data, silent: true };",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 662,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1268,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 406,
@@ -2578,6 +2584,31 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1268,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.attach = { data: data, silent: true };",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 662,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "attach",
@@ -2591,11 +2622,6 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "params",
-      "logicName" : "视图参数",
-      "name" : "视图参数",
-      "viewNavDataParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
@@ -2605,6 +2631,11 @@
       "logicName" : "表格",
       "name" : "表格",
       "ctrlParam" : true
+    }, {
+      "codeName" : "params",
+      "logicName" : "视图参数",
+      "name" : "视图参数",
+      "viewNavDataParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -3083,6 +3114,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
+      "enableScriptCode" : "context.srfreadonly != true",
       "name" : "u44d00e2",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
@@ -3113,7 +3145,7 @@
       "actionLevel" : 250,
       "caption" : "下载",
       "detailType" : "DEUIACTION",
-      "name" : "uf50d99f",
+      "name" : "u0321bac",
       "getPSSysImage" : {
         "glyph" : "xf019@FontAwesome",
         "cssClass" : "fa fa-download"
@@ -3133,7 +3165,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u345ff05",
+      "name" : "u2745e5e",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -3162,7 +3194,7 @@
       "actionLevel" : 200,
       "caption" : "下载",
       "detailType" : "DEUIACTION",
-      "name" : "u5832788",
+      "name" : "u69ec7c3",
       "getPSSysImage" : {
         "glyph" : "xf019@FontAwesome",
         "cssClass" : "fa fa-download"

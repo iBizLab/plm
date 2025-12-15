@@ -272,6 +272,7 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_PRINCIPAL_ID_EQ|关联主体标识|EQ||
 |N_PRINCIPAL_TYPE_EQ|关联主体类型|EQ||
+|N_RELATION_TYPE_EQ|关联类型|EQ||
 |N_TARGET_ID_EQ|目标主体标识|EQ||
 |N_TARGET_TYPE_EQ|关联目标类型|EQ||
 |N_TARGET_VERSION_ID_EQ|目标对象版本标识|EQ||
@@ -308,7 +309,7 @@
 |[依赖列表视图加载完成](module/Base/relation/uilogic/dependency_load_success)|dependency_load_success|依赖列表视图加载完成|
 |[依赖类型值变更](module/Base/relation/uilogic/dependency_onchange)|dependency_onchange|依赖类型值变更|
 |[取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)|del_relation_disabled|用于动态取消关联按钮的启用(target_priority列绑定的界面行为组)|
-|[工作项添加依赖关系](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
+|[工作项添加依赖关系值变更](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
 |[建立双向关联数据（移动端）](module/Base/relation/uilogic/create_double_relation)|create_double_relation|移动端建立双向关联数据|
 |[打开依赖工作项](module/Base/relation/uilogic/open_dependency)|open_dependency|打开依赖工作项主视图|
 |[打开需求（跟踪）](module/Base/relation/uilogic/open_idea_view)|open_idea_view||

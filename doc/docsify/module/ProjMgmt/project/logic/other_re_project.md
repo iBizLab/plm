@@ -17,15 +17,13 @@ hide empty description
 state "开始" as Begin <<start>> [[$./other_re_project#begin {"开始"}]]
 state "填充关联参数" as PREPAREPARAM1  [[$./other_re_project#prepareparam1 {"填充关联参数"}]]
 state "生成反向关联数据" as DEACTION2  [[$./other_re_project#deaction2 {"生成反向关联数据"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./other_re_project#debugparam1 {"调试逻辑参数"}]]
 state "生成正向关联数据" as DEACTION1  [[$./other_re_project#deaction1 {"生成正向关联数据"}]]
 state "抛出异常" as THROWEXCEPTION1  [[$./other_re_project#throwexception1 {"抛出异常"}]]
 state "结束" as END1 <<end>> [[$./other_re_project#end1 {"结束"}]]
 
 
 Begin --> PREPAREPARAM1 : [[$./other_re_project#begin-prepareparam1{存在关联主要标识} 存在关联主要标识]]
-PREPAREPARAM1 --> DEBUGPARAM1
-DEBUGPARAM1 --> DEACTION1
+PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> DEACTION2
 DEACTION2 --> END1
 Begin --> THROWEXCEPTION1 : [[$./other_re_project#begin-throwexception1{无值} 无值]]
@@ -60,14 +58,6 @@ Begin --> THROWEXCEPTION1 : [[$./other_re_project#begin-throwexception1{无值} 
 
 
 调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Create](module/Base/relation#行为) ，行为参数为`relationobj2(反向关系对象)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`relationobj(关系对象)`的详细信息
-
 
 #### 生成正向关联数据 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

@@ -98,6 +98,46 @@
           },
           "showCaption" : true
         } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container2",
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "工具栏",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "toolbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "传送部件占位",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "tab_toolbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "name" : "tab_toolbar",
+            "predefinedType" : "TELEPORT_PLACEHOLDER"
+          },
+          "showCaption" : true
+        } ]
       } ],
       "predefinedType" : "VIEWHEADER"
     }, {
@@ -203,7 +243,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "14718489-64B7-4DE1-A62C-5369D9D475CF",
+    "modelid" : "d955eb98e0e3deaed73224331d20c284",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -211,6 +251,66 @@
       "name" : "engine"
     } ],
     "getPSControls" : [ {
+      "codeName" : "tab_exp_view_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "工作台工具栏",
+      "name" : "toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getPSControlParam" : {
+        "id" : "TOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "登记工时",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "登记工时",
+          "codeName" : "record_working_hours",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_quick_create_view_workbench.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "workload_record_working_hours",
+          "name" : "工作台登记工时",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf067@FontAwesome",
+            "cssClass" : "fa fa-plus"
+          },
+          "refreshMode" : 1,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "record_working_hours",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "record_working_hours@workload"
+        },
+        "tooltip" : "登记工时",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "51CCC697-BEEA-44B7-A467-02F169DAC552",
+      "modeltype" : "PSDETOOLBAR"
+    }, {
       "codeName" : "tab_exp_view_tabexppanel",
       "controlType" : "TABEXPPANEL",
       "name" : "tabexppanel",
@@ -374,18 +474,7 @@
                     "grow" : -1,
                     "heightMode" : "FULL",
                     "layout" : "FLEX"
-                  },
-                  "getPSPanelItems" : [ {
-                    "caption" : "工具栏",
-                    "itemStyle" : "DEFAULT",
-                    "itemType" : "CTRLPOS",
-                    "name" : "toolbar",
-                    "getPSLayoutPos" : {
-                      "grow" : -1,
-                      "layout" : "FLEX"
-                    },
-                    "showCaption" : true
-                  } ]
+                  }
                 } ]
               } ],
               "predefinedType" : "VIEWHEADER"
@@ -503,6 +592,16 @@
                 } ]
               } ],
               "predefinedType" : "VIEWCONTENT"
+            }, {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "tab_toolbar",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
             } ],
             "layoutBodyOnly" : false,
             "layoutPanel" : true,
@@ -631,6 +730,118 @@
               "hideEditItem" : true,
               "modelid" : "778d36cca3c7638385df56a6e2131c5b",
               "modeltype" : "PSDEDRTAB"
+            }, {
+              "codeName" : "tab_search_view_tab_toolbar",
+              "controlType" : "TOOLBAR",
+              "logicName" : "自定义导出工具栏",
+              "name" : "tab_toolbar",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+              },
+              "getPSControlParam" : {
+                "ctrlParams" : {
+                  "TELEPORTFLAG" : "true"
+                },
+                "id" : "TAB_TOOLBAR"
+              },
+              "getPSDEToolbarItems" : [ {
+                "buttonStyle" : "STYLE2",
+                "caption" : "更多",
+                "itemType" : "ITEMS",
+                "name" : "items1",
+                "getPSDEToolbarItems" : [ {
+                  "caption" : "导出",
+                  "groupExtractMode" : "ITEM",
+                  "itemType" : "DEUIACTION",
+                  "name" : "deuiaction1",
+                  "noPrivDisplayMode" : 2,
+                  "getPSAppViewUIAction" : {
+                    "modelref" : true,
+                    "id" : "tab_toolbar_deuiaction1"
+                  },
+                  "getPSSysImage" : {
+                    "glyph" : "xf1c3@FontAwesome",
+                    "cssClass" : "fa fa-file-excel-o"
+                  },
+                  "getPSUIAction" : {
+                    "actionTarget" : "NONE",
+                    "caption" : "自定义导出",
+                    "codeName" : "custom_export",
+                    "frontProcessType" : "OTHER",
+                    "fullCodeName" : "workload_custom_export",
+                    "name" : "自定义导出",
+                    "getPSAppDEUILogic" : {
+                      "modelref" : true,
+                      "id" : "custom_export"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+                    },
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "custom_export",
+                    "uIActionType" : "DEUIACTION",
+                    "uILogicAttachMode" : "REPLACE",
+                    "id" : "custom_export@workload"
+                  },
+                  "tooltip" : "导出",
+                  "uIActionTarget" : "NONE",
+                  "showCaption" : true,
+                  "showIcon" : true
+                }, {
+                  "caption" : "AI登记预估工时",
+                  "groupExtractMode" : "ITEM",
+                  "itemType" : "DEUIACTION",
+                  "name" : "deuiaction2",
+                  "noPrivDisplayMode" : 2,
+                  "getPSAppViewUIAction" : {
+                    "modelref" : true,
+                    "id" : "tab_toolbar_deuiaction2"
+                  },
+                  "getPSUIAction" : {
+                    "actionTarget" : "SINGLEDATA",
+                    "caption" : "AI登记预估工时",
+                    "codeName" : "ai_add_estimated_workload",
+                    "frontProcessType" : "OTHER",
+                    "fullCodeName" : "workload_ai_add_estimated_workload",
+                    "name" : "AI登记预估工时",
+                    "getPSAppDEMethod" : {
+                      "modelref" : true,
+                      "id" : "ai_add_estimated_workload"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+                    },
+                    "refreshMode" : 1,
+                    "successMsg" : "登记成功",
+                    "timeout" : 60000,
+                    "uIActionMode" : "BACKEND",
+                    "uIActionTag" : "ai_add_estimated_workload",
+                    "uIActionType" : "DEUIACTION",
+                    "enableConfirm" : true,
+                    "globalUIAction" : true,
+                    "reloadData" : true,
+                    "id" : "ai_add_estimated_workload@workload"
+                  },
+                  "tooltip" : "AI登记预估工时",
+                  "uIActionTarget" : "SINGLEDATA",
+                  "hiddenItem" : true,
+                  "showCaption" : true,
+                  "showIcon" : true
+                } ],
+                "getPSSysImage" : {
+                  "glyph" : "xf0ca@FontAwesome",
+                  "cssClass" : "fa fa-list-ul"
+                },
+                "tooltip" : "更多",
+                "showCaption" : false,
+                "showIcon" : true
+              } ],
+              "toolbarStyle" : "USER",
+              "modelid" : "88BF572A-0E77-4583-A68D-13C60D10388E",
+              "modeltype" : "PSDETOOLBAR"
             }, {
               "getCapPSLanguageRes" : {
                 "lanResTag" : "DE.LNAME.WORKLOAD"

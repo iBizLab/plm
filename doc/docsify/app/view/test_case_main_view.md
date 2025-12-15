@@ -22,7 +22,7 @@ false
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
-* `onViewMounted`
+* `onMounted`
 ```javascript
 const form = view.getController('form');
 if (form) {
@@ -43,29 +43,31 @@ if (form) {
 
 
 ### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [最小化](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联缺陷（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [最小化](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_上一个记录](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_下一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [AI+](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联需求（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_上一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
-  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
-  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
+  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
+  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
 
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)
+  * [智能体选择器(ai_agent_assignment_selector)](app/view/ai_agent_assignment_selector)
   * [基线用例(baseline_test_case_relation_version_list_view)](app/view/baseline_test_case_relation_version_list_view)
   * [评论(comment_list_view)](app/view/comment_list_view)
   * [关联(relation_test_case_re_bug_grid_view)](app/view/relation_test_case_re_bug_grid_view)

@@ -1,5 +1,31 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[224]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[230]</font></sup>
+
+#### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[同步删除文档和分块(sync_remove_doc_chunk)](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)
+
+节点：删除文档分块
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+DELETE c FROM ai_kb_chunk  c WHERE  exists (select 1 from ai_kb_document doc where doc.id=c.document_id and doc.SYNC_ID= ? )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+#### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[同步删除文档和分块(sync_remove_doc_chunk)](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)
+
+节点：删除文档
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+DELETE doc FROM ai_kb_document doc WHERE doc.sync_id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -2763,6 +2789,65 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='space'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[标记主空间(mark_main_space)](module/Wiki/space/logic/mark_main_space)
+
+节点：清除主标记
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE relation
+SET RELATION_TYPE = NULL
+WHERE PRINCIPAL_ID = ? AND (PRINCIPAL_TYPE = 'project' OR PRINCIPAL_TYPE = 'product') AND TARGET_TYPE = 'space';
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).principal_id`
+
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[标记主空间(mark_main_space)](module/Wiki/space/logic/mark_main_space)
+
+节点：标记主知识库
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE relation
+SET RELATION_TYPE = 'main_space'
+WHERE PRINCIPAL_ID = ? AND TARGET_ID = ? AND (PRINCIPAL_TYPE = 'project' OR PRINCIPAL_TYPE = 'product') AND TARGET_TYPE = 'space';
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).principal_id`
+2. `Default(传入变量).ID(标识)`
+
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取关联的空间(get_re_space)](module/Wiki/space/logic/get_re_space)
+
+节点：获取关联数据
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	t1.ID,
+	t1.`NAME`,
+	t2.RELATION_TYPE 
+FROM
+	space t1
+	JOIN relation t2 ON t2.TARGET_ID = t1.ID 
+WHERE
+	t1.IS_DELETED = 0 
+	AND t1.IS_ARCHIVED = 0 
+	AND t2.PRINCIPAL_TYPE = ? 
+	AND t2.TARGET_TYPE = ? 
+	AND t2.PRINCIPAL_ID = ?;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).principal_type`
+2. `Default(传入变量).target_type`
+3. `Default(传入变量).principal_id`
+
+重置参数`page(page)`，并将执行sql结果赋值给参数`page(page)`
 #### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[删除类别(delete_categories)](module/ProjMgmt/sprint/logic/delete_categories)
 
 节点：当类别删除时，修改迭代的类别属性
@@ -3874,6 +3959,22 @@ limit 1
 2. `Default(传入变量).OWNER_TYPE(所属数据对象)`
 
 重置参数`cur_version(当前版本)`，并将执行sql结果赋值给参数`cur_version(当前版本)`
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[AI登记工时并更新剩余工时(ai_save_workload)](module/Base/workload/logic/ai_save_workload)
+
+节点：合计已登记工时
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ? and CATEGORY = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `actual(实际工时).OWNER_ID(所属数据标识)`
+2. `actual(实际工时).OWNER_TYPE(所属数据对象)`
+3. `actual(实际工时).NAME(名称)`
+
+重置参数`actual(实际工时)`，并将执行sql结果赋值给参数`actual(实际工时)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove)
 
 节点：获取已登记工时

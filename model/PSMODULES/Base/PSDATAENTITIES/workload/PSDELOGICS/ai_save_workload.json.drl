@@ -1,0 +1,304 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.ai_save_workload;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadai_save_workloaddefault;
+                global cn.ibizlab.plm.core.base.domain.extend_storage workloadai_save_workloadactual;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea workloadai_save_workloadidea;
+                global cn.ibizlab.plm.core.base.domain.extend_storage workloadai_save_workloadremaining;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case workloadai_save_workloadtest_case;
+                global cn.ibizlab.plm.core.base.domain.workload workloadai_save_workloadu_workload;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadai_save_workloadwork_item;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.Iextend_storageService extend_storageservice;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadai_save_workloadbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "workloadai_save_workloaddebugparam1"
+            when
+            then
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定所属对象标识]
+            rule "prepareparam2"
+            ruleflow-group "workloadai_save_workloadprepareparam2"
+            when
+            then
+                            workloadai_save_workloadtest_case.set("id",workloadai_save_workloaddefault.get("principalid"));
+                            workloadai_save_workloadactual.set("ownerid",workloadai_save_workloaddefault.get("principalid"));
+                            workloadai_save_workloadactual.set("ownerid",workloadai_save_workloaddefault.get("principalid"));
+                            workloadai_save_workloadremaining.set("name","REMAINING_WORKLOAD");
+                            workloadai_save_workloadremaining.set("ownerid",workloadai_save_workloaddefault.get("principalid"));
+                            workloadai_save_workloadwork_item.set("id",workloadai_save_workloaddefault.get("principalid"));
+                            workloadai_save_workloadidea.set("id",workloadai_save_workloaddefault.get("principalid"));
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项]
+            rule "deaction4"
+            ruleflow-group "workloadai_save_workloaddeaction4"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(workloadai_save_workloadwork_item.getId()),workloadai_save_workloadwork_item);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取需求]
+            rule "deaction3"
+            ruleflow-group "workloadai_save_workloaddeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(workloadai_save_workloadidea.getId()),workloadai_save_workloadidea);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例]
+            rule "deaction5"
+            ruleflow-group "workloadai_save_workloaddeaction5"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(workloadai_save_workloadtest_case.getId()),workloadai_save_workloadtest_case);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工作项和项目信息属性]
+            rule "prepareparam3"
+            ruleflow-group "workloadai_save_workloadprepareparam3"
+            when
+            then
+                            workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
+                            workloadai_save_workloadactual.set("ownertype","WORK_ITEM");
+                            workloadai_save_workloadremaining.set("ownertype","WORK_ITEM");
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[产品需求和产品信息属性]
+            rule "prepareparam4"
+            ruleflow-group "workloadai_save_workloadprepareparam4"
+            when
+            then
+                            workloadai_save_workloadactual.set("ownertype","IDEA");
+                            workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
+                            workloadai_save_workloadremaining.set("ownertype","IDEA");
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例和测试库信息属性]
+            rule "prepareparam5"
+            ruleflow-group "workloadai_save_workloadprepareparam5"
+            when
+            then
+                            workloadai_save_workloadactual.set("ownertype","TEST_CASE");
+                            workloadai_save_workloadactual.set("name",workloadai_save_workloaddefault.get("category"));
+                            workloadai_save_workloadremaining.set("ownertype","TEST_CASE");
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算需求剩余工时]
+            rule "rawsfcode1"
+            ruleflow-group "workloadai_save_workloadrawsfcode1"
+            when
+            then
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算工作项剩余工时]
+            rule "rawsfcode2"
+            ruleflow-group "workloadai_save_workloadrawsfcode2"
+            when
+            then
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算用例剩余工时]
+            rule "rawsfcode3"
+            ruleflow-group "workloadai_save_workloadrawsfcode3"
+            when
+            then
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新剩余工时]
+            rule "deaction6"
+            ruleflow-group "workloadai_save_workloaddeaction6"
+            when
+            then
+                        extend_storageservice.save(workloadai_save_workloadremaining);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工时为0时置为null]
+            rule "prepareparam6"
+            ruleflow-group "workloadai_save_workloadprepareparam6"
+            when
+            then
+                                workloadai_save_workloadactual.set("decimalvalue",null);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[合计已登记工时]
+            rule "rawsqlcall1"
+            ruleflow-group "workloadai_save_workloadrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadai_save_workloadactual.get("ownerid"));
+        param.put("param1",workloadai_save_workloadactual.get("ownertype"));
+        param.put("param2",workloadai_save_workloadactual.get("name"));
+    String strSql="select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = #{et.param0} and PRINCIPAL_TYPE = #{et.param1} and CATEGORY = #{et.param2}";
+                        java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    workloadai_save_workloadactual.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新实际工时]
+            rule "deaction7"
+            ruleflow-group "workloadai_save_workloaddeaction7"
+            when
+            then
+                        extend_storageservice.save(workloadai_save_workloadactual);
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充父工作项标识]
+            rule "prepareparam7"
+            ruleflow-group "workloadai_save_workloadprepareparam7"
+            when
+            then
+                            workloadai_save_workloadu_workload.set("principalid",workloadai_save_workloadwork_item.get("pid"));
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[自动计算父工时]
+            rule "delogic1"
+            ruleflow-group "workloadai_save_workloaddelogic1"
+            when
+            then
+                        update(workloadai_save_workloaddefault);//更新fact中变量值
+                        update(workloadai_save_workloadactual);//更新fact中变量值
+                        update(workloadai_save_workloadidea);//更新fact中变量值
+                        update(workloadai_save_workloadremaining);//更新fact中变量值
+                        update(workloadai_save_workloadtest_case);//更新fact中变量值
+                        update(workloadai_save_workloadu_workload);//更新fact中变量值
+                        update(workloadai_save_workloadwork_item);//更新fact中变量值
+            end

@@ -1177,6 +1177,19 @@ if(executors != null && executors != undefined && executors.length > 0){
 }
 
 ```
+* `onChange`
+```
+//console.log('工作项类型发生变化!', ctrl)
+var ctxpid =context.pid
+var pid = ctrl.details.pid;
+var ptitle = ctrl.details.ptitle;
+if(ctxpid==null)
+{
+    pid.setDataValue(null)
+    ptitle.setDataValue(null)
+}
+
+```
 
 ##### 值规则
 * `start_at` : [开始时间](index/value_rule_index)
@@ -1214,6 +1227,16 @@ if(executors != null && executors != undefined && executors.length > 0){
 ```
 
 ## 视图界面逻辑
+* `onBeforeLoadDraft`
+```javascript
+const srfdefdata = viewParam.srfdefdata;
+// 置空父项数据
+if (srfdefdata) {
+  srfdefdata.pid = undefined;
+  srfdefdata.ptitle = undefined;
+}
+```
+  * [设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)
 * `onCreated`
 ```javascript
 ctrl.evt.on('onFormDataChange', evt => {
@@ -1231,8 +1254,8 @@ ctrl.evt.on('onFormDataChange', evt => {
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [视图_确定](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [视图_取消](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [视图_确定](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)

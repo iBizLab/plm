@@ -1,0 +1,74 @@
+{
+  "codeName" : "create_ai_kb_doc",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/create_ai_kb_doc.json",
+  "logicName" : "创建知识库文档",
+  "name" : "创建知识库文档",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('default').getReal(); \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\ndef doc_sync_runtime = sys.dataentity('ai_kb_document_sync')\r\ndef page_list = sys.codelist('Wiki__page_list')\r\ndef space_list = sys.codelist('Wiki__space_list')\r\n\r\ndef import_method=_default[\"import_method\"];\r\ndef kb_id=_default[\"kb_id\"]\r\ndef space_selection=_default[\"space_selection\"]\r\ndef sync_frequency=_default[\"sync_frequency\"]\r\ndef parser_config=_default[\"parser_config\"]\r\ndef custom_chunk=_default[\"custom_chunk\"]\r\ndef chunk_method=_default[\"chunk_method\"]\r\n\r\n//手动从空间导入\r\nif(import_method == \"space_manual\"){\r\n    def selection_page_ids=_default[\"selection_page_ids\"]\r\n    if(selection_page_ids){\r\n        //创建文档\r\n        selection_page_ids.split(',').each { String page_id ->\r\n            def new_doc=doc_runtime.entity()\r\n            def  page_name=page_list.getText(page_id)  \r\n            new_doc.set(\"name\",page_name)\r\n            new_doc.set(\"source_id\",page_id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"sync_frequency\",sync_frequency)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"space\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n}\r\n\r\n//自动从空间同步\r\nif(import_method == \"space_auto_sync\"){\r\n    //创建文档同步\r\n    def new_doc_sync=doc_sync_runtime.entity()\r\n    def  space_name=space_list.getText(space_selection)  \r\n    new_doc_sync.set(\"name\",space_name)\r\n    new_doc_sync.set(\"ai_knowledge_base_id\",kb_id)\r\n    new_doc_sync.set(\"source_id\",space_selection)\r\n    new_doc_sync.set(\"source_type\",\"space\")\r\n    new_doc_sync.set(\"sync_frequency\",sync_frequency)\r\n    new_doc_sync.set(\"parser_config\",parser_config)\r\n    new_doc_sync.set(\"custom_chunk\",custom_chunk)\r\n    new_doc_sync.set(\"chunk_method\",chunk_method)\r\n    doc_sync_runtime.create(new_doc_sync)\r\n}\r\n\r\n//上传本地文件\r\nif(import_method == \"local_upload\"){\r\n    def selection_file_ids=_default[\"selection_file_ids\"]\r\n    if(selection_file_ids){\r\n        //创建文档\r\n        def files = new groovy.json.JsonSlurper().parseText(selection_file_ids)\r\n        files.each { file ->\r\n            def new_doc=doc_runtime.entity()\r\n            def file_name = file.name\r\n            int last_index = file.name.lastIndexOf(\".\")\r\n            if (last_index > 0) {\r\n                file_name = file.name.substring(0, last_index)\r\n            }\r\n            new_doc.set(\"name\",file_name)\r\n            new_doc.set(\"source_id\",file.id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"file\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n\r\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 370,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "创建知识库文档",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 222,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 596,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 222,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

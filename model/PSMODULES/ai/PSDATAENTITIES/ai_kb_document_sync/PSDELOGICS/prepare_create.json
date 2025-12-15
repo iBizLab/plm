@@ -1,0 +1,121 @@
+{
+  "codeName" : "prepare_create",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/prepare_create.json",
+  "logicName" : "准备建立",
+  "name" : "准备建立",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 160,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 260,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 510,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PARSER_CONFIG",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_kb_doc_wizard"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "parser_config",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CUSTOM_CHUNK",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_kb_doc_wizard"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "custom_chunk",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CHUNK_METHOD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_kb_doc_wizard"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "chunk_method",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 330,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 280,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "查看创建前的参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      }
+    } ],
+    "topPos" : 340,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "ai_kb_doc_wizard",
+    "logicName" : "ai_kb_doc_wizard",
+    "name" : "ai_kb_doc_wizard",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
+    },
+    "sessionParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

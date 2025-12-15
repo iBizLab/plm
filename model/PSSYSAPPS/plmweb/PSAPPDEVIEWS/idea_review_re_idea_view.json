@@ -497,6 +497,17 @@
           "engineType" : "PickupGridView",
           "name" : "engine"
         } ],
+        "getPSAppViewNavParams" : [ {
+          "key" : "add_tag",
+          "name" : "add_tag",
+          "value" : "IDEA",
+          "rawValue" : true
+        }, {
+          "key" : "add_review",
+          "name" : "add_review",
+          "value" : "review",
+          "rawValue" : false
+        } ],
         "getPSControls" : [ {
           "codeName" : "review_searchform",
           "controlType" : "SEARCHFORM",
@@ -551,6 +562,13 @@
             "id" : "SEARCHFORM"
           },
           "getPSDEFormItems" : [ {
+            "id" : "n_identifier_like",
+            "dataType" : 25,
+            "getPSAppDEField" : {
+              "name" : "IDENTIFIER",
+              "codeName" : "identifier"
+            }
+          }, {
             "id" : "n_title_like",
             "dataType" : 25,
             "getPSAppDEField" : {
@@ -588,6 +606,9 @@
             }
           } ],
           "getPSDEFormPages" : [ {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMPAGE.FORMPAGE1"
+            },
             "caption" : "常规条件",
             "codeName" : "formpage1",
             "detailStyle" : "DEFAULT",
@@ -595,7 +616,37 @@
             "name" : "formpage1",
             "getPSDEFormDetails" : [ {
               "getCapPSLanguageRes" : {
-                "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_TITLE_LIKE"
+                "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_IDENTIFIER_LIKE"
+              },
+              "caption" : "编号",
+              "codeName" : "n_identifier_like",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "n_identifier_like",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "IDENTIFIER",
+                "codeName" : "identifier"
+              },
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "n_identifier_like",
+                "placeHolder" : "编号"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 5,
+                "colMD" : 5,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_TITLE_LIKE"
               },
               "caption" : "标题",
               "codeName" : "n_title_like",
@@ -615,7 +666,7 @@
               "getPSEditor" : {
                 "editorType" : "TEXTBOX",
                 "name" : "n_title_like",
-                "placeHolder" : "请输入需求标题"
+                "placeHolder" : "标题"
               },
               "getPSLayoutPos" : {
                 "colLG" : 5,
@@ -649,7 +700,7 @@
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_state.json"
                 },
-                "placeHolder" : "请选择需求状态",
+                "placeHolder" : "选择状态",
                 "singleSelect" : true
               },
               "getPSLayoutPos" : {
@@ -682,7 +733,7 @@
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__requirement_type.json"
                 },
-                "placeHolder" : "请选择需求类型",
+                "placeHolder" : "选择类型",
                 "singleSelect" : true
               },
               "getPSLayoutPos" : {
@@ -769,8 +820,8 @@
                 "singleSelect" : true
               },
               "getPSLayoutPos" : {
-                "colLG" : 5,
-                "colMD" : 5,
+                "colLG" : 4,
+                "colMD" : 4,
                 "layout" : "TABLE_24COL"
               },
               "valueItemName" : "n_assignee_id_eq",
@@ -826,7 +877,7 @@
           "enableFilterSave" : false,
           "noTabHeader" : true,
           "name" : "searchform",
-          "modelid" : "F8947DD9-3D16-4F0E-AEDF-7E2C6F10C355",
+          "modelid" : "9709445137581a2c65ace6b6e39fca6a",
           "modeltype" : "PSDEFORM_SEARCHFORM"
         }, {
           "aggMode" : "NONE",
@@ -1243,7 +1294,7 @@
           "noSort" : false,
           "singleSelect" : false,
           "name" : "grid",
-          "modelid" : "1c2db98ed5e0dc83683aef35ec23615b",
+          "modelid" : "e2fbca16e36437909df422375bc0390e",
           "modeltype" : "PSDEGRID"
         }, {
           "controlType" : "SEARCHBAR",
@@ -1277,7 +1328,7 @@
           "getPSControlParam" : { }
         } ],
         "getPSDEViewCodeName" : "not_add_pick_up_grid_view_review",
-        "getPSDEViewId" : "8B35ECE3-F519-4698-B15C-8525557B6D74",
+        "getPSDEViewId" : "474e41eb89c47de2beda07697226808c",
         "getPSViewLayoutPanel" : {
           "codeName" : "layoutpanel",
           "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -1305,7 +1356,7 @@
         "expandSearchForm" : true,
         "pickupMode" : true,
         "rowEditDefault" : false,
-        "modelid" : "9464b3736d3ebda075a0df2a45011724",
+        "modelid" : "bab6bc19282af18f2abbc670d96c12a9",
         "modeltype" : "PSAPPDEVIEW",
         "getPSAppDERSPaths" : [ [ {
           "actionRSMode" : 1,
@@ -1815,6 +1866,11 @@
             "key" : "n_owner_subtype_eq",
             "name" : "n_owner_subtype_eq",
             "value" : "idea",
+            "rawValue" : true
+          }, {
+            "key" : "n_owner_type_eq",
+            "name" : "n_owner_type_eq",
+            "value" : "product",
             "rawValue" : true
           } ],
           "parentFilter" : "owner_id",
@@ -2347,7 +2403,7 @@
             },
             "viewFieldName" : "TITLE"
           } ],
-          "id" : "6c989f2e6134f88eb4344bfc5c68a867"
+          "id" : "fd637ea683b66f5a2438f904bc6eab1e"
         } ],
         "name" : "simplelist_itempanel",
         "modelid" : "9fbd800f0be14f9cc67c89e8b965a784",

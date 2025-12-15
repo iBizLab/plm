@@ -19,6 +19,47 @@
 
 
 
+## [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment.md) :id=ai_agent_assignment
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[run分配智能体逻辑](module/ai/ai_agent_assignment/uilogic/run)|run||
+
+
+
+
+
+
+
+## [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session.md) :id=ai_agent_session
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[accept_feedback](module/ai/ai_agent_session/uilogic/accept_feedback)|accept_feedback||
+|[debug_context](module/ai/ai_agent_session/uilogic/debug_context)|debug_context||
+|[dyna_context](module/ai/ai_agent_session/uilogic/dyna_context)|dyna_context||
+|[jenkins_build](module/ai/ai_agent_session/uilogic/jenkins_build)|jenkins_build||
+|[remark_feedback](module/ai/ai_agent_session/uilogic/remark_feedback)|remark_feedback||
+
+
+
+
+
+
+
+## [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync.md) :id=ai_kb_document_sync
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新文档同步表格](module/ai/ai_kb_document_sync/uilogic/refresh_doc_sync_grid)|refresh_doc_sync_grid||
+
+
+
+
+
+
+
+
 ## [附件(ATTACHMENT)](module/Base/attachment.md) :id=attachment
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -83,9 +124,6 @@
 
 
 
-
-
-
 ## [类别(CATEGORY)](module/Base/category.md) :id=category
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -99,6 +137,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[ai添加评论](module/Base/comment/uilogic/ai_comment)|ai_comment||
 |[刷新评论列表](module/Base/comment/uilogic/refresh_comment_list)|refresh_comment_list|刷新|
 |[刷新评论列表（移动端）](module/Base/comment/uilogic/refresh_comment)|refresh_comment|刷新|
 |[发送评论](module/Base/comment/uilogic/send_comment)|send_comment|发送评论，并关闭评论输入框|
@@ -125,7 +164,6 @@
 
 
 
-
 ## [客户(CUSTOMER)](module/ProdMgmt/customer.md) :id=customer
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -147,6 +185,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[主表单保存](module/Base/deliverable/uilogic/main_form_save)|main_form_save||
 |[删除（表单中）](module/Base/deliverable/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
 |[提交](module/Base/deliverable/uilogic/submit)|submit|瀑布项目主视图 → 交付物分页表格 → 表格行操作|
 |[提交（表单中）](module/Base/deliverable/uilogic/submit_form)|submit_form|瀑布项目 → 工作项详情 → 交付物分页 → 表格行操作|
@@ -232,6 +271,10 @@
 
 
 
+
+
+
+
 ## [团队(GROUP)](module/Base/group.md) :id=group
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -254,8 +297,8 @@
 |[关闭评论区](module/ProdMgmt/idea/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|
 |[删除类别或分组](module/ProdMgmt/idea/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[刷新需求表格](module/ProdMgmt/idea/uilogic/refresh_idea_grid)|refresh_idea_grid|刷新需求表格|
-|[工作项关联需求](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
-|[工单关联需求](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
+|[工作项关联需求值变更](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
+|[工单关联需求值变更](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
 |[已归档或已删除需求显示隐藏](module/ProdMgmt/idea/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除需求显示隐藏|
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建子模块](module/ProdMgmt/idea/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
@@ -270,7 +313,7 @@
 |[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
+|[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|
@@ -283,7 +326,7 @@
 |[门户全屏](module/ProdMgmt/idea/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
+|[需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
 |[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 
@@ -380,6 +423,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[ai添加page](module/Wiki/article_page/uilogic/ai_add_page)|ai_add_page||
 |[共享设置表单加载数据](module/Wiki/article_page/uilogic/shared_form_data)|shared_form_data|共享设置表单加载数据|
 |[关闭模板中心](module/Wiki/article_page/uilogic/close_stencil)|close_stencil|关闭模板中心|
 |[关闭评论区](module/Wiki/article_page/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|
@@ -558,7 +602,7 @@
 |[依赖列表视图加载完成](module/Base/relation/uilogic/dependency_load_success)|dependency_load_success|依赖列表视图加载完成|
 |[依赖类型值变更](module/Base/relation/uilogic/dependency_onchange)|dependency_onchange|依赖类型值变更|
 |[取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)|del_relation_disabled|用于动态取消关联按钮的启用(target_priority列绑定的界面行为组)|
-|[工作项添加依赖关系](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
+|[工作项添加依赖关系值变更](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
 |[建立双向关联数据（移动端）](module/Base/relation/uilogic/create_double_relation)|create_double_relation|移动端建立双向关联数据|
 |[打开依赖工作项](module/Base/relation/uilogic/open_dependency)|open_dependency|打开依赖工作项主视图|
 |[打开需求（跟踪）](module/Base/relation/uilogic/open_idea_view)|open_idea_view||
@@ -582,7 +626,6 @@
 |[门户全屏](module/ProjMgmt/release/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProjMgmt/release/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProjMgmt/release/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-
 
 
 
@@ -675,7 +718,6 @@
 |[获取移动端结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)|get_mob_run_attachment||
 |[获取结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)|get_run_attachment_total|获取结果附件总条数|
 |[附件删除（移动端）](module/TestMgmt/run_attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
-
 
 
 
@@ -773,7 +815,7 @@
 |[关联工作项（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联缺陷（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_bug)|toolbar_link_bug|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
+|[工作项关联用例值变更](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
 |[已删除用例显示隐藏](module/TestMgmt/test_case/uilogic/deleted_visible)|deleted_visible|已删除用例显示隐藏|
 |[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
@@ -789,7 +831,7 @@
 |[门户全屏](module/TestMgmt/test_case/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/test_case/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/test_case/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联用例](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
+|[需求关联用例值变更](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
 
 
 
@@ -828,7 +870,7 @@
 |[关联工单值变更](module/ProdMgmt/ticket/uilogic/relation_ticket_change)|relation_ticket_change|关联工单值变更时，调用处理逻辑，生成正反向关联数据|
 |[关联工单（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)|customer_add_change|客户添加工单值变更，触发工单的客户属性变更|
-|[工作项关联工单](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
+|[工作项关联工单值变更](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
 |[工单只读用户判断](module/ProdMgmt/ticket/uilogic/ticket_readonly_recognize)|ticket_readonly_recognize|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[已归档或已删除工单显示隐藏](module/ProdMgmt/ticket/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工单显示隐藏|
 |[建立双向关联数据](module/ProdMgmt/ticket/uilogic/create_double_relation)|create_double_relation|建立双向关联数据|
@@ -842,7 +884,7 @@
 |[门户全屏](module/ProdMgmt/ticket/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/ticket/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/ticket/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联工单](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
+|[需求关联工单值变更](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
 
 
 ## [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type.md) :id=ticket_type
@@ -884,6 +926,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[AI登记预估工时](module/Base/workload/uilogic/ai_estimated)|ai_estimated||
 |[工时打开对应事项详情视图](module/Base/workload/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例详情主视图|
 |[工时日历打开工时日志视图](module/Base/workload/uilogic/calendar_link_log_view)|calendar_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
 |[工时日历打开工时日志视图（管理）](module/Base/workload/uilogic/calendar_management_link_log_view)|calendar_management_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
@@ -897,6 +940,7 @@
 |[打开所属工时记录列表视图(管理)](module/Base/workload/uilogic/open_parent_with_log_grid)|open_parent_with_log_grid|工时管理，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表|
 |[打开测试库主视图](module/Base/workload/uilogic/open_library_main_view)|open_library_main_view|打开测试库主视图|
 |[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
+|[自定义导出](module/Base/workload/uilogic/custom_export)|custom_export||
 |[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
 |[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
 |[重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)|reset_workload_category||
@@ -924,17 +968,18 @@
 |[刷新关联子工作项列表（移动端）](module/ProjMgmt/work_item/uilogic/mob_refresh_child_list)|mob_refresh_child_list||
 |[图表全屏（移动端）](module/ProjMgmt/work_item/uilogic/mob_full_screen)|mob_full_screen||
 |[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|chart_show_count|仪表盘图表显示总数<br>|
+|[填充子工作项类型](module/ProjMgmt/work_item/uilogic/fill_work_item_sub_type)|fill_work_item_sub_type|子工作项新建默认填充首个子工作项类型|
 |[子工作项刷新计数器](module/ProjMgmt/work_item/uilogic/child_refresh_counter)|child_refresh_counter|关联数据变更后，触发计数器刷新|
 |[导出为图片（甘特图）](module/ProjMgmt/work_item/uilogic/export_gantt_image)|export_gantt_image|甘特图导出为图片|
 |[导出报表PDF](module/ProjMgmt/work_item/uilogic/export_report_pdf)|export_report_pdf||
 |[导出报表excel](module/ProjMgmt/work_item/uilogic/export_report_excel)|export_report_excel||
 |[工作项关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_self_change)|relation_self_change|工作项关联工作项值变更时，调用处理逻辑，生成正反向关联数据|
-|[工单关联工作项](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
+|[工单关联工作项值变更](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
 |[已归档或已删除工作项显示隐藏](module/ProjMgmt/work_item/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工作项显示隐藏|
 |[建立关联数据](module/ProjMgmt/work_item/uilogic/create_relation)|create_relation|新建执行后触发，建立关联数据|
 |[我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)|my_assign_chart_jump||
 |[打开BI报表设计界面](module/ProjMgmt/work_item/uilogic/open_bi_report_design)|open_bi_report_design|打开bi报表设计界面，后续需删除|
-|[执行用例关联工作项(缺陷)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
+|[执行用例关联工作项(缺陷)值变更](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
 |[新建事务（hybrid）工具栏](module/ProjMgmt/work_item/uilogic/new_hybrid_kanban_issue_toolbar)|new_hybrid_kanban_issue_toolbar|在混合看板新建工作项时，添加entry_id|
 |[新建任务（hybrid）工具栏](module/ProjMgmt/work_item/uilogic/new_hybrid_kanban_task_toolbar)|new_hybrid_kanban_task_toolbar|在混合看板新建工作项时，添加entry_id|
 |[新建任务（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_task_toolbar)|new_kanban_task_toolbar|看板项目工作项分页新建任务类型工作项|
@@ -956,7 +1001,8 @@
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)|before_state_change_grid|检测变更状态前选中的数据是否为同一类型，不同则禁用|
-|[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[用例关联工作项值变更](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[自定义确定](module/ProjMgmt/work_item/uilogic/custom_confirm)|custom_confirm||
 |[获取工作项工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)|mob_get_workload_schedule|获取工时信息，并计算工时进度（移动端）|
 |[获取工作项总条数](module/ProjMgmt/work_item/uilogic/get_work_item_total)|get_work_item_total|获取工作项的总条数信息|
@@ -971,11 +1017,12 @@
 |[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|
 |[选择下拉框区域展示](module/ProjMgmt/work_item/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
-|[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
+|[通知刷新](module/ProjMgmt/work_item/uilogic/notify_refresh)|notify_refresh||
+|[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh_mob)|notify_refresh_mob|通知页面刷新|
 |[门户全屏](module/ProjMgmt/work_item/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProjMgmt/work_item/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProjMgmt/work_item/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
+|[需求关联工作项值变更](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
 
 
 ## [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state.md) :id=work_item_state

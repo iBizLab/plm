@@ -326,7 +326,7 @@
     "enableBackend" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "other_relation_run",
     "dataAccessAction" : "UPDATE",
@@ -339,18 +339,20 @@
         "modelref" : true,
         "id" : "run_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSDEActionReturn" : {
       "name" : "Other_relation_runResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "run_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDELOGICS/others_relation_run.json"
     },
-    "enableAudit" : true,
     "enableFront" : false
   }, {
     "actionHolder" : 1,
@@ -2156,6 +2158,7 @@
         "codeName" : "workload_schedule"
       },
       "precision" : 1,
+      "scale" : 1,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -2168,6 +2171,7 @@
         "codeName" : "remaining_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -2202,6 +2206,7 @@
         "codeName" : "estimated_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -2214,6 +2219,7 @@
         "codeName" : "actual_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -5130,6 +5136,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -5141,6 +5148,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ESTIMATED_WORKLOAD][预估工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -5169,6 +5177,7 @@
     "name" : "ESTIMATED_WORKLOAD",
     "orderValue" : 430,
     "precision" : 1,
+    "scale" : 1,
     "serviceCodeName" : "estimated_workload",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -5184,6 +5193,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -5195,6 +5205,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[WORKLOAD_SCHEDULE][工时进度]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -5223,6 +5234,7 @@
     "name" : "WORKLOAD_SCHEDULE",
     "orderValue" : 430,
     "precision" : 1,
+    "scale" : 1,
     "serviceCodeName" : "workload_schedule",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -5238,6 +5250,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[REMAINING_WORKLOAD][剩余工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -5249,6 +5262,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[REMAINING_WORKLOAD][剩余工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -5277,6 +5291,7 @@
     "name" : "REMAINING_WORKLOAD",
     "orderValue" : 440,
     "precision" : 1,
+    "scale" : 1,
     "serviceCodeName" : "remaining_workload",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -5292,6 +5307,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ACTUAL_WORKLOAD][实际工时]",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -5303,6 +5319,7 @@
         "editorType" : "MOBTEXT",
         "name" : "[ACTUAL_WORKLOAD][实际工时]移动端默认",
         "precision" : 1,
+        "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -5331,6 +5348,7 @@
     "name" : "ACTUAL_WORKLOAD",
     "orderValue" : 450,
     "precision" : 1,
+    "scale" : 1,
     "serviceCodeName" : "actual_workload",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -6173,6 +6191,25 @@
       "standardColumnName" : "`REVIEW_RESULT_STATE`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -6193,25 +6230,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[REVIEW_RESULT_STATE][评审结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[REVIEW_RESULT_STATE][评审结果]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-        },
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -8443,6 +8461,72 @@
       } ],
       "topPos" : -80
     }, {
+      "codeName" : "DEACTION6",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
+      },
+      "leftPos" : 644,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建执行结果",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "topPos" : -220
+    }, {
+      "codeName" : "DEDATASET2",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+      },
+      "leftPos" : 850,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter_page"
+      },
+      "topPos" : -80
+    }, {
       "codeName" : "END2",
       "leftPos" : 860,
       "logicNodeType" : "END",
@@ -8558,6 +8642,32 @@
         }
       } ],
       "topPos" : 36
+    }, {
+      "codeName" : "LOOPSUBCALL3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "leftPos" : 1036,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL3"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter_page"
+      },
+      "topPos" : -80
     }, {
       "codeName" : "DEACTION5",
       "getDstPSDEAction" : {
@@ -8928,79 +9038,6 @@
       } ],
       "topPos" : 438
     }, {
-      "codeName" : "DEACTION3",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/Get.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "test_plan"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
-      },
-      "leftPos" : 820,
-      "logicNodeType" : "DEACTION",
-      "name" : "获取测试计划",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM7"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "PROJECT_ID",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "test_plan"
-            },
-            "logicType" : "SINGLE",
-            "name" : "test_plan[PROJECT_ID] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END2"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "PROJECT_ID",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "test_plan"
-            },
-            "logicType" : "SINGLE",
-            "name" : "test_plan[PROJECT_ID] 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "test_plan"
-      },
-      "topPos" : 438
-    }, {
       "codeName" : "LOOPSUBCALL2",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -9036,73 +9073,6 @@
         "id" : "attachments"
       },
       "topPos" : 538
-    }, {
-      "codeName" : "PREPAREPARAM11",
-      "leftPos" : 464,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "owner_id",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "attachment_temp"
-        },
-        "name" : "空值（NULL） ==> attachment_temp[owner_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NULLVALUE"
-      }, {
-        "dstFieldName" : "owner_type",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "attachment_temp"
-        },
-        "name" : "空值（NULL） ==> attachment_temp[owner_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NULLVALUE"
-      }, {
-        "dstFieldName" : "id",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "attachment_temp"
-        },
-        "name" : "空值（NULL） ==> attachment_temp[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NULLVALUE"
-      } ],
-      "topPos" : 648
-    }, {
-      "codeName" : "DEACTION6",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
-      },
-      "leftPos" : 644,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建执行结果",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION6"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "topPos" : -220
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 644,
@@ -9206,6 +9176,98 @@
       } ],
       "topPos" : -80
     }, {
+      "codeName" : "DEACTION3",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取测试计划",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "PROJECT_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "test_plan"
+            },
+            "logicType" : "SINGLE",
+            "name" : "test_plan[PROJECT_ID] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "PROJECT_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "test_plan"
+            },
+            "logicType" : "SINGLE",
+            "name" : "test_plan[PROJECT_ID] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "topPos" : 438
+    }, {
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef work_item = logic.param('work_item').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"80\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = _default.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (_default.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\nwork_item.set('description', text);",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 1196,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接描述字段",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 438
+    }, {
       "codeName" : "PREPAREPARAM7",
       "leftPos" : 820,
       "logicNodeType" : "PREPAREPARAM",
@@ -9252,110 +9314,6 @@
       } ],
       "topPos" : 598
     }, {
-      "codeName" : "DEDATASET2",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parameter_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
-      },
-      "leftPos" : 850,
-      "logicNodeType" : "DEDATASET",
-      "name" : "实体数据集",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET2"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parameter_page"
-      },
-      "topPos" : -80
-    }, {
-      "codeName" : "PREPAREPARAM13",
-      "leftPos" : 850,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备系统参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM13"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "N_OWNER_ID_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "parameter_filter"
-        },
-        "name" : "Default[LIBRARY_ID] ==> parameter_filter[N_OWNER_ID_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "LIBRARY_ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "N_OWNER_TYPE_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "parameter_filter"
-        },
-        "name" : "直接值[LIBRARY] ==> parameter_filter[N_OWNER_TYPE_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "LIBRARY",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "N_OWNER_SUBTYPE_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "parameter_filter"
-        },
-        "name" : "直接值[RUNFAILURE] ==> parameter_filter[N_OWNER_SUBTYPE_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "RUNFAILURE",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : -220
-    }, {
-      "code" : "def _default = logic.param('Default').getReal();\r\ndef work_item = logic.param('work_item').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"80\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = _default.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (_default.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\nwork_item.set('description', text);",
-      "codeName" : "RAWSFCODE1",
-      "codeType" : "Groovy",
-      "leftPos" : 1196,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "拼接描述字段",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION4"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 438
-    }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
         "modelref" : true,
@@ -9388,32 +9346,6 @@
         "id" : "work_item_type_page"
       },
       "topPos" : 598
-    }, {
-      "codeName" : "LOOPSUBCALL3",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parameter"
-      },
-      "leftPos" : 1036,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION7"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL3"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parameter_page"
-      },
-      "topPos" : -80
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -9466,6 +9398,92 @@
         "id" : "work_item_type_page"
       },
       "topPos" : 598
+    }, {
+      "codeName" : "PREPAREPARAM11",
+      "leftPos" : 464,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "owner_id",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "attachment_temp"
+        },
+        "name" : "空值（NULL） ==> attachment_temp[owner_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      }, {
+        "dstFieldName" : "owner_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "attachment_temp"
+        },
+        "name" : "空值（NULL） ==> attachment_temp[owner_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      }, {
+        "dstFieldName" : "id",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "attachment_temp"
+        },
+        "name" : "空值（NULL） ==> attachment_temp[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      } ],
+      "topPos" : 648
+    }, {
+      "codeName" : "PREPAREPARAM13",
+      "leftPos" : 850,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备系统参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM13"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OWNER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter_filter"
+        },
+        "name" : "Default[LIBRARY_ID] ==> parameter_filter[N_OWNER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "LIBRARY_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "N_OWNER_TYPE_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter_filter"
+        },
+        "name" : "直接值[LIBRARY] ==> parameter_filter[N_OWNER_TYPE_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "LIBRARY",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_OWNER_SUBTYPE_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter_filter"
+        },
+        "name" : "直接值[RUNFAILURE] ==> parameter_filter[N_OWNER_SUBTYPE_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "RUNFAILURE",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -220
     }, {
       "codeName" : "PREPAREPARAM8",
       "leftPos" : 1196,
@@ -10630,7 +10648,7 @@
       } ],
       "topPos" : 330
     }, {
-      "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+      "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('target_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))\r\n}\r\n\r\n\r\n",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 796,
@@ -14790,6 +14808,7 @@
         "codeName" : "workload_schedule"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -14801,6 +14820,7 @@
         "codeName" : "remaining_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -14832,6 +14852,7 @@
         "codeName" : "estimated_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -14843,6 +14864,7 @@
         "codeName" : "actual_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -15365,6 +15387,7 @@
         "codeName" : "estimated_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -15376,6 +15399,7 @@
         "codeName" : "workload_schedule"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -15387,6 +15411,7 @@
         "codeName" : "remaining_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -15398,6 +15423,7 @@
         "codeName" : "actual_workload"
       },
       "precision" : 1,
+      "scale" : 1,
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
       "type" : "SIMPLE"
@@ -15716,6 +15742,7 @@
         "name" : "ATTENTIONS",
         "codeName" : "attentions"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15730,6 +15757,7 @@
         "name" : "CASE_ID",
         "codeName" : "Case_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15744,6 +15772,7 @@
         "name" : "CASE_NAME",
         "codeName" : "case_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15758,6 +15787,7 @@
         "name" : "CASE_NAME",
         "codeName" : "case_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15772,6 +15802,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15786,6 +15817,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -15800,6 +15832,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15814,6 +15847,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15828,6 +15862,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -15843,6 +15878,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -15858,6 +15894,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -15873,6 +15910,7 @@
         "name" : "EXECUTED_AT",
         "codeName" : "executed_at"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -15888,6 +15926,7 @@
         "name" : "EXECUTED_AT",
         "codeName" : "executed_at"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -15903,6 +15942,7 @@
         "name" : "EXECUTED_AT",
         "codeName" : "executed_at"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -15917,6 +15957,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15931,6 +15972,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -15945,6 +15987,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15959,6 +16002,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15973,6 +16017,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -15987,6 +16032,7 @@
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -16001,6 +16047,7 @@
         "name" : "EXECUTOR_NAME",
         "codeName" : "executor_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16015,6 +16062,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16029,6 +16077,7 @@
         "name" : "LIBRARY_ID",
         "codeName" : "library_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16043,6 +16092,7 @@
         "name" : "LIBRARY_NAME",
         "codeName" : "library_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16057,6 +16107,7 @@
         "name" : "LIBRARY_NAME",
         "codeName" : "library_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16071,6 +16122,7 @@
         "name" : "MAINTENANCE_NAME",
         "codeName" : "maintenance_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16085,6 +16137,7 @@
         "name" : "MAINTENANCE_NAME",
         "codeName" : "maintenance_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16099,6 +16152,7 @@
         "name" : "MAINTENANCE_NAME",
         "codeName" : "maintenance_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16113,6 +16167,7 @@
         "name" : "MAINTENANCE_NAME",
         "codeName" : "maintenance_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16127,6 +16182,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16141,6 +16197,7 @@
         "name" : "PLAN_ID",
         "codeName" : "Plan_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16155,6 +16212,7 @@
         "name" : "PLAN_NAME",
         "codeName" : "PLAN_NAME"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16169,6 +16227,7 @@
         "name" : "PLAN_NAME",
         "codeName" : "PLAN_NAME"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16184,6 +16243,7 @@
         "name" : "PRIORITY",
         "codeName" : "priority"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16198,6 +16258,7 @@
         "name" : "RECENT_CREATE_DAYS",
         "codeName" : "recent_create_days"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 9,
       "type" : "SIMPLE"
@@ -16212,6 +16273,7 @@
         "name" : "SHOW_IDENTIFIER",
         "codeName" : "show_identifier"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16226,6 +16288,7 @@
         "name" : "SHOW_IDENTIFIER",
         "codeName" : "show_identifier"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16240,6 +16303,7 @@
         "name" : "STATUS",
         "codeName" : "status"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16254,6 +16318,7 @@
         "name" : "STATUS",
         "codeName" : "status"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16268,6 +16333,7 @@
         "name" : "SUITE_ID",
         "codeName" : "suite_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16282,6 +16348,7 @@
         "name" : "TITLE",
         "codeName" : "TITLE"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -16296,6 +16363,7 @@
         "name" : "TITLE",
         "codeName" : "TITLE"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"

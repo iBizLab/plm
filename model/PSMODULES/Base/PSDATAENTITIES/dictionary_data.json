@@ -291,11 +291,17 @@
       "name" : "COLOR",
       "codeName" : "color"
     }, {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    }, {
       "name" : "STYLE",
       "codeName" : "style"
     }, {
       "name" : "CATALOG",
       "codeName" : "catalog"
+    }, {
+      "name" : "ICON",
+      "codeName" : "icon"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -400,6 +406,54 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ai_kb_doc_import_method/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ai_kb_doc_import_method",
+    "logicName" : "知识库文档导入方式",
+    "name" : "ai_kb_doc_import_method",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_kb_doc_import_method",
+          "fieldName" : "TYPE",
+          "name" : "(TYPE) 等于(=) ai_kb_doc_import_method",
+          "getPSDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ai_kb_doc_import_methodInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ai_kb_doc_import_methodResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -634,6 +688,54 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Idea_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/project_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "project_type",
+    "logicName" : "项目类型",
+    "name" : "project_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "project_type",
+          "fieldName" : "TYPE",
+          "name" : "(TYPE) 等于(=) project_type",
+          "getPSDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Project_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -1449,6 +1551,37 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "ai_kb_doc_import_method",
+    "logicName" : "知识库文档导入方式",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "name" : "ai_kb_doc_import_method",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ai_kb_doc_import_method"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ai_kb_doc_import_methodInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ai_kb_doc_import_methodResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "idea",
     "logicName" : "需求",
     "name" : "idea",
@@ -1570,6 +1703,37 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Idea_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "project_type",
+    "logicName" : "项目类型",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "name" : "project_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "project_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Project_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -2379,6 +2543,93 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DESCRIPTION",
+      "dBType" : "MYSQL5",
+      "name" : "DESCRIPTION",
+      "queryCodeExp" : "t1.`DESCRIPTION`",
+      "standardColumnName" : "`DESCRIPTION`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[DESCRIPTION][描述]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[DESCRIPTION][描述]移动端默认",
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DESCRIPTION",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "description",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT_1000",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.DESCRIPTION"
+    },
+    "length" : 2000,
+    "logicName" : "描述",
+    "name" : "DESCRIPTION",
+    "orderValue" : 180,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "DESCRIPTION"
+    },
+    "serviceCodeName" : "description",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "STYLE",
       "dBType" : "MYSQL5",
       "name" : "STYLE",
@@ -2392,6 +2643,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[STYLE][背景样式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[STYLE][背景样式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[STYLE][背景样式]移动端默认",
       "getPSDEFFormItem" : {
@@ -2405,18 +2668,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[STYLE][背景样式]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[STYLE][背景样式]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2561,6 +2812,84 @@
     "serviceCodeName" : "catalog",
     "stdDataType" : 25,
     "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ICON",
+      "dBType" : "MYSQL5",
+      "name" : "ICON",
+      "queryCodeExp" : "t1.`ICON`",
+      "standardColumnName" : "`ICON`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ICON][图标]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[ICON][图标]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ICON][图标]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[ICON][图标]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ICON",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "icon",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "图标",
+    "name" : "ICON",
+    "orderValue" : 210,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ICON"
+    },
+    "serviceCodeName" : "icon",
+    "stdDataType" : 21,
+    "stringLength" : 100,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -3193,6 +3522,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "0",
       "logicName" : "是否系统默认",
       "name" : "is_system",
@@ -3224,6 +3564,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "图标",
+      "name" : "icon",
+      "getPSDEField" : {
+        "name" : "ICON",
+        "codeName" : "icon"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "建立人",
@@ -3317,6 +3668,7 @@
         "name" : "CATALOG",
         "codeName" : "catalog"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3331,6 +3683,7 @@
         "name" : "CATALOG",
         "codeName" : "catalog"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3345,6 +3698,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3359,6 +3713,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3373,6 +3728,7 @@
         "name" : "STYLE",
         "codeName" : "style"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3387,6 +3743,7 @@
         "name" : "TYPE",
         "codeName" : "type"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3463,18 +3820,6 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "delete_confirm_option_view",
-    "logicName" : "数据字典确认删除视图",
-    "name" : "数据字典确认删除视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "idea_dictionary_create_view",
-    "logicName" : "需求字典新建视图",
-    "name" : "需求字典新建视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "ticket_dictionary_create_view",
     "logicName" : "工单字典新建视图",
     "name" : "工单字典新建视图",
@@ -3497,6 +3842,18 @@
     "logicName" : "测试用例字典表格视图",
     "name" : "测试用例字典表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "copy_project_type_list_view",
+    "logicName" : "复制项目类型字典列表视图",
+    "name" : "复制项目类型字典列表视图",
+    "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_type_list_view",
+    "logicName" : "项目类型字典列表视图",
+    "name" : "项目类型字典列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -3548,6 +3905,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "import_method_list_view",
+    "logicName" : "知识库文档导入方式字典列表视图",
+    "name" : "知识库文档导入方式字典列表视图",
+    "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "数据字典实体编辑视图",
     "modelTag" : "EDITVIEW",
@@ -3580,6 +3943,12 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "delete_confirm_option_view",
+    "logicName" : "数据字典确认删除视图",
+    "name" : "数据字典确认删除视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "global_tab_exp_view",
     "logicName" : "分页导航视图（发布配置）",
     "name" : "分页导航视图（发布配置）",
@@ -3598,10 +3967,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "idea_dictionary_grid_view",
-    "logicName" : "需求字典表格视图",
-    "name" : "需求字典表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "idea_dictionary_create_view",
+    "logicName" : "需求字典新建视图",
+    "name" : "需求字典新建视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -3617,12 +3986,25 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "idea_dictionary_grid_view",
+    "logicName" : "需求字典表格视图",
+    "name" : "需求字典表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "RedirectView",
     "logicName" : "数据字典实体数据重定向视图",
     "modelTag" : "REDIRECTVIEW",
     "name" : "数据字典实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "idea_create_form",
+    "logicName" : "需求字典新建视图_表单",
+    "modelTag2" : "0",
+    "name" : "需求字典新建视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "ticket_create_form",
     "logicName" : "工单字典新建视图_表单",
@@ -3666,13 +4048,6 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "Usr04280472_Form",
-    "logicName" : "数据字典确认删除视图_表单",
-    "modelTag2" : "0",
-    "name" : "数据字典确认删除视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "global_edit_view_Form",
     "logicName" : "实体选项操作视图（编辑阶段）_表单",
     "modelTag2" : "0",
@@ -3687,6 +4062,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "Usr04280472_Form",
+    "logicName" : "数据字典确认删除视图_表单",
+    "modelTag2" : "0",
+    "name" : "数据字典确认删除视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "ticket_remove_view_Form",
     "logicName" : "工单配置状态管理确认删除_表单",
     "modelTag2" : "0",
@@ -3698,13 +4080,6 @@
     "logicName" : "测试用例字典新建视图_表单",
     "modelTag2" : "0",
     "name" : "测试用例字典新建视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "idea_create_form",
-    "logicName" : "需求字典新建视图_表单",
-    "modelTag2" : "0",
-    "name" : "需求字典新建视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

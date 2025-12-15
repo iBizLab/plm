@@ -16,11 +16,11 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
+`MEMBER_UID(用户组/人员标识)` <i class="fa fa-angle-double-right"/></i> `MEMBER_UID(用户组/人员标识)`
+* `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
 * `属性等价`
 `ROLE_ID(系统角色标识)` <i class="fa fa-angle-double-right"/></i> `ROLE_ID(系统角色标识)`
-* `属性等价`
-`MEMBER_UID(用户组/人员标识)` <i class="fa fa-angle-double-right"/></i> `MEMBER_UID(用户组/人员标识)`
 * `属性等价`
 `NAME(姓名)` <i class="fa fa-angle-double-right"/></i> `MEMBER_NAME(成员姓名)`
 * `属性等价`

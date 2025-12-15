@@ -21,8 +21,7 @@ state "结束" as END1 <<end>> [[$./get_deliverable_total#end1 {结束}]]
 
 
 Begin --> RAWJSCODE2
-RAWJSCODE2 --> RAWJSCODE3
-RAWJSCODE3 --> END1
+RAWJSCODE2 --> END1
 
 
 @enduml
@@ -43,6 +42,7 @@ RAWJSCODE3 --> END1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+console.log('')
 uiLogic.view.layoutPanel.panelItems.total.data.total = uiLogic.view.layoutPanel.panelItems.grid.control.state.items.length;
 if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){
     view.layoutPanel.panelItems.grid.state.visible = false

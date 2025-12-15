@@ -166,7 +166,7 @@
 |[客户取消分配负责人通知](module/ProdMgmt/customer/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[客户通知模板(取消分配负责人)](index/notify_index#customer_assignee_cancel)|负责人 ||
 |[客户分配负责人通知](module/ProdMgmt/customer/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[客户通知模板(分配负责人)](index/notify_index#customer_assignee)|负责人 ||
 |[客户变更负责人通知](module/ProdMgmt/customer/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[客户通知模板(变更负责人)](index/notify_index#customer_assignee_onchange)|负责人 关注人 ||
-|[客户删除通知](module/ProdMgmt/customer/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[客户通知模板(删除客户)](index/notify_index#customer_remove)|负责人 关注人 ||
+|[客户删除通知](module/ProdMgmt/customer/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[客户通知模板(删除客户)](index/notify_index#customer_remove)|关注人 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

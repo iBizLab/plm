@@ -710,6 +710,91 @@ Integer
 
 
 
+## 重新加载
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/pscoreprdfuncs/{key}/reload" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|核心产品功能标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
+|<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
+|<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
+|<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
+|<el-row justify="space-between"><el-col :span="20">fullpath</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全路径|
+|<el-row justify="space-between"><el-col :span="20">funcsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能编号|
+|<el-row justify="space-between"><el-col :span="20">funcstate</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|功能状态|
+|<el-row justify="space-between"><el-col :span="20">functag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能标记|
+|<el-row justify="space-between"><el-col :span="20">functag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能标记2|
+|<el-row justify="space-between"><el-col :span="20">funcurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能描述链接|
+|<el-row justify="space-between"><el-col :span="20">httpurltorepo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Http仓库地址|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
+|<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
+  "avatarurl" : null,
+  "createdate" : null,
+  "createman" : null,
+  "currentversion" : null,
+  "fullname" : null,
+  "fullpath" : null,
+  "funcsn" : null,
+  "funcstate" : null,
+  "functag" : null,
+  "functag2" : null,
+  "funcurl" : null,
+  "httpurltorepo" : null,
+  "memo" : null,
+  "ordervalue" : null,
+  "pscoreprdfuncid" : null,
+  "pscoreprdfuncname" : null,
+  "pscoreprdid" : null,
+  "pscoreprdname" : null,
+  "path" : null,
+  "settingurl" : null,
+  "updatedate" : null,
+  "updateman" : null,
+}
+```
+
+
+
 ## 卸载
 
 <el-row>

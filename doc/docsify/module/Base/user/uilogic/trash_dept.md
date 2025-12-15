@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./trash_dept#begin {开始}]]
-state "提示移除成员后才可删除" as RAWJSCODE1  [[$./trash_dept#rawjscode1 {提示移除成员后才可删除}]]
-state "获取下级部门" as DEPARTMENT  [[$./trash_dept#department {获取下级部门}]]
-state "结束" as END1 <<end>> [[$./trash_dept#end1 {结束}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./trash_dept#preparejsparam1 {准备参数}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./trash_dept#viewctrlinvoke1 {视图部件调用}]]
 state "获取部门成员" as USER  [[$./trash_dept#user {获取部门成员}]]
-state "提示移除下级部门" as RAWJSCODE2  [[$./trash_dept#rawjscode2 {提示移除下级部门}]]
+state "结束" as END1 <<end>> [[$./trash_dept#end1 {结束}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./trash_dept#viewctrlinvoke1 {视图部件调用}]]
 state "删除部门" as DEUIACTION1  [[$./trash_dept#deuiaction1 {删除部门}]]
+state "提示移除成员后才可删除" as RAWJSCODE1  [[$./trash_dept#rawjscode1 {提示移除成员后才可删除}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./trash_dept#preparejsparam1 {准备参数}]]
+state "提示移除下级部门" as RAWJSCODE2  [[$./trash_dept#rawjscode2 {提示移除下级部门}]]
+state "获取下级部门" as DEPARTMENT  [[$./trash_dept#department {获取下级部门}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -123,9 +123,9 @@ const bol = await util.confirm.warning({
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|用户查询结果|user_page|分页查询||
-|过滤器|filter|过滤器||
-|树部件|treeexpbar_tree|部件对象||
-|部门过滤器|dept_filter|过滤器||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |部门查询分页结果|dept_page|分页查询||
+|树部件|treeexpbar_tree|部件对象||
+|过滤器|filter|过滤器||
+|部门过滤器|dept_filter|过滤器||
+|用户查询结果|user_page|分页查询||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

@@ -17,21 +17,24 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_statebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选择数据对象"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_staterawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置工作项类型id"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_staterawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="设置工作项类型ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="清除工作项类型"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_statedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更状态"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置状态"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="bindparam1_rawsfcode1" sourceRef="bindparam1" targetRef="rawsfcode1">
+                    <sequenceFlow id="bindparam1_prepareparam_01" sourceRef="bindparam1" targetRef="prepareparam_01">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_loopsubcall1" sourceRef="rawsfcode1" targetRef="loopsubcall1">
+                    <sequenceFlow id="rawsfcode_01_loopsubcall1" sourceRef="rawsfcode_01" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    <sequenceFlow id="prepareparam_01_loopsubcall1" sourceRef="prepareparam_01" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
                     </sequenceFlow>
         </process>
     </definitions>

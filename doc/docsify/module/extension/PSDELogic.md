@@ -33,6 +33,7 @@
 |逻辑标记3|LOGICTAG3|文本，可指定长度|60|是||
 |逻辑标记4|LOGICTAG4|文本，可指定长度|60|是||
 |逻辑类型|LOGICTYPE|文本，可指定长度|50|是||
+|MCP服务标识|MCPSERVERID|文本，可指定长度|200|是||
 |备注|MEMO|长文本，长度1000|2000|是||
 |附加次序|ORDERVALUE|整型||是||
 |实体|PSDEID|文本，可指定长度|100|否||
@@ -46,6 +47,7 @@
 |成功率|SUCCESS_RATE|数值||是||
 |线程模式|THREADMODE|文本，可指定长度|100|是||
 |定时触发策略|TIMERPOLICY|文本，可指定长度|100|是||
+|MCP工具规格说明|TOOLSPECIFICATION|长文本，没有长度限制|1048576|是||
 |更新时间|UPDATEDATE|日期时间型|8|否||
 |更新人|UPDATEMAN|文本，可指定长度|60|否||
 |用户标记|USERTAG|文本，可指定长度|200|是||
@@ -110,6 +112,7 @@
 | -------- |---------- |------------|----- |
 |[DER1N_PSDELOGICLINK_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICLINK_PSDELOGIC_PSDELOGICID)|[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|1:N关系||
 |[DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID)|[实体处理逻辑节点(PSDELOGICNODE)](module/extension/PSDELogicNode)|1:N关系||
+|[DER1N_PSDELOGICPARAM_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICPARAM_PSDELOGIC_PSDELOGICID)|[实体逻辑参数(PSDELOGICPARAM)](module/extension/PSDELogicParam)|1:N关系||
 
 
 </el-tab-pane>
@@ -121,7 +124,7 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |应用|apply|用户自定义|默认|不支持||||
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDELogic_Create)|||
 |CreateTemp|CreateTemp|内置方法|默认|不支持||||
 |CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
 |禁用|disable|用户自定义|默认|不支持||||
@@ -147,6 +150,7 @@
 |[WebHook地址](module/extension/PSDELogic/logic/WebHook)|WebHook|属性逻辑||WebHook地址|
 |[从模板建立规则](module/extension/PSDELogic/logic/create_by_template)|create_by_template|无||从模板建立规则|
 |[切换启用状态](module/extension/PSDELogic/logic/valid)|valid|属性逻辑||切换启用状态|
+|[初始化规则](module/extension/PSDELogic/logic/initLogic)|initLogic|无|||
 |[失败率计算](module/extension/PSDELogic/logic/failure_per)|failure_per|属性逻辑||失败率计算|
 |[获取最后运行状态](module/extension/PSDELogic/logic/get_last_run_info)|get_last_run_info|无||获取最后运行状态|
 
@@ -198,7 +202,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 根据模板标识建立 | create_by_template | 建立 |无数据|<details><summary>后台调用</summary>[create_by_template](#行为)||
 | 新建计划规则 | create_schedule_flow | 计划规则 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建规则](app/view/psdelogicquick_create_view_schedule)</details>||
-| 打开配置视图 | open_quick_cfg_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[实体处理逻辑](app/view/psdelogicquick_cfg_view)</details>||
+| 打开配置视图 | open_quick_cfg_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[自动化规则](app/view/psdelogicquick_cfg_view)</details>||
 | 应用扩展模型 | apply | 应用 |单项数据（主键）|<details><summary>后台调用</summary>[apply](#行为)||
 | 新建自动化规则 | create_auto_flow | 自动化规则 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建规则](app/view/psdelogicquick_create_view_auto_flow)</details>||
 | 打开全部日志 | open_all_log | 全部日志 |无数据|<details><summary>打开视图或向导（模态）</summary>[全部日志](app/view/psde_logic_all_log_grid_view)</details>||

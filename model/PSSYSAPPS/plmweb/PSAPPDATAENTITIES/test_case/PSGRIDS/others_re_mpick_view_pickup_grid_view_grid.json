@@ -3,7 +3,6 @@
   "codeName" : "others_re_mpick_view_pickup_grid_view_grid",
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
-  "controlStyle" : "CHECKBOX_GRID",
   "controlType" : "GRID",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSGRIDS/others_re_mpick_view_pickup_grid_view_grid.json",
   "getFetchPSControlAction" : {
@@ -31,6 +30,23 @@
     "id" : "import_test_case"
   },
   "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "identifier",
+    "excelCaption" : "编号",
+    "name" : "identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
     "caption" : "标题",
@@ -71,27 +87,6 @@
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "FRONT",
-    "caption" : "执行结果",
-    "codeName" : "run_status",
-    "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "run_status",
-    "excelCaption" : "执行结果",
-    "name" : "run_status",
-    "noPrivDisplayMode" : 1,
-    "getPSAppCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__run_status.json"
-    },
-    "getPSAppDEField" : {
-      "name" : "RUN_STATUS",
-      "codeName" : "run_status"
-    },
-    "width" : 100,
-    "widthUnit" : "PX",
-    "enableSort" : false
-  }, {
-    "align" : "LEFT",
-    "cLConvertMode" : "FRONT",
     "caption" : "用例类型",
     "codeName" : "type",
     "columnType" : "DEFGRIDCOLUMN",
@@ -107,7 +102,7 @@
       "name" : "TYPE",
       "codeName" : "type"
     },
-    "width" : 100,
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
   }, {
@@ -129,11 +124,18 @@
       "name" : "LEVEL",
       "codeName" : "level"
     },
-    "width" : 100,
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
   } ],
   "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    }
+  }, {
     "dataType" : 25,
     "name" : "title",
     "getPSAppDEField" : {
@@ -146,13 +148,6 @@
     "getPSAppDEField" : {
       "name" : "STATE",
       "codeName" : "state"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "run_status",
-    "getPSAppDEField" : {
-      "name" : "RUN_STATUS",
-      "codeName" : "run_status"
     }
   }, {
     "dataType" : 25,
@@ -235,11 +230,6 @@
     },
     "allowEmpty" : true
   } ],
-  "getPSSysPFPlugin" : {
-    "pluginType" : "GRID_RENDER",
-    "pluginCode" : "CHECKBOX_GRID",
-    "runtimeObject" : true
-  },
   "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {

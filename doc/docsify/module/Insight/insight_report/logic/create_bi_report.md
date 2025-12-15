@@ -63,9 +63,10 @@ if(templateModel != null){
 
 
 1. 将`1` 设置给  `bireport(智能报表).VALIDFLAG(启用)`
-2. 将`BIScheme` 设置给  `bireport(智能报表).PSSYSBISCHEMEID(智能报表体系)`
-3. 将`BIScheme.work_item` 设置给  `bireport(智能报表).PSSYSBICUBEID(智能报表立方体)`
-4. 将`Default(传入变量).NAME(名称)` 设置给  `bireport(智能报表).PSSYSBIREPORTNAME(智能报表名称)`
+2. 将`Default(传入变量).APP_TAG(应用标记)` 设置给  `bireport(智能报表).pssysappid`
+3. 将`BIScheme` 设置给  `bireport(智能报表).PSSYSBISCHEMEID(智能报表体系)`
+4. 将`BIScheme.work_item` 设置给  `bireport(智能报表).PSSYSBICUBEID(智能报表立方体)`
+5. 将`Default(传入变量).NAME(名称)` 设置给  `bireport(智能报表).PSSYSBIREPORTNAME(智能报表名称)`
 
 #### 建立bi报表扩展模型 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

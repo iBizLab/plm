@@ -11,8 +11,11 @@
 ## 视图界面逻辑
 * `onMounted`
 ```javascript
-view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;
-
+console.log("VIEWMOUNTED");
+const choose_data = view.layoutPanel.panelItems.choose_data;
+if(choose_data){
+  	choose_data.state.visible = view.context.srfshowchoose || false;
+}
 // 初始化默认隐藏表格
 view.layoutPanel.panelItems.grid.state.keepAlive = true;
 view.layoutPanel.panelItems.grid.state.visible = false;
@@ -30,10 +33,15 @@ if (form) {
         }
     });
 }
-
 // 初始化隐藏发送和清空按钮
-view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
-view.layoutPanel.panelItems.button_calluilogic.state.visible = false
+const  button_calluilogic1 = view.layoutPanel.panelItems.button_calluilogic1;
+if(button_calluilogic1){
+  button_calluilogic1.state.visible = false;
+}
+const button_calluilogic = view.layoutPanel.panelItems.button_calluilogic;
+if(button_calluilogic){
+  button_calluilogic.state.visible = false;
+}
 ```
   * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
@@ -46,8 +54,8 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加客户（其他实体关联）](module/ProdMgmt/customer#界面行为)
 
 ### 关联界面逻辑
-  * [关联(RELATION)](module/Base/relation) : [触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)
+  * [关联(RELATION)](module/Base/relation) : [触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)
 
 ### 关联视图
   * [客户(customer_main_view)](app/view/customer_main_view)

@@ -1,0 +1,105 @@
+package cn.ibizlab.plm.extension.logic.psdelogiclogic.initlogic;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.extension.domain.PSDELogic psdelogicinitlogicdefault;
+                global cn.ibizlab.plm.core.extension.domain.PSDELogicParam psdelogicinitlogicdelogicparam;
+                global cn.ibizlab.plm.core.extension.domain.PSDELogicParam psdelogicinitlogicdelogicparams;
+        global cn.ibizlab.plm.core.extension.service.IPSDELogicService iBzSysPsdelogicDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "psdelogicinitlogicbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam_01"
+            ruleflow-group "psdelogicinitlogicappendparam_01"
+            when
+            then
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam_01"
+            ruleflow-group "psdelogicinitlogicrenewparam_01"
+            when
+            then
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备默认变量参数]
+            rule "prepareparam_01"
+            ruleflow-group "psdelogicinitlogicprepareparam_01"
+            when
+            then
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamid","default");
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamname","DEFAULT");
+                            psdelogicinitlogicdelogicparam.set("defaultparam","1");
+                            psdelogicinitlogicdelogicparam.set("globalparam","0");
+                            psdelogicinitlogicdelogicparam.set("logicname","默认变量");
+                            psdelogicinitlogicdelogicparam.set("originentityflag","1");
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备事件变量参数]
+            rule "prepareparam_02"
+            ruleflow-group "psdelogicinitlogicprepareparam_02"
+            when
+            then
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamid","eventdata");
+                            psdelogicinitlogicdelogicparam.set("psdelogicparamname","EVENTDATA");
+                            psdelogicinitlogicdelogicparam.set("defaultparam","0");
+                            psdelogicinitlogicdelogicparam.set("globalparam","0");
+                            psdelogicinitlogicdelogicparam.set("logicname","事件变量");
+                            psdelogicinitlogicdelogicparam.set("originentityflag","1");
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam_02"
+            ruleflow-group "psdelogicinitlogicappendparam_02"
+            when
+            then
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置预置变量参数]
+            rule "prepareparam_03"
+            ruleflow-group "psdelogicinitlogicprepareparam_03"
+            when
+            then
+                            psdelogicinitlogicdefault.set("psdelogicparams",psdelogicinitlogicdelogicparams.get(""));
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "psdelogicinitlogicend_01"
+            when
+            then
+                        update(psdelogicinitlogicdefault);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparam);//更新fact中变量值
+                        update(psdelogicinitlogicdelogicparams);//更新fact中变量值
+            end

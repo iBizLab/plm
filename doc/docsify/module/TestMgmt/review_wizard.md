@@ -111,9 +111,9 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `CREATE(测试库(SUBDATA))`
 * `UPDATE`
 * `DELETE`
-* `CREATE(测试库(SUBDATA))`
 * `READ`
 
 

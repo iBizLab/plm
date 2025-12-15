@@ -25,11 +25,11 @@ state "产品需求和产品信息属性" as PREPAREPARAM4  [[$./save_workload#p
 state "测试用例和测试库信息属性" as PREPAREPARAM5  [[$./save_workload#prepareparam5 {"测试用例和测试库信息属性"}]]
 state "保存工时" as DEACTION2  [[$./save_workload#deaction2 {"保存工时"}]]
 state "更新剩余工时" as DEACTION6  [[$./save_workload#deaction6 {"更新剩余工时"}]]
+state "工时为0时置为NULL" as PREPAREPARAM6  [[$./save_workload#prepareparam6 {"工时为0时置为NULL"}]]
 state "合计已登记工时" as RAWSQLCALL1  [[$./save_workload#rawsqlcall1 {"合计已登记工时"}]]
 state "更新实际工时" as DEACTION7  [[$./save_workload#deaction7 {"更新实际工时"}]]
 state "填充父工作项标识" as PREPAREPARAM7  [[$./save_workload#prepareparam7 {"填充父工作项标识"}]]
 state "自动计算父工时" as DELOGIC1  [[$./save_workload#delogic1 {"自动计算父工时"}]]
-state "工时为0时置为NULL" as PREPAREPARAM6  [[$./save_workload#prepareparam6 {"工时为0时置为NULL"}]]
 
 
 Begin --> DEBUGPARAM1

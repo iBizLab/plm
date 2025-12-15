@@ -146,10 +146,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ`
-* `DELETE`
 * `UPDATE`
+* `READ`
 * `CREATE`
+* `DELETE`
 
 
 
@@ -184,6 +184,7 @@
 |N_ORGANIZATION_ID_EQ|组织标识|EQ||
 |N_ORGANIZATION_NAME_EQ|组织名称|EQ||
 |N_ORGANIZATION_NAME_LIKE|组织名称|LIKE||
+|N_REPORT_FLAG_EQ|统计|EQ||
 |N_STATUS_EQ|状态|EQ||
 |N_TITLE_EQ|职位|EQ||
 |N_USER_ID_NOTEQ|用户ID|NOTEQ||

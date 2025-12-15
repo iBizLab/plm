@@ -52,7 +52,7 @@ DEACTION1 --> END1
 
 
 
-调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 行为 [关联项目(other_re_project)](module/ProjMgmt/project#行为) ，行为参数为`Default(传入变量)`
+调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 行为 [其他实体关联项目(other_re_project)](module/ProjMgmt/project#行为) ，行为参数为`Default(传入变量)`
 
 
 

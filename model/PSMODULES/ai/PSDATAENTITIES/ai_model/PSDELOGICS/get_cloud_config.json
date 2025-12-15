@@ -1,0 +1,379 @@
+{
+  "codeName" : "get_cloud_config",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDELOGICS/get_cloud_config.json",
+  "logicName" : "获取Cloud配置",
+  "name" : "获取Cloud配置",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_03"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "LIKE",
+          "dstFieldName" : "MODEL_CAPABILITY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CAPABILITY] 文本包含(%) reasoning",
+          "paramValue" : "reasoning"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_04"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "LIKE",
+          "dstFieldName" : "MODEL_CAPABILITY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CAPABILITY] 文本包含(%) function_calling",
+          "paramValue" : "function_calling"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_05"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "API_BASE_URL",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[API_BASE_URL] 等于(=) https://api.deepseek.com",
+          "paramValue" : "https://api.deepseek.com"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_06"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "LIKE",
+          "dstFieldName" : "MODEL_CAPABILITY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CAPABILITY] 文本包含(%) streaming",
+          "paramValue" : "streaming"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_07"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "MODEL_CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CATEGORY] 等于(=) vision",
+          "paramValue" : "vision"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "禁用时",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "ACTIVE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[ACTIVE] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_02"
+      },
+      "name" : "最后返回",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_02",
+    "leftPos" : 670,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置流和vlm",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_02"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "descossimage",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 70,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 1100,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "map"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 72,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_07",
+    "leftPos" : 710,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备多模态类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_07"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "aitype",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "QWENVL",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 210,
+    "parallelOutput" : true
+  }, {
+    "code" : "net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(\"cloud-oss\",\"aiimage:\\n  agent: ${sys.getDeploySystemId()}-ai--vl\");",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 902,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "发布oss配置代码",
+    "topPos" : 226,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_06",
+    "leftPos" : 740,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "stream",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 307,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置禁用",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "disabled",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 367,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_04",
+    "leftPos" : 420,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置tools",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "tools",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "toolmaxcalls",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "20",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 390,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_05",
+    "leftPos" : 616,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置aitype",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "aitype",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "deepseek",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 390,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_03",
+    "leftPos" : 370,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置think",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "think",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 510,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "map",
+    "logicName" : "map",
+    "name" : "map",
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

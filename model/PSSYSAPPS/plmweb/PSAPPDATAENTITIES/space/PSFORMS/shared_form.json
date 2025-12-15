@@ -180,14 +180,17 @@
           "getPSDEFDLogics" : [ {
             "groupOP" : "OR",
             "logicType" : "GROUP",
+            "name" : "OR",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "is_shared",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "is_shared值为空(Nil)"
             }, {
               "condOP" : "EQ",
               "dEFDName" : "is_shared",
               "logicType" : "SINGLE",
+              "name" : "is_shared等于(=) 0",
               "value" : "0"
             } ],
             "notMode" : false
@@ -246,15 +249,18 @@
           "getPSDEFDLogics" : [ {
             "groupOP" : "OR",
             "logicType" : "GROUP",
+            "name" : "OR",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "is_shared",
               "logicType" : "SINGLE",
+              "name" : "is_shared等于(=) 1",
               "value" : "1"
             }, {
               "condOP" : "EQ",
               "dEFDName" : "is_shared",
               "logicType" : "SINGLE",
+              "name" : "is_shared等于(=) 2",
               "value" : "2"
             } ],
             "notMode" : false
@@ -289,9 +295,11 @@
             "value" : "space",
             "rawValue" : false
           } ],
+          "refreshMode" : 1,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "space_shared_setting",
           "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
           "id" : "space_shared_setting@space"
         },
         "tooltip" : "共享设置",

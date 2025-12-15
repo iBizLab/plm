@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./del_comment#begin {开始}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./del_comment#viewctrlinvoke1 {视图部件调用}]]
-state "回复数量-1" as RAWJSCODE1  [[$./del_comment#rawjscode1 {回复数量-1}]]
 state "删除评论" as DEACTION1  [[$./del_comment#deaction1 {删除评论}]]
+state "回复数量-1" as RAWJSCODE1  [[$./del_comment#rawjscode1 {回复数量-1}]]
 state "获取评论标识" as PREPAREJSPARAM1  [[$./del_comment#preparejsparam1 {获取评论标识}]]
 
 
@@ -79,8 +79,8 @@ if (comment_count.value == 1) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|评论组件控制器|comments_controller|部件对象||
-|评论|comment|数据对象||
 |评论标识|comment_key|简单数据||
+|评论组件控制器|comments_controller|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|评论|comment|数据对象||
 |当前部件对象|ctrl|当前部件对象||

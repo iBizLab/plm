@@ -26,6 +26,10 @@
 
 * `全部数据`
 
+> [!ATTENTION|label:存在长文本属性]
+>
+> `ICON(图标)`
+
 
 
 
@@ -39,6 +43,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,

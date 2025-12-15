@@ -291,6 +291,858 @@ FROM `ADDON_ROLE_MEMBER` t1
 ```
 
 
+## [智能体(AI_AGENT)](module/ai/ai_agent.md) :id=ai_agent
+
+#### DEFAULT :id=ai_agent-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_MODEL_ID`,
+t11.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STREAM`,
+t1.`TEMPERATURE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT` t1 
+LEFT JOIN `AI_MODEL` t11 ON t1.`AI_MODEL_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_MODEL_ID`,
+t11.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOM_SUGGESTION_PROMPT`,
+t1.`DEFAULT_SYSTEM_PROMPT`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STREAM`,
+t1.`SUGGESTED_QUESTIONS`,
+t1.`TEMPERATURE`,
+t1.`TOOL_EXCEED_MESSAGE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WELCOME_MESSAGE`
+FROM `AI_AGENT` t1 
+LEFT JOIN `AI_MODEL` t11 ON t1.`AI_MODEL_ID` = t11.`ID` 
+
+```
+
+
+## [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment.md) :id=ai_agent_assignment
+
+#### DEFAULT :id=ai_agent_assignment-Default
+```sql
+SELECT
+t11.`CODE_NAME` AS `CONTEXT_CODE_NAME`,
+t1.`CONTEXT_ID`,
+t11.`NAME` AS `CONTEXT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SYSTEM_FLAG`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_TAG`
+FROM `AI_AGENT_ASSIGNMENT` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`CONTEXT_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_assignment-View
+```sql
+SELECT
+t11.`CODE_NAME` AS `CONTEXT_CODE_NAME`,
+t1.`CONTEXT_ID`,
+t11.`NAME` AS `CONTEXT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SYSTEM_FLAG`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_TAG`
+FROM `AI_AGENT_ASSIGNMENT` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`CONTEXT_ID` = t11.`ID` 
+
+```
+
+
+## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md) :id=ai_agent_context
+
+#### DEFAULT :id=ai_agent_context-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_AGENT_ID`,
+t11.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_MODEL_ID`,
+t21.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`SCOPES`,
+t1.`SEQUENCE`,
+t1.`STREAM`,
+t1.`SYSTEM_FLAG`,
+t1.`TEMPERATURE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_CONTEXT` t1 
+LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
+LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_context-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_AGENT_ID`,
+t11.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_MODEL_ID`,
+t21.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CONTEXT_DEBUG_DATA`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOM_SUGGESTION_PROMPT`,
+t1.`DEFAULT_SYSTEM_PROMPT`,
+t1.`DESCRIPTION`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`SCOPES`,
+t1.`SEQUENCE`,
+t1.`STREAM`,
+t1.`SUGGESTED_QUESTIONS`,
+t1.`SYSTEM_FLAG`,
+t1.`TEMPERATURE`,
+t1.`TOOL_EXCEED_MESSAGE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WELCOME_MESSAGE`
+FROM `AI_AGENT_CONTEXT` t1 
+LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
+LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+
+```
+
+#### 业务过滤(filter) :id=ai_agent_context-filter
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_AGENT_ID`,
+t11.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_MODEL_ID`,
+t21.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`SCOPES`,
+t1.`SEQUENCE`,
+t1.`STREAM`,
+t1.`SYSTEM_FLAG`,
+t1.`TEMPERATURE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_CONTEXT` t1 
+LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
+LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+
+WHERE ( ( FIND_IN_SET(#{ctx.webcontext.srfaiagentscope}, t1.`SCOPES`) > 0  OR  t1.`SCOPES` IS NULL ) )
+```
+
+
+## [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation.md) :id=ai_agent_conversation
+
+#### DEFAULT :id=ai_agent_conversation-Default
+```sql
+SELECT
+t1.`AI_AGENT_CONTEXT_ID`,
+t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
+t11.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_TOP`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`SESSION_ID`,
+t1.`STATUS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_CONVERSATION` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_conversation-View
+```sql
+SELECT
+t1.`AI_AGENT_CONTEXT_ID`,
+t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
+t11.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_TOP`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`SESSION_ID`,
+t1.`STATUS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_CONVERSATION` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+
+## [智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback.md) :id=ai_agent_feedback
+
+#### DEFAULT :id=ai_agent_feedback-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FEEDBACK_CONTENT`,
+t1.`FEEDBACK_TYPE`,
+t1.`ID`,
+t1.`MESSAGE_ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_FEEDBACK` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_feedback-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FEEDBACK_CONTENT`,
+t1.`FEEDBACK_TYPE`,
+t1.`ID`,
+t1.`MESSAGE_ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_FEEDBACK` t1 
+
+```
+
+
+## [智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel.md) :id=ai_agent_knowledge_rel
+
+#### DEFAULT :id=ai_agent_knowledge_rel-Default
+```sql
+SELECT
+t1.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_KNOWLEDGE_BASE_ID`,
+t11.`NAME` AS `AI_KNOWLEDGE_BASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_KNOWLEDGE_REL` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`AI_KNOWLEDGE_BASE_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_knowledge_rel-View
+```sql
+SELECT
+t1.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_KNOWLEDGE_BASE_ID`,
+t11.`NAME` AS `AI_KNOWLEDGE_BASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_KNOWLEDGE_REL` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`AI_KNOWLEDGE_BASE_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+
+## [智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message.md) :id=ai_agent_message
+
+#### DEFAULT :id=ai_agent_message-Default
+```sql
+SELECT
+t1.`CONTENT_TYPE`,
+t1.`CONVERSATION_ID`,
+t11.`NAME` AS `CONVERSATION_NAME`,
+t11.`TITLE` AS `CONVERSATION_TITLE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+(select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='dislike') AS `IS_DISLIKE`,
+(select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='like') AS `IS_LIKE`,
+t1.`NAME`,
+t1.`SENDER_TYPE`,
+t1.`SEQUENCE`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_MESSAGE` t1 
+LEFT JOIN `AI_AGENT_CONVERSATION` t11 ON t1.`CONVERSATION_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_message-View
+```sql
+SELECT
+t1.`CONTENT`,
+t1.`CONTENT_TYPE`,
+t1.`CONVERSATION_ID`,
+t11.`NAME` AS `CONVERSATION_NAME`,
+t11.`TITLE` AS `CONVERSATION_TITLE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+(select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='dislike') AS `IS_DISLIKE`,
+(select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='like') AS `IS_LIKE`,
+t1.`METADATA`,
+t1.`NAME`,
+t1.`SENDER_TYPE`,
+t1.`SEQUENCE`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_MESSAGE` t1 
+LEFT JOIN `AI_AGENT_CONVERSATION` t11 ON t1.`CONVERSATION_ID` = t11.`ID` 
+
+```
+
+
+## [智能体工具引用(AI_AGENT_TOOL_REL)](module/ai/ai_agent_tool_rel.md) :id=ai_agent_tool_rel
+
+#### DEFAULT :id=ai_agent_tool_rel-Default
+```sql
+SELECT
+t1.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_TOOL_ID`,
+t11.`NAME` AS `AI_TOOL_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_TOOL_REL` t1 
+LEFT JOIN `AI_TOOL` t11 ON t1.`AI_TOOL_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_agent_tool_rel-View
+```sql
+SELECT
+t1.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_TOOL_ID`,
+t11.`NAME` AS `AI_TOOL_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_AGENT_TOOL_REL` t1 
+LEFT JOIN `AI_TOOL` t11 ON t1.`AI_TOOL_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+
+```
+
+
+## [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential.md) :id=ai_credential
+
+#### DEFAULT :id=ai_credential-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`API_KEY`,
+t1.`CLIENT_ID`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CREDENTIAL_TYPE`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROVIDER`,
+t1.`REGION`,
+t1.`SCOPE`,
+t1.`TOKEN_URL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_CREDENTIAL` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_credential-View
+```sql
+SELECT
+t1.`ACCESS_KEY`,
+t1.`ACTIVE`,
+t1.`API_KEY`,
+t1.`BEARER_TOKEN`,
+t1.`CLIENT_ID`,
+t1.`CLIENT_SECRET`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CREDENTIAL_TYPE`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROVIDER`,
+t1.`REGION`,
+t1.`SCOPE`,
+t1.`SECRET_KEY`,
+t1.`TOKEN_URL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_CREDENTIAL` t1 
+
+```
+
+
+## [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk.md) :id=ai_kb_chunk
+
+#### DEFAULT :id=ai_kb_chunk-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONTENT`,
+t1.`CONTENT_PREVIEW`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t11.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KEYWORDS`,
+t1.`KEY_QUESTIONS`,
+t1.`NAME`,
+t1.`POSITIONS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_CHUNK` t1 
+LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_chunk-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONTENT`,
+t1.`CONTENT_PREVIEW`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t11.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KEYWORDS`,
+t1.`KEY_QUESTIONS`,
+t1.`NAME`,
+t1.`POSITIONS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_CHUNK` t1 
+LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
+
+```
+
+
+## [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document.md) :id=ai_kb_document
+
+#### DEFAULT :id=ai_kb_document-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CHUNK_METHOD`,
+t1.`CHUNK_NUM`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOM_CHUNK`,
+t1.`FILE`,
+t1.`FILE_TYPE`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`SIZE`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_TYPE`,
+t1.`STATUS`,
+t1.`SYNC_FREQUENCY`,
+t1.`SYNC_ID`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_DOCUMENT` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_document-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CHUNK_METHOD`,
+t1.`CHUNK_NUM`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOM_CHUNK`,
+t1.`FILE`,
+t1.`FILE_TYPE`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`META_DATA`,
+t1.`NAME`,
+t1.`PARSER_CONFIG`,
+t1.`SIZE`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_TYPE`,
+t1.`STATUS`,
+t1.`SYNC_FREQUENCY`,
+t1.`SYNC_ID`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_DOCUMENT` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+
+## [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync.md) :id=ai_kb_document_sync
+
+#### DEFAULT :id=ai_kb_document_sync-Default
+```sql
+SELECT
+t1.`AI_KNOWLEDGE_BASE_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_TYPE`,
+t1.`SYNC_FREQUENCY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_DOCUMENT_SYNC` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_document_sync-View
+```sql
+SELECT
+t1.`AI_KNOWLEDGE_BASE_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_TYPE`,
+t1.`SYNC_FREQUENCY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_DOCUMENT_SYNC` t1 
+
+```
+
+
+## [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base.md) :id=ai_knowledge_base
+
+#### DEFAULT :id=ai_knowledge_base-Default
+```sql
+SELECT
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SOURCE_ID`,
+t11.`NAME` AS `SOURCE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KNOWLEDGE_BASE` t1 
+LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_knowledge_base-View
+```sql
+SELECT
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PARSER_CONFIG`,
+t1.`SOURCE_ID`,
+t11.`NAME` AS `SOURCE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KNOWLEDGE_BASE` t1 
+LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID` 
+
+```
+
+
+## [知识库源(AI_KNOWLEDGE_SOURCE)](module/ai/ai_knowledge_source.md) :id=ai_knowledge_source
+
+#### DEFAULT :id=ai_knowledge_source-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`BASE_URL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`LAST_SYNC_TIME`,
+t1.`NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KNOWLEDGE_SOURCE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_knowledge_source-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`API_KEY`,
+t1.`BASE_URL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`LAST_SYNC_TIME`,
+t1.`NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KNOWLEDGE_SOURCE` t1 
+
+```
+
+
+## [AI大模型(AI_MODEL)](module/ai/ai_model.md) :id=ai_model
+
+#### DEFAULT :id=ai_model-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_CREDENTIAL_ID`,
+t11.`NAME` AS `AI_CREDENTIAL_NAME`,
+t1.`API_BASE_URL`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC_OSS_IMAGE`,
+t1.`ID`,
+t1.`MAX_CONTEXT_TOKENS`,
+t1.`MAX_OUTPUT_TOKENS`,
+t1.`MODEL_CAPABILITY`,
+t1.`MODEL_CATEGORY`,
+t1.`NAME`,
+t1.`PROVIDER`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_MODEL` t1 
+LEFT JOIN `AI_CREDENTIAL` t11 ON t1.`AI_CREDENTIAL_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_model-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_CREDENTIAL_ID`,
+t11.`NAME` AS `AI_CREDENTIAL_NAME`,
+t1.`API_BASE_URL`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC_OSS_IMAGE`,
+t1.`EXTRA_PARAMS`,
+t1.`ID`,
+t1.`MAX_CONTEXT_TOKENS`,
+t1.`MAX_OUTPUT_TOKENS`,
+t1.`MODEL_CAPABILITY`,
+t1.`MODEL_CATEGORY`,
+t1.`NAME`,
+t1.`PROVIDER`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_MODEL` t1 
+LEFT JOIN `AI_CREDENTIAL` t11 ON t1.`AI_CREDENTIAL_ID` = t11.`ID` 
+
+```
+
+
+## [AI调用工具(AI_TOOL)](module/ai/ai_tool.md) :id=ai_tool
+
+#### DEFAULT :id=ai_tool-Default
+```sql
+SELECT
+t1.`API_AUTH_TYPE`,
+t1.`API_HEADERS`,
+t1.`API_KEY`,
+t1.`API_METHOD`,
+t1.`API_URL`,
+t1.`CLIENT_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TIMEOUT`,
+t1.`TOKEN_URL`,
+t1.`TOOL_TAG`,
+t1.`TOOL_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_TOOL` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_tool-View
+```sql
+SELECT
+t1.`ACCESS_KEY`,
+t1.`API_AUTH_TYPE`,
+t1.`API_HEADERS`,
+t1.`API_KEY`,
+t1.`API_METHOD`,
+t1.`API_URL`,
+t1.`BEARER_TOKEN`,
+t1.`CLIENT_ID`,
+t1.`CLIENT_SECRET`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`INPUT_SCHEMA`,
+t1.`NAME`,
+t1.`SECRET_KEY`,
+t1.`TIMEOUT`,
+t1.`TOKEN_URL`,
+t1.`TOOL_TAG`,
+t1.`TOOL_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_TOOL` t1 
+
+```
+
+
 ## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md) :id=app_view_theme
 
 #### 数据查询(DEFAULT) :id=app_view_theme-Default
@@ -1811,72 +2663,6 @@ WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21
 ```
 
 
-## [代码分支(BRANCH)](module/DevOps/branch.md) :id=branch
-
-#### 数据查询(DEFAULT) :id=branch-Default
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `BRANCH` t1 
-
-```
-
-#### 默认（全部数据）(VIEW) :id=branch-View
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `BRANCH` t1 
-
-```
-
-
-## [分支提交关联(BRANCH_REF_COMMIT)](module/DevOps/branch_ref_commit.md) :id=branch_ref_commit
-
-#### 数据查询(DEFAULT) :id=branch_ref_commit-Default
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`META_ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`SHA`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `BRANCH_REF_COMMIT` t1 
-
-```
-
-#### 默认（全部数据）(VIEW) :id=branch_ref_commit-View
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`META_ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`SHA`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `BRANCH_REF_COMMIT` t1 
-
-```
-
-
 ## [用例执行历史(CASE_HISTORY)](module/TestMgmt/case_history.md) :id=case_history
 
 #### 数据查询(DEFAULT) :id=case_history-Default
@@ -1917,6 +2703,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -1932,7 +2719,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -1945,6 +2733,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -1960,7 +2749,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -1973,6 +2763,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -1988,7 +2779,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2002,6 +2794,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2017,7 +2810,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2031,6 +2825,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2046,7 +2841,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2060,6 +2856,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2075,7 +2872,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2089,6 +2887,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2104,7 +2903,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2118,6 +2918,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2133,7 +2934,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2147,6 +2949,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2162,7 +2965,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2176,6 +2980,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2191,7 +2996,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2205,6 +3011,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2220,7 +3027,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2234,6 +3042,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2249,7 +3058,8 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -2263,6 +3073,7 @@ t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
 t1.`IS_LEAF3`,
@@ -2278,11 +3089,43 @@ t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_TAG`,
-t1.`USER_TAG2`
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
 FROM `CATEGORY` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
 WHERE ( t1.`OWNER_TYPE` = 'space'  AND  t1.`OWNER_SUBTYPE` = 'space'  AND  t1.`PID` IS NULL )
+```
+
+#### 工作流类别(wf_category) :id=category-wf_category
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
+t1.`WF_VERSION_ID`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( t1.`OWNER_TYPE` = 'workflow'  AND  t1.`IS_DELETED` = 0 )
 ```
 
 
@@ -2362,27 +3205,6 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `COMMENT` t1 
 LEFT JOIN `COMMENT` t11 ON t1.`PID` = t11.`ID` 
-
-```
-
-
-## [代码提交(COMMIT)](module/DevOps/commit.md) :id=commit
-
-#### 数据查询(DEFAULT) :id=commit-Default
-```sql
-SELECT
-t1.`MESSAGE`,
-t1.`SHA`
-FROM `scm_commit` t1 
-
-```
-
-#### 默认（全部数据）(VIEW) :id=commit-View
-```sql
-SELECT
-t1.`MESSAGE`,
-t1.`SHA`
-FROM `scm_commit` t1 
 
 ```
 
@@ -2784,6 +3606,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2804,6 +3628,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2824,6 +3650,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2845,6 +3673,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2866,6 +3696,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2887,6 +3719,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2908,6 +3742,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2922,6 +3758,29 @@ FROM `DICTIONARY` t1
 WHERE ( t1.`CATALOG` = 'idea_type' )
 ```
 
+#### 项目类型(project_type) :id=dictionary_data-project_type
+```sql
+SELECT
+t1.`CATALOG`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STYLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VAL`
+FROM `DICTIONARY` t1 
+
+WHERE ( t1.`TYPE` = 'project_type' )
+```
+
 #### 发布阶段(release_stage) :id=dictionary_data-release_stage
 ```sql
 SELECT
@@ -2929,6 +3788,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2950,6 +3811,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2971,6 +3834,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -2992,6 +3857,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3013,6 +3880,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3034,6 +3903,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3055,6 +3926,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3076,6 +3949,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3097,6 +3972,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3118,6 +3995,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3139,6 +4018,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3160,6 +4041,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3181,6 +4064,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3202,6 +4087,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3223,6 +4110,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -3244,6 +4133,8 @@ t1.`CATALOG`,
 t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -4526,6 +5417,184 @@ FROM `EXTEND_LOG` t1
 ```
 
 
+## [扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule.md) :id=extend_schedule
+
+#### DEFAULT :id=extend_schedule-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`NEXT_TRIGGER_TIME`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`SCHEDULE_TYPE`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`TIMER_POLICY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULE` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=extend_schedule-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`NEXT_TRIGGER_TIME`,
+t1.`PAYLOAD`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`SCHEDULE_TYPE`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`TIMER_POLICY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULE` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+
+## [扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task.md) :id=extend_scheduled_task
+
+#### DEFAULT :id=extend_scheduled_task-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t11.`EXECUTOR_TAG`,
+t1.`FINISHED_AT`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RESULT_MESSAGE`,
+t1.`RETRY_COUNT`,
+t1.`SCHEDULED_AT`,
+t1.`SCHEDULE_ID`,
+t1.`STARTED_AT`,
+t1.`STATUS`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULED_TASK` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=extend_scheduled_task-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t11.`EXECUTOR_TAG`,
+t1.`FINISHED_AT`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`PAYLOAD`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RESULT`,
+t1.`RESULT_MESSAGE`,
+t1.`RETRY_COUNT`,
+t1.`SCHEDULED_AT`,
+t1.`SCHEDULE_ID`,
+t1.`STARTED_AT`,
+t1.`STATUS`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULED_TASK` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+
+## [扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)](module/Base/extend_scheduled_task_his.md) :id=extend_scheduled_task_his
+
+#### DEFAULT :id=extend_scheduled_task_his-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`FINISHED_AT`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RESULT_MESSAGE`,
+t1.`RETRY_COUNT`,
+t1.`SCHEDULED_AT`,
+t1.`STARTED_AT`,
+t1.`STATUS`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULED_TASK_HIS` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=extend_scheduled_task_his-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`FINISHED_AT`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`PAYLOAD`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RESULT`,
+t1.`RESULT_MESSAGE`,
+t1.`RETRY_COUNT`,
+t1.`SCHEDULED_AT`,
+t1.`STARTED_AT`,
+t1.`STATUS`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULED_TASK_HIS` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+
 ## [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) :id=extend_storage
 
 #### 数据查询(DEFAULT) :id=extend_storage-Default
@@ -4568,6 +5637,51 @@ t1.`STRING_VALUE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `EXTEND_STORAGE` t1 
+
+```
+
+
+## [扩展任务类型(EXTEND_TASK_TYPE)](module/Base/extend_task_type.md) :id=extend_task_type
+
+#### DEFAULT :id=extend_task_type-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EXECUTOR_SUBTYPE`,
+t1.`EXECUTOR_TAG`,
+t1.`EXECUTOR_TYPE`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`RETRYABLE`,
+t1.`TIMEOUT_SEC`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_TASK_TYPE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=extend_task_type-View
+```sql
+SELECT
+t1.`CODE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EXECUTOR_CONFIG`,
+t1.`EXECUTOR_SUBTYPE`,
+t1.`EXECUTOR_TAG`,
+t1.`EXECUTOR_TYPE`,
+t1.`ID`,
+t1.`MAX_RETRY`,
+t1.`NAME`,
+t1.`RETRYABLE`,
+t1.`TIMEOUT_SEC`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_TASK_TYPE` t1 
 
 ```
 
@@ -4871,6 +5985,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -4927,6 +6042,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`DESCRIPTION`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -4985,6 +6101,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5057,6 +6174,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5111,6 +6229,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5167,6 +6286,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5223,6 +6343,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5333,6 +6454,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5387,6 +6509,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5443,6 +6566,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5571,6 +6695,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5625,6 +6750,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5679,6 +6805,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5733,6 +6860,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5787,6 +6915,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5841,6 +6970,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5895,6 +7025,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5949,6 +7080,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -5992,6 +7124,61 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE ( t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.section_id !=null ">  t21.`SECTION_ID` = #{ctx.webcontext.section_id}  </when><otherwise>1=1</otherwise></choose> )
 ```
 
+#### 未添加的需求(not_add_idea) :id=idea-not_add_idea
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PRODUCT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.section_id !=null ">  t21.`SECTION_ID` = #{ctx.webcontext.section_id}  </when><otherwise>1=1</otherwise></choose>  AND  not exists(select 1 from `relation` t2 where t1.id = t2.target_id and t2.principal_id = #{ctx.webcontext.add_review} and t2.principal_type = 'REVIEW' and t2.target_type = 'IDEA') )
+```
+
 #### 未关联的需求(not_exsists_relation) :id=idea-not_exsists_relation
 ```sql
 SELECT
@@ -6003,6 +7190,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6070,6 +7258,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6126,6 +7315,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6180,6 +7370,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6236,6 +7427,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6290,6 +7482,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6346,6 +7539,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDEA_FROM`,
 t1.`IDEA_TYPE`,
@@ -6389,6 +7583,63 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
  WHERE 
  t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`ROLE_ID` = 'user'  AND  t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
+#### 工时登记需求(workload_idea) :id=idea-workload_idea
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`FORMAT_TYPE`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PRODUCT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
+ WHERE 
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( ( t41.`ROLE_ID` = 'admin'  OR  t41.`ROLE_ID` = 'user' ) ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t11.`IS_DELETED` = 0  AND  t11.`IS_ARCHIVED` = 0 )
 ```
 
 
@@ -6576,6 +7827,7 @@ FROM `MEMBER` t1
 #### 数据查询(DEFAULT) :id=insight_report-Default
 ```sql
 SELECT
+t1.`APP_TAG`,
 t1.`CATEGORIES`,
 t1.`CHART_TYPE`,
 t1.`CREATE_MAN`,
@@ -6597,6 +7849,7 @@ LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID`
 #### 默认（全部数据）(VIEW) :id=insight_report-View
 ```sql
 SELECT
+t1.`APP_TAG`,
 t1.`CATEGORIES`,
 t1.`CHART_TYPE`,
 t1.`CREATE_MAN`,
@@ -6619,6 +7872,7 @@ LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID`
 #### 模板报表(is_system) :id=insight_report-is_system
 ```sql
 SELECT
+t1.`APP_TAG`,
 t1.`CATEGORIES`,
 t1.`CHART_TYPE`,
 t1.`CREATE_MAN`,
@@ -6642,6 +7896,7 @@ WHERE ( t1.`IS_SYSTEM` = 1 )
 #### 正常数据(normal) :id=insight_report-normal
 ```sql
 SELECT
+t1.`APP_TAG`,
 t1.`CATEGORIES`,
 t1.`CHART_TYPE`,
 t1.`CREATE_MAN`,
@@ -9289,6 +10544,46 @@ WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21
  t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### 我的可见项目(my_visible) :id=project-my_visible
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CONSUME_TIME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`EXPECTED_TIME`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( t1.`VISIBILITY` = 'public'  OR  EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PROJECT_ID` AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) ) )
+```
+
 #### 未关联的项目(no_relation) :id=project-no_relation
 ```sql
 SELECT
@@ -9859,37 +11154,6 @@ FROM `PROJECT_TAG` t1
 ```
 
 
-## [拉取提交(PULL_REQUEST)](module/DevOps/pull_request.md) :id=pull_request
-
-#### 数据查询(DEFAULT) :id=pull_request-Default
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `PULL_REQUEST` t1 
-
-```
-
-#### 默认（全部数据）(VIEW) :id=pull_request-View
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `PULL_REQUEST` t1 
-
-```
-
-
 ## [最近访问(RECENT)](module/Base/recent.md) :id=recent
 
 #### 数据查询(DEFAULT) :id=recent-Default
@@ -10343,6 +11607,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10366,6 +11631,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10389,6 +11655,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10412,6 +11679,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10435,6 +11703,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10459,6 +11728,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10483,6 +11753,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10507,6 +11778,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10533,6 +11805,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10559,6 +11832,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10585,6 +11859,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10611,6 +11886,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10637,6 +11913,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10661,6 +11938,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10685,6 +11963,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10709,6 +11988,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10735,6 +12015,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10761,6 +12042,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10790,6 +12072,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10817,6 +12100,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10843,6 +12127,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10870,6 +12155,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10897,6 +12183,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10923,6 +12210,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10950,6 +12238,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -10974,6 +12263,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11000,6 +12290,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11026,6 +12317,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11052,6 +12344,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11078,6 +12371,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11104,6 +12398,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11130,6 +12425,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -11156,6 +12452,7 @@ t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
 t1.`RELATION_TYPE`,
+t1.`SEQUENCE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -12606,39 +13903,6 @@ LEFT JOIN `RUN` t11 ON t1.`RUN_ID` = t11.`ID`
 LEFT JOIN `TEST_CASE` t21 ON t11.`CASE_ID` = t21.`ID` 
 
 WHERE ( t1.`RUN_ID` = #{ctx.webcontext.run} )
-```
-
-
-## [代码评审(SCM_REVIEW)](module/DevOps/scm_review.md) :id=scm_review
-
-#### 数据查询(DEFAULT) :id=scm_review-Default
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`PULL_REQUEST_ID`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `SCM_REVIEW` t1 
-
-```
-
-#### 默认（全部数据）(VIEW) :id=scm_review-View
-```sql
-SELECT
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`ID`,
-t1.`NAME`,
-t1.`PULL_REQUEST_ID`,
-t1.`REPOSITORY_ID`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `SCM_REVIEW` t1 
-
 ```
 
 
@@ -14445,6 +15709,7 @@ t1.`UPDATE_TIME`
 FROM `STENCIL` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
+/*ALIAS.sp=t11*/
 WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21 
  WHERE 
  t11.`ID` = t21.`SPACE_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
@@ -15520,6 +16785,46 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`SUITE_ID` IS NULL )
 ```
 
+#### 未添加用例(not_add) :id=test_case-not_add
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
+t21.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`STEPS`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  ( <choose><when test="ctx.webcontext.suite_id !=null ">  t11.`SUITES` LIKE CONCAT('%',#{ctx.webcontext.suite_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test="ctx.webcontext.suite_id !=null ">  t1.`SUITE_ID` = #{ctx.webcontext.suite_id}  </when><otherwise>1=1</otherwise></choose> )  AND  not exists(select 1 from `relation` t2 where t1.id = t2.target_id and t2.principal_id = #{ctx.webcontext.add_review} and t2.principal_type = 'REVIEW' and t2.target_type = 'TEST_CASE') )
+```
+
 #### 未添加过的用例(not_add_case) :id=test_case-not_add_case
 ```sql
 SELECT
@@ -16049,6 +17354,48 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
  t1.`ID` = t31.`TARGET_ID`  AND  ( ( t31.`PRINCIPAL_TYPE` = 'work_item'  OR  t31.`PRINCIPAL_TYPE` = 'bug' )  AND  t31.`TARGET_TYPE` = 'test_case'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 工时登记用例(workload_case) :id=test_case-workload_case
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
+t21.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`STEPS`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t31 
+ WHERE 
+ t21.`ID` = t31.`LIBRARY_ID`  AND  ( ( t31.`ROLE_ID` = 'admin'  OR  t31.`ROLE_ID` = 'user' ) ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t21.`IS_ARCHIVED` = 0  AND  t21.`IS_DELETED` = 0 )
 ```
 
 
@@ -17513,6 +18860,49 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
+#### 我提交的工单(my_submit) :id=ticket-my_submit
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PRODUCT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  ( t1.`SUBMITTER_ID` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
 #### 我的事项工单(my_summary_ticket) :id=ticket-my_summary_ticket
 ```sql
 SELECT
@@ -18386,6 +19776,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18430,6 +19821,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -18473,6 +19866,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18521,6 +19915,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -18561,6 +19957,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18605,6 +20002,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -18646,6 +20045,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18690,6 +20090,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -18872,6 +20274,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18916,6 +20319,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -18957,6 +20362,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19001,6 +20407,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19042,6 +20450,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19086,6 +20495,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19138,6 +20549,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19182,6 +20594,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19223,6 +20637,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19267,6 +20682,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19308,6 +20725,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19352,6 +20770,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19393,6 +20813,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19437,6 +20858,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19591,6 +21014,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19639,6 +21063,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19679,6 +21105,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19723,6 +21150,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19764,6 +21193,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19808,6 +21238,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -19954,6 +21386,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -19998,6 +21431,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20039,6 +21474,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20083,6 +21519,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20124,6 +21562,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20168,6 +21607,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20209,6 +21650,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20253,6 +21695,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20294,6 +21738,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20338,6 +21783,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20379,6 +21826,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20423,6 +21871,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20464,6 +21914,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20508,6 +21959,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20549,6 +22002,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20593,6 +22047,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20634,6 +22090,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20678,6 +22135,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20719,6 +22178,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20763,6 +22223,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20804,6 +22266,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20848,6 +22311,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -20889,6 +22354,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -20933,6 +22399,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21109,6 +22577,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21153,6 +22622,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21196,6 +22667,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21240,6 +22712,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21283,6 +22757,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21327,6 +22802,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21430,6 +22907,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21474,6 +22952,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21553,6 +23033,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21597,6 +23078,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21638,6 +23121,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21682,6 +23166,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21725,6 +23211,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21769,6 +23256,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21810,6 +23299,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21854,6 +23344,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -21946,6 +23438,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -21990,6 +23483,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22031,6 +23526,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22075,6 +23571,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22166,6 +23664,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22210,6 +23709,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22254,6 +23755,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22298,6 +23800,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22339,6 +23843,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22383,6 +23888,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22424,6 +23931,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22468,6 +23976,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22509,6 +24019,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22553,6 +24064,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22594,6 +24107,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22638,6 +24152,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22783,6 +24299,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22827,6 +24344,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22868,6 +24387,7 @@ t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`FINISHER`,
+t1.`FORMAT_TYPE`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -22912,6 +24432,8 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
@@ -22971,6 +24493,57 @@ t1.`ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 
+```
+
+#### 工时登记工作项(workload_work_item) :id=work_item-workload_work_item
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t31.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+t1.`RISK`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t51 
+ WHERE 
+ t11.`ID` = t51.`PROJECT_ID`  AND  ( ( t51.`ROLE_ID` = 'admin'  OR  t51.`ROLE_ID` = 'user' ) ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t11.`IS_ARCHIVED` = 0  AND  t11.`IS_DELETED` = 0 )
 ```
 
 
@@ -23759,6 +25332,7 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_SYSTEM`,
 t1.`NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
@@ -23773,6 +25347,7 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_SYSTEM`,
 t1.`NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,

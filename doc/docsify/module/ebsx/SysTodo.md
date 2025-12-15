@@ -8,7 +8,7 @@
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
 |业务数据标识|BIZKEY|文本，可指定长度|100|是||
-|业务对象|BIZTYPE|文本，可指定长度|100|是||
+|业务对象|BIZTYPE|单项选择(文本值)|100|是||
 |长文本参数01|CLOBPARAM01|长文本，没有长度限制|1048576|是||
 |长文本参数02|CLOBPARAM02|长文本，没有长度限制|1048576|是||
 |内容|CONTENT|长文本，没有长度限制|1048576|是||
@@ -34,7 +34,7 @@
 |处理时间|PROCESSDATE|日期时间型||是||
 |标题|TITLE|文本，可指定长度|200|否||
 |待办标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|TODOID|全局唯一标识，文本类型，用户不可见|60|否||
-|待办状态|TODOSTATE|单项选择(文本值)|100|是||
+|待办状态|TODOSTATE|[单项选择(文本值)](index/dictionary_index#CodeListTodoState "待办状态")|100|是||
 |待办子类|TODOSUBTYPE|文本，可指定长度|100|是||
 |待办类型|TODOTYPE|文本，可指定长度|100|是||
 |待办地址类型|TODOURLTYPE|单项选择(文本值)|60|是||
@@ -49,6 +49,7 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
+|删除草稿|DelUndo|用户自定义|默认|支持||||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |GetLinkUrl|GetLinkUrl|用户自定义|默认|不支持||||
@@ -72,10 +73,17 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_DCSYSTEMID_EQ|租户系统标识|EQ||
 |N_TITLE_LIKE|标题|LIKE||
 |N_TODOID_EQ|待办标识|EQ||
 |N_TODOSTATE_EQ|待办状态|EQ||
+|N_TODOSUBTYPE_EQ|待办子类|EQ||
 |N_TODOURLTYPE_EQ|待办地址类型|EQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 待办流程操作 | workflow_edit | 流程操作 |单项数据|<details><summary>打开视图或向导（模态）</summary>[待办](app/view/sys_todoredirect_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -95,6 +103,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ebsx/SysTodo?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ebsx/SysTodo?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

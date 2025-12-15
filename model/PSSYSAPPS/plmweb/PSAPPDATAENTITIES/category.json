@@ -888,6 +888,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_space_category_top",
     "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_wf_category",
+    "dataSetName" : "wf_category",
+    "dataSetTag" : "wf_category",
+    "methodType" : "FETCH",
+    "name" : "fetch_wf_category",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "wf_category"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_wf_category"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_wf_category",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -1163,6 +1201,61 @@
     "codeName" : "is_leaf3",
     "logicName" : "是否叶子节点3",
     "name" : "IS_LEAF3",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "wf_version_id",
+    "logicName" : "工作流版本",
+    "name" : "WF_VERSION_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "is_deleted",
+    "logicName" : "是否删除",
+    "name" : "IS_DELETED",
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -1554,6 +1647,17 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USER_TAG][用户标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG][用户标记]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[USER_TAG][用户标记]移动端默认",
       "getPSDEFFormItem" : {
@@ -1566,17 +1670,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[USER_TAG][用户标记]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USER_TAG][用户标记]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "user_tag",
     "logicName" : "用户标记",
@@ -1717,6 +1810,29 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "wf_version_id",
+      "logicName" : "工作流版本",
+      "name" : "wf_version_id",
+      "getPSAppDEField" : {
+        "name" : "WF_VERSION_ID",
+        "codeName" : "wf_version_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "is_deleted",
+      "logicName" : "是否删除",
+      "name" : "is_deleted",
+      "getPSAppDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
@@ -2844,6 +2960,44 @@
     "requestPath" : "/fetch_space_category_top",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_wf_category",
+    "dataSetName" : "wf_category",
+    "dataSetTag" : "wf_category",
+    "methodType" : "FETCH",
+    "name" : "fetch_wf_category",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "wf_category"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_wf_category"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_wf_category",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -2880,6 +3034,61 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "edit_design",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_workflow_edit_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "category_edit_design",
+    "name" : "编辑",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "edit_design",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "edit_design@category"
+  }, {
+    "actionTarget" : "MULTIKEY",
+    "caption" : "删除",
+    "codeName" : "remove",
+    "confirmMsg" : "是否确认删除此数据？",
+    "fullCodeName" : "category_remove",
+    "name" : "删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove@category"
+  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "删除",
     "codeName" : "toolbar_category_tree_exp_view_node1_cm_deuiaction1_click",
@@ -2963,6 +3172,68 @@
     "uILogicAttachMode" : "REPLACE",
     "uILogicType" : "DELOGIC",
     "id" : "toolbar_tree_exp_view_node_cm_deuiaction2_click@category"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "查看审批单",
+    "codeName" : "workflow_approve",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "category_workflow_approve",
+    "name" : "流程_查看审批单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "n_wf_workflow_id_eq",
+      "name" : "n_wf_workflow_id_eq",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf06e@FontAwesome",
+      "cssClass" : "fa fa-eye"
+    },
+    "tooltip" : "查看审批单",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "workflow_approve",
+    "uIActionType" : "DEUIACTION",
+    "id" : "workflow_approve@category"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "流程设计",
+    "codeName" : "workflow_design",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/pswfversiondesign.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "category_workflow_design",
+    "name" : "流程_设计",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PSWFVERSION",
+      "name" : "PSWFVERSION",
+      "value" : "wf_version_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf040@FontAwesome",
+      "cssClass" : "fa fa-pencil"
+    },
+    "tooltip" : "流程设计",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "workflow_design",
+    "uIActionType" : "DEUIACTION",
+    "id" : "workflow_design@category"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "edit_section_or_category",
@@ -3157,12 +3428,32 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_test_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_workflow_edit_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_pick_up_grid_view.json",
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_workflow_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_pick_up_view.json",
     "viewType" : "DEPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_redirect_view.json",
+    "viewType" : "DEREDIRECTVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -3223,5 +3514,95 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "workflow",
+    "name" : "工作流",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "uniqueTag" : "category__workflow",
+    "getPSUIActionGroupDetails" : [ {
+      "actionLevel" : 250,
+      "caption" : "流程设计",
+      "detailType" : "DEUIACTION",
+      "name" : "u008bd42",
+      "getPSSysImage" : {
+        "glyph" : "xf040@FontAwesome",
+        "cssClass" : "fa fa-pencil"
+      },
+      "tooltip" : "流程设计",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "modelref" : true,
+        "id" : "workflow_design@category"
+      }
+    }, {
+      "caption" : "查看审批单",
+      "detailType" : "DEUIACTION",
+      "name" : "u59246ed",
+      "getPSSysImage" : {
+        "glyph" : "xf06e@FontAwesome",
+        "cssClass" : "fa fa-eye"
+      },
+      "tooltip" : "查看审批单",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "modelref" : true,
+        "id" : "workflow_approve@category"
+      }
+    }, {
+      "caption" : "编辑",
+      "detailType" : "DEUIACTION",
+      "name" : "u3411347",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "modelref" : true,
+        "id" : "edit_design@category"
+      }
+    }, {
+      "caption" : "删除",
+      "detailType" : "DEUIACTION",
+      "name" : "u613b88c",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "tooltip" : "删除",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "modelref" : true,
+        "id" : "remove@category"
+      }
+    } ]
+  } ]
 }

@@ -1,4 +1,4 @@
-# 工作项(work_item_re_self_mpick_up_view)  <!-- {docsify-ignore-all} -->
+# 选择工作项(work_item_re_self_mpick_up_view)  <!-- {docsify-ignore-all} -->
 
 
 
@@ -10,6 +10,10 @@
 
 
 ### 关联界面行为
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加选中数据（数据选择）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移除选中数据（数据选择）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移除全部数据（数据选择）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加全部数据（数据选择）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [视图_确定](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [视图_取消](module/ProjMgmt/work_item#界面行为)
 

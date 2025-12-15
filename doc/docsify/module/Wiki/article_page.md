@@ -73,6 +73,76 @@
 |空间名称|SPACE_NAME|外键值文本|200|是||
 
 </el-tab-pane>
+<el-tab-pane label="AI完整数据信息" name="field_group_ai_full_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_page_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|是否开启共享|IS_SHARED|单项选择(文本值)|60|是||
+|共享有效期|EXPIRATION_DATE|日期型||是||
+|访问密码|ACCESS_PASSWORD|文本，可指定长度|100|是||
+|正文格式|FORMAT_TYPE|单项选择(文本值)|60|是||
+|序号|SEQUENCE|数值||是||
+|正文|CONTENT|长文本，没有长度限制|16777215|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#page_type "页面类型")|60|是||
+|是否星标|IS_FAVORITE|文本，可指定长度|200|是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
+|类别路径|CATEGORIES|长文本，长度1000|2000|是||
+|空间编号|SPACE_IDENTIFIER|外键值附加数据|15|是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
+|发布时间|PUBLISH_TIME|日期时间型||是||
+|是否发布|IS_PUBLISHED|是否逻辑||是||
+|发布人|PUBLISH_MAN|文本，可指定长度|100|是||
+|发布正文|PUBLISH_CONTENT|长文本，没有长度限制|16777215|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|发布主题|PUBLISH_NAME|文本，可指定长度|200|是||
+|发布状态|PUBLISHED|是否逻辑||是||
+|是否锁定|IS_LOCK|是否逻辑||是||
+|图标|ICON|文本，可指定长度|500|是||
+|是否同时共享子页面|IS_SHARED_SUBSET|单项选择(文本值)|60|是||
+|共享只读能力|READ_SHARED|是否逻辑|200|是||
+|共享人|SHARED_BY|文本，可指定长度|100|是||
+|共享时间|SHARED_TIME|日期时间型||是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|主题|NAME|文本，可指定长度|200|否||
+|父页面标识|PARENT_ID|外键值|100|是||
+|空间标识|SPACE_ID|外键值|100|否||
+|空间名称|SPACE_NAME|外键值文本|200|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
+
+</el-tab-pane>
+<el-tab-pane label="AI数据信息" name="field_group_ai_info">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|正文|CONTENT|长文本，没有长度限制|16777215|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#page_type "页面类型")|60|是||
+|类别路径|CATEGORIES|长文本，长度1000|2000|是||
+|发布人|PUBLISH_MAN|文本，可指定长度|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|主题|NAME|文本，可指定长度|200|否||
+|空间名称|SPACE_NAME|外键值文本|200|是||
+|更新时间|UPDATE_TIME|日期时间型||否||
+
+</el-tab-pane>
 <el-tab-pane label="名称" name="field_group_name">
 
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
@@ -168,6 +238,7 @@
 | -------- |---------- |------------|----- |
 |[DER1N_PAGE_PAGE_PARENT_ID](der/DER1N_PAGE_PAGE_PARENT_ID)|[页面(PAGE)](module/Wiki/article_page)|1:N关系||
 |[DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
+|[DERCUSTOM_AI_KB_DOCUMENT_PAGE](der/DERCUSTOM_AI_KB_DOCUMENT_PAGE)|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|自定义关系||
 |[DERCUSTOM_ATTENTION_PAGE_OWNER_ID](der/DERCUSTOM_ATTENTION_PAGE_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_MEMBER_PAGE_OWNER_ID](der/DERCUSTOM_MEMBER_PAGE_OWNER_ID)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_PAGE_ATTACHMENT](der/DERCUSTOM_PAGE_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
@@ -198,10 +269,13 @@
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#article_page_Create)|||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#article_page_Get)|||
+|获取完整AI数据信息|GetAIFullInfo|内置方法|默认|不支持||||
+|获取AI数据信息|GetAIInfo|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#article_page_Update)|||
+|AI创建页面|ai_create_page|[实体处理逻辑](module/Wiki/article_page/logic/ai_create_page "AI创建页面")|默认|不支持||||
 |校验共享访问密码|check_access_password|[实体处理逻辑](module/Wiki/article_page/logic/access_password "校验共享访问密码")|默认|不支持||||
 |检验共享页面|check_shared|[实体处理逻辑](module/Wiki/article_page/logic/check_shared "检验共享页面")|默认|不支持||||
 |关闭共享|closed_shared|[实体处理逻辑](module/Wiki/article_page/logic/closed_shared "关闭共享")|默认|不支持||||
@@ -232,6 +306,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[AI创建页面](module/Wiki/article_page/logic/ai_create_page)|ai_create_page|无|||
 |[保存命名版本](module/Wiki/article_page/logic/set_name_version)|set_name_version|无||设置命名版本：新建命名版本并保存|
 |[共享空间下搜索页面](module/Wiki/article_page/logic/space_shared_search)|space_shared_search|无||共享空间下搜索页面时使用|
 |[共享空间主页](module/Wiki/article_page/logic/space_shared_home)|space_shared_home|无||共享空间下获取主页|
@@ -312,6 +387,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Wiki/article_page/dataset/Default)|DEFAULT|数据查询|是|||
 |[高级搜索(advanced_search)](module/Wiki/article_page/dataset/advanced_search)|advanced_search|数据查询|否|||
+|[查询知识空间的页面信息（AI调用）(ai_info)](module/Wiki/article_page/dataset/ai_info)|ai_info|数据查询|否||查询全部知识空间的页面实体信息，排序可以指定create_time或update_time，模糊搜索可以根据name/content来LIKE匹配|
 |[全部共享页面查询(all_shared_pages)](module/Wiki/article_page/dataset/all_shared_pages)|all_shared_pages|数据查询|否|||
 |[基线选择页面(baseline_choose_page)](module/Wiki/article_page/dataset/baseline_choose_page)|baseline_choose_page|数据查询|否|||
 |[基线规划页面(baseline_plan_page)](module/Wiki/article_page/dataset/baseline_plan_page)|baseline_plan_page|[实体逻辑](module/Wiki/article_page/logic/baseline_plan_page)|否|||
@@ -473,6 +549,7 @@
 | 打开界面编辑页 | open_page_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_document_edit_view)</details>||
 | 新建页面（快速新建） | quick_new_page | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_quick_new_page_option_view)</details>||
 | 新建子分组 | toolbar_tree_exp_view_node5_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
+| 智能添加知识库 | ai_add_page | 智能添加知识库 |单项数据|用户自定义||
 | 复制页面 | copy_page | 复制页面 |单项数据（主键）|<details><summary>后台调用</summary>[copy_page](#行为)||
 | 收藏 | add_favorite | 收藏 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 新建子分组 | toolbar_tree_exp_view_node2_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
@@ -538,6 +615,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[ai添加page](module/Wiki/article_page/uilogic/ai_add_page)|ai_add_page||
 |[共享设置表单加载数据](module/Wiki/article_page/uilogic/shared_form_data)|shared_form_data|共享设置表单加载数据|
 |[关闭模板中心](module/Wiki/article_page/uilogic/close_stencil)|close_stencil|关闭模板中心|
 |[关闭评论区](module/Wiki/article_page/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|

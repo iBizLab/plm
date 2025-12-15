@@ -256,6 +256,9 @@
       "name" : "SEQUENCE",
       "codeName" : "sequence"
     }, {
+      "name" : "IS_SYSTEM",
+      "codeName" : "is_system"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -460,6 +463,73 @@
     "predefinedType" : "ORDERVALUE",
     "serviceCodeName" : "sequence",
     "stdDataType" : 6,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_SYSTEM",
+      "dBType" : "MYSQL5",
+      "name" : "IS_SYSTEM",
+      "queryCodeExp" : "t1.`IS_SYSTEM`",
+      "standardColumnName" : "`IS_SYSTEM`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_system",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "logicName" : "是否系统默认",
+    "name" : "IS_SYSTEM",
+    "orderValue" : 180,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IS_SYSTEM"
+    },
+    "serviceCodeName" : "is_system",
+    "stdDataType" : 9,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -1054,6 +1124,17 @@
       "stdDataType" : 6,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "是否系统默认",
+      "name" : "is_system",
+      "getPSDEField" : {
+        "name" : "IS_SYSTEM",
+        "codeName" : "is_system"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -1145,6 +1226,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -1159,6 +1241,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"

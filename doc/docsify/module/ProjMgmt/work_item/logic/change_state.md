@@ -16,7 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./change_state#begin {"开始"}]]
 state "绑定选择数据对象" as BINDPARAM1  [[$./change_state#bindparam1 {"绑定选择数据对象"}]]
-state "设置工作项类型id" as RAWSFCODE1  [[$./change_state#rawsfcode1 {"设置工作项类型id"}]]
+state "设置工作项类型ID" as RAWSFCODE_01  [[$./change_state#rawsfcode_01 {"设置工作项类型ID"}]]
+state "清除工作项类型" as PREPAREPARAM_01  [[$./change_state#prepareparam_01 {"清除工作项类型"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./change_state#loopsubcall1 {"循环子调用"}]] #green {
 state "设置状态" as PREPAREPARAM2  [[$./change_state#prepareparam2 {"设置状态"}]]
 state "变更状态" as DEACTION1  [[$./change_state#deaction1 {"变更状态"}]]
@@ -24,8 +25,8 @@ state "变更状态" as DEACTION1  [[$./change_state#deaction1 {"变更状态"}]
 
 
 Begin --> BINDPARAM1
-BINDPARAM1 --> RAWSFCODE1
-RAWSFCODE1 --> LOOPSUBCALL1
+BINDPARAM1 --> PREPAREPARAM_01
+PREPAREPARAM_01 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION1
 
@@ -46,20 +47,29 @@ PREPAREPARAM2 --> DEACTION1
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选择数据对象)`
-#### 设置工作项类型id :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 设置工作项类型ID :id=RAWSFCODE_01<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
 
-```javascript
-var _default = logic.getParam("default");
-var old_work_item_type_id = _default.get("work_item_type_id");
+```groovy
+def _default = logic.param("default").getReal()
 
-var first_value = old_work_item_type_id.split(';')[0];
+def old_work_item_type_id = _default?.get("work_item_type_id")
 
-_default.set("work_item_type_id", first_value);
+if (old_work_item_type_id) {
+    def first_value = old_work_item_type_id.split(',')[0]
+
+    _default?.set("work_item_type_id", first_value)
+}
 ```
+
+#### 清除工作项类型 :id=PREPAREPARAM_01<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`无值（NONE）` 设置给  `Default(传入变量).WORK_ITEM_TYPE_ID(工作项类型)`
 
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 

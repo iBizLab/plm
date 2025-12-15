@@ -72,6 +72,38 @@
     "builtinMethod" : false,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "batchActionMode" : 1,
+    "codeName" : "DelUndo",
+    "methodType" : "DEACTION",
+    "name" : "DelUndo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "SysTodoDTO"
+      },
+      "type" : "DTOS"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo/PSDEACTIONS/DelUndo.json"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "DelUndo"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delundo",
+    "builtinMethod" : false,
+    "enableBatchAction" : true,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "READ",
     "codeName" : "Get",
     "methodType" : "DEACTION",
@@ -738,10 +770,11 @@
       "name" : "[BIZTYPE][业务对象]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "DROPDOWNLIST",
         "name" : "[BIZTYPE][业务对象]",
         "stringLength" : 100,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
@@ -749,11 +782,12 @@
       "name" : "[BIZTYPE][业务对象]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBDROPDOWNLIST",
         "name" : "[BIZTYPE][业务对象]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
+        "mobileMode" : true,
+        "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
@@ -1885,6 +1919,17 @@
     "codeName" : "SysTodoFilterDTO",
     "name" : "SysTodoFilterDTO",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "N_DCSYSTEMID_EQ",
+      "logicName" : "租户系统标识",
+      "name" : "N_DCSYSTEMID_EQ",
+      "getPSAppDEField" : {
+        "name" : "DCSYSTEMID",
+        "codeName" : "DCSystemId"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "N_TITLE_LIKE",
       "logicName" : "标题",
       "name" : "N_TITLE_LIKE",
@@ -1913,6 +1958,17 @@
       "getPSAppDEField" : {
         "name" : "TODOSTATE",
         "codeName" : "TodoState"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_TODOSUBTYPE_EQ",
+      "logicName" : "待办子类",
+      "name" : "N_TODOSUBTYPE_EQ",
+      "getPSAppDEField" : {
+        "name" : "TODOSUBTYPE",
+        "codeName" : "TodoSubType"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -2004,6 +2060,38 @@
     "requestParamType" : "ENTITY",
     "builtinMethod" : false,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "batchActionMode" : 1,
+    "codeName" : "DelUndo",
+    "methodType" : "DEACTION",
+    "name" : "DelUndo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "SysTodoDTO"
+      },
+      "type" : "DTOS"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo/PSDEACTIONS/DelUndo.json"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "DelUndo"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delundo",
+    "builtinMethod" : false,
+    "enableBatchAction" : true,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "Get",
@@ -2345,17 +2433,58 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "流程操作",
+    "codeName" : "workflow_edit",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todoredirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "SysTodo_workflow_edit",
+    "name" : "待办流程操作",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "workflow_edit",
+    "uIActionType" : "DEUIACTION",
+    "id" : "workflow_edit@SysTodo"
+  } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_done_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_todo_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_edit_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_redirect_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_undo_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_todo_tree_exp_view.json",
+    "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todoredirect_view.json",
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_all_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_finish_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {

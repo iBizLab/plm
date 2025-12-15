@@ -88,6 +88,18 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.publish_page;
                         update(article_pagepublish_pageversion_temp);//更新fact中变量值
             end
 
+            //逻辑处理节点[设置默认排序值]
+            rule "rawsfcode_01"
+            ruleflow-group "article_pagepublish_pagerawsfcode_01"
+            when
+            then
+                        update(article_pagepublish_pagedefault);//更新fact中变量值
+                        update(article_pagepublish_pagefilter);//更新fact中变量值
+                        update(article_pagepublish_pageversion_filter);//更新fact中变量值
+                        update(article_pagepublish_pageversion_pages);//更新fact中变量值
+                        update(article_pagepublish_pageversion_temp);//更新fact中变量值
+            end
+
             //逻辑处理节点[设置发布状态]
             rule "prepareparam2"
             ruleflow-group "article_pagepublish_pageprepareparam2"

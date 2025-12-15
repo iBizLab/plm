@@ -1,0 +1,33 @@
+* MCP服务接口
+  * [概述](api/_mcp/_mcp#概述)
+  * [鉴权](api/_mcp/_mcp#鉴权)
+  * [使用方式](api/_mcp/_mcp#使用方式)
+
+* 产品管理
+  * [需求](api/_mcp/deapi/idea#idea)
+  * [产品](api/_mcp/deapi/product#product)
+  * [工单](api/_mcp/deapi/ticket#ticket)
+* 项目管理
+  * [项目](api/_mcp/deapi/project#project)
+  * [迭代](api/_mcp/deapi/sprint#sprint)
+  * [工作项](api/_mcp/deapi/work_item#work_item)
+* 测试管理
+  * [测试库](api/_mcp/deapi/library#library)
+  * [用例](api/_mcp/deapi/test_case#test_case)
+* 知识管理
+  * [页面](api/_mcp/deapi/article_page#article_page)
+* 协作空间
+* 基础管理
+  * [基线](api/_mcp/deapi/baseline#baseline)
+  * [数据字典](api/_mcp/deapi/dictionary_data#dictionary_data)
+  * [团队](api/_mcp/deapi/group#group)
+  * [成员](api/_mcp/deapi/member#member)
+  * [企业用户](api/_mcp/deapi/user#user)
+  * [工时](api/_mcp/deapi/workload#workload)
+* 效能度量
+* 全文检索
+* 系统管理
+* ebsx系统管理
+* 模型扩展
+* DevOps数据集成
+* 智能

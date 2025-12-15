@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_child_change#begin {开始}]]
-state "获取选中列表" as RAWJSCODE2  [[$./add_child_change#rawjscode2 {获取选中列表}]]
-state "更新父标识" as DEACTION1  [[$./add_child_change#deaction1 {更新父标识}]]
 state "触发计数器刷新" as RAWJSCODE3  [[$./add_child_change#rawjscode3 {触发计数器刷新}]]
-state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./add_child_change#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./add_child_change#preparejsparam2 {准备参数}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_child_change#preparejsparam1 {绑定表格部件}]]
 state "表格刷新" as VIEWCTRLINVOKE1  [[$./add_child_change#viewctrlinvoke1 {表格刷新}]]
+state "获取选中列表" as RAWJSCODE2  [[$./add_child_change#rawjscode2 {获取选中列表}]]
+state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./add_child_change#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_child_change#preparejsparam1 {绑定表格部件}]]
+state "更新父标识" as DEACTION1  [[$./add_child_change#deaction1 {更新父标识}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./add_child_change#preparejsparam2 {准备参数}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -60,7 +60,15 @@ RAWJSCODE2 --> RAWJSCODE1 : [[$./add_child_change#rawjscode2-rawjscode1{选中�
 ```javascript
 let choose = uiLogic.default.choose_data;
 if (choose != null && choose != '') {
-    uiLogic.dto.srfactionparam = JSON.parse(choose);
+    const srfactionparam = JSON.parse(choose);
+    // 将 owner_id 替换为 target_id
+    if (srfactionparam && Array.isArray(srfactionparam)) {
+        srfactionparam.forEach(item => {
+            item.target_id = item.owner_id
+            delete item.owner_id
+        })
+    }
+    uiLogic.dto.srfactionparam = srfactionparam;
 }
 ```
 
@@ -119,7 +127,7 @@ ibiz.mc.command.update.send({ srfdecodename: 'work_item'})
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |表格对象|grid|部件对象||
-|视图对象|view|当前视图对象||
 |传入后台对象|dto|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |应用上下文变量|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|视图对象|view|当前视图对象||

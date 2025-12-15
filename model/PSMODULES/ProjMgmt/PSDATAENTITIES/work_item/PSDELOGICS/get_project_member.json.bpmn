@@ -17,21 +17,33 @@
                             <tns:global identifier="work_itemget_project_membermembers" type="cn.ibizlab.plm.core.projmgmt.domain.project_member" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberdebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取产品ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为项目成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="空"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemget_project_memberrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                     <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam_01_rawsfcode3" sourceRef="gateway-debugparam_01" targetRef="rawsfcode3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemget_project_memberdefault:work_item();
+                                            $work_itemget_project_memberfilter:project_member();
+                                            $work_itemget_project_memberfor_obj:Map();
+                                            $work_itemget_project_membermembers:project_member();
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
+                                eval((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","0"))&&(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="gateway-rawsfcode3_prepareparam2" sourceRef="gateway-rawsfcode3" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -79,6 +91,19 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam3_rawsfcode4" sourceRef="gateway-prepareparam3" targetRef="rawsfcode4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemget_project_memberdefault:work_item();
+                                            $work_itemget_project_memberfilter:project_member();
+                                            $work_itemget_project_memberfor_obj:Map();
+                                            $work_itemget_project_membermembers:project_member();
+                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
+                                eval(((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("projectIsArchived"),"EQ","1"))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_debugparam_01" sourceRef="prepareparam3" targetRef="debugparam_01">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam5_rawsfcode2" sourceRef="gateway-prepareparam5" targetRef="rawsfcode2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemget_project_memberdefault:work_item();
@@ -103,32 +128,14 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam3_rawsfcode4" sourceRef="gateway-prepareparam3" targetRef="rawsfcode4">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemget_project_memberdefault:work_item();
-                                            $work_itemget_project_memberfilter:project_member();
-                                            $work_itemget_project_memberfor_obj:Map();
-                                            $work_itemget_project_membermembers:project_member();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
-                                eval(((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","1"))||(RuleUtils.test($work_itemget_project_memberdefault.get("projectIsArchived"),"EQ","1"))))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam3_rawsfcode3" sourceRef="gateway-prepareparam3" targetRef="rawsfcode3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemget_project_memberdefault:work_item();
-                                            $work_itemget_project_memberfilter:project_member();
-                                            $work_itemget_project_memberfor_obj:Map();
-                                            $work_itemget_project_membermembers:project_member();
-                                    eval($work_itemget_project_memberdefault==work_itemget_project_memberdefault && $work_itemget_project_memberfilter==work_itemget_project_memberfilter && $work_itemget_project_membermembers==work_itemget_project_membermembers);
-                                eval((RuleUtils.test($work_itemget_project_memberdefault.get("isArchived"),"EQ","0"))&&(RuleUtils.test($work_itemget_project_memberdefault.get("isDeleted"),"EQ","0")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode4_end2" sourceRef="rawsfcode4" targetRef="end2">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam_01" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam_01_gateway-debugparam_01_gatewayline" sourceRef="debugparam_01" targetRef="gateway-debugparam_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam_01_end_line" sourceRef="gateway-debugparam_01" targetRef="gateway-debugparam_01_end"/>
+                            <endEvent id="gateway-debugparam_01_end" name="end"/>
                             <exclusiveGateway id="gateway-rawsfcode3" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode3_end_line"></exclusiveGateway>
                             <sequenceFlow id="rawsfcode3_gateway-rawsfcode3_gatewayline" sourceRef="rawsfcode3" targetRef="gateway-rawsfcode3"></sequenceFlow>
                             <sequenceFlow id="gateway-rawsfcode3_end_line" sourceRef="gateway-rawsfcode3" targetRef="gateway-rawsfcode3_end"/>
@@ -137,13 +144,13 @@
                             <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
                             <endEvent id="gateway-dedataset3_end" name="end"/>
-                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
-                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
-                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
-                            <endEvent id="gateway-prepareparam5_end" name="end"/>
                             <exclusiveGateway id="gateway-prepareparam3" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam3_end_line"></exclusiveGateway>
                             <sequenceFlow id="prepareparam3_gateway-prepareparam3_gatewayline" sourceRef="prepareparam3" targetRef="gateway-prepareparam3"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam3_end_line" sourceRef="gateway-prepareparam3" targetRef="gateway-prepareparam3_end"/>
                             <endEvent id="gateway-prepareparam3_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
+                            <endEvent id="gateway-prepareparam5_end" name="end"/>
         </process>
     </definitions>

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_reply#begin {开始}]]
-state "展开评论输入框并设值" as RAWJSCODE1  [[$./edit_reply#rawjscode1 {展开评论输入框并设值}]]
 state "设置回复id" as PREPAREJSPARAM1  [[$./edit_reply#preparejsparam1 {设置回复id}]]
+state "展开评论输入框并设值" as RAWJSCODE1  [[$./edit_reply#rawjscode1 {展开评论输入框并设值}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./edit_reply#begin-preparejsparam1{无回复内容时不执行} 无回复内容时不执行]]
@@ -66,6 +66,6 @@ uiLogic.editor.setValue(uiLogic.default.content);
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |回复对象|editor|数据对象||
+|当前视图对象|view|当前视图对象||
 |父视图对象|parentView|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|当前视图对象|view|当前视图对象||

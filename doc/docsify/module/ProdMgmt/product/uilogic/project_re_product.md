@@ -52,7 +52,7 @@ DEACTION1 --> END1
 
 
 
-调用实体 [产品(PRODUCT)](module/ProdMgmt/product.md) 行为 [关联产品(other_re_product)](module/ProdMgmt/product#行为) ，行为参数为`Default(传入变量)`
+调用实体 [产品(PRODUCT)](module/ProdMgmt/product.md) 行为 [其他实体关联产品(other_re_product)](module/ProdMgmt/product#行为) ，行为参数为`Default(传入变量)`
 
 
 

@@ -12,9 +12,9 @@
 
 
 ### 关联界面行为
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [进行中_删除（移动端）](module/TestMgmt/library#界面行为)
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [移动测试库（移动端）](module/TestMgmt/library#界面行为)
   * [测试库(LIBRARY)](module/TestMgmt/library) : [进行中_归档](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [移动测试库（移动端）](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [进行中_删除（移动端）](module/TestMgmt/library#界面行为)
 
 ### 关联视图
   * [测试库移动(library_mob_move_edit_view)](app/view/library_mob_move_edit_view)

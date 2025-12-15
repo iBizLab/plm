@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_org#begin {开始}]]
-state "结束" as END1 <<end>> [[$./edit_org#end1 {结束}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./edit_org#viewctrlinvoke1 {视图部件调用}]]
 state "界面行为" as DEUIACTION1  [[$./edit_org#deuiaction1 {界面行为}]]
+state "结束" as END1 <<end>> [[$./edit_org#end1 {结束}]]
 
 
 Begin --> DEUIACTION1

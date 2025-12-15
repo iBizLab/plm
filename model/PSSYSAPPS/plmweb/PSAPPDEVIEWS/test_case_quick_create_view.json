@@ -209,6 +209,10 @@
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "ENABLEJSONSCHEMA" : "true",
+        "JSONSCHEMAPARAMS" : "{\"test_library_id\":\"%library%\"}"
+      },
       "id" : "FORM"
     },
     "getPSDEFormItems" : [ {
@@ -454,6 +458,7 @@
               "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "MAXHEIGHT" : "450",
               "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "srfaiagent" : "TextAgent_Writing",
               "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
               "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
               "MODE" : "default",
@@ -463,16 +468,30 @@
               "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+              "ac" : "true",
               "QUOTEURL" : "`recents/fetch_recent_access`"
             },
             "editorStyle" : "COLLAPSE",
             "editorType" : "HTMLEDITOR",
             "name" : "precondition",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "AIChat"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "COMMENT",
               "runtimeObject" : true
-            }
+            },
+            "enableAC" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -519,6 +538,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "is_group",
                   "logicType" : "SINGLE",
+                  "name" : "is_group等于(=) 1",
                   "value" : "1"
                 } ],
                 "relatedDetailNames" : [ "is_group" ],
@@ -556,6 +576,7 @@
                   "condOP" : "NOTEQ",
                   "dEFDName" : "is_group",
                   "logicType" : "SINGLE",
+                  "name" : "is_group不等于(<>) 1",
                   "value" : "1"
                 } ],
                 "relatedDetailNames" : [ "is_group" ],
@@ -593,6 +614,7 @@
                   "condOP" : "NOTEQ",
                   "dEFDName" : "is_group",
                   "logicType" : "SINGLE",
+                  "name" : "is_group不等于(<>) 1",
                   "value" : "1"
                 } ],
                 "relatedDetailNames" : [ "is_group" ],
@@ -734,6 +756,7 @@
               "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "MAXHEIGHT" : "450",
               "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "srfaiagent" : "TextAgent_Writing",
               "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
               "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
               "MODE" : "default",
@@ -743,16 +766,30 @@
               "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+              "ac" : "true",
               "QUOTEURL" : "`recents/fetch_recent_access`"
             },
             "editorStyle" : "COLLAPSE",
             "editorType" : "HTMLEDITOR",
             "name" : "case_description",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "AIChat"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "COMMENT",
               "runtimeObject" : true
-            }
+            },
+            "enableAC" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -1093,6 +1130,7 @@
                   }, {
                     "caption" : "删除",
                     "detailType" : "DEUIACTION",
+                    "enableScriptCode" : "context.srfreadonly != true",
                     "name" : "u44d00e2",
                     "getPSSysImage" : {
                       "glyph" : "xf014@FontAwesome",
@@ -1289,7 +1327,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "添加附件",
               "detailType" : "DEUIACTION",
-              "name" : "u69bc7c7",
+              "name" : "ubeba57d",
               "getPSSysImage" : {
                 "glyph" : "xf067@FontAwesome",
                 "cssClass" : "fa fa-plus"
@@ -1370,14 +1408,17 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "checkid",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "checkid值为空(Nil)"
               }, {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "dynamic_new",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "dynamic_new值不为空(NotNil)"
               } ],
               "notMode" : false
             } ],
@@ -1495,7 +1536,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "test_library_name",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "test_library_name值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "test_library_name" ],
             "notMode" : false
@@ -1741,7 +1783,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "跳转至成员设置",
                 "detailType" : "DEUIACTION",
-                "name" : "u23c0102",
+                "name" : "u7b4a0f4",
                 "getPSSysImage" : {
                   "glyph" : "xf0f0@FontAwesome",
                   "cssClass" : "fa fa-user-md"
@@ -2066,7 +2108,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "aa1d723e673a23a3fd479ef945a9213b",
+    "modelid" : "6ca7834f48e9b72e552d240fb4328052",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "quick_create_view_toolbar",
@@ -2461,6 +2503,52 @@
       "tooltip" : "选择模板",
       "uIActionTarget" : "NONE",
       "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "buttonStyle" : "WARNING",
+      "caption" : "AI+",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction2"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf123@FontAwesome",
+        "cssClass" : "fa fa-star-half-full"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "buttonStyle" : "WARNING",
+        "caption" : "AI+",
+        "codeName" : "ai",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
+          "viewType" : "DELISTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "ai_agent_assignment_ai",
+        "name" : "AI+",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf123@FontAwesome",
+          "cssClass" : "fa fa-star-half-full"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "ai",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "id" : "ai@ai_agent_assignment"
+      },
+      "tooltip" : "AI+",
+      "uIActionTarget" : "SINGLEDATA",
+      "showCaption" : true,
       "showIcon" : true
     } ],
     "toolbarStyle" : "USER",

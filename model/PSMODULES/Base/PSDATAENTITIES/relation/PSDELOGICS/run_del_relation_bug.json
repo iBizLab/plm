@@ -100,6 +100,54 @@
     } ],
     "topPos" : 290
   }, {
+    "codeName" : "DEACTION6",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取执行用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "执行用例中的测试用例标识不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "case_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "run"
+          },
+          "logicType" : "SINGLE",
+          "name" : "run[case_id] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run"
+    },
+    "topPos" : 480
+  }, {
     "codeName" : "DEBUGPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -153,53 +201,80 @@
     } ],
     "topPos" : 380
   }, {
-    "codeName" : "DEACTION6",
-    "getDstPSDEAction" : {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Get.json"
+      "id" : "Default"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "run"
+      "id" : "relation_filter"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
     "leftPos" : 160,
-    "logicNodeType" : "DEACTION",
-    "name" : "获取执行用例",
+    "logicNodeType" : "DEDATASET",
+    "name" : "对应测试用例关联缺陷",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM2"
+        "id" : "LOOPSUBCALL1"
       },
-      "name" : "执行用例中的测试用例标识不为空",
+      "name" : "对应测试用例存在关联缺陷",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "case_id",
+          "condOP" : "GT",
+          "dstFieldName" : "size",
           "getDstLogicParam" : {
             "modelref" : true,
-            "id" : "run"
+            "id" : "relation_page"
           },
           "logicType" : "SINGLE",
-          "name" : "run[case_id] 值不为空(NotNil)"
+          "name" : "relation_page[size] 大于(>) 0",
+          "paramValue" : "0"
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION6"
+        "id" : "DEDATASET1"
       }
     } ],
     "getRetPSDELogicParam" : {
       "modelref" : true,
-      "id" : "run"
+      "id" : "relation_page"
     },
-    "topPos" : 480
+    "topPos" : 700
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relation_page"
+    },
+    "topPos" : 838
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 160,
@@ -368,81 +443,6 @@
       "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 613
-  }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "relation_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEDATASET",
-    "name" : "对应测试用例关联缺陷",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "对应测试用例存在关联缺陷",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "GT",
-          "dstFieldName" : "size",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "relation_page"
-          },
-          "logicType" : "SINGLE",
-          "name" : "relation_page[size] 大于(>) 0",
-          "paramValue" : "0"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "relation_page"
-    },
-    "topPos" : 700
-  }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_temp_obj"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "relation_page"
-    },
-    "topPos" : 838
   }, {
     "code" : "var for_temp_obj = logic.getParam(\"for_temp_obj\");\r\nvar test_case_relation_bug = logic.getParam(\"test_case_relation_bug\");\r\nvar bug_relation_test_case = logic.getParam(\"bug_relation_test_case\");\r\nif(for_temp_obj.get(\"principal_id\") != null && for_temp_obj.get(\"target_id\") != null){\r\n    // 获取测试用例关联缺陷对象的主键\r\n    test_case_relation_bug.set(\"id\", for_temp_obj.get(\"principal_id\") + \"_\" + for_temp_obj.get(\"target_id\"));\r\n    // 获取缺陷关联测试用例对象的主键\r\n    bug_relation_test_case.set(\"id\", for_temp_obj.get(\"target_id\") + \"_\" + for_temp_obj.get(\"principal_id\"));\r\n}",
     "codeName" : "RAWSFCODE2",

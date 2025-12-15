@@ -10,6 +10,7 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|是否系统默认|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |序号|SEQUENCE|数值||是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||

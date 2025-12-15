@@ -10,9 +10,10 @@
 
 ### 关联界面行为
   * [最近访问(RECENT)](module/Base/recent) : [首页](module/Base/recent#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品配置](module/ProdMgmt/product#界面行为)
+  * [工时(WORKLOAD)](module/Base/workload) : [工作台登记工时](module/Base/workload#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品首页视图](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品配置](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [关注(attention_tab_exp_view)](app/view/attention_tab_exp_view)
@@ -42,6 +43,7 @@
   * [工作项(work_item_my_attention_grid_view)](app/view/work_item_my_attention_grid_view)
   * [工作项(work_item_my_todo_gird_view)](app/view/work_item_my_todo_gird_view)
   * [工时(workload_log_grid_view)](app/view/workload_log_grid_view)
+  * [登记工时(workload_quick_create_view_workbench)](app/view/workload_quick_create_view_workbench)
   * [工时(workload_tab_exp_view)](app/view/workload_tab_exp_view)
   * [工时(workload_tab_search_view)](app/view/workload_tab_search_view)
 

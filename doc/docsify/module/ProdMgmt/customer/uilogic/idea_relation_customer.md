@@ -90,6 +90,7 @@ if (panel) {
     panel.state.visible = false;
 }
 uiLogic.default.choose_data = null;
+uiLogic.default.choose_relation_data = null;
 ```
 
 #### 表格刷新 :id=VIEWCTRLINVOKE1<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>

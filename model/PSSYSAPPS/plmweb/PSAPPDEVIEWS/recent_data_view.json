@@ -776,7 +776,7 @@
       "modeltype" : "PSDEFORM_SEARCHFORM"
     }, {
       "cardHeight" : 120,
-      "cardWidth" : 150,
+      "cardWidth" : 200,
       "codeName" : "data_view_card",
       "controlType" : "DATAVIEW",
       "getCreatePSControlAction" : {
@@ -800,7 +800,6 @@
         "modelref" : true,
         "id" : "fetch",
         "actionType" : "DEDATASET",
-        "customCond" : "SRFNAVPARAM.SIZE=8",
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
@@ -1001,7 +1000,6 @@
           }
         }, {
           "actionType" : "DEDATASET",
-          "customCond" : "SRFNAVPARAM.SIZE=8",
           "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
@@ -1016,18 +1014,12 @@
         "enableDEFieldPrivilege" : false,
         "id" : "数据视图处理器"
       },
-      "getPSControlNavParams" : [ {
-        "key" : "size",
-        "name" : "size",
-        "value" : "8",
-        "rawValue" : true
-      } ],
       "getPSControlParam" : {
         "height" : 250.0,
         "autoLoad" : true,
         "showBusyIndicator" : true,
         "ctrlParams" : {
-          "SRFNAVPARAM.SIZE" : "8"
+          "SHOWMODE" : "ONLYDATA"
         },
         "id" : "DATAVIEW"
       },
@@ -1049,7 +1041,8 @@
       "getPSSysCss" : {
         "cssName" : "recentdata-screen-auto-item"
       },
-      "pagingSize" : 1000,
+      "pagingMode" : 1,
+      "pagingSize" : 8,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -1089,7 +1082,7 @@
       "enableCardEditOrder" : false,
       "enableCardNew" : false,
       "enableGroup" : false,
-      "enablePagingBar" : false,
+      "enablePagingBar" : true,
       "noSort" : false,
       "singleSelect" : true,
       "name" : "dataview",

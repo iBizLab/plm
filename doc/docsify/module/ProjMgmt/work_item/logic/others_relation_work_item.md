@@ -88,6 +88,10 @@ LOOPSUBCALL1 --> END1
 重建参数```reverse_relation_obj(反向关系对象)```
 #### 关联标识 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
 
 
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
@@ -105,9 +109,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 

@@ -13,9 +13,9 @@ if(for_temp_obj.get('id') != null){
     reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
     forward_relation_obj.set('target_id', for_temp_obj.get('id'))
 }
-if(for_temp_obj.get('owner_id') != null){
-    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
-    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+if(for_temp_obj.get('target_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('target_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('target_id'))
 }
 
 

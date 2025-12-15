@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.service.logic.ai_credentialget_cloud_config" isClosed="false" isExecutable="true" name="ai_ai_credential_get_cloud_config_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.service.logic.ai_credentialget_cloud_config">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ai_credentialget_cloud_configdefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="ai_credentialget_cloud_configmap" type="refentity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_credentialService))" name="iBzSysAi_credentialDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ai_credentialget_cloud_configdefault" type="cn.ibizlab.plm.core.ai.domain.ai_credential" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_credentialget_cloud_configend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_credentialget_cloud_configprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="设置禁用"/>
+                        <endEvent id="prepareparam_01_end" name="end"/>
+                        <sequenceFlow id="prepareparam_01_end_line" sourceRef="prepareparam_01" targetRef="prepareparam_01_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_credentialget_cloud_configdefault:ai_credential();
+                                            $ai_credentialget_cloud_configmap:Map();
+                                    eval($ai_credentialget_cloud_configdefault==ai_credentialget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_credentialget_cloud_configdefault.get("active"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="begin_end_01" sourceRef="begin" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

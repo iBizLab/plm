@@ -68,10 +68,10 @@ MAINSTATE1 --> MAINSTATE4
 
 #### 规划中 :id=MAINSTATE5<sup class="footnote-symbol"> <font color=gray size=1>[14]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
@@ -88,20 +88,20 @@ MAINSTATE1 --> MAINSTATE4
 
 #### 被拒绝 :id=MAINSTATE7<sup class="footnote-symbol"> <font color=gray size=1>[60]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
 
 #### 规划完成 :id=MAINSTATE6<sup class="footnote-symbol"> <font color=gray size=1>[16]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
@@ -128,10 +128,10 @@ MAINSTATE1 --> MAINSTATE4
 
 #### 开发完成 :id=MAINSTATE8<sup class="footnote-symbol"> <font color=gray size=1>[30]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
@@ -148,30 +148,30 @@ MAINSTATE1 --> MAINSTATE4
 
 #### 测试中 :id=MAINSTATE9<sup class="footnote-symbol"> <font color=gray size=1>[32]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
 
 #### 测试失败 :id=MAINSTATE11<sup class="footnote-symbol"> <font color=gray size=1>[36]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
 
 #### 测试通过 :id=MAINSTATE10<sup class="footnote-symbol"> <font color=gray size=1>[34]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 

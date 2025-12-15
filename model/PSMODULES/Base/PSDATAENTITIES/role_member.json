@@ -1063,6 +1063,18 @@
       }
     } ],
     "getPSDEMapFields" : [ {
+      "dstFieldName" : "MEMBER_UID",
+      "getDstPSDEField" : {
+        "name" : "MEMBER_UID",
+        "codeName" : "Member_uid"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MEMBER_UID",
+      "getSrcPSDEField" : {
+        "name" : "MEMBER_UID",
+        "codeName" : "Member_uid"
+      }
+    }, {
       "dstFieldName" : "ID",
       "getDstPSDEField" : {
         "name" : "ID",
@@ -1085,18 +1097,6 @@
       "getSrcPSDEField" : {
         "name" : "ROLE_ID",
         "codeName" : "Role_id"
-      }
-    }, {
-      "dstFieldName" : "MEMBER_UID",
-      "getDstPSDEField" : {
-        "name" : "MEMBER_UID",
-        "codeName" : "Member_uid"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "MEMBER_UID",
-      "getSrcPSDEField" : {
-        "name" : "MEMBER_UID",
-        "codeName" : "Member_uid"
       }
     }, {
       "dstFieldName" : "MEMBER_NAME",
@@ -1249,16 +1249,16 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "SYS_ROLEID",
+      "dstFieldName" : "SYS_USER_ROLEID",
       "getDstPSDEField" : {
-        "name" : "SYS_ROLEID",
-        "codeName" : "RoleId"
+        "name" : "SYS_USER_ROLEID",
+        "codeName" : "UserRoleId"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "ROLE_ID",
+      "srcFieldName" : "ID",
       "getSrcPSDEField" : {
-        "name" : "ROLE_ID",
-        "codeName" : "Role_id"
+        "name" : "ID",
+        "codeName" : "id"
       }
     }, {
       "dstFieldName" : "USERID",
@@ -1273,16 +1273,16 @@
         "codeName" : "Member_uid"
       }
     }, {
-      "dstFieldName" : "SYS_USER_ROLEID",
+      "dstFieldName" : "SYS_ROLEID",
       "getDstPSDEField" : {
-        "name" : "SYS_USER_ROLEID",
-        "codeName" : "UserRoleId"
+        "name" : "SYS_ROLEID",
+        "codeName" : "RoleId"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "ID",
+      "srcFieldName" : "ROLE_ID",
       "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "ROLE_ID",
+        "codeName" : "Role_id"
       }
     } ],
     "valid" : false
@@ -1403,6 +1403,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -1417,6 +1418,7 @@
         "name" : "MEMBER_UID",
         "codeName" : "Member_uid"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -1431,6 +1433,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -1445,6 +1448,7 @@
         "name" : "ROLE_ID",
         "codeName" : "Role_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -1454,6 +1458,9 @@
     "defaultMode" : true
   } ],
   "getAllPSDEOPPrivs" : [ {
+    "logicName" : "建立",
+    "name" : "CREATE"
+  }, {
     "logicName" : "建立",
     "mapPSDEName" : "ROLE",
     "mapPSDEOPPrivName" : "CREATE",
@@ -1467,9 +1474,6 @@
     },
     "name" : "CREATE",
     "id" : "role__CREATE"
-  }, {
-    "logicName" : "建立",
-    "name" : "CREATE"
   }, {
     "logicName" : "删除",
     "name" : "DELETE"

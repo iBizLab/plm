@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.ai_kb_document.create.afterLogic" isClosed="false" isExecutable="true" name="ai_ai_kb_document_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.ai_kb_document.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.ai.domain.ai_kb_document"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.ai.service.logic.ai_kb_documentgenerate_doc_scheduled" id="aba8a25765a24c6530887ae774e788f9_@_@_64e7ee0a-7cfc-0917-862c-36c4eba06c77" name="generate_doc_scheduled.json.bpmn"/>
+                        <sequenceFlow id="begin_aba8a25765a24c6530887ae774e788f9_@_@_64e7ee0a-7cfc-0917-862c-36c4eba06c77" sourceRef="begin" targetRef="aba8a25765a24c6530887ae774e788f9_@_@_64e7ee0a-7cfc-0917-862c-36c4eba06c77"/>
+                            <sequenceFlow id="aba8a25765a24c6530887ae774e788f9_@_@_64e7ee0a-7cfc-0917-862c-36c4eba06c77_prepareparam1_end" sourceRef="aba8a25765a24c6530887ae774e788f9_@_@_64e7ee0a-7cfc-0917-862c-36c4eba06c77" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

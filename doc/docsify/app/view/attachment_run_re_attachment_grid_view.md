@@ -18,8 +18,8 @@
 ### 关联界面行为
   * [附件(ATTACHMENT)](module/Base/attachment) : [附件删除（表格）](module/Base/attachment#界面行为)
   * [附件(ATTACHMENT)](module/Base/attachment) : [附件预览](module/Base/attachment#界面行为)
-  * [附件(ATTACHMENT)](module/Base/attachment) : [添加附件数据（表格）](module/Base/attachment#界面行为)
   * [附件(ATTACHMENT)](module/Base/attachment) : [附件下载](module/Base/attachment#界面行为)
+  * [附件(ATTACHMENT)](module/Base/attachment) : [添加附件数据（表格）](module/Base/attachment#界面行为)
 
 ### 关联视图
   * [附件(attachment_edit_view)](app/view/attachment_edit_view)

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workloadai_add_estimated_workload" isClosed="false" isExecutable="true" name="base_workload_ai_add_estimated_workload_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workloadai_add_estimated_workload">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workloadai_add_estimated_workloaddefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadai_add_estimated_workloaddata" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload_type()" name="workloadai_add_estimated_workloadfilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadai_add_estimated_workloadtemp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadai_add_estimated_workloadwork_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload_type()" name="workloadai_add_estimated_workloadworkload_type_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iworkload_typeService))" name="workload_typeservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workloadai_add_estimated_workloaddefault" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadai_add_estimated_workloaddata" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadai_add_estimated_workloadfilter" type="cn.ibizlab.plm.core.base.domain.workload_type" />
+                            <tns:global identifier="workloadai_add_estimated_workloadtemp" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadai_add_estimated_workloadwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadai_add_estimated_workloadworkload_type_page" type="cn.ibizlab.plm.core.base.domain.workload_type" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取工时种类"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloaddelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="登记工时"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadai_add_estimated_workloadend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_debugparam_01" sourceRef="gateway-begin" targetRef="debugparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadai_add_estimated_workloaddefault:workload();
+                                            $workloadai_add_estimated_workloaddata:workload();
+                                            $workloadai_add_estimated_workloadfilter:workload_type();
+                                            $workloadai_add_estimated_workloadtemp:workload();
+                                            $workloadai_add_estimated_workloadwork_item:work_item();
+                                            $workloadai_add_estimated_workloadworkload_type_page:workload_type();
+                                    eval($workloadai_add_estimated_workloaddefault==workloadai_add_estimated_workloaddefault && $workloadai_add_estimated_workloaddata==workloadai_add_estimated_workloaddata && $workloadai_add_estimated_workloadfilter==workloadai_add_estimated_workloadfilter && $workloadai_add_estimated_workloadtemp==workloadai_add_estimated_workloadtemp && $workloadai_add_estimated_workloadwork_item==workloadai_add_estimated_workloadwork_item && $workloadai_add_estimated_workloadworkload_type_page==workloadai_add_estimated_workloadworkload_type_page);
+                                eval((RuleUtils.test($workloadai_add_estimated_workloaddefault.get("success"),"EQ","true")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_prepareparam2" sourceRef="debugparam_01" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_bindparam1" sourceRef="dedataset1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction1" sourceRef="loopsubcall1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam1" sourceRef="deaction1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_delogic1" sourceRef="rawsfcode1" targetRef="delogic1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

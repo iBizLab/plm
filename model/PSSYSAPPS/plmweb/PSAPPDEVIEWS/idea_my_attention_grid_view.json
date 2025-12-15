@@ -510,7 +510,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "跳转至成员设置",
             "detailType" : "DEUIACTION",
-            "name" : "u4befff7",
+            "name" : "udd2bf0b",
             "getPSSysImage" : {
               "glyph" : "xf0f0@FontAwesome",
               "cssClass" : "fa fa-user-md"
@@ -673,11 +673,11 @@
       "id" : "SEARCHFORM"
     },
     "getPSDEFormItems" : [ {
-      "id" : "n_show_identifier_like",
+      "id" : "n_identifier_like",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "SHOW_IDENTIFIER",
-        "codeName" : "show_identifier"
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
       }
     }, {
       "id" : "n_title_like",
@@ -694,20 +694,31 @@
         "codeName" : "state"
       }
     }, {
-      "id" : "n_product_name_eq",
+      "id" : "n_idea_type_eq",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "PRODUCT_NAME",
-        "codeName" : "product_name"
+        "name" : "IDEA_TYPE",
+        "codeName" : "idea_type"
       }
     }, {
-      "id" : "n_product_id_eq",
+      "id" : "n_assignee_name_eq",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      }
+    }, {
+      "id" : "n_assignee_id_eq",
       "hidden" : true,
-      "dataType" : 25
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      }
     } ],
     "getPSDEFormPages" : [ {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.IDEA.USR12263500_SEARCHFORM.FORMPAGE.FORMPAGE1"
+        "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMPAGE.FORMPAGE1"
       },
       "caption" : "常规条件",
       "codeName" : "formpage1",
@@ -716,10 +727,10 @@
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12263500_SEARCHFORM.FORMITEM.N_SHOW_IDENTIFIER_LIKE"
+          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_IDENTIFIER_LIKE"
         },
         "caption" : "编号",
-        "codeName" : "n_show_identifier_like",
+        "codeName" : "n_identifier_like",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -727,26 +738,26 @@
         "ignoreInput" : 0,
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "n_show_identifier_like",
+        "name" : "n_identifier_like",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
         },
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
-          "name" : "n_show_identifier_like",
+          "name" : "n_identifier_like",
           "placeHolder" : "编号"
         },
         "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
+          "colLG" : 5,
+          "colMD" : 5,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true
       }, {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12263500_SEARCHFORM.FORMITEM.N_TITLE_LIKE"
+          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12252032_SEARCHFORM.FORMITEM.N_TITLE_LIKE"
         },
         "caption" : "标题",
         "codeName" : "n_title_like",
@@ -769,14 +780,14 @@
           "placeHolder" : "标题"
         },
         "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
+          "colLG" : 5,
+          "colMD" : 5,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true
       }, {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12263500_SEARCHFORM.FORMITEM.N_STATE_EQ"
+          "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_STATE_EQ"
         },
         "caption" : "状态",
         "codeName" : "n_state_eq",
@@ -804,18 +815,15 @@
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
+          "colLG" : 5,
+          "colMD" : 5,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
         "needCodeListConfig" : true
       }, {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.IDEA.USR12263500_SEARCHFORM.FORMITEM.N_PRODUCT_NAME_EQ"
-        },
-        "caption" : "所属产品",
-        "codeName" : "n_product_name_eq",
+        "caption" : "需求类型",
+        "codeName" : "n_idea_type_eq",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -823,38 +831,99 @@
         "ignoreInput" : 0,
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "n_product_name_eq",
+        "name" : "n_idea_type_eq",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "PRODUCT_NAME",
-          "codeName" : "product_name"
+          "name" : "IDEA_TYPE",
+          "codeName" : "idea_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "DROPDOWNLIST",
+          "name" : "n_idea_type_eq",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__requirement_type.json"
+          },
+          "placeHolder" : "选择类型",
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 5,
+          "colMD" : 5,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_ASSIGNEE_NAME_EQ"
+        },
+        "caption" : "负责人",
+        "codeName" : "n_assignee_name_eq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "n_assignee_name_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
         },
         "getPSEditor" : {
           "editorParams" : {
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
-            "PICKUPVIEW" : "FALSE"
+            "URL" : "products/${context.product}/product_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
           },
+          "editorStyle" : "PERSONEL_SELECT_PRODUCT",
           "editorType" : "PICKEREX_TRIGGER",
           "handlerType" : "PickupText",
-          "name" : "n_product_name_eq",
+          "name" : "n_assignee_name_eq",
           "getPSAppDEACMode" : {
             "modelref" : true,
             "id" : "Default"
           },
           "getPSAppDEDataSet" : {
             "modelref" : true,
-            "id" : "fetch_main"
+            "id" : "fetch_default"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
           },
           "getPSEditorItems" : [ {
-            "name" : "n_product_id_eq"
+            "name" : "n_assignee_id_eq"
           } ],
-          "placeHolder" : "选择产品",
-          "valueItemName" : "n_product_id_eq",
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "placeHolder" : "负责人",
+          "valueItemName" : "n_assignee_id_eq",
           "enableAC" : true,
           "enablePickupView" : false,
           "forceSelection" : true,
@@ -862,14 +931,18 @@
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
+          "colLG" : 4,
+          "colMD" : 4,
           "layout" : "TABLE_24COL"
         },
-        "valueItemName" : "n_product_id_eq",
+        "valueItemName" : "n_assignee_id_eq",
         "allowEmpty" : true
       }, {
-        "codeName" : "n_product_id_eq",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_ASSIGNEE_ID_EQ"
+        },
+        "caption" : "负责人",
+        "codeName" : "n_assignee_id_eq",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -877,23 +950,27 @@
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "n_product_id_eq",
+        "name" : "n_assignee_id_eq",
         "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_ID",
+          "codeName" : "assignee_id"
+        },
         "getPSEditor" : {
           "editorType" : "HIDDEN",
-          "name" : "n_product_id_eq"
+          "name" : "n_assignee_id_eq"
         },
         "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
+          "colLG" : 5,
+          "colMD" : 5,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
         "hidden" : true
       } ],
       "getPSLayout" : {
-        "childColLG" : 3,
-        "childColMD" : 3,
+        "childColLG" : 5,
+        "childColMD" : 5,
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
       },

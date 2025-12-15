@@ -16,5 +16,3 @@
   * [组织管理](er/org)
 * 效能度量
   * [效能度量](er/insight)
-* DevOps数据集成
-  * [DevOps数据集成](er/DevOps)

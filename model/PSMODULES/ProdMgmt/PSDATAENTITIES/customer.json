@@ -253,7 +253,7 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "customer_choose_ticket",
     "dataAccessAction" : "UPDATE",
@@ -266,18 +266,20 @@
         "modelref" : true,
         "id" : "customer_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSDEActionReturn" : {
       "name" : "Customer_choose_ticketResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "customer_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/customer_choose_ticket.json"
     },
-    "enableAudit" : true,
     "enableFront" : false
   }, {
     "actionHolder" : 1,
@@ -455,7 +457,7 @@
     "enableBackend" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "others_relation_customer",
     "dataAccessAction" : "UPDATE",
@@ -468,18 +470,20 @@
         "modelref" : true,
         "id" : "customer_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSDEActionReturn" : {
       "name" : "Others_relation_customerResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "customer_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/others_relation_customer.json"
     },
-    "enableAudit" : true,
     "enableFront" : false
   }, {
     "actionHolder" : 1,
@@ -4120,9 +4124,9 @@
           "modelref" : true,
           "id" : "update_obj"
         },
-        "name" : "for_temp_obj[owner_id] ==> update_obj[ID]",
+        "name" : "for_temp_obj[target_id] ==> update_obj[ID]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "owner_id",
+        "srcFieldName" : "target_id",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "for_ticket"
@@ -6289,6 +6293,7 @@
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6303,6 +6308,7 @@
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -6317,6 +6323,7 @@
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6331,6 +6338,7 @@
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6345,6 +6353,7 @@
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -6359,6 +6368,7 @@
         "name" : "CATEGORIES",
         "codeName" : "categories"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6373,6 +6383,7 @@
         "name" : "CATEGORIES",
         "codeName" : "categories"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6387,6 +6398,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6401,6 +6413,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -6415,6 +6428,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6429,6 +6443,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6443,6 +6458,7 @@
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -6458,6 +6474,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -6473,6 +6490,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -6487,6 +6505,7 @@
         "name" : "GRADE_ID",
         "codeName" : "grade_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6501,6 +6520,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6515,6 +6535,7 @@
         "name" : "INDUSTRY_ID",
         "codeName" : "industry_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6529,6 +6550,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6543,6 +6565,7 @@
         "name" : "PRODUCT_ID",
         "codeName" : "Product_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6557,6 +6580,7 @@
         "name" : "PRODUCT_NAME",
         "codeName" : "product_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6571,6 +6595,7 @@
         "name" : "PRODUCT_NAME",
         "codeName" : "product_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -6586,6 +6611,7 @@
         "name" : "UPDATE_TIME",
         "codeName" : "update_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -6601,6 +6627,7 @@
         "name" : "UPDATE_TIME",
         "codeName" : "update_time"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
       "type" : "SIMPLE"
@@ -6692,17 +6719,17 @@
     "name" : "客户删除通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/customer_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/customer_notify_assignee.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],

@@ -39,17 +39,17 @@
 <p class="panel-title"><b>行为映射</b></p>
 
 * `默认`
-`Create` <i class="fa fa-angle-double-right"/></i> `Create`
+`Update` <i class="fa fa-angle-double-right"/></i> `Update`
 * `默认`
 `CheckKey` <i class="fa fa-angle-double-right"/></i> `CheckKey`
 * `默认`
-`Save` <i class="fa fa-angle-double-right"/></i> `Save`
+`Create` <i class="fa fa-angle-double-right"/></i> `Create`
 * `默认`
-`Get` <i class="fa fa-angle-double-right"/></i> `Get`
+`Save` <i class="fa fa-angle-double-right"/></i> `Save`
 * `默认`
 `Remove` <i class="fa fa-angle-double-right"/></i> `Remove`
 * `默认`
-`Update` <i class="fa fa-angle-double-right"/></i> `Update`
+`Get` <i class="fa fa-angle-double-right"/></i> `Get`
 
 <p class="panel-title"><b>查询映射</b></p>
 

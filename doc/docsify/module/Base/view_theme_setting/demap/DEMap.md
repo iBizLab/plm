@@ -64,9 +64,9 @@
 <p class="panel-title"><b>集合映射</b></p>
 
 * `默认`
-`PSMODEL_SYNC(实体数据关系界面组（同步）)` <i class="fa fa-angle-double-right"/></i> `CUR_SYSTEM(当前系统（全局）)` 
-* `默认`
 `CUR_USER_ALL(当前用户全部（含全局）)` <i class="fa fa-angle-double-right"/></i> `CUR_USER_ALL(当前用户全部（含全局）)` 并且 `启用查询条件`
+* `默认`
+`PSMODEL_SYNC(实体数据关系界面组（同步）)` <i class="fa fa-angle-double-right"/></i> `CUR_SYSTEM(当前系统（全局）)` 
 * `默认`
 `DEFAULT(数据集)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 
 * `默认`

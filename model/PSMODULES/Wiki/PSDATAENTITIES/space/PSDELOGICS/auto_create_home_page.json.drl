@@ -21,15 +21,6 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_home_page;
             then
             end
 
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "spaceauto_create_home_pageend1"
-            when
-            then
-                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
-                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置主页相关参数]
             rule "prepareparam1"
             ruleflow-group "spaceauto_create_home_pageprepareparam1"
@@ -57,6 +48,15 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_home_page;
                         update(spaceauto_create_home_pagehome_page);//更新fact中变量值
             end
 
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spaceauto_create_home_pageend1"
+            when
+            then
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
             //逻辑处理节点[设置发布时间]
             rule "rawsfcode3"
             ruleflow-group "spaceauto_create_home_pagerawsfcode3"
@@ -75,11 +75,12 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_home_page;
                         update(spaceauto_create_home_pagehome_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置主页发布内容（publish_content）]
-            rule "rawsfcode2"
-            ruleflow-group "spaceauto_create_home_pagerawsfcode2"
+            //逻辑处理节点[设置发布内容]
+            rule "prepareparam_01"
+            ruleflow-group "spaceauto_create_home_pageprepareparam_01"
             when
             then
+                            spaceauto_create_home_pagehome_page.set("publishcontent",spaceauto_create_home_pagehome_page.get("content"));
                         update(spaceauto_create_home_pagedefault);//更新fact中变量值
                         update(spaceauto_create_home_pagehome_page);//更新fact中变量值
             end

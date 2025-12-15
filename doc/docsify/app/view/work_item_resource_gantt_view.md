@@ -7,6 +7,7 @@
 #### 甘特部件(gantt)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
+#### 工具栏(toolbar)
 
 ## 视图界面逻辑
 * `onBeforeLoadDraft`
@@ -34,10 +35,12 @@ Object.assign(viewParam, {
 
 ### 关联界面行为
   * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [打开全局容量设置](module/Base/addon_resource#界面行为)
+  * [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session) : [AI+无数据](module/ai/ai_agent_session#界面行为)
   * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [全局资源成员设置(设置回显数据)](module/Base/addon_resource#界面行为)
 
 ### 关联视图
   * [容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)
+  * [智能体选择器(ai_agent_assignment_selector)](app/view/ai_agent_assignment_selector)
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>

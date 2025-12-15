@@ -22,25 +22,25 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移入迭代](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [归档](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [规划工作项（release）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_导出操作（Excel）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [变更父工作项](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [激活](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [复制工作项](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [规划工作项（release）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移入发布](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移动](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工作项](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [归档](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [变更状态](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移出发布](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [复制工作项](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [激活](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [修改时间](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工作项](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移入发布](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移入迭代](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [变更父工作项](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [分配负责人](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移动](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [修改时间](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)
 
 ### 关联视图
   * [项目发布(release_pick_up_around_view)](app/view/release_pick_up_around_view)
@@ -53,8 +53,8 @@
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
   * [移动工作项(work_item_move_view)](app/view/work_item_move_view)
-  * [工作项(work_item_plan_work_item_mpick_up_view)](app/view/work_item_plan_work_item_mpick_up_view)
-  * [工作项(work_item_re_self_mpick_up_view)](app/view/work_item_re_self_mpick_up_view)
+  * [选择工作项(work_item_plan_work_item_mpick_up_view)](app/view/work_item_plan_work_item_mpick_up_view)
+  * [选择工作项(work_item_re_self_mpick_up_view)](app/view/work_item_re_self_mpick_up_view)
 
 <script>
  const { createApp } = Vue

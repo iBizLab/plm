@@ -9,7 +9,7 @@
 
 <p class="panel-title"><b>数据集类型</b></p>
 
-* `数据查询`
+* `实体逻辑`
 
 <p class="panel-title"><b>选择列级别</b></p>
 
@@ -19,4 +19,3 @@
 
 
 ### 数据查询
-  * [产品关联的空间(product_re_space)](module/Wiki/space/query/product_re_space)

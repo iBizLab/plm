@@ -1,0 +1,60 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.get_re_space;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space spaceget_re_spacedefault;
+                global cn.ibizlab.plm.core.wiki.domain.space spaceget_re_spacepage;
+        global cn.ibizlab.plm.core.wiki.service.IspaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spaceget_re_spacebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取关联数据]
+            rule "rawsqlcall1"
+            ruleflow-group "spaceget_re_spacerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",spaceget_re_spacedefault.get("principal_type"));
+        param.put("param1",spaceget_re_spacedefault.get("target_type"));
+        param.put("param2",spaceget_re_spacedefault.get("principal_id"));
+    String strSql="SELECT 	t1.ID, 	t1.`NAME`, 	t2.RELATION_TYPE  FROM 	space t1 	JOIN relation t2 ON t2.TARGET_ID = t1.ID  WHERE 	t1.IS_DELETED = 0  	AND t1.IS_ARCHIVED = 0  	AND t2.PRINCIPAL_TYPE = #{et.param0}  	AND t2.TARGET_TYPE = #{et.param1}  	AND t2.PRINCIPAL_ID = #{et.param2};";
+                        java.util.List<JSONObject> entities=iBzSysSpaceDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    spaceget_re_spacepage.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(spaceget_re_spacedefault);//更新fact中变量值
+                        update(spaceget_re_spacepage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "spaceget_re_spacerawsfcode1"
+            when
+            then
+                        update(spaceget_re_spacedefault);//更新fact中变量值
+                        update(spaceget_re_spacepage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spaceget_re_spaceend1"
+            when
+            then
+                        update(spaceget_re_spacedefault);//更新fact中变量值
+                        update(spaceget_re_spacepage);//更新fact中变量值
+            end

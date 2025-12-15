@@ -290,7 +290,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "program_test_case",
     "methodType" : "DEACTION",
     "name" : "program_test_case",
@@ -300,8 +300,7 @@
         "modelref" : true,
         "id" : "review_content_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -323,11 +322,10 @@
       "modelref" : true,
       "id" : "program_test_case"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/program_test_case",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
@@ -2563,7 +2561,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "UPDATE",
+    "actionMode" : "GETDRAFT",
     "codeName" : "program_test_case",
     "methodType" : "DEACTION",
     "name" : "program_test_case",
@@ -2573,8 +2571,7 @@
         "modelref" : true,
         "id" : "review_content_dto"
       },
-      "type" : "DTO",
-      "output" : true
+      "type" : "DTO"
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
@@ -2596,11 +2593,10 @@
       "modelref" : true,
       "id" : "program_test_case"
     },
-    "requestMethod" : "PUT",
+    "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/program_test_case",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
@@ -3788,12 +3784,6 @@
       "topPos" : 260,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
-    }, {
       "code" : "const rows = uiLogic.grid.state.rows;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n\t\tconst titleColumn = row.uiActionGroupStates.target_title;\r\n\t\tconst review_state = row.data.review_data.state;\r\n\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\tif (action.uiActionId === 'remove_case@review_content') {\r\n\t\t\t\t\taction.visible = review_state == '10';\r\n\t\t\t\t}\r\n                if(action.uiActionId === 'remove_case@review_content' && context.srfreadonly ==true){\r\n                    action.visible = false;\r\n                }\r\n\t\t\t})\r\n\t\t}\r\n        row.editColStates.change_type.disabled = review_state == '60';\r\n        row.editColStates.change_version.disabled = review_state == '60';\r\n        row.editColStates.change_version.readonly = review_state == '60';\r\n        row.editColStates.change_version.editable = review_state == '60';\r\n\t})\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -3812,6 +3802,12 @@
         }
       } ],
       "topPos" : 410
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -4313,30 +4309,6 @@
       "topPos" : 70,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "get"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "获取评审结果进度",
-      "topPos" : 350
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 561
-    }, {
       "code" : "const total = uiLogic.ctrl.state.total;\r\nconst rows = uiLogic.grid.state.rows;\r\nuiLogic.view.layoutPanel.state.data.total = rows.length;\r\nif (rows && rows.length > 0) {\r\n    let total_already = 0;\r\n    rows.forEach(row => {\r\n        const state = row.data.final_stage_results;\r\n    if (state !== null && state !== undefined) {\r\n        total_already++;\r\n    }\r\n    });\r\n    uiLogic.view.layoutPanel.state.data.total_already = total_already;\r\n    const floatTotal = parseFloat(rows.length);\r\n    const floatTotalAlready = parseFloat(total_already);\r\n    const ratio = Math.round((floatTotalAlready / floatTotal) * 100); \r\n    uiLogic.view.layoutPanel.state.data.schedule = ratio;\r\n} else {\r\n    uiLogic.view.layoutPanel.state.data.total_already = 0;\r\n    uiLogic.view.layoutPanel.state.data.schedule = 0;\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : -180,
@@ -4388,6 +4360,30 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 190
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 561
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "get"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取评审结果进度",
+      "topPos" : 350
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -4401,6 +4397,12 @@
       "name" : "表格",
       "ctrlParam" : true
     }, {
+      "codeName" : "CTRL",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
       "codeName" : "VIEW",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
@@ -4410,12 +4412,6 @@
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
-    }, {
-      "codeName" : "CTRL",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4472,16 +4468,16 @@
       "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityListParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
     }, {
       "codeName" : "ctx",
       "logicName" : "应用上下文",
@@ -4524,28 +4520,6 @@
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "topPos" : 208
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "cur_container"
-      },
-      "leftPos" : -270,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 210
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : -86,
@@ -4591,32 +4565,34 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "cur_container"
+      },
+      "leftPos" : -270,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 210
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "cur_container",
-      "logicName" : "当前容器对象",
-      "name" : "当前容器对象",
-      "activeContainerParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "choosed_content",
-      "logicName" : "选择的内容",
-      "name" : "选择的内容",
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "parent_form",
-      "logicName" : "父表单",
-      "name" : "父表单",
       "entityParam" : true
     }, {
       "codeName" : "parent_view",
@@ -4624,10 +4600,30 @@
       "name" : "父视图",
       "entityParam" : true
     }, {
+      "codeName" : "choosed_content",
+      "logicName" : "选择的内容",
+      "name" : "选择的内容",
+      "entityParam" : true
+    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
+    }, {
+      "codeName" : "cur_container",
+      "logicName" : "当前容器对象",
+      "name" : "当前容器对象",
+      "activeContainerParam" : true
+    }, {
+      "codeName" : "parent_form",
+      "logicName" : "父表单",
+      "name" : "父表单",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4658,6 +4654,308 @@
       } ],
       "topPos" : 250,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "review_content_version_comparison@version"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "review_content"
+      },
+      "leftPos" : 940,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "测试用例",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 180
+    }, {
+      "code" : "const review_content = uiLogic.review_content;\r\nconst content_version = review_content.change_version;\r\n\r\n\r\nif(content_version && content_version.length >0){\r\n    content_version.forEach((c_version, index) => {\r\n        if(c_version.srflistmapfield == 'from'){\r\n            review_content.base_version = c_version.id;\r\n        }\r\n        if(c_version.srflistmapfield == 'to'){\r\n            review_content.compare_version = c_version.id;\r\n        }\r\n    })\r\n\r\n}\r\n\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 741,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "target_type",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[target_type] 等于(=) TEST_CASE",
+              "paramValue" : "TEST_CASE",
+              "value" : "TEST_CASE"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "principal_type",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "ctx"
+              },
+              "logicType" : "SINGLE",
+              "name" : "ctx[principal_type] 等于(=) test_case",
+              "paramValue" : "test_case",
+              "value" : "test_case"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "target_type",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[target_type] 等于(=) IDEA",
+              "paramValue" : "IDEA",
+              "value" : "IDEA"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "principal_type",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "ctx"
+              },
+              "logicType" : "SINGLE",
+              "name" : "ctx[principal_type] 等于(=) idea",
+              "paramValue" : "idea",
+              "value" : "idea"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 258
+    }, {
+      "codeName" : "PREPAREJSPARAM4",
+      "leftPos" : 550,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "review_content"
+        },
+        "name" : "Default ==> review_content",
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 258
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1375,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 250
+    }, {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 370,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "需求",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM3"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "idea",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "Default[target_id] ==> ctx[idea]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 326
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "idea_review_content_version_comparison@version"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "review_content"
+      },
+      "leftPos" : 940,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "需求",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 326
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 1132,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "test_case",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "无值（NONE） ==> ctx[test_case]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NONEVALUE"
+      }, {
+        "dstFieldName" : "idea",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "无值（NONE） ==> ctx[idea]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NONEVALUE"
+      } ],
+      "topPos" : 258
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 370,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "测试用例",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "test_case",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "Default[target_id] ==> ctx[test_case]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 190
     }, {
       "codeName" : "DEBUGPARAM1",
       "getDstPSDEUILogicParam" : {
@@ -4755,308 +5053,6 @@
         }
       } ],
       "topPos" : 258
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 370,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "测试用例",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "test_case",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "Default[target_id] ==> ctx[test_case]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 190
-    }, {
-      "codeName" : "PREPAREJSPARAM4",
-      "leftPos" : 550,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "review_content"
-        },
-        "name" : "Default ==> review_content",
-        "paramAction" : "COPYPARAM",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 258
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1375,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 250
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 1132,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "test_case",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "无值（NONE） ==> ctx[test_case]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NONEVALUE"
-      }, {
-        "dstFieldName" : "idea",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "无值（NONE） ==> ctx[idea]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NONEVALUE"
-      } ],
-      "topPos" : 258
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "idea_review_content_version_comparison@version"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "review_content"
-      },
-      "leftPos" : 940,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "需求",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "topPos" : 326
-    }, {
-      "code" : "const review_content = uiLogic.review_content;\r\nconst content_version = review_content.change_version;\r\n\r\n\r\nif(content_version && content_version.length >0){\r\n    content_version.forEach((c_version, index) => {\r\n        if(c_version.srflistmapfield == 'from'){\r\n            review_content.base_version = c_version.id;\r\n        }\r\n        if(c_version.srflistmapfield == 'to'){\r\n            review_content.compare_version = c_version.id;\r\n        }\r\n    })\r\n\r\n}\r\n\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 741,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "groupOP" : "OR",
-            "logicType" : "GROUP",
-            "name" : "OR",
-            "getPSDEUILogicLinkConds" : [ {
-              "condOP" : "EQ",
-              "dstFieldName" : "target_type",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[target_type] 等于(=) TEST_CASE",
-              "paramValue" : "TEST_CASE",
-              "value" : "TEST_CASE"
-            }, {
-              "condOP" : "EQ",
-              "dstFieldName" : "principal_type",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "ctx"
-              },
-              "logicType" : "SINGLE",
-              "name" : "ctx[principal_type] 等于(=) test_case",
-              "paramValue" : "test_case",
-              "value" : "test_case"
-            } ]
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "groupOP" : "OR",
-            "logicType" : "GROUP",
-            "name" : "OR",
-            "getPSDEUILogicLinkConds" : [ {
-              "condOP" : "EQ",
-              "dstFieldName" : "target_type",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[target_type] 等于(=) IDEA",
-              "paramValue" : "IDEA",
-              "value" : "IDEA"
-            }, {
-              "condOP" : "EQ",
-              "dstFieldName" : "principal_type",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "ctx"
-              },
-              "logicType" : "SINGLE",
-              "name" : "ctx[principal_type] 等于(=) idea",
-              "paramValue" : "idea",
-              "value" : "idea"
-            } ]
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 258
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "review_content_version_comparison@version"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "review_content"
-      },
-      "leftPos" : 940,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "测试用例",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "topPos" : 180
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 370,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "需求",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "idea",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "Default[target_id] ==> ctx[idea]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 326
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "ctx",
@@ -5064,15 +5060,15 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
+      "codeName" : "review_content",
+      "logicName" : "评审内容",
+      "name" : "评审内容",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "review_content",
-      "logicName" : "评审内容",
-      "name" : "评审内容",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -5377,6 +5373,9 @@
     "id" : "review__CREATE"
   }, {
     "logicName" : "删除",
+    "name" : "DELETE"
+  }, {
+    "logicName" : "删除",
     "mapPSDEName" : "REVIEW",
     "mapPSDEOPPrivName" : "DELETE",
     "getMapPSDER" : {
@@ -5389,9 +5388,6 @@
     },
     "name" : "DELETE",
     "id" : "review__DELETE"
-  }, {
-    "logicName" : "删除",
-    "name" : "DELETE"
   }, {
     "logicName" : "读取",
     "name" : "READ"
@@ -5559,7 +5555,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u4fb0bbd",
+      "name" : "u11aba99",
       "getPSSysImage" : {
         "glyph" : "xf112@FontAwesome",
         "cssClass" : "fa fa-mail-reply"
@@ -5579,7 +5575,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u1a93324",
+      "name" : "u2f0c566",
       "getPSSysImage" : {
         "glyph" : "xf0ec@FontAwesome",
         "cssClass" : "fa fa-exchange"
@@ -5608,7 +5604,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "ucb9925e",
+      "name" : "u873b2b6",
       "getPSSysImage" : {
         "glyph" : "xf112@FontAwesome",
         "cssClass" : "fa fa-mail-reply"
@@ -5628,7 +5624,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u2d8231b",
+      "name" : "ufd8545c",
       "getPSSysImage" : {
         "glyph" : "xf0ec@FontAwesome",
         "cssClass" : "fa fa-exchange"

@@ -11,6 +11,7 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|是否删除|IS_DELETED|是否逻辑||否||
 |是否叶子节点|IS_LEAF|是否逻辑||是||
 |是否叶子节点2|IS_LEAF2|是否逻辑||是||
 |是否叶子节点3|IS_LEAF3|是否逻辑||是||
@@ -27,7 +28,26 @@
 |更新时间|UPDATE_TIME|日期时间型||否||
 |用户标记|USER_TAG|文本，可指定长度|200|是||
 |用户标记2|USER_TAG2|文本，可指定长度|200|是||
+|工作流版本|WF_VERSION_ID|文本，可指定长度|100|是||
 
+
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="OWNER" name="index_I3D13482D7243AEC4F">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属数据标识|OWNER_ID|false|升序|-1||
+|所属对象子类型|OWNER_SUBTYPE|false|升序|-1||
+|所属数据对象|OWNER_TYPE|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
 
 ## 关系
 
@@ -93,6 +113,7 @@
 |[排期计划类别(product_plan)](module/Base/category/query/product_plan)|product_plan|否|否 |否 ||
 |[空间目录(space_category)](module/Base/category/query/space_category)|space_category|否|否 |否 ||
 |[空间目录（顶级）(space_category_top)](module/Base/category/query/space_category_top)|space_category_top|否|否 |否 ||
+|[工作流类别(wf_category)](module/Base/category/query/wf_category)|wf_category|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -109,6 +130,7 @@
 |[排期计划类别(product_plan)](module/Base/category/dataset/product_plan)|product_plan|数据查询|否|||
 |[空间目录(space_category)](module/Base/category/dataset/space_category)|space_category|数据查询|否|||
 |[空间目录（顶级）(space_category_top)](module/Base/category/dataset/space_category_top)|space_category_top|数据查询|否|||
+|[工作流类别(wf_category)](module/Base/category/dataset/wf_category)|wf_category|数据查询|否|||
 
 ## 数据权限
 
@@ -175,9 +197,13 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 流程_设计 | workflow_design | 流程设计 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作流版本设计](app/view/pswfversiondesign)</details>||
 | 编辑 | toolbar_tree_exp_view_node_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_category_tree_exp_view_node_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
+| 流程_查看审批单 | workflow_approve | 查看审批单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[类别](app/view/category_redirect_view)</details>||
+| 编辑 | edit_design | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作流表](app/view/category_workflow_edit_view)</details>||
 | 删除 | toolbar_category_tree_exp_view_node1_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
+| 删除 | remove | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除 | toolbar_tree_exp_view_node_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑
@@ -230,7 +256,7 @@
       return {
 show_der:'major',
 
-
+show_index:'index_I3D13482D7243AEC4F',
       }
     },
     methods: {

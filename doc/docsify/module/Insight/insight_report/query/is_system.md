@@ -46,6 +46,7 @@
 
 ```sql
 SELECT
+t1.`APP_TAG`,
 t1.`CATEGORIES`,
 t1.`CHART_TYPE`,
 t1.`CREATE_MAN`,

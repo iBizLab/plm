@@ -8,7 +8,7 @@
 #### 分页导航面板(tabexppanel)
 
 ## 视图界面逻辑
-* `onViewMounted`
+* `onMounted`
 ```javascript
 const searchBar = view.getController('searchbar');
 if (searchBar) {

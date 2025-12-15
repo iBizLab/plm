@@ -402,6 +402,9 @@
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRGROUPS/DRGroup.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRGROUPS/UsrDRGroup1205428411.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRGROUPS/UsrDRGroup0407176246.json"
   }, {
     "modelref" : true,
@@ -434,6 +437,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem1022394038.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem1205920270.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem1210366303.json"
@@ -1335,6 +1341,12 @@
     "stringLength" : 100,
     "valueFormat" : "%1$s"
   }, {
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REPORT_FLAG_EQ",
+      "name" : "N_REPORT_FLAG_EQ",
+      "stdDataType" : 9,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[REPORT_FLAG][统计状态]移动端默认",
@@ -1556,17 +1568,6 @@
       "standardColumnName" : "`OPEN_USER_TAG`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[OPEN_USER_TAG][第三方用户标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[OPEN_USER_TAG][第三方用户标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[OPEN_USER_TAG][第三方用户标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1579,6 +1580,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[OPEN_USER_TAG][第三方用户标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[OPEN_USER_TAG][第三方用户标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -4059,34 +4071,34 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "name" : "PSDEMAPDQ",
-      "getSrcPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "user"
-      },
-      "enableDQCond" : true
-    }, {
-      "getDstPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "mapMode" : "INNER",
-      "name" : "PSDEMAPDQ",
-      "getSrcPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "enableDQCond" : true
-    }, {
-      "getDstPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
       "mapMode" : "INNER",
       "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
         "id" : "unassigned_dept"
+      },
+      "enableDQCond" : true
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "mapMode" : "INNER",
+      "name" : "PSDEMAPDQ",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "enableDQCond" : true
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "PSDEMAPDQ",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "user"
       },
       "enableDQCond" : true
     } ],
@@ -4107,10 +4119,11 @@
         "modelref" : true,
         "id" : "Default"
       },
+      "mapMode" : "INNER",
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "user"
+        "id" : "Default"
       },
       "enableDQCond" : true
     }, {
@@ -4118,11 +4131,10 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "mapMode" : "INNER",
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "user"
       },
       "enableDQCond" : true
     }, {
@@ -4137,30 +4149,6 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "PHONE",
-      "getDstPSDEField" : {
-        "name" : "PHONE",
-        "codeName" : "Phone"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "MOBILE",
-      "getSrcPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
-      }
-    }, {
-      "dstFieldName" : "MDEPTNAME",
-      "getDstPSDEField" : {
-        "name" : "MDEPTNAME",
-        "codeName" : "MDeptName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_NAME",
-      "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_NAME",
-        "codeName" : "department_name"
-      }
-    }, {
       "dstFieldName" : "ORGNAME",
       "getDstPSDEField" : {
         "name" : "ORGNAME",
@@ -4171,30 +4159,6 @@
       "getSrcPSDEField" : {
         "name" : "ORGANIZATION_NAME",
         "codeName" : "organization_name"
-      }
-    }, {
-      "dstFieldName" : "USERCODE",
-      "getDstPSDEField" : {
-        "name" : "USERCODE",
-        "codeName" : "UserCode"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "EMPLOYEE_NUMBER",
-      "getSrcPSDEField" : {
-        "name" : "EMPLOYEE_NUMBER",
-        "codeName" : "employee_number"
-      }
-    }, {
-      "dstFieldName" : "POSTID",
-      "getDstPSDEField" : {
-        "name" : "POSTID",
-        "codeName" : "PostId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "JOB_ID",
-      "getSrcPSDEField" : {
-        "name" : "JOB_ID",
-        "codeName" : "Job_id"
       }
     }, {
       "dstFieldName" : "ORGID",
@@ -4209,40 +4173,28 @@
         "codeName" : "organization_id"
       }
     }, {
-      "dstFieldName" : "POSTNAME",
+      "dstFieldName" : "PERSONNAME",
       "getDstPSDEField" : {
-        "name" : "POSTNAME",
-        "codeName" : "PostName"
+        "name" : "PERSONNAME",
+        "codeName" : "PersonName"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "JOB_NAME",
+      "srcFieldName" : "DISPLAY_NAME",
       "getSrcPSDEField" : {
-        "name" : "JOB_NAME",
-        "codeName" : "job_name"
+        "name" : "DISPLAY_NAME",
+        "codeName" : "display_name"
       }
     }, {
-      "dstFieldName" : "USERID",
+      "dstFieldName" : "MDEPTNAME",
       "getDstPSDEField" : {
-        "name" : "USERID",
-        "codeName" : "UserId"
+        "name" : "MDEPTNAME",
+        "codeName" : "MDeptName"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "ID",
+      "srcFieldName" : "DEPARTMENT_NAME",
       "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dstFieldName" : "USERICON",
-      "getDstPSDEField" : {
-        "name" : "USERICON",
-        "codeName" : "UserIcon"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AVATAR",
-      "getSrcPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
+        "name" : "DEPARTMENT_NAME",
+        "codeName" : "department_name"
       }
     }, {
       "dstFieldName" : "POSTNAME",
@@ -4257,18 +4209,6 @@
         "codeName" : "title"
       }
     }, {
-      "dstFieldName" : "PERSONNAME",
-      "getDstPSDEField" : {
-        "name" : "PERSONNAME",
-        "codeName" : "PersonName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DISPLAY_NAME",
-      "getSrcPSDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
-      }
-    }, {
       "dstFieldName" : "MDEPTID",
       "getDstPSDEField" : {
         "name" : "MDEPTID",
@@ -4279,6 +4219,18 @@
       "getSrcPSDEField" : {
         "name" : "DEPARTMENT_ID",
         "codeName" : "Department_id"
+      }
+    }, {
+      "dstFieldName" : "USERCODE",
+      "getDstPSDEField" : {
+        "name" : "USERCODE",
+        "codeName" : "UserCode"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "EMPLOYEE_NUMBER",
+      "getSrcPSDEField" : {
+        "name" : "EMPLOYEE_NUMBER",
+        "codeName" : "employee_number"
       }
     }, {
       "dstFieldName" : "LOGINNAME",
@@ -4293,6 +4245,18 @@
         "codeName" : "name"
       }
     }, {
+      "dstFieldName" : "POSTID",
+      "getDstPSDEField" : {
+        "name" : "POSTID",
+        "codeName" : "PostId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "JOB_ID",
+      "getSrcPSDEField" : {
+        "name" : "JOB_ID",
+        "codeName" : "Job_id"
+      }
+    }, {
       "dstFieldName" : "STATE",
       "getDstPSDEField" : {
         "name" : "STATE",
@@ -4303,6 +4267,54 @@
       "getSrcPSDEField" : {
         "name" : "STATUS",
         "codeName" : "status"
+      }
+    }, {
+      "dstFieldName" : "PHONE",
+      "getDstPSDEField" : {
+        "name" : "PHONE",
+        "codeName" : "Phone"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MOBILE",
+      "getSrcPSDEField" : {
+        "name" : "MOBILE",
+        "codeName" : "mobile"
+      }
+    }, {
+      "dstFieldName" : "POSTNAME",
+      "getDstPSDEField" : {
+        "name" : "POSTNAME",
+        "codeName" : "PostName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "JOB_NAME",
+      "getSrcPSDEField" : {
+        "name" : "JOB_NAME",
+        "codeName" : "job_name"
+      }
+    }, {
+      "dstFieldName" : "USERICON",
+      "getDstPSDEField" : {
+        "name" : "USERICON",
+        "codeName" : "UserIcon"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AVATAR",
+      "getSrcPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      }
+    }, {
+      "dstFieldName" : "USERID",
+      "getDstPSDEField" : {
+        "name" : "USERID",
+        "codeName" : "UserId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
       }
     }, {
       "dstFieldName" : "PASSWORD",
@@ -4356,6 +4368,16 @@
     "getPSDEMapActions" : [ {
       "getDstPSDEAction" : {
         "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/Save.json"
+      },
+      "name" : "PSDEMapAction",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/Save.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
         "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/GetSimple.json"
       },
       "name" : "PSDEMapAction",
@@ -4366,22 +4388,12 @@
     }, {
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/Update.json"
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/CheckKey.json"
       },
       "name" : "PSDEMapAction",
       "getSrcPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/Update.json"
-      }
-    }, {
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/GetDraft.json"
-      },
-      "name" : "PSDEMapAction",
-      "getSrcPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/GetDraft.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/CheckKey.json"
       }
     }, {
       "getDstPSDEAction" : {
@@ -4396,12 +4408,22 @@
     }, {
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/Save.json"
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/ResetPassword.json"
       },
       "name" : "PSDEMapAction",
       "getSrcPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/Save.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/ResetPassword.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/Update.json"
+      },
+      "name" : "PSDEMapAction",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/Update.json"
       }
     }, {
       "getDstPSDEAction" : {
@@ -4416,32 +4438,22 @@
     }, {
       "getDstPSDEAction" : {
         "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/GetDraft.json"
+      },
+      "name" : "PSDEMapAction",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/GetDraft.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
         "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/Create.json"
       },
       "name" : "PSDEMapAction",
       "getSrcPSDEAction" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/Create.json"
-      }
-    }, {
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/ResetPassword.json"
-      },
-      "name" : "PSDEMapAction",
-      "getSrcPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/ResetPassword.json"
-      }
-    }, {
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/CheckKey.json"
-      },
-      "name" : "PSDEMapAction",
-      "getSrcPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/CheckKey.json"
       }
     } ],
     "getPSDEMapDataQueries" : [ {
@@ -4505,136 +4517,16 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "ID",
+      "dstFieldName" : "IDENTIFICATION_NUMBER",
       "getDstPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "IDENTIFICATION_NUMBER",
+        "codeName" : "identification_number"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "USER_ID",
+      "srcFieldName" : "OPEN_USER_TAG",
       "getSrcPSDEField" : {
-        "name" : "USER_ID",
-        "codeName" : "user_id"
-      }
-    }, {
-      "dstFieldName" : "TITLE",
-      "getDstPSDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "TITLE",
-      "getSrcPSDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      }
-    }, {
-      "dstFieldName" : "STATUS",
-      "getDstPSDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "STATUS",
-      "getSrcPSDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
-      }
-    }, {
-      "dstFieldName" : "MDEPARTMENT_ID",
-      "getDstPSDEField" : {
-        "name" : "MDEPARTMENT_ID",
-        "codeName" : "Mdepartment_id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_ID",
-      "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_ID",
-        "codeName" : "Department_id"
-      }
-    }, {
-      "dstFieldName" : "ORGANIZATION_ID",
-      "getDstPSDEField" : {
-        "name" : "ORGANIZATION_ID",
-        "codeName" : "organization_id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ORGANIZATION_ID",
-      "getSrcPSDEField" : {
-        "name" : "ORGANIZATION_ID",
-        "codeName" : "organization_id"
-      }
-    }, {
-      "dstFieldName" : "MDEPARTMENT_NAME",
-      "getDstPSDEField" : {
-        "name" : "MDEPARTMENT_NAME",
-        "codeName" : "mdepartment_name"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_NAME",
-      "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_NAME",
-        "codeName" : "department_name"
-      }
-    }, {
-      "dstFieldName" : "UID",
-      "getDstPSDEField" : {
-        "name" : "UID",
-        "codeName" : "uid"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "NAME",
-      "getSrcPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    }, {
-      "dstFieldName" : "MOBILE",
-      "getDstPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "MOBILE",
-      "getSrcPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
-      }
-    }, {
-      "dstFieldName" : "ORGANIZATION_NAME",
-      "getDstPSDEField" : {
-        "name" : "ORGANIZATION_NAME",
-        "codeName" : "organization_name"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ORGANIZATION_NAME",
-      "getSrcPSDEField" : {
-        "name" : "ORGANIZATION_NAME",
-        "codeName" : "organization_name"
-      }
-    }, {
-      "dstFieldName" : "AVATAR",
-      "getDstPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AVATAR",
-      "getSrcPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
-      }
-    }, {
-      "dstFieldName" : "DISPLAY_NAME",
-      "getDstPSDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DISPLAY_NAME",
-      "getSrcPSDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
+        "name" : "OPEN_USER_TAG",
+        "codeName" : "open_user_tag"
       }
     }, {
       "dstFieldName" : "ID",
@@ -4649,16 +4541,124 @@
         "codeName" : "id"
       }
     }, {
-      "dstFieldName" : "IDENTIFICATION_NUMBER",
+      "dstFieldName" : "ORGANIZATION_ID",
       "getDstPSDEField" : {
-        "name" : "IDENTIFICATION_NUMBER",
-        "codeName" : "identification_number"
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "OPEN_USER_TAG",
+      "srcFieldName" : "ORGANIZATION_ID",
       "getSrcPSDEField" : {
-        "name" : "OPEN_USER_TAG",
-        "codeName" : "open_user_tag"
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      }
+    }, {
+      "dstFieldName" : "EMPLOYEE_NUMBER",
+      "getDstPSDEField" : {
+        "name" : "EMPLOYEE_NUMBER",
+        "codeName" : "employee_number"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "EMPLOYEE_NUMBER",
+      "getSrcPSDEField" : {
+        "name" : "EMPLOYEE_NUMBER",
+        "codeName" : "employee_number"
+      }
+    }, {
+      "dstFieldName" : "AVATAR",
+      "getDstPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AVATAR",
+      "getSrcPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      }
+    }, {
+      "dstFieldName" : "ORGANIZATION_NAME",
+      "getDstPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ORGANIZATION_NAME",
+      "getSrcPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      }
+    }, {
+      "dstFieldName" : "UID",
+      "getDstPSDEField" : {
+        "name" : "UID",
+        "codeName" : "uid"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "NAME",
+      "getSrcPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      }
+    }, {
+      "dstFieldName" : "MOBILE",
+      "getDstPSDEField" : {
+        "name" : "MOBILE",
+        "codeName" : "mobile"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MOBILE",
+      "getSrcPSDEField" : {
+        "name" : "MOBILE",
+        "codeName" : "mobile"
+      }
+    }, {
+      "dstFieldName" : "TITLE",
+      "getDstPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "dstFieldName" : "DISPLAY_NAME",
+      "getDstPSDEField" : {
+        "name" : "DISPLAY_NAME",
+        "codeName" : "display_name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DISPLAY_NAME",
+      "getSrcPSDEField" : {
+        "name" : "DISPLAY_NAME",
+        "codeName" : "display_name"
+      }
+    }, {
+      "dstFieldName" : "STATUS",
+      "getDstPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "STATUS",
+      "getSrcPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
       }
     }, {
       "dstFieldName" : "MAIL",
@@ -4673,16 +4673,28 @@
         "codeName" : "email"
       }
     }, {
-      "dstFieldName" : "EMPLOYEE_NUMBER",
+      "dstFieldName" : "MDEPARTMENT_ID",
       "getDstPSDEField" : {
-        "name" : "EMPLOYEE_NUMBER",
-        "codeName" : "employee_number"
+        "name" : "MDEPARTMENT_ID",
+        "codeName" : "Mdepartment_id"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "EMPLOYEE_NUMBER",
+      "srcFieldName" : "DEPARTMENT_ID",
       "getSrcPSDEField" : {
-        "name" : "EMPLOYEE_NUMBER",
-        "codeName" : "employee_number"
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
+      }
+    }, {
+      "dstFieldName" : "MDEPARTMENT_NAME",
+      "getDstPSDEField" : {
+        "name" : "MDEPARTMENT_NAME",
+        "codeName" : "mdepartment_name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DEPARTMENT_NAME",
+      "getSrcPSDEField" : {
+        "name" : "DEPARTMENT_NAME",
+        "codeName" : "department_name"
       }
     }, {
       "dstFieldName" : "REPORT_FLAG",
@@ -5009,6 +5021,7 @@
         "name" : "DEPARTMENT_ID",
         "codeName" : "Department_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5023,6 +5036,7 @@
         "name" : "DEPARTMENT_ID",
         "codeName" : "Department_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5037,6 +5051,7 @@
         "name" : "DEPARTMENT_NAME",
         "codeName" : "department_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5051,6 +5066,7 @@
         "name" : "DEPARTMENT_NAME",
         "codeName" : "department_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5065,6 +5081,7 @@
         "name" : "DISPLAY_NAME",
         "codeName" : "display_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5079,6 +5096,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5093,6 +5111,7 @@
         "name" : "ID",
         "codeName" : "id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
@@ -5107,6 +5126,7 @@
         "name" : "JOB_ID",
         "codeName" : "Job_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5121,6 +5141,7 @@
         "name" : "JOB_NAME",
         "codeName" : "job_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5135,6 +5156,7 @@
         "name" : "JOB_NAME",
         "codeName" : "job_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5149,6 +5171,7 @@
         "name" : "NAME",
         "codeName" : "name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5163,6 +5186,7 @@
         "name" : "ORGANIZATION_ID",
         "codeName" : "organization_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5177,6 +5201,7 @@
         "name" : "ORGANIZATION_NAME",
         "codeName" : "organization_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5191,8 +5216,24 @@
         "name" : "ORGANIZATION_NAME",
         "codeName" : "organization_name"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "统计",
+      "name" : "n_report_flag_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REPORT_FLAG_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "logicName" : "状态",
@@ -5205,6 +5246,7 @@
         "name" : "STATUS",
         "codeName" : "status"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5219,6 +5261,7 @@
         "name" : "TITLE",
         "codeName" : "title"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5233,6 +5276,7 @@
         "name" : "USER_ID",
         "codeName" : "user_id"
       },
+      "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -5274,20 +5318,6 @@
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_RW.json",
     "name" : "全部数据（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    }, {
       "dataAccessAction" : "UPDATE",
       "name" : "UPDATE",
       "getPSDEOPPriv" : {
@@ -5295,11 +5325,25 @@
         "id" : "UPDATE"
       }
     }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
       "dataAccessAction" : "CREATE",
       "name" : "CREATE",
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
       }
     } ],
     "roleTag" : "ALL_RW",
@@ -5341,10 +5385,22 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "main_view",
+    "logicName" : "用户主视图",
+    "name" : "用户主视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "account_view",
     "logicName" : "帐号详情",
     "name" : "帐号详情",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "quick_create_view",
+    "logicName" : "用户快速新建视图",
+    "name" : "用户快速新建视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "unassigned_dept_grid_view",
@@ -5357,12 +5413,6 @@
     "logicName" : "管理后台_成员",
     "name" : "管理后台_成员",
     "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "main_view",
-    "logicName" : "用户主视图",
-    "name" : "用户主视图",
-    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "grid_view",
@@ -5470,12 +5520,6 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_create_view",
-    "logicName" : "用户快速新建视图",
-    "name" : "用户快速新建视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "mpick_up_view",
     "logicName" : "企业用户实体数据多项选择视图",
     "name" : "企业用户实体数据多项选择视图",
@@ -5488,6 +5532,13 @@
     "name" : "用户多项数据选择",
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "main_view",
+    "logicName" : "用户主视图_表单",
+    "modelTag2" : "0",
+    "name" : "用户主视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "mob_user_info_view_Form",
     "logicName" : "用户基本信息页（移动端）_表单",
@@ -5510,13 +5561,6 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "main_view",
-    "logicName" : "用户主视图_表单",
-    "modelTag2" : "0",
-    "name" : "用户主视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "dept_option_view_Form",
     "logicName" : "部门选项操作视图_表单",
     "modelTag2" : "0",
@@ -5524,17 +5568,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "account",
-    "logicName" : "帐号详情",
-    "modelTag2" : "0",
-    "name" : "帐号详情",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "quick_create",
     "logicName" : "用户快速新建表单",
     "modelTag2" : "0",
     "name" : "用户快速新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "account",
+    "logicName" : "帐号详情",
+    "modelTag2" : "0",
+    "name" : "帐号详情",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

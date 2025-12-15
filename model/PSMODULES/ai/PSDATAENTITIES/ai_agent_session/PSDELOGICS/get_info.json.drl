@@ -1,0 +1,37 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_sessionlogic.get_info;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_session ai_agent_sessionget_infodefault;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_sessionService iBzSysAi_agent_sessionDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_sessionget_infobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_agent_sessionget_infoprepareparam_01"
+            when
+            then
+                            ai_agent_sessionget_infodefault.set("name","调试数据");
+                        update(ai_agent_sessionget_infodefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_agent_sessionget_infoend_01"
+            when
+            then
+                        update(ai_agent_sessionget_infodefault);//更新fact中变量值
+            end

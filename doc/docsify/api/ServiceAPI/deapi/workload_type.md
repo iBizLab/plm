@@ -17,6 +17,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -26,6 +27,7 @@
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -41,6 +43,7 @@
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -76,6 +79,7 @@
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -130,6 +134,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -139,6 +144,7 @@
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -154,6 +160,7 @@
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -182,6 +189,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -191,6 +199,7 @@
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -224,6 +233,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -233,6 +243,7 @@ Integer
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -248,6 +259,7 @@ Integer
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -281,6 +293,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -290,6 +303,7 @@ Integer
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -305,6 +319,7 @@ Integer
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -333,6 +348,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">is_system</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否系统默认|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -342,6 +358,7 @@ Integer
 ```json
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -357,6 +374,7 @@ Integer
 
 {
   "sequence" : null,
+  "is_system" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -406,6 +424,7 @@ Integer
 [
   {
     "sequence" : null,
+    "is_system" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

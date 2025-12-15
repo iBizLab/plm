@@ -449,6 +449,32 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "is_system",
+    "logicName" : "是否系统默认",
+    "name" : "IS_SYSTEM",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -754,6 +780,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "is_system",
+      "logicName" : "是否系统默认",
+      "name" : "is_system",
+      "getPSAppDEField" : {
+        "name" : "IS_SYSTEM",
+        "codeName" : "is_system"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "codeName" : "create_man",
@@ -1444,7 +1481,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "新建类别",
       "detailType" : "DEUIACTION",
-      "name" : "u650e3e6",
+      "name" : "u08b192f",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
@@ -1471,7 +1508,7 @@
     "uniqueTag" : "workload_type__Usr0419388814",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u8ddb81b",
+      "name" : "u33f8a30",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -1480,6 +1517,7 @@
       "getTooltipPSLanguageRes" : {
         "lanResTag" : "TBB.TOOLTIP.*.EDIT"
       },
+      "visibleScriptCode" : "data.is_system !== 1",
       "addSeparator" : false,
       "showCaption" : false,
       "showIcon" : true,
@@ -1489,12 +1527,13 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u014f195",
+      "name" : "u89b3689",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
       },
       "tooltip" : "删除",
+      "visibleScriptCode" : "data.is_system !== 1",
       "addSeparator" : false,
       "showCaption" : false,
       "showIcon" : true,

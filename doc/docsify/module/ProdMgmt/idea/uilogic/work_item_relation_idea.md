@@ -1,4 +1,4 @@
-## 工作项关联需求 <!-- {docsify-ignore-all} -->
+## 工作项关联需求值变更 <!-- {docsify-ignore-all} -->
 
    值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./work_item_relation_idea#begin {开始}]]
-state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./work_item_relation_idea#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "刷新表格" as VIEWCTRLINVOKE1  [[$./work_item_relation_idea#viewctrlinvoke1 {刷新表格}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./work_item_relation_idea#preparejsparam1 {绑定表格部件}]]
 state "触发计数器刷新" as RAWJSCODE3  [[$./work_item_relation_idea#rawjscode3 {触发计数器刷新}]]
-state "获取选中列表" as RAWJSCODE2  [[$./work_item_relation_idea#rawjscode2 {获取选中列表}]]
 state "进行关联操作" as DEACTION1  [[$./work_item_relation_idea#deaction1 {进行关联操作}]]
-state "刷新表格" as VIEWCTRLINVOKE1  [[$./work_item_relation_idea#viewctrlinvoke1 {刷新表格}]]
+state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./work_item_relation_idea#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "获取选中列表" as RAWJSCODE2  [[$./work_item_relation_idea#rawjscode2 {获取选中列表}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -58,7 +58,15 @@ RAWJSCODE2 --> RAWJSCODE1 : [[$./work_item_relation_idea#rawjscode2-rawjscode1{�
 ```javascript
 let choose = uiLogic.default.choose_data;
 if(choose != null && choose != ''){
-    uiLogic.dto.srfactionparam = JSON.parse(choose);
+    const srfactionparam = JSON.parse(choose);
+    // 将 owner_id 替换为 target_id
+    if (srfactionparam && Array.isArray(srfactionparam)) {
+        srfactionparam.forEach(item => {
+            item.target_id = item.owner_id
+            delete item.owner_id
+        })
+    }
+    uiLogic.dto.srfactionparam = srfactionparam;
     uiLogic.dto.principal_id = view.context.principal_id;
     uiLogic.dto.principal_type = view.context.principal_type;
     uiLogic.dto.target_type = view.context.target_type;
@@ -113,8 +121,8 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格对象|grid|部件对象||
+|传入后台对象|dto|数据对象||
 |viewctx|viewctx|导航视图参数绑定参数||
 |视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|传入后台对象|dto|数据对象||
+|表格对象|grid|部件对象||

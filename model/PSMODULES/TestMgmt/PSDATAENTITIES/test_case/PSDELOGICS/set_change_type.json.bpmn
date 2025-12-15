@@ -26,15 +26,15 @@
                             <tns:global identifier="test_caseset_change_typeversion_pages_results" type="cn.ibizlab.plm.core.base.domain.version" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备计划参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取计划用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typedebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备基线参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备计划参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取计划用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset5" id="dedataset5" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询用例分页数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置版本过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取评审测试用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typedebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询符合条件的版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取基线用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
@@ -46,10 +46,6 @@
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam3" sourceRef="begin" targetRef="debugparam3">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam5_dedataset4" sourceRef="prepareparam5" targetRef="dedataset4">
-                    </sequenceFlow>
-                    <sequenceFlow id="dedataset4_loopsubcall1" sourceRef="dedataset4" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam3_dedataset1" sourceRef="gateway-debugparam3" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -63,7 +59,7 @@
                                             $test_caseset_change_typeversion_filter:version();
                                             $test_caseset_change_typeversion_pages_results:version();
                                     eval($test_caseset_change_typedefault==test_caseset_change_typedefault && $test_caseset_change_typefor_obj==test_caseset_change_typefor_obj && $test_caseset_change_typepage_results==test_caseset_change_typepage_results && $test_caseset_change_typereview_detail==test_caseset_change_typereview_detail && $test_caseset_change_typeversion_filter==test_caseset_change_typeversion_filter && $test_caseset_change_typeversion_pages_results==test_caseset_change_typeversion_pages_results);
-                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("tag"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("test_plan"),"ISNULL","")))
+                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("tag"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("test_plan"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("add_tag"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("add_review"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -115,7 +111,29 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam3_dedataset5" sourceRef="gateway-debugparam3" targetRef="dedataset5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
+                                            $test_caseset_change_typechange_version:Map();
+                                            $test_caseset_change_typefor_obj:test_case();
+                                            $test_caseset_change_typepage_results:test_case();
+                                            $test_caseset_change_typeplan_filter:Map();
+                                            $test_caseset_change_typereview_detail:review();
+                                            $test_caseset_change_typeversion_filter:version();
+                                            $test_caseset_change_typeversion_pages_results:version();
+                                    eval($test_caseset_change_typedefault==test_caseset_change_typedefault && $test_caseset_change_typefor_obj==test_caseset_change_typefor_obj && $test_caseset_change_typepage_results==test_caseset_change_typepage_results && $test_caseset_change_typereview_detail==test_caseset_change_typereview_detail && $test_caseset_change_typeversion_filter==test_caseset_change_typeversion_filter && $test_caseset_change_typeversion_pages_results==test_caseset_change_typeversion_pages_results);
+                                eval((RuleUtils.test($test_caseset_change_typedefault.get("add_tag"),"ISNOTNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("add_review"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam4_dedataset3" sourceRef="prepareparam4" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset4" sourceRef="prepareparam5" targetRef="dedataset4">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_loopsubcall1" sourceRef="dedataset4" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset5_loopsubcall1" sourceRef="dedataset5" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
                     </sequenceFlow>
@@ -123,9 +141,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_debugparam4" sourceRef="rawsqlcall1" targetRef="debugparam4">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam4_loopsubcall1" sourceRef="debugparam4" targetRef="loopsubcall1">
+                    <sequenceFlow id="rawsqlcall1_loopsubcall1" sourceRef="rawsqlcall1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset2_debugparam2" sourceRef="dedataset2" targetRef="debugparam2">
                     </sequenceFlow>

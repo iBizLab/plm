@@ -18,8 +18,8 @@ state "开始" as Begin <<start>> [[$./get_tabsearchbar_param#begin {开始}]]
 state "设置选中搜索栏参数" as RAWJSCODE1  [[$./get_tabsearchbar_param#rawjscode1 {设置选中搜索栏参数}]]
 state "工作项字典新建（行为）" as DEUIACTION3  [[$./get_tabsearchbar_param#deuiaction3 {工作项字典新建（行为）}]]
 state "测试用例字典新建（行为）" as DEUIACTION4  [[$./get_tabsearchbar_param#deuiaction4 {测试用例字典新建（行为）}]]
-state "需求字典新建（行为）" as DEUIACTION1  [[$./get_tabsearchbar_param#deuiaction1 {需求字典新建（行为）}]]
 state "工单字典新建（行为）" as DEUIACTION2  [[$./get_tabsearchbar_param#deuiaction2 {工单字典新建（行为）}]]
+state "需求字典新建（行为）" as DEUIACTION1  [[$./get_tabsearchbar_param#deuiaction1 {需求字典新建（行为）}]]
 
 
 Begin --> RAWJSCODE1
@@ -112,5 +112,5 @@ uiLogic.default.type = type;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|tabsearchbar|tabsearchbar|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|tabsearchbar|tabsearchbar|部件对象||

@@ -828,25 +828,6 @@
     "stringLength" : 200
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[TOPIC_ID][话题标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[TOPIC_ID][话题标识]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[TOPIC_ID][话题标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -867,6 +848,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TOPIC_ID][话题标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[TOPIC_ID][话题标识]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "topic_id",
     "logicName" : "话题标识",
@@ -2320,6 +2320,40 @@
       "topPos" : 208,
       "parallelOutput" : true
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "comments_controller"
+      },
+      "invokeMethod" : "deleteItem",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "comment_key"
+      },
+      "leftPos" : 1120,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 216
+    }, {
+      "code" : "\r\nvar comments_count = uiLogic.ctrl.panelItems.comment_count;\r\nif (comments_count.value == 1) {\r\n    uiLogic.ctrl.panelItems.comments.state.visible = false;\r\n    comments_count.value = 0;\r\n    comments_count.state.visible = false;\r\n} else {\r\n    comments_count.value = comments_count.value - 1;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 850,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "回复数量-1",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 216
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 575,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2393,25 +2427,6 @@
       } ],
       "topPos" : 216
     }, {
-      "code" : "\r\nvar comments_count = uiLogic.ctrl.panelItems.comment_count;\r\nif (comments_count.value == 1) {\r\n    uiLogic.ctrl.panelItems.comments.state.visible = false;\r\n    comments_count.value = 0;\r\n    comments_count.state.visible = false;\r\n} else {\r\n    comments_count.value = comments_count.value - 1;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 850,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "回复数量-1",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 216
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -2429,27 +2444,11 @@
       "logicNodeType" : "DEACTION",
       "name" : "删除评论",
       "topPos" : 370
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "comments_controller"
-      },
-      "invokeMethod" : "deleteItem",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "comment_key"
-      },
-      "leftPos" : 1120,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 216
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "ctrl",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
+      "codeName" : "comments_controller",
+      "logicName" : "评论部件控制器",
+      "name" : "评论部件控制器",
       "ctrlParam" : true
     }, {
       "codeName" : "ctx",
@@ -2468,9 +2467,10 @@
       "stdDataType" : 25,
       "simpleParam" : true
     }, {
-      "codeName" : "comments_controller",
-      "logicName" : "评论部件控制器",
-      "name" : "评论部件控制器",
+      "codeName" : "ctrl",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
       "ctrlParam" : true
     }, {
       "codeName" : "Default",

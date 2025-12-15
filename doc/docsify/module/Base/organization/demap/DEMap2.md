@@ -16,17 +16,17 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`PID(父标识)` <i class="fa fa-angle-double-right"/></i> `PARENT_ID(父标识)`
+`ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
 * `属性等价`
 `NAME(名称)` <i class="fa fa-angle-double-right"/></i> `ORGANIZATION_NAME(名称)`
 * `属性等价`
 `DESCRIPTION(描述)` <i class="fa fa-angle-double-right"/></i> `DESCRIPTION(描述)`
 * `属性等价`
-`PNAME(名称)` <i class="fa fa-angle-double-right"/></i> `PARENT_NAME(上级名称)`
-* `属性等价`
-`ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
-* `属性等价`
 `ORGANIZATION_NUMBER(机构编号)` <i class="fa fa-angle-double-right"/></i> `ORGANIZATION_NUMBER(机构编号)`
+* `属性等价`
+`PID(父标识)` <i class="fa fa-angle-double-right"/></i> `PARENT_ID(父标识)`
+* `属性等价`
+`PNAME(名称)` <i class="fa fa-angle-double-right"/></i> `PARENT_NAME(上级名称)`
 * `属性等价`
 `CREATE_TIME(建立时间)` <i class="fa fa-angle-double-right"/></i> `CREATE_TIME(创建时间)`
 * `属性等价`
@@ -65,6 +65,6 @@
 <p class="panel-title"><b>集合映射</b></p>
 
 * `默认`
-`DEFAULT(数据集)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 并且 `启用查询条件`
-* `默认`
 `root(根节点)` <i class="fa fa-angle-double-right"/></i> `Nav(Nav)` 并且 `启用查询条件`
+* `默认`
+`DEFAULT(数据集)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 并且 `启用查询条件`

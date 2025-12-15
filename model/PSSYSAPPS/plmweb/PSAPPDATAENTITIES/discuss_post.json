@@ -4008,46 +4008,10 @@
       } ],
       "topPos" : 120
     }, {
-      "codeName" : "DEACTION4",
+      "codeName" : "DEACTION2",
       "getDstPSAppDEAction" : {
         "modelref" : true,
-        "id" : "send_comment"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "comment"
-      },
-      "leftPos" : 270,
-      "logicNodeType" : "DEACTION",
-      "name" : "添加讨论下评论",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION4"
-        }
-      } ],
-      "topPos" : 910
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 460,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 1470
-    }, {
-      "codeName" : "DEACTION6",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "send_comment"
+        "id" : "add_reply"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
@@ -4055,11 +4019,11 @@
       },
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "comment"
+        "id" : "discuss_reply"
       },
-      "leftPos" : 779,
+      "leftPos" : -240,
       "logicNodeType" : "DEACTION",
-      "name" : "添加回复下评论",
+      "name" : "添加回复",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -4069,10 +4033,42 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION6"
+          "id" : "DEACTION2"
         }
       } ],
       "topPos" : 910
+    }, {
+      "code" : "debugger;\r\nvar comments_control = uiLogic.view.layoutPanel.panelItems.form.control.formItems.find(item => item.name == \"comments\").editor;\r\nvar comment = uiLogic.comment;\r\nif (view.operation_type == \"send_post_comment\") {\r\n    comments_control.addItem(comment);\r\n} else if (view.operation_type == \"edit_post_comment\") {\r\n    comments_control.deleteItem(comment.comment_id);\r\n    comments_control.addItem(comment);\r\n}",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 406,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "修改讨论下的comments",
+      "topPos" : 1030
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 460,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 1470
+    }, {
+      "code" : "uiLogic.view.layoutPanel.panelItems.field_textbox.value = '';\r\nuiLogic.view.layoutPanel.panelItems.field_textbox.data.field_textbox = '';\r\nuiLogic.view.operation_type = null;\r\nuiLogic.view.operation_id = null;\r\nuiLogic.view.reply_id = null;\r\nuiLogic.editor.reply.value = null;\r\nuiLogic.editor.toggleCollapse(false)\r\n",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 420,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "清空回复框与回复id",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 1340
     }, {
       "codeName" : "DEACTION5",
       "getDstPSAppDEAction" : {
@@ -4104,35 +4100,11 @@
       } ],
       "topPos" : 910
     }, {
-      "codeName" : "DEACTION7",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update_comment"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "comment"
-      },
-      "leftPos" : 1015,
-      "logicNodeType" : "DEACTION",
-      "name" : "编辑回复下评论",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION7"
-        }
-      } ],
-      "topPos" : 910
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 1000,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "修改回复下的comments",
+      "topPos" : 1040
     }, {
       "codeName" : "PREPAREJSPARAM4",
       "leftPos" : -240,
@@ -4167,20 +4139,20 @@
       } ],
       "topPos" : 720
     }, {
-      "codeName" : "PREPAREJSPARAM8",
-      "leftPos" : 1015,
+      "codeName" : "PREPAREJSPARAM6",
+      "leftPos" : 536,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "设置数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION7"
+          "id" : "DEACTION5"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM8"
+          "id" : "PREPAREJSPARAM6"
         }
       } ],
       "getPSDEUILogicNodeParams" : [ {
@@ -4195,88 +4167,6 @@
         "getSrcPSDEUILogicParam" : {
           "modelref" : true,
           "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "discuss_reply",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "view[reply_id] ==> ctx[discuss_reply]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "reply_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 720
-    }, {
-      "code" : "debugger;\r\nvar comments_control = uiLogic.view.layoutPanel.panelItems.form.control.formItems.find(item => item.name == \"comments\").editor;\r\nvar comment = uiLogic.comment;\r\nif (view.operation_type == \"send_post_comment\") {\r\n    comments_control.addItem(comment);\r\n} else if (view.operation_type == \"edit_post_comment\") {\r\n    comments_control.deleteItem(comment.comment_id);\r\n    comments_control.addItem(comment);\r\n}",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 406,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "修改讨论下的comments",
-      "topPos" : 1030
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 40,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "discuss_reply"
-        },
-        "name" : "view[operation_id] ==> discuss_reply[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "operation_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "discuss_reply",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "view[operation_id] ==> ctx[discuss_reply]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "operation_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "post_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "discuss_reply"
-        },
-        "name" : "ctx[discuss_post] ==> discuss_reply[post_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "discuss_post",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
@@ -4329,6 +4219,36 @@
       } ],
       "topPos" : 720
     }, {
+      "codeName" : "DEACTION7",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update_comment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "leftPos" : 1015,
+      "logicNodeType" : "DEACTION",
+      "name" : "编辑回复下评论",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        }
+      } ],
+      "topPos" : 910
+    }, {
       "codeName" : "PREPAREJSPARAM5",
       "leftPos" : 270,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -4362,35 +4282,38 @@
       } ],
       "topPos" : 720
     }, {
-      "codeName" : "DEACTION2",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "add_reply"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "discuss_reply"
-      },
-      "leftPos" : -240,
-      "logicNodeType" : "DEACTION",
-      "name" : "添加回复",
+      "code" : "uiLogic.discuss_reply.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;\r\nuiLogic.comment.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 420,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取回复框内容",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
-        "name" : "连接名称",
+        "name" : "回复内容不为空",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "content",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "discuss_reply"
+            },
+            "logicType" : "SINGLE",
+            "name" : "discuss_reply[content] 值不为空(NotNil)"
+          } ]
+        },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION2"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 910
+      "topPos" : 230
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 420,
@@ -4627,6 +4550,113 @@
       } ],
       "topPos" : 380
     }, {
+      "codeName" : "PREPAREJSPARAM8",
+      "leftPos" : 1015,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM8"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "comment_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "comment"
+        },
+        "name" : "view[operation_id] ==> comment[comment_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "operation_id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "discuss_reply",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "view[reply_id] ==> ctx[discuss_reply]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "reply_id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 720
+    }, {
+      "codeName" : "DEACTION6",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "send_comment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "leftPos" : 779,
+      "logicNodeType" : "DEACTION",
+      "name" : "添加回复下评论",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      } ],
+      "topPos" : 910
+    }, {
+      "codeName" : "DEACTION4",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "send_comment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "leftPos" : 270,
+      "logicNodeType" : "DEACTION",
+      "name" : "添加讨论下评论",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION4"
+        }
+      } ],
+      "topPos" : 910
+    }, {
       "codeName" : "DEACTION3",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -4657,62 +4687,29 @@
       } ],
       "topPos" : 910
     }, {
-      "code" : "uiLogic.discuss_reply.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;\r\nuiLogic.comment.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 420,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取回复框内容",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "回复内容不为空",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "content",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "discuss_reply"
-            },
-            "logicType" : "SINGLE",
-            "name" : "discuss_reply[content] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 230
-    }, {
-      "codeName" : "PREPAREJSPARAM6",
-      "leftPos" : 536,
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 40,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "设置数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION5"
+          "id" : "DEACTION3"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM6"
+          "id" : "PREPAREJSPARAM3"
         }
       } ],
       "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "comment_id",
+        "dstFieldName" : "id",
         "getDstPSDEUILogicParam" : {
           "modelref" : true,
-          "id" : "comment"
+          "id" : "discuss_reply"
         },
-        "name" : "view[operation_id] ==> comment[comment_id]",
+        "name" : "view[operation_id] ==> discuss_reply[id]",
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "operation_id",
         "getSrcPSDEUILogicParam" : {
@@ -4720,48 +4717,41 @@
           "id" : "view"
         },
         "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "discuss_reply",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "view[operation_id] ==> ctx[discuss_reply]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "operation_id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "post_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "discuss_reply"
+        },
+        "name" : "ctx[discuss_post] ==> discuss_reply[post_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "discuss_post",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 720
-    }, {
-      "code" : "uiLogic.view.layoutPanel.panelItems.field_textbox.value = '';\r\nuiLogic.view.layoutPanel.panelItems.field_textbox.data.field_textbox = '';\r\nuiLogic.view.operation_type = null;\r\nuiLogic.view.operation_id = null;\r\nuiLogic.view.reply_id = null;\r\nuiLogic.editor.reply.value = null;\r\nuiLogic.editor.toggleCollapse(false)\r\n",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 420,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "清空回复框与回复id",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 1340
-    }, {
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 1000,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "修改回复下的comments",
-      "topPos" : 1040
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "discuss_reply",
-      "logicName" : "讨论回复",
-      "name" : "讨论回复",
-      "entityParam" : true
-    }, {
-      "codeName" : "editor",
-      "logicName" : "编辑器",
-      "name" : "编辑器",
+      "codeName" : "comment",
+      "logicName" : "评论对象",
+      "name" : "评论对象",
       "entityParam" : true
     }, {
       "codeName" : "ctx",
@@ -4769,15 +4759,25 @@
       "name" : "应用上下文变量",
       "navContextParam" : true
     }, {
+      "codeName" : "editor",
+      "logicName" : "编辑器",
+      "name" : "编辑器",
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "comment",
-      "logicName" : "评论对象",
-      "name" : "评论对象",
+      "codeName" : "discuss_reply",
+      "logicName" : "讨论回复",
+      "name" : "讨论回复",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -4873,13 +4873,6 @@
       "name" : "视图部件调用",
       "topPos" : 464
     }, {
-      "code" : "\r\nvar comment_count = uiLogic.ctrl.formItems.comment_count;\r\nif (comment_count.value == 1) {\r\n    uiLogic.ctrl.formItems.comments.state.visible = false;\r\n    comment_count.value = 0;\r\n    comment_count.state.visible = false;\r\n} else {\r\n    comment_count.value = comment_count.value - 1;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 860,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "回复数量-1",
-      "topPos" : 320
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -4897,6 +4890,13 @@
       "logicNodeType" : "DEACTION",
       "name" : "删除评论",
       "topPos" : 310
+    }, {
+      "code" : "\r\nvar comment_count = uiLogic.ctrl.formItems.comment_count;\r\nif (comment_count.value == 1) {\r\n    uiLogic.ctrl.formItems.comments.state.visible = false;\r\n    comment_count.value = 0;\r\n    comment_count.state.visible = false;\r\n} else {\r\n    comment_count.value = comment_count.value - 1;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 860,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "回复数量-1",
+      "topPos" : 320
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 603,
@@ -4958,26 +4958,26 @@
       "topPos" : 186
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "comments_controller",
-      "logicName" : "评论组件控制器",
-      "name" : "评论组件控制器",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "comment",
-      "logicName" : "评论",
-      "name" : "评论",
-      "entityParam" : true
-    }, {
       "codeName" : "comment_key",
       "logicName" : "评论标识",
       "name" : "评论标识",
       "stdDataType" : 25,
       "simpleParam" : true
     }, {
+      "codeName" : "comments_controller",
+      "logicName" : "评论组件控制器",
+      "name" : "评论组件控制器",
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "comment",
+      "logicName" : "评论",
+      "name" : "评论",
       "entityParam" : true
     }, {
       "codeName" : "ctrl",
@@ -5066,26 +5066,10 @@
       "topPos" : 158
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "comments_controller",
-      "logicName" : "评论部件控制器",
-      "name" : "评论部件控制器",
-      "ctrlParam" : true
-    }, {
       "codeName" : "comment",
       "logicName" : "评论",
       "name" : "评论",
       "entityParam" : true
-    }, {
-      "codeName" : "ctrl",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -5097,6 +5081,22 @@
       "logicName" : "上下文变量",
       "name" : "上下文变量",
       "navContextParam" : true
+    }, {
+      "codeName" : "comments_controller",
+      "logicName" : "评论部件控制器",
+      "name" : "评论部件控制器",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "ctrl",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5140,13 +5140,6 @@
         }
       } ],
       "topPos" : 200
-    }, {
-      "code" : "\r\nuiLogic.editor.toggleCollapse(true);\r\nuiLogic.editor.setValue(uiLogic.default.content);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "展开评论输入框并设值",
-      "topPos" : 480
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -5216,12 +5209,24 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 340
+    }, {
+      "code" : "\r\nuiLogic.editor.toggleCollapse(true);\r\nuiLogic.editor.setValue(uiLogic.default.content);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "展开评论输入框并设值",
+      "topPos" : 480
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "editor",
       "logicName" : "回复对象",
       "name" : "回复对象",
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     }, {
       "codeName" : "parentView",
       "logicName" : "父视图对象",
@@ -5233,11 +5238,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5424,39 +5424,56 @@
       "topPos" : 22,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "send_comment"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "comment"
-      },
-      "leftPos" : 60,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存评论",
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 220,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "PREPAREJSPARAM2"
         }
       } ],
-      "getRetPSDEUILogicParam" : {
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "operation_type",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "直接值[send_post_comment] ==> view[operation_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "send_post_comment",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 157
+    }, {
+      "code" : "// 获取底部编辑器，设置打开状态并设置空值\r\n\r\nvar editor = uiLogic.view.layoutPanel.panelItems.field_textbox.editor;\r\neditor.toggleCollapse(true);\r\neditor.setValue(\" \");",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 280
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "comments_controller"
+      },
+      "invokeMethod" : "addItem",
+      "getInvokeParam" : {
         "modelref" : true,
         "id" : "comment"
       },
-      "topPos" : 420
+      "leftPos" : 60,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 560
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 60,
@@ -5518,72 +5535,44 @@
       } ],
       "topPos" : 280
     }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 220,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置数据",
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "send_comment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "leftPos" : 60,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存评论",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "VIEWCTRLINVOKE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "DEACTION1"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "operation_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "name" : "直接值[send_post_comment] ==> view[operation_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "send_post_comment",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 157
-    }, {
-      "code" : "// 获取底部编辑器，设置打开状态并设置空值\r\n\r\nvar editor = uiLogic.view.layoutPanel.panelItems.field_textbox.editor;\r\neditor.toggleCollapse(true);\r\neditor.setValue(\" \");",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 220,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "topPos" : 280
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "comments_controller"
-      },
-      "invokeMethod" : "addItem",
-      "getInvokeParam" : {
+      "getRetPSDEUILogicParam" : {
         "modelref" : true,
         "id" : "comment"
       },
-      "leftPos" : 60,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 560
+      "topPos" : 420
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文变量",
-      "name" : "上下文变量",
-      "navContextParam" : true
-    }, {
-      "codeName" : "ctrl",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
+      "codeName" : "comments_controller",
+      "logicName" : "评论部件控制器",
+      "name" : "评论部件控制器",
       "ctrlParam" : true
     }, {
       "codeName" : "Default",
@@ -5592,15 +5581,26 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "comments_controller",
-      "logicName" : "评论部件控制器",
-      "name" : "评论部件控制器",
-      "ctrlParam" : true
+      "codeName" : "ctx",
+      "logicName" : "上下文变量",
+      "name" : "上下文变量",
+      "navContextParam" : true
     }, {
       "codeName" : "comment",
       "logicName" : "评论",
       "name" : "评论",
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "ctrl",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5708,25 +5708,25 @@
       "topPos" : 340
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "editor",
-      "logicName" : "回复对象",
-      "name" : "回复对象",
-      "entityParam" : true
-    }, {
       "codeName" : "parentView",
       "logicName" : "父视图对象",
       "name" : "父视图对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "editor",
+      "logicName" : "回复对象",
+      "name" : "回复对象",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -6033,7 +6033,7 @@
       "actionLevel" : 200,
       "caption" : "恢复",
       "detailType" : "DEUIACTION",
-      "name" : "u508b77e",
+      "name" : "u83020ce",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -6061,7 +6061,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "添加附件",
       "detailType" : "DEUIACTION",
-      "name" : "u469426b",
+      "name" : "ueb31cbc",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"

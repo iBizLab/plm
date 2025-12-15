@@ -29,11 +29,6 @@ PREPAREJSPARAM1 --> PREPAREJSPARAM2
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
 #### 绑定部件对象 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -45,6 +40,11 @@ PREPAREJSPARAM1 --> PREPAREJSPARAM2
 
 
 1. 将`true` 设置给  `choose_data_state_obj(选项框状态对象).visible`
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
 
 
 

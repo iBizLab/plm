@@ -16,11 +16,11 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`ROLE_ID(系统角色标识)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLEID(角色)`
+`ID(标识)` <i class="fa fa-angle-double-right"/></i> `SYS_USER_ROLEID(用户角色关系标识)`
 * `属性等价`
 `MEMBER_UID(用户组/人员标识)` <i class="fa fa-angle-double-right"/></i> `USERID(用户标识)`
 * `属性等价`
-`ID(标识)` <i class="fa fa-angle-double-right"/></i> `SYS_USER_ROLEID(用户角色关系标识)`
+`ROLE_ID(系统角色标识)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLEID(角色)`
 
 <p class="panel-title"><b>行为映射</b></p>
 

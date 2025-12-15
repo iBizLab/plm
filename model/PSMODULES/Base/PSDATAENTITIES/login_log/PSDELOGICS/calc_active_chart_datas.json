@@ -175,13 +175,13 @@
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
     },
-    "leftPos" : 1290,
+    "leftPos" : 1300,
     "logicNodeType" : "DEDATASET",
     "name" : "获取图表默认数据",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "LOOPSUBCALL1"
+        "id" : "RAWSFCODE_01"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -193,14 +193,14 @@
       "modelref" : true,
       "id" : "echart_page"
     },
-    "topPos" : -182
+    "topPos" : -180
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "echart_obj"
     },
-    "leftPos" : 1450,
+    "leftPos" : 1500,
     "logicNodeType" : "LOOPSUBCALL",
     "name" : "循环子调用",
     "getPSDELogicLinks" : [ {
@@ -214,33 +214,42 @@
         "id" : "LOOPSUBCALL1"
       },
       "subCallLink" : true
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "结束循环",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      }
     } ],
     "getSrcPSDELogicParam" : {
       "modelref" : true,
       "id" : "echart_page"
     },
-    "topPos" : -182
+    "topPos" : 10
   }, {
     "code" : "var echart_obj = logic.getParam('echart_obj');\r\n//活跃总人数\r\nvar user_total = logic.getParam('user_total');\r\nvar total = user_total.get('total');\r\n//活跃人数\r\nvar active_members = echart_obj.get('active_members');\r\n//计算活跃率\r\nvar active_rate = ((active_members / total) * 100).toFixed(2); \r\n//补充活跃率\r\nechart_obj.set(\"active_rate\",active_rate);\r\n\r\n//处理authtime\r\nvar newdate = String(echart_obj.get('auth_time')).split(' ')[0]; \r\nechart_obj.set(\"auth_time\",newdate);",
     "codeName" : "RAWSFCODE2",
     "codeType" : "JavaScript",
-    "leftPos" : 1450,
+    "leftPos" : 1500,
     "logicNodeType" : "RAWSFCODE",
     "name" : "计算图表所需数据",
-    "topPos" : -44
+    "topPos" : 170
+  }, {
+    "code" : "// 从逻辑参数获取数据集\r\ndef echart_page = logic.param('echart_page').getReal()\r\n\r\n// 活跃总人数\r\ndef user_total = logic.param('user_total').getReal()\r\ndef total = user_total.get('total')\r\n\r\nechart_page.eachWithIndex { currentRow, i ->\r\n     // 计算活跃率\r\n    def active_members = currentRow.get('active_members') ?: 0 \r\n    def active_rate = total > 0 ?  (active_members.toDouble() / total.toDouble() * 100).round(2) :  \"0.00\"\r\n    currentRow.set(\"active_rate\", active_rate)  \r\n}\r\n\r\n ",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 1510,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算图表数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : -180
   }, {
     "codeName" : "END1",
-    "leftPos" : 1720,
+    "leftPos" : 1860,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
@@ -248,7 +257,8 @@
       "id" : "echart_page"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : -190
+    "topPos" : -178,
+    "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

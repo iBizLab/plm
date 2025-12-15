@@ -12,8 +12,8 @@
 
 
 ### 关联界面行为
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [查看工作项（移动端）](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除（移动端）](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [查看工作项（移动端）](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑（移动端）](module/Base/deliverable#界面行为)
 
 ### 关联视图

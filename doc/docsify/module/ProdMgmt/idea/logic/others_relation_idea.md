@@ -88,8 +88,8 @@ LOOPSUBCALL1 --> END1
 
 
 
-1. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(目标主体标识)`
+1. 将`for_temp_obj(循环临时变量).target_id` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
+2. 将`for_temp_obj(循环临时变量).target_id` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(目标主体标识)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -119,10 +119,10 @@ LOOPSUBCALL1 --> END1
 `selectdata(关联列表).size` GT `0`
 #### 产品需求关联产品需求 :id=PREPAREPARAM1-PREPAREPARAM2
 
-`for_temp_obj(循环临时变量).owner_id` ISNOTNULL
+`for_temp_obj(循环临时变量).target_id` ISNOTNULL
 #### 其他实体关联产品需求 :id=PREPAREPARAM1-DEACTION1
 
-`for_temp_obj(循环临时变量).owner_id` ISNULL
+`for_temp_obj(循环临时变量).target_id` ISNULL
 
 
 ### 实体逻辑参数

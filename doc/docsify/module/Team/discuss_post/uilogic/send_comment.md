@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./send_comment#begin {开始}]]
-state "保存评论" as DEACTION1  [[$./send_comment#deaction1 {保存评论}]]
-state "获取评论内容" as PREPAREJSPARAM1  [[$./send_comment#preparejsparam1 {获取评论内容}]]
 state "设置数据" as PREPAREJSPARAM2  [[$./send_comment#preparejsparam2 {设置数据}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./send_comment#rawjscode1 {注入脚本代码}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./send_comment#viewctrlinvoke1 {视图部件调用}]]
+state "获取评论内容" as PREPAREJSPARAM1  [[$./send_comment#preparejsparam1 {获取评论内容}]]
+state "保存评论" as DEACTION1  [[$./send_comment#deaction1 {保存评论}]]
 
 
 Begin --> PREPAREJSPARAM2
@@ -84,9 +84,9 @@ editor.setValue(" ");
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
-|上下文变量|ctx|导航视图参数绑定参数||
-|当前部件对象|ctrl|当前部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评论部件控制器|comments_controller|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文变量|ctx|导航视图参数绑定参数||
 |评论|comment|数据对象||
+|view|view|当前视图对象||
+|当前部件对象|ctrl|当前部件对象||

@@ -2,9 +2,9 @@
   "codeName" : "get_project_member",
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/get_project_member.json",
-  "logicName" : "获取项目成员",
+  "logicName" : "获取项目成员及权限",
   "memo" : "获取项目成员信息，用于判断当前用户权限",
-  "name" : "获取项目成员",
+  "name" : "获取项目成员及权限",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
     "leftPos" : -490,
@@ -22,6 +22,54 @@
       }
     } ],
     "topPos" : -80,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -190,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "IS_ARCHIVED",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "IS_DELETED",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[IS_DELETED] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      }
+    } ],
+    "topPos" : -210,
     "parallelOutput" : true
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
@@ -48,7 +96,7 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[srfreadonly] 值为空(Nil)"
+          "name" : "Default[srfreadonly] 值为空(Nil) "
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -82,7 +130,7 @@
         "id" : "RAWSFCODE3"
       }
     } ],
-    "topPos" : -72
+    "topPos" : -80
   }, {
     "codeName" : "END2",
     "leftPos" : 71,
@@ -93,7 +141,8 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 150
+    "topPos" : 160,
+    "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 284,
@@ -212,6 +261,74 @@
     },
     "topPos" : -72
   }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : -340,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "空",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE4"
+      },
+      "name" : "已归档已删除",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_ARCHIVED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_ARCHIVED] 等于(=) 1",
+            "paramValue" : "1"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_DELETED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_DELETED] 等于(=) 1",
+            "paramValue" : "1"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "project_is_archived",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[project_is_archived] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "topPos" : -82
+  }, {
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 492,
     "logicNodeType" : "PREPAREPARAM",
@@ -303,111 +420,6 @@
     } ],
     "topPos" : -72
   }, {
-    "codeName" : "END6",
-    "leftPos" : 1020,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : -220
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : -290,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "空",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE4"
-      },
-      "name" : "已归档已删除",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "groupOP" : "OR",
-          "logicType" : "GROUP",
-          "name" : "OR",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_ARCHIVED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_ARCHIVED] 等于(=) 1",
-            "paramValue" : "1"
-          }, {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_DELETED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_DELETED] 等于(=) 1",
-            "paramValue" : "1"
-          }, {
-            "condOP" : "EQ",
-            "dstFieldName" : "project_is_archived",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[project_is_archived] 等于(=) 1",
-            "paramValue" : "1"
-          } ]
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE3"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "EQ",
-          "dstFieldName" : "IS_ARCHIVED",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[IS_ARCHIVED] 等于(=) 0",
-          "paramValue" : "0"
-        }, {
-          "condOP" : "EQ",
-          "dstFieldName" : "IS_DELETED",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[IS_DELETED] 等于(=) 0",
-          "paramValue" : "0"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "topPos" : -72
-  }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
     "codeName" : "RAWSFCODE2",
     "leftPos" : 756,
@@ -426,10 +438,22 @@
     } ],
     "topPos" : -336
   }, {
+    "codeName" : "END6",
+    "leftPos" : 1020,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : -220,
+    "parallelOutput" : true
+  }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
     "codeName" : "RAWSFCODE4",
     "codeType" : "JavaScript",
-    "leftPos" : -290,
+    "leftPos" : -340,
     "logicNodeType" : "RAWSFCODE",
     "name" : "只读权限",
     "getPSDELogicLinks" : [ {
@@ -443,7 +467,7 @@
         "id" : "RAWSFCODE4"
       }
     } ],
-    "topPos" : 158
+    "topPos" : 156
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

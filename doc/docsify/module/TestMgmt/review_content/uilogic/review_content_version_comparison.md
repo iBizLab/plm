@@ -15,15 +15,15 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./review_content_version_comparison#begin {开始}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./review_content_version_comparison#debugparam1 {调试逻辑参数}]]
-state "测试用例" as PREPAREJSPARAM1  [[$./review_content_version_comparison#preparejsparam1 {测试用例}]]
+state "测试用例" as DEUIACTION1  [[$./review_content_version_comparison#deuiaction1 {测试用例}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./review_content_version_comparison#rawjscode1 {注入脚本代码}]]
 state "准备参数" as PREPAREJSPARAM4  [[$./review_content_version_comparison#preparejsparam4 {准备参数}]]
 state "结束" as END1 <<end>> [[$./review_content_version_comparison#end1 {结束}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./review_content_version_comparison#preparejsparam2 {准备参数}]]
-state "需求" as DEUIACTION2  [[$./review_content_version_comparison#deuiaction2 {需求}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./review_content_version_comparison#rawjscode1 {注入脚本代码}]]
-state "测试用例" as DEUIACTION1  [[$./review_content_version_comparison#deuiaction1 {测试用例}]]
 state "需求" as PREPAREJSPARAM3  [[$./review_content_version_comparison#preparejsparam3 {需求}]]
+state "需求" as DEUIACTION2  [[$./review_content_version_comparison#deuiaction2 {需求}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./review_content_version_comparison#preparejsparam2 {准备参数}]]
+state "测试用例" as PREPAREJSPARAM1  [[$./review_content_version_comparison#preparejsparam1 {测试用例}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./review_content_version_comparison#debugparam1 {调试逻辑参数}]]
 
 
 Begin --> DEBUGPARAM1
@@ -145,5 +145,5 @@ if(content_version && content_version.length >0){
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |上下文|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评审内容|review_content|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

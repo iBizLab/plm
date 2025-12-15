@@ -421,6 +421,7 @@
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                  "srfaiagent" : "TextAgent_Writing",
                   "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                   "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
@@ -430,17 +431,31 @@
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+                  "ac" : "true",
                   "QUOTEURL" : "`recents/fetch_recent_access`"
                 },
                 "editorStyle" : "COLLAPSE",
                 "editorType" : "HTMLEDITOR",
                 "name" : "description",
+                "getPSAppDEACMode" : {
+                  "modelref" : true,
+                  "id" : "AIChat"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                },
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
                   "pluginCode" : "COMMENT",
                   "runtimeObject" : true
                 },
-                "placeHolder" : "输入描述"
+                "placeHolder" : "输入描述",
+                "enableAC" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -750,7 +765,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "type",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "type值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "type" ],
               "notMode" : false
@@ -2060,7 +2076,7 @@
                   "getPSUIActionGroupDetails" : [ {
                     "actionLevel" : 200,
                     "detailType" : "DEUIACTION",
-                    "name" : "u4fb0bbd",
+                    "name" : "u11aba99",
                     "getPSSysImage" : {
                       "glyph" : "xf112@FontAwesome",
                       "cssClass" : "fa fa-mail-reply"
@@ -2102,7 +2118,7 @@
                   }, {
                     "actionLevel" : 200,
                     "detailType" : "DEUIACTION",
-                    "name" : "u1a93324",
+                    "name" : "u2f0c566",
                     "getPSSysImage" : {
                       "glyph" : "xf0ec@FontAwesome",
                       "cssClass" : "fa fa-exchange"
@@ -2998,7 +3014,7 @@
       },
       "noTabHeader" : true,
       "name" : "wizardpanel_form_review_connect",
-      "modelid" : "f0902d087f7a34c1ea65d7526bc7253a",
+      "modelid" : "14869b40be553eae899f2aca3f62324c",
       "modeltype" : "PSDEFORM_EDITFORM"
     } ],
     "getPSDEWizard" : {
@@ -3051,7 +3067,7 @@
     "showActionBar" : true,
     "showStepBar" : true,
     "name" : "wizardpanel",
-    "modelid" : "6cea2502ead9164766a587d0ff705246",
+    "modelid" : "154c1847b2bf9e78802e042850d2cfb3",
     "modeltype" : "PSDEWIZARDPANEL"
   }, {
     "getCapPSLanguageRes" : {

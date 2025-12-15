@@ -15,24 +15,24 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_reply#begin {开始}]]
-state "添加讨论下评论" as DEACTION4  [[$./add_reply#deaction4 {添加讨论下评论}]]
-state "结束" as END1 <<end>> [[$./add_reply#end1 {结束}]]
-state "添加回复下评论" as DEACTION6  [[$./add_reply#deaction6 {添加回复下评论}]]
-state "编辑讨论下评论" as DEACTION5  [[$./add_reply#deaction5 {编辑讨论下评论}]]
-state "编辑回复下评论" as DEACTION7  [[$./add_reply#deaction7 {编辑回复下评论}]]
-state "设置数据" as PREPAREJSPARAM4  [[$./add_reply#preparejsparam4 {设置数据}]]
-state "设置数据" as PREPAREJSPARAM8  [[$./add_reply#preparejsparam8 {设置数据}]]
-state "修改讨论下的comments" as RAWJSCODE3  [[$./add_reply#rawjscode3 {修改讨论下的comments}]]
-state "设置数据" as PREPAREJSPARAM3  [[$./add_reply#preparejsparam3 {设置数据}]]
-state "设置数据" as PREPAREJSPARAM7  [[$./add_reply#preparejsparam7 {设置数据}]]
-state "设置数据" as PREPAREJSPARAM5  [[$./add_reply#preparejsparam5 {设置数据}]]
 state "添加回复" as DEACTION2  [[$./add_reply#deaction2 {添加回复}]]
-state "设置讨论标识" as PREPAREJSPARAM1  [[$./add_reply#preparejsparam1 {设置讨论标识}]]
-state "修改回复" as DEACTION3  [[$./add_reply#deaction3 {修改回复}]]
-state "获取回复框内容" as RAWJSCODE1  [[$./add_reply#rawjscode1 {获取回复框内容}]]
-state "设置数据" as PREPAREJSPARAM6  [[$./add_reply#preparejsparam6 {设置数据}]]
+state "修改讨论下的comments" as RAWJSCODE3  [[$./add_reply#rawjscode3 {修改讨论下的comments}]]
+state "结束" as END1 <<end>> [[$./add_reply#end1 {结束}]]
 state "清空回复框与回复id" as RAWJSCODE2  [[$./add_reply#rawjscode2 {清空回复框与回复id}]]
+state "编辑讨论下评论" as DEACTION5  [[$./add_reply#deaction5 {编辑讨论下评论}]]
 state "修改回复下的comments" as RAWJSCODE4  [[$./add_reply#rawjscode4 {修改回复下的comments}]]
+state "设置数据" as PREPAREJSPARAM4  [[$./add_reply#preparejsparam4 {设置数据}]]
+state "设置数据" as PREPAREJSPARAM6  [[$./add_reply#preparejsparam6 {设置数据}]]
+state "设置数据" as PREPAREJSPARAM7  [[$./add_reply#preparejsparam7 {设置数据}]]
+state "编辑回复下评论" as DEACTION7  [[$./add_reply#deaction7 {编辑回复下评论}]]
+state "设置数据" as PREPAREJSPARAM5  [[$./add_reply#preparejsparam5 {设置数据}]]
+state "获取回复框内容" as RAWJSCODE1  [[$./add_reply#rawjscode1 {获取回复框内容}]]
+state "设置讨论标识" as PREPAREJSPARAM1  [[$./add_reply#preparejsparam1 {设置讨论标识}]]
+state "设置数据" as PREPAREJSPARAM8  [[$./add_reply#preparejsparam8 {设置数据}]]
+state "添加回复下评论" as DEACTION6  [[$./add_reply#deaction6 {添加回复下评论}]]
+state "添加讨论下评论" as DEACTION4  [[$./add_reply#deaction4 {添加讨论下评论}]]
+state "修改回复" as DEACTION3  [[$./add_reply#deaction3 {修改回复}]]
+state "设置数据" as PREPAREJSPARAM3  [[$./add_reply#preparejsparam3 {设置数据}]]
 
 
 Begin --> RAWJSCODE1
@@ -240,9 +240,9 @@ uiLogic.editor.toggleCollapse(false)
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
-|讨论回复|discuss_reply|数据对象||
-|编辑器|editor|数据对象||
-|应用上下文变量|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评论对象|comment|数据对象||
+|应用上下文变量|ctx|导航视图参数绑定参数||
+|编辑器|editor|数据对象||
+|当前视图对象|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|讨论回复|discuss_reply|数据对象||

@@ -2,17 +2,17 @@
 
 |  中文名col150      |   编号col150  |  模式col300 |  备注  |
 |  --------   | -----   |  -----    |  -------- |
-|[系统管理员](security/AUTHOR_ADMIN.md)|AUTHOR_ADMIN|无||
-|[效能管理员](security/INSIGHT_ADMIN.md)|INSIGHT_ADMIN|无||
-|[知识管理员](security/WIKI_ADMIN.md)|WIKI_ADMIN|无||
-|[默认用户权限](security/ROLE_USERS.md)|ROLE_USERS|用户默认||
 |[项目管理员](security/PROJECT_ADMIN.md)|PROJECT_ADMIN|无||
+|[系统管理员](security/AUTHOR_ADMIN.md)|AUTHOR_ADMIN|无||
+|[默认用户权限](security/ROLE_USERS.md)|ROLE_USERS|用户默认||
+|[效能管理员](security/INSIGHT_ADMIN.md)|INSIGHT_ADMIN|无||
+|[团队管理员](security/GROUP_ADMIN.md)|GROUP_ADMIN|无||
+|[协作管理员](security/TEAM_ADMIN.md)|TEAM_ADMIN|无||
+|[测试管理员](security/TEST_ADMIN.md)|TEST_ADMIN|无||
 |[微信用户](security/WXMP_USERS.md)|WXMP_USERS|无||
 |[匿名用户](security/ANON_USERS.md)|ANON_USERS|无||
-|[测试管理员](security/TEST_ADMIN.md)|TEST_ADMIN|无||
-|[协作管理员](security/TEAM_ADMIN.md)|TEAM_ADMIN|无||
 |[产品管理员](security/PRODUCT_ADMIN.md)|PRODUCT_ADMIN|无||
-|[团队管理员](security/GROUP_ADMIN.md)|GROUP_ADMIN|无||
+|[知识管理员](security/WIKI_ADMIN.md)|WIKI_ADMIN|无||
 
 
 
@@ -21,24 +21,24 @@
 <table>
 <tr>
 <th colspan="2">能力col150</th>
-<th>系统管理员col150</th>
-<th>效能管理员col150</th>
-<th>知识管理员col150</th>
-<th>默认用户权限col150</th>
 <th>项目管理员col150</th>
+<th>系统管理员col150</th>
+<th>默认用户权限col150</th>
+<th>效能管理员col150</th>
+<th>团队管理员col150</th>
+<th>协作管理员col150</th>
+<th>测试管理员col150</th>
 <th>微信用户col150</th>
 <th>匿名用户col150</th>
-<th>测试管理员col150</th>
-<th>协作管理员col150</th>
 <th>产品管理员col150</th>
-<th>团队管理员col150</th>
+<th>知识管理员col150</th>
 
 </tr>
 
 
 <tr>
 
-<td rowspan="43">统一资源</td>
+<td rowspan="46">统一资源</td>
 
 <td>PLM社区插件</td>
 <td align="center">
@@ -438,6 +438,85 @@
 </tr>
 <tr>
 
+<td>工作流模型扩展</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>工作流模型扩展（只读）</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+<tr>
+
 <td>工时管理</td>
 <td align="center">
 
@@ -694,6 +773,45 @@
 </td>
 <td align="center">
 <i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>智能协同</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -1188,6 +1306,7 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 
@@ -1879,8 +1998,1459 @@
 
 </tr>
 
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_agent">智能体(AI_AGENT)</a></td>
+
+<td><a href ="#/module/ai/ai_agent#ai_agent-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent#ai_agent-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="3"><a href ="#/module/ai/ai_agent_assignment">智能体分配(AI_AGENT_ASSIGNMENT)</a></td>
+
+<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-curdraftman_rw">我创建的（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-system_r">系统的（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="5"><a href ="#/module/ai/ai_agent_context">智能体业务上下文(AI_AGENT_CONTEXT)</a></td>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-curdraftman_rw">我创建的（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-system_r">系统的（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_agent_conversation">智能体会话(AI_AGENT_CONVERSATION)</a></td>
+
+<td><a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_agent_feedback">智能体回复反馈(AI_AGENT_FEEDBACK)</a></td>
+
+<td><a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_agent_message">智能体会话消息(AI_AGENT_MESSAGE)</a></td>
+
+<td><a href ="#/module/ai/ai_agent_message#ai_agent_message-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_message#ai_agent_message-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_credential">AI凭证(AI_CREDENTIAL)</a></td>
+
+<td><a href ="#/module/ai/ai_credential#ai_credential-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_credential#ai_credential-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_kb_chunk">知识库文档分块(AI_KB_CHUNK)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_chunk#ai_kb_chunk-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_chunk#ai_kb_chunk-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_kb_chunking_strategy">知识库文档切片策略(AI_KB_CHUNKING_STRATEGY)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_chunking_strategy#ai_kb_chunking_strategy-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_chunking_strategy#ai_kb_chunking_strategy-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_kb_document">知识库文档(AI_KB_DOCUMENT)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_document#ai_kb_document-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_document#ai_kb_document-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_kb_document_sync">知识库文档同步(AI_KB_DOCUMENT_SYNC)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_document_sync#ai_kb_document_sync-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_document_sync#ai_kb_document_sync-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_kb_document_wizard">知识库文档向导(AI_KB_DOCUMENT_WIZARD)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_document_wizard#ai_kb_document_wizard-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_document_wizard#ai_kb_document_wizard-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_knowledge_base">知识库(AI_KNOWLEDGE_BASE)</a></td>
+
+<td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_knowledge_source">知识库源(AI_KNOWLEDGE_SOURCE)</a></td>
+
+<td><a href ="#/module/ai/ai_knowledge_source#ai_knowledge_source-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_knowledge_source#ai_knowledge_source-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_model">AI大模型(AI_MODEL)</a></td>
+
+<td><a href ="#/module/ai/ai_model#ai_model-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_model#ai_model-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ai/ai_tool">AI调用工具(AI_TOOL)</a></td>
+
+<td><a href ="#/module/ai/ai_tool#ai_tool-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_tool#ai_tool-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
 
@@ -2012,7 +3582,6 @@
 </td>
 
 </tr>
-
 
 
 
@@ -2591,6 +4160,10 @@
 </td>
 
 </tr>
+
+
+
+
 
 
   <tr>
@@ -5101,6 +6674,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="2"><a href ="#/module/extension/PSDENotify">实体通知(PSDENOTIFY)</a></td>
@@ -5355,8 +6929,89 @@
 </tr>
 
 
+  <tr>
 
+<td rowspan="1"><a href ="#/module/extension/PSWFVersion">工作流版本(PSWFVERSION)</a></td>
 
+<td><a href ="#/module/extension/PSWFVersion#pswfversion-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/extension/PSWorkflow">工作流(PSWORKFLOW)</a></td>
+
+<td><a href ="#/module/extension/PSWorkflow#psworkflow-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
   <tr>
 
@@ -5451,7 +7106,6 @@
 
 
 
-
   <tr>
 
 <td rowspan="1"><a href ="#/module/Base/role">角色(ROLE)</a></td>
@@ -5493,7 +7147,6 @@
 </td>
 
 </tr>
-
 
 
 
@@ -6642,7 +8295,7 @@
 
   <tr>
 
-<td rowspan="6"><a href ="#/module/ProdMgmt/ticket">工单(TICKET)</a></td>
+<td rowspan="7"><a href ="#/module/ProdMgmt/ticket">工单(TICKET)</a></td>
 
 <td><a href ="#/module/ProdMgmt/ticket#ticket-admin_rw">管理员（读写）</a></td>
 <td align="center">
@@ -6723,6 +8376,45 @@
   <tr>
 
 <td><a href ="#/module/ProdMgmt/ticket#ticket-customer_user_rw">特定用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-my_rw">我提交的工单（读写）</a></td>
 <td align="center">
 
 </td>

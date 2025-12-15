@@ -1,4 +1,4 @@
-## 工作项添加依赖关系 <!-- {docsify-ignore-all} -->
+## 工作项添加依赖关系值变更 <!-- {docsify-ignore-all} -->
 
    工作项添加依赖关系
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_dependency#begin {开始}]]
+state "列表刷新" as VIEWCTRLINVOKE1  [[$./add_dependency#viewctrlinvoke1 {列表刷新}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./add_dependency#rawjscode3 {触发计数器刷新}]]
 state "获取选中列表" as RAWJSCODE2  [[$./add_dependency#rawjscode2 {获取选中列表}]]
-state "进行关联操作" as DEACTION1  [[$./add_dependency#deaction1 {进行关联操作}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_dependency#preparejsparam1 {绑定表格部件}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./add_dependency#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./add_dependency#rawjscode3 {触发计数器刷新}]]
-state "列表刷新" as VIEWCTRLINVOKE1  [[$./add_dependency#viewctrlinvoke1 {列表刷新}]]
+state "进行关联操作" as DEACTION1  [[$./add_dependency#deaction1 {进行关联操作}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -59,7 +59,15 @@ RAWJSCODE2 --> RAWJSCODE1 : [[$./add_dependency#rawjscode2-rawjscode1{选择数�
 let choose = uiLogic.default.choose_relation_data;
 let choose_type = uiLogic.ctrl.panelItems.choose_data.data.choose_type;
 if (choose != null && choose != '') {
-    uiLogic.dto.srfactionparam = JSON.parse(choose);
+    const srfactionparam = JSON.parse(choose);
+    // 将 owner_id 替换为 target_id
+    if (srfactionparam && Array.isArray(srfactionparam)) {
+        srfactionparam.forEach(item => {
+            item.target_id = item.owner_id
+            delete item.owner_id
+        })
+    }
+    uiLogic.dto.srfactionparam = srfactionparam;
     uiLogic.dto.principal_id = view.context.principal_id;
 }
 // 依赖类型
@@ -120,9 +128,9 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|列表对象|list|部件对象||
 |传入后台对象|dto|数据对象||
 |视图对象|view|当前视图对象||
-|ctrl|ctrl|当前部件对象||
-|列表对象|list|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |viewctx|viewctx|导航视图参数绑定参数||
+|ctrl|ctrl|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

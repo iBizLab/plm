@@ -55,6 +55,9 @@ if( _default.get("group")!=null){
 }
 if( _default.get("id")!=null){
     var appportletid = "plmweb.";
+    if(_default.get("app_tag")){
+        appportletid = _default.get("app_tag") + ".";
+    }
     var appportletcodename = "uxbireport__"+_default.get("id").replace(".", "__");
     appportletid = appportletid + appportletcodename;
     groupdata.set("psappportletid",appportletid.toLowerCase());

@@ -111,14 +111,6 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "check_palntime",
-    "name" : "校验计划时间",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "plan_at"
-    } ],
-    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
-    "customCode" : true
-  }, {
     "codeName" : "mob_remaining_update",
     "name" : "剩余工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
@@ -134,6 +126,14 @@
       "name" : "real_at"
     } ],
     "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
+    "customCode" : true
+  }, {
+    "codeName" : "check_palntime",
+    "name" : "校验计划时间",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "plan_at"
+    } ],
+    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
     "customCode" : true
   }, {
     "codeName" : "mob_estimated_update",
@@ -1315,7 +1315,7 @@
                                 "actionLevel" : 250,
                                 "caption" : "下载",
                                 "detailType" : "DEUIACTION",
-                                "name" : "u1e2ba6d",
+                                "name" : "uad47c9e",
                                 "getPSSysImage" : {
                                   "glyph" : "xf019@FontAwesome",
                                   "cssClass" : "fa fa-download"
@@ -1364,7 +1364,7 @@
                               }, {
                                 "caption" : "删除",
                                 "detailType" : "DEUIACTION",
-                                "name" : "u38dbf91",
+                                "name" : "u106c7b5",
                                 "getPSSysImage" : {
                                   "glyph" : "xf014@FontAwesome",
                                   "cssClass" : "fa fa-trash-o"
@@ -2297,7 +2297,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "estimated_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colLG" : 18,
@@ -2352,6 +2353,11 @@
                     "modelref" : true,
                     "id" : "product__UPDATE"
                   },
+                  "getPSNavigateContexts" : [ {
+                    "key" : "WORKLOAD",
+                    "name" : "WORKLOAD",
+                    "rawValue" : true
+                  } ],
                   "getPSNavigateParams" : [ {
                     "key" : "estimated_workload",
                     "name" : "estimated_workload",
@@ -2489,7 +2495,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "actual_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colLG" : 18,
@@ -2544,6 +2551,11 @@
                     "modelref" : true,
                     "id" : "product__UPDATE"
                   },
+                  "getPSNavigateContexts" : [ {
+                    "key" : "WORKLOAD",
+                    "name" : "WORKLOAD",
+                    "rawValue" : true
+                  } ],
                   "getPSNavigateParams" : [ {
                     "key" : "estimated_workload",
                     "name" : "estimated_workload",
@@ -2685,7 +2697,8 @@
                 "editorType" : "MOBNUMBER",
                 "minValue" : 0.0,
                 "name" : "remaining_workload",
-                "precision" : 1
+                "precision" : 1,
+                "scale" : 1
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -2720,6 +2733,7 @@
                 "editorType" : "MOBSLIDER",
                 "name" : "workload_schedule",
                 "precision" : 1,
+                "scale" : 1,
                 "stepValue" : 1.0
               },
               "getPSLayoutPos" : {
@@ -3607,7 +3621,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -5640,7 +5654,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -7511,7 +7525,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"
@@ -9500,7 +9514,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "caption" : "取消关联",
                       "detailType" : "DEUIACTION",
-                      "name" : "ua71fcf1",
+                      "name" : "u0f749a7",
                       "getPSSysImage" : {
                         "glyph" : "xf127@FontAwesome",
                         "cssClass" : "fa fa-unlink"

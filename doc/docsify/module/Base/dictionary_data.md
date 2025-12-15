@@ -11,6 +11,8 @@
 |颜色|COLOR|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|图标|ICON|长文本，没有长度限制|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否系统默认|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
@@ -50,6 +52,7 @@
 |[需求来源(idea_source)](module/Base/dictionary_data/query/idea_source)|idea_source|否|否 |否 ||
 |[需求状态(idea_state)](module/Base/dictionary_data/query/idea_state)|idea_state|否|否 |否 ||
 |[需求类型(idea_type)](module/Base/dictionary_data/query/idea_type)|idea_type|否|否 |否 ||
+|[项目类型(project_type)](module/Base/dictionary_data/query/project_type)|project_type|否|否 |否 ||
 |[发布阶段(release_stage)](module/Base/dictionary_data/query/release_stage)|release_stage|否|否 |否 ||
 |[测试用例(test_case)](module/Base/dictionary_data/query/test_case)|test_case|否|否 |否 ||
 |[测试用例重要程度(test_case_level)](module/Base/dictionary_data/query/test_case_level)|test_case_level|否|否 |否 ||
@@ -76,6 +79,7 @@
 |[需求来源(idea_source)](module/Base/dictionary_data/dataset/idea_source)|idea_source|数据查询|否|||
 |[需求状态(idea_state)](module/Base/dictionary_data/dataset/idea_state)|idea_state|数据查询|否|||
 |[需求类型(idea_type)](module/Base/dictionary_data/dataset/idea_type)|idea_type|数据查询|否|||
+|[项目类型(project_type)](module/Base/dictionary_data/dataset/project_type)|project_type|数据查询|否|||
 |[发布阶段(release_stage)](module/Base/dictionary_data/dataset/release_stage)|release_stage|数据查询|否|||
 |[测试用例(test_case)](module/Base/dictionary_data/dataset/test_case)|test_case|数据查询|否|||
 |[测试用例重要程度(test_case_importance_level)](module/Base/dictionary_data/dataset/test_case_importance_level)|test_case_importance_level|数据查询|否|||

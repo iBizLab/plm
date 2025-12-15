@@ -1,0 +1,168 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.ai_create_page;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageai_create_pagedefault;
+                global cn.ibizlab.plm.core.base.domain.relation article_pageai_create_pagefilter;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageai_create_pagepage;
+                global cn.ibizlab.plm.core.base.domain.relation article_pageai_create_pagerelation_page;
+                global cn.ibizlab.plm.core.wiki.domain.space article_pageai_create_pagespace;
+                global cn.ibizlab.plm.core.base.domain.relation article_pageai_create_pagetemp;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+                    global cn.ibizlab.plm.core.wiki.service.IspaceService spaceservice;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pageai_create_pagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "article_pageai_create_pageprepareparam2"
+            when
+            then
+                            article_pageai_create_pagefilter.set("n_principal_id_eq",article_pageai_create_pagedefault.get("project"));
+                            article_pageai_create_pagefilter.set("n_target_type_eq","space");
+                            article_pageai_create_pagefilter.set("n_relation_type_eq","main_space");
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "article_pageai_create_pagededataset1"
+            when
+            then
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[抛出异常]
+            rule "throwexception1"
+            ruleflow-group "article_pageai_create_pagethrowexception1"
+            when
+            then
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "article_pageai_create_pageloopsubcall1"
+            when
+            then
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "article_pageai_create_pageprepareparam3"
+            when
+            then
+                            article_pageai_create_pagespace.set("id",article_pageai_create_pagetemp.get("targetid"));
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction2"
+            ruleflow-group "article_pageai_create_pagedeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(spaceservice.get(article_pageai_create_pagespace.getId()),article_pageai_create_pagespace);
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "article_pageai_create_pageprepareparam1"
+            when
+            then
+                            article_pageai_create_pagepage.set("formattype","MD");
+                                article_pageai_create_pagepage.set("identifier",null);
+                                article_pageai_create_pagepage.set("id",null);
+                            article_pageai_create_pagepage.set("isarchived","0");
+                            article_pageai_create_pagepage.set("isdeleted","0");
+                            article_pageai_create_pagepage.set("isleaf","1");
+                            article_pageai_create_pagepage.set("islock","0");
+                            article_pageai_create_pagepage.set("ispublished","0");
+                            article_pageai_create_pagepage.set("isshared","0");
+                            article_pageai_create_pagepage.set("issharedsubset","0");
+                            article_pageai_create_pagepage.set("name",article_pageai_create_pagedefault.get("name"));
+                            article_pageai_create_pagepage.set("published","0");
+                            article_pageai_create_pagepage.set("reviewresultstate","1");
+                            article_pageai_create_pagepage.set("spaceid",article_pageai_create_pagespace.get("id"));
+                            article_pageai_create_pagepage.set("title",article_pageai_create_pagedefault.get("name"));
+                            article_pageai_create_pagepage.set("type","1");
+                            article_pageai_create_pagepage.set("content",article_pageai_create_pagedefault.get("content"));
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "article_pageai_create_pagedeaction1"
+            when
+            then
+                        article_pageservice.publish_page(article_pageai_create_pagepage);
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pageai_create_pageend1"
+            when
+            then
+                        update(article_pageai_create_pagedefault);//更新fact中变量值
+                        update(article_pageai_create_pagefilter);//更新fact中变量值
+                        update(article_pageai_create_pagepage);//更新fact中变量值
+                        update(article_pageai_create_pagerelation_page);//更新fact中变量值
+                        update(article_pageai_create_pagespace);//更新fact中变量值
+                        update(article_pageai_create_pagetemp);//更新fact中变量值
+            end

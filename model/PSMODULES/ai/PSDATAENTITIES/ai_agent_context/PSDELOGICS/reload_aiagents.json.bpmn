@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.service.logic.ai_agent_contextreload_aiagents" isClosed="false" isExecutable="true" name="ai_ai_agent_context_reload_aiagents_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.service.logic.ai_agent_contextreload_aiagents">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ai_agent_contextreload_aiagentsdefault" type="entity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_agent_contextService))" name="iBzSysAi_agent_contextDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ai_agent_contextreload_aiagentsdefault" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextreload_aiagentsrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="触发刷新信号"/>
+                        <endEvent id="rawsfcode_01_end" name="end"/>
+                        <sequenceFlow id="rawsfcode_01_end_line" sourceRef="rawsfcode_01" targetRef="rawsfcode_01_end"/>
+                    <sequenceFlow id="begin_rawsfcode_01" sourceRef="begin" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+        </process>
+    </definitions>

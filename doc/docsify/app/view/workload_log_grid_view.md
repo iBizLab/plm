@@ -7,7 +7,7 @@
 #### 数据表格(grid)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
-#### 工具栏(toolbar)
+#### 工具栏(tab_toolbar)
 
 ## 视图界面逻辑
 * `onBeforeLoadDraft`
@@ -24,8 +24,8 @@ Object.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, dat
 
 
 ### 关联界面行为
-  * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
   * [工时(WORKLOAD)](module/Base/workload) : [工时打开对应事项详情视图](module/Base/workload#界面行为)
+  * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)

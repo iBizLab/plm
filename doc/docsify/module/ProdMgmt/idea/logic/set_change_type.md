@@ -17,9 +17,9 @@ hide empty description
 state "开始" as Begin <<start>> [[$./set_change_type#begin {"开始"}]]
 state "设置基线过滤器" as PREPAREPARAM4  [[$./set_change_type#prepareparam4 {"设置基线过滤器"}]]
 state "查询基线需求分页数据" as DEDATASET3  [[$./set_change_type#dedataset3 {"查询基线需求分页数据"}]]
+state "实体数据集" as DEDATASET4  [[$./set_change_type#dedataset4 {"实体数据集"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./set_change_type#debugparam1 {"调试逻辑参数"}]]
 state "查询需求分页数据" as DEDATASET1  [[$./set_change_type#dedataset1 {"查询需求分页数据"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./set_change_type#debugparam2 {"调试逻辑参数"}]]
 state "获取评审需求" as RAWSQLCALL1  [[$./set_change_type#rawsqlcall1 {"获取评审需求"}]]
 state "结束" as END1 <<end>> [[$./set_change_type#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_change_type#loopsubcall1 {"循环子调用"}]] #green {
@@ -46,11 +46,12 @@ DEBUGPARAM3 --> PREPAREPARAM3 : [[$./set_change_type#debugparam3-prepareparam3{�
 PREPAREPARAM3 --> RAWSFCODE2
 RAWSFCODE2 --> END1
 DEBUGPARAM1 --> RAWSQLCALL1 : [[$./set_change_type#debugparam1-rawsqlcall1{连接名称} 连接名称]]
-RAWSQLCALL1 --> DEBUGPARAM2
-DEBUGPARAM2 --> LOOPSUBCALL1
+RAWSQLCALL1 --> LOOPSUBCALL1
 DEBUGPARAM1 --> PREPAREPARAM4 : [[$./set_change_type#debugparam1-prepareparam4{连接名称} 连接名称]]
 PREPAREPARAM4 --> DEDATASET3
 DEDATASET3 --> LOOPSUBCALL1
+DEBUGPARAM1 --> DEDATASET4 : [[$./set_change_type#debugparam1-dedataset4{连接名称} 连接名称]]
+DEDATASET4 --> LOOPSUBCALL1
 
 
 @enduml
@@ -70,6 +71,14 @@ DEDATASET3 --> LOOPSUBCALL1
 
 
 调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 数据集合 [基线需求(baseline_idea)](module/ProdMgmt/idea#数据集合) ，查询参数为`baseline_filter(基线过滤器)`
+
+将执行结果返回给参数`page_results(分页查询结果)`
+
+#### 实体数据集 :id=DEDATASET4<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+
+
+
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 数据集合 [未添加的需求(not_add_idea)](module/ProdMgmt/idea#数据集合) ，查询参数为`Default(传入变量)`
 
 将执行结果返回给参数`page_results(分页查询结果)`
 
@@ -99,13 +108,12 @@ DEDATASET3 --> LOOPSUBCALL1
 
 
 循环参数`page_results(分页查询结果)`，子循环参数使用`for_obj(循环临时变量)`
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 设置版本过滤器 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`page_results(分页查询结果)`的详细信息
-
+1. 将`for_obj(循环临时变量).ID(标识)` 设置给  `version_filter(版本过滤器).N_OWNER_ID_EQ`
+2. 将`2` 设置给  `version_filter(版本过滤器).SIZE`
 
 #### 获取评审需求 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -141,13 +149,6 @@ DEDATASET3 --> LOOPSUBCALL1
 2. `Default(传入变量).n_test_library_id_eq`
 
 重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`
-
-#### 设置版本过滤器 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`for_obj(循环临时变量).ID(标识)` 设置给  `version_filter(版本过滤器).N_OWNER_ID_EQ`
-2. 将`2` 设置给  `version_filter(版本过滤器).SIZE`
 
 #### 查询符合条件的版本 :id=DEDATASET2<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -234,7 +235,7 @@ if (version_pages_results) {
 ### 连接条件说明
 #### 连接名称 :id=DEBUGPARAM1-DEDATASET1
 
-`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL
+`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL AND `Default(传入变量).add_review` ISNULL AND `Default(传入变量).add_tag` ISNULL
 #### 未评审 :id=DEBUGPARAM3-PREPAREPARAM2
 
 `for_obj(循环临时变量).REVIEW_RESULT_STATE(评审结果)` EQ `1`
@@ -247,6 +248,9 @@ if (version_pages_results) {
 #### 连接名称 :id=DEBUGPARAM1-PREPAREPARAM4
 
 (`Default(传入变量).tag` EQ `baseline` OR `Default(传入变量).baseline` ISNOTNULL)
+#### 连接名称 :id=DEBUGPARAM1-DEDATASET4
+
+`Default(传入变量).add_review` ISNOTNULL AND `Default(传入变量).add_tag` ISNOTNULL
 
 
 ### 实体逻辑参数

@@ -47,6 +47,19 @@ if(executors != null && executors != undefined && executors.length > 0){
 }
 
 ```
+* `onChange`
+```
+//console.log('工作项类型发生变化!', ctrl)
+var ctxpid =context.pid
+var pid = ctrl.details.pid;
+var ptitle = ctrl.details.ptitle;
+if(ctxpid==null)
+{
+    pid.setDataValue(null)
+    ptitle.setDataValue(null)
+}
+
+```
 
 ##### 值规则
 * `start_at` : [开始时间](index/value_rule_index)
@@ -86,10 +99,12 @@ if(executors != null && executors != undefined && executors.length > 0){
 ## 视图界面逻辑
   * [计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)
   * [设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)
+  * [填充子工作项类型](module/ProjMgmt/work_item/uilogic/fill_work_item_sub_type)
 
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [填充子工作项类型](module/ProjMgmt/work_item/uilogic/fill_work_item_sub_type)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)
 
 ### 关联视图

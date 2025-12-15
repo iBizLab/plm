@@ -219,6 +219,13 @@
     <td></td>
   </tr>
   <tr>
+    <td>读取(READ)<br><a href ="#/der/DER1N_TEST_PLAN_PROJECT_PROJECT_ID">DER1N_TEST_PLAN_PROJECT_PROJECT_ID</a></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>读取(READ)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -227,13 +234,6 @@
   </tr>
   <tr>
     <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)<br><a href ="#/der/DER1N_TEST_PLAN_PROJECT_PROJECT_ID">DER1N_TEST_PLAN_PROJECT_PROJECT_ID</a></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>

@@ -23,24 +23,24 @@ state "挂起" as MAINSTATE4  [[$./waterfall_requirement#mainstate4 {"挂起"}]]
 state "被拒绝" as MAINSTATE7  [[$./waterfall_requirement#mainstate7 {"被拒绝"}]]
 
 
-MAINSTATE1 --> MAINSTATE5
+MAINSTATE1 --> MAINSTATE7
+MAINSTATE7 --> MAINSTATE1
+MAINSTATE7 --> MAINSTATE4
+MAINSTATE4 --> MAINSTATE7
+MAINSTATE4 --> MAINSTATE1
+MAINSTATE4 --> MAINSTATE5
 MAINSTATE5 --> MAINSTATE6
 MAINSTATE6 --> MAINSTATE2
 MAINSTATE2 --> MAINSTATE3
 MAINSTATE3 --> MAINSTATE1
 MAINSTATE2 --> MAINSTATE4
-MAINSTATE4 --> MAINSTATE7
-MAINSTATE7 --> MAINSTATE1
-MAINSTATE7 --> MAINSTATE4
-MAINSTATE4 --> MAINSTATE1
-MAINSTATE4 --> MAINSTATE5
-MAINSTATE4 --> MAINSTATE2
-MAINSTATE4 --> MAINSTATE3
 MAINSTATE6 --> MAINSTATE4
 MAINSTATE5 --> MAINSTATE4
-MAINSTATE1 --> MAINSTATE7
+MAINSTATE4 --> MAINSTATE2
+MAINSTATE4 --> MAINSTATE3
 MAINSTATE1 --> MAINSTATE2
 MAINSTATE1 --> MAINSTATE4
+MAINSTATE1 --> MAINSTATE5
 
 
 @enduml
@@ -60,30 +60,30 @@ MAINSTATE1 --> MAINSTATE4
 
 #### 被拒绝 :id=MAINSTATE7<sup class="footnote-symbol"> <font color=gray size=1>[60]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
 
 #### 规划中 :id=MAINSTATE5<sup class="footnote-symbol"> <font color=gray size=1>[14]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 
 
 #### 规划完成 :id=MAINSTATE6<sup class="footnote-symbol"> <font color=gray size=1>[16]</font></sup>
 
-###### 允许行为
+###### 拒绝行为
 
 
-###### 允许操作标识
+###### 拒绝操作标识
 
 ###### 允许属性
 

@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./after_new_product_re_project#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./after_new_product_re_project#deaction1 {实体行为}]]
-state "结束" as END1 <<end>> [[$./after_new_product_re_project#end1 {结束}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./after_new_product_re_project#preparejsparam1 {准备参数}]]
+state "结束" as END1 <<end>> [[$./after_new_product_re_project#end1 {结束}]]
+state "实体行为" as DEACTION1  [[$./after_new_product_re_project#deaction1 {实体行为}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -54,7 +54,7 @@ DEACTION1 --> END1
 
 
 
-调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 行为 [关联项目(other_re_project)](module/ProjMgmt/project#行为) ，行为参数为`relation_obj(关联对象)`
+调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 行为 [其他实体关联项目(other_re_project)](module/ProjMgmt/project#行为) ，行为参数为`relation_obj(关联对象)`
 
 
 
@@ -62,6 +62,6 @@ DEACTION1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上下文|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
 |关联对象|relation_obj|数据对象||

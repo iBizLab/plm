@@ -18,28 +18,28 @@ state "开始" as Begin <<start>> [[$./create_result#begin {"开始"}]]
 state "设置执行人相关信息" as PREPAREPARAM3  [[$./create_result#prepareparam3 {"设置执行人相关信息"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./create_result#debugparam2 {"调试逻辑参数"}]]
 state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
+state "创建执行结果" as DEACTION6  [[$./create_result#deaction6 {"创建执行结果"}]]
+state "实体数据集" as DEDATASET2  [[$./create_result#dedataset2 {"实体数据集"}]]
 state "结束" as END2 <<end>> [[$./create_result#end2 {"结束"}]]
 state "反向关联" as DEACTION8  [[$./create_result#deaction8 {"反向关联"}]]
 state "正向关联" as DEACTION5  [[$./create_result#deaction5 {"正向关联"}]]
 state "准备关联数据" as PREPAREPARAM9  [[$./create_result#prepareparam9 {"准备关联数据"}]]
 state "创建工作项" as DEACTION4  [[$./create_result#deaction4 {"创建工作项"}]]
 state "准备参数" as PREPAREPARAM12  [[$./create_result#prepareparam12 {"准备参数"}]]
-state "获取测试计划" as DEACTION3  [[$./create_result#deaction3 {"获取测试计划"}]]
-state "创建执行结果" as DEACTION6  [[$./create_result#deaction6 {"创建执行结果"}]]
 state "执行用例数据准备" as PREPAREPARAM6  [[$./create_result#prepareparam6 {"执行用例数据准备"}]]
-state "准备参数" as PREPAREPARAM7  [[$./create_result#prepareparam7 {"准备参数"}]]
-state "实体数据集" as DEDATASET2  [[$./create_result#dedataset2 {"实体数据集"}]]
-state "准备系统参数" as PREPAREPARAM13  [[$./create_result#prepareparam13 {"准备系统参数"}]]
+state "获取测试计划" as DEACTION3  [[$./create_result#deaction3 {"获取测试计划"}]]
 state "拼接描述字段" as RAWSFCODE1  [[$./create_result#rawsfcode1 {"拼接描述字段"}]]
+state "准备参数" as PREPAREPARAM7  [[$./create_result#prepareparam7 {"准备参数"}]]
 state "工作项类型数据集" as DEDATASET1  [[$./create_result#dedataset1 {"工作项类型数据集"}]]
-state "循环子调用" as LOOPSUBCALL2  [[$./create_result#loopsubcall2 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM11  [[$./create_result#prepareparam11 {"准备参数"}]]
-}
+state "准备系统参数" as PREPAREPARAM13  [[$./create_result#prepareparam13 {"准备系统参数"}]]
 state "循环子调用" as LOOPSUBCALL3  [[$./create_result#loopsubcall3 {"循环子调用"}]] #green {
 state "更新执行用例" as DEACTION7  [[$./create_result#deaction7 {"更新执行用例"}]]
 state "准备参数" as PREPAREPARAM4  [[$./create_result#prepareparam4 {"准备参数"}]]
 state "获取测试用例" as DEACTION9  [[$./create_result#deaction9 {"获取测试用例"}]]
 state "绑定用例附件" as PREPAREPARAM10  [[$./create_result#prepareparam10 {"绑定用例附件"}]]
+}
+state "循环子调用" as LOOPSUBCALL2  [[$./create_result#loopsubcall2 {"循环子调用"}]] #green {
+state "准备参数" as PREPAREPARAM11  [[$./create_result#prepareparam11 {"准备参数"}]]
 }
 state "循环子调用" as LOOPSUBCALL1  [[$./create_result#loopsubcall1 {"循环子调用"}]] #green {
 state "准备参数" as PREPAREPARAM8  [[$./create_result#prepareparam8 {"准备参数"}]]

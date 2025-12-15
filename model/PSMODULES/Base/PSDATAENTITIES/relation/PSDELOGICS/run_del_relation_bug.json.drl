@@ -79,6 +79,23 @@ package cn.ibizlab.plm.base.logic.relationlogic.run_del_relation_bug;
                         update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
             end
 
+            //逻辑处理节点[获取执行用例]
+            rule "deaction6"
+            ruleflow-group "relationrun_del_relation_bugdeaction6"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(runservice.get(relationrun_del_relation_bugrun.getId()),relationrun_del_relation_bugrun);
+                        update(relationrun_del_relation_bugdefault);//更新fact中变量值
+                        update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
+                        update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugforward_relation_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugrelation_filter);//更新fact中变量值
+                        update(relationrun_del_relation_bugrelation_page);//更新fact中变量值
+                        update(relationrun_del_relation_bugreverse_relation_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugrun);//更新fact中变量值
+                        update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
+            end
+
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam1"
             ruleflow-group "relationrun_del_relation_bugdebugparam1"
@@ -112,12 +129,27 @@ package cn.ibizlab.plm.base.logic.relationlogic.run_del_relation_bug;
                         update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取执行用例]
-            rule "deaction6"
-            ruleflow-group "relationrun_del_relation_bugdeaction6"
+            //逻辑处理节点[对应测试用例关联缺陷]
+            rule "dedataset1"
+            ruleflow-group "relationrun_del_relation_bugdedataset1"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(runservice.get(relationrun_del_relation_bugrun.getId()),relationrun_del_relation_bugrun);
+                        update(relationrun_del_relation_bugdefault);//更新fact中变量值
+                        update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
+                        update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugforward_relation_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugrelation_filter);//更新fact中变量值
+                        update(relationrun_del_relation_bugrelation_page);//更新fact中变量值
+                        update(relationrun_del_relation_bugreverse_relation_obj);//更新fact中变量值
+                        update(relationrun_del_relation_bugrun);//更新fact中变量值
+                        update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "relationrun_del_relation_bugloopsubcall1"
+            when
+            then
                         update(relationrun_del_relation_bugdefault);//更新fact中变量值
                         update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
                         update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值
@@ -160,38 +192,6 @@ package cn.ibizlab.plm.base.logic.relationlogic.run_del_relation_bug;
                             relationrun_del_relation_bugrelation_filter.set("n_target_type_eq","work_item");
                             relationrun_del_relation_bugrelation_filter.set("n_principal_id_eq",relationrun_del_relation_bugrun.get("caseid"));
                             relationrun_del_relation_bugrelation_filter.set("n_principal_type_eq","test_case");
-                        update(relationrun_del_relation_bugdefault);//更新fact中变量值
-                        update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
-                        update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugforward_relation_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugrelation_filter);//更新fact中变量值
-                        update(relationrun_del_relation_bugrelation_page);//更新fact中变量值
-                        update(relationrun_del_relation_bugreverse_relation_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugrun);//更新fact中变量值
-                        update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
-            end
-
-            //逻辑处理节点[对应测试用例关联缺陷]
-            rule "dedataset1"
-            ruleflow-group "relationrun_del_relation_bugdedataset1"
-            when
-            then
-                        update(relationrun_del_relation_bugdefault);//更新fact中变量值
-                        update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
-                        update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugforward_relation_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugrelation_filter);//更新fact中变量值
-                        update(relationrun_del_relation_bugrelation_page);//更新fact中变量值
-                        update(relationrun_del_relation_bugreverse_relation_obj);//更新fact中变量值
-                        update(relationrun_del_relation_bugrun);//更新fact中变量值
-                        update(relationrun_del_relation_bugtest_case_relation_bug);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "relationrun_del_relation_bugloopsubcall1"
-            when
-            then
                         update(relationrun_del_relation_bugdefault);//更新fact中变量值
                         update(relationrun_del_relation_bugbug_relation_test_case);//更新fact中变量值
                         update(relationrun_del_relation_bugfor_temp_obj);//更新fact中变量值

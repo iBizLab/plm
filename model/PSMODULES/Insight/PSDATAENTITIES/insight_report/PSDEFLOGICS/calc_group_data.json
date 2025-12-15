@@ -39,9 +39,10 @@
       "id" : "group_data"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 292
+    "topPos" : 292,
+    "parallelOutput" : true
   }, {
-    "code" : "var _default = logic.getParam('Default');\r\nvar groupdata = logic.getParam('group_data');\r\nif( _default.get(\"group\")!=null){\r\n    groupdata.set(\"groupname\", _default.codeitem(\"group\").text);\r\n    groupdata.set(\"groupcodename\", _default.get(\"group\"));\r\n}\r\nif( _default.get(\"id\")!=null){\r\n    var appportletid = \"plmweb.\";\r\n    var appportletcodename = \"uxbireport__\"+_default.get(\"id\").replace(\".\", \"__\");\r\n    appportletid = appportletid + appportletcodename;\r\n    groupdata.set(\"psappportletid\",appportletid.toLowerCase());\r\n    groupdata.set(\"codename\",appportletcodename.toLowerCase());\r\n    groupdata.set(\"psappportletname\",_default.get(\"name\"));\r\n    _default.set(\"ctrl_id\",appportletid.toLowerCase());\r\n}\r\n",
+    "code" : "var _default = logic.getParam('Default');\r\nvar groupdata = logic.getParam('group_data');\r\nif( _default.get(\"group\")!=null){\r\n    groupdata.set(\"groupname\", _default.codeitem(\"group\").text);\r\n    groupdata.set(\"groupcodename\", _default.get(\"group\"));\r\n}\r\nif( _default.get(\"id\")!=null){\r\n    var appportletid = \"plmweb.\";\r\n    if(_default.get(\"app_tag\")){\r\n        appportletid = _default.get(\"app_tag\") + \".\";\r\n    }\r\n    var appportletcodename = \"uxbireport__\"+_default.get(\"id\").replace(\".\", \"__\");\r\n    appportletid = appportletid + appportletcodename;\r\n    groupdata.set(\"psappportletid\",appportletid.toLowerCase());\r\n    groupdata.set(\"codename\",appportletcodename.toLowerCase());\r\n    groupdata.set(\"psappportletname\",_default.get(\"name\"));\r\n    _default.set(\"ctrl_id\",appportletid.toLowerCase());\r\n}\r\n",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
     "leftPos" : 459,

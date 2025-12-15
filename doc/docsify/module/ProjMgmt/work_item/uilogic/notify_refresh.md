@@ -1,6 +1,6 @@
-## 通知刷新（移动端） <!-- {docsify-ignore-all} -->
+## 通知刷新 <!-- {docsify-ignore-all} -->
 
-   通知页面刷新
+   
 
 ### 处理过程
 
@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./notify_refresh#begin {开始}]]
 state "结束" as END1 <<end>> [[$./notify_refresh#end1 {结束}]]
-state "通知刷新" as RAWJSCODE1  [[$./notify_refresh#rawjscode1 {通知刷新}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./notify_refresh#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -39,14 +39,14 @@ RAWJSCODE1 --> END1
 
 
 
-#### 通知刷新 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'work_item'})
+ibiz.mc.command.create.send({ srfdecodename: 'work_item'});
 ```
 
 

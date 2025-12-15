@@ -14,10 +14,10 @@
 
 
 ### 关联界面行为
-  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [添加产品成员](module/ProdMgmt/product_member#界面行为)
   * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [设置角色](module/ProdMgmt/product_member#界面行为)
-  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [表格界面_删除操作](module/ProdMgmt/product_member#界面行为)
   * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [职位变更](module/ProdMgmt/product_member#界面行为)
+  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [表格界面_删除操作](module/ProdMgmt/product_member#界面行为)
+  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [添加产品成员](module/ProdMgmt/product_member#界面行为)
 
 ### 关联视图
   * [选择职位(product_member_choose_position_option_view)](app/view/product_member_choose_position_option_view)

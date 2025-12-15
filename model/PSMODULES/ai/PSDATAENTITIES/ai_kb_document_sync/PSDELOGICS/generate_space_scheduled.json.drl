@@ -1,0 +1,54 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.generate_space_scheduled;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncgenerate_space_scheduleddefault;
+                global cn.ibizlab.plm.core.base.domain.extend_schedule ai_kb_document_syncgenerate_space_scheduledextend_schedule;
+                    global cn.ibizlab.plm.core.base.service.Iextend_scheduleService extend_scheduleservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_document_syncgenerate_space_scheduledbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_document_syncgenerate_space_scheduledprepareparam_01"
+            when
+            then
+                            ai_kb_document_syncgenerate_space_scheduledextend_schedule.set("tasktype","SYNC_SPACE");
+                            ai_kb_document_syncgenerate_space_scheduledextend_schedule.set("principaltype","AI_KB_DOCUMENT_SYNC");
+                            ai_kb_document_syncgenerate_space_scheduledextend_schedule.set("principalname","知识库文档同步");
+                            ai_kb_document_syncgenerate_space_scheduledextend_schedule.set("principalid",ai_kb_document_syncgenerate_space_scheduleddefault.get("id"));
+                        update(ai_kb_document_syncgenerate_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncgenerate_space_scheduledextend_schedule);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构造定时器策略]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_document_syncgenerate_space_scheduledrawsfcode_01"
+            when
+            then
+                        update(ai_kb_document_syncgenerate_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncgenerate_space_scheduledextend_schedule);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建空间执行计划]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_document_syncgenerate_space_scheduleddeaction_01"
+            when
+            then
+                        extend_scheduleservice.create(ai_kb_document_syncgenerate_space_scheduledextend_schedule);
+                        update(ai_kb_document_syncgenerate_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncgenerate_space_scheduledextend_schedule);//更新fact中变量值
+            end

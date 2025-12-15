@@ -21,13 +21,17 @@
 |属性标记2|FIELDTAG2|文本，可指定长度|100|是||
 |长度|LENGTH|整型||是||
 |中文名称|LOGICNAME|文本，可指定长度|60|否||
+|备注|MEMO|长文本，没有长度限制|1048576|是||
+|排序|ORDERVALUE|数值||是||
 |浮点精度|PRECISION2|整型||是||
+|代码表|PSCODELISTID|文本，可指定长度|100|是||
 |数据类型|PSDATATYPEID|文本，可指定长度|100|否||
 |数据类型|PSDATATYPENAME|文本，可指定长度|100|否||
 |实体属性标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDEFIELDID|全局唯一标识，文本类型，用户不可见|100|否||
 |实体属性名称|PSDEFIELDNAME|文本，可指定长度|200|是||
 |实体|PSDEID|文本，可指定长度|100|否||
 |实体|PSDENAME|文本，可指定长度|100|否||
+|系统建立模式|SYSTEMFLAG|数值||是||
 |更新时间|UPDATEDATE|日期时间型|8|否||
 |更新人|UPDATEMAN|文本，可指定长度|60|否||
 |用户标记|USERTAG|文本，可指定长度|100|是||

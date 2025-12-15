@@ -635,6 +635,7 @@
                 "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                 "MAXHEIGHT" : "450",
                 "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                "srfaiagent" : "TextAgent_Writing",
                 "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                 "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                 "MODE" : "default",
@@ -644,17 +645,31 @@
                 "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+                "ac" : "true",
                 "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
               "name" : "description",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "AIChat"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+              },
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "COMMENT",
                 "runtimeObject" : true
               },
-              "placeHolder" : "输入描述"
+              "placeHolder" : "输入描述",
+              "enableAC" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -994,6 +1009,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
+                      "enableScriptCode" : "context.srfreadonly != true",
                       "name" : "u44d00e2",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
@@ -1190,7 +1206,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "ufce83c9",
+                "name" : "uc53a5f2",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -1269,14 +1285,17 @@
               "getPSDEFDLogics" : [ {
                 "groupOP" : "OR",
                 "logicType" : "GROUP",
+                "name" : "OR",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "ISNULL",
                   "dEFDName" : "checkid",
-                  "logicType" : "SINGLE"
+                  "logicType" : "SINGLE",
+                  "name" : "checkid值为空(Nil)"
                 }, {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "dynamic_new",
-                  "logicType" : "SINGLE"
+                  "logicType" : "SINGLE",
+                  "name" : "dynamic_new值不为空(NotNil)"
                 } ],
                 "notMode" : false
               } ],
@@ -1418,7 +1437,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "product_name",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "product_name值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "product_name" ],
               "notMode" : false
@@ -1476,7 +1496,8 @@
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "product_name",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "product_name值不为空(NotNil)"
               } ],
               "relatedDetailNames" : [ "product_name" ],
               "notMode" : false

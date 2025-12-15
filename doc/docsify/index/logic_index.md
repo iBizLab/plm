@@ -26,6 +26,75 @@
 
 
 
+
+
+## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md) :id=ai_agent_context
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[fill_with_agent](module/ai/ai_agent_context/logic/fill_with_agent)|fill_with_agent|无||由插件补充填充，此配置仅作为填充入口|
+|[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents)|reload_aiagents|无||重载AI代理对象|
+
+
+
+
+
+
+## [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session.md) :id=ai_agent_session
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[get_info](module/ai/ai_agent_session/logic/get_info)|get_info|无|||
+
+
+
+## [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential.md) :id=ai_credential
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[获取Cloud配置](module/ai/ai_credential/logic/get_cloud_config)|get_cloud_config|无|||
+
+
+
+
+## [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document.md) :id=ai_kb_document
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[删除文档执行计划](module/ai/ai_kb_document/logic/remove_doc_scheduled)|remove_doc_scheduled|无|||
+|[更新文档执行计划](module/ai/ai_kb_document/logic/update_doc_scheduled)|update_doc_scheduled|属性逻辑|||
+|[生成文档执行计划](module/ai/ai_kb_document/logic/generate_doc_scheduled)|generate_doc_scheduled|无|||
+
+
+## [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync.md) :id=ai_kb_document_sync
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[准备建立](module/ai/ai_kb_document_sync/logic/prepare_create)|prepare_create|无|||
+|[删除空间执行计划](module/ai/ai_kb_document_sync/logic/remove_space_scheduled)|remove_space_scheduled|无|||
+|[同步创建知识库文档](module/ai/ai_kb_document_sync/logic/sync_create_doc)|sync_create_doc|无|||
+|[同步删除文档和分块](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)|sync_remove_doc_chunk|无|||
+|[更新空间执行计划](module/ai/ai_kb_document_sync/logic/update_space_scheduled)|update_space_scheduled|属性逻辑|||
+|[生成空间执行计划](module/ai/ai_kb_document_sync/logic/generate_space_scheduled)|generate_space_scheduled|无|||
+
+
+## [知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard.md) :id=ai_kb_document_wizard
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[创建知识库文档](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc)|create_ai_kb_doc|无|||
+
+
+
+
+## [AI大模型(AI_MODEL)](module/ai/ai_model.md) :id=ai_model
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[获取Cloud配置](module/ai/ai_model/logic/get_cloud_config)|get_cloud_config|无|||
+
+
+
 ## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md) :id=app_view_theme
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -111,9 +180,6 @@
 
 
 
-
-
-
 ## [类别(CATEGORY)](module/Base/category.md) :id=category
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -131,7 +197,7 @@
 |[取消置顶](module/Base/comment/logic/no_top)|no_top|无|||
 |[新建评论后通知](module/Base/comment/logic/after_create_notify)|after_create_notify|无||发表评论后，发送通知消息至相应负责人员、关注人员|
 |[评论置顶](module/Base/comment/logic/top)|top|无|||
-
+|[识别内容格式](module/Base/comment/logic/format_type)|format_type|属性逻辑||识别评论内容格式|
 
 
 
@@ -263,6 +329,10 @@
 |[删除执行人时发送通知](module/Base/executor/logic/del_notice)|del_notice|无||删除执行人时发送通知|
 |[执行人变更附加逻辑](module/Base/executor/logic/user_id_onchange)|user_id_onchange|属性逻辑||执行人变更附加逻辑|
 |[添加执行人时发送通知](module/Base/executor/logic/after_create_notice)|after_create_notice|无||添加执行人时发送通知|
+
+
+
+
 
 
 
@@ -450,6 +520,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[AI创建页面](module/Wiki/article_page/logic/ai_create_page)|ai_create_page|无|||
 |[保存命名版本](module/Wiki/article_page/logic/set_name_version)|set_name_version|无||设置命名版本：新建命名版本并保存|
 |[共享空间下搜索页面](module/Wiki/article_page/logic/space_shared_search)|space_shared_search|无||共享空间下搜索页面时使用|
 |[共享空间主页](module/Wiki/article_page/logic/space_shared_home)|space_shared_home|无||共享空间下获取主页|
@@ -674,8 +745,10 @@
 |[WebHook地址](module/extension/PSDELogic/logic/WebHook)|WebHook|属性逻辑||WebHook地址|
 |[从模板建立规则](module/extension/PSDELogic/logic/create_by_template)|create_by_template|无||从模板建立规则|
 |[切换启用状态](module/extension/PSDELogic/logic/valid)|valid|属性逻辑||切换启用状态|
+|[初始化规则](module/extension/PSDELogic/logic/initLogic)|initLogic|无|||
 |[失败率计算](module/extension/PSDELogic/logic/failure_per)|failure_per|属性逻辑||失败率计算|
 |[获取最后运行状态](module/extension/PSDELogic/logic/get_last_run_info)|get_last_run_info|无||获取最后运行状态|
+
 
 
 
@@ -703,7 +776,6 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[更新报表](module/extension/PSSysBIReport/logic/update_report)|update_report|无||更新报表|
-
 
 
 
@@ -752,7 +824,6 @@
 |[计算发布工作项数量](module/ProjMgmt/release/logic/cal_release_work_item_num)|cal_release_work_item_num|无||发布工作项数量计算|
 |[迭代取消关联发布](module/ProjMgmt/release/logic/del_relation)|del_relation|无||迭代取消关联发布|
 |[项目下发布（移动端）](module/ProjMgmt/release/logic/mob_project_release)|mob_project_release|无|||
-
 
 
 
@@ -862,7 +933,6 @@
 |[执行结果获取](module/TestMgmt/run_history/logic/run_history_get)|run_history_get|无||获取执行结果|
 
 
-
 ## [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment.md) :id=search_attachment
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -922,6 +992,7 @@
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/Wiki/space/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||空间删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/Wiki/space/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||空间归档或激活时触发相应的通知消息|
+|[标记主空间](module/Wiki/space/logic/mark_main_space)|mark_main_space|无|||
 |[激活](module/Wiki/space/logic/activate)|activate|无||激活已归档状态空间，修改空间的归档属性|
 |[生成最近访问](module/Wiki/space/logic/create_recent)|create_recent|无||在用户对空间数据进行了get或update操作时生成相应的访问记录|
 |[移出分类](module/Wiki/space/logic/move_out_category)|move_out_category|无||将空间移除分类|
@@ -929,6 +1000,7 @@
 |[空间组件权限计数器](module/Wiki/space/logic/space_addon_authority)|space_addon_authority|无||获取空间组件权限|
 |[自动创建主页](module/Wiki/space/logic/auto_create_home_page)|auto_create_home_page|无||附加在实体的CREATE行为后，自动生成模板化的主页|
 |[自动创建人员](module/Wiki/space/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员，若选择个人，则添加个人为所属成员。|
+|[获取关联的空间](module/Wiki/space/logic/get_re_space)|get_re_space|无|||
 |[获取快速新建空间集合](module/Wiki/space/logic/quick_create)|quick_create|无||用于获取可快速新建的空间集合|
 |[获取知识空间成员](module/Wiki/space/logic/get_space_member_one)|get_space_member_one|无||获取知识空间成员信息，用于判断当前用户权限|
 |[设置星标](module/Wiki/space/logic/favorite)|favorite|无||设置为星标产品|
@@ -1153,6 +1225,8 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[AI登记工时并更新剩余工时](module/Base/workload/logic/ai_save_workload)|ai_save_workload|无||保存实际登记工时记录，并计算重置剩余工时属性|
+|[AI登记预估工时](module/Base/workload/logic/ai_add_estimated_workload)|ai_add_estimated_workload|无|||
 |[产品需求维度工时日历查询](module/Base/workload/logic/idea_dimension)|idea_dimension|无||首页工作台工时日历：产品/产品需求维度查询数据使用|
 |[产品需求维度管理工时日历查询](module/Base/workload/logic/idea_management_dimension)|idea_management_dimension|无||工时管理菜单中工时日历：产品/产品需求维度查询数据使用|
 |[人员维度工时日历查询](module/Base/workload/logic/member_dimension)|member_dimension|无||工时管理菜单中工时日历：人员维度查询数据使用|
@@ -1241,7 +1315,7 @@
 |[获取工作项类型](module/ProjMgmt/work_item/logic/get_work_item_type)|get_work_item_type|无||链接跳转工作项主视图前，获取工作项类型|
 |[获取测试计划对应项目](module/ProjMgmt/work_item/logic/work_item_test_plan_project)|work_item_test_plan_project|无||获取测试计划对应项目|
 |[获取草稿](module/ProjMgmt/work_item/logic/custom_draft)|custom_draft|无|||
-|[获取项目成员](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前用户权限|
+|[获取项目成员及权限](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前用户权限|
 |[规划工作项](module/ProjMgmt/work_item/logic/plan_work_item)|plan_work_item|无||规划选中工作项至指定发布|
 |[设置初始排序值](module/ProjMgmt/work_item/logic/set_sequence)|set_sequence|无||设置初始排序值|
 |[设置执行人](module/ProjMgmt/work_item/logic/setting_executors)|setting_executors|无||设置执行人|

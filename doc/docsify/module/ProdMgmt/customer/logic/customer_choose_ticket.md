@@ -61,7 +61,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 
-1. 将`for_ticket(工单循环变量).owner_id` 设置给  `update_obj(更新对象).ID(标识)`
+1. 将`for_ticket(工单循环变量).target_id` 设置给  `update_obj(更新对象).ID(标识)`
 2. 将`Default(传入变量).customer_id` 设置给  `update_obj(更新对象).CUSTOMER_ID(客户标识)`
 
 #### 更新工单信息 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>

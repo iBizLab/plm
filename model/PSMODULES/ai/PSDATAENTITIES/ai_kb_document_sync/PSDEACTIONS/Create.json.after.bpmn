@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.ai_kb_document_sync.create.afterLogic" isClosed="false" isExecutable="true" name="ai_ai_kb_document_sync_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.ai_kb_document_sync.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.ai.service.logic.ai_kb_document_syncsync_create_doc" id="b270ebed1fe1071cb946ca2882bceda1_@_@_336daa10-e9e3-5d18-dd83-9748dadd4330" name="sync_create_doc.json.bpmn"/>
+                        <sequenceFlow id="begin_b270ebed1fe1071cb946ca2882bceda1_@_@_336daa10-e9e3-5d18-dd83-9748dadd4330" sourceRef="begin" targetRef="b270ebed1fe1071cb946ca2882bceda1_@_@_336daa10-e9e3-5d18-dd83-9748dadd4330"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.ai.service.logic.ai_kb_document_syncgenerate_space_scheduled" id="b270ebed1fe1071cb946ca2882bceda1_@_@_9f89d0f7-34ca-4df0-51b6-d75d306055a0" name="generate_space_scheduled.json.bpmn"/>
+                        <sequenceFlow id="b270ebed1fe1071cb946ca2882bceda1_@_@_336daa10-e9e3-5d18-dd83-9748dadd4330_b270ebed1fe1071cb946ca2882bceda1_@_@_9f89d0f7-34ca-4df0-51b6-d75d306055a0" sourceRef="b270ebed1fe1071cb946ca2882bceda1_@_@_336daa10-e9e3-5d18-dd83-9748dadd4330" targetRef="b270ebed1fe1071cb946ca2882bceda1_@_@_9f89d0f7-34ca-4df0-51b6-d75d306055a0"/>
+                            <sequenceFlow id="b270ebed1fe1071cb946ca2882bceda1_@_@_9f89d0f7-34ca-4df0-51b6-d75d306055a0_prepareparam1_end" sourceRef="b270ebed1fe1071cb946ca2882bceda1_@_@_9f89d0f7-34ca-4df0-51b6-d75d306055a0" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>
