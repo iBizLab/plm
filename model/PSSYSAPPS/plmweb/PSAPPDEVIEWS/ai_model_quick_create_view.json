@@ -23,7 +23,7 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "main",
+    "codeName" : "quick_create",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -42,7 +42,7 @@
       }
     },
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model/PSFORMS/main.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model/PSFORMS/quick_create.json",
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
@@ -87,7 +87,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
       }
     },
-    "logicName" : "主编辑表单",
+    "logicName" : "快速新建表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
@@ -270,6 +270,15 @@
         "codeName" : "model_capability"
       }
     }, {
+      "id" : "desc_oss_image",
+      "dataType" : 9,
+      "createDV" : "1",
+      "updateDV" : "1",
+      "getPSAppDEField" : {
+        "name" : "DESC_OSS_IMAGE",
+        "codeName" : "desc_oss_image"
+      }
+    }, {
       "id" : "api_base_url",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -343,8 +352,8 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
           "name" : "name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -365,7 +374,8 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false
+          "allowEmpty" : false,
+          "showCaption" : true
         }, {
           "caption" : "模型标识",
           "codeName" : "code_name",
@@ -374,7 +384,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "code_name",
           "noPrivDisplayMode" : 1,
@@ -402,7 +412,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "active",
           "noPrivDisplayMode" : 1,
@@ -429,7 +439,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "provider",
           "noPrivDisplayMode" : 1,
@@ -462,7 +472,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "ai_credential_name",
           "noPrivDisplayMode" : 1,
@@ -521,7 +531,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "model_category",
           "noPrivDisplayMode" : 1,
@@ -554,7 +564,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "model_capability",
           "noPrivDisplayMode" : 1,
@@ -571,9 +581,47 @@
             }
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
+            "colLG" : 16,
+            "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "多模态图片解析",
+          "codeName" : "desc_oss_image",
+          "createDV" : "1",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemWidth" : 230.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "desc_oss_image",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESC_OSS_IMAGE",
+            "codeName" : "desc_oss_image"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "desc_oss_image",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 12,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "1",
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true
@@ -585,7 +633,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "api_base_url",
           "noPrivDisplayMode" : 1,
@@ -612,7 +660,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "max_output_tokens",
           "noPrivDisplayMode" : 1,
@@ -639,7 +687,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 180,
           "name" : "max_context_tokens",
           "noPrivDisplayMode" : 1,
@@ -666,7 +714,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "extra_params",
           "noPrivDisplayMode" : 1,
@@ -804,7 +852,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "7998b180285c58adcfc0e1d28125bae7",
+    "modelid" : "052998a1dfaf7721cdde1965d0bab8e0",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "quick_create_view_toolbar",

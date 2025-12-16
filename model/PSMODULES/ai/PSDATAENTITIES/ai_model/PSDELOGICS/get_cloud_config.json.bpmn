@@ -12,10 +12,12 @@
                             <tns:global identifier="ai_modelget_cloud_configdefault" type="cn.ibizlab.plm.core.ai.domain.ai_model" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="设置流和vlm"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="设置流和vlm"/>
+                        <endEvent id="prepareparam_02_end" name="end"/>
+                        <sequenceFlow id="prepareparam_02_end_line" sourceRef="prepareparam_02" targetRef="prepareparam_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_07" id="prepareparam_07" implementation="http://www.jboss.org/drools/rule" name="准备多模态类型"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="发布oss配置代码"/>
                         <endEvent id="rawsfcode_01_end" name="end"/>
@@ -89,9 +91,16 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="begin_prepareparam_02" sourceRef="begin" targetRef="prepareparam_02">
+                    <sequenceFlow id="gateway-begin_prepareparam_02" sourceRef="gateway-begin" targetRef="prepareparam_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_modelget_cloud_configdefault:ai_model();
+                                            $ai_modelget_cloud_configmap:Map();
+                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("descOssImage"),"NOTEQ","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam_02_end_01" sourceRef="prepareparam_02" targetRef="end_01">
+                    <sequenceFlow id="begin_end_01" sourceRef="begin" targetRef="end_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_07_rawsfcode_01" sourceRef="prepareparam_07" targetRef="rawsfcode_01">
                     </sequenceFlow>

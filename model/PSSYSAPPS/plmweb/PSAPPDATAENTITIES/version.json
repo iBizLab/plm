@@ -1861,6 +1861,29 @@
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "NONE",
+    "caption" : "返回",
+    "codeName" : "back",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "version_back",
+    "name" : "返回",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "back"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+    },
+    "scriptCode" : "history.back()",
+    "tooltip" : "返回",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "back",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "id" : "back@version"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "创建新版本",
     "codeName" : "create_new_version",
     "getFrontPSAppView" : {
@@ -2157,6 +2180,128 @@
     "id" : "work_item_version_comparison@version"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "back",
+    "defaultParamName" : "Default",
+    "logicName" : "返回",
+    "memo" : "查看版本后，返回主表单按钮使用",
+    "name" : "返回",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.parentview.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.parentview.ctx.controllersMap.get(\"form\").details.version.state.visible=false;\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 510
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "parentView[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 410
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取父视图对象",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "name" : "view[parentView] ==> parentView",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "parentView",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 310
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "parentView",
+      "logicName" : "parentView",
+      "name" : "parentView",
+      "entityParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "表单",
+      "name" : "表单",
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "calc_column_button_state",
     "defaultParamName" : "Default",
     "logicName" : "计算表格列行为状态（version）",
@@ -2470,21 +2615,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "load",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "主表单重新加载",
-      "topPos" : 445
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2516,18 +2646,71 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 350
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "load",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "主表单重新加载",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 460
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type});",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 708
+    }, {
+      "code" : "uiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "组件显隐重置",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 584
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "form",
+      "logicName" : "主表单",
+      "name" : "主表单",
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "主表单",
-      "name" : "主表单",
-      "ctrlParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
@@ -2551,6 +2734,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_idea_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_test_case_list_view.json",
+    "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_edit_version_view.json",
