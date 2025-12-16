@@ -27,14 +27,14 @@
     "logicType" : "SCRIPT",
     "name" : "LOGIC",
     "getPSViewCtrlName" : "list",
-    "scriptCode" : "console.log(456);\r\nview.evt.emit('onSelectionChange', { data });"
+    "scriptCode" : "view.evt.emit('onSelectionChange', { data });"
   }, {
     "eventNames" : "onLoadSuccess",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "SCRIPT",
     "name" : "LOGIC2",
     "getPSViewCtrlName" : "list",
-    "scriptCode" : "let list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\n\r\nreturn (async function() {\r\n  console.log(123);\r\n  select_list.length = 0;\r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.ai_kb_document_wizard');\r\n    const data_list = service.local.getList();\r\n    // 遍历临时数据\r\n    data_list.forEach(item => {\r\n      if (item.import_method == undefined) {\r\n        for (let i = 0; i < list.length; i++) {\r\n          const it = list[i];\r\n          if (it.id == 'space_manual' && select_list.length == 0) {\r\n            view.layoutPanel.panelItems.list.control.state.selectedData.push(it);\r\n            view.evt.emit('onSelectionChange', { data });\r\n            break;\r\n          }\r\n        }\r\n      } else {\r\n        for (let j = 0; j < list.length; j++) {\r\n          const it = list[j];\r\n          if (it.id == item.import_method) {\r\n            item.import_method = undefined;\r\n            view.layoutPanel.panelItems.list.control.state.selectedData.push(it);\r\n            view.evt.emit('onSelectionChange', { data });\r\n            break;\r\n          }\r\n        }\r\n      }\r\n    })\r\n})();  \r\n\r\n\r\n"
+    "scriptCode" : "let list = view.layoutPanel.panelItems.list.control.state.items;\r\nlet select_list = view.layoutPanel.panelItems.list.control.state.selectedData;\r\n\r\nreturn (async function() {\r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.ai_kb_document_wizard');\r\n    const data_list = service.local.getList();\r\n    // 遍历临时数据\r\n    data_list.forEach(item => {\r\n      if (item.import_method == undefined) {\r\n        for (let i = 0; i < list.length; i++) {\r\n          const it = list[i];\r\n          if (it.id == 'space_manual' && select_list.length == 0) {\r\n            view.layoutPanel.panelItems.list.control.state.selectedData.push(it);\r\n            view.evt.emit('onSelectionChange', { data });\r\n            break;\r\n          }\r\n        }\r\n      } else {\r\n        for (let j = 0; j < list.length; j++) {\r\n          const it = list[j];\r\n          if (it.id == item.import_method) {\r\n            item.import_method = undefined;\r\n            view.layoutPanel.panelItems.list.control.state.selectedData.push(it);\r\n            view.evt.emit('onSelectionChange', { data });\r\n            break;\r\n          }\r\n        }\r\n      }\r\n    })\r\n})();  \r\n\r\n"
   }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",

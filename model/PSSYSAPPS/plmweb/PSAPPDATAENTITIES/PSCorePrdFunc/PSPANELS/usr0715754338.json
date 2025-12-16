@@ -517,12 +517,16 @@
               "uIActionTarget" : "NONE",
               "showCaption" : true
             }, {
-              "actionType" : "NONE",
+              "actionType" : "UIACTION",
               "buttonStyle" : "DEFAULT",
               "caption" : "重新加载",
               "itemStyle" : "DEFAULT",
               "itemType" : "BUTTON",
               "name" : "reload",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "itemlayoutpanel_reload"
+              },
               "getPSControlLogics" : [ {
                 "itemName" : "reload",
                 "logicTag" : "itemlayoutpanel",
@@ -535,8 +539,42 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEKEY",
+                "caption" : "重新加载",
+                "codeName" : "Reload",
+                "fullCodeName" : "PSCorePrdFunc_Reload",
+                "name" : "重新加载",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "reload"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                },
+                "getPSNavigateContexts" : [ {
+                  "key" : "PSCOREPRDFUNC",
+                  "name" : "PSCOREPRDFUNC",
+                  "value" : "pscoreprdfuncid",
+                  "rawValue" : false
+                } ],
+                "getPSNavigateParams" : [ {
+                  "key" : "n_pscoreprdid_eq",
+                  "name" : "n_pscoreprdid_eq",
+                  "value" : "srfv2systemid",
+                  "rawValue" : false
+                } ],
+                "successMsg" : "开始重新加载，请稍等片刻重新刷新页面！",
+                "timeout" : 60000,
+                "uIActionMode" : "BACKEND",
+                "uIActionTag" : "Reload",
+                "uIActionType" : "DEUIACTION",
+                "enableConfirm" : true,
+                "id" : "Reload@PSCorePrdFunc"
+              },
               "tooltip" : "重新加载",
-              "uIActionTarget" : "NONE",
+              "uIActionTarget" : "SINGLEKEY",
               "showCaption" : true
             } ]
           }, {

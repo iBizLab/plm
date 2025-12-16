@@ -2049,6 +2049,32 @@
           "modelref" : true,
           "id" : "PREPAREPARAM_02"
         },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "DESC_OSS_IMAGE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[DESC_OSS_IMAGE] 不等于(<>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
         "name" : "最后返回",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
@@ -2058,21 +2084,22 @@
       "topPos" : 170,
       "parallelOutput" : true
     }, {
+      "codeName" : "END_01",
+      "leftPos" : 1020,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 40,
+      "parallelOutput" : true
+    }, {
       "codeName" : "PREPAREPARAM_02",
-      "leftPos" : 670,
+      "leftPos" : 860,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置流和vlm",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM_02"
-        }
-      } ],
       "getPSDELogicNodeParams" : [ {
         "dstFieldName" : "descossimage",
         "getDstPSDELogicParam" : {
@@ -2083,19 +2110,7 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 70,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END_01",
-      "leftPos" : 1100,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "map"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 72,
+      "topPos" : 130,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_07",
@@ -2687,6 +2702,13 @@
     "name" : "AI大模型实体编辑视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "quick_create",
+    "logicName" : "快速新建表单",
+    "modelTag2" : "0",
+    "name" : "快速新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",

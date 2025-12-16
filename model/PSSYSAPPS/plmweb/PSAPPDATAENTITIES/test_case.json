@@ -9934,6 +9934,30 @@
     "id" : "check_review_history@test_case"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "查看版本",
+    "codeName" : "check_version",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "test_case_check_version",
+    "name" : "查看版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_version"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf18e@FontAwesome",
+      "cssClass" : "fa fa-arrow-circle-o-right"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "check_version",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "check_version@test_case"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "查看工时明细",
     "codeName" : "check_workload_detail",
     "frontProcessType" : "OTHER",
@@ -10349,6 +10373,48 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "copy_test_case@test_case"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "创建新版本",
+    "codeName" : "create_new_version",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "test_case_create_new_version",
+    "name" : "建立版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "reset"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "owner_id",
+      "name" : "owner_id",
+      "value" : "test_case",
+      "rawValue" : false
+    }, {
+      "key" : "owner_type",
+      "name" : "owner_type",
+      "value" : "TEST_CASE",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_new_version",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "reloadData" : true,
+    "id" : "create_new_version@test_case"
   }, {
     "actionTarget" : "MULTIKEY",
     "caption" : "删除",
@@ -11802,6 +11868,54 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "check_version",
+    "defaultParamName" : "Default",
+    "logicName" : "查看版本",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看版本",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "check_workload_detail",
     "defaultParamName" : "Default",
     "logicName" : "查看工时明细",
@@ -12997,6 +13111,118 @@
       "logicName" : "门户部件",
       "name" : "门户部件",
       "activeCtrlParam" : true,
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "reset",
+    "defaultParamName" : "Default",
+    "logicName" : "组件显隐重置",
+    "name" : "组件显隐重置",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 340
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "load",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 446
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "指定部件对象",
+      "name" : "指定部件对象",
       "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -14400,11 +14626,12 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "添加附件",
       "detailType" : "DEUIACTION",
-      "name" : "ubeba57d",
+      "name" : "u69bc7c7",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
       },
+      "visibleScriptCode" : "context.srfreadonly != true",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,

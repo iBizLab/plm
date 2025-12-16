@@ -22,6 +22,13 @@
     "engineType" : "WizardView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onCloseView",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGIC",
+    "scriptCode" : "return (async function() { \r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmweb.ai_kb_document_wizard');\r\n    const list = service.local.getList();\r\n    // 遍历临时数据删除\r\n    list.forEach(item => {\r\n        service.local.delete(context, item.id);\r\n    })\r\n})();\r\n"
+  } ],
   "getPSControls" : [ {
     "codeName" : "create_wizard_view",
     "controlType" : "WIZARDPANEL",
@@ -472,7 +479,7 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "selected_page_name"
         } ],
-        "scriptCode" : "console.log(\"change_page\",data);\r\nlet temp_page_selection = data.temp_page_selection;\r\nlet pages = temp_page_selection.split(',').map(item => item.trim()).map(value => {\r\n    return {\r\n        ai_kb_doc_name: value\r\n    };\r\n});\r\ndata.selected_page_name=pages;",
+        "scriptCode" : "console.log(\"change_page\",data);\r\nlet selection_page_names = data.selection_page_names;\r\nlet pages = selection_page_names.split(',').map(item => item.trim()).map(value => {\r\n    return {\r\n        ai_kb_doc_name: value\r\n    };\r\n});\r\ndata.selected_page_name=pages;",
         "customCode" : true
       }, {
         "codeName" : "fill_selection_file",
@@ -546,8 +553,12 @@
           "codeName" : "sync_frequency"
         }
       }, {
-        "id" : "temp_page_selection",
-        "dataType" : 25
+        "id" : "selection_page_names",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "SELECTION_PAGE_NAMES",
+          "codeName" : "selection_page_names"
+        }
       }, {
         "id" : "selection_page_ids",
         "hidden" : true,
@@ -695,7 +706,7 @@
             "showCaption" : true
           }, {
             "caption" : "选择页面",
-            "codeName" : "temp_page_selection",
+            "codeName" : "selection_page_names",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -704,8 +715,12 @@
             "itemHeight" : 470.0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "temp_page_selection",
+            "name" : "selection_page_names",
             "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SELECTION_PAGE_NAMES",
+              "codeName" : "selection_page_names"
+            },
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
@@ -745,7 +760,7 @@
                 "isshowtext" : "false"
               },
               "editorType" : "PICKUPVIEW",
-              "name" : "temp_page_selection",
+              "name" : "selection_page_names",
               "getPSEditorItems" : [ {
                 "name" : "selection_page_ids"
               } ],
