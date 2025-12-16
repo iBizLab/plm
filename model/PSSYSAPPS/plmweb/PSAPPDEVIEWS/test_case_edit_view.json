@@ -277,6 +277,15 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "remaining_update",
+      "name" : "剩余工时表单项更新",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "workload_schedule"
+      } ],
+      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
+      "customCode" : true,
+      "showBusyIndicator" : false
+    }, {
       "codeName" : "estimated_update",
       "name" : "预估工时表单项更新",
       "getPSDEFIUpdateDetails" : [ {
@@ -285,15 +294,6 @@
         "name" : "workload_schedule"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-      "customCode" : true,
-      "showBusyIndicator" : false
-    }, {
-      "codeName" : "remaining_update",
-      "name" : "剩余工时表单项更新",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "workload_schedule"
-      } ],
-      "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
       "customCode" : true,
       "showBusyIndicator" : false
     } ],
@@ -13099,6 +13099,7 @@
                         "uIActionTag" : "create_new_version",
                         "uIActionType" : "DEUIACTION",
                         "uILogicAttachMode" : "AFTER",
+                        "globalUIAction" : true,
                         "reloadData" : true,
                         "id" : "create_new_version@version"
                       },
@@ -13711,12 +13712,87 @@
                 "enableLinkView" : false
               },
               "getPSLayoutPos" : {
-                "colMD" : 24,
+                "colLG" : 21,
+                "colMD" : 21,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
               "convertToCodeItemText" : true,
               "showCaption" : true
+            }, {
+              "codeName" : "grouppanel16",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "GROUPPANEL",
+              "name" : "grouppanel16",
+              "getPSDEFormDetails" : [ {
+                "actionType" : "UIACTION",
+                "buttonStyle" : "STYLE2",
+                "caption" : "移入计划",
+                "codeName" : "button7",
+                "detailStyle" : "STYLE2",
+                "detailType" : "BUTTON",
+                "name" : "button7",
+                "getPSAppViewUIAction" : {
+                  "modelref" : true,
+                  "id" : "form_button7"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf18e@FontAwesome",
+                  "cssClass" : "fa fa-arrow-circle-o-right"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "SINGLEKEY",
+                  "caption" : "移入计划",
+                  "codeName" : "shift_in_plan",
+                  "getFrontPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_pick_up_around_view.json",
+                    "viewType" : "DEPICKUPVIEW2"
+                  },
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "test_case_shift_in_plan",
+                  "name" : "移入计划",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "getPSNavigateParams" : [ {
+                    "key" : "testcaseid",
+                    "name" : "testcaseid",
+                    "value" : "test_case",
+                    "rawValue" : false
+                  } ],
+                  "getPSSysImage" : {
+                    "glyph" : "xf064@FontAwesome",
+                    "cssClass" : "fa fa-share"
+                  },
+                  "refreshMode" : 1,
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "shift_in_plan",
+                  "uIActionType" : "DEUIACTION",
+                  "reloadData" : true,
+                  "id" : "shift_in_plan@test_case"
+                },
+                "tooltip" : "移入计划",
+                "uIActionTarget" : "SINGLEKEY",
+                "showCaption" : true
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 3,
+                "colMD" : 3,
+                "layout" : "TABLE_24COL"
+              },
+              "infoGroupMode" : false,
+              "showCaption" : false
             }, {
               "getCapPSLanguageRes" : {
                 "lanResTag" : "DEF.LNAME.ID"
