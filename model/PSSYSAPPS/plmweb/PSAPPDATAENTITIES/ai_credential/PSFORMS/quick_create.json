@@ -1,5 +1,5 @@
 {
-  "codeName" : "main",
+  "codeName" : "quick_create",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,11 +14,11 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool/PSFORMS/main.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential/PSFORMS/quick_create.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -28,7 +28,7 @@
     "name" : "loaddraftfrom",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
   "getGetDraftPSControlAction" : {
@@ -44,7 +44,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
   "getGetPSControlAction" : {
@@ -60,13 +60,13 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
-  "logicName" : "主编辑表单",
+  "logicName" : "快速新建表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
   },
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -120,25 +120,40 @@
       "codeName" : "name"
     }
   }, {
-    "id" : "tool_type",
+    "id" : "code_name",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "TOOL_TYPE",
-      "codeName" : "tool_type"
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
     }
   }, {
-    "id" : "tool_tag",
-    "dataType" : 25,
+    "id" : "active",
+    "dataType" : 9,
     "getPSAppDEField" : {
-      "name" : "TOOL_TAG",
-      "codeName" : "tool_tag"
+      "name" : "ACTIVE",
+      "codeName" : "active"
     }
   }, {
-    "id" : "api_auth_type",
+    "id" : "provider",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "API_AUTH_TYPE",
-      "codeName" : "api_auth_type"
+      "name" : "PROVIDER",
+      "codeName" : "provider"
+    }
+  }, {
+    "id" : "credential_type",
+    "dataType" : 25,
+    "createDV" : "api_key",
+    "getPSAppDEField" : {
+      "name" : "CREDENTIAL_TYPE",
+      "codeName" : "credential_type"
+    }
+  }, {
+    "id" : "description",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
     }
   }, {
     "id" : "api_key",
@@ -162,6 +177,13 @@
       "codeName" : "secret_key"
     }
   }, {
+    "id" : "region",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "REGION",
+      "codeName" : "region"
+    }
+  }, {
     "id" : "client_id",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -183,46 +205,18 @@
       "codeName" : "client_secret"
     }
   }, {
+    "id" : "scope",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SCOPE",
+      "codeName" : "scope"
+    }
+  }, {
     "id" : "bearer_token",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "BEARER_TOKEN",
       "codeName" : "bearer_token"
-    }
-  }, {
-    "id" : "api_url",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "API_URL",
-      "codeName" : "api_url"
-    }
-  }, {
-    "id" : "api_method",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "API_METHOD",
-      "codeName" : "api_method"
-    }
-  }, {
-    "id" : "api_headers",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "API_HEADERS",
-      "codeName" : "api_headers"
-    }
-  }, {
-    "id" : "input_schema",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "INPUT_SCHEMA",
-      "codeName" : "input_schema"
-    }
-  }, {
-    "id" : "timeout",
-    "dataType" : 9,
-    "getPSAppDEField" : {
-      "name" : "TIMEOUT",
-      "codeName" : "timeout"
     }
   }, {
     "id" : "id",
@@ -235,7 +229,7 @@
   } ],
   "getPSDEFormPages" : [ {
     "getCapPSLanguageRes" : {
-      "lanResTag" : "CONTROL.DEFORM.AI_TOOL.MAIN.FORMPAGE.FORMPAGE1"
+      "lanResTag" : "CONTROL.DEFORM.AI_CREDENTIAL.MAIN.FORMPAGE.FORMPAGE1"
     },
     "caption" : "基本信息",
     "codeName" : "formpage1",
@@ -244,26 +238,26 @@
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.AI_TOOL.MAIN.GROUPPANEL.GROUP1"
+        "lanResTag" : "CONTROL.DEFORM.AI_CREDENTIAL.MAIN.GROUPPANEL.GROUP1"
       },
-      "caption" : "AI调用工具基本信息",
+      "caption" : "AI凭证基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_TOOL.NAME"
+          "lanResTag" : "DEF.LNAME.AI_CREDENTIAL.NAME"
         },
-        "caption" : "AI调用工具名称",
+        "caption" : "名称",
         "codeName" : "name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
         "name" : "name",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
@@ -277,41 +271,96 @@
           "editorType" : "TEXTAREA",
           "maxLength" : 200,
           "name" : "name",
-          "placeHolder" : "工具名称",
+          "placeHolder" : "凭证名称",
           "showMaxLength" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : false
+        "allowEmpty" : false,
+        "showCaption" : true
       }, {
-        "caption" : "工具类型",
-        "codeName" : "tool_type",
+        "caption" : "代码标识",
+        "codeName" : "code_name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
+        "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "tool_type",
+        "name" : "code_name",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "TOOL_TYPE",
-          "codeName" : "tool_type"
+          "name" : "CODE_NAME",
+          "codeName" : "code_name"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "code_name"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 16,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "showCaption" : true
+      }, {
+        "caption" : "启用",
+        "codeName" : "active",
+        "dataType" : 9,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "active",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTIVE",
+          "codeName" : "active"
+        },
+        "getPSEditor" : {
+          "editorType" : "CHECKBOX",
+          "name" : "active"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 8,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "showCaption" : true
+      }, {
+        "caption" : "模型提供商",
+        "codeName" : "provider",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "provider",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PROVIDER",
+          "codeName" : "provider"
         },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
-          "name" : "tool_type",
+          "name" : "provider",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__tool_type_codelist.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_model_provider.json"
           },
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
-          "colLG" : 16,
+          "colLG" : 8,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
@@ -319,55 +368,28 @@
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
-        "caption" : "工具标记",
-        "codeName" : "tool_tag",
+        "caption" : "凭证类型",
+        "codeName" : "credential_type",
+        "createDV" : "api_key",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
+        "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "tool_tag",
+        "name" : "credential_type",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "TOOL_TAG",
-          "codeName" : "tool_tag"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "maxLength" : 200,
-          "name" : "tool_tag"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 8,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "认证方式",
-        "codeName" : "api_auth_type",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "api_auth_type",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "API_AUTH_TYPE",
-          "codeName" : "api_auth_type"
+          "name" : "CREDENTIAL_TYPE",
+          "codeName" : "credential_type"
         },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
-          "name" : "api_auth_type",
+          "name" : "credential_type",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_auth_type_codelist.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__credential_type.json"
           },
           "singleSelect" : true
         },
@@ -376,8 +398,39 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : true,
+        "allowEmpty" : false,
         "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "用途说明",
+        "codeName" : "description",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "description",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "DESCRIPTION",
+          "codeName" : "description"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "isAuto" : "true"
+          },
+          "editorType" : "TEXTAREA",
+          "maxLength" : 2000,
+          "name" : "description",
+          "showMaxLength" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
         "showCaption" : true
       }, {
         "caption" : "API Key",
@@ -391,12 +444,12 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "condOP" : "EQ",
-            "dEFDName" : "api_auth_type",
+            "dEFDName" : "credential_type",
             "logicType" : "SINGLE",
-            "name" : "api_auth_type等于(=) api_key",
+            "name" : "credential_type等于(=) api_key",
             "value" : "api_key"
           } ],
-          "relatedDetailNames" : [ "api_auth_type" ],
+          "relatedDetailNames" : [ "credential_type" ],
           "notMode" : false
         } ],
         "getPSDEFormDetails" : [ {
@@ -407,7 +460,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "api_key",
           "noPrivDisplayMode" : 1,
@@ -450,12 +503,12 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "condOP" : "EQ",
-            "dEFDName" : "api_auth_type",
+            "dEFDName" : "credential_type",
             "logicType" : "SINGLE",
-            "name" : "api_auth_type等于(=) access_key_secret",
+            "name" : "credential_type等于(=) access_key_secret",
             "value" : "access_key_secret"
           } ],
-          "relatedDetailNames" : [ "api_auth_type" ],
+          "relatedDetailNames" : [ "credential_type" ],
           "notMode" : false
         } ],
         "getPSDEFormDetails" : [ {
@@ -466,7 +519,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "access_key",
           "noPrivDisplayMode" : 1,
@@ -496,7 +549,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "secret_key",
           "noPrivDisplayMode" : 1,
@@ -531,6 +584,59 @@
         "infoGroupMode" : false,
         "showCaption" : true
       }, {
+        "caption" : "区域",
+        "codeName" : "region",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "region",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "REGION",
+          "codeName" : "region"
+        },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "credential_type",
+              "logicType" : "SINGLE",
+              "name" : "credential_type等于(=) api_key",
+              "value" : "api_key"
+            }, {
+              "condOP" : "EQ",
+              "dEFDName" : "credential_type",
+              "logicType" : "SINGLE",
+              "name" : "credential_type等于(=) access_key_secret",
+              "value" : "access_key_secret"
+            } ],
+            "notMode" : false
+          } ],
+          "relatedDetailNames" : [ "credential_type" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "region"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
         "caption" : "OAuth2 Client",
         "codeName" : "grouppanel2",
         "detailStyle" : "DEFAULT",
@@ -542,12 +648,12 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "condOP" : "EQ",
-            "dEFDName" : "api_auth_type",
+            "dEFDName" : "credential_type",
             "logicType" : "SINGLE",
-            "name" : "api_auth_type等于(=) oauth2",
-            "value" : "oauth2"
+            "name" : "credential_type等于(=) oauth2_client",
+            "value" : "oauth2_client"
           } ],
-          "relatedDetailNames" : [ "api_auth_type" ],
+          "relatedDetailNames" : [ "credential_type" ],
           "notMode" : false
         } ],
         "getPSDEFormDetails" : [ {
@@ -558,7 +664,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "client_id",
           "noPrivDisplayMode" : 1,
@@ -586,7 +692,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "token_url",
           "noPrivDisplayMode" : 1,
@@ -618,7 +724,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "client_secret",
           "noPrivDisplayMode" : 1,
@@ -633,6 +739,33 @@
             "editorType" : "PASSWORD",
             "maxLength" : 1048576,
             "name" : "client_secret"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "权限范围",
+          "codeName" : "scope",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE",
+            "codeName" : "scope"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "scope"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -664,12 +797,12 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "condOP" : "EQ",
-            "dEFDName" : "api_auth_type",
+            "dEFDName" : "credential_type",
             "logicType" : "SINGLE",
-            "name" : "api_auth_type等于(=) bearer_token",
+            "name" : "credential_type等于(=) bearer_token",
             "value" : "bearer_token"
           } ],
-          "relatedDetailNames" : [ "api_auth_type" ],
+          "relatedDetailNames" : [ "credential_type" ],
           "notMode" : false
         } ],
         "getPSDEFormDetails" : [ {
@@ -680,7 +813,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "bearer_token",
           "noPrivDisplayMode" : 1,
@@ -714,159 +847,6 @@
         },
         "infoGroupMode" : false,
         "showCaption" : true
-      }, {
-        "caption" : "接口地址",
-        "codeName" : "api_url",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "api_url",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "API_URL",
-          "codeName" : "api_url"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "maxLength" : 500,
-          "name" : "api_url"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 16,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "HTTP 方法",
-        "codeName" : "api_method",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 80,
-        "name" : "api_method",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "API_METHOD",
-          "codeName" : "api_method"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "api_method",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__api_method_codelist.json"
-          },
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "请求头",
-        "codeName" : "api_headers",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "api_headers",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "API_HEADERS",
-          "codeName" : "api_headers"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
-          "editorType" : "TEXTAREA",
-          "maxLength" : 2000,
-          "name" : "api_headers",
-          "showMaxLength" : true
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "输入参数 Schema",
-        "codeName" : "input_schema",
-        "dataType" : 21,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 137,
-        "name" : "input_schema",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "INPUT_SCHEMA",
-          "codeName" : "input_schema"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
-          "editorType" : "TEXTAREA",
-          "maxLength" : 1048576,
-          "name" : "input_schema",
-          "showMaxLength" : true
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "超时时间",
-        "codeName" : "timeout",
-        "dataType" : 9,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "timeout",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "TIMEOUT",
-          "codeName" : "timeout"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
-          "editorType" : "NUMBER",
-          "name" : "timeout"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 16,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -881,9 +861,9 @@
       "showCaption" : false
     }, {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.AI_TOOL.ID"
+        "lanResTag" : "DEF.LNAME.AI_CREDENTIAL.ID"
       },
-      "caption" : "AI调用工具标识",
+      "caption" : "标识",
       "codeName" : "id",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
@@ -934,7 +914,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
   "tabHeaderPos" : "TOP",
@@ -951,10 +931,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_tool.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_credential.json"
     }
   },
   "noTabHeader" : true,
-  "modelid" : "514b37489569e90be2bc456034da6991",
+  "modelid" : "87a5c6b5efe2dfb1961b806fab13e2c2",
   "modeltype" : "PSDEFORM_EDITFORM"
 }
