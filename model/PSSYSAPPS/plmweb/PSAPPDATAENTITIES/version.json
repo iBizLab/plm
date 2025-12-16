@@ -2615,40 +2615,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "load",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "主表单重新加载",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        }
-      } ],
-      "topPos" : 460
-    }, {
-      "code" : "uiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "组件显隐重置",
-      "topPos" : 584
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2680,8 +2646,66 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 350
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "load",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "主表单重新加载",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 460
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type});",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 708
+    }, {
+      "code" : "uiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.parentView.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "组件显隐重置",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 584
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "form",
+      "logicName" : "主表单",
+      "name" : "主表单",
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -2692,11 +2716,6 @@
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "主表单",
-      "name" : "主表单",
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
