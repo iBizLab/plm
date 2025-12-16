@@ -9933,43 +9933,20 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "check_review_history@test_case"
   }, {
-    "actionTarget" : "SINGLEDATA",
+    "actionTarget" : "NONE",
     "caption" : "查看版本",
     "codeName" : "check_version",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_test_case_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
-    },
-    "frontProcessType" : "WIZARD",
+    "frontProcessType" : "OTHER",
     "fullCodeName" : "test_case_check_version",
     "name" : "查看版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_version"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
     },
-    "getPSNavigateContexts" : [ {
-      "key" : "OWNER_TYPE",
-      "name" : "OWNER_TYPE",
-      "value" : "TEST_CASE",
-      "rawValue" : true
-    }, {
-      "key" : "COMPARE_VERSION",
-      "name" : "COMPARE_VERSION",
-      "value" : "cur_version_id",
-      "rawValue" : false
-    }, {
-      "key" : "OWNER_ID",
-      "name" : "OWNER_ID",
-      "value" : "test_case",
-      "rawValue" : false
-    } ],
-    "getPSNavigateParams" : [ {
-      "key" : "n_owner_id_eq",
-      "name" : "n_owner_id_eq",
-      "value" : "test_case",
-      "rawValue" : false
-    } ],
     "getPSSysImage" : {
       "glyph" : "xf18e@FontAwesome",
       "cssClass" : "fa fa-arrow-circle-o-right"
@@ -9977,6 +9954,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check_version",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
     "id" : "check_version@test_case"
   }, {
     "actionTarget" : "NONE",
@@ -11825,6 +11803,54 @@
       "topPos" : 200
     }, {
       "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel11.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "check_version",
+    "defaultParamName" : "Default",
+    "logicName" : "查看版本",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看版本",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel17.state.visible=true;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -14446,11 +14472,12 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "添加附件",
       "detailType" : "DEUIACTION",
-      "name" : "ubeba57d",
+      "name" : "u69bc7c7",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
       },
+      "visibleScriptCode" : "context.srfreadonly != true",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
