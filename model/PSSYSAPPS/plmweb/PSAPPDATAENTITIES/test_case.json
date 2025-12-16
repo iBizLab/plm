@@ -10385,6 +10385,10 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "test_case_create_new_version",
     "name" : "建立版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "reset"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
@@ -10408,6 +10412,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_version",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "reloadData" : true,
     "id" : "create_new_version@test_case"
   }, {
@@ -13107,6 +13112,49 @@
       "name" : "门户部件",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "reset",
+    "defaultParamName" : "Default",
+    "logicName" : "组件显隐重置",
+    "name" : "组件显隐重置",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 359
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
