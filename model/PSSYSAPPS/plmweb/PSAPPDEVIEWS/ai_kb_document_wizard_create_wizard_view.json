@@ -418,7 +418,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document_wizard.json"
         }
       },
-      "hookEventNames" : [ "SAVE", "LOAD" ],
+      "hookEventNames" : [ "ONLOADSUCCESS", "SAVE", "LOAD" ],
       "logicName" : "选择文件",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -454,6 +454,13 @@
         "id" : "wizardpanel_form_file_selection"
       },
       "getPSControlLogics" : [ {
+        "eventNames" : "onLoadSuccess",
+        "itemName" : "temp_page_selection",
+        "logicTag" : "wizardpanel_form_file_selection",
+        "logicType" : "SCRIPT",
+        "name" : "logic",
+        "scriptCode" : "console.log('测试内容')"
+      }, {
         "eventNames" : "SAVE",
         "logicTag" : "wizardpanel_form_file_selection",
         "logicType" : "CUSTOM",
