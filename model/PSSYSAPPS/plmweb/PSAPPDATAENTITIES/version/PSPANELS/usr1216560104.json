@@ -74,49 +74,27 @@
           "itemType" : "FIELD",
           "name" : "create_man",
           "getPSEditor" : {
-            "editorParams" : {
-              "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
-              "AC" : "TRUE",
-              "SRFNAVPARAM.n_status_eq" : "1",
-              "TRIGGER" : "TRUE",
-              "URL" : "libraries/${context.library}/library_members/fetch_default",
-              "PICKUPVIEW" : "FALSE",
-              "USERMETHOD" : "post",
-              "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-              "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
-              "DEPTMETHOD" : "get",
-              "DEPTURL" : "/users/fetch_default"
-            },
-            "editorStyle" : "PERSONEL_SELECT_LIBRARY",
-            "editorType" : "PICKEREX_TRIGGER",
+            "editorStyle" : "PERSONNEL_INFO",
+            "editorType" : "SPAN",
             "name" : "create_man",
-            "getPSNavigateParams" : [ {
-              "key" : "n_department_id_eq",
-              "name" : "n_department_id_eq",
-              "value" : "srforgsectorid",
-              "rawValue" : false
-            }, {
-              "key" : "n_status_eq",
-              "name" : "n_status_eq",
-              "value" : "1",
-              "rawValue" : true
-            } ],
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+            },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "PERSON_SELECT",
+              "pluginCode" : "PERSONNEL_INFO",
               "runtimeObject" : true
             },
-            "enableAC" : true,
-            "enablePickupView" : false,
-            "forceSelection" : true,
-            "showTrigger" : true,
-            "singleSelect" : true
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "create_man"
+          "viewFieldName" : "create_man",
+          "convertToCodeItemText" : true
         }, {
           "caption" : "文本(动态)",
           "itemStyle" : "DEFAULT",
@@ -168,6 +146,7 @@
           },
           "viewFieldName" : "name"
         }, {
+          "actionGroupExtractMode" : "ITEMS",
           "caption" : "按钮组",
           "itemStyle" : "STYLE2",
           "itemType" : "BUTTONLIST",
@@ -177,8 +156,8 @@
             "layout" : "FLEX"
           },
           "getPSSysImage" : {
-            "glyph" : "xf0ca@FontAwesome",
-            "cssClass" : "fa fa-list-ul"
+            "glyph" : "xf142@FontAwesome",
+            "cssClass" : "fa fa-ellipsis-v"
           },
           "getPSUIActionGroup" : {
             "codeName" : "test_case_operate",
