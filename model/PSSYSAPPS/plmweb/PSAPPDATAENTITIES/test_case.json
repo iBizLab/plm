@@ -13130,7 +13130,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -13142,14 +13142,74 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 446
+    }, {
       "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
-      "topPos" : 359
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 340
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "form",
+      "logicName" : "指定部件对象",
+      "name" : "指定部件对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
