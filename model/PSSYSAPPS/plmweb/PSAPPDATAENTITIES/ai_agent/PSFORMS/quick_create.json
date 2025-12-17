@@ -192,7 +192,6 @@
   }, {
     "id" : "welcome_message",
     "dataType" : 21,
-    "createDV" : "<user>  </user>",
     "getPSAppDEField" : {
       "name" : "WELCOME_MESSAGE",
       "codeName" : "welcome_message"
@@ -530,51 +529,51 @@
           "allowEmpty" : true,
           "showCaption" : true
         }, {
+          "caption" : "生成模式",
+          "codeName" : "generation_mode",
+          "createDV" : "precise",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 77,
+          "name" : "generation_mode",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "GENERATION_MODE",
+            "codeName" : "generation_mode"
+          },
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "compute"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "rendermode" : "button"
+            },
+            "editorType" : "RADIOBUTTONLIST",
+            "name" : "generation_mode",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_mode.json"
+            }
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
           "codeName" : "grouppanel9",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel9",
           "getPSDEFormDetails" : [ {
-            "caption" : "生成模式",
-            "codeName" : "generation_mode",
-            "createDV" : "precise",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 77,
-            "name" : "generation_mode",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "GENERATION_MODE",
-              "codeName" : "generation_mode"
-            },
-            "getPSDEFormItemUpdate" : {
-              "modelref" : true,
-              "id" : "compute"
-            },
-            "getPSEditor" : {
-              "editorParams" : {
-                "rendermode" : "button"
-              },
-              "editorType" : "RADIOBUTTONLIST",
-              "name" : "generation_mode",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_mode.json"
-              }
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 11,
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "needCodeListConfig" : true,
-            "showCaption" : true
-          }, {
             "codeName" : "grouppanel8",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
@@ -615,7 +614,8 @@
                 "stepValue" : 0.01
               },
               "getPSLayoutPos" : {
-                "colMD" : 24,
+                "colLG" : 12,
+                "colMD" : 12,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
@@ -656,7 +656,8 @@
                 "stepValue" : 0.01
               },
               "getPSLayoutPos" : {
-                "colMD" : 24,
+                "colLG" : 12,
+                "colMD" : 12,
                 "layout" : "TABLE_24COL"
               },
               "valueFormat" : "0.01",
@@ -664,12 +665,12 @@
               "showCaption" : true
             } ],
             "getPSLayout" : {
-              "childColMD" : 24,
+              "childColLG" : 12,
+              "childColMD" : 12,
               "columnCount" : 24,
               "layout" : "TABLE_24COL"
             },
             "getPSLayoutPos" : {
-              "colLG" : 13,
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
@@ -706,16 +707,36 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel7",
         "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem1",
+          "contentType" : "INFO",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "INFO",
+            "name" : "rawitem1",
+            "rawContent" : "{\"title\":\"欢迎消息模版：如果是用户身份信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "{\"title\":\"欢迎消息模版：如果是用户身份信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
           "caption" : "欢迎消息模板",
           "codeName" : "welcome_message",
-          "createDV" : "<user>  </user>",
           "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
           "name" : "welcome_message",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -723,10 +744,6 @@
             "codeName" : "welcome_message"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "ISAUTO" : "true",
-              "appCodeListId" : "ai__ai_message_role"
-            },
             "editorType" : "MARKDOWN",
             "maxLength" : 1048576,
             "mode" : "EDIT",
@@ -737,8 +754,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "showCaption" : true
+          "allowEmpty" : true
         }, {
           "caption" : "预置建议问题",
           "codeName" : "suggested_questions",
@@ -792,6 +808,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
+          "itemWidth" : 230.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "enable_suggested_questions",
@@ -801,8 +818,14 @@
             "codeName" : "enable_suggested_questions"
           },
           "getPSEditor" : {
-            "editorType" : "SWITCH",
-            "name" : "enable_suggested_questions"
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "enable_suggested_questions",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 4,
@@ -810,6 +833,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "caption" : "自定义建议提示词",
@@ -819,8 +843,8 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
           "name" : "custom_suggestion_prompt",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -842,9 +866,6 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
-            "editorParams" : {
-              "ISAUTO" : "true"
-            },
             "editorType" : "MARKDOWN",
             "maxLength" : 1048576,
             "mode" : "EDIT",
@@ -857,8 +878,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
-          "showCaption" : true
+          "allowEmpty" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -885,6 +905,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
+          "itemWidth" : 230.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "enable_tools",
@@ -894,8 +915,14 @@
             "codeName" : "enable_tools"
           },
           "getPSEditor" : {
-            "editorType" : "SWITCH",
-            "name" : "enable_tools"
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "enable_tools",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
@@ -903,6 +930,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "caption" : "最大工具调用次数",
@@ -2492,6 +2520,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
+          "itemWidth" : 230.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "enable_thinking",
@@ -2501,8 +2530,14 @@
             "codeName" : "enable_thinking"
           },
           "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "enable_thinking"
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "enable_thinking",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 6,
@@ -2510,6 +2545,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "caption" : "流式输出",
@@ -2519,6 +2555,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
+          "itemWidth" : 230.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "stream",
@@ -2528,8 +2565,14 @@
             "codeName" : "stream"
           },
           "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "stream"
+            "editorType" : "DROPDOWNLIST_100",
+            "editorWidth" : 100.0,
+            "name" : "stream",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 6,
@@ -2537,6 +2580,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -2557,6 +2601,7 @@
         "layout" : "TABLE_24COL"
       },
       "getPSLayoutPos" : {
+        "colLG" : 23,
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
