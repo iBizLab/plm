@@ -1633,23 +1633,23 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "estimated_update",
+        "name" : "预估工时表单项更新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "workload_schedule"
+        }, {
+          "name" : "remaining_workload"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
         "codeName" : "remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "workload_schedule"
         } ],
         "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
-        "customCode" : true,
-        "showBusyIndicator" : false
-      }, {
-        "codeName" : "estimated_update",
-        "name" : "预估工时表单项更新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "remaining_workload"
-        }, {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
         "customCode" : true,
         "showBusyIndicator" : false
       } ],
@@ -19322,8 +19322,8 @@
                               "cssClass" : "fa fa-ellipsis-v"
                             },
                             "getPSUIActionGroup" : {
-                              "codeName" : "test_case_operate",
-                              "name" : "用例版本表格操作列",
+                              "codeName" : "idea_operate",
+                              "name" : "产品需求版本表格操作列",
                               "getPSAppDataEntity" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
@@ -19331,7 +19331,7 @@
                               "getPSUIActionGroupDetails" : [ {
                                 "caption" : "编辑版本",
                                 "detailType" : "DEUIACTION",
-                                "name" : "ub4c4164",
+                                "name" : "u87cf2bc",
                                 "getPSSysImage" : {
                                   "glyph" : "xf044@FontAwesome",
                                   "cssClass" : "fa fa-edit"
@@ -19376,7 +19376,7 @@
                               }, {
                                 "caption" : "恢复版本",
                                 "detailType" : "DEUIACTION",
-                                "name" : "ua787862",
+                                "name" : "u674fe21",
                                 "getPSSysImage" : {
                                   "glyph" : "xf021@FontAwesome",
                                   "cssClass" : "fa fa-refresh"
@@ -19428,7 +19428,7 @@
                               }, {
                                 "caption" : "版本对比",
                                 "detailType" : "DEUIACTION",
-                                "name" : "ub49cd57",
+                                "name" : "u1dda521",
                                 "getPSSysImage" : {
                                   "glyph" : "xf0ec@FontAwesome",
                                   "cssClass" : "fa fa-exchange"
@@ -19436,15 +19436,15 @@
                                 "getPSUIAction" : {
                                   "actionTarget" : "SINGLEDATA",
                                   "caption" : "版本对比",
-                                  "codeName" : "test_case_version_comparison",
+                                  "codeName" : "idea_version_comparison",
                                   "getFrontPSAppView" : {
                                     "modelref" : true,
-                                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_version_comparison_view.json",
+                                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_version_comparison_view.json",
                                     "viewType" : "DEEDITVIEW"
                                   },
                                   "frontProcessType" : "WIZARD",
-                                  "fullCodeName" : "version_test_case_version_comparison",
-                                  "name" : "用例版本对比",
+                                  "fullCodeName" : "version_idea_version_comparison",
+                                  "name" : "需求版本对比",
                                   "getPSAppDataEntity" : {
                                     "modelref" : true,
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
@@ -19466,10 +19466,9 @@
                                   },
                                   "tooltip" : "版本对比",
                                   "uIActionMode" : "FRONT",
-                                  "uIActionTag" : "test_case_version_comparison",
+                                  "uIActionTag" : "idea_version_comparison",
                                   "uIActionType" : "DEUIACTION",
-                                  "globalUIAction" : true,
-                                  "id" : "test_case_version_comparison@version"
+                                  "id" : "idea_version_comparison@version"
                                 },
                                 "tooltip" : "版本对比",
                                 "visibleScriptCode" : "context.srfreadonly != true",
@@ -19477,7 +19476,7 @@
                                 "showCaption" : true,
                                 "showIcon" : true
                               } ],
-                              "uniqueTag" : "version__test_case_operate"
+                              "uniqueTag" : "version__idea_operate"
                             }
                           } ]
                         } ]
