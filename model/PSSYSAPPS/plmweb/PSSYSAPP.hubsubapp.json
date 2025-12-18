@@ -23758,7 +23758,7 @@
         "caption" : "卸载",
         "codeName" : "Uninstall",
         "fullCodeName" : "PSCorePrdFunc_Uninstall",
-        "name" : "卸载",
+        "name" : "禁用",
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "uninstall"
@@ -23794,6 +23794,49 @@
         "reloadData" : true,
         "id" : "Uninstall@PSCorePrdFunc"
       },
+      "visibleScriptCode" : "data.funcstate==1",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "重新加载",
+      "detailType" : "DEUIACTION",
+      "name" : "ud68208c",
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "重新加载",
+        "codeName" : "Reload",
+        "fullCodeName" : "PSCorePrdFunc_Reload",
+        "name" : "重新加载",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "reload"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PSCOREPRDFUNC",
+          "name" : "PSCOREPRDFUNC",
+          "value" : "pscoreprdfuncid",
+          "rawValue" : false
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "n_pscoreprdid_eq",
+          "name" : "n_pscoreprdid_eq",
+          "value" : "srfv2systemid",
+          "rawValue" : false
+        } ],
+        "successMsg" : "开始重新加载，请稍等片刻重新刷新页面！",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "Reload",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "id" : "Reload@PSCorePrdFunc"
+      },
+      "visibleScriptCode" : "data.funcstate==2 || data.funcstate==3",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true
@@ -23843,7 +23886,7 @@
         "caption" : "卸载",
         "codeName" : "Uninstall",
         "fullCodeName" : "PSCorePrdFunc_Uninstall",
-        "name" : "卸载",
+        "name" : "禁用",
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "uninstall"
