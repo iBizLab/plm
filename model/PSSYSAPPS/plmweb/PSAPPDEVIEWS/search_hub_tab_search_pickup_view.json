@@ -251,6 +251,12 @@
     "modelid" : "13e181003df2f31155d8dccb059cb6df",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
+      "eventNames" : "onSelectionChange",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "onSelectionChange",
+      "scriptCode" : "view.evt.emit('onSelectionChange', { data });"
+    }, {
       "eventNames" : "onMounted",
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
@@ -335,19 +341,19 @@
           "viewType" : "DEGRIDVIEW"
         }
       }, {
-        "name" : "EXPITEM:attachment",
-        "realTitle" : "评论高级搜索表格视图",
-        "getRefPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_pickview.json",
-          "viewType" : "DEGRIDVIEW"
-        }
-      }, {
         "name" : "EXPITEM:comment",
         "realTitle" : "附件高级搜索表格视图",
         "getRefPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_attachment_advanced_search_grid_pickview.json",
+          "viewType" : "DEGRIDVIEW"
+        }
+      }, {
+        "name" : "EXPITEM:attachment",
+        "realTitle" : "评论高级搜索表格视图",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_pickview.json",
           "viewType" : "DEGRIDVIEW"
         }
       } ],
@@ -391,6 +397,13 @@
             "name" : "engine"
           } ],
           "getPSAppViewLogics" : [ {
+            "eventNames" : "onSelectionChange",
+            "logicTrigger" : "CTRLEVENT",
+            "logicType" : "SCRIPT",
+            "name" : "SelectionChange",
+            "getPSViewCtrlName" : "grid",
+            "scriptCode" : "view.evt.emit('onSelectionChange', { data });"
+          }, {
             "logicTrigger" : "CUSTOM",
             "logicType" : "APPUILOGIC",
             "name" : "newdata",
@@ -1597,25 +1610,6 @@
         "modeltype" : "PSVIEWPANEL"
       }, {
         "caption" : "附件",
-        "codeName" : "tab_search_pickup_view_attachment",
-        "controlType" : "TABVIEWPANEL",
-        "getEmbeddedPSAppDEView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_pickview.json",
-          "viewType" : "DEGRIDVIEW"
-        },
-        "name" : "attachment",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
-        },
-        "getPSControlParam" : {
-          "id" : "attachment"
-        },
-        "modelid" : "33c1e6d3acb7d89d10ec4b619dde5a65_attachment",
-        "modeltype" : "PSVIEWPANEL"
-      }, {
-        "caption" : "评论",
         "codeName" : "tab_search_pickup_view_comment",
         "controlType" : "TABVIEWPANEL",
         "getEmbeddedPSAppDEView" : {
@@ -1633,6 +1627,25 @@
         },
         "modelid" : "33c1e6d3acb7d89d10ec4b619dde5a65_comment",
         "modeltype" : "PSVIEWPANEL"
+      }, {
+        "caption" : "评论",
+        "codeName" : "tab_search_pickup_view_attachment",
+        "controlType" : "TABVIEWPANEL",
+        "getEmbeddedPSAppDEView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_pickview.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "name" : "attachment",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
+        },
+        "getPSControlParam" : {
+          "id" : "attachment"
+        },
+        "modelid" : "33c1e6d3acb7d89d10ec4b619dde5a65_attachment",
+        "modeltype" : "PSVIEWPANEL"
       } ],
       "getPSTabExpPages" : [ {
         "name" : "work_item"
@@ -1645,9 +1658,9 @@
       }, {
         "name" : "test_case"
       }, {
-        "name" : "attachment"
-      }, {
         "name" : "comment"
+      }, {
+        "name" : "attachment"
       } ],
       "tabLayout" : "TOP",
       "uniqueTag" : "search_hub_tab_search_pickup_view__tabexppanel",
