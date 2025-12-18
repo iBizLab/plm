@@ -1032,6 +1032,23 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "NONE",
+    "caption" : "确定",
+    "codeName" : "panel_layoutpanel_button_okaction_click",
+    "fullCodeName" : "search_hub_panel_layoutpanel_button_okaction_click",
+    "name" : "确定",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
+    },
+    "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    print_id: 'airesource',\r\n    de_name: item.srfdataentity\r\n  },\r\n  metadata: {\r\n    name: item.title\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: view.state.transformedList });",
+    "timeout" : 60000,
+    "uIActionMode" : "CUSTOM",
+    "uIActionTag" : "panel_layoutpanel_button_okaction_click",
+    "uIActionType" : "DEUIACTION",
+    "id" : "panel_layoutpanel_button_okaction_click@search_hub"
+  } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_hub_tab_search_view.json",

@@ -51458,6 +51458,18 @@
     } ],
     "uniqueTag" : "UsrVMGroup0715595933"
   }, {
+    "codeName" : "UsrVMGroup0419025627",
+    "name" : "工作项类型全局配置消息",
+    "getPSAppViewMsgGroupDetails" : [ {
+      "name" : "工作项类型全局配置消息",
+      "getPSAppViewMsg" : {
+        "modelref" : true,
+        "id" : "UsrViewMsg0419242540"
+      },
+      "position" : "TOP"
+    } ],
+    "uniqueTag" : "UsrVMGroup0419025627"
+  }, {
     "codeName" : "UsrVMGroup1022146691",
     "name" : "工单设置提示消息组",
     "getPSAppViewMsgGroupDetails" : [ {
@@ -133795,6 +133807,23 @@
         "methodType" : "FILTERACTION",
         "name" : "FILTERUPDATE",
         "builtinMethod" : true
+      } ],
+      "getAllPSAppDEUIActions" : [ {
+        "actionTarget" : "NONE",
+        "caption" : "确定",
+        "codeName" : "panel_layoutpanel_button_okaction_click",
+        "fullCodeName" : "search_hub_panel_layoutpanel_button_okaction_click",
+        "name" : "确定",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
+        },
+        "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    print_id: 'airesource',\r\n    de_name: item.srfdataentity\r\n  },\r\n  metadata: {\r\n    name: item.title\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: view.state.transformedList });",
+        "timeout" : 60000,
+        "uIActionMode" : "CUSTOM",
+        "uIActionTag" : "panel_layoutpanel_button_okaction_click",
+        "uIActionType" : "DEUIACTION",
+        "id" : "panel_layoutpanel_button_okaction_click@search_hub"
       } ],
       "getAllPSAppViews" : [ {
         "modelref" : true,
@@ -224833,10 +224862,6 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "SysTodo_workflow_edit",
         "name" : "待办流程操作",
-        "getPSAppDEUILogic" : {
-          "modelref" : true,
-          "id" : "notify_refresh"
-        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
@@ -224845,72 +224870,8 @@
         "uIActionMode" : "FRONT",
         "uIActionTag" : "workflow_edit",
         "uIActionType" : "DEUIACTION",
-        "uILogicAttachMode" : "AFTER",
         "reloadData" : true,
         "id" : "workflow_edit@SysTodo"
-      } ],
-      "getAllPSAppDEUILogics" : [ {
-        "codeName" : "notify_refresh",
-        "defaultParamName" : "Default",
-        "logicName" : "通知刷新",
-        "name" : "通知刷新",
-        "getPSDEUILogicNodes" : [ {
-          "codeName" : "Begin",
-          "leftPos" : 200,
-          "logicNodeType" : "BEGIN",
-          "name" : "开始",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "Begin"
-            }
-          } ],
-          "topPos" : 200,
-          "parallelOutput" : true
-        }, {
-          "codeName" : "END1",
-          "leftPos" : 667,
-          "logicNodeType" : "END",
-          "name" : "结束",
-          "topPos" : 200,
-          "parallelOutput" : true
-        }, {
-          "code" : "// ibiz.mc.command.create.send({ srfdecodename: 'SysTodo'});\r\nif (uiLogic.grid) {\r\n    uiLogic.grid.refresh();\r\n}",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 366,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "注入脚本代码",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "END1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
-          "topPos" : 200
-        } ],
-        "getPSDEUILogicParams" : [ {
-          "codeName" : "Default",
-          "logicName" : "传入变量",
-          "name" : "传入变量",
-          "default" : true,
-          "entityParam" : true
-        } ],
-        "getStartPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
       } ],
       "getAllPSAppViews" : [ {
         "modelref" : true,
