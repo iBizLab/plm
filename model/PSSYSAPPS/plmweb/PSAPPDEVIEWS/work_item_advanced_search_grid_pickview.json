@@ -28,7 +28,7 @@
     "logicType" : "SCRIPT",
     "name" : "SelectionChange",
     "getPSViewCtrlName" : "grid",
-    "scriptCode" : "console.log(\"\");\r\ndata.srfdename=\"work_item\"\r\nview.evt.emit('onSelectionChange', { data });"
+    "scriptCode" : "console.log(\"\");\r\n// data.srfdename=\"work_item\"\r\ndata.forEach(item => {\r\n  item.srfdename = 'work_item';\r\n});\r\n// view.evt.emit('onSelectionChange', { data });\r\n//获取选择视图\r\nview.parentView.parentView.state['srfpickupdata'] = data;"
   }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
