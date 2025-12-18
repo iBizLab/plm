@@ -224954,16 +224954,84 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "SysTodo_workflow_edit",
         "name" : "待办流程操作",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
         },
-        "refreshMode" : 3,
+        "refreshMode" : 2,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "workflow_edit",
         "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
         "reloadData" : true,
         "id" : "workflow_edit@SysTodo"
+      } ],
+      "getAllPSAppDEUILogics" : [ {
+        "codeName" : "notify_refresh",
+        "defaultParamName" : "Default",
+        "logicName" : "通知刷新",
+        "name" : "通知刷新",
+        "getPSDEUILogicNodes" : [ {
+          "codeName" : "Begin",
+          "leftPos" : 200,
+          "logicNodeType" : "BEGIN",
+          "name" : "开始",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "Begin"
+            }
+          } ],
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "codeName" : "END1",
+          "leftPos" : 667,
+          "logicNodeType" : "END",
+          "name" : "结束",
+          "topPos" : 200,
+          "parallelOutput" : true
+        }, {
+          "code" : "ibiz.mc.command.create.send({ srfdecodename: 'SysTodo'});",
+          "codeName" : "RAWJSCODE1",
+          "leftPos" : 366,
+          "logicNodeType" : "RAWJSCODE",
+          "name" : "注入脚本代码",
+          "getPSDEUILogicLinks" : [ {
+            "getDstPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "END1"
+            },
+            "linkMode" : 0,
+            "name" : "连接名称",
+            "getSrcPSDEUILogicNode" : {
+              "modelref" : true,
+              "id" : "RAWJSCODE1"
+            }
+          } ],
+          "topPos" : 200
+        } ],
+        "getPSDEUILogicParams" : [ {
+          "codeName" : "Default",
+          "logicName" : "传入变量",
+          "name" : "传入变量",
+          "default" : true,
+          "entityParam" : true
+        } ],
+        "getStartPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
       } ],
       "getAllPSAppViews" : [ {
         "modelref" : true,
