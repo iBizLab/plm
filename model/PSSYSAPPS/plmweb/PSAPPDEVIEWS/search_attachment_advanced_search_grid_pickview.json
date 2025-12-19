@@ -23,6 +23,13 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onSelectionChange",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "SelectionChange",
+    "getPSViewCtrlName" : "grid",
+    "scriptCode" : "\ndata.forEach(item => {\n  item.srfdename = 'search_attachment';\n});\n//获取选择视图\nview.parentView.parentView.state['srfpickupdata'] = data;"
+  }, {
     "eventNames" : "onActive",
     "logicTrigger" : "CTRLEVENT",
     "logicType" : "APPDEUILOGIC",

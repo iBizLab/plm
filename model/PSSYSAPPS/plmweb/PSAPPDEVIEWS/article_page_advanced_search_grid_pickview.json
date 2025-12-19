@@ -23,6 +23,13 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onSelectionChange",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "SelectionChange",
+    "getPSViewCtrlName" : "grid",
+    "scriptCode" : "\ndata.forEach(item => {\n  item.srfdename = 'page';\n});\n//获取选择视图\nview.parentView.parentView.state['srfpickupdata'] = data;"
+  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
