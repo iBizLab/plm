@@ -26,6 +26,17 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
+    "getBeforePSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "BEFORE",
+      "codeName" : "Auto12628840",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/extract_session_type.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/Create.json",
@@ -189,6 +200,87 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "clear_all_except",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_all_except.json",
+    "logicName" : "除指定外清空会话",
+    "name" : "clear_all_except",
+    "getPSDEActionInput" : {
+      "name" : "Clear_all_exceptInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Clear_all_exceptResult",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/clear_all_except.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "clear_message",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_message.json",
+    "logicName" : "清空消息",
+    "name" : "clear_message",
+    "getPSDEActionInput" : {
+      "name" : "Clear_messageInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Clear_messageResult",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/clear_message.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "delete",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/delete.json",
+    "logicName" : "删除",
+    "name" : "delete",
+    "getPSDEActionInput" : {
+      "name" : "DeleteInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "DeleteResult",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/delete.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -320,6 +412,153 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/active/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "active",
+    "logicName" : "有效会话",
+    "name" : "active",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_AGENT_CONVERSATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "active",
+            "fieldName" : "STATUS",
+            "name" : "(STATUS) 等于(=) active",
+            "getPSDEField" : {
+              "name" : "STATUS",
+              "codeName" : "status"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "paused",
+            "fieldName" : "STATUS",
+            "name" : "(STATUS) 等于(=) paused",
+            "getPSDEField" : {
+              "name" : "STATUS",
+              "codeName" : "status"
+            }
+          } ]
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ActiveInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ActiveResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/cur_user_active/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_user_active",
+    "logicName" : "当前用户会话",
+    "name" : "cur_user_active",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_AGENT_CONVERSATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "active",
+            "fieldName" : "STATUS",
+            "name" : "(STATUS) 等于(=) active",
+            "getPSDEField" : {
+              "name" : "STATUS",
+              "codeName" : "status"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "paused",
+            "fieldName" : "STATUS",
+            "name" : "(STATUS) 等于(=) paused",
+            "getPSDEField" : {
+              "name" : "STATUS",
+              "codeName" : "status"
+            }
+          } ]
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "USER_ID",
+          "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "USER_ID",
+            "codeName" : "user_id"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "topic",
+          "fieldName" : "TYPE",
+          "name" : "(TYPE) 等于(=) topic",
+          "getPSDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_user_activeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_user_activeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -350,6 +589,63 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "active",
+    "logicName" : "有效会话",
+    "name" : "active",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "active"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ActiveInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ActiveResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_user_active",
+    "logicName" : "当前用户会话",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "name" : "cur_user_active",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_user_active"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_user_activeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_user_activeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1841,6 +2137,359 @@
     "serviceCodeName" : "sequence",
     "stdDataType" : 1,
     "valueFormat" : "%1$s"
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "clear_all_except",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/clear_all_except.json",
+    "logicName" : "除指定外清空会话",
+    "name" : "除指定外清空会话",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSQLCALL_01",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "SESSION_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "srfpersonid",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SESSION"
+      } ],
+      "sql" : "UPDATE AI_AGENT_CONVERSATION  SET STATUS= 'ended' WHERE SESSION_ID <> ? AND  USER_ID = ?",
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 525,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 412,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "clear_message",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/clear_message.json",
+    "logicName" : "清空消息",
+    "name" : "清空消息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSQLCALL_01",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "DELETE  FROM AI_AGENT_MESSAGE WHERE CONVERSATION_ID = ? ;\nDELETE  FROM AI_AGENT_FEEDBACK WHERE CONVERSATION_ID = ? ;\n",
+      "topPos" : 420,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 519,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 422,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "delete",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/delete.json",
+    "logicName" : "delete",
+    "memo" : "设置结束状态",
+    "name" : "delete",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置结束状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "STATUS",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "ended",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "leftPos" : 408,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新结束状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 685,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 410,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "extract_session_type",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/extract_session_type.json",
+    "logicName" : "提取session前缀并存储",
+    "name" : "提取session前缀并存储",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "// 获取sessionid参数\ndef _default = logic.param(\"default\").getReal()\ndef sessionId = _default.get(\"session_id\")\n\n// 提取前缀\ndef prefix = \"\"\nif(sessionId && sessionId.contains(\"@\")) {\n    prefix = sessionId.split(\"@\")[0]\n}\n\n// 存储到conversation_type参数\n_default.set(\"type\",prefix)",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 230,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 430,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 484,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 432,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_agent_conversation_dto",

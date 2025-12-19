@@ -95030,6 +95030,86 @@
       "requestPath" : "/check_key",
       "uniqueTag" : "AI_AGENT_CONVERSATION__DEACTION__CHECKKEY"
     }, {
+      "codeName" : "clear_all_except",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "clear_all_except",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_all_except.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/clear_all_except",
+      "uniqueTag" : "AI_AGENT_CONVERSATION__DEACTION__CLEAR_ALL_EXCEPT"
+    }, {
+      "codeName" : "clear_message",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "clear_message",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_message.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/clear_message",
+      "uniqueTag" : "AI_AGENT_CONVERSATION__DEACTION__CLEAR_MESSAGE",
+      "needResourceKey" : true
+    }, {
+      "codeName" : "delete",
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "delete",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/delete.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/delete",
+      "uniqueTag" : "AI_AGENT_CONVERSATION__DEACTION__DELETE",
+      "needResourceKey" : true
+    }, {
       "codeName" : "get_draft",
       "dataAccessAction" : "CREATE",
       "methodType" : "DEACTION",
@@ -95088,6 +95168,64 @@
       "requestPath" : "/save",
       "uniqueTag" : "AI_AGENT_CONVERSATION__DEACTION__SAVE"
     }, {
+      "codeName" : "fetch_active",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_active",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "active"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_active",
+      "uniqueTag" : "AI_AGENT_CONVERSATION__FETCH__ACTIVE"
+    }, {
+      "codeName" : "fetch_cur_user_active",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_cur_user_active",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "cur_user_active"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_conversation_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_cur_user_active",
+      "uniqueTag" : "AI_AGENT_CONVERSATION__FETCH__CUR_USER_ACTIVE"
+    }, {
       "codeName" : "fetch_default",
       "dataAccessAction" : "READ",
       "methodType" : "FETCH",
@@ -95120,6 +95258,409 @@
     "getPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "enableDataExport" : true,
+    "enableDataImport" : true,
+    "major" : true
+  }, {
+    "aPIMode" : 1,
+    "codeName" : "ai_agent_feedback",
+    "codeName2" : "ai_agent_feedbacks",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.AI_AGENT_FEEDBACK"
+    },
+    "logicName" : "智能体回复反馈",
+    "name" : "AI_AGENT_FEEDBACK",
+    "getPSDEServiceAPIFields" : [ {
+      "codeName" : "id",
+      "codeName2" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_AGENT_FEEDBACK.ID"
+      },
+      "logicName" : "标识",
+      "name" : "ID",
+      "orderValue" : 1,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : true,
+      "majorField" : false
+    }, {
+      "codeName" : "name",
+      "codeName2" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_AGENT_FEEDBACK.NAME"
+      },
+      "logicName" : "名称",
+      "name" : "NAME",
+      "orderValue" : 2,
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : true
+    }, {
+      "codeName" : "create_man",
+      "codeName2" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_AGENT_FEEDBACK.CREATE_MAN"
+      },
+      "logicName" : "创建人",
+      "name" : "CREATE_MAN",
+      "orderValue" : 4,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "create_time",
+      "codeName2" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_AGENT_FEEDBACK.CREATE_TIME"
+      },
+      "logicName" : "创建时间",
+      "name" : "CREATE_TIME",
+      "orderValue" : 5,
+      "stdDataType" : 5,
+      "allowEmpty" : false,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "update_man",
+      "codeName2" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "name" : "UPDATE_MAN",
+      "orderValue" : 6,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "update_time",
+      "codeName2" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "name" : "UPDATE_TIME",
+      "orderValue" : 7,
+      "stdDataType" : 5,
+      "allowEmpty" : false,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "feedback_type",
+      "codeName2" : "feedback_type",
+      "logicName" : "反馈类型",
+      "name" : "FEEDBACK_TYPE",
+      "orderValue" : 170,
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "feedback_content",
+      "codeName2" : "feedback_content",
+      "logicName" : "反馈内容",
+      "name" : "FEEDBACK_CONTENT",
+      "orderValue" : 180,
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "user_id",
+      "codeName2" : "user_id",
+      "logicName" : "用户标识",
+      "name" : "USER_ID",
+      "orderValue" : 190,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "conversation_id",
+      "codeName2" : "conversation_id",
+      "logicName" : "会话标识",
+      "name" : "CONVERSATION_ID",
+      "orderValue" : 200,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
+      "codeName" : "message_id",
+      "codeName2" : "message_id",
+      "logicName" : "消息标识",
+      "name" : "MESSAGE_ID",
+      "orderValue" : 1000,
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    } ],
+    "getPSDEServiceAPIMethods" : [ {
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Create.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Get.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "dataAccessAction" : "DELETE",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Remove.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "getKeyPSDEServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Update.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "codeName" : "check_key",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/CheckKey.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "stdDataType" : 9,
+        "type" : "SIMPLE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/check_key",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__CHECKKEY"
+    }, {
+      "codeName" : "get_draft",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/GetDraft.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "requestPath" : "/get_draft",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__GETDRAFT"
+    }, {
+      "codeName" : "save",
+      "dataAccessAction" : "CREATE",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Save.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "DTO"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/save",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__DEACTION__SAVE"
+    }, {
+      "codeName" : "fetch_default",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_default",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_feedback_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_default",
+      "uniqueTag" : "AI_AGENT_FEEDBACK__FETCH__DEFAULT"
+    } ],
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback.json"
     },
     "enableDataExport" : true,
     "enableDataImport" : true,
@@ -95470,6 +96011,19 @@
       "keyField" : false,
       "majorField" : false
     }, {
+      "codeName" : "session_id",
+      "codeName2" : "session_id",
+      "logicName" : "外部会话标识",
+      "name" : "SESSION_ID",
+      "orderValue" : 340,
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "allowEmpty" : true,
+      "enableCreate" : true,
+      "enableModify" : true,
+      "keyField" : false,
+      "majorField" : false
+    }, {
       "codeName" : "input_tokens",
       "codeName2" : "input_tokens",
       "logicName" : "输入token数",
@@ -95722,6 +96276,32 @@
       "needResourceKey" : true,
       "noServiceCodeName" : true
     }, {
+      "codeName" : "cancel_feedback",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "cancel_feedback",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/cancel_feedback.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_message_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/cancel_feedback",
+      "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__CANCEL_FEEDBACK",
+      "needResourceKey" : true
+    }, {
       "codeName" : "check_key",
       "dataAccessAction" : "CREATE",
       "methodType" : "DEACTION",
@@ -95747,6 +96327,32 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/check_key",
       "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__CHECKKEY"
+    }, {
+      "codeName" : "dislike",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "dislike",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/dislike.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_message_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/dislike",
+      "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__DISLIKE",
+      "needResourceKey" : true
     }, {
       "codeName" : "get_draft",
       "dataAccessAction" : "CREATE",
@@ -95777,6 +96383,32 @@
       "requestPath" : "/get_draft",
       "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__GETDRAFT"
     }, {
+      "codeName" : "like",
+      "dataAccessAction" : "READ",
+      "methodType" : "DEACTION",
+      "name" : "like",
+      "getPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/like.json"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_message_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/like",
+      "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__LIKE",
+      "needResourceKey" : true
+    }, {
       "codeName" : "save",
       "dataAccessAction" : "CREATE",
       "methodType" : "DEACTION",
@@ -95805,6 +96437,35 @@
       "requestParamType" : "ENTITY",
       "requestPath" : "/save",
       "uniqueTag" : "AI_AGENT_MESSAGE__DEACTION__SAVE"
+    }, {
+      "codeName" : "fetch_all",
+      "dataAccessAction" : "READ",
+      "methodType" : "FETCH",
+      "name" : "fetch_all",
+      "getPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "all"
+      },
+      "getPSDEServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_message_filter_dto"
+        },
+        "type" : "DTO"
+      },
+      "getPSDEServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSDEMethodDTO" : {
+          "modelref" : true,
+          "id" : "ai_agent_message_dto"
+        },
+        "type" : "PAGE"
+      },
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "requestPath" : "/fetch_all",
+      "uniqueTag" : "AI_AGENT_MESSAGE__FETCH__ALL"
     }, {
       "codeName" : "fetch_default",
       "dataAccessAction" : "READ",

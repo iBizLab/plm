@@ -1,5 +1,39 @@
 {
   "getAllPSAppDEActions" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "cancel_feedback",
+    "methodType" : "DEACTION",
+    "name" : "cancel_feedback",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/cancel_feedback.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "cancel_feedback"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/cancel_feedback",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -73,6 +107,40 @@
     "requestParamType" : "ENTITY",
     "builtinMethod" : false,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "dislike",
+    "methodType" : "DEACTION",
+    "name" : "dislike",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/dislike.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "dislike"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/dislike",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
@@ -151,6 +219,40 @@
     "requestParamType" : "NONE",
     "requestPath" : "/get_draft",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "like",
+    "methodType" : "DEACTION",
+    "name" : "like",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/like.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "like"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/like",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
@@ -270,6 +372,44 @@
     "noServiceCodeName" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -749,6 +889,49 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+        },
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "session_id",
+    "logicName" : "外部会话标识",
+    "name" : "SESSION_ID",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
         "editorType" : "TEXTBOX",
         "name" : "默认",
         "uIMode" : "DEFAULT"
@@ -1209,6 +1392,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "session_id",
+      "logicName" : "外部会话标识",
+      "name" : "session_id",
+      "getPSAppDEField" : {
+        "name" : "SESSION_ID",
+        "codeName" : "session_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "content",
       "logicName" : "消息内容",
       "name" : "content",
@@ -1376,6 +1570,40 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "cancel_feedback",
+    "methodType" : "DEACTION",
+    "name" : "cancel_feedback",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/cancel_feedback.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "cancel_feedback"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/cancel_feedback",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -1449,6 +1677,40 @@
     "requestParamType" : "ENTITY",
     "builtinMethod" : false,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "dislike",
+    "methodType" : "DEACTION",
+    "name" : "dislike",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/dislike.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "dislike"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/dislike",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
@@ -1527,6 +1789,40 @@
     "requestParamType" : "NONE",
     "requestPath" : "/get_draft",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "like",
+    "methodType" : "DEACTION",
+    "name" : "like",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/like.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "like"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/like",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
@@ -1644,6 +1940,44 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_message_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
   }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",

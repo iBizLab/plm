@@ -35,6 +35,75 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "clear_all_except",
+    "methodType" : "DEACTION",
+    "name" : "clear_all_except",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_all_except.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "clear_all_except"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/clear_all_except",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "clear_message",
+    "methodType" : "DEACTION",
+    "name" : "clear_message",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_message.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "clear_message"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/clear_message",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -73,6 +142,41 @@
     "requestParamType" : "ENTITY",
     "builtinMethod" : false,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "delete",
+    "methodType" : "DEACTION",
+    "name" : "delete",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/delete.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delete",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
@@ -270,6 +374,82 @@
     "noServiceCodeName" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
+    "codeName" : "fetch_active",
+    "dataSetName" : "active",
+    "dataSetTag" : "active",
+    "methodType" : "FETCH",
+    "name" : "fetch_active",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "active"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_active"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_active",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_cur_user_active",
+    "dataSetName" : "cur_user_active",
+    "dataSetTag" : "cur_user_active",
+    "methodType" : "FETCH",
+    "name" : "fetch_cur_user_active",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_user_active"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_cur_user_active"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_cur_user_active",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -1204,6 +1384,75 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "clear_all_except",
+    "methodType" : "DEACTION",
+    "name" : "clear_all_except",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_all_except.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "clear_all_except"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/clear_all_except",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "clear_message",
+    "methodType" : "DEACTION",
+    "name" : "clear_message",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/clear_message.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "clear_message"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/clear_message",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -1242,6 +1491,41 @@
     "requestParamType" : "ENTITY",
     "builtinMethod" : false,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "delete",
+    "methodType" : "DEACTION",
+    "name" : "delete",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEACTIONS/delete.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delete",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
@@ -1437,6 +1721,82 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "codeName" : "fetch_active",
+    "dataSetName" : "active",
+    "dataSetTag" : "active",
+    "methodType" : "FETCH",
+    "name" : "fetch_active",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "active"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_active"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_active",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_cur_user_active",
+    "dataSetName" : "cur_user_active",
+    "dataSetTag" : "cur_user_active",
+    "methodType" : "FETCH",
+    "name" : "fetch_cur_user_active",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_agent_conversation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_user_active"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_cur_user_active"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_cur_user_active",
+    "builtinMethod" : false
   }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
