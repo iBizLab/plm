@@ -1,0 +1,71 @@
+package cn.ibizlab.plm.base.logic.portfoliologic.portfolio_addon_authority;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.portfolio portfolioportfolio_addon_authoritydefault;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioportfolio_addon_authorityaddons;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioportfolio_addon_authorityfilter;
+                global cn.ibizlab.plm.core.base.domain.portfolio portfolioportfolio_addon_authorityresult;
+                    global cn.ibizlab.plm.core.base.service.IaddonService addonservice;
+        global cn.ibizlab.plm.core.base.service.IportfolioService iBzSysPortfolioDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "portfolioportfolio_addon_authoritybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备组件过滤参数]
+            rule "prepareparam1"
+            ruleflow-group "portfolioportfolio_addon_authorityprepareparam1"
+            when
+            then
+                            portfolioportfolio_addon_authorityfilter.set("ownerid",portfolioportfolio_addon_authoritydefault.get("id"));
+                            portfolioportfolio_addon_authorityfilter.set("n_owner_type_eq","portfolio");
+                            portfolioportfolio_addon_authorityfilter.set("size","1000");
+                        update(portfolioportfolio_addon_authoritydefault);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityaddons);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityfilter);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取组件列表]
+            rule "dedataset1"
+            ruleflow-group "portfolioportfolio_addon_authoritydedataset1"
+            when
+            then
+                        update(portfolioportfolio_addon_authoritydefault);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityaddons);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityfilter);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构建计数器结果]
+            rule "rawsfcode1"
+            ruleflow-group "portfolioportfolio_addon_authorityrawsfcode1"
+            when
+            then
+                        update(portfolioportfolio_addon_authoritydefault);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityaddons);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityfilter);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "portfolioportfolio_addon_authorityend1"
+            when
+            then
+                        update(portfolioportfolio_addon_authoritydefault);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityaddons);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityfilter);//更新fact中变量值
+                        update(portfolioportfolio_addon_authorityresult);//更新fact中变量值
+            end

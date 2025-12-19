@@ -1,0 +1,71 @@
+package cn.ibizlab.plm.insight.logic.insight_reportlogic.sync_model;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportsync_modeldefault;
+                global cn.ibizlab.plm.core.extension.domain.PSSysBIReport insight_reportsync_modelbireport;
+                    global cn.ibizlab.plm.core.extension.service.IPSSysBIReportService pssysbireportservice;
+                    global cn.ibizlab.plm.core.insight.service.Iinsight_reportService insight_reportservice;
+        global cn.ibizlab.plm.core.insight.service.Iinsight_reportService iBzSysInsight_reportDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "insight_reportsync_modelbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "insight_reportsync_modelend1"
+            when
+            then
+                        update(insight_reportsync_modeldefault);//更新fact中变量值
+                        update(insight_reportsync_modelbireport);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备report标识]
+            rule "prepareparam1"
+            ruleflow-group "insight_reportsync_modelprepareparam1"
+            when
+            then
+                            insight_reportsync_modelbireport.set("pssysbireportid",insight_reportsync_modeldefault.get("id"));
+                        update(insight_reportsync_modeldefault);//更新fact中变量值
+                        update(insight_reportsync_modelbireport);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取bireport]
+            rule "deaction1"
+            ruleflow-group "insight_reportsync_modeldeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(pssysbireportservice.get(insight_reportsync_modelbireport.getPssysbireportid()),insight_reportsync_modelbireport);
+                        update(insight_reportsync_modeldefault);//更新fact中变量值
+                        update(insight_reportsync_modelbireport);//更新fact中变量值
+            end
+
+            //逻辑处理节点[dump模型]
+            rule "rawsfcode1"
+            ruleflow-group "insight_reportsync_modelrawsfcode1"
+            when
+            then
+                        update(insight_reportsync_modeldefault);//更新fact中变量值
+                        update(insight_reportsync_modelbireport);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新模型属性]
+            rule "deaction2"
+            ruleflow-group "insight_reportsync_modeldeaction2"
+            when
+            then
+                        insight_reportservice.update(insight_reportsync_modeldefault);
+                        update(insight_reportsync_modeldefault);//更新fact中变量值
+                        update(insight_reportsync_modelbireport);//更新fact中变量值
+            end

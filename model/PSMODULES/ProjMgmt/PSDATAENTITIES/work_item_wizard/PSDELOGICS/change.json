@@ -1,0 +1,331 @@
+{
+  "codeName" : "change",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard/PSDELOGICS/change.json",
+  "logicName" : "变更工作项类型",
+  "memo" : "变更工作项类型",
+  "name" : "变更工作项类型",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "THROWEXCEPTION1",
+    "errorCode" : 0,
+    "errorInfo" : "未填写目标类型或状态",
+    "leftPos" : 880,
+    "logicNodeType" : "THROWEXCEPTION",
+    "name" : "抛出异常",
+    "topPos" : 260
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "details"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定工作项变更操作列表",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "details",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 348
+  }, {
+    "code" : "def for_temp = logic.param('for_temp').getReal()\r\ndef child_work_item_types = for_temp.get('child_work_item_types')\r\n//获取实体运行对象 参数实体名\r\ndef work_item_runtime = sys.dataentity('work_item')\r\n\r\nchild_work_item_types.each { it ->\r\n    def target_parent = it.get('target_parent')\r\n    if(it.get('influence_child_ids') != null){\r\n        def work_item_filter = work_item_runtime.filter()\r\n        work_item_filter.in('id', it.get('influence_child_ids'))\r\n        def childs = work_item_filter.select('')\r\n        childs.each { item ->\r\n            def update_entity = work_item_runtime.entity()\r\n            update_entity.set('id', item.get('id'))\r\n            if (target_parent != null) {\r\n               update_entity.set('pid', target_parent) \r\n            } else {\r\n               update_entity.set('pid', null)\r\n            }\r\n            //更新子工作项的所属父级\r\n            work_item_runtime.update(update_entity)\r\n        }       \r\n    }   \r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 950,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "处理子工作项所属父级",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 460
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 1170,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新工作项类型",
+    "topPos" : 460
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "details"
+    },
+    "topPos" : 473
+  }, {
+    "codeName" : "RESETPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "leftPos" : 402,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置工作项对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      }
+    } ],
+    "topPos" : 473
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 590,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充目标工作项类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "存在目标类型和状态",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "TARGET_STATE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp[TARGET_STATE] 值不为空(NotNil)"
+        }, {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "TARGET_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp[TARGET_TYPE] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "THROWEXCEPTION1"
+      },
+      "name" : "未填写目标类型或状态",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "TARGET_TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_temp[TARGET_TYPE] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "TARGET_STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_temp[TARGET_STATE] 值为空(Nil)"
+          } ]
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "for_temp[ID] ==> work_item[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "空值（NULL） ==> work_item[PID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "WORK_ITEM_TYPE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "for_temp[TARGET_TYPE] ==> work_item[WORK_ITEM_TYPE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "for_temp[TARGET_STATE] ==> work_item[STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_STATE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 473,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "child_work_item_types",
+    "logicName" : "子工作项类型列表",
+    "name" : "子工作项类型列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "details",
+    "logicName" : "变更明细",
+    "name" : "变更明细",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "for_temp",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "工作项",
+    "name" : "工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
