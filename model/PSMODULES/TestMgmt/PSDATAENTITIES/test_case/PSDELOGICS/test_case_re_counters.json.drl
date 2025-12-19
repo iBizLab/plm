@@ -172,7 +172,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
     Map param =new HashMap();
         param.put("param0",test_casetest_case_re_countersdefault.get("id"));
         param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
-    String strSql="SELECT 	count( t.id ) AS test_case_re_idea FROM 	idea t  WHERE t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+    String strSql="SELECT COUNT(t.id) AS test_case_re_idea FROM idea t WHERE t.IS_DELETED = 0 AND t.ID IN (     SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')     FROM version_data t12     WHERE t12.OWNER_TYPE = 'RELATION'         AND t12.PARENT_ID =#{et.param0}         AND t12.PARENT_VERSION_ID =#{et.param1} )";
                         java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -192,7 +192,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
     Map param =new HashMap();
         param.put("param0",test_casetest_case_re_countersdefault.get("id"));
         param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
-    String strSql="SELECT 	count( t.id ) AS test_case_re_work_item FROM 	work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug' and t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+    String strSql="SELECT COUNT(t.id) AS test_case_re_work_item FROM work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug' and t.IS_DELETED = 0 AND t.ID IN (     SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')     FROM version_data t12     WHERE t12.OWNER_TYPE = 'RELATION'         AND t12.PARENT_ID =#{et.param0}         AND t12.PARENT_VERSION_ID =#{et.param1} )";
                         java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -212,7 +212,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
     Map param =new HashMap();
         param.put("param0",test_casetest_case_re_countersdefault.get("id"));
         param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
-    String strSql="SELECT 	count( t.id ) AS test_case_re_bug FROM 	work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug' and t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+    String strSql="SELECT COUNT(t.id) AS test_case_re_bug FROM work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug' and t.IS_DELETED = 0 AND t.ID IN (     SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')     FROM version_data t12     WHERE t12.OWNER_TYPE = 'RELATION'         AND t12.PARENT_ID =#{et.param0}         AND t12.PARENT_VERSION_ID =#{et.param1} )";
                         java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
