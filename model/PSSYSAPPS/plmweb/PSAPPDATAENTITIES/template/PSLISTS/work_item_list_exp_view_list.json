@@ -1,0 +1,223 @@
+{
+  "codeName" : "work_item_list_exp_view_list",
+  "controlType" : "LIST",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template/PSLISTS/work_item_list_exp_view_list.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "getItemPSLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "name",
+      "viewFieldName" : "name"
+    } ],
+    "codeName" : "usr1222143928",
+    "controlType" : "PANEL",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template/PSPANELS/usr1222143928.json",
+    "layoutMode" : "TABLE_24COL",
+    "logicName" : "List_列表项面板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    },
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "page_container",
+      "getPSLayout" : {
+        "dir" : "column",
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "图片",
+          "contentType" : "IMAGE",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_image",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "static_image",
+            "getPSSysImage" : {
+              "glyph" : "xf15c@FontAwesome",
+              "cssClass" : "fa fa-file-text"
+            },
+            "predefinedType" : "STATIC_IMAGE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf15c@FontAwesome",
+            "cssClass" : "fa fa-file-text"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "name",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "name",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "name"
+        } ]
+      } ]
+    } ],
+    "name" : "listexpbar_list_itempanel",
+    "modelid" : "6DA8D086-49A5-4B8F-8059-CF212D8D3A89",
+    "modeltype" : "PSSYSVIEWPANEL"
+  },
+  "logicName" : "List",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_selectionchange"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_load"
+  } ],
+  "getPSDEListDataItems" : [ {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "pagingSize" : 1000,
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    }
+  },
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    }
+  },
+  "hasWFDataItems" : false,
+  "enableGroup" : false,
+  "enableRowEdit" : false,
+  "enableRowEditGroup" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "noSort" : false,
+  "showHeader" : true,
+  "singleSelect" : false,
+  "modelid" : "542071D5-1E16-4318-8776-C3D029C088DD",
+  "modeltype" : "PSDELIST"
+}
