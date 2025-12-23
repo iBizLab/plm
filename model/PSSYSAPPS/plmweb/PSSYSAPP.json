@@ -135295,7 +135295,7 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
         },
-        "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    print_id: 'chat_resource',\r\n    de_name: item.srfdename\r\n  },\r\n  metadata: {\r\n    //name: item.title?item.title:item.name\r\n    name: item.title ?: item.name ?: item.content\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: transformedList });",
+        "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    print_id: 'chat_resource',\r\n    de_name: item.srfdename\r\n  },\r\n  metadata: {\r\n    //name: item.title?item.title:item.name\r\n   name: item.title ? item.title : (item.name ? item.name : item.content)\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: transformedList });",
         "timeout" : 60000,
         "uIActionMode" : "CUSTOM",
         "uIActionTag" : "panel_auto40195056_button_okaction_click",
@@ -192972,7 +192972,7 @@
         "codeName" : "chat_resource",
         "name" : "chat_resource",
         "reportFile" : "#",
-        "reportModel" : "<#list data as item>\r\n\r\n标题：${item.title}\r\n\r\n优先级：${item.priority}\r\n\r\n描述：${item.description}\r\n\r\n</#list>",
+        "reportModel" : "<#list data as item>\r\n\r\n<#if item.title??>\r\n标题：${item.title}\r\n</#if>\r\n\r\n<#if item.priority??>\r\n优先级：${item.priority}\r\n</#if>\r\n\r\n<#if item.description??>\r\n描述：${item.description}\r\n</#if>\r\n\r\n</#list>",
         "reportType" : "CHATRESOURCE"
       } ],
       "getAllPSAppDEUIActions" : [ {
