@@ -6,9 +6,11 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_documentparsingdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_documentparsingmasked_data" type="refentity"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_documentService))" name="iBzSysAi_kb_documentDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_documentparsingdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
+                            <tns:global identifier="ai_kb_documentparsingmasked_data" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="正则解析文档内容"/>
