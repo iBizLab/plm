@@ -3,10 +3,12 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.TEMPLATE"
   },
-  "caption" : "模板展示视图",
-  "codeName" : "template_show_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_show_view.json",
-  "name" : "templateshow_view",
+  "caption" : "编辑工作项模板",
+  "codeName" : "template_edit_work_item_template_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_work_item_template_view.json",
+  "height" : 70,
+  "name" : "templateedit_work_item_template_view",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -17,11 +19,11 @@
   },
   "getPSAppViewEngines" : [ {
     "engineCat" : "VIEW",
-    "engineType" : "EditView",
+    "engineType" : "OptionView",
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "show_form",
+    "codeName" : "main",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -40,7 +42,7 @@
       }
     },
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template/PSFORMS/show_form.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template/PSFORMS/main.json",
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
@@ -85,7 +87,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
       }
     },
-    "logicName" : "展示表单",
+    "logicName" : "主编辑表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -219,11 +221,25 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
       "id" : "description",
       "dataType" : 21,
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "description"
+      }
+    }, {
+      "id" : "visibility",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
       }
     }, {
       "id" : "id",
@@ -235,18 +251,54 @@
       }
     } ],
     "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.TEMPLATE.MAIN.FORMPAGE.FORMPAGE1"
+      },
       "caption" : "基本信息",
       "codeName" : "formpage1",
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.TEMPLATE.MAIN.GROUPPANEL.GROUP1"
+        },
         "caption" : "通用模板基本信息",
         "codeName" : "group1",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.TEMPLATE.NAME"
+          },
+          "caption" : "名称",
+          "codeName" : "name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "name"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
           "caption" : "描述",
           "codeName" : "description",
           "dataType" : 21,
@@ -254,9 +306,9 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
           "name" : "description",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -277,7 +329,39 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "可用范围",
+          "codeName" : "visibility",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "visibility",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "VISIBILITY",
+            "codeName" : "visibility"
+          },
+          "getPSEditor" : {
+            "editorType" : "RADIOBUTTONLIST",
+            "name" : "visibility",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__work_item_visibility.json"
+            }
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "needCodeListConfig" : true,
+          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -367,118 +451,10 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "AE4F100C-3C01-43E9-B48D-759D7F44E3DC",
+    "modelid" : "a21b1837f96fedf96b017d891690d0ab",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
-    "codeName" : "show_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "模板工具栏",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "caption" : "编辑模板",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction1"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf044@FontAwesome",
-        "cssClass" : "fa fa-edit"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEKEY",
-        "caption" : "编辑模板",
-        "codeName" : "edit",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_work_item_template_view.json",
-          "viewType" : "DEOPTVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "template_edit",
-        "name" : "编辑模板",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf044@FontAwesome",
-          "cssClass" : "fa fa-edit"
-        },
-        "refreshMode" : 1,
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "edit",
-        "uIActionType" : "DEUIACTION",
-        "reloadData" : true,
-        "id" : "edit@template"
-      },
-      "tooltip" : "编辑模板",
-      "uIActionTarget" : "SINGLEKEY",
-      "showCaption" : true,
-      "showIcon" : true
-    }, {
-      "caption" : "删除模板",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction2",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction2"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf014@FontAwesome",
-        "cssClass" : "fa fa-trash-o"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEKEY",
-        "caption" : "删除模板",
-        "codeName" : "delete",
-        "confirmMsg" : "是否确认删除此模板？",
-        "fullCodeName" : "template_delete",
-        "name" : "删除模板",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf014@FontAwesome",
-          "cssClass" : "fa fa-trash-o"
-        },
-        "refreshMode" : 1,
-        "successMsg" : "删除成功",
-        "timeout" : 60000,
-        "uIActionMode" : "BACKEND",
-        "uIActionTag" : "delete",
-        "uIActionType" : "DEUIACTION",
-        "enableConfirm" : true,
-        "reloadData" : true,
-        "id" : "delete@template"
-      },
-      "tooltip" : "删除模板",
-      "uIActionTarget" : "SINGLEKEY",
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "xDataControlName" : "form",
-    "modelid" : "B0F58A6C-AA95-4716-98AC-675521ACB435",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
-    "codeName" : "show_view_datainfobar",
+    "codeName" : "edit_work_item_template_view_datainfobar",
     "controlType" : "DATAINFOBAR",
     "name" : "datainfobar",
     "getPSAppDataEntity" : {
@@ -492,8 +468,8 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.TEMPLATE"
     },
-    "caption" : "模板展示视图",
-    "codeName" : "show_view_captionbar",
+    "caption" : "编辑工作项模板",
+    "codeName" : "edit_work_item_template_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -502,11 +478,11 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "show_view",
-  "getPSDEViewId" : "F96ECF22-8393-4841-A284-7DACDD176FE6",
+  "getPSDEViewCodeName" : "edit_work_item_template_view",
+  "getPSDEViewId" : "B9D564C1-8905-42E3-8A73-AD59BE473D7D",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
-    "controlStyle" : "APPDEEDITVIEW",
+    "controlStyle" : "APPDEOPTVIEW",
     "controlType" : "VIEWLAYOUTPANEL",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
@@ -519,12 +495,13 @@
     "useDefaultLayout" : true
   },
   "refFlag" : false,
-  "title" : "模板展示视图",
+  "title" : "编辑工作项模板",
   "viewStyle" : "DEFAULT",
-  "viewType" : "DEEDITVIEW",
+  "viewType" : "DEOPTVIEW",
+  "width" : 55,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "0dfe6cb6f963f99ee5a1282f46d1510f",
+  "modelid" : "893c0bad1f11d0fb1be249d784f89cd7",
   "modeltype" : "PSAPPDEVIEW"
 }

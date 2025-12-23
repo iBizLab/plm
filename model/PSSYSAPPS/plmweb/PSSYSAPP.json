@@ -6649,13 +6649,21 @@
       "text" : "就绪",
       "value" : "1"
     }, {
+      "codeName" : "chunk_pending",
+      "text" : "待切片",
+      "value" : "3"
+    }, {
       "codeName" : "parsing",
       "text" : "解析中",
       "value" : "2"
     }, {
+      "codeName" : "chunking",
+      "text" : "切片中",
+      "value" : "4"
+    }, {
       "codeName" : "failed",
       "text" : "失败",
-      "value" : "3"
+      "value" : "99"
     } ],
     "enableCache" : true
   }, {
@@ -65529,6 +65537,13 @@
     "name" : "ai_toolGridView"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_create_work_item_template_view.json",
+    "viewType" : "DEOPTVIEW",
+    "resource" : "template",
+    "view" : "create_work_item_template_view",
+    "name" : "templatecreate_work_item_template_view"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_logic_test_auto_rules_edit_view.json",
     "viewType" : "DEEDITVIEW",
     "resource" : "PSDELogic",
@@ -65794,6 +65809,13 @@
     "resource" : "ai_kb_chunk",
     "view" : "multi_data_view",
     "name" : "ai_kb_chunkmulti_data_view"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_work_item_template_view.json",
+    "viewType" : "DEOPTVIEW",
+    "resource" : "template",
+    "view" : "edit_work_item_template_view",
+    "name" : "templateedit_work_item_template_view"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_all_resource_mpick_up_view.json",
@@ -152312,7 +152334,7 @@
         "codeName" : "chat_resource",
         "name" : "chat_resource",
         "reportFile" : "#",
-        "reportModel" : "<#list data as item>\r\n\r\n标题：${item.name}\r\n\r\n描述：${item.content}\r\n\r\n</#list>",
+        "reportModel" : "<#list data as item>\r\n\r\n标题：${item.name}\r\n\r\n内容：${item.publish_content}\r\n\r\n</#list>",
         "reportType" : "CHATRESOURCE"
       } ],
       "getAllPSAppDEUIActions" : [ {
@@ -227021,8 +227043,8 @@
         "codeName" : "create",
         "getFrontPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_view.json",
-          "viewType" : "DEEDITVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_create_work_item_template_view.json",
+          "viewType" : "DEOPTVIEW"
         },
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "template_create",
@@ -227041,6 +227063,60 @@
         "uIActionType" : "DEUIACTION",
         "reloadData" : true,
         "id" : "create@template"
+      }, {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除模板",
+        "codeName" : "delete",
+        "confirmMsg" : "是否确认删除此模板？",
+        "fullCodeName" : "template_delete",
+        "name" : "删除模板",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "delete",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "delete@template"
+      }, {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "编辑模板",
+        "codeName" : "edit",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_work_item_template_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "template_edit",
+        "name" : "编辑模板",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "edit",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "edit@template"
       } ],
       "getAllPSAppViews" : [ {
         "modelref" : true,
@@ -227054,6 +227130,14 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_view.json",
         "viewType" : "DEEDITVIEW"
+      }, {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_create_work_item_template_view.json",
+        "viewType" : "DEOPTVIEW"
+      }, {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_work_item_template_view.json",
+        "viewType" : "DEOPTVIEW"
       }, {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_grid_view.json",

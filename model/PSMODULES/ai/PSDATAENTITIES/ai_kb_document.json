@@ -273,6 +273,9 @@
       "name" : "CUSTOM_CHUNK",
       "codeName" : "custom_chunk"
     }, {
+      "name" : "PARSED_CONTENT",
+      "codeName" : "parsed_content"
+    }, {
       "name" : "KB_ID",
       "codeName" : "kb_id"
     }, {
@@ -1451,7 +1454,8 @@
       "dBType" : "MYSQL5",
       "name" : "STATUS",
       "queryCodeExp" : "t1.`STATUS`",
-      "standardColumnName" : "`STATUS`"
+      "standardColumnName" : "`STATUS`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_STATUS_EQ",
@@ -1514,6 +1518,7 @@
     "codeName" : "status",
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
+    "defaultValue" : "0",
     "importOrder" : 1000,
     "length" : 60,
     "logicName" : "状态",
@@ -1816,6 +1821,80 @@
     "serviceCodeName" : "custom_chunk",
     "stdDataType" : 9,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PARSED_CONTENT",
+      "dBType" : "MYSQL5",
+      "name" : "PARSED_CONTENT",
+      "standardColumnName" : "`PARSED_CONTENT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTAREA_10",
+        "name" : "默认",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXTAREA",
+        "name" : "移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PARSED_CONTENT",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "parsed_content",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "解析内容",
+    "name" : "PARSED_CONTENT",
+    "orderValue" : 330,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "PARSED_CONTENT"
+    },
+    "serviceCodeName" : "parsed_content",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "KB_ID",
@@ -2581,6 +2660,37 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "parsing",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/parsing.json",
+    "logicName" : "文档解析处理",
+    "name" : "文档解析处理",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "remove_doc_scheduled",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/remove_doc_scheduled.json",
@@ -3221,6 +3331,7 @@
       "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
       "logicName" : "状态",
       "name" : "status",
       "getPSDEField" : {
@@ -3271,6 +3382,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "解析内容",
+      "name" : "parsed_content",
+      "getPSDEField" : {
+        "name" : "PARSED_CONTENT",
+        "codeName" : "parsed_content"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",
@@ -3462,6 +3584,7 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
       "logicName" : "状态",
       "name" : "n_status_eq",
       "getPSDEFSearchMode" : {
