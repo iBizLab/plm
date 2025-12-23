@@ -11,7 +11,16 @@
                             <tns:global identifier="ai_kb_documentparsingdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <endEvent id="begin_end" name="end"/>
-                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="正则解析文档内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                    <sequenceFlow id="begin_debugparam_01" sourceRef="begin" targetRef="debugparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_rawsfcode_01" sourceRef="debugparam_01" targetRef="rawsfcode_01">
+                    </sequenceFlow>
         </process>
     </definitions>

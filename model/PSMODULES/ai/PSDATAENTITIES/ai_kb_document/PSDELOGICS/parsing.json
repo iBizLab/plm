@@ -9,7 +9,67 @@
     "leftPos" : 200,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
     "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef parsed_content = _default.get('parsed_content')\r\ndef parser_config = _default.get('parser_config')\r\nif (parsed_content && parser_config ){\r\n    def data_masking_rules = parser_config.get('data_masking_rules')\r\n    if (data_masking_rules){\r\n        // 根据正则规则pattern对parsed_content进行替换\r\n        for (data_masking_rule in data_masking_rules){\r\n            def pattern = data_masking_rule.get('pattern')\r\n            def replacement = data_masking_rule.get('replacement')?:''\r\n            if (pattern){\r\n                parsed_content = parsed_content.replaceAll(pattern, replacement)\r\n            }\r\n        }\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 352,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "正则解析文档内容",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 198,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 560,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 256,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      }
+    } ],
+    "topPos" : 327,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
