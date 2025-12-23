@@ -1,0 +1,82 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.remove_space_scheduled;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncremove_space_scheduleddefault;
+                global cn.ibizlab.plm.core.base.domain.extend_schedule ai_kb_document_syncremove_space_scheduledextend_schedule;
+                global cn.ibizlab.plm.core.base.domain.extend_schedule ai_kb_document_syncremove_space_scheduledextend_schedule_filter;
+                global cn.ibizlab.plm.core.base.domain.extend_schedule ai_kb_document_syncremove_space_scheduledextend_schedule_pages;
+                    global cn.ibizlab.plm.core.base.service.Iextend_scheduleService extend_scheduleservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduledbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduledprepareparam_01"
+            when
+            then
+                            ai_kb_document_syncremove_space_scheduledextend_schedule_filter.set("size","1000");
+                            ai_kb_document_syncremove_space_scheduledextend_schedule_filter.set("n_principal_id_eq",ai_kb_document_syncremove_space_scheduleddefault.get("id"));
+                        update(ai_kb_document_syncremove_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_filter);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[过滤空间对应计划]
+            rule "dedataset_01"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduleddedataset_01"
+            when
+            then
+                        update(ai_kb_document_syncremove_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_filter);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall_01"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduledloopsubcall_01"
+            when
+            then
+                        update(ai_kb_document_syncremove_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_filter);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduledend_01"
+            when
+            then
+                        update(ai_kb_document_syncremove_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_filter);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除空间执行计划]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_document_syncremove_space_scheduleddeaction_01"
+            when
+            then
+                        extend_scheduleservice.remove(ai_kb_document_syncremove_space_scheduledextend_schedule.getId());
+                        update(ai_kb_document_syncremove_space_scheduleddefault);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_filter);//更新fact中变量值
+                        update(ai_kb_document_syncremove_space_scheduledextend_schedule_pages);//更新fact中变量值
+            end
