@@ -147,8 +147,7 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 0,
-        "itemHeight" : 200.0,
+        "ignoreInput" : 12,
         "labelPos" : "NONE",
         "labelWidth" : 0,
         "name" : "description",
@@ -158,14 +157,20 @@
           "codeName" : "description"
         },
         "getPSEditor" : {
-          "editorHeight" : 200.0,
+          "contentType" : "HTML",
           "editorParams" : {
-            "HEIGHT" : "200"
+            "contenttype" : "HTML",
+            "TITLE" : "name",
+            "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
           },
-          "editorType" : "TEXTAREA_10",
-          "maxLength" : 1048576,
+          "editorStyle" : "ANCHO_HTML",
+          "editorType" : "RAW",
           "name" : "description",
-          "showMaxLength" : true
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "ANCHO_HTML",
+            "runtimeObject" : true
+          }
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
