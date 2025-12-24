@@ -24,13 +24,15 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取知识空间ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为知识空间成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
-                    <sequenceFlow id="begin_rawsfcode3" sourceRef="begin" targetRef="rawsfcode3">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="已删除归档只读"/>
+                    <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
                     </sequenceFlow>
@@ -82,6 +84,20 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam_01_rawsfcode_01" sourceRef="gateway-prepareparam_01" targetRef="rawsfcode_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $spaceget_space_member_onedefault:space();
+                                            $spaceget_space_member_onefilter:space_member();
+                                            $spaceget_space_member_onefor_obj:Map();
+                                            $spaceget_space_member_onemembers:space_member();
+                                            $spaceget_space_member_oneuser:Map();
+                                    eval($spaceget_space_member_onedefault==spaceget_space_member_onedefault && $spaceget_space_member_onefilter==spaceget_space_member_onefilter && $spaceget_space_member_onemembers==spaceget_space_member_onemembers && );
+                                eval(((RuleUtils.test($spaceget_space_member_onedefault.get("isArchived"),"EQ","1"))||(RuleUtils.test($spaceget_space_member_onedefault.get("isDeleted"),"EQ","1"))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_rawsfcode3" sourceRef="prepareparam_01" targetRef="rawsfcode3">
+                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
@@ -110,6 +126,8 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_end2" sourceRef="rawsfcode_01" targetRef="end2">
+                    </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
@@ -118,6 +136,10 @@
                             <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
                             <endEvent id="gateway-prepareparam5_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam_01" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam_01_gateway-prepareparam_01_gatewayline" sourceRef="prepareparam_01" targetRef="gateway-prepareparam_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam_01_end_line" sourceRef="gateway-prepareparam_01" targetRef="gateway-prepareparam_01_end"/>
+                            <endEvent id="gateway-prepareparam_01_end" name="end"/>
                             <exclusiveGateway id="gateway-rawsfcode3" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode3_end_line"></exclusiveGateway>
                             <sequenceFlow id="rawsfcode3_gateway-rawsfcode3_gatewayline" sourceRef="rawsfcode3" targetRef="gateway-rawsfcode3"></sequenceFlow>
                             <sequenceFlow id="gateway-rawsfcode3_end_line" sourceRef="gateway-rawsfcode3" targetRef="gateway-rawsfcode3_end"/>

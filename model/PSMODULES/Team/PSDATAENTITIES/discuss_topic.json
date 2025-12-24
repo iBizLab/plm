@@ -5485,7 +5485,7 @@
     "name" : "获取话题成员",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -330,
+      "leftPos" : -350,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -5499,7 +5499,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : -80,
+      "topPos" : -70,
       "parallelOutput" : true
     }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
@@ -5526,7 +5526,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 值为空(Nil)"
+            "name" : "Default[srfreadonly] 值为空(Nil) "
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -5571,7 +5571,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 215
+      "topPos" : 215,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 294,
@@ -5717,7 +5718,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : -220
+      "topPos" : -220,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : -203,
@@ -5868,7 +5870,7 @@
       } ],
       "topPos" : -330
     }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "code" : "console.log('');\r\n\r\nvar defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
       "codeName" : "RAWSFCODE4",
       "leftPos" : -203,
       "logicNodeType" : "RAWSFCODE",
@@ -5884,7 +5886,7 @@
           "id" : "RAWSFCODE4"
         }
       } ],
-      "topPos" : 223
+      "topPos" : 215
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
