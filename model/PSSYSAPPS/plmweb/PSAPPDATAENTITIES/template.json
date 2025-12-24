@@ -1474,6 +1474,10 @@
       "modelref" : true,
       "id" : "remove"
     },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "notify_refresh"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -1488,6 +1492,7 @@
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "delete",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "delete@template"
@@ -1569,6 +1574,68 @@
     "uIActionType" : "DEUIACTION",
     "reloadData" : true,
     "id" : "edit_test_case@template"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "notify_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "通知刷新",
+    "name" : "通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 721,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'template'});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 400,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
