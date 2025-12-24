@@ -29,6 +29,10 @@
     "cssName" : "template_style"
   },
   "getPSViewLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "visible",
+      "hidden" : true
+    } ],
     "codeName" : "work_item_template",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
@@ -174,6 +178,20 @@
             "layout" : "FLEX",
             "spacingBottom" : "OUTERSMALL"
           },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "visible",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            } ],
+            "relatedItemNames" : [ "visible" ],
+            "notMode" : false
+          } ],
           "tooltip" : "使用此模板",
           "uIActionTarget" : "NONE",
           "showCaption" : true
@@ -206,19 +224,59 @@
           },
           "showCaption" : true
         }, {
-          "actionType" : "NONE",
-          "buttonStyle" : "DEFAULT",
-          "caption" : "按钮",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "BUTTON",
-          "name" : "create_template",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "tooltip" : "按钮",
-          "uIActionTarget" : "NONE",
-          "showCaption" : true
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "visible",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            } ],
+            "relatedItemNames" : [ "visible" ],
+            "notMode" : false
+          } ],
+          "getPSPanelItems" : [ {
+            "actionType" : "NONE",
+            "buttonStyle" : "DEFAULT",
+            "caption" : "按钮",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "BUTTON",
+            "name" : "create_template",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "tooltip" : "按钮",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "文本框",
+          "itemType" : "FIELD",
+          "name" : "visible",
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "visible"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "hidden" : true
         } ]
       } ],
       "predefinedType" : "CONTAINER_H_SPLIT"
@@ -235,13 +293,6 @@
       "name" : "engine"
     } ],
     "getPSAppViewLogics" : [ {
-      "eventNames" : "onMounted",
-      "logicTrigger" : "CTRLEVENT",
-      "logicType" : "SCRIPT",
-      "name" : "LOGIC",
-      "getPSViewCtrlName" : "listexpbar",
-      "scriptCode" : "console.log('测试');\r\nconsole.log(view);"
-    }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
       "name" : "newdata",
