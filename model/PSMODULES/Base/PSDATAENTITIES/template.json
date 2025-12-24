@@ -189,6 +189,36 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "codeName" : "save_template",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template/PSDEACTIONS/save_template.json",
+    "logicName" : "保存模板",
+    "name" : "save_template",
+    "getPSDEActionInput" : {
+      "name" : "Save_templateInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "template_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Save_templateResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "template_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/template/PSDELOGICS/save_template.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -1424,6 +1454,105 @@
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
     "queryColumn" : false
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "save_template",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template/PSDELOGICS/save_template.json",
+    "logicName" : "保存模板",
+    "name" : "保存模板",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -30,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 696,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 139,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/template/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/template.json"
+      },
+      "leftPos" : 399,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/template.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "template_dto",
