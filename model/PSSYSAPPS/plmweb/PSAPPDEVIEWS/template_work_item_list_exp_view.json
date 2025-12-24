@@ -228,7 +228,8 @@
             "name" : "static_image",
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "spacingBottom" : "OUTERSMALL"
             },
             "getPSRawItem" : {
               "contentType" : "IMAGE",
@@ -243,15 +244,50 @@
             },
             "showCaption" : true
           }, {
-            "actionType" : "NONE",
+            "actionType" : "UIACTION",
             "buttonStyle" : "DEFAULT",
             "caption" : "新建模板",
             "itemStyle" : "DEFAULT",
             "itemType" : "BUTTON",
             "name" : "create_template",
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "layoutpanel_create_template"
+            },
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf067@FontAwesome",
+              "cssClass" : "fa fa-plus"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "新建模板",
+              "codeName" : "create",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_create_work_item_template_view.json",
+                "viewType" : "DEOPTVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "template_create",
+              "name" : "新建工作项模板",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf067@FontAwesome",
+                "cssClass" : "fa fa-plus"
+              },
+              "refreshMode" : 1,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "create",
+              "uIActionType" : "DEUIACTION",
+              "reloadData" : true,
+              "id" : "create@template"
             },
             "tooltip" : "新建模板",
             "uIActionTarget" : "NONE",
@@ -277,7 +313,7 @@
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
       "name" : "LOGIC",
-      "scriptCode" : "view.layoutPanel.panelItems.apply.state.visible = false;\r\nview.layoutPanel.panelItems.no_data_container.state.visible = true;"
+      "scriptCode" : "view.layoutPanel.panelItems.apply.state.visible = false;\r\nview.layoutPanel.panelItems.nav_pos.state.visible = false;\r\nview.layoutPanel.panelItems.no_data_container.state.visible = true;"
     }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
