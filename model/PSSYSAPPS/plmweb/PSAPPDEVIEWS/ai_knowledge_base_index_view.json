@@ -350,138 +350,7 @@
     "modelid" : "7f1e7f29e3e43de68b991ea129754b98",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSControls" : [ {
-      "codeName" : "index_view_relation",
-      "controlStyle" : "DRBAR_EX",
-      "controlType" : "DRBAR",
-      "dataRelationTag" : "index_view_relation",
-      "getEditItemCapPSLanguageRes" : {
-        "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
-      },
-      "editItemCaption" : "知识库",
-      "name" : "drbar",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-      },
-      "getPSControlHandler" : {
-        "enableDEFieldPrivilege" : false,
-        "id" : "drbar"
-      },
-      "getPSControlParam" : {
-        "autoLoad" : true,
-        "showBusyIndicator" : true,
-        "id" : "DRBAR"
-      },
-      "getPSDEDRBarGroups" : [ {
-        "caption" : "知识库首页",
-        "name" : "知识库首页",
-        "hidden" : false,
-        "id" : "index_view"
-      } ],
-      "getPSDEDRCtrlItems" : [ {
-        "caption" : "知识库文档",
-        "name" : "ai_kb_doc",
-        "getPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_tree_exp_view.json",
-          "viewType" : "DETREEEXPVIEW"
-        },
-        "getPSDEDRBarGroup" : {
-          "modelref" : true,
-          "id" : "index_view"
-        }
-      }, {
-        "caption" : "知识库文档",
-        "name" : "test",
-        "getPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_nested_grid_view.json",
-          "viewType" : "DEGRIDVIEW"
-        },
-        "getPSDEDRBarGroup" : {
-          "modelref" : true,
-          "id" : "index_view"
-        },
-        "getPSNavigateParams" : [ {
-          "key" : "n_kb_id_eq",
-          "name" : "n_kb_id_eq",
-          "value" : "ai_knowledge_base",
-          "rawValue" : false
-        } ]
-      } ],
-      "getPSSysPFPlugin" : {
-        "pluginType" : "CUSTOM",
-        "pluginCode" : "DRBAR_EX",
-        "runtimeObject" : true
-      },
-      "uniqueTag" : "ai_knowledge_base_index_view__drbar",
-      "showTitle" : true,
-      "modelid" : "8455252ca5b49c913c9583447fe3876f",
-      "modeltype" : "PSDEDRBAR"
-    }, {
-      "codeName" : "index_view_toolbar",
-      "controlType" : "TOOLBAR",
-      "logicName" : "知识库首页视图工具栏",
-      "name" : "toolbar",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-      },
-      "getPSControlParam" : {
-        "id" : "TOOLBAR"
-      },
-      "getPSDEToolbarItems" : [ {
-        "caption" : "更多",
-        "itemType" : "ITEMS",
-        "name" : "items1",
-        "getPSDEToolbarItems" : [ {
-          "caption" : "知识库信息",
-          "groupExtractMode" : "ITEM",
-          "itemType" : "DEUIACTION",
-          "name" : "deuiaction1",
-          "noPrivDisplayMode" : 2,
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "toolbar_deuiaction1"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEKEY",
-            "caption" : "知识库信息",
-            "codeName" : "open_kb_base_view",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_edit_view.json",
-              "viewType" : "DEEDITVIEW"
-            },
-            "frontProcessType" : "WIZARD",
-            "fullCodeName" : "ai_knowledge_base_open_kb_base_view",
-            "name" : "打开知识库信息",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-            },
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "open_kb_base_view",
-            "uIActionType" : "DEUIACTION",
-            "id" : "open_kb_base_view@ai_knowledge_base"
-          },
-          "tooltip" : "知识库信息",
-          "uIActionTarget" : "SINGLEKEY",
-          "showCaption" : true,
-          "showIcon" : true
-        } ],
-        "getPSSysImage" : {
-          "glyph" : "xf013@FontAwesome",
-          "cssClass" : "fa fa-gear"
-        },
-        "tooltip" : "更多",
-        "showCaption" : false,
-        "showIcon" : true
-      } ],
-      "modelid" : "8f5aa0e4df2d269ff770314e52cbdca6",
-      "modeltype" : "PSDETOOLBAR"
-    }, {
-      "codeName" : "form",
+      "codeName" : "index_view_form",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
         "modelref" : true,
@@ -500,7 +369,7 @@
         }
       },
       "defaultLabelWidth" : 130,
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/form.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/index_view_form.json",
       "getGetDraftFromPSControlAction" : {
         "modelref" : true,
         "id" : "loaddraftfrom",
@@ -545,6 +414,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
         }
       },
+      "logicName" : "知识库首页视图_表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
@@ -633,6 +503,105 @@
         "showBusyIndicator" : true,
         "id" : "FORM"
       },
+      "getPSDEFormItems" : [ {
+        "id" : "srfupdatedate",
+        "hidden" : true,
+        "dataType" : 5,
+        "getPSAppDEField" : {
+          "name" : "UPDATE_TIME",
+          "codeName" : "update_time"
+        }
+      }, {
+        "id" : "srforikey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfkey",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      }, {
+        "id" : "srfmajortext",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      }, {
+        "id" : "srftempmode",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfuf",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfdeid",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfsourcekey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "id",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      } ],
+      "getPSDEFormPages" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.SPACE.INDEX_VIEW_FORM.FORMPAGE.FORMPAGE1"
+        },
+        "caption" : "基本信息",
+        "codeName" : "formpage1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMPAGE",
+        "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"
+          },
+          "caption" : "知识库标识",
+          "codeName" : "id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false
+      } ],
       "getPSLayout" : {
         "childColMD" : 24,
         "columnCount" : 24,
@@ -671,10 +640,117 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
         }
       },
-      "noTabHeader" : false,
+      "noTabHeader" : true,
       "name" : "form",
-      "modelid" : "fbc466809f126cb6ea4d37a7200e7164_form",
+      "modelid" : "28434fe099788b01b2689e703eded184",
       "modeltype" : "PSDEFORM_EDITFORM"
+    }, {
+      "codeName" : "index_view_relation",
+      "controlType" : "DRBAR",
+      "dataRelationTag" : "index_view_relation",
+      "getEditItemCapPSLanguageRes" : {
+        "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+      },
+      "editItemCaption" : "知识库",
+      "name" : "drbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "drbar"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "DRBAR"
+      },
+      "getPSDEDRBarGroups" : [ {
+        "caption" : "知识库首页",
+        "name" : "知识库首页",
+        "hidden" : false,
+        "id" : "index_view"
+      } ],
+      "getPSDEDRCtrlItems" : [ {
+        "caption" : "知识库文档",
+        "name" : "ai_kb_doc",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_tree_exp_view.json",
+          "viewType" : "DETREEEXPVIEW"
+        },
+        "getPSDEDRBarGroup" : {
+          "modelref" : true,
+          "id" : "index_view"
+        }
+      } ],
+      "uniqueTag" : "ai_knowledge_base_index_view__drbar",
+      "showTitle" : true,
+      "modelid" : "8455252ca5b49c913c9583447fe3876f",
+      "modeltype" : "PSDEDRBAR"
+    }, {
+      "codeName" : "index_view_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "知识库首页视图工具栏",
+      "name" : "toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "getPSControlParam" : {
+        "id" : "TOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "更多",
+        "itemType" : "ITEMS",
+        "name" : "items1",
+        "getPSDEToolbarItems" : [ {
+          "caption" : "知识库信息",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "toolbar_deuiaction1"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "知识库信息",
+            "codeName" : "open_kb_base_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_edit_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_knowledge_base_open_kb_base_view",
+            "name" : "打开知识库信息",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_kb_base_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_kb_base_view@ai_knowledge_base"
+          },
+          "tooltip" : "知识库信息",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf013@FontAwesome",
+          "cssClass" : "fa fa-gear"
+        },
+        "tooltip" : "更多",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "modelid" : "8f5aa0e4df2d269ff770314e52cbdca6",
+      "modeltype" : "PSDETOOLBAR"
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
