@@ -336,6 +336,13 @@
         "codeName" : "executor_name"
       }
     }, {
+      "id" : "executors",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      }
+    }, {
       "id" : "priority",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -13090,6 +13097,73 @@
                   "layout" : "TABLE_24COL"
                 },
                 "valueItemName" : "executor_id",
+                "allowEmpty" : true,
+                "showCaption" : true
+              }, {
+                "caption" : "执行人",
+                "codeName" : "executors",
+                "dataType" : 21,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "itemWidth" : 450.0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
+                "name" : "executors",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "EXECUTORS",
+                  "codeName" : "executors"
+                },
+                "getPSEditor" : {
+                  "editorParams" : {
+                    "ENABLEBOTTOMBUTTON" : "true",
+                    "MULTIPLE" : "true",
+                    "DEFAULTATNVALUE" : "40",
+                    "CODELISTID" : "Base__attention_type",
+                    "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+                    "AC" : "TRUE",
+                    "TRIGGER" : "TRUE",
+                    "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"user_name\"}",
+                    "URL" : "libraries/${context.library}/library_members/fetch_default",
+                    "PICKUPVIEW" : "FALSE",
+                    "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                    "USERMETHOD" : "post",
+                    "DEPTURL" : "/users/fetch_default",
+                    "DEPTMETHOD" : "get",
+                    "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+                    "CODELISTMAP" : "{\"FOLLOWED\":[20,30,40],\"NOTFOLLOWING\":[10]}"
+                  },
+                  "editorStyle" : "ATTENTION_LIBRARY",
+                  "editorType" : "PICKEREX_TRIGGER",
+                  "editorWidth" : 320.0,
+                  "handlerType" : "PickupText",
+                  "name" : "executors",
+                  "objectIdField" : "id",
+                  "objectNameField" : "name",
+                  "getPSNavigateParams" : [ {
+                    "key" : "n_department_id_eq",
+                    "name" : "n_department_id_eq",
+                    "value" : "srforgsectorid",
+                    "rawValue" : false
+                  } ],
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "ATTENTION",
+                    "runtimeObject" : true
+                  },
+                  "valueType" : "OBJECTS",
+                  "enableAC" : true,
+                  "enablePickupView" : false,
+                  "forceSelection" : true,
+                  "showTrigger" : true,
+                  "singleSelect" : true
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
                 "allowEmpty" : true,
                 "showCaption" : true
               }, {
