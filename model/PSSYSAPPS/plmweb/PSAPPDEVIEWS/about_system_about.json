@@ -30,7 +30,12 @@
       "id" : "version",
       "viewFieldName" : "version"
     }, {
-      "id" : "newversion"
+      "id" : "latest_version",
+      "viewFieldName" : "latest_version"
+    }, {
+      "id" : "has_update",
+      "hidden" : true,
+      "viewFieldName" : "has_update"
     }, {
       "id" : "license",
       "viewFieldName" : "license"
@@ -128,7 +133,7 @@
           "name" : "container_singledata",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "GetAboutInfo"
+            "id" : "CheckVersion"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -221,7 +226,8 @@
               "name" : "static_image1",
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "spacingRight" : "OUTERSMALL"
               },
               "getPSRawItem" : {
                 "contentType" : "IMAGE",
@@ -252,15 +258,16 @@
                 "hAlignSelf" : "CENTER",
                 "layout" : "FLEX"
               },
+              "valueFormat" : "当前版本：@",
               "viewFieldName" : "version"
             }, {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "newversion",
+              "name" : "latest_version",
               "getPSEditor" : {
                 "editorType" : "SPAN",
-                "name" : "newversion",
+                "name" : "latest_version",
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
                 "renderMode" : "TEXT_DYNAMIC",
                 "enableLinkView" : false
@@ -277,13 +284,36 @@
                 "logicType" : "GROUP",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "ISNOTNULL",
-                  "dstModelField" : "newversion",
+                  "dstModelField" : "latest_version",
                   "logicType" : "SINGLE",
-                  "name" : "newversion 值不为空(NotNil) "
+                  "name" : "latest_version 值不为空(NotNil) "
+                }, {
+                  "condOp" : "EQ",
+                  "dstModelField" : "has_update",
+                  "logicType" : "SINGLE",
+                  "name" : "has_update 等于(=) true",
+                  "value" : "true"
                 } ],
-                "relatedItemNames" : [ "newversion" ],
+                "relatedItemNames" : [ "latest_version", "has_update" ],
                 "notMode" : false
-              } ]
+              } ],
+              "valueFormat" : "最新版本：@",
+              "viewFieldName" : "latest_version"
+            }, {
+              "caption" : "文本(动态)",
+              "itemType" : "FIELD",
+              "name" : "has_update",
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "has_update",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "has_update",
+              "hidden" : true
             } ]
           }, {
             "caption" : "文本(动态)",
