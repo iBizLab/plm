@@ -24,6 +24,12 @@
       "id" : "name",
       "viewFieldName" : "name"
     }, {
+      "id" : "has_update",
+      "viewFieldName" : "has_update"
+    }, {
+      "id" : "check_for_updates",
+      "viewFieldName" : "check_for_updates"
+    }, {
       "id" : "description",
       "viewFieldName" : "description"
     }, {
@@ -35,14 +41,6 @@
     }, {
       "id" : "license",
       "viewFieldName" : "license"
-    }, {
-      "id" : "has_update",
-      "hidden" : true,
-      "viewFieldName" : "has_update"
-    }, {
-      "id" : "check_for_updates",
-      "hidden" : true,
-      "viewFieldName" : "check_for_updates"
     }, {
       "id" : "appinfo",
       "viewFieldName" : "appinfo"
@@ -171,6 +169,66 @@
               "spacingBottom" : "OUTERSMALL"
             },
             "viewFieldName" : "name"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container2",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "ISNULL",
+                "dstModelField" : "name",
+                "logicType" : "SINGLE",
+                "name" : "name 值为空(Nil) "
+              } ],
+              "relatedItemNames" : [ "name" ],
+              "notMode" : false
+            } ],
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "has_update",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "has_update",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "has_update"
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "check_for_updates",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "check_for_updates",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "check_for_updates"
+            } ]
           }, {
             "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
@@ -341,36 +399,6 @@
               "notMode" : false
             } ],
             "viewFieldName" : "license"
-          }, {
-            "caption" : "文本(动态)",
-            "itemType" : "FIELD",
-            "name" : "has_update",
-            "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "has_update",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC"
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "viewFieldName" : "has_update",
-            "hidden" : true
-          }, {
-            "caption" : "文本(动态)",
-            "itemType" : "FIELD",
-            "name" : "check_for_updates",
-            "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "check_for_updates",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC"
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "viewFieldName" : "check_for_updates",
-            "hidden" : true
           } ],
           "predefinedType" : "CONTAINER_SINGLEDATA",
           "width" : 400.0
