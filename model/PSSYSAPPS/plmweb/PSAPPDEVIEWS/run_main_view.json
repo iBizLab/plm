@@ -13584,19 +13584,22 @@
                   },
                   "getPSEditor" : {
                     "editorParams" : {
+                      "DEFAULTATNVALUE" : "40",
+                      "CODELISTID" : "Base__attention_type",
                       "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                       "AC" : "TRUE",
-                      "SRFNAVPARAM.n_status_eq" : "1",
                       "TRIGGER" : "TRUE",
+                      "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
                       "URL" : "libraries/${context.library}/library_members/fetch_default",
                       "PICKUPVIEW" : "FALSE",
                       "USERMETHOD" : "post",
                       "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-                      "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+                      "DEPTURL" : "/users/fetch_default",
                       "DEPTMETHOD" : "get",
-                      "DEPTURL" : "/users/fetch_default"
+                      "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+                      "CODELISTMAP" : "{\"FOLLOWED\":[20,30,40],\"NOTFOLLOWING\":[10]}"
                     },
-                    "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+                    "editorStyle" : "ATTENTION_LIBRARY",
                     "editorType" : "PICKEREX_TRIGGER",
                     "editorWidth" : 320.0,
                     "handlerType" : "PickupText",
@@ -13621,15 +13624,10 @@
                       "name" : "n_department_id_eq",
                       "value" : "srforgsectorid",
                       "rawValue" : false
-                    }, {
-                      "key" : "n_status_eq",
-                      "name" : "n_status_eq",
-                      "value" : "1",
-                      "rawValue" : true
                     } ],
                     "getPSSysPFPlugin" : {
                       "pluginType" : "EDITOR_CUSTOMSTYLE",
-                      "pluginCode" : "PERSON_SELECT",
+                      "pluginCode" : "ATTENTION",
                       "runtimeObject" : true
                     },
                     "getPSUIActionGroup" : {
