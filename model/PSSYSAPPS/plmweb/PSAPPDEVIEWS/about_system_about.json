@@ -37,10 +37,12 @@
     }, {
       "id" : "backendinfo",
       "viewFieldName" : "backendinfo"
+    }, {
+      "id" : "lic",
+      "viewFieldName" : "lic"
     } ],
     "codeName" : "usr0822478854",
     "controlType" : "VIEWLAYOUTPANEL",
-    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "FLEX",
     "logicName" : "关于布局面板",
     "name" : "layoutpanel",
@@ -48,14 +50,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ABOUT.json"
     },
-    "getPSControlLogics" : [ {
-      "eventNames" : "onClick",
-      "itemName" : "STATIC_IMAGE1",
-      "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
-      "name" : "check",
-      "scriptCode" : "console.info(\"检测新版本\")"
-    } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
       "layout" : "FLEX"
@@ -186,6 +180,19 @@
               "layout" : "FLEX",
               "spacingBottom" : "OUTERSMALL"
             },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "ISNOTNULL",
+                "dstModelField" : "description",
+                "logicType" : "SINGLE",
+                "name" : "description 值不为空(NotNil) "
+              } ],
+              "relatedItemNames" : [ "description" ],
+              "notMode" : false
+            } ],
             "viewFieldName" : "description"
           }, {
             "caption" : "容器",
@@ -203,6 +210,28 @@
               "spacingBottom" : "OUTERSMALL"
             },
             "getPSPanelItems" : [ {
+              "caption" : "图片",
+              "contentType" : "IMAGE",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "static_image1",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSRawItem" : {
+                "contentType" : "IMAGE",
+                "name" : "static_image1",
+                "getPSSysImage" : {
+                  "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
+                },
+                "predefinedType" : "STATIC_IMAGE"
+              },
+              "getPSSysImage" : {
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
+              },
+              "showCaption" : true
+            }, {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
@@ -221,34 +250,6 @@
               },
               "viewFieldName" : "version"
             }, {
-              "caption" : "图片",
-              "contentType" : "IMAGE",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_image1",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "hAlignSelf" : "CENTER",
-                "layout" : "FLEX",
-                "spacingLeft" : "OUTERSMALL",
-                "spacingRight" : "OUTERSMALL"
-              },
-              "getPSRawItem" : {
-                "contentType" : "IMAGE",
-                "name" : "static_image1",
-                "getPSSysImage" : {
-                  "glyph" : "xf0ee@FontAwesome",
-                  "cssClass" : "fa fa-cloud-upload"
-                },
-                "predefinedType" : "STATIC_IMAGE",
-                "tooltip" : "检测新版本"
-              },
-              "getPSSysImage" : {
-                "glyph" : "xf0ee@FontAwesome",
-                "cssClass" : "fa fa-cloud-upload"
-              },
-              "showCaption" : true
-            }, {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
@@ -263,7 +264,8 @@
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "hAlignSelf" : "CENTER",
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "spacingLeft" : "OUTERSMALL"
               },
               "getPSPanelItemGroupLogics" : [ {
                 "groupOP" : "AND",
@@ -333,12 +335,31 @@
             "getPSLayoutPos" : {
               "grow" : -1,
               "hAlignSelf" : "CENTER",
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "spacingBottom" : "OUTERSMALL"
             },
             "viewFieldName" : "backendinfo"
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "lic",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "lic",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "hAlignSelf" : "CENTER",
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "lic"
           } ],
           "predefinedType" : "CONTAINER_SINGLEDATA",
-          "scriptCode" : "{appinfo:\"前端应用由iBiz全动态网页架构：[\"+ibiz.env.appVersion+\"]提供支持\", backendinfo:\"后台服务由iBiz全动态微服务架构：[\"+ibiz.appData.version+\"]提供支持\"}\n",
+          "scriptCode" : "{appinfo:\"前端应用由：[ibiz-app-hub:\"+ibiz.env.appVersion+\"]提供支持\", backendinfo:\"后台服务由：[ibiz-service-hub:\"+ibiz.appData.version+\"]提供支持\",\"lic\":\"MIT\"}\n",
           "width" : 400.0
         } ]
       } ]
