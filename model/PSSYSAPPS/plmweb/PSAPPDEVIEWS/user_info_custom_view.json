@@ -397,27 +397,31 @@
           "getPSUIAction" : {
             "actionTarget" : "NONE",
             "caption" : "关于",
-            "codeName" : "about",
+            "codeName" : "open_about",
             "dialogResult" : "OK",
-            "getFrontPSAppView" : {
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "ABOUT_open_about",
+            "name" : "打开关于界面",
+            "getNextPSUIAction" : {
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ABOUT.json"
+              },
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/about_system_about.json",
-              "viewType" : "DECUSTOMVIEW"
+              "id" : "about@ABOUT"
             },
-            "frontProcessType" : "WIZARD",
-            "fullCodeName" : "ABOUT_about",
-            "name" : "关于",
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ABOUT.json"
             },
+            "scriptCode" : "if (view) {\n    view.closeView();\n}",
             "uIActionMode" : "FRONT",
-            "uIActionTag" : "about",
+            "uIActionTag" : "open_about",
             "uIActionType" : "DEUIACTION",
             "closeEditView" : true,
             "closePopupView" : true,
             "globalUIAction" : true,
-            "id" : "about@ABOUT"
+            "id" : "open_about@ABOUT"
           },
           "renderMode" : "LINK",
           "tooltip" : "关于iBizPLM",
