@@ -281,29 +281,6 @@
               "spacingBottom" : "OUTERSMALL"
             },
             "getPSPanelItems" : [ {
-              "caption" : "图片",
-              "contentType" : "IMAGE",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_image1",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX",
-                "spacingRight" : "OUTERSMALL"
-              },
-              "getPSRawItem" : {
-                "contentType" : "IMAGE",
-                "name" : "static_image1",
-                "getPSSysImage" : {
-                  "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
-                },
-                "predefinedType" : "STATIC_IMAGE"
-              },
-              "getPSSysImage" : {
-                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
-              },
-              "showCaption" : true
-            }, {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
@@ -324,6 +301,7 @@
               "viewFieldName" : "version"
             }, {
               "caption" : "文本(动态)",
+              "cssStyle" : "color:blue",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
               "name" : "latest_version",
@@ -363,20 +341,13 @@
               "viewFieldName" : "latest_version"
             } ]
           }, {
-            "caption" : "文本(动态)",
+            "caption" : "容器",
             "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "license",
-            "getPSEditor" : {
-              "contentType" : "HTML",
-              "editorParams" : {
-                "contenttype" : "HTML",
-                "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
-              },
-              "editorType" : "RAW",
-              "name" : "license",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
+            "itemType" : "CONTAINER",
+            "name" : "container3",
+            "getPSLayout" : {
+              "dir" : "row",
+              "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -384,21 +355,66 @@
               "layout" : "FLEX",
               "spacingBottom" : "OUTERSMALL"
             },
-            "getPSPanelItemGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSPanelItemLogics" : [ {
-                "condOp" : "EQ",
-                "dstModelField" : "check_for_updates",
-                "logicType" : "SINGLE",
-                "name" : "check_for_updates 等于(=) true",
-                "value" : "true"
+            "getPSPanelItems" : [ {
+              "caption" : "图片",
+              "contentType" : "IMAGE",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "static_image1",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "spacingRight" : "OUTERSMALL"
+              },
+              "getPSRawItem" : {
+                "contentType" : "IMAGE",
+                "name" : "static_image1",
+                "getPSSysImage" : {
+                  "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
+                },
+                "predefinedType" : "STATIC_IMAGE"
+              },
+              "getPSSysImage" : {
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"20\" role=\"img\" aria-label=\"license: MIT\"><title>license: MIT</title><linearGradient id=\"s\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><clipPath id=\"r\"><rect width=\"78\" height=\"20\" rx=\"3\" fill=\"#fff\"/></clipPath><g clip-path=\"url(#r)\"><rect width=\"47\" height=\"20\" fill=\"#555\"/><rect x=\"47\" width=\"31\" height=\"20\" fill=\"#4c1\"/><rect width=\"78\" height=\"20\" fill=\"url(#s)\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" text-rendering=\"geometricPrecision\" font-size=\"110\"><text aria-hidden=\"true\" x=\"245\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"370\">license</text><text x=\"245\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"370\">license</text><text aria-hidden=\"true\" x=\"615\" y=\"150\" fill=\"#010101\" fill-opacity=\".3\" transform=\"scale(.1)\" textLength=\"210\">MIT</text><text x=\"615\" y=\"140\" transform=\"scale(.1)\" fill=\"#fff\" textLength=\"210\">MIT</text></g></svg>"
+              },
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "license",
+              "getPSEditor" : {
+                "contentType" : "HTML",
+                "editorParams" : {
+                  "contenttype" : "HTML",
+                  "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
+                },
+                "editorType" : "RAW",
+                "name" : "license",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "hAlignSelf" : "CENTER",
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "check_for_updates",
+                  "logicType" : "SINGLE",
+                  "name" : "check_for_updates 等于(=) true",
+                  "value" : "true"
+                } ],
+                "relatedItemNames" : [ "check_for_updates" ],
+                "notMode" : false
               } ],
-              "relatedItemNames" : [ "check_for_updates" ],
-              "notMode" : false
-            } ],
-            "viewFieldName" : "license"
+              "viewFieldName" : "license"
+            } ]
           } ],
           "predefinedType" : "CONTAINER_SINGLEDATA",
           "width" : 400.0
