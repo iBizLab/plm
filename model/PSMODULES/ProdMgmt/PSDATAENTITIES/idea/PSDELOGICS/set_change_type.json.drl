@@ -127,7 +127,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             then
     Map param =new HashMap();
         param.put("param0",ideaset_change_typedefault.get("review"));
-        param.put("param1",ideaset_change_typedefault.get("n_test_library_id_eq"));
+        param.put("param1",ideaset_change_typedefault.get("n_product_id_eq"));
     String strSql="	SELECT 		*  	FROM 		idea t1  	WHERE 		NOT EXISTS ( 		SELECT 			*  		FROM 			relation t2 			JOIN review_content_extend t3 ON t3.id = t2.id 			JOIN review t4 ON t4.id = t2.PRINCIPAL_ID  		WHERE 			t2.TARGET_ID = t1.id  			AND t4.id = #{et.param0}  		)  		AND t1.product_id = #{et.param1}  AND t1.IS_DELETED = 0 	ORDER BY 	t1.IDENTIFIER;";
                         java.util.List<JSONObject> entities=iBzSysIdeaDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
