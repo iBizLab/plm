@@ -58,6 +58,21 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
     },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:ai_kb_doc",
+      "parentDataJO" : {
+        "srfparentdename" : "AI_KB_DOCUMENT",
+        "srfparentmode" : "DER1N_AI_KB_CHUNK_AI_KB_DOCUMENT_DOCUMENT_ID",
+        "srfparentdefname" : "DOCUMENT_ID"
+      },
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "文档分块",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_card_view.json",
+        "viewType" : "DEDATAVIEW"
+      }
+    } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
       "id" : "treeexpbar"
@@ -315,6 +330,108 @@
         },
         "renderType" : "LAYOUTPANEL"
       } ],
+      "getPSControls" : [ {
+        "codeName" : "tree_exp_view_ai_kb_doc_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "树节点工具栏",
+        "name" : "ai_kb_doc_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+        },
+        "getPSControlParam" : {
+          "id" : "ai_kb_doc_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "文档信息",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "ai_kb_doc_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "文档信息",
+            "codeName" : "open_base_info_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_kb_document_open_base_info_view",
+            "name" : "打开知识库文档信息视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_base_info_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_base_info_view@ai_kb_document"
+          },
+          "tooltip" : "文档信息",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "文档切片与同步",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "ai_kb_doc_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "文档切片与同步",
+            "codeName" : "open_chunk_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_chunk.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_kb_document_open_chunk_view",
+            "name" : "打开知识库文档切片与同步视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_chunk_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_chunk_view@ai_kb_document"
+          },
+          "tooltip" : "文档切片与同步",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "modelid" : "5d202b70098062211aeeed5e29ba74b0",
+        "modeltype" : "PSDETOOLBAR"
+      } ],
       "getPSDETreeNodeRSs" : [ {
         "getChildPSDETreeNode" : {
           "modelref" : true,
@@ -372,6 +489,42 @@
         },
         "maxSize" : -1,
         "name" : "知识库文档(动态)",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_card_view.json",
+          "viewType" : "DEDATAVIEW"
+        },
+        "getNavPSDER" : {
+          "codeName" : "AI_KB_DOCUMENT",
+          "dERType" : "DER1N",
+          "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDERS/DER1N_AI_KB_CHUNK_AI_KB_DOCUMENT_DOCUMENT_ID.json",
+          "fKeyName" : "FF308B087C87AF1EB0",
+          "getMajorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+          },
+          "masterOrder" : -1,
+          "masterRS" : 0,
+          "getMinorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
+          },
+          "name" : "DER1N_AI_KB_CHUNK_AI_KB_DOCUMENT_DOCUMENT_ID",
+          "orderValue" : 100,
+          "getPSPickupDEField" : {
+            "name" : "DOCUMENT_ID",
+            "codeName" : "document_id"
+          },
+          "getPSPickupTextDEField" : {
+            "name" : "DOCUMENT_NAME",
+            "codeName" : "document_name"
+          },
+          "pickupDEFName" : "DOCUMENT_ID",
+          "removeActionType" : -1,
+          "removeOrder" : 0,
+          "serviceCodeName" : "ai_kb_document",
+          "enableFKey" : true
+        },
         "nodeType" : "ai_kb_doc",
         "getPSAppDEDataSet" : {
           "modelref" : true,
@@ -380,6 +533,108 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_ai_kb_doc_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "树节点工具栏",
+          "name" : "ai_kb_doc_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+          },
+          "getPSControlParam" : {
+            "id" : "ai_kb_doc_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "文档信息",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "ai_kb_doc_cm_deuiaction1"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "文档信息",
+              "codeName" : "open_base_info_view",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info.json",
+                "viewType" : "DEEDITVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "ai_kb_document_open_base_info_view",
+              "name" : "打开知识库文档信息视图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf044@FontAwesome",
+                "cssClass" : "fa fa-edit"
+              },
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_base_info_view",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_base_info_view@ai_kb_document"
+            },
+            "tooltip" : "文档信息",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "文档切片与同步",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "ai_kb_doc_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "文档切片与同步",
+              "codeName" : "open_chunk_view",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_chunk.json",
+                "viewType" : "DEEDITVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "ai_kb_document_open_chunk_view",
+              "name" : "打开知识库文档切片与同步视图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf044@FontAwesome",
+                "cssClass" : "fa fa-edit"
+              },
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_chunk_view",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_chunk_view@ai_kb_document"
+            },
+            "tooltip" : "文档切片与同步",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "modelid" : "5d202b70098062211aeeed5e29ba74b0",
+          "modeltype" : "PSDETOOLBAR"
         },
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
