@@ -132,33 +132,33 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "NONE",
-              "caption" : "打开空间导航页",
-              "codeName" : "open_space_exp_page",
+              "caption" : "打开知识库导航页",
+              "codeName" : "open_ai_kb_base_exp_page",
               "getFrontPSAppView" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_tree_exp_view.json",
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_tree_exp_view.json",
                 "viewType" : "DETREEEXPVIEW"
               },
               "frontProcessType" : "TOP",
-              "fullCodeName" : "space_open_space_exp_page",
-              "name" : "打开空间导航页",
+              "fullCodeName" : "ai_knowledge_base_open_ai_kb_base_exp_page",
+              "name" : "打开知识库导航页",
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
               },
               "getPSNavigateContexts" : [ {
+                "key" : "AI_KNOWLEDGE_BASE",
+                "name" : "AI_KNOWLEDGE_BASE",
+                "rawValue" : true
+              }, {
                 "key" : "SRFREADONLY",
                 "name" : "SRFREADONLY",
                 "rawValue" : true
-              }, {
-                "key" : "SPACE",
-                "name" : "SPACE",
-                "rawValue" : true
               } ],
               "uIActionMode" : "FRONT",
-              "uIActionTag" : "open_space_exp_page",
+              "uIActionTag" : "open_ai_kb_base_exp_page",
               "uIActionType" : "DEUIACTION",
-              "id" : "open_space_exp_page@space"
+              "id" : "open_ai_kb_base_exp_page@ai_knowledge_base"
             },
             "renderMode" : "LINK",
             "tooltip" : "首页",
@@ -197,9 +197,9 @@
             "name" : "route_picker",
             "getPSEditor" : {
               "editorParams" : {
+                "SRFNAVPARAM.ai_knowledge_base" : "%ai_knowledge_base%",
                 "ENABLESEARCH" : "TRUE",
                 "AC" : "TRUE",
-                "SRFNAVPARAM.space" : "%space%",
                 "SUFFIX" : "chevron-expand-outline",
                 "PICKUPVIEW" : "TRUE"
               },
@@ -212,16 +212,16 @@
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_main"
+                "id" : "fetch_default"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
               },
               "getPSNavigateParams" : [ {
-                "key" : "space",
-                "name" : "space",
-                "value" : "space",
+                "key" : "ai_knowledge_base",
+                "name" : "ai_knowledge_base",
+                "value" : "ai_knowledge_base",
                 "rawValue" : false
               } ],
               "getPSSysPFPlugin" : {
@@ -633,7 +633,6 @@
       "getPSControlParam" : { }
     } ]
   },
-  "refFlag" : false,
   "title" : "知识库",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEINDEXVIEW",
