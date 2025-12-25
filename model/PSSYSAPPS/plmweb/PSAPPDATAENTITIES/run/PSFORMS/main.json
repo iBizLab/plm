@@ -211,14 +211,6 @@
       "codeName" : "plan_name"
     }
   }, {
-    "id" : "executor_id",
-    "hidden" : true,
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "EXECUTOR_ID",
-      "codeName" : "executor_id"
-    }
-  }, {
     "id" : "multiple_people",
     "dataType" : 9,
     "createDV" : "0",
@@ -240,6 +232,14 @@
     "getPSAppDEField" : {
       "name" : "EXECUTORS",
       "codeName" : "executors"
+    }
+  }, {
+    "id" : "executor_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_ID",
+      "codeName" : "executor_id"
     }
   }, {
     "id" : "priority",
@@ -12844,32 +12844,6 @@
               "allowEmpty" : true,
               "showCaption" : true
             }, {
-              "caption" : "执行人标识",
-              "codeName" : "executor_id",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "executor_id",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "EXECUTOR_ID",
-                "codeName" : "executor_id"
-              },
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "executor_id"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
               "codeName" : "executors_container",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
@@ -12929,50 +12903,33 @@
                   },
                   "getPSUIAction" : {
                     "actionTarget" : "NONE",
-                    "caption" : "选择用例",
-                    "codeName" : "choose_test_case",
+                    "caption" : "打开执行人",
+                    "codeName" : "open_executors",
                     "getFrontPSAppView" : {
                       "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_test_plan_re_test_case_prickup_view.json",
-                      "viewType" : "DEMPICKUPVIEW2"
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_executors_edit_form.json",
+                      "viewType" : "DEOPTVIEW"
                     },
                     "frontProcessType" : "WIZARD",
-                    "fullCodeName" : "run_choose_test_case",
-                    "name" : "选择用例",
-                    "getPSAppDEMethod" : {
+                    "fullCodeName" : "run_open_executors",
+                    "name" : "打开执行人设置视图",
+                    "getNextPSUIAction" : {
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                      },
                       "modelref" : true,
-                      "id" : "program_plan"
+                      "id" : "setting_executors@run"
                     },
                     "getPSAppDataEntity" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                     },
-                    "getPSNavigateContexts" : [ {
-                      "key" : "TARGET_TYPE",
-                      "name" : "TARGET_TYPE",
-                      "value" : "test_case",
-                      "rawValue" : true
-                    }, {
-                      "key" : "PRINCIPAL_TYPE",
-                      "name" : "PRINCIPAL_TYPE",
-                      "value" : "test_plan",
-                      "rawValue" : true
-                    } ],
-                    "getPSNavigateParams" : [ {
-                      "key" : "principal_id",
-                      "name" : "principal_id",
-                      "value" : "test_plan",
-                      "rawValue" : false
-                    } ],
-                    "refreshMode" : 1,
-                    "successMsg" : "规划成功",
-                    "timeout" : 60000,
-                    "uIActionMode" : "BACKEND",
-                    "uIActionTag" : "choose_test_case",
+                    "tooltip" : "设置执行人",
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "open_executors",
                     "uIActionType" : "DEUIACTION",
-                    "enableConfirm" : true,
-                    "reloadData" : true,
-                    "id" : "choose_test_case@run"
+                    "id" : "open_executors@run"
                   },
                   "tooltip" : "设置执行人",
                   "uIActionTarget" : "NONE",
@@ -13223,6 +13180,32 @@
                 },
                 "allowEmpty" : true,
                 "showCaption" : true
+              }, {
+                "caption" : "执行人标识",
+                "codeName" : "executor_id",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
+                "name" : "executor_id",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "EXECUTOR_ID",
+                  "codeName" : "executor_id"
+                },
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "executor_id"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "hidden" : true
               } ],
               "getPSLayout" : {
                 "childColMD" : 24,
