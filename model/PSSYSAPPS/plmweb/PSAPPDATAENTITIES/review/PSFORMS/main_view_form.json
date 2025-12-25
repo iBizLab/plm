@@ -9976,150 +9976,198 @@
                             },
                             "allowEmpty" : true
                           }, {
-                            "actionType" : "UIACTION",
-                            "caption" : "通过",
-                            "codeName" : "button1",
+                            "codeName" : "grouppanel3",
                             "detailStyle" : "DEFAULT",
-                            "detailType" : "BUTTON",
-                            "name" : "button1",
-                            "getPSAppViewUIAction" : {
-                              "modelref" : true,
-                              "id" : "mdctrl1_form_button1"
-                            },
-                            "getPSControlLogics" : [ {
-                              "itemName" : "button1",
-                              "logicTag" : "mdctrl1_form",
-                              "logicType" : "SCRIPT",
-                              "name" : "button1",
-                              "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
-                              "triggerType" : "ITEMVISIBLE"
+                            "detailType" : "GROUPPANEL",
+                            "name" : "grouppanel3",
+                            "getPSDEFormDetails" : [ {
+                              "codeName" : "grouppanel2",
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "GROUPPANEL",
+                              "name" : "grouppanel2",
+                              "getPSDEFormDetails" : [ {
+                                "actionType" : "UIACTION",
+                                "caption" : "通过",
+                                "codeName" : "button1",
+                                "detailStyle" : "DEFAULT",
+                                "detailType" : "BUTTON",
+                                "name" : "button1",
+                                "getPSAppViewUIAction" : {
+                                  "modelref" : true,
+                                  "id" : "mdctrl1_form_button1"
+                                },
+                                "getPSControlLogics" : [ {
+                                  "itemName" : "button1",
+                                  "logicTag" : "mdctrl1_form",
+                                  "logicType" : "SCRIPT",
+                                  "name" : "button1",
+                                  "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
+                                  "triggerType" : "ITEMVISIBLE"
+                                } ],
+                                "getPSLayoutPos" : {
+                                  "grow" : -1,
+                                  "layout" : "FLEX"
+                                },
+                                "getPSSysImage" : {
+                                  "glyph" : "xf00c@FontAwesome",
+                                  "cssClass" : "fa fa-check"
+                                },
+                                "getPSUIAction" : {
+                                  "actionTarget" : "SINGLEDATA",
+                                  "caption" : "通过",
+                                  "codeName" : "pass",
+                                  "frontProcessType" : "OTHER",
+                                  "fullCodeName" : "review_result_pass",
+                                  "name" : "通过（单条）",
+                                  "getNextPSUIAction" : {
+                                    "modelref" : true,
+                                    "id" : "Refresh"
+                                  },
+                                  "getPSAppDEUILogic" : {
+                                    "modelref" : true,
+                                    "id" : "pass"
+                                  },
+                                  "getPSAppDataEntity" : {
+                                    "modelref" : true,
+                                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
+                                  },
+                                  "uIActionMode" : "FRONT",
+                                  "uIActionTag" : "pass",
+                                  "uIActionType" : "DEUIACTION",
+                                  "uILogicAttachMode" : "REPLACE",
+                                  "id" : "pass@review_result"
+                                },
+                                "tooltip" : "通过",
+                                "uIActionTarget" : "SINGLEDATA",
+                                "showCaption" : true
+                              }, {
+                                "actionType" : "UIACTION",
+                                "caption" : "拒绝",
+                                "codeName" : "button2",
+                                "detailStyle" : "DEFAULT",
+                                "detailType" : "BUTTON",
+                                "name" : "button2",
+                                "getPSAppViewUIAction" : {
+                                  "modelref" : true,
+                                  "id" : "mdctrl1_form_button2"
+                                },
+                                "getPSControlLogics" : [ {
+                                  "itemName" : "button2",
+                                  "logicTag" : "mdctrl1_form",
+                                  "logicType" : "SCRIPT",
+                                  "name" : "button2",
+                                  "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
+                                  "triggerType" : "ITEMVISIBLE"
+                                } ],
+                                "getPSLayoutPos" : {
+                                  "grow" : -1,
+                                  "layout" : "FLEX"
+                                },
+                                "getPSSysImage" : {
+                                  "glyph" : "xf00d@FontAwesome",
+                                  "cssClass" : "fa fa-times"
+                                },
+                                "getPSUIAction" : {
+                                  "actionTarget" : "SINGLEDATA",
+                                  "caption" : "拒绝",
+                                  "codeName" : "decline",
+                                  "frontProcessType" : "OTHER",
+                                  "fullCodeName" : "review_result_decline",
+                                  "name" : "拒绝（单条）",
+                                  "getPSAppDEUILogic" : {
+                                    "modelref" : true,
+                                    "id" : "refuse"
+                                  },
+                                  "getPSAppDataEntity" : {
+                                    "modelref" : true,
+                                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
+                                  },
+                                  "refreshMode" : 1,
+                                  "uIActionMode" : "FRONT",
+                                  "uIActionTag" : "decline",
+                                  "uIActionType" : "DEUIACTION",
+                                  "uILogicAttachMode" : "REPLACE",
+                                  "reloadData" : true,
+                                  "id" : "decline@review_result"
+                                },
+                                "tooltip" : "拒绝",
+                                "uIActionTarget" : "SINGLEDATA",
+                                "showCaption" : true
+                              } ],
+                              "getPSLayout" : {
+                                "align" : "flex-start",
+                                "dir" : "row",
+                                "layout" : "FLEX",
+                                "vAlign" : "center"
+                              },
+                              "getPSLayoutPos" : {
+                                "grow" : -1,
+                                "layout" : "FLEX"
+                              },
+                              "infoGroupMode" : false,
+                              "showCaption" : false
+                            }, {
+                              "codeName" : "grouppanel1",
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "GROUPPANEL",
+                              "name" : "grouppanel1",
+                              "getPSDEFormDetails" : [ {
+                                "caption" : "继续下一条",
+                                "codeName" : "next_review",
+                                "createDV" : "1",
+                                "dataType" : 25,
+                                "detailStyle" : "DEFAULT",
+                                "detailType" : "FORMITEM",
+                                "enableCond" : 3,
+                                "ignoreInput" : 0,
+                                "labelPos" : "RIGHT",
+                                "labelWidth" : 130,
+                                "name" : "next_review",
+                                "noPrivDisplayMode" : 1,
+                                "getPSControlLogics" : [ {
+                                  "itemName" : "next_review",
+                                  "logicTag" : "mdctrl1_form",
+                                  "logicType" : "SCRIPT",
+                                  "name" : "next_review",
+                                  "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
+                                  "triggerType" : "ITEMVISIBLE"
+                                } ],
+                                "getPSEditor" : {
+                                  "editorType" : "CHECKBOX",
+                                  "name" : "next_review"
+                                },
+                                "getPSLayoutPos" : {
+                                  "grow" : -1,
+                                  "layout" : "FLEX"
+                                },
+                                "updateDV" : "1",
+                                "allowEmpty" : true,
+                                "showCaption" : true
+                              } ],
+                              "getPSLayout" : {
+                                "align" : "flex-end",
+                                "dir" : "row-reverse",
+                                "layout" : "FLEX",
+                                "vAlign" : "center"
+                              },
+                              "getPSLayoutPos" : {
+                                "grow" : -1,
+                                "layout" : "FLEX"
+                              },
+                              "infoGroupMode" : false,
+                              "showCaption" : false
                             } ],
+                            "getPSLayout" : {
+                              "align" : "space-between",
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
+                            },
                             "getPSLayoutPos" : {
-                              "colLG" : 6,
-                              "colMD" : 6,
+                              "colMD" : 24,
                               "layout" : "TABLE_24COL"
                             },
-                            "getPSSysImage" : {
-                              "glyph" : "xf00c@FontAwesome",
-                              "cssClass" : "fa fa-check"
-                            },
-                            "getPSUIAction" : {
-                              "actionTarget" : "SINGLEDATA",
-                              "caption" : "通过",
-                              "codeName" : "pass",
-                              "frontProcessType" : "OTHER",
-                              "fullCodeName" : "review_result_pass",
-                              "name" : "通过（单条）",
-                              "getNextPSUIAction" : {
-                                "modelref" : true,
-                                "id" : "Refresh"
-                              },
-                              "getPSAppDEUILogic" : {
-                                "modelref" : true,
-                                "id" : "pass"
-                              },
-                              "getPSAppDataEntity" : {
-                                "modelref" : true,
-                                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
-                              },
-                              "uIActionMode" : "FRONT",
-                              "uIActionTag" : "pass",
-                              "uIActionType" : "DEUIACTION",
-                              "uILogicAttachMode" : "REPLACE",
-                              "id" : "pass@review_result"
-                            },
-                            "tooltip" : "通过",
-                            "uIActionTarget" : "SINGLEDATA",
-                            "showCaption" : true
-                          }, {
-                            "actionType" : "UIACTION",
-                            "caption" : "拒绝",
-                            "codeName" : "button2",
-                            "detailStyle" : "DEFAULT",
-                            "detailType" : "BUTTON",
-                            "name" : "button2",
-                            "getPSAppViewUIAction" : {
-                              "modelref" : true,
-                              "id" : "mdctrl1_form_button2"
-                            },
-                            "getPSControlLogics" : [ {
-                              "itemName" : "button2",
-                              "logicTag" : "mdctrl1_form",
-                              "logicType" : "SCRIPT",
-                              "name" : "button2",
-                              "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
-                              "triggerType" : "ITEMVISIBLE"
-                            } ],
-                            "getPSLayoutPos" : {
-                              "colLG" : 6,
-                              "colMD" : 6,
-                              "layout" : "TABLE_24COL"
-                            },
-                            "getPSSysImage" : {
-                              "glyph" : "xf00d@FontAwesome",
-                              "cssClass" : "fa fa-times"
-                            },
-                            "getPSUIAction" : {
-                              "actionTarget" : "SINGLEDATA",
-                              "caption" : "拒绝",
-                              "codeName" : "decline",
-                              "frontProcessType" : "OTHER",
-                              "fullCodeName" : "review_result_decline",
-                              "name" : "拒绝（单条）",
-                              "getPSAppDEUILogic" : {
-                                "modelref" : true,
-                                "id" : "refuse"
-                              },
-                              "getPSAppDataEntity" : {
-                                "modelref" : true,
-                                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
-                              },
-                              "refreshMode" : 1,
-                              "uIActionMode" : "FRONT",
-                              "uIActionTag" : "decline",
-                              "uIActionType" : "DEUIACTION",
-                              "uILogicAttachMode" : "REPLACE",
-                              "reloadData" : true,
-                              "id" : "decline@review_result"
-                            },
-                            "tooltip" : "拒绝",
-                            "uIActionTarget" : "SINGLEDATA",
-                            "showCaption" : true
-                          }, {
-                            "caption" : "继续下一条",
-                            "codeName" : "next_review",
-                            "createDV" : "1",
-                            "dataType" : 25,
-                            "detailStyle" : "DEFAULT",
-                            "detailType" : "FORMITEM",
-                            "enableCond" : 3,
-                            "ignoreInput" : 0,
-                            "labelPos" : "RIGHT",
-                            "labelWidth" : 130,
-                            "name" : "next_review",
-                            "noPrivDisplayMode" : 1,
-                            "getPSControlLogics" : [ {
-                              "itemName" : "next_review",
-                              "logicTag" : "mdctrl1_form",
-                              "logicType" : "SCRIPT",
-                              "name" : "next_review",
-                              "scriptCode" : "(context.cur_reviewer_id == context.srfuserid)&&(context.curstage_state == 20)&&(context.curstage_id == data.stage_id)",
-                              "triggerType" : "ITEMVISIBLE"
-                            } ],
-                            "getPSEditor" : {
-                              "editorType" : "CHECKBOX",
-                              "name" : "next_review"
-                            },
-                            "getPSLayoutPos" : {
-                              "colLG" : 8,
-                              "colLGOffset" : 4,
-                              "colMD" : 8,
-                              "colMDOffset" : 4,
-                              "layout" : "TABLE_24COL"
-                            },
-                            "updateDV" : "1",
-                            "allowEmpty" : true,
-                            "showCaption" : true
+                            "infoGroupMode" : false,
+                            "showCaption" : false
                           } ],
                           "getPSLayout" : {
                             "childColMD" : 24,
