@@ -1151,6 +1151,12 @@
       "queryCodeExp" : "t1.`OWNER_ID`",
       "standardColumnName" : "`OWNER_ID`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_OWNER_ID_EQ",
+      "name" : "N_OWNER_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
@@ -1469,7 +1475,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWSFCODE1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -1486,14 +1492,12 @@
       "name" : "结束",
       "topPos" : 200
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 139,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
+      "code" : "def _default = logic.param('Default').getReal() \r\ndef user = sys.user()\r\n\r\nif (_default.get('visibility') == '10') {\r\n    _default.set('owner_id', user.getUserid())\r\n}\r\nif (_default.get('visibility') == '30') {\r\n    _default.set('owner_id', user.getOrgid())\r\n}",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 140,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1502,7 +1506,7 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWSFCODE1"
         }
       } ],
       "topPos" : 208
@@ -1756,6 +1760,21 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属数据标识",
+      "name" : "n_owner_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_OWNER_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "owner_id"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",

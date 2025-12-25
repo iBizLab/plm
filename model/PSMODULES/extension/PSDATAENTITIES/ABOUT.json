@@ -869,7 +869,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "RAWSFCODE_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -881,13 +881,13 @@
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
-      "leftPos" : 540,
+      "leftPos" : 646,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置关于信息",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWSFCODE_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -916,10 +916,28 @@
         "srcValue" : "v8.0.5.1-preview",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 288
+      "topPos" : 268
+    }, {
+      "codeName" : "RAWSFCODE_01",
+      "leftPos" : 540,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 384,
+      "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 580,
+      "leftPos" : 590,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -927,7 +945,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 423,
+      "topPos" : 570,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -1095,6 +1113,12 @@
     "modelTag" : "REDIRECTVIEW",
     "name" : "关于实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "system_about",
+    "logicName" : "关于",
+    "name" : "关于",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
