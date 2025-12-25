@@ -2667,9 +2667,128 @@
     "name" : "文档解析处理",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : -66,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 130,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : -106,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_03"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[TYPE] 不等于(<>) file",
+            "paramValue" : "file"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "SOURCE_TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[SOURCE_TYPE] 值不为空(NotNil) "
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "SOURCE_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[SOURCE_ID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[TYPE] 等于(=) file",
+            "paramValue" : "file"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "FILE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[FILE] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "topPos" : 241,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('Default').getReal()\ndef _type = _default.get('type')\nif (_type == 'file'){\n    def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient(\"cloud-oss\", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)\n    def fileJson = _default.get(\"file\")\n    if (fileJson){\n        def file = new groovy.json.JsonSlurper().parseText(fileJson)\n        if (file.size() > 0){\n            println(\"输出file\"+file[0])\n            def fileId = file[0].id\n            def folder = file[0].folder\n            def fileText = iCloudOSSClient.downloadText(folder, fileId)\n            _default.set(\"parsed_content\", fileText)\n        }\n    }\n}",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 130,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "获取文件内容",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2678,18 +2797,127 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "RAWSFCODE_01"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 241,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\ndef parsed_content = _default.get('parsed_content')\r\ndef parser_config = _default.get('parser_config')\r\nif (parsed_content && parser_config ){\r\n    def data_masking_rules = parser_config.get('data_masking_rules')\r\n    if (data_masking_rules){\r\n        // 根据正则规则pattern对parsed_content进行替换\r\n        for (data_masking_rule in data_masking_rules){\r\n            def pattern = data_masking_rule.get('pattern')\r\n            def replacement = data_masking_rule.get('replacement')?:''\r\n            if (pattern){\r\n                parsed_content = parsed_content.replaceAll(pattern, replacement)\r\n            }\r\n        }\r\n    }\r\n}",
-      "codeName" : "RAWSFCODE_01",
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 130,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 408,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('Default').getReal()\ndef deCodeName = _default.get('source_type')\ndef dstEntityKey = _default.get('source_id')\nif (deCodeName && dstEntityKey) {\n    def dstEntityRuntime = sys.dataentity(deCodeName)\n    def bos = new java.io.ByteArrayOutputStream()\n    def dePrintCodeName = \"chat_resource\"\n    def keys = [dstEntityKey] as Object[]\n    dstEntityRuntime.outputPrint(\n        dePrintCodeName,\n        bos,\n        keys,\n        null,\n        false\n    )\n    _default.set(\"parsed_content\", bos.toString(\"utf-8\"))\n}",
+      "codeName" : "RAWSFCODE_03",
       "codeType" : "Groovy",
-      "leftPos" : 352,
+      "leftPos" : -106,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "实体打印",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_03"
+        }
+      } ],
+      "topPos" : 408,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('Default').getReal()\ndef parsed_content = _default.get('parsed_content')\ndef custom_chunk = _default.get('custom_chunk')\ndef parser_config\nif (custom_chunk == 0){\n    // 使用所属知识库默认规则\n    def knowledge_base_runtime = sys.dataentity('ai_knowledge_base')\n    def knowledge_base = knowledge_base_runtime.get(_default.get('kb_id'))\n    if (knowledge_base){\n        parser_config = knowledge_base.get('parser_config')\n    }\n}else if (custom_chunk == 1){\n    // 使用自定义规则\n    parser_config = _default.get('parser_config')\n}\nif (parser_config){\n    // 1. 预处理规则\n    def pre_process_rules = parser_config.get('pre_process_rules')\n    if (pre_process_rules) {\n        def rulesList = pre_process_rules.split(',')\n        // 合并多余空格/换行（保留单个空格，移除连续空白）\n        if (rulesList.contains('remove_extra_whitespace')) {\n            parsed_content = parsed_content.replaceAll(/[\\s\\u3000]+/, ' ')\n        }\n\n        // 移除 <script> 和 <style> 内容（保留其他标签，如 <div>）\n        if (rulesList.contains('remove_js_css')) {\n            // 先移除 <script> 标签内容\n            parsed_content = parsed_content.replaceAll(/<script[^>]*>[\\s\\S]*?<\\/script>/, '')\n            // 再移除 <style> 标签内容\n            parsed_content = parsed_content.replaceAll(/<style[^>]*>[\\s\\S]*?<\\/style>/, '')\n        }\n\n        // 剥离 HTML 标签（保留纯文本，如 <p>Hello</p> → Hello）\n        if (rulesList.contains('remove_html_tags')) {\n            parsed_content = parsed_content.replaceAll(/<[^>]+>/, '')\n        }\n\n        // 移除电子邮箱及 URL（精准匹配，避免误删）\n        if (rulesList.contains('remove_emails_url')) {\n            // 移除 URL（http/https 开头）\n            parsed_content = parsed_content.replaceAll(/https?:\\/\\/[^\\s]+/, '')\n            // 移除电子邮箱（标准格式）\n            parsed_content = parsed_content.replaceAll(/[\\w\\.-]+@[\\w\\.-]+\\.\\w+/, '')\n        }\n\n        // 统一中英文标点（如 “” → \"，‘’ → '）\n        if (rulesList.contains('normalize_punctuation')) {\n            parsed_content = parsed_content\n                .replace('，', ',')\n                .replace('。', '.')\n                .replace('！', '!')\n                .replace('？', '?')\n                .replace('；', ';')\n                .replace('：', ':')\n                .replace('（', '(')\n                .replace('）', ')')\n                .replace('“', '\"')\n                .replace('”', '\"')\n                .replace('‘', \"'\")\n                .replace('’', \"'\")\n        }\n    }\n    // 2. 自定义脱敏规则\n    def data_masking_rules = parser_config.get('data_masking_rules')\n    if (data_masking_rules){\n        // 根据正则规则pattern对parsed_content进行替换\n        def masked_data = logic.param('masked_data').getReal()\n        for (data_masking_rule in data_masking_rules){\n            def pattern = data_masking_rule.get('pattern')\n            def replacement = data_masking_rule.get('replacement')?:''\n            if (pattern){\n                parsed_content = parsed_content.replaceAll(pattern, replacement)\n            }\n        }\n    }\n    def masked_data = logic.param('masked_data').getReal()\n    masked_data.set(\"id\", _default.get(\"id\"))\n    masked_data.set(\"parsed_content\", parsed_content)\n    masked_data.set(\"status\", \"3\")\n\n}",
+      "codeName" : "RAWSFCODE_02",
+      "codeType" : "Groovy",
+      "leftPos" : 130,
       "logicNodeType" : "RAWSFCODE",
       "name" : "正则解析文档内容",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        }
+      } ],
+      "topPos" : 538,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_02",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "masked_data"
+      },
+      "leftPos" : 130,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "masked_data"
+            },
+            "logicType" : "SINGLE",
+            "name" : "masked_data[ID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_02"
+        }
+      } ],
+      "topPos" : 648,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_02",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "masked_data"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 130,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2698,39 +2926,22 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE_01"
+          "id" : "DEACTION_02"
         }
       } ],
-      "topPos" : 198,
+      "topPos" : 778,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 560,
+      "leftPos" : 170,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEBUGPARAM_01",
-      "getDstPSDELogicParam" : {
+      "getReturnParam" : {
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 256,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM_01"
-        }
-      } ],
-      "topPos" : 327,
+      "returnType" : "LOGICPARAM",
+      "topPos" : 890,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2743,6 +2954,20 @@
       },
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "agent_context",
+      "logicName" : "agent_context",
+      "name" : "agent_context",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "lastreturn",
+      "logicName" : "lastreturn",
+      "name" : "lastreturn",
+      "lastReturnParam" : true
     }, {
       "codeName" : "masked_data",
       "logicName" : "masked_data",

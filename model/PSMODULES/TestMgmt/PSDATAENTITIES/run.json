@@ -682,6 +682,9 @@
       "name" : "IS_NEWEST",
       "codeName" : "is_newest"
     }, {
+      "name" : "MULTIPLE_PEOPLE",
+      "codeName" : "multiple_people"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -6504,6 +6507,78 @@
     "viewLevel" : 0,
     "formulaDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "MULTIPLE_PEOPLE",
+      "dBType" : "MYSQL5",
+      "name" : "MULTIPLE_PEOPLE",
+      "queryCodeExp" : "t1.`MULTIPLE_PEOPLE`",
+      "standardColumnName" : "`MULTIPLE_PEOPLE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[MULTIPLE_PEOPLE][多人任务]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[MULTIPLE_PEOPLE][多人任务]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[MULTIPLE_PEOPLE][多人任务]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[MULTIPLE_PEOPLE][多人任务]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "multiple_people",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "logicName" : "多人任务",
+    "name" : "MULTIPLE_PEOPLE",
+    "orderValue" : 760,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "MULTIPLE_PEOPLE"
+    },
+    "serviceCodeName" : "multiple_people",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -15686,6 +15761,17 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "多人任务",
+      "name" : "multiple_people",
+      "getPSDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "测试用例标识",
       "name" : "case_id",
       "getPSDEField" : {
@@ -16865,6 +16951,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "executors_edit_form",
+    "logicName" : "执行用例执行人选项操作视图",
+    "name" : "执行用例执行人选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_view",
     "logicName" : "执行用例实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -16996,6 +17088,13 @@
     "logicName" : "每日执行结果统计选项操作视图（测试）_表单",
     "modelTag2" : "0",
     "name" : "每日执行结果统计选项操作视图（测试）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "executors_form",
+    "logicName" : "执行人_表单",
+    "modelTag2" : "0",
+    "name" : "执行人_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
