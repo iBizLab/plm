@@ -4496,13 +4496,13 @@
     "name" : "打开评审结果",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -370,
+      "leftPos" : -190,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -4519,10 +4519,22 @@
       "leftPos" : 283,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
       "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : -86,
+      "leftPos" : 14,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "绑定父视图及表单",
       "getPSDEUILogicLinks" : [ {
@@ -4566,27 +4578,12 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "cur_container"
-      },
-      "leftPos" : -270,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 210
+      "code" : "view.parentView.layoutPanel.panelItems.form.control.state.modified=false;",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 569,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -4595,15 +4592,10 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "parent_view",
-      "logicName" : "父视图",
-      "name" : "父视图",
-      "entityParam" : true
-    }, {
-      "codeName" : "choosed_content",
-      "logicName" : "选择的内容",
-      "name" : "选择的内容",
-      "entityParam" : true
+      "codeName" : "cur_container",
+      "logicName" : "当前容器对象",
+      "name" : "当前容器对象",
+      "activeContainerParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
@@ -4615,10 +4607,15 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
-      "codeName" : "cur_container",
-      "logicName" : "当前容器对象",
-      "name" : "当前容器对象",
-      "activeContainerParam" : true
+      "codeName" : "choosed_content",
+      "logicName" : "选择的内容",
+      "name" : "选择的内容",
+      "entityParam" : true
+    }, {
+      "codeName" : "parent_view",
+      "logicName" : "父视图",
+      "name" : "父视图",
+      "entityParam" : true
     }, {
       "codeName" : "parent_form",
       "logicName" : "父表单",
