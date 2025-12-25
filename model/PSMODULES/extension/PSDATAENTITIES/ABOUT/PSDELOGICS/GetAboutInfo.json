@@ -1,0 +1,93 @@
+{
+  "codeName" : "GetAboutInfo",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/ABOUT/PSDELOGICS/GetAboutInfo.json",
+  "logicName" : "获取关于信息",
+  "name" : "获取关于信息",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 580,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 140,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 540,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置关于信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[iBiz软件云工厂低代码运行环境] ==> Default[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "iBiz软件云工厂低代码运行环境",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "VERSION",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[v8.0.5.1-preview] ==> Default[VERSION]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "v8.0.5.1-preview",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 288
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 580,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 423,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/ABOUT.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
