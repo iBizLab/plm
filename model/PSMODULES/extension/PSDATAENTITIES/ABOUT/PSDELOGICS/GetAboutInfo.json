@@ -23,45 +23,13 @@
     "topPos" : 140,
     "parallelOutput" : true
   }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 646,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置关于信息",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE_01"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[iBiz软件云工厂低代码运行环境] ==> Default[NAME]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "iBiz软件云工厂低代码运行环境",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "VERSION",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[v8.0.5.1-preview] ==> Default[VERSION]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "v8.0.5.1-preview",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 268
-  }, {
+    "code" : "entity.set(\"name\", sys.getPSSystem().getLogicName());\nentity.set(\"version\", sys.getPSSystem().getDefaultPSSysSFPub().getVersionString());\nentity.set(\"id\", sys.getDeploySystemId());\nentity.set(\"description\", sys.getPSSystem().getMemo());\nentity.set(\"license\", \"MIT\");",
     "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "leftPos" : 540,
     "logicNodeType" : "RAWSFCODE",
     "name" : "执行脚本代码",
@@ -76,6 +44,10 @@
         "id" : "RAWSFCODE_01"
       }
     } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "topPos" : 384,
     "parallelOutput" : true
   }, {
