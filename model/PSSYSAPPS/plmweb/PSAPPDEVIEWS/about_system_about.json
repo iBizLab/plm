@@ -33,12 +33,16 @@
       "id" : "latest_version",
       "viewFieldName" : "latest_version"
     }, {
+      "id" : "license",
+      "viewFieldName" : "license"
+    }, {
       "id" : "has_update",
       "hidden" : true,
       "viewFieldName" : "has_update"
     }, {
-      "id" : "license",
-      "viewFieldName" : "license"
+      "id" : "check_for_updates",
+      "hidden" : true,
+      "viewFieldName" : "check_for_updates"
     }, {
       "id" : "appinfo",
       "viewFieldName" : "appinfo"
@@ -299,21 +303,6 @@
               } ],
               "valueFormat" : "最新版本：@",
               "viewFieldName" : "latest_version"
-            }, {
-              "caption" : "文本(动态)",
-              "itemType" : "FIELD",
-              "name" : "has_update",
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "has_update",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "viewFieldName" : "has_update",
-              "hidden" : true
             } ]
           }, {
             "caption" : "文本(动态)",
@@ -337,7 +326,51 @@
               "layout" : "FLEX",
               "spacingBottom" : "OUTERSMALL"
             },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "check_for_updates",
+                "logicType" : "SINGLE",
+                "name" : "check_for_updates 等于(=) true",
+                "value" : "true"
+              } ],
+              "relatedItemNames" : [ "check_for_updates" ],
+              "notMode" : false
+            } ],
             "viewFieldName" : "license"
+          }, {
+            "caption" : "文本(动态)",
+            "itemType" : "FIELD",
+            "name" : "has_update",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "has_update",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "has_update",
+            "hidden" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemType" : "FIELD",
+            "name" : "check_for_updates",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "check_for_updates",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "check_for_updates",
+            "hidden" : true
           } ],
           "predefinedType" : "CONTAINER_SINGLEDATA",
           "width" : 400.0
