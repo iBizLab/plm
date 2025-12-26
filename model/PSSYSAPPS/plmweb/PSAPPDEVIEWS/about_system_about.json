@@ -266,13 +266,16 @@
             } ],
             "viewFieldName" : "description"
           }, {
-            "caption" : "容器",
+            "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
-            "itemType" : "CONTAINER",
-            "name" : "container1",
-            "getPSLayout" : {
-              "dir" : "row",
-              "layout" : "FLEX"
+            "itemType" : "FIELD",
+            "name" : "version",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "version",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -280,66 +283,49 @@
               "layout" : "FLEX",
               "spacingBottom" : "OUTERSMALL"
             },
-            "getPSPanelItems" : [ {
-              "caption" : "文本(动态)",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "version",
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "version",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "renderMode" : "TEXT_DYNAMIC",
-                "enableLinkView" : false
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "hAlignSelf" : "CENTER",
-                "layout" : "FLEX"
-              },
-              "valueFormat" : "当前版本：@",
-              "viewFieldName" : "version"
-            }, {
-              "caption" : "文本(动态)",
-              "cssStyle" : "background: cornsilk;",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
+            "valueFormat" : "当前版本：@",
+            "viewFieldName" : "version"
+          }, {
+            "caption" : "文本(动态)",
+            "cssStyle" : "background: cornsilk;",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "latest_version",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
               "name" : "latest_version",
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "latest_version",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "renderMode" : "TEXT_DYNAMIC",
-                "enableLinkView" : false
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "hAlignSelf" : "CENTER",
-                "layout" : "FLEX",
-                "spacingLeft" : "OUTERSMALL"
-              },
-              "getPSPanelItemGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSPanelItemLogics" : [ {
-                  "condOp" : "ISNOTNULL",
-                  "dstModelField" : "latest_version",
-                  "logicType" : "SINGLE",
-                  "name" : "latest_version 值不为空(NotNil) "
-                }, {
-                  "condOp" : "EQ",
-                  "dstModelField" : "has_update",
-                  "logicType" : "SINGLE",
-                  "name" : "has_update 等于(=) true",
-                  "value" : "true"
-                } ],
-                "relatedItemNames" : [ "latest_version", "has_update" ],
-                "notMode" : false
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "hAlignSelf" : "CENTER",
+              "layout" : "FLEX",
+              "spacingBottom" : "OUTERSMALL",
+              "spacingLeft" : "OUTERSMALL"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "ISNOTNULL",
+                "dstModelField" : "latest_version",
+                "logicType" : "SINGLE",
+                "name" : "latest_version 值不为空(NotNil) "
+              }, {
+                "condOp" : "EQ",
+                "dstModelField" : "has_update",
+                "logicType" : "SINGLE",
+                "name" : "has_update 等于(=) true",
+                "value" : "true"
               } ],
-              "valueFormat" : "最新版本：@",
-              "viewFieldName" : "latest_version"
-            } ]
+              "relatedItemNames" : [ "latest_version", "has_update" ],
+              "notMode" : false
+            } ],
+            "valueFormat" : "最新版本：@",
+            "viewFieldName" : "latest_version"
           }, {
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
