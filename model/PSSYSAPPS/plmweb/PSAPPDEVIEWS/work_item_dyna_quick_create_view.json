@@ -14383,7 +14383,7 @@
         "logicTag" : "_form_scrum_task",
         "logicType" : "SCRIPT",
         "name" : "executors_onchange",
-        "scriptCode" : "// console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
+        "scriptCode" : "// console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    first_executor.is_assignee = 1;\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
       } ],
       "getPSControlParam" : {
         "autoLoad" : true,
@@ -30955,7 +30955,7 @@
         "logicTag" : "_form_kanban_task",
         "logicType" : "SCRIPT",
         "name" : "executors_onchange",
-        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
+        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    first_executor.is_assignee = 1;\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
       } ],
       "getPSControlParam" : {
         "autoLoad" : true,
@@ -30964,14 +30964,6 @@
         "id" : "_FORM_KANBAN_TASK"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
         "getPSAppDEMethod" : {
@@ -30992,6 +30984,14 @@
           "name" : "work_item_type_id"
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
+        "customCode" : true
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -34014,7 +34014,7 @@
         "logicTag" : "_form_waterfall_task",
         "logicType" : "SCRIPT",
         "name" : "executors_onchange",
-        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
+        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    first_executor.is_assignee = 1;\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
       } ],
       "getPSControlParam" : {
         "autoLoad" : true,
@@ -34023,14 +34023,6 @@
         "id" : "_FORM_WATERFALL_TASK"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -34041,6 +34033,14 @@
           "name" : "work_item_type_name"
         } ],
         "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
+        "customCode" : true
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -69071,7 +69071,7 @@
         "logicTag" : "_form_hybrid_task",
         "logicType" : "SCRIPT",
         "name" : "executors_onchange",
-        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
+        "scriptCode" : "console.log('执行人发生变化!', ctrl)\nvar assignee_id = ctrl.details.assignee_id;\nvar assignee_name = ctrl.details.assignee_name;\nvar estimated_workload = ctrl.details.estimated_workload;\nvar remaining_workload = ctrl.details.remaining_workload;\nvar executors = ctrl.details.executors.value;\nvar total_estimated_workload = 0;\nif(executors != null && executors != undefined && executors.length > 0){\n    // 默认取第一个执行人作为负责人\n    var first_executor = executors[0];\n    first_executor.is_assignee = 1;\n    if(first_executor.user_id != null){\n        assignee_id.setDataValue(first_executor.user_id)\n    }\n    if(first_executor.user_name != null){\n        assignee_name.setDataValue(first_executor.user_name)\n    }\n    for (var i = 0; i < executors.length; i++) {\n        var executor_estimated_workload = executors[i].estimated_workload;\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\n        }\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\n            assignee_id.setDataValue(executors[i].user_id)\n            assignee_name.setDataValue(executors[i].user_name)\n        }\n    }\n    estimated_workload.setDataValue(total_estimated_workload)\n    remaining_workload.setDataValue(total_estimated_workload)\n} else {\n    assignee_id.setDataValue(null)\n    assignee_name.setDataValue(null)\n    estimated_workload.setDataValue(null)\n}\n"
       } ],
       "getPSControlParam" : {
         "autoLoad" : true,
@@ -69080,14 +69080,6 @@
         "id" : "_FORM_HYBRID_TASK"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
         "getPSAppDEMethod" : {
@@ -69097,6 +69089,14 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
         } ]
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "customCode" : true
       }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",

@@ -32,16 +32,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.set_executor;
                         update(runset_executorsrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "runset_executorloopsubcall1"
-            when
-            then
-                        update(runset_executordefault);//更新fact中变量值
-                        update(runset_executorfor_temp_obj);//更新fact中变量值
-                        update(runset_executorsrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[填充执行人]
             rule "prepareparam2"
             ruleflow-group "runset_executorprepareparam2"
@@ -60,6 +50,16 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.set_executor;
             when
             then
                         runservice.update(runset_executordefault);
+                        update(runset_executordefault);//更新fact中变量值
+                        update(runset_executorfor_temp_obj);//更新fact中变量值
+                        update(runset_executorsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runset_executorloopsubcall1"
+            when
+            then
                         update(runset_executordefault);//更新fact中变量值
                         update(runset_executorfor_temp_obj);//更新fact中变量值
                         update(runset_executorsrfactionparam);//更新fact中变量值
