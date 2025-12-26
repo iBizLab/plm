@@ -17,7 +17,7 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executordeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更执行人"/>
                         <endEvent id="deaction1_end" name="end"/>
@@ -31,11 +31,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_prepareparam3" sourceRef="prepareparam4" targetRef="prepareparam3">
+                    <sequenceFlow id="rawsfcode1_prepareparam3" sourceRef="rawsfcode1" targetRef="prepareparam3">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-loopsubcall1_prepareparam4" sourceRef="gateway-loopsubcall1" targetRef="prepareparam4">
+                    <sequenceFlow id="gateway-loopsubcall1_rawsfcode1" sourceRef="gateway-loopsubcall1" targetRef="rawsfcode1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runset_executordefault:run();
                                             $runset_executorfor_temp_obj:run();
