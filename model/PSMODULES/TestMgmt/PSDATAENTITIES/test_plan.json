@@ -798,16 +798,25 @@
           "condType" : "GROUP",
           "name" : "连接条件",
           "getPSDEDQConditions" : [ {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "srfpersonid",
-            "fieldName" : "EXECUTOR_ID",
-            "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
-            "getPSDEField" : {
-              "name" : "EXECUTOR_ID",
-              "codeName" : "executor_id"
-            },
-            "getPSVARTypeId" : "SESSIONCONTEXT"
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "OR",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "EQ",
+              "condType" : "SINGLE",
+              "condValue" : "srfpersonid",
+              "fieldName" : "EXECUTOR_ID",
+              "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
+              "getPSDEField" : {
+                "name" : "EXECUTOR_ID",
+                "codeName" : "executor_id"
+              },
+              "getPSVARTypeId" : "SESSIONCONTEXT"
+            }, {
+              "condType" : "CUSTOM",
+              "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+              "name" : "执行人"
+            } ]
           } ]
         }
       }, {

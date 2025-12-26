@@ -208,7 +208,7 @@
                 "condOp" : "ISNULL",
                 "dstModelField" : "name",
                 "logicType" : "SINGLE",
-                "name" : "name 值为空(Nil) "
+                "name" : "name 值为空(Nil)"
               } ],
               "relatedItemNames" : [ "name" ],
               "notMode" : false
@@ -278,7 +278,7 @@
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "description",
                 "logicType" : "SINGLE",
-                "name" : "description 值不为空(NotNil) "
+                "name" : "description 值不为空(NotNil)"
               } ],
               "relatedItemNames" : [ "description" ],
               "notMode" : false
@@ -323,6 +323,25 @@
               "spacingLeft" : "INNERSMALL",
               "spacingRight" : "INNERSMALL"
             },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "has_update",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "true"
+              }, {
+                "condOp" : "ISNOTNULL",
+                "dstModelField" : "latest_version",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项"
+              } ],
+              "relatedItemNames" : [ "has_update", "latest_version" ],
+              "notMode" : false
+            } ],
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
@@ -348,7 +367,7 @@
                   "condOp" : "ISNOTNULL",
                   "dstModelField" : "latest_version",
                   "logicType" : "SINGLE",
-                  "name" : "latest_version 值不为空(NotNil) "
+                  "name" : "latest_version 值不为空(NotNil)"
                 }, {
                   "condOp" : "EQ",
                   "dstModelField" : "has_update",
