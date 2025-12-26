@@ -3105,6 +3105,10 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
     },
+    "getPSSysImage" : {
+      "glyph" : "xf112@FontAwesome",
+      "cssClass" : "fa fa-mail-reply"
+    },
     "tooltip" : "返回",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "back",
@@ -3581,9 +3585,33 @@
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "切换显示组件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
       "topPos" : 520
+    }, {
+      "code" : "view.parentView.layoutPanel.panelItems.form.control.state.modified=false;",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 632
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "parentView",
+      "logicName" : "parentView",
+      "name" : "parentView",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -3593,11 +3621,6 @@
       "codeName" : "parent_form",
       "logicName" : "父表单",
       "name" : "父表单",
-      "entityParam" : true
-    }, {
-      "codeName" : "parentView",
-      "logicName" : "parentView",
-      "name" : "parentView",
       "entityParam" : true
     }, {
       "codeName" : "view",
