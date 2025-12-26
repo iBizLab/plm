@@ -270,6 +270,36 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "codeName" : "custom_draft",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/custom_draft.json",
+    "logicName" : "自定义draft",
+    "name" : "custom_draft",
+    "getPSDEActionInput" : {
+      "name" : "Custom_draftInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "run_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Custom_draftResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "run_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDELOGICS/custom_draft.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "get_actual_workload",
@@ -9838,6 +9868,59 @@
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
       },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "custom_draft",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDELOGICS/custom_draft.json",
+    "logicName" : "获取草稿",
+    "name" : "获取草稿",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 471
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      },
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
