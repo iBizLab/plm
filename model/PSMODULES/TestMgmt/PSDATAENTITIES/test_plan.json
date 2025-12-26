@@ -779,6 +779,7 @@
     "name" : "my_participate",
     "getPSDEDQMain" : {
       "getChildPSDEDQJoins" : [ {
+        "alias" : "run_case",
         "getDERPSDataEntity" : {
           "modelref" : true,
           "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
@@ -792,7 +793,7 @@
           "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
         },
         "joinType" : "1N",
-        "name" : "RUN存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID",
+        "name" : "RUN*存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID",
         "getPSDEDQGroupCondition" : {
           "condOp" : "AND",
           "condType" : "GROUP",
@@ -814,7 +815,7 @@
               "getPSVARTypeId" : "SESSIONCONTEXT"
             }, {
               "condType" : "CUSTOM",
-              "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+              "condition" : "exists(select 1 from executor t2 where run_case.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
               "name" : "执行人"
             } ]
           } ]
