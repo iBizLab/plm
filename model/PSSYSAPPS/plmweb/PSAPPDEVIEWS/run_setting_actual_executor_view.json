@@ -232,15 +232,6 @@
       "hidden" : true,
       "dataType" : 25
     }, {
-      "id" : "multiple_people",
-      "dataType" : 9,
-      "createDV" : "0",
-      "updateDV" : "0",
-      "getPSAppDEField" : {
-        "name" : "MULTIPLE_PEOPLE",
-        "codeName" : "multiple_people"
-      }
-    }, {
       "id" : "executors",
       "dataType" : 21,
       "getPSAppDEField" : {
@@ -249,6 +240,7 @@
       }
     }, {
       "id" : "executor_name",
+      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "EXECUTOR_NAME",
@@ -278,73 +270,6 @@
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
-        "codeName" : "grouppanel1",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel1",
-        "getPSDEFormDetails" : [ {
-          "caption" : "选择执行人",
-          "codeName" : "multiple_people",
-          "createDV" : "0",
-          "dataType" : 9,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 2,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "multiple_people",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "MULTIPLE_PEOPLE",
-            "codeName" : "multiple_people"
-          },
-          "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "multiple_people"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "updateDV" : "0",
-          "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "codeName" : "rawitem1",
-          "contentType" : "RAW",
-          "detailStyle" : "DEFAULT",
-          "detailType" : "RAWITEM",
-          "name" : "rawitem1",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSRawItem" : {
-            "caption" : "多人执行",
-            "contentType" : "RAW",
-            "name" : "rawitem1",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0
-          },
-          "rawContent" : "多人执行",
-          "rawItemHeight" : -1.0,
-          "rawItemWidth" : -1.0,
-          "showCaption" : true
-        } ],
-        "getPSLayout" : {
-          "align" : "flex-start",
-          "dir" : "row",
-          "layout" : "FLEX",
-          "vAlign" : "center"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : false
-      }, {
         "caption" : "执行人",
         "codeName" : "executors",
         "dataType" : 21,
@@ -360,19 +285,6 @@
           "name" : "EXECUTORS",
           "codeName" : "executors"
         },
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "multiple_people",
-            "logicType" : "SINGLE",
-            "value" : "1"
-          } ],
-          "relatedDetailNames" : [ "multiple_people" ],
-          "notMode" : false
-        } ],
         "getPSEditor" : {
           "editorParams" : {
             "ENABLEBOTTOMBUTTON" : "true",
@@ -434,140 +346,47 @@
           "name" : "EXECUTOR_NAME",
           "codeName" : "executor_name"
         },
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "groupOP" : "OR",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "ISNULL",
-              "dEFDName" : "multiple_people",
-              "logicType" : "SINGLE"
-            }, {
-              "condOP" : "EQ",
-              "dEFDName" : "multiple_people",
-              "logicType" : "SINGLE",
-              "value" : "0"
-            } ],
-            "notMode" : false
-          } ],
-          "relatedDetailNames" : [ "multiple_people" ],
-          "notMode" : false
-        } ],
         "getPSEditor" : {
           "editorParams" : {
-            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
-            "AC" : "TRUE",
-            "SRFNAVPARAM.n_status_eq" : "1",
-            "TRIGGER" : "TRUE",
             "URL" : "libraries/${context.library}/library_members/fetch_default",
-            "PICKUPVIEW" : "FALSE",
-            "USERMETHOD" : "post",
+            "DEPTURL" : "/users/fetch_default",
+            "SRFNAVPARAM.n_status_eq" : "1",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
             "DEPTMETHOD" : "get",
-            "DEPTURL" : "/users/fetch_default"
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "USERMETHOD" : "post"
           },
           "editorStyle" : "PERSONEL_SELECT_LIBRARY",
-          "editorType" : "PICKEREX_TRIGGER",
-          "handlerType" : "PickupText",
+          "editorType" : "HIDDEN",
           "name" : "executor_name",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "member_select"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_default"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library_member.json"
-          },
           "getPSEditorItems" : [ {
             "name" : "executor_id"
           } ],
           "getPSNavigateParams" : [ {
-            "key" : "n_department_id_eq",
-            "name" : "n_department_id_eq",
-            "value" : "srforgsectorid",
-            "rawValue" : false
-          }, {
             "key" : "n_status_eq",
             "name" : "n_status_eq",
             "value" : "1",
             "rawValue" : true
+          }, {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
             "pluginCode" : "PERSON_SELECT",
             "runtimeObject" : true
-          },
-          "getPSUIActionGroup" : {
-            "codeName" : "Usr0311619181",
-            "name" : "跳转至成员设置",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library_member.json"
-            },
-            "getPSUIActionGroupDetails" : [ {
-              "caption" : "跳转至成员设置",
-              "detailType" : "DEUIACTION",
-              "name" : "u7b4a0f4",
-              "getPSSysImage" : {
-                "glyph" : "xf0f0@FontAwesome",
-                "cssClass" : "fa fa-user-md"
-              },
-              "getPSUIAction" : {
-                "actionTarget" : "NONE",
-                "caption" : "跳转至成员设置",
-                "codeName" : "jump_to_member_set",
-                "frontProcessType" : "OTHER",
-                "fullCodeName" : "library_member_jump_to_member_set",
-                "name" : "跳转至成员设置",
-                "getPSAppDEUILogic" : {
-                  "modelref" : true,
-                  "id" : "jump_to_member_set"
-                },
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library_member.json"
-                },
-                "getPSSysImage" : {
-                  "glyph" : "xf0f0@FontAwesome",
-                  "cssClass" : "fa fa-user-md"
-                },
-                "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/projectRedirectView/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                "tooltip" : "跳转至成员设置",
-                "uIActionMode" : "FRONT",
-                "uIActionTag" : "jump_to_member_set",
-                "uIActionType" : "DEUIACTION",
-                "uILogicAttachMode" : "REPLACE",
-                "globalUIAction" : true,
-                "id" : "jump_to_member_set@library_member"
-              },
-              "tooltip" : "跳转至成员设置",
-              "addSeparator" : false,
-              "showCaption" : true,
-              "showIcon" : true
-            } ],
-            "uniqueTag" : "library_member__Usr0311619181"
-          },
-          "valueItemName" : "executor_id",
-          "enableAC" : true,
-          "enablePickupView" : false,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
+          }
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
         "valueItemName" : "executor_id",
-        "allowEmpty" : true
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.ID"

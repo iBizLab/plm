@@ -19,14 +19,18 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executordeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更执行人"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充执行人"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充执行人"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
@@ -35,7 +39,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-loopsubcall1_rawsfcode1" sourceRef="gateway-loopsubcall1" targetRef="rawsfcode1">
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode2_rawsfcode1" sourceRef="gateway-rawsfcode2" targetRef="rawsfcode1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runset_executordefault:run();
                                             $runset_executorfor_temp_obj:run();
@@ -45,9 +53,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-loopsubcall1_prepareparam2" sourceRef="gateway-loopsubcall1" targetRef="prepareparam2">
+                    <sequenceFlow id="gateway-rawsfcode2_rawsfcode3" sourceRef="gateway-rawsfcode2" targetRef="rawsfcode3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runset_executordefault:run();
                                             $runset_executorfor_temp_obj:run();
@@ -57,11 +63,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    <sequenceFlow id="rawsfcode3_deaction1" sourceRef="rawsfcode3" targetRef="deaction1">
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
-                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
-                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode2" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode2_gateway-rawsfcode2_gatewayline" sourceRef="rawsfcode2" targetRef="gateway-rawsfcode2"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode2_end_line" sourceRef="gateway-rawsfcode2" targetRef="gateway-rawsfcode2_end"/>
+                            <endEvent id="gateway-rawsfcode2_end" name="end"/>
         </process>
     </definitions>
