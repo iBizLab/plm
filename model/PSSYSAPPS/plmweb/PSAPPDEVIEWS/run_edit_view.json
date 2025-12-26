@@ -86,7 +86,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
       }
     },
-    "hookEventNames" : [ "ONLOADSUCCESS" ],
+    "hookEventNames" : [ "ONLOADSUCCESS", "ONCHANGE" ],
     "logicName" : "主编辑表单",
     "getPSAppCounterRefs" : [ {
       "getPSAppCounter" : {
@@ -205,6 +205,13 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
       }
+    }, {
+      "eventNames" : "onChange",
+      "itemName" : "executors",
+      "logicTag" : "form",
+      "logicType" : "SCRIPT",
+      "name" : "executors_onchange",
+      "scriptCode" : "var assignee_id = ctrl.details.assignee_id;\r\nvar assignee_name = ctrl.details.assignee_name;\r\nvar executors = ctrl.details.executors.value;\r\nif(executors != null && executors != undefined && executors.length > 0){\r\n    // 默认取第一个执行人作为负责人\r\n    var first_executor = executors[0];\r\n    if(first_executor.user_id != null){\r\n        assignee_id.setDataValue(first_executor.user_id)\r\n    }\r\n    if(first_executor.user_name != null){\r\n        assignee_name.setDataValue(first_executor.user_name)\r\n    }\r\n    for (var i = 0; i < executors.length; i++) {\r\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\r\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\r\n            assignee_id.setDataValue(executors[i].user_id)\r\n            assignee_name.setDataValue(executors[i].user_name)\r\n        }\r\n    }\r\n} else {\r\n    assignee_id.setDataValue(null)\r\n    assignee_name.setDataValue(null)\r\n}"
     }, {
       "logicTag" : "form",
       "logicType" : "APPDEUILOGIC",
@@ -12964,28 +12971,7 @@
                   "detailType" : "GROUPPANEL",
                   "name" : "grouppanel11",
                   "getPSDEFormDetails" : [ {
-                    "codeName" : "rawitem1",
-                    "contentType" : "RAW",
-                    "detailStyle" : "DEFAULT",
-                    "detailType" : "RAWITEM",
-                    "name" : "rawitem1",
-                    "getPSLayoutPos" : {
-                      "grow" : -1,
-                      "layout" : "FLEX"
-                    },
-                    "getPSRawItem" : {
-                      "caption" : "执行人",
-                      "contentType" : "RAW",
-                      "name" : "rawitem1",
-                      "rawItemHeight" : -1.0,
-                      "rawItemWidth" : -1.0
-                    },
-                    "rawContent" : "执行人",
-                    "rawItemHeight" : -1.0,
-                    "rawItemWidth" : -1.0,
-                    "showCaption" : true
-                  }, {
-                    "caption" : "多人",
+                    "caption" : "执行人",
                     "codeName" : "multiple_people",
                     "createDV" : "0",
                     "dataType" : 9,
@@ -12993,8 +12979,8 @@
                     "detailType" : "FORMITEM",
                     "enableCond" : 3,
                     "ignoreInput" : 2,
-                    "labelPos" : "RIGHT",
-                    "labelWidth" : 130,
+                    "labelPos" : "LEFT",
+                    "labelWidth" : 54,
                     "name" : "multiple_people",
                     "noPrivDisplayMode" : 1,
                     "getPSAppDEField" : {
@@ -13020,6 +13006,27 @@
                     },
                     "updateDV" : "0",
                     "allowEmpty" : true,
+                    "showCaption" : true
+                  }, {
+                    "codeName" : "rawitem1",
+                    "contentType" : "RAW",
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "RAWITEM",
+                    "name" : "rawitem1",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSRawItem" : {
+                      "caption" : "多人执行",
+                      "contentType" : "RAW",
+                      "name" : "rawitem1",
+                      "rawItemHeight" : -1.0,
+                      "rawItemWidth" : -1.0
+                    },
+                    "rawContent" : "多人执行",
+                    "rawItemHeight" : -1.0,
+                    "rawItemWidth" : -1.0,
                     "showCaption" : true
                   }, {
                     "actionType" : "UIACTION",
