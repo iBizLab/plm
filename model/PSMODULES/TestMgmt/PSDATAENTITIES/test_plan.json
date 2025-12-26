@@ -779,6 +779,39 @@
     "name" : "my_participate",
     "getPSDEDQMain" : {
       "getChildPSDEDQJoins" : [ {
+        "getChildPSDEDQJoins" : [ {
+          "getDERPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+          },
+          "getJoinPSDER" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/executor/PSDERS/DERCUSTOM_EXECUTOR_RUN_OWNER_ID.json"
+          },
+          "getJoinPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+          },
+          "joinType" : "1N",
+          "name" : "EXECUTOR存在1:N（EXISTS (SELECT)）DERCUSTOM_EXECUTOR_RUN_OWNER_ID",
+          "getPSDEDQGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "连接条件",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "EQ",
+              "condType" : "SINGLE",
+              "condValue" : "srfpersonid",
+              "fieldName" : "USER_ID",
+              "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+              "getPSDEField" : {
+                "name" : "USER_ID",
+                "codeName" : "user_id"
+              },
+              "getPSVARTypeId" : "SESSIONCONTEXT"
+            } ]
+          }
+        } ],
         "getDERPSDataEntity" : {
           "modelref" : true,
           "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
@@ -798,32 +831,16 @@
           "condType" : "GROUP",
           "name" : "连接条件",
           "getPSDEDQConditions" : [ {
-            "condOp" : "OR",
-            "condType" : "GROUP",
-            "name" : "OR",
-            "getPSDEDQConditions" : [ {
-              "condOp" : "LIKE",
-              "condType" : "SINGLE",
-              "condValue" : "srfpersonid",
-              "fieldName" : "EXECUTORS",
-              "name" : "(EXECUTORS) 文本包含(%) 用户上下文 srfpersonid",
-              "getPSDEField" : {
-                "name" : "EXECUTORS",
-                "codeName" : "executors"
-              },
-              "getPSVARTypeId" : "SESSIONCONTEXT"
-            }, {
-              "condOp" : "EQ",
-              "condType" : "SINGLE",
-              "condValue" : "srfpersonid",
-              "fieldName" : "EXECUTOR_ID",
-              "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
-              "getPSDEField" : {
-                "name" : "EXECUTOR_ID",
-                "codeName" : "executor_id"
-              },
-              "getPSVARTypeId" : "SESSIONCONTEXT"
-            } ]
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "EXECUTOR_ID",
+            "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "EXECUTOR_ID",
+              "codeName" : "executor_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
           } ]
         }
       }, {
