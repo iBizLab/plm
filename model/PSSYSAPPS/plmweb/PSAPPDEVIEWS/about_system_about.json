@@ -306,7 +306,7 @@
             "viewFieldName" : "version"
           }, {
             "caption" : "容器",
-            "cssStyle" : "background: cornsilk;padding:4px;",
+            "cssStyle" : "background: var(--ibiz-color-warning-light-active);padding:4px;",
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "container1",
@@ -480,45 +480,62 @@
             "widthMode" : "PX"
           },
           "getPSPanelItems" : [ {
-            "caption" : "文本(动态)",
-            "cssStyle" : "--ibiz-form-item-text-color: var(--ibiz-color-link) !important;cursor: pointer;",
+            "caption" : "容器",
+            "cssStyle" : "cursor: pointer;--ibiz-form-item-text-color: var(--ibiz-color-link) !important;",
             "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "appinfo",
-            "getPSEditor" : {
-              "editorType" : "SPAN",
+            "itemType" : "CONTAINER",
+            "name" : "container4",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "hAlignSelf" : "CENTER",
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "cssStyle" : "--ibiz-form-item-text-color: var(--ibiz-color-link) !important;cursor: pointer;",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
               "name" : "appinfo",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "hAlignSelf" : "CENTER",
-              "layout" : "FLEX",
-              "spacingBottom" : "OUTERSMALL"
-            },
-            "viewFieldName" : "appinfo"
-          }, {
-            "caption" : "文本(动态)",
-            "cssStyle" : "--ibiz-form-item-text-color: var(--ibiz-color-link) !important;cursor: pointer;",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "backendinfo",
-            "getPSEditor" : {
-              "editorType" : "SPAN",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "appinfo",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "hAlignSelf" : "CENTER",
+                "layout" : "FLEX",
+                "spacingBottom" : "OUTERSMALL"
+              },
+              "viewFieldName" : "appinfo"
+            }, {
+              "caption" : "文本(动态)",
+              "cssStyle" : "--ibiz-form-item-text-color: var(--ibiz-color-link) !important;cursor: pointer;",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
               "name" : "backendinfo",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "hAlignSelf" : "CENTER",
-              "layout" : "FLEX",
-              "spacingBottom" : "OUTERSMALL"
-            },
-            "viewFieldName" : "backendinfo"
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "backendinfo",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "hAlignSelf" : "CENTER",
+                "layout" : "FLEX",
+                "spacingBottom" : "OUTERSMALL"
+              },
+              "viewFieldName" : "backendinfo"
+            } ]
           } ],
           "predefinedType" : "CONTAINER_SINGLEDATA",
           "scriptCode" : "{appinfo:\"前端应用由：[ibiz-app-hub:\"+ibiz.env.appVersion+\"]提供支持\", backendinfo:\"后台服务由：[ibiz-service-hub:\"+ibiz.appData.version+\"]提供支持\",\"lic\":\"MIT\"}\n",
