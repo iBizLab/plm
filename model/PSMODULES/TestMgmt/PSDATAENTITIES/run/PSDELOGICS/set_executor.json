@@ -49,95 +49,6 @@
     },
     "topPos" : 403
   }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 140,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "填充执行人",
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "EXECUTOR_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "for_temp_obj[EXECUTOR_ID] ==> Default[EXECUTOR_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTOR_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "EXECUTOR_NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "for_temp_obj[EXECUTOR_NAME] ==> Default[EXECUTOR_NAME]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTOR_NAME",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 403
-  }, {
-    "codeName" : "DEACTION1",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Update.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-    },
-    "leftPos" : 570,
-    "logicNodeType" : "DEACTION",
-    "name" : "变更执行人",
-    "topPos" : 522
-  }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_temp_obj"
-    },
-    "leftPos" : -90,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      }
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "srfactionparam"
-    },
-    "topPos" : 522
-  }, {
     "codeName" : "PREPAREPARAM4",
     "leftPos" : 140,
     "logicNodeType" : "PREPAREPARAM",
@@ -164,10 +75,10 @@
       "srcValue" : "1",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 522
+    "topPos" : 422
   }, {
     "codeName" : "PREPAREPARAM3",
-    "leftPos" : 360,
+    "leftPos" : 350,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
     "getPSDELogicLinks" : [ {
@@ -238,7 +149,150 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
+    "topPos" : 422
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "DEACTION",
+    "name" : "变更执行人",
     "topPos" : 522
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : -90,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "MULTIPLE_PEOPLE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[MULTIPLE_PEOPLE] 等于(=) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "MULTIPLE_PEOPLE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[MULTIPLE_PEOPLE] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 522
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 140,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充执行人",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "EXECUTOR_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "for_temp_obj[EXECUTOR_ID] ==> Default[EXECUTOR_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "EXECUTOR_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "EXECUTOR_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "for_temp_obj[EXECUTOR_NAME] ==> Default[EXECUTOR_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "EXECUTOR_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 610
   }, {
     "codeName" : "END1",
     "leftPos" : -50,

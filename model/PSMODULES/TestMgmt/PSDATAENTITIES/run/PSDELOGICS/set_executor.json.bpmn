@@ -17,15 +17,13 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充执行人"/>
-                        <endEvent id="prepareparam2_end" name="end"/>
-                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executordeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更执行人"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充执行人"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -33,13 +31,37 @@
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
-                    </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
-                    </sequenceFlow>
                     <sequenceFlow id="prepareparam4_prepareparam3" sourceRef="prepareparam4" targetRef="prepareparam3">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam4" sourceRef="gateway-loopsubcall1" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runset_executordefault:run();
+                                            $runset_executorfor_temp_obj:run();
+                                            $runset_executorsrfactionparam:run();
+                                    eval($runset_executordefault==runset_executordefault && $runset_executorfor_temp_obj==runset_executorfor_temp_obj && $runset_executorsrfactionparam==runset_executorsrfactionparam);
+                                eval((RuleUtils.test($runset_executorfor_temp_obj.get("multiplePeople"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam2" sourceRef="gateway-loopsubcall1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runset_executordefault:run();
+                                            $runset_executorfor_temp_obj:run();
+                                            $runset_executorsrfactionparam:run();
+                                    eval($runset_executordefault==runset_executordefault && $runset_executorfor_temp_obj==runset_executorfor_temp_obj && $runset_executorsrfactionparam==runset_executorsrfactionparam);
+                                eval((RuleUtils.test($runset_executorfor_temp_obj.get("multiplePeople"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
         </process>
     </definitions>
