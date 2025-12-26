@@ -6,7 +6,7 @@
   "caption" : "关于",
   "codeName" : "about_system_about",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/about_system_about.json",
-  "height" : 400,
+  "height" : 500,
   "name" : "ABOUTsystem_about",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -286,46 +286,59 @@
             "valueFormat" : "当前版本：@",
             "viewFieldName" : "version"
           }, {
-            "caption" : "文本(动态)",
-            "cssStyle" : "background: cornsilk;",
+            "caption" : "容器",
             "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "latest_version",
-            "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "latest_version",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
               "hAlignSelf" : "CENTER",
               "layout" : "FLEX",
-              "spacingBottom" : "OUTERSMALL",
-              "spacingLeft" : "OUTERSMALL"
+              "spacingBottom" : "OUTERSMALL"
             },
-            "getPSPanelItemGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSPanelItemLogics" : [ {
-                "condOp" : "ISNOTNULL",
-                "dstModelField" : "latest_version",
-                "logicType" : "SINGLE",
-                "name" : "latest_version 值不为空(NotNil) "
-              }, {
-                "condOp" : "EQ",
-                "dstModelField" : "has_update",
-                "logicType" : "SINGLE",
-                "name" : "has_update 等于(=) true",
-                "value" : "true"
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "cssStyle" : "background: cornsilk;",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "latest_version",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "latest_version",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "hAlignSelf" : "CENTER",
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "latest_version",
+                  "logicType" : "SINGLE",
+                  "name" : "latest_version 值不为空(NotNil) "
+                }, {
+                  "condOp" : "EQ",
+                  "dstModelField" : "has_update",
+                  "logicType" : "SINGLE",
+                  "name" : "has_update 等于(=) true",
+                  "value" : "true"
+                } ],
+                "relatedItemNames" : [ "latest_version", "has_update" ],
+                "notMode" : false
               } ],
-              "relatedItemNames" : [ "latest_version", "has_update" ],
-              "notMode" : false
-            } ],
-            "valueFormat" : "最新版本：@",
-            "viewFieldName" : "latest_version"
+              "valueFormat" : "最新版本：@",
+              "viewFieldName" : "latest_version"
+            } ]
           }, {
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
@@ -373,12 +386,12 @@
                 "contentType" : "HTML",
                 "editorParams" : {
                   "contenttype" : "HTML",
-                  "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
+                  "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/plm/badge/star.svg?theme=white\" alt=\"star\"></a>"
                 },
                 "editorType" : "RAW",
                 "name" : "license",
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>"
+                "template" : "<a href=\"https://github.com/iBizLab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://img.shields.io/github/stars/iBizLab/plm.svg\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/iBizPMS/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/iBizPMS/badge/star.svg?theme=white\" alt=\"star\"></a>&nbsp;<a href=\"https://gitee.com/ibizlab/plm/stargazers\" target=\"_blank\"  ><img src=\"https://gitee.com/ibizlab/plm/badge/star.svg?theme=white\" alt=\"star\"></a>"
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
