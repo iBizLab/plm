@@ -257,12 +257,12 @@
               "contentType" : "HTML",
               "editorParams" : {
                 "contenttype" : "HTML",
-                "template" : "<span class=\"ibiz-span ibiz-panel-field-content\" title=\"{{this}}\" style=\"max-width: 500px;\">{{this}}</span>"
+                "template" : "<span class=\"ibiz-span ibiz-panel-field-content\" title=\"{{this}}\" style=\"width: 500px;display: inline-block;text-align:center;\">{{this}}</span>"
               },
               "editorType" : "RAW",
               "name" : "description",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "template" : "<span class=\"ibiz-span ibiz-panel-field-content\" title=\"{{this}}\" style=\"max-width: 500px;\">{{this}}</span>"
+              "template" : "<span class=\"ibiz-span ibiz-panel-field-content\" title=\"{{this}}\" style=\"width: 500px;display: inline-block;text-align:center;\">{{this}}</span>"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -319,7 +319,9 @@
               "grow" : -1,
               "hAlignSelf" : "CENTER",
               "layout" : "FLEX",
-              "spacingBottom" : "OUTERSMALL"
+              "spacingBottom" : "OUTERSMALL",
+              "spacingLeft" : "INNERSMALL",
+              "spacingRight" : "INNERSMALL"
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
@@ -369,12 +371,12 @@
                 "contentType" : "HTML",
                 "editorParams" : {
                   "contenttype" : "HTML",
-                  "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.build_date}}.</span>&nbsp;<a href=\"{{latest.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{latest.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
+                  "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.release_date}}.</span>&nbsp;<a href=\"{{this.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{this.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
                 },
                 "editorType" : "RAW",
                 "name" : "latest",
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.build_date}}.</span>&nbsp;<a href=\"{{latest.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{latest.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
+                "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.release_date}}.</span>&nbsp;<a href=\"{{this.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{this.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
@@ -484,11 +486,14 @@
             "itemType" : "FIELD",
             "name" : "appinfo",
             "getPSEditor" : {
-              "editorType" : "SPAN",
+              "editorParams" : {
+                "LINKVIEW" : "TRUE"
+              },
+              "editorType" : "SPAN_LINK",
               "name" : "appinfo",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+              "enableLinkView" : true
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -503,11 +508,14 @@
             "itemType" : "FIELD",
             "name" : "backendinfo",
             "getPSEditor" : {
-              "editorType" : "SPAN",
+              "editorParams" : {
+                "LINKVIEW" : "TRUE"
+              },
+              "editorType" : "SPAN_LINK",
               "name" : "backendinfo",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+              "enableLinkView" : true
             },
             "getPSLayoutPos" : {
               "grow" : -1,
