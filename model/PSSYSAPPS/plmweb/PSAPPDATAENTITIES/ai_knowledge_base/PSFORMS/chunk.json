@@ -1,5 +1,5 @@
 {
-  "codeName" : "chunking_strategy",
+  "codeName" : "chunk",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -18,7 +18,7 @@
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/chunking_strategy.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/chunk.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -63,7 +63,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "logicName" : "切片策略表单(只读)",
+  "logicName" : "切片策略表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
@@ -162,7 +162,7 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
-          "ignoreInput" : 3,
+          "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
           "name" : "chunk_method",
@@ -172,13 +172,13 @@
             "codeName" : "chunk_method"
           },
           "getPSEditor" : {
-            "editorType" : "SPAN",
+            "editorType" : "DROPDOWNLIST",
             "name" : "chunk_method",
             "getPSAppCodeList" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__chunkingstrategy.json"
             },
-            "enableLinkView" : false
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 8,
@@ -187,7 +187,7 @@
           },
           "updateDV" : "fixed",
           "allowEmpty" : true,
-          "convertToCodeItemText" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "codeName" : "parser_config",
@@ -213,9 +213,8 @@
             "name" : "chunk_size",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "chunk_size",
-              "enableLinkView" : false
+              "editorType" : "NUMBER",
+              "name" : "chunk_size"
             },
             "getPSLayoutPos" : {
               "colLG" : 8,
@@ -240,9 +239,8 @@
             "name" : "separator",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "separator",
-              "enableLinkView" : false
+              "editorType" : "TEXTBOX",
+              "name" : "separator"
             },
             "getPSLayoutPos" : {
               "colLG" : 8,
@@ -260,7 +258,7 @@
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 0,
+            "enableCond" : 3,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
@@ -293,9 +291,8 @@
             "name" : "chunk_overlap",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "chunk_overlap",
-              "enableLinkView" : false
+              "editorType" : "TEXTBOX",
+              "name" : "chunk_overlap"
             },
             "getPSLayoutPos" : {
               "colLG" : 8,
@@ -320,9 +317,8 @@
             "name" : "max_chunk_count_per_doc",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "max_chunk_count_per_doc",
-              "enableLinkView" : false
+              "editorType" : "TEXTBOX",
+              "name" : "max_chunk_count_per_doc"
             },
             "getPSLayoutPos" : {
               "colLG" : 8,
@@ -339,7 +335,7 @@
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
-            "enableCond" : 0,
+            "enableCond" : 3,
             "ignoreInput" : 0,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
@@ -368,10 +364,12 @@
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel2",
             "getPSDEFormDetails" : [ {
+              "buildInActions" : 7,
               "codeName" : "data_masking_rules",
               "contentType" : "REPEATER",
               "detailStyle" : "DEFAULT",
               "detailType" : "MDCTRL",
+              "fieldName" : "data_masking_rules",
               "name" : "data_masking_rules",
               "getPSDEFormDetails" : [ {
                 "caption" : "匹配规则",
@@ -386,10 +384,9 @@
                 "name" : "pattern",
                 "noPrivDisplayMode" : 1,
                 "getPSEditor" : {
-                  "editorType" : "SPAN",
+                  "editorType" : "TEXTBOX",
                   "name" : "pattern",
-                  "placeHolder" : "正则式",
-                  "enableLinkView" : false
+                  "placeHolder" : "正则式"
                 },
                 "getPSLayoutPos" : {
                   "colLG" : 8,
@@ -412,9 +409,8 @@
                 "name" : "replacement",
                 "noPrivDisplayMode" : 1,
                 "getPSEditor" : {
-                  "editorType" : "SPAN",
-                  "name" : "replacement",
-                  "enableLinkView" : false
+                  "editorType" : "TEXTBOX",
+                  "name" : "replacement"
                 },
                 "getPSLayoutPos" : {
                   "colLG" : 16,
@@ -434,7 +430,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "infoGroupMode" : true,
+              "infoGroupMode" : false,
               "repeatContent" : true,
               "showCaption" : true
             } ],
@@ -447,7 +443,7 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "infoGroupMode" : true,
+            "infoGroupMode" : false,
             "repeatContent" : true,
             "showCaption" : true
           } ],
@@ -460,7 +456,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : true,
+          "infoGroupMode" : false,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -472,8 +468,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : true,
-        "showCaption" : false
+        "infoGroupMode" : false,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -484,7 +480,7 @@
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
-      "infoGroupMode" : true,
+      "infoGroupMode" : false,
       "showCaption" : false
     }, {
       "getCapPSLanguageRes" : {
@@ -521,7 +517,7 @@
       "columnCount" : 24,
       "layout" : "TABLE_24COL"
     },
-    "infoGroupMode" : true
+    "infoGroupMode" : false
   } ],
   "getPSLayout" : {
     "childColMD" : 24,
@@ -561,8 +557,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "infoFormMode" : true,
   "noTabHeader" : true,
-  "modelid" : "8d1a2bcdd5f757e37a7b197305ea5c86",
+  "modelid" : "60aa2c7cf969c51516f1546a3339e23c",
   "modeltype" : "PSDEFORM_EDITFORM"
 }
