@@ -39,6 +39,9 @@
       "id" : "latest_version",
       "viewFieldName" : "latest_version"
     }, {
+      "id" : "latest",
+      "viewFieldName" : "latest"
+    }, {
       "id" : "license",
       "viewFieldName" : "license"
     }, {
@@ -50,6 +53,7 @@
     } ],
     "codeName" : "usr0822478854",
     "controlType" : "VIEWLAYOUTPANEL",
+    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "FLEX",
     "logicName" : "关于布局面板",
     "name" : "layoutpanel",
@@ -57,6 +61,21 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ABOUT.json"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "appinfo",
+      "logicTag" : "layoutpanel",
+      "logicType" : "SCRIPT",
+      "name" : "apphub",
+      "scriptCode" : "window.open(\"https://gitee.com/ibizlab-cloud/ibiz-app-hub\");"
+    }, {
+      "eventNames" : "onClick",
+      "itemName" : "backendinfo",
+      "logicTag" : "layoutpanel",
+      "logicType" : "SCRIPT",
+      "name" : "servicehub",
+      "scriptCode" : "window.open(\"https://gitee.com/ibizlab-cloud/ibiz-service-hub\");"
+    } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
       "layout" : "FLEX"
@@ -287,11 +306,14 @@
             "viewFieldName" : "version"
           }, {
             "caption" : "容器",
+            "cssStyle" : "background: cornsilk;",
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "container1",
             "getPSLayout" : {
-              "layout" : "FLEX"
+              "dir" : "column",
+              "layout" : "FLEX",
+              "vAlign" : "center"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -301,7 +323,6 @@
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
-              "cssStyle" : "background: cornsilk;",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
               "name" : "latest_version",
@@ -315,7 +336,8 @@
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "hAlignSelf" : "CENTER",
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "spacingBottom" : "OUTERSMALL"
               },
               "getPSPanelItemGroupLogics" : [ {
                 "groupOP" : "AND",
@@ -338,6 +360,28 @@
               } ],
               "valueFormat" : "最新版本：@",
               "viewFieldName" : "latest_version"
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "latest",
+              "getPSEditor" : {
+                "contentType" : "HTML",
+                "editorParams" : {
+                  "contenttype" : "HTML",
+                  "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.build_date}}.</span>&nbsp;<a href=\"{{latest.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{latest.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
+                },
+                "editorType" : "RAW",
+                "name" : "latest",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "template" : "<span class=\"ibiz-span ibiz-panel-field-content\">build: {{this.build_date}}.</span>&nbsp;<a href=\"{{latest.changelog_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">changelog</a>&nbsp;<a href=\"{{latest.download_url}}\" target=\"_blank\" style=\"text-decoration: none;color: darkblue;\">download</a>"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "hAlignSelf" : "CENTER",
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "latest"
             } ]
           }, {
             "caption" : "容器",
