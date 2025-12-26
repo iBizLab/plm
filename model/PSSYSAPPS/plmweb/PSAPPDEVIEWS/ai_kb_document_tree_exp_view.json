@@ -596,6 +596,14 @@
             }, {
               "id" : "status",
               "viewFieldName" : "status"
+            }, {
+              "id" : "sync_id",
+              "hidden" : true,
+              "viewFieldName" : "sync_id"
+            }, {
+              "id" : "type",
+              "hidden" : true,
+              "viewFieldName" : "type"
             } ],
             "codeName" : "kb_doc_tree_node_panel",
             "controlType" : "PANEL",
@@ -689,21 +697,53 @@
                 "itemType" : "FIELD",
                 "name" : "status",
                 "getPSEditor" : {
-                  "editorType" : "DROPDOWNLIST",
+                  "editorType" : "SPAN",
                   "name" : "status",
                   "getPSAppCodeList" : {
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__slice_status.json"
                   },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                  "singleSelect" : true
+                  "renderMode" : "TEXT_DYNAMIC",
+                  "enableLinkView" : false
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX",
                   "spacingLeft" : "OUTERSMALL"
                 },
-                "viewFieldName" : "status"
+                "viewFieldName" : "status",
+                "convertToCodeItemText" : true
+              }, {
+                "caption" : "文本(动态)",
+                "itemType" : "FIELD",
+                "name" : "sync_id",
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "sync_id",
+                  "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "viewFieldName" : "sync_id",
+                "hidden" : true
+              }, {
+                "caption" : "文本(动态)",
+                "itemType" : "FIELD",
+                "name" : "type",
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "type",
+                  "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "viewFieldName" : "type",
+                "hidden" : true
               } ]
             } ],
             "layoutPanel" : true,
