@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "EXISTS(SELECT * FROM `RUN` t51 \n WHERE \n t1.`ID` = t51.`PLAN_ID`  AND  ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) )",
+    "customCond" : "EXISTS(SELECT * FROM `RUN` t51 \n WHERE \n t1.`ID` = t51.`PLAN_ID`  AND  ( ( t52.`EXECUTORS` LIKE CONCAT('%',#{ctx.sessioncontext.srfpersonid},'%')  OR  t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) ) )",
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",

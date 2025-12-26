@@ -798,16 +798,32 @@
           "condType" : "GROUP",
           "name" : "连接条件",
           "getPSDEDQConditions" : [ {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "srfpersonid",
-            "fieldName" : "EXECUTOR_ID",
-            "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
-            "getPSDEField" : {
-              "name" : "EXECUTOR_ID",
-              "codeName" : "executor_id"
-            },
-            "getPSVARTypeId" : "SESSIONCONTEXT"
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "OR",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "LIKE",
+              "condType" : "SINGLE",
+              "condValue" : "srfpersonid",
+              "fieldName" : "EXECUTORS",
+              "name" : "(EXECUTORS) 文本包含(%) 用户上下文 srfpersonid",
+              "getPSDEField" : {
+                "name" : "EXECUTORS",
+                "codeName" : "executors"
+              },
+              "getPSVARTypeId" : "SESSIONCONTEXT"
+            }, {
+              "condOp" : "EQ",
+              "condType" : "SINGLE",
+              "condValue" : "srfpersonid",
+              "fieldName" : "EXECUTOR_ID",
+              "name" : "(EXECUTOR_ID) 等于(=) 用户上下文 srfpersonid",
+              "getPSDEField" : {
+                "name" : "EXECUTOR_ID",
+                "codeName" : "executor_id"
+              },
+              "getPSVARTypeId" : "SESSIONCONTEXT"
+            } ]
           } ]
         }
       }, {
