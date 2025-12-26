@@ -125,11 +125,27 @@
     "hidden" : true,
     "dataType" : 25
   }, {
+    "id" : "multiple_people",
+    "dataType" : 9,
+    "createDV" : "0",
+    "updateDV" : "0",
+    "getPSAppDEField" : {
+      "name" : "MULTIPLE_PEOPLE",
+      "codeName" : "multiple_people"
+    }
+  }, {
     "id" : "executor_name",
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "EXECUTOR_NAME",
       "codeName" : "executor_name"
+    }
+  }, {
+    "id" : "executors",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "EXECUTORS",
+      "codeName" : "executors"
     }
   }, {
     "id" : "id",
@@ -155,6 +171,34 @@
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
+      "caption" : "多人执行",
+      "codeName" : "multiple_people",
+      "createDV" : "0",
+      "dataType" : 9,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 2,
+      "labelPos" : "RIGHT",
+      "labelWidth" : 130,
+      "name" : "multiple_people",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "getPSEditor" : {
+        "editorType" : "CHECKBOX",
+        "name" : "multiple_people"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "updateDV" : "0",
+      "allowEmpty" : true,
+      "showCaption" : true
+    }, {
       "caption" : "执行人",
       "codeName" : "executor_name",
       "dataType" : 25,
@@ -170,6 +214,28 @@
         "name" : "EXECUTOR_NAME",
         "codeName" : "executor_name"
       },
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "getPSDEFDLogics" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNULL",
+            "dEFDName" : "multiple_people",
+            "logicType" : "SINGLE"
+          }, {
+            "condOP" : "EQ",
+            "dEFDName" : "multiple_people",
+            "logicType" : "SINGLE",
+            "value" : "0"
+          } ],
+          "notMode" : false
+        } ],
+        "relatedDetailNames" : [ "multiple_people" ],
+        "notMode" : false
+      } ],
       "getPSEditor" : {
         "editorParams" : {
           "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
@@ -281,6 +347,80 @@
         "layout" : "TABLE_24COL"
       },
       "valueItemName" : "executor_id",
+      "allowEmpty" : true
+    }, {
+      "caption" : "执行人",
+      "codeName" : "executors",
+      "dataType" : 21,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executors",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "getPSDEFDLogics" : [ {
+          "condOP" : "EQ",
+          "dEFDName" : "multiple_people",
+          "logicType" : "SINGLE",
+          "value" : "1"
+        } ],
+        "relatedDetailNames" : [ "multiple_people" ],
+        "notMode" : false
+      } ],
+      "getPSEditor" : {
+        "editorParams" : {
+          "ENABLEBOTTOMBUTTON" : "true",
+          "MULTIPLE" : "true",
+          "DEFAULTATNVALUE" : "40",
+          "CODELISTID" : "Base__attention_type",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"user_name\"}",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "USERMETHOD" : "post",
+          "DEPTURL" : "/users/fetch_default",
+          "DEPTMETHOD" : "get",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "CODELISTMAP" : "{\"FOLLOWED\":[20,30,40],\"NOTFOLLOWING\":[10]}"
+        },
+        "editorStyle" : "ATTENTION_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "handlerType" : "PickupText",
+        "name" : "executors",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "ATTENTION",
+          "runtimeObject" : true
+        },
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
       "allowEmpty" : true
     }, {
       "getCapPSLanguageRes" : {
