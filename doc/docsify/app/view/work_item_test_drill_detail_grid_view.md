@@ -10,6 +10,13 @@
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
+* `onCreated`
+```javascript
+if (view && viewParam.reportcaption) {
+    view.model.caption = viewParam.reportcaption;
+    view.evt.on('onViewInfoChange', {});
+}
+```
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 

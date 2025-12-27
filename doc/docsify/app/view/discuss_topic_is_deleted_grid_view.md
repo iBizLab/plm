@@ -14,7 +14,7 @@
 
 
 ### 关联界面行为
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [已删除_恢复](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [恢复](module/Team/discuss_topic#界面行为)
 
 ### 关联视图
   * [话题(discuss_topic_edit_view)](app/view/discuss_topic_edit_view)

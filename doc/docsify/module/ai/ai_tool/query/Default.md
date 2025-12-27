@@ -35,6 +35,7 @@
 
 ```sql
 SELECT
+t1.`ACTIVE`,
 t1.`API_AUTH_TYPE`,
 t1.`API_HEADERS`,
 t1.`API_KEY`,
@@ -43,6 +44,7 @@ t1.`API_URL`,
 t1.`CLIENT_ID`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`EXPIRATION_DATE`,
 t1.`ID`,
 t1.`NAME`,
 t1.`TIMEOUT`,

@@ -1143,6 +1143,7 @@
 | 新建缺陷（测试计划关联） | new_test_plan_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_quick_create_bug_view)</details>|测试计划分页导航 → 缺陷分页 → 表格工具栏 「 新建缺陷 」|
 | 新建任务（移动端waterfall） | mob_create_waterfall_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建并添加子工作项（移动端） | create_and_child_work_item | 新建子工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
+| 建立版本 | create_new_version | 创建新版本 |无数据|<details><summary>打开视图或向导（模态）</summary>[建立版本](app/view/version_quick_create_view)</details>||
 | 打开我的事项其他工作项 | open_summary_other_item | 其他工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[其他工作项](app/view/work_item_summary_other_grid_view)</details>||
 | 打开更多我负责的工作项 | query_more_my_assignee | 打开更多我负责的工作项 |无数据|用户自定义||
 | 新建缺陷（scrum动态） | new_dyna_scrum_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_scrum_quick_create_view)</details>|SRFNAVPARAM.work_item_type_group_bug=bug|
@@ -1245,6 +1246,7 @@
 | 新建任务（scrum动态） | new_dyna_scrum_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_scrum_quick_create_view)</details>||
 | 打开我的事项任务 | open_summary_task | 任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[任务](app/view/work_item_summary_task_grid_view)</details>||
 | 新建任务（移动端hybrid） | mob_create_hybrid_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
+| 查看版本 | check_version | 查看版本 |无数据|用户自定义||
 | 新建工作项（快速新建） | quick_new_work_item | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>|SRFNAVPARAM.srfdatatype=%srfdatatype%<br>SRFNAVPARAM.work_item_type_id=%srfdatatype%<br>SRFNAVPARAM.srfparentdename=%srfparentdename%<br>SRFNAVPARAM.srfparentkey=%srfparentkey%<br>SRFNAVPARAM.project_name=%project_name%<br>SRFNAVPARAM.need_fill_form=true|
 | 查看预估工时明细 | check_estimated_workload_detail | 查看预估工时明细 |无数据|用户自定义||
 | 分配负责人 | change_assignee | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[change_assignee](#行为)||
@@ -1314,6 +1316,7 @@
 | 项目资源成员设置 | project_resource_member | 成员设置 |无数据|<details><summary>后台调用</summary>[project_resource_setting](#行为)||
 | 移动 | move | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[move_work_item](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 打印交谈资料_工作项 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
 | 打开BI报表配置表单_工作项缺陷 | open_bi_form_item_bug | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>|缺陷占比专用|
 | 新建事务（kanban） | new_kanban_issue | 新建事务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建特性（hybrid） | new_hybrid_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
@@ -1374,12 +1377,14 @@
 |[显示下拉并展开选项（嵌入视图）](module/ProjMgmt/work_item/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
 |[显示表单侧边栏](module/ProjMgmt/work_item/uilogic/show_form_sidebar)|show_form_sidebar|每次工作项主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看版本](module/ProjMgmt/work_item/uilogic/check_version)|check_version|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProjMgmt/work_item/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)|before_state_change_grid|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[用例关联工作项值变更](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[组件显隐重置](module/ProjMgmt/work_item/uilogic/reset)|reset||
 |[自定义确定](module/ProjMgmt/work_item/uilogic/custom_confirm)|custom_confirm||
 |[获取工作项工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)|mob_get_workload_schedule|获取工时信息，并计算工时进度（移动端）|

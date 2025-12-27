@@ -63,7 +63,7 @@ BINDPARAM1 --> END1 : [[$./mob_change_admin_role#bindparam1-end1{未勾选添加
 
 
 
-1. 将`for_temp_obj(循环临时变量).USER_ID(用户ID)` 设置给  `update_member_info(更新成员信息).USER_ID(登录名)`
+1. 将`for_temp_obj(循环临时变量).USER_ID` 设置给  `update_member_info(更新成员信息).USER_ID(登录名)`
 2. 将`admin` 设置给  `update_member_info(更新成员信息).ROLE_ID(角色)`
 3. 将`Default(传入变量).ID(标识)` 设置给  `update_member_info(更新成员信息).OWNER_ID(话题标识)`
 

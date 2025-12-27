@@ -8,6 +8,7 @@
 |---|---|
 |工时管理|WORKLOAD|
 |项目集管理_维护|PORTFOLIO_M|
+|资源管理|RESOURCE|
 |项目管理_维护|PROJECT_M|
 |组织管理|ORG_M|
 

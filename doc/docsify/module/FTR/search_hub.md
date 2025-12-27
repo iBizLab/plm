@@ -49,6 +49,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 打开搜索页 | open_search_view | 打开搜索页 |无数据|<details><summary>打开视图或向导（模态）</summary>[检索中心](app/view/search_hub_mob_tab_search_view)</details>||
+| 确定 | panel_auto40195056_button_okaction_click | 确定 |无数据|自定义代码||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

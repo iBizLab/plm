@@ -12,9 +12,9 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |自定义建议提示词|CUSTOM_SUGGESTION_PROMPT|长文本，没有长度限制|1048576|是||
 |默认系统提示词|DEFAULT_SYSTEM_PROMPT|长文本，没有长度限制|1048576|是||
-|启用问题建议|ENABLE_SUGGESTED_QUESTIONS|真假逻辑||是||
-|启用思考链|ENABLE_THINKING|真假逻辑||是||
-|调用工具|ENABLE_TOOLS|真假逻辑||是||
+|启用问题建议|ENABLE_SUGGESTED_QUESTIONS|是否逻辑||是||
+|启用思考链|ENABLE_THINKING|是否逻辑||是||
+|调用工具|ENABLE_TOOLS|是否逻辑||是||
 |生成模式|GENERATION_MODE|[单项选择(文本值)](index/dictionary_index#ai_mode "AI生成模式")|60|是||
 |智能体标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否默认Agent|IS_DEFAULT|是否逻辑||否||
@@ -23,7 +23,7 @@
 |记忆模式|MEMORY_MODE|[单项选择(文本值)](index/dictionary_index#memory_mode "记忆模式")|200|是||
 |智能体名称|NAME|文本，可指定长度|200|是||
 |排序|SEQUENCE|整型||是||
-|流式输出|STREAM|真假逻辑||是||
+|流式输出|STREAM|是否逻辑||是||
 |预置建议问题|SUGGESTED_QUESTIONS|文本数组（没有长度限制）|1000|是||
 |模型随机性参数|TEMPERATURE|数值||是||
 |工具调用超限提示语|TOOL_EXCEED_MESSAGE|长文本，没有长度限制|1048576|是||

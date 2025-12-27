@@ -50,6 +50,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DER1N_EXECUTOR_USER_USER_ID](der/DER1N_EXECUTOR_USER_USER_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
+|[DERCUSTOM_EXECUTOR_RUN_OWNER_ID](der/DERCUSTOM_EXECUTOR_RUN_OWNER_ID)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID](der/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
 
 </el-tab-pane>

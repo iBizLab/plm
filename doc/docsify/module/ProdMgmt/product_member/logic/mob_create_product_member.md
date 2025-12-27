@@ -66,7 +66,7 @@ BINDPARAM1 --> END1 : [[$./mob_create_product_member#bindparam1-end1{未勾选�
 
 
 
-1. 将`for_temp_obj(循环临时变量).USER_ID(用户ID)` 设置给  `member_obj(关系对象).USER_ID(登录名)`
+1. 将`for_temp_obj(循环临时变量).USER_ID` 设置给  `member_obj(关系对象).USER_ID(登录名)`
 2. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(姓名)` 设置给  `member_obj(关系对象).NAME(姓名)`
 3. 将`Default(传入变量).PRODUCT_ID(产品标识)` 设置给  `member_obj(关系对象).PRODUCT_ID(产品标识)`
 
@@ -95,10 +95,10 @@ BINDPARAM1 --> END1 : [[$./mob_create_product_member#bindparam1-end1{未勾选�
 `selectdata(用户列表).size` GT `0`
 #### 无USER_ID :id=PREPAREPARAM1-PREPAREPARAM2
 
-`for_temp_obj(循环临时变量).USER_ID(用户ID)` ISNULL
+`for_temp_obj(循环临时变量).USER_ID` ISNULL
 #### 存在USER_ID :id=PREPAREPARAM1-DEACTION1
 
-`for_temp_obj(循环临时变量).USER_ID(用户ID)` ISNOTNULL
+`for_temp_obj(循环临时变量).USER_ID` ISNOTNULL
 #### 未勾选添加成员 :id=BINDPARAM1-END1
 
 `selectdata(用户列表).size` EQ `0`

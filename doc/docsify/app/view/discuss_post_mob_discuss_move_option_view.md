@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [视图_确定](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [视图_取消](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [视图_确定](module/Team/discuss_post#界面行为)
 
 <script>
  const { createApp } = Vue

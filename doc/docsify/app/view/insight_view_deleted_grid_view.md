@@ -15,7 +15,7 @@
 
 
 ### 关联界面行为
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [已删除_恢复](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [恢复](module/Insight/insight_view#界面行为)
 
 ### 关联视图
   * [效能视图(insight_view_edit_view)](app/view/insight_view_edit_view)

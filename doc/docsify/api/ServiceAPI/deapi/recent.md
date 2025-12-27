@@ -827,7 +827,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/fetch_only_ten_access_use" type="info" :closable="false" ></el-alert>
+<el-alert title="/recents/fetch_only_eight_access_use" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`READ`

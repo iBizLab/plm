@@ -49,8 +49,8 @@ if(button_calluilogic){
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [客户取消关联工单](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [添加工单（其他实体关联）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [客户取消关联工单](module/ProdMgmt/ticket#界面行为)
 
 ### 关联界面逻辑
   * [工单(TICKET)](module/ProdMgmt/ticket) : [客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)

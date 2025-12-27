@@ -24,6 +24,7 @@
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -48,6 +49,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -74,6 +76,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -120,6 +123,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -181,6 +185,7 @@
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -205,6 +210,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -231,6 +237,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -266,6 +273,7 @@
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -290,6 +298,7 @@
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -330,6 +339,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -354,6 +364,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -380,6 +391,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -415,6 +427,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -439,6 +452,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -465,6 +479,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -500,6 +515,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
 |<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
 |<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
 |<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
@@ -524,6 +540,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -550,6 +567,7 @@ Integer
   "kb_id" : null,
   "selection_file_ids" : null,
   "selection_page_ids" : null,
+  "selection_page_names" : null,
   "space_selection" : null,
   "parser_config" : null,
   "selected_file_name" : null,
@@ -618,6 +636,7 @@ Integer
     "kb_id" : null,
     "selection_file_ids" : null,
     "selection_page_ids" : null,
+    "selection_page_names" : null,
     "space_selection" : null,
     "parser_config" : null,
     "selected_file_name" : null,

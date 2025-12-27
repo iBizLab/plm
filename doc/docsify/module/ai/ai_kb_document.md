@@ -9,7 +9,7 @@
 |切片数量|CHUNK_NUM|数值||是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
-|自定义切片|CUSTOM_CHUNK|[是否逻辑](index/dictionary_index#custom_chunk "自定义切片")||是||
+|自定义切片|CUSTOM_CHUNK|[单项选择(数值)](index/dictionary_index#custom_chunk "自定义切片")||是||
 |上传文件|FILE|文件|500|是||
 |文件类型|FILE_TYPE|单项选择(文本值)|100|是||
 |知识库文档标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
@@ -17,6 +17,7 @@
 |知识库名称|KB_NAME|外键值文本|200|是||
 |文档元数据|META_DATA|长文本，没有长度限制|1048576|是||
 |知识库文档名称|NAME|文本，可指定长度|200|是||
+|解析内容|PARSED_CONTENT|长文本，没有长度限制|1048576|是||
 |解析配置|PARSER_CONFIG|一对一关系数据对象|1048576|是||
 |内容大小|SIZE|数值||是||
 |源标识|SOURCE_ID|文本，可指定长度|200|是||
@@ -69,6 +70,7 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除文档执行计划](module/ai/ai_kb_document/logic/remove_doc_scheduled)|remove_doc_scheduled|无|||
+|[文档解析处理](module/ai/ai_kb_document/logic/parsing)|parsing|无|||
 |[更新文档执行计划](module/ai/ai_kb_document/logic/update_doc_scheduled)|update_doc_scheduled|属性逻辑|||
 |[生成文档执行计划](module/ai/ai_kb_document/logic/generate_doc_scheduled)|generate_doc_scheduled|无|||
 
@@ -133,6 +135,8 @@
 | --------| --------| -------- |------------|------------|------------|
 | 打开知识库文档编辑视图 | open_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[知识库文档](app/view/ai_kb_document_edit_view)</details>||
 | 打开知识库文档同步表格视图 | open_doc_sync_grid_view | 同步设置 |无数据|<details><summary>打开视图或向导（模态）</summary>[同步设置](app/view/ai_kb_document_sync_grid_view)</details>||
+| 打开知识库文档信息视图 | open_base_info_view | 文档信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[文档信息](app/view/ai_kb_document_base_info_view)</details>||
+| 打开知识库文档切片与同步视图 | open_chunk_view | 文档切片与同步 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[切片与同步](app/view/ai_kb_document_chunk_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

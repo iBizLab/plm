@@ -47,6 +47,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/dictionary_data/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/dictionary_data/query/View)|VIEW|否|否 |否 ||
+|[知识库文档导入方式(ai_kb_doc_import_method)](module/Base/dictionary_data/query/ai_kb_doc_import_method)|ai_kb_doc_import_method|否|否 |否 ||
 |[需求(idea)](module/Base/dictionary_data/query/idea)|idea|否|否 |否 ||
 |[需求优先级(idea_priority)](module/Base/dictionary_data/query/idea_priority)|idea_priority|否|否 |否 ||
 |[需求来源(idea_source)](module/Base/dictionary_data/query/idea_source)|idea_source|否|否 |否 ||
@@ -74,6 +75,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/dictionary_data/dataset/Default)|DEFAULT|数据查询|是|||
+|[知识库文档导入方式(ai_kb_doc_import_method)](module/Base/dictionary_data/dataset/ai_kb_doc_import_method)|ai_kb_doc_import_method|数据查询|否|||
 |[需求(idea)](module/Base/dictionary_data/dataset/idea)|idea|数据查询|否|||
 |[需求优先级(idea_priority)](module/Base/dictionary_data/dataset/idea_priority)|idea_priority|数据查询|否|||
 |[需求来源(idea_source)](module/Base/dictionary_data/dataset/idea_source)|idea_source|数据查询|否|||

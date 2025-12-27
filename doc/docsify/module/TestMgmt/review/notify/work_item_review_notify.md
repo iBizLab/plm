@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [工作项评审通知模板](index/notify_index?id=wi_review_inform_template)
+* [评审通知模板(工作项)](index/notify_index?id=wi_review_inform_template)
 
 <p class="panel-title"><b>通知类型</b></p>
 

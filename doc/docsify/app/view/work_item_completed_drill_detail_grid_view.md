@@ -10,13 +10,20 @@
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
+* `onCreated`
+```javascript
+if (view && viewParam.reportcaption) {
+    view.model.caption = viewParam.reportcaption;
+    view.evt.on('onViewInfoChange', {});
+}
+```
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联视图
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
 
 <script>
  const { createApp } = Vue

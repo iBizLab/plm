@@ -68,10 +68,14 @@
     <th>未安装col150</th>
     <th>已安装col150</th>
     <th>已禁用col150</th>
+    <th>已安装（需重新加载）col150</th>
+    <th>已禁用（需重新加载）col150</th>
     <th>备注col600</th>
   </tr>
   <tr>
     <td>删除(DELETE)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -82,10 +86,14 @@
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"></td>
     <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
   <tr>
     <td>建立(CREATE)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -96,6 +104,8 @@
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
   <tr>
@@ -103,10 +113,14 @@
     <td align="center"></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
   <tr>
     <td>读取(READ)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -139,7 +153,6 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开卡片详情页面_界面逻辑 | open_app_detail_view_logic | 详情 |无数据|用户自定义||
 | 模型构建信息 | model_build_info | 构建信息 |无数据|用户自定义||
 | 打开卡片详情页面 | open_info_view | 打开卡片详情页面 |单项数据|<details><summary>打开视图或向导（模态）</summary>[核心产品功能](app/view/ps_core_prd_func_info_view)</details>||
 | 跳转插件设置页面 | skip_setting | 设置 |无数据|用户自定义||

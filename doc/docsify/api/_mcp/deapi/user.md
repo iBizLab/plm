@@ -33,7 +33,6 @@
 |<el-row justify="space-between"><el-col :span="20">n_report_flag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_title_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
-|<el-row justify="space-between"><el-col :span="20">n_user_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
 
 
@@ -60,7 +59,6 @@
   "n_report_flag_eq" : null,
   "n_status_eq" : null,
   "n_title_eq" : null,
-  "n_user_id_noteq" : null,
 }
 ```
 
@@ -77,7 +75,6 @@
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
-    "user_id" : null,
     "title" : null,
     "open_user_tag" : null,
     "create_man" : null,

@@ -16,15 +16,15 @@ ctrl.details.formpage1.state.keepAlive=true;
 
 
 ### 关联界面行为
-  * [评审(REVIEW)](module/TestMgmt/review) : [发送评论](module/TestMgmt/review#界面行为)
-  * [评审(REVIEW)](module/TestMgmt/review) : [添加工作项评审内容](module/TestMgmt/review#界面行为)
-  * [评审(REVIEW)](module/TestMgmt/review) : [撤销评审](module/TestMgmt/review#界面行为)
-  * [评审(REVIEW)](module/TestMgmt/review) : [添加页面评审内容](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [编辑界面_保存操作](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [添加工作项评审内容](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [添加评审内容](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [清空评论](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [添加需求评审内容](module/TestMgmt/review#界面行为)
-  * [评审(REVIEW)](module/TestMgmt/review) : [添加评审内容](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [发送评论](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [添加页面评审内容](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [编辑界面_保存操作](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [撤销评审](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [编辑界面_保存操作](module/TestMgmt/review#界面行为)
 
 ### 关联界面逻辑

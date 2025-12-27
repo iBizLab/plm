@@ -17,11 +17,11 @@
 
 
 ### 关联界面行为
-  * [类别(CATEGORY)](module/Base/category) : [表格界面_新建操作](module/Base/category#界面行为)
-  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
-  * [类别(CATEGORY)](module/Base/category) : [流程_查看审批单](module/Base/category#界面行为)
   * [类别(CATEGORY)](module/Base/category) : [编辑](module/Base/category#界面行为)
   * [类别(CATEGORY)](module/Base/category) : [流程_设计](module/Base/category#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [流程_查看审批单](module/Base/category#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [表格界面_新建操作](module/Base/category#界面行为)
+  * [类别(CATEGORY)](module/Base/category) : [删除](module/Base/category#界面行为)
 
 ### 关联视图
   * [类别(category_redirect_view)](app/view/category_redirect_view)

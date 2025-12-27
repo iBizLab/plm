@@ -83,7 +83,7 @@
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
 |[我的任务总结](module/Base/recent/logic/my_summary)|my_summary|无||获取我的任务总结数据|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
-|[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
+|[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询8条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
 |[移动端首页_最近访问](module/Base/recent/logic/mob_home_recent_access)|mob_home_recent_access|无||仅查询最近5条访问|
 |[跳转对应视图](module/Base/recent/logic/jump_corresponding_view)|jump_corresponding_view|无|||
@@ -115,7 +115,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/recent/dataset/Default)|DEFAULT|数据查询|是|||
 |[移动端首页_最近访问(mob_home_recent_access)](module/Base/recent/dataset/mob_home_recent_access)|mob_home_recent_access|[实体逻辑](module/Base/recent/logic/mob_home_recent_access)|否|||
-|[最近使用（10条）(only_ten_access_use)](module/Base/recent/dataset/only_ten_access_use)|only_ten_access_use|[实体逻辑](module/Base/recent/logic/recent_use)|否|||
+|[最近使用（10条）(only_eight_access_use)](module/Base/recent/dataset/only_eight_access_use)|only_eight_access_use|[实体逻辑](module/Base/recent/logic/recent_use)|否|||
 |[最近访问(recent_access)](module/Base/recent/dataset/recent_access)|recent_access|数据查询|否|||
 |[最近访问（逻辑生成）(recent_access_logic)](module/Base/recent/dataset/recent_access_logic)|recent_access_logic|[实体逻辑](module/Base/recent/logic/recent_access)|否|||
 |[最近浏览当前产品内工单(recent_curproduct_ticket)](module/Base/recent/dataset/recent_curproduct_ticket)|recent_curproduct_ticket|数据查询|否|||

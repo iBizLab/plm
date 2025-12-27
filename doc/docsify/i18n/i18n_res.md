@@ -106,6 +106,11 @@
 |CONTROL.DATAGRIDROWCOUNTLIST.PAGEFMT|| <el-tooltip content="{0}/P" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DATAGRIDTHEMELIST.MANAGEMYVIEW|| <el-tooltip content="Manage My View" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DATAGRIDTHEMELIST.NOVIEW|| <el-tooltip content="(None)" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.ABOUT.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.ABOUT.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.ABOUT.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.ABOUT.MAIN.GROUPPANEL.GROUP1|关于基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.ABOUT.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.ACTIVITIY.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.ACTIVITIY.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.ACTIVITIY.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -919,6 +924,11 @@
 |CONTROL.DEFORM.REPOSITORY.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REPOSITORY.MAIN.GROUPPANEL.GROUP1|代码仓库基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REPOSITORY.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.RESOURCE.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.RESOURCE.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.RESOURCE.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.RESOURCE.MAIN.GROUPPANEL.GROUP1|生产资源基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.RESOURCE.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.RESOURCE_MEMBER.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.RESOURCE_MEMBER.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.RESOURCE_MEMBER.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1222,6 +1232,11 @@
 |CONTROL.DEFORM.TEAM.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.TEAM.MAIN.GROUPPANEL.GROUP1|企业基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.TEAM.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.TEMPLATE.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.TEMPLATE.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.TEMPLATE.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.TEMPLATE.MAIN.GROUPPANEL.GROUP1|通用模板基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.TEMPLATE.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.TEMPLATE_FLOW.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.TEMPLATE_FLOW.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.TEMPLATE_FLOW.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1587,6 +1602,7 @@
 |CONTROL.DEFSFITEM.SYS_PERSON.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.TAG.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.TEAM.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFSFITEM.TEMPLATE.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.TEMPLATE_FLOW.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.TEST.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.TEST_CASE.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1719,6 +1735,7 @@
 |CTRL.WFSERVICE.STEP.ROLLBACK|流程撤回| <el-tooltip content="Rollback workflow" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CTRL.WFSERVICE.STEP.START|启动流程| <el-tooltip content="Start workflow" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CTRL.WFSERVICE.STEP.TIMEOUT|超时处理| <el-tooltip content="System timeout process" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.ABOUT|关于| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.ACTIVITIY|活动| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.ADDON|组件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.ADDON_APPLICATION_ACTIVITY|应用插件活动| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1854,6 +1871,7 @@
 |DE.LNAME.RELATION_ISO|关联同构| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.RELEASE|项目发布| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REPOSITORY|代码仓库| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.RESOURCE|生产资源| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.RESOURCE_MEMBER|资源组件成员| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW|评审| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_ACTION_RULE|评审后置动作| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1905,6 +1923,7 @@
 |DE.LNAME.SYS_USER_ROLE|用户角色关系| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.TAG|产品标签| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.TEAM|企业| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.TEMPLATE|通用模板| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.TEMPLATE_FLOW|规则模板| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.TEST|test| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.TEST_CASE|用例| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -2155,6 +2174,11 @@
 |DEF.LNAME.SUITE|模块| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DEF.LNAME.SYSTEM_TAG|系统标记| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DEF.LNAME.TARGET_TYPE|目标类型| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DEF.LNAME.TEMPLATE.CREATE_MAN|创建人| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DEF.LNAME.TEMPLATE.CREATE_TIME|创建时间| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DEF.LNAME.TEMPLATE.ENABLE|逻辑有效标识| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DEF.LNAME.TEMPLATE.ID|标识| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DEF.LNAME.TEMPLATE.NAME|名称| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DEF.LNAME.TEST.CREATE_MAN|创建人| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DEF.LNAME.TEST.CREATE_TIME|创建时间| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DEF.LNAME.TEST.ENABLE|逻辑有效标识| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |

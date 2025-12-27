@@ -1,5 +1,35 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[230]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[232]</font></sup>
+
+#### [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)的处理逻辑[清空消息(clear_message)](module/ai/ai_agent_conversation/logic/clear_message)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+DELETE  FROM AI_AGENT_MESSAGE WHERE CONVERSATION_ID = ? ;
+DELETE  FROM AI_AGENT_FEEDBACK WHERE CONVERSATION_ID = ? ;
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).ID(标识)`
+
+#### [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)的处理逻辑[除指定外清空会话(clear_all_except)](module/ai/ai_agent_conversation/logic/clear_all_except)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE AI_AGENT_CONVERSATION  SET STATUS= 'ended' WHERE SESSION_ID <> ? AND  USER_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).SESSION_ID(外部会话ID)`
+2. `用户全局对象.srfpersonid`
 
 #### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[同步删除文档和分块(sync_remove_doc_chunk)](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)
 
@@ -608,21 +638,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_customer
-FROM
-	customer t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_customer
+FROM customer t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -637,22 +662,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_idea
-FROM
-	idea t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_idea
+FROM idea t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -667,22 +686,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_ticket
-FROM
-	ticket t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_ticket
+FROM ticket t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -697,22 +710,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_work_item
-FROM
-	work_item t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_work_item
+FROM work_item t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -727,22 +734,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_test_case
-FROM
-	test_case t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_test_case
+FROM test_case t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -847,7 +848,7 @@ WHERE PRINCIPAL_ID = ? and PRINCIPAL_TYPE = 'IDEA'
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).review`
-2. `Default(传入变量).n_test_library_id_eq`
+2. `Default(传入变量).n_product_id_eq`
 
 重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取工单数量(get_ticket_num)](module/ProdMgmt/idea/logic/get_ticket_num)
@@ -3291,22 +3292,16 @@ and	EXISTS (
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS test_case_re_idea
-FROM
-	idea t 
-WHERE
-t.is_deleted = 0
-AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS test_case_re_idea
+FROM idea t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -3321,22 +3316,17 @@ AND EXISTS (
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS test_case_re_work_item
-FROM
-	work_item t, work_item_type t1
+SELECT COUNT(t.id) AS test_case_re_work_item
+FROM work_item t, work_item_type t1
 WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'
-and t.is_deleted = 0
-AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+and t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -3351,22 +3341,17 @@ AND EXISTS (
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS test_case_re_bug
-FROM
-	work_item t, work_item_type t1
+SELECT COUNT(t.id) AS test_case_re_bug
+FROM work_item t, work_item_type t1
 WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'
-and t.is_deleted = 0
-AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+and t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -4288,22 +4273,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS work_item_re_idea 
-FROM
-	idea t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	) 
-	AND t.`IS_DELETED` = 0
+SELECT COUNT(t.id) AS work_item_re_idea
+FROM idea t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -4318,22 +4297,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS work_item_re_work_item 
-FROM
-	work_item t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	) 
-	AND t.`IS_DELETED` = 0
+SELECT COUNT(t.id) AS work_item_re_work_item
+FROM work_item t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -4348,22 +4321,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS work_item_re_test_case
-FROM
-	test_case t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	) 
-	AND t.`IS_DELETED` = 0
+SELECT COUNT(t.id) AS work_item_re_test_case
+FROM test_case t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -4378,22 +4345,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS work_item_re_ticket 
-FROM
-	ticket t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	) 
-	AND t.`IS_DELETED` = 0
+SELECT COUNT(t.id) AS work_item_re_ticket 
+FROM ticket t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

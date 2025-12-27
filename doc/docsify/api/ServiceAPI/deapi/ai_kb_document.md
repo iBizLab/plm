@@ -29,6 +29,7 @@
 |<el-row justify="space-between"><el-col :span="20">size</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|内容大小|
 |<el-row justify="space-between"><el-col :span="20">file_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件类型|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">parsed_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解析内容|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|是否启用|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
@@ -58,6 +59,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -89,6 +91,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -140,6 +143,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -206,6 +210,7 @@
 |<el-row justify="space-between"><el-col :span="20">size</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|内容大小|
 |<el-row justify="space-between"><el-col :span="20">file_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件类型|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">parsed_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解析内容|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|是否启用|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
@@ -235,6 +240,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -266,6 +272,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -306,6 +313,7 @@
 |<el-row justify="space-between"><el-col :span="20">size</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|内容大小|
 |<el-row justify="space-between"><el-col :span="20">file_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件类型|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">parsed_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解析内容|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|是否启用|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
@@ -335,6 +343,7 @@
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -380,6 +389,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">size</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|内容大小|
 |<el-row justify="space-between"><el-col :span="20">file_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件类型|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">parsed_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解析内容|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|是否启用|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
@@ -409,6 +419,7 @@ Integer
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -440,6 +451,7 @@ Integer
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -480,6 +492,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">size</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|内容大小|
 |<el-row justify="space-between"><el-col :span="20">file_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件类型|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">parsed_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|解析内容|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|是否启用|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 |<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
@@ -509,6 +522,7 @@ Integer
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -540,6 +554,7 @@ Integer
   "size" : null,
   "file_type" : null,
   "custom_chunk" : null,
+  "parsed_content" : null,
   "active" : null,
   "chunk_method" : null,
   "kb_id" : null,
@@ -623,6 +638,7 @@ Integer
     "size" : null,
     "file_type" : null,
     "custom_chunk" : null,
+    "parsed_content" : null,
     "active" : null,
     "chunk_method" : null,
     "kb_id" : null,

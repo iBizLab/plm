@@ -15,10 +15,6 @@
 
 * `默认（全部查询列）`
 
-<p class="panel-title"><b>默认分页大小</b></p>
-
-* `8`
-
 
 <p class="panel-title"><b>主排序属性</b></p>
 

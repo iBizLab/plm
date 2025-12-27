@@ -19,13 +19,18 @@ state "结束" as END2 <<end>> [[$./get_space_member_one#end2 {"结束"}]]
 state "获取知识空间ID并设置过滤参数" as PREPAREPARAM2  [[$./get_space_member_one#prepareparam2 {"获取知识空间ID并设置过滤参数"}]]
 state "查询当前用户是否为知识空间成员" as DEDATASET3  [[$./get_space_member_one#dedataset3 {"查询当前用户是否为知识空间成员"}]]
 state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_space_member_one#prepareparam5 {"绑定用户数据到for_obj"}]]
+state "空" as PREPAREPARAM_01  [[$./get_space_member_one#prepareparam_01 {"空"}]]
 state "只读权限" as RAWSFCODE1  [[$./get_space_member_one#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_space_member_one#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_space_member_one#end6 {"结束"}]]
 state "判断系统管理员身份" as RAWSFCODE3  [[$./get_space_member_one#rawsfcode3 {"判断系统管理员身份"}]]
+state "已删除归档只读" as RAWSFCODE_01  [[$./get_space_member_one#rawsfcode_01 {"已删除归档只读"}]]
 
 
-Begin --> RAWSFCODE3
+Begin --> PREPAREPARAM_01
+PREPAREPARAM_01 --> RAWSFCODE_01 : [[$./get_space_member_one#prepareparam_01-rawsfcode_01{已删除、已归档} 已删除、已归档]]
+RAWSFCODE_01 --> END2
+PREPAREPARAM_01 --> RAWSFCODE3
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_space_member_one#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> RAWSFCODE1 : [[$./get_space_member_one#dedataset3-rawsfcode1{不在知识空间中的成员} 不在知识空间中的成员]]
@@ -66,11 +71,13 @@ defaultObj.set("srfreadonly", false);
 
 返回 `Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+#### 空 :id=PREPAREPARAM_01<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-*- N/A*
+
+    无
+
 #### 判断系统管理员身份 :id=RAWSFCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -113,6 +120,23 @@ var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", true);
 ```
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
+#### 已删除归档只读 :id=RAWSFCODE_01<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+
 #### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
@@ -121,6 +145,9 @@ defaultObj.set("srfreadonly", true);
 
 
 ### 连接条件说明
+#### 已删除、已归档 :id=PREPAREPARAM_01-RAWSFCODE_01
+
+(`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1` OR `Default(传入变量).IS_DELETED(是否已删除)` EQ `1`)
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2
 
 `Default(传入变量).srfreadonly` ISNULL

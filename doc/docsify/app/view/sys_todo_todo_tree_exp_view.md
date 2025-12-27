@@ -17,7 +17,6 @@
   * [已处理事项(sys_todo_done_grid_view)](app/view/sys_todo_done_grid_view)
   * [已办结事项(sys_todo_finish_grid_view)](app/view/sys_todo_finish_grid_view)
   * [待处理事项(sys_todo_todo_grid_view)](app/view/sys_todo_todo_grid_view)
-  * [未提交事项(sys_todo_undo_grid_view)](app/view/sys_todo_undo_grid_view)
 
 <script>
  const { createApp } = Vue

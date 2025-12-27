@@ -26,9 +26,23 @@ else if (uiLogic.default.msg) {
 
 if (answer && typeof answer == 'string') {
     if (formController){
+        var targetFormItem = formController.getFormDetail("FORMITEM","description");
+		if(targetFormItem){
            try {
                 var newvalue = answer;
                 var oldvalue = formController.data["description"];
+                if(_entity_tag=='work_item' || _entity_tag=='idea') {
+                    if(!oldvalue) {
+                        oldvalue = formController.data["html_description"];
+                    }
+                    if(!oldvalue) {
+                        oldvalue = formController.data["md_description"];
+                    }
+                    if(!oldvalue) {
+                        oldvalue = formController.data["formitem1"];
+                    }
+                }
+                
                 if(oldvalue) {
                     newvalue = oldvalue + "\n---------\n" + answer;
                 }
@@ -41,6 +55,9 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+        targetFormItem = formController.getFormDetail("FORMITEM","content");
+		if(targetFormItem){
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["content"];
@@ -51,6 +68,7 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
     }
 
 }

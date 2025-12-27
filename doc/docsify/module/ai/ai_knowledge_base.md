@@ -104,6 +104,13 @@
 |N_SOURCE_NAME_EQ|知识库源名称|EQ||
 |N_SOURCE_NAME_LIKE|知识库源名称|LIKE||
 
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 打开知识库切片策略视图 | open_kb_doc_chunk_view | 知识库切片策略 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[知识库切片策略](app/view/ai_knowledge_base_chunk_view)</details>||
+| 打开智能体导航页 | open_ai_agent_tree_exp_view | 打开智能体导航页 |无数据|<details><summary>打开顶级视图</summary>[智能体](app/view/ai_agent_tree_exp_view)</details>||
+| 打开知识库信息视图 | open_kb_doc_info_view | 知识库信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[知识库信息](app/view/ai_knowledge_base_base_info_view)</details>||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -128,6 +135,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_knowledge_base?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_knowledge_base?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

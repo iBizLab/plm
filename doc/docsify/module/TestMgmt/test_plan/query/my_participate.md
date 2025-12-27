@@ -30,10 +30,10 @@
 
 
 ### 查询连接
-* **RUN存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID**<br>
+* **RUN*存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID**<br>
 连接关系：[DER1N_RUN_TEST_PLAN_PLAN_ID](der/DER1N_RUN_TEST_PLAN_PLAN_ID)<br>
 连接实体：[测试计划](module/TestMgmt/test_plan)<br>
-连接条件：(`EXECUTOR_ID(执行人标识)` EQ `用户上下文.srfpersonid`)<br>
+连接条件：((`EXECUTOR_ID(执行人标识)` EQ `用户上下文.srfpersonid` OR `exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})`))<br>
 * **LIBRARY相关N:1（INNER JOIN）DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID**<br>
 连接关系：[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)<br>
 连接实体：[测试库](module/TestMgmt/library)<br>
@@ -78,7 +78,7 @@ LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID`
 
 WHERE EXISTS(SELECT * FROM `RUN` t51 
  WHERE 
- t1.`ID` = t51.`PLAN_ID`  AND  ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t21.`IS_DELETED` = 0 )
+ t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

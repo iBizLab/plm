@@ -1,6 +1,18 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[245]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[255]</font></sup>
 
+#### [关于(ABOUT)](module/extension/ABOUT)的处理逻辑[获取关于信息(GetAboutInfo)](module/extension/ABOUT/logic/GetAboutInfo)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+entity.set("name", sys.getPSSystem().getLogicName());
+entity.set("version", sys.getPSSystem().getDefaultPSSysSFPub().getVersionString());
+entity.set("id", sys.getDeploySystemId());
+entity.set("description", sys.getPSSystem().getMemo());
+entity.set("license", "MIT");
+```
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
 节点：构建计数器结果
@@ -28,6 +40,161 @@ config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()
 //发布配置
 net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)
 
+```
+#### [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)的处理逻辑[提取session前缀并存储(extract_session_type)](module/ai/ai_agent_conversation/logic/extract_session_type)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+// 获取sessionid参数
+def _default = logic.param("default").getReal()
+def sessionId = _default.get("session_id")
+
+// 提取前缀
+def prefix = ""
+if(sessionId && sessionId.contains("@")) {
+    prefix = sessionId.split("@")[0]
+}
+
+// 存储到conversation_type参数
+_default.set("type",prefix)
+```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+
+节点：获取文件内容
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def _type = _default.get('type')
+if (_type == 'file'){
+    def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient("cloud-oss", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)
+    def fileJson = _default.get("file")
+    if (fileJson){
+        def file = new groovy.json.JsonSlurper().parseText(fileJson)
+        if (file.size() > 0){
+            println("输出file"+file[0])
+            def fileId = file[0].id
+            def folder = file[0].folder
+            def fileText = iCloudOSSClient.downloadText(folder, fileId)
+            _default.set("parsed_content", fileText)
+        }
+    }
+}
+```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+
+节点：实体打印
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def deCodeName = _default.get('source_type')
+def dstEntityKey = _default.get('source_id')
+if (deCodeName && dstEntityKey) {
+    def dstEntityRuntime = sys.dataentity(deCodeName)
+    def bos = new java.io.ByteArrayOutputStream()
+    def dePrintCodeName = "chat_resource"
+    def keys = [dstEntityKey] as Object[]
+    dstEntityRuntime.outputPrint(
+        dePrintCodeName,
+        bos,
+        keys,
+        null,
+        false
+    )
+    _default.set("parsed_content", bos.toString("utf-8"))
+}
+```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+
+节点：正则解析文档内容
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def parsed_content = _default.get('parsed_content')
+def custom_chunk = _default.get('custom_chunk')
+def parser_config
+if (custom_chunk == 0){
+    // 使用所属知识库默认规则
+    def knowledge_base_runtime = sys.dataentity('ai_knowledge_base')
+    def knowledge_base = knowledge_base_runtime.get(_default.get('kb_id'))
+    if (knowledge_base){
+        parser_config = knowledge_base.get('parser_config')
+    }
+}else if (custom_chunk == 1){
+    // 使用自定义规则
+    parser_config = _default.get('parser_config')
+}
+if (parser_config){
+    // 1. 预处理规则
+    def pre_process_rules = parser_config.get('pre_process_rules')
+    if (pre_process_rules) {
+        def rulesList = pre_process_rules.split(',')
+        // 合并多余空格/换行（保留单个空格，移除连续空白）
+        if (rulesList.contains('remove_extra_whitespace')) {
+            parsed_content = parsed_content.replaceAll(/[\s\u3000]+/, ' ')
+        }
+
+        // 移除 <script> 和 <style> 内容（保留其他标签，如 <div>）
+        if (rulesList.contains('remove_js_css')) {
+            // 先移除 <script> 标签内容
+            parsed_content = parsed_content.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/, '')
+            // 再移除 <style> 标签内容
+            parsed_content = parsed_content.replaceAll(/<style[^>]*>[\s\S]*?<\/style>/, '')
+        }
+
+        // 剥离 HTML 标签（保留纯文本，如 <p>Hello</p> → Hello）
+        if (rulesList.contains('remove_html_tags')) {
+            parsed_content = parsed_content.replaceAll(/<[^>]+>/, '')
+        }
+
+        // 移除电子邮箱及 URL（精准匹配，避免误删）
+        if (rulesList.contains('remove_emails_url')) {
+            // 移除 URL（http/https 开头）
+            parsed_content = parsed_content.replaceAll(/https?:\/\/[^\s]+/, '')
+            // 移除电子邮箱（标准格式）
+            parsed_content = parsed_content.replaceAll(/[\w\.-]+@[\w\.-]+\.\w+/, '')
+        }
+
+        // 统一中英文标点（如 “” → "，‘’ → '）
+        if (rulesList.contains('normalize_punctuation')) {
+            parsed_content = parsed_content
+                .replace('，', ',')
+                .replace('。', '.')
+                .replace('！', '!')
+                .replace('？', '?')
+                .replace('；', ';')
+                .replace('：', ':')
+                .replace('（', '(')
+                .replace('）', ')')
+                .replace('“', '"')
+                .replace('”', '"')
+                .replace('‘', "'")
+                .replace('’', "'")
+        }
+    }
+    // 2. 自定义脱敏规则
+    def data_masking_rules = parser_config.get('data_masking_rules')
+    if (data_masking_rules){
+        // 根据正则规则pattern对parsed_content进行替换
+        def masked_data = logic.param('masked_data').getReal()
+        for (data_masking_rule in data_masking_rules){
+            def pattern = data_masking_rule.get('pattern')
+            def replacement = data_masking_rule.get('replacement')?:''
+            if (pattern){
+                parsed_content = parsed_content.replaceAll(pattern, replacement)
+            }
+        }
+    }
+    def masked_data = logic.param('masked_data').getReal()
+    masked_data.set("id", _default.get("id"))
+    masked_data.set("parsed_content", parsed_content)
+    masked_data.set("status", "3")
+
+}
 ```
 #### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[更新文档执行计划(update_doc_scheduled)](module/ai/ai_kb_document/logic/update_doc_scheduled)
 
@@ -675,6 +842,8 @@ defaultObj.set("srfreadonly", true);
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
+console.log('');
+
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
@@ -3226,6 +3395,68 @@ text +=table_end;
 
 work_item.set('description', text);
 ```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[设置执行人(set_executor)](module/TestMgmt/run/logic/set_executor)
+
+节点：多人执行
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def list = []
+list = for_temp_obj.get('executors')
+
+if (list.size != 0) {
+    list[0].set('is_assignee', 1)
+    _default.set('executor_name', list[0].get('user_name'))
+    _default.set('executor_id', list[0].get('user_id'))
+}
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[设置执行人(set_executor)](module/TestMgmt/run/logic/set_executor)
+
+节点：判断所选人数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def list = []
+list = for_temp_obj.get('executors')
+
+
+if (list ==null){
+    for_temp_obj.set('multiple_people', -1)
+}
+else{
+    if (list.size > 1) {
+        for_temp_obj.set('multiple_people', 1)
+    } else {
+        for_temp_obj.set('multiple_people', 0)
+    } 
+}
+
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[设置执行人(set_executor)](module/TestMgmt/run/logic/set_executor)
+
+节点：单人执行
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def list = []
+list = for_temp_obj.get('executors')
+
+if (list.size == 1) {
+    _default.set('executor_name', list[0].get('user_name'))
+    _default.set('executor_id', list[0].get('user_id'))
+    _default.set('multiple_people', 0)
+    _default.set('executors', null)
+}
+```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test)
 
 节点：获取选中的用例ID
@@ -3588,6 +3819,16 @@ var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one)
+
+节点：已删除归档只读
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [空间成员(SPACE_MEMBER)](module/Wiki/space_member)的处理逻辑[移除空间成员发送通知(remove_space_member_notify)](module/Wiki/space_member/logic/remove_space_member_notify)
 
 节点：获取当前操作时间
@@ -3699,6 +3940,22 @@ sprint_page_result.each { sprint ->
     sprint.set('schedule_text', "${schedule}%")
 }
 
+```
+#### [通用模板(TEMPLATE)](module/Base/template)的处理逻辑[保存模板(save_template)](module/Base/template/logic/save_template)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal() 
+def user = sys.user()
+
+if (_default.get('visibility') == '10') {
+    _default.set('owner_id', user.getUserid())
+}
+if (_default.get('visibility') == '30') {
+    _default.set('owner_id', user.getOrgid())
+}
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[其他实体关联用例(others_relation_test_case)](module/TestMgmt/test_case/logic/others_relation_test_case)
 

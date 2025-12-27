@@ -51,7 +51,7 @@ LOOPSUBCALL_01 --> END_01
 
 
 
-调用实体 [页面(PAGE)](module/Wiki/article_page.md) 数据集合 [正常(normal)](module/Wiki/article_page#数据集合) ，查询参数为`page_filter`
+调用实体 [页面(PAGE)](module/Wiki/article_page.md) 数据集合 [仅页面(only_page)](module/Wiki/article_page#数据集合) ，查询参数为`page_filter`
 
 将执行结果返回给参数`pages`
 

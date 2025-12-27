@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[502]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[515]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -33,24 +33,22 @@ if(view && view.parentView) {
     }
     var contextObj = view.parentView.state.srfactiveviewdata;
     if((!contextObj) && view.parentData && view.parentData.length > 0) {
-        if (view.parentData.length == 1) {
-            contextObj = view.parentData[0];
-        }
-        else {
-            contextObj = view.parentData;
-        }
+        const contextObj = Object.assign({}, view.parentData[0]);
+        contextObj._list = [...view.parentData];
     }
     else if((!contextObj) && view.parentView.getController("form")) {
         contextObj = view.parentView.getController("form").data;
     }
+    else if((!contextObj) && view.parentView.getController("grid")) {
+        var gridrows = view.parentView.getController("grid").state.rows;
+        if (gridrows && gridrows.length > 0) {
+            const contextObj = Object.assign({}, gridrows[0]);
+            contextObj._list = [...gridrows];
+        }
+    }
     if(contextObj) {
         // 使用Object.assign进行浅合并
-        if (!Array.isArray(contextObj)) {
-            Object.assign(uiLogic.aicontext, contextObj);
-        }
-        else {
-            uiLogic.aicontext.list = contextObj;
-        }
+        Object.assign(uiLogic.aicontext, contextObj);
     }
      
     if(screenshot) {
@@ -201,9 +199,23 @@ else if (uiLogic.default.msg) {
 
 if (answer && typeof answer == 'string') {
     if (formController){
+        var targetFormItem = formController.getFormDetail("FORMITEM","description");
+		if(targetFormItem){
            try {
                 var newvalue = answer;
                 var oldvalue = formController.data["description"];
+                if(_entity_tag=='work_item' || _entity_tag=='idea') {
+                    if(!oldvalue) {
+                        oldvalue = formController.data["html_description"];
+                    }
+                    if(!oldvalue) {
+                        oldvalue = formController.data["md_description"];
+                    }
+                    if(!oldvalue) {
+                        oldvalue = formController.data["formitem1"];
+                    }
+                }
+                
                 if(oldvalue) {
                     newvalue = oldvalue + "\n---------\n" + answer;
                 }
@@ -216,6 +228,9 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+        targetFormItem = formController.getFormDetail("FORMITEM","content");
+		if(targetFormItem){
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["content"];
@@ -226,6 +241,7 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
     }
 
 }
@@ -302,7 +318,7 @@ if (answer && typeof answer == 'string') {
         if (ret.data_type == 'jsonobject' && formController) {
             Object.entries(ret.data).forEach(([key, value]) => {
                 try {
-                    if(value && value !='null') {
+                    if(value && value !='null' && formController.getFormDetail("FORMITEM",key)) {
                         var newvalue = value;
                         if(key === 'description' || key === 'content') {
                             var oldvalue = formController.data[key];
@@ -323,15 +339,16 @@ if (answer && typeof answer == 'string') {
             });
         }
 
-        if (formController && formController.model.codeName === "debug") {
+        if (formController && formController.getFormDetail("FORMITEM","debug_callback_2")) {
             try {
-                formController.setDataValue("debug_callback_2", ret.data);
+                formController.setDataValue("debug_callback_2", JSON.stringify(ret.data));
 
             } catch (error) {
             }
         }
     }
     else if (formController){
+        if(formController.getFormDetail("FORMITEM","description")) {
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["description"];
@@ -347,6 +364,9 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+            
+        if(formController.getFormDetail("FORMITEM","content")) {
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["content"];
@@ -357,11 +377,13 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+            
     }
 
 }
 
-if (formController && formController.model.codeName === "debug") {
+if (formController && formController.getFormDetail("FORMITEM","debug_callback_1")) {
     try {
         formController.setDataValue("debug_callback_1", answer);
     } catch (error) {
@@ -2403,6 +2425,15 @@ uiLogic.view.ctx.controllersMap.get("form").details.grouppanel11.state.visible=t
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel11.state.visible=true;
 ```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[查看版本(check_version)](module/ProdMgmt/idea/uilogic/check_version)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=true;
+```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[查看预估工时明细(check_estimated_workload_detail)](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)
 
 节点：切换显示组件
@@ -2411,6 +2442,15 @@ uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel11.state.vi
 ```javascript
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel17.state.visible=true;
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[组件显隐重置(reset)](module/ProdMgmt/idea/uilogic/reset)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=false;
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取需求工时进度(get_workload_schedule)](module/ProdMgmt/idea/uilogic/get_workload_schedule)
 
@@ -4158,6 +4198,14 @@ uiLogic.parent_form.control.details.review_results.state.visible=false;
 const choose_data = uiLogic.parent_form.control.details.choosed_content;
 choose_data.setDataValue(null);
 ```
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[返回(back)](module/TestMgmt/review_content/uilogic/back)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+view.parentView.layoutPanel.panelItems.form.control.state.modified=false;
+```
 #### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[打开评审结果(open_result)](module/TestMgmt/review_content/uilogic/open_result)
 
 节点：注入脚本代码
@@ -4169,6 +4217,14 @@ choose_data.setDataValue(uiLogic.default.id);
 uiLogic.parent_form.control.details.grouppanel6.state.keepAlive=true;
 uiLogic.parent_form.control.details.grouppanel6.state.visible=false;
 uiLogic.parent_form.control.details.review_results.state.visible=true;
+```
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[打开评审结果(open_result)](module/TestMgmt/review_content/uilogic/open_result)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+view.parentView.layoutPanel.panelItems.form.control.state.modified=false;
 ```
 #### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[开始当前阶段评审(start_cur_stage_review)](module/TestMgmt/review_content/uilogic/start_cur_stage_review)
 
@@ -4509,6 +4565,20 @@ uiLogic.ctrl.refresh();
 
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: 'run'})
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[执行人(setting_executors)](module/TestMgmt/run/uilogic/setting_executors)
+
+节点：设置执行人回写主表单
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+console.log('界面逻辑');
+console.log(view);
+var main_form_executors = view.layoutPanel.panelItems.form.control.details.executors;
+var executors = uiLogic.default.executors;
+main_form_executors.setDataValue(executors)
+
+
 ```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取实际工时(get_actual_workload)](module/TestMgmt/run/uilogic/get_actual_workload)
 
@@ -4948,6 +5018,14 @@ view.state.isLoading = false;
 view.closeView();
 
 ```
+#### [通用模板(TEMPLATE)](module/Base/template)的处理逻辑[通知刷新(notify_refresh)](module/Base/template/uilogic/notify_refresh)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'template'});
+```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[门户编辑(edit_to_design)](module/TestMgmt/test_case/uilogic/edit_to_design)
 
 节点：跳转设计页
@@ -5177,6 +5255,15 @@ uiLogic.attach = uiLogic.files.map(item =>
     }
 )
 ```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[查看版本(check_version)](module/TestMgmt/test_case/uilogic/check_version)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=true;
+```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[查看预估工时明细(check_estimated_workload_detail)](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)
 
 节点：切换显示组件
@@ -5185,6 +5272,15 @@ uiLogic.attach = uiLogic.files.map(item =>
 ```javascript
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel14.state.visible=true;
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[组件显隐重置(reset)](module/TestMgmt/test_case/uilogic/reset)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=false;
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[清空表单关注人(clean_attentions)](module/TestMgmt/test_case/uilogic/clean_attentions)
 
@@ -5867,6 +5963,33 @@ if(!total){
 }else{
     view.layoutPanel.panelItems.grid.state.visible = true;
 }
+```
+#### [版本(VERSION)](module/Base/version)的处理逻辑[版本变化后刷新主表单(version_change_after_refresh)](module/Base/version/uilogic/version_change_after_refresh)
+
+节点：组件显隐重置
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.parentView.ctx.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.view.parentView.ctx.controllersMap.get("form").details.version.state.visible=false;
+```
+#### [版本(VERSION)](module/Base/version)的处理逻辑[版本变化后刷新主表单(version_change_after_refresh)](module/Base/version/uilogic/version_change_after_refresh)
+
+节点：触发计数器刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: context.principal_type});
+```
+#### [版本(VERSION)](module/Base/version)的处理逻辑[返回(back)](module/Base/version/uilogic/back)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.parentview.ctx.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.parentview.ctx.controllersMap.get("form").details.version.state.visible=false;
+
 ```
 #### [版本(VERSION)](module/Base/version)的处理逻辑[触发计数器刷新(refresh_counter)](module/Base/version/uilogic/refresh_counter)
 
@@ -6749,6 +6872,15 @@ if (selectedData && selectedData.length > 0) {
     }
 })();
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[查看版本(check_version)](module/ProjMgmt/work_item/uilogic/check_version)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=true;
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[关联子工作项表格行为列状态(relation_child_grid_action)](module/ProjMgmt/work_item/uilogic/relation_child_grid_action)
 
 节点：关联子工作项表格行为列状态
@@ -6784,6 +6916,15 @@ setTimeout(() => {
 ```javascript
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.controllersMap.get("form").details.grouppanel17.state.visible=true;
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[组件显隐重置(reset)](module/ProjMgmt/work_item/uilogic/reset)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.view.ctx.controllersMap.get("form").details.version.state.visible=false;
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算父工作项类型(calc_parent_work_item_type)](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type)
 

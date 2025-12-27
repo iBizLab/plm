@@ -15,7 +15,7 @@
 |名称|NAME|文本，可指定长度|200|是||
 |序号|SEQUENCE|大整型||是||
 |外部会话ID|SESSION_ID|文本，可指定长度|200|是||
-|会话状态|STATUS|[单项选择(文本值)](index/dictionary_index#ai_conversation_status "AI会话状态")|60|否||
+|会话状态|STATUS|[单项选择(文本值)](index/dictionary_index#ai_conversation_status "AI会话状态")|60|是||
 |会话标题|TITLE|文本，可指定长度|200|是||
 |会话类型|TYPE|[单项选择(文本值)](index/dictionary_index#conversation_type "会话类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -49,23 +49,38 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#ai_agent_conversation_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|除指定外清空会话|clear_all_except|[实体处理逻辑](module/ai/ai_agent_conversation/logic/clear_all_except "除指定外清空会话")|默认|不支持||||
+|清空消息|clear_message|[实体处理逻辑](module/ai/ai_agent_conversation/logic/clear_message "清空消息")|默认|不支持||||
+|删除|delete|[实体处理逻辑](module/ai/ai_agent_conversation/logic/delete "delete")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[delete](module/ai/ai_agent_conversation/logic/delete)|delete|无||设置结束状态|
+|[提取session前缀并存储](module/ai/ai_agent_conversation/logic/extract_session_type)|extract_session_type|无|||
+|[清空消息](module/ai/ai_agent_conversation/logic/clear_message)|clear_message|无|||
+|[除指定外清空会话](module/ai/ai_agent_conversation/logic/clear_all_except)|clear_all_except|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[DEFAULT](module/ai/ai_agent_conversation/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ai/ai_agent_conversation/query/View)|VIEW|否|否 |否 ||
+|[有效会话(active)](module/ai/ai_agent_conversation/query/active)|active|否|否 |否 ||
+|[当前用户会话(cur_user_active)](module/ai/ai_agent_conversation/query/cur_user_active)|cur_user_active|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/ai/ai_agent_conversation/dataset/Default)|DEFAULT|数据查询|是|||
+|[有效会话(active)](module/ai/ai_agent_conversation/dataset/active)|active|数据查询|否|||
+|[当前用户会话(cur_user_active)](module/ai/ai_agent_conversation/dataset/cur_user_active)|cur_user_active|数据查询|否|||
 
 ## 数据权限
 
@@ -96,13 +111,32 @@
 
 
 
+##### 我的智能体会话（读写） :id=ai_agent_conversation-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('user_id','=',#{srf.sessioncontext.srfpersonid})]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+* `DELETE`
+* `CREATE`
+* `UPDATE`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_AI_AGENT_CONTEXT_ID_EQ|智能体业务上下文标识|EQ||
+|N_AI_AGENT_CONTEXT_NAME_EQ|智能体业务上下文名称|EQ||
+|N_AI_AGENT_CONTEXT_NAME_LIKE|智能体业务上下文名称|LIKE||
+|N_AI_AGENT_ID_EQ|智能体标识|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_SESSION_ID_EQ|外部会话ID|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -116,6 +150,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_conversation?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_agent_conversation?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_conversation?id=数据查询`">
   数据查询

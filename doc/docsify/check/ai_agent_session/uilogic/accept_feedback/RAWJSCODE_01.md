@@ -30,7 +30,7 @@ if (answer && typeof answer == 'string') {
         if (ret.data_type == 'jsonobject' && formController) {
             Object.entries(ret.data).forEach(([key, value]) => {
                 try {
-                    if(value && value !='null') {
+                    if(value && value !='null' && formController.getFormDetail("FORMITEM",key)) {
                         var newvalue = value;
                         if(key === 'description' || key === 'content') {
                             var oldvalue = formController.data[key];
@@ -51,15 +51,16 @@ if (answer && typeof answer == 'string') {
             });
         }
 
-        if (formController && formController.model.codeName === "debug") {
+        if (formController && formController.getFormDetail("FORMITEM","debug_callback_2")) {
             try {
-                formController.setDataValue("debug_callback_2", ret.data);
+                formController.setDataValue("debug_callback_2", JSON.stringify(ret.data));
 
             } catch (error) {
             }
         }
     }
     else if (formController){
+        if(formController.getFormDetail("FORMITEM","description")) {
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["description"];
@@ -75,6 +76,9 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+            
+        if(formController.getFormDetail("FORMITEM","content")) {
             try {
                 var newvalue = answer;
                 var oldvalue = formController.data["content"];
@@ -85,11 +89,13 @@ if (answer && typeof answer == 'string') {
 
             } catch (error) {
             }
+        }
+            
     }
 
 }
 
-if (formController && formController.model.codeName === "debug") {
+if (formController && formController.getFormDetail("FORMITEM","debug_callback_1")) {
     try {
         formController.setDataValue("debug_callback_1", answer);
     } catch (error) {

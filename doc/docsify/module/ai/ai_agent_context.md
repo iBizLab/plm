@@ -17,12 +17,13 @@
 |默认系统提示词|DEFAULT_SYSTEM_PROMPT|长文本，没有长度限制|1048576|是||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |启用问题建议|ENABLE_SUGGESTED_QUESTIONS|真假逻辑||是||
-|启用思考链|ENABLE_THINKING|真假逻辑||是||
+|启用思考链|ENABLE_THINKING|是否逻辑||是||
 |调用工具|ENABLE_TOOLS|真假逻辑||是||
 |生成模式|GENERATION_MODE|[单项选择(文本值)](index/dictionary_index#ai_mode "AI生成模式")|60|是||
 |智能体业务上下文标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否默认Agent|IS_DEFAULT|是否逻辑||否||
 |最大输入token数|MAX_INPUT_TOKENS|整型||是||
+|mcp服务标识集合|MCP_SERVER_TAGS|文本，可指定长度|100|是||
 |记忆对话轮数|MEMORY_MAX_TURNS|整型||是||
 |记忆模式|MEMORY_MODE|[单项选择(文本值)](index/dictionary_index#memory_mode "记忆模式")|60|是||
 |名称|NAME|文本，可指定长度|200|是||
@@ -139,7 +140,19 @@
 
 
 
-##### 我创建的（读写） :id=ai_agent_context-CURDRAFTMAN_RW
+##### 系统的（读） :id=ai_agent_context-SYSTEM_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('SYSTEM_FLAG','=',1)]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
+##### 我的智能体上下文（读写） :id=ai_agent_context-USER_RW
 
 <p class="panel-title"><b>数据范围</b></p>
 
@@ -150,18 +163,6 @@
 * `UPDATE`
 * `DELETE`
 * `CREATE`
-* `READ`
-
-
-
-##### 系统的（读） :id=ai_agent_context-SYSTEM_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `自定义条件` ：`[('SYSTEM_FLAG','=',1)]`
-
-<p class="panel-title"><b>数据能力</b></p>
-
 * `READ`
 
 
@@ -182,7 +183,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 打开完整信息视图 | open_info_view | 查看完整配置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[智能体](app/view/ai_agent_context_info_view)</details>||
 | 编辑 | edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[智能体](app/view/ai_agent_context_edit_view)</details>||
-| 打开调试页面 | open_debug_view | 打开调试页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[调试](app/view/ai_agent_session_debug_view)</details>||
+| 打开调试页面 | open_debug_view | 打开调试页面 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[调试](app/view/ai_agent_session_debug_view)</details>||
 | 查看 | check | 查看 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[智能体](app/view/ai_agent_context_info_view)</details>||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 

@@ -39,6 +39,22 @@
 
 
 
+## [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation.md)  :id=ai_agent_conversation
+
+#### [Create](module/ai/ai_agent_conversation#行为) :id=ai_agent_conversation_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [提取session前缀并存储(extract_session_type)](module/ai/ai_agent_conversation/logic/extract_session_type.md)
+
+
+
+
+
 ## [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session.md)  :id=ai_agent_session
 
 #### [Get](module/ai/ai_agent_session#行为) :id=ai_agent_session_Get

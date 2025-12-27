@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [表格界面_删除操作](module/ai/ai_credential#界面行为)
   * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [表格界面_新建操作](module/ai/ai_credential#界面行为)
+  * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [表格界面_删除操作](module/ai/ai_credential#界面行为)
 
 ### 关联视图
   * [AI凭证(ai_credential_edit_view)](app/view/ai_credential_edit_view)

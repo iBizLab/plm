@@ -218,16 +218,17 @@
 | --------| --------| -------- |------------|------------|------------|
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 移动视图 | move_view | 移动视图 |单项数据（主键）|<details><summary>后台调用</summary>[view_move](#行为)||
-| 已删除_恢复 | recover | 已删除_恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 新建视图 | create_insight_view | 新建视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建视图](app/view/insight_view_create_wizard_view)</details>||
 | 打开模板选择 | open_choose_template | 打开模板选择 |无数据|<details><summary>打开视图或向导（模态）</summary>[仪表盘模板列表](app/view/dyna_dashboard_list_exp_view)</details>||
-| 进行中_删除 | delete | 进行中_删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 添加效能度量成员 | add_insight_view_member | 添加成员 |无数据|系统预定义||
 | 复制视图 | copy_view | 复制视图 |单项数据（主键）|用户自定义||
+| 删除并至主页 | delete_to_home | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 视图成员 | open_insight_member | 视图成员 |单项数据（主键）|用户自定义||
 | 打开视图导航页 | open_insight_view_exp_page | 打开视图导航页 |无数据|<details><summary>打开顶级视图</summary>[效能度量](app/view/insight_view_tree_exp_view)</details>||
 | 视图信息 | open_show_view | 视图信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[视图信息](app/view/insight_view_show_edit_view)</details>||

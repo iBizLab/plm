@@ -23,10 +23,11 @@ if(context.sync_id){
 
 
 ### 关联界面行为
-  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_退出操作](module/ai/ai_kb_document#界面行为)
   * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_保存并退出操作](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_退出操作](module/ai/ai_kb_document#界面行为)
 
 ### 关联视图
+  * [切片策略(ai_knowledge_base_chunking_view_readonly)](app/view/ai_knowledge_base_chunking_view_readonly)
   * [知识库(ai_knowledge_base_pickup_view)](app/view/ai_knowledge_base_pickup_view)
 
 <script>

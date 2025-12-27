@@ -687,6 +687,7 @@
 | 关联需求（移动端） | mob_add_idea | 关联需求 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 删除（工具栏） | toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|工具栏上按钮调用|
 | 全屏 | toolbar_idea_grid_parts_toolbar_deuiaction1_click | 全屏 |单项数据|用户自定义||
+| 建立版本 | create_new_version | 创建新版本 |无数据|<details><summary>打开视图或向导（模态）</summary>[建立版本](app/view/version_quick_create_view)</details>||
 | 变更需求状态 | change_idea_state | 变更需求状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)|批操作工具栏上按钮调用|
 | 关联客户非常重要（移动端） | mob_add_customer_very_important | 关联客户非常重要 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
@@ -699,6 +700,7 @@
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 查看客户统计信息 | check_customer_info | 查看客户信息 |无数据|用户自定义||
+| 查看版本 | check_version | 查看版本 |无数据|用户自定义||
 | 关联客户未知（移动端） | mob_add_customer_unkonw | 关联客户未知 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
@@ -731,6 +733,7 @@
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；恢复已删除的需求|
 | 新建子模块 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建子模块 |单项数据|用户自定义||
+| 打印交谈资料_需求 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 需求归档 | idea_archive | 需求归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|批操作工具栏上按钮调用|
 | 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
@@ -772,10 +775,12 @@
 |[查看客户统计信息](module/ProdMgmt/idea/uilogic/check_customer_info)|check_customer_info|按钮触发，通过脚本切换显示组件|
 |[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|check_ticket_info|按钮触发，通过脚本切换显示组件|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看版本](module/ProdMgmt/idea/uilogic/check_version)|check_version|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
+|[组件显隐重置](module/ProdMgmt/idea/uilogic/reset)|reset||
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|

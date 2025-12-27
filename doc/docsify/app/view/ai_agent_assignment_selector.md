@@ -20,8 +20,8 @@ console.log('parentData父视图数据为：', view.parentData)
 
 
 ### 关联界面行为
-  * [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment) : [绑定](module/ai/ai_agent_assignment#界面行为)
   * [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment) : [删除](module/ai/ai_agent_assignment#界面行为)
+  * [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment) : [绑定](module/ai/ai_agent_assignment#界面行为)
   * [智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment) : [新建智能体](module/ai/ai_agent_assignment#界面行为)
 
 ### 关联视图

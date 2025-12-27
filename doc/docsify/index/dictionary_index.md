@@ -32,7 +32,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |pending|待处理|pending||
 |sent|已发送|sent||
 |failed|失败|failed||
-|cancelled|用户取消|cancelled||
+|canceled|用户取消|canceled||
 
 ##### AI消息角色类型 :id=ai_message_role
 
@@ -224,6 +224,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 | --------   |------------|------------|------------|
 |api|HTTP 接口|api||
 |mcp|MCP服务|mcp||
+|mcp_built_in_extension|内置MCP扩展服务|mcp_built_in_extension|用于提供逻辑扩展中的mcp服务|
 
 ##### 主状态逻辑设计呈现模式 :id=MSLogicDesignMode
 
@@ -473,6 +474,16 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |1|开启|item_1||
 |0|停止|item_0||
 
+##### 启用标记 :id=enable_tag_codelist
+
+iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|启用|item_1||
+|0|不启用|item_0||
+|-1|不涉及|_SUB_1||
+
 ##### 团队角色类型 :id=user_group_role_type
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -670,6 +681,26 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |5|星期五|item_5||
 |6|星期六|item_6||
 |0|星期日|item_0||
+
+##### 工作项可见范围 :id=work_item_visibility
+
+iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|个人模板（仅自己可用）|item_10||
+|20|项目模板（当前项目可用）|item_20||
+|30|组织模板（所有项目可用）|item_30||
+
+##### 工作项模板 :id=work_item_template
+
+iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|个人|item_10||
+|20|项目|item_20||
+|30|组织|item_30||
 
 ##### 工作项状态类型 :id=state_type
 
@@ -964,8 +995,10 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 | --------   |------------|------------|------------|
 |0|未解析|unparsed||
 |1|就绪|ready||
+|3|待切片|chunk_pending||
 |2|解析中|parsing||
-|3|失败|failed||
+|4|切片中|chunking||
+|99|失败|failed||
 
 ##### 日志状态 :id=log_state
 
@@ -1123,6 +1156,8 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |0|未安装|not_install||
 |1|已安装|Installed||
 |2|已禁用|disabled||
+|3|已安装（需重新加载）|installedneedreload||
+|4|已禁用（需重新加载）|disabledneedreload||
 
 ##### 模型类别 :id=model_category
 
@@ -1301,8 +1336,8 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|file|文件|file||
 |space|空间|space||
+|file|文件|file||
 
 ##### 知识库源类型 :id=knowledge_source
 
@@ -1423,8 +1458,9 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |none|无认证|none||
 |api_key|API Key|api_key||
 |bearer_token|Bearer Token|bearer_token||
-|oauth2|OAuth2|oauth2||
 |access_key_secret|Access Key/Secret|access_key_secret||
+|oauth2_client|OAuth2 Client|oauth2_client||
+|custom|Custom|custom||
 
 ##### 讨论状态 :id=discuss_status
 

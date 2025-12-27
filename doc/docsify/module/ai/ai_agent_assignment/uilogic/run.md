@@ -56,24 +56,22 @@ if(view && view.parentView) {
     }
     var contextObj = view.parentView.state.srfactiveviewdata;
     if((!contextObj) && view.parentData && view.parentData.length > 0) {
-        if (view.parentData.length == 1) {
-            contextObj = view.parentData[0];
-        }
-        else {
-            contextObj = view.parentData;
-        }
+        const contextObj = Object.assign({}, view.parentData[0]);
+        contextObj._list = [...view.parentData];
     }
     else if((!contextObj) && view.parentView.getController("form")) {
         contextObj = view.parentView.getController("form").data;
     }
+    else if((!contextObj) && view.parentView.getController("grid")) {
+        var gridrows = view.parentView.getController("grid").state.rows;
+        if (gridrows && gridrows.length > 0) {
+            const contextObj = Object.assign({}, gridrows[0]);
+            contextObj._list = [...gridrows];
+        }
+    }
     if(contextObj) {
         // 使用Object.assign进行浅合并
-        if (!Array.isArray(contextObj)) {
-            Object.assign(uiLogic.aicontext, contextObj);
-        }
-        else {
-            uiLogic.aicontext.list = contextObj;
-        }
+        Object.assign(uiLogic.aicontext, contextObj);
     }
      
     if(screenshot) {

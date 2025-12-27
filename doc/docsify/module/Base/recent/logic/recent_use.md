@@ -1,6 +1,6 @@
 ## 最近使用 <!-- {docsify-ignore-all} -->
 
-   查询最近使用数据(项目/产品/空间)，仅查询10条
+   查询最近使用数据(项目/产品/空间)，仅查询8条
 
 ### 处理过程
 
@@ -40,7 +40,7 @@ DEDATASET1 --> END1
 
 
 
-1. 将`10` 设置给  `Default(传入变量).size`
+1. 将`8` 设置给  `Default(传入变量).size`
 
 #### 最近使用 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 

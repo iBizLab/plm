@@ -44,10 +44,10 @@ if (form) {
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
 
 ### 关联界面逻辑
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
 
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)
@@ -59,7 +59,7 @@ if (form) {
   * [评审历史(review_content_list_view)](app/view/review_content_list_view)
   * [执行用例(run_history_grid_view)](app/view/run_history_grid_view)
   * [用例选择树视图(test_case_pick_up_tree_view)](app/view/test_case_pick_up_tree_view)
-  * [版本(version_test_case_grid_view)](app/view/version_test_case_grid_view)
+  * [版本记录(version_test_case_list_view)](app/view/version_test_case_list_view)
   * [工时(workload_list_view)](app/view/workload_list_view)
 
 <script>

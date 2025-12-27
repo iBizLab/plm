@@ -46,7 +46,7 @@ DEACTION1 --> END1
 4. 将`Default(传入变量).TOPIC_ID(话题标识)` 设置给  `recent.RECENT_PARENT(访问父类)`
 5. 将`用户全局对象.srfpersonid` 设置给  `recent.CREATE_MAN(建立人)`
 6. 将`3` 设置给  `recent.TYPE(访问类型)`
-7. 将`Default(传入变量).NAME(讨论名称)` 设置给  `recent.NAME(名称)`
+7. 将`Default(传入变量).NAME(标题)` 设置给  `recent.NAME(名称)`
 8. 将`discuss` 设置给  `recent.OWNER_TYPE(所属数据对象)`
 9. 将`post` 设置给  `recent.OWNER_SUBTYPE(所属对象子类型)`
 

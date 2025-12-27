@@ -454,6 +454,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -472,6 +473,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }
@@ -526,6 +528,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -544,6 +547,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }
@@ -597,6 +601,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -615,6 +620,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }
@@ -668,6 +674,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -686,6 +693,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }
@@ -739,6 +747,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -757,6 +766,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }
@@ -810,6 +820,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_project_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">n_project_type_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 |<el-row justify="space-between"><el-col :span="20">n_sub_type_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|下级类型|
 
@@ -828,6 +839,7 @@ Integer
   "n_name_like" : null,
   "n_project_id_eq" : null,
   "n_project_type_eq" : null,
+  "n_project_type_isnull" : null,
   "n_sub_type_in" : null,
   "n_sub_type_like" : null,
 }

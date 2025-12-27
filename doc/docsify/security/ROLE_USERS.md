@@ -7,6 +7,7 @@
 |统一资源|标识|
 |---|---|
 |智能报表立方体维度模型扩展（只读）|EXTENSION__READ_PSSYSBICUBEDIMENSION|
+|基础数据|BASE|
 |智能报表立方体模型扩展（只读）|EXTENSION__READ_PSSYSBICUBE|
 |逻辑模型扩展（只读）|EXTENSION__READ_PSDELOGIC|
 |智能报表模型扩展（只读）|EXTENSION__READ_PSSYSBIREPORT|
@@ -40,7 +41,6 @@
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|<a href ="#/module/Insight/insight_report#insight_report-all_r">全部数据（读）</a>|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-user_rw">普通用户（读写）</a>|
 |[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|<a href ="#/module/TestMgmt/review_wizard#review_wizard-all_rw">全部数据（读写）</a>|
-|[智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback)|<a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-all_r">全部数据（读）</a>|
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|<a href ="#/module/ai/ai_agent_context#ai_agent_context-all_w">全部数据（写）</a>|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|<a href ="#/module/ProjMgmt/work_item#work_item-user_r">操作用户(读)</a>|
 |[页面(PAGE)](module/Wiki/article_page)|<a href ="#/module/Wiki/article_page#article_page-shaerd_w">与我共享(写)</a>|
@@ -62,6 +62,7 @@
 |[智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension)|<a href ="#/module/extension/PSSysBICubeDimension#pssysbicubedimension-all_rw">全部数据（读写）</a>|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|<a href ="#/module/Base/portfolio#portfolio-user_r">只读用户（读）</a>|
 |[企业用户(USER)](module/Base/user)|<a href ="#/module/Base/user#user-all_r">全部数据（读）</a>|
+|[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|<a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-user_rw">我的智能体会话（读写）</a>|
 |[工时(WORKLOAD)](module/Base/workload)|<a href ="#/module/Base/workload#workload-user_rw">我的工时（读写）</a>|
 |[需求(IDEA)](module/ProdMgmt/idea)|<a href ="#/module/ProdMgmt/idea#idea-user_w">操作用户(写)</a>|
 |[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|<a href ="#/module/ProdMgmt/product_ticket_type#product_ticket_type-all_r">全部数据（读）</a>|
@@ -103,6 +104,7 @@
 |[类别(CATEGORY)](module/Base/category)|<a href ="#/module/Base/category#category-all_r">全部数据（读）</a>|
 |[产品(PRODUCT)](module/ProdMgmt/product)|<a href ="#/module/ProdMgmt/product#product-user_rw">普通用户（读写）</a>|
 |[看板(BOARD)](module/ProjMgmt/board)|<a href ="#/module/ProjMgmt/board#board-user_r">操作用户(读)</a>|
+|[智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback)|<a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-user_rw">我的智能体反馈（读写）</a>|
 |[分组(SECTION)](module/Base/section)|<a href ="#/module/Base/section#section-user_rw">我的分组（读写）</a>|
 |[依赖(DEPENDENCY)](module/Base/dependency)|<a href ="#/module/Base/dependency#dependency-all_r">全部数据（读）</a>|
 |[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|<a href ="#/module/ai/ai_kb_chunk#ai_kb_chunk-all_r">全部数据（读）</a>|
@@ -119,12 +121,13 @@
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-user_r">只读用户（读）</a>|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|<a href ="#/module/ProdMgmt/product_tag#product_tag-all_r">全部数据（读）</a>|
 |[类别(CATEGORY)](module/Base/category)|<a href ="#/module/Base/category#category-user_rw">我的类别（读写）</a>|
-|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|<a href ="#/module/ai/ai_agent_context#ai_agent_context-curdraftman_rw">我创建的（读写）</a>|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|<a href ="#/module/ai/ai_agent_context#ai_agent_context-user_rw">我的智能体上下文（读写）</a>|
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|<a href ="#/module/ProjMgmt/stage#stage-all_r">全部数据（读）</a>|
-|[智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment)|<a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-curdraftman_rw">我创建的（读写）</a>|
+|[智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment)|<a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-user_rw">我的智能体分配（读写）</a>|
 |[视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)|<a href ="#/module/Base/view_theme_setting#view_theme_setting-user_rw">我的主题设置（读写）</a>|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|<a href ="#/module/Base/dictionary_data#dictionary_data-all_r">全部数据（读）</a>|
 |[收藏(FAVORITE)](module/Base/favorite)|<a href ="#/module/Base/favorite#favorite-user_rw">我的收藏（读写）</a>|
+|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|<a href ="#/module/ai/ai_agent_message#ai_agent_message-user_rw">我的智能体消息（读写）</a>|
 |[页面模板(STENCIL)](module/Wiki/stencil)|<a href ="#/module/Wiki/stencil#stencil-user_r">只读用户（读）</a>|
 |[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|<a href ="#/module/TestMgmt/review_content#review_content-all_r">全部数据（读）</a>|
 |[智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment)|<a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-system_r">系统的（读）</a>|
@@ -139,13 +142,11 @@
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|<a href ="#/module/Team/discuss_topic#discuss_topic-user_rw">普通用户（读写）</a>|
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)|<a href ="#/module/ProjMgmt/work_item_wizard#work_item_wizard-all_rw">全部数据（读写）</a>|
 |[页面(PAGE)](module/Wiki/article_page)|<a href ="#/module/Wiki/article_page#article_page-user_w">操作用户(写)</a>|
-|[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|<a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-all_r">全部数据（读）</a>|
 |[工单(TICKET)](module/ProdMgmt/ticket)|<a href ="#/module/ProdMgmt/ticket#ticket-customer_user_rw">特定用户（读写）</a>|
 |[人员(SYS_PERSON)](module/ibizsysmgr/sys_person)|<a href ="#/module/ibizsysmgr/sys_person#sys_person-all_r">全部数据（读）</a>|
 |[工单(TICKET)](module/ProdMgmt/ticket)|<a href ="#/module/ProdMgmt/ticket#ticket-user_rw">普通用户（读写）</a>|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|<a href ="#/module/ProjMgmt/project_tag#project_tag-all_r">全部数据（读）</a>|
 |[部门(DEPARTMENT)](module/Base/department)|<a href ="#/module/Base/department#department-all_r">全部数据（读）</a>|
-|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|<a href ="#/module/ai/ai_agent_message#ai_agent_message-all_r">全部数据（读）</a>|
 |[关联(RELATION)](module/Base/relation)|<a href ="#/module/Base/relation#relation-user_rw">我的关联（读写）</a>|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|<a href ="#/module/Base/portfolio#portfolio-admin_rw">管理员（读写）</a>|
 |[基线(BASELINE)](module/Base/baseline)|<a href ="#/module/Base/baseline#baseline-user_w">操作用户(写)</a>|

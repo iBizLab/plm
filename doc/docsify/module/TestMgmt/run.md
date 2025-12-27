@@ -20,6 +20,7 @@
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |执行时间|EXECUTED_AT|日期时间型||是||
+|执行人|EXECUTORS|一对多关系数据集合|1048576|是||
 |执行人标识|EXECUTOR_ID|文本，可指定长度|100|是||
 |执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
@@ -32,6 +33,7 @@
 |测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
 |维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
+|多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |父对象版本标识|PARENT_VERSION_ID|文本，可指定长度|100|是||
 |测试计划标识|PLAN_ID|外键值|100|是||
@@ -135,6 +137,7 @@
 |[DER1N_STEP_RUN_RUN_ID](der/DER1N_STEP_RUN_RUN_ID)|[用例步骤(STEP)](module/TestMgmt/step)|1:N关系||
 |[DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
 |[DERCUSTOM_ATTENTION_RUN_OWNER_ID](der/DERCUSTOM_ATTENTION_RUN_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
+|[DERCUSTOM_EXECUTOR_RUN_OWNER_ID](der/DERCUSTOM_EXECUTOR_RUN_OWNER_ID)|[执行人(EXECUTOR)](module/Base/executor)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_RUN](der/DERCUSTOM_RELATION_TARGET_RUN)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_RUN_RUN_ATTACHMENT](der/DERCUSTOM_RUN_RUN_ATTACHMENT)|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)|自定义关系||
 |[DERCUSTOM_RUN_SEARCH_COMMENT](der/DERCUSTOM_RUN_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
@@ -164,6 +167,7 @@
 |Update|Update|内置方法|默认|不支持||||
 |添加计划执行用例|add_plan_run|[实体处理逻辑](module/TestMgmt/run/logic/create_plan_run "添加计划执行用例")|默认|不支持||||
 |批设置执行结果|batch_save_run_history|[实体处理逻辑](module/TestMgmt/run/logic/batch_save_run_history "批设置执行结果")|默认|不支持||||
+|自定义draft|custom_draft|[实体处理逻辑](module/TestMgmt/run/logic/custom_draft "获取草稿")|默认|不支持||||
 |获取实际工时|get_actual_workload|[实体处理逻辑](module/TestMgmt/run/logic/get_actual_workload "获取实际工时")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/run/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联执行用例|other_relation_run|[实体处理逻辑](module/TestMgmt/run/logic/others_relation_run "其他实体关联执行用例")|默认|不支持||||
@@ -196,6 +200,7 @@
 |[获取实际工时](module/TestMgmt/run/logic/get_actual_workload)|get_actual_workload|无||获取用例的实际工时|
 |[获取当前用例详情](module/TestMgmt/run/logic/this_run_details)|this_run_details|无||获取当前执行用例详情信息|
 |[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前用户权限|
+|[获取草稿](module/TestMgmt/run/logic/custom_draft)|custom_draft|无|||
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
@@ -337,27 +342,29 @@
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
 | 选择用例（发布） | program_plan_by_release | 选择发布 |无数据|<details><summary>后台调用</summary>[program_plan_by_release](#行为)||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 设置主要执行人 | setting_executors | 设置执行人 |无数据|用户自定义||
 | 移出（移动端） | mob_delete_run | 移出(移动端) |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 打开选项操作视图（门户）（测试） | open_optview_portlet | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_test_option_view)</details>||
-| 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
 | 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
 | 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
-| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
-| 移出（主视图） | delete_run_main | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 打开执行人设置视图 | open_executors | 打开执行人 |无数据|<details><summary>打开视图或向导（模态）</summary>[执行用例](app/view/run_executors_edit_form)</details>||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
-| 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
 | 选择用例（迭代） | sprint_choose_case | 选择迭代 |无数据|<details><summary>后台调用</summary>[program_plan_by_sprint](#行为)||
 | 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
-| 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
-| 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
-| 选择用例（工作项） | work_item_choose_case | 选择工作项 |无数据|<details><summary>后台调用</summary>[program_plan_by_workitem](#行为)||
 | 执行用例关联缺陷（移动端） | mob_add_bug | 执行用例关联缺陷 |无数据|<details><summary>后台调用</summary>[other_relation_run](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
+| 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
+| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
+| 移出（主视图） | delete_run_main | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
+| 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
+| 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
+| 选择用例（工作项） | work_item_choose_case | 选择工作项 |无数据|<details><summary>后台调用</summary>[program_plan_by_workitem](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
@@ -365,6 +372,7 @@
 |[刷新用例表格](module/TestMgmt/run/uilogic/refresh_run_grid)|refresh_run_grid|内置脚本，刷新用例表格|
 |[填充并刷新门户数据（测试）](module/TestMgmt/run/uilogic/fill_and_refresh_portlet)|fill_and_refresh_portlet|门户界面行为打开选项操作视图后，计算需要填充到视图上的数据|
 |[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
+|[执行人](module/TestMgmt/run/uilogic/setting_executors)|setting_executors|设置执行人|
 |[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
 |[通知刷新（移动端）](module/TestMgmt/run/uilogic/send_refresh)|send_refresh||
