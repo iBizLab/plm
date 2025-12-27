@@ -54,7 +54,7 @@
     "codeType" : "Groovy",
     "leftPos" : 460,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
+    "name" : "多人执行",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -112,7 +112,8 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 420
+    "topPos" : 420,
+    "parallelOutput" : true
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -150,12 +151,12 @@
     },
     "topPos" : 522
   }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\ndef for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef list = []\r\nlist = for_temp_obj.get('executors')\r\n\r\nif (list.size > 1) {\r\n    for_temp_obj.set('multiple_people', 1)\r\n} else {\r\n    for_temp_obj.set('multiple_people', 0)\r\n}",
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef list = []\r\nlist = for_temp_obj.get('executors')\r\n\r\nif (list.size > 1) {\r\n    for_temp_obj.set('multiple_people', 1)\r\n} else if (list.size == 1)  {\r\n    for_temp_obj.set('multiple_people', 0)\r\n} else {\r\n    for_temp_obj.set('multiple_people', -1)\r\n}",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
     "leftPos" : 154,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
+    "name" : "判断所选人数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -208,6 +209,32 @@
         "modelref" : true,
         "id" : "RAWSFCODE2"
       }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "MULTIPLE_PEOPLE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[MULTIPLE_PEOPLE] 等于(=) -1",
+          "paramValue" : "-1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
     } ],
     "topPos" : 522
   }, {
@@ -216,7 +243,7 @@
     "codeType" : "Groovy",
     "leftPos" : 460,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
+    "name" : "单人执行",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -252,12 +279,24 @@
     "leftPos" : -50,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 681
+    "topPos" : 681,
+    "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 460,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "填充执行人",
+    "name" : "清空执行人",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "EXECUTOR_ID",
       "getDstPSDELogicParam" : {
@@ -266,12 +305,7 @@
       },
       "name" : "for_temp_obj[EXECUTOR_ID] ==> Default[EXECUTOR_ID]",
       "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTOR_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
+      "srcValueType" : "NULLVALUE"
     }, {
       "dstFieldName" : "MULTIPLE_PEOPLE",
       "getDstPSDELogicParam" : {
@@ -280,12 +314,7 @@
       },
       "name" : "for_temp_obj[MULTIPLE_PEOPLE] ==> Default[MULTIPLE_PEOPLE]",
       "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "MULTIPLE_PEOPLE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
+      "srcValueType" : "NULLVALUE"
     }, {
       "dstFieldName" : "EXECUTOR_NAME",
       "getDstPSDELogicParam" : {
@@ -294,14 +323,17 @@
       },
       "name" : "for_temp_obj[EXECUTOR_NAME] ==> Default[EXECUTOR_NAME]",
       "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTOR_NAME",
-      "getSrcPSDELogicParam" : {
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "EXECUTORS",
+      "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "for_temp_obj"
+        "id" : "Default"
       },
-      "srcValueType" : "SRCDLPARAM"
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
     } ],
-    "topPos" : 707
+    "topPos" : 710
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
