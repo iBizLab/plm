@@ -151,7 +151,7 @@
     },
     "topPos" : 522
   }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\ndef for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef list = []\r\nlist = for_temp_obj.get('executors')\r\n\r\nif (list.size > 1) {\r\n    for_temp_obj.set('multiple_people', 1)\r\n} else if (list.size == 1)  {\r\n    for_temp_obj.set('multiple_people', 0)\r\n} else {\r\n    for_temp_obj.set('multiple_people', -1)\r\n}",
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef list = []\r\nlist = for_temp_obj.get('executors')\r\n\r\n\r\nif (list ==null){\r\n    for_temp_obj.set('multiple_people', -1)\r\n}\r\nelse{\r\n    if (list.size > 1) {\r\n        for_temp_obj.set('multiple_people', 1)\r\n    } else {\r\n        for_temp_obj.set('multiple_people', 0)\r\n    } \r\n}\r\n",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
     "leftPos" : 154,
