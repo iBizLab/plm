@@ -1,0 +1,68 @@
+{
+  "codeName" : "is_deleted_onchange",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEFLOGICS/is_deleted_onchange.json",
+  "logicName" : "是否删除变更附加逻辑",
+  "logicSubType" : "DEFIELD",
+  "memo" : "空间删除或恢复时触发相应的通知消息",
+  "name" : "是否删除变更附加逻辑",
+  "getPSDEField" : {
+    "name" : "IS_DELETED",
+    "codeName" : "is_deleted"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDENOTIFIES/remove_or_recover_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "空间删除/恢复通知",
+    "topPos" : 377
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

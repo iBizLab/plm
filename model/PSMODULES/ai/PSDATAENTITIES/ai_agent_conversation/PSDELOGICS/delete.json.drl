@@ -1,0 +1,47 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_conversationlogic.delete;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_conversation ai_agent_conversationdeletedefault;
+                    global cn.ibizlab.plm.core.ai.service.Iai_agent_conversationService ai_agent_conversationservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_conversationService iBzSysAi_agent_conversationDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_conversationdeletebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置结束状态]
+            rule "prepareparam_01"
+            ruleflow-group "ai_agent_conversationdeleteprepareparam_01"
+            when
+            then
+                            ai_agent_conversationdeletedefault.set("status","ended");
+                        update(ai_agent_conversationdeletedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新结束状态]
+            rule "deaction_01"
+            ruleflow-group "ai_agent_conversationdeletedeaction_01"
+            when
+            then
+                        ai_agent_conversationservice.update(ai_agent_conversationdeletedefault);
+                        update(ai_agent_conversationdeletedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_agent_conversationdeleteend_01"
+            when
+            then
+                        update(ai_agent_conversationdeletedefault);//更新fact中变量值
+            end

@@ -1,0 +1,238 @@
+{
+  "codeName" : "log_management_search_form",
+  "controlType" : "SEARCHFORM",
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSSEARCHFORMS/log_management_search_form.json",
+  "logicName" : "工时日志_搜索表单",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "date_range",
+    "dataType" : 25
+  }, {
+    "id" : "n_show_identifier_like",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    }
+  }, {
+    "id" : "n_name_like",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "id" : "n_register_date_gtandeq",
+    "hidden" : true,
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "REGISTER_DATE",
+      "codeName" : "register_date"
+    }
+  }, {
+    "id" : "n_register_date_ltandeq",
+    "hidden" : true,
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "REGISTER_DATE",
+      "codeName" : "register_date"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "CONTROL.DEFORM.WORKLOAD.DEFAULT.FORMPAGE.FORMPAGE1"
+    },
+    "caption" : "常规条件",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "工作日期",
+      "codeName" : "date_range",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "date_range",
+      "noPrivDisplayMode" : 1,
+      "getPSControlAttributes" : [ {
+        "attrName" : "shortcuts",
+        "attrValue" : "[\r\n    {\r\n    text: '最近7天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 6);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '最近30天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 29);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本周',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const currentDay = end_at.getDay();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 计算本周的开始日期 (周一)\r\n        start_at.setDate(\r\n        end_at.getDate() - currentDay + (currentDay === 0 ? -6 : 1),\r\n        );\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本月',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 将日期设置为本月第一天\r\n        start_at.setDate(1);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n]",
+        "name" : "date_range_shortcuts"
+      } ],
+      "getPSEditor" : {
+        "dateTimeFormat" : "YYYY-MM-DD",
+        "editorParams" : {
+          "TIMEFMT" : "YYYY-MM-DD"
+        },
+        "editorType" : "DATERANGE_NOTIME",
+        "name" : "date_range",
+        "getPSEditorItems" : [ {
+          "name" : "n_register_date_gtandeq"
+        }, {
+          "name" : "n_register_date_ltandeq"
+        } ]
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 6,
+        "colMD" : 6,
+        "colSM" : 8,
+        "colXS" : 8,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "n_register_date_gtandeq",
+      "allowEmpty" : true
+    }, {
+      "caption" : "编号",
+      "codeName" : "n_show_identifier_like",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "n_show_identifier_like",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "n_show_identifier_like",
+        "placeHolder" : "编号"
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 4,
+        "colMD" : 6,
+        "colSM" : 6,
+        "colXS" : 6,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFSFITEM.WORKLOAD.N_NAME_LIKE"
+      },
+      "caption" : "事项",
+      "codeName" : "n_name_like",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "n_name_like",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "n_name_like",
+        "placeHolder" : "事项"
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 4,
+        "colMD" : 4,
+        "colSM" : 6,
+        "colXS" : 6,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true
+    }, {
+      "caption" : "工作日期（大于）",
+      "codeName" : "n_register_date_gtandeq",
+      "dataType" : 5,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "n_register_date_gtandeq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "n_register_date_gtandeq"
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 6,
+        "colMD" : 6,
+        "colSM" : 6,
+        "colXS" : 6,
+        "layout" : "TABLE_24COL"
+      },
+      "valueFormat" : "YYYY-MM-DD",
+      "allowEmpty" : true,
+      "hidden" : true
+    }, {
+      "caption" : "工作日期（小于）",
+      "codeName" : "n_register_date_ltandeq",
+      "dataType" : 5,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "n_register_date_ltandeq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "n_register_date_ltandeq"
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 6,
+        "colMD" : 6,
+        "colSM" : 6,
+        "colXS" : 6,
+        "layout" : "TABLE_24COL"
+      },
+      "valueFormat" : "YYYY-MM-DD",
+      "allowEmpty" : true,
+      "hidden" : true
+    } ],
+    "getPSLayout" : {
+      "childColLG" : 6,
+      "childColMD" : 6,
+      "childColSM" : 6,
+      "childColXS" : 6,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "searchButtonStyle" : "NONE",
+  "tabHeaderPos" : "TOP",
+  "enableAdvanceSearch" : false,
+  "enableAutoSearch" : true,
+  "enableFilterSave" : false,
+  "noTabHeader" : true,
+  "modelid" : "598d45a6023c73995458e6822fae89ea",
+  "modeltype" : "PSDEFORM_SEARCHFORM"
+}

@@ -1,0 +1,284 @@
+{
+  "codeName" : "like",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDELOGICS/like.json",
+  "logicName" : "点赞",
+  "name" : "点赞",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -116,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 362,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 330,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备点赞参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "FEEDBACK_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_agent_feedback"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "like",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "MESSAGE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_agent_feedback"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "USER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ai_agent_feedback"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    } ],
+    "topPos" : 198,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_01",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ai_agent_feedback"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback.json"
+    },
+    "leftPos" : 543,
+    "logicNodeType" : "DEACTION",
+    "name" : "生成点赞记录",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_01"
+      }
+    } ],
+    "topPos" : 198,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_02",
+    "leftPos" : 20,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_02"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "message"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 360,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DELOGIC_01",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDELOGICS/cancel_feedback.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "message"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message.json"
+    },
+    "leftPos" : 204,
+    "logicNodeType" : "DELOGIC",
+    "name" : "取消点赞或点踩",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "IS_LIKE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "message"
+          },
+          "logicType" : "SINGLE",
+          "name" : "message[IS_LIKE] 不等于(<>) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC_01"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "IS_LIKE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "message"
+          },
+          "logicType" : "SINGLE",
+          "name" : "message[IS_LIKE] 等于(=) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC_01"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "message"
+    },
+    "topPos" : 360,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 583,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 460,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_02",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "message"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message.json"
+    },
+    "leftPos" : 204,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取消息信息",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "message"
+    },
+    "topPos" : 526,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "ai_agent_feedback",
+    "logicName" : "ai_agent_feedback",
+    "name" : "ai_agent_feedback",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_feedback.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "message",
+    "logicName" : "message",
+    "name" : "message",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_message.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,36 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.get_schedule;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectget_scheduledefault;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectget_schedulebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[计算项目进度]
+            rule "rawsfcode1"
+            ruleflow-group "projectget_schedulerawsfcode1"
+            when
+            then
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectget_scheduleend1"
+            when
+            then
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end

@@ -1,0 +1,355 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "main",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent/PSGRIDS/main.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "主表格",
+  "minorSortDir" : "DESC",
+  "getMinorSortPSAppDEField" : {
+    "name" : "UPDATE_TIME",
+    "codeName" : "update_time"
+  },
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_AGENT.NAME"
+    },
+    "caption" : "名称",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "名称",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getPSDEUIActionGroup" : {
+      "codeName" : "ai_grid_action",
+      "name" : "智能协同通用表格操作列",
+      "getPSUIActionGroupDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.REMOVE"
+        },
+        "caption" : "删除",
+        "detailType" : "DEUIACTION",
+        "name" : "u31c0ac2",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.REMOVE"
+          },
+          "caption" : "删除",
+          "codeName" : "Remove",
+          "dataAccessAction" : "DELETE",
+          "fullCodeName" : "Remove",
+          "name" : "表格界面_删除操作",
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "DELETE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "predefinedType" : "GRIDVIEW_REMOVEACTION",
+          "timeout" : 60000,
+          "tooltip" : "删除",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Remove",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "删除",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ]
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "代码标识",
+    "codeName" : "code_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "code_name",
+    "excelCaption" : "代码标识",
+    "name" : "code_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "AI模型名称",
+    "codeName" : "ai_model_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "ai_model_name",
+    "excelCaption" : "AI模型名称",
+    "name" : "ai_model_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "AI_MODEL_NAME",
+      "codeName" : "ai_model_name"
+    },
+    "width" : 250,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "默认Agent",
+    "codeName" : "is_default",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "is_default",
+    "excelCaption" : "默认Agent",
+    "name" : "is_default",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "IS_DEFAULT",
+      "codeName" : "is_default"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "有效",
+    "codeName" : "active",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "active",
+    "excelCaption" : "有效",
+    "name" : "active",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "ACTIVE",
+      "codeName" : "active"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "caption" : "更新时间",
+    "codeName" : "update_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_time",
+    "excelCaption" : "更新时间",
+    "name" : "update_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "code_name",
+    "getPSAppDEField" : {
+      "name" : "CODE_NAME",
+      "codeName" : "code_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "ai_model_name",
+    "getPSAppDEField" : {
+      "name" : "AI_MODEL_NAME",
+      "codeName" : "ai_model_name"
+    }
+  }, {
+    "dataType" : 9,
+    "name" : "is_default",
+    "getPSAppDEField" : {
+      "name" : "IS_DEFAULT",
+      "codeName" : "is_default"
+    }
+  }, {
+    "dataType" : 9,
+    "name" : "active",
+    "getPSAppDEField" : {
+      "name" : "ACTIVE",
+      "codeName" : "active"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "update_time",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "ai_model_id",
+    "getPSAppDEField" : {
+      "name" : "AI_MODEL_ID",
+      "codeName" : "ai_model_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "默认Agent",
+    "codeName" : "is_default",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "is_default",
+    "getPSAppDEField" : {
+      "name" : "IS_DEFAULT",
+      "codeName" : "is_default"
+    },
+    "getPSEditor" : {
+      "editorType" : "CHECKBOX",
+      "name" : "is_default"
+    },
+    "allowEmpty" : false
+  }, {
+    "caption" : "有效",
+    "codeName" : "active",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "active",
+    "getPSAppDEField" : {
+      "name" : "ACTIVE",
+      "codeName" : "active"
+    },
+    "getPSEditor" : {
+      "editorType" : "CHECKBOX",
+      "name" : "active"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "智能体标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingMode" : 1,
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "f9be6d1caea2295c450ef97199791011",
+  "modeltype" : "PSDEGRID"
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ticketchoose_tag" isClosed="false" isExecutable="true" name="prodmgmt_ticket_choose_tag_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ticketchoose_tag">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ticketchoose_tagdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="ticketchoose_tagfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="ticketchoose_tagsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="iBzSysTicketDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ticketchoose_tagdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="ticketchoose_tagfor_temp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="ticketchoose_tagsrfactionparam" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketchoose_tagbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选中标签"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketchoose_tagprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置工单标签信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketchoose_tagdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更工单标签信息"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketchoose_tagloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    </sequenceFlow>
+        </process>
+    </definitions>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.projectquick_create" isClosed="false" isExecutable="true" name="projmgmt_project_quick_create_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.projectquick_create">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="projectquick_createdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project()" name="projectquick_createprojects" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IprojectService))" name="projectservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IprojectService))" name="iBzSysProjectDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="projectquick_createdefault" type="cn.ibizlab.plm.core.projmgmt.domain.project" />
+                            <tns:global identifier="projectquick_createprojects" type="cn.ibizlab.plm.core.projmgmt.domain.project" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectquick_creatededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取主表格查询数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectquick_creatededataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取用户快速新建数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectquick_createend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectquick_createrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
+                    <sequenceFlow id="begin_rawsfcode3" sourceRef="begin" targetRef="rawsfcode3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_end2" sourceRef="dedataset2" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_end2" sourceRef="dedataset4" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode3_dedataset4" sourceRef="gateway-rawsfcode3" targetRef="dedataset4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $projectquick_createdefault:project();
+                                            $projectquick_createprojects:project();
+                                    eval($projectquick_createdefault==projectquick_createdefault && $projectquick_createprojects==projectquick_createprojects);
+                                eval((RuleUtils.test($projectquick_createdefault.get("srfreadonly"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode3_dedataset2" sourceRef="gateway-rawsfcode3" targetRef="dedataset2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $projectquick_createdefault:project();
+                                            $projectquick_createprojects:project();
+                                    eval($projectquick_createdefault==projectquick_createdefault && $projectquick_createprojects==projectquick_createprojects);
+                                eval((RuleUtils.test($projectquick_createdefault.get("srfreadonly"),"EQ","false")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-rawsfcode3" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode3_gateway-rawsfcode3_gatewayline" sourceRef="rawsfcode3" targetRef="gateway-rawsfcode3"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode3_end_line" sourceRef="gateway-rawsfcode3" targetRef="gateway-rawsfcode3_end"/>
+                            <endEvent id="gateway-rawsfcode3_end" name="end"/>
+        </process>
+    </definitions>
