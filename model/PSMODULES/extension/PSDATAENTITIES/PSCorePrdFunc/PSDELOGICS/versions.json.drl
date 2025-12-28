@@ -27,6 +27,7 @@ package cn.ibizlab.plm.extension.logic.pscoreprdfunclogic.versions;
             ruleflow-group "pscoreprdfuncversionsprepareparam_01"
             when
             then
+                            pscoreprdfuncversionsfunc.set("",pscoreprdfuncversionsdefault.get(""));
                         update(pscoreprdfuncversionsdefault);//更新fact中变量值
                         update(pscoreprdfuncversionsfunc);//更新fact中变量值
                         update(pscoreprdfuncversionsversions);//更新fact中变量值
@@ -37,7 +38,7 @@ package cn.ibizlab.plm.extension.logic.pscoreprdfunclogic.versions;
             ruleflow-group "pscoreprdfuncversionsdeaction_01"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(pscoreprdfuncservice.get(pscoreprdfuncversionsdefault.getPscoreprdfuncid()),pscoreprdfuncversionsdefault);
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(pscoreprdfuncservice.get(pscoreprdfuncversionsfunc.getPscoreprdfuncid()),pscoreprdfuncversionsfunc);
                         update(pscoreprdfuncversionsdefault);//更新fact中变量值
                         update(pscoreprdfuncversionsfunc);//更新fact中变量值
                         update(pscoreprdfuncversionsversions);//更新fact中变量值
