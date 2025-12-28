@@ -318,6 +318,39 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/valid/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "valid",
+    "logicName" : "启用知识库",
+    "name" : "VALID",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -351,6 +384,33 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "valid",
+    "logicName" : "启用数据集",
+    "name" : "VALID",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "valid"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   } ],

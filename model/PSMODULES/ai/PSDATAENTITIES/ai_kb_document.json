@@ -369,6 +369,39 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEDATAQUERIES/unparsed/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "unparsed",
+    "logicName" : "未解析文档",
+    "name" : "UNPARSED",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_DOCUMENT"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "UnparsedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "UnparsedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -399,6 +432,33 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "unparsed",
+    "logicName" : "未解析文档",
+    "name" : "UNPARSED",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "unparsed"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "UnparsedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "UnparsedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1877,6 +1937,7 @@
     "codeName" : "parsed_content",
     "dEFType" : 1,
     "dataType" : "LONGTEXT",
+    "fieldTag" : "CONTENT",
     "importOrder" : 1000,
     "length" : 1048576,
     "logicName" : "解析内容",
@@ -1970,6 +2031,7 @@
     "codeName" : "kb_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
+    "fieldTag" : "KNOWLEDGE_BASE_ID",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "知识库标识",
