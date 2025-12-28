@@ -6,12 +6,42 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="pscoreprdfuncversionsdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSCorePrdFunc()" name="pscoreprdfuncversionsfunc" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="pscoreprdfuncversionsversions" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSCorePrdFuncService))" name="pscoreprdfuncservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSCorePrdFuncService))" name="iBzSysPscoreprdfuncDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="pscoreprdfuncversionsdefault" type="cn.ibizlab.plm.core.extension.domain.PSCorePrdFunc" />
+                            <tns:global identifier="pscoreprdfuncversionsfunc" type="cn.ibizlab.plm.core.extension.domain.PSCorePrdFunc" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <endEvent id="begin_end" name="end"/>
-                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pscoreprdfuncversionsprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pscoreprdfuncversionsdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="getFunc"/>
+                        <endEvent id="deaction_01_end" name="end"/>
+                        <sequenceFlow id="deaction_01_end_line" sourceRef="deaction_01" targetRef="deaction_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pscoreprdfuncversionsrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pscoreprdfuncversionsend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam_01_deaction_01" sourceRef="gateway-prepareparam_01" targetRef="deaction_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $pscoreprdfuncversionsdefault:PSCorePrdFunc();
+                                            $pscoreprdfuncversionsfunc:PSCorePrdFunc();
+                                            $pscoreprdfuncversionsversions:Map();
+                                    eval($pscoreprdfuncversionsdefault==pscoreprdfuncversionsdefault && $pscoreprdfuncversionsfunc==pscoreprdfuncversionsfunc && );
+                                eval((RuleUtils.test($pscoreprdfuncversionsdefault.get("httpurltorepo"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_rawsfcode_01" sourceRef="prepareparam_01" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam_01" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam_01_gateway-prepareparam_01_gatewayline" sourceRef="prepareparam_01" targetRef="gateway-prepareparam_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam_01_end_line" sourceRef="gateway-prepareparam_01" targetRef="gateway-prepareparam_01_end"/>
+                            <endEvent id="gateway-prepareparam_01_end" name="end"/>
         </process>
     </definitions>
