@@ -17,18 +17,67 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="多人执行"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充执行人"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="判断所选人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="单人执行"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executordeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更执行人"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runset_executorprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="清空执行人"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    <sequenceFlow id="rawsfcode1_prepareparam3" sourceRef="rawsfcode1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode2_rawsfcode1" sourceRef="gateway-rawsfcode2" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runset_executordefault:run();
+                                            $runset_executorfor_temp_obj:run();
+                                            $runset_executorsrfactionparam:run();
+                                    eval($runset_executordefault==runset_executordefault && $runset_executorfor_temp_obj==runset_executorfor_temp_obj && $runset_executorsrfactionparam==runset_executorsrfactionparam);
+                                eval((RuleUtils.test($runset_executorfor_temp_obj.get("multiplePeople"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode2_rawsfcode3" sourceRef="gateway-rawsfcode2" targetRef="rawsfcode3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runset_executordefault:run();
+                                            $runset_executorfor_temp_obj:run();
+                                            $runset_executorsrfactionparam:run();
+                                    eval($runset_executordefault==runset_executordefault && $runset_executorfor_temp_obj==runset_executorfor_temp_obj && $runset_executorsrfactionparam==runset_executorsrfactionparam);
+                                eval((RuleUtils.test($runset_executorfor_temp_obj.get("multiplePeople"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode2_prepareparam2" sourceRef="gateway-rawsfcode2" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runset_executordefault:run();
+                                            $runset_executorfor_temp_obj:run();
+                                            $runset_executorsrfactionparam:run();
+                                    eval($runset_executordefault==runset_executordefault && $runset_executorfor_temp_obj==runset_executorfor_temp_obj && $runset_executorsrfactionparam==runset_executorsrfactionparam);
+                                eval((RuleUtils.test($runset_executorfor_temp_obj.get("multiplePeople"),"EQ","-1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode3_deaction1" sourceRef="rawsfcode3" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-rawsfcode2" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode2_gateway-rawsfcode2_gatewayline" sourceRef="rawsfcode2" targetRef="gateway-rawsfcode2"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode2_end_line" sourceRef="gateway-rawsfcode2" targetRef="gateway-rawsfcode2_end"/>
+                            <endEvent id="gateway-rawsfcode2_end" name="end"/>
         </process>
     </definitions>

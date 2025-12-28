@@ -23,6 +23,24 @@
 |更新时间|UPDATE_TIME|日期时间型||否||
 
 
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="VERSION_DATA" name="index_VERSION_DATA">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属数据对象|OWNER_TYPE|false|升序|-1||
+|所属父数据标识|PARENT_ID|false|升序|-1||
+|父对象版本标识|PARENT_VERSION_ID|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
@@ -80,7 +98,7 @@
       return {
 
 
-
+show_index:'index_VERSION_DATA',
       }
     },
     methods: {

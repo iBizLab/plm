@@ -98,6 +98,7 @@
 | 调试 | ai_debug | 调试 |单项数据|<details><summary>打开聊天界面</summary></details>||
 | 调试逻辑 | debug_context | 调试 |单项数据|用户自定义||
 | 执行 | run | 执行 |单项数据|<details><summary>打开聊天界面</summary></details>||
+| 引用资料 | question_resource | 引用资料 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择资资料](app/view/search_hub_advance_pick_up_view)</details>||
 | 执行逻辑 | run_context | 执行 |单项数据|用户自定义||
 | PLM智能助手 | plm_ai_agent | PLM智能助手 |无数据|<details><summary>打开聊天界面</summary></details>||
 | 确认结果 | accept | 确认采纳 |单项数据|用户自定义||

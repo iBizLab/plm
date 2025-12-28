@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_cloud_config#begin {"开始"}]]
-state "设置流和vlm" as PREPAREPARAM_02  [[$./get_cloud_config#prepareparam_02 {"设置流和vlm"}]]
 state "结束" as END_01 <<end>> [[$./get_cloud_config#end_01 {"结束"}]]
+state "设置流和vlm" as PREPAREPARAM_02  [[$./get_cloud_config#prepareparam_02 {"设置流和vlm"}]]
 state "准备多模态类型" as PREPAREPARAM_07  [[$./get_cloud_config#prepareparam_07 {"准备多模态类型"}]]
 state "发布oss配置代码" as RAWSFCODE_01  [[$./get_cloud_config#rawsfcode_01 {"发布oss配置代码"}]]
 state "准备参数" as PREPAREPARAM_06  [[$./get_cloud_config#prepareparam_06 {"准备参数"}]]
@@ -33,8 +33,8 @@ Begin --> PREPAREPARAM_06 : [[$./get_cloud_config#begin-prepareparam_06{连接�
 Begin --> PREPAREPARAM_07 : [[$./get_cloud_config#begin-prepareparam_07{连接名称} 连接名称]]
 PREPAREPARAM_07 --> RAWSFCODE_01
 Begin --> PREPAREPARAM_01 : [[$./get_cloud_config#begin-prepareparam_01{禁用时} 禁用时]]
-Begin --> PREPAREPARAM_02
-PREPAREPARAM_02 --> END_01
+Begin --> PREPAREPARAM_02 : [[$./get_cloud_config#begin-prepareparam_02{连接名称} 连接名称]]
+Begin --> END_01
 
 
 @enduml
@@ -43,17 +43,17 @@ PREPAREPARAM_02 --> END_01
 
 ### 处理步骤说明
 
-#### 设置流和vlm :id=PREPAREPARAM_02<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`true` 设置给  `map.descossimage`
-
 #### 结束 :id=END_01<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
 返回 `map`
+
+#### 设置流和vlm :id=PREPAREPARAM_02<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`true` 设置给  `map.descossimage`
 
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
@@ -127,6 +127,9 @@ net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(
 #### 禁用时 :id=Begin-PREPAREPARAM_01
 
 `Default(传入变量).ACTIVE(启用该模型)` EQ `0`
+#### 连接名称 :id=Begin-PREPAREPARAM_02
+
+`Default(传入变量).DESC_OSS_IMAGE(多模态图片解析)` NOTEQ `0`
 
 
 ### 实体逻辑参数

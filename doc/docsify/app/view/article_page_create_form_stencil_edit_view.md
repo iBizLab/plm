@@ -13,8 +13,8 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [发布](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [AI+](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [发布](module/Wiki/article_page#界面行为)
 
 ### 关联界面逻辑
   * [页面(PAGE)](module/Wiki/article_page) : [关闭模板中心](module/Wiki/article_page/uilogic/close_stencil)

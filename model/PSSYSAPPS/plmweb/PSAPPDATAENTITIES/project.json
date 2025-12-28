@@ -8942,10 +8942,10 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "激活",
     "codeName" : "activate",
-    "confirmMsg" : "是否确认激活该项目？",
+    "confirmMsg" : "确认激活该项目？",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_activate",
-    "name" : "已归档_激活",
+    "name" : "激活",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "activate"
@@ -9035,7 +9035,7 @@
     "confirmMsg" : "确认归档该项目？",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_archive",
-    "name" : "进行中_归档",
+    "name" : "归档",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "archive"
@@ -9054,32 +9054,6 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "archive@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "删除",
-    "codeName" : "archived_delete",
-    "confirmMsg" : "确认删除该项目？",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "project_archived_delete",
-    "name" : "已归档_删除",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "delete"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "refreshMode" : 1,
-    "successMsg" : "删除成功",
-    "timeout" : 60000,
-    "tooltip" : "删除",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "archived_delete",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "reloadData" : true,
-    "id" : "archived_delete@project"
   }, {
     "actionTarget" : "NONE",
     "caption" : "全屏",
@@ -9320,6 +9294,66 @@
     "id" : "create_project@project"
   }, {
     "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "delete",
+    "confirmMsg" : "确认删除该项目？",
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_delete",
+    "name" : "删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "delete",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "delete@project"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "delete_to_home",
+    "confirmMsg" : "确认删除该项目？",
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_delete_to_home",
+    "name" : "删除并至主页",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "modelref" : true,
+      "id" : "open_project_exp_view@project"
+    },
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "delete_to_home",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "delete_to_home@project"
+  }, {
+    "actionTarget" : "SINGLEKEY",
     "caption" : "编辑公告",
     "codeName" : "edit_notice",
     "dataAccessAction" : "UPDATE",
@@ -9348,40 +9382,6 @@
     "uIActionTag" : "edit_notice",
     "uIActionType" : "DEUIACTION",
     "id" : "edit_notice@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "删除",
-    "codeName" : "in_progress_into_deleted",
-    "confirmMsg" : "确认删除该项目？",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "project_in_progress_into_deleted",
-    "name" : "进行中_删除",
-    "getNextPSUIAction" : {
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-      },
-      "modelref" : true,
-      "id" : "open_project_exp_view@project"
-    },
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "delete"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "refreshMode" : 1,
-    "successMsg" : "删除成功",
-    "timeout" : 60000,
-    "tooltip" : "删除",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "in_progress_into_deleted",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "reloadData" : true,
-    "id" : "in_progress_into_deleted@project"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "移动项目",
@@ -10245,7 +10245,7 @@
     "confirmMsg" : "确认恢复该项目？",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_recover",
-    "name" : "已删除_恢复",
+    "name" : "恢复",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "recover"
@@ -11739,7 +11739,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
         },
         "modelref" : true,
-        "id" : "archived_delete@project"
+        "id" : "delete@project"
       }
     } ]
   }, {
@@ -11752,7 +11752,7 @@
     "uniqueTag" : "project__Usr1219112932",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "ue381a13",
+      "name" : "u04ed843",
       "getPSSysImage" : {
         "glyph" : "xf185@FontAwesome",
         "cssClass" : "fa fa-sun-o"
@@ -11771,7 +11771,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "uc34ed17",
+      "name" : "u3e07513",
       "getPSSysImage" : {
         "glyph" : "xf1c6@FontAwesome",
         "cssClass" : "fa fa-file-archive-o"
@@ -11790,7 +11790,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u9df1c9b",
+      "name" : "u1865473",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -11805,7 +11805,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
         },
         "modelref" : true,
-        "id" : "in_progress_into_deleted@project"
+        "id" : "delete@project"
       }
     } ]
   }, {

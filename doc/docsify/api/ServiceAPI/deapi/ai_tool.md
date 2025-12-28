@@ -18,7 +18,9 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|AI调用工具标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI调用工具名称|
+|<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">api_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|api密钥|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|过期时间|
 |<el-row justify="space-between"><el-col :span="20">tool_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工具标记|
 |<el-row justify="space-between"><el-col :span="20">access_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密钥|
 |<el-row justify="space-between"><el-col :span="20">api_auth_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|认证方式|
@@ -28,7 +30,7 @@
 |<el-row justify="space-between"><el-col :span="20">bearer_token</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Bearer令牌|
 |<el-row justify="space-between"><el-col :span="20">client_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端ID|
 |<el-row justify="space-between"><el-col :span="20">client_secret</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端密钥|
-|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|输入参数 Schema|
+|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|输入参数 Schema|
 |<el-row justify="space-between"><el-col :span="20">secret_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|安全密钥|
 |<el-row justify="space-between"><el-col :span="20">timeout</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|超时时间|
 |<el-row justify="space-between"><el-col :span="20">token_url</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|令牌地址|
@@ -45,7 +47,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -74,7 +78,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -123,7 +129,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -187,7 +195,9 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|AI调用工具标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI调用工具名称|
+|<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">api_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|api密钥|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|过期时间|
 |<el-row justify="space-between"><el-col :span="20">tool_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工具标记|
 |<el-row justify="space-between"><el-col :span="20">access_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密钥|
 |<el-row justify="space-between"><el-col :span="20">api_auth_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|认证方式|
@@ -197,7 +207,7 @@
 |<el-row justify="space-between"><el-col :span="20">bearer_token</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Bearer令牌|
 |<el-row justify="space-between"><el-col :span="20">client_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端ID|
 |<el-row justify="space-between"><el-col :span="20">client_secret</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端密钥|
-|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|输入参数 Schema|
+|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|输入参数 Schema|
 |<el-row justify="space-between"><el-col :span="20">secret_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|安全密钥|
 |<el-row justify="space-between"><el-col :span="20">timeout</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|超时时间|
 |<el-row justify="space-between"><el-col :span="20">token_url</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|令牌地址|
@@ -214,7 +224,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -243,7 +255,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -281,7 +295,9 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|AI调用工具标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI调用工具名称|
+|<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">api_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|api密钥|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|过期时间|
 |<el-row justify="space-between"><el-col :span="20">tool_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工具标记|
 |<el-row justify="space-between"><el-col :span="20">access_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密钥|
 |<el-row justify="space-between"><el-col :span="20">api_auth_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|认证方式|
@@ -291,7 +307,7 @@
 |<el-row justify="space-between"><el-col :span="20">bearer_token</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Bearer令牌|
 |<el-row justify="space-between"><el-col :span="20">client_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端ID|
 |<el-row justify="space-between"><el-col :span="20">client_secret</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端密钥|
-|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|输入参数 Schema|
+|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|输入参数 Schema|
 |<el-row justify="space-between"><el-col :span="20">secret_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|安全密钥|
 |<el-row justify="space-between"><el-col :span="20">timeout</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|超时时间|
 |<el-row justify="space-between"><el-col :span="20">token_url</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|令牌地址|
@@ -308,7 +324,9 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -351,7 +369,9 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|AI调用工具标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI调用工具名称|
+|<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">api_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|api密钥|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|过期时间|
 |<el-row justify="space-between"><el-col :span="20">tool_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工具标记|
 |<el-row justify="space-between"><el-col :span="20">access_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密钥|
 |<el-row justify="space-between"><el-col :span="20">api_auth_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|认证方式|
@@ -361,7 +381,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">bearer_token</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Bearer令牌|
 |<el-row justify="space-between"><el-col :span="20">client_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端ID|
 |<el-row justify="space-between"><el-col :span="20">client_secret</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端密钥|
-|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|输入参数 Schema|
+|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|输入参数 Schema|
 |<el-row justify="space-between"><el-col :span="20">secret_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|安全密钥|
 |<el-row justify="space-between"><el-col :span="20">timeout</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|超时时间|
 |<el-row justify="space-between"><el-col :span="20">token_url</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|令牌地址|
@@ -378,7 +398,9 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -407,7 +429,9 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -445,7 +469,9 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|AI调用工具标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI调用工具名称|
+|<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">api_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|api密钥|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|过期时间|
 |<el-row justify="space-between"><el-col :span="20">tool_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工具标记|
 |<el-row justify="space-between"><el-col :span="20">access_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密钥|
 |<el-row justify="space-between"><el-col :span="20">api_auth_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|认证方式|
@@ -455,7 +481,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">bearer_token</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|Bearer令牌|
 |<el-row justify="space-between"><el-col :span="20">client_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端ID|
 |<el-row justify="space-between"><el-col :span="20">client_secret</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户端密钥|
-|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|输入参数 Schema|
+|<el-row justify="space-between"><el-col :span="20">input_schema</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|输入参数 Schema|
 |<el-row justify="space-between"><el-col :span="20">secret_key</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|安全密钥|
 |<el-row justify="space-between"><el-col :span="20">timeout</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|超时时间|
 |<el-row justify="space-between"><el-col :span="20">token_url</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|令牌地址|
@@ -472,7 +498,9 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -501,7 +529,9 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
+  "active" : null,
   "api_key" : null,
+  "expiration_date" : null,
   "tool_tag" : null,
   "access_key" : null,
   "api_auth_type" : null,
@@ -564,7 +594,9 @@ Integer
     "create_time" : null,
     "update_man" : null,
     "update_time" : null,
+    "active" : null,
     "api_key" : null,
+    "expiration_date" : null,
     "tool_tag" : null,
     "access_key" : null,
     "api_auth_type" : null,

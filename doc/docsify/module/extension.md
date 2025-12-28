@@ -6,6 +6,7 @@
 
 |    名称col200   | 代码名col150      |  实体类型col150   | 存储模式col100 | 表名称col200   |    联合主键col100   |  主状态col100   |  权限控制col150  |  启用审计col100    |  备注col500  |
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
+|[关于(ABOUT)](module/extension/ABOUT)|ABOUT|主实体|无存储||否|否|自控制|否||
 |[主状态值代理(MSVALUEPROXY)](module/extension/MSValueProxy)|MSValueProxy|主实体|无存储||否|否|自控制|否|用于主状态流转设计工具代理业务数据。|
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|PSAppPortlet|主实体|无存储||否|否|自控制|否|应用门户部件|
 |[核心产品(PSCOREPRD)](module/extension/PSCorePrd)|PSCorePrd|主实体|无存储||否|否|自控制|否|管理查看应用市场产品|

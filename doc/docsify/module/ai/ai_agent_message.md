@@ -23,10 +23,12 @@
 |引用资料|RESOURCES|一对多动态对象|1048576|是||
 |发送者类型|SENDER_TYPE|[单项选择(文本值)](index/dictionary_index#msg_sender_type "消息发送方类型")|60|否||
 |消息序号|SEQUENCE|大整型||是||
+|外部会话标识|SESSION_ID|外键值附加数据|200|是||
 |消息状态|STATUS|[单项选择(文本值)](index/dictionary_index#ai_message_status "AI消息状态")|60|是||
 |总token数|TOTAL_TOKENS|整型||是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户ID|USER_ID|外键值附加数据|100|是||
 
 
 ## 关系
@@ -61,6 +63,16 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|取消点赞或点踩|cancel_feedback|[实体处理逻辑](module/ai/ai_agent_message/logic/cancel_feedback "取消点赞或点踩")|默认|不支持||||
+|点踩|dislike|[实体处理逻辑](module/ai/ai_agent_message/logic/dislike "点踩")|默认|不支持||||
+|点赞|like|[实体处理逻辑](module/ai/ai_agent_message/logic/like "点赞")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[取消点赞或点踩](module/ai/ai_agent_message/logic/cancel_feedback)|cancel_feedback|无|||
+|[点赞](module/ai/ai_agent_message/logic/like)|like|无|||
+|[点踩](module/ai/ai_agent_message/logic/dislike)|dislike|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -72,6 +84,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/ai/ai_agent_message/dataset/Default)|DEFAULT|数据查询|是|||
+|[全部消息(all)](module/ai/ai_agent_message/dataset/all)|all|数据查询|否|||
 
 ## 数据权限
 
@@ -102,13 +115,32 @@
 
 
 
+##### 我的智能体消息（读写） :id=ai_agent_message-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('user_id','=',#{srf.sessioncontext.srfpersonid})]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+* `UPDATE`
+* `DELETE`
+* `CREATE`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_CONVERSATION_ID_EQ|会话标识|EQ||
+|N_CONVERSATION_NAME_EQ|会话名称|EQ||
+|N_CONVERSATION_NAME_LIKE|会话名称|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_SESSION_ID_EQ|外部会话标识|EQ||
+|N_STATUS_EQ|消息状态|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -122,6 +154,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_message?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_agent_message?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_message?id=数据查询`">
   数据查询

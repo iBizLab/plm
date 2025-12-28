@@ -601,6 +601,7 @@
 | 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 客户关联工单（移动端） | mob_customer_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[customer_choose_ticket](#行为)||
+| 打印交谈资料_工单 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
 | 工作项 | toolbar_test_main_view_toolbar_deuiaction2_click | 工作项 |单项数据|用户自定义||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 配置 | panel_usr1022695769_button_calluilogic1_click | 工单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单设计](app/view/ticket_dyna_tab_exp_view)</details>||

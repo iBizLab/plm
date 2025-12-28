@@ -29,6 +29,8 @@
 > [!ATTENTION|label:存在长文本属性]
 >
 > `META_DATA(文档元数据)`
+>
+> `PARSED_CONTENT(解析内容)`
 
 
 
@@ -52,6 +54,7 @@ t1.`KB_ID`,
 t11.`NAME` AS `KB_NAME`,
 t1.`META_DATA`,
 t1.`NAME`,
+t1.`PARSED_CONTENT`,
 t1.`PARSER_CONFIG`,
 t1.`SIZE`,
 t1.`SOURCE_ID`,

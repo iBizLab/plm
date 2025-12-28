@@ -8086,6 +8086,18 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n<#if item.name??>\r\n标题：${item.name}\r\n</#if>\r\n\r\n<#if item.publish_name??>\r\n发布人：${item.publish_name}\r\n</#if>\r\n\r\n<#if item.publish_time??>\r\n发布时间：${item.publish_time}\r\n</#if>\r\n\r\n<#if item.publish_content??>\r\n发布内容：${utils.html2md(item.publish_content!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/article_pages/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"PAGE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE"
+  } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmwiki/PSAPPDEVIEWS/article_page_shared_tree_exp_view.json",

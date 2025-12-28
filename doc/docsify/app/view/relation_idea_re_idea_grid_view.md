@@ -57,8 +57,8 @@ if(button_calluilogic){
   * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [需求(IDEA)](module/ProdMgmt/idea) : [需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)
   * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)
 
 ### 关联视图
   * [需求(idea_main_view)](app/view/idea_main_view)

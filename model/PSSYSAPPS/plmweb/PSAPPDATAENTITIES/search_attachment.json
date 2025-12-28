@@ -2133,7 +2133,39 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n标题：${item.name}\r\n\r\n附件内容：${item.id}\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE"
+  } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打印",
+    "codeName" : "chat_resource_print",
+    "frontProcessType" : "PRINT",
+    "fullCodeName" : "search_attachment_chat_resource_print",
+    "name" : "打印交谈资料_附件搜索",
+    "getPSAppDEPrint" : {
+      "modelref" : true,
+      "id" : "chat_resource"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_attachment.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "chat_resource_print",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "chat_resource_print@search_attachment"
+  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "下载",
     "codeName" : "download",
@@ -2939,6 +2971,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_attachment_edit_view.json",
     "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_attachment_advanced_search_grid_pickview.json",
+    "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",

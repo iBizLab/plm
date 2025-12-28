@@ -1032,10 +1032,35 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "NONE",
+    "caption" : "确定",
+    "codeName" : "panel_auto40195056_button_okaction_click",
+    "fullCodeName" : "search_hub_panel_auto40195056_button_okaction_click",
+    "name" : "确定",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
+    },
+    "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    print_id: 'chat_resource',\r\n    de_name: item.srfdename\r\n  },\r\n  metadata: {\r\n    //name: item.title?item.title:item.name\r\n   name: item.title ? item.title : (item.name ? item.name : item.content),\r\n   downloadContext: (item.srfdename || '') +':'+(item.id || ''),\r\n   downloadactionid: 'chat_resource_print@'+(item.srfdename || '')\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: transformedList });",
+    "timeout" : 60000,
+    "uIActionMode" : "CUSTOM",
+    "uIActionTag" : "panel_auto40195056_button_okaction_click",
+    "uIActionType" : "DEUIACTION",
+    "id" : "panel_auto40195056_button_okaction_click@search_hub"
+  } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_hub_tab_search_view.json",
     "viewType" : "DETABSEARCHVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_hub_tab_search_pickup_view.json",
+    "viewType" : "DETABSEARCHVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_hub_advance_pick_up_view.json",
+    "viewType" : "DEPICKUPVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -1092,5 +1117,120 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Auto59801703",
+    "name" : "实体资料打印挂载界面行为组",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
+    },
+    "uniqueTag" : "search_hub__Auto59801703",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "u8ef094f",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@work_item"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "udd2e0af",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@idea"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "ua3b01d7",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@ticket"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "uea9227e",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@article_page"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "u7ab89d9",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@test_case"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "uce019c3",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@search_comment"
+      }
+    }, {
+      "caption" : "打印",
+      "detailType" : "DEUIACTION",
+      "name" : "u7b09423",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_attachment.json"
+        },
+        "modelref" : true,
+        "id" : "chat_resource_print@search_attachment"
+      }
+    } ]
+  } ]
 }

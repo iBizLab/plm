@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [知识库源(AI_KNOWLEDGE_SOURCE)](module/ai/ai_knowledge_source) : [表格界面_新建操作](module/ai/ai_knowledge_source#界面行为)
   * [知识库源(AI_KNOWLEDGE_SOURCE)](module/ai/ai_knowledge_source) : [表格界面_删除操作](module/ai/ai_knowledge_source#界面行为)
+  * [知识库源(AI_KNOWLEDGE_SOURCE)](module/ai/ai_knowledge_source) : [表格界面_新建操作](module/ai/ai_knowledge_source#界面行为)
 
 ### 关联视图
   * [知识库源(ai_knowledge_source_edit_view)](app/view/ai_knowledge_source_edit_view)

@@ -146,7 +146,7 @@ DEDATASET4 --> LOOPSUBCALL1
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).review`
-2. `Default(传入变量).n_test_library_id_eq`
+2. `Default(传入变量).n_product_id_eq`
 
 重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`
 
@@ -235,7 +235,7 @@ if (version_pages_results) {
 ### 连接条件说明
 #### 连接名称 :id=DEBUGPARAM1-DEDATASET1
 
-`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL AND `Default(传入变量).add_review` ISNULL AND `Default(传入变量).add_tag` ISNULL
+`Default(传入变量).review` ISNULL AND `Default(传入变量).baseline` ISNULL AND `Default(传入变量).tag` ISNULL AND `Default(传入变量).add_review` ISNULL AND `Default(传入变量).add_tag` EQ `idea`
 #### 未评审 :id=DEBUGPARAM3-PREPAREPARAM2
 
 `for_obj(循环临时变量).REVIEW_RESULT_STATE(评审结果)` EQ `1`

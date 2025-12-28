@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [关注(ATTENTION)](module/Base/attention) : [添加页面关注（移动端）](module/Base/attention#界面行为)
   * [关注(ATTENTION)](module/Base/attention) : [取消关注](module/Base/attention#界面行为)
+  * [关注(ATTENTION)](module/Base/attention) : [添加页面关注（移动端）](module/Base/attention#界面行为)
 
 ### 关联视图
   * [空间成员(space_member_mob_attention_mpickup_view)](app/view/space_member_mob_attention_mpickup_view)

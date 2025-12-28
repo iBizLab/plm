@@ -2686,6 +2686,16 @@
   }, {
     "codeName" : "main",
     "logicName" : "主表格查询",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
     "name" : "main",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -7808,13 +7818,13 @@
     "name" : "获取知识空间成员",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -160,
+      "leftPos" : -400,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE3"
+          "id" : "PREPAREPARAM_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -7822,14 +7832,15 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : -80,
+      "topPos" : -70,
       "parallelOutput" : true
     }, {
       "codeName" : "END2",
       "leftPos" : 5,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 104
+      "topPos" : 104,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 234,
@@ -8021,6 +8032,65 @@
       } ],
       "topPos" : -336
     }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : -273,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "空",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "已删除、已归档",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_ARCHIVED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_ARCHIVED] 等于(=) 1",
+              "paramValue" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_DELETED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_DELETED] 等于(=) 1",
+              "paramValue" : "1"
+            } ]
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "topPos" : -72,
+      "parallelOutput" : true
+    }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
       "codeName" : "RAWSFCODE1",
       "leftPos" : 756,
@@ -8066,7 +8136,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : -220
+      "topPos" : -220,
+      "parallelOutput" : true
     }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
       "codeName" : "RAWSFCODE3",
@@ -8092,7 +8163,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 值为空(Nil)"
+            "name" : "Default[srfreadonly] 值为空(Nil) "
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -8127,6 +8198,26 @@
         }
       } ],
       "topPos" : -72
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "JavaScript",
+      "leftPos" : -273,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "已删除归档只读",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 102,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

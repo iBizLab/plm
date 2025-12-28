@@ -44,7 +44,7 @@ false
   * [评审历史(review_content_list_view)](app/view/review_content_list_view)
   * [工单(ticket_idea_re_ticket_statistics_view)](app/view/ticket_idea_re_ticket_statistics_view)
   * [流转记录(transition_history_work_item_calendar_view)](app/view/transition_history_work_item_calendar_view)
-  * [版本(version_idea_grid_view)](app/view/version_idea_grid_view)
+  * [版本记录(version_idea_list_view)](app/view/version_idea_list_view)
   * [工时(workload_list_view)](app/view/workload_list_view)
 
 <script>

@@ -23,6 +23,7 @@
 |<el-row justify="space-between"><el-col :span="20">context_debug_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试数据|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">scopes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|业务范围|
+|<el-row justify="space-between"><el-col :span="20">mcp_server_tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|mcp服务标识集合|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
@@ -64,6 +65,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -107,6 +109,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -170,6 +173,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -248,6 +252,7 @@
 |<el-row justify="space-between"><el-col :span="20">context_debug_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试数据|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">scopes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|业务范围|
+|<el-row justify="space-between"><el-col :span="20">mcp_server_tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|mcp服务标识集合|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
@@ -289,6 +294,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -332,6 +338,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -384,6 +391,7 @@
 |<el-row justify="space-between"><el-col :span="20">context_debug_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试数据|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">scopes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|业务范围|
+|<el-row justify="space-between"><el-col :span="20">mcp_server_tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|mcp服务标识集合|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
@@ -425,6 +433,7 @@
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -493,6 +502,7 @@ Integer
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -545,6 +555,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">context_debug_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试数据|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">scopes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|业务范围|
+|<el-row justify="space-between"><el-col :span="20">mcp_server_tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|mcp服务标识集合|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
@@ -586,6 +597,7 @@ Integer
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -629,6 +641,7 @@ Integer
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -681,6 +694,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">context_debug_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试数据|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">scopes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|业务范围|
+|<el-row justify="space-between"><el-col :span="20">mcp_server_tags</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|mcp服务标识集合|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
@@ -722,6 +736,7 @@ Integer
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -765,6 +780,7 @@ Integer
   "context_debug_data" : null,
   "description" : null,
   "scopes" : null,
+  "mcp_server_tags" : null,
   "active" : null,
   "ai_agent_id" : null,
   "ai_agent_name" : null,
@@ -849,6 +865,7 @@ Integer
     "context_debug_data" : null,
     "description" : null,
     "scopes" : null,
+    "mcp_server_tags" : null,
     "active" : null,
     "ai_agent_id" : null,
     "ai_agent_name" : null,
@@ -933,6 +950,7 @@ Integer
     "context_debug_data" : null,
     "description" : null,
     "scopes" : null,
+    "mcp_server_tags" : null,
     "active" : null,
     "ai_agent_id" : null,
     "ai_agent_name" : null,
@@ -1017,6 +1035,7 @@ Integer
     "context_debug_data" : null,
     "description" : null,
     "scopes" : null,
+    "mcp_server_tags" : null,
     "active" : null,
     "ai_agent_id" : null,
     "ai_agent_name" : null,

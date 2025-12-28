@@ -16,4 +16,5 @@
 * 模型扩展
   * [主状态值代理](api/_dynamodelapi/deapi/MSValueProxy#MSValueProxy)
 * DevOps数据集成
+* 产品管理（制造业）
 * 智能

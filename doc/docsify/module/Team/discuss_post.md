@@ -19,7 +19,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_post_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|是否逻辑||是||
-|讨论名称|NAME|文本，可指定长度|200|是||
+|标题|NAME|文本，可指定长度|200|否||
 |阅读次数|READ_COUNT|文本，可指定长度|200|是||
 |讨论回复数|REPLIES|文本，可指定长度|200|是||
 |状态|STATUS|[单项选择(文本值)](index/dictionary_index#discuss_status "讨论状态")|60|是||
@@ -191,7 +191,7 @@
 | -------- |------------|------------|------|
 |N_CREATE_MAN_EQ|建立人|EQ||
 |N_ID_EQ|标识|EQ||
-|N_NAME_LIKE|讨论名称|LIKE||
+|N_NAME_LIKE|标题|LIKE||
 |N_STATUS_EQ|状态|EQ||
 |N_TOPIC_ID_EQ|话题标识|EQ||
 |N_TOPIC_NAME_EQ|话题|EQ||

@@ -1,5 +1,12 @@
 # 处理逻辑 <!-- {docsify-ignore-all} -->
 
+## [关于(ABOUT)](module/extension/ABOUT.md) :id=ABOUT
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[获取关于信息](module/extension/ABOUT/logic/GetAboutInfo)|GetAboutInfo|无|||
+
+
 ## [活动(ACTIVITY)](module/Base/activity.md) :id=activity
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -36,8 +43,25 @@
 |[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents)|reload_aiagents|无||重载AI代理对象|
 
 
+## [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation.md) :id=ai_agent_conversation
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[delete](module/ai/ai_agent_conversation/logic/delete)|delete|无||设置结束状态|
+|[提取session前缀并存储](module/ai/ai_agent_conversation/logic/extract_session_type)|extract_session_type|无|||
+|[清空消息](module/ai/ai_agent_conversation/logic/clear_message)|clear_message|无|||
+|[除指定外清空会话](module/ai/ai_agent_conversation/logic/clear_all_except)|clear_all_except|无|||
 
 
+
+
+## [智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message.md) :id=ai_agent_message
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[取消点赞或点踩](module/ai/ai_agent_message/logic/cancel_feedback)|cancel_feedback|无|||
+|[点赞](module/ai/ai_agent_message/logic/like)|like|无|||
+|[点踩](module/ai/ai_agent_message/logic/dislike)|dislike|无|||
 
 
 ## [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session.md) :id=ai_agent_session
@@ -62,6 +86,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除文档执行计划](module/ai/ai_kb_document/logic/remove_doc_scheduled)|remove_doc_scheduled|无|||
+|[文档解析处理](module/ai/ai_kb_document/logic/parsing)|parsing|无|||
 |[更新文档执行计划](module/ai/ai_kb_document/logic/update_doc_scheduled)|update_doc_scheduled|属性逻辑|||
 |[生成文档执行计划](module/ai/ai_kb_document/logic/generate_doc_scheduled)|generate_doc_scheduled|无|||
 
@@ -788,7 +813,7 @@
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
 |[我的任务总结](module/Base/recent/logic/my_summary)|my_summary|无||获取我的任务总结数据|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
-|[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
+|[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询8条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
 |[移动端首页_最近访问](module/Base/recent/logic/mob_home_recent_access)|mob_home_recent_access|无||仅查询最近5条访问|
 |[跳转对应视图](module/Base/recent/logic/jump_corresponding_view)|jump_corresponding_view|无|||
@@ -824,6 +849,7 @@
 |[计算发布工作项数量](module/ProjMgmt/release/logic/cal_release_work_item_num)|cal_release_work_item_num|无||发布工作项数量计算|
 |[迭代取消关联发布](module/ProjMgmt/release/logic/del_relation)|del_relation|无||迭代取消关联发布|
 |[项目下发布（移动端）](module/ProjMgmt/release/logic/mob_project_release)|mob_project_release|无|||
+
 
 
 
@@ -915,6 +941,7 @@
 |[获取实际工时](module/TestMgmt/run/logic/get_actual_workload)|get_actual_workload|无||获取用例的实际工时|
 |[获取当前用例详情](module/TestMgmt/run/logic/this_run_details)|this_run_details|无||获取当前执行用例详情信息|
 |[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前用户权限|
+|[获取草稿](module/TestMgmt/run/logic/custom_draft)|custom_draft|无|||
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
@@ -1073,6 +1100,13 @@
 
 
 
+
+
+## [通用模板(TEMPLATE)](module/Base/template.md) :id=template
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[保存模板](module/Base/template/logic/save_template)|save_template|无|||
 
 
 ## [规则模板(TEMPLATE_FLOW)](module/Base/template_flow.md) :id=template_flow

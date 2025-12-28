@@ -13,8 +13,8 @@
 
 
 ### 关联界面行为
-  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_删除操作](module/ai/ai_kb_document#界面行为)
   * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [打开知识库文档编辑视图](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_删除操作](module/ai/ai_kb_document#界面行为)
 
 ### 关联视图
   * [知识库文档(ai_kb_document_edit_view)](app/view/ai_kb_document_edit_view)

@@ -25,6 +25,6 @@
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).review`
-2. `Default(传入变量).n_test_library_id_eq`
+2. `Default(传入变量).n_product_id_eq`
 
 重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`

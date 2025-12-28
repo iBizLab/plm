@@ -21,6 +21,11 @@
   },
   "groupMode" : "NONE",
   "logicName" : "进行中",
+  "minorSortDir" : "DESC",
+  "getMinorSortPSAppDEField" : {
+    "name" : "CREATE_TIME",
+    "codeName" : "create_time"
+  },
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
@@ -107,7 +112,7 @@
       },
       "getPSUIActionGroupDetails" : [ {
         "detailType" : "DEUIACTION",
-        "name" : "ua96a642",
+        "name" : "u1fa2d7d",
         "getPSSysImage" : {
           "glyph" : "xf185@FontAwesome",
           "cssClass" : "fa fa-sun-o"
@@ -157,7 +162,7 @@
         "showIcon" : true
       }, {
         "detailType" : "DEUIACTION",
-        "name" : "u122923b",
+        "name" : "u7ba7e0a",
         "getPSSysImage" : {
           "glyph" : "xf1c6@FontAwesome",
           "cssClass" : "fa fa-file-archive-o"
@@ -169,7 +174,7 @@
           "confirmMsg" : "确认归档该产品？",
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "product_in_progress_into_archived",
-          "name" : "进行中_归档",
+          "name" : "归档",
           "getPSAppDEMethod" : {
             "modelref" : true,
             "id" : "archive"
@@ -195,7 +200,7 @@
         "showIcon" : true
       }, {
         "detailType" : "DEUIACTION",
-        "name" : "ue4a99fb",
+        "name" : "u0e6a9d2",
         "getPSSysImage" : {
           "glyph" : "xf014@FontAwesome",
           "cssClass" : "fa fa-trash-o"
@@ -203,19 +208,10 @@
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
           "caption" : "删除",
-          "codeName" : "in_progress_into_deleted",
+          "codeName" : "delete",
           "confirmMsg" : "确认删除该产品？",
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "product_in_progress_into_deleted",
-          "name" : "进行中_删除",
-          "getNextPSUIAction" : {
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-            },
-            "modelref" : true,
-            "id" : "open_product_exp_page@product"
-          },
+          "fullCodeName" : "product_delete",
+          "name" : "删除",
           "getPSAppDEMethod" : {
             "modelref" : true,
             "id" : "delete"
@@ -229,11 +225,11 @@
           "timeout" : 60000,
           "tooltip" : "删除",
           "uIActionMode" : "BACKEND",
-          "uIActionTag" : "in_progress_into_deleted",
+          "uIActionTag" : "delete",
           "uIActionType" : "DEUIACTION",
           "enableConfirm" : true,
           "reloadData" : true,
-          "id" : "in_progress_into_deleted@product"
+          "id" : "delete@product"
         },
         "tooltip" : "删除",
         "addSeparator" : false,

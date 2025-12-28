@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base) : [编辑界面_保存并新建操作](module/ai/ai_knowledge_base#界面行为)
   * [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base) : [编辑界面_保存操作](module/ai/ai_knowledge_base#界面行为)
+  * [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base) : [编辑界面_保存并新建操作](module/ai/ai_knowledge_base#界面行为)
   * [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base) : [取消变更](module/ai/ai_knowledge_base#界面行为)
 
 ### 关联视图

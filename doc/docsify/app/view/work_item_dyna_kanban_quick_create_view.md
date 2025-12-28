@@ -214,6 +214,7 @@ var total_estimated_workload = 0;
 if(executors != null && executors != undefined && executors.length > 0){
     // 默认取第一个执行人作为负责人
     var first_executor = executors[0];
+    first_executor.is_assignee = 1;
     if(first_executor.user_id != null){
         assignee_id.setDataValue(first_executor.user_id)
     }
@@ -383,9 +384,9 @@ if (srfdefdata) {
 
 
 ### 关联界面行为
-  * [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session) : [AI+无数据](module/ai/ai_agent_session#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [确定](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关闭视图](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [确定](module/ProjMgmt/work_item#界面行为)
+  * [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session) : [AI+无数据](module/ai/ai_agent_session#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)

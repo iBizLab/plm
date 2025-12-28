@@ -71,11 +71,6 @@ defaultObj.set("srfreadonly", false);
 
 返回 `Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 空，承载判断 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -113,6 +108,11 @@ if(srfreadonly == true){
 
 将执行结果返回给参数`members(成员)`
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 只读权限 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -125,12 +125,6 @@ var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", true);
 ```
 
-#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `Default(传入变量)`
-
 #### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -138,10 +132,18 @@ defaultObj.set("srfreadonly", true);
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
+console.log('');
+
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
+
+#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
 
 
 ### 连接条件说明

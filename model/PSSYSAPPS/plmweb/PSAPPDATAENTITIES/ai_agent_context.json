@@ -872,6 +872,33 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "mcp_server_tags",
+    "logicName" : "mcp服务标识集合",
+    "name" : "MCP_SERVER_TAGS",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
         "editorType" : "DROPDOWNLIST_100",
         "name" : "默认",
         "uIMode" : "DEFAULT",
@@ -1718,6 +1745,17 @@
       "getPSAppDEField" : {
         "name" : "SCOPES",
         "codeName" : "scopes"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "mcp_server_tags",
+      "logicName" : "mcp服务标识集合",
+      "name" : "mcp_server_tags",
+      "getPSAppDEField" : {
+        "name" : "MCP_SERVER_TAGS",
+        "codeName" : "mcp_server_tags"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -2603,7 +2641,7 @@
     "reloadData" : true,
     "id" : "edit@ai_agent_context"
   }, {
-    "actionTarget" : "NONE",
+    "actionTarget" : "SINGLEKEY",
     "caption" : "打开调试页面",
     "codeName" : "open_debug_view",
     "getFrontPSAppView" : {
@@ -2785,6 +2823,26 @@
         },
         "modelref" : true,
         "id" : "open_debug_view@ai_agent_context"
+      }
+    }, {
+      "buttonStyle" : "WARNING",
+      "caption" : "AI+",
+      "detailType" : "DEUIACTION",
+      "name" : "u07ab374",
+      "getPSSysImage" : {
+        "glyph" : "xf123@FontAwesome",
+        "cssClass" : "fa fa-star-half-full"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+        },
+        "modelref" : true,
+        "id" : "ai@ai_agent_assignment"
       }
     } ]
   }, {

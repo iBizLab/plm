@@ -18,6 +18,7 @@
 |已选择页面|SELECTED_PAGE_NAME|一对多动态对象|1048576|是||
 |选择文件|SELECTION_FILE_IDS|文本，可指定长度|4000|是||
 |选择页面|SELECTION_PAGE_IDS|文本，可指定长度|4000|是||
+|选择页面名称|SELECTION_PAGE_NAMES|文本，可指定长度|4000|是||
 |选择空间|SPACE_SELECTION|单项选择(文本值)|60|是||
 |同步频率|SYNC_FREQUENCY|[单项选择(文本值)](index/dictionary_index#KBSyncFrequency "知识库同步频率")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -112,6 +113,11 @@
 |N_SPACE_SELECTION_EQ|选择空间|EQ||
 |N_SYNC_FREQUENCY_EQ|同步频率|EQ||
 
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 打开知识库文档向导视图 | open_kb_doc_wizard_view | 知识库文档 |无数据|<details><summary>打开视图或向导（模态）</summary>[知识库文档向导](app/view/ai_kb_document_wizard_create_wizard_view)</details>||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -139,6 +145,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_kb_document_wizard?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_kb_document_wizard?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

@@ -294,12 +294,12 @@
         "codeName" : "assignee_id"
       }
     }, {
-      "id" : "product_identifier",
+      "id" : "product_id",
       "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "PRODUCT_IDENTIFIER",
-        "codeName" : "product_identifier"
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
       }
     }, {
       "id" : "checkid",
@@ -1764,11 +1764,16 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
               },
+              "getPSEditorItems" : [ {
+                "name" : "product_id"
+              } ],
               "getPickupPSAppView" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_mob_product_pickup_view.json",
                 "viewType" : "DEMOBPICKUPVIEW"
               },
+              "placeHolder" : "请选择所属产品",
+              "valueItemName" : "product_id",
               "dropDownView" : true,
               "enableAC" : true,
               "enablePickupView" : true,
@@ -1780,6 +1785,7 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "valueItemName" : "product_id",
             "allowEmpty" : false,
             "showCaption" : true
           }, {
@@ -2107,7 +2113,7 @@
           "hidden" : true
         }, {
           "caption" : "产品标识",
-          "codeName" : "product_identifier",
+          "codeName" : "product_id",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -2115,27 +2121,15 @@
           "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
-          "name" : "product_identifier",
+          "name" : "product_id",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "PRODUCT_IDENTIFIER",
-            "codeName" : "product_identifier"
+            "name" : "PRODUCT_ID",
+            "codeName" : "product_id"
           },
-          "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "ITEMENABLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "ISNULL",
-              "dEFDName" : "product_name",
-              "logicType" : "SINGLE"
-            } ],
-            "relatedDetailNames" : [ "product_name" ],
-            "notMode" : false
-          } ],
           "getPSEditor" : {
             "editorType" : "HIDDEN",
-            "name" : "product_identifier"
+            "name" : "product_id"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,

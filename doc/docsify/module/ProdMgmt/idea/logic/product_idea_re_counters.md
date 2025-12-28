@@ -297,21 +297,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_customer
-FROM
-	customer t 
-WHERE
-	EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_customer
+FROM customer t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -328,22 +323,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_idea
-FROM
-	idea t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_idea
+FROM idea t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -360,22 +349,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_ticket
-FROM
-	ticket t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_ticket
+FROM ticket t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -392,22 +375,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_work_item
-FROM
-	work_item t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_work_item
+FROM work_item t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -424,22 +401,16 @@ WHERE
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-SELECT
-	count( t.id ) AS idea_re_test_case
-FROM
-	test_case t 
-WHERE
-    t.is_deleted = 0 
-	AND EXISTS (
-	SELECT
-			*
-	FROM
-		version_data t12
-	WHERE
-		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
-		AND t12.PARENT_VERSION_ID = ?
-		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
-	)
+SELECT COUNT(t.id) AS idea_re_test_case
+FROM test_case t
+WHERE t.IS_DELETED = 0
+AND t.ID IN (
+    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')
+    FROM version_data t12
+    WHERE t12.OWNER_TYPE = 'RELATION'
+        AND t12.PARENT_ID =?
+        AND t12.PARENT_VERSION_ID =?
+)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

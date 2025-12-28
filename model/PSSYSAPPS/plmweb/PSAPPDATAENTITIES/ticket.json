@@ -7885,6 +7885,18 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n <#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n\r\n<#assign comments = api.invoke(\"/tickets/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TICKET\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE"
+  } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "MULTIKEY",
     "caption" : "激活",
@@ -8083,6 +8095,26 @@
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
     "id" : "bi_report_view@ticket"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打印",
+    "codeName" : "chat_resource_print",
+    "frontProcessType" : "PRINT",
+    "fullCodeName" : "ticket_chat_resource_print",
+    "name" : "打印交谈资料_工单",
+    "getPSAppDEPrint" : {
+      "modelref" : true,
+      "id" : "chat_resource"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "chat_resource_print",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "chat_resource_print@ticket"
   }, {
     "actionTarget" : "MULTIKEY",
     "caption" : "设置标签",
@@ -12873,6 +12905,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view.json",
     "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_advanced_search_grid_pickview.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_re_self_mpick_up_view.json",

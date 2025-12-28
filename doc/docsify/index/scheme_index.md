@@ -219,6 +219,7 @@
 #### 智能体回复反馈(AI_AGENT_FEEDBACK)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CONVERSATION_ID|会话标识|VARCHAR|是|100|||
 |CREATE_MAN|创建人|VARCHAR|是|100|||
 |CREATE_TIME|创建时间|DATETIME|是||||
 |ENABLE|逻辑有效标识|INT|是||||
@@ -324,6 +325,7 @@
 |KB_ID|知识库标识|VARCHAR|是|100|||
 |META_DATA|文档元数据|TEXT|是|1048576|||
 |NAME|知识库文档名称|VARCHAR|是|200|||
+|PARSED_CONTENT|解析内容|TEXT|是|1048576|||
 |PARSER_CONFIG|解析配置|TEXT|是|1048576|||
 |SCHEDULED_AT|计划执行时间|DATETIME|是||||
 |SIZE|内容大小|DECIMAL|是||||
@@ -401,6 +403,7 @@
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |ACCESS_KEY|访问密钥|TEXT|是|1048576|||
+|ACTIVE|启用|INT|是||||
 |API_AUTH_TYPE|认证方式|VARCHAR|是|60|||
 |API_HEADERS|请求头|VARCHAR|是|2000|||
 |API_KEY|api密钥|VARCHAR|是|200|||
@@ -411,6 +414,7 @@
 |CLIENT_SECRET|客户端密钥|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|EXPIRATION_DATE|过期时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |INPUT_SCHEMA|输入参数 Schema|TEXT|是|1048576|||
 |NAME|名称|VARCHAR|是|200|||
@@ -1385,6 +1389,18 @@
 |TARGET_VERSION_ID|目标对象版本标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 生产资源(RESOURCE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CATEGORY|资源类型|VARCHAR|是|100|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|RESOURCE_NO|资源编号|VARCHAR|是|100|||
+|TYPE|资源大类|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 评审(REVIEW)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -1454,6 +1470,7 @@
 |EXECUTOR_NAME|执行人|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_NEWEST|是否最新|INT|是||||
+|MULTIPLE_PEOPLE|多人任务|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |PARENT_VERSION_ID|父对象版本标识|VARCHAR|是|100|||
 |PLAN_ID|测试计划标识|VARCHAR|是|100|||
@@ -1619,6 +1636,22 @@
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 通用模板(TEMPLATE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|BROAD_TYPE|模板类型|VARCHAR|是|100|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|TEXT|是|1048576|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_ARCHIVED|是否已归档|INT|是||||
+|IS_DELETED|是否已删除|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|OWNER_ID|所属数据标识|VARCHAR|是|100|||
+|SCOPE|业务范围|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 用例(TEST_CASE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |

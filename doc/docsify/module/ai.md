@@ -12,7 +12,7 @@
 |[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|ai_agent_conversation|主实体|SQL|AI_AGENT_CONVERSATION|否|否|自控制|否||
 |[智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback)|ai_agent_feedback|主实体|SQL|AI_AGENT_FEEDBACK|否|否|自控制|否||
 |[智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel)|ai_agent_knowledge_rel|关系实体|SQL|AI_AGENT_KNOWLEDGE_REL|是|否|附属主实体控制|否||
-|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|ai_agent_message|主实体|SQL|AI_AGENT_MESSAGE|否|否|自控制|否||
+|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|ai_agent_message|主实体|SQL|AI_AGENT_MESSAGE|否|否|附属主实体控制（未映射自控）|否||
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session)|ai_agent_session|主实体|无存储||否|否|无控制|否||
 |[智能体工具引用(AI_AGENT_TOOL_REL)](module/ai/ai_agent_tool_rel)|ai_agent_tool_rel|关系实体|SQL|AI_AGENT_TOOL_REL|是|否|附属主实体控制|否||
 |[AI凭证(AI_CREDENTIAL)](module/ai/ai_credential)|ai_credential|主实体|SQL|AI_CREDENTIAL|否|否|自控制|否||

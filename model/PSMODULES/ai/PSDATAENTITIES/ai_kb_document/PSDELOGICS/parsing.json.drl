@@ -1,0 +1,114 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parsing;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentparsingdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_kb_documentparsingagent_context;
+                global java.util.Map ai_kb_documentparsinglastreturn;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentparsingmasked_data;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService iBzSysAi_kb_documentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_documentparsingbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取数据]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_documentparsingdeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_kb_documentservice.get(ai_kb_documentparsingdefault.getId()),ai_kb_documentparsingdefault);
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取文件内容]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_documentparsingrawsfcode_01"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam_01"
+            ruleflow-group "ai_kb_documentparsingdebugparam_01"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体打印]
+            rule "rawsfcode_03"
+            ruleflow-group "ai_kb_documentparsingrawsfcode_03"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[正则解析文档内容]
+            rule "rawsfcode_02"
+            ruleflow-group "ai_kb_documentparsingrawsfcode_02"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam_02"
+            ruleflow-group "ai_kb_documentparsingdebugparam_02"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction_02"
+            ruleflow-group "ai_kb_documentparsingdeaction_02"
+            when
+            then
+                        ai_kb_documentservice.update(ai_kb_documentparsingmasked_data);
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_documentparsingend_01"
+            when
+            then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end

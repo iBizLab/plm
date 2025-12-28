@@ -61,6 +61,58 @@
     "enablePagingBar" : false,
     "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACMODES/Default.json"
   }, {
+    "aCParams" : {
+      "templ_id" : "Basic",
+      "type" : "dataentity",
+      "de_name" : "WORK_ITEM"
+    },
+    "codeName" : "ai_resource",
+    "logicName" : "AI工作项资料",
+    "name" : "ai_resource",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "format" : "Basic",
+      "dataType" : 25,
+      "name" : "templ_id",
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      }
+    }, {
+      "format" : "WORK_ITEM",
+      "dataType" : 25,
+      "name" : "de_name",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "format" : "dataentity",
+      "dataType" : 25,
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      }
+    } ],
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACMODES/ai_resource.json"
+  }, {
     "codeName" : "fill_workload",
     "logicName" : "填充工时",
     "name" : "fill_workload",
@@ -1913,6 +1965,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem1121992665.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem1217637406.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem1222896939.json"
@@ -47132,7 +47187,7 @@
     "name" : "工作项关联分页计数器",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -810,
+      "leftPos" : -760,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -47146,7 +47201,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 276,
+      "topPos" : 286,
       "parallelOutput" : true
     }, {
       "codeName" : "RAWSQLCALL12",
@@ -47181,17 +47236,6 @@
       "sql" : "SELECT\r\n     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'work_item' AND t1.IS_DELETED=0  THEN 1 ELSE 0 END),0) AS work_item_re_idea,\r\n     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'work_item' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0)  AS work_item_re_work_item,\r\n     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'work_item' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END),0)  AS work_item_re_test_case,\r\n     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'work_item' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END),0)  AS work_item_re_ticket\r\nFROM\r\n    `RELATION` t11\r\nJOIN\r\n    `work_item` t ON t.`ID` = t11.`PRINCIPAL_ID`\r\nLEFT JOIN\r\n    `idea` t1 ON t1.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `ticket` t3 ON t3.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\r\nLEFT JOIN\r\n    `test_case` t5 ON t5.ID = t11.TARGET_ID\r\nWHERE\r\n    (t11.`PRINCIPAL_ID` = ? );",
       "topPos" : 170,
       "fillDstLogicParam" : true
-    }, {
-      "codeName" : "END2",
-      "leftPos" : 1640,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 268
     }, {
       "codeName" : "RAWSQLCALL13",
       "getDstPSDELogicParam" : {
@@ -47235,6 +47279,18 @@
       "topPos" : 276,
       "fillDstLogicParam" : true
     }, {
+      "codeName" : "END2",
+      "leftPos" : 1540,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 276,
+      "parallelOutput" : true
+    }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -47277,7 +47333,7 @@
                   "id" : "Default"
                 },
                 "logicType" : "SINGLE",
-                "name" : "Default[srfversionid] 值不为空(NotNil)"
+                "name" : "Default[srfversionid] 值不为空(NotNil) "
               }, {
                 "condOP" : "EQ",
                 "dstFieldName" : "srfversionid",
@@ -47302,7 +47358,7 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[srfversionid] 值为空(Nil)"
+              "name" : "Default[srfversionid] 值为空(Nil) "
             } ]
           } ]
         },
@@ -47328,7 +47384,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfversionid] 值不为空(NotNil)"
+            "name" : "Default[srfversionid] 值不为空(NotNil) "
           }, {
             "condOP" : "NOTEQ",
             "dstFieldName" : "srfversionid",
@@ -47387,7 +47443,8 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 284
+      "topPos" : 284,
+      "parallelOutput" : true
     }, {
       "codeName" : "RAWSQLCALL2",
       "getDstPSDELogicParam" : {
@@ -47526,7 +47583,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_idea \r\nFROM\r\n\tidea t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+      "sql" : "SELECT COUNT(t.id) AS work_item_re_idea\nFROM idea t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 344,
       "fillDstLogicParam" : true
     }, {
@@ -47568,7 +47625,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_work_item \r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+      "sql" : "SELECT COUNT(t.id) AS work_item_re_work_item\nFROM work_item t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 344,
       "fillDstLogicParam" : true
     }, {
@@ -47610,7 +47667,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+      "sql" : "SELECT COUNT(t.id) AS work_item_re_test_case\nFROM test_case t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 344,
       "fillDstLogicParam" : true
     }, {
@@ -47652,7 +47709,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_ticket \r\nFROM\r\n\tticket t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+      "sql" : "SELECT COUNT(t.id) AS work_item_re_ticket \nFROM ticket t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 344,
       "fillDstLogicParam" : true
     } ],
@@ -53739,6 +53796,19 @@
     "name" : "UPDATE",
     "id" : "project__UPDATE"
   } ],
+  "getAllPSDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE",
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEPRINTS/chat_resource.json"
+  } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEREPORTS/bi_report.json",
@@ -54356,6 +54426,12 @@
     "logicName" : "Scrum需求每日趋势报表",
     "name" : "Scrum需求每日趋势报表",
     "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_pickview",
+    "logicName" : "工作项高级搜索表格视图(选择)",
+    "name" : "工作项高级搜索表格视图(选择)",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "waterfall_tree_grid_view",

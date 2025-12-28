@@ -246,12 +246,12 @@
 |------------| -----   |  -------- | -------- |-------- |-------- |
 |[完成需求评审通知](module/TestMgmt/review/notify/idea_review_notify)|idea_review_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(产品需求)](index/notify_index#idea_review_complete)|评审关注人 ||
 |[完成页面评审通知](module/TestMgmt/review/notify/page_complete_notify)|page_complete_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(空间页面)](index/notify_index#page_review_complete)|通知关注人 ||
-|[空间页面评审通知](module/TestMgmt/review/notify/page_review_notify)|page_review_notify|[默认消息队列](index/notify_index)|[页面评审通知模板](index/notify_index#page_review_inform_template)|当前评审人 ||
-|[评审通知](module/TestMgmt/review/notify/review_notify)|review_notify|[默认消息队列](index/notify_index)|[评审通知模板](index/notify_index#review_inform_template)|当前评审人 ||
+|[空间页面评审通知](module/TestMgmt/review/notify/page_review_notify)|page_review_notify|[默认消息队列](index/notify_index)|[评审通知模板(页面)](index/notify_index#page_review_inform_template)|当前评审人 ||
+|[评审通知](module/TestMgmt/review/notify/review_notify)|review_notify|[默认消息队列](index/notify_index)|[评审通知模板(产品需求)](index/notify_index#review_inform_template)|当前评审人 ||
 |[完成用例评审通知](module/TestMgmt/review/notify/test_case_complete_notify)|test_case_complete_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(测试用例)](index/notify_index#tc_review_complete_template)|通知关注人 ||
-|[测试用例评审通知](module/TestMgmt/review/notify/test_case_review_notify)|test_case_review_notify|[默认消息队列](index/notify_index)|[测试用例评审通知模板](index/notify_index#tc_review_inform_template)|当前评审人 ||
+|[测试用例评审通知](module/TestMgmt/review/notify/test_case_review_notify)|test_case_review_notify|[默认消息队列](index/notify_index)|[评审通知模板(测试用例)](index/notify_index#tc_review_inform_template)|当前评审人 ||
 |[完成工作项评审通知](module/TestMgmt/review/notify/work_item_complete_notify)|work_item_complete_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(项目工作项)](index/notify_index#work_item_review_complete)|通知关注人 ||
-|[项目工作项评审通知](module/TestMgmt/review/notify/work_item_review_notify)|work_item_review_notify|[默认消息队列](index/notify_index)|[工作项评审通知模板](index/notify_index#wi_review_inform_template)|当前评审人 ||
+|[项目工作项评审通知](module/TestMgmt/review/notify/work_item_review_notify)|work_item_review_notify|[默认消息队列](index/notify_index)|[评审通知模板(工作项)](index/notify_index#wi_review_inform_template)|当前评审人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

@@ -33,8 +33,8 @@ Object.assign(viewParam, {
 
 
 ### 关联界面行为
-  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [项目集容量设置](module/Base/addon_resource#界面行为)
   * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [项目集资源成员设置(设置回显数据)](module/Base/addon_resource#界面行为)
+  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [项目集容量设置](module/Base/addon_resource#界面行为)
 
 ### 关联视图
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)

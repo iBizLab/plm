@@ -5,6 +5,7 @@
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
 |访问密钥|ACCESS_KEY|长文本，没有长度限制|1048576|是||
+|启用|ACTIVE|是否逻辑||否||
 |认证方式|API_AUTH_TYPE|[单项选择(文本值)](index/dictionary_index#api_auth_type_codelist "认证方式")|60|是||
 |请求头|API_HEADERS|文本，可指定长度|2000|是||
 |api密钥|API_KEY|文本，可指定长度|200|是||
@@ -15,8 +16,9 @@
 |客户端密钥|CLIENT_SECRET|长文本，没有长度限制|1048576|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|过期时间|EXPIRATION_DATE|日期时间型||是||
 |AI调用工具标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|输入参数 Schema|INPUT_SCHEMA|长文本，没有长度限制|1048576|否||
+|输入参数 Schema|INPUT_SCHEMA|长文本，没有长度限制|1048576|是||
 |AI调用工具名称|NAME|文本，可指定长度|200|是||
 |安全密钥|SECRET_KEY|长文本，没有长度限制|1048576|是||
 |超时时间|TIMEOUT|整型||是||

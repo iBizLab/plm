@@ -13,7 +13,6 @@
   * [评论(comment_list_view)](app/view/comment_list_view)
   * [交付物(deliverable_target_grid_view)](app/view/deliverable_target_grid_view)
   * [流转记录(transition_history_work_item_calendar_view)](app/view/transition_history_work_item_calendar_view)
-  * [版本(version_work_item_grid_view)](app/view/version_work_item_grid_view)
   * [工作项(work_item_child_grid_view)](app/view/work_item_child_grid_view)
   * [工时(workload_list_view)](app/view/workload_list_view)
 

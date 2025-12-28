@@ -71,7 +71,19 @@
 
 
 
-##### 我创建的（读写） :id=ai_agent_assignment-CURDRAFTMAN_RW
+##### 系统的（读） :id=ai_agent_assignment-SYSTEM_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('SYSTEM_FLAG','=',1)]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
+##### 我的智能体分配（读写） :id=ai_agent_assignment-USER_RW
 
 <p class="panel-title"><b>数据范围</b></p>
 
@@ -83,18 +95,6 @@
 * `UPDATE`
 * `READ`
 * `CREATE`
-
-
-
-##### 系统的（读） :id=ai_agent_assignment-SYSTEM_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `自定义条件` ：`[('SYSTEM_FLAG','=',1)]`
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `READ`
 
 
 

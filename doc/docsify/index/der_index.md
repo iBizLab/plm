@@ -10,7 +10,7 @@
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|[DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID](der/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID)|1:N关系||
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session)|[DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID](der/DER1N_AI_AGENT_SESSION_AI_AGENT_CONTEXT_CONTEXT_ID)|1:N关系||
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|[智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment)|[DER1N_AI_AGENT_ASSIGNMENT_AI_AGENT_CONTEXT_CONTEXT_ID](der/DER1N_AI_AGENT_ASSIGNMENT_AI_AGENT_CONTEXT_CONTEXT_ID)|1:N关系||
-|[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|[DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID](der/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID)|1:N关系||
+|[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|[DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID](der/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID)|1:N关系|数据访问控制、|
 |[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|[智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback)|[DER1N_AI_AGENT_FEEDBACK_AI_AGENT_MESSAGE_MESSAGE_ID](der/DER1N_AI_AGENT_FEEDBACK_AI_AGENT_MESSAGE_MESSAGE_ID)|1:N关系||
 |[AI凭证(AI_CREDENTIAL)](module/ai/ai_credential)|[AI大模型(AI_MODEL)](module/ai/ai_model)|[DER1N_AI_MODEL_AI_CREDENTIAL_AI_CREDENTIAL_ID](der/DER1N_AI_MODEL_AI_CREDENTIAL_AI_CREDENTIAL_ID)|1:N关系||
 |[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|[知识库文档切片策略(AI_KB_CHUNKING_STRATEGY)](module/ai/ai_kb_chunking_strategy)|[DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT](der/DERCUSTOM_AI_KB_CHUNKING_STRATEGY_AI_KB_DOCUMENT)|自定义关系||
@@ -207,6 +207,7 @@
 |[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|[DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD)|自定义关系|附属关系、附属关系(N:N连接)、|
 |[角色(ROLE)](module/Base/role)|[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|[ROLE_MEMBER_ROLE_ROLE_ID](der/ROLE_MEMBER_ROLE_ROLE_ID)|自定义关系|附属关系、附属关系(N:N连接)、数据访问控制、|
 |[执行用例(RUN)](module/TestMgmt/run)|[评论(COMMENT)](module/Base/comment)|[DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID)|自定义关系|附属关系、数据访问控制、|
+|[执行用例(RUN)](module/TestMgmt/run)|[执行人(EXECUTOR)](module/Base/executor)|[DERCUSTOM_EXECUTOR_RUN_OWNER_ID](der/DERCUSTOM_EXECUTOR_RUN_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[执行用例(RUN)](module/TestMgmt/run)|[用例步骤(STEP)](module/TestMgmt/step)|[DER1N_STEP_RUN_RUN_ID](der/DER1N_STEP_RUN_RUN_ID)|1:N关系|附属关系、嵌套操作、|
 |[执行用例(RUN)](module/TestMgmt/run)|[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|[DER1N_RUN_HISTORY_RUN_RUN_ID](der/DER1N_RUN_HISTORY_RUN_RUN_ID)|1:N关系|附属关系、|
 |[执行用例(RUN)](module/TestMgmt/run)|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)|[DERCUSTOM_RUN_RUN_ATTACHMENT](der/DERCUSTOM_RUN_RUN_ATTACHMENT)|自定义关系||

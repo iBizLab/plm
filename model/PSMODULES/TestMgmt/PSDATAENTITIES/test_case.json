@@ -19718,7 +19718,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "codeName" : "RAWSQLCALL5",
       "getDstPSDELogicParam" : {
@@ -19823,11 +19824,11 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[srfversionid] 值为空(Nil)"
+              "name" : "Default[srfversionid] 值为空(Nil) "
             }, {
               "groupOP" : "AND",
               "logicType" : "GROUP",
-              "name" : "逻辑分组",
+              "name" : "AND",
               "getPSDELogicLinkConds" : [ {
                 "condOP" : "ISNOTNULL",
                 "dstFieldName" : "srfversionid",
@@ -19836,7 +19837,7 @@
                   "id" : "Default"
                 },
                 "logicType" : "SINGLE",
-                "name" : "Default[srfversionid] 值不为空(NotNil)"
+                "name" : "Default[srfversionid] 值不为空(NotNil) "
               }, {
                 "condOP" : "EQ",
                 "dstFieldName" : "srfversionid",
@@ -19878,7 +19879,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfversionid] 值不为空(NotNil)"
+            "name" : "Default[srfversionid] 值不为空(NotNil) "
           }, {
             "condOP" : "NOTEQ",
             "dstFieldName" : "srfversionid",
@@ -20044,7 +20045,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_idea\r\nFROM\r\n\tidea t \r\nWHERE\r\nt.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS test_case_re_idea\nFROM idea t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 288,
       "fillDstLogicParam" : true
     }, {
@@ -20086,7 +20087,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_work_item\r\nFROM\r\n\twork_item t, work_item_type t1\r\nWHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'\r\nand t.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS test_case_re_work_item\nFROM work_item t, work_item_type t1\nWHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'\nand t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 288,
       "fillDstLogicParam" : true
     }, {
@@ -20128,7 +20129,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_bug\r\nFROM\r\n\twork_item t, work_item_type t1\r\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\r\nand t.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS test_case_re_bug\nFROM work_item t, work_item_type t1\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\nand t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 288,
       "fillDstLogicParam" : true
     } ],
@@ -22201,6 +22202,19 @@
     "name" : "UPDATE",
     "id" : "library__UPDATE"
   } ],
+  "getAllPSDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人：${item.maintenance_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.level_text??>\r\n重要程度：${item.level_text!''}\r\n</#if>\r\n\r\n\r\n<#if item.precondition??>\r\n前置条件：${utils.html2md(item.precondition!\"\")}\r\n</#if>\r\n \r\n\r\n <#if item.description??>\r\n描述：${utils.html2md(item.description!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/test_cases/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TEST_CASE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE",
+    "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEPRINTS/chat_resource.json"
+  } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEREPORTS/bi_report.json",
@@ -22443,6 +22457,12 @@
     "logicName" : "测试用例回收站多数据视图（移动端）",
     "name" : "测试用例回收站多数据视图（移动端）",
     "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_pickview",
+    "logicName" : "测试用例高级搜索表格视图（选择）",
+    "name" : "测试用例高级搜索表格视图（选择）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "program_analyze_report_view",

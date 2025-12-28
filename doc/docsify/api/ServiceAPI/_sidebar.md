@@ -113,6 +113,7 @@
   * [附件搜索](api/ServiceAPI/deapi/search_attachment#search_attachment)
   * [评论搜索](api/ServiceAPI/deapi/search_comment#search_comment)
   * [分组](api/ServiceAPI/deapi/section#section)
+  * [通用模板](api/ServiceAPI/deapi/template#template)
   * [规则模板](api/ServiceAPI/deapi/template_flow#template_flow)
   * [企业用户](api/ServiceAPI/deapi/user#user)
   * [版本](api/ServiceAPI/deapi/version#version)
@@ -135,6 +136,7 @@
   * [人员](api/ServiceAPI/deapi/SysEmployee#SysEmployee)
   * [待办](api/ServiceAPI/deapi/SysTodo#SysTodo)
 * 模型扩展
+  * [关于](api/ServiceAPI/deapi/ABOUT#ABOUT)
   * [主状态值代理](api/ServiceAPI/deapi/MSValueProxy#MSValueProxy)
   * [通知事件](api/ServiceAPI/deapi/notify_event#notify_event)
   * [应用门户部件](api/ServiceAPI/deapi/PSAppPortlet#PSAppPortlet)
@@ -158,11 +160,14 @@
   * [工作流版本](api/ServiceAPI/deapi/PSWFVersion#PSWFVersion)
   * [通知设置](api/ServiceAPI/deapi/system_extension_notify_setting#system_extension_notify_setting)
 * DevOps数据集成
+* 产品管理（制造业）
+  * [生产资源](api/ServiceAPI/deapi/resource#resource)
 * 智能
   * [智能体](api/ServiceAPI/deapi/ai_agent#ai_agent)
   * [智能体分配](api/ServiceAPI/deapi/ai_agent_assignment#ai_agent_assignment)
   * [智能体业务上下文](api/ServiceAPI/deapi/ai_agent_context#ai_agent_context)
   * [智能体会话](api/ServiceAPI/deapi/ai_agent_conversation#ai_agent_conversation)
+  * [智能体回复反馈](api/ServiceAPI/deapi/ai_agent_feedback#ai_agent_feedback)
   * [智能体知识库引用](api/ServiceAPI/deapi/ai_agent_knowledge_rel#ai_agent_knowledge_rel)
   * [智能体会话消息](api/ServiceAPI/deapi/ai_agent_message#ai_agent_message)
   * [智能体会话](api/ServiceAPI/deapi/ai_agent_session#ai_agent_session)

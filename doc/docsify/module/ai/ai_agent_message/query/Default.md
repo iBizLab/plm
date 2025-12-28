@@ -24,7 +24,13 @@
 
 <p class="panel-title"><b>查询列级别</b></p>
 
-* `默认（全部查询列）`
+* `全部数据`
+
+> [!ATTENTION|label:存在长文本属性]
+>
+> `CONTENT(消息内容)`
+>
+> `METADATA(消息元数据)`
 
 
 
@@ -35,6 +41,7 @@
 
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CONTENT_TYPE`,
 t1.`CONVERSATION_ID`,
 t11.`NAME` AS `CONVERSATION_NAME`,
@@ -44,12 +51,15 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 (select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='dislike') AS `IS_DISLIKE`,
 (select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='like') AS `IS_LIKE`,
+t1.`METADATA`,
 t1.`NAME`,
 t1.`SENDER_TYPE`,
 t1.`SEQUENCE`,
+t11.`SESSION_ID`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t11.`USER_ID`
 FROM `AI_AGENT_MESSAGE` t1 
 LEFT JOIN `AI_AGENT_CONVERSATION` t11 ON t1.`CONVERSATION_ID` = t11.`ID` 
 

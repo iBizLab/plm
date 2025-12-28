@@ -12707,6 +12707,18 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE"
+  } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "MULTIKEY",
     "caption" : "激活",
@@ -12992,6 +13004,26 @@
     "reloadData" : true,
     "id" : "change_idea_state@idea"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打印",
+    "codeName" : "chat_resource_print",
+    "frontProcessType" : "PRINT",
+    "fullCodeName" : "idea_chat_resource_print",
+    "name" : "打印交谈资料_需求",
+    "getPSAppDEPrint" : {
+      "modelref" : true,
+      "id" : "chat_resource"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "chat_resource_print",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "chat_resource_print@idea"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "查看客户信息",
     "codeName" : "check_customer_info",
@@ -13082,6 +13114,30 @@
     "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true,
     "id" : "check_ticket_info@idea"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "查看版本",
+    "codeName" : "check_version",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "idea_check_version",
+    "name" : "查看版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_version"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf18e@FontAwesome",
+      "cssClass" : "fa fa-arrow-circle-o-right"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "check_version",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "check_version@idea"
   }, {
     "actionTarget" : "NONE",
     "caption" : "查看工时明细",
@@ -13502,6 +13558,48 @@
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "AFTER",
     "id" : "create_idea_and_relation_customer@idea"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "创建新版本",
+    "codeName" : "create_new_version",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "idea_create_new_version",
+    "name" : "建立版本",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "reset"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "owner_id",
+      "name" : "owner_id",
+      "value" : "idea",
+      "rawValue" : false
+    }, {
+      "key" : "owner_type",
+      "name" : "owner_type",
+      "value" : "IDEA",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_new_version",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "reloadData" : true,
+    "id" : "create_new_version@idea"
   }, {
     "actionTarget" : "NONE",
     "caption" : "需求导入",
@@ -15859,6 +15957,54 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "check_version",
+    "defaultParamName" : "Default",
+    "logicName" : "查看版本",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看版本",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
@@ -18255,6 +18401,118 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "reset",
+    "defaultParamName" : "Default",
+    "logicName" : "组件显隐重置",
+    "name" : "组件显隐重置",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.version.state.visible=false;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 340
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "load",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 446
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "指定部件对象",
+      "name" : "指定部件对象",
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "reset_product_id",
     "defaultParamName" : "Default",
     "logicName" : "重置上下文产品ID",
@@ -20421,6 +20679,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_re_self_mpick_up_view.json",
     "viewType" : "DEMPICKUPVIEW2"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_advanced_search_grid_pickview.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_drill_detail_grid_view.json",

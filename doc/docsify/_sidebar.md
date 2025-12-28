@@ -11,6 +11,7 @@
   * [ebsx系统管理](module/ebsx)
   * [模型扩展](module/extension)
   * [DevOps数据集成](module/DevOps)
+  * [产品管理（制造业）](module/ProdMgmt_MFG)
   * [智能](module/ai)
 
 * <i class="fa-solid fa-cube"></i> 智能报表

@@ -24,6 +24,12 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onCreated",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "onCreated",
+    "scriptCode" : "if (view && viewParam.reportcaption) {\r\n    view.model.caption = viewParam.reportcaption;\r\n    view.evt.on('onViewInfoChange', {});\r\n}"
+  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
@@ -72,6 +78,12 @@
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
         "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
@@ -80,6 +92,12 @@
       },
       "getPSAppUILogicRefViews" : [ {
         "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
@@ -93,6 +111,12 @@
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
     "openMode" : "POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "PROJECT",
+      "name" : "PROJECT",
+      "value" : "project_id",
+      "rawValue" : false
+    } ],
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "工作项",
     "getRefPSAppView" : {

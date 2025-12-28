@@ -24,6 +24,12 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onCreated",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "onCreated",
+    "scriptCode" : "if (view && viewParam.reportcaption) {\n    view.model.caption = viewParam.reportcaption;\n    view.evt.on('onViewInfoChange', {});\n}"
+  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
@@ -72,17 +78,29 @@
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
         "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
         "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -93,11 +111,17 @@
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
     "openMode" : "POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "PROJECT",
+      "name" : "PROJECT",
+      "value" : "project_id",
+      "rawValue" : false
+    } ],
     "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "工作项",
+    "realTitle" : "工作项（动态）",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {

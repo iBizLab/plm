@@ -15439,6 +15439,19 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n <#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n\r\n<#assign comments = api.invoke(\"/tickets/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TICKET\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE",
+    "id" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEPRINTS/chat_resource.json"
+  } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEREPORTS/bi_report.json",
@@ -15782,6 +15795,12 @@
     "logicName" : "客户关联工单选择视图（移动端）",
     "name" : "客户关联工单选择视图（移动端）",
     "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_pickview",
+    "logicName" : "工单高级搜索表格视图（选择）",
+    "name" : "工单高级搜索表格视图（选择）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "global_setting_view",

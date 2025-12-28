@@ -130,7 +130,7 @@
           "detailType" : "DEUIACTION",
           "name" : "u8f8c17a",
           "getPSUIAction" : {
-            "actionTarget" : "NONE",
+            "actionTarget" : "SINGLEKEY",
             "caption" : "打开调试页面",
             "codeName" : "open_debug_view",
             "getFrontPSAppView" : {
@@ -151,6 +151,45 @@
             "id" : "open_debug_view@ai_agent_context"
           },
           "addSeparator" : true,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "buttonStyle" : "WARNING",
+          "caption" : "AI+",
+          "detailType" : "DEUIACTION",
+          "name" : "u07ab374",
+          "getPSSysImage" : {
+            "glyph" : "xf123@FontAwesome",
+            "cssClass" : "fa fa-star-half-full"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "buttonStyle" : "WARNING",
+            "caption" : "AI+",
+            "codeName" : "ai",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
+              "viewType" : "DELISTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_agent_assignment_ai",
+            "name" : "AI+",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf123@FontAwesome",
+              "cssClass" : "fa fa-star-half-full"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "ai",
+            "uIActionType" : "DEUIACTION",
+            "globalUIAction" : true,
+            "id" : "ai@ai_agent_assignment"
+          },
+          "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
         } ],
@@ -811,41 +850,6 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel7",
           "getPSDEFormDetails" : [ {
-            "caption" : "欢迎消息模板",
-            "codeName" : "welcome_message",
-            "dataType" : 21,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
-            "name" : "welcome_message",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "WELCOME_MESSAGE",
-              "codeName" : "welcome_message"
-            },
-            "getPSEditor" : {
-              "editorParams" : {
-                "ISAUTO" : "true",
-                "appCodeListId" : "ai__ai_message_role",
-                "language" : "markdown"
-              },
-              "editorType" : "MARKDOWN",
-              "maxLength" : 1048576,
-              "mode" : "EDIT",
-              "name" : "welcome_message",
-              "placeHolder" : "继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中",
-              "showMaxLength" : true
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
-          }, {
             "codeName" : "rawitem1",
             "contentType" : "INFO",
             "detailStyle" : "DEFAULT",
@@ -858,14 +862,43 @@
             "getPSRawItem" : {
               "contentType" : "INFO",
               "name" : "rawitem1",
-              "rawContent" : "{\"title\":\"为空则继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
+              "rawContent" : "{\"title\":\"欢迎消息模版：为空则继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
               "rawItemHeight" : -1.0,
               "rawItemWidth" : -1.0
             },
-            "rawContent" : "{\"title\":\"为空则继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
+            "rawContent" : "{\"title\":\"欢迎消息模版：为空则继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中\",\"closeabled\":false,\"showIcon\":true}",
             "rawItemHeight" : -1.0,
             "rawItemWidth" : -1.0,
             "showCaption" : true
+          }, {
+            "caption" : "欢迎消息模板",
+            "codeName" : "welcome_message",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "welcome_message",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "WELCOME_MESSAGE",
+              "codeName" : "welcome_message"
+            },
+            "getPSEditor" : {
+              "editorType" : "MARKDOWN",
+              "maxLength" : 1048576,
+              "mode" : "EDIT",
+              "name" : "welcome_message",
+              "placeHolder" : "继承自模版，如修改初始上下文消息，用户信息请放置在 <user> 您的用户信息模版 </user> 标签中",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true
           }, {
             "caption" : "预置建议问题",
             "codeName" : "suggested_questions",
@@ -1172,7 +1205,7 @@
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
-              "labelPos" : "LEFT",
+              "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "ai_model_name",
               "noPrivDisplayMode" : 1,

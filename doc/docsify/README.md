@@ -20,6 +20,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |[ebsx系统管理](module/ebsx)|ebsx|ebsx模型组[^ebsx]|ebsx部门及人员业务实体的映射。|
 |[模型扩展](module/extension)|extension||主要包含模型扩展类实体。|
 |[DevOps数据集成](module/DevOps)|DevOps||DevOps数据集成|
+|[产品管理（制造业）](module/ProdMgmt_MFG)|ProdMgmt_MFG|||
 |[智能](module/ai)|ai|||
 
 

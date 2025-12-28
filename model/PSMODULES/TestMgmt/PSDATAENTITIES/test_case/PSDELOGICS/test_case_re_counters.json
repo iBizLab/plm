@@ -99,7 +99,8 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 200
+    "topPos" : 200,
+    "parallelOutput" : true
   }, {
     "codeName" : "RAWSQLCALL5",
     "getDstPSDELogicParam" : {
@@ -204,11 +205,11 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfversionid] 值为空(Nil)"
+            "name" : "Default[srfversionid] 值为空(Nil) "
           }, {
             "groupOP" : "AND",
             "logicType" : "GROUP",
-            "name" : "逻辑分组",
+            "name" : "AND",
             "getPSDELogicLinkConds" : [ {
               "condOP" : "ISNOTNULL",
               "dstFieldName" : "srfversionid",
@@ -217,7 +218,7 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[srfversionid] 值不为空(NotNil)"
+              "name" : "Default[srfversionid] 值不为空(NotNil) "
             }, {
               "condOP" : "EQ",
               "dstFieldName" : "srfversionid",
@@ -259,7 +260,7 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[srfversionid] 值不为空(NotNil)"
+          "name" : "Default[srfversionid] 值不为空(NotNil) "
         }, {
           "condOP" : "NOTEQ",
           "dstFieldName" : "srfversionid",
@@ -425,7 +426,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_idea\r\nFROM\r\n\tidea t \r\nWHERE\r\nt.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+    "sql" : "SELECT COUNT(t.id) AS test_case_re_idea\nFROM idea t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
     "topPos" : 288,
     "fillDstLogicParam" : true
   }, {
@@ -467,7 +468,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_work_item\r\nFROM\r\n\twork_item t, work_item_type t1\r\nWHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'\r\nand t.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+    "sql" : "SELECT COUNT(t.id) AS test_case_re_work_item\nFROM work_item t, work_item_type t1\nWHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'\nand t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
     "topPos" : 288,
     "fillDstLogicParam" : true
   }, {
@@ -509,7 +510,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_bug\r\nFROM\r\n\twork_item t, work_item_type t1\r\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\r\nand t.is_deleted = 0\r\nAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+    "sql" : "SELECT COUNT(t.id) AS test_case_re_bug\nFROM work_item t, work_item_type t1\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\nand t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
     "topPos" : 288,
     "fillDstLogicParam" : true
   } ],

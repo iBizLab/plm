@@ -1,0 +1,18 @@
+```sql
+SELECT
+t1.`BROAD_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`SCOPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `TEMPLATE` t1 
+
+
+```

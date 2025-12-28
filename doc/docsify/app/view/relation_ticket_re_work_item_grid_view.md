@@ -57,8 +57,8 @@ if(button_calluilogic){
   * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工单关联工作项值变更](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)
+  * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)

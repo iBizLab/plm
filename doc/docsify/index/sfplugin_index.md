@@ -5,7 +5,9 @@
 |项目工作项代码表||PSCodeListImpl|[MSLogicCodeListRuntimeEx](#UsrSFPlugin0623056576)||
 |AI凭证同步组件||PSSysUtilImpl|[CredentialDESyncUtilRuntime](#CredentialDESyncUtilRuntime)||
 |AI模型同步组件||PSSysUtilImpl|[AIAgentDESyncUtilRuntime](#AIAgentDESyncUtilRuntime)||
+|AI工具同步组件||PSSysUtilImpl|[AIToolDESyncUtilRuntime](#AIToolDESyncUtilRuntime)||
 |SysDEBIReportProxyUtilRuntime||PSSysUtilImpl|[SysDEBIReportProxyUtilRuntime](#UsrSFPlugin0702700490)||
+|知识库组件||PSSysUtilImpl|[SysKnowledgeBaseUtilRuntime](#SysKnowledgeBaseUtilRuntime)|知识库功能组件运行时|
 |SysMcpServerUtil||PSSysUtilImpl|[SysMcpServerUtilRuntime](#SysMcpServerUtilRuntime)||
 |SysPSDEModelUtilRuntime||PSSysUtilImpl|[PLMSysPSDEModelUtilRuntime](#PLMSysPSDEModelUtilRuntime)||
 |用户导入增强||PSSysTranslatorImpl|[One2ManyUserImpTransRuntime](#UsrSFPlugin0424744613)|参数名               说明                                   默认值<br>username       指定从用户实体对象中获取值名称名称             display_name<br>userdename     指定用户数据实体名称                          user<br>one2manyfield  指定转换器属性映射的1对多集合属性名称          attentions<br>one2manyuserid 指定映射的1对多集合属性中存储用户标识属性名称   user_id|
@@ -14,6 +16,7 @@
 |@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)|评论@转换器|
 |用例步骤导入增强||PSSysTranslatorImpl|[One2ManyCaseStepImpTransRuntime](#UsrSFPlugin0515997865)|用例步骤导入增强|
 |工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
+|检查新版本(CheckVersion)|[关于(ABOUT)](module/extension/ABOUT)|PSDEUserCustomActionImpl|[CheckUpdateDEActionRuntime](#CheckUpdateDEActionRuntime)|检查系统新版本|
 |智能体业务上下文(AI_AGENT_CONTEXT)||PSDataEntityImpl|[AIAgentContextDERuntime](#AIAgentContextDERuntime)||
 |填充产品需求版本数据(fill_version_data)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
@@ -141,6 +144,19 @@ public class AIAgentContextDERuntime extends DataEntityRuntime {
                             }
                         }
                         item.copyToIf(aiAgentContextDTO)
+                        if (aiAgentContextDTO.get("ai_agent_tool_rels")){
+                            def tool_refs = aiAgentContextDTO.get("ai_agent_tool_rels")
+                            def tags = tool_refs.findAll { it.tool_type == 'mcp' || it.tool_type == 'mcp_built_in_extension'}
+                                    .collect { it.tool_tag }
+                                    .join(',')
+                            aiAgentContextDTO.set("mcp_server_tags",tags)
+                        }
+                        if (aiAgentContextDTO.get("ai_agent_knowledge_rels")){
+                            def kb_refs = aiAgentContextDTO.get("ai_agent_knowledge_rels")
+                            def tags = kb_refs.collect { it.kb_tag }
+                                    .join(',')
+                            aiAgentContextDTO.set("kb_tags",tags)
+                        }
                     }
                 }
             }
@@ -168,6 +184,19 @@ public class AIAgentContextDERuntime extends DataEntityRuntime {
                         }
                     }
                     item.copyToIf(aiAgentContextDTO)
+                    if (aiAgentContextDTO.get("ai_agent_tool_rels")){
+                        def tool_refs = aiAgentContextDTO.get("ai_agent_tool_rels")
+                        def tags = tool_refs.findAll { it.tool_type == 'mcp' || it.tool_type == 'mcp_built_in_extension'}
+                                .collect { it.tool_tag }
+                                .join(',')
+                        aiAgentContextDTO.set("mcp_server_tags",tags)
+                    }
+                    if (aiAgentContextDTO.get("ai_agent_knowledge_rels")){
+                        def kb_refs = aiAgentContextDTO.get("ai_agent_knowledge_rels")
+                        def tags = kb_refs.collect { it.kb_tag }
+                                .join(',')
+                        aiAgentContextDTO.set("kb_tags",tags)
+                    }
                 }
             }
         }
@@ -181,6 +210,478 @@ public class AIAgentContextDERuntime extends DataEntityRuntime {
 
 ```groovy
 null
+```
+### AIToolDESyncUtilRuntime :id=AIToolDESyncUtilRuntime
+
+
+```net.ibizsys.central.plugin.util.sysutil.AIToolDESyncUtilRuntime```
+
+```groovy
+package net.ibizsys.central.plugin.util.sysutil;
+
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import net.ibizsys.central.cloud.core.spring.rt.ServiceHub;
+import net.ibizsys.central.cloud.core.util.domain.Credential;
+import net.ibizsys.central.dataentity.IDataEntityRuntime;
+import net.ibizsys.model.dataentity.action.IPSDEAction;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import net.ibizsys.central.cloud.core.util.domain.AIAccess;
+import net.ibizsys.central.util.IEntityDTO;
+import net.ibizsys.central.util.expression.ExpressionUtils;
+import net.ibizsys.model.codelist.IPSCodeItem;
+import net.ibizsys.model.dataentity.defield.IPSDEField;
+import net.ibizsys.runtime.codelist.ICodeListRuntime;
+import net.ibizsys.runtime.dataentity.IDataEntityRuntimeContext;
+import net.ibizsys.runtime.util.DataTypeUtils;
+import net.ibizsys.runtime.util.DateUtils;
+import net.ibizsys.runtime.util.JsonUtils;
+import net.ibizsys.runtime.util.YamlUtils;
+
+public class AIToolDESyncUtilRuntime extends SysCloudConfigDESyncUtilRuntimeBase{
+
+	private static final Log log = LogFactory.getLog(AIToolDESyncUtilRuntime.class);
+	private boolean bRawGet = false;
+	private static String mcpPrefix = "mcp";
+	private static String mcpBuiltInExtension = "mcp_built_in_extension";
+	private static String builtInExtensionUrlFormat = "http://%s:%s/%s/extension/mcp/%s/sse"
+	/**
+	 * 路径参数：组件标识
+	 */
+	public final static String UTILPARAM_UTIL = "util";
+
+	/**
+	 * 预定义属性：TYPE 工具类型
+	 */
+	public final static String PREDEFINEDFIELD_TOOL_TYPE = "TOOL_TYPE";
+
+	/**
+	 * 预定义属性：API 地址
+	 */
+	public final static String PREDEFINEDFIELD_API_URL = "API_URL";
+
+	/**
+	 * 预定义属性：工具标识
+	 */
+	public final static String PREDEFINEDFIELD_TOOL_TAG = "TOOL_TAG";
+
+	/**
+	 * 预定义属性：TYPE 凭证类型
+	 */
+	public final static String PREDEFINEDFIELD_API_AUTH_TYPE = "API_AUTH_TYPE";
+
+	/**
+	 * 预定义属性：ACCESS_KEY
+	 */
+	public final static String PREDEFINEDFIELD_ACCESS_KEY = "ACCESS_KEY";
+
+	/**
+	 * 预定义属性：SECRET_KEY
+	 */
+	public final static String PREDEFINEDFIELD_SECRET_KEY = "SECRET_KEY";
+
+	/**
+	 * 预定义属性：TOKEN_URL
+	 */
+	public final static String PREDEFINEDFIELD_TOKEN_URL = "TOKEN_URL";
+
+	/**
+	 * 预定义属性：DIGEST/api密钥
+	 */
+	public final static String PREDEFINEDFIELD_DIGEST = "DIGEST";
+
+	/**
+	 * 预定义属性：BEARER_TOKEN
+	 */
+	public final static String PREDEFINEDFIELD_BEARER_TOKEN = "BEARER_TOKEN";
+
+	/**
+	 * 预定义属性：CLIENT_ID
+	 */
+	public final static String PREDEFINEDFIELD_CLIENT_ID = "CLIENT_ID";
+
+	/**
+	 * 预定义属性：CLIENT_SECRET
+	 */
+	public final static String PREDEFINEDFIELD_CLIENT_SECRET = "CLIENT_SECRET";
+
+	/**
+	 * 预定义属性：过期时间
+	 */
+	public final static String PREDEFINEDFIELD_EXPIRATION_DATE = "EXPIRATION_DATE";
+
+	/**
+	 * 预定义属性：凭证状态
+	 */
+	public final static String PREDEFINEDFIELD_STATUS = "STATUS";
+
+
+	public final static String STATUS_ACTIVE = "active";
+
+	public final static String STATUS_EXPIRED = "expired";
+
+	public final static String STATUS_DISABLED = "disabled";
+
+
+
+
+
+	@Override
+	protected void onInit() throws Exception {
+		this.bRawGet = DataTypeUtils.asBoolean(this.getUtilParam("rawget", (String)null), false);
+		super.onInit();
+	}
+
+	@Override
+	protected String getConfig(IDataEntityRuntimeContext iDataEntityRuntimeContext, IEntityDTO iEntityDTO) throws Throwable {
+		String strConfig = super.getConfig(iDataEntityRuntimeContext, iEntityDTO);
+		if(StringUtils.hasLength(strConfig)) {
+			return strConfig;
+		}
+		Map<String, Object> map = this.getConfigMap(iDataEntityRuntimeContext, iEntityDTO);
+		String strToolType = "";
+		String strToolTag = "";
+		IPSDEField toolTagPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TAG, true);
+		if(toolTagPSDEField != null) {
+			Object toolTag = iEntityDTO.get(toolTagPSDEField.getLowerCaseName());
+			if(!ObjectUtils.isEmpty(toolTag)) {
+				strToolTag = String.valueOf(toolTag);
+			}
+		}
+
+		IPSDEField toolTypePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TYPE, true);
+		if(toolTypePSDEField != null) {
+			Object toolType = iEntityDTO.get(toolTypePSDEField.getLowerCaseName());
+			if (!ObjectUtils.isEmpty(toolType)) {
+				strToolType = String.valueOf(toolType);
+			}
+		}
+
+		if(!map.containsKey(AIAccess.FIELD_SERVICEURL)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_API_URL, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(AIAccess.FIELD_SERVICEURL, strValue);
+				}else if(mcpBuiltInExtension.equals(strToolType)){
+					String strBaseUrl = String.format(getBuiltInExtensionUrlFormat(), ServiceHub.getInstance().getIPAddress(), ServiceHub.getInstance().getPort(), this.getSystemRuntime().getServiceId(),strToolTag);
+					map.put(AIAccess.FIELD_SERVICEURL, strBaseUrl);
+				}
+			}
+		}
+
+		if(!map.containsKey(PREDEFINEDFIELD_API_AUTH_TYPE)) {
+			IPSDEField typePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_API_AUTH_TYPE, true);
+			if(typePSDEField != null) {
+				Object type = iEntityDTO.get(typePSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(type)) {
+					String strType = String.valueOf(type);
+					map.put(PREDEFINEDFIELD_API_AUTH_TYPE.toLowerCase(), strType);
+					if(typePSDEField.getPSCodeList() != null) {
+						ICodeListRuntime iCodeListRuntime = this.getSystemRuntime().getCodeListRuntime(typePSDEField.getPSCodeList().getId(), true);
+						if(iCodeListRuntime != null) {
+							IPSCodeItem iPSCodeItem = iCodeListRuntime.getPSCodeItem(strType, true);
+							if(iPSCodeItem!=null && StringUtils.hasLength(iPSCodeItem.getUserData())) {
+								map.put(PREDEFINEDFIELD_API_AUTH_TYPE.toLowerCase(), iPSCodeItem.getUserData());
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_ACCESSKEY)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_ACCESS_KEY, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_ACCESSKEY, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_SECRETKEY)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_SECRET_KEY, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_SECRETKEY, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_TOKENURL)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOKEN_URL, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_TOKENURL, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_CONTENT)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_DIGEST, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_CONTENT, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_ACCESSTOKEN)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_BEARER_TOKEN, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_ACCESSTOKEN, strValue);
+				}else if (mcpBuiltInExtension.equals(strToolType)){
+					map.put(Credential.FIELD_ACCESSTOKEN, strToolTag);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_CLIENTID)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_CLIENT_ID, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_CLIENTID, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_CLIENTSECRET)) {
+			IPSDEField iPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_CLIENT_SECRET, true);
+			if(iPSDEField != null) {
+				Object value = iEntityDTO.get(iPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(value)) {
+					String strValue = String.valueOf(value);
+					map.put(Credential.FIELD_CLIENTSECRET, strValue);
+				}
+			}
+		}
+
+		if(!map.containsKey(Credential.FIELD_DISABLED)) {
+			map.put(Credential.FIELD_DISABLED, 0);
+			IPSDEField statusPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_STATUS, true);
+			if(statusPSDEField != null) {
+				Object status = iEntityDTO.get(statusPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(status)) {
+					String strStatus = String.valueOf(status);
+					if(STATUS_ACTIVE.equalsIgnoreCase(strStatus) || STATUS_DISABLED.equalsIgnoreCase(strStatus) || STATUS_EXPIRED.equalsIgnoreCase(strStatus)) {
+						if(STATUS_EXPIRED.equalsIgnoreCase(strStatus) || STATUS_DISABLED.equalsIgnoreCase(strStatus)) {
+							map.put(Credential.FIELD_DISABLED, 1);
+						}
+					}
+					else {
+						if(statusPSDEField.getPSCodeList() != null) {
+							ICodeListRuntime iCodeListRuntime = this.getSystemRuntime().getCodeListRuntime(statusPSDEField.getPSCodeList().getId(), true);
+							if(iCodeListRuntime != null) {
+								IPSCodeItem iPSCodeItem = iCodeListRuntime.getPSCodeItem(strStatus, true);
+								if(iPSCodeItem!=null && StringUtils.hasLength(iPSCodeItem.getUserData())) {
+									if(STATUS_EXPIRED.equalsIgnoreCase(iPSCodeItem.getUserData()) || STATUS_DISABLED.equalsIgnoreCase(iPSCodeItem.getUserData())) {
+										map.put(Credential.FIELD_DISABLED, 1);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return this.getConfig(iDataEntityRuntimeContext, map, iEntityDTO);
+	}
+
+	protected String getBuildInAccessTokenConfig(IDataEntityRuntimeContext iDataEntityRuntimeContext, IEntityDTO iEntityDTO) throws Throwable {
+		String strConfig = super.getConfig(iDataEntityRuntimeContext, iEntityDTO);
+		if(StringUtils.hasLength(strConfig)) {
+			return strConfig;
+		}
+
+		Map<String, Object> map = this.getConfigMap(iDataEntityRuntimeContext, iEntityDTO);
+
+		if(!map.containsKey(AIAccess.FIELD_EXPIRESTIME)) {
+			IPSDEField expirationDatePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_EXPIRATION_DATE, true);
+			if(expirationDatePSDEField != null) {
+				Object expirationDate = iEntityDTO.get(expirationDatePSDEField.getLowerCaseName());
+				if(expirationDate != null) {
+					if(expirationDate instanceof String) {
+						map.put(AIAccess.FIELD_EXPIRESTIME, expirationDate);
+					}
+					else
+					if(expirationDate instanceof Date) {
+						map.put(AIAccess.FIELD_EXPIRESTIME, DateUtils.toDateTimeString((Date)expirationDate));
+					}
+					else
+					{
+						try {
+							map.put(AIAccess.FIELD_EXPIRESTIME, DateUtils.toDateTimeString(DataTypeUtils.asDateTime(expirationDate)));
+						}
+						catch (Throwable ex) {
+							log.error(String.format("过期时间[%1$s]类型不支持", expirationDate));
+						}
+					}
+				}
+			}
+		}
+
+		return this.getConfig(iDataEntityRuntimeContext, map, iEntityDTO);
+	}
+	protected String getConfig(IDataEntityRuntimeContext iDataEntityRuntimeContext, Map<String, Object> map, IEntityDTO iEntityDTO) throws Throwable {
+		return YamlUtils.toString(map);
+	}
+
+
+	@Override
+	protected String getCloudConfigId(IDataEntityRuntimeContext iDataEntityRuntimeContext, Map<String, Object> map, IEntityDTO iEntityDTO) throws Exception {
+		if (!map.containsKey(PARAM_KEY)) {
+			IPSDEField toolTagPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TAG, true);
+			if(toolTagPSDEField != null) {
+				Object toolTag = iEntityDTO.get(toolTagPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(toolTag)) {
+					String strToolTag = String.valueOf(toolTag);
+					map.put(PARAM_KEY, strToolTag);
+				}
+			}
+		}
+
+		if(!map.containsKey(UTILPARAM_UTIL)) {
+			map.put(UTILPARAM_UTIL, this.getUtilParam(UTILPARAM_UTIL, "unknown"));
+		}
+
+		return super.getCloudConfigId(iDataEntityRuntimeContext, map, iEntityDTO);
+	}
+
+	protected String getBuildInCloudAccessTokenId(IDataEntityRuntimeContext iDataEntityRuntimeContext, Map<String, Object> map, IEntityDTO iEntityDTO) throws Exception {
+		if (!map.containsKey(PARAM_KEY)) {
+			IPSDEField toolTagPSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TAG, true);
+			if(toolTagPSDEField != null) {
+				Object toolTag = iEntityDTO.get(toolTagPSDEField.getLowerCaseName());
+				if(!ObjectUtils.isEmpty(toolTag)) {
+					String strToolTag = String.valueOf(toolTag);
+					map.put(PARAM_KEY, strToolTag);
+					map.put(AIAccess.FIELD_ACCESSTOKEN, strToolTag);
+				}
+			}
+		}
+
+		if(!map.containsKey(UTILPARAM_UTIL)) {
+			map.put(UTILPARAM_UTIL, this.getUtilParam(UTILPARAM_UTIL, "unknown"));
+		}
+		if(!map.containsKey(PARAM_SYSTEM)) {
+			map.put(PARAM_SYSTEM, this.getSystemRuntime().getDeploySystemId());
+		}
+		return ExpressionUtils.getValue(this.getDefaultCloudAccessTokenFormat(iDataEntityRuntimeContext), map).toLowerCase();
+	}
+
+	protected void onAfterCreate(IDataEntityRuntimeContext iDataEntityRuntimeContext, IPSDEAction iPSDEAction, IEntityDTO iEntityDTO) throws Throwable {
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
+		IPSDEField toolTypePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TYPE, true);
+		if(toolTypePSDEField != null) {
+			Object toolType = iEntityDTO.get(toolTypePSDEField.getLowerCaseName());
+			if(!ObjectUtils.isEmpty(toolType)) {
+				String strToolType = String.valueOf(toolType);
+				if (strToolType.equals(mcpBuiltInExtension)) {
+					if (this.bRawGet) {
+						IEntityDTO rawEntityDTO = ((IDataEntityRuntime) iDataEntityRuntimeContext.getDataEntityRuntime()).rawGet(iDataEntityRuntimeContext.getDataEntityRuntime().getKeyFieldValue(iEntityDTO));
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, rawEntityDTO);
+						String strConfig = this.getBuildInAccessTokenConfig(iDataEntityRuntimeContext, rawEntityDTO);
+						ServiceHub.getInstance().publishConfig(strConfigId, strConfig);
+					} else {
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, iEntityDTO);
+						String strConfig = this.getBuildInAccessTokenConfig(iDataEntityRuntimeContext, iEntityDTO);
+						ServiceHub.getInstance().publishConfig(strConfigId, strConfig);
+					}
+				}else if(!strToolType.startsWith(mcpPrefix)) {
+					return;
+				}
+			}
+		}
+
+
+		super.onAfterCreate(iDataEntityRuntimeContext, iPSDEAction, iEntityDTO);
+	}
+
+	protected void onAfterUpdate(IDataEntityRuntimeContext iDataEntityRuntimeContext, IPSDEAction iPSDEAction, IEntityDTO iEntityDTO) throws Throwable {
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
+		IPSDEField toolTypePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TYPE, true);
+		if(toolTypePSDEField != null) {
+			Object toolType = iEntityDTO.get(toolTypePSDEField.getLowerCaseName());
+			if (!ObjectUtils.isEmpty(toolType)) {
+				String strToolType = String.valueOf(toolType);
+				if (strToolType.equals(mcpBuiltInExtension)) {
+					if (this.bRawGet) {
+						IEntityDTO rawEntityDTO = ((IDataEntityRuntime) iDataEntityRuntimeContext.getDataEntityRuntime()).rawGet(iDataEntityRuntimeContext.getDataEntityRuntime().getKeyFieldValue(iEntityDTO));
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, rawEntityDTO);
+						String strConfig = this.getBuildInAccessTokenConfig(iDataEntityRuntimeContext, rawEntityDTO);
+						ServiceHub.getInstance().publishConfig(strConfigId, strConfig);
+					} else {
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, iEntityDTO);
+						String strConfig = this.getBuildInAccessTokenConfig(iDataEntityRuntimeContext, iEntityDTO);
+						ServiceHub.getInstance().publishConfig(strConfigId, strConfig);
+					}
+				}else if(!strToolType.startsWith(mcpPrefix)) {
+					return;
+				}
+			}
+		}
+		super.onAfterUpdate(iDataEntityRuntimeContext, iPSDEAction, iEntityDTO);
+	}
+
+	protected void onBeforeRemove(IDataEntityRuntimeContext iDataEntityRuntimeContext, IPSDEAction iPSDEAction, IEntityDTO iEntityDTO) throws Throwable {
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
+		IPSDEField toolTypePSDEField = iDataEntityRuntimeContext.getDataEntityRuntime().getPSDEFieldByTag(PREDEFINEDFIELD_TOOL_TYPE, true);
+		if(toolTypePSDEField != null) {
+			Object toolType = iEntityDTO.get(toolTypePSDEField.getLowerCaseName());
+			if (!ObjectUtils.isEmpty(toolType)) {
+				String strToolType = String.valueOf(toolType);
+				if (strToolType.equals(mcpBuiltInExtension)) {
+					//同步移除
+					if (this.bRawGet) {
+						IEntityDTO rawEntityDTO = ((IDataEntityRuntime) iDataEntityRuntimeContext.getDataEntityRuntime()).rawGet(iDataEntityRuntimeContext.getDataEntityRuntime().getKeyFieldValue(iEntityDTO));
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, rawEntityDTO);
+						ServiceHub.getInstance().removeConfig(strConfigId);
+					} else {
+						String strConfigId = this.getBuildInCloudAccessTokenId(iDataEntityRuntimeContext, map, iEntityDTO);
+						ServiceHub.getInstance().removeConfig(strConfigId);
+					}
+				}else if(!strToolType.startsWith(mcpPrefix)) {
+					return;
+				}
+			}
+		}
+		super.onBeforeRemove(iDataEntityRuntimeContext, iPSDEAction, iEntityDTO);
+	}
+	@Override
+	protected String getDefaultCloudConfigIdFormat(IDataEntityRuntimeContext iDataEntityRuntimeContext) throws Exception {
+		return "cloud-ai-mcp-{key}";
+	}
+	
+	protected String getDefaultCloudAccessTokenFormat(IDataEntityRuntimeContext iDataEntityRuntimeContext) throws Exception {
+		return "accesstoken-{system}-sysutil-extension_mcp_{key}--{accesstoken}";
+	}
+
+	protected String getBuiltInExtensionUrlFormat() throws Exception {
+		return builtInExtensionUrlFormat;
+	}
+}
+
 ```
 ### BoardCopyDEActionRuntime :id=BoardCopyDEActionRuntime
 看板拷贝增强插件
@@ -270,6 +771,202 @@ public class BoardCopyDEActionRuntime extends CopyDEActionRuntime {
 //            throw new Exception("TestCopy");
             return ret;
         }
+    }
+}
+```
+### CheckUpdateDEActionRuntime :id=CheckUpdateDEActionRuntime
+检查系统新版本
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.action.CheckUpdateDEActionRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.action
+
+import net.ibizsys.central.cloud.core.util.domain.V2DeploySystem
+import net.ibizsys.central.plugin.util.dataentity.action.DEActionRuntimeBase
+import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.model.IPSSystem
+import org.apache.commons.logging.LogFactory
+
+import java.time.Duration
+import java.time.Instant
+
+public class CheckUpdateDEActionRuntime extends DEActionRuntimeBase {
+
+    private static final org.apache.commons.logging.Log log = LogFactory.getLog(CheckUpdateDEActionRuntime.class);
+
+    public CheckUpdateDEActionRuntime() {
+
+    }
+
+
+    class VersionComparator {
+        static int compare(String version1, String version2) {
+            // 处理空值
+            if (version1 == null && version2 == null) return 0
+            if (version1 == null) return -1
+            if (version2 == null) return 1
+            if (version1 == version2) return 0
+
+            // 标准化版本
+            def (nums1, pre1) = parseVersion(version1)
+            def (nums2, pre2) = parseVersion(version2)
+
+            // 比较数字部分
+            for (int i = 0; i < 3; i++) {
+                if (nums1[i] != nums2[i]) {
+                    return nums1[i] > nums2[i] ? 1 : -1
+                }
+            }
+
+            // 比较预发布部分
+            return comparePreRelease(pre1, pre2)
+        }
+        static boolean hasNewVersion(String currentVersion, String latestVersion) {
+            return compare(latestVersion, currentVersion) > 0
+        }
+        private static def parseVersion(String version) {
+            // 去掉v前缀，转小写
+            String v = version.toLowerCase().replace('v', '')
+
+            // 分离预发布标识
+            def parts = v.split('-', 2)
+            String mainPart = parts[0]
+            String preRelease = parts.length > 1 ? parts[1] : null
+
+            // 分离数字部分
+            def numParts = mainPart.split('\\.')
+            int major = numParts.size() > 0 ? toInt(numParts[0]) : 0
+            int minor = numParts.size() > 1 ? toInt(numParts[1]) : 0
+            int patch = numParts.size() > 2 ? toInt(numParts[2]) : 0
+
+            return [[major, minor, patch], preRelease]
+        }
+        private static int comparePreRelease(String pre1, String pre2) {
+            // 都没有预发布标识 -> 相等
+            if (!pre1 && !pre2) return 0
+            // 有预发布标识的 < 没有预发布标识的
+            if (!pre1) return 1
+            if (!pre2) return -1
+
+            // 预发布标识优先级
+            def order = [
+                    'dev': 0,
+                    'snapshot': 1,
+                    'alpha': 2,
+                    'beta': 3,
+                    'rc': 4,
+                    'release': 4
+            ]
+
+            // 提取预发布类型和编号
+            def (type1, num1) = parsePreRelease(pre1)
+            def (type2, num2) = parsePreRelease(pre2)
+
+            // 获取类型优先级
+            int order1 = order[type1] ?: 0
+            int order2 = order[type2] ?: 0
+
+            // 比较类型优先级
+            if (order1 != order2) {
+                return order1 > order2 ? 1 : -1
+            }
+
+            // 类型相同，比较编号
+            int n1 = num1 ?: 0
+            int n2 = num2 ?: 0
+
+            return n1 <=> n2
+        }
+
+        private static def parsePreRelease(String preRelease) {
+            if (!preRelease) return [null, null]
+
+            // 匹配类型和数字
+            def matcher = preRelease =~ /([a-z]+)(?:\.?(\d+))?/
+            if (matcher.find()) {
+                String type = matcher.group(1)
+                Integer num = matcher.group(2) ? matcher.group(2).toInteger() : null
+                return [type, num]
+            }
+            return [preRelease, null]
+        }
+        private static int toInt(String str) {
+            try {
+                return str.toInteger()
+            } catch (e) {
+                // 尝试提取数字
+                def matcher = str =~ /(\d+)/
+                return matcher.find() ? matcher.group(1).toInteger() : 0
+            }
+        }
+
+    }
+
+    /**
+     * 使用Java 8 Time API计算天数差
+     */
+    static long getDaysDifferenceWithTimeAPI(long timestamp1, long timestamp2) {
+        Instant instant1 = Instant.ofEpochMilli(timestamp1)
+        Instant instant2 = Instant.ofEpochMilli(timestamp2)
+        return Duration.between(instant2, instant1).toHours()
+    }
+
+    private static IEntityDTO currentVersion;
+    private static int errorCount = 0;
+
+    @Override
+    protected Object onExecute(IEntityDTO entity) throws Throwable {
+        
+        boolean needcache = entity.getBoolean("needcache",false);
+
+        if(needcache && currentVersion!=null && getDaysDifferenceWithTimeAPI(System.currentTimeMillis(),currentVersion.getLong("check_time",System.currentTimeMillis()))<8)
+            return currentVersion;
+
+        IPSSystem psSystem = this.getSystemRuntime().getPSSystem();
+        entity.set("name", psSystem.getLogicName());
+        String current = psSystem.getDefaultPSSysSFPub().getVersionString();
+        entity.set("version", current);
+        entity.set("id", this.getSystemRuntime().getDeploySystemId());
+        entity.set("description", psSystem.getMemo());
+        entity.set("license", "MIT");
+        boolean checkForUpdates = this.getSystemRuntime().getSystemRuntimeSetting().getParam("check_for_updates",true);
+        entity.set("check_for_updates", checkForUpdates);
+        entity.set("check_time", System.currentTimeMillis());
+
+        String productId = sys.getDeploySystemId();
+        try {
+            V2DeploySystem v2DeploySystem = this.getSystemRuntime().getV2DeploySystem();
+            if(v2DeploySystem != null && v2DeploySystem.getProductId() != null)
+                productId = v2DeploySystem.getProductId();
+            String updateCheckUrl = sys.getSystemRuntimeSetting().getParam("update_check_url", "https://release.ibizlab.cn/versions/${productId}/latest.json");
+            updateCheckUrl = updateCheckUrl+"?current=${current}&t=${System.currentTimeMillis()}";
+            if (checkForUpdates) {
+                def response = sys.webclient().get(updateCheckUrl,null,null,null,HashMap.class,null);
+                if (response!=null && response.getStatusCode() == 200) {
+                    String latest = response.getBody().get("version");
+                    entity.set("latest_version",latest);
+                    entity.set("latest", response.getBody());
+                    boolean hasUpdate = VersionComparator.hasNewVersion(current, latest);
+                    entity.set("has_update",hasUpdate);
+
+                }
+            }
+            if (needcache)
+                currentVersion = entity;
+        }catch (Exception ex) {
+            errorCount ++;
+            if(errorCount>3 && needcache)
+                currentVersion = entity;
+        }
+
+
+        return entity;
+    }
+
+    static void main(String[] args) {
+        println "${CheckUpdateDEActionRuntime.getDaysDifferenceWithTimeAPI(System.currentTimeMillis(),System.currentTimeMillis()-8*60*60*1000)}"
+        println "${CheckUpdateDEActionRuntime.VersionComparator.hasNewVersion("V1.0-alpha","V1.0.1-alpha.20251223")}"
     }
 }
 ```
@@ -1339,6 +2036,14 @@ public class ProjectCopyDEActionRuntime extends CopyDEActionRuntime {
         }
     }
 }
+```
+### SysKnowledgeBaseUtilRuntime :id=SysKnowledgeBaseUtilRuntime
+知识库功能组件运行时
+
+```net.ibizsys.central.plugin.ai.sysutil.SysKnowledgeBaseUtilRuntime```
+
+```groovy
+null
 ```
 ### SysMcpServerUtilRuntime :id=SysMcpServerUtilRuntime
 

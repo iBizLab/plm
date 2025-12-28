@@ -14,9 +14,9 @@
 
 
 ### 关联界面行为
-  * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [编辑界面_保存并新建操作](module/ai/ai_kb_chunk#界面行为)
   * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [编辑界面_保存操作](module/ai/ai_kb_chunk#界面行为)
   * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [取消变更](module/ai/ai_kb_chunk#界面行为)
+  * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [编辑界面_保存并新建操作](module/ai/ai_kb_chunk#界面行为)
 
 ### 关联视图
   * [知识库文档(ai_kb_document_pickup_view)](app/view/ai_kb_document_pickup_view)

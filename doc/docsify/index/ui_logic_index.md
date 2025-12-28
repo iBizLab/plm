@@ -1,5 +1,6 @@
 # 界面逻辑 <!-- {docsify-ignore-all} -->
 
+
 ## [活动(ACTIVITY)](module/Base/activity.md) :id=activity
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -310,10 +311,12 @@
 |[查看客户统计信息](module/ProdMgmt/idea/uilogic/check_customer_info)|check_customer_info|按钮触发，通过脚本切换显示组件|
 |[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|check_ticket_info|按钮触发，通过脚本切换显示组件|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看版本](module/ProdMgmt/idea/uilogic/check_version)|check_version|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProdMgmt/idea/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
+|[组件显隐重置](module/ProdMgmt/idea/uilogic/reset)|reset||
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|
@@ -629,6 +632,7 @@
 
 
 
+
 ## [评审(REVIEW)](module/TestMgmt/review.md) :id=review
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -700,6 +704,7 @@
 |[刷新用例表格](module/TestMgmt/run/uilogic/refresh_run_grid)|refresh_run_grid|内置脚本，刷新用例表格|
 |[填充并刷新门户数据（测试）](module/TestMgmt/run/uilogic/fill_and_refresh_portlet)|fill_and_refresh_portlet|门户界面行为打开选项操作视图后，计算需要填充到视图上的数据|
 |[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
+|[执行人](module/TestMgmt/run/uilogic/setting_executors)|setting_executors|设置执行人|
 |[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
 |[通知刷新（移动端）](module/TestMgmt/run/uilogic/send_refresh)|send_refresh||
@@ -806,6 +811,13 @@
 
 
 
+## [通用模板(TEMPLATE)](module/Base/template.md) :id=template
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[通知刷新](module/Base/template/uilogic/notify_refresh)|notify_refresh||
+
+
 
 ## [用例(TEST_CASE)](module/TestMgmt/test_case.md) :id=test_case
 
@@ -820,10 +832,12 @@
 |[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[查看已规划基线](module/TestMgmt/test_case/uilogic/check_baseline_version)|check_baseline_version|按钮触发，通过脚本切换显示组件|
+|[查看版本](module/TestMgmt/test_case/uilogic/check_version)|check_version|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
+|[组件显隐重置](module/TestMgmt/test_case/uilogic/reset)|reset||
 |[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[选择用例模板](module/TestMgmt/test_case/uilogic/choose_case_template)|choose_case_template|选择用例模板后回填所选模板数据至表单|
@@ -917,6 +931,7 @@
 |[获取版本总条数](module/Base/version/uilogic/get_version_total)|get_version_total|获取版本的总条数信息|
 |[触发计数器刷新](module/Base/version/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[计算表格列行为状态（version）](module/Base/version/uilogic/calc_column_button_state)|calc_column_button_state|判断版本是否与当前版本一致，是否可恢复此版本|
+|[返回](module/Base/version/uilogic/back)|back|查看版本后，返回主表单按钮使用|
 
 
 
@@ -996,12 +1011,14 @@
 |[显示下拉并展开选项（嵌入视图）](module/ProjMgmt/work_item/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
 |[显示表单侧边栏](module/ProjMgmt/work_item/uilogic/show_form_sidebar)|show_form_sidebar|每次工作项主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看版本](module/ProjMgmt/work_item/uilogic/check_version)|check_version|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/ProjMgmt/work_item/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)|before_state_change_grid|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[用例关联工作项值变更](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[组件显隐重置](module/ProjMgmt/work_item/uilogic/reset)|reset||
 |[自定义确定](module/ProjMgmt/work_item/uilogic/custom_confirm)|custom_confirm||
 |[获取工作项工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)|mob_get_workload_schedule|获取工时信息，并计算工时进度（移动端）|

@@ -17,8 +17,8 @@
 
 
 ### 关联界面行为
-  * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [表格界面_新建操作](module/ai/ai_kb_chunk#界面行为)
   * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [表格界面_删除操作](module/ai/ai_kb_chunk#界面行为)
+  * [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk) : [表格界面_新建操作](module/ai/ai_kb_chunk#界面行为)
 
 ### 关联视图
   * [知识库文档分块(ai_kb_chunk_main_view)](app/view/ai_kb_chunk_main_view)

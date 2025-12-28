@@ -4,6 +4,7 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|会话标识|CONVERSATION_ID|外键值附加数据|100|是||
 |创建人|CREATE_MAN|文本，可指定长度|100|否||
 |创建时间|CREATE_TIME|日期时间型||否||
 |反馈内容|FEEDBACK_CONTENT|长文本，长度1000|2000|是||
@@ -76,6 +77,21 @@
 
 * `DELETE`
 * `UPDATE`
+* `READ`
+* `CREATE`
+
+
+
+##### 我的智能体反馈（读写） :id=ai_agent_feedback-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('user_id','=',#{srf.sessioncontext.srfpersonid})]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `DELETE`
 * `READ`
 * `CREATE`
 

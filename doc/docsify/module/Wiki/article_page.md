@@ -595,6 +595,7 @@
 | 另存为模板 | save_to_stencil | 另存为模板 |单项数据|<details><summary>后台调用</summary>[save_to_stencil](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |无数据|用户自定义||
+| 打印交谈资料_页面 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
 | 重命名 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 打开页面信息 | open_page_info | 打开页面信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面信息](app/view/article_page_page_detail_edit_view)</details>||
 | 查看空间成员 | open_space_member | 空间成员 |无数据|用户自定义||

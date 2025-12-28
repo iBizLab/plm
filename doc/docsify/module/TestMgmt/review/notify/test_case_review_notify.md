@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [测试用例评审通知模板](index/notify_index?id=tc_review_inform_template)
+* [评审通知模板(测试用例)](index/notify_index?id=tc_review_inform_template)
 
 <p class="panel-title"><b>通知类型</b></p>
 

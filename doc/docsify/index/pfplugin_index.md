@@ -1,14 +1,5 @@
 # 应用插件 <!-- {docsify-ignore-all} -->
 
-### AI参数编辑器 :id=AI_PARAMS
-
-
-插件标识：`AI_PARAMS`
-
-运行对象：`AI_PARAMS`
-
-远程仓库：`@ibiz-template-ai/prompt-template@0.1.8-alpha.357`
-
 ### BI报表面板 :id=BI_REPORT_PANEL
 
 
@@ -118,6 +109,15 @@
 运行对象：`MobPersonelSelect`
 
 远程仓库：`@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.102`
+
+### 信息标题 :id=DATA_INFO_TITLE
+
+
+插件标识：`DATA_INFO_TITLE`
+
+运行对象：`IBizDataInfoTitle`
+
+远程仓库：`@ibiz-template-plm/data-info-title@0.0.3-alpha.306`
 
 ### 修改密码 :id=CHANGE_PASSWORD
 
@@ -731,7 +731,7 @@
 
 运行对象：`REPEATER_FORM`
 
-远程仓库：`@ibiz-template-pamweb/repeater-form@0.1.8-y.4`
+远程仓库：`@ibiz-template-pamweb/repeater-form@0.1.8-alpha.384`
 
 ### 锚点富文本 :id=ANCHO_HTML
 

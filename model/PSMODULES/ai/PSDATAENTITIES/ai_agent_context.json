@@ -1526,6 +1526,68 @@
     "stringLength" : 500,
     "valueFormat" : "%1$s"
   }, {
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "MCP_SERVER_TAGS",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "mcp_server_tags",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "mcp服务标识集合",
+    "name" : "MCP_SERVER_TAGS",
+    "orderValue" : 440,
+    "serviceCodeName" : "mcp_server_tags",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ENABLE_SUGGESTED_QUESTIONS",
       "dBType" : "MYSQL5",
@@ -2799,11 +2861,15 @@
     } ],
     "codeName" : "enable_thinking",
     "dEFType" : 1,
-    "dataType" : "TRUEFALSE",
+    "dataType" : "YESNO",
     "importOrder" : 1000,
     "logicName" : "启用思考链",
     "name" : "ENABLE_THINKING",
     "orderValue" : 1000,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3668,6 +3734,17 @@
       "stringLength" : 500,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "mcp服务标识集合",
+      "name" : "mcp_server_tags",
+      "getPSDEField" : {
+        "name" : "MCP_SERVER_TAGS",
+        "codeName" : "mcp_server_tags"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "1",
       "logicName" : "有效",
       "name" : "active",
@@ -4118,9 +4195,23 @@
     "allData" : true,
     "systemReserved" : true
   }, {
+    "customCond" : "[('SYSTEM_FLAG','=',1)]",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEUSERROLES/SYSTEM_R.json",
+    "name" : "系统的（读）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "SYSTEM_R",
+    "userDRAction" : "READ"
+  }, {
     "customCond" : "[('CREATE_MAN','=',#{srf.sessioncontext.srfpersonid})]",
-    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEUSERROLES/CURDRAFTMAN_RW.json",
-    "name" : "我创建的（读写）",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEUSERROLES/USER_RW.json",
+    "name" : "我的智能体上下文（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
       "dataAccessAction" : "UPDATE",
       "name" : "UPDATE",
@@ -4150,22 +4241,9 @@
         "id" : "READ"
       }
     } ],
-    "roleTag" : "CURDRAFTMAN_RW",
-    "userDRAction" : "READ"
-  }, {
-    "customCond" : "[('SYSTEM_FLAG','=',1)]",
-    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEUSERROLES/SYSTEM_R.json",
-    "name" : "系统的（读）",
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    } ],
-    "roleTag" : "SYSTEM_R",
-    "userDRAction" : "READ"
+    "roleTag" : "USER_RW",
+    "userDRAction" : "READ",
+    "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "EditView",

@@ -65,7 +65,7 @@ false
   * [关联(relation_work_item_re_test_case_grid_view)](app/view/relation_work_item_re_test_case_grid_view)
   * [关联(relation_work_item_re_ticket_grid_view)](app/view/relation_work_item_re_ticket_grid_view)
   * [流转记录(transition_history_work_item_calendar_view)](app/view/transition_history_work_item_calendar_view)
-  * [版本(version_work_item_grid_view)](app/view/version_work_item_grid_view)
+  * [版本记录(version_work_item_list_view)](app/view/version_work_item_list_view)
   * [工作项(work_item_child_grid_view)](app/view/work_item_child_grid_view)
   * [工时(workload_list_view)](app/view/workload_list_view)
 

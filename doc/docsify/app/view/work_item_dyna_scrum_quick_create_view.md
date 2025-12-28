@@ -175,6 +175,7 @@ var total_estimated_workload = 0;
 if(executors != null && executors != undefined && executors.length > 0){
     // 默认取第一个执行人作为负责人
     var first_executor = executors[0];
+    first_executor.is_assignee = 1;
     if(first_executor.user_id != null){
         assignee_id.setDataValue(first_executor.user_id)
     }

@@ -53,8 +53,8 @@ if(button_calluilogic){
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [用例关联工作项值变更](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)

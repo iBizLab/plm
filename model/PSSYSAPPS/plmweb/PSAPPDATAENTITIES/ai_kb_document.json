@@ -350,6 +350,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_default",
     "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_unparsed",
+    "dataSetName" : "UNPARSED",
+    "dataSetTag" : "unparsed",
+    "methodType" : "FETCH",
+    "name" : "fetch_unparsed",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "unparsed"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_unparsed"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_unparsed",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -918,7 +956,7 @@
     "getAllPSAppDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST_100",
+        "editorType" : "DROPDOWNLIST",
         "name" : "默认",
         "uIMode" : "DEFAULT",
         "needCodeListConfig" : true
@@ -927,7 +965,7 @@
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "MOBSWITCH",
+        "editorType" : "MOBDROPDOWNLIST",
         "name" : "移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
@@ -940,6 +978,33 @@
     "logicName" : "自定义切片",
     "name" : "CUSTOM_CHUNK",
     "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTAREA_10",
+        "name" : "默认",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXTAREA",
+        "name" : "移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "parsed_content",
+    "logicName" : "解析内容",
+    "name" : "PARSED_CONTENT",
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1352,6 +1417,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "parsed_content",
+      "logicName" : "解析内容",
+      "name" : "parsed_content",
+      "getPSAppDEField" : {
+        "name" : "PARSED_CONTENT",
+        "codeName" : "parsed_content"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "active",
@@ -1870,6 +1946,44 @@
     "requestPath" : "/fetch_default",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_unparsed",
+    "dataSetName" : "UNPARSED",
+    "dataSetTag" : "unparsed",
+    "methodType" : "FETCH",
+    "name" : "fetch_unparsed",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "unparsed"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_unparsed"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_unparsed",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -1906,6 +2020,66 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "文档信息",
+    "codeName" : "open_base_info_view",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_kb_document_open_base_info_view",
+    "name" : "打开知识库文档信息视图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "sync_id",
+      "name" : "sync_id",
+      "value" : "sync_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf05a@FontAwesome",
+      "cssClass" : "fa fa-info-circle"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_base_info_view",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_base_info_view@ai_kb_document"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "文档切片与同步",
+    "codeName" : "open_chunk_view",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_chunk_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_kb_document_open_chunk_view",
+    "name" : "打开知识库文档切片与同步视图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "sync_id",
+      "name" : "sync_id",
+      "value" : "sync_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf085@FontAwesome",
+      "cssClass" : "fa fa-gears"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_chunk_view",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_chunk_view@ai_kb_document"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "同步设置",
     "codeName" : "open_doc_sync_grid_view",
@@ -1965,6 +2139,14 @@
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_tree_exp_view.json",
+    "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_chunk_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_nested_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
@@ -1979,6 +2161,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_pickup_view.json",
     "viewType" : "DEPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
+    "viewType" : "DEEDITVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",

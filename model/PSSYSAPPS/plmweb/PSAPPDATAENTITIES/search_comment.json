@@ -1847,7 +1847,39 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n内容：${utils.html2md(item.content!\"\")}\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE"
+  } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打印",
+    "codeName" : "chat_resource_print",
+    "frontProcessType" : "PRINT",
+    "fullCodeName" : "search_comment_chat_resource_print",
+    "name" : "打印交谈资料_评论搜索",
+    "getPSAppDEPrint" : {
+      "modelref" : true,
+      "id" : "chat_resource"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "chat_resource_print",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "chat_resource_print@search_comment"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "打开客户主视图",
     "codeName" : "open_customer_main_view",
@@ -2567,6 +2599,10 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_pickview.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,

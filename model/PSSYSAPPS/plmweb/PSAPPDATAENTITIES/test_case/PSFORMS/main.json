@@ -13095,9 +13095,17 @@
               "codeName" : "test_library_name"
             },
             "getPSEditor" : {
-              "editorType" : "SPAN",
+              "editorParams" : {
+                "LINKVIEW" : "TRUE"
+              },
+              "editorType" : "SPAN_LINK",
+              "getLinkPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
+                "viewType" : "DEREDIRECTVIEW"
+              },
               "name" : "test_library_name",
-              "enableLinkView" : false
+              "enableLinkView" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -15617,6 +15625,10 @@
                   "modelref" : true,
                   "id" : "toolbar_deuiaction1"
                 },
+                "getPSSysImage" : {
+                  "glyph" : "xf112@FontAwesome",
+                  "cssClass" : "fa fa-mail-reply"
+                },
                 "getPSUIAction" : {
                   "actionTarget" : "NONE",
                   "caption" : "返回",
@@ -15632,6 +15644,10 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_test_case.json"
                   },
+                  "getPSSysImage" : {
+                    "glyph" : "xf112@FontAwesome",
+                    "cssClass" : "fa fa-mail-reply"
+                  },
                   "scriptCode" : "history.back()",
                   "tooltip" : "返回",
                   "uIActionMode" : "FRONT",
@@ -15646,6 +15662,7 @@
                 "showCaption" : true,
                 "showIcon" : true
               } ],
+              "toolbarStyle" : "USER",
               "xDataControlName" : "list",
               "modelid" : "f660bbea33fa20bc965e23ee12104dc7",
               "modeltype" : "PSDETOOLBAR"
@@ -17583,7 +17600,7 @@
               }
             } ],
             "getPSControls" : [ {
-              "codeName" : "version_list",
+              "codeName" : "test_case_version_list",
               "controlType" : "LIST",
               "getCreatePSControlAction" : {
                 "modelref" : true,
@@ -17601,7 +17618,7 @@
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
                 }
               },
-              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version/PSLISTS/version_list.json",
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version/PSLISTS/test_case_version_list.json",
               "getFetchPSControlAction" : {
                 "modelref" : true,
                 "id" : "fetch",
@@ -17651,7 +17668,7 @@
                 "controlType" : "PANEL",
                 "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version/PSPANELS/usr1216560104.json",
                 "layoutMode" : "TABLE_24COL",
-                "logicName" : "version_list_列表项面板",
+                "logicName" : "test_case_version_list_列表项面板",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
@@ -17803,9 +17820,60 @@
                             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
                           },
                           "getPSUIActionGroupDetails" : [ {
+                            "caption" : "版本对比",
+                            "detailType" : "DEUIACTION",
+                            "name" : "ub736052",
+                            "getPSSysImage" : {
+                              "glyph" : "xf0ec@FontAwesome",
+                              "cssClass" : "fa fa-exchange"
+                            },
+                            "getPSUIAction" : {
+                              "actionTarget" : "SINGLEDATA",
+                              "caption" : "版本对比",
+                              "codeName" : "test_case_version_comparison",
+                              "getFrontPSAppView" : {
+                                "modelref" : true,
+                                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_version_comparison_view.json",
+                                "viewType" : "DEEDITVIEW"
+                              },
+                              "frontProcessType" : "WIZARD",
+                              "fullCodeName" : "version_test_case_version_comparison",
+                              "name" : "用例版本对比",
+                              "getPSAppDataEntity" : {
+                                "modelref" : true,
+                                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+                              },
+                              "getPSNavigateParams" : [ {
+                                "key" : "base_version",
+                                "name" : "base_version",
+                                "value" : "id",
+                                "rawValue" : false
+                              }, {
+                                "key" : "compare_version",
+                                "name" : "compare_version",
+                                "value" : "compare_version",
+                                "rawValue" : false
+                              } ],
+                              "getPSSysImage" : {
+                                "glyph" : "xf0ec@FontAwesome",
+                                "cssClass" : "fa fa-exchange"
+                              },
+                              "tooltip" : "版本对比",
+                              "uIActionMode" : "FRONT",
+                              "uIActionTag" : "test_case_version_comparison",
+                              "uIActionType" : "DEUIACTION",
+                              "globalUIAction" : true,
+                              "id" : "test_case_version_comparison@version"
+                            },
+                            "tooltip" : "版本对比",
+                            "visibleScriptCode" : "context.srfreadonly != true",
+                            "addSeparator" : true,
+                            "showCaption" : true,
+                            "showIcon" : true
+                          }, {
                             "caption" : "编辑版本",
                             "detailType" : "DEUIACTION",
-                            "name" : "ub4c4164",
+                            "name" : "u7270abe",
                             "getPSSysImage" : {
                               "glyph" : "xf044@FontAwesome",
                               "cssClass" : "fa fa-edit"
@@ -17850,7 +17918,8 @@
                           }, {
                             "caption" : "恢复版本",
                             "detailType" : "DEUIACTION",
-                            "name" : "ua787862",
+                            "enableScriptCode" : "data.id != context.compare_version",
+                            "name" : "uaec7820",
                             "getPSSysImage" : {
                               "glyph" : "xf021@FontAwesome",
                               "cssClass" : "fa fa-refresh"
@@ -17899,57 +17968,6 @@
                             "addSeparator" : false,
                             "showCaption" : true,
                             "showIcon" : true
-                          }, {
-                            "caption" : "版本对比",
-                            "detailType" : "DEUIACTION",
-                            "name" : "ub49cd57",
-                            "getPSSysImage" : {
-                              "glyph" : "xf0ec@FontAwesome",
-                              "cssClass" : "fa fa-exchange"
-                            },
-                            "getPSUIAction" : {
-                              "actionTarget" : "SINGLEDATA",
-                              "caption" : "版本对比",
-                              "codeName" : "test_case_version_comparison",
-                              "getFrontPSAppView" : {
-                                "modelref" : true,
-                                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_version_comparison_view.json",
-                                "viewType" : "DEEDITVIEW"
-                              },
-                              "frontProcessType" : "WIZARD",
-                              "fullCodeName" : "version_test_case_version_comparison",
-                              "name" : "用例版本对比",
-                              "getPSAppDataEntity" : {
-                                "modelref" : true,
-                                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-                              },
-                              "getPSNavigateParams" : [ {
-                                "key" : "base_version",
-                                "name" : "base_version",
-                                "value" : "id",
-                                "rawValue" : false
-                              }, {
-                                "key" : "compare_version",
-                                "name" : "compare_version",
-                                "value" : "compare_version",
-                                "rawValue" : false
-                              } ],
-                              "getPSSysImage" : {
-                                "glyph" : "xf0ec@FontAwesome",
-                                "cssClass" : "fa fa-exchange"
-                              },
-                              "tooltip" : "版本对比",
-                              "uIActionMode" : "FRONT",
-                              "uIActionTag" : "test_case_version_comparison",
-                              "uIActionType" : "DEUIACTION",
-                              "globalUIAction" : true,
-                              "id" : "test_case_version_comparison@version"
-                            },
-                            "tooltip" : "版本对比",
-                            "visibleScriptCode" : "context.srfreadonly != true",
-                            "addSeparator" : false,
-                            "showCaption" : true,
-                            "showIcon" : true
                           } ],
                           "uniqueTag" : "version__test_case_operate"
                         }
@@ -17978,7 +17996,7 @@
                 "modelid" : "9E084BB0-6BD7-43F9-9356-E4014B22C14A",
                 "modeltype" : "PSSYSVIEWPANEL"
               },
-              "logicName" : "version_list",
+              "logicName" : "test_case_version_list",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
@@ -18139,6 +18157,10 @@
                   "modelref" : true,
                   "id" : "toolbar_deuiaction1"
                 },
+                "getPSSysImage" : {
+                  "glyph" : "xf112@FontAwesome",
+                  "cssClass" : "fa fa-mail-reply"
+                },
                 "getPSUIAction" : {
                   "actionTarget" : "NONE",
                   "caption" : "返回",
@@ -18154,6 +18176,10 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
                   },
+                  "getPSSysImage" : {
+                    "glyph" : "xf112@FontAwesome",
+                    "cssClass" : "fa fa-mail-reply"
+                  },
                   "scriptCode" : "history.back()",
                   "tooltip" : "返回",
                   "uIActionMode" : "FRONT",
@@ -18168,6 +18194,7 @@
                 "showCaption" : true,
                 "showIcon" : true
               } ],
+              "toolbarStyle" : "USER",
               "xDataControlName" : "list",
               "modelid" : "a182b9128d4c785210f0b4a74e64e902",
               "modeltype" : "PSDETOOLBAR"

@@ -584,12 +584,67 @@ LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID`
 
 ```
 
+#### 有效会话(active) :id=ai_agent_conversation-active
+```sql
+SELECT
+t1.`AI_AGENT_CONTEXT_ID`,
+t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
+t11.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_TOP`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`SESSION_ID`,
+t1.`STATUS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_CONVERSATION` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
+
+WHERE ( ( t1.`STATUS` = 'active'  OR  t1.`STATUS` = 'paused' ) )
+```
+
+#### 当前用户会话(cur_user_active) :id=ai_agent_conversation-cur_user_active
+```sql
+SELECT
+t1.`AI_AGENT_CONTEXT_ID`,
+t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
+t11.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_TOP`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`SESSION_ID`,
+t1.`STATUS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_AGENT_CONVERSATION` t1 
+LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
+
+WHERE ( ( t1.`STATUS` = 'active'  OR  t1.`STATUS` = 'paused' )  AND  t1.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`TYPE` = 'topic' )
+```
+
 
 ## [智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback.md) :id=ai_agent_feedback
 
 #### DEFAULT :id=ai_agent_feedback-Default
 ```sql
 SELECT
+t1.`CONVERSATION_ID`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`FEEDBACK_CONTENT`,
@@ -607,6 +662,7 @@ FROM `AI_AGENT_FEEDBACK` t1
 #### 默认（全部数据）(VIEW) :id=ai_agent_feedback-View
 ```sql
 SELECT
+t1.`CONVERSATION_ID`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`FEEDBACK_CONTENT`,
@@ -668,6 +724,7 @@ LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID`
 #### DEFAULT :id=ai_agent_message-Default
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CONTENT_TYPE`,
 t1.`CONVERSATION_ID`,
 t11.`NAME` AS `CONVERSATION_NAME`,
@@ -677,12 +734,15 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 (select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='dislike') AS `IS_DISLIKE`,
 (select count(1) from ai_agent_feedback t where t.user_id=#{ctx.sessioncontext.srfuserid} and t.message_id=t1.`ID` and t.feedback_type='like') AS `IS_LIKE`,
+t1.`METADATA`,
 t1.`NAME`,
 t1.`SENDER_TYPE`,
 t1.`SEQUENCE`,
+t11.`SESSION_ID`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t11.`USER_ID`
 FROM `AI_AGENT_MESSAGE` t1 
 LEFT JOIN `AI_AGENT_CONVERSATION` t11 ON t1.`CONVERSATION_ID` = t11.`ID` 
 
@@ -705,9 +765,11 @@ t1.`METADATA`,
 t1.`NAME`,
 t1.`SENDER_TYPE`,
 t1.`SEQUENCE`,
+t11.`SESSION_ID`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t11.`USER_ID`
 FROM `AI_AGENT_MESSAGE` t1 
 LEFT JOIN `AI_AGENT_CONVERSATION` t11 ON t1.`CONVERSATION_ID` = t11.`ID` 
 
@@ -902,6 +964,7 @@ t1.`KB_ID`,
 t11.`NAME` AS `KB_NAME`,
 t1.`META_DATA`,
 t1.`NAME`,
+t1.`PARSED_CONTENT`,
 t1.`PARSER_CONFIG`,
 t1.`SIZE`,
 t1.`SOURCE_ID`,
@@ -1094,6 +1157,7 @@ LEFT JOIN `AI_CREDENTIAL` t11 ON t1.`AI_CREDENTIAL_ID` = t11.`ID`
 #### DEFAULT :id=ai_tool-Default
 ```sql
 SELECT
+t1.`ACTIVE`,
 t1.`API_AUTH_TYPE`,
 t1.`API_HEADERS`,
 t1.`API_KEY`,
@@ -1102,6 +1166,7 @@ t1.`API_URL`,
 t1.`CLIENT_ID`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`EXPIRATION_DATE`,
 t1.`ID`,
 t1.`NAME`,
 t1.`TIMEOUT`,
@@ -1118,6 +1183,7 @@ FROM `AI_TOOL` t1
 ```sql
 SELECT
 t1.`ACCESS_KEY`,
+t1.`ACTIVE`,
 t1.`API_AUTH_TYPE`,
 t1.`API_HEADERS`,
 t1.`API_KEY`,
@@ -1128,6 +1194,7 @@ t1.`CLIENT_ID`,
 t1.`CLIENT_SECRET`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`EXPIRATION_DATE`,
 t1.`ID`,
 t1.`INPUT_SCHEMA`,
 t1.`NAME`,
@@ -3641,6 +3708,29 @@ t1.`UPDATE_TIME`,
 t1.`VAL`
 FROM `DICTIONARY` t1 
 
+```
+
+#### 知识库文档导入方式(ai_kb_doc_import_method) :id=dictionary_data-ai_kb_doc_import_method
+```sql
+SELECT
+t1.`CATALOG`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STYLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VAL`
+FROM `DICTIONARY` t1 
+
+WHERE ( t1.`TYPE` = 'ai_kb_doc_import_method' )
 ```
 
 #### 需求(idea) :id=dictionary_data-idea
@@ -12759,6 +12849,41 @@ WHERE EXISTS(SELECT * FROM `RELATION` t21
 ```
 
 
+## [生产资源(RESOURCE)](module/ProdMgmt_MFG/resource.md) :id=resource
+
+#### DEFAULT :id=resource-Default
+```sql
+SELECT
+t1.`CATEGORY`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`RESOURCE_NO`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RESOURCE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=resource-View
+```sql
+SELECT
+t1.`CATEGORY`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`RESOURCE_NO`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RESOURCE` t1 
+
+```
+
+
 ## [评审(REVIEW)](module/TestMgmt/review.md) :id=review
 
 #### 数据查询(DEFAULT) :id=review-Default
@@ -13097,6 +13222,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13147,6 +13273,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13199,6 +13326,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13253,6 +13381,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13357,6 +13486,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13407,6 +13537,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13457,6 +13588,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13507,6 +13639,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13558,6 +13691,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13609,6 +13743,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13660,6 +13795,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13710,6 +13846,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -13761,6 +13898,7 @@ t51.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
 t51.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
+t1.`MULTIPLE_PEOPLE`,
 t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
@@ -15768,6 +15906,48 @@ FROM `SWIMLANE` t1
 ```
 
 
+## [通用模板(TEMPLATE)](module/Base/template.md) :id=template
+
+#### DEFAULT :id=template-Default
+```sql
+SELECT
+t1.`BROAD_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`SCOPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `TEMPLATE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=template-View
+```sql
+SELECT
+t1.`BROAD_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`SCOPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `TEMPLATE` t1 
+
+```
+
+
 ## [用例(TEST_CASE)](module/TestMgmt/test_case.md) :id=test_case
 
 #### 数据查询(DEFAULT) :id=test_case-Default
@@ -17746,7 +17926,7 @@ LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID`
 
 WHERE EXISTS(SELECT * FROM `RUN` t51 
  WHERE 
- t1.`ID` = t51.`PLAN_ID`  AND  ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t21.`IS_DELETED` = 0 )
+ t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
 ```
 
 #### 未开始和进行中的计划(pending_and_in_progress) :id=test_plan-pending_and_in_progress

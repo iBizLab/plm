@@ -38,7 +38,7 @@
 
 <tr>
 
-<td rowspan="46">统一资源</td>
+<td rowspan="49">统一资源</td>
 
 <td>PLM社区插件</td>
 <td align="center">
@@ -353,6 +353,45 @@
 
 </td>
 <td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>基础数据</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 
@@ -1150,6 +1189,45 @@
 </tr>
 <tr>
 
+<td>流程设计</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
 <td>测试管理</td>
 <td align="center">
 
@@ -1508,6 +1586,47 @@
 </td>
 <td align="center">
 <i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+<tr>
+
+<td>资源管理</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
 
 </td>
 
@@ -1873,6 +1992,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="2"><a href ="#/module/Base/activity">活动(ACTIVITY)</a></td>
@@ -2122,7 +2242,7 @@
 </tr>
   <tr>
 
-<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-curdraftman_rw">我创建的（读写）</a></td>
+<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-system_r">系统的（读）</a></td>
 <td align="center">
 
 </td>
@@ -2161,7 +2281,7 @@
 </tr>
   <tr>
 
-<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-system_r">系统的（读）</a></td>
+<td><a href ="#/module/ai/ai_agent_assignment#ai_agent_assignment-user_rw">我的智能体分配（读写）</a></td>
 <td align="center">
 
 </td>
@@ -2319,45 +2439,6 @@
 </tr>
   <tr>
 
-<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-curdraftman_rw">我创建的（读写）</a></td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-<i class="fa fa-check"></i>
-
-</td>
-
-</tr>
-  <tr>
-
 <td><a href ="#/module/ai/ai_agent_context#ai_agent_context-system_r">系统的（读）</a></td>
 <td align="center">
 
@@ -2395,10 +2476,49 @@
 </td>
 
 </tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_context#ai_agent_context-user_rw">我的智能体上下文（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
 
   <tr>
 
-<td rowspan="2"><a href ="#/module/ai/ai_agent_conversation">智能体会话(AI_AGENT_CONVERSATION)</a></td>
+<td rowspan="3"><a href ="#/module/ai/ai_agent_conversation">智能体会话(AI_AGENT_CONVERSATION)</a></td>
 
 <td><a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-all_r">全部数据（读）</a></td>
 <td align="center">
@@ -2432,7 +2552,6 @@
 
 </td>
 <td align="center">
-<i class="fa fa-check"></i>
 
 </td>
 
@@ -2476,10 +2595,49 @@
 </td>
 
 </tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-user_rw">我的智能体会话（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
 
   <tr>
 
-<td rowspan="2"><a href ="#/module/ai/ai_agent_feedback">智能体回复反馈(AI_AGENT_FEEDBACK)</a></td>
+<td rowspan="3"><a href ="#/module/ai/ai_agent_feedback">智能体回复反馈(AI_AGENT_FEEDBACK)</a></td>
 
 <td><a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-all_r">全部数据（读）</a></td>
 <td align="center">
@@ -2513,7 +2671,6 @@
 
 </td>
 <td align="center">
-<i class="fa fa-check"></i>
 
 </td>
 
@@ -2557,13 +2714,9 @@
 </td>
 
 </tr>
-
-
   <tr>
 
-<td rowspan="2"><a href ="#/module/ai/ai_agent_message">智能体会话消息(AI_AGENT_MESSAGE)</a></td>
-
-<td><a href ="#/module/ai/ai_agent_message#ai_agent_message-all_r">全部数据（读）</a></td>
+<td><a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-user_rw">我的智能体反馈（读写）</a></td>
 <td align="center">
 
 </td>
@@ -2600,45 +2753,8 @@
 </td>
 
 </tr>
-  <tr>
 
-<td><a href ="#/module/ai/ai_agent_message#ai_agent_message-all_rw">全部数据（读写）</a></td>
-<td align="center">
 
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-<i class="fa fa-check"></i>
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-
-</tr>
 
 
 
@@ -7106,6 +7222,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="1"><a href ="#/module/Base/role">角色(ROLE)</a></td>
@@ -8284,6 +8401,7 @@
 </td>
 
 </tr>
+
 
 
 

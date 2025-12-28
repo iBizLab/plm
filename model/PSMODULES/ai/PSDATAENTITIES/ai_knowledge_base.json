@@ -241,9 +241,16 @@
     },
     "tableType" : "MAIN"
   } ],
+  "getAllPSDEDRGroups" : [ {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDRGROUPS/index_view.json"
+  } ],
   "getAllPSDEDRItems" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDRITEMS/DRItem.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDRITEMS/DRItem2.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -311,10 +318,46 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/valid/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "valid",
+    "logicName" : "启用知识库",
+    "name" : "VALID",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATARELATIONS/Default.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATARELATIONS/index_view_relation.json"
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
@@ -341,6 +384,33 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "valid",
+    "logicName" : "启用数据集",
+    "name" : "VALID",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "valid"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1755,6 +1825,12 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "chunk_view",
+    "logicName" : "知识库实体切片策略视图",
+    "name" : "知识库实体切片策略视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupView",
     "logicName" : "知识库实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -1783,6 +1859,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "index_view",
+    "logicName" : "知识库实体首页视图",
+    "name" : "知识库实体首页视图",
+    "realModelSubType" : "DEINDEXVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "MPickupView",
     "logicName" : "知识库实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -1790,9 +1872,21 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "chunking_strategy_edit_view",
-    "logicName" : "知识库实体切片策略编辑视图",
-    "name" : "知识库实体切片策略编辑视图",
+    "codeName" : "base_info_view",
+    "logicName" : "知识库实体信息视图",
+    "name" : "知识库实体信息视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "tree_exp_view",
+    "logicName" : "知识库导航视图",
+    "name" : "知识库导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "chunking_view_readonly",
+    "logicName" : "知识库实体切片策略视图（只读）",
+    "name" : "知识库实体切片策略视图（只读）",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -1828,10 +1922,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "chunking_strategy",
+    "codeName" : "index_view_Form",
+    "logicName" : "知识库首页视图_表单",
+    "modelTag2" : "0",
+    "name" : "知识库首页视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "base_info",
+    "logicName" : "信息表单",
+    "modelTag2" : "0",
+    "name" : "信息表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "chunk",
     "logicName" : "切片策略表单",
     "modelTag2" : "0",
     "name" : "切片策略表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "chunking_strategy",
+    "logicName" : "切片策略表单(只读)",
+    "modelTag2" : "0",
+    "name" : "切片策略表单(只读)",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

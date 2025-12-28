@@ -4649,9 +4649,9 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "激活",
     "codeName" : "activate",
-    "confirmMsg" : "是否确认激活该话题？",
+    "confirmMsg" : "确认激活该话题？",
     "fullCodeName" : "discuss_topic_activate",
-    "name" : "已归档_激活",
+    "name" : "激活",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "activate"
@@ -4711,9 +4711,9 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "归档",
     "codeName" : "archive",
-    "confirmMsg" : "是否确认将该话题归档？",
+    "confirmMsg" : "确认归档该话题？",
     "fullCodeName" : "discuss_topic_archive",
-    "name" : "进行中_归档",
+    "name" : "归档",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "archive"
@@ -4760,37 +4760,6 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "archived@discuss_topic"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "删除",
-    "codeName" : "archived_delete",
-    "confirmMsg" : "确认删除该项目？",
-    "fullCodeName" : "discuss_topic_archived_delete",
-    "name" : "已归档_删除",
-    "getNextPSUIAction" : {
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
-      },
-      "modelref" : true,
-      "id" : "open_topic_exp_page@discuss_topic"
-    },
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "delete"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
-    },
-    "successMsg" : "成功删除",
-    "timeout" : 60000,
-    "tooltip" : "删除",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "archived_delete",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "id" : "archived_delete@discuss_topic"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "取消星标",
@@ -4863,11 +4832,40 @@
     "id" : "create_discuss_topic@discuss_topic"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "删除话题",
+    "caption" : "删除",
     "codeName" : "delete",
     "confirmMsg" : "确认删除该话题？",
     "fullCodeName" : "discuss_topic_delete",
-    "name" : "删除话题",
+    "name" : "删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "成功删除",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "delete",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "delete@discuss_topic"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除话题",
+    "codeName" : "delete_to_home",
+    "confirmMsg" : "确认删除该话题？",
+    "fullCodeName" : "discuss_topic_delete_to_home",
+    "name" : "删除并至主页",
     "getNextPSUIAction" : {
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -4888,40 +4886,11 @@
     "successMsg" : "删除成功",
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
-    "uIActionTag" : "delete",
+    "uIActionTag" : "delete_to_home",
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
     "reloadData" : true,
-    "id" : "delete@discuss_topic"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "删除",
-    "codeName" : "in_progress_into_deleted",
-    "confirmMsg" : "确认删除该话题？",
-    "fullCodeName" : "discuss_topic_in_progress_into_deleted",
-    "name" : "进行中_删除",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "delete"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
-    },
-    "getPSSysImage" : {
-      "glyph" : "xf014@FontAwesome",
-      "cssClass" : "fa fa-trash-o"
-    },
-    "refreshMode" : 1,
-    "successMsg" : "删除成功",
-    "timeout" : 60000,
-    "tooltip" : "删除",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "in_progress_into_deleted",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "reloadData" : true,
-    "id" : "in_progress_into_deleted@discuss_topic"
+    "id" : "delete_to_home@discuss_topic"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "移动话题",
@@ -5197,7 +5166,7 @@
     "codeName" : "recover",
     "confirmMsg" : "确认恢复该话题？",
     "fullCodeName" : "discuss_topic_recover",
-    "name" : "已删除_恢复",
+    "name" : "恢复",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "recover"
@@ -5855,7 +5824,7 @@
     "uniqueTag" : "discuss_topic__Usr0517788260",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "ua781527",
+      "name" : "ucb075fd",
       "getPSSysImage" : {
         "glyph" : "xf185@FontAwesome",
         "cssClass" : "fa fa-sun-o"
@@ -5874,7 +5843,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u4149342",
+      "name" : "uaf13673",
       "getPSSysImage" : {
         "glyph" : "xf1c6@FontAwesome",
         "cssClass" : "fa fa-file-archive-o"
@@ -5893,7 +5862,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u96a076b",
+      "name" : "u119a0e7",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -5908,7 +5877,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
         },
         "modelref" : true,
-        "id" : "in_progress_into_deleted@discuss_topic"
+        "id" : "delete@discuss_topic"
       }
     } ]
   }, {
@@ -5922,7 +5891,7 @@
     "uniqueTag" : "discuss_topic__Usr0517838049",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u3e75e85",
+      "name" : "u5b3591f",
       "getPSSysImage" : {
         "glyph" : "xf0eb@FontAwesome",
         "cssClass" : "fa fa-lightbulb-o"
@@ -5941,7 +5910,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u41f95a1",
+      "name" : "uc9e8583",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -5956,7 +5925,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
         },
         "modelref" : true,
-        "id" : "archived_delete@discuss_topic"
+        "id" : "delete@discuss_topic"
       }
     } ]
   } ]

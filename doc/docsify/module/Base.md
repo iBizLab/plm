@@ -58,6 +58,7 @@
 |[分组(SECTION)](module/Base/section)|section|主实体|SQL|SECTION|否|否|自控制|否|用于结构化管理需求、工单等。|
 |[序列(SEQUENCE_GENERATOR)](module/Base/sequence_generator)|sequence_generator|主实体|SQL|SEQUENCE_GENERATOR|否|否|自控制|否|生成并存储唯一的序列号。|
 |[企业(TEAM)](module/Base/team)|team|主实体|无存储||否|否|自控制|否|记录企业组织结构。|
+|[通用模板(TEMPLATE)](module/Base/template)|template|主实体|SQL|TEMPLATE|否|否|自控制|否||
 |[规则模板(TEMPLATE_FLOW)](module/Base/template_flow)|template_flow|主实体|无存储||否|否|自控制|否|用于承载规则模板实体|
 |[企业用户(USER)](module/Base/user)|user|主实体|无存储||否|否|自控制|否|记录使用PLM系统的用户信息。（无存储，通过外部服务获取用户数据）|
 |[版本(VERSION)](module/Base/version)|version|主实体|SQL|VERSION|否|否|附属主实体控制（未映射自控）|否|用于管理和记录软件的版本历史和变更。|

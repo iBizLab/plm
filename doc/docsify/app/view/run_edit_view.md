@@ -9,6 +9,35 @@
 
 ##### 部件逻辑
 * `onLoadSuccess` : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
+* `onChange`
+```
+console.log('值变更事件');
+console.log(view);
+var executor_id = ctrl.details.executor_id;
+var executor_name = ctrl.details.executor_name;
+var executors = ctrl.details.executors.value;
+if(executors != null && executors != undefined && executors.length > 0){
+    // 默认取第一个执行人作为主执行人
+    var first_executor = executors[0];
+    first_executor.is_assignee = 1;
+    if(first_executor.user_id != null){
+        executor_id.setDataValue(first_executor.user_id)
+    }
+    if(first_executor.user_name != null){
+        executor_name.setDataValue(first_executor.user_name)
+    }
+    for (var i = 0; i < executors.length; i++) {
+        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {
+            // 根据重复器中的是否主执行人按钮，进行设置。只会有一个
+            executor_id.setDataValue(executors[i].user_id)
+            executor_name.setDataValue(executors[i].user_name)
+        }
+    }
+} else {
+    executor_id.setDataValue(null)
+    executor_name.setDataValue(null)
+}
+```
 * `null` : [打开关联用例](module/TestMgmt/run/uilogic/open_re_run)
 
 

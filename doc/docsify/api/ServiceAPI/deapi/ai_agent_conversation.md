@@ -26,7 +26,7 @@
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
 |<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
-|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
@@ -179,7 +179,7 @@
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
 |<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
-|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
@@ -261,7 +261,203 @@
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
 |<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
-|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "ai_agent_name" : null,
+  "type" : null,
+  "is_top" : null,
+  "ai_agent_context_id" : null,
+  "ai_agent_context_name" : null,
+  "ai_agent_id" : null,
+  "sequence" : null,
+  "session_id" : null,
+  "status" : null,
+  "title" : null,
+  "user_id" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+Integer
+```
+
+## 除指定外清空会话
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_agent_conversations/clear_all_except" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`CREATE`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话类型|
+|<el-row justify="space-between"><el-col :span="20">is_top</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|置顶|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
+|<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "ai_agent_name" : null,
+  "type" : null,
+  "is_top" : null,
+  "ai_agent_context_id" : null,
+  "ai_agent_context_name" : null,
+  "ai_agent_id" : null,
+  "sequence" : null,
+  "session_id" : null,
+  "status" : null,
+  "title" : null,
+  "user_id" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+Integer
+```
+
+## 清空消息
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_agent_conversations/{key}/clear_message" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话类型|
+|<el-row justify="space-between"><el-col :span="20">is_top</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|置顶|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
+|<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "ai_agent_name" : null,
+  "type" : null,
+  "is_top" : null,
+  "ai_agent_context_id" : null,
+  "ai_agent_context_name" : null,
+  "ai_agent_id" : null,
+  "sequence" : null,
+  "session_id" : null,
+  "status" : null,
+  "title" : null,
+  "user_id" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+Integer
+```
+
+## 删除
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_agent_conversations/{key}/delete" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话类型|
+|<el-row justify="space-between"><el-col :span="20">is_top</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|置顶|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_context_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
+|<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
@@ -323,7 +519,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
 |<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
-|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
@@ -405,7 +601,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">ai_agent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|序号|
 |<el-row justify="space-between"><el-col :span="20">session_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
-|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|会话状态|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话状态|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|会话标题|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 
@@ -460,6 +656,144 @@ Integer
 
 ```
 
+## 有效会话
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_agent_conversations/fetch_active" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_session_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_ai_agent_context_id_eq" : null,
+  "n_ai_agent_context_name_eq" : null,
+  "n_ai_agent_context_name_like" : null,
+  "n_ai_agent_id_eq" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_session_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "id" : null,
+    "name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "update_man" : null,
+    "update_time" : null,
+    "ai_agent_name" : null,
+    "type" : null,
+    "is_top" : null,
+    "ai_agent_context_id" : null,
+    "ai_agent_context_name" : null,
+    "ai_agent_id" : null,
+    "sequence" : null,
+    "session_id" : null,
+    "status" : null,
+    "title" : null,
+    "user_id" : null,
+  }
+]
+```
+
+## 当前用户会话
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_agent_conversations/fetch_cur_user_active" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_session_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_ai_agent_context_id_eq" : null,
+  "n_ai_agent_context_name_eq" : null,
+  "n_ai_agent_context_name_like" : null,
+  "n_ai_agent_id_eq" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_session_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "id" : null,
+    "name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "update_man" : null,
+    "update_time" : null,
+    "ai_agent_name" : null,
+    "type" : null,
+    "is_top" : null,
+    "ai_agent_context_id" : null,
+    "ai_agent_context_name" : null,
+    "ai_agent_id" : null,
+    "sequence" : null,
+    "session_id" : null,
+    "status" : null,
+    "title" : null,
+    "user_id" : null,
+  }
+]
+```
+
 ## DEFAULT
 
 <el-row>
@@ -478,8 +812,12 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文标识|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_context_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体业务上下文名称|
+|<el-row justify="space-between"><el-col :span="20">n_ai_agent_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_session_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|外部会话ID|
 
 
 
@@ -490,8 +828,12 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_ai_agent_context_id_eq" : null,
+  "n_ai_agent_context_name_eq" : null,
+  "n_ai_agent_context_name_like" : null,
+  "n_ai_agent_id_eq" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_session_id_eq" : null,
 }
 ```
 

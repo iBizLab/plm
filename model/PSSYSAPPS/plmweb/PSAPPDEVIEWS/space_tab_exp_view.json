@@ -427,6 +427,11 @@
             },
             "groupMode" : "NONE",
             "logicName" : "进行中",
+            "minorSortDir" : "DESC",
+            "getMinorSortPSAppDEField" : {
+              "name" : "CREATE_TIME",
+              "codeName" : "create_time"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
@@ -599,7 +604,7 @@
                 },
                 "getPSUIActionGroupDetails" : [ {
                   "detailType" : "DEUIACTION",
-                  "name" : "uec69677",
+                  "name" : "ua2b8637",
                   "getPSSysImage" : {
                     "glyph" : "xf185@FontAwesome",
                     "cssClass" : "fa fa-sun-o"
@@ -649,7 +654,7 @@
                   "showIcon" : true
                 }, {
                   "detailType" : "DEUIACTION",
-                  "name" : "u02d03bd",
+                  "name" : "ub198852",
                   "getPSSysImage" : {
                     "glyph" : "xf1c6@FontAwesome",
                     "cssClass" : "fa fa-file-archive-o"
@@ -661,7 +666,7 @@
                     "confirmMsg" : "确认归档该空间？",
                     "frontProcessType" : "WIZARD",
                     "fullCodeName" : "space_in_progress_into_archived",
-                    "name" : "进行中_归档",
+                    "name" : "归档",
                     "getPSAppDEMethod" : {
                       "modelref" : true,
                       "id" : "archive"
@@ -687,7 +692,7 @@
                   "showIcon" : true
                 }, {
                   "detailType" : "DEUIACTION",
-                  "name" : "u24dc415",
+                  "name" : "ufef7e74",
                   "getPSSysImage" : {
                     "glyph" : "xf014@FontAwesome",
                     "cssClass" : "fa fa-trash-o"
@@ -695,19 +700,10 @@
                   "getPSUIAction" : {
                     "actionTarget" : "SINGLEKEY",
                     "caption" : "删除",
-                    "codeName" : "in_progress_into_deleted",
+                    "codeName" : "delete",
                     "confirmMsg" : "确认删除该空间？",
-                    "frontProcessType" : "WIZARD",
-                    "fullCodeName" : "space_in_progress_into_deleted",
-                    "name" : "进行中_删除",
-                    "getNextPSUIAction" : {
-                      "getPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
-                      },
-                      "modelref" : true,
-                      "id" : "open_space_exp_page@space"
-                    },
+                    "fullCodeName" : "space_delete",
+                    "name" : "删除",
                     "getPSAppDEMethod" : {
                       "modelref" : true,
                       "id" : "delete"
@@ -716,14 +712,16 @@
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
                     },
+                    "refreshMode" : 1,
                     "successMsg" : "删除成功",
                     "timeout" : 60000,
                     "tooltip" : "删除",
                     "uIActionMode" : "BACKEND",
-                    "uIActionTag" : "in_progress_into_deleted",
+                    "uIActionTag" : "delete",
                     "uIActionType" : "DEUIACTION",
                     "enableConfirm" : true,
-                    "id" : "in_progress_into_deleted@space"
+                    "reloadData" : true,
+                    "id" : "delete@space"
                   },
                   "tooltip" : "删除",
                   "addSeparator" : false,

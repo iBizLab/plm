@@ -31,7 +31,7 @@ false
   * [评审历史(review_content_list_view)](app/view/review_content_list_view)
   * [执行用例(run_history_grid_view)](app/view/run_history_grid_view)
   * [用例选择树视图(test_case_pick_up_tree_view)](app/view/test_case_pick_up_tree_view)
-  * [版本(version_test_case_grid_view)](app/view/version_test_case_grid_view)
+  * [版本记录(version_test_case_list_view)](app/view/version_test_case_list_view)
   * [工时(workload_list_view)](app/view/workload_list_view)
 
 <script>

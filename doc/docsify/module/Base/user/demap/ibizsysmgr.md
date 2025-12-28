@@ -30,8 +30,6 @@
 * `属性等价`
 `NAME(登录名)` <i class="fa fa-angle-double-right"/></i> `UID(uid/loginname)`
 * `属性等价`
-`USER_ID(用户ID)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
-* `属性等价`
 `MOBILE(手机号)` <i class="fa fa-angle-double-right"/></i> `MOBILE(移动电话)`
 * `属性等价`
 `TITLE(职位)` <i class="fa fa-angle-double-right"/></i> `TITLE(职位)`

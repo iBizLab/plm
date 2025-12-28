@@ -1228,6 +1228,9 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem1128914214.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem1217373725.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/estimated_workload.json"
   } ],
   "getAllPSDEDataImports" : [ {
@@ -19873,7 +19876,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 310
+      "topPos" : 310,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 30,
@@ -19945,11 +19949,11 @@
                 "id" : "Default"
               },
               "logicType" : "SINGLE",
-              "name" : "Default[srfversionid] 值为空(Nil)"
+              "name" : "Default[srfversionid] 值为空(Nil) "
             }, {
               "groupOP" : "AND",
               "logicType" : "GROUP",
-              "name" : "逻辑分组",
+              "name" : "AND",
               "getPSDELogicLinkConds" : [ {
                 "condOP" : "ISNOTNULL",
                 "dstFieldName" : "srfversionid",
@@ -19958,7 +19962,7 @@
                   "id" : "Default"
                 },
                 "logicType" : "SINGLE",
-                "name" : "Default[srfversionid] 值不为空(NotNil)"
+                "name" : "Default[srfversionid] 值不为空(NotNil) "
               }, {
                 "condOP" : "EQ",
                 "dstFieldName" : "srfversionid",
@@ -20000,7 +20004,7 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[srfversionid] 值不为空(NotNil)"
+            "name" : "Default[srfversionid] 值不为空(NotNil) "
           }, {
             "condOP" : "NOTEQ",
             "dstFieldName" : "srfversionid",
@@ -20133,7 +20137,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS idea_re_customer\r\nFROM\r\n\tcustomer t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS idea_re_customer\nFROM customer t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 416,
       "fillDstLogicParam" : true
     }, {
@@ -20175,7 +20179,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS idea_re_idea\r\nFROM\r\n\tidea t \r\nWHERE\r\n    t.is_deleted = 0 \r\n\tAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS idea_re_idea\nFROM idea t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 416,
       "fillDstLogicParam" : true
     }, {
@@ -20217,7 +20221,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS idea_re_ticket\r\nFROM\r\n\tticket t \r\nWHERE\r\n    t.is_deleted = 0 \r\n\tAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS idea_re_ticket\nFROM ticket t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 416,
       "fillDstLogicParam" : true
     }, {
@@ -20259,7 +20263,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS idea_re_work_item\r\nFROM\r\n\twork_item t \r\nWHERE\r\n    t.is_deleted = 0 \r\n\tAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS idea_re_work_item\nFROM work_item t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 416,
       "fillDstLogicParam" : true
     }, {
@@ -20301,7 +20305,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n\tcount( t.id ) AS idea_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n    t.is_deleted = 0 \r\n\tAND EXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t)",
+      "sql" : "SELECT COUNT(t.id) AS idea_re_test_case\nFROM test_case t\nWHERE t.IS_DELETED = 0\nAND t.ID IN (\n    SELECT JSON_UNQUOTE(t12.DATA->'$.target_id')\n    FROM version_data t12\n    WHERE t12.OWNER_TYPE = 'RELATION'\n        AND t12.PARENT_ID =?\n        AND t12.PARENT_VERSION_ID =?\n)",
       "topPos" : 416,
       "fillDstLogicParam" : true
     } ],
@@ -20667,14 +20671,15 @@
             "logicType" : "SINGLE",
             "name" : "Default[add_review] 值为空(Nil)"
           }, {
-            "condOP" : "ISNULL",
+            "condOP" : "EQ",
             "dstFieldName" : "add_tag",
             "getDstLogicParam" : {
               "modelref" : true,
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[add_tag] 值为空(Nil)"
+            "name" : "Default[add_tag] 等于(=) idea",
+            "paramValue" : "idea"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -20931,9 +20936,9 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
-        "name" : "Default[n_test_library_id_eq]",
+        "name" : "Default[n_product_id_eq]",
         "paramAction" : "SQLPARAM",
-        "srcFieldName" : "n_test_library_id_eq",
+        "srcFieldName" : "n_product_id_eq",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
@@ -24244,6 +24249,19 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEPrints" : [ {
+    "codeName" : "chat_resource",
+    "dataAccessAction" : "READ",
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "chat_resource",
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportType" : "CHATRESOURCE",
+    "id" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEPRINTS/chat_resource.json"
+  } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEREPORTS/bi_report.json",
@@ -24681,6 +24699,12 @@
     "logicName" : "需求移动端多数据视图",
     "name" : "需求移动端多数据视图",
     "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_pickview",
+    "logicName" : "需求高级搜索表格视图（选择）",
+    "name" : "需求高级搜索表格视图（选择）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "advanced_search_grid_view",

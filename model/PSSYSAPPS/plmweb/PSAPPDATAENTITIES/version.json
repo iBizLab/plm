@@ -1874,6 +1874,10 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
     },
+    "getPSSysImage" : {
+      "glyph" : "xf112@FontAwesome",
+      "cssClass" : "fa fa-mail-reply"
+    },
     "scriptCode" : "history.back()",
     "tooltip" : "返回",
     "uIActionMode" : "FRONT",
@@ -2756,12 +2760,20 @@
     "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_work_item_list_view.json",
+    "viewType" : "DELISTVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_test_case_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_idea_list_view.json",
+    "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_edit_view.json",
@@ -3140,9 +3152,30 @@
     },
     "uniqueTag" : "version__idea_operate",
     "getPSUIActionGroupDetails" : [ {
+      "caption" : "版本对比",
+      "detailType" : "DEUIACTION",
+      "name" : "ucef3d72",
+      "getPSSysImage" : {
+        "glyph" : "xf0ec@FontAwesome",
+        "cssClass" : "fa fa-exchange"
+      },
+      "tooltip" : "版本对比",
+      "visibleScriptCode" : "context.srfreadonly != true",
+      "addSeparator" : true,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "idea_version_comparison@version"
+      }
+    }, {
       "caption" : "编辑版本",
       "detailType" : "DEUIACTION",
-      "name" : "u87cf2bc",
+      "name" : "u454386e",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -3162,7 +3195,8 @@
     }, {
       "caption" : "恢复版本",
       "detailType" : "DEUIACTION",
-      "name" : "u674fe21",
+      "enableScriptCode" : "data.id != context.compare_version",
+      "name" : "u09bb19e",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -3178,27 +3212,6 @@
         },
         "modelref" : true,
         "id" : "restore@version"
-      }
-    }, {
-      "caption" : "版本对比",
-      "detailType" : "DEUIACTION",
-      "name" : "u1dda521",
-      "getPSSysImage" : {
-        "glyph" : "xf0ec@FontAwesome",
-        "cssClass" : "fa fa-exchange"
-      },
-      "tooltip" : "版本对比",
-      "visibleScriptCode" : "context.srfreadonly != true",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "idea_version_comparison@version"
       }
     } ]
   }, {
@@ -3210,9 +3223,30 @@
     },
     "uniqueTag" : "version__test_case_operate",
     "getPSUIActionGroupDetails" : [ {
+      "caption" : "版本对比",
+      "detailType" : "DEUIACTION",
+      "name" : "ub736052",
+      "getPSSysImage" : {
+        "glyph" : "xf0ec@FontAwesome",
+        "cssClass" : "fa fa-exchange"
+      },
+      "tooltip" : "版本对比",
+      "visibleScriptCode" : "context.srfreadonly != true",
+      "addSeparator" : true,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "test_case_version_comparison@version"
+      }
+    }, {
       "caption" : "编辑版本",
       "detailType" : "DEUIACTION",
-      "name" : "ub4c4164",
+      "name" : "u7270abe",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -3232,7 +3266,8 @@
     }, {
       "caption" : "恢复版本",
       "detailType" : "DEUIACTION",
-      "name" : "ua787862",
+      "enableScriptCode" : "data.id != context.compare_version",
+      "name" : "uaec7820",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -3248,27 +3283,6 @@
         },
         "modelref" : true,
         "id" : "restore@version"
-      }
-    }, {
-      "caption" : "版本对比",
-      "detailType" : "DEUIACTION",
-      "name" : "ub49cd57",
-      "getPSSysImage" : {
-        "glyph" : "xf0ec@FontAwesome",
-        "cssClass" : "fa fa-exchange"
-      },
-      "tooltip" : "版本对比",
-      "visibleScriptCode" : "context.srfreadonly != true",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "test_case_version_comparison@version"
       }
     } ]
   }, {
@@ -3280,9 +3294,30 @@
     },
     "uniqueTag" : "version__work_item_operate",
     "getPSUIActionGroupDetails" : [ {
+      "caption" : "版本对比",
+      "detailType" : "DEUIACTION",
+      "name" : "u55ff28f",
+      "getPSSysImage" : {
+        "glyph" : "xf0ec@FontAwesome",
+        "cssClass" : "fa fa-exchange"
+      },
+      "tooltip" : "版本对比",
+      "visibleScriptCode" : "context.srfreadonly != true",
+      "addSeparator" : true,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "work_item_version_comparison@version"
+      }
+    }, {
       "caption" : "编辑版本",
       "detailType" : "DEUIACTION",
-      "name" : "u44b4fb6",
+      "name" : "u75cf0ed",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -3302,7 +3337,8 @@
     }, {
       "caption" : "恢复版本",
       "detailType" : "DEUIACTION",
-      "name" : "u07a1f35",
+      "enableScriptCode" : "data.id != context.compare_version",
+      "name" : "udd14231",
       "getPSSysImage" : {
         "glyph" : "xf021@FontAwesome",
         "cssClass" : "fa fa-refresh"
@@ -3318,27 +3354,6 @@
         },
         "modelref" : true,
         "id" : "restore@version"
-      }
-    }, {
-      "caption" : "版本对比",
-      "detailType" : "DEUIACTION",
-      "name" : "u1f74885",
-      "getPSSysImage" : {
-        "glyph" : "xf0ec@FontAwesome",
-        "cssClass" : "fa fa-exchange"
-      },
-      "tooltip" : "版本对比",
-      "visibleScriptCode" : "context.srfreadonly != true",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "work_item_version_comparison@version"
       }
     } ]
   } ]
