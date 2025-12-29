@@ -23,7 +23,66 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "autoSaveMode" : 1,
+    "codeName" : "chunk_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工具栏模板（嵌入编辑表单，只有一个保存按钮）",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.SAVE"
+      },
+      "caption" : "保存",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "tbitem1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_tbitem1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf0c7@FontAwesome",
+        "cssClass" : "fa fa-save"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.SAVE"
+        },
+        "caption" : "保存",
+        "codeName" : "Save",
+        "fullCodeName" : "Save",
+        "name" : "编辑界面_保存操作",
+        "getPSSysImage" : {
+          "glyph" : "xf0c7@FontAwesome",
+          "cssClass" : "fa fa-save"
+        },
+        "predefinedType" : "EDITVIEW_SAVEACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.SAVE"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "Save",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "保存",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.SAVE"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "form",
+    "modelid" : "25823041a044e2dfc60cdebdb06ebd82",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "codeName" : "chunk",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -174,7 +233,7 @@
     },
     "getPSControlParam" : {
       "autoLoad" : true,
-      "enableAutoSave" : true,
+      "enableAutoSave" : false,
       "showBusyIndicator" : true,
       "ctrlParams" : {
         "EDITMODE" : "hover"
@@ -670,7 +729,6 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
       }
     },
-    "enableAutoSave" : true,
     "noTabHeader" : true,
     "name" : "form",
     "modelid" : "60aa2c7cf969c51516f1546a3339e23c",
