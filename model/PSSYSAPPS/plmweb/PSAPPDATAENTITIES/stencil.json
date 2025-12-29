@@ -2123,7 +2123,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_01"
+          "id" : "PREPAREJSPARAM_01"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2135,7 +2135,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "uiLogic.stencil = view.layoutPanel.panelItems.form.control.getReal()[0];",
+      "code" : "// uiLogic.stencil = view.layoutPanel.panelItems.form.control.getReal()[0];\r\n\r\nconst stencil = uiLogic.stencil;\r\n\r\nconsole.info(stencil);\r\n\r\nif(stencil.format_type === \"HTML\"  &&  stencil.html_description !== undefined){\r\n    stencil.content = stencil.html_description;\r\n}\r\nif(stencil.format_type === \"MD\"  &&  stencil.md_description !== undefined){\r\n    stencil.content = stencil.md_description;\r\n}\r\nif(stencil.format_type === \"EXCEL\" &&  stencil.excel_description !== undefined){\r\n    stencil.content = stencil.excel_description;\r\n}\r\n\r\n\r\n",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -2152,7 +2152,38 @@
           "id" : "RAWJSCODE_01"
         }
       } ],
-      "topPos" : 329,
+      "topPos" : 479,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "stencil"
+        },
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 316,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -2171,7 +2202,7 @@
       "leftPos" : 160,
       "logicNodeType" : "DEACTION",
       "name" : "发布",
-      "topPos" : 454,
+      "topPos" : 614,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
