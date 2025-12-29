@@ -2044,6 +2044,27 @@
     "id" : "toolbar_tree_exp_view_node1_cm_deuiaction2_click@product_plan"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "新建类别",
+    "codeName" : "toolbar_tree_exp_view_node1_cm_deuiaction3_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "product_plan_toolbar_tree_exp_view_node1_cm_deuiaction3_click",
+    "name" : "新建类别",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "create_children_category"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_plan.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "toolbar_tree_exp_view_node1_cm_deuiaction3_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "toolbar_tree_exp_view_node1_cm_deuiaction3_click@product_plan"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "编辑",
     "codeName" : "toolbar_tree_exp_view_node2_cm_deuiaction1_click",
     "frontProcessType" : "OTHER",
@@ -2311,6 +2332,334 @@
       "codeName" : "node_param",
       "logicName" : "节点参数",
       "name" : "节点参数",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "create_children_category",
+    "defaultParamName" : "Default",
+    "logicName" : "新建子模块",
+    "memo" : "调用树节点新建方法，新建子模块",
+    "name" : "新建子模块",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "父节点为子产品",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_nodeId",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_nodeId] 等于(=) node_1",
+            "paramValue" : "node_1",
+            "value" : "node_1"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "父节点为非子产品",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "_nodeId",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_nodeId] 不等于(<>) node_1",
+            "paramValue" : "node_1",
+            "value" : "node_1"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 480,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "nodeType",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "直接值[node_2] ==> node_param[nodeType]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "node_2",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "parent_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[parent_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "owner_subtype",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "直接值[idea] ==> defaultValue[owner_subtype]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "idea",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "owner_type",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "直接值[product] ==> defaultValue[owner_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "product",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "owner_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "context[product] ==> defaultValue[owner_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "product",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "context"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "section_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[section_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "defaultValue",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "defaultValue ==> node_param[defaultValue]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "newTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 771,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 268
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 480,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "nodeType",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "直接值[node_2] ==> node_param[nodeType]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "node_2",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "parent_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[parent_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "owner_subtype",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "直接值[idea] ==> defaultValue[owner_subtype]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "idea",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "owner_type",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "直接值[product] ==> defaultValue[owner_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "product",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "owner_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "context[product] ==> defaultValue[owner_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "product",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "context"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "pid",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[pid]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "defaultValue",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "defaultValue ==> node_param[defaultValue]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 336
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "defaultValue",
+      "logicName" : "默认值对象",
+      "name" : "默认值对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
+    }, {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "_dedata",
+      "logicName" : "当前选中节点",
+      "name" : "当前选中节点",
+      "entityParam" : true
+    }, {
+      "codeName" : "node_param",
+      "logicName" : "节点参数",
+      "name" : "节点参数",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
