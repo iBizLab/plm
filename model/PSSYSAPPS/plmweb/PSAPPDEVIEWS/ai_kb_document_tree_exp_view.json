@@ -643,10 +643,12 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "widthMode" : "FULL"
               },
               "getPSPanelItems" : [ {
                 "caption" : "容器",
+                "contentWidth" : 75.0,
                 "cssStyle" : "--ibiz-panel-scroll: hidden;",
                 "itemStyle" : "DEFAULT",
                 "itemType" : "CONTAINER",
@@ -657,7 +659,9 @@
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
-                  "layout" : "FLEX"
+                  "layout" : "FLEX",
+                  "width" : 75,
+                  "widthMode" : "PERCENTAGE"
                 },
                 "getPSPanelItems" : [ {
                   "caption" : "图片",
@@ -701,29 +705,48 @@
                     "spacingLeft" : "OUTERSMALL"
                   },
                   "viewFieldName" : "name"
-                } ]
+                } ],
+                "width" : 75.0
               }, {
-                "caption" : "文本(动态)",
+                "caption" : "容器",
+                "contentWidth" : 25.0,
                 "itemStyle" : "DEFAULT",
-                "itemType" : "FIELD",
-                "name" : "status",
-                "getPSEditor" : {
-                  "editorType" : "SPAN",
-                  "name" : "status",
-                  "getPSAppCodeList" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__slice_status.json"
-                  },
-                  "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                  "renderMode" : "TEXT_DYNAMIC",
-                  "enableLinkView" : false
+                "itemType" : "CONTAINER",
+                "name" : "container2",
+                "getPSLayout" : {
+                  "dir" : "row-reverse",
+                  "layout" : "FLEX"
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
-                  "layout" : "FLEX"
+                  "layout" : "FLEX",
+                  "width" : 25,
+                  "widthMode" : "PERCENTAGE"
                 },
-                "viewFieldName" : "status",
-                "convertToCodeItemText" : true
+                "getPSPanelItems" : [ {
+                  "caption" : "文本(动态)",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "FIELD",
+                  "name" : "status",
+                  "getPSEditor" : {
+                    "editorType" : "SPAN",
+                    "name" : "status",
+                    "getPSAppCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__slice_status.json"
+                    },
+                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                    "renderMode" : "TEXT_DYNAMIC",
+                    "enableLinkView" : false
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "viewFieldName" : "status",
+                  "convertToCodeItemText" : true
+                } ],
+                "width" : 25.0
               } ]
             }, {
               "caption" : "文本(动态)",
