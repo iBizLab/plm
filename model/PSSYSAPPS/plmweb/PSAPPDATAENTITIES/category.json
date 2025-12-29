@@ -3174,6 +3174,27 @@
     "id" : "toolbar_tree_exp_view_node_cm_deuiaction2_click@category"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "新建职位",
+    "codeName" : "toolbar_tree_exp_view_node_cm_deuiaction3_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "category_toolbar_tree_exp_view_node_cm_deuiaction3_click",
+    "name" : "新建职位",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "create_children_category"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "toolbar_tree_exp_view_node_cm_deuiaction3_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "toolbar_tree_exp_view_node_cm_deuiaction3_click@category"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "查看审批单",
     "codeName" : "workflow_approve",
     "getFrontPSAppView" : {
@@ -3236,6 +3257,153 @@
     "id" : "workflow_design@category"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "create_children_category",
+    "defaultParamName" : "Default",
+    "logicName" : "新建子类别",
+    "memo" : "调用树节点新建方法，新建子模块",
+    "name" : "新建子类别",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 330,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 480,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "nodeType",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "直接值[node_2] ==> node_param[nodeType]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "node_2",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "parent_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[parent_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "section_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "name" : "Default[_value] ==> defaultValue[section_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "defaultValue",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_param"
+        },
+        "name" : "defaultValue ==> node_param[defaultValue]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "defaultValue"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 268
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "newTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 721,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 268
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
+    }, {
+      "codeName" : "defaultValue",
+      "logicName" : "默认值对象",
+      "name" : "默认值对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "_dedata",
+      "logicName" : "当前选中节点",
+      "name" : "当前选中节点",
+      "entityParam" : true
+    }, {
+      "codeName" : "node_param",
+      "logicName" : "节点参数",
+      "name" : "节点参数",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "edit_section_or_category",
     "defaultParamName" : "Default",
     "logicName" : "编辑类别或分组",

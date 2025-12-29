@@ -138,6 +138,10 @@
   }, {
     "id" : "section_name",
     "dataType" : 25,
+    "createDVT" : "APPDATA",
+    "createDV" : "section_name",
+    "updateDVT" : "APPDATA",
+    "updateDV" : "section_name",
     "getPSAppDEField" : {
       "name" : "SECTION_NAME",
       "codeName" : "section_name"
@@ -284,6 +288,8 @@
       }, {
         "caption" : "所属分组",
         "codeName" : "section_name",
+        "createDV" : "section_name",
+        "createDVT" : "APPDATA",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -297,6 +303,18 @@
           "name" : "SECTION_NAME",
           "codeName" : "section_name"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNULL",
+            "dEFDName" : "section_name",
+            "logicType" : "SINGLE"
+          } ],
+          "relatedDetailNames" : [ "section_name" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorParams" : {
             "SRFNAVPARAM.n_owner_id_eq" : "group",
@@ -344,6 +362,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "updateDV" : "section_name",
+        "updateDVT" : "APPDATA",
         "valueItemName" : "section_id",
         "allowEmpty" : true,
         "showCaption" : true
