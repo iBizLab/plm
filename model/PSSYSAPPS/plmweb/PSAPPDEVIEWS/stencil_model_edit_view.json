@@ -41,9 +41,6 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-      },
       "caption" : "保存",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
@@ -58,34 +55,37 @@
         "cssClass" : "fa fa-floppy-o"
       },
       "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-        },
-        "caption" : "保存并关闭",
-        "codeName" : "SaveAndExit",
-        "dataAccessAction" : "SUBDATA",
-        "fullCodeName" : "SaveAndExit",
-        "name" : "编辑界面_保存并退出操作",
-        "getPSDEOPPriv" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "发布",
+        "codeName" : "release",
+        "dialogResult" : "OK",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "stencil_release",
+        "name" : "发布",
+        "getPSAppDEUILogic" : {
           "modelref" : true,
-          "id" : "SUBDATA"
+          "id" : "release"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/stencil.json"
         },
         "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandclose"
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-paper-plane-o"
         },
-        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndExit",
-        "uIActionType" : "DEUIACTION"
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "release",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "reloadData" : true,
+        "id" : "release@stencil"
       },
       "tooltip" : "保存",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-      },
+      "uIActionTarget" : "SINGLEDATA",
       "showCaption" : true,
       "showIcon" : true
     } ],
