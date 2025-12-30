@@ -106,6 +106,24 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "name" : "Default[OWNER_TYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[OWNER_SUBTYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_SUBTYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "name" : "Default[ID]",
       "paramAction" : "SQLPARAM",
       "srcFieldName" : "ID",
@@ -115,7 +133,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = ? ) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
+    "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = ? AND owner_type = ? AND owner_subtype = ?) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
     "topPos" : 480
   }, {
     "codeName" : "RAWSQLCALL2",
@@ -143,6 +161,24 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "name" : "Default[OWNER_TYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[OWNER_SUBTYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_SUBTYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "name" : "Default[ID]",
       "paramAction" : "SQLPARAM",
       "srcFieldName" : "ID",
@@ -152,7 +188,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = ?) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
+    "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = ? AND owner_type = ? AND owner_subtype = ?) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
     "topPos" : 480
   }, {
     "codeName" : "END1",
