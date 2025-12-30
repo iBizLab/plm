@@ -4439,7 +4439,7 @@
       },
       "topPos" : 550
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\n\r\ndef dbschema = sys.dbschema('default')\r\ndef sql =  'SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;'\r\ndef param = []\r\nparam.add(_default.get('section_id'))\r\ndef list = dbschema.executeSelectSQL(sql,param)\r\n\r\nsys.warn(list)\r\n\r\n_default.set('sequence', list[0].max_sequence)",
+      "code" : "def _default = logic.param('Default').getReal()\r\n\r\ndef dbschema = sys.dbschema('default')\r\ndef sql =  'SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;'\r\ndef _param = []\r\n_param.add(_default.get('section_id'))\r\ndef list = dbschema.executeSelectSQL(sql, _param)\r\n\r\nsys.warn(list)\r\n\r\n_default.set('sequence', list[0].max_sequence)",
       "codeName" : "RAWSFCODE2",
       "codeType" : "Groovy",
       "leftPos" : 160,
