@@ -223,6 +223,12 @@
     }, {
       "name" : "AI_KNOWLEDGE_BASE_ID",
       "codeName" : "ai_knowledge_base_id"
+    }, {
+      "name" : "AI_KNOWLEDGE_BASE_NAME",
+      "codeName" : "ai_knowledge_base_name"
+    }, {
+      "name" : "AI_AGENT_NAME",
+      "codeName" : "ai_agent_name"
     } ],
     "codeName" : "Table",
     "name" : "AI_AGENT_KNOWLEDGE_REL",
@@ -1110,7 +1116,7 @@
       "columnName" : "AI_KNOWLEDGE_BASE_NAME",
       "dBType" : "MYSQL5",
       "name" : "AI_KNOWLEDGE_BASE_NAME",
-      "queryCodeExp" : "t11.`NAME`",
+      "queryCodeExp" : "t1.`AI_KNOWLEDGE_BASE_NAME`",
       "standardColumnName" : "`AI_KNOWLEDGE_BASE_NAME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -1197,16 +1203,24 @@
       "enableFront" : true
     } ],
     "codeName" : "ai_knowledge_base_name",
-    "dEFType" : 3,
+    "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
     "length" : 200,
     "logicName" : "知识库名称",
     "name" : "AI_KNOWLEDGE_BASE_NAME",
     "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_knowledge_rel/PSDERS/DER1N_AI_AGENT_KNOWLEDGE_REL_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_BASE_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "AI_KNOWLEDGE_BASE_NAME"
     },
     "getRealPSDEField" : {
       "name" : "NAME",
@@ -1232,15 +1246,14 @@
       "name" : "AI_KNOWLEDGE_BASE_ID",
       "codeName" : "ai_knowledge_base_id"
     },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
+    "ignoreRefresh" : true,
+    "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "AI_AGENT_NAME",
       "dBType" : "MYSQL5",
       "name" : "AI_AGENT_NAME",
-      "queryCodeExp" : "t21.`NAME`",
+      "queryCodeExp" : "t1.`AI_AGENT_NAME`",
       "standardColumnName" : "`AI_AGENT_NAME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -1327,16 +1340,24 @@
       "enableFront" : true
     } ],
     "codeName" : "ai_agent_name",
-    "dEFType" : 3,
+    "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
     "length" : 200,
     "logicName" : "智能体名称",
     "name" : "AI_AGENT_NAME",
     "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_knowledge_rel/PSDERS/DER1N_AI_AGENT_KNOWLEDGE_REL_AI_AGENT_AI_AGENT_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "AI_AGENT_NAME"
     },
     "getRealPSDEField" : {
       "name" : "NAME",
@@ -1362,9 +1383,8 @@
       "name" : "AI_AGENT_ID",
       "codeName" : "ai_agent_id"
     },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
+    "ignoreRefresh" : true,
+    "linkDEField" : true
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_agent_knowledge_rel_dto",

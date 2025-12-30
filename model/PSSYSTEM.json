@@ -2471,6 +2471,43 @@
     "path" : "PSSYSDBVFS/STRLEN.json"
   } ],
   "getAllPSSysDEGroups" : [ {
+    "codeName" : "TaskDEGroup",
+    "dynaModelFilePath" : "PSMODULES/Base/PSSYSDEGROUPS/TaskDEGroup.json",
+    "name" : "任务调度实体组",
+    "getPSDEGroupDetails" : [ {
+      "codeName" : "SCHEDULE",
+      "orderValue" : 1000,
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
+      }
+    }, {
+      "codeName" : "SCHEDULED_TASK",
+      "orderValue" : 1000,
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      }
+    }, {
+      "codeName" : "SCHEDULED_TASK_HIS",
+      "orderValue" : 1000,
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his.json"
+      }
+    }, {
+      "codeName" : "TASK_TYPE",
+      "orderValue" : 1000,
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+      }
+    } ],
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base.json"
+    }
+  }, {
     "codeName" : "de_model_sync",
     "dynaModelFilePath" : "PSMODULES/Base/PSSYSDEGROUPS/de_model_sync.json",
     "name" : "实体模型同步",
@@ -5366,6 +5403,15 @@
     "pluginCode" : "CredentialDESyncUtilRuntime",
     "pluginType" : "USER",
     "rTObjectName" : "net.ibizsys.central.plugin.util.sysutil.CredentialDESyncUtilRuntime",
+    "rTObjectSource" : 1,
+    "runtimeObject" : true
+  }, {
+    "codeName" : "DefaultSysDETaskUtilRuntime",
+    "dynaModelFilePath" : "PSSYSSFPLUGINS/DefaultSysDETaskUtilRuntime.json",
+    "name" : "DefaultSysDETaskUtilRuntime",
+    "pluginCode" : "DefaultSysDETaskUtilRuntime",
+    "pluginType" : "USER",
+    "rTObjectName" : "net.ibizsys.central.plugin.task.sysutil.DefaultSysDETaskUtilRuntime",
     "rTObjectSource" : 1,
     "runtimeObject" : true
   }, {
@@ -9496,6 +9542,21 @@
       "path" : "PSSYSSFPLUGINS/PLMSysPSDEModelUtilRuntime.json"
     },
     "utilTag" : "PSDEMODEL",
+    "utilType" : "USER",
+    "regToSys" : false
+  }, {
+    "codeName" : "TaskUtil",
+    "dynaModelFilePath" : "PSSYSUTILDES/TaskUtil.json",
+    "name" : "任务调度组件",
+    "getPSSysDEGroup" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSSYSDEGROUPS/TaskDEGroup.json"
+    },
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/DefaultSysDETaskUtilRuntime.json"
+    },
+    "utilTag" : "TASKUTIL",
     "utilType" : "USER",
     "regToSys" : false
   } ],

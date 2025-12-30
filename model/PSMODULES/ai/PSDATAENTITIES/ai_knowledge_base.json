@@ -235,6 +235,9 @@
     }, {
       "name" : "PARSER_CONFIG",
       "codeName" : "parser_config"
+    }, {
+      "name" : "SOURCE_NAME",
+      "codeName" : "source_name"
     } ],
     "codeName" : "Table",
     "name" : "AI_KNOWLEDGE_BASE",
@@ -1468,7 +1471,7 @@
       "columnName" : "SOURCE_NAME",
       "dBType" : "MYSQL5",
       "name" : "SOURCE_NAME",
-      "queryCodeExp" : "t11.`NAME`",
+      "queryCodeExp" : "t1.`SOURCE_NAME`",
       "standardColumnName" : "`SOURCE_NAME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -1555,16 +1558,24 @@
       "enableFront" : true
     } ],
     "codeName" : "source_name",
-    "dEFType" : 3,
+    "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
     "length" : 200,
     "logicName" : "知识库源名称",
     "name" : "SOURCE_NAME",
     "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDERS/DER1N_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_SOURCE_SOURCE_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SOURCE_NAME"
     },
     "getRealPSDEField" : {
       "name" : "NAME",
@@ -1590,9 +1601,8 @@
       "name" : "SOURCE_ID",
       "codeName" : "source_id"
     },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
+    "ignoreRefresh" : true,
+    "linkDEField" : true
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_knowledge_base_dto",
@@ -2144,10 +2154,6 @@
     "getPSPickupDEField" : {
       "name" : "KB_ID",
       "codeName" : "kb_id"
-    },
-    "getPSPickupTextDEField" : {
-      "name" : "KB_NAME",
-      "codeName" : "kb_name"
     },
     "pickupDEFName" : "KB_ID",
     "removeActionType" : -1,
