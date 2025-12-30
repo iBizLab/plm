@@ -189,7 +189,7 @@
     "topPos" : 410,
     "parallelOutput" : true
   }, {
-    "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 * * *',\r\n    'weekly': '0 0 * * 1', \r\n    'monthly': '0 0 1 * *'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]",
+    "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 0 * * ?',\r\n    'weekly': '0 0 0 ? * MON', \r\n    'monthly': '0 0 0 1 * ?'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "getDstPSDELogicParam" : {
