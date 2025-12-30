@@ -4511,7 +4511,7 @@
     "name" : "新建子类别排序",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 296,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -4533,6 +4533,49 @@
             },
             "logicType" : "SINGLE",
             "name" : "Default[SECTION_ID] 值不为空(NotNil)"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "OWNER_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[OWNER_ID] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "SECTION_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[SECTION_ID] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "OWNER_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[OWNER_ID] 值不为空(NotNil)"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -4540,7 +4583,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 280,
+      "topPos" : 290,
       "parallelOutput" : true
     }, {
       "codeName" : "RAWSQLCALL1",
@@ -4580,11 +4623,48 @@
       "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = ? ) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
       "topPos" : 480
     }, {
+      "codeName" : "RAWSQLCALL2",
+      "leftPos" : 356,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[OWNER_ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "OWNER_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = NULL AND c1.OWNER_ID = ?) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
+      "topPos" : 480
+    }, {
       "codeName" : "END1",
-      "leftPos" : 200,
+      "leftPos" : 296,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 640
+      "topPos" : 650
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

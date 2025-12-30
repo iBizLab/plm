@@ -285,6 +285,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "数据查询",
@@ -318,6 +321,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -397,6 +403,7 @@
       "columnName" : "RESULT_STATE",
       "dBType" : "POSTGRESQL",
       "name" : "RESULT_STATE",
+      "queryCodeExp" : "t1.RESULT_STATE",
       "standardColumnName" : "RESULT_STATE",
       "valueAutoGen" : true
     } ],
@@ -479,6 +486,7 @@
       "columnName" : "COMMENT",
       "dBType" : "POSTGRESQL",
       "name" : "COMMENT",
+      "queryCodeExp" : "t1.COMMENT",
       "standardColumnName" : "COMMENT"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -562,6 +570,7 @@
       "columnName" : "REVIEWER",
       "dBType" : "POSTGRESQL",
       "name" : "REVIEWER",
+      "queryCodeExp" : "t1.REVIEWER",
       "standardColumnName" : "REVIEWER"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -650,6 +659,7 @@
       "columnName" : "WHETHER_REVIEW",
       "dBType" : "POSTGRESQL",
       "name" : "WHETHER_REVIEW",
+      "queryCodeExp" : "(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.CONTENT_ID  AND t3.state = '20') THEN 1 ELSE 0 END AS result)",
       "standardColumnName" : "WHETHER_REVIEW",
       "valueAutoGen" : true
     } ],
@@ -736,6 +746,7 @@
       "columnName" : "STAGE_ID",
       "dBType" : "POSTGRESQL",
       "name" : "STAGE_ID",
+      "queryCodeExp" : "t1.STAGE_ID",
       "standardColumnName" : "STAGE_ID"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -825,6 +836,7 @@
       "columnName" : "SEQUENCES",
       "dBType" : "POSTGRESQL",
       "name" : "SEQUENCES",
+      "queryCodeExp" : "t1.SEQUENCES",
       "standardColumnName" : "SEQUENCES"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -893,6 +905,7 @@
       "columnName" : "ID",
       "dBType" : "POSTGRESQL",
       "name" : "ID",
+      "queryCodeExp" : "t1.ID",
       "standardColumnName" : "ID"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -996,6 +1009,7 @@
       "columnName" : "NAME",
       "dBType" : "POSTGRESQL",
       "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
       "standardColumnName" : "NAME"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -1096,6 +1110,7 @@
       "columnName" : "CREATE_MAN",
       "dBType" : "POSTGRESQL",
       "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
       "standardColumnName" : "CREATE_MAN"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1197,6 +1212,7 @@
       "columnName" : "CREATE_TIME",
       "dBType" : "POSTGRESQL",
       "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
       "standardColumnName" : "CREATE_TIME"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1282,6 +1298,7 @@
       "columnName" : "UPDATE_MAN",
       "dBType" : "POSTGRESQL",
       "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
       "standardColumnName" : "UPDATE_MAN"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1383,6 +1400,7 @@
       "columnName" : "UPDATE_TIME",
       "dBType" : "POSTGRESQL",
       "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
       "standardColumnName" : "UPDATE_TIME"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1468,6 +1486,7 @@
       "columnName" : "CONTENT_ID",
       "dBType" : "POSTGRESQL",
       "name" : "CONTENT_ID",
+      "queryCodeExp" : "t1.CONTENT_ID",
       "standardColumnName" : "CONTENT_ID"
     } ],
     "getAllPSDEFSearchModes" : [ {

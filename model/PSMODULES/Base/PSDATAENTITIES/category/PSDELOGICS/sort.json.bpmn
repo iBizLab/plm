@@ -12,6 +12,7 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -19,11 +20,21 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $categorysortdefault:category();
                                     eval($categorysortdefault==categorysortdefault);
-                                eval((RuleUtils.test($categorysortdefault.get("sectionId"),"ISNOTNULL","")))
+                                eval((RuleUtils.test($categorysortdefault.get("sectionId"),"ISNOTNULL",""))&&(RuleUtils.test($categorysortdefault.get("ownerId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_rawsqlcall2" sourceRef="gateway-begin" targetRef="rawsqlcall2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $categorysortdefault:category();
+                                    eval($categorysortdefault==categorysortdefault);
+                                eval((RuleUtils.test($categorysortdefault.get("sectionId"),"ISNULL",""))&&(RuleUtils.test($categorysortdefault.get("ownerId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_end1" sourceRef="rawsqlcall2" targetRef="end1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
