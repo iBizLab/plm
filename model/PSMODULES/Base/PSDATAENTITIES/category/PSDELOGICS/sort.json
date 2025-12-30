@@ -60,14 +60,14 @@
       }
     } ],
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "N_PID_EQ",
+      "dstFieldName" : "N_SECTION_ID_EQ",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "filter"
       },
-      "name" : "Default[_value] ==> filter[N_PID_EQ]",
+      "name" : "Default[id] ==> filter[N_SECTION_ID_EQ]",
       "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "_value",
+      "srcFieldName" : "id",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
@@ -112,7 +112,7 @@
     "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\n\r\n\r\npage.each { item ->\r\n    if (item.get('sequence') > maxValue) {\r\n        maxValue = item.get('sequence')\r\n    }\r\n}\r\n_default.set('sequence', maxValue + 10)",
     "codeName" : "RAWSFCODE1",
     "codeType" : "Groovy",
-    "leftPos" : 159,
+    "leftPos" : 160,
     "logicNodeType" : "RAWSFCODE",
     "name" : "执行脚本代码",
     "getPSDELogicLinks" : [ {
