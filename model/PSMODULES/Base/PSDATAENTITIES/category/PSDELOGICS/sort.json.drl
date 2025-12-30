@@ -7,6 +7,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.category categorysortdefault;
                 global cn.ibizlab.plm.core.base.domain.category categorysortfilter;
+                global cn.ibizlab.plm.core.base.domain.category categorysortmax_sequence;
                 global cn.ibizlab.plm.core.base.domain.category categorysortpage;
                     global cn.ibizlab.plm.core.base.service.IcategoryService categoryservice;
         global cn.ibizlab.plm.core.base.service.IcategoryService iBzSysCategoryDefaultService;
@@ -29,6 +30,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -40,6 +42,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
                             categorysortfilter.set("n_section_id_eq",categorysortdefault.get("id"));
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -55,11 +58,12 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
                                     for (Map.Entry entry : entity.entrySet()) {
-                                    categorysortdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    categorysortmax_sequence.set(String.valueOf(entry.getKey()),entry.getValue());
                                     }
                             }
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -70,6 +74,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -80,16 +85,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "categorysortdebugparam2"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -100,6 +96,18 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
+                        update(categorysortpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "categorysortdebugparam2"
+            when
+            then
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end
 
@@ -110,5 +118,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortfilter);//更新fact中变量值
+                        update(categorysortmax_sequence);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
             end

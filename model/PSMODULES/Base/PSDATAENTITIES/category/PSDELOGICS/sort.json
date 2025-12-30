@@ -34,7 +34,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL1"
+        "id" : "RAWSFCODE2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -68,22 +68,11 @@
     "codeName" : "RAWSQLCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "Default"
+      "id" : "max_sequence"
     },
-    "leftPos" : 160,
+    "leftPos" : 400,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "直接SQL调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL1"
-      }
-    } ],
     "getPSDELogicNodeParams" : [ {
       "name" : "Default[SECTION_ID]",
       "paramAction" : "SQLPARAM",
@@ -95,7 +84,7 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;",
-    "topPos" : 461,
+    "topPos" : 470,
     "fillDstLogicParam" : true
   }, {
     "codeName" : "DEDATASET1",
@@ -131,7 +120,7 @@
     },
     "topPos" : 550
   }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\n\r\n_default.set('sequence', _default.get('max_sequence'))",
+    "code" : "def _default = logic.param('Default').getReal()\r\n\r\ndef dbschema = sys.dbschema('default')\r\ndef sql =  'SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;'\r\ndef param = []\r\nparam.add(_default.get('section_id'))\r\ndef list = dbschema.executeSelectSQL(sql,param)\r\n\r\nsys.warn(list)\r\n\r\n_default.set('sequence', list[0].max_sequence)",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
     "leftPos" : 160,
@@ -148,7 +137,15 @@
         "id" : "RAWSFCODE2"
       }
     } ],
-    "topPos" : 588
+    "topPos" : 578
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\n\r\n\r\npage.each { item ->\r\n    if (item.get('sequence') > maxValue) {\r\n        maxValue = item.get('sequence')\r\n    }\r\n}\r\n_default.set('sequence', maxValue + 10)",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 690,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "topPos" : 770
   }, {
     "codeName" : "DEBUGPARAM2",
     "getDstPSDELogicParam" : {
@@ -169,15 +166,7 @@
         "id" : "DEBUGPARAM2"
       }
     } ],
-    "topPos" : 710
-  }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\n\r\n\r\npage.each { item ->\r\n    if (item.get('sequence') > maxValue) {\r\n        maxValue = item.get('sequence')\r\n    }\r\n}\r\n_default.set('sequence', maxValue + 10)",
-    "codeName" : "RAWSFCODE1",
-    "codeType" : "Groovy",
-    "leftPos" : 690,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
-    "topPos" : 770
+    "topPos" : 820
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -188,7 +177,7 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 830
+    "topPos" : 920
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -209,6 +198,15 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
     },
     "filterParam" : true
+  }, {
+    "codeName" : "max_sequence",
+    "logicName" : "max_sequence",
+    "name" : "max_sequence",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "entityParam" : true
   }, {
     "codeName" : "page",
     "logicName" : "page",
