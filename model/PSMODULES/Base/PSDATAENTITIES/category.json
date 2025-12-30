@@ -4610,7 +4610,8 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 440
+      "topPos" : 440,
+      "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -4631,7 +4632,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE1"
+          "id" : "DEBUGPARAM_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -4643,7 +4644,29 @@
         "modelref" : true,
         "id" : "page"
       },
-      "topPos" : 590
+      "topPos" : 550
+    }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "leftPos" : 256,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数page########",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 650,
+      "parallelOutput" : true
     }, {
       "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\nif (page.size > 0) {\r\n    // page.each { item ->\r\n    //     if (item.get('sequence') > maxValue) {\r\n    //         maxValue = item.get('sequence')\r\n    //     }\r\n    // }\r\n    maxValue = page[0].get('sequence')\r\n    _default.set('sequence', maxValue + 10)\r\n}",
       "codeName" : "RAWSFCODE1",
@@ -4673,7 +4696,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 900
+      "topPos" : 900,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
