@@ -43,7 +43,7 @@
     "logicType" : "SCRIPT",
     "name" : "LOGIC",
     "getPSViewCtrlName" : "form",
-    "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'test_library_id') {\r\n        view.redrawView({\r\n            context: { library: value, dynamicnew: true },\r\n            params: {},\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
+    "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'test_library_id') {\r\n        view.redrawView({\r\n            context: { library: value, dynamicnew: true },\r\n            params: {\r\n                srfdefdata: evt.data[0]\r\n            },\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
   } ],
   "getPSAppViewNavParams" : [ {
     "key" : "suite_id",

@@ -153,7 +153,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE_02"
+        "id" : "DEACTION_03"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -161,6 +161,40 @@
         "id" : "DEBUGPARAM_01"
       }
     } ],
+    "topPos" : 408,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_03",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/extract_meta_data.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "leftPos" : 361,
+    "logicNodeType" : "DEACTION",
+    "name" : "提取元数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_03"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "topPos" : 408,
     "parallelOutput" : true
   }, {
@@ -200,6 +234,38 @@
         "modelref" : true,
         "id" : "RAWSFCODE_02"
       }
+    } ],
+    "topPos" : 538,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 361,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "META_DATA",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "masked_data"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "meta_data",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 538,
     "parallelOutput" : true

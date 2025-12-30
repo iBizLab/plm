@@ -57,6 +57,18 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parsing;
                         update(ai_kb_documentparsingmasked_data);//更新fact中变量值
             end
 
+            //逻辑处理节点[提取元数据]
+            rule "deaction_03"
+            ruleflow-group "ai_kb_documentparsingdeaction_03"
+            when
+            then
+                        ai_kb_documentservice.extract_meta_data(ai_kb_documentparsingdefault);
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
             //逻辑处理节点[实体打印]
             rule "rawsfcode_03"
             ruleflow-group "ai_kb_documentparsingrawsfcode_03"
@@ -73,6 +85,18 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parsing;
             ruleflow-group "ai_kb_documentparsingrawsfcode_02"
             when
             then
+                        update(ai_kb_documentparsingdefault);//更新fact中变量值
+                        update(ai_kb_documentparsingagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsinglastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsingmasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_documentparsingprepareparam_01"
+            when
+            then
+                            ai_kb_documentparsingmasked_data.set("metadata",ai_kb_documentparsingdefault.get("metadata"));
                         update(ai_kb_documentparsingdefault);//更新fact中变量值
                         update(ai_kb_documentparsingagent_context);//更新fact中变量值
                         update(ai_kb_documentparsinglastreturn);//更新fact中变量值

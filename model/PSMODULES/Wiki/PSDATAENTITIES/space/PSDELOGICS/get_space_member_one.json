@@ -7,13 +7,13 @@
   "name" : "获取知识空间成员",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -400,
+    "leftPos" : -600,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM_01"
+        "id" : "DEBUGPARAM_01"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -22,6 +22,28 @@
       }
     } ],
     "topPos" : -70,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -484,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数Default######",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      }
+    } ],
+    "topPos" : -72,
     "parallelOutput" : true
   }, {
     "codeName" : "END2",
@@ -221,6 +243,54 @@
     } ],
     "topPos" : -336
   }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+    "codeName" : "RAWSFCODE1",
+    "leftPos" : 756,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : -72
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
+    "codeName" : "RAWSFCODE2",
+    "leftPos" : 756,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "非只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : -336
+  }, {
+    "codeName" : "END6",
+    "leftPos" : 1020,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : -220,
+    "parallelOutput" : true
+  }, {
     "codeName" : "PREPAREPARAM_01",
     "leftPos" : -273,
     "logicNodeType" : "PREPAREPARAM",
@@ -278,54 +348,6 @@
       }
     } ],
     "topPos" : -72,
-    "parallelOutput" : true
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
-    "codeName" : "RAWSFCODE1",
-    "leftPos" : 756,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : -72
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
-    "codeName" : "RAWSFCODE2",
-    "leftPos" : 756,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "非只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE2"
-      }
-    } ],
-    "topPos" : -336
-  }, {
-    "codeName" : "END6",
-    "leftPos" : 1020,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : -220,
     "parallelOutput" : true
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",

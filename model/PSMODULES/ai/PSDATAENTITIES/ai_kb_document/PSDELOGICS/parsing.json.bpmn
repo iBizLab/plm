@@ -20,8 +20,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="获取文件内容"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="提取元数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingrawsfcode_03" id="rawsfcode_03" implementation="http://www.jboss.org/drools/rule" name="实体打印"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="正则解析文档内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsingend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
@@ -53,11 +55,15 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_01_debugparam_01" sourceRef="rawsfcode_01" targetRef="debugparam_01">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam_01_rawsfcode_02" sourceRef="debugparam_01" targetRef="rawsfcode_02">
+                    <sequenceFlow id="debugparam_01_deaction_03" sourceRef="debugparam_01" targetRef="deaction_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_03_prepareparam_01" sourceRef="deaction_03" targetRef="prepareparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_03_debugparam_01" sourceRef="rawsfcode_03" targetRef="debugparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_02_debugparam_02" sourceRef="rawsfcode_02" targetRef="debugparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_rawsfcode_02" sourceRef="prepareparam_01" targetRef="rawsfcode_02">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam_02_deaction_02" sourceRef="gateway-debugparam_02" targetRef="deaction_02">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

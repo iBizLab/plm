@@ -213,6 +213,36 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "extract_meta_data",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/extract_meta_data.json",
+    "logicName" : "提取元数据",
+    "name" : "extract_meta_data",
+    "getPSDEActionInput" : {
+      "name" : "Extract_meta_dataInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Extract_meta_dataResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/ExtractMetaDataDEActionRuntime.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "USERUPDATE",
     "codeName" : "update_status",
@@ -2368,6 +2398,7 @@
       "columnName" : "PARSED_CONTENT",
       "dBType" : "MYSQL5",
       "name" : "PARSED_CONTENT",
+      "queryCodeExp" : "t1.`PARSED_CONTENT`",
       "standardColumnName" : "`PARSED_CONTENT`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -2443,6 +2474,7 @@
       "columnName" : "PARSE_ERROR",
       "dBType" : "MYSQL5",
       "name" : "PARSE_ERROR",
+      "queryCodeExp" : "t1.`PARSE_ERROR`",
       "standardColumnName" : "`PARSE_ERROR`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -2513,6 +2545,115 @@
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
     "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TAG_SETS",
+      "dBType" : "MYSQL5",
+      "name" : "TAG_SETS",
+      "queryCodeExp" : "t11.`TAG_SETS`",
+      "standardColumnName" : "`TAG_SETS`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+        },
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "SPAN",
+        "name" : "移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+        },
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TAG_SETS",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "tag_sets",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 2000,
+    "logicName" : "标签集",
+    "name" : "TAG_SETS",
+    "orderValue" : 370,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/kb_tag_sets.json"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDERS/DER1N_AI_KB_DOCUMENT_AI_KNOWLEDGE_BASE_KB_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "TAG_SETS",
+      "codeName" : "tag_sets"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TAG_SETS",
+      "codeName" : "tag_sets"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "serviceCodeName" : "tag_sets",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "KB_NAME",
@@ -2977,7 +3118,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE_02"
+          "id" : "DEACTION_03"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -2985,6 +3126,40 @@
           "id" : "DEBUGPARAM_01"
         }
       } ],
+      "topPos" : 408,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_03",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/extract_meta_data.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 361,
+      "logicNodeType" : "DEACTION",
+      "name" : "提取元数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_03"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "topPos" : 408,
       "parallelOutput" : true
     }, {
@@ -3024,6 +3199,38 @@
           "modelref" : true,
           "id" : "RAWSFCODE_02"
         }
+      } ],
+      "topPos" : 538,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 361,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "META_DATA",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "masked_data"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "meta_data",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 538,
       "parallelOutput" : true
@@ -3928,6 +4135,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 21,
       "stringLength" : 1048576,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "标签集",
+      "name" : "tag_sets",
+      "getPSDEField" : {
+        "name" : "TAG_SETS",
+        "codeName" : "tag_sets"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
       "type" : "SIMPLE"
     }, {
       "logicName" : "知识库名称",

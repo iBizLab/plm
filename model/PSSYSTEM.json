@@ -95,6 +95,9 @@
     "path" : "PSCODELISTS/CodeList42.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ai/PSCODELISTS/kb_tag.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSCODELISTS/all_library.json"
   }, {
     "modelref" : true,
@@ -414,6 +417,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSCODELISTS/user_group.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSCODELISTS/kb_tag_sets.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSCODELISTS/defect_property_distribution.json"
@@ -1499,6 +1505,14 @@
     "modelref" : true,
     "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json",
     "name" : "AI_KB_DOCUMENT_WIZARD"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_tag.json",
+    "name" : "AI_KB_TAG"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_tag_set.json",
+    "name" : "AI_KB_TAG_SET"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json",
@@ -5377,6 +5391,16 @@
     "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.notify.EventHookDENotifyRuntimeEx",
     "rTObjectSource" : 1,
     "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.notify\r\n\r\nimport groovy.transform.CompileStatic;\r\nimport net.ibizsys.central.dataentity.notify.DENotifyRuntime\r\nimport net.ibizsys.central.util.SearchGroupCond\r\nimport net.ibizsys.model.util.JsonUtils\r\nimport net.ibizsys.psmodel.core.util.Conditions\r\nimport net.ibizsys.psmodel.core.util.DataTypeUtils\r\nimport net.ibizsys.runtime.util.IEntity\r\nimport net.ibizsys.runtime.util.ISearchCond\r\nimport net.ibizsys.runtime.util.ISearchFieldCond\r\nimport org.springframework.util.StringUtils;\r\n\r\n@CompileStatic\r\npublic class EventHookDENotifyRuntimeEx extends DENotifyRuntime{\r\n\r\n    @Override\r\n    protected void onSend(IEntity iEntity, Map<String, Object> params) throws Throwable {\r\n        Object eventData = params.get(NOTIFY_PARAM_EVENTDATA);\r\n        // 自定义条件\r\n        String strsearchCond = this.getPSDENotify().getCustomCond();\r\n        if(StringUtils.hasLength(strsearchCond)){\r\n             SearchGroupCond searchGroupCond = SearchGroupCond.from(JsonUtils.asMap(strsearchCond),true);\r\n             if(!testDomainField((IEntity)eventData,searchGroupCond)) {\r\n                 return;\r\n             }\r\n        }\r\n        super.onSend(iEntity,params)\r\n    }\r\n\r\n    protected boolean testDomainField(IEntity entity, SearchGroupCond searchGroupCond) throws Exception {\r\n        Boolean testResult = true;\r\n        if(StringUtils.hasLength(this.getPSDENotify().getUserTag())){\r\n            if (!this.getPSDENotify().getUserTag().equals(entity.get(\"work_item_type_id\"))) {\r\n                return false;\r\n            }\r\n        }\r\n        String groupType = searchGroupCond.getCondOp();\r\n        Boolean andMode = groupType.equals(\"AND\")?true:false;\r\n        List<ISearchCond> searchConds = searchGroupCond.getSearchConds();\r\n        for (ISearchCond searchCond : searchConds) {\r\n            if(searchCond instanceof ISearchFieldCond) {\r\n                Object value = entity.get(searchCond.getFieldName()) ;\r\n                if(!testSingleDomainField(value,searchCond.getCondOp(),searchCond.getValue())) {\r\n                    if(andMode) {\r\n                        testResult = testResult && false;\r\n                        break;\r\n                    }else {\r\n                        testResult = testResult || false;\r\n                    }\r\n\r\n                }else {\r\n                    if(!andMode) {\r\n                        testResult = testResult || true;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return testResult;\r\n    }\r\n\r\n    protected boolean testSingleDomainField(Object value, String strCondition,Object condValue){\r\n        if (Conditions.EQ.equals(strCondition) || Conditions.ABSEQ.equals(strCondition)) {\r\n            if (value instanceof String) {\r\n                return ((String) value).equalsIgnoreCase(condValue.toString());\r\n            }\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) == 0;\r\n        }\r\n\r\n        if (Conditions.GT.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) > 0;\r\n        }\r\n\r\n        if (Conditions.GTANDEQ.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) >= 0;\r\n        }\r\n\r\n        if (Conditions.LT.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) < 0;\r\n        }\r\n\r\n        if (Conditions.LTANDEQ.equals(strCondition)) {\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) <= 0;\r\n        }\r\n\r\n        if (Conditions.NOTEQ.equals(strCondition)) {\r\n            if (value instanceof String) {\r\n                return !((String) value).equalsIgnoreCase(condValue.toString());\r\n            }\r\n            int nDataType = DataTypeUtils.getObjectDataType(value);\r\n            return DataTypeUtils.compare(nDataType, value, condValue) != 0;\r\n        }\r\n\r\n        if (Conditions.IN.equals(strCondition)) {\r\n            return  Arrays.stream((condValue.toString()).split(\",\")).filter({ cond -> !cond.isEmpty() && cond.equals((String) value) }).count() > 0;\r\n        }\r\n\r\n        if (Conditions.NOTIN.equals(strCondition)) {\r\n            return  Arrays.stream((condValue.toString()).split(\",\")).filter({ cond -> !cond.isEmpty() && cond.equals((String) value) }).count() <= 0;\r\n        }\r\n\r\n        if (Conditions.LIKE.equals(strCondition)) {\r\n            return value.toString().toUpperCase().indexOf(condValue.toString().toUpperCase()) != -1;\r\n        }\r\n        if(Conditions.ISNOTNULL.equals(strCondition)) {\r\n            return value != null;\r\n        }\r\n        if(Conditions.ISNULL.equals(strCondition)) {\r\n            return value == null;\r\n        }\r\n        return false;\r\n    }\r\n}\r\n",
+    "runtimeObject" : true
+  }, {
+    "codeName" : "ExtractMetaDataDEActionRuntime",
+    "dynaModelFilePath" : "PSSYSSFPLUGINS/ExtractMetaDataDEActionRuntime.json",
+    "name" : "ExtractMetaDataDEActionRuntime",
+    "pluginCode" : "ExtractMetaDataDEActionRuntime",
+    "pluginType" : "DEACTION",
+    "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.action.ExtractMetaDataDEActionRuntime",
+    "rTObjectSource" : 1,
+    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.action\r\nimport com.google.gson.Gson\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.dataentity.action.DEActionRuntimeBase\r\nimport net.ibizsys.central.util.IEntityDTO\r\nimport com.vladsch.flexmark.ast.Image;\r\nimport com.vladsch.flexmark.ast.Link;\r\nimport com.vladsch.flexmark.parser.Parser;\r\nimport com.vladsch.flexmark.util.ast.Document;\r\nimport com.vladsch.flexmark.util.ast.NodeVisitor;\r\nimport com.vladsch.flexmark.util.ast.VisitHandler\r\nimport groovy.json.JsonSlurper\r\nimport java.text.SimpleDateFormat\r\n\r\n@CompileStatic\r\nclass ExtractMetaDataDEActionRuntime extends DEActionRuntimeBase {\r\n    private static final SimpleDateFormat sdf = new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\")\r\n\r\n    @Override\r\n    protected Object onExecute(IEntityDTO iEntityDTO) throws Throwable {\r\n        def parsed_content = iEntityDTO.get('parsed_content').toString()\r\n        if (parsed_content) {\r\n            def meta_data = [:]\r\n            def references = []\r\n            // 解析Markdown内容\r\n            Parser parser = Parser.builder().build()\r\n            Document document = parser.parse(parsed_content)\r\n            // 收集所有图片节点\r\n            List<Image> images = []\r\n            NodeVisitor imageCollector = new NodeVisitor(new VisitHandler<>(Image, images.&add))\r\n            imageCollector.visit(document)\r\n\r\n            // 收集所有链接节点\r\n            List<Link> links = []\r\n            NodeVisitor linkCollector = new NodeVisitor(new VisitHandler<>(Link, links.&add))\r\n            linkCollector.visit(document)\r\n\r\n            // 处理图片\r\n            images.each { image ->\r\n                def path = image.getUrl().toString()\r\n                def name = image.getText().toString()\r\n                def position = image.getLineNumber()\r\n                references.add([\r\n                        type: \"image\",\r\n                        path: path,\r\n                        name: name,\r\n                        position: position\r\n                ])\r\n            }\r\n\r\n            // 处理链接（仅包含/ibizutil/download）\r\n            links.each { link ->\r\n                def path = link.getUrl().toString()\r\n                // 仅处理包含指定路径的链接\r\n                if (path.contains(\"/ibizutil/download\")) {\r\n                    def name = link.getText().toString()\r\n                    def position = link.getLineNumber()\r\n                    references.add([\r\n                            type: \"external_url\",\r\n                            path: path,\r\n                            name: name,\r\n                            position: position\r\n                    ])\r\n                }\r\n            }\r\n\r\n            // 更新_meta_data\r\n            def sourceType = iEntityDTO.get('source_type')\r\n            meta_data.put('source_type', sourceType)\r\n            def _type = iEntityDTO.get('type')\r\n            if (_type == 'file'){\r\n                def fileJson = iEntityDTO.get('file').toString()\r\n                def file = new JsonSlurper().parseText(fileJson)as ArrayList\r\n                def fileName = file[0].getAt(\"name\")\r\n                def fileType = iEntityDTO.get('file_type').toString()\r\n                def fileSize = file[0].getAt(\"size\")\r\n                meta_data.put('file_size', fileSize)\r\n                meta_data.put('file_type', fileType)\r\n                meta_data.put('title', fileName)\r\n                meta_data.put('source_type', \"file\")\r\n            }\r\n            def now = new Date()\r\n            def nowStr = sdf.format(now)\r\n            meta_data.put('parsed_at', nowStr)\r\n            meta_data.put('references', references)\r\n            def metaDataJson = new Gson().toJson(meta_data)\r\n            iEntityDTO.set('meta_data', metaDataJson)\r\n        }\r\n        return iEntityDTO;\r\n    }\r\n}",
     "runtimeObject" : true
   }, {
     "codeName" : "FieldChangeDENotifyRuntimeEx",
@@ -10814,10 +10838,16 @@
       "path" : "PSMODULES/ai/PSCODELISTS/text_clean_config.json"
     }, {
       "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/kb_tag.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/ai/PSCODELISTS/slice_status.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSCODELISTS/ai_model_provider.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/kb_tag_sets.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSCODELISTS/conversation_type.json"
@@ -10924,6 +10954,12 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_tag.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_tag_set.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"

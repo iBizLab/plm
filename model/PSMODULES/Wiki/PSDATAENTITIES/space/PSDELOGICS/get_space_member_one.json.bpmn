@@ -18,21 +18,24 @@
                             <tns:global identifier="spaceget_space_member_onemembers" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数Default######"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取知识空间ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为知识空间成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_oneprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spaceget_space_member_onerawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="已删除归档只读"/>
-                    <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
+                    <sequenceFlow id="begin_debugparam_01" sourceRef="begin" targetRef="debugparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_prepareparam_01" sourceRef="debugparam_01" targetRef="prepareparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
                     </sequenceFlow>
@@ -84,6 +87,10 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam_01_rawsfcode_01" sourceRef="gateway-prepareparam_01" targetRef="rawsfcode_01">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $spaceget_space_member_onedefault:space();
@@ -97,10 +104,6 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_rawsfcode3" sourceRef="prepareparam_01" targetRef="rawsfcode3">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-rawsfcode3_prepareparam2" sourceRef="gateway-rawsfcode3" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
