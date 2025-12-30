@@ -18,20 +18,29 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam1_end" name="end"/>
+                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
+                    <sequenceFlow id="debugparam1_rawsqlcall1" sourceRef="debugparam1" targetRef="rawsqlcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    <sequenceFlow id="rawsqlcall1_rawsfcode2" sourceRef="rawsqlcall1" targetRef="rawsfcode2">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_rawsfcode1" sourceRef="dedataset1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
+                    <sequenceFlow id="rawsfcode2_debugparam2" sourceRef="rawsfcode2" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_end1" sourceRef="debugparam2" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

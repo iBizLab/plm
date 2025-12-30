@@ -2352,7 +2352,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2363,110 +2363,6 @@
       } ],
       "topPos" : 260,
       "parallelOutput" : true
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "category"
-      },
-      "leftPos" : 380,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 268
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "invokeMethod" : "newTreeNode",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "node_param"
-      },
-      "leftPos" : 791,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 268
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "sort"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "category"
-      },
-      "leftPos" : 190,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "category"
-      },
-      "topPos" : 268
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : -10,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "category"
-        },
-        "name" : "Default[_value] ==> category[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "_value",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 268
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 570,
@@ -2585,21 +2481,103 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 268
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "newTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 791,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 268
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "category"
+      },
+      "leftPos" : 400,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "topPos" : 420
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 10,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "category"
+        },
+        "name" : "Default[_value] ==> category[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "_value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 450
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "sort"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "category"
+      },
+      "leftPos" : 180,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "category"
+      },
+      "topPos" : 420
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "treeexpbar_tree",
-      "logicName" : "树部件",
-      "name" : "树部件",
-      "ctrlParam" : true
-    }, {
       "codeName" : "_dedata",
       "logicName" : "当前选中节点",
       "name" : "当前选中节点",
-      "entityParam" : true
-    }, {
-      "codeName" : "defaultValue",
-      "logicName" : "默认值对象",
-      "name" : "默认值对象",
       "entityParam" : true
     }, {
       "codeName" : "node_param",
@@ -2616,6 +2594,16 @@
       "logicName" : "category",
       "name" : "category",
       "entityParam" : true
+    }, {
+      "codeName" : "defaultValue",
+      "logicName" : "默认值对象",
+      "name" : "默认值对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",

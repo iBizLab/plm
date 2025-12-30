@@ -43,9 +43,49 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
                         update(categorysortpage);//更新fact中变量值
             end
 
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "categorysortrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",categorysortdefault.get("sectionid"));
+    String strSql="SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = #{et.param0};";
+                        java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    categorysortdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
+                        update(categorysortpage);//更新fact中变量值
+            end
+
             //逻辑处理节点[实体数据集]
             rule "dedataset1"
             ruleflow-group "categorysortdedataset1"
+            when
+            then
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
+                        update(categorysortpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode2"
+            ruleflow-group "categorysortrawsfcode2"
+            when
+            then
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
+                        update(categorysortpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "categorysortdebugparam2"
             when
             then
                         update(categorysortdefault);//更新fact中变量值
