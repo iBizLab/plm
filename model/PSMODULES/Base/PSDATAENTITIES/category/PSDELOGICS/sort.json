@@ -12,9 +12,24 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "DEBUGPARAM2"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "SECTION_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[SECTION_ID] 值不为空(NotNil)"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "Begin"
@@ -23,26 +38,26 @@
     "topPos" : 200,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEBUGPARAM1",
+    "codeName" : "DEBUGPARAM2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 159,
+    "leftPos" : 160,
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE2"
+        "id" : "RAWSQLCALL1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "DEBUGPARAM2"
       }
     } ],
-    "topPos" : 338
+    "topPos" : 350
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 690,
@@ -66,13 +81,20 @@
     "topPos" : 441
   }, {
     "codeName" : "RAWSQLCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "max_sequence"
-    },
-    "leftPos" : 400,
+    "leftPos" : 160,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "直接SQL调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "name" : "Default[SECTION_ID]",
       "paramAction" : "SQLPARAM",
@@ -82,10 +104,18 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;",
-    "topPos" : 470,
-    "fillDstLogicParam" : true
+    "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = ? ) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
+    "topPos" : 480
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -123,21 +153,16 @@
     "code" : "def _default = logic.param('Default').getReal()\r\n\r\ndef dbschema = sys.dbschema('default')\r\ndef sql =  'SELECT MAX(SEQUENCE) as max_sequence FROM `category` WHERE SECTION_ID = ?;'\r\ndef _param = []\r\n_param.add(_default.get('section_id'))\r\ndef list = dbschema.executeSelectSQL(sql, _param)\r\n\r\nsys.warn(list)\r\n\r\n_default.set('sequence', list[0].max_sequence)",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
-    "leftPos" : 160,
+    "leftPos" : 450,
     "logicNodeType" : "RAWSFCODE",
     "name" : "执行脚本代码",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE2"
-      }
-    } ],
-    "topPos" : 578
+    "topPos" : 610
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 640
   }, {
     "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\n\r\n\r\npage.each { item ->\r\n    if (item.get('sequence') > maxValue) {\r\n        maxValue = item.get('sequence')\r\n    }\r\n}\r\n_default.set('sequence', maxValue + 10)",
     "codeName" : "RAWSFCODE1",
@@ -146,38 +171,6 @@
     "logicNodeType" : "RAWSFCODE",
     "name" : "执行脚本代码",
     "topPos" : 770
-  }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : 820
-  }, {
-    "codeName" : "END1",
-    "leftPos" : 200,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 920
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

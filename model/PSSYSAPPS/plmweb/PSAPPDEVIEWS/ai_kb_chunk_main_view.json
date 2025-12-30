@@ -403,6 +403,13 @@
         "codeName" : "positions"
       }
     }, {
+      "id" : "tags",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      }
+    }, {
       "id" : "keywords",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -529,6 +536,48 @@
           "allowEmpty" : true,
           "showCaption" : true
         }, {
+          "caption" : "标签",
+          "codeName" : "tags",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "tags",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "TAGS",
+            "codeName" : "tags"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "SRFNAVPARAM.n_set_id_in" : "%tag_sets%"
+            },
+            "editorType" : "MDROPDOWNLIST",
+            "name" : "tags",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "n_set_id_in",
+              "name" : "n_set_id_in",
+              "value" : "tag_sets",
+              "rawValue" : false
+            } ],
+            "singleSelect" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 12,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
           "caption" : "关键词",
           "codeName" : "keywords",
           "dataType" : 25,
@@ -578,7 +627,7 @@
             "valueType" : "SIMPLES"
           },
           "getPSLayoutPos" : {
-            "colLG" : 16,
+            "colLG" : 8,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
