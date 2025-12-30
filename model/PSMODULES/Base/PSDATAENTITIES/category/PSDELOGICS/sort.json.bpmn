@@ -27,11 +27,23 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset1_debugparam_01" sourceRef="dedataset1" targetRef="debugparam_01">
+                    <sequenceFlow id="gateway-dedataset1_debugparam_01" sourceRef="gateway-dedataset1" targetRef="debugparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $categorysortdefault:category();
+                                            $categorysortfilter:category();
+                                            $categorysortpage:category();
+                                    eval($categorysortdefault==categorysortdefault && $categorysortfilter==categorysortfilter && $categorysortpage==categorysortpage);
+                                eval((RuleUtils.test($categorysortpage.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="debugparam_01_rawsfcode1" sourceRef="debugparam_01" targetRef="rawsfcode1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
         </process>
     </definitions>
