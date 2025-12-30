@@ -6,10 +6,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.category categorysortdefault;
-                global cn.ibizlab.plm.core.base.domain.category categorysortfilter;
-                global cn.ibizlab.plm.core.base.domain.category categorysortmax_sequence;
-                global cn.ibizlab.plm.core.base.domain.category categorysortpage;
-                    global cn.ibizlab.plm.core.base.service.IcategoryService categoryservice;
         global cn.ibizlab.plm.core.base.service.IcategoryService iBzSysCategoryDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -23,29 +19,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "categorysortdebugparam2"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam1"
-            ruleflow-group "categorysortprepareparam1"
-            when
-            then
-                            categorysortfilter.set("n_section_id_eq",categorysortdefault.get("id"));
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
             //逻辑处理节点[直接sql调用]
             rule "rawsqlcall1"
             ruleflow-group "categorysortrawsqlcall1"
@@ -57,31 +30,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
     String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = #{et.param0} ) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param1};";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[实体数据集]
-            rule "dedataset1"
-            ruleflow-group "categorysortdedataset1"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[执行脚本代码]
-            rule "rawsfcode2"
-            ruleflow-group "categorysortrawsfcode2"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -90,18 +38,4 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             when
             then
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[执行脚本代码]
-            rule "rawsfcode1"
-            ruleflow-group "categorysortrawsfcode1"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortfilter);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
             end

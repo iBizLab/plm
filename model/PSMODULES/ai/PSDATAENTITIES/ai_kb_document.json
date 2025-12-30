@@ -439,7 +439,42 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
       },
       "joinType" : "MAIN",
-      "name" : "AI_KB_DOCUMENT"
+      "name" : "AI_KB_DOCUMENT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "ACTIVE",
+          "name" : "(ACTIVE) 不等于(<>) 0",
+          "getPSDEField" : {
+            "name" : "ACTIVE",
+            "codeName" : "active"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "3",
+          "fieldName" : "STATUS",
+          "name" : "(STATUS) 等于(=) 3",
+          "getPSDEField" : {
+            "name" : "STATUS",
+            "codeName" : "status"
+          }
+        }, {
+          "condOp" : "ISNOTNULL",
+          "condType" : "SINGLE",
+          "fieldName" : "PARSED_CONTENT",
+          "name" : "(PARSED_CONTENT) 值不为空(NotNil) ",
+          "getPSDEField" : {
+            "name" : "PARSED_CONTENT",
+            "codeName" : "parsed_content"
+          }
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "UnparsedInput",
@@ -4332,7 +4367,7 @@
   } ],
   "codeName" : "ai_kb_document",
   "dEType" : 1,
-  "dSLink" : "DEFAULT",
+  "dSLink" : "DB3",
   "dataAccCtrlArch" : 1,
   "dataAccCtrlMode" : 1,
   "dataChangeLogMode" : 0,
@@ -4508,7 +4543,7 @@
   "name" : "AI_KB_DOCUMENT",
   "getPSSysDBScheme" : {
     "modelref" : true,
-    "path" : "PSSYSDBSCHEMES/DEFAULT.json"
+    "path" : "PSSYSDBSCHEMES/DB3.json"
   },
   "getPSSystemModule" : {
     "modelref" : true,
