@@ -26,9 +26,9 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "getAfterPSDEActionLogics" : [ {
+    "getBeforePSDEActionLogics" : [ {
       "actionLogicType" : 1,
-      "attachMode" : "AFTER",
+      "attachMode" : "BEFORE",
       "codeName" : "Usr1230099834",
       "name" : "附加逻辑",
       "getPSDELogic" : {
@@ -4517,7 +4517,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSQLCALL1"
+          "id" : "DEBUGPARAM2"
         },
         "name" : "连接名称",
         "getPSDELogicLinkGroupCond" : {
@@ -4551,7 +4551,7 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSQLCALL2"
+          "id" : "RAWSQLCALL3"
         },
         "name" : "连接名称",
         "getPSDELogicLinkGroupCond" : {
@@ -4585,6 +4585,16 @@
       } ],
       "topPos" : 290,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 74,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "topPos" : 367
     }, {
       "codeName" : "RAWSQLCALL1",
       "leftPos" : 160,
@@ -4645,17 +4655,6 @@
       "leftPos" : 356,
       "logicNodeType" : "RAWSQLCALL",
       "name" : "直接SQL调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL2"
-        }
-      } ],
       "getPSDELogicNodeParams" : [ {
         "name" : "Default[OWNER_ID]",
         "paramAction" : "SQLPARAM",
@@ -4696,10 +4695,87 @@
       "sql" : "UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = ? AND owner_type = ? AND owner_subtype = ?) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = ?;",
       "topPos" : 480
     }, {
+      "codeName" : "RAWSQLCALL3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "sequence"
+      },
+      "leftPos" : 579,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[OWNER_ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "OWNER_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[OWNER_TYPE]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "OWNER_TYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[OWNER_SUBTYPE]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "OWNER_SUBTYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = ? AND owner_type = ? AND owner_subtype = ?",
+      "topPos" : 480,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "sequence"
+      },
+      "leftPos" : 579,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 580
+    }, {
       "codeName" : "END1",
       "leftPos" : 296,
       "logicNodeType" : "END",
       "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
       "topPos" : 650
     } ],
     "getPSDELogicParams" : [ {
@@ -4711,6 +4787,15 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
       },
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "sequence",
+      "logicName" : "sequence",
+      "name" : "sequence",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+      },
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {

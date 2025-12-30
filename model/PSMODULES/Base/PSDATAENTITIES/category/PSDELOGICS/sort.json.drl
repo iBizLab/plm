@@ -6,6 +6,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.category categorysortdefault;
+                global cn.ibizlab.plm.core.base.domain.category categorysortsequence;
         global cn.ibizlab.plm.core.base.service.IcategoryService iBzSysCategoryDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -17,6 +18,15 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             ruleflow-group "categorysortbegin"
             when
             then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "categorysortdebugparam2"
+            when
+            then
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
             end
 
             //逻辑处理节点[直接sql调用]
@@ -32,6 +42,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
     String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param3};";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
                         update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
             end
 
             //逻辑处理节点[直接sql调用]
@@ -47,6 +58,37 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
     String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param3};";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
                         update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall3"
+            ruleflow-group "categorysortrawsqlcall3"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",categorysortdefault.get("ownerid"));
+        param.put("param1",categorysortdefault.get("ownertype"));
+        param.put("param2",categorysortdefault.get("ownersubtype"));
+    String strSql="SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}";
+                        java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    categorysortsequence.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "categorysortdebugparam1"
+            when
+            then
+                        update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -55,4 +97,5 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             when
             then
                         update(categorysortdefault);//更新fact中变量值
+                        update(categorysortsequence);//更新fact中变量值
             end
