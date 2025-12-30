@@ -67,7 +67,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         param.put("param0",categorysortdefault.get("ownerid"));
         param.put("param1",categorysortdefault.get("ownertype"));
         param.put("param2",categorysortdefault.get("ownersubtype"));
-    String strSql="SELECT * FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2} ORDER BY `DESC`;";
+    String strSql="SELECT * FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2} ORDER BY DESC;";
                         java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -90,11 +90,13 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         param.put("param0",categorysortdefault.get("sectionid"));
         param.put("param1",categorysortdefault.get("ownertype"));
         param.put("param2",categorysortdefault.get("ownersubtype"));
-    String strSql="SELECT MAX(SEQUENCE) AS max_sequence FROM `category` WHERE SECTION_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}";
+    String strSql="SELECT * FROM `category` WHERE SECTION_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2} ORDER BY DESC;";
                         java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
-                                categorysortmax_sequence.putAll(entity);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    categorysortpage.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
                             }
                         update(categorysortdefault);//更新fact中变量值
                         update(categorysortmax_sequence);//更新fact中变量值
