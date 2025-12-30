@@ -40,7 +40,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
     Map param =new HashMap();
         param.put("param0",categorysortdefault.get("ownerid"));
         param.put("param1",categorysortdefault.get("id"));
-    String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = NULL AND OWNER_ID = #{et.param0}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param1};";
+    String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param1};";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
                         update(categorysortdefault);//更新fact中变量值
             end
