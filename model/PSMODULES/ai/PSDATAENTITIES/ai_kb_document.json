@@ -461,11 +461,11 @@
         "condType" : "GROUP",
         "name" : "连接条件",
         "getPSDEDQConditions" : [ {
-          "condOp" : "NOTEQ",
+          "condOp" : "EQ",
           "condType" : "SINGLE",
-          "condValue" : "0",
+          "condValue" : "1",
           "fieldName" : "ACTIVE",
-          "name" : "(ACTIVE) 不等于(<>) 0",
+          "name" : "(ACTIVE) 等于(=) 1",
           "getPSDEField" : {
             "name" : "ACTIVE",
             "codeName" : "active"
@@ -481,14 +481,28 @@
             "codeName" : "status"
           }
         }, {
-          "condOp" : "ISNOTNULL",
-          "condType" : "SINGLE",
-          "fieldName" : "PARSED_CONTENT",
-          "name" : "(PARSED_CONTENT) 值不为空(NotNil) ",
-          "getPSDEField" : {
-            "name" : "PARSED_CONTENT",
-            "codeName" : "parsed_content"
-          }
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "ISNOTNULL",
+            "condType" : "SINGLE",
+            "fieldName" : "PARSED_CONTENT",
+            "name" : "(PARSED_CONTENT) 值不为空(NotNil) ",
+            "getPSDEField" : {
+              "name" : "PARSED_CONTENT",
+              "codeName" : "parsed_content"
+            }
+          }, {
+            "condOp" : "ISNOTNULL",
+            "condType" : "SINGLE",
+            "fieldName" : "FILE",
+            "name" : "(FILE) 值不为空(NotNil) ",
+            "getPSDEField" : {
+              "name" : "FILE",
+              "codeName" : "file"
+            }
+          } ]
         } ]
       }
     },
