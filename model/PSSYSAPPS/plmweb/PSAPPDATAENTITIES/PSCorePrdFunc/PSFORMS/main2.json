@@ -120,6 +120,13 @@
       "codeName" : "FuncSN"
     }
   }, {
+    "id" : "functype",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "FUNCTYPE",
+      "codeName" : "FuncType"
+    }
+  }, {
     "id" : "currentversion",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -134,8 +141,10 @@
       "codeName" : "PSCorePrdFuncName"
     }
   }, {
-    "id" : "formitem1",
-    "dataType" : 25
+    "id" : "uploadflag",
+    "dataType" : 25,
+    "createDV" : "0",
+    "updateDV" : "0"
   }, {
     "id" : "zipfile",
     "dataType" : 25
@@ -145,6 +154,18 @@
     "getPSAppDEField" : {
       "name" : "HTTPURLTOREPO",
       "codeName" : "HttpUrlToRepo"
+    }
+  }, {
+    "id" : "default_branch",
+    "dataType" : 25,
+    "createDV" : "master",
+    "updateDV" : "master"
+  }, {
+    "id" : "memo",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "MEMO",
+      "codeName" : "Memo"
     }
   }, {
     "id" : "pscoreprdid",
@@ -197,11 +218,40 @@
           "name" : "funcsn"
         },
         "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
+          "colLG" : 8,
+          "colMD" : 8,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : false,
+        "showCaption" : true
+      }, {
+        "caption" : "功能类型",
+        "codeName" : "functype",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 3,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "functype",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "FUNCTYPE",
+          "codeName" : "FuncType"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 50,
+          "name" : "functype"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 8,
+          "colMD" : 8,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "convertToCodeItemText" : true,
         "showCaption" : true
       }, {
         "caption" : "版本",
@@ -225,8 +275,8 @@
           "name" : "currentversion"
         },
         "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
+          "colLG" : 8,
+          "colMD" : 8,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : false,
@@ -265,7 +315,8 @@
         "name" : "grouppanel1",
         "getPSDEFormDetails" : [ {
           "caption" : "上传应用包",
-          "codeName" : "formitem1",
+          "codeName" : "uploadflag",
+          "createDV" : "0",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -273,16 +324,17 @@
           "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
-          "name" : "formitem1",
+          "name" : "uploadflag",
           "noPrivDisplayMode" : 1,
           "getPSEditor" : {
             "editorType" : "SWITCH",
-            "name" : "formitem1"
+            "name" : "uploadflag"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
+          "updateDV" : "0",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -297,6 +349,20 @@
           "labelWidth" : 0,
           "name" : "zipfile",
           "noPrivDisplayMode" : 1,
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "uploadflag",
+              "logicType" : "SINGLE",
+              "name" : "uploadflag等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "uploadflag" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorParams" : {
               "FILEEXTS" : "",
@@ -332,6 +398,33 @@
             "name" : "HTTPURLTOREPO",
             "codeName" : "HttpUrlToRepo"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "uploadflag",
+              "logicType" : "SINGLE",
+              "name" : "uploadflag等于(=) 0",
+              "value" : "0"
+            } ],
+            "relatedDetailNames" : [ "uploadflag" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMBLANK",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "uploadflag",
+              "logicType" : "SINGLE",
+              "name" : "uploadflag等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "uploadflag" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorHeight" : 200.0,
             "editorParams" : {
@@ -346,7 +439,58 @@
             "grow" : 1,
             "layout" : "FLEX"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "分支",
+          "codeName" : "default_branch",
+          "createDV" : "master",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "default_branch",
+          "noPrivDisplayMode" : 1,
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "uploadflag",
+              "logicType" : "SINGLE",
+              "name" : "uploadflag等于(=) 0",
+              "value" : "0"
+            } ],
+            "relatedDetailNames" : [ "uploadflag" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMBLANK",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "uploadflag",
+              "logicType" : "SINGLE",
+              "name" : "uploadflag等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "uploadflag" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "default_branch"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "master",
+          "allowEmpty" : false,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -358,6 +502,39 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "备注",
+        "codeName" : "memo",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "itemHeight" : 200.0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "memo",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "MEMO",
+          "codeName" : "Memo"
+        },
+        "getPSEditor" : {
+          "editorHeight" : 200.0,
+          "editorParams" : {
+            "HEIGHT" : "200"
+          },
+          "editorType" : "TEXTAREA_10",
+          "maxLength" : 4000,
+          "name" : "memo",
+          "showMaxLength" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,

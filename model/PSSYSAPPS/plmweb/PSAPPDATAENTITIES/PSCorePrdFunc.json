@@ -2307,6 +2307,46 @@
     "reloadData" : true,
     "id" : "Install@PSCorePrdFunc"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "安装",
+    "codeName" : "InstallSpecVer",
+    "fullCodeName" : "PSCorePrdFunc_InstallSpecVer",
+    "name" : "指定版本安装",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "InstallSpecVer"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PSCOREPRDFUNC",
+      "name" : "PSCOREPRDFUNC",
+      "value" : "pscoreprdfuncid",
+      "rawValue" : false
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "n_pscoreprdid_eq",
+      "name" : "n_pscoreprdid_eq",
+      "value" : "srfv2systemid",
+      "rawValue" : false
+    }, {
+      "key" : "reload",
+      "name" : "reload",
+      "value" : "false",
+      "rawValue" : true
+    } ],
+    "refreshMode" : 1,
+    "successMsg" : "安装成功！",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "InstallSpecVer",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "InstallSpecVer@PSCorePrdFunc"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "重新加载",
     "codeName" : "Reload",
@@ -2400,20 +2440,29 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "clone_git@PSCorePrdFunc"
   }, {
-    "actionTarget" : "SINGLEDATA",
+    "actionTarget" : "SINGLEKEY",
     "caption" : "安装特定版本",
     "codeName" : "install_specific_ver_test",
-    "frontProcessType" : "OTHER",
+    "dialogResult" : "OK",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_spec_version.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
     "fullCodeName" : "PSCorePrdFunc_install_specific_ver_test",
     "name" : "安装特定版本_提示开发中",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
     },
-    "scriptCode" : "util.message.info(\"功能正在开发中\");",
+    "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "install_specific_ver_test",
     "uIActionType" : "DEUIACTION",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "reloadData" : true,
     "id" : "install_specific_ver_test@PSCorePrdFunc"
   }, {
     "actionTarget" : "NONE",
@@ -2847,6 +2896,10 @@
     }
   } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_spec_version.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_custom_install_view.json",
     "viewType" : "DEEDITVIEW"

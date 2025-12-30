@@ -6,62 +6,29 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="categorysortdefault" type="entity"/>
-                                <tns:metaData express="new HashMap()" name="categorysortmax_sequence" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.category()" name="categorysortfilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.category()" name="categorysortpage" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.category()" name="categorysortsequence" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IcategoryService))" name="categoryservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IcategoryService))" name="iBzSysCategoryDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="categorysortdefault" type="cn.ibizlab.plm.core.base.domain.category" />
+                            <tns:global identifier="categorysortfilter" type="cn.ibizlab.plm.core.base.domain.category" />
                             <tns:global identifier="categorysortpage" type="cn.ibizlab.plm.core.base.domain.category" />
-                            <tns:global identifier="categorysortsequence" type="cn.ibizlab.plm.core.base.domain.category" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <endEvent id="rawsqlcall1_end" name="end"/>
-                        <sequenceFlow id="rawsqlcall1_end_line" sourceRef="rawsqlcall1" targetRef="rawsqlcall1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <endEvent id="rawsqlcall2_end" name="end"/>
-                        <sequenceFlow id="rawsqlcall2_end_line" sourceRef="rawsqlcall2" targetRef="rawsqlcall2_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorysortend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="gateway-begin_rawsqlcall4" sourceRef="gateway-begin" targetRef="rawsqlcall4">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $categorysortdefault:category();
-                                            $categorysortmax_sequence:Map();
-                                            $categorysortpage:category();
-                                            $categorysortsequence:category();
-                                    eval($categorysortdefault==categorysortdefault && $categorysortpage==categorysortpage && $categorysortsequence==categorysortsequence);
-                                eval((RuleUtils.test($categorysortdefault.get("sectionId"),"ISNOTNULL",""))&&(RuleUtils.test($categorysortdefault.get("ownerId"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_rawsqlcall3" sourceRef="gateway-begin" targetRef="rawsqlcall3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $categorysortdefault:category();
-                                            $categorysortmax_sequence:Map();
-                                            $categorysortpage:category();
-                                            $categorysortsequence:category();
-                                    eval($categorysortdefault==categorysortdefault && $categorysortpage==categorysortpage && $categorysortsequence==categorysortsequence);
-                                eval((RuleUtils.test($categorysortdefault.get("sectionId"),"ISNULL",""))&&(RuleUtils.test($categorysortdefault.get("ownerId"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall3_debugparam1" sourceRef="rawsqlcall3" targetRef="debugparam1">
+                    <sequenceFlow id="dedataset1_rawsfcode1" sourceRef="dedataset1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall4_debugparam1" sourceRef="rawsqlcall4" targetRef="debugparam1">
+                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam1_debugparam2" sourceRef="debugparam1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_end1" sourceRef="debugparam2" targetRef="end1">
-                    </sequenceFlow>
-                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
-                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
-                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
-                            <endEvent id="gateway-begin_end" name="end"/>
         </process>
     </definitions>

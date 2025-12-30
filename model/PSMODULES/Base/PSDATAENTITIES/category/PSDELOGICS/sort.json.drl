@@ -6,9 +6,9 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.category categorysortdefault;
-                global java.util.Map categorysortmax_sequence;
+                global cn.ibizlab.plm.core.base.domain.category categorysortfilter;
                 global cn.ibizlab.plm.core.base.domain.category categorysortpage;
-                global cn.ibizlab.plm.core.base.domain.category categorysortsequence;
+                    global cn.ibizlab.plm.core.base.service.IcategoryService categoryservice;
         global cn.ibizlab.plm.core.base.service.IcategoryService iBzSysCategoryDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -22,108 +22,39 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             then
             end
 
-            //逻辑处理节点[直接sql调用]
-            rule "rawsqlcall1"
-            ruleflow-group "categorysortrawsqlcall1"
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "categorysortprepareparam1"
             when
             then
-    Map param =new HashMap();
-        param.put("param0",categorysortdefault.get("sectionid"));
-        param.put("param1",categorysortdefault.get("ownertype"));
-        param.put("param2",categorysortdefault.get("ownersubtype"));
-        param.put("param3",categorysortdefault.get("id"));
-    String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param3};";
-                        iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
+                            categorysortfilter.set("n_owner_type_eq",categorysortdefault.get("ownertype"));
+                            categorysortfilter.set("sort","sequence,desc");
+                            categorysortfilter.set("n_owner_subtype_eq",categorysortdefault.get("ownersubtype"));
+                            categorysortfilter.set("n_section_id_eq",categorysortdefault.get("sectionid"));
+                            categorysortfilter.set("n_owner_id_eq",categorysortdefault.get("ownerid"));
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
             end
 
-            //逻辑处理节点[直接sql调用]
-            rule "rawsqlcall2"
-            ruleflow-group "categorysortrawsqlcall2"
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "categorysortdedataset1"
             when
             then
-    Map param =new HashMap();
-        param.put("param0",categorysortdefault.get("ownerid"));
-        param.put("param1",categorysortdefault.get("ownertype"));
-        param.put("param2",categorysortdefault.get("ownersubtype"));
-        param.put("param3",categorysortdefault.get("id"));
-    String strSql="UPDATE `category` c1 JOIN ( SELECT MAX( SEQUENCE ) AS max_sequence FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2}) AS c2 SET c1.SEQUENCE = COALESCE ( c2.max_sequence + 10, 1 ) WHERE c1.ID = #{et.param3};";
-                        iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
             end
 
-            //逻辑处理节点[直接sql调用]
-            rule "rawsqlcall3"
-            ruleflow-group "categorysortrawsqlcall3"
-            when
-            then
-    Map param =new HashMap();
-        param.put("param0",categorysortdefault.get("ownerid"));
-        param.put("param1",categorysortdefault.get("ownertype"));
-        param.put("param2",categorysortdefault.get("ownersubtype"));
-    String strSql="SELECT * FROM `category` WHERE SECTION_ID IS NULL AND OWNER_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2} ORDER BY DESC;";
-                        java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
-                            if(entities.size()>0){
-                            JSONObject entity=entities.get(0);
-                                    for (Map.Entry entry : entity.entrySet()) {
-                                    categorysortpage.set(String.valueOf(entry.getKey()),entry.getValue());
-                                    }
-                            }
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
-            end
-
-            //逻辑处理节点[直接sql调用]
-            rule "rawsqlcall4"
-            ruleflow-group "categorysortrawsqlcall4"
-            when
-            then
-    Map param =new HashMap();
-        param.put("param0",categorysortdefault.get("sectionid"));
-        param.put("param1",categorysortdefault.get("ownertype"));
-        param.put("param2",categorysortdefault.get("ownersubtype"));
-    String strSql="SELECT * FROM `category` WHERE SECTION_ID = #{et.param0} AND owner_type = #{et.param1} AND owner_subtype = #{et.param2} ORDER BY DESC;";
-                        java.util.List<JSONObject> entities=iBzSysCategoryDefaultService.select(strSql,param);//SQL调用
-                            if(entities.size()>0){
-                            JSONObject entity=entities.get(0);
-                                    for (Map.Entry entry : entity.entrySet()) {
-                                    categorysortpage.set(String.valueOf(entry.getKey()),entry.getValue());
-                                    }
-                            }
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "categorysortdebugparam1"
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "categorysortrawsfcode1"
             when
             then
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "categorysortdebugparam2"
-            when
-            then
-                        update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
-                        update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -132,7 +63,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.sort;
             when
             then
                         update(categorysortdefault);//更新fact中变量值
-                        update(categorysortmax_sequence);//更新fact中变量值
+                        update(categorysortfilter);//更新fact中变量值
                         update(categorysortpage);//更新fact中变量值
-                        update(categorysortsequence);//更新fact中变量值
             end
