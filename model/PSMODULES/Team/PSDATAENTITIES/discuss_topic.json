@@ -5738,16 +5738,6 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
           "id" : "RAWSFCODE4"
         },
         "name" : "已删除已归档",
@@ -5780,6 +5770,42 @@
               "name" : "Default[IS_ARCHIVED] 等于(=) 1",
               "paramValue" : "1"
             } ]
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_DELETED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_DELETED] 等于(=) 0",
+            "paramValue" : "0"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_ARCHIVED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+            "paramValue" : "0"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -5880,7 +5906,7 @@
       } ],
       "topPos" : -330
     }, {
-      "code" : "console.log('');\r\n\r\nvar defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
       "codeName" : "RAWSFCODE4",
       "leftPos" : -203,
       "logicNodeType" : "RAWSFCODE",
