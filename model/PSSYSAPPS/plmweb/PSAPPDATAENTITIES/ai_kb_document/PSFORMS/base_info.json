@@ -72,9 +72,9 @@
     "codeName" : "fill_file_info",
     "name" : "fill_file_info",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "file_type"
-    }, {
       "name" : "size"
+    }, {
+      "name" : "file_type"
     } ],
     "scriptCode" : "const fileData = data.file ? JSON.parse(data.file)?.[0] : null;\ndata.size = fileData?.size ?? null;\ndata.file_type = fileData?.ext?.replace(/^\\./, '') ?? null;",
     "customCode" : true
@@ -145,6 +145,13 @@
       "codeName" : "status"
     }
   }, {
+    "id" : "active",
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "ACTIVE",
+      "codeName" : "active"
+    }
+  }, {
     "id" : "file",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -171,13 +178,6 @@
     "getPSAppDEField" : {
       "name" : "SYNC_FREQUENCY",
       "codeName" : "sync_frequency"
-    }
-  }, {
-    "id" : "active",
-    "dataType" : 9,
-    "getPSAppDEField" : {
-      "name" : "ACTIVE",
-      "codeName" : "active"
     }
   }, {
     "id" : "kb_id",
@@ -322,6 +322,33 @@
         },
         "allowEmpty" : true,
         "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "是否启用",
+        "codeName" : "active",
+        "dataType" : 9,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "active",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTIVE",
+          "codeName" : "active"
+        },
+        "getPSEditor" : {
+          "editorType" : "CHECKBOX",
+          "name" : "active"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 6,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
         "showCaption" : true
       }, {
         "caption" : "上传文件",
@@ -502,31 +529,150 @@
         "needCodeListConfig" : true,
         "showCaption" : true
       }, {
-        "caption" : "是否启用",
-        "codeName" : "active",
-        "dataType" : 9,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "active",
-        "noPrivDisplayMode" : 1,
+        "caption" : "参考引用",
+        "codeName" : "references",
+        "contentType" : "REPEATER",
+        "detailStyle" : "STYLE2",
+        "detailType" : "MDCTRL",
+        "fieldName" : "references",
+        "name" : "references",
         "getPSAppDEField" : {
-          "name" : "ACTIVE",
-          "codeName" : "active"
+          "name" : "REFERENCES",
+          "codeName" : "references"
         },
-        "getPSEditor" : {
-          "editorType" : "CHECKBOX",
-          "name" : "active"
+        "getPSDEFormDetails" : [ {
+          "caption" : "名称",
+          "codeName" : "reference_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "name",
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 300,
+          "name" : "reference_name",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "reference_name",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "类型",
+          "codeName" : "reference_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "type",
+          "ignoreInput" : 3,
+          "labelPos" : "LEFT",
+          "labelWidth" : 100,
+          "name" : "reference_type",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "reference_type",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__reference_type.json"
+            },
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "convertToCodeItemText" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "url",
+          "codeName" : "path",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 300,
+          "name" : "path",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "path",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "预览",
+          "codeName" : "source_markdown",
+          "contentHeight" : 50.0,
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "height" : 50.0,
+          "ignoreInput" : 0,
+          "itemHeight" : 50.0,
+          "itemWidth" : 600.0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 300,
+          "name" : "source_markdown",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "contentType" : "MARKDOWN",
+            "editorHeight" : 50.0,
+            "editorParams" : {
+              "contenttype" : "MARKDOWN"
+            },
+            "editorType" : "RAW",
+            "editorWidth" : 300.0,
+            "name" : "source_markdown"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 6,
+            "height" : 50,
+            "heightMode" : "PX",
+            "layout" : "TABLE_24COL"
+          },
+          "getPSSysCss" : {
+            "cssName" : "reference-style"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColLG" : 6,
+          "childColMD" : 6,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
         },
         "getPSLayoutPos" : {
-          "colLG" : 6,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : false,
+        "infoGroupMode" : false,
         "showCaption" : true
       }, {
         "caption" : "知识库标识",
