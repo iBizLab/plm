@@ -243,6 +243,32 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "parsing",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/parsing.json",
+    "logicName" : "文档解析处理",
+    "name" : "parsing",
+    "getPSDEActionInput" : {
+      "name" : "ParsingInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "ParsingResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/parsing.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "USERUPDATE",
     "codeName" : "update_status",
@@ -2871,6 +2897,73 @@
     "viewLevel" : 0,
     "linkDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REFERENCES",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "references",
+    "getComputePSDEFLogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEFLOGICS/references.json"
+    },
+    "dEFType" : 5,
+    "dataType" : "ONE2MANYOBJ",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "参考引用",
+    "name" : "REFERENCES",
+    "orderValue" : 380,
+    "serviceCodeName" : "references",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "queryColumn" : false,
+    "uIAssistDEField" : true
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "generate_doc_scheduled",
@@ -3440,6 +3533,88 @@
       },
       "entityParam" : true
     } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "references",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEFLOGICS/references.json",
+    "logicName" : "参考引用",
+    "logicSubType" : "DEFIELD",
+    "name" : "参考引用",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('Default').getReal()\ndef meta_data_str = _default.get('meta_data')\nif (meta_data_str) {\n    try {\n        def meta_data = new groovy.json.JsonSlurper().parseText(meta_data_str)\n        def references = meta_data.references\n        _default.set('references', references)\n    }catch (e){\n        println \"Error parsing meta_data: ${e}\"\n    }\n}",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 346,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "提取references",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 198,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "dstFieldName" : "references",
+      "leftPos" : 624,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAMFIELD",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "references",
+      "logicName" : "references",
+      "name" : "references",
+      "entityListParam" : true
+    } ],
+    "scriptCode" : "var meta_data = data.meta_data;\nif (meta_data && typeof meta_data === 'string') {\n    try {\n        const parsed = JSON.parse(meta_data);\n        if (Array.isArray(parsed.references)) {\n            data.references = parsed.references;\n        }\n    } catch (e) {\n        console.warn('Invalid meta_data JSON format, skipping references assignment', e);\n    }\n}",
     "getStartPSDELogicNode" : {
       "modelref" : true,
       "id" : "Begin"
@@ -4239,6 +4414,16 @@
       "stdDataType" : 25,
       "stringLength" : 2000,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "参考引用",
+      "name" : "references",
+      "getPSDEField" : {
+        "name" : "REFERENCES",
+        "codeName" : "references"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTOS"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -4499,6 +4684,12 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "meta_data_view",
+    "logicName" : "知识库文档元数据快速配置页",
+    "name" : "知识库文档元数据快速配置页",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "chunk_view",
     "logicName" : "知识库文档实体切片视图",
     "name" : "知识库文档实体切片视图",
@@ -4545,10 +4736,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "chunk",
-    "logicName" : "文档切片与同步表单",
+    "codeName" : "Main2",
+    "logicName" : "知识库文档元数据快速配置页_表单",
     "modelTag2" : "0",
-    "name" : "文档切片与同步表单",
+    "name" : "知识库文档元数据快速配置页_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "chunk",
+    "logicName" : "文档切片表单",
+    "modelTag2" : "0",
+    "name" : "文档切片表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

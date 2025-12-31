@@ -63,7 +63,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
     }
   },
-  "logicName" : "文档切片与同步表单",
+  "logicName" : "文档切片表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
@@ -136,13 +136,6 @@
     "getPSAppDEField" : {
       "name" : "CHUNK_NUM",
       "codeName" : "chunk_num"
-    }
-  }, {
-    "id" : "sync_frequency",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "SYNC_FREQUENCY",
-      "codeName" : "sync_frequency"
     }
   }, {
     "id" : "kb_id",
@@ -1873,58 +1866,6 @@
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "同步频率",
-        "codeName" : "sync_frequency",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "sync_frequency",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "SYNC_FREQUENCY",
-          "codeName" : "sync_frequency"
-        },
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "ISNULL",
-            "dEFDName" : "sync_id",
-            "logicType" : "SINGLE",
-            "name" : "sync_id值为空(Nil)"
-          }, {
-            "condOP" : "EQ",
-            "dEFDName" : "type",
-            "logicType" : "SINGLE",
-            "name" : "type等于(=) space",
-            "value" : "space"
-          } ],
-          "relatedDetailNames" : [ "sync_id", "type" ],
-          "notMode" : false
-        } ],
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "sync_frequency",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__KBSyncFrequency.json"
-          },
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 6,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "知识库标识",

@@ -166,11 +166,11 @@
       "codeName" : "size"
     }
   }, {
-    "id" : "meta_data",
-    "dataType" : 21,
+    "id" : "sync_frequency",
+    "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "META_DATA",
-      "codeName" : "meta_data"
+      "name" : "SYNC_FREQUENCY",
+      "codeName" : "sync_frequency"
     }
   }, {
     "id" : "active",
@@ -450,35 +450,56 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
-        "caption" : "文档元数据",
-        "codeName" : "meta_data",
-        "dataType" : 21,
+        "caption" : "同步频率",
+        "codeName" : "sync_frequency",
+        "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "meta_data",
+        "name" : "sync_frequency",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "META_DATA",
-          "codeName" : "meta_data"
+          "name" : "SYNC_FREQUENCY",
+          "codeName" : "sync_frequency"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNULL",
+            "dEFDName" : "sync_id",
+            "logicType" : "SINGLE",
+            "name" : "sync_id值为空(Nil)"
+          }, {
+            "condOP" : "EQ",
+            "dEFDName" : "type",
+            "logicType" : "SINGLE",
+            "name" : "type等于(=) space",
+            "value" : "space"
+          } ],
+          "relatedDetailNames" : [ "sync_id", "type" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
+          "editorType" : "DROPDOWNLIST",
+          "name" : "sync_frequency",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__KBSyncFrequency.json"
           },
-          "editorType" : "TEXTAREA",
-          "maxLength" : 1048576,
-          "name" : "meta_data",
-          "showMaxLength" : true
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
+          "colLG" : 6,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
+        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "是否启用",

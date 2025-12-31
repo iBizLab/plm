@@ -63168,6 +63168,13 @@
     "name" : "test_casemain_view"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_meta_data_view.json",
+    "viewType" : "DEOPTVIEW",
+    "resource" : "ai_kb_document",
+    "view" : "meta_data_view",
+    "name" : "ai_kb_documentmeta_data_view"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_advanced_setting_edit_view.json",
     "viewType" : "DEEDITVIEW",
     "resource" : "project",
@@ -81196,6 +81203,10 @@
                     "name" : "CREATE_TIME",
                     "codeName" : "create_time"
                   }
+                }, {
+                  "id" : "n_project_id_eq",
+                  "hidden" : true,
+                  "dataType" : 25
                 } ],
                 "getPSDEFormPages" : [ {
                   "caption" : "常规条件",
@@ -81295,23 +81306,45 @@
                       },
                       "getPSEditor" : {
                         "editorParams" : {
-                          "overflowMode" : "ellipsis"
+                          "n_is_deleted_eq" : "0",
+                          "n_is_archived_eq" : "0",
+                          "overflowMode" : "ellipsis",
+                          "AC" : "TRUE",
+                          "TRIGGER" : "TRUE",
+                          "PICKUPVIEW" : "FALSE"
                         },
-                        "editorType" : "DROPDOWNLIST",
+                        "editorType" : "PICKEREX_TRIGGER",
+                        "handlerType" : "PickupText",
                         "name" : "n_project_name_eq",
-                        "getPSAppCodeList" : {
+                        "getPSAppDEACMode" : {
                           "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__UsrCodeList0122047845.json"
+                          "id" : "Default"
                         },
+                        "getPSAppDEDataSet" : {
+                          "modelref" : true,
+                          "id" : "fetch_default"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                        },
+                        "getPSEditorItems" : [ {
+                          "name" : "n_project_id_eq"
+                        } ],
                         "placeHolder" : "选择项目",
+                        "valueItemName" : "n_project_id_eq",
+                        "enableAC" : true,
+                        "enablePickupView" : false,
+                        "forceSelection" : true,
+                        "showTrigger" : true,
                         "singleSelect" : true
                       },
                       "getPSLayoutPos" : {
                         "colMD" : 24,
                         "layout" : "TABLE_24COL"
                       },
+                      "valueItemName" : "n_project_id_eq",
                       "allowEmpty" : true,
-                      "needCodeListConfig" : true,
                       "showCaption" : true
                     }, {
                       "caption" : "工作项类型",
@@ -81558,6 +81591,27 @@
                     },
                     "infoGroupMode" : false,
                     "showCaption" : true
+                  }, {
+                    "codeName" : "n_project_id_eq",
+                    "dataType" : 25,
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "FORMITEM",
+                    "enableCond" : 3,
+                    "ignoreInput" : 0,
+                    "labelPos" : "LEFT",
+                    "labelWidth" : 130,
+                    "name" : "n_project_id_eq",
+                    "noPrivDisplayMode" : 1,
+                    "getPSEditor" : {
+                      "editorType" : "HIDDEN",
+                      "name" : "n_project_id_eq"
+                    },
+                    "getPSLayoutPos" : {
+                      "colMD" : 24,
+                      "layout" : "TABLE_24COL"
+                    },
+                    "allowEmpty" : true,
+                    "hidden" : true
                   } ],
                   "getPSLayout" : {
                     "childColMD" : 24,

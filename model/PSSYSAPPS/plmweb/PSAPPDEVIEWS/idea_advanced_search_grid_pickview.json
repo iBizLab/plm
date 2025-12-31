@@ -577,6 +577,10 @@
         "name" : "CREATE_TIME",
         "codeName" : "create_time"
       }
+    }, {
+      "id" : "n_product_id_eq",
+      "hidden" : true,
+      "dataType" : 25
     } ],
     "getPSDEFormPages" : [ {
       "getCapPSLanguageRes" : {
@@ -683,23 +687,45 @@
           },
           "getPSEditor" : {
             "editorParams" : {
-              "overflowMode" : "ellipsis"
+              "n_is_deleted_eq" : "0",
+              "n_is_archived_eq" : "0",
+              "overflowMode" : "ellipsis",
+              "AC" : "TRUE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
             },
-            "editorType" : "DROPDOWNLIST",
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
             "name" : "n_product_name_eq",
-            "getPSAppCodeList" : {
+            "getPSAppDEACMode" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_list.json"
+              "id" : "Default"
             },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "n_product_id_eq"
+            } ],
             "placeHolder" : "选择产品",
+            "valueItemName" : "n_product_id_eq",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "valueItemName" : "n_product_id_eq",
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {
@@ -931,6 +957,27 @@
         },
         "infoGroupMode" : false,
         "showCaption" : true
+      }, {
+        "codeName" : "n_product_id_eq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "n_product_id_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "n_product_id_eq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
