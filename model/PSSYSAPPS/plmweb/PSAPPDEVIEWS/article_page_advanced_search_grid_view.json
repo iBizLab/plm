@@ -469,11 +469,11 @@
       "id" : "queryconds",
       "dataType" : 25
     }, {
-      "id" : "n_space_id_eq",
+      "id" : "n_space_name_eq",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "SPACE_ID",
-        "codeName" : "space_id"
+        "name" : "SPACE_NAME",
+        "codeName" : "space_name"
       }
     }, {
       "id" : "publish_man",
@@ -505,6 +505,10 @@
         "name" : "PUBLISH_TIME",
         "codeName" : "publish_time"
       }
+    }, {
+      "id" : "n_space_id_eq",
+      "hidden" : true,
+      "dataType" : 25
     } ],
     "getPSDEFormPages" : [ {
       "caption" : "常规条件",
@@ -588,8 +592,8 @@
           "infoGroupMode" : false,
           "showCaption" : false
         }, {
-          "caption" : "空间名称",
-          "codeName" : "n_space_id_eq",
+          "caption" : "空间名称(=)",
+          "codeName" : "n_space_name_eq",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -597,11 +601,11 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "n_space_id_eq",
+          "name" : "n_space_name_eq",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "SPACE_ID",
-            "codeName" : "space_id"
+            "name" : "SPACE_NAME",
+            "codeName" : "space_name"
           },
           "getPSEditor" : {
             "editorParams" : {
@@ -612,20 +616,24 @@
             },
             "editorType" : "PICKEREX_TRIGGER",
             "handlerType" : "PickupText",
-            "name" : "n_space_id_eq",
+            "name" : "n_space_name_eq",
             "getPSAppDEACMode" : {
               "modelref" : true,
               "id" : "Default"
             },
             "getPSAppDEDataSet" : {
               "modelref" : true,
-              "id" : "fetch_normal"
+              "id" : "fetch_default"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
             },
+            "getPSEditorItems" : [ {
+              "name" : "n_space_id_eq"
+            } ],
             "placeHolder" : "选择空间",
+            "valueItemName" : "n_space_id_eq",
             "enableAC" : true,
             "enablePickupView" : false,
             "forceSelection" : true,
@@ -636,6 +644,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "valueItemName" : "n_space_id_eq",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -817,6 +826,27 @@
         },
         "infoGroupMode" : false,
         "showCaption" : true
+      }, {
+        "codeName" : "n_space_id_eq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "n_space_id_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "n_space_id_eq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,

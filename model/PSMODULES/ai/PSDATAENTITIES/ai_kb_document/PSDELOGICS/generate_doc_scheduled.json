@@ -88,8 +88,13 @@
         "id" : "extend_schedule"
       },
       "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "name",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
       "srcValue" : "知识库文档",
-      "srcValueType" : "SRCVALUE"
+      "srcValueType" : "SRCDLPARAM"
     }, {
       "dstFieldName" : "PRINCIPAL_ID",
       "getDstPSDELogicParam" : {
@@ -107,7 +112,7 @@
     "topPos" : 280,
     "parallelOutput" : true
   }, {
-    "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 0 * * ?',\r\n    'weekly': '0 0 0 ? * MON', \r\n    'monthly': '0 0 0 1 * ?'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]\r\n_extend_schedule.name=\"[\"+_default.name+\"]文档执行计划\"",
+    "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 0 * * ?',\r\n    'weekly': '0 0 0 ? * MON', \r\n    'monthly': '0 0 0 1 * ?'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]\r\n_extend_schedule.name=\"[\"+_default.name+\"]文档执行计划\"\r\n\r\n_extend_schedule.payload={id:_default.id}",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "getDstPSDELogicParam" : {
