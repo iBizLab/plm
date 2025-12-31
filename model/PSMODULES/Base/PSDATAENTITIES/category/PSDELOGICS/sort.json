@@ -127,9 +127,25 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEDATASET1"
@@ -139,30 +155,9 @@
       "modelref" : true,
       "id" : "page"
     },
-    "topPos" : 550
+    "topPos" : 580
   }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "leftPos" : 256,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 660
-  }, {
-    "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\nsys.warn(\"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\")\r\nsys.warn(\"${page.size}!\")\r\nsys.warn(\"${page}!\")\r\nsys.warn(\"${page[0]}!\")\r\nif (page != null && page.size > 0) {\r\n    if (page[0] != null) {\r\n        maxValue = page[0].get('sequence')\r\n        _default.set('sequence', maxValue + 10)\r\n    }\r\n}",
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\nif (page[0] != null) {\r\n    maxValue = page[0].get('sequence')\r\n    _default.set('sequence', maxValue + 10)\r\n}",
     "codeName" : "RAWSFCODE1",
     "codeType" : "Groovy",
     "leftPos" : 256,
