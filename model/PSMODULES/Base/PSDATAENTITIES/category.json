@@ -4602,7 +4602,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE1"
+          "id" : "DEBUGPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -4615,6 +4615,27 @@
         "id" : "page"
       },
       "topPos" : 550
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "leftPos" : 256,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 660
     }, {
       "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\nif (page != null && page.size > 0) {\r\n    maxValue = page[0].get('sequence')\r\n    _default.set('sequence', maxValue + 10)\r\n}",
       "codeName" : "RAWSFCODE1",
@@ -4633,7 +4654,7 @@
           "id" : "RAWSFCODE1"
         }
       } ],
-      "topPos" : 670
+      "topPos" : 760
     }, {
       "codeName" : "END1",
       "leftPos" : 296,
@@ -4644,7 +4665,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 780,
+      "topPos" : 870,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
