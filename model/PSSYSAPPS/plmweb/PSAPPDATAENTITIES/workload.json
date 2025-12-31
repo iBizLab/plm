@@ -6868,23 +6868,31 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 120,
       "parallelOutput" : true
     }, {
-      "codeName" : "END_02",
-      "leftPos" : 470,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "result"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 669,
+      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('预估工时登记成功');\nuiLogic.result = {content: \"预估工时登记成功\"};",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "刷新父页面",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
+      "topPos" : 627,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 180,
+      "leftPos" : 200,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -6895,69 +6903,9 @@
       "topPos" : 770,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 450,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END_02"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "content",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "result"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "预估工时登记未成功",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 530,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEACTION_01",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "create"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "list"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "AI登记预估工时",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE_02"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION_01"
-        }
-      } ],
-      "topPos" : 503,
-      "parallelOutput" : true
-    }, {
       "code" : "\nconsole.info(\"ai callback\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\n//var formController = realView.getController(\"form\");\nvar wl_name = \"\";\nif (uiLogic.default.data && uiLogic.default.data.messages &&\n     uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n    if(uiLogic.default.data.aiChat && \n        uiLogic.default.data.aiChat.appendCurData &&\n        uiLogic.default.data.aiChat.appendCurData.title) {\n        wl_name = uiLogic.default.data.aiChat.appendCurData.title;\n    }\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n    if(uiLogic.default.topic && uiLogic.default.topic.aiChat && \n        uiLogic.default.topic.aiChat.appendCurData &&\n        uiLogic.default.topic.aiChat.appendCurData.title) {\n        wl_name = uiLogic.default.topic.aiChat.appendCurData.title;\n    }\n}\n\nuiLogic.list = [];\nuiLogic.resultcnt = 0;\n\nif (answer && typeof answer == 'string') {\n    var ret = ibiz.util.jsonUtil.parseJson(answer);\n    if (ret.success && ret.data) {\n        if (ret.data_type == 'jsonarray' && _entity_tag) {\n            const principal_id = realView.context[_entity_tag];\n            const register_date = new Date();   \n            ret.data.forEach(entity => {\n                entity.principal_id = principal_id;\n                entity.register_date = register_date;\n                entity.principal_type= _entity_tag.toUpperCase();\n                entity.name = wl_name;\n                entity.category=\"ESTIMATED_WORKLOAD\"\n                uiLogic.list.push(entity);\n                uiLogic.resultcnt = uiLogic.resultcnt+1;\n            });\n        }\n\n    }\n\n}\n",
       "codeName" : "RAWJSCODE4",
-      "leftPos" : 430,
+      "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
@@ -6999,44 +6947,96 @@
         },
         "defaultLink" : true
       } ],
-      "topPos" : 380
+      "topPos" : 320
     }, {
-      "code" : "view.parentView.call(\"Refresh\");\nibiz.message.success('预估工时登记成功');\nuiLogic.result = {content: \"预估工时登记成功\"};",
-      "codeName" : "RAWJSCODE_02",
+      "codeName" : "DEACTION_01",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "list"
+      },
       "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新父页面",
+      "logicNodeType" : "DEACTION",
+      "name" : "AI登记预估工时",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END_01"
+          "id" : "RAWJSCODE_02"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "DEACTION_01"
         }
       } ],
-      "topPos" : 627,
+      "topPos" : 503,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 430,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "content",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "result"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "预估工时登记未成功",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 320,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_02",
+      "leftPos" : 470,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 495,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "list",
-      "logicName" : "list",
-      "name" : "list",
-      "entityListParam" : true
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     }, {
       "codeName" : "result",
       "logicName" : "result",
       "name" : "result",
       "entityParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
+      "codeName" : "list",
+      "logicName" : "list",
+      "name" : "list",
+      "entityListParam" : true
     }, {
       "codeName" : "resultcnt",
       "logicName" : "resultcnt",

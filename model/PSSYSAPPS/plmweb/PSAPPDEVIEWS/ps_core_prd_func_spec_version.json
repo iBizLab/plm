@@ -236,6 +236,9 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "specty",
+      "dataType" : 25
+    }, {
       "id" : "cust_version",
       "dataType" : 25
     }, {
@@ -274,6 +277,53 @@
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
+        "codeName" : "grouppanel6",
+        "contentHeight" : 150.0,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "height" : 150.0,
+        "name" : "grouppanel6",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "specty",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "specty",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorParams" : {
+              "rendermode" : "button",
+              "isbtnroundcorner" : "true"
+            },
+            "editorType" : "RADIOBUTTONLIST",
+            "name" : "specty"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "center",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "flex-end"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "height" : 150,
+          "heightMode" : "PX",
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
         "caption" : "核心产品功能基本信息",
         "codeName" : "group1",
         "detailStyle" : "DEFAULT",
@@ -312,7 +362,7 @@
                   "fieldName" : "version",
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
-                  "labelWidth" : 130,
+                  "labelWidth" : 50,
                   "name" : "spec_version",
                   "noPrivDisplayMode" : 1,
                   "getPSEditor" : {
@@ -390,7 +440,7 @@
                 "detailType" : "GROUPPANEL",
                 "name" : "grouppanel1ver",
                 "getPSDEFormDetails" : [ {
-                  "caption" : "仓库地址",
+                  "caption" : "仓库",
                   "codeName" : "spec_http_url_to_repo",
                   "dataType" : 25,
                   "detailStyle" : "DEFAULT",
@@ -399,7 +449,7 @@
                   "fieldName" : "http_url_to_repo",
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
-                  "labelWidth" : 130,
+                  "labelWidth" : 50,
                   "name" : "spec_http_url_to_repo",
                   "noPrivDisplayMode" : 1,
                   "getPSEditor" : {
@@ -424,9 +474,22 @@
                   "fieldName" : "default_branch",
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
-                  "labelWidth" : 130,
+                  "labelWidth" : 60,
                   "name" : "spec_default_branch",
                   "noPrivDisplayMode" : 1,
+                  "getPSDEFDGroupLogics" : [ {
+                    "groupOP" : "AND",
+                    "logicCat" : "PANELVISIBLE",
+                    "logicType" : "GROUP",
+                    "getPSDEFDLogics" : [ {
+                      "condOP" : "ISNOTNULL",
+                      "dEFDName" : "spec_default_branch",
+                      "logicType" : "SINGLE",
+                      "name" : "spec_default_branch值不为空(NotNil)"
+                    } ],
+                    "relatedDetailNames" : [ "spec_default_branch" ],
+                    "notMode" : false
+                  } ],
                   "getPSEditor" : {
                     "editorType" : "SPAN",
                     "name" : "spec_default_branch",
@@ -441,7 +504,7 @@
                   "showCaption" : true
                 } ],
                 "getPSLayout" : {
-                  "align" : "space-between",
+                  "align" : "flex-start",
                   "dir" : "row",
                   "layout" : "FLEX",
                   "vAlign" : "center"
@@ -453,6 +516,26 @@
                 "infoGroupMode" : false,
                 "repeatContent" : true,
                 "showCaption" : false
+              }, {
+                "codeName" : "rawitem1",
+                "contentType" : "DIVIDER",
+                "detailStyle" : "DEFAULT",
+                "detailType" : "RAWITEM",
+                "name" : "rawitem1",
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "getPSRawItem" : {
+                  "contentType" : "DIVIDER",
+                  "name" : "rawitem1",
+                  "rawItemHeight" : -1.0,
+                  "rawItemWidth" : -1.0
+                },
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0,
+                "repeatContent" : true,
+                "showCaption" : true
               } ],
               "getPSLayout" : {
                 "childColMD" : 24,
@@ -683,7 +766,6 @@
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
-              "itemHeight" : 200.0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
               "name" : "cust_httpurltorepo",
@@ -707,14 +789,9 @@
                 "notMode" : false
               } ],
               "getPSEditor" : {
-                "editorHeight" : 200.0,
-                "editorParams" : {
-                  "HEIGHT" : "200"
-                },
-                "editorType" : "TEXTAREA_10",
+                "editorType" : "TEXTBOX",
                 "maxLength" : 1000,
-                "name" : "cust_httpurltorepo",
-                "showMaxLength" : true
+                "name" : "cust_httpurltorepo"
               },
               "getPSLayoutPos" : {
                 "grow" : 1,
