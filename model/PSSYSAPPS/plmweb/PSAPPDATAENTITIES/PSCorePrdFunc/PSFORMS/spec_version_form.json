@@ -114,7 +114,9 @@
     "dataType" : 25
   }, {
     "id" : "specty",
-    "dataType" : 25
+    "dataType" : 25,
+    "createDV" : "history",
+    "updateDV" : "history"
   }, {
     "id" : "cust_version",
     "dataType" : 25
@@ -154,64 +156,84 @@
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
-      "codeName" : "grouppanel6",
-      "contentHeight" : 150.0,
-      "detailStyle" : "DEFAULT",
-      "detailType" : "GROUPPANEL",
-      "height" : 150.0,
-      "name" : "grouppanel6",
-      "getPSDEFormDetails" : [ {
-        "codeName" : "specty",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "specty",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorParams" : {
-            "rendermode" : "button",
-            "isbtnroundcorner" : "true"
-          },
-          "editorType" : "RADIOBUTTONLIST",
-          "name" : "specty"
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true
-      } ],
-      "getPSLayout" : {
-        "align" : "center",
-        "dir" : "row",
-        "layout" : "FLEX",
-        "vAlign" : "flex-end"
-      },
-      "getPSLayoutPos" : {
-        "colMD" : 24,
-        "height" : 150,
-        "heightMode" : "PX",
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false,
-      "showCaption" : false
-    }, {
       "caption" : "核心产品功能基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
+        "codeName" : "grouppanel6",
+        "contentHeight" : 150.0,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "height" : 150.0,
+        "name" : "grouppanel6",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "specty",
+          "createDV" : "history",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "specty",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorParams" : {
+              "rendermode" : "button",
+              "isbtnroundcorner" : "true"
+            },
+            "editorType" : "RADIOBUTTONLIST",
+            "name" : "specty",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__pscoreprdfunc_spec_version_type.json"
+            }
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "updateDV" : "history",
+          "allowEmpty" : true,
+          "needCodeListConfig" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "center",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "flex-end"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "height" : 150,
+          "heightMode" : "PX",
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
         "caption" : "历史版本安装",
         "codeName" : "grouppanel4",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel4",
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "specty",
+            "logicType" : "SINGLE",
+            "name" : "specty等于(=) history",
+            "value" : "history"
+          } ],
+          "relatedDetailNames" : [ "specty" ],
+          "notMode" : false
+        } ],
         "getPSDEFormDetails" : [ {
           "codeName" : "versions",
           "contentType" : "REPEATER",
@@ -232,17 +254,20 @@
               "getPSDEFormDetails" : [ {
                 "caption" : "版本",
                 "codeName" : "spec_version",
+                "cssStyle" : "    font-size: 18px;\n    font-weight: bolder;",
                 "dataType" : 25,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
                 "enableCond" : 3,
                 "fieldName" : "version",
                 "ignoreInput" : 0,
+                "labelCssStyle" : "    font-size: 18px;\n    font-weight: bolder;",
                 "labelPos" : "LEFT",
                 "labelWidth" : 50,
                 "name" : "spec_version",
                 "noPrivDisplayMode" : 1,
                 "getPSEditor" : {
+                  "cssStyle" : "    font-size: 18px;\n    font-weight: bolder;",
                   "editorType" : "SPAN",
                   "name" : "spec_version",
                   "enableLinkView" : false
@@ -256,9 +281,10 @@
                 "showCaption" : true
               }, {
                 "actionType" : "UIACTION",
+                "buttonStyle" : "STYLE2",
                 "caption" : "安装",
                 "codeName" : "specinstallbtn",
-                "detailStyle" : "DEFAULT",
+                "detailStyle" : "STYLE2",
                 "detailType" : "BUTTON",
                 "name" : "specinstallbtn",
                 "getPSAppViewUIAction" : {
@@ -456,6 +482,20 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel2",
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "specty",
+            "logicType" : "SINGLE",
+            "name" : "specty等于(=) custom",
+            "value" : "custom"
+          } ],
+          "relatedDetailNames" : [ "specty" ],
+          "notMode" : false
+        } ],
         "getPSDEFormDetails" : [ {
           "caption" : "自定义版本",
           "codeName" : "grouppanel5",
@@ -487,9 +527,10 @@
             "showCaption" : true
           }, {
             "actionType" : "UIACTION",
+            "buttonStyle" : "STYLE2",
             "caption" : "安装",
             "codeName" : "custinstallbtn",
-            "detailStyle" : "DEFAULT",
+            "detailStyle" : "STYLE2",
             "detailType" : "BUTTON",
             "name" : "custinstallbtn",
             "getPSAppViewUIAction" : {

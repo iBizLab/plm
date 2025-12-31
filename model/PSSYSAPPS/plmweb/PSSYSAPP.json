@@ -8388,6 +8388,24 @@
     "valueSeparator" : ";",
     "enableCache" : true
   }, {
+    "codeListTag" : "extension__pscoreprdfunc_spec_version_type",
+    "codeListType" : "STATIC",
+    "codeName" : "extension__pscoreprdfunc_spec_version_type",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__pscoreprdfunc_spec_version_type.json",
+    "emptyText" : "未定义",
+    "name" : "特定版本类型",
+    "getPSCodeItems" : [ {
+      "codeName" : "history",
+      "text" : "历史版本",
+      "value" : "history"
+    }, {
+      "codeName" : "custom",
+      "text" : "定制版本",
+      "value" : "custom"
+    } ],
+    "enableCache" : true
+  }, {
     "codeListTag" : "extension__pscoreprdfunc_type",
     "codeListType" : "STATIC",
     "codeName" : "extension__pscoreprdfunc_type",
@@ -226126,7 +226144,7 @@
           },
           "getDstPSDEUILogicParam" : {
             "modelref" : true,
-            "id" : "Default"
+            "id" : "spec"
           },
           "leftPos" : 256,
           "logicNodeType" : "DEUIACTION",
@@ -226143,10 +226161,14 @@
               "id" : "DEUIACTION_01"
             }
           } ],
+          "getRetPSDEUILogicParam" : {
+            "modelref" : true,
+            "id" : "spec"
+          },
           "topPos" : 497,
           "parallelOutput" : true
         }, {
-          "code" : "console.log(\"prepare version data\");",
+          "code" : "console.log(\"prepare version data\");\nObject.assign(uiLogic.spec, uiLogic.view.state.srfactiveviewdata);\nObject.assign(uiLogic.spec, uiLogic.default);",
           "codeName" : "RAWJSCODE_01",
           "leftPos" : 240,
           "logicNodeType" : "RAWJSCODE",
@@ -226215,6 +226237,11 @@
           "logicName" : "container",
           "name" : "container",
           "activeContainerParam" : true
+        }, {
+          "codeName" : "spec",
+          "logicName" : "spec",
+          "name" : "spec",
+          "entityParam" : true
         }, {
           "codeName" : "ctx",
           "logicName" : "ctx",

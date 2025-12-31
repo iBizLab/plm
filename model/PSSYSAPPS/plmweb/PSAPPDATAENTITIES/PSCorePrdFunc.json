@@ -2822,7 +2822,7 @@
       },
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "spec"
       },
       "leftPos" : 256,
       "logicNodeType" : "DEUIACTION",
@@ -2839,10 +2839,14 @@
           "id" : "DEUIACTION_01"
         }
       } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "spec"
+      },
       "topPos" : 497,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(\"prepare version data\");",
+      "code" : "console.log(\"prepare version data\");\nObject.assign(uiLogic.spec, uiLogic.view.state.srfactiveviewdata);\nObject.assign(uiLogic.spec, uiLogic.default);",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 240,
       "logicNodeType" : "RAWJSCODE",
@@ -2911,6 +2915,11 @@
       "logicName" : "container",
       "name" : "container",
       "activeContainerParam" : true
+    }, {
+      "codeName" : "spec",
+      "logicName" : "spec",
+      "name" : "spec",
+      "entityParam" : true
     }, {
       "codeName" : "ctx",
       "logicName" : "ctx",
