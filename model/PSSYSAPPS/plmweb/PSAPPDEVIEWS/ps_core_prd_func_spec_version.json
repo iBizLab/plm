@@ -236,6 +236,29 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "cust_version",
+      "dataType" : 25
+    }, {
+      "id" : "uploadflag",
+      "dataType" : 25,
+      "createDV" : "0",
+      "updateDV" : "0"
+    }, {
+      "id" : "zipfile",
+      "dataType" : 25
+    }, {
+      "id" : "cust_httpurltorepo",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "HTTPURLTOREPO",
+        "codeName" : "HttpUrlToRepo"
+      }
+    }, {
+      "id" : "cust_default_branch",
+      "dataType" : 25,
+      "createDV" : "master",
+      "updateDV" : "master"
+    }, {
       "id" : "pscoreprdfuncid",
       "hidden" : true,
       "dataType" : 25,
@@ -257,181 +280,201 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "versions",
-          "contentType" : "REPEATER",
+          "caption" : "历史版本安装",
+          "codeName" : "grouppanel4",
           "detailStyle" : "DEFAULT",
-          "detailType" : "MDCTRL",
-          "fieldName" : "versions",
-          "name" : "versions",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel4",
           "getPSDEFormDetails" : [ {
-            "codeName" : "grouppanel2",
+            "codeName" : "versions",
+            "contentType" : "REPEATER",
             "detailStyle" : "DEFAULT",
-            "detailType" : "GROUPPANEL",
-            "name" : "grouppanel2",
+            "detailType" : "MDCTRL",
+            "fieldName" : "versions",
+            "name" : "versions",
             "getPSDEFormDetails" : [ {
-              "codeName" : "grouppanel3",
+              "codeName" : "grouppanel2ver",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
-              "name" : "grouppanel3",
+              "name" : "grouppanel2ver",
               "getPSDEFormDetails" : [ {
-                "caption" : "版本",
-                "codeName" : "version",
-                "dataType" : 25,
+                "codeName" : "grouppanel3",
                 "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "version",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "SPAN",
-                  "name" : "version",
-                  "enableLinkView" : false
-                },
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
-                },
-                "allowEmpty" : true,
-                "repeatContent" : true,
-                "showCaption" : true
-              }, {
-                "actionType" : "UIACTION",
-                "caption" : "安装",
-                "codeName" : "specinstallbtn",
-                "detailStyle" : "DEFAULT",
-                "detailType" : "BUTTON",
-                "name" : "specinstallbtn",
-                "getPSAppViewUIAction" : {
-                  "modelref" : true,
-                  "id" : "form_specinstallbtn"
-                },
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
-                },
-                "getPSUIAction" : {
-                  "actionTarget" : "SINGLEDATA",
+                "detailType" : "GROUPPANEL",
+                "name" : "grouppanel3",
+                "getPSDEFormDetails" : [ {
+                  "caption" : "版本",
+                  "codeName" : "spec_version",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "fieldName" : "version",
+                  "ignoreInput" : 0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "spec_version",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "SPAN",
+                    "name" : "spec_version",
+                    "enableLinkView" : false
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "allowEmpty" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
+                  "actionType" : "UIACTION",
                   "caption" : "安装",
-                  "codeName" : "InstallSpecVer",
-                  "fullCodeName" : "PSCorePrdFunc_InstallSpecVer",
-                  "name" : "指定版本安装",
-                  "getPSAppDEMethod" : {
+                  "codeName" : "specinstallbtn",
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "BUTTON",
+                  "name" : "specinstallbtn",
+                  "getPSAppViewUIAction" : {
                     "modelref" : true,
-                    "id" : "InstallSpecVer"
+                    "id" : "form_specinstallbtn"
                   },
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
                   },
-                  "getPSNavigateContexts" : [ {
-                    "key" : "PSCOREPRDFUNC",
-                    "name" : "PSCOREPRDFUNC",
-                    "value" : "pscoreprdfuncid",
-                    "rawValue" : false
-                  } ],
-                  "getPSNavigateParams" : [ {
-                    "key" : "n_pscoreprdid_eq",
-                    "name" : "n_pscoreprdid_eq",
-                    "value" : "srfv2systemid",
-                    "rawValue" : false
-                  }, {
-                    "key" : "reload",
-                    "name" : "reload",
-                    "value" : "false",
-                    "rawValue" : true
-                  } ],
-                  "refreshMode" : 1,
-                  "successMsg" : "安装成功！",
-                  "timeout" : 60000,
-                  "uIActionMode" : "BACKEND",
-                  "uIActionTag" : "InstallSpecVer",
-                  "uIActionType" : "DEUIACTION",
-                  "enableConfirm" : true,
-                  "reloadData" : true,
-                  "id" : "InstallSpecVer@PSCorePrdFunc"
-                },
-                "tooltip" : "安装",
-                "uIActionTarget" : "SINGLEDATA",
-                "repeatContent" : true,
-                "showCaption" : true
-              } ],
-              "getPSLayout" : {
-                "align" : "space-between",
-                "dir" : "row",
-                "layout" : "FLEX",
-                "vAlign" : "center"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "infoGroupMode" : false,
-              "repeatContent" : true,
-              "showCaption" : false
-            }, {
-              "codeName" : "grouppanel1",
-              "detailStyle" : "DEFAULT",
-              "detailType" : "GROUPPANEL",
-              "name" : "grouppanel1",
-              "getPSDEFormDetails" : [ {
-                "caption" : "仓库地址",
-                "codeName" : "http_url_to_repo",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "fieldName" : "http_url_to_repo",
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "http_url_to_repo",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "SPAN",
-                  "name" : "http_url_to_repo",
-                  "enableLinkView" : false
+                  "getPSUIAction" : {
+                    "actionTarget" : "SINGLEDATA",
+                    "caption" : "安装",
+                    "codeName" : "InstallSpecVer",
+                    "fullCodeName" : "PSCorePrdFunc_InstallSpecVer",
+                    "name" : "指定版本安装",
+                    "getPSAppDEMethod" : {
+                      "modelref" : true,
+                      "id" : "InstallSpecVer"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                    },
+                    "getPSNavigateContexts" : [ {
+                      "key" : "PSCOREPRDFUNC",
+                      "name" : "PSCOREPRDFUNC",
+                      "value" : "pscoreprdfuncid",
+                      "rawValue" : false
+                    } ],
+                    "getPSNavigateParams" : [ {
+                      "key" : "n_pscoreprdid_eq",
+                      "name" : "n_pscoreprdid_eq",
+                      "value" : "srfv2systemid",
+                      "rawValue" : false
+                    }, {
+                      "key" : "reload",
+                      "name" : "reload",
+                      "value" : "false",
+                      "rawValue" : true
+                    } ],
+                    "refreshMode" : 1,
+                    "successMsg" : "安装成功！",
+                    "timeout" : 60000,
+                    "uIActionMode" : "BACKEND",
+                    "uIActionTag" : "InstallSpecVer",
+                    "uIActionType" : "DEUIACTION",
+                    "enableConfirm" : true,
+                    "reloadData" : true,
+                    "id" : "InstallSpecVer@PSCorePrdFunc"
+                  },
+                  "tooltip" : "安装",
+                  "uIActionTarget" : "SINGLEDATA",
+                  "repeatContent" : true,
+                  "showCaption" : true
+                } ],
+                "getPSLayout" : {
+                  "align" : "space-between",
+                  "dir" : "row",
+                  "layout" : "FLEX",
+                  "vAlign" : "center"
                 },
                 "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
                 },
-                "allowEmpty" : true,
+                "infoGroupMode" : false,
                 "repeatContent" : true,
-                "showCaption" : true
+                "showCaption" : false
               }, {
-                "caption" : "分支",
-                "codeName" : "default_branch",
-                "dataType" : 25,
+                "codeName" : "grouppanel1ver",
                 "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "fieldName" : "default_branch",
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "default_branch",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "SPAN",
-                  "name" : "default_branch",
-                  "enableLinkView" : false
+                "detailType" : "GROUPPANEL",
+                "name" : "grouppanel1ver",
+                "getPSDEFormDetails" : [ {
+                  "caption" : "仓库地址",
+                  "codeName" : "spec_http_url_to_repo",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "fieldName" : "http_url_to_repo",
+                  "ignoreInput" : 0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "spec_http_url_to_repo",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "SPAN",
+                    "name" : "spec_http_url_to_repo",
+                    "enableLinkView" : false
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "allowEmpty" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
+                  "caption" : "分支",
+                  "codeName" : "spec_default_branch",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "fieldName" : "default_branch",
+                  "ignoreInput" : 0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "spec_default_branch",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "SPAN",
+                    "name" : "spec_default_branch",
+                    "enableLinkView" : false
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "allowEmpty" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                } ],
+                "getPSLayout" : {
+                  "align" : "space-between",
+                  "dir" : "row",
+                  "layout" : "FLEX",
+                  "vAlign" : "center"
                 },
                 "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
                 },
-                "allowEmpty" : true,
+                "infoGroupMode" : false,
                 "repeatContent" : true,
-                "showCaption" : true
+                "showCaption" : false
               } ],
               "getPSLayout" : {
-                "align" : "space-between",
-                "dir" : "row",
-                "layout" : "FLEX",
-                "vAlign" : "center"
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -451,7 +494,299 @@
               "layout" : "TABLE_24COL"
             },
             "infoGroupMode" : false,
-            "repeatContent" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "自定义版本安装",
+          "codeName" : "grouppanel2",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel2",
+          "getPSDEFormDetails" : [ {
+            "caption" : "自定义版本",
+            "codeName" : "grouppanel5",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel5",
+            "getPSDEFormDetails" : [ {
+              "caption" : "自定义版本",
+              "codeName" : "cust_version",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "fieldName" : "version",
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "cust_version",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "cust_version"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "actionType" : "UIACTION",
+              "caption" : "安装",
+              "codeName" : "custinstallbtn",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "BUTTON",
+              "name" : "custinstallbtn",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "form_custinstallbtn"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEDATA",
+                "caption" : "安装",
+                "codeName" : "InstallSpecVer",
+                "fullCodeName" : "PSCorePrdFunc_InstallSpecVer",
+                "name" : "指定版本安装",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "InstallSpecVer"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                },
+                "getPSNavigateContexts" : [ {
+                  "key" : "PSCOREPRDFUNC",
+                  "name" : "PSCOREPRDFUNC",
+                  "value" : "pscoreprdfuncid",
+                  "rawValue" : false
+                } ],
+                "getPSNavigateParams" : [ {
+                  "key" : "n_pscoreprdid_eq",
+                  "name" : "n_pscoreprdid_eq",
+                  "value" : "srfv2systemid",
+                  "rawValue" : false
+                }, {
+                  "key" : "reload",
+                  "name" : "reload",
+                  "value" : "false",
+                  "rawValue" : true
+                } ],
+                "refreshMode" : 1,
+                "successMsg" : "安装成功！",
+                "timeout" : 60000,
+                "uIActionMode" : "BACKEND",
+                "uIActionTag" : "InstallSpecVer",
+                "uIActionType" : "DEUIACTION",
+                "enableConfirm" : true,
+                "reloadData" : true,
+                "id" : "InstallSpecVer@PSCorePrdFunc"
+              },
+              "tooltip" : "安装",
+              "uIActionTarget" : "SINGLEDATA",
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "align" : "space-between",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : false
+          }, {
+            "codeName" : "grouppanel1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel1",
+            "getPSDEFormDetails" : [ {
+              "caption" : "上传应用包",
+              "codeName" : "uploadflag",
+              "createDV" : "0",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "uploadflag",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "SWITCH",
+                "name" : "uploadflag"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "updateDV" : "0",
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "应用上传",
+              "codeName" : "zipfile",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "fieldName" : "zipfile",
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "zipfile",
+              "noPrivDisplayMode" : 1,
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "uploadflag",
+                  "logicType" : "SINGLE",
+                  "name" : "uploadflag等于(=) 1",
+                  "value" : "1"
+                } ],
+                "relatedDetailNames" : [ "uploadflag" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorParams" : {
+                  "multiple" : "false",
+                  "FILEEXTS" : "",
+                  "accept" : ".zip",
+                  "osscat" : "devops-dynamodel",
+                  "MAXFILESIZE" : "",
+                  "MINFILECNT" : "",
+                  "MAXFILECNT" : ""
+                },
+                "editorType" : "FILEUPLOADER",
+                "maxFileCount" : -1,
+                "maxFileSize" : -1,
+                "minFileCount" : 0,
+                "name" : "zipfile",
+                "oSSCat" : "devops-dynamodel"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "allowEmpty" : true
+            }, {
+              "caption" : "仓库地址",
+              "codeName" : "cust_httpurltorepo",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "itemHeight" : 200.0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "cust_httpurltorepo",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "HTTPURLTOREPO",
+                "codeName" : "HttpUrlToRepo"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "uploadflag",
+                  "logicType" : "SINGLE",
+                  "name" : "uploadflag等于(=) 0",
+                  "value" : "0"
+                } ],
+                "relatedDetailNames" : [ "uploadflag" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorHeight" : 200.0,
+                "editorParams" : {
+                  "HEIGHT" : "200"
+                },
+                "editorType" : "TEXTAREA_10",
+                "maxLength" : 1000,
+                "name" : "cust_httpurltorepo",
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "layout" : "FLEX"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "分支",
+              "codeName" : "cust_default_branch",
+              "createDV" : "master",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "fieldName" : "default_branch",
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "cust_default_branch",
+              "noPrivDisplayMode" : 1,
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "uploadflag",
+                  "logicType" : "SINGLE",
+                  "name" : "uploadflag等于(=) 0",
+                  "value" : "0"
+                } ],
+                "relatedDetailNames" : [ "uploadflag" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "name" : "cust_default_branch"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "updateDV" : "master",
+              "allowEmpty" : true,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
             "showCaption" : false
           } ],
           "getPSLayout" : {
@@ -466,22 +801,6 @@
           "infoGroupMode" : false,
           "showCaption" : true
         } ],
-        "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : false
-      }, {
-        "codeName" : "grouppanel4",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel4",
         "getPSLayout" : {
           "childColMD" : 24,
           "columnCount" : 24,

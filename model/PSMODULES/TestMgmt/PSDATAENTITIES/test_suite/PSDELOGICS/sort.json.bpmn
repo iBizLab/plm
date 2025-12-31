@@ -26,9 +26,21 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset1_rawsfcode1" sourceRef="dedataset1" targetRef="rawsfcode1">
+                    <sequenceFlow id="gateway-dedataset1_rawsfcode1" sourceRef="gateway-dedataset1" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_suitesortdefault:test_suite();
+                                            $test_suitesortfilter:test_suite();
+                                            $test_suitesortpage:test_suite();
+                                    eval($test_suitesortdefault==test_suitesortdefault && $test_suitesortfilter==test_suitesortfilter && $test_suitesortpage==test_suitesortpage);
+                                eval((RuleUtils.test($test_suitesortpage.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
         </process>
     </definitions>
