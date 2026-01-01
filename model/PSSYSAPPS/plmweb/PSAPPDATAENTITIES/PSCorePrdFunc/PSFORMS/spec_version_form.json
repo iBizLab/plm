@@ -287,14 +287,52 @@
                 "fieldName" : "version",
                 "ignoreInput" : 0,
                 "labelCssStyle" : "    font-size: 18px;\n    font-weight: bolder;",
-                "labelPos" : "NONE",
-                "labelWidth" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 50,
                 "name" : "spec_version",
                 "noPrivDisplayMode" : 1,
                 "getPSEditor" : {
                   "cssStyle" : "    font-size: 18px;\n    font-weight: bolder;",
                   "editorType" : "SPAN",
                   "name" : "spec_version",
+                  "enableLinkView" : false
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "allowEmpty" : true,
+                "repeatContent" : true,
+                "showCaption" : true
+              }, {
+                "codeName" : "install_reason",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "fieldName" : "install_reason",
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "install_reason",
+                "noPrivDisplayMode" : 1,
+                "getPSDEFDGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSDEFDLogics" : [ {
+                    "condOP" : "EQ",
+                    "dEFDName" : "disable_install",
+                    "logicType" : "SINGLE",
+                    "name" : "disable_install等于(=) true",
+                    "value" : "true"
+                  } ],
+                  "relatedDetailNames" : [ "disable_install" ],
+                  "notMode" : false
+                } ],
+                "getPSEditor" : {
+                  "editorType" : "SPAN",
+                  "name" : "install_reason",
                   "enableLinkView" : false
                 },
                 "getPSLayoutPos" : {
@@ -314,6 +352,20 @@
                   "modelref" : true,
                   "id" : "form_specinstallbtn"
                 },
+                "getPSDEFDGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSDEFDLogics" : [ {
+                    "condOP" : "EQ",
+                    "dEFDName" : "disable_install",
+                    "logicType" : "SINGLE",
+                    "name" : "disable_install等于(=) true",
+                    "value" : "true"
+                  } ],
+                  "relatedDetailNames" : [ "disable_install" ],
+                  "notMode" : false
+                } ],
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
@@ -391,7 +443,7 @@
                 "repeatContent" : true,
                 "showCaption" : true
               }, {
-                "caption" : "分支",
+                "caption" : "/",
                 "codeName" : "spec_default_branch",
                 "dataType" : 25,
                 "detailStyle" : "DEFAULT",
@@ -400,7 +452,7 @@
                 "fieldName" : "default_branch",
                 "ignoreInput" : 0,
                 "labelPos" : "LEFT",
-                "labelWidth" : 60,
+                "labelWidth" : 40,
                 "name" : "spec_default_branch",
                 "noPrivDisplayMode" : 1,
                 "getPSDEFDGroupLogics" : [ {
@@ -428,6 +480,29 @@
                 "allowEmpty" : true,
                 "repeatContent" : true,
                 "showCaption" : true
+              }, {
+                "codeName" : "disable_install",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "fieldName" : "disable_install",
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "disable_install",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "disable_install"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "allowEmpty" : true,
+                "hidden" : true,
+                "repeatContent" : true
               } ],
               "getPSLayout" : {
                 "align" : "flex-start",
