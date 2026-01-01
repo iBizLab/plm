@@ -22,6 +22,14 @@
     "engineType" : "EditView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "pack",
+    "getPSViewCtrlName" : "form",
+    "scriptCode" : "console.log(\"spec ver list\");\n\n// 如果 versions 不存在，则初始化为包含 latest 的数组\ndata.versions = data.versions || [];\n\n// 检查是否需要添加 latest\nif (data.versions.length === 0 || \n    (data.versions[0].version && data.versions[0].version !== 'latest')) {\n  data.versions.unshift({\n    \"version\": \"latest\", \n    \"http_url_to_repo\": data.httpurltorepo, \n    \"default_branch\": data.default_branch\n  });\n}"
+  } ],
   "getPSControls" : [ {
     "codeName" : "spec_version_toolbar",
     "controlType" : "TOOLBAR",
@@ -1063,6 +1071,7 @@
   "width" : 700,
   "xDataControlName" : "form",
   "enableDP" : true,
+  "enableDirtyChecking" : false,
   "showCaptionBar" : false,
   "showDataInfoBar" : true,
   "modelid" : "130592bea1ecdf01af4b6460973bef3a",
