@@ -153,9 +153,7 @@
     }
   }, {
     "id" : "default_branch",
-    "dataType" : 25,
-    "createDV" : "master",
-    "updateDV" : "master"
+    "dataType" : 25
   }, {
     "id" : "memo",
     "dataType" : 25,
@@ -228,7 +226,7 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 3,
+        "ignoreInput" : 0,
         "labelPos" : "LEFT",
         "labelWidth" : 130,
         "name" : "functype",
@@ -238,9 +236,13 @@
           "codeName" : "FuncType"
         },
         "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "maxLength" : 50,
-          "name" : "functype"
+          "editorType" : "DROPDOWNLIST",
+          "name" : "functype",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__pscoreprdfunc_type.json"
+          },
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colLG" : 8,
@@ -249,7 +251,7 @@
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : false,
-        "convertToCodeItemText" : true,
+        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "caption" : "版本",
@@ -298,7 +300,9 @@
           "name" : "pscoreprdfuncname"
         },
         "getPSLayoutPos" : {
-          "colMD" : 24,
+          "colLG" : 8,
+          "colMD" : 8,
+          "colSM" : 8,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : false,
@@ -381,121 +385,117 @@
             "layout" : "FLEX"
           },
           "allowEmpty" : true
-        }, {
-          "caption" : "Http仓库地址",
-          "codeName" : "httpurltorepo",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "httpurltorepo",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "HTTPURLTOREPO",
-            "codeName" : "HttpUrlToRepo"
-          },
-          "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "uploadflag",
-              "logicType" : "SINGLE",
-              "name" : "uploadflag等于(=) 0",
-              "value" : "0"
-            } ],
-            "relatedDetailNames" : [ "uploadflag" ],
-            "notMode" : false
-          }, {
-            "groupOP" : "AND",
-            "logicCat" : "ITEMBLANK",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "uploadflag",
-              "logicType" : "SINGLE",
-              "name" : "uploadflag等于(=) 1",
-              "value" : "1"
-            } ],
-            "relatedDetailNames" : [ "uploadflag" ],
-            "notMode" : false
-          } ],
-          "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 1000,
-            "name" : "httpurltorepo"
-          },
-          "getPSLayoutPos" : {
-            "grow" : 1,
-            "layout" : "FLEX"
-          },
-          "allowEmpty" : false,
-          "showCaption" : true
-        }, {
-          "caption" : "分支",
-          "codeName" : "default_branch",
-          "createDV" : "master",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "default_branch",
-          "noPrivDisplayMode" : 1,
-          "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "uploadflag",
-              "logicType" : "SINGLE",
-              "name" : "uploadflag等于(=) 0",
-              "value" : "0"
-            } ],
-            "relatedDetailNames" : [ "uploadflag" ],
-            "notMode" : false
-          }, {
-            "groupOP" : "AND",
-            "logicCat" : "ITEMBLANK",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "uploadflag",
-              "logicType" : "SINGLE",
-              "name" : "uploadflag等于(=) 1",
-              "value" : "1"
-            } ],
-            "relatedDetailNames" : [ "uploadflag" ],
-            "notMode" : false
-          } ],
-          "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "name" : "default_branch"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "updateDV" : "master",
-          "allowEmpty" : false,
-          "showCaption" : true
         } ],
         "getPSLayout" : {
-          "layout" : "FLEX"
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
-          "colMD" : 24,
+          "colLG" : 16,
+          "colMD" : 16,
+          "colSM" : 16,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "仓库地址",
+        "codeName" : "httpurltorepo",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "httpurltorepo",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "HTTPURLTOREPO",
+          "codeName" : "HttpUrlToRepo"
+        },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "uploadflag",
+            "logicType" : "SINGLE",
+            "name" : "uploadflag等于(=) 0",
+            "value" : "0"
+          } ],
+          "relatedDetailNames" : [ "uploadflag" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMBLANK",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "uploadflag",
+            "logicType" : "SINGLE",
+            "name" : "uploadflag等于(=) 1",
+            "value" : "1"
+          } ],
+          "relatedDetailNames" : [ "uploadflag" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 1000,
+          "name" : "httpurltorepo",
+          "placeHolder" : "git仓库地址或zip包下载地址"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 20,
+          "colMD" : 20,
+          "colSM" : 20,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "showCaption" : true
+      }, {
+        "caption" : "/",
+        "codeName" : "default_branch",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 40,
+        "name" : "default_branch",
+        "noPrivDisplayMode" : 1,
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "uploadflag",
+            "logicType" : "SINGLE",
+            "name" : "uploadflag等于(=) 0",
+            "value" : "0"
+          } ],
+          "relatedDetailNames" : [ "uploadflag" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "name" : "default_branch",
+          "placeHolder" : "分支"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 4,
+          "colMD" : 4,
+          "colSM" : 4,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
       }, {
         "caption" : "备注",
         "codeName" : "memo",
@@ -529,6 +529,83 @@
         },
         "allowEmpty" : true,
         "showCaption" : true
+      }, {
+        "codeName" : "grouppanel2",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel2",
+        "getPSDEFormDetails" : [ {
+          "actionType" : "UIACTION",
+          "caption" : "安装",
+          "codeName" : "btninstall",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "BUTTON",
+          "name" : "btninstall",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_btninstall"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "安装",
+            "codeName" : "install_spec_ver",
+            "fullCodeName" : "PSCorePrdFunc_install_spec_ver",
+            "name" : "指定版本安装",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "InstallSpecVer"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "PSCOREPRDFUNC",
+              "name" : "PSCOREPRDFUNC",
+              "value" : "pscoreprdfuncid",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "n_pscoreprdid_eq",
+              "name" : "n_pscoreprdid_eq",
+              "value" : "srfv2systemid",
+              "rawValue" : false
+            }, {
+              "key" : "reload",
+              "name" : "reload",
+              "value" : "false",
+              "rawValue" : true
+            } ],
+            "refreshMode" : 1,
+            "successMsg" : "安装成功！",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "install_spec_ver",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "install_spec_ver@PSCorePrdFunc"
+          },
+          "tooltip" : "安装",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "center",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
