@@ -28,7 +28,7 @@
     "logicType" : "SCRIPT",
     "name" : "pack",
     "getPSViewCtrlName" : "form",
-    "scriptCode" : "console.log(\"spec ver list\");\n\n// 如果 versions 不存在，则初始化为包含 latest 的数组\ndata[0].versions = data[0].versions || [];\n\n// 检查是否需要添加 latest\nif (data[0].versions.length === 0 || \n    (data[0].versions[0].version && data[0].versions[0].version !== 'latest')) {\n  data[0].versions.unshift({\n    \"version\": \"latest\", \n    \"http_url_to_repo\": data[0].httpurltorepo, \n    \"default_branch\": data[0].default_branch\n  });\n  }\n\n\n  // 增强版版本比较函数，支持 beta, alpha, rc 等预发布版本\n  const compareVersions = (v1, v2) => {\n    if (!v1 || !v2) return 0;\n    \n    // 解析版本号\n    const parseVersion = (version) => {\n      // 移除 v 前缀并转换为小写\n      version = (version || '').toString().toLowerCase().replace(/^v/, '');\n      \n      // 分割主版本和预发布标签\n      const dashParts = version.split('-');\n      const main = dashParts[0];\n      const prerelease = dashParts.slice(1).join('-') || '';\n      \n      // 解析主版本号 (1.2.3.4 等)\n      const mainParts = main.split('.').map(part => {\n        const num = parseInt(part, 10);\n        return isNaN(num) ? 0 : num;\n      });\n      \n      // 解析预发布标签 (beta.1, alpha.2, rc.3 等)\n      const prereleaseParts = prerelease.split('.').map(part => {\n        const num = parseInt(part, 10);\n        return isNaN(num) ? part : num;\n      });\n      \n      return {\n        main: mainParts,\n        prerelease: prereleaseParts,\n        original: version\n      };\n    };\n    \n    const p1 = parseVersion(v1);\n    const p2 = parseVersion(v2);\n    \n    // 比较主版本号\n    for (let i = 0; i < Math.max(p1.main.length, p2.main.length); i++) {\n      const n1 = p1.main[i] || 0;\n      const n2 = p2.main[i] || 0;\n      if (n1 < n2) return -1;\n      if (n1 > n2) return 1;\n    }\n    \n    // 如果主版本号相同，比较预发布标签\n    // 规则: 无预发布标签 > 有预发布标签\n    if (p1.prerelease.length === 0 && p2.prerelease.length > 0) return 1;\n    if (p1.prerelease.length > 0 && p2.prerelease.length === 0) return -1;\n    \n    // 比较预发布标签\n    for (let i = 0; i < Math.max(p1.prerelease.length, p2.prerelease.length); i++) {\n      const r1 = p1.prerelease[i];\n      const r2 = p2.prerelease[i];\n      \n      // 如果一个标签存在，另一个不存在，存在的小\n      if (typeof r1 === 'undefined' && typeof r2 !== 'undefined') return -1;\n      if (typeof r1 !== 'undefined' && typeof r2 === 'undefined') return 1;\n      \n      // 比较类型：数字 < 字符串\n      if (typeof r1 === 'number' && typeof r2 === 'string') return -1;\n      if (typeof r1 === 'string' && typeof r2 === 'number') return 1;\n      \n      // 相同类型比较\n      if (typeof r1 === 'number' && typeof r2 === 'number') {\n        if (r1 < r2) return -1;\n        if (r1 > r2) return 1;\n      } else if (typeof r1 === 'string' && typeof r2 === 'string') {\n        // 预发布标签排序: alpha < beta < rc < 无标签\n        const prereleaseOrder = { 'alpha': 0, 'beta': 1, 'rc': 2 };\n        const order1 = prereleaseOrder[r1] !== undefined ? prereleaseOrder[r1] : 3;\n        const order2 = prereleaseOrder[r2] !== undefined ? prereleaseOrder[r2] : 3;\n        \n        if (order1 < order2) return -1;\n        if (order1 > order2) return 1;\n        \n        // 如果标签相同，比较标签值\n        const compare = r1.localeCompare(r2);\n        if (compare !== 0) return compare;\n      }\n    }\n    \n    return 0; // 完全相同\n  };\n  \n  // 获取当前版本\n  const currentVersion = data[0].major_system_version || '1.0.0';\n  console.log(\"当前主系统版本:\", currentVersion || \"未知\");\n  \n  // 遍历每个版本，计算 disable_install\n  let installableCount = 0;\n  let latestInstallable = false;\n  \nif(data[0].versions) {\n  data[0].versions.forEach((version, index) => {\n    const minRequired = version.min_required;\n    const versionName = version.version || 'unknown';\n    if(!version.http_url_to_repo) {\n          version.http_url_to_repo = data[0].httpurltorepo;\n    }\n     if(!version.default_branch) {\n          version.default_branch = data[0].default_branch;\n    }\n    // 如果 min_required 为空，可以安装\n    if (!minRequired || minRequired.trim() === '') {\n      version.disable_install = false;\n      version.can_install = true;\n      version.install_reason = \"无版本要求\";\n      installableCount++;\n      \n      if (versionName === 'latest') {\n        latestInstallable = true;\n      }\n      \n      console.log(` ${versionName}: 可安装 (无版本要求)`);\n      return;\n    }\n    \n    \n    // 比较版本\n    const comparison = compareVersions(currentVersion, minRequired);\n    \n    if (comparison < 0) {\n      version.disable_install = true;\n      version.can_install = false;\n      version.install_reason = `当前主系统版本 ${currentVersion} 低于要求版本 ${minRequired}`;\n      console.log(` ${versionName}: 不可安装 (需要 ${minRequired}+)`);\n    } else {\n      version.disable_install = false;\n      version.can_install = true;\n      version.install_reason = `满足主系统版本要求 (当前: ${currentVersion}, 需要: ${minRequired})`;\n      installableCount++;\n      \n      if (versionName === 'latest') {\n        latestInstallable = true;\n      }\n      \n      console.log(` ${versionName}: 可安装 (满足要求)`);\n    }\n  });\n\n}"
+    "scriptCode" : "console.log(\"spec ver list\");\n\n// 如果 versions 不存在，则初始化为包含 latest 的数组\ndata[0].versions = data[0].versions || [];\n\n// 检查是否需要添加 latest\nif (data[0].versions.length === 0 || \n    (data[0].versions[0].version && data[0].versions[0].version !== 'latest')) {\n  data[0].versions.unshift({\n    \"version\": \"latest\", \n    \"http_url_to_repo\": data[0].httpurltorepo, \n    \"default_branch\": data[0].default_branch\n  });\n  }\n\n\n  // 增强版版本比较函数，支持 beta, alpha, rc 等预发布版本\n  const compareVersions = (v1, v2) => {\n    if (!v1 || !v2) return 0;\n    \n    // 解析版本号\n    const parseVersion = (version) => {\n      // 移除 v 前缀并转换为小写\n      version = (version || '').toString().toLowerCase().replace(/^v/, '');\n      \n      // 分割主版本和预发布标签\n      const dashParts = version.split('-');\n      const main = dashParts[0];\n      const prerelease = dashParts.slice(1).join('-') || '';\n      \n      // 解析主版本号 (1.2.3.4 等)\n      const mainParts = main.split('.').map(part => {\n        const num = parseInt(part, 10);\n        return isNaN(num) ? 0 : num;\n      });\n      \n      // 解析预发布标签 (beta.1, alpha.2, rc.3 等)\n      const prereleaseParts = prerelease.split('.').map(part => {\n        const num = parseInt(part, 10);\n        return isNaN(num) ? part : num;\n      });\n      \n      return {\n        main: mainParts,\n        prerelease: prereleaseParts,\n        original: version\n      };\n    };\n    \n    const p1 = parseVersion(v1);\n    const p2 = parseVersion(v2);\n    \n    // 比较主版本号\n    for (let i = 0; i < Math.max(p1.main.length, p2.main.length); i++) {\n      const n1 = p1.main[i] || 0;\n      const n2 = p2.main[i] || 0;\n      if (n1 < n2) return -1;\n      if (n1 > n2) return 1;\n    }\n    \n    // 如果主版本号相同，比较预发布标签\n    // 规则: 无预发布标签 > 有预发布标签\n    if (p1.prerelease.length === 0 && p2.prerelease.length > 0) return 1;\n    if (p1.prerelease.length > 0 && p2.prerelease.length === 0) return -1;\n    \n    // 比较预发布标签\n    for (let i = 0; i < Math.max(p1.prerelease.length, p2.prerelease.length); i++) {\n      const r1 = p1.prerelease[i];\n      const r2 = p2.prerelease[i];\n      \n      // 如果一个标签存在，另一个不存在，存在的小\n      if (typeof r1 === 'undefined' && typeof r2 !== 'undefined') return -1;\n      if (typeof r1 !== 'undefined' && typeof r2 === 'undefined') return 1;\n      \n      // 比较类型：数字 < 字符串\n      if (typeof r1 === 'number' && typeof r2 === 'string') return -1;\n      if (typeof r1 === 'string' && typeof r2 === 'number') return 1;\n      \n      // 相同类型比较\n      if (typeof r1 === 'number' && typeof r2 === 'number') {\n        if (r1 < r2) return -1;\n        if (r1 > r2) return 1;\n      } else if (typeof r1 === 'string' && typeof r2 === 'string') {\n        // 预发布标签排序: alpha < beta < rc < 无标签\n        const prereleaseOrder = { 'alpha': 0, 'beta': 1, 'rc': 2 };\n        const order1 = prereleaseOrder[r1] !== undefined ? prereleaseOrder[r1] : 3;\n        const order2 = prereleaseOrder[r2] !== undefined ? prereleaseOrder[r2] : 3;\n        \n        if (order1 < order2) return -1;\n        if (order1 > order2) return 1;\n        \n        // 如果标签相同，比较标签值\n        const compare = r1.localeCompare(r2);\n        if (compare !== 0) return compare;\n      }\n    }\n    \n    return 0; // 完全相同\n  };\n  \n  // 获取当前版本\n  const major_system_version = data[0].major_system_version || '1.0.0';\n  console.log(\"当前主系统版本:\", major_system_version || \"未知\");\n  \n  // 遍历每个版本，计算 disable_install\n  let installableCount = 0;\n  let latestInstallable = false;\n  \nif(data[0].versions) {\n  data[0].versions.forEach((version, index) => {\n    const minRequired = version.min_required;\n    const versionName = version.version || 'unknown';\n    if(!version.http_url_to_repo) {\n          version.http_url_to_repo = data[0].httpurltorepo;\n    }\n     if(!version.default_branch) {\n          version.default_branch = data[0].default_branch;\n    }\n\n    version.state = data[0].funcstate;\n    if(version.state ==1 || version.state == 3) {\n        if(data[0].currentversion && data[0].currentversion == version.version ) {\n             version.current_install=true;\n        }\n        else if (!data[0].currentversion && version.version === 'latest') {\n             version.current_install=true;\n        }\n    }\n    \n    // 如果 min_required 为空，可以安装\n    if (!minRequired || minRequired.trim() === '') {\n      version.disable_install = false;\n      version.can_install = true;\n      version.install_reason = \"无版本要求\";\n      installableCount++;\n      \n      if (versionName === 'latest') {\n        latestInstallable = true;\n      }\n      \n      console.log(` ${versionName}: 可安装 (无版本要求)`);\n      return;\n    }\n    \n    \n    // 比较版本\n    const comparison = compareVersions(major_system_version, minRequired);\n    \n    if (comparison < 0) {\n      version.disable_install = true;\n      version.can_install = false;\n      version.install_reason = `当前主系统版本 ${major_system_version} 低于要求版本 ${minRequired}`;\n      console.log(` ${versionName}: 不可安装 (需要 ${minRequired}+)`);\n    } else {\n      version.disable_install = false;\n      version.can_install = true;\n      version.install_reason = `满足主系统版本要求 (当前: ${major_system_version}, 需要: ${minRequired})`;\n      installableCount++;\n      \n      if (versionName === 'latest') {\n        latestInstallable = true;\n      }\n      \n      console.log(` ${versionName}: 可安装 (满足要求)`);\n    }\n  });\n\n}"
   } ],
   "getPSControls" : [ {
     "codeName" : "spec_version_toolbar",
@@ -278,6 +278,14 @@
       "updateDVT" : "APPDATA",
       "updateDV" : "currentversion"
     }, {
+      "id" : "funcstate",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "FUNCSTATE",
+        "codeName" : "FuncState"
+      }
+    }, {
       "id" : "pscoreprdfuncid",
       "hidden" : true,
       "dataType" : 25,
@@ -473,6 +481,42 @@
                   "allowEmpty" : true,
                   "repeatContent" : true
                 }, {
+                  "codeName" : "using",
+                  "contentType" : "RAW",
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "RAWITEM",
+                  "name" : "using",
+                  "getPSDEFDGroupLogics" : [ {
+                    "groupOP" : "AND",
+                    "logicCat" : "PANELVISIBLE",
+                    "logicType" : "GROUP",
+                    "getPSDEFDLogics" : [ {
+                      "condOP" : "EQ",
+                      "dEFDName" : "current_install",
+                      "logicType" : "SINGLE",
+                      "name" : "current_install等于(=) true",
+                      "value" : "true"
+                    } ],
+                    "relatedDetailNames" : [ "current_install" ],
+                    "notMode" : false
+                  } ],
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSRawItem" : {
+                    "caption" : "正在使用",
+                    "contentType" : "RAW",
+                    "name" : "using",
+                    "rawItemHeight" : -1.0,
+                    "rawItemWidth" : -1.0
+                  },
+                  "rawContent" : "正在使用",
+                  "rawItemHeight" : -1.0,
+                  "rawItemWidth" : -1.0,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
                   "actionType" : "UIACTION",
                   "caption" : "安装",
                   "codeName" : "specinstallbtn",
@@ -494,8 +538,32 @@
                       "logicType" : "SINGLE",
                       "name" : "disable_install等于(=) false",
                       "value" : "false"
+                    }, {
+                      "groupOP" : "OR",
+                      "logicType" : "GROUP",
+                      "name" : "OR",
+                      "getPSDEFDLogics" : [ {
+                        "condOP" : "EQ",
+                        "dEFDName" : "ver_state",
+                        "logicType" : "SINGLE",
+                        "name" : "ver_state等于(=) 0",
+                        "value" : "0"
+                      }, {
+                        "condOP" : "EQ",
+                        "dEFDName" : "ver_state",
+                        "logicType" : "SINGLE",
+                        "name" : "ver_state等于(=) 2",
+                        "value" : "2"
+                      }, {
+                        "condOP" : "EQ",
+                        "dEFDName" : "ver_state",
+                        "logicType" : "SINGLE",
+                        "name" : "ver_state等于(=) 4",
+                        "value" : "4"
+                      } ],
+                      "notMode" : false
                     } ],
-                    "relatedDetailNames" : [ "disable_install" ],
+                    "relatedDetailNames" : [ "disable_install", "ver_state" ],
                     "notMode" : false
                   } ],
                   "getPSLayoutPos" : {
@@ -518,12 +586,14 @@
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
                     },
+                    "refreshMode" : 1,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "prepare_version_install",
                     "uIActionType" : "DEUIACTION",
                     "uILogicAttachMode" : "REPLACE",
                     "closeEditView" : true,
                     "closePopupView" : true,
+                    "reloadData" : true,
                     "id" : "prepare_version_install@PSCorePrdFunc"
                   },
                   "tooltip" : "安装",
@@ -633,6 +703,52 @@
                   "getPSEditor" : {
                     "editorType" : "HIDDEN",
                     "name" : "disable_install"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "allowEmpty" : true,
+                  "hidden" : true,
+                  "repeatContent" : true
+                }, {
+                  "codeName" : "ver_state",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "fieldName" : "state",
+                  "ignoreInput" : 0,
+                  "labelPos" : "NONE",
+                  "labelWidth" : 0,
+                  "name" : "ver_state",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "HIDDEN",
+                    "name" : "ver_state"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "allowEmpty" : true,
+                  "hidden" : true,
+                  "repeatContent" : true
+                }, {
+                  "codeName" : "current_install",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "fieldName" : "current_install",
+                  "ignoreInput" : 0,
+                  "labelPos" : "NONE",
+                  "labelWidth" : 0,
+                  "name" : "current_install",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "HIDDEN",
+                    "name" : "current_install"
                   },
                   "getPSLayoutPos" : {
                     "grow" : -1,
@@ -752,6 +868,38 @@
                 "modelref" : true,
                 "id" : "form_custinstallbtn"
               },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "groupOP" : "OR",
+                  "logicType" : "GROUP",
+                  "name" : "OR",
+                  "getPSDEFDLogics" : [ {
+                    "condOP" : "EQ",
+                    "dEFDName" : "funcstate",
+                    "logicType" : "SINGLE",
+                    "name" : "funcstate等于(=) 0",
+                    "value" : "0"
+                  }, {
+                    "condOP" : "EQ",
+                    "dEFDName" : "funcstate",
+                    "logicType" : "SINGLE",
+                    "name" : "funcstate等于(=) 2",
+                    "value" : "2"
+                  }, {
+                    "condOP" : "EQ",
+                    "dEFDName" : "funcstate",
+                    "logicType" : "SINGLE",
+                    "name" : "funcstate等于(=) 4",
+                    "value" : "4"
+                  } ],
+                  "notMode" : false
+                } ],
+                "relatedDetailNames" : [ "funcstate" ],
+                "notMode" : false
+              } ],
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "layout" : "FLEX"
@@ -1061,6 +1209,32 @@
         },
         "updateDV" : "currentversion",
         "updateDVT" : "APPDATA",
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "功能状态",
+        "codeName" : "funcstate",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "funcstate",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "FUNCSTATE",
+          "codeName" : "FuncState"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "funcstate"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
         "allowEmpty" : true,
         "hidden" : true
       }, {

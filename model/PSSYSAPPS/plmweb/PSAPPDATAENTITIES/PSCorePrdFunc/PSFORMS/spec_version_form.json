@@ -147,6 +147,14 @@
     "updateDVT" : "APPDATA",
     "updateDV" : "currentversion"
   }, {
+    "id" : "funcstate",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "FUNCSTATE",
+      "codeName" : "FuncState"
+    }
+  }, {
     "id" : "pscoreprdfuncid",
     "hidden" : true,
     "dataType" : 25,
@@ -342,6 +350,42 @@
                 "allowEmpty" : true,
                 "repeatContent" : true
               }, {
+                "codeName" : "using",
+                "contentType" : "RAW",
+                "detailStyle" : "DEFAULT",
+                "detailType" : "RAWITEM",
+                "name" : "using",
+                "getPSDEFDGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSDEFDLogics" : [ {
+                    "condOP" : "EQ",
+                    "dEFDName" : "current_install",
+                    "logicType" : "SINGLE",
+                    "name" : "current_install等于(=) true",
+                    "value" : "true"
+                  } ],
+                  "relatedDetailNames" : [ "current_install" ],
+                  "notMode" : false
+                } ],
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSRawItem" : {
+                  "caption" : "正在使用",
+                  "contentType" : "RAW",
+                  "name" : "using",
+                  "rawItemHeight" : -1.0,
+                  "rawItemWidth" : -1.0
+                },
+                "rawContent" : "正在使用",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0,
+                "repeatContent" : true,
+                "showCaption" : true
+              }, {
                 "actionType" : "UIACTION",
                 "caption" : "安装",
                 "codeName" : "specinstallbtn",
@@ -363,8 +407,32 @@
                     "logicType" : "SINGLE",
                     "name" : "disable_install等于(=) false",
                     "value" : "false"
+                  }, {
+                    "groupOP" : "OR",
+                    "logicType" : "GROUP",
+                    "name" : "OR",
+                    "getPSDEFDLogics" : [ {
+                      "condOP" : "EQ",
+                      "dEFDName" : "ver_state",
+                      "logicType" : "SINGLE",
+                      "name" : "ver_state等于(=) 0",
+                      "value" : "0"
+                    }, {
+                      "condOP" : "EQ",
+                      "dEFDName" : "ver_state",
+                      "logicType" : "SINGLE",
+                      "name" : "ver_state等于(=) 2",
+                      "value" : "2"
+                    }, {
+                      "condOP" : "EQ",
+                      "dEFDName" : "ver_state",
+                      "logicType" : "SINGLE",
+                      "name" : "ver_state等于(=) 4",
+                      "value" : "4"
+                    } ],
+                    "notMode" : false
                   } ],
-                  "relatedDetailNames" : [ "disable_install" ],
+                  "relatedDetailNames" : [ "disable_install", "ver_state" ],
                   "notMode" : false
                 } ],
                 "getPSLayoutPos" : {
@@ -387,12 +455,14 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
                   },
+                  "refreshMode" : 1,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "prepare_version_install",
                   "uIActionType" : "DEUIACTION",
                   "uILogicAttachMode" : "REPLACE",
                   "closeEditView" : true,
                   "closePopupView" : true,
+                  "reloadData" : true,
                   "id" : "prepare_version_install@PSCorePrdFunc"
                 },
                 "tooltip" : "安装",
@@ -502,6 +572,52 @@
                 "getPSEditor" : {
                   "editorType" : "HIDDEN",
                   "name" : "disable_install"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "allowEmpty" : true,
+                "hidden" : true,
+                "repeatContent" : true
+              }, {
+                "codeName" : "ver_state",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "fieldName" : "state",
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "ver_state",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "ver_state"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "allowEmpty" : true,
+                "hidden" : true,
+                "repeatContent" : true
+              }, {
+                "codeName" : "current_install",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "fieldName" : "current_install",
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "current_install",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "current_install"
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
@@ -621,6 +737,38 @@
               "modelref" : true,
               "id" : "form_custinstallbtn"
             },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "name" : "OR",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "funcstate",
+                  "logicType" : "SINGLE",
+                  "name" : "funcstate等于(=) 0",
+                  "value" : "0"
+                }, {
+                  "condOP" : "EQ",
+                  "dEFDName" : "funcstate",
+                  "logicType" : "SINGLE",
+                  "name" : "funcstate等于(=) 2",
+                  "value" : "2"
+                }, {
+                  "condOP" : "EQ",
+                  "dEFDName" : "funcstate",
+                  "logicType" : "SINGLE",
+                  "name" : "funcstate等于(=) 4",
+                  "value" : "4"
+                } ],
+                "notMode" : false
+              } ],
+              "relatedDetailNames" : [ "funcstate" ],
+              "notMode" : false
+            } ],
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -930,6 +1078,32 @@
       },
       "updateDV" : "currentversion",
       "updateDVT" : "APPDATA",
+      "allowEmpty" : true,
+      "hidden" : true
+    }, {
+      "caption" : "功能状态",
+      "codeName" : "funcstate",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "funcstate",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "FUNCSTATE",
+        "codeName" : "FuncState"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "funcstate"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
       "allowEmpty" : true,
       "hidden" : true
     }, {
