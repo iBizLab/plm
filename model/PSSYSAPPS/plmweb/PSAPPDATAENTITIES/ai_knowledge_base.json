@@ -1557,13 +1557,28 @@
     "uIActionType" : "DEUIACTION",
     "id" : "open_kb_doc_info_view@ai_knowledge_base"
   }, {
+    "actionTarget" : "NONE",
+    "caption" : "打开知识库导航页",
+    "codeName" : "open_knowledge_base_view",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_knowledge_base_open_knowledge_base_view",
+    "name" : "打开知识库导航页",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_knowledge_base_view",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_knowledge_base_view@ai_knowledge_base"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "更多设置",
     "codeName" : "open_setting_center",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_config_tree_exp_view.json",
-      "viewType" : "DETREEEXPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_manage_tab_exp_view.json",
+      "viewType" : "DETABEXPVIEW"
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "ai_knowledge_base_open_setting_center",
@@ -1576,6 +1591,38 @@
     "uIActionTag" : "open_setting_center",
     "uIActionType" : "DEUIACTION",
     "id" : "open_setting_center@ai_knowledge_base"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "remove",
+    "confirmMsg" : "确认删除该知识库？",
+    "fullCodeName" : "ai_knowledge_base_remove",
+    "name" : "删除知识库",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "modelref" : true,
+      "id" : "open_knowledge_base_view@ai_knowledge_base"
+    },
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove@ai_knowledge_base"
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
