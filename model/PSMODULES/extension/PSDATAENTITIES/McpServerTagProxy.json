@@ -817,6 +817,52 @@
     "allowEmpty" : false,
     "systemReserver" : true
   } ],
+  "getAllPSDEMaps" : [ {
+    "codeName" : "DEMap",
+    "getDstPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_tool.json"
+    },
+    "name" : "实体映射",
+    "getPSDEMapDataQueries" : [ {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "extension_mcp_server"
+      },
+      "mapMode" : "INNER",
+      "name" : "PSDEMAPDQ",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "enableDQCond" : true
+    } ],
+    "getPSDEMapFields" : [ {
+      "dstFieldName" : "TOOL_TAG",
+      "getDstPSDEField" : {
+        "name" : "TOOL_TAG",
+        "codeName" : "tool_tag"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MCPSERVERTAGPROXYID",
+      "getSrcPSDEField" : {
+        "name" : "MCPSERVERTAGPROXYID",
+        "codeName" : "McpServerTagProxyId"
+      }
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MCPSERVERTAGPROXYNAME",
+      "getSrcPSDEField" : {
+        "name" : "MCPSERVERTAGPROXYNAME",
+        "codeName" : "McpServerTagProxyName"
+      }
+    } ]
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "McpServerTagProxyDTO",
     "getPSDEMethodDTOFields" : [ {
