@@ -62,7 +62,7 @@
         "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
@@ -70,7 +70,7 @@
         "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -81,10 +81,19 @@
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
     "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "知识库文档编辑视图",
+    "realTitle" : "知识库文档信息视图",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "OPENDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "知识库文档信息视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_document_base_info_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
@@ -216,6 +225,75 @@
       "showBusyIndicator" : true,
       "id" : "GRID"
     },
+    "getPSControls" : [ {
+      "codeName" : "grid_view_grid_batchtoolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "批操作工具栏",
+      "name" : "grid_batchtoolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_document.json"
+      },
+      "getPSControlParam" : {
+        "id" : "grid_batchtoolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.REMOVE"
+        },
+        "caption" : "删除",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 1,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.REMOVE"
+          },
+          "caption" : "删除",
+          "codeName" : "Remove",
+          "dataAccessAction" : "DELETE",
+          "fullCodeName" : "Remove",
+          "name" : "表格界面_删除操作",
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "DELETE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "predefinedType" : "GRIDVIEW_REMOVEACTION",
+          "timeout" : 60000,
+          "tooltip" : "删除",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Remove",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "删除",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+        },
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "03c28f7c0211709390592317434a9028",
+      "modeltype" : "PSDETOOLBAR"
+    } ],
     "getPSDEGridColumns" : [ {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
