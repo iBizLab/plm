@@ -52140,6 +52140,18 @@
     } ],
     "uniqueTag" : "UsrVMGroup0419511397"
   }, {
+    "codeName" : "UsrVMGroup0523544599",
+    "name" : "归档工作项提示消息组",
+    "getPSAppViewMsgGroupDetails" : [ {
+      "name" : "归档工作项提示消息",
+      "getPSAppViewMsg" : {
+        "modelref" : true,
+        "id" : "UsrViewMsg0523429227"
+      },
+      "position" : "TOP"
+    } ],
+    "uniqueTag" : "UsrVMGroup0523544599"
+  }, {
     "codeName" : "test_caseUsrVMGroup",
     "name" : "自定义测试用例的数据字典",
     "getPSAppViewMsgGroupDetails" : [ {
@@ -52175,18 +52187,6 @@
       "position" : "BODY"
     } ],
     "uniqueTag" : "UsrVMGroup1107155954"
-  }, {
-    "codeName" : "UsrVMGroup0523544599",
-    "name" : "归档工作项提示消息组",
-    "getPSAppViewMsgGroupDetails" : [ {
-      "name" : "归档工作项提示消息",
-      "getPSAppViewMsg" : {
-        "modelref" : true,
-        "id" : "UsrViewMsg0523429227"
-      },
-      "position" : "TOP"
-    } ],
-    "uniqueTag" : "UsrVMGroup0523544599"
   }, {
     "codeName" : "UsrVMGroup0106331027",
     "name" : "项目全局属性配置提示消息组",
@@ -63208,6 +63208,13 @@
     "name" : "attachmentEditView"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view_pop_up.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "article_page",
+    "view" : "model_show_view_pop_up",
+    "name" : "article_pagemodel_show_view_pop_up"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_setting_grid_view.json",
     "viewType" : "DEGRIDVIEW",
     "resource" : "addon",
@@ -70606,6 +70613,14 @@
     "view" : "customer_app_data_upload_view"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view_pop_up.json",
+    "viewType" : "DEEDITVIEW",
+    "dynaSysMode" : 1,
+    "resource" : "ticket",
+    "view" : "main_view_pop_up",
+    "name" : "ticketmain_view_pop_up"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_config_tree_exp_view.json",
     "viewType" : "DETREEEXPVIEW",
     "dynaSysMode" : 1,
@@ -71228,6 +71243,14 @@
     "resource" : "work_item",
     "view" : "bi_form_view_item_state",
     "name" : "work_itembi_form_view_item_state"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view_pop_up.json",
+    "viewType" : "DEEDITVIEW",
+    "dynaSysMode" : 1,
+    "resource" : "test_case",
+    "view" : "main_view_pop_up",
+    "name" : "test_casemain_view_pop_up"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_pick_up_view.json",
@@ -80941,6 +80964,49 @@
                   "getPSAppDEField" : {
                     "name" : "TITLE",
                     "codeName" : "title"
+                  },
+                  "getPSDEUIAction" : {
+                    "actionTarget" : "SINGLEKEY",
+                    "caption" : "打开主视图·",
+                    "codeName" : "open_main_view_pop_up",
+                    "getFrontPSAppView" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view_pop_up.json",
+                      "viewType" : "DEEDITVIEW"
+                    },
+                    "frontProcessType" : "WIZARD",
+                    "fullCodeName" : "work_item_open_main_view_pop_up",
+                    "name" : "打开主视图（模态弹出）",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    },
+                    "getPSNavigateContexts" : [ {
+                      "key" : "SRFDATATYPE",
+                      "name" : "SRFDATATYPE",
+                      "value" : "work_item_type_id",
+                      "rawValue" : false
+                    }, {
+                      "key" : "PROJECT",
+                      "name" : "PROJECT",
+                      "value" : "project_id",
+                      "rawValue" : false
+                    }, {
+                      "key" : "WORK_ITEM_TYPE_ID",
+                      "name" : "WORK_ITEM_TYPE_ID",
+                      "value" : "work_item_type_id",
+                      "rawValue" : false
+                    } ],
+                    "getPSNavigateParams" : [ {
+                      "key" : "srfdatatype",
+                      "name" : "srfdatatype",
+                      "value" : "work_item_type_id",
+                      "rawValue" : false
+                    } ],
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "open_main_view_pop_up",
+                    "uIActionType" : "DEUIACTION",
+                    "id" : "open_main_view_pop_up@work_item"
                   },
                   "width" : 200,
                   "widthUnit" : "STAR",
@@ -154794,6 +154860,32 @@
         "uIActionType" : "DEUIACTION",
         "id" : "open_deleted_view@article_page"
       }, {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "打开主视图",
+        "codeName" : "open_main_view",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view_pop_up.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "article_page_open_main_view",
+        "name" : "打开主视图（模态弹出）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "SPACE",
+          "name" : "SPACE",
+          "value" : "space_id",
+          "rawValue" : false
+        } ],
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_main_view",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_main_view@article_page"
+      }, {
         "actionTarget" : "NONE",
         "caption" : "打开页面",
         "codeName" : "open_more_page",
@@ -155418,6 +155510,48 @@
         "uILogicAttachMode" : "REPLACE",
         "uILogicType" : "DELOGIC",
         "id" : "toolbar_model_show_view_noupdown_toolbar_deuiaction3_click@article_page"
+      }, {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "评论",
+        "codeName" : "toolbar_model_show_view_pop_up_toolbar_deuiaction2_click",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "article_page_toolbar_model_show_view_pop_up_toolbar_deuiaction2_click",
+        "name" : "评论",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "show_commnet"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "toolbar_model_show_view_pop_up_toolbar_deuiaction2_click",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "uILogicType" : "DELOGIC",
+        "id" : "toolbar_model_show_view_pop_up_toolbar_deuiaction2_click@article_page"
+      }, {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "关闭",
+        "codeName" : "toolbar_model_show_view_pop_up_toolbar_deuiaction3_click",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "article_page_toolbar_model_show_view_pop_up_toolbar_deuiaction3_click",
+        "name" : "关闭",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "close_comment"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "toolbar_model_show_view_pop_up_toolbar_deuiaction3_click",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "uILogicType" : "DELOGIC",
+        "id" : "toolbar_model_show_view_pop_up_toolbar_deuiaction3_click@article_page"
       }, {
         "actionTarget" : "SINGLEDATA",
         "caption" : "评论",
@@ -158387,6 +158521,10 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_show_custom_view.json",
         "viewType" : "DECUSTOMVIEW"
+      }, {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view_pop_up.json",
+        "viewType" : "DEEDITVIEW"
       }, {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_shared_setting_view.json",
@@ -202251,6 +202389,48 @@
         "uIActionTag" : "open_main_view",
         "uIActionType" : "DEUIACTION",
         "id" : "open_main_view@work_item"
+      }, {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "打开主视图·",
+        "codeName" : "open_main_view_pop_up",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view_pop_up.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "work_item_open_main_view_pop_up",
+        "name" : "打开主视图（模态弹出）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFDATATYPE",
+          "name" : "SRFDATATYPE",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        }, {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        }, {
+          "key" : "WORK_ITEM_TYPE_ID",
+          "name" : "WORK_ITEM_TYPE_ID",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "srfdatatype",
+          "name" : "srfdatatype",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        } ],
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_main_view_pop_up",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_main_view_pop_up@work_item"
       }, {
         "actionTarget" : "NONE",
         "caption" : "打开更多我创建的工作项",
