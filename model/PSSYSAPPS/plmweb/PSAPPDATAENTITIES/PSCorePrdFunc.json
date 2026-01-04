@@ -2402,6 +2402,29 @@
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "安装",
+    "codeName" : "custom_version_install",
+    "dialogResult" : "OK",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "PSCorePrdFunc_custom_version_install",
+    "name" : "自定义版本并安装",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "custom_version_info"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "custom_version_install",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "id" : "custom_version_install@PSCorePrdFunc"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "安装",
     "codeName" : "install_spec_ver",
     "fullCodeName" : "PSCorePrdFunc_install_spec_ver",
     "name" : "指定版本安装",
@@ -2430,14 +2453,12 @@
       "value" : "false",
       "rawValue" : true
     } ],
-    "refreshMode" : 2,
     "successMsg" : "安装成功！",
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "install_spec_ver",
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
-    "reloadData" : true,
     "id" : "install_spec_ver@PSCorePrdFunc"
   }, {
     "actionTarget" : "NONE",
@@ -2640,6 +2661,108 @@
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "custom_version_info",
+    "defaultParamName" : "Default",
+    "logicName" : "自定义版本安装",
+    "name" : "自定义版本安装",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION_01",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+        },
+        "modelref" : true,
+        "id" : "install_spec_ver@PSCorePrdFunc"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 180,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "指定版本安装",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION_01"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 330,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(\"custom version execed\");\n// ibiz.mc.command.create.send({ srfdecodename: 'PSCorePrdFunc'}, { triggerKey: 'specinstallbtn' });\nif(view && view.parentView ){\n    await view.parentView.callUIAction('Refresh');\n}",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 180,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 430,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 220,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 530,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
