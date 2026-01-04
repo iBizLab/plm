@@ -1238,6 +1238,7 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEDATAQUERIES/normal/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "normal",
+    "dEFGroupType" : "FIELDS",
     "logicName" : "当前模块下用例",
     "name" : "normal",
     "getPSDEDQMain" : {
@@ -1294,11 +1295,15 @@
       "name" : "NormalResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
-        "id" : "run_dto"
+        "id" : "run_executors_group_dto"
       },
       "type" : "DTOS"
     },
-    "viewLevel" : 0
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "executors_group"
+    },
+    "viewLevel" : 100
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -1967,11 +1972,15 @@
       "name" : "NormalResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
-        "id" : "run_dto"
+        "id" : "run_executors_group_dto"
       },
       "type" : "PAGE"
     },
-    "viewLevel" : 0,
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "executors_group"
+    },
+    "viewLevel" : 100,
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -2616,6 +2625,510 @@
       },
       "stringLength" : 100,
       "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "executors_group",
+    "groupType" : "FIELDS",
+    "name" : "多人执行",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "executors",
+      "logicName" : "执行人",
+      "name" : "EXECUTORS",
+      "orderValue" : 100,
+      "getPSDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "logicName" : "标识",
+      "name" : "ID",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "status",
+      "logicName" : "执行结果",
+      "name" : "STATUS",
+      "orderValue" : 120,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/run_status.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Case_id",
+      "logicName" : "测试用例标识",
+      "name" : "CASE_ID",
+      "orderValue" : 130,
+      "getPSDEField" : {
+        "name" : "CASE_ID",
+        "codeName" : "Case_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Plan_id",
+      "logicName" : "测试计划标识",
+      "name" : "PLAN_ID",
+      "orderValue" : 140,
+      "getPSDEField" : {
+        "name" : "PLAN_ID",
+        "codeName" : "Plan_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "PLAN_NAME",
+      "logicName" : "测试计划",
+      "name" : "PLAN_NAME",
+      "orderValue" : 150,
+      "getPSDEField" : {
+        "name" : "PLAN_NAME",
+        "codeName" : "PLAN_NAME"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "case_name",
+      "logicName" : "名称",
+      "name" : "CASE_NAME",
+      "orderValue" : 160,
+      "getPSDEField" : {
+        "name" : "CASE_NAME",
+        "codeName" : "case_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "STATE",
+      "logicName" : "用例状态",
+      "name" : "STATE",
+      "orderValue" : 170,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/case_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "STATE"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "suite_id",
+      "logicName" : "用例模块标识",
+      "name" : "SUITE_ID",
+      "orderValue" : 180,
+      "getPSDEField" : {
+        "name" : "SUITE_ID",
+        "codeName" : "suite_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "suites",
+      "logicName" : "模块路径",
+      "name" : "SUITES",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "SUITES",
+        "codeName" : "suites"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "用例类型",
+      "name" : "TYPE",
+      "orderValue" : 200,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "level",
+      "logicName" : "重要程度",
+      "name" : "LEVEL",
+      "orderValue" : 210,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_level.json"
+      },
+      "getPSDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "suite_name",
+      "logicName" : "所属模块",
+      "name" : "SUITE_NAME",
+      "orderValue" : 220,
+      "getPSDEField" : {
+        "name" : "SUITE_NAME",
+        "codeName" : "suite_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "library_name",
+      "logicName" : "所属测试库",
+      "name" : "LIBRARY_NAME",
+      "orderValue" : 230,
+      "getPSDEField" : {
+        "name" : "LIBRARY_NAME",
+        "codeName" : "library_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "identifier",
+      "logicName" : "编号",
+      "name" : "IDENTIFIER",
+      "orderValue" : 240,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "library_id",
+      "logicName" : "测试库标识",
+      "name" : "LIBRARY_ID",
+      "orderValue" : 250,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/all_library.json"
+      },
+      "getPSDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "library_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "TITLE",
+      "logicName" : "标题",
+      "name" : "TITLE",
+      "orderValue" : 260,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "TITLE"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "library_identifier",
+      "logicName" : "测试库编号",
+      "name" : "LIBRARY_IDENTIFIER",
+      "orderValue" : 270,
+      "getPSDEField" : {
+        "name" : "LIBRARY_IDENTIFIER",
+        "codeName" : "library_identifier"
+      },
+      "stringLength" : 15,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "maintenance_name",
+      "logicName" : "维护人",
+      "name" : "MAINTENANCE_NAME",
+      "orderValue" : 280,
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "library_is_deleted",
+      "logicName" : "测试库是否删除",
+      "name" : "LIBRARY_IS_DELETED",
+      "orderValue" : 290,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "LIBRARY_IS_DELETED",
+        "codeName" : "library_is_deleted"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "review_result_state",
+      "logicName" : "评审结果",
+      "name" : "REVIEW_RESULT_STATE",
+      "orderValue" : 300,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "library_is_archived",
+      "logicName" : "测试库是否归档",
+      "name" : "LIBRARY_IS_ARCHIVED",
+      "orderValue" : 310,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "LIBRARY_IS_ARCHIVED",
+        "codeName" : "library_is_archived"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "TEST_TYPE",
+      "logicName" : "测试类型",
+      "name" : "TEST_TYPE",
+      "orderValue" : 320,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_test_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TEST_TYPE",
+        "codeName" : "TEST_TYPE"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "bi_plan_name",
+      "logicName" : "bi测试计划名称",
+      "name" : "BI_PLAN_NAME",
+      "orderValue" : 330,
+      "getPSDEField" : {
+        "name" : "BI_PLAN_NAME",
+        "codeName" : "bi_plan_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "logicName" : "名称",
+      "name" : "NAME",
+      "orderValue" : 340,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      },
+      "logicName" : "更新人",
+      "name" : "UPDATE_MAN",
+      "orderValue" : 350,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "parent_version_id",
+      "logicName" : "父对象版本标识",
+      "name" : "PARENT_VERSION_ID",
+      "orderValue" : 360,
+      "getPSDEField" : {
+        "name" : "PARENT_VERSION_ID",
+        "codeName" : "parent_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "executor_name",
+      "logicName" : "执行人",
+      "name" : "EXECUTOR_NAME",
+      "orderValue" : 370,
+      "getPSDEField" : {
+        "name" : "EXECUTOR_NAME",
+        "codeName" : "executor_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "cur_version_id",
+      "logicName" : "当前版本标识",
+      "name" : "CUR_VERSION_ID",
+      "orderValue" : 380,
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_ID",
+        "codeName" : "cur_version_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "show_identifier",
+      "logicName" : "编号",
+      "name" : "SHOW_IDENTIFIER",
+      "orderValue" : 390,
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "executor_id",
+      "logicName" : "执行人标识",
+      "name" : "EXECUTOR_ID",
+      "orderValue" : 400,
+      "getPSDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_man",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      },
+      "logicName" : "建立人",
+      "name" : "CREATE_MAN",
+      "orderValue" : 410,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "create_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "logicName" : "建立时间",
+      "name" : "CREATE_TIME",
+      "orderValue" : 420,
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "name" : "UPDATE_TIME",
+      "orderValue" : 430,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "executed_at",
+      "logicName" : "执行时间",
+      "name" : "EXECUTED_AT",
+      "orderValue" : 440,
+      "getPSDEField" : {
+        "name" : "EXECUTED_AT",
+        "codeName" : "executed_at"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "priority",
+      "logicName" : "优先级",
+      "name" : "PRIORITY",
+      "orderValue" : 450,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stringLength" : 60,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     } ]
@@ -16533,6 +17046,426 @@
       "stringLength" : 100,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
+  }, {
+    "name" : "run_executors_group_dto",
+    "getPSDEMethodDTOFields" : [ {
+      "logicName" : "执行人",
+      "name" : "executors",
+      "getPSDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/executor/PSDERS/DERCUSTOM_EXECUTOR_RUN_OWNER_ID.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "executor_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stringLength" : 1048576,
+      "type" : "DTOS"
+    }, {
+      "logicName" : "标识",
+      "name" : "id",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "logicName" : "执行结果",
+      "name" : "status",
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试用例标识",
+      "name" : "case_id",
+      "getPSDEField" : {
+        "name" : "CASE_ID",
+        "codeName" : "Case_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试计划标识",
+      "name" : "plan_id",
+      "getPSDEField" : {
+        "name" : "PLAN_ID",
+        "codeName" : "Plan_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试计划",
+      "name" : "plan_name",
+      "getPSDEField" : {
+        "name" : "PLAN_NAME",
+        "codeName" : "PLAN_NAME"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "名称",
+      "name" : "case_name",
+      "getPSDEField" : {
+        "name" : "CASE_NAME",
+        "codeName" : "case_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用例状态",
+      "name" : "state",
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "STATE"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用例模块标识",
+      "name" : "suite_id",
+      "getPSDEField" : {
+        "name" : "SUITE_ID",
+        "codeName" : "suite_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "模块路径",
+      "name" : "suites",
+      "getPSDEField" : {
+        "name" : "SUITES",
+        "codeName" : "suites"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 500,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用例类型",
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "重要程度",
+      "name" : "level",
+      "getPSDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属模块",
+      "name" : "suite_name",
+      "getPSDEField" : {
+        "name" : "SUITE_NAME",
+        "codeName" : "suite_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属测试库",
+      "name" : "library_name",
+      "getPSDEField" : {
+        "name" : "LIBRARY_NAME",
+        "codeName" : "library_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "编号",
+      "name" : "identifier",
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试库标识",
+      "name" : "library_id",
+      "getPSDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "library_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "标题",
+      "name" : "title",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "TITLE"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 500,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试库编号",
+      "name" : "library_identifier",
+      "getPSDEField" : {
+        "name" : "LIBRARY_IDENTIFIER",
+        "codeName" : "library_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 15,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "维护人",
+      "name" : "maintenance_name",
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试库是否删除",
+      "name" : "library_is_deleted",
+      "getPSDEField" : {
+        "name" : "LIBRARY_IS_DELETED",
+        "codeName" : "library_is_deleted"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试库是否归档",
+      "name" : "library_is_archived",
+      "getPSDEField" : {
+        "name" : "LIBRARY_IS_ARCHIVED",
+        "codeName" : "library_is_archived"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "测试类型",
+      "name" : "test_type",
+      "getPSDEField" : {
+        "name" : "TEST_TYPE",
+        "codeName" : "TEST_TYPE"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "bi测试计划名称",
+      "name" : "bi_plan_name",
+      "getPSDEField" : {
+        "name" : "BI_PLAN_NAME",
+        "codeName" : "bi_plan_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "名称",
+      "name" : "name",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "更新人",
+      "name" : "update_man",
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "logicName" : "父对象版本标识",
+      "name" : "parent_version_id",
+      "getPSDEField" : {
+        "name" : "PARENT_VERSION_ID",
+        "codeName" : "parent_version_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "执行人",
+      "name" : "executor_name",
+      "getPSDEField" : {
+        "name" : "EXECUTOR_NAME",
+        "codeName" : "executor_name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "当前版本标识",
+      "name" : "cur_version_id",
+      "getPSDEField" : {
+        "name" : "CUR_VERSION_ID",
+        "codeName" : "cur_version_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "编号",
+      "name" : "show_identifier",
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "执行人标识",
+      "name" : "executor_id",
+      "getPSDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "建立人",
+      "name" : "create_man",
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "执行时间",
+      "name" : "executed_at",
+      "getPSDEField" : {
+        "name" : "EXECUTED_AT",
+        "codeName" : "executed_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "20",
+      "logicName" : "优先级",
+      "name" : "priority",
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
