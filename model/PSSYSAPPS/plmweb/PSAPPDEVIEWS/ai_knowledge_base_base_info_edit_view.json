@@ -3,10 +3,10 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
   },
-  "caption" : "高级设置",
-  "codeName" : "ai_knowledge_base_advanced_setting_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_advanced_setting_view.json",
-  "name" : "ai_knowledge_baseadvanced_setting_view",
+  "caption" : "基本信息",
+  "codeName" : "ai_knowledge_base_base_info_edit_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_base_info_edit_view.json",
+  "name" : "ai_knowledge_basebase_info_edit_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
@@ -21,9 +21,9 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "advanced_setting_view_toolbar",
+    "codeName" : "base_info_edit_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "知识库高级设置_工具栏",
+    "logicName" : "知识库基本信息编辑视图_工具栏",
     "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -33,10 +33,10 @@
       "id" : "TOOLBAR"
     },
     "xDataControlName" : "form",
-    "modelid" : "cccd1f59f95ba497021630f8f123117a",
+    "modelid" : "788b1b3bdf4186f8244630061f46adc3",
     "modeltype" : "PSDETOOLBAR"
   }, {
-    "codeName" : "main2",
+    "codeName" : "main3",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -55,7 +55,7 @@
       }
     },
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/main2.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/main3.json",
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
@@ -100,7 +100,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
       }
     },
-    "logicName" : "知识库高级设置_表单",
+    "logicName" : "知识库基本信息编辑视图_表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
@@ -234,6 +234,42 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "id" : "source_name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SOURCE_NAME",
+        "codeName" : "source_name"
+      }
+    }, {
+      "id" : "embedding_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "EMBEDDING_MODEL",
+        "codeName" : "embedding_model"
+      }
+    }, {
+      "id" : "tag_sets",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "TAG_SETS",
+        "codeName" : "tag_sets"
+      }
+    }, {
+      "id" : "description",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -243,90 +279,231 @@
       }
     } ],
     "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.AI_KNOWLEDGE_BASE.MAIN.FORMPAGE.FORMPAGE1"
+      },
       "caption" : "基本信息",
       "codeName" : "formpage1",
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
       "getPSDEFormDetails" : [ {
-        "caption" : "删除知识库",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.AI_KNOWLEDGE_BASE.MAIN.GROUPPANEL.GROUP1"
+        },
+        "caption" : "知识库基本信息",
         "codeName" : "group1",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "rawitem1",
-          "contentType" : "RAW",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.NAME"
+          },
+          "caption" : "知识库名称",
+          "codeName" : "name",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
-          "detailType" : "RAWITEM",
-          "name" : "rawitem1",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "name"
+          },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "getPSRawItem" : {
-            "caption" : "如果此知识库已经不再需要了，你可以删除它。删除后如果想找回知识库，可以通过配置中心由管理员进行恢复。",
-            "contentType" : "RAW",
-            "name" : "rawitem1",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0
-          },
-          "rawContent" : "如果此知识库已经不再需要了，你可以删除它。删除后如果想找回知识库，可以通过配置中心由管理员进行恢复。",
-          "rawItemHeight" : -1.0,
-          "rawItemWidth" : -1.0,
+          "allowEmpty" : false,
           "showCaption" : true
         }, {
-          "actionType" : "UIACTION",
-          "caption" : "删除知识库",
-          "codeName" : "button1",
+          "caption" : "知识库源",
+          "codeName" : "source_name",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
-          "detailType" : "BUTTON",
-          "name" : "button1",
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "form_button1"
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "source_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SOURCE_NAME",
+            "codeName" : "source_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "source_name"
           },
           "getPSLayoutPos" : {
-            "colLG" : 3,
-            "colMD" : 3,
+            "colLG" : 8,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEKEY",
-            "caption" : "删除",
-            "codeName" : "remove",
-            "confirmMsg" : "确认删除该知识库？",
-            "fullCodeName" : "ai_knowledge_base_remove",
-            "name" : "删除知识库",
-            "getNextPSUIAction" : {
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-              },
-              "modelref" : true,
-              "id" : "open_ai_agent_tree_exp_view@ai_knowledge_base"
-            },
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "remove"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-            },
-            "refreshMode" : 1,
-            "successMsg" : "删除成功",
-            "timeout" : 60000,
-            "uIActionMode" : "BACKEND",
-            "uIActionTag" : "remove",
-            "uIActionType" : "DEUIACTION",
-            "enableConfirm" : true,
-            "reloadData" : true,
-            "id" : "remove@ai_knowledge_base"
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "切片模型",
+          "codeName" : "embedding_model",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "embedding_model",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "EMBEDDING_MODEL",
+            "codeName" : "embedding_model"
           },
-          "tooltip" : "删除知识库",
-          "uIActionTarget" : "SINGLEKEY",
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "embedding_model"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
           "showCaption" : true
+        }, {
+          "caption" : "标签集",
+          "codeName" : "tag_sets",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "tag_sets",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "TAG_SETS",
+            "codeName" : "tag_sets"
+          },
+          "getPSEditor" : {
+            "editorType" : "MDROPDOWNLIST",
+            "name" : "tag_sets",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag_sets.json"
+            },
+            "singleSelect" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "描述",
+          "codeName" : "description",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "description",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTAREA",
+            "maxLength" : 2000,
+            "name" : "description",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "codeName" : "grouppanel1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel1",
+          "getPSDEFormDetails" : [ {
+            "actionType" : "UIACTION",
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.SAVE"
+            },
+            "caption" : "确定",
+            "codeName" : "button1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "BUTTON",
+            "name" : "button1",
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "form_button1"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "width" : 100,
+              "widthMode" : "PX"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf0c7@FontAwesome",
+              "cssClass" : "fa fa-save"
+            },
+            "getPSUIAction" : {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "TBB.TEXT.*.SAVE"
+              },
+              "caption" : "保存",
+              "codeName" : "Save",
+              "fullCodeName" : "Save",
+              "name" : "编辑界面_保存操作",
+              "getPSSysImage" : {
+                "glyph" : "xf0c7@FontAwesome",
+                "cssClass" : "fa fa-save"
+              },
+              "predefinedType" : "EDITVIEW_SAVEACTION",
+              "timeout" : 60000,
+              "getTooltipPSLanguageRes" : {
+                "lanResTag" : "TBB.TOOLTIP.*.SAVE"
+              },
+              "uIActionMode" : "SYS",
+              "uIActionTag" : "Save",
+              "uIActionType" : "DEUIACTION"
+            },
+            "tooltip" : "确定",
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "align" : "center",
+            "dir" : "row",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -334,11 +511,12 @@
           "layout" : "TABLE_24COL"
         },
         "getPSLayoutPos" : {
-          "colMD" : 24,
+          "colLG" : 12,
+          "colMD" : 12,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : true
+        "showCaption" : false
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"
@@ -416,10 +594,10 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "a04d5df4a43d972312df80edc9f423d2",
+    "modelid" : "3f137699df99d3b516fb2e131d32ebde",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
-    "codeName" : "advanced_setting_view_datainfobar",
+    "codeName" : "base_info_edit_view_datainfobar",
     "controlType" : "DATAINFOBAR",
     "name" : "datainfobar",
     "getPSAppDataEntity" : {
@@ -433,8 +611,8 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
     },
-    "caption" : "高级设置",
-    "codeName" : "advanced_setting_view_captionbar",
+    "caption" : "基本信息",
+    "codeName" : "base_info_edit_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -443,8 +621,8 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "advanced_setting_view",
-  "getPSDEViewId" : "2ebc7fe16adb29753d8c52467f6c77c7",
+  "getPSDEViewCodeName" : "base_info_edit_view",
+  "getPSDEViewId" : "ba31f27c067f4472f045845d314a0271",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEEDITVIEW",
@@ -460,13 +638,13 @@
     "useDefaultLayout" : true
   },
   "refFlag" : false,
-  "title" : "高级设置",
+  "title" : "基本信息",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
   "xDataControlName" : "form",
   "enableDP" : true,
   "showCaptionBar" : false,
   "showDataInfoBar" : true,
-  "modelid" : "e8e33059dbe227352b42c404e737c1ff",
+  "modelid" : "eaefaa7faa0da204a2cdb4ee85269dc3",
   "modeltype" : "PSAPPDEVIEW"
 }

@@ -1,5 +1,5 @@
 {
-  "codeName" : "base_info",
+  "codeName" : "main3",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -18,7 +18,7 @@
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/base_info.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSFORMS/main3.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -63,7 +63,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "logicName" : "信息表单",
+  "logicName" : "知识库基本信息编辑视图_表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
@@ -113,7 +113,7 @@
     "hidden" : true,
     "dataType" : 25
   }, {
-    "id" : "title",
+    "id" : "name",
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "NAME",
@@ -180,35 +180,31 @@
           "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.NAME"
         },
         "caption" : "知识库名称",
-        "codeName" : "title",
+        "codeName" : "name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "title",
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "name",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
           "name" : "NAME",
           "codeName" : "name"
         },
         "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
-          "editorType" : "TEXTAREA",
+          "editorType" : "TEXTBOX",
           "maxLength" : 200,
-          "name" : "title",
-          "placeHolder" : "知识库名称",
-          "showMaxLength" : true
+          "name" : "name"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : false
+        "allowEmpty" : false,
+        "showCaption" : true
       }, {
         "caption" : "知识库源",
         "codeName" : "source_name",
@@ -244,7 +240,7 @@
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
+        "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "embedding_model",
         "noPrivDisplayMode" : 1,
@@ -255,11 +251,9 @@
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
           "maxLength" : 100,
-          "name" : "embedding_model",
-          "readOnly" : true
+          "name" : "embedding_model"
         },
         "getPSLayoutPos" : {
-          "colLG" : 8,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
@@ -273,7 +267,7 @@
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
+        "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "tag_sets",
         "noPrivDisplayMode" : 1,
@@ -291,8 +285,7 @@
           "singleSelect" : false
         },
         "getPSLayoutPos" : {
-          "colLG" : 8,
-          "colMD" : 8,
+          "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
@@ -306,7 +299,7 @@
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "LEFT",
+        "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "description",
         "noPrivDisplayMode" : 1,
@@ -315,9 +308,6 @@
           "codeName" : "description"
         },
         "getPSEditor" : {
-          "editorParams" : {
-            "ISAUTO" : "true"
-          },
           "editorType" : "TEXTAREA",
           "maxLength" : 2000,
           "name" : "description",
@@ -329,6 +319,70 @@
         },
         "allowEmpty" : true,
         "showCaption" : true
+      }, {
+        "codeName" : "grouppanel1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "actionType" : "UIACTION",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.SAVE"
+          },
+          "caption" : "确定",
+          "codeName" : "button1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "BUTTON",
+          "name" : "button1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_button1"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "width" : 100,
+            "widthMode" : "PX"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c7@FontAwesome",
+            "cssClass" : "fa fa-save"
+          },
+          "getPSUIAction" : {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.SAVE"
+            },
+            "caption" : "保存",
+            "codeName" : "Save",
+            "fullCodeName" : "Save",
+            "name" : "编辑界面_保存操作",
+            "getPSSysImage" : {
+              "glyph" : "xf0c7@FontAwesome",
+              "cssClass" : "fa fa-save"
+            },
+            "predefinedType" : "EDITVIEW_SAVEACTION",
+            "timeout" : 60000,
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.SAVE"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "Save",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "确定",
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "align" : "center",
+          "dir" : "row",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -336,10 +390,11 @@
         "layout" : "TABLE_24COL"
       },
       "getPSLayoutPos" : {
-        "colMD" : 24,
+        "colLG" : 12,
+        "colMD" : 12,
         "layout" : "TABLE_24COL"
       },
-      "infoGroupMode" : true,
+      "infoGroupMode" : false,
       "showCaption" : false
     }, {
       "getCapPSLanguageRes" : {
@@ -376,7 +431,7 @@
       "columnCount" : 24,
       "layout" : "TABLE_24COL"
     },
-    "infoGroupMode" : true
+    "infoGroupMode" : false
   } ],
   "getPSLayout" : {
     "childColMD" : 24,
@@ -416,8 +471,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "infoFormMode" : true,
   "noTabHeader" : true,
-  "modelid" : "466fc54c844f160cd894fb82da52cada",
+  "modelid" : "3f137699df99d3b516fb2e131d32ebde",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

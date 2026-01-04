@@ -676,6 +676,11 @@
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "mob_common_list",
+      "minorSortDir" : "DESC",
+      "getMinorSortPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
       "mobListStyle" : "LISTVIEW",
       "getOrderValuePSAppDEField" : {
         "name" : "SEQUENCE",
@@ -769,10 +774,37 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+        },
+        "name" : "priority",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
+        }
+      }, {
+        "dataType" : 25,
         "name" : "show_identifier",
         "getPSAppDEField" : {
           "name" : "SHOW_IDENTIFIER",
           "codeName" : "show_identifier"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
         }
       }, {
         "dataType" : 25,
@@ -789,25 +821,6 @@
           "codeName" : "title"
         }
       }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD",
-        "name" : "end_at",
-        "getPSAppDEField" : {
-          "name" : "END_AT",
-          "codeName" : "end_at"
-        }
-      }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
-        },
-        "name" : "priority",
-        "getPSAppDEField" : {
-          "name" : "PRIORITY",
-          "codeName" : "priority"
-        }
-      }, {
         "dataType" : 25,
         "getFrontPSCodeList" : {
           "modelref" : true,
@@ -817,14 +830,6 @@
         "getPSAppDEField" : {
           "name" : "STATE",
           "codeName" : "state"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD",
-        "name" : "start_at",
-        "getPSAppDEField" : {
-          "name" : "START_AT",
-          "codeName" : "start_at"
         }
       }, {
         "dataType" : 25,
@@ -931,10 +936,40 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "caption" : "优先级",
+        "dataItemName" : "priority",
+        "itemType" : "TEXTITEM",
+        "name" : "PRIORITY",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
         "caption" : "编号",
         "dataItemName" : "show_identifier",
         "itemType" : "TEXTITEM",
         "name" : "SHOW_IDENTIFIER",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "开始时间",
+        "dataItemName" : "start_at",
+        "itemType" : "TEXTITEM",
+        "name" : "START_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "截止时间",
+        "dataItemName" : "end_at",
+        "itemType" : "TEXTITEM",
+        "name" : "END_AT",
+        "valueFormat" : "YYYY-MM-DD",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -958,41 +993,11 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "截止时间",
-        "dataItemName" : "end_at",
-        "itemType" : "TEXTITEM",
-        "name" : "END_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "优先级",
-        "dataItemName" : "priority",
-        "itemType" : "TEXTITEM",
-        "name" : "PRIORITY",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
         "cLConvertMode" : "FRONT",
         "caption" : "状态",
         "dataItemName" : "state",
         "itemType" : "TEXTITEM",
         "name" : "STATE",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "开始时间",
-        "dataItemName" : "start_at",
-        "itemType" : "TEXTITEM",
-        "name" : "START_AT",
-        "valueFormat" : "YYYY-MM-DD",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true

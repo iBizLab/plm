@@ -70694,6 +70694,13 @@
     "name" : "activityhistory_list_view"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_base_info_edit_view.json",
+    "viewType" : "DEEDITVIEW",
+    "resource" : "ai_knowledge_base",
+    "view" : "base_info_edit_view",
+    "name" : "ai_knowledge_basebase_info_edit_view"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_report_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW",
     "resource" : "insight_report",
@@ -231254,7 +231261,7 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
         },
-        "scriptCode" : "console.log('使用此模板');",
+        "scriptCode" : "const vditor = view.ctx.parent.vditor;\r\nconst templateView = view.getController('templateshow_view');\r\nif (templateView) {\r\n    const form = templateView.getController('form');\r\n    const [data] = form.getData();\r\n    const description = data.description;\r\n    // 先清空\r\n    vditor.vditor.setValue('');\r\n    vditor.vditor.insertValue(description);\r\n}",
         "uIActionMode" : "FRONT",
         "uIActionTag" : "use_template",
         "uIActionType" : "DEUIACTION",
