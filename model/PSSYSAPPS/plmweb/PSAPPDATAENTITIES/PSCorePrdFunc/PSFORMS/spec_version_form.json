@@ -118,6 +118,13 @@
     "createDV" : "history",
     "updateDV" : "history"
   }, {
+    "id" : "pscoreprdfuncname",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PSCOREPRDFUNCNAME",
+      "codeName" : "PSCorePrdFuncName"
+    }
+  }, {
     "id" : "cust_version",
     "dataType" : 25
   }, {
@@ -177,10 +184,8 @@
       "name" : "group1",
       "getPSDEFormDetails" : [ {
         "codeName" : "grouppanel6",
-        "contentHeight" : 60.0,
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "height" : 60.0,
         "name" : "grouppanel6",
         "getPSDEFormDetails" : [ {
           "codeName" : "specty",
@@ -246,12 +251,22 @@
           "allowEmpty" : true,
           "needCodeListConfig" : true
         }, {
-          "codeName" : "rawitem3",
-          "contentType" : "HTML",
+          "caption" : "应用名称",
+          "codeName" : "pscoreprdfuncname",
+          "cssStyle" : "padding: 0px var(--ibiz-spacing-base); color: var(--ibiz-color-primary); background-color: var(--ibiz-color-secondary-light-default);border-color: var(--ibiz-color-secondary-light-default);border-radius: 32px;",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
-          "detailType" : "RAWITEM",
-          "htmlContent" : "<p><span style=\"font-size: 22px;\">版本清单</span></p>",
-          "name" : "rawitem3",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "pscoreprdfuncname",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "PSCOREPRDFUNCNAME",
+            "codeName" : "PSCorePrdFuncName"
+          },
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
@@ -284,20 +299,21 @@
             "relatedDetailNames" : [ "funcstate" ],
             "notMode" : false
           } ],
+          "getPSEditor" : {
+            "contentType" : "HTML",
+            "editorParams" : {
+              "contenttype" : "HTML",
+              "template" : "<span class=\"ibiz-span is-is-ellipsis\">{{this}}版本清单</span>"
+            },
+            "editorType" : "RAW",
+            "name" : "pscoreprdfuncname",
+            "template" : "<span class=\"ibiz-span is-is-ellipsis\">{{this}}版本清单</span>"
+          },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "getPSRawItem" : {
-            "content" : "<p><span style=\"font-size: 22px;\">版本清单</span></p>",
-            "contentType" : "HTML",
-            "name" : "rawitem3",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0
-          },
-          "rawItemHeight" : -1.0,
-          "rawItemWidth" : -1.0,
-          "showCaption" : true
+          "allowEmpty" : true
         } ],
         "getPSLayout" : {
           "align" : "flex-end",
@@ -307,8 +323,6 @@
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
-          "height" : 60,
-          "heightMode" : "PX",
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
