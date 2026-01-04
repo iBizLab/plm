@@ -308,11 +308,41 @@
         "name" : "group1",
         "getPSDEFormDetails" : [ {
           "codeName" : "grouppanel6",
-          "contentHeight" : 50.0,
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
-          "height" : 50.0,
           "name" : "grouppanel6",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "groupOP" : "OR",
+              "logicType" : "GROUP",
+              "name" : "OR",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 0",
+                "value" : "0"
+              }, {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 2",
+                "value" : "2"
+              }, {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 4",
+                "value" : "4"
+              } ],
+              "notMode" : false
+            } ],
+            "relatedDetailNames" : [ "funcstate" ],
+            "notMode" : false
+          } ],
           "getPSDEFormDetails" : [ {
             "codeName" : "specty",
             "createDV" : "history",
@@ -353,8 +383,6 @@
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
-            "height" : 50,
-            "heightMode" : "PX",
             "layout" : "TABLE_24COL"
           },
           "infoGroupMode" : false,
@@ -365,6 +393,38 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "RAWITEM",
           "name" : "rawitem1",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "groupOP" : "OR",
+              "logicType" : "GROUP",
+              "name" : "OR",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 0",
+                "value" : "0"
+              }, {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 2",
+                "value" : "2"
+              }, {
+                "condOP" : "EQ",
+                "dEFDName" : "funcstate",
+                "logicType" : "SINGLE",
+                "name" : "funcstate等于(=) 4",
+                "value" : "4"
+              } ],
+              "notMode" : false
+            } ],
+            "relatedDetailNames" : [ "funcstate" ],
+            "notMode" : false
+          } ],
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
@@ -478,6 +538,9 @@
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
+                  "getPSSysCss" : {
+                    "cssName" : "grey-span"
+                  },
                   "allowEmpty" : true,
                   "repeatContent" : true
                 }, {
@@ -508,8 +571,14 @@
                     "caption" : "正在使用",
                     "contentType" : "RAW",
                     "name" : "using",
+                    "getPSSysCss" : {
+                      "cssName" : "green-span"
+                    },
                     "rawItemHeight" : -1.0,
                     "rawItemWidth" : -1.0
+                  },
+                  "getPSSysCss" : {
+                    "cssName" : "green-span"
                   },
                   "rawContent" : "正在使用",
                   "rawItemHeight" : -1.0,
@@ -1180,7 +1249,14 @@
           "layout" : "TABLE_24COL"
         },
         "getPSLayoutPos" : {
-          "colMD" : 24,
+          "colLG" : 22,
+          "colLGOffset" : 1,
+          "colMD" : 22,
+          "colMDOffset" : 1,
+          "colSM" : 22,
+          "colSMOffset" : 1,
+          "colXS" : 22,
+          "colXSOffset" : 1,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
@@ -1358,7 +1434,7 @@
   "title" : "版本清单",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
-  "width" : 700,
+  "width" : 800,
   "xDataControlName" : "form",
   "enableDP" : true,
   "enableDirtyChecking" : false,
