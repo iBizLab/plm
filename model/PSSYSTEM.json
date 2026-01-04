@@ -5455,7 +5455,7 @@
     "pluginType" : "DEACTION",
     "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.action.ExtractMetaDataDEActionRuntime",
     "rTObjectSource" : 1,
-    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.action\r\n\r\nimport com.google.gson.Gson\r\nimport com.google.gson.GsonBuilder\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.dataentity.action.DEActionRuntimeBase\r\nimport net.ibizsys.central.util.IEntityDTO\r\nimport com.vladsch.flexmark.ast.Image;\r\nimport com.vladsch.flexmark.ast.Link;\r\nimport com.vladsch.flexmark.parser.Parser;\r\nimport com.vladsch.flexmark.util.ast.Document;\r\nimport com.vladsch.flexmark.util.ast.NodeVisitor;\r\nimport com.vladsch.flexmark.util.ast.VisitHandler\r\nimport groovy.json.JsonSlurper\r\nimport java.text.SimpleDateFormat\r\n\r\n@CompileStatic\r\nclass ExtractMetaDataDEActionRuntime extends DEActionRuntimeBase {\r\n    private static final SimpleDateFormat sdf = new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\")\r\n\r\n    @Override\r\n    protected Object onExecute(IEntityDTO iEntityDTO) throws Throwable {\r\n        def parsed_content = iEntityDTO.get('parsed_content').toString()\r\n        if (parsed_content) {\r\n            def meta_data = [:]\r\n            def references = []\r\n            // 解析Markdown内容\r\n            Parser parser = Parser.builder().build()\r\n            Document document = parser.parse(parsed_content)\r\n            // 收集所有图片节点\r\n            List<Image> images = []\r\n            NodeVisitor imageCollector = new NodeVisitor(new VisitHandler<>(Image, images.&add))\r\n            imageCollector.visit(document)\r\n\r\n            // 收集所有链接节点\r\n            List<Link> links = []\r\n            NodeVisitor linkCollector = new NodeVisitor(new VisitHandler<>(Link, links.&add))\r\n            linkCollector.visit(document)\r\n\r\n            // 处理图片\r\n            images.each { image ->\r\n                def path = image.getUrl().toString()\r\n                def name = image.getText().toString()\r\n                def position = image.getLineNumber()\r\n                def source_markdown = image.getChars().toString()\r\n                references.add([\r\n                        type: \"image\",\r\n                        path: path,\r\n                        name: name,\r\n                        position: position,\r\n                        source_markdown: source_markdown\r\n                ])\r\n            }\r\n\r\n            // 处理链接（仅包含/ibizutil/download）\r\n            links.each { link ->\r\n                def path = link.getUrl().toString()\r\n                // 仅处理包含指定路径的链接\r\n                if (path.contains(\"/ibizutil/download\")) {\r\n                    def name = link.getText().toString()\r\n                    def position = link.getLineNumber()\r\n                    def source_markdown = link.getChars().toString()\r\n                    references.add([\r\n                            type: \"url\",\r\n                            path: path,\r\n                            name: name,\r\n                            position: position,\r\n                            source_markdown : source_markdown\r\n                    ])\r\n                }\r\n            }\r\n\r\n            // 更新_meta_data\r\n            def sourceType = iEntityDTO.get('source_type')\r\n            meta_data.put('source_type', sourceType)\r\n            def _type = iEntityDTO.get('type')\r\n            if (_type == 'file'){\r\n                def fileJson = iEntityDTO.get('file').toString()\r\n                def file = new JsonSlurper().parseText(fileJson)as ArrayList\r\n                def fileName = file[0].getAt(\"name\")\r\n                def fileType = iEntityDTO.get('file_type').toString()\r\n                def fileSize = file[0].getAt(\"size\")\r\n                meta_data.put('file_size', fileSize)\r\n                meta_data.put('file_type', fileType)\r\n                meta_data.put('title', fileName)\r\n                meta_data.put('source_type', \"file\")\r\n            }\r\n            def now = new Date()\r\n            def nowStr = sdf.format(now)\r\n            meta_data.put('parsed_at', nowStr)\r\n            meta_data.put('references', references)\r\n            def gson = new GsonBuilder().setPrettyPrinting().create()\r\n            def metaDataJson = gson.toJson(meta_data)\r\n            iEntityDTO.set('meta_data', metaDataJson)\r\n        }\r\n        return iEntityDTO;\r\n    }\r\n}",
+    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.action\r\n\r\nimport net.ibizsys.model.util.JsonUtils\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.dataentity.action.DEActionRuntimeBase\r\nimport net.ibizsys.central.util.IEntityDTO\r\nimport com.vladsch.flexmark.ast.Image;\r\nimport com.vladsch.flexmark.ast.Link;\r\nimport com.vladsch.flexmark.parser.Parser;\r\nimport com.vladsch.flexmark.util.ast.Document;\r\nimport com.vladsch.flexmark.util.ast.NodeVisitor;\r\nimport com.vladsch.flexmark.util.ast.VisitHandler\r\nimport groovy.json.JsonSlurper\r\nimport java.text.SimpleDateFormat\r\n\r\n@CompileStatic\r\nclass ExtractMetaDataDEActionRuntime extends DEActionRuntimeBase {\r\n    private static final SimpleDateFormat sdf = new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\")\r\n\r\n    @Override\r\n    protected Object onExecute(IEntityDTO iEntityDTO) throws Throwable {\r\n        def parsed_content = iEntityDTO.get('parsed_content').toString()\r\n        if (parsed_content) {\r\n            def meta_data = [:]\r\n            def references = []\r\n            // 解析Markdown内容\r\n            Parser parser = Parser.builder().build()\r\n            Document document = parser.parse(parsed_content)\r\n            // 收集所有图片节点\r\n            List<Image> images = []\r\n            NodeVisitor imageCollector = new NodeVisitor(new VisitHandler<>(Image, images.&add))\r\n            imageCollector.visit(document)\r\n\r\n            // 收集所有链接节点\r\n            List<Link> links = []\r\n            NodeVisitor linkCollector = new NodeVisitor(new VisitHandler<>(Link, links.&add))\r\n            linkCollector.visit(document)\r\n\r\n            // 处理图片\r\n            images.each { image ->\r\n                def path = image.getUrl().toString()\r\n                def name = image.getText().toString()\r\n                def position = image.getLineNumber()\r\n                def source_markdown = image.getChars().toString()\r\n                references.add([\r\n                        type: \"image\",\r\n                        path: path,\r\n                        name: name,\r\n                        position: position,\r\n                        source_markdown: source_markdown\r\n                ])\r\n            }\r\n\r\n            // 处理链接（仅包含/ibizutil/download）\r\n            links.each { link ->\r\n                def path = link.getUrl().toString()\r\n                // 仅处理包含指定路径的链接\r\n                if (path.contains(\"/ibizutil/download\")) {\r\n                    def name = link.getText().toString()\r\n                    def position = link.getLineNumber()\r\n                    def source_markdown = link.getChars().toString()\r\n                    references.add([\r\n                            type: \"url\",\r\n                            path: path,\r\n                            name: name,\r\n                            position: position,\r\n                            source_markdown : source_markdown\r\n                    ])\r\n                }\r\n            }\r\n\r\n            // 更新_meta_data\r\n            def sourceType = iEntityDTO.get('source_type')\r\n            meta_data.put('source_type', sourceType)\r\n            def _type = iEntityDTO.get('type')\r\n            if (_type == 'file'){\r\n                def fileJson = iEntityDTO.get('file').toString()\r\n                def file = new JsonSlurper().parseText(fileJson)as ArrayList\r\n                def fileName = file[0].getAt(\"name\")\r\n                def fileType = iEntityDTO.get('file_type').toString()\r\n                def fileSize = file[0].getAt(\"size\")\r\n                meta_data.put('file_size', fileSize)\r\n                meta_data.put('file_type', fileType)\r\n                meta_data.put('title', fileName)\r\n                meta_data.put('source_type', \"file\")\r\n            }\r\n            def now = new Date()\r\n            def nowStr = sdf.format(now)\r\n            meta_data.put('parsed_at', nowStr)\r\n            meta_data.put('references', references)\r\n            def metaDataJson = JsonUtils.getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(meta_data);\r\n            iEntityDTO.set('meta_data', metaDataJson)\r\n        }\r\n        return iEntityDTO;\r\n    }\r\n}",
     "runtimeObject" : true
   }, {
     "codeName" : "FieldChangeDENotifyRuntimeEx",
@@ -6420,6 +6420,16 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
       }
     }, {
+      "name" : "系统管理员-EXTEND_SCHEDULED_TASK_HIS[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task_his.json"
+      }
+    }, {
       "name" : "系统管理员-AI_KB_DOCUMENT_WIZARD[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6750,6 +6760,16 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
       }
     }, {
+      "name" : "系统管理员-EXTEND_TASK_TYPE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_task_type.json"
+      }
+    }, {
       "name" : "系统管理员-AI_AGENT_MESSAGE[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6888,6 +6908,16 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "系统管理员-EXTEND_SCHEDULE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
       }
     }, {
       "name" : "系统管理员-SYS_PERSON[全部数据（读写）]",
@@ -7258,6 +7288,16 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
+      }
+    }, {
+      "name" : "系统管理员-EXTEND_SCHEDULED_TASK[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
       }
     } ],
     "getPSSysUserRoleReses" : [ {
