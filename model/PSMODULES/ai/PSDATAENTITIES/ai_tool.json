@@ -370,7 +370,23 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_tool.json"
       },
       "joinType" : "MAIN",
-      "name" : "AI_TOOL"
+      "name" : "AI_TOOL",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "mcp_built_in_extension",
+          "fieldName" : "TOOL_TYPE",
+          "name" : "(TOOL_TYPE) 等于(=) mcp_built_in_extension",
+          "getPSDEField" : {
+            "name" : "TOOL_TYPE",
+            "codeName" : "tool_type"
+          }
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "Extension_mcp_serverInput",

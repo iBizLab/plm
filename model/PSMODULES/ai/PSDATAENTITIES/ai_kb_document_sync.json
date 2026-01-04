@@ -1894,14 +1894,37 @@
         "modelref" : true,
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
       },
-      "leftPos" : 340,
+      "leftPos" : 330,
       "logicNodeType" : "DEACTION",
       "name" : "实体行为",
       "getRetPSDELogicParam" : {
         "modelref" : true,
         "id" : "doc_sync"
       },
-      "topPos" : 230,
+      "topPos" : 270,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_01",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "only_page"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "leftPos" : 350,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_pages"
+      },
+      "topPos" : 390,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -1915,6 +1938,33 @@
       "default" : true,
       "entityParam" : true
     }, {
+      "codeName" : "doc",
+      "logicName" : "doc",
+      "name" : "doc",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "doc_filter",
+      "logicName" : "doc_filter",
+      "name" : "doc_filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "doc_pages",
+      "logicName" : "doc_pages",
+      "name" : "doc_pages",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityPageParam" : true
+    }, {
       "codeName" : "doc_sync",
       "logicName" : "doc_sync",
       "name" : "doc_sync",
@@ -1923,6 +1973,24 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
       },
       "entityParam" : true
+    }, {
+      "codeName" : "page_filter",
+      "logicName" : "page_filter",
+      "name" : "page_filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "page_pages",
+      "logicName" : "page_pages",
+      "name" : "page_pages",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,

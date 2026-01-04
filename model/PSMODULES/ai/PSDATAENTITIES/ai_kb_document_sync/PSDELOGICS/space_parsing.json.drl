@@ -6,8 +6,14 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncspace_parsingdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_syncspace_parsingdoc;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_syncspace_parsingdoc_filter;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_syncspace_parsingdoc_pages;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncspace_parsingdoc_sync;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpage_filter;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpage_pages;
                     global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService ai_kb_document_syncservice;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -28,5 +34,24 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_kb_document_syncservice.get(ai_kb_document_syncspace_parsingdefault.getId()),ai_kb_document_syncspace_parsingdefault);
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset_01"
+            ruleflow-group "ai_kb_document_syncspace_parsingdedataset_01"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
             end
