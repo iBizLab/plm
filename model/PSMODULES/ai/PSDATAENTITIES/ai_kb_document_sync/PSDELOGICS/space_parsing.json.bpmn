@@ -6,12 +6,18 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_document_syncspace_parsingdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync()" name="ai_kb_document_syncspace_parsingdoc_sync" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService))" name="ai_kb_document_syncservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService))" name="iBzSysAi_kb_document_syncDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_document_syncspace_parsingdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync" />
+                            <tns:global identifier="ai_kb_document_syncspace_parsingdoc_sync" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <endEvent id="begin_end" name="end"/>
                         <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <endEvent id="deaction_01_end" name="end"/>
+                        <sequenceFlow id="deaction_01_end_line" sourceRef="deaction_01" targetRef="deaction_01_end"/>
         </process>
     </definitions>

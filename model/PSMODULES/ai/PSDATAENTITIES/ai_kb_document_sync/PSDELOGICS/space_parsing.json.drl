@@ -6,6 +6,8 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncspace_parsingdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncspace_parsingdoc_sync;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService ai_kb_document_syncservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -17,4 +19,14 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             ruleflow-group "ai_kb_document_syncspace_parsingbegin"
             when
             then
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_document_syncspace_parsingdeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_kb_document_syncservice.get(ai_kb_document_syncspace_parsingdefault.getId()),ai_kb_document_syncspace_parsingdefault);
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
             end
