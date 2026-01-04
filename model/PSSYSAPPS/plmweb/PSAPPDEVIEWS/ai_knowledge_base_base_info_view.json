@@ -295,8 +295,8 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
           "name" : "title",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -317,7 +317,8 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false
+          "allowEmpty" : false,
+          "showCaption" : true
         }, {
           "caption" : "知识库源",
           "codeName" : "source_name",
@@ -362,10 +363,9 @@
             "codeName" : "embedding_model"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
+            "editorType" : "SPAN",
             "name" : "embedding_model",
-            "readOnly" : true
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 8,
@@ -381,7 +381,7 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
-          "ignoreInput" : 0,
+          "ignoreInput" : 3,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
           "name" : "tag_sets",
@@ -391,13 +391,13 @@
             "codeName" : "tag_sets"
           },
           "getPSEditor" : {
-            "editorType" : "MDROPDOWNLIST",
+            "editorType" : "SPAN",
             "name" : "tag_sets",
             "getPSAppCodeList" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag_sets.json"
             },
-            "singleSelect" : false
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 8,
@@ -405,7 +405,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
+          "convertToCodeItemText" : true,
           "showCaption" : true
         }, {
           "caption" : "描述",
@@ -424,13 +424,9 @@
             "codeName" : "description"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "ISAUTO" : "true"
-            },
-            "editorType" : "TEXTAREA",
-            "maxLength" : 2000,
+            "editorType" : "SPAN",
             "name" : "description",
-            "showMaxLength" : true
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
