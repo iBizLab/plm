@@ -399,7 +399,7 @@
                 "showCaption" : true
               }, {
                 "codeName" : "install_reason",
-                "cssStyle" : "color: gray;",
+                "cssStyle" : "background-color:var(--ibiz-color-disabled-bg);padding-top:0px;padding-left:5px;padding-right:5px;padding-bottom:0px;border-radius:4px;--ibiz-form-item-text-color:var(--ibiz-color-disabled-text);",
                 "dataType" : 25,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
@@ -437,10 +437,17 @@
                 "repeatContent" : true
               }, {
                 "codeName" : "using",
-                "contentType" : "RAW",
+                "cssStyle" : "background-color:var(--ibiz-color-success-disabled-bg);padding-top:0px;padding-left:5px;padding-right:5px;padding-bottom:0px;border-radius:4px;--ibiz-form-item-text-color:var(--ibiz-color-success-disabled-text);",
+                "dataType" : 25,
                 "detailStyle" : "DEFAULT",
-                "detailType" : "RAWITEM",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "fieldName" : "current_install",
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
                 "name" : "using",
+                "noPrivDisplayMode" : 1,
                 "getPSDEFDGroupLogics" : [ {
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
@@ -455,23 +462,22 @@
                   "relatedDetailNames" : [ "current_install" ],
                   "notMode" : false
                 } ],
+                "getPSEditor" : {
+                  "contentType" : "HTML",
+                  "editorParams" : {
+                    "contenttype" : "HTML",
+                    "template" : "<span class=\"ibiz-span is-is-ellipsis\">正在使用</span>"
+                  },
+                  "editorType" : "RAW",
+                  "name" : "using",
+                  "template" : "<span class=\"ibiz-span is-is-ellipsis\">正在使用</span>"
+                },
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
-                "getPSRawItem" : {
-                  "caption" : "正在使用",
-                  "contentType" : "RAW",
-                  "dynaClass" : "color: gray;",
-                  "name" : "using",
-                  "rawItemHeight" : -1.0,
-                  "rawItemWidth" : -1.0
-                },
-                "rawContent" : "正在使用",
-                "rawItemHeight" : -1.0,
-                "rawItemWidth" : -1.0,
-                "repeatContent" : true,
-                "showCaption" : true
+                "allowEmpty" : true,
+                "repeatContent" : true
               }, {
                 "actionType" : "UIACTION",
                 "caption" : "安装",
