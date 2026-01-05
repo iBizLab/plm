@@ -1906,6 +1906,59 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template/PSDEUSERROLES/ALL_R.json",
+    "name" : "全部数据（读）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "ALL_R",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "systemReserved" : true
+  }, {
+    "customCond" : "[('owner_id','=',#{srf.sessioncontext.srfpersonid})]",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template/PSDEUSERROLES/USER_RW.json",
+    "name" : "我的通用模板（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    } ],
+    "roleTag" : "USER_RW",
+    "userDRAction" : "READ",
+    "systemReserved" : true
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "create_test_case_template_view",
     "logicName" : "新建用例模板",

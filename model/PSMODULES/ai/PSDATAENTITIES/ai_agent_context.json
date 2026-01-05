@@ -1671,6 +1671,68 @@
     "phisicalDEField" : false,
     "uIAssistDEField" : true
   }, {
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "KB_TAGS",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "kb_tags",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "知识库标识集合",
+    "name" : "KB_TAGS",
+    "orderValue" : 440,
+    "serviceCodeName" : "kb_tags",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ENABLE_SUGGESTED_QUESTIONS",
       "dBType" : "POSTGRESQL",
@@ -3961,6 +4023,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 500,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库标识集合",
+      "name" : "kb_tags",
+      "getPSDEField" : {
+        "name" : "KB_TAGS",
+        "codeName" : "kb_tags"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "mcp服务标识集合",
