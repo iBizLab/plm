@@ -158,15 +158,69 @@
         },
         "showCaption" : true
       }, {
-        "caption" : "搜索栏",
+        "caption" : "栅格容器",
         "itemStyle" : "DEFAULT",
-        "itemType" : "CTRLPOS",
-        "name" : "searchbar",
+        "itemType" : "CONTAINER",
+        "name" : "container_grid",
+        "getPSLayout" : {
+          "layout" : "SIMPLEFLEX"
+        },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "showCaption" : true
+        "getPSPanelItems" : [ {
+          "caption" : "面板容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "grow" : 4,
+            "layout" : "SIMPLEFLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "搜索栏",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "searchbar",
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "面板容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "grow" : 8,
+            "layout" : "SIMPLEFLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "列表",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "list",
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "showCaption" : true
+          } ]
+        } ],
+        "predefinedType" : "CONTAINER_GRID"
       } ]
     }, {
       "caption" : "容器",
@@ -180,17 +234,6 @@
         "grow" : 1,
         "layout" : "FLEX"
       },
-      "getPSPanelItems" : [ {
-        "caption" : "列表",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "CTRLPOS",
-        "name" : "list",
-        "getPSLayoutPos" : {
-          "grow" : 1,
-          "layout" : "FLEX"
-        },
-        "showCaption" : true
-      } ],
       "predefinedType" : "VIEWCONTENT"
     } ],
     "layoutBodyOnly" : true,
@@ -280,6 +323,30 @@
       }
     } ],
     "getPSControls" : [ {
+      "codeName" : "retrieval_search_bar",
+      "controlType" : "SEARCHBAR",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHBARS/retrieval_search_bar.json",
+      "height" : 320.0,
+      "logicName" : "检索测试搜索栏",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+      },
+      "getPSControlParam" : {
+        "height" : 320.0,
+        "id" : "SEARCHBAR"
+      },
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 1,
+      "quickSearchWidth" : 0,
+      "enableFilter" : false,
+      "enableGroup" : false,
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : false,
+      "name" : "searchbar",
+      "modelid" : "62dcad18ce1d89ad88e108b0d11e8340",
+      "modeltype" : "PSSYSSEARCHBAR"
+    }, {
       "codeName" : "retrieval_test_view_list",
       "controlType" : "LIST",
       "getCreatePSControlAction" : {
@@ -535,28 +602,6 @@
       "name" : "list",
       "modelid" : "19b0dd63a5f02fddf5ed52a4059a3a70",
       "modeltype" : "PSDELIST"
-    }, {
-      "codeName" : "retrieval_search_bar",
-      "controlType" : "SEARCHBAR",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHBARS/retrieval_search_bar.json",
-      "logicName" : "检索测试搜索栏",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
-      },
-      "getPSControlParam" : {
-        "id" : "SEARCHBAR"
-      },
-      "quickGroupCount" : -1,
-      "quickSearchMode" : 1,
-      "quickSearchWidth" : 0,
-      "enableFilter" : false,
-      "enableGroup" : false,
-      "enableQuickSearch" : true,
-      "mobileSearchBar" : false,
-      "name" : "searchbar",
-      "modelid" : "62dcad18ce1d89ad88e108b0d11e8340",
-      "modeltype" : "PSSYSSEARCHBAR"
     }, {
       "codeName" : "retrieval_test_view_toolbar",
       "controlType" : "TOOLBAR",

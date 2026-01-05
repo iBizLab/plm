@@ -147,53 +147,11 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备文档参数]
-            rule "prepareparam_03"
-            ruleflow-group "ai_kb_document_syncspace_parsingprepareparam_03"
-            when
-            then
-                            ai_kb_document_syncspace_parsingdoc.set("customchunk","0");
-                            ai_kb_document_syncspace_parsingdoc.set("sourceid",ai_kb_document_syncspace_parsingpage.get("id"));
-                            ai_kb_document_syncspace_parsingdoc.set("name",ai_kb_document_syncspace_parsingpage.get("name"));
-                            ai_kb_document_syncspace_parsingdoc.set("syncfrequency",ai_kb_document_syncspace_parsingdoc_sync.get("syncfrequency"));
-                            ai_kb_document_syncspace_parsingdoc.set("status","0");
-                            ai_kb_document_syncspace_parsingdoc.set("syncid",ai_kb_document_syncspace_parsingdoc_sync.get("id"));
-                            ai_kb_document_syncspace_parsingdoc.set("type","space");
-                            ai_kb_document_syncspace_parsingdoc.set("sourcetype","page");
-                            ai_kb_document_syncspace_parsingdoc.set("kbid",ai_kb_document_syncspace_parsingdoc_sync.get("aiknowledgebaseid"));
-                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
-            end
-
             //逻辑处理节点[解析空间下文档]
             rule "loopsubcall_02"
             ruleflow-group "ai_kb_document_syncspace_parsingloopsubcall_02"
             when
             then
-                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
-            end
-
-            //逻辑处理节点[创建文档]
-            rule "deaction_02"
-            ruleflow-group "ai_kb_document_syncspace_parsingdeaction_02"
-            when
-            then
-                        ai_kb_documentservice.create(ai_kb_document_syncspace_parsingdoc);
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
@@ -227,22 +185,6 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             when
             then
                         ai_kb_documentservice.parsing(ai_kb_document_syncspace_parsingdoc);
-                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
-                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
-            end
-
-            //逻辑处理节点[重置参数]
-            rule "resetparam_01"
-            ruleflow-group "ai_kb_document_syncspace_parsingresetparam_01"
-            when
-            then
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值

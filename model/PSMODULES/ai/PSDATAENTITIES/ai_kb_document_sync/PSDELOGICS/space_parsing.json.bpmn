@@ -37,18 +37,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_03" id="dedataset_03" implementation="http://www.jboss.org/drools/rule" name="查询最新空间文档"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="处理未同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_02" id="dedataset_02" implementation="http://www.jboss.org/drools/rule" name="查询已同步页面"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备文档参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_02" id="loopsubcall_02" implementation="http://www.jboss.org/drools/rule" name="解析空间下文档"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="创建文档"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="解析文档"/>
                         <endEvent id="deaction_03_end" name="end"/>
                         <sequenceFlow id="deaction_03_end_line" sourceRef="deaction_03" targetRef="deaction_03_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingresetparam_01" id="resetparam_01" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
-                        <endEvent id="resetparam_01_end" name="end"/>
-                        <sequenceFlow id="resetparam_01_end_line" sourceRef="resetparam_01" targetRef="resetparam_01_end"/>
                     <sequenceFlow id="begin_deaction_01" sourceRef="begin" targetRef="deaction_01">
                     </sequenceFlow>
                     <sequenceFlow id="deaction_01_prepareparam_01" sourceRef="deaction_01" targetRef="prepareparam_01">
@@ -93,13 +88,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset_02_rawsfcode_01" sourceRef="dedataset_02" targetRef="rawsfcode_01">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam_03_deaction_02" sourceRef="prepareparam_03" targetRef="deaction_02">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall_02_deaction_03" sourceRef="loopsubcall_02" targetRef="deaction_03">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_02_end_01" sourceRef="loopsubcall_02" targetRef="end_01">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction_02_resetparam_01" sourceRef="deaction_02" targetRef="resetparam_01">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>

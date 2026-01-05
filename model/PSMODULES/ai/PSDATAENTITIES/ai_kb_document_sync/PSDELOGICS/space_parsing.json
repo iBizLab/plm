@@ -294,126 +294,6 @@
     "topPos" : 370,
     "parallelOutput" : true
   }, {
-    "codeName" : "PREPAREPARAM_03",
-    "leftPos" : 90,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备文档参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION_02"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM_03"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "CUSTOM_CHUNK",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "0",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "SOURCE_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "NAME",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "SYNC_FREQUENCY",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "SYNC_FREQUENCY",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_sync"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "STATUS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "0",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "SYNC_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_sync"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "TYPE",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "space",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "SOURCE_TYPE",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "page",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "KB_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "AI_KNOWLEDGE_BASE_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_sync"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 510,
-    "parallelOutput" : true
-  }, {
     "codeName" : "LOOPSUBCALL_02",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -451,36 +331,6 @@
     "topPos" : 510,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEACTION_02",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "doc"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-    },
-    "leftPos" : 90,
-    "logicNodeType" : "DEACTION",
-    "name" : "创建文档",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RESETPARAM_01"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION_02"
-      }
-    } ],
-    "topPos" : 622,
-    "parallelOutput" : true
-  }, {
     "codeName" : "END_01",
     "leftPos" : 616,
     "logicNodeType" : "END",
@@ -510,17 +360,6 @@
     "logicNodeType" : "DEACTION",
     "name" : "解析文档",
     "topPos" : 644,
-    "parallelOutput" : true
-  }, {
-    "codeName" : "RESETPARAM_01",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "doc"
-    },
-    "leftPos" : 90,
-    "logicNodeType" : "RESETPARAM",
-    "name" : "重置参数",
-    "topPos" : 730,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
