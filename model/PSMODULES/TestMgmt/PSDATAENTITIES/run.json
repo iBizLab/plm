@@ -2634,6 +2634,20 @@
     "name" : "多人执行",
     "orderValue" : 99999,
     "getPSDEFGroupDetails" : [ {
+      "codeName" : "multiple_people",
+      "logicName" : "多人任务",
+      "orderValue" : 90,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
       "codeName" : "executors",
       "logicName" : "执行人",
       "name" : "EXECUTORS",
@@ -17052,6 +17066,17 @@
   }, {
     "name" : "run_executors_group_dto",
     "getPSDEMethodDTOFields" : [ {
+      "defaultValue" : "0",
+      "logicName" : "多人任务",
+      "name" : "multiple_people",
+      "getPSDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "执行人",
       "name" : "executors",
       "getPSDEField" : {

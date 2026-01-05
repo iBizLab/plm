@@ -2069,69 +2069,16 @@
       "topPos" : 260,
       "parallelOutput" : true
     }, {
-      "codeName" : "LOOPSUBCALL_01",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page"
-      },
-      "leftPos" : 286,
-      "logicNodeType" : "LOOPSUBCALL",
+      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\ndef doc_pageids_in_space = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"doc已有的pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_without_doc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !doc_pageids_in_space.contains(it.id)\r\n}\r\nprintln \"doc未存在的pageId: ${pages_without_doc*.id}\"  \r\n\r\n_pages_notin_docs=pages_without_doc\r\n\r\n\r\n\r\n_pages_notin_docs.each { page ->\r\n    println \"页面ID: ${page.id}, 页面: ${page.name}\"\r\n}",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 516,
+      "logicNodeType" : "RAWSFCODE",
       "name" : "处理未同步页面",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM_03"
-        },
-        "name" : "进入循环",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "pages_notin_docs"
-            },
-            "logicType" : "SINGLE",
-            "name" : "pages_notin_docs[size] 大于(>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_01"
-        },
-        "subCallLink" : true
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
           "id" : "DEDATASET_03"
-        },
-        "name" : "循环结束",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_01"
-        }
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "pages_notin_docs"
-      },
-      "topPos" : 370,
-      "parallelOutput" : true
-    }, {
-      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\ndef doc_pageids_in_space = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"doc已有的pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_without_doc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !doc_pageids_in_space.contains(it.id)\r\n}\r\nprintln \"doc未存在的pageId: ${pages_without_doc*.id}\"  \r\n\r\n_pages_notin_docs=pages_without_doc\r\n\r\n_pages_notin_docs.each { page ->\r\n    println \"页面ID: ${page.id}, 页面: ${page.name}\"\r\n}",
-      "codeName" : "RAWSFCODE_01",
-      "codeType" : "Groovy",
-      "leftPos" : 500,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "获取未同步页面",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -2176,8 +2123,58 @@
       "topPos" : 370,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEDATASET_03",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 320,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询最新空间文档",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "docs"
+            },
+            "logicType" : "SINGLE",
+            "name" : "docs[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_03"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "docs"
+      },
+      "topPos" : 380,
+      "parallelOutput" : true
+    }, {
       "codeName" : "PREPAREPARAM_03",
-      "leftPos" : 210,
+      "leftPos" : 90,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备文档参数",
       "getPSDELogicLinks" : [ {
@@ -2293,87 +2290,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 520,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEDATASET_03",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-      },
-      "leftPos" : 490,
-      "logicNodeType" : "DEDATASET",
-      "name" : "查询最新空间文档",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL_02"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "docs"
-            },
-            "logicType" : "SINGLE",
-            "name" : "docs[size] 大于(>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET_03"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "docs"
-      },
-      "topPos" : 540,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEACTION_02",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "doc"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
-      },
-      "leftPos" : 210,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建文档",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RESETPARAM_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION_02"
-        }
-      } ],
-      "topPos" : 642,
+      "topPos" : 510,
       "parallelOutput" : true
     }, {
       "codeName" : "LOOPSUBCALL_02",
@@ -2381,7 +2298,7 @@
         "modelref" : true,
         "id" : "doc"
       },
-      "leftPos" : 500,
+      "leftPos" : 320,
       "logicNodeType" : "LOOPSUBCALL",
       "name" : "解析空间下文档",
       "getPSDELogicLinks" : [ {
@@ -2410,18 +2327,49 @@
         "modelref" : true,
         "id" : "docs"
       },
-      "topPos" : 670,
+      "topPos" : 510,
       "parallelOutput" : true
     }, {
-      "codeName" : "RESETPARAM_01",
+      "codeName" : "DEACTION_02",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
+      },
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "doc"
       },
-      "leftPos" : 210,
-      "logicNodeType" : "RESETPARAM",
-      "name" : "重置参数",
-      "topPos" : 760,
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 90,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建文档",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RESETPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        }
+      } ],
+      "topPos" : 622,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 616,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 622,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_03",
@@ -2437,22 +2385,21 @@
         "modelref" : true,
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
       },
-      "leftPos" : 500,
+      "leftPos" : 334,
       "logicNodeType" : "DEACTION",
       "name" : "解析文档",
-      "topPos" : 806,
+      "topPos" : 644,
       "parallelOutput" : true
     }, {
-      "codeName" : "END_01",
-      "leftPos" : 780,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
+      "codeName" : "RESETPARAM_01",
+      "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "doc"
       },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 808,
+      "leftPos" : 90,
+      "logicNodeType" : "RESETPARAM",
+      "name" : "重置参数",
+      "topPos" : 730,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
