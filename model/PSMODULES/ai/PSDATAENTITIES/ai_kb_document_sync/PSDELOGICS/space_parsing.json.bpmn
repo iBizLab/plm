@@ -38,12 +38,15 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <endEvent id="rawsfcode_01_end" name="end"/>
                         <sequenceFlow id="rawsfcode_01_end_line" sourceRef="rawsfcode_01" targetRef="rawsfcode_01_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam_03_end" name="end"/>
-                        <sequenceFlow id="prepareparam_03_end_line" sourceRef="prepareparam_03" targetRef="prepareparam_03_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_01" id="loopsubcall_01" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备文档参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="创建文档"/>
-                        <endEvent id="deaction_02_end" name="end"/>
-                        <sequenceFlow id="deaction_02_end_line" sourceRef="deaction_02" targetRef="deaction_02_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingresetparam_01" id="resetparam_01" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <endEvent id="resetparam_01_end" name="end"/>
+                        <sequenceFlow id="resetparam_01_end_line" sourceRef="resetparam_01" targetRef="resetparam_01_end"/>
                     <sequenceFlow id="begin_deaction_01" sourceRef="begin" targetRef="deaction_01">
                     </sequenceFlow>
                     <sequenceFlow id="deaction_01_prepareparam_01" sourceRef="deaction_01" targetRef="prepareparam_01">
@@ -55,6 +58,14 @@
                     <sequenceFlow id="prepareparam_02_dedataset_02" sourceRef="prepareparam_02" targetRef="dedataset_02">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset_02_rawsfcode_01" sourceRef="dedataset_02" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall_01_prepareparam_03" sourceRef="loopsubcall_01" targetRef="prepareparam_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall_01_end_01" sourceRef="loopsubcall_01" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_03_deaction_02" sourceRef="prepareparam_03" targetRef="deaction_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_resetparam_01" sourceRef="deaction_02" targetRef="resetparam_01">
                     </sequenceFlow>
         </process>
     </definitions>
