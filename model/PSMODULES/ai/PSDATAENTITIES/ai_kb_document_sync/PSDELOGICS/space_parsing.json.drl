@@ -147,6 +147,22 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
             end
 
+            //逻辑处理节点[查询最新空间文档]
+            rule "dedataset_03"
+            ruleflow-group "ai_kb_document_syncspace_parsingdedataset_03"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+            end
+
             //逻辑处理节点[准备文档参数]
             rule "prepareparam_03"
             ruleflow-group "ai_kb_document_syncspace_parsingprepareparam_03"
@@ -161,6 +177,22 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                             ai_kb_document_syncspace_parsingdoc.set("type","space");
                             ai_kb_document_syncspace_parsingdoc.set("sourcetype","page");
                             ai_kb_document_syncspace_parsingdoc.set("kbid",ai_kb_document_syncspace_parsingdoc_sync.get("aiknowledgebaseid"));
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall_02"
+            ruleflow-group "ai_kb_document_syncspace_parsingloopsubcall_02"
+            when
+            then
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
@@ -194,6 +226,23 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             when
             then
                         ai_kb_documentservice.create(ai_kb_document_syncspace_parsingdoc);
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[解析文档]
+            rule "deaction_03"
+            ruleflow-group "ai_kb_document_syncspace_parsingdeaction_03"
+            when
+            then
+                        ai_kb_documentservice.parsing(ai_kb_document_syncspace_parsingdocs);
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
