@@ -2103,7 +2103,7 @@
       "topPos" : 590,
       "parallelOutput" : true
     }, {
-      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('_docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\n\r\n\r\nprintln(\"_pages值：\"+_all_pages);\r\nprintln(\"_docs值：\"+_docs);\r\n\r\ndef docPageIdsInSpace = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"已有doc的pageId: $docPageIdsInSpace\"  \r\n\r\ndef pagesWithoutDoc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !docPageIdsInSpace.contains(it.id)\r\n}\r\n\r\nprintln \"结果: ${pagesWithoutDoc*.name}\"  \r\n\r\n_pages_notin_docs=pagesWithoutDoc",
+      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\n\r\n\r\nprintln(\"_pages值：\"+_all_pages);\r\nprintln(\"_docs值：\"+_docs);\r\n\r\ndef docPageIdsInSpace = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"已有doc的pageId: $docPageIdsInSpace\"  \r\n\r\ndef pagesWithoutDoc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !docPageIdsInSpace.contains(it.id)\r\n}\r\n\r\nprintln \"结果: ${pagesWithoutDoc*.name}\"  \r\n\r\n_pages_notin_docs=pagesWithoutDoc",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 555,
