@@ -184,6 +184,24 @@
             "layout" : "SIMPLEFLEX"
           },
           "getPSPanelItems" : [ {
+            "caption" : "标签",
+            "contentType" : "HTML",
+            "htmlContent" : "<p><strong>检索测试</strong></p><p>请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</p>",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_label",
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSRawItem" : {
+              "content" : "<p><strong>检索测试</strong></p><p>请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</p>",
+              "contentType" : "HTML",
+              "name" : "static_label",
+              "predefinedType" : "STATIC_LABEL"
+            },
+            "showCaption" : true
+          }, {
             "caption" : "搜索栏",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
@@ -402,6 +420,9 @@
           "id" : "docid",
           "viewFieldName" : "docid"
         }, {
+          "id" : "similarity",
+          "viewFieldName" : "similarity"
+        }, {
           "id" : "field_text_dynamic1",
           "viewFieldName" : "content"
         } ],
@@ -431,33 +452,111 @@
             "layout" : "FLEX"
           },
           "getPSPanelItems" : [ {
-            "caption" : "文本(动态)",
+            "caption" : "容器",
             "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "docid",
-            "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "docid",
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+            "itemType" : "CONTAINER",
+            "name" : "container",
+            "getPSLayout" : {
+              "align" : "flex-start",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "docid"
+            "getPSPanelItems" : [ {
+              "caption" : "标签",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "static_label",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSRawItem" : {
+                "caption" : "知识库：",
+                "contentType" : "RAW",
+                "name" : "static_label",
+                "predefinedType" : "STATIC_LABEL",
+                "renderMode" : "PARAGRAPH"
+              },
+              "rawContent" : "知识库：",
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "docid",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "docid",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "docid"
+            }, {
+              "caption" : "标签",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "static_label1",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "spacingLeft" : "OUTERLARGE"
+              },
+              "getPSRawItem" : {
+                "caption" : "相似度：",
+                "contentType" : "RAW",
+                "name" : "static_label1",
+                "predefinedType" : "STATIC_LABEL",
+                "renderMode" : "PARAGRAPH"
+              },
+              "rawContent" : "相似度：",
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "similarity",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "similarity",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "similarity"
+            } ]
           }, {
             "caption" : "文本(动态)",
+            "fieldStates" : 3,
             "itemStyle" : "DEFAULT",
             "itemType" : "FIELD",
             "name" : "field_text_dynamic1",
             "getPSEditor" : {
-              "editorType" : "SPAN",
+              "editorParams" : {
+                "disabledirectory" : "true",
+                "READONLY" : "TRUE"
+              },
+              "editorType" : "MARKDOWN",
+              "mode" : "EDIT",
               "name" : "field_text_dynamic1",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+              "readOnly" : true,
+              "showMaxLength" : true
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -556,6 +655,9 @@
       }, {
         "dataType" : 21,
         "name" : "content"
+      }, {
+        "dataType" : 25,
+        "name" : "similarity"
       } ],
       "pagingSize" : 1000,
       "getRemovePSControlAction" : {
