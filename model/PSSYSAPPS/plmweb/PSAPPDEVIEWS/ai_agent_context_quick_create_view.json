@@ -90,6 +90,70 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
         },
         "getPSUIActionGroupDetails" : [ {
+          "caption" : "上下文模版智能生成",
+          "detailType" : "DEUIACTION",
+          "name" : "u947b483",
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "上下文模版智能生成",
+            "codeName" : "template",
+            "frontProcessType" : "CHAT",
+            "fullCodeName" : "ai_agent_context_template",
+            "name" : "模版填充",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "dyna_agent"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "SRFAIAPPENDCURDATA",
+              "name" : "SRFAIAPPENDCURDATA",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "AI_AGENT_CONTEXT",
+              "name" : "AI_AGENT_CONTEXT",
+              "value" : "id",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "srfenableaiagentchange",
+              "name" : "srfenableaiagentchange",
+              "value" : "false",
+              "rawValue" : true
+            }, {
+              "key" : "hidetopicsidebar",
+              "name" : "hidetopicsidebar",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "disabletopicstorage",
+              "name" : "disabletopicstorage",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "srfaiagent",
+              "name" : "srfaiagent",
+              "value" : "print",
+              "rawValue" : true
+            }, {
+              "key" : "autoquestion",
+              "name" : "autoquestion",
+              "value" : "true",
+              "rawValue" : true
+            } ],
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "template",
+            "uIActionType" : "DEUIACTION",
+            "id" : "template@ai_agent_context"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
           "caption" : "查看完整配置",
           "detailType" : "DEUIACTION",
           "name" : "u3235882",
@@ -154,40 +218,65 @@
           "showCaption" : true,
           "showIcon" : true
         }, {
-          "buttonStyle" : "WARNING",
-          "caption" : "AI+",
+          "caption" : "提示词智能生成",
           "detailType" : "DEUIACTION",
-          "name" : "u07ab374",
-          "getPSSysImage" : {
-            "glyph" : "xf123@FontAwesome",
-            "cssClass" : "fa fa-star-half-full"
-          },
+          "name" : "udbd1903",
           "getPSUIAction" : {
             "actionTarget" : "SINGLEDATA",
-            "buttonStyle" : "WARNING",
-            "caption" : "AI+",
-            "codeName" : "ai",
-            "getFrontPSAppView" : {
+            "caption" : "提示词智能生成",
+            "codeName" : "prompt",
+            "frontProcessType" : "CHAT",
+            "fullCodeName" : "ai_agent_context_prompt",
+            "name" : "提示词填充",
+            "getPSAppDEACMode" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
-              "viewType" : "DELISTVIEW"
+              "id" : "dyna_agent"
             },
-            "frontProcessType" : "WIZARD",
-            "fullCodeName" : "ai_agent_assignment_ai",
-            "name" : "AI+",
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
             },
-            "getPSSysImage" : {
-              "glyph" : "xf123@FontAwesome",
-              "cssClass" : "fa fa-star-half-full"
-            },
+            "getPSNavigateContexts" : [ {
+              "key" : "SRFAIAPPENDCURDATA",
+              "name" : "SRFAIAPPENDCURDATA",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "AI_AGENT_CONTEXT",
+              "name" : "AI_AGENT_CONTEXT",
+              "value" : "id",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "srfenableaiagentchange",
+              "name" : "srfenableaiagentchange",
+              "value" : "false",
+              "rawValue" : true
+            }, {
+              "key" : "hidetopicsidebar",
+              "name" : "hidetopicsidebar",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "disabletopicstorage",
+              "name" : "disabletopicstorage",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "srfaiagent",
+              "name" : "srfaiagent",
+              "value" : "AgentCreator",
+              "rawValue" : true
+            }, {
+              "key" : "autoquestion",
+              "name" : "autoquestion",
+              "value" : "true",
+              "rawValue" : true
+            } ],
             "uIActionMode" : "FRONT",
-            "uIActionTag" : "ai",
+            "uIActionTag" : "prompt",
             "uIActionType" : "DEUIACTION",
-            "globalUIAction" : true,
-            "id" : "ai@ai_agent_assignment"
+            "id" : "prompt@ai_agent_context"
           },
           "addSeparator" : false,
           "showCaption" : true,
@@ -828,23 +917,6 @@
           },
           "allowEmpty" : true,
           "showCaption" : true
-        }, {
-          "codeName" : "grouppanel4",
-          "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel4",
-          "getPSLayout" : {
-            "align" : "center",
-            "dir" : "row",
-            "layout" : "FLEX",
-            "vAlign" : "center"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "infoGroupMode" : false,
-          "showCaption" : false
         }, {
           "caption" : "默认系统提示词",
           "codeName" : "default_system_prompt",

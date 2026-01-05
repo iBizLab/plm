@@ -24,9 +24,6 @@
   } ],
   "getPSDEViewCodeName" : "retrieval_test_view",
   "getPSDEViewId" : "440311c1ba54e9ff72cd5055dcd51eb1",
-  "getPSSysCss" : {
-    "cssName" : "retrieval_test"
-  },
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -138,29 +135,18 @@
       } ],
       "predefinedType" : "VIEWHEADER"
     }, {
+      "caption" : "容器",
       "itemStyle" : "DEFAULT",
       "itemType" : "CONTAINER",
-      "name" : "view_searchform",
+      "name" : "view_content",
       "getPSLayout" : {
-        "dir" : "column",
         "layout" : "FLEX"
       },
       "getPSLayoutPos" : {
-        "grow" : -1,
-        "layout" : "FLEX",
-        "shrink" : 0
+        "grow" : 1,
+        "layout" : "FLEX"
       },
       "getPSPanelItems" : [ {
-        "caption" : "搜索表单",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "CTRLPOS",
-        "name" : "searchform",
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "showCaption" : true
-      }, {
         "caption" : "栅格容器",
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
@@ -189,20 +175,26 @@
           "getPSPanelItems" : [ {
             "caption" : "标签",
             "contentType" : "HTML",
-            "htmlContent" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px; font-family: 黑体;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+            "contentWidth" : 95.0,
+            "htmlContent" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
             "itemStyle" : "DEFAULT",
             "itemType" : "RAWITEM",
             "name" : "static_label",
             "getPSLayoutPos" : {
               "colMD" : 24,
-              "layout" : "TABLE_24COL"
+              "layout" : "TABLE_24COL",
+              "width" : 95,
+              "widthMode" : "PERCENTAGE"
             },
             "getPSRawItem" : {
-              "content" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px; font-family: 黑体;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+              "content" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
               "contentType" : "HTML",
               "name" : "static_label",
-              "predefinedType" : "STATIC_LABEL"
+              "predefinedType" : "STATIC_LABEL",
+              "rawItemWidth" : 95.0
             },
+            "rawItemWidth" : 95.0,
+            "width" : 95.0,
             "showCaption" : true
           }, {
             "caption" : "搜索栏",
@@ -214,6 +206,29 @@
               "layout" : "TABLE_24COL"
             },
             "showCaption" : true
+          }, {
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_searchform",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "搜索表单",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "searchform",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            } ]
           } ]
         }, {
           "caption" : "面板容器",
@@ -242,19 +257,7 @@
           } ]
         } ],
         "predefinedType" : "CONTAINER_GRID"
-      } ]
-    }, {
-      "caption" : "容器",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "CONTAINER",
-      "name" : "view_content",
-      "getPSLayout" : {
-        "layout" : "FLEX"
-      },
-      "getPSLayoutPos" : {
-        "grow" : 1,
-        "layout" : "FLEX"
-      },
+      } ],
       "predefinedType" : "VIEWCONTENT"
     } ],
     "layoutBodyOnly" : true,
@@ -344,50 +347,120 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "retrieval_search_bar",
-      "controlType" : "SEARCHBAR",
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHBARS/retrieval_search_bar.json",
+      "codeName" : "main2",
+      "controlType" : "SEARCHFORM",
+      "defaultLabelWidth" : 130,
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHFORMS/main2.json",
       "height" : 320.0,
-      "logicName" : "检索测试搜索栏",
+      "logicName" : "检索测试列表视图_搜索表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
       },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionType" : "FILTERACTION",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "FilterGet"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+          }
+        }, {
+          "actionType" : "FILTERACTION",
+          "name" : "loaddraft",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "FilterGetDraft"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+          }
+        }, {
+          "actionType" : "FILTERACTION",
+          "name" : "search",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "FilterSearch"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+          }
+        } ],
+        "enableDEFieldPrivilege" : false,
+        "id" : "搜索表单处理器"
+      },
       "getPSControlParam" : {
         "height" : 320.0,
-        "id" : "SEARCHBAR"
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "SEARCHFORM"
       },
-      "getPSSearchBarFilters" : [ {
-        "dataType" : 25,
-        "itemHeight" : 200.0,
-        "itemType" : "FILTER",
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "query",
-        "getPSEditor" : {
-          "editorHeight" : 200.0,
-          "editorParams" : {
-            "HEIGHT" : "200"
-          },
-          "editorType" : "TEXTAREA_10",
-          "name" : "query",
-          "showMaxLength" : true
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : false,
-        "hidden" : false,
-        "showCaption" : false
+      "getPSDEFormItems" : [ {
+        "id" : "query",
+        "dataType" : 25
       } ],
-      "quickGroupCount" : -1,
-      "quickSearchMode" : 1,
-      "quickSearchWidth" : 0,
-      "enableFilter" : true,
-      "enableGroup" : false,
-      "enableQuickSearch" : true,
-      "mobileSearchBar" : false,
-      "name" : "searchbar",
-      "modelid" : "62dcad18ce1d89ad88e108b0d11e8340",
-      "modeltype" : "PSSYSSEARCHBAR"
+      "getPSDEFormPages" : [ {
+        "caption" : "常规条件",
+        "codeName" : "formpage1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMPAGE",
+        "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "query",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "query",
+          "ignoreInput" : 0,
+          "itemHeight" : 200.0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "query",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorHeight" : 200.0,
+            "editorParams" : {
+              "HEIGHT" : "200"
+            },
+            "editorType" : "TEXTAREA_10",
+            "name" : "query",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "searchButtonPos" : "RIGHT",
+      "searchButtonStyle" : "DEFAULT",
+      "tabHeaderPos" : "TOP",
+      "enableAdvanceSearch" : false,
+      "enableAutoSearch" : false,
+      "enableFilterSave" : false,
+      "noTabHeader" : true,
+      "name" : "searchform",
+      "modelid" : "dbb43fd68ed2c6e651f9c1c5d7a68084",
+      "modeltype" : "PSDEFORM_SEARCHFORM"
     }, {
       "codeName" : "retrieval_test_view_list",
       "controlType" : "LIST",
@@ -489,7 +562,8 @@
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX",
-              "spacingBottom" : "OUTERMEDIUM"
+              "spacingBottom" : "OUTERMEDIUM",
+              "spacingTop" : "OUTERMEDIUM"
             },
             "getPSPanelItems" : [ {
               "caption" : "标签",
@@ -744,6 +818,23 @@
       "xDataControlName" : "list",
       "modelid" : "1f338aad2a654b5dd636ff3ec430990e",
       "modeltype" : "PSDETOOLBAR"
+    }, {
+      "controlType" : "SEARCHBAR",
+      "name" : "searchbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+      },
+      "getPSControlParam" : {
+        "id" : "searchbar"
+      },
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 1,
+      "quickSearchWidth" : 0,
+      "enableFilter" : false,
+      "enableGroup" : false,
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : false
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.AI_KB_CHUNK"
