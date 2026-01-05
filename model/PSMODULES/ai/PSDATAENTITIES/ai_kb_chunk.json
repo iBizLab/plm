@@ -375,6 +375,35 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "retrieval_test",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "检索测试",
+    "name" : "retrieval_test",
+    "getPSDEDataSetInput" : {
+      "name" : "Retrieval_testInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Retrieval_testResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDELOGICS/retrieval_test.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -2001,10 +2030,80 @@
     "name" : "检索测试",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 210,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
-      "topPos" : 200,
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 192,
+      "parallelOutput" : true
+    }, {
+      "code" : "    def _default = logic.param('Default').getReal()\r\n    def kb_id = _default.get('kb_id')\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false);\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _default);\r\n    _default.set('result',_page)",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 400,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "检索测试",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 190,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "BINDPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "leftPos" : 594,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM_01"
+        }
+      } ],
+      "srcFieldName" : "result",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 190,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 806,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 190,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2016,7 +2115,16 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
       },
       "default" : true,
-      "entityParam" : true
+      "filterParam" : true
+    }, {
+      "codeName" : "page",
+      "logicName" : "page",
+      "name" : "page",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,

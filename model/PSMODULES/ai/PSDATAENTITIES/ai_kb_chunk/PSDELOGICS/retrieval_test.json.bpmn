@@ -6,12 +6,23 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_chunkretrieval_testdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_knowledge_base()" name="ai_kb_chunkretrieval_testpage" type="refentity"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_chunkService))" name="iBzSysAi_kb_chunkDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_chunkretrieval_testdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_chunk" />
+                            <tns:global identifier="ai_kb_chunkretrieval_testpage" type="cn.ibizlab.plm.core.ai.domain.ai_knowledge_base" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <endEvent id="begin_end" name="end"/>
-                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_chunkretrieval_testrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="检索测试"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_chunkretrieval_testbindparam_01" id="bindparam_01" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_chunkretrieval_testend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_rawsfcode_01" sourceRef="begin" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_bindparam_01" sourceRef="rawsfcode_01" targetRef="bindparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam_01_end_01" sourceRef="bindparam_01" targetRef="end_01">
+                    </sequenceFlow>
         </process>
     </definitions>
