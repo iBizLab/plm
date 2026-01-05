@@ -14,6 +14,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpage_pages;
                     global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService ai_kb_document_syncservice;
                     global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
         global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -27,7 +28,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             then
             end
 
-            //逻辑处理节点[获取同步实体数据]
+            //逻辑处理节点[获取文档同步同步数据]
             rule "deaction_01"
             ruleflow-group "ai_kb_document_syncspace_parsingdeaction_01"
             when
@@ -42,9 +43,69 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
             end
 
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_document_syncspace_parsingprepareparam_01"
+            when
+            then
+                            ai_kb_document_syncspace_parsingpage_filter.set("n_space_id_eq",ai_kb_document_syncspace_parsingdoc_sync.get("sourceid"));
+                            ai_kb_document_syncspace_parsingpage_filter.set("size","1500");
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
+            end
+
             //逻辑处理节点[查询空间下所有的页面]
             rule "dedataset_01"
             ruleflow-group "ai_kb_document_syncspace_parsingdedataset_01"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "ai_kb_document_syncspace_parsingprepareparam_02"
+            when
+            then
+                            ai_kb_document_syncspace_parsingdoc_filter.set("n_sync_id_eq",ai_kb_document_syncspace_parsingdoc_sync.get("id"));
+                            ai_kb_document_syncspace_parsingdoc_filter.set("size","1500");
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询已同步页面]
+            rule "dedataset_02"
+            ruleflow-group "ai_kb_document_syncspace_parsingdedataset_02"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_document_syncspace_parsingrawsfcode_01"
             when
             then
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值

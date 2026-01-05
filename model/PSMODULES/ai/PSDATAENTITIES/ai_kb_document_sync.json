@@ -242,6 +242,32 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "space_parsing",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/space_parsing.json",
+    "logicName" : "空间文档解析处理",
+    "name" : "space_parsing",
+    "getPSDEActionInput" : {
+      "name" : "Space_parsingInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_sync_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Space_parsingResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/space_parsing.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "POSTGRESQL",
@@ -1875,10 +1901,21 @@
     "name" : "空间文档解析处理",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 40,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
-      "topPos" : 200,
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 262,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -1894,15 +1931,67 @@
         "modelref" : true,
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
       },
-      "leftPos" : 330,
+      "leftPos" : 150,
       "logicNodeType" : "DEACTION",
-      "memo" : "根据extend_schedule的payload获取同步实体数据",
-      "name" : "获取同步实体数据",
+      "memo" : "根据extend_schedule_task的payload获取文档同步数据",
+      "name" : "获取文档同步同步数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
       "getRetPSDELogicParam" : {
         "modelref" : true,
         "id" : "doc_sync"
       },
-      "topPos" : 270,
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 334,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_space_id_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "page_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "SOURCE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_sync"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "page_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1500",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 260,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -1918,14 +2007,109 @@
         "modelref" : true,
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
       },
-      "leftPos" : 350,
+      "leftPos" : 334,
       "logicNodeType" : "DEDATASET",
       "name" : "查询空间下所有的页面",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        }
+      } ],
       "getRetPSDELogicParam" : {
         "modelref" : true,
         "id" : "page_pages"
       },
-      "topPos" : 390,
+      "topPos" : 360,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_02",
+      "leftPos" : 334,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_SYNC_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_sync"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1500",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 470,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_02",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 334,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询已同步页面",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_02"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_pages"
+      },
+      "topPos" : 590,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _page_pages = logic.param('page_pages').getReal();\r\ndef _doc_pages = logic.param('doc_pages').getReal();\r\n\r\nprintln(\"_page_pages值：\"+_page_pages);\r\nprintln(\"_doc_pages值：\"+doc_pages);",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 555,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "topPos" : 590,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
