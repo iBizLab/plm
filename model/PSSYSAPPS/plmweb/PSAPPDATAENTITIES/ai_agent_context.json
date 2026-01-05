@@ -2825,6 +2825,27 @@
     "id" : "prompt@ai_agent_context"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "提示词反馈",
+    "codeName" : "prompt_feedback",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_agent_context_prompt_feedback",
+    "name" : "提示词反馈",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "prompt_feedback"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "prompt_feedback",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "id" : "prompt_feedback@ai_agent_context"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "上下文模版智能生成",
     "codeName" : "template",
     "frontProcessType" : "CHAT",
@@ -2879,6 +2900,174 @@
     "uIActionTag" : "template",
     "uIActionType" : "DEUIACTION",
     "id" : "template@ai_agent_context"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "上下文模版反馈",
+    "codeName" : "template_feedback",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_agent_context_template_feedback",
+    "name" : "上下文模版反馈",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "template_feedback"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "template_feedback",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true,
+    "id" : "template_feedback@ai_agent_context"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "prompt_feedback",
+    "defaultParamName" : "Default",
+    "logicName" : "prompt_feedback",
+    "name" : "prompt_feedback",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 350,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 520,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.info(\"ai default_system_prompt\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\nvar formController = realView.getController(\"form\");\n\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n\nif (answer && typeof answer == 'string') {\n    if (formController){\n        var targetFormItem = formController.getFormDetail(\"FORMITEM\",\"default_system_prompt\");\n\t\tif(targetFormItem){\n           try {\n                var newvalue = answer;\n                var oldvalue = formController.data[\"default_system_prompt\"];\n                \n                if(oldvalue) {\n                    newvalue = oldvalue + \"\\n---------\\n\" + answer;\n                }\n                formController.setDataValue(\"default_system_prompt\", newvalue);\n\n            } catch (error) {\n            }\n        }\n         \n    }\n\n}\nuiLogic.result = {content: \"已完成\"};\n\n",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 330,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "template_feedback",
+    "defaultParamName" : "Default",
+    "logicName" : "template_feedback",
+    "name" : "template_feedback",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 350,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 520,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.info(\"ai default_system_prompt\");\nvar answer = null;\nvar realView = view;\nvar _entity_tag = view.context._entity_tag;\nif (realView.model.appDataEntityId && realView.model.appDataEntityId.endsWith(\"ai_agent_assignment\")) {\n    realView = view.parentView;\n}\nif (!_entity_tag) {\n    _entity_tag = realView.model.appDataEntityId ? realView.model.appDataEntityId.split('.').at(-1) : \"\";\n}\nif (_entity_tag) {\n    uiLogic.default._entity_tag = _entity_tag;\n}\nvar formController = realView.getController(\"form\");\n\nif (uiLogic.default.data && uiLogic.default.data.messages && uiLogic.default.data.messages.length > 0) {\n    const lastAns = uiLogic.default.data.messages[uiLogic.default.data.messages.length - 1];\n    answer = lastAns.realcontent;\n}\nelse if (uiLogic.default.msg) {\n    answer = uiLogic.default.msg.realcontent;\n}\n\nif (answer && typeof answer == 'string') {\n    if (formController){\n        var targetFormItem = formController.getFormDetail(\"FORMITEM\",\"default_system_prompt\");\n\t\tif(targetFormItem){\n           try {\n                var newvalue = '<user>\\n'+answer+\"\\n</user>\";\n                \n                formController.setDataValue(\"welcome_message\", newvalue);\n\n            } catch (error) {\n            }\n        }\n         \n    }\n\n}\nuiLogic.result = {content: \"已完成\"};\n\n",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 220,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 330,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "result",
+      "name" : "result",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
