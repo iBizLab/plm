@@ -55,7 +55,21 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset_01_prepareparam_02" sourceRef="dedataset_01" targetRef="prepareparam_02">
+                    <sequenceFlow id="gateway-dedataset_01_prepareparam_02" sourceRef="gateway-dedataset_01" targetRef="prepareparam_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_document_syncspace_parsingdefault:ai_kb_document_sync();
+                                            $ai_kb_document_syncspace_parsingall_pages:article_page();
+                                            $ai_kb_document_syncspace_parsingdoc:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingdoc_filter:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingdoc_sync:ai_kb_document_sync();
+                                            $ai_kb_document_syncspace_parsingdocs:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingpage:article_page();
+                                            $ai_kb_document_syncspace_parsingpage_filter:article_page();
+                                            $ai_kb_document_syncspace_parsingpages_notin_docs:article_page();
+                                    eval($ai_kb_document_syncspace_parsingdefault==ai_kb_document_syncspace_parsingdefault && $ai_kb_document_syncspace_parsingall_pages==ai_kb_document_syncspace_parsingall_pages && $ai_kb_document_syncspace_parsingdoc==ai_kb_document_syncspace_parsingdoc && $ai_kb_document_syncspace_parsingdoc_filter==ai_kb_document_syncspace_parsingdoc_filter && $ai_kb_document_syncspace_parsingdoc_sync==ai_kb_document_syncspace_parsingdoc_sync && $ai_kb_document_syncspace_parsingdocs==ai_kb_document_syncspace_parsingdocs && $ai_kb_document_syncspace_parsingpage==ai_kb_document_syncspace_parsingpage && $ai_kb_document_syncspace_parsingpage_filter==ai_kb_document_syncspace_parsingpage_filter && $ai_kb_document_syncspace_parsingpages_notin_docs==ai_kb_document_syncspace_parsingpages_notin_docs);
+                                eval((RuleUtils.test($ai_kb_document_syncspace_parsingall_pages.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_dedataset_02" sourceRef="prepareparam_02" targetRef="dedataset_02">
                     </sequenceFlow>
@@ -87,6 +101,10 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction_02_resetparam_01" sourceRef="deaction_02" targetRef="resetparam_01">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset_01_end_line" sourceRef="gateway-dedataset_01" targetRef="gateway-dedataset_01_end"/>
+                            <endEvent id="gateway-dedataset_01_end" name="end"/>
                             <exclusiveGateway id="gateway-dedataset_03" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_03_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset_03_gateway-dedataset_03_gatewayline" sourceRef="dedataset_03" targetRef="gateway-dedataset_03"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset_03_end_line" sourceRef="gateway-dedataset_03" targetRef="gateway-dedataset_03_end"/>

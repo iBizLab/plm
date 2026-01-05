@@ -2016,6 +2016,22 @@
           "id" : "PREPAREPARAM_02"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "all_pages"
+            },
+            "logicType" : "SINGLE",
+            "name" : "all_pages[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
@@ -2119,7 +2135,7 @@
       "topPos" : 370,
       "parallelOutput" : true
     }, {
-      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\n// def _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\ndef doc_pageids_in_space = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"doc已有的pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_without_doc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !doc_pageids_in_space.contains(it.id)\r\n}\r\nprintln \"doc未存在的pageId: ${pages_without_doc*.id}\"  \r\n\r\n// _pages_notin_docs=pages_without_doc\r\n\r\n\r\npages_without_doc.each { page ->\r\n    println \"页面ID: ${page.id}, 页面: ${page.name}\"\r\n}",
+      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef doc_pageids_in_space = _docs.collect { it.source_id }as Set \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\n\r\nprintln \"doc已有的pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_without_doc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !doc_pageids_in_space.contains(it.id)\r\n}\r\nprintln \"doc未存在的pageId: ${pages_without_doc*.id}\"  \r\n\r\npages_without_doc.each { page ->\r\n    println \"页面ID: ${page.id}, 页面: ${page.name}\"\r\n    def new_doc = doc_runtime.entity()\r\n    new_doc.set('custom_chunk',0)\r\n    new_doc.set('source_id',page.id)\r\n    new_doc.set('name',page.name)\r\n    new_doc.set('sync_frequency',_doc_sync.sync_frequency)\r\n    new_doc.set('status',0)\r\n    new_doc.set('sync_id',_doc_sync.id)\r\n    new_doc.set('type','space')\r\n    new_doc.set('source_type','page')\r\n    new_doc.set('kb_id',_doc_sync.ai_knowledge_base_id)\r\n    doc_runtime.create(new_doc)\r\n}",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 516,
