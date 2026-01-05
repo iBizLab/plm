@@ -2103,13 +2103,49 @@
       "topPos" : 590,
       "parallelOutput" : true
     }, {
-      "code" : "def _page_pages = logic.param('page_pages').getReal();\r\ndef _doc_pages = logic.param('doc_pages').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\n\r\nprintln(\"_page_pages值：\"+_page_pages);\r\nprintln(\"_doc_pages值：\"+doc_pages);\r\n\r\ndef docPageIdsInSpace = _doc_pages\r\n    .collect { it.source_id }\r\n    as Set \r\n\r\nprintln \"已有doc的pageId: $docPageIdsInSpace\"  \r\n\r\ndef pagesWithoutDoc = _page_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !docPageIdsInSpace.contains(it.id)\r\n}\r\n\r\nprintln \"结果: ${pagesWithoutDoc*.name}\"  ",
+      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('_docs').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\ndef _pages_notin_docs = logic.param('pages_notin_docs').getReal();\r\n\r\n\r\nprintln(\"_pages值：\"+_all_pages);\r\nprintln(\"_docs值：\"+_docs);\r\n\r\ndef docPageIdsInSpace = _docs.collect { it.source_id }as Set \r\n\r\nprintln \"已有doc的pageId: $docPageIdsInSpace\"  \r\n\r\ndef pagesWithoutDoc = _all_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !docPageIdsInSpace.contains(it.id)\r\n}\r\n\r\nprintln \"结果: ${pagesWithoutDoc*.name}\"  \r\n\r\n_pages_notin_docs=pagesWithoutDoc",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 555,
       "logicNodeType" : "RAWSFCODE",
       "name" : "执行脚本代码",
       "topPos" : 590,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_03",
+      "leftPos" : 224,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "CUSTOM_CHUNK",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 800,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_02",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 460,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建文档",
+      "topPos" : 800,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2168,6 +2204,15 @@
       },
       "entityPageParam" : true
     }, {
+      "codeName" : "page",
+      "logicName" : "page",
+      "name" : "page",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "entityParam" : true
+    }, {
       "codeName" : "page_filter",
       "logicName" : "page_filter",
       "name" : "page_filter",
@@ -2177,9 +2222,9 @@
       },
       "filterParam" : true
     }, {
-      "codeName" : "pages_not_in_docs",
-      "logicName" : "pages_not_in_docs",
-      "name" : "pages_not_in_docs",
+      "codeName" : "pages_notin_docs",
+      "logicName" : "pages_notin_docs",
+      "name" : "pages_notin_docs",
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
