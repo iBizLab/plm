@@ -36,8 +36,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备文档参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_01" id="loopsubcall_01" implementation="http://www.jboss.org/drools/rule" name="处理未同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="获取未同步页面"/>
-                        <endEvent id="rawsfcode_01_end" name="end"/>
-                        <sequenceFlow id="rawsfcode_01_end_line" sourceRef="rawsfcode_01" targetRef="rawsfcode_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_02" id="dedataset_02" implementation="http://www.jboss.org/drools/rule" name="查询已同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备文档参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_03" id="dedataset_03" implementation="http://www.jboss.org/drools/rule" name="查询最新空间文档"/>
@@ -79,6 +77,8 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_01_dedataset_03" sourceRef="loopsubcall_01" targetRef="dedataset_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_loopsubcall_01" sourceRef="rawsfcode_01" targetRef="loopsubcall_01">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset_02_rawsfcode_01" sourceRef="dedataset_02" targetRef="rawsfcode_01">
                     </sequenceFlow>
