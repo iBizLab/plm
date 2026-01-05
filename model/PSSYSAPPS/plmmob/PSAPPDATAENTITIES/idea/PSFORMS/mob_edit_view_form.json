@@ -111,6 +111,14 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
+    "codeName" : "check_palntime",
+    "name" : "校验计划时间",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "plan_at"
+    } ],
+    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
+    "customCode" : true
+  }, {
     "codeName" : "mob_remaining_update",
     "name" : "剩余工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
@@ -126,14 +134,6 @@
       "name" : "real_at"
     } ],
     "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
-    "customCode" : true
-  }, {
-    "codeName" : "check_palntime",
-    "name" : "校验计划时间",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "plan_at"
-    } ],
-    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
     "customCode" : true
   }, {
     "codeName" : "mob_estimated_update",
@@ -2314,10 +2314,9 @@
               "name" : "grouppanel6",
               "getPSDEFormDetails" : [ {
                 "actionType" : "UIACTION",
-                "buttonStyle" : "STYLE2",
                 "caption" : "添加预估工时",
                 "codeName" : "button4",
-                "detailStyle" : "STYLE2",
+                "detailStyle" : "DEFAULT",
                 "detailType" : "BUTTON",
                 "name" : "button4",
                 "getPSAppViewUIAction" : {
@@ -2512,10 +2511,9 @@
               "name" : "grouppanel9",
               "getPSDEFormDetails" : [ {
                 "actionType" : "UIACTION",
-                "buttonStyle" : "STYLE2",
                 "caption" : "添加实际工时",
                 "codeName" : "button1",
-                "detailStyle" : "STYLE2",
+                "detailStyle" : "DEFAULT",
                 "detailType" : "BUTTON",
                 "name" : "button1",
                 "getPSAppViewUIAction" : {
