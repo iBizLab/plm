@@ -208,7 +208,7 @@
     "topPos" : 590,
     "parallelOutput" : true
   }, {
-    "code" : "def _page_pages = logic.param('page_pages').getReal();\r\ndef _doc_pages = logic.param('doc_pages').getReal();\r\n\r\nprintln(\"_page_pages值：\"+_page_pages);\r\nprintln(\"_doc_pages值：\"+doc_pages);",
+    "code" : "def _page_pages = logic.param('page_pages').getReal();\r\ndef _doc_pages = logic.param('doc_pages').getReal();\r\ndef _doc_sync = logic.param('doc_sync').getReal();\r\n\r\nprintln(\"_page_pages值：\"+_page_pages);\r\nprintln(\"_doc_pages值：\"+doc_pages);\r\n\r\ndef docPageIdsInSpace = _doc_pages\r\n    .collect { it.source_id }\r\n    as Set \r\n\r\nprintln \"已有doc的pageId: $docPageIdsInSpace\"  \r\n\r\ndef pagesWithoutDoc = _page_pages.findAll { \r\n    it.space_id == _doc_sync.source_id && !docPageIdsInSpace.contains(it.id)\r\n}\r\n\r\nprintln \"结果: ${pagesWithoutDoc*.name}\"  ",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 555,
