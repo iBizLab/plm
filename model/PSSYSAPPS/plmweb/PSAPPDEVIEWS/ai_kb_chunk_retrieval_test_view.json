@@ -6,7 +6,7 @@
   "caption" : "检索测试",
   "codeName" : "ai_kb_chunk_retrieval_test_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_retrieval_test_view.json",
-  "mDCtrlActiveMode" : 1,
+  "mDCtrlActiveMode" : 0,
   "name" : "ai_kb_chunkretrieval_test_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -24,6 +24,9 @@
   } ],
   "getPSDEViewCodeName" : "retrieval_test_view",
   "getPSDEViewId" : "440311c1ba54e9ff72cd5055dcd51eb1",
+  "getPSSysCss" : {
+    "cssName" : "retrieval_test"
+  },
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -180,13 +183,13 @@
             "layout" : "TABLE_24COL"
           },
           "getPSLayoutPos" : {
-            "grow" : 4,
+            "grow" : 3,
             "layout" : "SIMPLEFLEX"
           },
           "getPSPanelItems" : [ {
             "caption" : "标签",
             "contentType" : "HTML",
-            "htmlContent" : "<p><strong>检索测试</strong></p><p>请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</p>",
+            "htmlContent" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px; font-family: 黑体;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
             "itemStyle" : "DEFAULT",
             "itemType" : "RAWITEM",
             "name" : "static_label",
@@ -195,7 +198,7 @@
               "layout" : "TABLE_24COL"
             },
             "getPSRawItem" : {
-              "content" : "<p><strong>检索测试</strong></p><p>请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</p>",
+              "content" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px; font-family: 黑体;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
               "contentType" : "HTML",
               "name" : "static_label",
               "predefinedType" : "STATIC_LABEL"
@@ -354,10 +357,31 @@
         "height" : 320.0,
         "id" : "SEARCHBAR"
       },
+      "getPSSearchBarFilters" : [ {
+        "dataType" : 25,
+        "itemHeight" : 200.0,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "query",
+        "getPSEditor" : {
+          "editorHeight" : 200.0,
+          "editorParams" : {
+            "HEIGHT" : "200"
+          },
+          "editorType" : "TEXTAREA_10",
+          "name" : "query",
+          "showMaxLength" : true
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      } ],
       "quickGroupCount" : -1,
       "quickSearchMode" : 1,
       "quickSearchWidth" : 0,
-      "enableFilter" : false,
+      "enableFilter" : true,
       "enableGroup" : false,
       "enableQuickSearch" : true,
       "mobileSearchBar" : false,
@@ -464,7 +488,8 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "spacingBottom" : "OUTERMEDIUM"
             },
             "getPSPanelItems" : [ {
               "caption" : "标签",
