@@ -1,8 +1,5 @@
 {
   "getAllPSPanelFields" : [ {
-    "id" : "docid",
-    "viewFieldName" : "docid"
-  }, {
     "id" : "similarity",
     "viewFieldName" : "similarity"
   }, {
@@ -40,7 +37,7 @@
       "name" : "container",
       "getPSLayout" : {
         "align" : "flex-start",
-        "dir" : "row",
+        "dir" : "row-reverse",
         "layout" : "FLEX",
         "vAlign" : "center"
       },
@@ -51,41 +48,25 @@
         "spacingTop" : "OUTERMEDIUM"
       },
       "getPSPanelItems" : [ {
-        "caption" : "标签",
-        "contentType" : "RAW",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "RAWITEM",
-        "name" : "static_label",
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "getPSRawItem" : {
-          "caption" : "知识库：",
-          "contentType" : "RAW",
-          "name" : "static_label",
-          "predefinedType" : "STATIC_LABEL",
-          "renderMode" : "PARAGRAPH"
-        },
-        "rawContent" : "知识库：",
-        "showCaption" : true
-      }, {
         "caption" : "文本(动态)",
         "itemStyle" : "DEFAULT",
         "itemType" : "FIELD",
-        "name" : "docid",
+        "name" : "similarity",
         "getPSEditor" : {
-          "editorType" : "SPAN",
-          "name" : "docid",
+          "editorParams" : {
+            "showtext" : "true",
+            "format" : "0.00"
+          },
+          "editorType" : "SLIDER",
+          "name" : "similarity",
           "predefinedType" : "FIELD_TEXT_DYNAMIC",
-          "renderMode" : "TEXT_DYNAMIC",
-          "enableLinkView" : false
+          "stepValue" : 1.0
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "viewFieldName" : "docid"
+        "viewFieldName" : "similarity"
       }, {
         "caption" : "标签",
         "contentType" : "RAW",
@@ -98,31 +79,14 @@
           "spacingLeft" : "OUTERLARGE"
         },
         "getPSRawItem" : {
-          "caption" : "相似度：",
+          "caption" : "Score:",
           "contentType" : "RAW",
           "name" : "static_label1",
           "predefinedType" : "STATIC_LABEL",
           "renderMode" : "PARAGRAPH"
         },
-        "rawContent" : "相似度：",
+        "rawContent" : "Score:",
         "showCaption" : true
-      }, {
-        "caption" : "文本(动态)",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "FIELD",
-        "name" : "similarity",
-        "getPSEditor" : {
-          "editorType" : "SPAN",
-          "name" : "similarity",
-          "predefinedType" : "FIELD_TEXT_DYNAMIC",
-          "renderMode" : "TEXT_DYNAMIC",
-          "enableLinkView" : false
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "viewFieldName" : "similarity"
       } ]
     }, {
       "caption" : "文本(动态)",
@@ -132,15 +96,14 @@
       "name" : "field_text_dynamic1",
       "getPSEditor" : {
         "editorParams" : {
-          "disabledirectory" : "true",
           "READONLY" : "TRUE"
         },
-        "editorType" : "MARKDOWN",
-        "mode" : "EDIT",
+        "editorType" : "SPAN",
         "name" : "field_text_dynamic1",
         "predefinedType" : "FIELD_TEXT_DYNAMIC",
-        "readOnly" : true,
-        "showMaxLength" : true
+        "renderMode" : "TEXT_DYNAMIC",
+        "enableLinkView" : false,
+        "readOnly" : true
       },
       "getPSLayoutPos" : {
         "grow" : -1,
