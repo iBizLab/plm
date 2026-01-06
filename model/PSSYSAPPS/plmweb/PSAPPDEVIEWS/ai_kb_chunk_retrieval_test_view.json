@@ -24,6 +24,9 @@
   } ],
   "getPSDEViewCodeName" : "retrieval_test_view",
   "getPSDEViewId" : "440311c1ba54e9ff72cd5055dcd51eb1",
+  "getPSSysCss" : {
+    "cssName" : "retrieval_test"
+  },
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -135,16 +138,17 @@
       } ],
       "predefinedType" : "VIEWHEADER"
     }, {
-      "caption" : "容器",
       "itemStyle" : "DEFAULT",
       "itemType" : "CONTAINER",
-      "name" : "view_content",
+      "name" : "view_searchform",
       "getPSLayout" : {
+        "dir" : "column",
         "layout" : "FLEX"
       },
       "getPSLayoutPos" : {
-        "grow" : 1,
-        "layout" : "FLEX"
+        "grow" : -1,
+        "layout" : "FLEX",
+        "shrink" : 0
       },
       "getPSPanelItems" : [ {
         "caption" : "栅格容器",
@@ -175,50 +179,37 @@
           "getPSPanelItems" : [ {
             "caption" : "标签",
             "contentType" : "HTML",
-            "contentWidth" : 95.0,
-            "htmlContent" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+            "contentWidth" : 85.0,
+            "htmlContent" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 16px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
             "itemStyle" : "DEFAULT",
             "itemType" : "RAWITEM",
             "name" : "static_label",
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL",
-              "width" : 95,
+              "width" : 85,
               "widthMode" : "PERCENTAGE"
             },
             "getPSRawItem" : {
-              "content" : "<p><span style=\"font-size: 19px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 19px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+              "content" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 16px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
               "contentType" : "HTML",
               "name" : "static_label",
               "predefinedType" : "STATIC_LABEL",
-              "rawItemWidth" : 95.0
+              "rawItemWidth" : 85.0
             },
-            "rawItemWidth" : 95.0,
-            "width" : 95.0,
+            "rawItemWidth" : 85.0,
+            "width" : 85.0,
             "showCaption" : true
           }, {
+            "caption" : "搜索表单",
             "itemStyle" : "DEFAULT",
-            "itemType" : "CONTAINER",
-            "name" : "view_searchform",
-            "getPSLayout" : {
-              "dir" : "column",
-              "layout" : "FLEX"
-            },
+            "itemType" : "CTRLPOS",
+            "name" : "searchform",
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "getPSPanelItems" : [ {
-              "caption" : "搜索表单",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CTRLPOS",
-              "name" : "searchform",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "showCaption" : true
-            } ]
+            "showCaption" : true
           } ]
         }, {
           "caption" : "面板容器",
@@ -247,7 +238,19 @@
           } ]
         } ],
         "predefinedType" : "CONTAINER_GRID"
-      } ],
+      } ]
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "view_content",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : 1,
+        "layout" : "FLEX"
+      },
       "predefinedType" : "VIEWCONTENT"
     } ],
     "layoutBodyOnly" : true,
@@ -394,6 +397,13 @@
       "getPSDEFormItems" : [ {
         "id" : "query",
         "dataType" : 25
+      }, {
+        "id" : "n_name_like",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
       } ],
       "getPSDEFormPages" : [ {
         "caption" : "常规条件",
@@ -428,6 +438,35 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFSFITEM.AI_KB_CHUNK.N_NAME_LIKE"
+          },
+          "caption" : "分块名称(%)",
+          "codeName" : "n_name_like",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "n_name_like",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "n_name_like"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -848,6 +887,7 @@
   "enableFilter" : true,
   "enableQuickSearch" : true,
   "enableSearch" : true,
+  "expandSearchForm" : true,
   "modelid" : "0915e24634407f92edbf2245e68e618b",
   "modeltype" : "PSAPPDEVIEW"
 }
