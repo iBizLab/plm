@@ -865,6 +865,30 @@
     "stringLength" : 2000
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "doc_index",
+    "logicName" : "文档索引顺序",
+    "name" : "DOC_INDEX",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[DOCUMENT_ID][知识库文档标识]",
       "getPSDEFFormItem" : {
@@ -1144,6 +1168,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "doc_index",
+      "logicName" : "文档索引顺序",
+      "name" : "doc_index",
+      "getPSAppDEField" : {
+        "name" : "DOC_INDEX",
+        "codeName" : "doc_index"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "codeName" : "active",
@@ -1630,6 +1665,26 @@
     "uIActionTag" : "panel_layoutpanel_button_okaction_click",
     "uIActionType" : "DEUIACTION",
     "id" : "panel_layoutpanel_button_okaction_click@ai_kb_chunk"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "切片",
+    "codeName" : "panel_list_itempanel_button_calluilogic_click",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_chunk_info_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_kb_chunk_panel_list_itempanel_button_calluilogic_click",
+    "name" : "按钮",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "panel_list_itempanel_button_calluilogic_click",
+    "uIActionType" : "DEUIACTION",
+    "id" : "panel_list_itempanel_button_calluilogic_click@ai_kb_chunk"
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
@@ -1643,6 +1698,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_chunk_info_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_card_view.json",

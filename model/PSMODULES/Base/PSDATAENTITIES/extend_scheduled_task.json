@@ -2812,9 +2812,49 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM_01"
+          "id" : "PREPAREPARAM_01"
         },
-        "name" : "连接名称",
+        "name" : "sync_id为空",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "sync_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[sync_id] 值为空(Nil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        },
+        "name" : "sync_id不为空",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "sync_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[sync_id] 值不为空(NotNil) "
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "Begin"
