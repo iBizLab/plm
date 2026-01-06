@@ -138,12 +138,12 @@
       } ],
       "predefinedType" : "VIEWHEADER"
     }, {
-      "caption" : "栅格容器",
+      "caption" : "滚动条容器",
       "itemStyle" : "DEFAULT",
       "itemType" : "CONTAINER",
-      "name" : "container_grid",
+      "name" : "container_scroll",
       "getPSLayout" : {
-        "layout" : "SIMPLEFLEX"
+        "layout" : "BORDER"
       },
       "getPSLayoutPos" : {
         "grow" : -1,
@@ -151,37 +151,105 @@
       },
       "getPSPanelItems" : [ {
         "caption" : "面板容器",
+        "contentWidth" : 33.0,
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
-        "name" : "container",
+        "name" : "container_scroll_left",
         "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
+          "layout" : "BORDER"
         },
         "getPSLayoutPos" : {
-          "grow" : 4,
-          "layout" : "SIMPLEFLEX"
+          "layout" : "BORDER",
+          "layoutPos" : "WEST",
+          "width" : 33,
+          "widthMode" : "PERCENTAGE"
         },
         "getPSPanelItems" : [ {
-          "caption" : "标签",
-          "contentType" : "HTML",
-          "htmlContent" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_label",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX"
+          },
           "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
+            "layout" : "BORDER",
+            "layoutPos" : "CENTER"
           },
-          "getPSRawItem" : {
-            "content" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+          "getPSPanelItems" : [ {
+            "caption" : "标签",
             "contentType" : "HTML",
-            "cssStyle" : "width : 380px",
+            "contentWidth" : 80.0,
+            "htmlContent" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
             "name" : "static_label",
-            "predefinedType" : "STATIC_LABEL"
-          },
-          "showCaption" : true
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "width" : 80,
+              "widthMode" : "PERCENTAGE"
+            },
+            "getPSRawItem" : {
+              "content" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+              "contentType" : "HTML",
+              "cssStyle" : "width : 380px",
+              "name" : "static_label",
+              "predefinedType" : "STATIC_LABEL",
+              "rawItemWidth" : 80.0
+            },
+            "rawItemWidth" : 80.0,
+            "width" : 80.0,
+            "showCaption" : true
+          }, {
+            "actionType" : "UIACTION",
+            "buttonStyle" : "INFO",
+            "buttonWidth" : 50.0,
+            "caption" : "检索设置",
+            "contentWidth" : 50.0,
+            "itemStyle" : "INFO",
+            "itemType" : "BUTTON",
+            "name" : "button_calluilogic",
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "layoutpanel_button_calluilogic"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "width" : 50,
+              "widthMode" : "PX"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf013@FontAwesome",
+              "cssClass" : "fa fa-gear"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "检索设置",
+              "codeName" : "panel_layoutpanel_button_calluilogic_click",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_retrieval_config_view.json",
+                "viewType" : "DEOPTVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "ai_kb_chunk_panel_layoutpanel_button_calluilogic_click",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+              },
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "panel_layoutpanel_button_calluilogic_click",
+              "uIActionType" : "DEUIACTION",
+              "id" : "panel_layoutpanel_button_calluilogic_click@ai_kb_chunk"
+            },
+            "tooltip" : "检索设置",
+            "uIActionTarget" : "SINGLEDATA",
+            "width" : 50.0
+          } ]
         }, {
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
@@ -191,8 +259,8 @@
             "layout" : "FLEX"
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
+            "layout" : "BORDER",
+            "layoutPos" : "CENTER"
           },
           "getPSPanelItems" : [ {
             "caption" : "搜索表单",
@@ -205,20 +273,21 @@
             },
             "showCaption" : true
           } ]
-        } ]
+        } ],
+        "predefinedType" : "CONTAINER_SCROLL_LEFT",
+        "width" : 33.0,
+        "showCaption" : true
       }, {
         "caption" : "面板容器",
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
-        "name" : "container1",
+        "name" : "container_scroll_main",
         "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
+          "layout" : "BORDER"
         },
         "getPSLayoutPos" : {
-          "grow" : 8,
-          "layout" : "SIMPLEFLEX"
+          "layout" : "BORDER",
+          "layoutPos" : "CENTER"
         },
         "getPSPanelItems" : [ {
           "caption" : "容器",
@@ -229,23 +298,26 @@
             "layout" : "FLEX"
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
+            "layout" : "BORDER",
+            "layoutPos" : "CENTER"
           },
+          "getPSPanelItems" : [ {
+            "caption" : "列表",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "list",
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ],
           "predefinedType" : "VIEWCONTENT"
-        }, {
-          "caption" : "列表",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "list",
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "showCaption" : true
-        } ]
+        } ],
+        "predefinedType" : "CONTAINER_SCROLL_MAIN",
+        "showCaption" : true
       } ],
-      "predefinedType" : "CONTAINER_GRID"
+      "predefinedType" : "CONTAINER_SCROLL"
     } ],
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
