@@ -128,7 +128,7 @@
     }
   }, {
     "id" : "active",
-    "dataType" : 9,
+    "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "ACTIVE",
       "codeName" : "active"
@@ -262,11 +262,11 @@
       }, {
         "caption" : "是否启用",
         "codeName" : "active",
-        "dataType" : 9,
+        "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
+        "enableCond" : 0,
+        "ignoreInput" : 3,
         "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "active",
@@ -276,15 +276,21 @@
           "codeName" : "active"
         },
         "getPSEditor" : {
-          "editorType" : "CHECKBOX",
-          "name" : "active"
+          "editorType" : "SPAN",
+          "name" : "active",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+          },
+          "enableLinkView" : false
         },
         "getPSLayoutPos" : {
           "colLG" : 12,
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : false,
+        "allowEmpty" : true,
+        "convertToCodeItemText" : true,
         "showCaption" : true
       }, {
         "caption" : "文档位置",
@@ -319,8 +325,8 @@
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
+        "enableCond" : 0,
+        "ignoreInput" : 3,
         "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "tags",
@@ -330,29 +336,20 @@
           "codeName" : "tags"
         },
         "getPSEditor" : {
-          "editorParams" : {
-            "SRFNAVPARAM.n_set_id_in" : "%tag_sets%"
-          },
-          "editorType" : "MDROPDOWNLIST",
+          "editorType" : "SPAN",
           "name" : "tags",
           "getPSAppCodeList" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
           },
-          "getPSNavigateParams" : [ {
-            "key" : "n_set_id_in",
-            "name" : "n_set_id_in",
-            "value" : "tag_sets",
-            "rawValue" : false
-          } ],
-          "singleSelect" : false
+          "enableLinkView" : false
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
-        "needCodeListConfig" : true,
+        "convertToCodeItemText" : true,
         "showCaption" : true
       }, {
         "caption" : "关键词",

@@ -21,15 +21,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recorddedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recorddebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看解析逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造执行记录信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordend_02" id="end_02" implementation="http://www.jboss.org/drools/rule" name="结束"/>
-                        <endEvent id="end_02_end" name="end"/>
-                        <sequenceFlow id="end_02_end_line" sourceRef="end_02" targetRef="end_02_end"/>
                     <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $extend_scheduled_taskdoc_parsing_recorddefault:extend_scheduled_task();
@@ -54,19 +49,28 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset_01_rawsfcode_01" sourceRef="dedataset_01" targetRef="rawsfcode_01">
+                    <sequenceFlow id="gateway-dedataset_01_rawsfcode_01" sourceRef="gateway-dedataset_01" targetRef="rawsfcode_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $extend_scheduled_taskdoc_parsing_recorddefault:extend_scheduled_task();
+                                            $extend_scheduled_taskdoc_parsing_recordtask:extend_scheduled_task();
+                                            $extend_scheduled_taskdoc_parsing_recordtask_filter:extend_scheduled_task();
+                                            $extend_scheduled_taskdoc_parsing_recordtasks:extend_scheduled_task();
+                                    eval($extend_scheduled_taskdoc_parsing_recorddefault==extend_scheduled_taskdoc_parsing_recorddefault && $extend_scheduled_taskdoc_parsing_recordtask==extend_scheduled_taskdoc_parsing_recordtask && $extend_scheduled_taskdoc_parsing_recordtask_filter==extend_scheduled_taskdoc_parsing_recordtask_filter && $extend_scheduled_taskdoc_parsing_recordtasks==extend_scheduled_taskdoc_parsing_recordtasks);
+                                eval((RuleUtils.test($extend_scheduled_taskdoc_parsing_recordtasks.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_dedataset_01" sourceRef="prepareparam_02" targetRef="dedataset_01">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam_01_prepareparam_03" sourceRef="debugparam_01" targetRef="prepareparam_03">
-                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam_03_end_02" sourceRef="prepareparam_03" targetRef="end_02">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
                             <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
                             <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset_01_end_line" sourceRef="gateway-dedataset_01" targetRef="gateway-dedataset_01_end"/>
+                            <endEvent id="gateway-dedataset_01_end" name="end"/>
         </process>
     </definitions>

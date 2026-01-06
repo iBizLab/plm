@@ -883,9 +883,9 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "doc_index",
+    "codeName" : "sequence",
     "logicName" : "文档索引顺序",
-    "name" : "DOC_INDEX",
+    "name" : "SEQUENCE",
     "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -1223,12 +1223,12 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "doc_index",
+      "codeName" : "sequence",
       "logicName" : "文档索引顺序",
-      "name" : "doc_index",
+      "name" : "sequence",
       "getPSAppDEField" : {
-        "name" : "DOC_INDEX",
-        "codeName" : "doc_index"
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
@@ -1736,6 +1736,22 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "知识库文档",
+    "codeName" : "open_document",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_kb_chunk_open_document",
+    "name" : "打开所属文档",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+    },
+    "scriptCode" : "const ai_knowledge_base = context.ai_knowledge_base\r\nconst ai_kb_document = context.ai_kb_document? context.ai_kb_document: data[0].document_id;\r\nwindow.location.hash=`/-/index/ai_knowledge_base=${ai_knowledge_base}/ai_knowledge_base_index_view/srfnavctx={\"srfnavctrlid\":\"plmweb.ai_knowledge_base_grid_view@plmweb.ai_knowledge_base.main\"};srfnav=index_view/ai_kb_document_tree_exp_view/srfnavctx={\"srfdefaulttoroutedepth\":3};srfnav=root:doc_type@file:ai_kb_doc@${ai_kb_document}/ai_kb_chunk_card_view/n_document_id_eq=${ai_kb_document};doc_type=file;srfnavctx={\"ai_kb_document\":${ai_kb_document},\"srfnavctrlid\":\"plmweb.ai_kb_document_tree_exp_view@plmweb.ai_kb_document.tree_exp_view_tree_view\"}`",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_document",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_document@ai_kb_chunk"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "保存",
     "codeName" : "panel_layoutpanel_button_okaction_click",

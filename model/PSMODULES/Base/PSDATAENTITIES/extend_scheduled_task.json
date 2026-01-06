@@ -2926,6 +2926,22 @@
           "id" : "RAWSFCODE_01"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "tasks"
+            },
+            "logicType" : "SINGLE",
+            "name" : "tasks[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
@@ -2979,29 +2995,7 @@
       "topPos" : 328,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM_01",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看解析逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM_03"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM_01"
-        }
-      } ],
-      "topPos" : 388,
-      "parallelOutput" : true
-    }, {
-      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\ndef task = _tasks.first()\r\nprintln \"第一个类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n\r\n_default.started_at=task.started_at\r\n_default.finished_at=task.finished_at\r\n\r\n_default['execution_time']=String.format(\"%.2f\", java.time.Duration.between(_default.started_at, _default.finished_at).toMillis() / 1000.0)",
+      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\ndef task = _tasks.first()\r\nprintln \"第一个类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n\r\n_default.started_at=task.started_at\r\n_default.finished_at=task.finished_at\r\n_default.result_message=task.result_message\r\n_default['execution_time'] = String.format(\"%.2f\", (_default.finished_at-_default.started_at) / 1000.0)",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 650,
@@ -3031,50 +3025,6 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 508,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREPARAM_03",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END_02"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM_03"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "RESULT_MESSAGE",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValue" : "123456",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 521,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END_02",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 631,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {

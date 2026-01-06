@@ -6,7 +6,6 @@
   "caption" : "切片",
   "codeName" : "ai_kb_chunk_chunk_info_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_chunk_info_view.json",
-  "height" : 700,
   "name" : "ai_kb_chunkchunk_info_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -23,6 +22,57 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
+    "codeName" : "chunk_info_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "知识库文档分块信息页_工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "所属文档",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf0c1@FontAwesome",
+        "cssClass" : "fa fa-link"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "知识库文档",
+        "codeName" : "open_document",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_chunk_open_document",
+        "name" : "打开所属文档",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+        },
+        "scriptCode" : "const ai_knowledge_base = context.ai_knowledge_base\r\nconst ai_kb_document = context.ai_kb_document? context.ai_kb_document: data[0].document_id;\r\nwindow.location.hash=`/-/index/ai_knowledge_base=${ai_knowledge_base}/ai_knowledge_base_index_view/srfnavctx={\"srfnavctrlid\":\"plmweb.ai_knowledge_base_grid_view@plmweb.ai_knowledge_base.main\"};srfnav=index_view/ai_kb_document_tree_exp_view/srfnavctx={\"srfdefaulttoroutedepth\":3};srfnav=root:doc_type@file:ai_kb_doc@${ai_kb_document}/ai_kb_chunk_card_view/n_document_id_eq=${ai_kb_document};doc_type=file;srfnavctx={\"ai_kb_document\":${ai_kb_document},\"srfnavctrlid\":\"plmweb.ai_kb_document_tree_exp_view@plmweb.ai_kb_document.tree_exp_view_tree_view\"}`",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_document",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_document@ai_kb_chunk"
+      },
+      "tooltip" : "所属文档",
+      "uIActionTarget" : "SINGLEDATA",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "form",
+    "modelid" : "0323cdc038f23f957aa4d3f5c0f473b7",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "codeName" : "main4",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -236,7 +286,7 @@
       }
     }, {
       "id" : "active",
-      "dataType" : 9,
+      "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ACTIVE",
         "codeName" : "active"
@@ -370,11 +420,11 @@
         }, {
           "caption" : "是否启用",
           "codeName" : "active",
-          "dataType" : 9,
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
+          "enableCond" : 0,
+          "ignoreInput" : 3,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "active",
@@ -384,15 +434,21 @@
             "codeName" : "active"
           },
           "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "active"
+            "editorType" : "SPAN",
+            "name" : "active",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+            },
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false,
+          "allowEmpty" : true,
+          "convertToCodeItemText" : true,
           "showCaption" : true
         }, {
           "caption" : "文档位置",
@@ -427,8 +483,8 @@
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
+          "enableCond" : 0,
+          "ignoreInput" : 3,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "tags",
@@ -438,29 +494,20 @@
             "codeName" : "tags"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "SRFNAVPARAM.n_set_id_in" : "%tag_sets%"
-            },
-            "editorType" : "MDROPDOWNLIST",
+            "editorType" : "SPAN",
             "name" : "tags",
             "getPSAppCodeList" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
             },
-            "getPSNavigateParams" : [ {
-              "key" : "n_set_id_in",
-              "name" : "n_set_id_in",
-              "value" : "tag_sets",
-              "rawValue" : false
-            } ],
-            "singleSelect" : false
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
+          "convertToCodeItemText" : true,
           "showCaption" : true
         }, {
           "caption" : "关键词",
