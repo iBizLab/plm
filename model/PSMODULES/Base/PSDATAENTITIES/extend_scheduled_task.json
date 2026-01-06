@@ -193,21 +193,21 @@
     "actionHolder" : 1,
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
-    "codeName" : "task_execution_record",
+    "codeName" : "doc_parsing_record",
     "dataAccessAction" : "READ",
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEACTIONS/task_execution_record.json",
-    "logicName" : "任务执行记录",
-    "name" : "task_execution_record",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEACTIONS/doc_parsing_record.json",
+    "logicName" : "文档解析记录",
+    "name" : "doc_parsing_record",
     "getPSDEActionInput" : {
       "getKeyPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
       },
-      "name" : "Task_execution_recordInput",
+      "name" : "Doc_parsing_recordInput",
       "type" : "KEYFIELD"
     },
     "getPSDEActionReturn" : {
-      "name" : "Task_execution_recordResult",
+      "name" : "Doc_parsing_recordResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "extend_scheduled_task_dto"
@@ -216,7 +216,7 @@
     },
     "getPSDELogic" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/task_execution_record.json"
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/doc_parsing_record.json"
     },
     "enableFront" : false
   } ],
@@ -2802,11 +2802,11 @@
     "systemReserver" : true
   } ],
   "getAllPSDELogics" : [ {
-    "codeName" : "task_execution_record",
+    "codeName" : "doc_parsing_record",
     "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/task_execution_record.json",
-    "logicName" : "任务执行记录",
-    "name" : "任务执行记录",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/doc_parsing_record.json",
+    "logicName" : "文档解析记录",
+    "name" : "文档解析记录",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 200,
@@ -2982,12 +2982,12 @@
       "topPos" : 328,
       "parallelOutput" : true
     }, {
-      "code" : "def _tasks = logic.param('tasks').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}",
+      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\n_default.started_at=new Date()",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 650,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "执行脚本代码",
+      "name" : "构造执行记录信息",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,

@@ -165,91 +165,72 @@
           "widthMode" : "PERCENTAGE"
         },
         "getPSPanelItems" : [ {
-          "caption" : "容器",
+          "caption" : "标签",
+          "contentType" : "HTML",
+          "contentWidth" : 80.0,
+          "htmlContent" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
           "itemStyle" : "DEFAULT",
-          "itemType" : "CONTAINER",
-          "name" : "container",
-          "getPSLayout" : {
-            "align" : "space-between",
-            "dir" : "row",
-            "layout" : "FLEX"
+          "itemType" : "RAWITEM",
+          "name" : "static_label",
+          "getPSLayoutPos" : {
+            "layout" : "BORDER",
+            "layoutPos" : "CENTER",
+            "width" : 80,
+            "widthMode" : "PERCENTAGE"
+          },
+          "getPSRawItem" : {
+            "content" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
+            "contentType" : "HTML",
+            "cssStyle" : "width : 380px",
+            "name" : "static_label",
+            "predefinedType" : "STATIC_LABEL"
+          },
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "buttonStyle" : "INFO",
+          "buttonWidth" : 50.0,
+          "caption" : "检索设置",
+          "contentWidth" : 50.0,
+          "itemStyle" : "INFO",
+          "itemType" : "BUTTON",
+          "name" : "button_calluilogic",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "layoutpanel_button_calluilogic"
           },
           "getPSLayoutPos" : {
             "layout" : "BORDER",
-            "layoutPos" : "CENTER"
+            "layoutPos" : "CENTER",
+            "width" : 50,
+            "widthMode" : "PX"
           },
-          "getPSPanelItems" : [ {
-            "caption" : "标签",
-            "contentType" : "HTML",
-            "contentWidth" : 80.0,
-            "htmlContent" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "RAWITEM",
-            "name" : "static_label",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX",
-              "width" : 80,
-              "widthMode" : "PERCENTAGE"
-            },
-            "getPSRawItem" : {
-              "content" : "<p><span style=\"font-size: 16px;\"><strong>检索测试</strong></span></p><p><span style=\"font-size: 15px;\">请完成召回测试：确保你的配置可以从数据库召回正确的文本块。如果你调整了这里的默认设置，比如关键词相似度权重，请注意这里的改动不会被自动保存。请务必在聊天助手设置或者召回算子设置处同步更新相关设置</span></p>",
-              "contentType" : "HTML",
-              "cssStyle" : "width : 380px",
-              "name" : "static_label",
-              "predefinedType" : "STATIC_LABEL",
-              "rawItemWidth" : 80.0
-            },
-            "rawItemWidth" : 80.0,
-            "width" : 80.0,
-            "showCaption" : true
-          }, {
-            "actionType" : "UIACTION",
-            "buttonStyle" : "INFO",
-            "buttonWidth" : 50.0,
+          "getPSSysImage" : {
+            "glyph" : "xf013@FontAwesome",
+            "cssClass" : "fa fa-gear"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
             "caption" : "检索设置",
-            "contentWidth" : 50.0,
-            "itemStyle" : "INFO",
-            "itemType" : "BUTTON",
-            "name" : "button_calluilogic",
-            "getPSAppViewUIAction" : {
+            "codeName" : "panel_layoutpanel_button_calluilogic_click",
+            "getFrontPSAppView" : {
               "modelref" : true,
-              "id" : "layoutpanel_button_calluilogic"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_retrieval_config_view.json",
+              "viewType" : "DEOPTVIEW"
             },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX",
-              "width" : 50,
-              "widthMode" : "PX"
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "ai_kb_chunk_panel_layoutpanel_button_calluilogic_click",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
             },
-            "getPSSysImage" : {
-              "glyph" : "xf013@FontAwesome",
-              "cssClass" : "fa fa-gear"
-            },
-            "getPSUIAction" : {
-              "actionTarget" : "SINGLEDATA",
-              "caption" : "检索设置",
-              "codeName" : "panel_layoutpanel_button_calluilogic_click",
-              "getFrontPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_retrieval_config_view.json",
-                "viewType" : "DEOPTVIEW"
-              },
-              "frontProcessType" : "WIZARD",
-              "fullCodeName" : "ai_kb_chunk_panel_layoutpanel_button_calluilogic_click",
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
-              },
-              "uIActionMode" : "FRONT",
-              "uIActionTag" : "panel_layoutpanel_button_calluilogic_click",
-              "uIActionType" : "DEUIACTION",
-              "id" : "panel_layoutpanel_button_calluilogic_click@ai_kb_chunk"
-            },
-            "tooltip" : "检索设置",
-            "uIActionTarget" : "SINGLEDATA",
-            "width" : 50.0
-          } ]
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "panel_layoutpanel_button_calluilogic_click",
+            "uIActionType" : "DEUIACTION",
+            "id" : "panel_layoutpanel_button_calluilogic_click@ai_kb_chunk"
+          },
+          "tooltip" : "检索设置",
+          "uIActionTarget" : "SINGLEDATA"
         }, {
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
@@ -410,7 +391,6 @@
       "controlType" : "SEARCHFORM",
       "defaultLabelWidth" : 130,
       "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHFORMS/main2.json",
-      "height" : 320.0,
       "logicName" : "检索测试列表视图_搜索表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -455,7 +435,6 @@
         "id" : "搜索表单处理器"
       },
       "getPSControlParam" : {
-        "height" : 320.0,
         "autoLoad" : true,
         "showBusyIndicator" : true,
         "id" : "SEARCHFORM"
