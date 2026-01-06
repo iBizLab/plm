@@ -2950,7 +2950,18 @@
       "leftPos" : 160,
       "logicNodeType" : "DEBUGPARAM",
       "name" : "查看解析逻辑参数",
-      "topPos" : 410,
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_03"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 388,
       "parallelOutput" : true
     }, {
       "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\n_default.started_at=new Date()\r\n_default.finished_at=new Date(new Date().time + 2 * 60 * 1000)",
@@ -2983,6 +2994,50 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 508,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_03",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_03"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "RESULT_MESSAGE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "123456",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 521,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_02",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 631,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {

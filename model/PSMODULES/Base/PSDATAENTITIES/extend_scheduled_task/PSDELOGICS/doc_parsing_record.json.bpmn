@@ -22,12 +22,14 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recorddedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recorddebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看解析逻辑参数"/>
-                        <endEvent id="debugparam_01_end" name="end"/>
-                        <sequenceFlow id="debugparam_01_end_line" sourceRef="debugparam_01" targetRef="debugparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造执行记录信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_taskdoc_parsing_recordend_02" id="end_02" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_02_end" name="end"/>
+                        <sequenceFlow id="end_02_end_line" sourceRef="end_02" targetRef="end_02_end"/>
                     <sequenceFlow id="begin_debugparam_01" sourceRef="begin" targetRef="debugparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
@@ -36,7 +38,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_dedataset_01" sourceRef="prepareparam_02" targetRef="dedataset_01">
                     </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_prepareparam_03" sourceRef="debugparam_01" targetRef="prepareparam_03">
+                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_03_end_02" sourceRef="prepareparam_03" targetRef="end_02">
                     </sequenceFlow>
         </process>
     </definitions>
