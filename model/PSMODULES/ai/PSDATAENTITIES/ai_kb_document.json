@@ -470,6 +470,44 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEDATAQUERIES/simple/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "simple",
+    "dEFGroupType" : "GRIDCOLUMNS",
+    "logicName" : "简单查询",
+    "name" : "simple",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_DOCUMENT"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "SimpleInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "SimpleResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_simple_dto"
+      },
+      "type" : "DTOS"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "simple"
+    },
+    "viewLevel" : 100
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEDATAQUERIES/unparsed/PSDEDQCODES/MYSQL5.json"
     }, {
       "modelref" : true,
@@ -585,6 +623,37 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "simple",
+    "logicName" : "简单查询",
+    "name" : "simple",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "simple"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "SimpleInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "SimpleResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_simple_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "simple"
+    },
+    "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "unparsed",
     "logicName" : "未解析文档",
     "name" : "UNPARSED",
@@ -611,6 +680,102 @@
     "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
+  } ],
+  "getAllPSDEFGroups" : [ {
+    "codeName" : "simple",
+    "groupType" : "GRIDCOLUMNS",
+    "name" : "基础数据",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_DOCUMENT.NAME"
+      },
+      "logicName" : "名称",
+      "name" : "name",
+      "orderValue" : 2,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "orderValue" : 6,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sync_id",
+      "logicName" : "文档同步标识",
+      "name" : "sync_id",
+      "orderValue" : 9,
+      "getPSDEField" : {
+        "name" : "SYNC_ID",
+        "codeName" : "sync_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "chunk_method",
+      "logicName" : "切片方法",
+      "name" : "chunk_method",
+      "orderValue" : 160,
+      "getPSDEField" : {
+        "name" : "CHUNK_METHOD",
+        "codeName" : "chunk_method"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "文档类型",
+      "name" : "type",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "status",
+      "logicName" : "状态",
+      "name" : "status",
+      "orderValue" : 220,
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "custom_chunk",
+      "logicName" : "自定义切片",
+      "name" : "custom_chunk",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "CUSTOM_CHUNK",
+        "codeName" : "custom_chunk"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -4573,6 +4738,90 @@
     "sourceType" : "DE",
     "type" : "DEFILTER",
     "defaultMode" : true
+  }, {
+    "name" : "ai_kb_document_simple_dto",
+    "getPSDEMethodDTOFields" : [ {
+      "logicName" : "名称",
+      "name" : "name",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "logicName" : "文档同步标识",
+      "name" : "sync_id",
+      "getPSDEField" : {
+        "name" : "SYNC_ID",
+        "codeName" : "sync_id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "切片方法",
+      "name" : "chunk_method",
+      "getPSDEField" : {
+        "name" : "CHUNK_METHOD",
+        "codeName" : "chunk_method"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "文档类型",
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "0",
+      "logicName" : "状态",
+      "name" : "status",
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "自定义切片",
+      "name" : "custom_chunk",
+      "getPSDEField" : {
+        "name" : "CUSTOM_CHUNK",
+        "codeName" : "custom_chunk"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
