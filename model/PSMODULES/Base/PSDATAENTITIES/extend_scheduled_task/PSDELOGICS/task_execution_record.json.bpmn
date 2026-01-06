@@ -20,11 +20,44 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_tasktask_execution_recordprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_tasktask_execution_recorddedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
-                        <endEvent id="dedataset_01_end" name="end"/>
-                        <sequenceFlow id="dedataset_01_end_line" sourceRef="dedataset_01" targetRef="dedataset_01_end"/>
-                    <sequenceFlow id="begin_prepareparam_01" sourceRef="begin" targetRef="prepareparam_01">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_tasktask_execution_recordprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_tasktask_execution_recordrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_scheduled_tasktask_execution_recordend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $extend_scheduled_tasktask_execution_recorddefault:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtask:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtask_filter:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtasks:extend_scheduled_task();
+                                    eval($extend_scheduled_tasktask_execution_recorddefault==extend_scheduled_tasktask_execution_recorddefault && $extend_scheduled_tasktask_execution_recordtask==extend_scheduled_tasktask_execution_recordtask && $extend_scheduled_tasktask_execution_recordtask_filter==extend_scheduled_tasktask_execution_recordtask_filter && $extend_scheduled_tasktask_execution_recordtasks==extend_scheduled_tasktask_execution_recordtasks);
+                                eval((RuleUtils.test($extend_scheduled_tasktask_execution_recorddefault.get("sync_id"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_02" sourceRef="gateway-begin" targetRef="prepareparam_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $extend_scheduled_tasktask_execution_recorddefault:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtask:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtask_filter:extend_scheduled_task();
+                                            $extend_scheduled_tasktask_execution_recordtasks:extend_scheduled_task();
+                                    eval($extend_scheduled_tasktask_execution_recorddefault==extend_scheduled_tasktask_execution_recorddefault && $extend_scheduled_tasktask_execution_recordtask==extend_scheduled_tasktask_execution_recordtask && $extend_scheduled_tasktask_execution_recordtask_filter==extend_scheduled_tasktask_execution_recordtask_filter && $extend_scheduled_tasktask_execution_recordtasks==extend_scheduled_tasktask_execution_recordtasks);
+                                eval((RuleUtils.test($extend_scheduled_tasktask_execution_recorddefault.get("sync_id"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_dedataset_01" sourceRef="prepareparam_01" targetRef="dedataset_01">
                     </sequenceFlow>
+                    <sequenceFlow id="dedataset_01_rawsfcode_01" sourceRef="dedataset_01" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_dedataset_01" sourceRef="prepareparam_02" targetRef="dedataset_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
         </process>
     </definitions>

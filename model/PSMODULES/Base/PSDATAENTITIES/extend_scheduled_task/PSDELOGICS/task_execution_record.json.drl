@@ -46,3 +46,38 @@ package cn.ibizlab.plm.base.logic.extend_scheduled_tasklogic.task_execution_reco
                         update(extend_scheduled_tasktask_execution_recordtask_filter);//更新fact中变量值
                         update(extend_scheduled_tasktask_execution_recordtasks);//更新fact中变量值
             end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "extend_scheduled_tasktask_execution_recordprepareparam_02"
+            when
+            then
+                            extend_scheduled_tasktask_execution_recordtask_filter.set("sort","finished_at,desc");
+                            extend_scheduled_tasktask_execution_recordtask_filter.set("n_principal_id_eq",extend_scheduled_tasktask_execution_recorddefault.get("sync_id"));
+                        update(extend_scheduled_tasktask_execution_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode_01"
+            ruleflow-group "extend_scheduled_tasktask_execution_recordrawsfcode_01"
+            when
+            then
+                        update(extend_scheduled_tasktask_execution_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "extend_scheduled_tasktask_execution_recordend_01"
+            when
+            then
+                        update(extend_scheduled_tasktask_execution_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_tasktask_execution_recordtasks);//更新fact中变量值
+            end
