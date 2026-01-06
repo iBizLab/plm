@@ -742,9 +742,9 @@
             "lanResTag" : "DE.LNAME.EXTEND_SCHEDULED_TASK"
           },
           "caption" : "文档解析记录",
-          "codeName" : "extend_scheduled_task_execution_record_view",
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_execution_record_view.json",
-          "name" : "extend_scheduled_taskexecution_record_view",
+          "codeName" : "extend_scheduled_task_parsing_record_view",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_parsing_record_view.json",
+          "name" : "extend_scheduled_taskparsing_record_view",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
@@ -758,8 +758,14 @@
             "engineType" : "EditView",
             "name" : "engine"
           } ],
+          "getPSAppViewNavContexts" : [ {
+            "key" : "SRFREADONLY",
+            "name" : "SRFREADONLY",
+            "value" : "true",
+            "rawValue" : true
+          } ],
           "getPSControls" : [ {
-            "codeName" : "execution_record_view_toolbar",
+            "codeName" : "parsing_record_view_toolbar",
             "controlType" : "TOOLBAR",
             "logicName" : "扩展计划任务实体执行记录编辑视图_工具栏",
             "name" : "toolbar",
@@ -979,6 +985,16 @@
                 "codeName" : "started_at"
               }
             }, {
+              "id" : "execution_time",
+              "dataType" : 25
+            }, {
+              "id" : "result_message",
+              "dataType" : 25,
+              "getPSAppDEField" : {
+                "name" : "RESULT_MESSAGE",
+                "codeName" : "result_message"
+              }
+            }, {
               "id" : "id",
               "hidden" : true,
               "dataType" : 25,
@@ -1033,6 +1049,64 @@
                     "layout" : "TABLE_24COL"
                   },
                   "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+                  "allowEmpty" : true,
+                  "showCaption" : true
+                }, {
+                  "caption" : "持续时间",
+                  "codeName" : "execution_time",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "ignoreInput" : 0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "execution_time",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "TEXTBOX",
+                    "name" : "execution_time"
+                  },
+                  "getPSLayoutPos" : {
+                    "colMD" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "allowEmpty" : true,
+                  "showCaption" : true
+                }, {
+                  "getCapPSLanguageRes" : {
+                    "lanResTag" : "DEF.LNAME.EXTEND_SCHEDULED_TASK.RESULT_MESSAGE"
+                  },
+                  "caption" : "执行信息",
+                  "codeName" : "result_message",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "ignoreInput" : 0,
+                  "itemHeight" : 220.0,
+                  "labelPos" : "TOP",
+                  "labelWidth" : 130,
+                  "name" : "result_message",
+                  "noPrivDisplayMode" : 1,
+                  "getPSAppDEField" : {
+                    "name" : "RESULT_MESSAGE",
+                    "codeName" : "result_message"
+                  },
+                  "getPSEditor" : {
+                    "editorHeight" : 200.0,
+                    "editorParams" : {
+                      "HEIGHT" : "200"
+                    },
+                    "editorType" : "TEXTAREA_10",
+                    "maxLength" : 2000,
+                    "name" : "result_message",
+                    "showMaxLength" : true
+                  },
+                  "getPSLayoutPos" : {
+                    "colMD" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
                   "allowEmpty" : true,
                   "showCaption" : true
                 } ],
@@ -1127,7 +1201,7 @@
             "modelid" : "a61909e198c4240bcd5da5077c4b66e6",
             "modeltype" : "PSDEFORM_EDITFORM"
           }, {
-            "codeName" : "execution_record_view_datainfobar",
+            "codeName" : "parsing_record_view_datainfobar",
             "controlType" : "DATAINFOBAR",
             "name" : "datainfobar",
             "getPSAppDataEntity" : {
@@ -1142,7 +1216,7 @@
               "lanResTag" : "DE.LNAME.EXTEND_SCHEDULED_TASK"
             },
             "caption" : "文档解析记录",
-            "codeName" : "execution_record_view_captionbar",
+            "codeName" : "parsing_record_view_captionbar",
             "controlType" : "CAPTIONBAR",
             "name" : "captionbar",
             "getPSAppDataEntity" : {
@@ -1151,7 +1225,7 @@
             },
             "getPSControlParam" : { }
           } ],
-          "getPSDEViewCodeName" : "execution_record_view",
+          "getPSDEViewCodeName" : "parsing_record_view",
           "getPSDEViewId" : "28139f4e65ab4aa1aa021014a8461235",
           "getPSViewLayoutPanel" : {
             "codeName" : "layoutpanel",
@@ -1167,7 +1241,6 @@
             "layoutPanel" : true,
             "useDefaultLayout" : true
           },
-          "refFlag" : false,
           "title" : "文档解析记录",
           "viewStyle" : "DEFAULT",
           "viewType" : "DEEDITVIEW",

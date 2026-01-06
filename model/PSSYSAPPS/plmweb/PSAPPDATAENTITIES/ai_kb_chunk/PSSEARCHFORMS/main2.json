@@ -9,6 +9,21 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
   },
   "getPSDEFormItems" : [ {
+    "id" : "similarity_threshold",
+    "dataType" : 25
+  }, {
+    "id" : "keyword_similarity_weight",
+    "dataType" : 25
+  }, {
+    "id" : "top_k",
+    "dataType" : 25
+  }, {
+    "id" : "cross_languages",
+    "dataType" : 25
+  }, {
+    "id" : "use_kg",
+    "dataType" : 25
+  }, {
     "id" : "n_rerank_eq",
     "dataType" : 25,
     "createDV" : "0",
@@ -24,6 +39,158 @@
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
+      "caption" : "知识库文档分块基本信息",
+      "codeName" : "group1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "group1",
+      "getPSDEFormDetails" : [ {
+        "caption" : "相似度阈值",
+        "codeName" : "similarity_threshold",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "similarity_threshold",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "maxvalue" : "1",
+            "stepvalue" : "0.01"
+          },
+          "editorType" : "SLIDER",
+          "maxValue" : 1.0,
+          "name" : "similarity_threshold",
+          "stepValue" : 0.01
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "关键字相似度权重",
+        "codeName" : "keyword_similarity_weight",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "keyword_similarity_weight",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "maxvalue" : "1",
+            "stepvalue" : "0.01"
+          },
+          "editorType" : "SLIDER",
+          "maxValue" : 1.0,
+          "name" : "keyword_similarity_weight",
+          "stepValue" : 0.01
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "Top-K",
+        "codeName" : "top_k",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "top_k",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "maxvalue" : "2048",
+            "stepvalue" : "1"
+          },
+          "editorType" : "SLIDER",
+          "maxValue" : 2048.0,
+          "name" : "top_k",
+          "stepValue" : 1.0
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "跨语言搜索",
+        "codeName" : "cross_languages",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "cross_languages",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "cross_languages",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList56.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "使用知识图谱",
+        "codeName" : "use_kg",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "use_kg",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "use_kg"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : false
+    }, {
       "caption" : "是否重排",
       "codeName" : "n_rerank_eq",
       "createDV" : "0",
@@ -142,7 +309,7 @@
   "searchButtonStyle" : "NONE",
   "tabHeaderPos" : "TOP",
   "enableAdvanceSearch" : false,
-  "enableAutoSearch" : true,
+  "enableAutoSearch" : false,
   "enableFilterSave" : false,
   "noTabHeader" : true,
   "modelid" : "dbb43fd68ed2c6e651f9c1c5d7a68084",
