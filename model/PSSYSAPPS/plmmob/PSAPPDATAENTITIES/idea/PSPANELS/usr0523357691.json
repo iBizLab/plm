@@ -64,26 +64,51 @@
         "getPSLayout" : {
           "align" : "flex-start",
           "dir" : "row",
-          "layout" : "FLEX"
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
-          "caption" : "图片",
-          "contentType" : "IMAGE",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_image",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
           "getPSLayoutPos" : {
             "grow" : -1,
-            "layout" : "FLEX",
-            "spacingRight" : "OUTERSMALL"
+            "layout" : "FLEX"
           },
-          "getPSRawItem" : {
+          "getPSPanelItems" : [ {
+            "caption" : "图片",
             "contentType" : "IMAGE",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
             "name" : "static_image",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingRight" : "OUTERSMALL"
+            },
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image",
+              "getPSSysCss" : {
+                "cssName" : "message_layout_panel_img_style"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf071@FontAwesome",
+                "cssClass" : "fa fa-warning"
+              },
+              "predefinedType" : "STATIC_IMAGE"
+            },
             "getPSSysCss" : {
               "cssName" : "message_layout_panel_img_style"
             },
@@ -91,152 +116,144 @@
               "glyph" : "xf071@FontAwesome",
               "cssClass" : "fa fa-warning"
             },
-            "predefinedType" : "STATIC_IMAGE"
-          },
-          "getPSSysCss" : {
-            "cssName" : "message_layout_panel_img_style"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf071@FontAwesome",
-            "cssClass" : "fa fa-warning"
-          },
-          "showCaption" : true
-        }, {
-          "caption" : "文本(动态)",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "FIELD",
-          "name" : "update_man",
-          "getPSEditor" : {
-            "editorType" : "SPAN",
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
             "name" : "update_man",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "update_man",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+              },
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
             },
-            "predefinedType" : "FIELD_TEXT_DYNAMIC",
-            "renderMode" : "TEXT_DYNAMIC",
-            "enableLinkView" : false
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "viewFieldName" : "update_man",
-          "convertToCodeItemText" : true
-        }, {
-          "caption" : "文本",
-          "contentType" : "RAW",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_text",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX",
-            "spacingLeft" : "INNERSMALL",
-            "spacingRight" : "INNERSMALL"
-          },
-          "getPSRawItem" : {
-            "caption" : "于",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "update_man",
+            "convertToCodeItemText" : true
+          }, {
+            "caption" : "文本",
             "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
             "name" : "static_text",
-            "predefinedType" : "STATIC_TEXT",
-            "renderMode" : "TEXT"
-          },
-          "rawContent" : "于",
-          "showCaption" : true
-        }, {
-          "caption" : "文本(动态)",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "FIELD",
-          "name" : "update_time",
-          "getPSEditor" : {
-            "editorType" : "SPAN",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "INNERSMALL",
+              "spacingRight" : "INNERSMALL"
+            },
+            "getPSRawItem" : {
+              "caption" : "于",
+              "contentType" : "RAW",
+              "name" : "static_text",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "于",
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
             "name" : "update_time",
-            "predefinedType" : "FIELD_TEXT_DYNAMIC",
-            "renderMode" : "TEXT_DYNAMIC",
-            "enableLinkView" : false
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "viewFieldName" : "update_time"
-        }, {
-          "caption" : "文本",
-          "contentType" : "RAW",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_text1",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX",
-            "spacingLeft" : "INNERSMALL",
-            "spacingRight" : "INNERSMALL"
-          },
-          "getPSPanelItemGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSPanelItemLogics" : [ {
-              "condOp" : "EQ",
-              "dstModelField" : "is_archived",
-              "logicType" : "SINGLE",
-              "name" : "逻辑项",
-              "value" : "1"
-            }, {
-              "condOp" : "EQ",
-              "dstModelField" : "is_deleted",
-              "logicType" : "SINGLE",
-              "name" : "逻辑项",
-              "value" : "0"
-            } ],
-            "relatedItemNames" : [ "is_archived", "is_deleted" ],
-            "notMode" : false
-          } ],
-          "getPSRawItem" : {
-            "caption" : "归档了需求",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "update_time",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "update_time"
+          }, {
+            "caption" : "文本",
             "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
             "name" : "static_text1",
-            "predefinedType" : "STATIC_TEXT",
-            "renderMode" : "TEXT"
-          },
-          "rawContent" : "归档了需求",
-          "showCaption" : true
-        }, {
-          "caption" : "文本",
-          "contentType" : "RAW",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_text2",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX",
-            "spacingLeft" : "INNERSMALL",
-            "spacingRight" : "INNERSMALL"
-          },
-          "getPSPanelItemGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSPanelItemLogics" : [ {
-              "condOp" : "EQ",
-              "dstModelField" : "is_deleted",
-              "logicType" : "SINGLE",
-              "name" : "逻辑项",
-              "value" : "1"
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "INNERSMALL",
+              "spacingRight" : "INNERSMALL"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "is_archived",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "1"
+              }, {
+                "condOp" : "EQ",
+                "dstModelField" : "is_deleted",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "0"
+              } ],
+              "relatedItemNames" : [ "is_archived", "is_deleted" ],
+              "notMode" : false
             } ],
-            "relatedItemNames" : [ "is_deleted" ],
-            "notMode" : false
-          } ],
-          "getPSRawItem" : {
-            "caption" : "删除了需求",
+            "getPSRawItem" : {
+              "caption" : "归档了需求",
+              "contentType" : "RAW",
+              "name" : "static_text1",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "归档了需求",
+            "showCaption" : true
+          }, {
+            "caption" : "文本",
             "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
             "name" : "static_text2",
-            "predefinedType" : "STATIC_TEXT",
-            "renderMode" : "TEXT"
-          },
-          "rawContent" : "删除了需求",
-          "showCaption" : true
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "INNERSMALL",
+              "spacingRight" : "INNERSMALL"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "is_deleted",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "1"
+              } ],
+              "relatedItemNames" : [ "is_deleted" ],
+              "notMode" : false
+            } ],
+            "getPSRawItem" : {
+              "caption" : "删除了需求",
+              "contentType" : "RAW",
+              "name" : "static_text2",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "删除了需求",
+            "showCaption" : true
+          } ]
         }, {
           "actionType" : "UIACTION",
           "buttonStyle" : "DEFAULT",

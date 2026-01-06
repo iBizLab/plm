@@ -6,7 +6,9 @@
   "caption" : "切片",
   "codeName" : "ai_kb_chunk_chunk_info_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_chunk_info_view.json",
+  "height" : 700,
   "name" : "ai_kb_chunkchunk_info_view",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
@@ -219,11 +221,18 @@
       "hidden" : true,
       "dataType" : 25
     }, {
-      "id" : "title",
+      "id" : "name",
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      }
+    }, {
+      "id" : "active",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "ACTIVE",
+        "codeName" : "active"
       }
     }, {
       "id" : "positions",
@@ -259,13 +268,6 @@
       "getPSAppDEField" : {
         "name" : "CONTENT",
         "codeName" : "content"
-      }
-    }, {
-      "id" : "active",
-      "dataType" : 9,
-      "getPSAppDEField" : {
-        "name" : "ACTIVE",
-        "codeName" : "active"
       }
     }, {
       "id" : "document_id",
@@ -306,34 +308,58 @@
             "lanResTag" : "DEF.LNAME.AI_KB_CHUNK.NAME"
           },
           "caption" : "分块名称",
-          "codeName" : "title",
+          "codeName" : "name",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
-          "name" : "title",
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "NAME",
             "codeName" : "name"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "ISAUTO" : "true"
-            },
-            "editorType" : "TEXTAREA",
-            "maxLength" : 200,
-            "name" : "title",
-            "showMaxLength" : true
+            "editorType" : "SPAN",
+            "name" : "name",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "是否启用",
+          "codeName" : "active",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "active",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ACTIVE",
+            "codeName" : "active"
+          },
+          "getPSEditor" : {
+            "editorType" : "CHECKBOX",
+            "name" : "active"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
         }, {
           "caption" : "文档位置",
           "codeName" : "positions",
@@ -342,7 +368,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "positions",
           "noPrivDisplayMode" : 1,
@@ -351,12 +377,11 @@
             "codeName" : "positions"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
-            "name" : "positions"
+            "editorType" : "SPAN",
+            "name" : "positions",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
@@ -370,7 +395,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "tags",
           "noPrivDisplayMode" : 1,
@@ -397,8 +422,7 @@
             "singleSelect" : false
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -412,8 +436,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "keywords",
           "noPrivDisplayMode" : 1,
@@ -422,17 +445,11 @@
             "codeName" : "keywords"
           },
           "getPSEditor" : {
-            "editorHeight" : 200.0,
-            "editorParams" : {
-              "HEIGHT" : "200"
-            },
-            "editorType" : "TEXTAREA_10",
-            "maxLength" : 4000,
+            "editorType" : "SPAN",
             "name" : "keywords",
-            "showMaxLength" : true
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
-            "colLG" : 8,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
@@ -446,8 +463,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "key_questions",
           "noPrivDisplayMode" : 1,
@@ -456,14 +472,9 @@
             "codeName" : "key_questions"
           },
           "getPSEditor" : {
-            "editorHeight" : 200.0,
-            "editorParams" : {
-              "HEIGHT" : "200"
-            },
-            "editorType" : "TEXTAREA_10",
-            "maxLength" : 4000,
+            "editorType" : "SPAN",
             "name" : "key_questions",
-            "showMaxLength" : true
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colLG" : 8,
@@ -478,9 +489,10 @@
           "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
-          "enableCond" : 3,
+          "enableCond" : 0,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "content",
           "noPrivDisplayMode" : 1,
@@ -489,11 +501,13 @@
             "codeName" : "content"
           },
           "getPSEditor" : {
+            "editorHeight" : 200.0,
             "editorParams" : {
-              "ISAUTO" : "true"
+              "disabledirectory" : "true"
             },
-            "editorType" : "TEXTAREA",
+            "editorType" : "MARKDOWN",
             "maxLength" : 1048576,
+            "mode" : "EDIT",
             "name" : "content",
             "showMaxLength" : true
           },
@@ -502,33 +516,6 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "是否启用",
-          "codeName" : "active",
-          "dataType" : 9,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "active",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "ACTIVE",
-            "codeName" : "active"
-          },
-          "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "active"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "caption" : "知识库文档标识",
@@ -568,7 +555,7 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : false,
+        "infoGroupMode" : true,
         "showCaption" : false
       }, {
         "getCapPSLanguageRes" : {
@@ -605,7 +592,7 @@
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
       },
-      "infoGroupMode" : false
+      "infoGroupMode" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,
@@ -645,6 +632,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
       }
     },
+    "infoFormMode" : true,
     "noTabHeader" : true,
     "name" : "form",
     "modelid" : "111f0302ea72997f68e8a51a4d2e4a8e",
@@ -694,6 +682,7 @@
   "title" : "文档分块信息",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
+  "width" : 700,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,

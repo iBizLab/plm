@@ -3001,7 +3001,7 @@
       "topPos" : 388,
       "parallelOutput" : true
     }, {
-      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\n_default.started_at=new Date()\r\n_default.finished_at=new Date(new Date().time + 2 * 60 * 1000)",
+      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\ndef task = _tasks.first()\r\nprintln \"第一个类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n\r\n_default.started_at=task.started_at\r\n_default.finished_at=task.finished_at\r\n\r\n_default['execution_time']=String.format(\"%.2f\", java.time.Duration.between(_default.started_at, _default.finished_at).toMillis() / 1000.0)",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 650,
