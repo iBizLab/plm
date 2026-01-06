@@ -1707,72 +1707,6 @@
     "stringLength" : 2000,
     "valueFormat" : "%1$s"
   }, {
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[QUERY][查询参数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[QUERY][查询参数]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[QUERY][查询参数]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[QUERY][查询参数]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "QUERY",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[100]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "query",
-    "dEFType" : 5,
-    "dataType" : "TEXT",
-    "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "查询参数",
-    "name" : "QUERY",
-    "orderValue" : 280,
-    "serviceCodeName" : "query",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "phisicalDEField" : false,
-    "uIAssistDEField" : true
-  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "DOCUMENT_ID",
       "dBType" : "POSTGRESQL",
@@ -2113,7 +2047,7 @@
       "topPos" : 192,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\ndef query = _default.get('query')\r\ndef kb_id = _default.get('kb_id')\r\nif (query && kb_id){\r\n    def _params = [:]\r\n    _params.put('query', query)\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false);\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params);\r\n    _default.set('result',_page)\r\n}\r\n",
+      "code" : "def _default = logic.param('Default').getReal()\r\ndef query = _default.get('query')\r\ndef kb_id = _default.get('kb_id')\r\nif (query && kb_id){\r\n    def _params = [:]\r\n    def n_rerank_eq = _default.get('n_rerank_eq')?:0\r\n    _params.put('query', query)\r\n    _params.put('n_rerank_eq', n_rerank_eq)\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false);\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params);\r\n    _default.set('result',_page)\r\n}\r\n",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 400,
@@ -2372,17 +2306,6 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 2000,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "查询参数",
-      "name" : "query",
-      "getPSDEField" : {
-        "name" : "QUERY",
-        "codeName" : "query"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",

@@ -12,49 +12,9 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM_01"
+        "id" : "DEBUGPARAM_01"
       },
-      "name" : "不存在同步id",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNULL",
-          "dstFieldName" : "sync_id",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[sync_id] 值为空(Nil) "
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "Begin"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM_02"
-      },
-      "name" : "存在同步id",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "sync_id",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[sync_id] 值不为空(NotNil) "
-        } ]
-      },
+      "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "Begin"
@@ -179,7 +139,18 @@
     "topPos" : 328,
     "parallelOutput" : true
   }, {
-    "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\n_default.started_at=new Date()\r\n_default.execution_time=15",
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "查看解析逻辑参数",
+    "topPos" : 410,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\n\r\n_tasks.each { task->\r\n    println \"类型: ${task.principal_type}, id: ${task.principal_id}, 名称: ${task.principal_name},完成时间: ${task.finished_at}\"\r\n}\r\n\r\n_default.started_at=new Date()\r\n_default.finished_at=new Date(new Date().time + 2 * 60 * 1000)",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 650,
