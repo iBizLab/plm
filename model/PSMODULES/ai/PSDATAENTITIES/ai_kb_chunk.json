@@ -255,6 +255,9 @@
       "name" : "SEQUENCE",
       "codeName" : "sequence"
     }, {
+      "name" : "DOCUMENT_TYPE",
+      "codeName" : "document_type"
+    }, {
       "name" : "DOCUMENT_ID",
       "codeName" : "document_id"
     }, {
@@ -1774,6 +1777,89 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DOCUMENT_TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "DOCUMENT_TYPE",
+      "standardColumnName" : "DOCUMENT_TYPE"
+    }, {
+      "columnName" : "DOCUMENT_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "DOCUMENT_TYPE",
+      "queryCodeExp" : "t2.`DOCUMENT_TYPE`",
+      "standardColumnName" : "`DOCUMENT_TYPE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[DOCUMENT_TYPE][文档类型]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[DOCUMENT_TYPE][文档类型]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DOCUMENT_TYPE][文档类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[DOCUMENT_TYPE][文档类型]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DOCUMENT_TYPE",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "document_type",
+    "dEFType" : 3,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "文档类型",
+    "name" : "DOCUMENT_TYPE",
+    "orderValue" : 300,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "DOCUMENT_TYPE"
+    },
+    "serviceCodeName" : "document_type",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "DOCUMENT_ID",
       "dBType" : "POSTGRESQL",
       "name" : "DOCUMENT_ID",
@@ -2518,6 +2604,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "文档类型",
+      "name" : "document_type",
+      "getPSDEField" : {
+        "name" : "DOCUMENT_TYPE",
+        "codeName" : "document_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",
