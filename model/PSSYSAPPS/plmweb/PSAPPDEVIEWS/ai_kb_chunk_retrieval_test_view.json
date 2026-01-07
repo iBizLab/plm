@@ -391,6 +391,12 @@
         "showBusyIndicator" : true,
         "id" : "SEARCHFORM"
       },
+      "getPSDEFormItemUpdates" : [ {
+        "codeName" : "vector_similarity_weight",
+        "name" : "更新向量相似度权重",
+        "scriptCode" : "const kwWeight = data.keyword_similarity_weight ?? 0;\r\ndata.vector_similarity_weight = 1 - kwWeight;\r\n",
+        "customCode" : true
+      } ],
       "getPSDEFormItems" : [ {
         "id" : "similarity_threshold",
         "dataType" : 25,
@@ -399,6 +405,10 @@
         "id" : "keyword_similarity_weight",
         "dataType" : 25,
         "createDV" : "0"
+      }, {
+        "id" : "vector_similarity_weight",
+        "hidden" : true,
+        "dataType" : 25
       }, {
         "id" : "top_k",
         "dataType" : 25,
@@ -475,6 +485,10 @@
             "labelWidth" : 130,
             "name" : "keyword_similarity_weight",
             "noPrivDisplayMode" : 1,
+            "getPSDEFormItemUpdate" : {
+              "modelref" : true,
+              "id" : "vector_similarity_weight"
+            },
             "getPSEditor" : {
               "cssStyle" : "padding-left: 5px;",
               "editorParams" : {
@@ -494,6 +508,29 @@
             "allowEmpty" : true,
             "showCaption" : true
           }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "fieldName" : "vector_similarity_weight",
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "vector_similarity_weight"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
             "caption" : "Top-K",
             "codeName" : "top_k",
             "createDV" : "0",
@@ -509,12 +546,12 @@
             "getPSEditor" : {
               "cssStyle" : "padding-left: 5px;",
               "editorParams" : {
-                "maxvalue" : "2048",
+                "maxvalue" : "50",
                 "stepvalue" : "1"
               },
               "editorType" : "SLIDER",
               "editorWidth" : 350.0,
-              "maxValue" : 2048.0,
+              "maxValue" : 50.0,
               "name" : "top_k",
               "stepValue" : 1.0
             },
@@ -685,6 +722,7 @@
             "layout" : "FLEX"
           },
           "getPSLayoutPos" : {
+            "colLG" : 8,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },

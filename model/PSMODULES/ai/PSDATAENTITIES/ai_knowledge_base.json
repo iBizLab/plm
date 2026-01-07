@@ -225,6 +225,9 @@
       "name" : "UPDATE_TIME",
       "codeName" : "update_time"
     }, {
+      "name" : "VISIBILITY",
+      "codeName" : "visibility"
+    }, {
       "name" : "META_DATA",
       "codeName" : "meta_data"
     }, {
@@ -1037,6 +1040,94 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "VISIBILITY",
+      "dBType" : "POSTGRESQL",
+      "name" : "VISIBILITY",
+      "standardColumnName" : "VISIBILITY"
+    }, {
+      "columnName" : "VISIBILITY",
+      "dBType" : "MYSQL5",
+      "name" : "VISIBILITY",
+      "queryCodeExp" : "t1.`VISIBILITY`",
+      "standardColumnName" : "`VISIBILITY`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "VISIBILITY",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "visibility",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "可见范围",
+    "name" : "VISIBILITY",
+    "orderValue" : 120,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/visibility.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "VISIBILITY"
+    },
+    "serviceCodeName" : "visibility",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "allowEmpty" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "META_DATA",
       "dBType" : "POSTGRESQL",
       "name" : "META_DATA",
@@ -1045,6 +1136,7 @@
       "columnName" : "META_DATA",
       "dBType" : "MYSQL5",
       "name" : "META_DATA",
+      "queryCodeExp" : "t1.`META_DATA`",
       "standardColumnName" : "`META_DATA`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1872,6 +1964,18 @@
       "type" : "SIMPLE",
       "allowEmpty" : false,
       "readOnly" : true
+    }, {
+      "logicName" : "可见范围",
+      "name" : "visibility",
+      "getPSDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "文档元数据",
       "name" : "meta_data",
