@@ -3519,7 +3519,7 @@
       "topPos" : 408,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\ndef deCodeName = _default.get('source_type')\ndef dstEntityKey = _default.get('source_id')\nif (deCodeName && dstEntityKey) {\n    def dstEntityRuntime = sys.dataentity(deCodeName)\n    def bos = new java.io.ByteArrayOutputStream()\n    def dePrintCodeName = \"chat_resource\"\n    def keys = [dstEntityKey] as Object[]\n    dstEntityRuntime.outputPrint(\n        dePrintCodeName,\n        bos,\n        keys,\n        null,\n        false\n    )\n    _default.set(\"parsed_content\", bos.toString(\"utf-8\"))\n}",
+      "code" : "def _default = logic.param('Default').getReal()\ndef deCodeName = _default.get('source_type')\ndef dstEntityKey = _default.get('source_id')\nif (deCodeName && dstEntityKey) {\n    def dstEntityRuntime = sys.dataentity(deCodeName)\n    def bos = new java.io.ByteArrayOutputStream()\n    def dePrintCodeName = \"chat_resource\"\n    def keys = [dstEntityKey] as Object[]\n    net.ibizsys.central.cloud.core.security.IEmployeeContext lastEmployeeContext = net.ibizsys.central.cloud.core.security.EmployeeContext.getCurrent();\n    try {\n        net.ibizsys.central.cloud.core.security.EmployeeContext.setCurrent(sys.createSuperUserContext());\n        dstEntityRuntime.outputPrint(\n            dePrintCodeName,\n            bos,\n            keys,\n            null,\n            false\n        )\n    }\n    finally {\n        net.ibizsys.central.cloud.core.security.EmployeeContext.setCurrent(lastEmployeeContext);\n    }\n\n    _default.set(\"parsed_content\", bos.toString(\"utf-8\"))\n}",
       "codeName" : "RAWSFCODE_03",
       "codeType" : "Groovy",
       "leftPos" : -106,
