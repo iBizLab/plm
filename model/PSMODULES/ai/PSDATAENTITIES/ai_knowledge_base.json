@@ -358,6 +358,263 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/admin/PSDEDQCODES/POSTGRESQL.json"
+    } ],
+    "codeName" : "admin",
+    "logicName" : "管理员",
+    "name" : "admin",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "joinType" : "1N",
+        "name" : "AI_KB_MEMBER存在1:N（EXISTS (SELECT)）DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "USER_ID",
+            "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "USER_ID",
+              "codeName" : "user_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "reader",
+            "fieldName" : "ROLE_ID",
+            "name" : "(ROLE_ID) 等于(=) reader",
+            "getPSDEField" : {
+              "name" : "ROLE_ID",
+              "codeName" : "role_id"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "AdminInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "AdminResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/public/PSDEDQCODES/POSTGRESQL.json"
+    } ],
+    "codeName" : "public",
+    "logicName" : "公开",
+    "name" : "public",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "PublicInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "PublicResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/reader/PSDEDQCODES/POSTGRESQL.json"
+    } ],
+    "codeName" : "reader",
+    "logicName" : "只读用户",
+    "name" : "reader",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "joinType" : "1N",
+        "name" : "AI_KB_MEMBER存在1:N（EXISTS (SELECT)）DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "USER_ID",
+            "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "USER_ID",
+              "codeName" : "user_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "reader",
+            "fieldName" : "ROLE_ID",
+            "name" : "(ROLE_ID) 等于(=) reader",
+            "getPSDEField" : {
+              "name" : "ROLE_ID",
+              "codeName" : "role_id"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ReaderInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ReaderResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/user/PSDEDQCODES/POSTGRESQL.json"
+    } ],
+    "codeName" : "user",
+    "logicName" : "操作用户",
+    "name" : "user",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+        },
+        "joinType" : "1N",
+        "name" : "AI_KB_MEMBER存在1:N（EXISTS (SELECT)）DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "USER_ID",
+            "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "USER_ID",
+              "codeName" : "user_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "reader",
+            "fieldName" : "ROLE_ID",
+            "name" : "(ROLE_ID) 等于(=) reader",
+            "getPSDEField" : {
+              "name" : "ROLE_ID",
+              "codeName" : "role_id"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "UserInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "UserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEDATAQUERIES/valid/PSDEDQCODES/MYSQL5.json"
     }, {
       "modelref" : true,
@@ -427,6 +684,87 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "admin",
+    "logicName" : "管理员",
+    "name" : "admin",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "admin"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "AdminInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "AdminResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "reader",
+    "logicName" : "只读用户",
+    "name" : "reader",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "public"
+    }, {
+      "modelref" : true,
+      "id" : "reader"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ReaderInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ReaderResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "user",
+    "logicName" : "操作用户",
+    "name" : "user",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "user"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "UserInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "UserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -1043,6 +1381,7 @@
       "columnName" : "VISIBILITY",
       "dBType" : "POSTGRESQL",
       "name" : "VISIBILITY",
+      "queryCodeExp" : "t1.VISIBILITY",
       "standardColumnName" : "VISIBILITY"
     }, {
       "columnName" : "VISIBILITY",
@@ -1131,6 +1470,7 @@
       "columnName" : "META_DATA",
       "dBType" : "POSTGRESQL",
       "name" : "META_DATA",
+      "queryCodeExp" : "t1.META_DATA",
       "standardColumnName" : "META_DATA"
     }, {
       "columnName" : "META_DATA",
@@ -2171,10 +2511,54 @@
     "logicName" : "读取",
     "name" : "READ"
   }, {
+    "logicName" : "子数据权限",
+    "name" : "SUBDATA"
+  }, {
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
   "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEUSERROLES/ADMIN_RW.json",
+    "name" : "管理员（读写）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "admin"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "SUBDATA",
+      "name" : "SUBDATA",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "SUBDATA"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    } ],
+    "roleTag" : "ADMIN_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
+  }, {
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEUSERROLES/ALL_R.json",
     "name" : "全部数据（读）",
     "getPSDEUserRoleOPPrivs" : [ {
@@ -2226,6 +2610,60 @@
     "userCat" : "CAT1",
     "userDRAction" : "READ",
     "allData" : true,
+    "systemReserved" : true
+  }, {
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEUSERROLES/USER_R.json",
+    "name" : "只读用户（读）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "reader"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "USER_R",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
+  }, {
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEUSERROLES/USER_RW.json",
+    "name" : "普通用户（读写）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "user"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "SUBDATA",
+      "name" : "SUBDATA",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "SUBDATA"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    } ],
+    "roleTag" : "USER_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
