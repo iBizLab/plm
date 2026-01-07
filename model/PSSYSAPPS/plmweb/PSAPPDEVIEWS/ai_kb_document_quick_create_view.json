@@ -1480,6 +1480,7 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
                   }
                 },
+                "hookEventNames" : [ "ONLOADSUCCESS", "ONLOADDRAFTSUCCESS" ],
                 "logicName" : "切片策略表单(只读)",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
@@ -1564,11 +1565,33 @@
                   "enableDEFieldPrivilege" : false,
                   "id" : "编辑表单处理器"
                 },
+                "getPSControlLogics" : [ {
+                  "eventNames" : "onLoadSuccess",
+                  "logicTag" : "form",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic1",
+                  "scriptCode" : "var chunk_method = data[0].chunk_method\ndata[0].parser_config.method = chunk_method"
+                }, {
+                  "eventNames" : "onLoadDraftSuccess",
+                  "logicTag" : "form",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic2",
+                  "scriptCode" : "var chunk_method = data[0].chunk_method\ndata[0].parser_config.method = chunk_method"
+                } ],
                 "getPSControlParam" : {
                   "autoLoad" : true,
                   "showBusyIndicator" : true,
                   "id" : "FORM"
                 },
+                "getPSDEFormItemUpdates" : [ {
+                  "codeName" : "update_method",
+                  "name" : "update_method",
+                  "getPSDEFIUpdateDetails" : [ {
+                    "name" : "method"
+                  } ],
+                  "scriptCode" : "console.log(\"update_metho\");\nconst chunk_method = data.chunk_method\ndata.parser_config.method = chunk_method\n",
+                  "customCode" : true
+                } ],
                 "getPSDEFormItems" : [ {
                   "id" : "srfupdatedate",
                   "hidden" : true,
@@ -1672,6 +1695,10 @@
                           "name" : "CHUNK_METHOD",
                           "codeName" : "chunk_method"
                         },
+                        "getPSDEFormItemUpdate" : {
+                          "modelref" : true,
+                          "id" : "update_method"
+                        },
                         "getPSEditor" : {
                           "editorType" : "SPAN",
                           "name" : "chunk_method",
@@ -1744,6 +1771,30 @@
                           "detailType" : "GROUPPANEL",
                           "name" : "grouppanel4",
                           "getPSDEFormDetails" : [ {
+                            "caption" : "切片方法",
+                            "codeName" : "method",
+                            "dataType" : 25,
+                            "detailStyle" : "DEFAULT",
+                            "detailType" : "FORMITEM",
+                            "enableCond" : 3,
+                            "ignoreInput" : 3,
+                            "labelPos" : "LEFT",
+                            "labelWidth" : 130,
+                            "name" : "method",
+                            "noPrivDisplayMode" : 1,
+                            "getPSEditor" : {
+                              "editorType" : "HIDDEN",
+                              "name" : "method"
+                            },
+                            "getPSLayoutPos" : {
+                              "colLG" : 24,
+                              "colMD" : 8,
+                              "layout" : "TABLE_24COL"
+                            },
+                            "allowEmpty" : true,
+                            "hidden" : true,
+                            "repeatContent" : true
+                          }, {
                             "caption" : "块大小",
                             "codeName" : "chunk_token_num",
                             "createDV" : "512",
@@ -1756,10 +1807,23 @@
                             "labelWidth" : 130,
                             "name" : "chunk_token_num",
                             "noPrivDisplayMode" : 1,
+                            "getPSDEFDGroupLogics" : [ {
+                              "groupOP" : "AND",
+                              "logicCat" : "ITEMBLANK",
+                              "logicType" : "GROUP",
+                              "getPSDEFDLogics" : [ {
+                                "condOP" : "NOTEQ",
+                                "dEFDName" : "method",
+                                "logicType" : "SINGLE",
+                                "name" : "method不等于(<>) NAIVE",
+                                "value" : "NAIVE"
+                              } ],
+                              "relatedDetailNames" : [ "method" ],
+                              "notMode" : false
+                            } ],
                             "getPSEditor" : {
-                              "editorType" : "SPAN",
-                              "name" : "chunk_token_num",
-                              "enableLinkView" : false
+                              "editorType" : "NUMBER",
+                              "name" : "chunk_token_num"
                             },
                             "getPSLayoutPos" : {
                               "colLG" : 8,
@@ -1767,7 +1831,7 @@
                               "layout" : "TABLE_24COL"
                             },
                             "updateDV" : "512",
-                            "allowEmpty" : true,
+                            "allowEmpty" : false,
                             "repeatContent" : true,
                             "showCaption" : true
                           }, {
@@ -1804,7 +1868,7 @@
                             "dataType" : 25,
                             "detailStyle" : "DEFAULT",
                             "detailType" : "FORMITEM",
-                            "enableCond" : 0,
+                            "enableCond" : 3,
                             "ignoreInput" : 0,
                             "labelPos" : "LEFT",
                             "labelWidth" : 130,
@@ -1878,7 +1942,7 @@
                             "repeatContent" : true,
                             "showCaption" : true
                           }, {
-                            "caption" : "任务页面大小",
+                            "caption" : "处理页面大小",
                             "codeName" : "task_page_size",
                             "createDV" : "12",
                             "dataType" : 25,
@@ -1890,10 +1954,23 @@
                             "labelWidth" : 130,
                             "name" : "task_page_size",
                             "noPrivDisplayMode" : 1,
+                            "getPSDEFDGroupLogics" : [ {
+                              "groupOP" : "AND",
+                              "logicCat" : "ITEMBLANK",
+                              "logicType" : "GROUP",
+                              "getPSDEFDLogics" : [ {
+                                "condOP" : "NOTEQ",
+                                "dEFDName" : "method",
+                                "logicType" : "SINGLE",
+                                "name" : "method不等于(<>) NAIVE",
+                                "value" : "NAIVE"
+                              } ],
+                              "relatedDetailNames" : [ "method" ],
+                              "notMode" : false
+                            } ],
                             "getPSEditor" : {
-                              "editorType" : "SPAN",
-                              "name" : "task_page_size",
-                              "enableLinkView" : false
+                              "editorType" : "NUMBER",
+                              "name" : "task_page_size"
                             },
                             "getPSLayoutPos" : {
                               "colLG" : 8,
@@ -1901,7 +1978,7 @@
                               "layout" : "TABLE_24COL"
                             },
                             "updateDV" : "12",
-                            "allowEmpty" : true,
+                            "allowEmpty" : false,
                             "repeatContent" : true,
                             "showCaption" : true
                           }, {
@@ -1910,9 +1987,9 @@
                             "dataType" : 25,
                             "detailStyle" : "DEFAULT",
                             "detailType" : "FORMITEM",
-                            "enableCond" : 0,
+                            "enableCond" : 3,
                             "ignoreInput" : 0,
-                            "itemWidth" : 380.0,
+                            "itemWidth" : 355.0,
                             "labelPos" : "LEFT",
                             "labelWidth" : 130,
                             "name" : "auto_keywords",
@@ -1923,21 +2000,21 @@
                               "logicType" : "GROUP",
                               "getPSDEFDLogics" : [ {
                                 "condOP" : "NOTEQ",
-                                "dEFDName" : "chunk_method",
+                                "dEFDName" : "method",
                                 "logicType" : "SINGLE",
-                                "name" : "chunk_method不等于(<>) NAIVE",
+                                "name" : "method不等于(<>) NAIVE",
                                 "value" : "NAIVE"
                               } ],
-                              "relatedDetailNames" : [ "chunk_method" ],
+                              "relatedDetailNames" : [ "method" ],
                               "notMode" : false
                             } ],
                             "getPSEditor" : {
-                              "cssStyle" : "padding-left: 5px;",
+                              "cssStyle" : "padding-left: 5px;\n",
                               "editorParams" : {
                                 "maxvalue" : "30"
                               },
                               "editorType" : "SLIDER",
-                              "editorWidth" : 250.0,
+                              "editorWidth" : 225.0,
                               "maxValue" : 30.0,
                               "name" : "auto_keywords",
                               "stepValue" : 1.0
@@ -1956,9 +2033,9 @@
                             "dataType" : 25,
                             "detailStyle" : "DEFAULT",
                             "detailType" : "FORMITEM",
-                            "enableCond" : 0,
+                            "enableCond" : 3,
                             "ignoreInput" : 0,
-                            "itemWidth" : 380.0,
+                            "itemWidth" : 355.0,
                             "labelPos" : "LEFT",
                             "labelWidth" : 130,
                             "name" : "auto_questions",
@@ -1969,21 +2046,21 @@
                               "logicType" : "GROUP",
                               "getPSDEFDLogics" : [ {
                                 "condOP" : "NOTEQ",
-                                "dEFDName" : "chunk_method",
+                                "dEFDName" : "method",
                                 "logicType" : "SINGLE",
-                                "name" : "chunk_method不等于(<>) NAIVE",
+                                "name" : "method不等于(<>) NAIVE",
                                 "value" : "NAIVE"
                               } ],
-                              "relatedDetailNames" : [ "chunk_method" ],
+                              "relatedDetailNames" : [ "method" ],
                               "notMode" : false
                             } ],
                             "getPSEditor" : {
-                              "cssStyle" : "padding-left: 5px;",
+                              "cssStyle" : "padding-left: 5px;\n",
                               "editorParams" : {
                                 "maxvalue" : "30"
                               },
                               "editorType" : "SLIDER",
-                              "editorWidth" : 250.0,
+                              "editorWidth" : 225.0,
                               "maxValue" : 30.0,
                               "name" : "auto_questions",
                               "stepValue" : 1.0
@@ -1997,70 +2074,420 @@
                             "repeatContent" : true,
                             "showCaption" : true
                           }, {
-                            "caption" : "Excel转HTML",
-                            "codeName" : "html4excel",
-                            "dataType" : 25,
+                            "codeName" : "grouppanel6",
                             "detailStyle" : "DEFAULT",
-                            "detailType" : "FORMITEM",
-                            "enableCond" : 0,
-                            "ignoreInput" : 0,
-                            "labelPos" : "LEFT",
-                            "labelWidth" : 130,
-                            "name" : "html4excel",
-                            "noPrivDisplayMode" : 1,
-                            "getPSDEFDGroupLogics" : [ {
-                              "groupOP" : "AND",
-                              "logicCat" : "ITEMBLANK",
-                              "logicType" : "GROUP",
-                              "getPSDEFDLogics" : [ {
-                                "condOP" : "NOTEQ",
-                                "dEFDName" : "chunk_method",
-                                "logicType" : "SINGLE",
-                                "name" : "chunk_method不等于(<>) NAIVE",
-                                "value" : "NAIVE"
+                            "detailType" : "GROUPPANEL",
+                            "name" : "grouppanel6",
+                            "getPSDEFormDetails" : [ {
+                              "caption" : "Excel转HTML",
+                              "codeName" : "html4excel",
+                              "dataType" : 25,
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "FORMITEM",
+                              "enableCond" : 3,
+                              "ignoreInput" : 0,
+                              "labelPos" : "LEFT",
+                              "labelWidth" : 130,
+                              "name" : "html4excel",
+                              "noPrivDisplayMode" : 1,
+                              "getPSDEFDGroupLogics" : [ {
+                                "groupOP" : "AND",
+                                "logicCat" : "ITEMBLANK",
+                                "logicType" : "GROUP",
+                                "getPSDEFDLogics" : [ {
+                                  "condOP" : "NOTEQ",
+                                  "dEFDName" : "method",
+                                  "logicType" : "SINGLE",
+                                  "name" : "method不等于(<>) NAIVE",
+                                  "value" : "NAIVE"
+                                } ],
+                                "relatedDetailNames" : [ "method" ],
+                                "notMode" : false
                               } ],
-                              "relatedDetailNames" : [ "chunk_method" ],
-                              "notMode" : false
-                            } ],
-                            "getPSEditor" : {
-                              "editorType" : "SWITCH",
-                              "name" : "html4excel"
-                            },
-                            "getPSLayoutPos" : {
-                              "colLG" : 8,
-                              "colMD" : 8,
-                              "layout" : "TABLE_24COL"
-                            },
-                            "allowEmpty" : false,
-                            "repeatContent" : true,
-                            "showCaption" : true
-                          }, {
-                            "caption" : "布局识别方式",
-                            "codeName" : "layout_recognize",
-                            "createDV" : "DeepDOC",
-                            "dataType" : 25,
-                            "detailStyle" : "DEFAULT",
-                            "detailType" : "FORMITEM",
-                            "enableCond" : 0,
-                            "ignoreInput" : 0,
-                            "labelPos" : "LEFT",
-                            "labelWidth" : 130,
-                            "name" : "layout_recognize",
-                            "noPrivDisplayMode" : 1,
-                            "getPSEditor" : {
-                              "editorType" : "SPAN",
+                              "getPSEditor" : {
+                                "editorType" : "SWITCH",
+                                "name" : "html4excel"
+                              },
+                              "getPSLayoutPos" : {
+                                "colLG" : 8,
+                                "colMD" : 8,
+                                "layout" : "TABLE_24COL"
+                              },
+                              "allowEmpty" : false,
+                              "repeatContent" : true,
+                              "showCaption" : true
+                            }, {
+                              "caption" : "布局识别方式",
+                              "codeName" : "layout_recognize",
+                              "createDV" : "DeepDOC",
+                              "dataType" : 25,
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "FORMITEM",
+                              "enableCond" : 3,
+                              "ignoreInput" : 0,
+                              "labelPos" : "LEFT",
+                              "labelWidth" : 130,
                               "name" : "layout_recognize",
-                              "enableLinkView" : false
-                            },
-                            "getPSLayoutPos" : {
-                              "colLG" : 8,
-                              "colMD" : 8,
+                              "noPrivDisplayMode" : 1,
+                              "getPSDEFDGroupLogics" : [ {
+                                "groupOP" : "AND",
+                                "logicCat" : "ITEMBLANK",
+                                "logicType" : "GROUP",
+                                "getPSDEFDLogics" : [ {
+                                  "condOP" : "NOTEQ",
+                                  "dEFDName" : "method",
+                                  "logicType" : "SINGLE",
+                                  "name" : "method不等于(<>) NAIVE",
+                                  "value" : "NAIVE"
+                                } ],
+                                "relatedDetailNames" : [ "method" ],
+                                "notMode" : false
+                              } ],
+                              "getPSEditor" : {
+                                "editorType" : "TEXTBOX",
+                                "name" : "layout_recognize"
+                              },
+                              "getPSLayoutPos" : {
+                                "colLG" : 8,
+                                "colMD" : 8,
+                                "layout" : "TABLE_24COL"
+                              },
+                              "updateDV" : "DeepDOC",
+                              "allowEmpty" : false,
+                              "repeatContent" : true,
+                              "showCaption" : true
+                            }, {
+                              "codeName" : "grouppanel7",
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "GROUPPANEL",
+                              "name" : "grouppanel7",
+                              "getPSDEFDGroupLogics" : [ {
+                                "groupOP" : "AND",
+                                "logicCat" : "PANELVISIBLE",
+                                "logicType" : "GROUP",
+                                "getPSDEFDLogics" : [ {
+                                  "groupOP" : "OR",
+                                  "logicType" : "GROUP",
+                                  "name" : "OR",
+                                  "getPSDEFDLogics" : [ {
+                                    "condOP" : "EQ",
+                                    "dEFDName" : "method",
+                                    "logicType" : "SINGLE",
+                                    "name" : "method等于(=) QA",
+                                    "value" : "QA"
+                                  }, {
+                                    "condOP" : "EQ",
+                                    "dEFDName" : "method",
+                                    "logicType" : "SINGLE",
+                                    "name" : "method等于(=) MANUAL",
+                                    "value" : "MANUAL"
+                                  }, {
+                                    "condOP" : "EQ",
+                                    "dEFDName" : "method",
+                                    "logicType" : "SINGLE",
+                                    "name" : "method等于(=) BOOK",
+                                    "value" : "BOOK"
+                                  }, {
+                                    "condOP" : "EQ",
+                                    "dEFDName" : "method",
+                                    "logicType" : "SINGLE",
+                                    "name" : "method等于(=) LAWS",
+                                    "value" : "LAWS"
+                                  }, {
+                                    "condOP" : "EQ",
+                                    "dEFDName" : "method",
+                                    "logicType" : "SINGLE",
+                                    "name" : "method等于(=) PRESENTATION",
+                                    "value" : "PRESENTATION"
+                                  } ],
+                                  "notMode" : false
+                                } ],
+                                "relatedDetailNames" : [ "method" ],
+                                "notMode" : false
+                              } ],
+                              "getPSDEFormDetails" : [ {
+                                "codeName" : "raptor",
+                                "contentType" : "REPEATER",
+                                "detailStyle" : "STYLE3",
+                                "detailType" : "MDCTRL",
+                                "fieldName" : "raptor",
+                                "name" : "raptor",
+                                "getPSDEFormDetails" : [ {
+                                  "caption" : "使用召回增强 RAPTOR 策略",
+                                  "codeName" : "use_raptor",
+                                  "createDV" : "0",
+                                  "dataType" : 25,
+                                  "detailStyle" : "DEFAULT",
+                                  "detailType" : "FORMITEM",
+                                  "enableCond" : 3,
+                                  "ignoreInput" : 0,
+                                  "labelPos" : "LEFT",
+                                  "labelWidth" : 200,
+                                  "name" : "use_raptor",
+                                  "noPrivDisplayMode" : 1,
+                                  "getPSEditor" : {
+                                    "editorType" : "SWITCH",
+                                    "name" : "use_raptor"
+                                  },
+                                  "getPSLayoutPos" : {
+                                    "colLG" : 8,
+                                    "colMD" : 8,
+                                    "layout" : "TABLE_24COL"
+                                  },
+                                  "updateDV" : "0",
+                                  "allowEmpty" : true,
+                                  "repeatContent" : true,
+                                  "showCaption" : true
+                                }, {
+                                  "codeName" : "grouppanel5",
+                                  "detailStyle" : "DEFAULT",
+                                  "detailType" : "GROUPPANEL",
+                                  "name" : "grouppanel5",
+                                  "getPSDEFDGroupLogics" : [ {
+                                    "groupOP" : "AND",
+                                    "logicCat" : "PANELVISIBLE",
+                                    "logicType" : "GROUP",
+                                    "getPSDEFDLogics" : [ {
+                                      "condOP" : "EQ",
+                                      "dEFDName" : "use_raptor",
+                                      "logicType" : "SINGLE",
+                                      "name" : "use_raptor等于(=) 1",
+                                      "value" : "1"
+                                    } ],
+                                    "relatedDetailNames" : [ "use_raptor" ],
+                                    "notMode" : false
+                                  } ],
+                                  "getPSDEFormDetails" : [ {
+                                    "caption" : "提示词",
+                                    "codeName" : "prompt",
+                                    "dataType" : 25,
+                                    "detailStyle" : "DEFAULT",
+                                    "detailType" : "FORMITEM",
+                                    "enableCond" : 3,
+                                    "ignoreInput" : 0,
+                                    "itemHeight" : 200.0,
+                                    "labelPos" : "LEFT",
+                                    "labelWidth" : 130,
+                                    "name" : "prompt",
+                                    "noPrivDisplayMode" : 1,
+                                    "getPSDEFDGroupLogics" : [ {
+                                      "groupOP" : "AND",
+                                      "logicCat" : "ITEMBLANK",
+                                      "logicType" : "GROUP",
+                                      "getPSDEFDLogics" : [ {
+                                        "condOP" : "NOTEQ",
+                                        "dEFDName" : "use_raptor",
+                                        "logicType" : "SINGLE",
+                                        "name" : "use_raptor不等于(<>) 1",
+                                        "value" : "1"
+                                      } ],
+                                      "relatedDetailNames" : [ "use_raptor" ],
+                                      "notMode" : false
+                                    } ],
+                                    "getPSEditor" : {
+                                      "editorHeight" : 200.0,
+                                      "editorParams" : {
+                                        "HEIGHT" : "200"
+                                      },
+                                      "editorType" : "TEXTAREA_10",
+                                      "name" : "prompt",
+                                      "showMaxLength" : true
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "colLG" : 24,
+                                      "colMD" : 24,
+                                      "layout" : "TABLE_24COL"
+                                    },
+                                    "allowEmpty" : false,
+                                    "repeatContent" : true,
+                                    "showCaption" : true
+                                  }, {
+                                    "caption" : "最大token数",
+                                    "codeName" : "max_token",
+                                    "createDV" : "256",
+                                    "dataType" : 25,
+                                    "detailStyle" : "DEFAULT",
+                                    "detailType" : "FORMITEM",
+                                    "enableCond" : 3,
+                                    "ignoreInput" : 0,
+                                    "itemWidth" : 355.0,
+                                    "labelPos" : "LEFT",
+                                    "labelWidth" : 130,
+                                    "name" : "max_token",
+                                    "noPrivDisplayMode" : 1,
+                                    "getPSEditor" : {
+                                      "editorParams" : {
+                                        "maxvalue" : "2048",
+                                        "stepvalue" : "1"
+                                      },
+                                      "editorType" : "SLIDER",
+                                      "editorWidth" : 225.0,
+                                      "maxValue" : 2048.0,
+                                      "name" : "max_token",
+                                      "stepValue" : 1.0
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "colLG" : 8,
+                                      "colMD" : 8,
+                                      "layout" : "TABLE_24COL"
+                                    },
+                                    "updateDV" : "256",
+                                    "allowEmpty" : true,
+                                    "repeatContent" : true,
+                                    "showCaption" : true
+                                  }, {
+                                    "caption" : "阈值",
+                                    "codeName" : "threshold",
+                                    "createDV" : "0.1",
+                                    "dataType" : 25,
+                                    "detailStyle" : "DEFAULT",
+                                    "detailType" : "FORMITEM",
+                                    "enableCond" : 3,
+                                    "ignoreInput" : 0,
+                                    "itemWidth" : 355.0,
+                                    "labelPos" : "LEFT",
+                                    "labelWidth" : 130,
+                                    "name" : "threshold",
+                                    "noPrivDisplayMode" : 1,
+                                    "getPSEditor" : {
+                                      "editorParams" : {
+                                        "maxvalue" : "1",
+                                        "stepvalue" : "0.01"
+                                      },
+                                      "editorType" : "SLIDER",
+                                      "editorWidth" : 225.0,
+                                      "maxValue" : 1.0,
+                                      "name" : "threshold",
+                                      "stepValue" : 0.01
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "colLG" : 8,
+                                      "colMD" : 8,
+                                      "layout" : "TABLE_24COL"
+                                    },
+                                    "updateDV" : "0.1",
+                                    "allowEmpty" : true,
+                                    "repeatContent" : true,
+                                    "showCaption" : true
+                                  }, {
+                                    "caption" : "最大聚类数",
+                                    "codeName" : "max_cluster",
+                                    "createDV" : "64",
+                                    "dataType" : 25,
+                                    "detailStyle" : "DEFAULT",
+                                    "detailType" : "FORMITEM",
+                                    "enableCond" : 3,
+                                    "ignoreInput" : 0,
+                                    "itemWidth" : 355.0,
+                                    "labelPos" : "LEFT",
+                                    "labelWidth" : 130,
+                                    "name" : "max_cluster",
+                                    "noPrivDisplayMode" : 1,
+                                    "getPSEditor" : {
+                                      "editorParams" : {
+                                        "maxvalue" : "1024",
+                                        "stepvalue" : "1"
+                                      },
+                                      "editorType" : "SLIDER",
+                                      "editorWidth" : 225.0,
+                                      "maxValue" : 1024.0,
+                                      "name" : "max_cluster",
+                                      "stepValue" : 1.0
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "colLG" : 8,
+                                      "colMD" : 8,
+                                      "layout" : "TABLE_24COL"
+                                    },
+                                    "updateDV" : "64",
+                                    "allowEmpty" : true,
+                                    "repeatContent" : true,
+                                    "showCaption" : true
+                                  }, {
+                                    "caption" : "随机种子",
+                                    "codeName" : "random_seed",
+                                    "createDV" : "42",
+                                    "dataType" : 25,
+                                    "detailStyle" : "DEFAULT",
+                                    "detailType" : "FORMITEM",
+                                    "enableCond" : 3,
+                                    "ignoreInput" : 0,
+                                    "labelPos" : "LEFT",
+                                    "labelWidth" : 130,
+                                    "name" : "random_seed",
+                                    "noPrivDisplayMode" : 1,
+                                    "getPSEditor" : {
+                                      "editorType" : "NUMBER",
+                                      "name" : "random_seed"
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "colLG" : 8,
+                                      "colMD" : 8,
+                                      "layout" : "TABLE_24COL"
+                                    },
+                                    "updateDV" : "42",
+                                    "allowEmpty" : true,
+                                    "repeatContent" : true,
+                                    "showCaption" : true
+                                  } ],
+                                  "getPSLayout" : {
+                                    "childColLG" : 8,
+                                    "childColMD" : 8,
+                                    "columnCount" : 24,
+                                    "layout" : "TABLE_24COL"
+                                  },
+                                  "getPSLayoutPos" : {
+                                    "colLG" : 24,
+                                    "colMD" : 24,
+                                    "layout" : "TABLE_24COL"
+                                  },
+                                  "infoGroupMode" : true,
+                                  "repeatContent" : true,
+                                  "showCaption" : false
+                                } ],
+                                "getPSLayout" : {
+                                  "childColLG" : 8,
+                                  "childColMD" : 8,
+                                  "columnCount" : 24,
+                                  "layout" : "TABLE_24COL"
+                                },
+                                "getPSLayoutPos" : {
+                                  "colLG" : 24,
+                                  "colMD" : 24,
+                                  "layout" : "TABLE_24COL"
+                                },
+                                "infoGroupMode" : true,
+                                "repeatContent" : true,
+                                "showCaption" : true
+                              } ],
+                              "getPSLayout" : {
+                                "childColMD" : 24,
+                                "columnCount" : 24,
+                                "layout" : "TABLE_24COL"
+                              },
+                              "getPSLayoutPos" : {
+                                "colLG" : 24,
+                                "colMD" : 24,
+                                "layout" : "TABLE_24COL"
+                              },
+                              "infoGroupMode" : true,
+                              "repeatContent" : true,
+                              "showCaption" : false
+                            } ],
+                            "getPSLayout" : {
+                              "childColLG" : 8,
+                              "childColMD" : 8,
+                              "columnCount" : 24,
                               "layout" : "TABLE_24COL"
                             },
-                            "updateDV" : "DeepDOC",
-                            "allowEmpty" : true,
+                            "getPSLayoutPos" : {
+                              "colLG" : 24,
+                              "colMD" : 24,
+                              "layout" : "TABLE_24COL"
+                            },
+                            "infoGroupMode" : true,
                             "repeatContent" : true,
-                            "showCaption" : true
+                            "showCaption" : false
                           } ],
                           "getPSLayout" : {
                             "childColLG" : 8,
@@ -2081,7 +2508,7 @@
                           "dataType" : 25,
                           "detailStyle" : "DEFAULT",
                           "detailType" : "FORMITEM",
-                          "enableCond" : 0,
+                          "enableCond" : 3,
                           "ignoreInput" : 0,
                           "labelPos" : "LEFT",
                           "labelWidth" : 130,
@@ -2110,6 +2537,7 @@
                           "detailType" : "GROUPPANEL",
                           "name" : "grouppanel2",
                           "getPSDEFormDetails" : [ {
+                            "buildInActions" : 7,
                             "codeName" : "data_masking_rules",
                             "contentType" : "REPEATER",
                             "detailStyle" : "DEFAULT",
@@ -2128,10 +2556,9 @@
                               "name" : "pattern",
                               "noPrivDisplayMode" : 1,
                               "getPSEditor" : {
-                                "editorType" : "SPAN",
+                                "editorType" : "TEXTBOX",
                                 "name" : "pattern",
-                                "placeHolder" : "正则式",
-                                "enableLinkView" : false
+                                "placeHolder" : "正则式"
                               },
                               "getPSLayoutPos" : {
                                 "colLG" : 8,
@@ -2154,9 +2581,8 @@
                               "name" : "replacement",
                               "noPrivDisplayMode" : 1,
                               "getPSEditor" : {
-                                "editorType" : "SPAN",
-                                "name" : "replacement",
-                                "enableLinkView" : false
+                                "editorType" : "TEXTBOX",
+                                "name" : "replacement"
                               },
                               "getPSLayoutPos" : {
                                 "colLG" : 16,
