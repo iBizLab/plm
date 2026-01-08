@@ -297,18 +297,27 @@
         "codeName" : "name"
       }
     }, {
+      "id" : "content",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "CONTENT",
+        "codeName" : "content"
+      }
+    }, {
       "id" : "positions",
+      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "POSITIONS",
         "codeName" : "positions"
       }
     }, {
-      "id" : "tags",
-      "dataType" : 25,
+      "id" : "sequence",
+      "hidden" : true,
+      "dataType" : 9,
       "getPSAppDEField" : {
-        "name" : "TAGS",
-        "codeName" : "tags"
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
       }
     }, {
       "id" : "keywords",
@@ -325,11 +334,11 @@
         "codeName" : "key_questions"
       }
     }, {
-      "id" : "content",
-      "dataType" : 21,
+      "id" : "tags",
+      "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "CONTENT",
-        "codeName" : "content"
+        "name" : "TAGS",
+        "codeName" : "tags"
       }
     }, {
       "id" : "active",
@@ -409,6 +418,39 @@
           },
           "allowEmpty" : false
         }, {
+          "caption" : "块内容",
+          "codeName" : "content",
+          "dataType" : 21,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "content",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CONTENT",
+            "codeName" : "content"
+          },
+          "getPSEditor" : {
+            "editorHeight" : 200.0,
+            "editorParams" : {
+              "ISAUTO" : "true"
+            },
+            "editorType" : "TEXTAREA",
+            "maxLength" : 1048576,
+            "name" : "content",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
           "caption" : "文档位置",
           "codeName" : "positions",
           "dataType" : 25,
@@ -425,8 +467,7 @@
             "codeName" : "positions"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
+            "editorType" : "HIDDEN",
             "name" : "positions"
           },
           "getPSLayoutPos" : {
@@ -435,49 +476,33 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "showCaption" : true
+          "hidden" : true
         }, {
-          "caption" : "标签",
-          "codeName" : "tags",
-          "dataType" : 25,
+          "caption" : "文档索引顺序",
+          "codeName" : "sequence",
+          "dataType" : 9,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
-          "name" : "tags",
+          "name" : "sequence",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "TAGS",
-            "codeName" : "tags"
+            "name" : "SEQUENCE",
+            "codeName" : "sequence"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "SRFNAVPARAM.n_set_id_in" : "%tag_sets%"
-            },
-            "editorType" : "MDROPDOWNLIST",
-            "name" : "tags",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
-            },
-            "getPSNavigateParams" : [ {
-              "key" : "n_set_id_in",
-              "name" : "n_set_id_in",
-              "value" : "tag_sets",
-              "rawValue" : false
-            } ],
-            "singleSelect" : false
+            "editorType" : "HIDDEN",
+            "name" : "sequence"
           },
           "getPSLayoutPos" : {
-            "colLG" : 16,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
-          "showCaption" : true
+          "hidden" : true
         }, {
           "caption" : "关键词",
           "codeName" : "keywords",
@@ -486,8 +511,8 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "LEFT",
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "keywords",
           "noPrivDisplayMode" : 1,
@@ -520,8 +545,8 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "LEFT",
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "key_questions",
           "noPrivDisplayMode" : 1,
@@ -547,37 +572,46 @@
           "allowEmpty" : true,
           "showCaption" : true
         }, {
-          "caption" : "块内容",
-          "codeName" : "content",
-          "dataType" : 21,
+          "caption" : "标签",
+          "codeName" : "tags",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "content",
+          "name" : "tags",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "CONTENT",
-            "codeName" : "content"
+            "name" : "TAGS",
+            "codeName" : "tags"
           },
           "getPSEditor" : {
-            "editorHeight" : 200.0,
             "editorParams" : {
-              "ISAUTO" : "true"
+              "SRFNAVPARAM.n_set_id_in" : "%tag_sets%"
             },
-            "editorType" : "TEXTAREA",
-            "maxLength" : 1048576,
-            "name" : "content",
-            "showMaxLength" : true
+            "editorType" : "MDROPDOWNLIST",
+            "name" : "tags",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "n_set_id_in",
+              "name" : "n_set_id_in",
+              "value" : "tag_sets",
+              "rawValue" : false
+            } ],
+            "singleSelect" : false
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
+            "colLG" : 24,
+            "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "caption" : "是否启用",
@@ -587,7 +621,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "active",
           "noPrivDisplayMode" : 1,
