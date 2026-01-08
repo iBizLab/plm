@@ -1015,7 +1015,7 @@
               "editorParams" : {
                 "FILEEXTS" : "",
                 "infomap" : "filesize:size;",
-                "accept" : ".txt,.md,.doc,.docx,.pdf",
+                "accept" : ".txt,.md,.doc,.docx,.pdf,.ppt,.pptx",
                 "MAXFILESIZE" : "",
                 "MINFILECNT" : "",
                 "MAXFILECNT" : ""
@@ -1041,14 +1041,14 @@
             "contentType" : "HTML",
             "detailStyle" : "DEFAULT",
             "detailType" : "RAWITEM",
-            "htmlContent" : "<p><span style=\"color: rgb(140, 140, 140);\">支持 TXT、MD、DOC、DOCX、PDF</span></p>",
+            "htmlContent" : "<p><span style=\"color: rgb(140, 140, 140);\">支持 TXT、MD、DOC、DOCX、PDF、PPT、PPTX</span></p>",
             "name" : "rawitem2",
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "getPSRawItem" : {
-              "content" : "<p><span style=\"color: rgb(140, 140, 140);\">支持 TXT、MD、DOC、DOCX、PDF</span></p>",
+              "content" : "<p><span style=\"color: rgb(140, 140, 140);\">支持 TXT、MD、DOC、DOCX、PDF、PPT、PPTX</span></p>",
               "contentType" : "HTML",
               "name" : "rawitem2",
               "rawItemHeight" : -1.0,
@@ -1559,8 +1559,14 @@
                     "value" : "ONE"
                   } ],
                   "notMode" : true
+                }, {
+                  "condOP" : "EQ",
+                  "dEFDName" : "custom_chunk",
+                  "logicType" : "SINGLE",
+                  "name" : "custom_chunk等于(=) 1",
+                  "value" : "1"
                 } ],
-                "relatedDetailNames" : [ "chunk_method" ],
+                "relatedDetailNames" : [ "chunk_method", "custom_chunk" ],
                 "notMode" : false
               } ],
               "getPSDEFormDetails" : [ {
@@ -4697,7 +4703,6 @@
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
-              "itemWidth" : 230.0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
               "name" : "is_parse_now",
@@ -4707,14 +4712,8 @@
                 "codeName" : "is_parse_now"
               },
               "getPSEditor" : {
-                "editorType" : "DROPDOWNLIST_100",
-                "editorWidth" : 100.0,
-                "name" : "is_parse_now",
-                "getPSAppCodeList" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
-                },
-                "singleSelect" : true
+                "editorType" : "SWITCH",
+                "name" : "is_parse_now"
               },
               "getPSLayoutPos" : {
                 "colLG" : 12,
@@ -4722,7 +4721,6 @@
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : false,
-              "needCodeListConfig" : true,
               "showCaption" : true
             } ],
             "getPSLayout" : {
