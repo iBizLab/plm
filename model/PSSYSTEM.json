@@ -4104,6 +4104,18 @@
     "wXContent" : "${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品：${data.name}",
     "mailGroupSend" : false
   }, {
+    "codeName" : "test_case_ai_chat_history",
+    "content" : "<user>\n<![CDATA[\n你是我的AI助手，为我提供相关用例的建议\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白，我是你的用例AI助手\n]]>\n</assistant>\n<user>\n<![CDATA[\n用例[${data.name}]，来自测试库[${data.test_library_name}]。工作内容如下：\n${data.description}\n]]>\n</user>\n<assistant>\n<![CDATA[\n好的，我已对用例[${data.name}]有了初步的了解\n]]>\n</assistant>\n<%\ndef list = data.children(\"COMMENT\");\nif(list) {%>\n<user>\n<![CDATA[\n对于该用例，存在以下评论，我将逐一向你介绍。\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白，我会参考相关的评论意见\n]]>\n</assistant>\n<% list.each {%>\n<user>\n<![CDATA[\n用户[${it.codelisttext(\"update_man\")}]于[${it.get(\"update_time\", \"未知时间\")}]发表下述评论：\n${it.get(\"content\", \"\")}\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白\n]]>\n</assistant>\n<%}\n}\n%>",
+    "contentType" : "TEXT",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSSYSMSGTEMPLS/test_case_ai_chat_history.json",
+    "name" : "用例AIChat历史",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt.json"
+    },
+    "templEngine" : "GROOVY",
+    "mailGroupSend" : false
+  }, {
     "codeName" : "notice_attention_customer",
     "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n\t\t\t    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n\t\t\t        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>\n\t\t\t    </div>\n\t\t\t    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n\t\t\t        <div class=\"notice-card__event\">\n\t\t\t            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n\t<span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.update_mantext}</span> \n<span class=\"notice-card__event-name\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type== 'TICKET'>工单<#elseif data.owner_type== 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例<#elseif data.owner_type == 'PAGE'>页面</#if></span></div>\n        </div>\n<#if data.parent(\"owner_id\")??>\n<#assign parent= data.parent(\"owner_id\")>\n        <div class=\"notice-card-object\" style=\"display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;\">\n<span class=\"notice-card__object-id\" style=\"color: #999; font-size: 14px;\"><#if parent.show_identifier??>${parent.show_identifier}</#if></span>\n<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>\n<span class=\"object-name\" title=\"${parent.name}\"> ${parent.name}</span>\n<#else>\n<span class=\"object-name\" title=\"${parent.title}\"> ${parent.title}</span></#if>\n\n        </div>\n    <#if parent.parent(\"project_id\")??>\n    <#assign project= parent.parent(\"project_id\")>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 项目管理 · ${project.name}</span></div>\n    <#elseif parent.parent(\"product_id\")??>\n        <#assign product= parent.parent(\"product_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 产品管理 · ${product.name}</span></div>\n    <#elseif parent.parent(\"plan_id\")??>\n        <#assign plan = parent.parent(\"plan_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${plan.library_name}</span></div>\n    <#elseif parent.parent(\"test_library_id\")??>\n        <#assign library= parent.parent(\"test_library_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${library.name}</span></div>\n    </#if>\n    </div>\n    </#if>\n</div>",
     "contentType" : "HTML",
@@ -4469,6 +4481,18 @@
     },
     "taskUrl" : "<#if data.parent(\"owner_id\")??>\nview://${data.owner_type?lower_case}_main_view?\nsrfnavctx={\"test_case\":\"${data.parent(\"owner_id\").id}\",\"library\":\"${data.parent(\"owner_id\").test_library_id}\",\n\"space\": null, \"article_page\": null, \"project\": null,\"work_item\": null, \"idea\": null, \"customer\": null, \"product\": null, \"ticket\": null, \"run\": null }</#if>",
     "wXContent" : "${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：\n<#if data.owner_type == 'CUSTOMER'>${data.parent(\"owner_id\").name}<#else>${data.parent(\"owner_id\").title}</#if>",
+    "mailGroupSend" : false
+  }, {
+    "codeName" : "idea_ai_chat_history",
+    "content" : "<user>\n<![CDATA[\n你是我的AI助手，为我提供相关需求的建议\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白，我是你的需求AI助手\n]]>\n</assistant>\n<user>\n<![CDATA[\n需求[${data.name}]，来自产品[${data.product_name}]。工作内容如下：\n${data.description}\n]]>\n</user>\n<assistant>\n<![CDATA[\n好的，我已对需求[${data.name}]有了初步的了解\n]]>\n</assistant>\n<%\ndef list = data.children(\"COMMENT\");\nif(list) {%>\n<user>\n<![CDATA[\n对于该需求，存在以下评论，我将逐一向你介绍。\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白，我会参考相关的评论意见\n]]>\n</assistant>\n<% list.each {%>\n<user>\n<![CDATA[\n用户[${it.codelisttext(\"update_man\")}]于[${it.get(\"update_time\", \"未知时间\")}]发表下述评论：\n${it.get(\"content\", \"\")}\n]]>\n</user>\n<assistant>\n<![CDATA[\n明白\n]]>\n</assistant>\n<%}\n}\n%>",
+    "contentType" : "TEXT",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSSYSMSGTEMPLS/idea_ai_chat_history.json",
+    "name" : "需求AIChat历史",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt.json"
+    },
+    "templEngine" : "GROOVY",
     "mailGroupSend" : false
   }, {
     "codeName" : "test_case_remove_or_recover",

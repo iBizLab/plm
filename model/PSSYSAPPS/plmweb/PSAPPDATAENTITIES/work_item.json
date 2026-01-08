@@ -3,10 +3,6 @@
     "aCTag" : "TextAgent_Writing",
     "aCType" : "CHATCOMPLETION",
     "codeName" : "AIChat",
-    "getHistoryPSSysMsgTempl" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSSYSMSGTEMPLS/work_item_ai_chat_history.json"
-    },
     "logicName" : "工作项助手",
     "name" : "AIChat",
     "getPSAppDataEntity" : {
@@ -37,8 +33,8 @@
       }
     } ],
     "getPSDEUIActionGroup" : {
-      "codeName" : "ai_inline_action",
-      "name" : "行内AI聊天界面行为组",
+      "codeName" : "ai_inline_action_work_item",
+      "name" : "行内AI聊天界面行为组（工作项）",
       "getPSUIActionGroupDetails" : [ {
         "caption" : "AI写作",
         "detailType" : "DEUIACTION",
@@ -166,6 +162,38 @@
             "showIcon" : true
           } ]
         },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "查看模板",
+        "detailType" : "DEUIACTION",
+        "name" : "udf53983",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "查看模板",
+          "codeName" : "check",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_work_item_list_exp_view.json",
+            "viewType" : "DELISTEXPVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "template_check",
+          "name" : "查看工作项内容模板",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+          },
+          "refreshMode" : 1,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "check",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "reloadData" : true,
+          "id" : "check@template"
+        },
+        "userTag" : "template",
         "addSeparator" : false,
         "showCaption" : true,
         "showIcon" : true
