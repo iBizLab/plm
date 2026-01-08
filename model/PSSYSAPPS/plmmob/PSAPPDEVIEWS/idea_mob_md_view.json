@@ -591,7 +591,8 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "shrink" : 0
               },
               "getPSPanelItems" : [ {
                 "caption" : "文本(动态)",
@@ -735,21 +736,10 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProdMgmt__idea_state.json"
-        },
-        "name" : "state",
+        "name" : "show_identifier",
         "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "assignee_name",
-        "getPSAppDEField" : {
-          "name" : "ASSIGNEE_NAME",
-          "codeName" : "assignee_name"
+          "name" : "SHOW_IDENTIFIER",
+          "codeName" : "show_identifier"
         }
       }, {
         "dataType" : 25,
@@ -760,10 +750,21 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "show_identifier",
+        "name" : "assignee_name",
         "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProdMgmt__idea_state.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
         }
       }, {
         "dataType" : 25,
@@ -806,26 +807,13 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.STATE"
+          "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
         },
-        "caption" : "需求状态",
-        "dataItemName" : "state",
+        "caption" : "编号",
+        "dataItemName" : "show_identifier",
         "itemType" : "TEXTITEM",
-        "name" : "STATE",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ASSIGNEE_NAME"
-        },
-        "caption" : "负责人",
-        "dataItemName" : "assignee_name",
-        "itemType" : "TEXTITEM",
-        "name" : "ASSIGNEE_NAME",
+        "name" : "SHOW_IDENTIFIER",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -844,12 +832,25 @@
       }, {
         "align" : "LEFT",
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
+          "lanResTag" : "DEF.LNAME.ASSIGNEE_NAME"
         },
-        "caption" : "编号",
-        "dataItemName" : "show_identifier",
+        "caption" : "负责人",
+        "dataItemName" : "assignee_name",
         "itemType" : "TEXTITEM",
-        "name" : "SHOW_IDENTIFIER",
+        "name" : "ASSIGNEE_NAME",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.STATE"
+        },
+        "caption" : "需求状态",
+        "dataItemName" : "state",
+        "itemType" : "TEXTITEM",
+        "name" : "STATE",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
