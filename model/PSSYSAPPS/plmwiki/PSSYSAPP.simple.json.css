@@ -2654,8 +2654,8 @@ padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-super-tight);
     display: block;
     text-overflow: ellipsis;
 }
-    .enter_button_style .van-button{
-    font-size: 16px;
+    .enter_button_style .van-button .ibiz-control-toolbar-item {
+    --ibiz-control-toolbar-font-right-fontSize: var(--ibiz-font-size-header-6);
     color: #6698ff;
 }
     .new_create_style .ibiz-form-group--left_group{border-right: 1px solid var(--ibiz-color-border);height: 100% !important;padding-top: 8px !important;padding-right: 8px !important;overflow-y: auto}
@@ -2771,13 +2771,12 @@ padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-super-tight);
 .no_border_button .van-button{
     border: 0;
 }
-    .mob_magnify_no_border_button .van-button--small {
-    border: 0;
-    font-size: 20px;
-}
-
+    .mob_magnify_no_border_button .van-button--small,
 .mob_magnify_no_border_button .van-button {
     border: 0;
+}
+.mob_magnify_no_border_button .van-button--small .ibiz-control-toolbar-item {
+--ibiz-control-toolbar-font-fontSize: 1.25rem;
 }
     /* 星标及切换背景颜色 */
 .star_css .ibiz-control-toolbar__menu .ibiz-control-toolbar-submenu .el-sub-menu__title:hover,
@@ -2942,7 +2941,7 @@ overflow: hidden !important;
 
 .index-recentvisit-custom .ibiz-control-mobmdctrl-item .ibiz-panel-container--container .ibiz-panel-field .ibiz-span{
     font-size: 1rem;
-    line-height: inherit;
+    line-height: 1.2;
 }
 
 .index-recentvisit-custom .ibiz-panel-field-content {
@@ -4730,12 +4729,12 @@ top: calc(3.25rem / 2 - 0.5625rem);
 }
 .mob_comment_list_style .ibiz-mob-personal-info-content__tip {
     margin-top: -0.9rem;
-    font-size: 14px;
+    font-size: 1rem;
     color: #1e1e1e;
 }
 .mob_comment_list_style .ibiz-panel-field--pcreate_man .ibiz-mob-personal-info-content__tip {
     margin-top: 0px !important;
-    font-size: 14px;
+    font-size: 1rem;
     color: #1e1e1e;
 }
 .mob_comment_list_style .ibiz-control-mobmdctrl__content.is-show-underLine .ibiz-control-mobmdctrl-item+.ibiz-control-mobmdctrl-item::before{
@@ -4808,6 +4807,17 @@ top: calc(3.25rem / 2 - 0.5625rem);
 .is-mob.ibiz-control .comment_style_main .ibiz-panel-field--attention_count .ibiz-span {
   margin-top: 0;
 }
+    /* 适配底部文字垂直居中对齐 */
+.is-mob.ibiz-control .comment_style_main .ibiz-rawitem--text,
+.is-mob.ibiz-control .comment_style_main .ibiz-panel-field--comment_count,
+.is-mob.ibiz-control .comment_style_main .ibiz-panel-field--attention_count {
+    display: flex;
+    align-items: center;
+    height: 1em;
+    margin-top: 0.25rem;
+    line-height: 1em;
+}
+
     .comment_style_main{
     background: white;
     position: relative;
@@ -4882,7 +4892,7 @@ top: calc(3.25rem / 2 - 0.5625rem);
 }
     /* 标题 */
 .mob_common_list_style .ibiz-panel-field.ibiz-panel-field--title span.ibiz-span.ibiz-panel-field-content {
-    font-size: 18px;
+    font-size: 1.125rem;
     /* 换行显示 */
     white-space: revert;
     word-break: break-all;
@@ -4919,7 +4929,7 @@ top: calc(3.25rem / 2 - 0.5625rem);
     background-color: #f3f3f3;
     border-radius: 12px;
     width: 100px;
-    height: 25px;
+    /* height: 25px; */
 }
 /* 为空不显示 */
 .mob_common_list_style .ibiz-panel-field.ibiz-panel-field--start_at:has(.ibiz-span:empty),
@@ -5084,8 +5094,10 @@ top: calc(3.25rem / 2 - 0.5625rem);
 .mob-advanced-setting-style .ibiz-form-page-item--formpage1 .ibiz-form-item--scope_type .ibiz-form-item-container__label{
     display: none;
 }
-    .mob-index-my-style {
+    .mob-index-my-style.ibiz-panel-container {
   line-height: 1;
+
+  --ibiz-panel-scroll: hidden;
 }
 
 .mob-index-my-style .ibiz-rawitem .ibiz-icon {
@@ -5528,13 +5540,18 @@ color: var(--ibiz-color-primary);
     width: 44px;
 }
     .mob_discuss_reply_detal_style .ibiz-form-item--discuss_name span {
-    margin-top: 9px;
     display: inline-grid;
 }
 
 .mob_discuss_reply_detal_style .ibiz-form-item--create_time span {
-    margin-top: 9px;
     display: inline-grid;
+}
+.mob_discuss_reply_detal_style .ibiz-form-item--discuss_name {
+    padding-left: 0;
+}
+.mob_discuss_reply_detal_style .ibiz-form-group__content .ibiz-form-raw-item {
+    padding-right: 0;
+    padding-left: 0;
 }
     .mob_discuss_reply_detal_style .ibiz-form-group--grouppanel1 .ibiz-rawitem__text {
     margin-left: 15px;
@@ -5545,6 +5562,7 @@ color: var(--ibiz-color-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
+    line-height: 1em;
 }
 
 .mob_discuss_reply_detal_style .ibiz-form-group--grouppanel2 span,
@@ -5553,6 +5571,7 @@ color: var(--ibiz-color-primary);
     color: #aaaaaa;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.1;
 }
 
 .mob_discuss_reply_detal_style .ibiz-form-item--create_time {
@@ -5562,10 +5581,6 @@ color: var(--ibiz-color-primary);
 
 .mob_discuss_reply_detal_style .ibiz-form-item--create_man {
     padding-right: 6px;
-}
-
-.mob_discuss_reply_detal_style .ibiz-form-item--discuss_name {
-    padding-left: 8px;
 }
 
 .mob_discuss_reply_detal_style .ibiz-form-group__content {
