@@ -1894,6 +1894,72 @@
     "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_PARSE_NOW",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_PARSE_NOW",
+      "standardColumnName" : "IS_PARSE_NOW"
+    }, {
+      "columnName" : "IS_PARSE_NOW",
+      "dBType" : "MYSQL5",
+      "name" : "IS_PARSE_NOW",
+      "queryCodeExp" : "t1.`IS_PARSE_NOW`",
+      "standardColumnName" : "`IS_PARSE_NOW`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_PARSE_NOW][是否立即解析]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_PARSE_NOW][是否立即解析]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_parse_now",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "logicName" : "是否立即解析",
+    "name" : "IS_PARSE_NOW",
+    "orderValue" : 290,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "serviceCodeName" : "is_parse_now",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CUSTOM_CHUNK",
       "dBType" : "POSTGRESQL",
       "name" : "CUSTOM_CHUNK",
@@ -2073,7 +2139,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal(); \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\ndef doc_sync_runtime = sys.dataentity('ai_kb_document_sync')\r\ndef page_list = sys.codelist('Wiki__page_list')\r\ndef space_list = sys.codelist('Wiki__space_list')\r\n\r\ndef import_method=_default[\"import_method\"];\r\ndef kb_id=_default[\"kb_id\"]\r\ndef space_selection=_default[\"space_selection\"]\r\ndef sync_frequency=_default[\"sync_frequency\"]\r\ndef parser_config=_default[\"parser_config\"]\r\ndef custom_chunk=_default[\"custom_chunk\"]\r\ndef chunk_method=_default[\"chunk_method\"]\r\n\r\n//手动从空间导入\r\nif(import_method == \"space_manual\"){\r\n    def selection_page_ids=_default[\"selection_page_ids\"]\r\n    if(selection_page_ids){\r\n        //创建文档\r\n        selection_page_ids.split(',').each { String page_id ->\r\n            def new_doc=doc_runtime.entity()\r\n            def  page_name=page_list.getText(page_id)  \r\n            new_doc.set(\"name\",page_name)\r\n            new_doc.set(\"source_id\",page_id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"sync_frequency\",sync_frequency)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"space\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n}\r\n\r\n//自动从空间同步\r\nif(import_method == \"space_auto_sync\"){\r\n    //创建文档同步\r\n    def new_doc_sync=doc_sync_runtime.entity()\r\n    def  space_name=space_list.getText(space_selection)  \r\n    new_doc_sync.set(\"name\",space_name)\r\n    new_doc_sync.set(\"ai_knowledge_base_id\",kb_id)\r\n    new_doc_sync.set(\"source_id\",space_selection)\r\n    new_doc_sync.set(\"source_type\",\"space\")\r\n    new_doc_sync.set(\"sync_frequency\",sync_frequency)\r\n    new_doc_sync.set(\"parser_config\",parser_config)\r\n    new_doc_sync.set(\"custom_chunk\",custom_chunk)\r\n    new_doc_sync.set(\"chunk_method\",chunk_method)\r\n    doc_sync_runtime.create(new_doc_sync)\r\n}\r\n\r\n//上传本地文件\r\nif(import_method == \"local_upload\"){\r\n    def selection_file_ids=_default[\"selection_file_ids\"]\r\n    if(selection_file_ids){\r\n        //创建文档\r\n        def files = new groovy.json.JsonSlurper().parseText(selection_file_ids)\r\n        files.each { file ->\r\n            def new_doc=doc_runtime.entity()\r\n            def file_name = file.name\r\n            int last_index = file.name.lastIndexOf(\".\")\r\n            if (last_index > 0) {\r\n                file_name = file.name.substring(0, last_index)\r\n                String doc_type = file.name.substring(last_index + 1)\r\n                new_doc.set(\"file_type\",doc_type)\r\n            }\r\n            def files_array = [file]\r\n            def file_string = groovy.json.JsonOutput.toJson(files_array)\r\n            new_doc.set(\"file\",file_string)\r\n            new_doc.set(\"size\",file.size)\r\n            new_doc.set(\"name\",file_name)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"file\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n\r\n}",
+      "code" : "def _default = logic.param('default').getReal(); \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\ndef doc_sync_runtime = sys.dataentity('ai_kb_document_sync')\r\ndef page_list = sys.codelist('Wiki__page_list')\r\ndef space_list = sys.codelist('Wiki__space_list')\r\n\r\ndef import_method=_default[\"import_method\"];\r\ndef kb_id=_default[\"kb_id\"]\r\ndef space_selection=_default[\"space_selection\"]\r\ndef sync_frequency=_default[\"sync_frequency\"]\r\ndef parser_config=_default[\"parser_config\"]\r\ndef custom_chunk=_default[\"custom_chunk\"]\r\ndef chunk_method=_default[\"chunk_method\"]\r\ndef is_parse_now=_default[\"is_parse_now\"]\r\n\r\n//手动从空间导入\r\nif(import_method == \"space_manual\"){\r\n    def selection_page_ids=_default[\"selection_page_ids\"]\r\n    if(selection_page_ids){\r\n        //创建文档\r\n        selection_page_ids.split(',').each { String page_id ->\r\n            def new_doc=doc_runtime.entity()\r\n            def  page_name=page_list.getText(page_id)  \r\n            new_doc.set(\"name\",page_name)\r\n            new_doc.set(\"source_id\",page_id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"sync_frequency\",sync_frequency)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"space\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n\r\n        //立即解析\r\n        if(is_parse_now == 1){\r\n            println(\"立即解析\")\r\n        }\r\n\r\n        }\r\n    }\r\n}else if(import_method == \"space_auto_sync\"){//自动从空间同步\r\n    //创建文档同步\r\n    def new_doc_sync=doc_sync_runtime.entity()\r\n    def  space_name=space_list.getText(space_selection)  \r\n    new_doc_sync.set(\"name\",space_name)\r\n    new_doc_sync.set(\"ai_knowledge_base_id\",kb_id)\r\n    new_doc_sync.set(\"source_id\",space_selection)\r\n    new_doc_sync.set(\"source_type\",\"space\")\r\n    new_doc_sync.set(\"sync_frequency\",sync_frequency)\r\n    new_doc_sync.set(\"parser_config\",parser_config)\r\n    new_doc_sync.set(\"custom_chunk\",custom_chunk)\r\n    new_doc_sync.set(\"chunk_method\",chunk_method)\r\n    doc_sync_runtime.create(new_doc_sync)\r\n\r\n    //立即解析\r\n\r\n}else(import_method == \"local_upload\"){//上传本地文件\r\n    def selection_file_ids=_default[\"selection_file_ids\"]\r\n    if(selection_file_ids){\r\n        //创建文档\r\n        def files = new groovy.json.JsonSlurper().parseText(selection_file_ids)\r\n        files.each { file ->\r\n            def new_doc=doc_runtime.entity()\r\n            def file_name = file.name\r\n            int last_index = file.name.lastIndexOf(\".\")\r\n            if (last_index > 0) {\r\n                file_name = file.name.substring(0, last_index)\r\n                String doc_type = file.name.substring(last_index + 1)\r\n                new_doc.set(\"file_type\",doc_type)\r\n            }\r\n            def files_array = [file]\r\n            def file_string = groovy.json.JsonOutput.toJson(files_array)\r\n            new_doc.set(\"file\",file_string)\r\n            new_doc.set(\"size\",file.size)\r\n            new_doc.set(\"name\",file_name)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"file\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n\r\n              //立即解析\r\n        }\r\n    }\r\n\r\n}",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "getDstPSDELogicParam" : {
@@ -2328,6 +2394,16 @@
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTOS"
+    }, {
+      "logicName" : "是否立即解析",
+      "name" : "is_parse_now",
+      "getPSDEField" : {
+        "name" : "IS_PARSE_NOW",
+        "codeName" : "is_parse_now"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "自定义切片",
       "name" : "custom_chunk",

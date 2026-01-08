@@ -4027,6 +4027,13 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "is_parse_now",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "IS_PARSE_NOW",
+        "codeName" : "is_parse_now"
+      }
+    }, {
       "id" : "import_method",
       "hidden" : true,
       "dataType" : 25,
@@ -4075,26 +4082,79 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel2",
         "getPSDEFormDetails" : [ {
-          "codeName" : "rawitem1",
-          "contentType" : "RAW",
+          "codeName" : "grouppanel4",
           "detailStyle" : "DEFAULT",
-          "detailType" : "RAWITEM",
-          "name" : "rawitem1",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel4",
+          "getPSDEFormDetails" : [ {
+            "codeName" : "rawitem1",
+            "contentType" : "RAW",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "RAWITEM",
+            "name" : "rawitem1",
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSRawItem" : {
+              "caption" : "以下文件会同步到知识库中，点击「确定」开始同步",
+              "contentType" : "RAW",
+              "name" : "rawitem1",
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0
+            },
+            "rawContent" : "以下文件会同步到知识库中，点击「确定」开始同步",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0,
+            "showCaption" : true
+          }, {
+            "caption" : "是否立即解析",
+            "codeName" : "is_parse_now",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 230.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "is_parse_now",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "IS_PARSE_NOW",
+              "codeName" : "is_parse_now"
+            },
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST_100",
+              "editorWidth" : 100.0,
+              "name" : "is_parse_now",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              },
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "getPSRawItem" : {
-            "caption" : "以下文件会同步到知识库中，点击「确定」开始同步",
-            "contentType" : "RAW",
-            "name" : "rawitem1",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0
-          },
-          "rawContent" : "以下文件会同步到知识库中，点击「确定」开始同步",
-          "rawItemHeight" : -1.0,
-          "rawItemWidth" : -1.0,
-          "showCaption" : true
+          "infoGroupMode" : false,
+          "showCaption" : false
         }, {
           "codeName" : "space_manual_group",
           "detailStyle" : "DEFAULT",
