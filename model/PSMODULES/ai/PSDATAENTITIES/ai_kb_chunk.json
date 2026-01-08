@@ -255,9 +255,6 @@
       "name" : "SEQUENCE",
       "codeName" : "sequence"
     }, {
-      "name" : "DOCUMENT_TYPE",
-      "codeName" : "document_type"
-    }, {
       "name" : "DOCUMENT_ID",
       "codeName" : "document_id"
     }, {
@@ -1786,7 +1783,7 @@
       "columnName" : "DOCUMENT_TYPE",
       "dBType" : "MYSQL5",
       "name" : "DOCUMENT_TYPE",
-      "queryCodeExp" : "t2.`DOCUMENT_TYPE`",
+      "queryCodeExp" : "t11.`TYPE`",
       "standardColumnName" : "`DOCUMENT_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1794,9 +1791,17 @@
       "name" : "[DOCUMENT_TYPE][文档类型]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "SPAN",
         "name" : "[DOCUMENT_TYPE][文档类型]移动端默认",
-        "stringLength" : 100,
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+        },
+        "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -1807,9 +1812,17 @@
       "name" : "[DOCUMENT_TYPE][文档类型]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "SPAN",
         "name" : "[DOCUMENT_TYPE][文档类型]",
-        "stringLength" : 100,
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+        },
+        "stringLength" : 60,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -1824,16 +1837,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "DOCUMENT_TYPE",
-          "maxValue" : 100,
+          "maxValue" : 60,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
+          "ruleInfo" : "内容长度必须小于等于[60]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
+        "ruleInfo" : "内容长度必须小于等于[60]"
       },
-      "ruleInfo" : "内容长度必须小于等于[100]",
+      "ruleInfo" : "内容长度必须小于等于[60]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -1841,24 +1854,43 @@
     } ],
     "codeName" : "document_type",
     "dEFType" : 3,
-    "dataType" : "TEXT",
+    "dataType" : "PICKUPDATA",
     "importOrder" : 1000,
-    "length" : 100,
+    "length" : 60,
     "logicName" : "文档类型",
     "name" : "DOCUMENT_TYPE",
     "orderValue" : 300,
-    "getPSDEDBTable" : {
+    "getPSCodeList" : {
       "modelref" : true,
-      "id" : "Table"
+      "path" : "PSMODULES/ai/PSCODELISTS/ai_kb_document_type.json"
     },
-    "getPSSysDBColumn" : {
+    "getPSDER" : {
       "modelref" : true,
-      "id" : "DOCUMENT_TYPE"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDERS/DER1N_AI_KB_CHUNK_AI_KB_DOCUMENT_DOCUMENT_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
     },
     "serviceCodeName" : "document_type",
     "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s"
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "DOCUMENT_ID",
@@ -2615,7 +2647,7 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "stringLength" : 100,
+      "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",
