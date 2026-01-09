@@ -935,6 +935,17 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "mob_estimated_update",
+        "name" : "预估工时表单项刷新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "workload_schedule"
+        }, {
+          "name" : "remaining_workload"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
         "codeName" : "check_palntime",
         "name" : "校验计划时间",
         "getPSDEFIUpdateDetails" : [ {
@@ -959,17 +970,6 @@
         } ],
         "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
         "customCode" : true
-      }, {
-        "codeName" : "mob_estimated_update",
-        "name" : "预估工时表单项刷新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "remaining_workload"
-        }, {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-        "customCode" : true,
-        "showBusyIndicator" : false
       } ],
       "getPSDEFormItems" : [ {
         "id" : "srfupdatedate",
@@ -1220,6 +1220,9 @@
                 "codeName" : "title"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "rows" : "1"
+                },
                 "editorType" : "MOBTEXTAREA",
                 "maxLength" : 500,
                 "name" : "title",
@@ -4186,6 +4189,9 @@
                         "getAllPSPanelFields" : [ {
                           "id" : "name",
                           "viewFieldName" : "name"
+                        }, {
+                          "id" : "level",
+                          "viewFieldName" : "level"
                         } ],
                         "codeName" : "usr0927084292",
                         "controlType" : "PANEL",
@@ -4290,6 +4296,36 @@
                                   "spacingLeft" : "OUTERSMALL"
                                 },
                                 "viewFieldName" : "name"
+                              } ]
+                            }, {
+                              "caption" : "容器",
+                              "itemStyle" : "DEFAULT",
+                              "itemType" : "CONTAINER",
+                              "name" : "container2",
+                              "getPSLayout" : {
+                                "layout" : "FLEX"
+                              },
+                              "getPSLayoutPos" : {
+                                "grow" : -1,
+                                "layout" : "FLEX"
+                              },
+                              "getPSPanelItems" : [ {
+                                "caption" : "文本(动态)",
+                                "itemStyle" : "DEFAULT",
+                                "itemType" : "FIELD",
+                                "name" : "level",
+                                "getPSEditor" : {
+                                  "editorType" : "SPAN",
+                                  "name" : "level",
+                                  "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                                  "renderMode" : "TEXT_DYNAMIC",
+                                  "enableLinkView" : false
+                                },
+                                "getPSLayoutPos" : {
+                                  "grow" : -1,
+                                  "layout" : "FLEX"
+                                },
+                                "viewFieldName" : "level"
                               } ]
                             } ]
                           } ]
