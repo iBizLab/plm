@@ -33,8 +33,6 @@
   },
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
-      "id" : "field_textbox1"
-    }, {
       "id" : "field_textbox"
     }, {
       "id" : "attention_count",
@@ -45,7 +43,7 @@
     } ],
     "codeName" : "usr1018539994",
     "controlType" : "VIEWLAYOUTPANEL",
-    "hookEventNames" : [ "ONBLUR", "ONCLICK" ],
+    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "FLEX",
     "logicName" : "mob_edit_view实体移动端编辑视图布局面板",
     "name" : "layoutpanel",
@@ -54,26 +52,46 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
     },
     "getPSControlLogics" : [ {
-      "eventNames" : "onBlur",
-      "itemName" : "SEND_COMMENT_CONTAINER",
-      "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
-      "name" : "leave_hidden",
-      "scriptCode" : "view.layoutPanel.panelItems.send_comment_container.state.visible = false;"
-    }, {
       "eventNames" : "onClick",
       "itemName" : "FIELD_TEXTBOX",
       "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
+      "logicType" : "APPDEUIACTION",
       "name" : "logic1",
-      "scriptCode" : "view.layoutPanel.panelItems.send_comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.comment_container.state.visible=false;\r\nview.layoutPanel.panelItems.field_textbox.editor.focus();"
-    }, {
-      "eventNames" : "onBlur",
-      "itemName" : "FIELD_TEXTBOX1",
-      "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
-      "name" : "onBlur",
-      "scriptCode" : "view.layoutPanel.panelItems.comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.send_comment_container.state.visible=false;"
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开评论列表",
+        "codeName" : "open_comment_list",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+          "viewType" : "DEMOBMDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "test_case_open_comment_list",
+        "name" : "打开评论列表",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PRINCIPAL_ID",
+          "name" : "PRINCIPAL_ID",
+          "value" : "principal_id",
+          "rawValue" : false
+        }, {
+          "key" : "PRINCIPAL_TYPE",
+          "name" : "PRINCIPAL_TYPE",
+          "value" : "principal_type",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_comment_list",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "reloadData" : true,
+        "id" : "open_comment_list@test_case"
+      }
     } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
@@ -224,110 +242,6 @@
         "showCaption" : true
       } ],
       "predefinedType" : "Content"
-    }, {
-      "caption" : "发送评论容器",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "CONTAINER",
-      "name" : "send_comment_container",
-      "getPSLayout" : {
-        "align" : "flex-end",
-        "dir" : "row",
-        "layout" : "FLEX",
-        "vAlign" : "center"
-      },
-      "getPSLayoutPos" : {
-        "grow" : -1,
-        "layout" : "FLEX",
-        "shrink" : 0
-      },
-      "getPSPanelItemGroupLogics" : [ {
-        "groupOP" : "AND",
-        "logicCat" : "PANELVISIBLE",
-        "logicType" : "GROUP",
-        "getPSPanelItemLogics" : [ {
-          "condOp" : "EQ",
-          "logicType" : "SINGLE",
-          "name" : "逻辑项"
-        } ],
-        "notMode" : false
-      } ],
-      "getPSPanelItems" : [ {
-        "caption" : "文本框",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "FIELD",
-        "name" : "field_textbox1",
-        "getPSEditor" : {
-          "editorParams" : {
-            "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
-            "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
-            "USERURL" : "`projects/${context.project}/project_members/fetch_default`",
-            "QUOTEURL" : "`recents/fetch_recent_access`"
-          },
-          "editorStyle" : "COMMENT",
-          "editorType" : "MOBHTMLTEXT",
-          "name" : "field_textbox1",
-          "getPSSysPFPlugin" : {
-            "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "MOBCOMMENT",
-            "runtimeObject" : true
-          },
-          "placeHolder" : "发表评论",
-          "predefinedType" : "FIELD_TEXTBOX"
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX",
-          "widthMode" : "FULL"
-        }
-      }, {
-        "actionType" : "UIACTION",
-        "buttonStyle" : "DEFAULT",
-        "buttonWidth" : 75.0,
-        "caption" : "发送",
-        "contentWidth" : 75.0,
-        "itemStyle" : "DEFAULT",
-        "itemType" : "BUTTON",
-        "name" : "button_calluilogic_send",
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "layoutpanel_button_calluilogic_send"
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX",
-          "width" : 75,
-          "widthMode" : "PX"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEDATA",
-          "caption" : "发送",
-          "codeName" : "panel_usr1018539994_button_calluilogic_send_click",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "discuss_post_panel_usr1018539994_button_calluilogic_send_click",
-          "name" : "发送",
-          "getPSAppDEUILogic" : {
-            "modelref" : true,
-            "id" : "send_comment_mob"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
-          },
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "panel_usr1018539994_button_calluilogic_send_click",
-          "uIActionType" : "DEUIACTION",
-          "uILogicAttachMode" : "REPLACE",
-          "uILogicType" : "DELOGIC",
-          "id" : "panel_usr1018539994_button_calluilogic_send_click@discuss_post"
-        },
-        "tooltip" : "发送",
-        "uIActionTarget" : "SINGLEDATA",
-        "width" : 75.0,
-        "showCaption" : true
-      } ],
-      "getPSSysCss" : {
-        "cssName" : "comment_style_list"
-      }
     }, {
       "caption" : "容器",
       "contentHeight" : 50.0,
