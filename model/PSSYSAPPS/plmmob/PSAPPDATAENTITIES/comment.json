@@ -1815,26 +1815,6 @@
     "id" : "del_comment@comment"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "选择人员",
-    "codeName" : "open_project_member",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_member_mob_pickup_view.json",
-      "viewType" : "DEMOBPICKUPVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "comment_open_project_member",
-    "name" : "打开人员选择视图（移动端）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
-    },
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_project_member",
-    "uIActionType" : "DEUIACTION",
-    "id" : "open_project_member@comment"
-  }, {
-    "actionTarget" : "NONE",
     "caption" : "选择事项",
     "codeName" : "open_recent_pickup_view",
     "getFrontPSAppView" : {
@@ -2436,6 +2416,63 @@
       "name" : "当前部件对象",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "mob_open_user",
+    "defaultParamName" : "Default",
+    "logicName" : "打开人员选择视图（移动端）",
+    "name" : "打开人员选择视图（移动端）",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -280,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 240,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "view"
+      },
+      "leftPos" : -320,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "topPos" : 420
+    }, {
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : -1040,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 570
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
