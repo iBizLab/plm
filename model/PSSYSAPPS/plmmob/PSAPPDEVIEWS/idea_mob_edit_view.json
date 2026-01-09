@@ -4185,7 +4185,7 @@
                       "getItemPSLayoutPanel" : {
                         "getAllPSPanelFields" : [ {
                           "id" : "name",
-                          "viewFieldName" : "customer"
+                          "viewFieldName" : "name"
                         }, {
                           "id" : "level",
                           "viewFieldName" : "level"
@@ -4194,7 +4194,7 @@
                         "controlType" : "PANEL",
                         "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSPANELS/usr0927084292.json",
                         "layoutMode" : "TABLE_24COL",
-                        "logicName" : "mob_customer_list_列表项面板",
+                        "logicName" : "mob_customer_choose_list_列表项面板",
                         "getPSAppDataEntity" : {
                           "modelref" : true,
                           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
@@ -4281,16 +4281,10 @@
                                 "itemType" : "FIELD",
                                 "name" : "name",
                                 "getPSEditor" : {
-                                  "editorParams" : {
-                                    "OBJECTNAMEFIELD" : "name",
-                                    "VALUETYPE" : "OBJECT"
-                                  },
                                   "editorType" : "SPAN",
                                   "name" : "name",
-                                  "objectNameField" : "name",
                                   "predefinedType" : "FIELD_TEXT_DYNAMIC",
                                   "renderMode" : "TEXT_DYNAMIC",
-                                  "valueType" : "OBJECT",
                                   "enableLinkView" : false
                                 },
                                 "getPSLayoutPos" : {
@@ -4298,7 +4292,7 @@
                                   "layout" : "FLEX",
                                   "spacingLeft" : "OUTERSMALL"
                                 },
-                                "viewFieldName" : "customer"
+                                "viewFieldName" : "name"
                               } ]
                             }, {
                               "caption" : "容器",
@@ -4332,6 +4326,19 @@
                                   "grow" : -1,
                                   "layout" : "FLEX"
                                 },
+                                "getPSPanelItemGroupLogics" : [ {
+                                  "groupOP" : "AND",
+                                  "logicCat" : "PANELVISIBLE",
+                                  "logicType" : "GROUP",
+                                  "getPSPanelItemLogics" : [ {
+                                    "condOp" : "ISNOTNULL",
+                                    "dstModelField" : "level",
+                                    "logicType" : "SINGLE",
+                                    "name" : "逻辑项"
+                                  } ],
+                                  "relatedItemNames" : [ "level" ],
+                                  "notMode" : false
+                                } ],
                                 "viewFieldName" : "level",
                                 "convertToCodeItemText" : true
                               } ]

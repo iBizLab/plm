@@ -1,5 +1,5 @@
 {
-  "codeName" : "mob_customer_list",
+  "codeName" : "mob_simplelist",
   "controlStyle" : "LISTVIEW",
   "controlType" : "MOBMDCTRL",
   "getCreatePSControlAction" : {
@@ -15,10 +15,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
     }
   },
-  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSMOBMDCTRLS/mob_customer_list.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer/PSMOBMDCTRLS/mob_simplelist.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
     "id" : "fetch",
@@ -26,11 +26,11 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_idea_re_customer"
+      "id" : "fetch_default"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
     }
   },
   "getGetPSControlAction" : {
@@ -46,7 +46,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
     }
   },
   "groupMode" : "NONE",
@@ -213,15 +213,19 @@
         } ]
       } ]
     } ],
-    "name" : "mdctrl_itempanel",
+    "name" : "simplelist_itempanel",
     "modelid" : "8060a18ac72f711863ddfaef553c597d",
     "modeltype" : "PSSYSVIEWPANEL"
   },
-  "logicName" : "mob_customer_list",
+  "logicName" : "mob_simplelist",
   "mobListStyle" : "LISTVIEW",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+  },
+  "getPSDEDataImport" : {
+    "modelref" : true,
+    "id" : "import_customer"
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
@@ -237,64 +241,21 @@
       "name" : "NAME",
       "codeName" : "name"
     }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "assignee_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "product_id",
+    "getPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "product_id"
+    }
   } ],
-  "getPSDEUIActionGroup" : {
-    "codeName" : "Usr0417741727",
-    "name" : "取消关联",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-    },
-    "getPSUIActionGroupDetails" : [ {
-      "caption" : "取消关联",
-      "detailType" : "DEUIACTION",
-      "name" : "u0f749a7",
-      "getPSSysImage" : {
-        "glyph" : "xf127@FontAwesome",
-        "cssClass" : "fa fa-unlink"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEDATA",
-        "caption" : "取消关联",
-        "codeName" : "del_relation",
-        "confirmMsg" : "确认取消关联？",
-        "fullCodeName" : "relation_del_relation",
-        "name" : "取消关联",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "del_relation"
-        },
-        "getPSAppDEUILogic" : {
-          "modelref" : true,
-          "id" : "refresh_counter"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf127@FontAwesome",
-          "cssClass" : "fa fa-unlink"
-        },
-        "refreshMode" : 1,
-        "successMsg" : "取消关联成功",
-        "timeout" : 60000,
-        "tooltip" : "取消关联",
-        "uIActionMode" : "BACKEND",
-        "uIActionTag" : "del_relation",
-        "uIActionType" : "DEUIACTION",
-        "uILogicAttachMode" : "AFTER",
-        "enableConfirm" : true,
-        "reloadData" : true,
-        "id" : "del_relation@relation"
-      },
-      "tooltip" : "取消关联",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "uniqueTag" : "relation__Usr0417741727"
-  },
   "pagingSize" : 1000,
   "getRemovePSControlAction" : {
     "modelref" : true,
@@ -309,7 +270,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
     }
   },
   "getUpdatePSControlAction" : {
@@ -325,7 +286,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
     }
   },
   "hasWFDataItems" : false,
@@ -337,6 +298,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "5c357c34de0a3e246a62f84a17fc73c1",
+  "modelid" : "e27bfd313d2a5b543c5feb97cd9184e8",
   "modeltype" : "PSDELIST"
 }
