@@ -251,14 +251,6 @@
         "codeName" : "name"
       }
     }, {
-      "id" : "source_name",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "SOURCE_NAME",
-        "codeName" : "source_name"
-      }
-    }, {
       "id" : "embedding_model",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -271,6 +263,21 @@
       "getPSAppDEField" : {
         "name" : "TAG_SETS",
         "codeName" : "tag_sets"
+      }
+    }, {
+      "id" : "visibility",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
+      }
+    }, {
+      "id" : "source_name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SOURCE_NAME",
+        "codeName" : "source_name"
       }
     }, {
       "id" : "description",
@@ -351,33 +358,6 @@
           "allowEmpty" : false,
           "showCaption" : true
         }, {
-          "caption" : "知识库源",
-          "codeName" : "source_name",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "source_name",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "SOURCE_NAME",
-            "codeName" : "source_name"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "source_name"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 8,
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true
-        }, {
           "caption" : "切片模型",
           "codeName" : "embedding_model",
           "dataType" : 25,
@@ -438,6 +418,66 @@
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true
+        }, {
+          "caption" : "可见范围",
+          "codeName" : "visibility",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "visibility",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "VISIBILITY",
+            "codeName" : "visibility"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "visibility",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
+            },
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "知识库源",
+          "codeName" : "source_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "source_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SOURCE_NAME",
+            "codeName" : "source_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "source_name"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
         }, {
           "caption" : "描述",
           "codeName" : "description",

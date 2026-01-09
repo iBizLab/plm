@@ -234,6 +234,9 @@
       "name" : "TAG_SETS",
       "codeName" : "tag_sets"
     }, {
+      "name" : "GUIDANCE_PROMPT",
+      "codeName" : "guidance_prompt"
+    }, {
       "name" : "SOURCE_ID",
       "codeName" : "source_id"
     }, {
@@ -1646,6 +1649,80 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "GUIDANCE_PROMPT",
+      "dBType" : "POSTGRESQL",
+      "name" : "GUIDANCE_PROMPT",
+      "standardColumnName" : "GUIDANCE_PROMPT"
+    }, {
+      "columnName" : "GUIDANCE_PROMPT",
+      "dBType" : "MYSQL5",
+      "name" : "GUIDANCE_PROMPT",
+      "standardColumnName" : "`GUIDANCE_PROMPT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTAREA_10",
+        "name" : "默认",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXTAREA",
+        "name" : "移动端默认",
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "GUIDANCE_PROMPT",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "guidance_prompt",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT_1000",
+    "importOrder" : 1000,
+    "length" : 2000,
+    "logicName" : "引导提示词",
+    "name" : "GUIDANCE_PROMPT",
+    "orderValue" : 260,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "serviceCodeName" : "guidance_prompt",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "SOURCE_ID",
       "dBType" : "POSTGRESQL",
       "name" : "SOURCE_ID",
@@ -2345,6 +2422,17 @@
       "getPSDEField" : {
         "name" : "TAG_SETS",
         "codeName" : "tag_sets"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "引导提示词",
+      "name" : "guidance_prompt",
+      "getPSDEField" : {
+        "name" : "GUIDANCE_PROMPT",
+        "codeName" : "guidance_prompt"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
