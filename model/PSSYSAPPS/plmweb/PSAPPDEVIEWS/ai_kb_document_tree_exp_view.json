@@ -828,6 +828,12 @@
         "getPSDETreeNodeDataItems" : [ {
           "cLConvertMode" : "NONE",
           "dataType" : 25,
+          "name" : "icon",
+          "scriptCode" : "const app = ibiz.hub.getApp(context.srfappid);\r\nconst dataItems = await app.codeList.get(\r\n  'plmweb.ai__file_type',\r\n  context\r\n);\r\nconst item = dataItems.find(x => x.value === data.file_type);\r\nif (item && item.sysImage) {\r\n    return item.sysImage.rawContent;\r\n}\r\n",
+          "customCode" : true
+        }, {
+          "cLConvertMode" : "NONE",
+          "dataType" : 25,
           "name" : "text",
           "scriptCode" : "const app = ibiz.hub.getApp(context.srfappid);\r\nconst dataItems = await app.codeList.get(\r\n  'plmweb.ai__slice_status',\r\n  context\r\n);\r\nconst item = dataItems.find(x => x.value === data.status);\r\nif (item && item.sysImage) {\r\nreturn '<div style=\"display: flex; align-items: center;justify-content: space-between\">'+\r\n    '<div style=\"overflow: hidden;text-overflow: ellipsis;\">'+data.name+'</div>'+\r\n    '<div class=\"ibiz-code-list__item\"><div class=\"ibiz-icon\">'+item.sysImage.rawContent+'</div>'+item.text+'</div>'+\r\n    ' </div>'\r\n}\r\nreturn data.name;",
           "customCode" : true
