@@ -53,7 +53,7 @@
   "getItemPSLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "name",
-      "viewFieldName" : "name"
+      "viewFieldName" : "customer"
     }, {
       "id" : "level",
       "viewFieldName" : "level"
@@ -149,10 +149,16 @@
             "itemType" : "FIELD",
             "name" : "name",
             "getPSEditor" : {
+              "editorParams" : {
+                "OBJECTNAMEFIELD" : "name",
+                "VALUETYPE" : "OBJECT"
+              },
               "editorType" : "SPAN",
               "name" : "name",
+              "objectNameField" : "name",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
+              "valueType" : "OBJECT",
               "enableLinkView" : false
             },
             "getPSLayoutPos" : {
@@ -160,7 +166,7 @@
               "layout" : "FLEX",
               "spacingLeft" : "OUTERSMALL"
             },
-            "viewFieldName" : "name"
+            "viewFieldName" : "customer"
           } ]
         }, {
           "caption" : "容器",
@@ -182,6 +188,10 @@
             "getPSEditor" : {
               "editorType" : "SPAN",
               "name" : "level",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProdMgmt__common_level.json"
+              },
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
               "enableLinkView" : false
@@ -190,7 +200,8 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "level"
+            "viewFieldName" : "level",
+            "convertToCodeItemText" : true
           } ]
         } ]
       } ]
