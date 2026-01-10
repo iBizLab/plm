@@ -803,8 +803,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -1143,7 +1143,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "codelistid" : "plmweb.formattype_chg",
@@ -1182,7 +1182,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -1204,7 +1204,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
@@ -4103,8 +4103,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -4373,7 +4373,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "srfaiagent" : "TextAgent_Writing",
@@ -4412,7 +4412,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -4434,7 +4434,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
@@ -6403,24 +6403,24 @@
         "id" : "_FORM_SCRUM_EPIC"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "project_type"
-        }, {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
-        "customCode" : true
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_name"
         } ],
         "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "customCode" : true
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "work_item_type_name"
+        }, {
+          "name" : "project_type"
+        } ],
+        "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\nctrl.state.data.work_item_type_id = null;\nctrl.state.data.work_item_type_name = null;\n\n// 调用表单项更新设置缺陷类型\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\nconst res = await ctrl.service.updateFormItem(\n    'set_type_bug',\n    tempContext,\n    params,\n);\n\nreturn res.data\n",
         "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -6580,8 +6580,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -6850,7 +6850,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "codelistid" : "plmweb.formattype_chg",
@@ -6889,7 +6889,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -6911,7 +6911,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
@@ -8980,8 +8980,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -9257,7 +9257,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "codelistid" : "plmweb.formattype_chg",
@@ -9296,7 +9296,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -9318,7 +9318,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
@@ -11489,8 +11489,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -11766,7 +11766,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "codelistid" : "plmweb.formattype_chg",
@@ -11805,7 +11805,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -11827,7 +11827,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
@@ -14005,8 +14005,8 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
@@ -14282,7 +14282,7 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
+                  "defaulttype" : "MD",
                   "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
                   "codelistid" : "plmweb.formattype_chg",
@@ -14321,7 +14321,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -14343,7 +14343,7 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
               "hidden" : true
             } ],
