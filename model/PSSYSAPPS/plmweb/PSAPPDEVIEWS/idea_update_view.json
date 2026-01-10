@@ -235,25 +235,11 @@
         "codeName" : "description"
       }
     }, {
-      "id" : "formitem",
-      "dataType" : 21,
-      "getPSAppDEField" : {
-        "name" : "DESCRIPTION",
-        "codeName" : "description"
-      }
-    }, {
-      "id" : "formitem1",
-      "dataType" : 21,
-      "getPSAppDEField" : {
-        "name" : "DESCRIPTION",
-        "codeName" : "description"
-      }
-    }, {
       "id" : "format_type",
       "hidden" : true,
       "dataType" : 25,
-      "createDV" : "HTML",
-      "updateDV" : "HTML",
+      "createDV" : "MD",
+      "updateDV" : "MD",
       "getPSAppDEField" : {
         "name" : "FORMAT_TYPE",
         "codeName" : "format_type"
@@ -325,8 +311,7 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 4,
-            "itemHeight" : 600.0,
+            "ignoreInput" : 0,
             "labelPos" : "NONE",
             "labelWidth" : 0,
             "name" : "description",
@@ -335,43 +320,19 @@
               "name" : "DESCRIPTION",
               "codeName" : "description"
             },
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) HTML",
-                "value" : "HTML"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            }, {
-              "groupOP" : "AND",
-              "logicCat" : "ITEMENABLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) HTML",
-                "value" : "HTML"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            } ],
             "getPSEditor" : {
-              "editorHeight" : 600.0,
               "editorParams" : {
-                "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                "MAXHEIGHT" : "600",
-                "TEMPLATEACTIONTAG" : "check_idea@template",
+                "defaulttype" : "MD",
+                "srfaiagent" : "TextAgent_Writing",
+                "hiddenswitch" : "true",
+                "SHOWWIDESCREEN" : "true",
+                "WIDESCREENMODE" : "false",
+                "codelistid" : "plmweb.formattype_chg",
+                "SHOWOUTLINE" : "true",
+                "TOOLBARALIGN" : "center",
                 "ac" : "true",
-                "srfaiagent" : "TextAgent_Writing"
+                "includes" : "[\"HTMLEDITOR_VDITOR\"]"
               },
-              "editorStyle" : "VDITOR",
               "editorType" : "HTMLEDITOR",
               "name" : "description",
               "getPSAppDEACMode" : {
@@ -384,13 +345,11 @@
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
               },
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "VDITOR",
-                "runtimeObject" : true
-              },
+              "getPSEditorItems" : [ {
+                "name" : "format_type"
+              } ],
               "placeHolder" : "请输入内容",
               "enableAC" : true
             },
@@ -398,148 +357,11 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "allowEmpty" : true
-          }, {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.DESCRIPTION"
+            "getPSSysPFPlugin" : {
+              "pluginType" : "FORM_USERCONTROL",
+              "pluginCode" : "COMPOSITE_FORM_ITEM_EX"
             },
-            "caption" : "描述",
-            "codeName" : "formitem",
-            "dataType" : 21,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 4,
-            "itemHeight" : 600.0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
-            "name" : "formitem",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "DESCRIPTION",
-              "codeName" : "description"
-            },
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) MD",
-                "value" : "MD"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            }, {
-              "groupOP" : "AND",
-              "logicCat" : "ITEMENABLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) MD",
-                "value" : "MD"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            } ],
-            "getPSEditor" : {
-              "editorHeight" : 600.0,
-              "editorParams" : {
-                "ac" : "true",
-                "srfaiagent" : "TextAgent_Writing"
-              },
-              "editorType" : "MARKDOWN",
-              "maxLength" : 1048576,
-              "mode" : "EDIT",
-              "name" : "formitem",
-              "getPSAppDEACMode" : {
-                "modelref" : true,
-                "id" : "AIChat"
-              },
-              "getPSAppDEDataSet" : {
-                "modelref" : true,
-                "id" : "fetch_default"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-              },
-              "enableAC" : true,
-              "showMaxLength" : true
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true
-          }, {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.DESCRIPTION"
-            },
-            "caption" : "描述",
-            "codeName" : "formitem1",
-            "dataType" : 21,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 4,
-            "itemHeight" : 600.0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
-            "name" : "formitem1",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "DESCRIPTION",
-              "codeName" : "description"
-            },
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) EXCEL",
-                "value" : "EXCEL"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            }, {
-              "groupOP" : "AND",
-              "logicCat" : "ITEMENABLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "format_type",
-                "logicType" : "SINGLE",
-                "name" : "format_type等于(=) EXCEL",
-                "value" : "EXCEL"
-              } ],
-              "relatedDetailNames" : [ "format_type" ],
-              "notMode" : false
-            } ],
-            "getPSEditor" : {
-              "editorHeight" : 600.0,
-              "editorStyle" : "LUCKYSHEET",
-              "editorType" : "TEXTAREA",
-              "maxLength" : 1048576,
-              "name" : "formitem1",
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "LUCKYSHEET",
-                "runtimeObject" : true
-              },
-              "showMaxLength" : true
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
+            "valueItemName" : "format_type",
             "allowEmpty" : true
           } ],
           "getPSLayout" : {
@@ -1140,7 +962,7 @@
       }, {
         "caption" : "内容格式",
         "codeName" : "format_type",
-        "createDV" : "HTML",
+        "createDV" : "MD",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -1162,7 +984,7 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "HTML",
+        "updateDV" : "MD",
         "allowEmpty" : true,
         "hidden" : true
       }, {
