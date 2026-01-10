@@ -481,43 +481,6 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[ENABLE][逻辑有效标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_KB_MEMBER.ENABLE"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[ENABLE][逻辑有效标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.AI_KB_MEMBER.ENABLE"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[ENABLE][逻辑有效标识]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "enable",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.AI_KB_MEMBER.ENABLE"
-    },
-    "logicName" : "逻辑有效标识",
-    "name" : "ENABLE",
-    "stdDataType" : 9
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
       "name" : "[CREATE_MAN][创建人]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -794,6 +757,34 @@
     "name" : "USER_ID",
     "stdDataType" : 25,
     "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "active",
+    "logicName" : "是否启用",
+    "name" : "ACTIVE",
+    "stdDataType" : 9
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "nothing",
@@ -858,17 +849,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "enable",
-      "logicName" : "逻辑有效标识",
-      "name" : "enable",
-      "getPSAppDEField" : {
-        "name" : "ENABLE",
-        "codeName" : "enable"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 9,
-      "type" : "SIMPLE"
-    }, {
       "codeName" : "create_man",
       "logicName" : "创建人",
       "name" : "create_man",
@@ -929,6 +909,18 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "active",
+      "logicName" : "是否启用",
+      "name" : "active",
+      "getPSAppDEField" : {
+        "name" : "ACTIVE",
+        "codeName" : "active"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "kb_id",
       "logicName" : "知识库标识",
