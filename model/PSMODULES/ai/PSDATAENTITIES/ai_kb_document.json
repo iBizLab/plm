@@ -668,7 +668,9 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "actionHolder" : 1,
     "codeName" : "unparsed",
+    "dataSetType" : "DELOGIC",
     "logicName" : "未解析文档",
     "name" : "UNPARSED",
     "getPSDEDataQueries" : [ {
@@ -691,9 +693,14 @@
       },
       "type" : "PAGE"
     },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/unparsed.json"
+    },
+    "predefinedType" : "DELOGIC",
     "viewLevel" : 0,
     "enableBackend" : true,
-    "enableFront" : true
+    "enableFront" : false
   } ],
   "getAllPSDEFGroups" : [ {
     "codeName" : "simple",
@@ -4024,6 +4031,177 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "unparsed",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/unparsed.json",
+    "logicName" : "未切片数据集",
+    "name" : "未切片数据集",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATAQUERY_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATAQUERY_01",
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "unparsed"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 358,
+      "logicNodeType" : "DEDATAQUERY",
+      "name" : "查询未切片",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATAQUERY_01"
+        }
+      } ],
+      "topPos" : 256,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "LOOPSUBCALL_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc"
+      },
+      "leftPos" : 358,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "CUSTOM_CHUNK",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "doc"
+            },
+            "logicType" : "SINGLE",
+            "name" : "doc[CUSTOM_CHUNK] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_01"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_01"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "topPos" : 386,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 677,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 388,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 358,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "置空查询parsing_config",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "PARSER_CONFIG",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      } ],
+      "topPos" : 602,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "doc",
+      "logicName" : "doc",
+      "name" : "doc",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "page",
+      "logicName" : "文档",
+      "name" : "文档",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
       },
       "entityPageParam" : true
     } ],

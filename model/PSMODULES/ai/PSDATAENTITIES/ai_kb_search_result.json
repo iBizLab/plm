@@ -1429,6 +1429,120 @@
     "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "RAW_QUERY",
+      "dBType" : "POSTGRESQL",
+      "name" : "RAW_QUERY",
+      "standardColumnName" : "RAW_QUERY"
+    }, {
+      "columnName" : "RAW_QUERY",
+      "dBType" : "MYSQL5",
+      "name" : "RAW_QUERY",
+      "standardColumnName" : "`RAW_QUERY`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RAW_QUERY][原始问题]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RAW_QUERY][原始问题]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+        },
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[RAW_QUERY][原始问题]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[RAW_QUERY][原始问题]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+        },
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "RAW_QUERY",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "raw_query",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "原始问题",
+    "name" : "RAW_QUERY",
+    "orderValue" : 250,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result/PSDERS/DER1N_AI_KB_SEARCH_RESULT_AI_KB_SEARCH_QUERY_QUERY_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "RAW_QUERY",
+      "codeName" : "raw_query"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "RAW_QUERY",
+      "codeName" : "raw_query"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+    },
+    "serviceCodeName" : "raw_query",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false,
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
       "dBType" : "POSTGRESQL",
       "name" : "CREATE_TIME",
@@ -1913,6 +2027,17 @@
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTOS"
+    }, {
+      "logicName" : "原始问题",
+      "name" : "raw_query",
+      "getPSDEField" : {
+        "name" : "RAW_QUERY",
+        "codeName" : "raw_query"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
+      "type" : "SIMPLE"
     }, {
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "创建时间",
