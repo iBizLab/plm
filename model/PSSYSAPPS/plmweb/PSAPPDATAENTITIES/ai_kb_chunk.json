@@ -1844,6 +1844,119 @@
     "uIActionTag" : "panel_ad500b587a806bf9660_button_calluilogic_click",
     "uIActionType" : "DEUIACTION",
     "id" : "panel_ad500b587a806bf9660_button_calluilogic_click@ai_kb_chunk"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "切换模式",
+    "codeName" : "switch_show_mode",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ai_kb_chunk_switch_show_mode",
+    "name" : "切换显示模式",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "switch_show_mode"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "switch_show_mode",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "switch_show_mode@ai_kb_chunk"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "switch_show_mode",
+    "defaultParamName" : "Default",
+    "logicName" : "切换显示模式",
+    "memo" : "切换表格的显示模式",
+    "name" : "切换显示模式",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 388,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "showMode",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "op_params"
+        },
+        "name" : "当前视图参数[showMode] ==> op_params[showMode]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "showMode",
+        "srcValueType" : "VIEWPARAM"
+      } ],
+      "topPos" : 208,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treegrid"
+      },
+      "invokeMethod" : "switchShowMode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "op_params"
+      },
+      "leftPos" : 660,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "op_params",
+      "logicName" : "操作参数",
+      "name" : "操作参数",
+      "entityParam" : true
+    }, {
+      "codeName" : "treegrid",
+      "logicName" : "树表部件",
+      "name" : "树表部件",
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
