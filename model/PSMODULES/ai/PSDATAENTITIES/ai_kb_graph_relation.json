@@ -242,6 +242,9 @@
     }, {
       "name" : "ACTIVE",
       "codeName" : "active"
+    }, {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
     } ],
     "codeName" : "Table",
     "name" : "AI_KB_GRAPH_RELATION",
@@ -1004,6 +1007,7 @@
     "codeName" : "subject_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
+    "fieldTag" : "SOURCE_ID",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_RELATION.SUBJECT_ID"
@@ -1132,6 +1136,7 @@
     "codeName" : "object_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
+    "fieldTag" : "TARGET_ID",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_RELATION.OBJECT_ID"
@@ -1437,6 +1442,7 @@
     "codeName" : "kb_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
+    "fieldTag" : "KNOWLEDGE_BASE_ID",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_RELATION.KB_ID"
@@ -1555,6 +1561,85 @@
     "stdDataType" : 9,
     "valueFormat" : "%1$s",
     "allowEmpty" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DESCRIPTION",
+      "dBType" : "POSTGRESQL",
+      "name" : "DESCRIPTION",
+      "standardColumnName" : "DESCRIPTION"
+    }, {
+      "columnName" : "DESCRIPTION",
+      "dBType" : "MYSQL5",
+      "name" : "DESCRIPTION",
+      "queryCodeExp" : "t1.`DESCRIPTION`",
+      "standardColumnName" : "`DESCRIPTION`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTAREA_10",
+        "name" : "默认",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXTAREA",
+        "name" : "移动端默认",
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DESCRIPTION",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "description",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT_1000",
+    "importOrder" : 1000,
+    "length" : 2000,
+    "logicName" : "描述",
+    "name" : "DESCRIPTION",
+    "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "DESCRIPTION"
+    },
+    "serviceCodeName" : "description",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_kb_graph_relation_dto",
@@ -1693,6 +1778,17 @@
       "stdDataType" : 9,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "logicName" : "描述",
+      "name" : "description",
+      "getPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
