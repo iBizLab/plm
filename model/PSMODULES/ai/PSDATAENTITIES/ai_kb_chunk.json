@@ -258,6 +258,15 @@
       "name" : "CHUNK_TYPE",
       "codeName" : "chunk_type"
     }, {
+      "name" : "TYPE",
+      "codeName" : "type"
+    }, {
+      "name" : "SOURCE_INDICES",
+      "codeName" : "source_indices"
+    }, {
+      "name" : "SOURCE_COUNT",
+      "codeName" : "source_count"
+    }, {
       "name" : "DOCUMENT_ID",
       "codeName" : "document_id"
     }, {
@@ -1930,6 +1939,7 @@
       "columnName" : "CHUNK_TYPE",
       "dBType" : "POSTGRESQL",
       "name" : "CHUNK_TYPE",
+      "queryCodeExp" : "t1.CHUNK_TYPE",
       "standardColumnName" : "CHUNK_TYPE",
       "valueAutoGen" : true
     }, {
@@ -2007,6 +2017,10 @@
     "logicName" : "分块类型",
     "name" : "CHUNK_TYPE",
     "orderValue" : 310,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/chunk_type.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2018,6 +2032,246 @@
     "serviceCodeName" : "chunk_type",
     "stdDataType" : 25,
     "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "TYPE",
+      "queryCodeExp" : "t1.TYPE",
+      "standardColumnName" : "TYPE",
+      "valueAutoGen" : true
+    }, {
+      "columnName" : "TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "TYPE",
+      "standardColumnName" : "`TYPE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TYPE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "type",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "original",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "分块类型",
+    "name" : "TYPE",
+    "orderValue" : 310,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/chunk_type.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "TYPE"
+    },
+    "serviceCodeName" : "type",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SOURCE_INDICES",
+      "dBType" : "POSTGRESQL",
+      "name" : "SOURCE_INDICES",
+      "queryCodeExp" : "t1.SOURCE_INDICES",
+      "standardColumnName" : "SOURCE_INDICES"
+    }, {
+      "columnName" : "SOURCE_INDICES",
+      "dBType" : "MYSQL5",
+      "name" : "SOURCE_INDICES",
+      "standardColumnName" : "`SOURCE_INDICES`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SOURCE_INDICES][源索引标识列表]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "ARRAY",
+        "name" : "[SOURCE_INDICES][源索引标识列表]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SOURCE_INDICES][源索引标识列表]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBARRAY",
+        "name" : "[SOURCE_INDICES][源索引标识列表]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SOURCE_INDICES",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "source_indices",
+    "dEFType" : 1,
+    "dataType" : "TEXTARRAY2",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "源分块索引",
+    "name" : "SOURCE_INDICES",
+    "orderValue" : 320,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SOURCE_INDICES"
+    },
+    "serviceCodeName" : "source_indices",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SOURCE_COUNT",
+      "dBType" : "POSTGRESQL",
+      "name" : "SOURCE_COUNT",
+      "queryCodeExp" : "t1.SOURCE_COUNT",
+      "standardColumnName" : "SOURCE_COUNT"
+    }, {
+      "columnName" : "SOURCE_COUNT",
+      "dBType" : "MYSQL5",
+      "name" : "SOURCE_COUNT",
+      "standardColumnName" : "`SOURCE_COUNT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SOURCE_COUNT][源分块计数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[SOURCE_COUNT][源分块计数]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SOURCE_COUNT][源分块计数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SOURCE_COUNT][源分块计数]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "source_count",
+    "dEFType" : 1,
+    "dataType" : "INT",
+    "importOrder" : 1000,
+    "logicName" : "源分块计数",
+    "name" : "SOURCE_COUNT",
+    "orderValue" : 330,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SOURCE_COUNT"
+    },
+    "serviceCodeName" : "source_count",
+    "stdDataType" : 9,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -2788,6 +3042,39 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "original",
+      "logicName" : "分块类型",
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "源分块索引",
+      "name" : "source_indices",
+      "getPSDEField" : {
+        "name" : "SOURCE_INDICES",
+        "codeName" : "source_indices"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 1048576,
+      "type" : "SIMPLES"
+    }, {
+      "logicName" : "源分块计数",
+      "name" : "source_count",
+      "getPSDEField" : {
+        "name" : "SOURCE_COUNT",
+        "codeName" : "source_count"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "defaultValue" : "1",
