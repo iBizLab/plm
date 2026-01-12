@@ -2015,6 +2015,35 @@
                   "repeatContent" : true,
                   "showCaption" : true
                 }, {
+                  "caption" : "文本预处理规则",
+                  "codeName" : "pre_process_rules",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "ignoreInput" : 0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "pre_process_rules",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "CHECKBOXLIST",
+                    "name" : "pre_process_rules",
+                    "getPSAppCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
+                    }
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 24,
+                    "colMD" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "allowEmpty" : true,
+                  "needCodeListConfig" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
                   "codeName" : "grouppanel7",
                   "detailStyle" : "DEFAULT",
                   "detailType" : "GROUPPANEL",
@@ -2026,7 +2055,7 @@
                     "getPSDEFDLogics" : [ {
                       "groupOP" : "OR",
                       "logicType" : "GROUP",
-                      "name" : "OR",
+                      "name" : "OR [取反]",
                       "getPSDEFDLogics" : [ {
                         "condOP" : "EQ",
                         "dEFDName" : "method",
@@ -2058,7 +2087,7 @@
                         "name" : "method等于(=) PRESENTATION",
                         "value" : "PRESENTATION"
                       } ],
-                      "notMode" : false
+                      "notMode" : true
                     } ],
                     "relatedDetailNames" : [ "method" ],
                     "notMode" : false
@@ -2344,8 +2373,8 @@
                         "name" : "use_graphrag"
                       },
                       "getPSLayoutPos" : {
-                        "colLG" : 8,
-                        "colMD" : 8,
+                        "colLG" : 12,
+                        "colMD" : 12,
                         "layout" : "TABLE_24COL"
                       },
                       "allowEmpty" : true,
@@ -2416,8 +2445,8 @@
                         "singleSelect" : false
                       },
                       "getPSLayoutPos" : {
-                        "colLG" : 16,
-                        "colMD" : 16,
+                        "colLG" : 12,
+                        "colMD" : 12,
                         "layout" : "TABLE_24COL"
                       },
                       "allowEmpty" : false,
@@ -2576,34 +2605,6 @@
                 "infoGroupMode" : false,
                 "repeatContent" : true,
                 "showCaption" : false
-              }, {
-                "caption" : "文本预处理规则",
-                "codeName" : "pre_process_rules",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "LEFT",
-                "labelWidth" : 130,
-                "name" : "pre_process_rules",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "CHECKBOXLIST",
-                  "name" : "pre_process_rules",
-                  "getPSAppCodeList" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
-                  }
-                },
-                "getPSLayoutPos" : {
-                  "colMD" : 24,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "needCodeListConfig" : true,
-                "repeatContent" : true,
-                "showCaption" : true
               }, {
                 "caption" : "自定义脱敏规则",
                 "codeName" : "grouppanel2",
@@ -3127,23 +3128,10 @@
                               "labelWidth" : 130,
                               "name" : "chunk_token_num",
                               "noPrivDisplayMode" : 1,
-                              "getPSDEFDGroupLogics" : [ {
-                                "groupOP" : "AND",
-                                "logicCat" : "ITEMBLANK",
-                                "logicType" : "GROUP",
-                                "getPSDEFDLogics" : [ {
-                                  "condOP" : "NOTEQ",
-                                  "dEFDName" : "method",
-                                  "logicType" : "SINGLE",
-                                  "name" : "method不等于(<>) NAIVE",
-                                  "value" : "NAIVE"
-                                } ],
-                                "relatedDetailNames" : [ "method" ],
-                                "notMode" : false
-                              } ],
                               "getPSEditor" : {
-                                "editorType" : "NUMBER",
-                                "name" : "chunk_token_num"
+                                "editorType" : "SPAN",
+                                "name" : "chunk_token_num",
+                                "enableLinkView" : false
                               },
                               "getPSLayoutPos" : {
                                 "colLG" : 12,
@@ -3151,7 +3139,7 @@
                                 "layout" : "TABLE_24COL"
                               },
                               "updateDV" : "512",
-                              "allowEmpty" : false,
+                              "allowEmpty" : true,
                               "repeatContent" : true,
                               "showCaption" : true
                             }, {
@@ -3188,7 +3176,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "labelPos" : "LEFT",
                               "labelWidth" : 130,
@@ -3274,23 +3262,10 @@
                               "labelWidth" : 130,
                               "name" : "task_page_size",
                               "noPrivDisplayMode" : 1,
-                              "getPSDEFDGroupLogics" : [ {
-                                "groupOP" : "AND",
-                                "logicCat" : "ITEMBLANK",
-                                "logicType" : "GROUP",
-                                "getPSDEFDLogics" : [ {
-                                  "condOP" : "NOTEQ",
-                                  "dEFDName" : "method",
-                                  "logicType" : "SINGLE",
-                                  "name" : "method不等于(<>) NAIVE",
-                                  "value" : "NAIVE"
-                                } ],
-                                "relatedDetailNames" : [ "method" ],
-                                "notMode" : false
-                              } ],
                               "getPSEditor" : {
-                                "editorType" : "NUMBER",
-                                "name" : "task_page_size"
+                                "editorType" : "SPAN",
+                                "name" : "task_page_size",
+                                "enableLinkView" : false
                               },
                               "getPSLayoutPos" : {
                                 "colLG" : 12,
@@ -3298,7 +3273,7 @@
                                 "layout" : "TABLE_24COL"
                               },
                               "updateDV" : "12",
-                              "allowEmpty" : false,
+                              "allowEmpty" : true,
                               "repeatContent" : true,
                               "showCaption" : true
                             }, {
@@ -3307,7 +3282,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "labelPos" : "LEFT",
                               "labelWidth" : 130,
@@ -3346,7 +3321,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "labelPos" : "LEFT",
                               "labelWidth" : 130,
@@ -3371,7 +3346,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "labelPos" : "LEFT",
                               "labelWidth" : 130,
@@ -3435,7 +3410,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "itemWidth" : 355.0,
                               "labelPos" : "LEFT",
@@ -3481,7 +3456,7 @@
                               "dataType" : 25,
                               "detailStyle" : "DEFAULT",
                               "detailType" : "FORMITEM",
-                              "enableCond" : 3,
+                              "enableCond" : 0,
                               "ignoreInput" : 0,
                               "itemWidth" : 355.0,
                               "labelPos" : "LEFT",
@@ -3522,6 +3497,35 @@
                               "repeatContent" : true,
                               "showCaption" : true
                             }, {
+                              "caption" : "文本预处理规则",
+                              "codeName" : "pre_process_rules",
+                              "dataType" : 25,
+                              "detailStyle" : "DEFAULT",
+                              "detailType" : "FORMITEM",
+                              "enableCond" : 0,
+                              "ignoreInput" : 0,
+                              "labelPos" : "LEFT",
+                              "labelWidth" : 130,
+                              "name" : "pre_process_rules",
+                              "noPrivDisplayMode" : 1,
+                              "getPSEditor" : {
+                                "editorType" : "CHECKBOXLIST",
+                                "name" : "pre_process_rules",
+                                "getPSAppCodeList" : {
+                                  "modelref" : true,
+                                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
+                                }
+                              },
+                              "getPSLayoutPos" : {
+                                "colLG" : 24,
+                                "colMD" : 24,
+                                "layout" : "TABLE_24COL"
+                              },
+                              "allowEmpty" : true,
+                              "needCodeListConfig" : true,
+                              "repeatContent" : true,
+                              "showCaption" : true
+                            }, {
                               "codeName" : "grouppanel7",
                               "detailStyle" : "DEFAULT",
                               "detailType" : "GROUPPANEL",
@@ -3533,7 +3537,7 @@
                                 "getPSDEFDLogics" : [ {
                                   "groupOP" : "OR",
                                   "logicType" : "GROUP",
-                                  "name" : "OR",
+                                  "name" : "OR [取反]",
                                   "getPSDEFDLogics" : [ {
                                     "condOP" : "EQ",
                                     "dEFDName" : "method",
@@ -3565,7 +3569,7 @@
                                     "name" : "method等于(=) PRESENTATION",
                                     "value" : "PRESENTATION"
                                   } ],
-                                  "notMode" : false
+                                  "notMode" : true
                                 } ],
                                 "relatedDetailNames" : [ "method" ],
                                 "notMode" : false
@@ -3694,7 +3698,7 @@
                                     },
                                     "getPSLayoutPos" : {
                                       "colLG" : 12,
-                                      "colMD" : 8,
+                                      "colMD" : 12,
                                       "layout" : "TABLE_24COL"
                                     },
                                     "updateDV" : "256",
@@ -3728,7 +3732,7 @@
                                     },
                                     "getPSLayoutPos" : {
                                       "colLG" : 12,
-                                      "colMD" : 8,
+                                      "colMD" : 12,
                                       "layout" : "TABLE_24COL"
                                     },
                                     "updateDV" : "0.1",
@@ -3762,7 +3766,7 @@
                                     },
                                     "getPSLayoutPos" : {
                                       "colLG" : 12,
-                                      "colMD" : 8,
+                                      "colMD" : 12,
                                       "layout" : "TABLE_24COL"
                                     },
                                     "updateDV" : "64",
@@ -3788,7 +3792,7 @@
                                     },
                                     "getPSLayoutPos" : {
                                       "colLG" : 12,
-                                      "colMD" : 8,
+                                      "colMD" : 12,
                                       "layout" : "TABLE_24COL"
                                     },
                                     "updateDV" : "42",
@@ -3797,8 +3801,8 @@
                                     "showCaption" : true
                                   } ],
                                   "getPSLayout" : {
-                                    "childColLG" : 8,
-                                    "childColMD" : 8,
+                                    "childColLG" : 12,
+                                    "childColMD" : 12,
                                     "columnCount" : 24,
                                     "layout" : "TABLE_24COL"
                                   },
@@ -3851,8 +3855,8 @@
                                     "name" : "use_graphrag"
                                   },
                                   "getPSLayoutPos" : {
-                                    "colLG" : 8,
-                                    "colMD" : 8,
+                                    "colLG" : 12,
+                                    "colMD" : 12,
                                     "layout" : "TABLE_24COL"
                                   },
                                   "allowEmpty" : true,
@@ -3923,8 +3927,8 @@
                                     "singleSelect" : false
                                   },
                                   "getPSLayoutPos" : {
-                                    "colLG" : 16,
-                                    "colMD" : 16,
+                                    "colLG" : 12,
+                                    "colMD" : 12,
                                     "layout" : "TABLE_24COL"
                                   },
                                   "allowEmpty" : false,
@@ -4083,34 +4087,6 @@
                             "infoGroupMode" : true,
                             "repeatContent" : true,
                             "showCaption" : false
-                          }, {
-                            "caption" : "文本预处理规则",
-                            "codeName" : "pre_process_rules",
-                            "dataType" : 25,
-                            "detailStyle" : "DEFAULT",
-                            "detailType" : "FORMITEM",
-                            "enableCond" : 3,
-                            "ignoreInput" : 0,
-                            "labelPos" : "LEFT",
-                            "labelWidth" : 130,
-                            "name" : "pre_process_rules",
-                            "noPrivDisplayMode" : 1,
-                            "getPSEditor" : {
-                              "editorType" : "CHECKBOXLIST",
-                              "name" : "pre_process_rules",
-                              "getPSAppCodeList" : {
-                                "modelref" : true,
-                                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
-                              }
-                            },
-                            "getPSLayoutPos" : {
-                              "colMD" : 24,
-                              "layout" : "TABLE_24COL"
-                            },
-                            "allowEmpty" : true,
-                            "needCodeListConfig" : true,
-                            "repeatContent" : true,
-                            "showCaption" : true
                           }, {
                             "caption" : "自定义脱敏规则",
                             "codeName" : "grouppanel2",

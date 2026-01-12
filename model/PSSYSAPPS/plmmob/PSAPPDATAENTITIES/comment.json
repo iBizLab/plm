@@ -2584,15 +2584,6 @@
           "groupOP" : "AND",
           "logicType" : "GROUP",
           "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "space",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "ctx"
-            },
-            "logicType" : "SINGLE",
-            "name" : "ctx[space] 值不为空(NotNil)"
-          }, {
             "condOP" : "ISNULL",
             "dstFieldName" : "project",
             "getDstLogicParam" : {
@@ -2628,6 +2619,29 @@
             },
             "logicType" : "SINGLE",
             "name" : "ctx[discuss_topic] 值为空(Nil)"
+          }, {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "ISNOTNULL",
+              "dstFieldName" : "article_page",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "ctx"
+              },
+              "logicType" : "SINGLE",
+              "name" : "ctx[article_page] 值不为空(NotNil)"
+            }, {
+              "condOP" : "ISNOTNULL",
+              "dstFieldName" : "space",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "ctx"
+              },
+              "logicType" : "SINGLE",
+              "name" : "ctx[space] 值不为空(NotNil)"
+            } ]
           } ]
         },
         "getSrcPSDEUILogicNode" : {
@@ -2760,131 +2774,6 @@
       "topPos" : 150,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEUIACTION3",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
-        },
-        "modelref" : true,
-        "id" : "open_user_view@space_member"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -139,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "空间成员",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION3"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "topPos" : 350
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
-        },
-        "modelref" : true,
-        "id" : "open_user_view@project_member"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -340,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "项目成员",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "topPos" : 350
-    }, {
-      "codeName" : "END1",
-      "leftPos" : -99,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 564
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
-        },
-        "modelref" : true,
-        "id" : "open_user_view@product_member"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -530,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "产品成员",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "topPos" : 350
-    }, {
       "codeName" : "DEUIACTION5",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -2960,6 +2849,131 @@
         "id" : "Default"
       },
       "topPos" : 350
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
+        },
+        "modelref" : true,
+        "id" : "open_user_view@product_member"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -530,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "产品成员",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 350
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+        },
+        "modelref" : true,
+        "id" : "open_user_view@project_member"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -340,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "项目成员",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 350
+    }, {
+      "codeName" : "DEUIACTION3",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+        },
+        "modelref" : true,
+        "id" : "open_user_view@space_member"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -139,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "空间成员",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION3"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 350
+    }, {
+      "codeName" : "END1",
+      "leftPos" : -99,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 564
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
