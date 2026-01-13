@@ -15,124 +15,182 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ai.json"
   },
-  "getPSAppViewEngines" : [ {
-    "engineCat" : "VIEW",
-    "engineType" : "ListExpView",
-    "name" : "engine"
-  } ],
-  "getPSAppViewLogics" : [ {
-    "logicTrigger" : "CUSTOM",
-    "logicType" : "APPUILOGIC",
-    "name" : "newdata",
-    "getPSAppUILogic" : {
-      "actionAfterWizard" : "DEFAULT",
-      "logicType" : "PREDEFINED",
-      "name" : "新建数据",
-      "viewLogicType" : "APP_NEWDATA",
-      "batchAddOnly" : false,
-      "enableBatchAdd" : false,
-      "enableWizardAdd" : false
-    }
-  }, {
-    "logicTrigger" : "CUSTOM",
-    "logicType" : "APPUILOGIC",
-    "name" : "opendata",
-    "getPSAppUILogic" : {
-      "logicType" : "PREDEFINED",
-      "name" : "打开数据",
-      "viewLogicType" : "APP_OPENDATA",
-      "editMode" : true
-    }
-  } ],
-  "getPSControls" : [ {
-    "codeName" : "list_exp_view_listexpbar",
-    "controlType" : "LISTEXPBAR",
-    "name" : "listexpbar",
+  "getPSDEViewCodeName" : "list_exp_view",
+  "getPSDEViewId" : "19341ac75ca54f104f0afe8ff2b9f545",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "layoutMode" : "FLEX",
+    "logicName" : "list_exp_view 实体列表导航视图布局面板",
+    "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     },
-    "getPSControlHandler" : {
-      "enableDEFieldPrivilege" : false,
-      "id" : "listexpbar"
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "layout" : "FLEX"
     },
-    "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "LISTEXPBAR"
-    },
+    "getRootPSPanelItems" : [ {
+      "caption" : "栅格容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container_grid",
+      "getPSLayout" : {
+        "layout" : "SIMPLEFLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "面板容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "grow" : 3,
+          "layout" : "SIMPLEFLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "列表导航",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "listexpbar",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "列表导航",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "listexpbar1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "showCaption" : true
+        } ]
+      }, {
+        "caption" : "面板容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container1",
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "grow" : 6,
+          "layout" : "SIMPLEFLEX"
+        }
+      }, {
+        "caption" : "面板容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container2",
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "grow" : 3,
+          "layout" : "SIMPLEFLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "导航区占位",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "nav_pos",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "name" : "nav_pos",
+            "predefinedType" : "NAV_POS"
+          },
+          "showCaption" : true
+        } ]
+      } ],
+      "predefinedType" : "CONTAINER_GRID"
+    } ],
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : false,
+    "viewProxyMode" : true,
+    "modelid" : "8f3c8de15beeaa0124ecd7a0ecd9ea51",
+    "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+    "getPSAppViewEngines" : [ {
+      "engineCat" : "VIEW",
+      "engineType" : "ListExpView",
+      "name" : "engine"
+    } ],
+    "getPSAppViewLogics" : [ {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "newdata",
+      "getPSAppUILogic" : {
+        "actionAfterWizard" : "DEFAULT",
+        "logicType" : "PREDEFINED",
+        "name" : "新建数据",
+        "viewLogicType" : "APP_NEWDATA",
+        "batchAddOnly" : false,
+        "enableBatchAdd" : false,
+        "enableWizardAdd" : false
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "opendata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "打开数据",
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : true
+      }
+    } ],
     "getPSControls" : [ {
-      "codeName" : "list_exp_view_list",
-      "controlType" : "LIST",
-      "getCreatePSControlAction" : {
-        "modelref" : true,
-        "id" : "create",
-        "actionName" : "Create",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "CREATE",
-        "name" : "create",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "create"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSLISTS/list_exp_view_list.json",
-      "getFetchPSControlAction" : {
-        "modelref" : true,
-        "id" : "fetch",
-        "actionType" : "DEDATASET",
-        "name" : "fetch",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "getGetPSControlAction" : {
-        "modelref" : true,
-        "id" : "load",
-        "actionName" : "Get",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "READ",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "get"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "groupMode" : "NONE",
-      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
-      "logicName" : "List2",
+      "codeName" : "list_exp_view_listexpbar",
+      "controlType" : "LISTEXPBAR",
+      "name" : "listexpbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
       },
+      "getPSAppViewRefs" : [ {
+        "name" : "EXPITEM:DEFAULT",
+        "realTitle" : "知识库图谱实体编辑视图",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
       "getPSControlHandler" : {
-        "getPSHandlerActions" : [ {
-          "actionName" : "Get",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "READ",
-          "name" : "load",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "get"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        }, {
+        "enableDEFieldPrivilege" : false,
+        "id" : "listexpbar"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "LISTEXPBAR"
+      },
+      "getPSControls" : [ {
+        "codeName" : "list_exp_view_list",
+        "controlType" : "LIST",
+        "getCreatePSControlAction" : {
+          "modelref" : true,
+          "id" : "create",
           "actionName" : "Create",
           "actionType" : "DEACTION",
           "dataAccessAction" : "CREATE",
@@ -145,20 +203,140 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           }
-        }, {
-          "actionName" : "Update",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "UPDATE",
-          "name" : "update",
+        },
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSLISTS/list_exp_view_list.json",
+        "getFetchPSControlAction" : {
+          "modelref" : true,
+          "id" : "fetch",
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "update"
+            "id" : "fetch_default"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           }
+        },
+        "getGetPSControlAction" : {
+          "modelref" : true,
+          "id" : "load",
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "groupMode" : "NONE",
+        "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+        "logicName" : "List2",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "navViewPos" : "RIGHT",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "getPSControlHandler" : {
+          "getPSHandlerActions" : [ {
+            "actionName" : "Get",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Create",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "create"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Update",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "update"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          } ],
+          "userDRAction" : "READ",
+          "enableDEFieldPrivilege" : false,
+          "id" : "列表控件处理器"
+        },
+        "getPSControlLogics" : [ {
+          "eventNames" : "SELECTIONCHANGE",
+          "logicTag" : "listexpbar_list",
+          "logicType" : "CUSTOM",
+          "name" : "listexpbar_selectionchange"
         }, {
+          "eventNames" : "LOAD",
+          "logicTag" : "listexpbar_list",
+          "logicType" : "CUSTOM",
+          "name" : "listexpbar_load"
+        } ],
+        "getPSControlParam" : {
+          "autoLoad" : true,
+          "showBusyIndicator" : true,
+          "id" : "listexpbar_list"
+        },
+        "pagingSize" : 1000,
+        "getRemovePSControlAction" : {
+          "modelref" : true,
+          "id" : "remove",
           "actionName" : "Remove",
           "actionType" : "DEACTION",
           "dataAccessAction" : "DELETE",
@@ -171,7 +349,91 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           }
-        }, {
+        },
+        "getUpdatePSControlAction" : {
+          "modelref" : true,
+          "id" : "update",
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "hasWFDataItems" : false,
+        "enableGroup" : false,
+        "enableRowEdit" : false,
+        "enableRowEditGroup" : false,
+        "enableRowEditOrder" : false,
+        "enableRowNew" : false,
+        "noSort" : false,
+        "showHeader" : true,
+        "singleSelect" : false,
+        "name" : "listexpbar_list",
+        "modelid" : "0c9a9bad0c7a76a9817b7f6987acbccf",
+        "modeltype" : "PSDELIST"
+      } ],
+      "xDataControlName" : "listexpbar_list",
+      "enableCounter" : true,
+      "enableSearch" : false,
+      "showTitleBar" : true,
+      "modelid" : "440d0be2bf13a97e9cf603f9f5da5e12_listexpbar",
+      "modeltype" : "PSEXPBAR"
+    }, {
+      "codeName" : "list_exp_view_listexpbar1",
+      "controlType" : "LISTEXPBAR",
+      "name" : "listexpbar1",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "getPSAppViewRefs" : [ {
+        "name" : "EXPITEM:DEFAULT",
+        "realTitle" : "知识库图谱实体编辑视图",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "listexpbar1"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "LISTEXPBAR1"
+      },
+      "getPSControls" : [ {
+        "codeName" : "list_view_list",
+        "controlType" : "LIST",
+        "getCreatePSControlAction" : {
+          "modelref" : true,
+          "id" : "create",
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSLISTS/list_view_list.json",
+        "getFetchPSControlAction" : {
+          "modelref" : true,
+          "id" : "fetch",
           "actionType" : "DEDATASET",
           "name" : "fetch",
           "getPSAppDEMethod" : {
@@ -182,127 +444,263 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           }
+        },
+        "getGetPSControlAction" : {
+          "modelref" : true,
+          "id" : "load",
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "groupMode" : "NONE",
+        "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+        "getItemPSLayoutPanel" : {
+          "getAllPSPanelFields" : [ {
+            "id" : "name",
+            "viewFieldName" : "name"
+          } ],
+          "codeName" : "listexpbar1_list_itempanel",
+          "controlType" : "PANEL",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSPANELS/listexpbar1_list_itempanel.json",
+          "layoutMode" : "FLEX",
+          "logicName" : "list_view_List列表",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "getPSControlParam" : { },
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getRootPSPanelItems" : [ {
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "align" : "space-between",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "name",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "name",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "name"
+            } ]
+          } ],
+          "layoutPanel" : true,
+          "name" : "listexpbar1_list_itempanel",
+          "modelid" : "af5946c6da21b1efd485c2cdae6e4f47",
+          "modeltype" : "PSSYSVIEWPANEL"
+        },
+        "logicName" : "List",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "navViewPos" : "RIGHT",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "getPSControlHandler" : {
+          "getPSHandlerActions" : [ {
+            "actionName" : "Get",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Create",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "create"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Update",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "update"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          } ],
+          "userDRAction" : "READ",
+          "enableDEFieldPrivilege" : false,
+          "id" : "列表控件处理器"
+        },
+        "getPSControlLogics" : [ {
+          "eventNames" : "SELECTIONCHANGE",
+          "logicTag" : "listexpbar1_list",
+          "logicType" : "CUSTOM",
+          "name" : "listexpbar1_selectionchange"
+        }, {
+          "eventNames" : "LOAD",
+          "logicTag" : "listexpbar1_list",
+          "logicType" : "CUSTOM",
+          "name" : "listexpbar1_load"
         } ],
-        "userDRAction" : "READ",
-        "enableDEFieldPrivilege" : false,
-        "id" : "列表控件处理器"
-      },
-      "getPSControlLogics" : [ {
-        "eventNames" : "SELECTIONCHANGE",
-        "logicTag" : "listexpbar_list",
-        "logicType" : "CUSTOM",
-        "name" : "listexpbar_selectionchange"
-      }, {
-        "eventNames" : "LOAD",
-        "logicTag" : "listexpbar_list",
-        "logicType" : "CUSTOM",
-        "name" : "listexpbar_load"
+        "getPSControlParam" : {
+          "autoLoad" : true,
+          "showBusyIndicator" : true,
+          "id" : "listexpbar1_list"
+        },
+        "getPSDEListDataItems" : [ {
+          "dataType" : 25,
+          "name" : "name"
+        } ],
+        "pagingSize" : 1000,
+        "getRemovePSControlAction" : {
+          "modelref" : true,
+          "id" : "remove",
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "getUpdatePSControlAction" : {
+          "modelref" : true,
+          "id" : "update",
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "hasWFDataItems" : false,
+        "enableGroup" : false,
+        "enableRowEdit" : false,
+        "enableRowEditGroup" : false,
+        "enableRowEditOrder" : false,
+        "enableRowNew" : false,
+        "noSort" : false,
+        "showHeader" : true,
+        "singleSelect" : false,
+        "name" : "listexpbar1_list",
+        "modelid" : "e1f6839039f039c9de816b41f56d8660",
+        "modeltype" : "PSDELIST"
       } ],
+      "xDataControlName" : "listexpbar1_list",
+      "enableCounter" : true,
+      "enableSearch" : false,
+      "showTitleBar" : true,
+      "modelid" : "440d0be2bf13a97e9cf603f9f5da5e12_listexpbar1",
+      "modeltype" : "PSEXPBAR"
+    }, {
+      "controlType" : "SEARCHBAR",
+      "name" : "searchbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
       "getPSControlParam" : {
-        "autoLoad" : true,
-        "showBusyIndicator" : true,
-        "id" : "listexpbar_list"
+        "id" : "searchbar"
       },
-      "pagingSize" : 1000,
-      "getRemovePSControlAction" : {
-        "modelref" : true,
-        "id" : "remove",
-        "actionName" : "Remove",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "DELETE",
-        "name" : "remove",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "getUpdatePSControlAction" : {
-        "modelref" : true,
-        "id" : "update",
-        "actionName" : "Update",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "UPDATE",
-        "name" : "update",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "update"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "hasWFDataItems" : false,
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 1,
+      "quickSearchWidth" : 0,
+      "enableFilter" : false,
       "enableGroup" : false,
-      "enableRowEdit" : false,
-      "enableRowEditGroup" : false,
-      "enableRowEditOrder" : false,
-      "enableRowNew" : false,
-      "noSort" : false,
-      "showHeader" : true,
-      "singleSelect" : false,
-      "name" : "listexpbar_list",
-      "modelid" : "0c9a9bad0c7a76a9817b7f6987acbccf",
-      "modeltype" : "PSDELIST"
-    } ],
-    "xDataControlName" : "listexpbar_list",
-    "enableCounter" : true,
-    "enableSearch" : false,
-    "showTitleBar" : true,
-    "modelid" : "440d0be2bf13a97e9cf603f9f5da5e12_listexpbar",
-    "modeltype" : "PSEXPBAR"
-  }, {
-    "controlType" : "SEARCHBAR",
-    "name" : "searchbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-    },
-    "getPSControlParam" : {
-      "id" : "searchbar"
-    },
-    "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
-    "quickSearchWidth" : 0,
-    "enableFilter" : false,
-    "enableGroup" : false,
-    "enableQuickSearch" : true,
-    "mobileSearchBar" : false
-  }, {
-    "getCapPSLanguageRes" : {
-      "lanResTag" : "DE.LNAME.AI_KB_GRAPH_ENTITY"
-    },
-    "caption" : "知识图谱",
-    "codeName" : "list_exp_view_captionbar",
-    "controlType" : "CAPTIONBAR",
-    "name" : "captionbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-    },
-    "getPSControlParam" : { }
-  } ],
-  "getPSDEViewCodeName" : "list_exp_view",
-  "getPSDEViewId" : "19341ac75ca54f104f0afe8ff2b9f545",
-  "getPSViewLayoutPanel" : {
-    "codeName" : "layoutpanel",
-    "controlStyle" : "APPDELISTEXPVIEW",
-    "controlType" : "VIEWLAYOUTPANEL",
-    "name" : "layoutpanel",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-    },
-    "getPSControlParam" : { },
-    "layoutBodyOnly" : true,
-    "layoutPanel" : true,
-    "useDefaultLayout" : true
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : false
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DE.LNAME.AI_KB_GRAPH_ENTITY"
+      },
+      "caption" : "知识图谱",
+      "codeName" : "list_exp_view_captionbar",
+      "controlType" : "CAPTIONBAR",
+      "name" : "captionbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "getPSControlParam" : { }
+    } ]
   },
-  "refFlag" : false,
   "sideBarLayout" : "LEFT",
   "title" : "知识图谱",
   "viewStyle" : "DEFAULT",
