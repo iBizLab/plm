@@ -224,6 +224,7 @@
         "width" : 300.0
       }, {
         "caption" : "容器",
+        "contentWidth" : 80.0,
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
         "name" : "container_table",
@@ -234,8 +235,11 @@
         "getPSLayoutPos" : {
           "grow" : 1,
           "heightMode" : "FULL",
-          "layout" : "FLEX"
-        }
+          "layout" : "FLEX",
+          "width" : 80,
+          "widthMode" : "PERCENTAGE"
+        },
+        "width" : 80.0
       }, {
         "caption" : "详细信息",
         "contentWidth" : 400.0,
@@ -277,9 +281,16 @@
       "eventNames" : "onSelectionChange",
       "logicTrigger" : "CTRLEVENT",
       "logicType" : "SCRIPT",
+      "name" : "LOGIC2",
+      "getPSViewCtrlName" : "tree1",
+      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\nconsole.log(\"treeCtrl为\"+treeCtrl.state.selectedData)\r\ntreeCtrl.state.selectedData = []\r\nconst selectedData = data[0];\r\n// 将数据存入视图会话变量\r\nview.session.ai_kb_graph_entity = selectedData;\r\nconst ai_kb_graph_relation = view.session.ai_kb_graph_relation?.id || '';\r\nif(ai_kb_graph_relation){\r\nactivectrl.params.ai_kb_graph_relation = ai_kb_graph_relation;\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
+    }, {
+      "eventNames" : "onSelectionChange",
+      "logicTrigger" : "CTRLEVENT",
+      "logicType" : "SCRIPT",
       "name" : "LOGIC1",
       "getPSViewCtrlName" : "tree",
-      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconst activectrlname = view.layoutPanel.findPanelItemByName('form');\r\nconst activectrl = view.getCtrl(\"\", activectrlname.value);\r\nconst selectedData = data[0];\r\n// 将数据存入视图会话变量\r\nview.session.ai_kb_graph_entity = selectedData;\r\nconst ai_kb_graph_entity = view.session.ai_kb_graph_entity?.id || '';\r\nif(ai_kb_graph_entity){\r\nactivectrl.params.ai_kb_graph_entity = ai_kb_graph_entity;\r\n}\r\nawait activectrl.refresh();\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\n"
+      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\ntreeCtrl1.state.selectedData = []\r\nconst selectedData = data[0];\r\n// 将数据存入视图会话变量\r\nview.session.ai_kb_graph_entity = selectedData;\r\nconst ai_kb_graph_entity = view.session.ai_kb_graph_entity?.id || '';\r\nif(ai_kb_graph_entity){\r\nactivectrl.params.ai_kb_graph_entity = ai_kb_graph_entity;\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
     } ],
     "getPSControls" : [ {
       "codeName" : "info",
@@ -964,8 +975,8 @@
         "expandFirstOnly" : false,
         "expanded" : true,
         "rootNode" : false,
-        "selectFirstOnly" : false,
-        "selected" : false,
+        "selectFirstOnly" : true,
+        "selected" : true,
         "id" : "node"
       } ],
       "getRemovePSControlAction" : {
