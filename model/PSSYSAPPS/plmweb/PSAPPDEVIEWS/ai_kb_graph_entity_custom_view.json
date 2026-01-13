@@ -172,7 +172,7 @@
           "widthMode" : "PX"
         },
         "getPSPanelItems" : [ {
-          "caption" : "容器",
+          "caption" : "图谱实体",
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
           "name" : "container2",
@@ -194,16 +194,31 @@
               "layout" : "FLEX"
             },
             "showCaption" : true
-          } ]
+          } ],
+          "showCaption" : true
         }, {
-          "caption" : "树视图",
+          "caption" : "图谱实体关系",
           "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "tree1",
+          "itemType" : "CONTAINER",
+          "name" : "container6",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
+          "getPSPanelItems" : [ {
+            "caption" : "树视图",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "tree1",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ],
           "showCaption" : true
         } ],
         "width" : 300.0
@@ -260,9 +275,9 @@
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
       "eventNames" : "onSelectionChange",
-      "logicTrigger" : "VIEWEVENT",
+      "logicTrigger" : "CTRLEVENT",
       "logicType" : "SCRIPT",
-      "name" : "logic1",
+      "name" : "LOGIC1",
       "getPSViewCtrlName" : "tree",
       "scriptCode" : "console.log(\"数据变更tree\")\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconst activectrlname = view.layoutPanel.findPanelItemByName('form');\r\nconst activectrl = view.getCtrl(\"\", activectrlname.value);\r\nconst selectedData = data[0];\r\n// 将数据存入视图会话变量\r\nview.session.ai_kb_graph_entity = selectedData;\r\nconst ai_kb_graph_entity = view.session.ai_kb_graph_entity?.id || '';\r\nif(ai_kb_graph_entity){\r\nactivectrl.params.ai_kb_graph_entity = ai_kb_graph_entity;\r\n}\r\nawait activectrl.refresh();\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\n"
     } ],
