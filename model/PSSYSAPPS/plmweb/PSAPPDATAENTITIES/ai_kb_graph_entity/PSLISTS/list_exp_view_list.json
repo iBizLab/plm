@@ -1,5 +1,5 @@
 {
-  "codeName" : "list_view_list",
+  "codeName" : "list_exp_view_list",
   "controlType" : "LIST",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,10 +14,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation/PSLISTS/list_view_list.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSLISTS/list_exp_view_list.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
     "id" : "fetch",
@@ -29,7 +29,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
   "getGetPSControlAction" : {
@@ -45,56 +45,26 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
   "groupMode" : "NONE",
-  "logicName" : "List",
-  "getNavPSAppView" : {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_relation_edit_view.json",
-    "viewType" : "DEEDITVIEW"
-  },
-  "navViewPos" : "RIGHT",
+  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "logicName" : "List2",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
   },
-  "getPSDEListDataItems" : [ {
-    "dataType" : 25,
-    "name" : "srfkey",
-    "getPSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    }
+  "getPSControlLogics" : [ {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_selectionchange"
   }, {
-    "dataType" : 25,
-    "name" : "srfmajortext",
-    "getPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "subject_id",
-    "getPSAppDEField" : {
-      "name" : "SUBJECT_ID",
-      "codeName" : "subject_id"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "object_id",
-    "getPSAppDEField" : {
-      "name" : "OBJECT_ID",
-      "codeName" : "object_id"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "kb_id",
-    "getPSAppDEField" : {
-      "name" : "KB_ID",
-      "codeName" : "kb_id"
-    }
+    "eventNames" : "LOAD",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_load"
   } ],
   "pagingSize" : 1000,
   "getRemovePSControlAction" : {
@@ -110,7 +80,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
   "getUpdatePSControlAction" : {
@@ -126,7 +96,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
   "hasWFDataItems" : false,
@@ -137,7 +107,7 @@
   "enableRowNew" : false,
   "noSort" : false,
   "showHeader" : true,
-  "singleSelect" : true,
-  "modelid" : "bc8c8c33ecb71f2ad03582e47cdad7ef",
+  "singleSelect" : false,
+  "modelid" : "0c9a9bad0c7a76a9817b7f6987acbccf",
   "modeltype" : "PSDELIST"
 }
