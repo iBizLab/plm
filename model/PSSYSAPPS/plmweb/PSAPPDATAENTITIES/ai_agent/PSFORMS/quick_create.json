@@ -253,13 +253,6 @@
       "codeName" : "use_kg"
     }
   }, {
-    "id" : "similarity_threshold",
-    "dataType" : 6,
-    "getPSAppDEField" : {
-      "name" : "SIMILARITY_THRESHOLD",
-      "codeName" : "similarity_threshold"
-    }
-  }, {
     "id" : "top_k",
     "dataType" : 9,
     "getPSAppDEField" : {
@@ -272,6 +265,13 @@
     "getPSAppDEField" : {
       "name" : "VECTOR_SIMILARITY_WEIGHT",
       "codeName" : "vector_similarity_weight"
+    }
+  }, {
+    "id" : "similarity_threshold",
+    "dataType" : 6,
+    "getPSAppDEField" : {
+      "name" : "SIMILARITY_THRESHOLD",
+      "codeName" : "similarity_threshold"
     }
   }, {
     "id" : "memory_mode",
@@ -1797,123 +1797,90 @@
             "allowEmpty" : true,
             "showCaption" : true
           }, {
-            "codeName" : "grouppanel11",
+            "caption" : "最大召回数量",
+            "codeName" : "top_k",
+            "dataType" : 9,
             "detailStyle" : "DEFAULT",
-            "detailType" : "GROUPPANEL",
-            "name" : "grouppanel11",
-            "getPSDEFDGroupLogics" : [ {
-              "groupOP" : "AND",
-              "logicCat" : "PANELVISIBLE",
-              "logicType" : "GROUP",
-              "getPSDEFDLogics" : [ {
-                "condOP" : "EQ",
-                "dEFDName" : "rerank",
-                "logicType" : "SINGLE",
-                "name" : "rerank等于(=) 1",
-                "value" : "1"
-              } ],
-              "relatedDetailNames" : [ "rerank" ],
-              "notMode" : false
-            } ],
-            "getPSDEFormDetails" : [ {
-              "caption" : "召回相似度阈值",
-              "codeName" : "similarity_threshold",
-              "dataType" : 6,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "similarity_threshold",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "SIMILARITY_THRESHOLD",
-                "codeName" : "similarity_threshold"
-              },
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "similarity_threshold",
-                "precision" : 2,
-                "scale" : 2
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 12,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "showCaption" : true
-            }, {
-              "caption" : "最大召回数量",
-              "codeName" : "top_k",
-              "dataType" : 9,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "top_k",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "TOP_K",
-                "codeName" : "top_k"
-              },
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "top_k"
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 12,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "showCaption" : true
-            }, {
-              "caption" : "向量相似度权重",
-              "codeName" : "vector_similarity_weight",
-              "dataType" : 6,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "vector_similarity_weight",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "VECTOR_SIMILARITY_WEIGHT",
-                "codeName" : "vector_similarity_weight"
-              },
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "vector_similarity_weight",
-                "precision" : 1,
-                "scale" : 1
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 12,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "showCaption" : true
-            } ],
-            "getPSLayout" : {
-              "childColLG" : 8,
-              "childColMD" : 12,
-              "columnCount" : 24,
-              "layout" : "TABLE_24COL"
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "top_k",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOP_K",
+              "codeName" : "top_k"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "top_k"
             },
             "getPSLayoutPos" : {
-              "colLG" : 24,
-              "colMD" : 24,
+              "colLG" : 8,
+              "colMD" : 12,
               "layout" : "TABLE_24COL"
             },
-            "infoGroupMode" : false,
-            "showCaption" : false
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VECTOR_SIMILARITY_WEIGHT",
+              "codeName" : "vector_similarity_weight"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "vector_similarity_weight",
+              "precision" : 1,
+              "scale" : 1
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回相似度阈值",
+            "codeName" : "similarity_threshold",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "similarity_threshold",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SIMILARITY_THRESHOLD",
+              "codeName" : "similarity_threshold"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "name" : "similarity_threshold",
+              "precision" : 2,
+              "scale" : 2
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
           } ],
           "getPSLayout" : {
             "childColLG" : 8,
