@@ -17,6 +17,9 @@
     "expression" : "t1.KB_ID",
     "name" : "KB_ID"
   }, {
+    "expression" : "t11.NAME",
+    "name" : "KB_NAME"
+  }, {
     "expression" : "t1.NAME",
     "name" : "NAME"
   }, {
@@ -32,6 +35,6 @@
     "expression" : "t1.USER_ID",
     "name" : "USER_ID"
   } ],
-  "queryCode" : "SELECT\nt1.ACTIVE,\nt1.CREATE_MAN,\nt1.CREATE_TIME,\nt1.ID,\nt1.KB_ID,\nt1.NAME,\nt1.ROLE_ID,\nt1.UPDATE_MAN,\nt1.UPDATE_TIME,\nt1.USER_ID\nFROM AI_KB_MEMBER t1 \n",
+  "queryCode" : "SELECT\nt1.ACTIVE,\nt1.CREATE_MAN,\nt1.CREATE_TIME,\nt1.ID,\nt1.KB_ID,\nt11.NAME AS KB_NAME,\nt1.NAME,\nt1.ROLE_ID,\nt1.UPDATE_MAN,\nt1.UPDATE_TIME,\nt1.USER_ID\nFROM AI_KB_MEMBER t1 \nLEFT JOIN AI_KNOWLEDGE_BASE t11 ON t1.KB_ID = t11.ID \n",
   "id" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
 }

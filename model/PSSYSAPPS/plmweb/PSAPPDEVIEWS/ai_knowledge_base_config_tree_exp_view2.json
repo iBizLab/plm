@@ -52,6 +52,23 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:node_2",
+      "realTitle" : "知识库",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_management_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_3",
+      "realTitle" : "知识库图谱实体类型",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_type_config_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
       "id" : "treeexpbar"
@@ -63,6 +80,7 @@
     },
     "getPSControls" : [ {
       "codeName" : "config_tree_exp_view2_tree_view",
+      "controlStyle" : "LIST_TREE",
       "controlType" : "TREEVIEW",
       "getCreatePSControlAction" : {
         "modelref" : true,
@@ -209,6 +227,30 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
+          "id" : "node_3"
+        },
+        "name" : "配置（node_1）-知识库图谱实体类型（node_3）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "name" : "通用（node）-知识库（node_2）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
           "id" : "node_1"
         },
         "name" : "默认根节点（ROOT）-配置（node_1）",
@@ -247,7 +289,7 @@
         "nodeType" : "node",
         "text" : "通用",
         "treeNodeType" : "STATIC",
-        "hasPSDETreeNodeRSs" : false,
+        "hasPSDETreeNodeRSs" : true,
         "appendPNodeId" : false,
         "disableSelect" : false,
         "enableCheck" : false,
@@ -269,7 +311,7 @@
         "nodeType" : "node_1",
         "text" : "配置",
         "treeNodeType" : "STATIC",
-        "hasPSDETreeNodeRSs" : false,
+        "hasPSDETreeNodeRSs" : true,
         "appendPNodeId" : false,
         "disableSelect" : false,
         "enableCheck" : false,
@@ -285,7 +327,66 @@
         "selectFirstOnly" : false,
         "selected" : false,
         "id" : "node_1"
+      }, {
+        "counterMode" : 0,
+        "name" : "知识库",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_management_tab_exp_view.json",
+          "viewType" : "DETABEXPVIEW"
+        },
+        "nodeType" : "node_2",
+        "text" : "知识库",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_2"
+      }, {
+        "counterMode" : 0,
+        "name" : "知识库图谱实体类型",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_type_config_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_3",
+        "text" : "知识库图谱实体类型",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_3"
       } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "LIST_TREE",
+        "runtimeObject" : true
+      },
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
