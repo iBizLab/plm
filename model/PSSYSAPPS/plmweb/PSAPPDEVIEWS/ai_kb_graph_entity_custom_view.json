@@ -188,7 +188,7 @@
             "caption" : "树视图",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
-            "name" : "tree",
+            "name" : "treeexpbar",
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -214,7 +214,7 @@
             "caption" : "树视图",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
-            "name" : "tree1",
+            "name" : "treeexpbar1",
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -285,17 +285,614 @@
       "logicTrigger" : "CTRLEVENT",
       "logicType" : "SCRIPT",
       "name" : "LOGIC2",
-      "getPSViewCtrlName" : "tree1",
-      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nactivectrl.params.current_selected = null;\r\n\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\nconsole.log(\"treeCtrl为\"+treeCtrl.state.selectedData)\r\ntreeCtrl.state.selectedData = []\r\nawait treeCtrl.refresh();\r\nconst selectedData = treeCtrl1.state.selectedData[0];\r\nconst ai_kb_graph_relation =selectedData._deData.id || '';\r\nif(ai_kb_graph_relation){\r\n    activectrl.params.ai_kb_graph_relation = ai_kb_graph_relation;\r\n    activectrl.params.current_selected = \"ai_kb_graph_relation\";\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
+      "getPSViewCtrlName" : "treeexpbar1",
+      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nactivectrl.params.current_selected = null;\r\n\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"treeexpbar1\");\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\nconsole.log(\"treeCtrl为\"+treeCtrl.state.selectedData)\r\ntreeCtrl.state.selectedData = []\r\nawait treeCtrl.refresh();\r\nconst selectedData = treeCtrl1.state.selectedData[0];\r\nconst ai_kb_graph_relation =selectedData._deData.id || '';\r\nif(ai_kb_graph_relation){\r\n    activectrl.params.ai_kb_graph_relation = ai_kb_graph_relation;\r\n    activectrl.params.current_selected = \"ai_kb_graph_relation\";\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
     }, {
       "eventNames" : "onSelectionChange",
       "logicTrigger" : "CTRLEVENT",
       "logicType" : "SCRIPT",
       "name" : "LOGIC1",
-      "getPSViewCtrlName" : "tree",
-      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nactivectrl.params.current_selected = null;\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"tree\");\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"tree1\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\ntreeCtrl1.state.selectedData = []\r\nawait treeCtrl1.refresh();\r\nconst selectedData = treeCtrl.state.selectedData[0];\r\nconst ai_kb_graph_entity = selectedData._deData.id || ''\r\nif(ai_kb_graph_entity){\r\n    activectrl.params.ai_kb_graph_entity = ai_kb_graph_entity;\r\n    activectrl.params.current_selected = \"ai_kb_graph_entity\";\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
+      "getPSViewCtrlName" : "treeexpbar",
+      "scriptCode" : "console.log(\"数据变更tree\")\r\nconst activectrl = view.getCtrl(\"FORM\", \"form\");\r\nactivectrl.params.current_selected = null;\r\nconst treeCtrl = view.getCtrl(\"TREEVIEW\", \"treeexpbar\");\r\nconst treeCtrl1= view.getCtrl(\"TREEVIEW\", \"treeexpbar1\");\r\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\r\ntreeCtrl1.state.selectedData = []\r\nawait treeCtrl1.refresh();\r\nconst selectedData = treeCtrl.state.selectedData[0];\r\nconst ai_kb_graph_entity = selectedData._deData.id || ''\r\nif(ai_kb_graph_entity){\r\n    activectrl.params.ai_kb_graph_entity = ai_kb_graph_entity;\r\n    activectrl.params.current_selected = \"ai_kb_graph_entity\";\r\n}\r\nawait activectrl.refresh();\r\n\r\n"
     } ],
     "getPSControls" : [ {
+      "codeName" : "custom_view_treeexpbar",
+      "controlType" : "TREEEXPBAR",
+      "name" : "treeexpbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "treeexpbar"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "TREEEXPBAR"
+      },
+      "getPSControls" : [ {
+        "codeName" : "graph_entity_tree",
+        "controlType" : "TREEVIEW",
+        "getCreatePSControlAction" : {
+          "modelref" : true,
+          "id" : "create",
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSTREEVIEWS/graph_entity_tree.json",
+        "getFetchPSControlAction" : {
+          "modelref" : true,
+          "id" : "fetch",
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "getGetPSControlAction" : {
+          "modelref" : true,
+          "id" : "load",
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+        "logicName" : "知识库图谱实体树",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "getPSControlHandler" : {
+          "getPSHandlerActions" : [ {
+            "actionName" : "Get",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Create",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "create"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Update",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "update"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          }, {
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            }
+          } ],
+          "userDRAction" : "READ",
+          "enableDEFieldPrivilege" : false,
+          "id" : "树视图处理器"
+        },
+        "getPSControlLogics" : [ {
+          "eventNames" : "SELECTIONCHANGE",
+          "logicTag" : "treeexpbar_tree",
+          "logicType" : "CUSTOM",
+          "name" : "treeexpbar_selectionchange"
+        }, {
+          "eventNames" : "LOAD",
+          "logicTag" : "treeexpbar_tree",
+          "logicType" : "CUSTOM",
+          "name" : "treeexpbar_load"
+        } ],
+        "getPSControlParam" : {
+          "autoLoad" : true,
+          "showBusyIndicator" : true,
+          "id" : "treeexpbar_tree"
+        },
+        "getPSDETreeNodeRSs" : [ {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node"
+          },
+          "name" : "实体类型（node_1）-图谱实体（node）",
+          "parentFilter" : "type",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_1"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        }, {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_1"
+          },
+          "name" : "默认根节点（ROOT）-实体类型（node_1）",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "ROOT"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        } ],
+        "getPSDETreeNodes" : [ {
+          "counterMode" : 0,
+          "name" : "默认根节点",
+          "nodeType" : "ROOT",
+          "text" : "默认根节点",
+          "treeNodeType" : "STATIC",
+          "hasPSDETreeNodeRSs" : true,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : true,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "ROOT"
+        }, {
+          "counterMode" : 0,
+          "dataSourceType" : "DEDATASET",
+          "getIdPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "maxSize" : -1,
+          "name" : "图谱实体",
+          "nodeType" : "node",
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "getTextPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "treeNodeType" : "DE",
+          "hasPSDETreeNodeRSs" : false,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : true,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : true,
+          "rootNode" : false,
+          "selectFirstOnly" : true,
+          "selected" : true,
+          "id" : "node"
+        }, {
+          "counterMode" : 0,
+          "dataSourceType" : "DEDATASET",
+          "getIdPSAppDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          },
+          "maxSize" : -1,
+          "name" : "实体类型",
+          "nodeType" : "node_1",
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "getTextPSAppDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          },
+          "treeNodeType" : "DE",
+          "hasPSDETreeNodeRSs" : true,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "distinctMode" : true,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node_1"
+        } ],
+        "getRemovePSControlAction" : {
+          "modelref" : true,
+          "id" : "remove",
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "treeGridMode" : 0,
+        "getUpdatePSControlAction" : {
+          "modelref" : true,
+          "id" : "update",
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          }
+        },
+        "enableRootSelect" : false,
+        "outputIconDefault" : true,
+        "rootVisible" : false,
+        "name" : "treeexpbar_tree",
+        "modelid" : "bcddf7d820b9217727e5f0f39425104d",
+        "modeltype" : "PSDETREEVIEW"
+      } ],
+      "xDataControlName" : "treeexpbar_tree",
+      "enableCounter" : true,
+      "enableSearch" : false,
+      "showTitleBar" : true,
+      "modelid" : "d661e58644a40af226bd09ef7c6247a6_treeexpbar",
+      "modeltype" : "PSEXPBAR"
+    }, {
+      "codeName" : "custom_view_treeexpbar1",
+      "controlType" : "TREEEXPBAR",
+      "name" : "treeexpbar1",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "treeexpbar1"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "TREEEXPBAR1"
+      },
+      "getPSControls" : [ {
+        "codeName" : "graph_rel_tree",
+        "controlType" : "TREEVIEW",
+        "getCreatePSControlAction" : {
+          "modelref" : true,
+          "id" : "create",
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          }
+        },
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation/PSTREEVIEWS/graph_rel_tree.json",
+        "getFetchPSControlAction" : {
+          "modelref" : true,
+          "id" : "fetch",
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          }
+        },
+        "getGetPSControlAction" : {
+          "modelref" : true,
+          "id" : "load",
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          }
+        },
+        "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+        "logicName" : "知识库图谱关系树",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+        },
+        "getPSControlHandler" : {
+          "getPSHandlerActions" : [ {
+            "actionName" : "Get",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+            }
+          }, {
+            "actionName" : "Create",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "create"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+            }
+          }, {
+            "actionName" : "Update",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "update"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+            }
+          }, {
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+            }
+          }, {
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+            }
+          } ],
+          "userDRAction" : "READ",
+          "enableDEFieldPrivilege" : false,
+          "id" : "树视图处理器"
+        },
+        "getPSControlLogics" : [ {
+          "eventNames" : "SELECTIONCHANGE",
+          "logicTag" : "treeexpbar1_tree",
+          "logicType" : "CUSTOM",
+          "name" : "treeexpbar1_selectionchange"
+        }, {
+          "eventNames" : "LOAD",
+          "logicTag" : "treeexpbar1_tree",
+          "logicType" : "CUSTOM",
+          "name" : "treeexpbar1_load"
+        } ],
+        "getPSControlParam" : {
+          "autoLoad" : true,
+          "showBusyIndicator" : true,
+          "id" : "treeexpbar1_tree"
+        },
+        "getPSDETreeNodeRSs" : [ {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node"
+          },
+          "name" : "默认根节点（ROOT）-节点名称（node）",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "ROOT"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        } ],
+        "getPSDETreeNodes" : [ {
+          "counterMode" : 0,
+          "name" : "默认根节点",
+          "nodeType" : "ROOT",
+          "text" : "默认根节点",
+          "treeNodeType" : "STATIC",
+          "hasPSDETreeNodeRSs" : true,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : true,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "ROOT"
+        }, {
+          "counterMode" : 0,
+          "dataSourceType" : "DEDATASET",
+          "getIdPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "maxSize" : -1,
+          "name" : "图谱关系",
+          "nodeType" : "node",
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          },
+          "pagingSize" : 1000,
+          "getTextPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "treeNodeType" : "DE",
+          "hasPSDETreeNodeRSs" : false,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enablePaging" : true,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : true,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node"
+        } ],
+        "getRemovePSControlAction" : {
+          "modelref" : true,
+          "id" : "remove",
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          }
+        },
+        "treeGridMode" : 0,
+        "getUpdatePSControlAction" : {
+          "modelref" : true,
+          "id" : "update",
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
+          }
+        },
+        "enableRootSelect" : false,
+        "outputIconDefault" : true,
+        "rootVisible" : false,
+        "name" : "treeexpbar1_tree",
+        "modelid" : "ad291dd714f94ee4fe4dd2b4bd565099",
+        "modeltype" : "PSDETREEVIEW"
+      } ],
+      "xDataControlName" : "treeexpbar1_tree",
+      "enableCounter" : true,
+      "enableSearch" : false,
+      "showTitleBar" : true,
+      "modelid" : "d661e58644a40af226bd09ef7c6247a6_treeexpbar1",
+      "modeltype" : "PSEXPBAR"
+    }, {
       "codeName" : "info",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
@@ -1095,478 +1692,6 @@
       "name" : "form",
       "modelid" : "fdfd94855f2aa915c93d0bd57359b3d6",
       "modeltype" : "PSDEFORM_EDITFORM"
-    }, {
-      "codeName" : "graph_entity_tree",
-      "controlType" : "TREEVIEW",
-      "getCreatePSControlAction" : {
-        "modelref" : true,
-        "id" : "create",
-        "actionName" : "Create",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "CREATE",
-        "name" : "create",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "create"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity/PSTREEVIEWS/graph_entity_tree.json",
-      "getFetchPSControlAction" : {
-        "modelref" : true,
-        "id" : "fetch",
-        "actionType" : "DEDATASET",
-        "name" : "fetch",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "getGetPSControlAction" : {
-        "modelref" : true,
-        "id" : "load",
-        "actionName" : "Get",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "READ",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "get"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "logicName" : "知识库图谱实体树",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-      },
-      "getPSControlHandler" : {
-        "getPSHandlerActions" : [ {
-          "actionName" : "Get",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "READ",
-          "name" : "load",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "get"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        }, {
-          "actionName" : "Create",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "CREATE",
-          "name" : "create",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "create"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        }, {
-          "actionName" : "Update",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "UPDATE",
-          "name" : "update",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "update"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        }, {
-          "actionName" : "Remove",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "DELETE",
-          "name" : "remove",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        }, {
-          "actionType" : "DEDATASET",
-          "name" : "fetch",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-          }
-        } ],
-        "userDRAction" : "READ",
-        "enableDEFieldPrivilege" : false,
-        "id" : "树视图处理器"
-      },
-      "getPSControlParam" : {
-        "autoLoad" : true,
-        "showBusyIndicator" : true,
-        "id" : "TREE"
-      },
-      "getPSDETreeNodeRSs" : [ {
-        "getChildPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "node"
-        },
-        "name" : "默认根节点（ROOT）-节点名称（node）",
-        "getParentPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "ROOT"
-        },
-        "parentValueLevel" : 1,
-        "searchMode" : 3
-      } ],
-      "getPSDETreeNodes" : [ {
-        "counterMode" : 0,
-        "name" : "默认根节点",
-        "nodeType" : "ROOT",
-        "text" : "默认根节点",
-        "treeNodeType" : "STATIC",
-        "hasPSDETreeNodeRSs" : true,
-        "appendPNodeId" : false,
-        "disableSelect" : false,
-        "enableCheck" : false,
-        "enableEditData" : false,
-        "enableNewData" : false,
-        "enableQuickCreate" : false,
-        "enableQuickSearch" : false,
-        "enableRemoveData" : false,
-        "enableViewData" : false,
-        "expandFirstOnly" : false,
-        "expanded" : false,
-        "rootNode" : true,
-        "selectFirstOnly" : false,
-        "selected" : false,
-        "id" : "ROOT"
-      }, {
-        "counterMode" : 0,
-        "dataSourceType" : "DEDATASET",
-        "getIdPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
-        },
-        "maxSize" : -1,
-        "name" : "图谱实体",
-        "nodeType" : "node",
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        },
-        "getTextPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "treeNodeType" : "DE",
-        "hasPSDETreeNodeRSs" : false,
-        "appendPNodeId" : false,
-        "disableSelect" : false,
-        "enableCheck" : true,
-        "enableEditData" : false,
-        "enableNewData" : false,
-        "enableQuickCreate" : false,
-        "enableQuickSearch" : false,
-        "enableRemoveData" : false,
-        "enableViewData" : false,
-        "expandFirstOnly" : false,
-        "expanded" : true,
-        "rootNode" : false,
-        "selectFirstOnly" : true,
-        "selected" : true,
-        "id" : "node"
-      } ],
-      "getRemovePSControlAction" : {
-        "modelref" : true,
-        "id" : "remove",
-        "actionName" : "Remove",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "DELETE",
-        "name" : "remove",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "treeGridMode" : 0,
-      "getUpdatePSControlAction" : {
-        "modelref" : true,
-        "id" : "update",
-        "actionName" : "Update",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "UPDATE",
-        "name" : "update",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "update"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
-        }
-      },
-      "enableRootSelect" : false,
-      "outputIconDefault" : true,
-      "rootVisible" : false,
-      "name" : "tree",
-      "modelid" : "bcddf7d820b9217727e5f0f39425104d",
-      "modeltype" : "PSDETREEVIEW"
-    }, {
-      "codeName" : "graph_rel_tree",
-      "controlType" : "TREEVIEW",
-      "getCreatePSControlAction" : {
-        "modelref" : true,
-        "id" : "create",
-        "actionName" : "Create",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "CREATE",
-        "name" : "create",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "create"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        }
-      },
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation/PSTREEVIEWS/graph_rel_tree.json",
-      "getFetchPSControlAction" : {
-        "modelref" : true,
-        "id" : "fetch",
-        "actionType" : "DEDATASET",
-        "name" : "fetch",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        }
-      },
-      "getGetPSControlAction" : {
-        "modelref" : true,
-        "id" : "load",
-        "actionName" : "Get",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "READ",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "get"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        }
-      },
-      "logicName" : "知识库图谱关系树",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-      },
-      "getPSControlHandler" : {
-        "getPSHandlerActions" : [ {
-          "actionName" : "Get",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "READ",
-          "name" : "load",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "get"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-          }
-        }, {
-          "actionName" : "Create",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "CREATE",
-          "name" : "create",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "create"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-          }
-        }, {
-          "actionName" : "Update",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "UPDATE",
-          "name" : "update",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "update"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-          }
-        }, {
-          "actionName" : "Remove",
-          "actionType" : "DEACTION",
-          "dataAccessAction" : "DELETE",
-          "name" : "remove",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-          }
-        }, {
-          "actionType" : "DEDATASET",
-          "name" : "fetch",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-          }
-        } ],
-        "userDRAction" : "READ",
-        "enableDEFieldPrivilege" : false,
-        "id" : "树视图处理器"
-      },
-      "getPSControlParam" : {
-        "autoLoad" : true,
-        "showBusyIndicator" : true,
-        "id" : "TREE1"
-      },
-      "getPSDETreeNodeRSs" : [ {
-        "getChildPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "node"
-        },
-        "name" : "默认根节点（ROOT）-节点名称（node）",
-        "getParentPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "ROOT"
-        },
-        "parentValueLevel" : 1,
-        "searchMode" : 3
-      } ],
-      "getPSDETreeNodes" : [ {
-        "counterMode" : 0,
-        "name" : "默认根节点",
-        "nodeType" : "ROOT",
-        "text" : "默认根节点",
-        "treeNodeType" : "STATIC",
-        "hasPSDETreeNodeRSs" : true,
-        "appendPNodeId" : false,
-        "disableSelect" : false,
-        "enableCheck" : false,
-        "enableEditData" : false,
-        "enableNewData" : false,
-        "enableQuickCreate" : false,
-        "enableQuickSearch" : false,
-        "enableRemoveData" : false,
-        "enableViewData" : false,
-        "expandFirstOnly" : false,
-        "expanded" : false,
-        "rootNode" : true,
-        "selectFirstOnly" : false,
-        "selected" : false,
-        "id" : "ROOT"
-      }, {
-        "counterMode" : 0,
-        "dataSourceType" : "DEDATASET",
-        "getIdPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
-        },
-        "maxSize" : -1,
-        "name" : "图谱关系",
-        "nodeType" : "node",
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        },
-        "pagingSize" : 1000,
-        "getTextPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "treeNodeType" : "DE",
-        "hasPSDETreeNodeRSs" : false,
-        "appendPNodeId" : false,
-        "disableSelect" : false,
-        "enableCheck" : false,
-        "enableEditData" : false,
-        "enableNewData" : false,
-        "enablePaging" : true,
-        "enableQuickCreate" : false,
-        "enableQuickSearch" : false,
-        "enableRemoveData" : false,
-        "enableViewData" : false,
-        "expandFirstOnly" : false,
-        "expanded" : true,
-        "rootNode" : false,
-        "selectFirstOnly" : false,
-        "selected" : false,
-        "id" : "node"
-      } ],
-      "getRemovePSControlAction" : {
-        "modelref" : true,
-        "id" : "remove",
-        "actionName" : "Remove",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "DELETE",
-        "name" : "remove",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        }
-      },
-      "treeGridMode" : 0,
-      "getUpdatePSControlAction" : {
-        "modelref" : true,
-        "id" : "update",
-        "actionName" : "Update",
-        "actionType" : "DEACTION",
-        "dataAccessAction" : "UPDATE",
-        "name" : "update",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "update"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-        }
-      },
-      "enableRootSelect" : false,
-      "outputIconDefault" : true,
-      "rootVisible" : false,
-      "name" : "tree1",
-      "modelid" : "ad291dd714f94ee4fe4dd2b4bd565099",
-      "modeltype" : "PSDETREEVIEW"
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.AI_KB_GRAPH_ENTITY"
