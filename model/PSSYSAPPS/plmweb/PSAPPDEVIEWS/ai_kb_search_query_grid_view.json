@@ -1,16 +1,17 @@
 {
   "accUserMode" : 2,
   "getCapPSLanguageRes" : {
-    "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+    "lanResTag" : "DE.LNAME.AI_KB_SEARCH_QUERY"
   },
-  "caption" : "知识库",
-  "codeName" : "ai_knowledge_base_actived_grid_view",
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_actived_grid_view.json",
+  "caption" : "知识库检索记录",
+  "codeName" : "ai_kb_search_query_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_grid_view.json",
+  "funcViewMode" : "MDATAVIEW",
   "gridRowActiveMode" : 1,
-  "name" : "ai_knowledge_baseactived_grid_view",
+  "name" : "ai_kb_search_queryGridView",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
   },
   "getPSAppModule" : {
     "modelref" : true,
@@ -30,18 +31,16 @@
       "logicType" : "PREDEFINED",
       "name" : "新建数据",
       "getNewDataPSAppView" : {
-        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
-        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -58,18 +57,16 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
-        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_base_info_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
-        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_base_info_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -78,39 +75,35 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "知识库编辑视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_base_info_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "知识库编辑视图",
+    "realTitle" : "知识库检索记录编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.AI_KB_SEARCH_QUERY.EDITVIEW"
+    },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
-    "name" : "OPENDATA",
-    "realTitle" : "知识库",
+    "name" : "EDITDATA",
+    "realTitle" : "知识库检索记录编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.AI_KB_SEARCH_QUERY.EDITVIEW"
+    },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_main_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_query_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
-    "codeName" : "main2",
+    "codeName" : "main",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
     "controlType" : "GRID",
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSGRIDS/main2.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query/PSGRIDS/main.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -118,18 +111,50 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_valid"
+        "id" : "fetch_default"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
       }
     },
     "groupMode" : "NONE",
-    "logicName" : "知识库实体表格视图（已启用）_表格",
+    "logicName" : "主表格",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_result_custom_view.json",
+      "viewType" : "DECUSTOMVIEW"
+    },
+    "getNavPSDER" : {
+      "codeName" : "AI_KB_SEARCH_QUERY",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result/PSDERS/DER1N_AI_KB_SEARCH_RESULT_AI_KB_SEARCH_QUERY_QUERY_ID.json",
+      "fKeyName" : "F0127E63FA9021B8C2",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 0,
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result.json"
+      },
+      "name" : "DER1N_AI_KB_SEARCH_RESULT_AI_KB_SEARCH_QUERY_QUERY_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "QUERY_ID",
+        "codeName" : "query_id"
+      },
+      "pickupDEFName" : "QUERY_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "ai_kb_search_query",
+      "enableFKey" : true
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlHandler" : {
       "getPSHandlerActions" : [ {
@@ -143,7 +168,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionName" : "Create",
@@ -156,7 +181,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionName" : "Update",
@@ -169,7 +194,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionName" : "Remove",
@@ -182,7 +207,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionName" : "GetDraft",
@@ -195,18 +220,18 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionType" : "DEDATASET",
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_valid"
+          "id" : "fetch_default"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       } ],
       "userDRAction" : "READ",
@@ -222,29 +247,178 @@
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.NAME"
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.RAW_QUERY"
       },
-      "caption" : "知识库名称",
-      "codeName" : "name",
+      "caption" : "原始问题",
+      "codeName" : "raw_query",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "name",
-      "excelCaption" : "知识库名称",
-      "name" : "name",
+      "dataItemName" : "raw_query",
+      "excelCaption" : "原始问题",
+      "name" : "raw_query",
       "noPrivDisplayMode" : 1,
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "RAW_QUERY",
+        "codeName" : "raw_query"
+      },
+      "width" : 200,
+      "widthUnit" : "STAR",
+      "enableSort" : false
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.SOURCE"
+      },
+      "caption" : "来源",
+      "codeName" : "source",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "source",
+      "excelCaption" : "来源",
+      "name" : "source",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_search_source.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "SOURCE",
+        "codeName" : "source"
+      },
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.TAGS"
+      },
+      "caption" : "检索标签",
+      "codeName" : "tags",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "tags",
+      "excelCaption" : "检索标签",
+      "name" : "tags",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.IS_ANSWERED"
+      },
+      "caption" : "有效回答",
+      "codeName" : "is_answered",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "is_answered",
+      "excelCaption" : "有效回答",
+      "name" : "is_answered",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "IS_ANSWERED",
+        "codeName" : "is_answered"
       },
       "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.TOTAL_DURATION"
+      },
+      "caption" : "总耗时",
+      "codeName" : "total_duration",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "total_duration",
+      "excelCaption" : "总耗时",
+      "name" : "total_duration",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "TOTAL_DURATION",
+        "codeName" : "total_duration"
+      },
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.CREATE_TIME"
+      },
+      "caption" : "创建时间",
+      "codeName" : "create_time",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "create_time",
+      "excelCaption" : "创建时间",
+      "name" : "create_time",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableSort" : true
     } ],
     "getPSDEGridDataItems" : [ {
-      "dataType" : 25,
-      "name" : "name",
+      "dataType" : 21,
+      "name" : "raw_query",
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "RAW_QUERY",
+        "codeName" : "raw_query"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "source",
+      "getPSAppDEField" : {
+        "name" : "SOURCE",
+        "codeName" : "source"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "tags",
+      "getPSAppDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      }
+    }, {
+      "dataType" : 9,
+      "name" : "is_answered",
+      "getPSAppDEField" : {
+        "name" : "IS_ANSWERED",
+        "codeName" : "is_answered"
+      }
+    }, {
+      "dataType" : 6,
+      "name" : "total_duration",
+      "getPSAppDEField" : {
+        "name" : "TOTAL_DURATION",
+        "codeName" : "total_duration"
+      }
+    }, {
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "dataType" : 5,
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
       }
     }, {
       "dataType" : 25,
@@ -263,13 +437,6 @@
       "dataAccessAction" : true
     }, {
       "dataType" : 25,
-      "name" : "source_id",
-      "getPSAppDEField" : {
-        "name" : "SOURCE_ID",
-        "codeName" : "source_id"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "srfmajortext",
       "getPSAppDEField" : {
         "name" : "NAME",
@@ -277,7 +444,7 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
-      "caption" : "知识库标识",
+      "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
       "ignoreInput" : 0,
@@ -305,7 +472,7 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
       }
     },
     "sortMode" : "REMOTE",
@@ -322,17 +489,17 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "a4361382229d59f1baa5672913bd7dde",
+    "modelid" : "47d49f880d4d71a30f3e992b434efe15",
     "modeltype" : "PSDEGRID"
   }, {
-    "codeName" : "main4",
+    "codeName" : "default",
     "controlType" : "SEARCHFORM",
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base/PSSEARCHFORMS/main4.json",
-    "logicName" : "知识库实体表格视图（已启用）_搜索表单",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query/PSSEARCHFORMS/default.json",
+    "logicName" : "默认搜索表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlHandler" : {
       "getPSHandlerActions" : [ {
@@ -344,7 +511,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionType" : "FILTERACTION",
@@ -355,7 +522,7 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       }, {
         "actionType" : "FILTERACTION",
@@ -366,11 +533,11 @@
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
         }
       } ],
       "enableDEFieldPrivilege" : false,
-      "id" : "搜索表单处理器"
+      "id" : "树视图处理器"
     },
     "getPSControlParam" : {
       "autoLoad" : true,
@@ -378,6 +545,9 @@
       "id" : "SEARCHFORM"
     },
     "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.AI_KB_SEARCH_QUERY.DEFAULT.FORMPAGE.FORMPAGE1"
+      },
       "caption" : "常规条件",
       "codeName" : "formpage1",
       "detailStyle" : "DEFAULT",
@@ -402,29 +572,29 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "5f8a2f7ad84708340e9455d0d116a925",
+    "modelid" : "d456367c3a1ab93e465a35a8934b12cc",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
-    "codeName" : "actived_grid_view_toolbar",
+    "codeName" : "grid_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "知识库实体表格视图（已启用）_工具栏",
+    "logicName" : "工具栏模板（默认表格界面）",
     "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlParam" : {
       "id" : "TOOLBAR"
     },
     "xDataControlName" : "grid",
-    "modelid" : "f90c3df827735dcd0a91966e440ab878",
+    "modelid" : "ec6fbb681f5e3e6783c2af57e5eefaaa",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlParam" : {
       "id" : "searchbar"
@@ -438,20 +608,20 @@
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
-      "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+      "lanResTag" : "DE.LNAME.AI_KB_SEARCH_QUERY"
     },
-    "caption" : "知识库",
-    "codeName" : "actived_grid_view_captionbar",
+    "caption" : "知识库检索记录",
+    "codeName" : "grid_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "actived_grid_view",
-  "getPSDEViewId" : "abfa18bbce04caac17acf5c9bdee6352",
+  "getPSDEViewCodeName" : "GridView",
+  "getPSDEViewId" : "8c2115316609af65e7222b2cf1432f6b",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -459,14 +629,17 @@
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
     },
     "getPSControlParam" : { },
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "知识库",
+  "title" : "知识库检索记录表格视图",
+  "getTitlePSLanguageRes" : {
+    "lanResTag" : "PAGE.TITLE.AI_KB_SEARCH_QUERY.GRIDVIEW"
+  },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",
   "xDataControlName" : "grid",
@@ -478,6 +651,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "9c6958e9a09738de4d8222566cf8e6fe",
+  "modelid" : "11b864399b89ae48dc60164885f7ed0a",
   "modeltype" : "PSAPPDEVIEW"
 }

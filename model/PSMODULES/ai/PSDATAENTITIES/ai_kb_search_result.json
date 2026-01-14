@@ -332,6 +332,38 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result/PSDEDATAQUERIES/cur_query/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_query",
+    "logicName" : "当前记录",
+    "name" : "cur_query",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_SEARCH_RESULT"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_queryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_search_result_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_queryResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_search_result_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -362,6 +394,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_query",
+    "logicName" : "当前记录",
+    "name" : "cur_query",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_query"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_queryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_search_result_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_queryResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_search_result_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -2176,6 +2234,12 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "知识库检索结果实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "custom_view",
+    "logicName" : "知识库检索结果自定义视图",
+    "name" : "知识库检索结果自定义视图",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
