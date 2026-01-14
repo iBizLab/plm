@@ -189,6 +189,32 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "delete",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/delete.json",
+    "logicName" : "删除",
+    "name" : "delete",
+    "getPSDEActionInput" : {
+      "name" : "DeleteInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "DeleteResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/delete.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "POSTGRESQL",
@@ -439,6 +465,50 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "AdminResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "codeName" : "deleted",
+    "logicName" : "已删除",
+    "name" : "deleted",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KNOWLEDGE_BASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "DeletedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "DeletedResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ai_knowledge_base_dto"
@@ -747,6 +817,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "AdminResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "deleted",
+    "logicName" : "已删除",
+    "name" : "deleted",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "deleted"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "DeletedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "DeletedResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ai_knowledge_base_dto"
@@ -2423,6 +2519,136 @@
     "ignoreRefresh" : true,
     "linkDEField" : true
   } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "delete",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/delete.json",
+    "logicName" : "删除",
+    "memo" : "知识库数据的逻辑删除，修改知识库的是否删除属性值",
+    "name" : "删除",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置删除状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "IS_DELETED",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_obj"
+        },
+        "name" : "直接值[1] ==> update_obj[IS_DELETED]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_obj"
+        },
+        "name" : "Default[ID] ==> update_obj[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 350
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "update_obj"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新知识库的删除标识",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 458
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 190,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 630,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "update_obj",
+      "logicName" : "产品更新对象",
+      "name" : "产品更新对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_knowledge_base_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -2924,6 +3150,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "deleted_grid_view",
+    "logicName" : "知识库实体表格视图（已删除）",
+    "name" : "知识库实体表格视图（已删除）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "知识库实体编辑视图",
     "modelTag" : "EDITVIEW",
@@ -2978,6 +3210,12 @@
     "logicName" : "知识库导航视图",
     "name" : "知识库导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "active_grid_view",
+    "logicName" : "知识库实体表格视图（已启用）",
+    "name" : "知识库实体表格视图（已启用）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "chunking_view_readonly",
