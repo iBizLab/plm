@@ -2001,6 +2001,53 @@
     "type" : "DEFILTER",
     "defaultMode" : true
   } ],
+  "getAllPSDENotifies" : [ {
+    "codeName" : "create_member_notify",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDENOTIFIES/create_member_notify.json",
+    "msgType" : 225,
+    "name" : "知识库成员加入通知",
+    "notifyTag2" : "智能协同",
+    "getPSDENotifyTargets" : [ {
+      "name" : "成员",
+      "getTargetPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      },
+      "targetType" : "DEFIELD"
+    } ],
+    "getPSSysMsgQueue" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
+    },
+    "getPSSysMsgTempl" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSSYSMSGTEMPLS/kb_member_create.json"
+    },
+    "taskMode" : 0
+  }, {
+    "codeName" : "remover_member_notify",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDENOTIFIES/remover_member_notify.json",
+    "msgType" : 225,
+    "name" : "知识库成员移除通知",
+    "notifyTag2" : "智能协同",
+    "getPSDENotifyTargets" : [ {
+      "name" : "成员",
+      "getTargetPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      },
+      "targetType" : "DEFIELD"
+    } ],
+    "getPSSysMsgQueue" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
+    },
+    "getPSSysMsgTempl" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSSYSMSGTEMPLS/kb_member_remove.json"
+    },
+    "taskMode" : 0
+  } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
     "name" : "CREATE"
