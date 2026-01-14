@@ -228,6 +228,9 @@
       "name" : "VISIBILITY",
       "codeName" : "visibility"
     }, {
+      "name" : "IS_DELETED",
+      "codeName" : "is_deleted"
+    }, {
       "name" : "META_DATA",
       "codeName" : "meta_data"
     }, {
@@ -1488,6 +1491,79 @@
     "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_DELETED",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_DELETED",
+      "standardColumnName" : "IS_DELETED",
+      "valueAutoGen" : true
+    }, {
+      "columnName" : "IS_DELETED",
+      "dBType" : "MYSQL5",
+      "name" : "IS_DELETED",
+      "queryCodeExp" : "t1.`IS_DELETED`",
+      "standardColumnName" : "`IS_DELETED`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "默认",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBSWITCH",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_deleted",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "logicName" : "是否已删除",
+    "name" : "IS_DELETED",
+    "orderValue" : 160,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IS_DELETED"
+    },
+    "serviceCodeName" : "is_deleted",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "META_DATA",
       "dBType" : "POSTGRESQL",
       "name" : "META_DATA",
@@ -2418,6 +2494,17 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
+      "defaultValue" : "0",
+      "logicName" : "是否已删除",
+      "name" : "is_deleted",
+      "getPSDEField" : {
+        "name" : "IS_DELETED",
+        "codeName" : "is_deleted"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "文档元数据",
       "name" : "meta_data",
       "getPSDEField" : {
@@ -3101,6 +3188,10 @@
       "name" : "KB_ID",
       "codeName" : "kb_id"
     },
+    "getPSPickupTextDEField" : {
+      "name" : "KB_NAME",
+      "codeName" : "KbName"
+    },
     "pickupDEFName" : "KB_ID",
     "removeActionType" : -1,
     "removeOrder" : 0,
@@ -3125,6 +3216,10 @@
     "getPSPickupDEField" : {
       "name" : "KB_ID",
       "codeName" : "kb_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "KB_NAME",
+      "codeName" : "kb_name"
     },
     "pickupDEFName" : "KB_ID",
     "removeActionType" : -1,

@@ -1345,6 +1345,151 @@
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "KB_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "KB_NAME",
+      "standardColumnName" : "KB_NAME"
+    }, {
+      "columnName" : "KB_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "KB_NAME",
+      "queryCodeExp" : "t11.`NAME`",
+      "standardColumnName" : "`KB_NAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_KB_NAME_EQ",
+      "name" : "N_KB_NAME_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_KB_NAME_LIKE",
+      "name" : "N_KB_NAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[KB_NAME][知识库名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_ENTITY.KB_ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[KB_NAME][知识库名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[KB_NAME][知识库名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_ENTITY.KB_ID"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[KB_NAME][知识库名称]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "KB_NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "KbName",
+    "dEFType" : 3,
+    "dataType" : "PICKUPTEXT",
+    "fieldTag" : "KNOWLEDGE_BASE_ID",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_ENTITY.KB_ID"
+    },
+    "length" : 200,
+    "logicName" : "知识库名称",
+    "name" : "KB_NAME",
+    "orderValue" : 210,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDERS/DER1N_AI_KB_GRAPH_ENTITY_AI_KNOWLEDGE_BASE_KB_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "getValuePSDEField" : {
+      "name" : "KB_ID",
+      "codeName" : "kb_id"
+    },
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false,
+    "serviceCodeName" : "kb_name"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "DESCRIPTION",
       "dBType" : "POSTGRESQL",
       "name" : "DESCRIPTION",
@@ -1880,6 +2025,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "知识库名称",
+      "name" : "kb_name",
+      "getPSDEField" : {
+        "name" : "KB_NAME",
+        "codeName" : "KbName"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "描述",
       "name" : "description",
       "getPSDEField" : {
@@ -1921,6 +2077,36 @@
       "getPSDEField" : {
         "name" : "KB_ID",
         "codeName" : "kb_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库名称",
+      "name" : "n_kb_name_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_KB_NAME_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "KB_NAME",
+        "codeName" : "KbName"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库名称",
+      "name" : "n_kb_name_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_KB_NAME_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "KB_NAME",
+        "codeName" : "KbName"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -2126,6 +2312,10 @@
       "name" : "OBJECT_ID",
       "codeName" : "object_id"
     },
+    "getPSPickupTextDEField" : {
+      "name" : "OBJECT_NAME",
+      "codeName" : "object_name"
+    },
     "pickupDEFName" : "OBJECT_ID",
     "removeActionType" : -1,
     "removeOrder" : 0,
@@ -2150,6 +2340,10 @@
     "getPSPickupDEField" : {
       "name" : "SUBJECT_ID",
       "codeName" : "subject_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "SUBJECT_NAME",
+      "codeName" : "subject_name"
     },
     "pickupDEFName" : "SUBJECT_ID",
     "removeActionType" : -1,
@@ -2176,6 +2370,10 @@
     "getPSPickupDEField" : {
       "name" : "KB_ID",
       "codeName" : "kb_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "KB_NAME",
+      "codeName" : "KbName"
     },
     "pickupDEFName" : "KB_ID",
     "removeActionType" : -1,

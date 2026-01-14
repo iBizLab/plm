@@ -185,6 +185,16 @@
             "spacingBottom" : "OUTERMEDIUM"
           },
           "getPSPanelItems" : [ {
+            "caption" : "图谱实体",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "view_pagecaption1",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          }, {
             "caption" : "树视图",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
@@ -209,6 +219,16 @@
             "layout" : "FLEX"
           },
           "getPSPanelItems" : [ {
+            "caption" : "图谱关系",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "view_pagecaption",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          }, {
             "caption" : "树视图",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
@@ -497,6 +517,13 @@
           "codeName" : "normalized_name"
         }
       }, {
+        "id" : "kb_name1",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "KB_NAME",
+          "codeName" : "kb_name"
+        }
+      }, {
         "id" : "type",
         "dataType" : 25,
         "getPSAppDEField" : {
@@ -521,7 +548,22 @@
         "id" : "relation_name",
         "dataType" : 25
       }, {
+        "id" : "kb_name",
+        "dataType" : 25
+      }, {
+        "id" : "subject_name",
+        "dataType" : 25
+      }, {
+        "id" : "object_name",
+        "dataType" : 25
+      }, {
         "id" : "predicate",
+        "dataType" : 25
+      }, {
+        "id" : "relation_confidence",
+        "dataType" : 25
+      }, {
+        "id" : "description1",
         "dataType" : 25
       }, {
         "id" : "current_selected",
@@ -618,6 +660,36 @@
             "getPSEditor" : {
               "editorType" : "SPAN",
               "name" : "normalized_name",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_ENTITY.KB_ID"
+            },
+            "caption" : "知识库",
+            "codeName" : "kb_name1",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "kb_name1",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "KB_NAME",
+              "codeName" : "kb_name"
+            },
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "kb_name1",
               "enableLinkView" : false
             },
             "getPSLayoutPos" : {
@@ -761,8 +833,78 @@
             "name" : "relation_name",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "name" : "relation_name"
+              "editorType" : "SPAN",
+              "name" : "relation_name",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "知识库",
+            "codeName" : "kb_name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "kb_name",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "kb_name",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "主体",
+            "codeName" : "subject_name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "subject_name",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "subject_name",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "客体",
+            "codeName" : "object_name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "object_name",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "object_name",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -783,8 +925,57 @@
             "name" : "predicate",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "name" : "predicate"
+              "editorType" : "SPAN",
+              "name" : "predicate",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "置信度",
+            "codeName" : "relation_confidence",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "fieldName" : "confidence",
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "relation_confidence",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "relation_confidence",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "描述",
+            "codeName" : "description1",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "fieldName" : "description",
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "description1",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "TEXTAREA",
+              "name" : "description1",
+              "showMaxLength" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
