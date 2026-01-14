@@ -1,5 +1,6 @@
 {
   "codeName" : "graph_rel_tree",
+  "controlStyle" : "LIST_TREE",
   "controlType" : "TREEVIEW",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -52,12 +53,24 @@
   "getPSDETreeNodeRSs" : [ {
     "getChildPSDETreeNode" : {
       "modelref" : true,
-      "id" : "node"
+      "id" : "static"
     },
-    "name" : "默认根节点（ROOT）-节点名称（node）",
+    "name" : "默认根节点（ROOT）-图谱关系（static）",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "图谱关系（static）-图谱关系（node）",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "static"
     },
     "parentValueLevel" : 1,
     "searchMode" : 3
@@ -125,7 +138,34 @@
     "selectFirstOnly" : false,
     "selected" : false,
     "id" : "node"
+  }, {
+    "counterMode" : 0,
+    "name" : "图谱关系",
+    "nodeType" : "static",
+    "text" : "图谱关系",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "static"
   } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "LIST_TREE",
+    "runtimeObject" : true
+  },
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",
