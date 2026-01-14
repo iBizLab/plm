@@ -4,9 +4,9 @@
     "lanResTag" : "DE.LNAME.WORK_ITEM"
   },
   "caption" : "我负责的工作项",
-  "codeName" : "work_item_my_assignee_mobboard",
-  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
-  "name" : "work_itemmy_assignee_mobboard",
+  "codeName" : "work_item_my_assignee_mob",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+  "name" : "work_itemmy_assignee_mob",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
@@ -15,8 +15,8 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
   },
-  "getPSDEViewCodeName" : "my_assignee_mobboard",
-  "getPSDEViewId" : "8a98bda76a0425e766f469ca350cf40f",
+  "getPSDEViewCodeName" : "my_assignee_mob",
+  "getPSDEViewId" : "b312f7bcdfb7a170a433ae9e53210821",
   "getPSSysCss" : {
     "cssName" : "mob_recent_item_style"
   },
@@ -431,7 +431,7 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "mobboard_list",
+      "codeName" : "mob_common_list",
       "controlStyle" : "LISTVIEW",
       "controlType" : "MOBMDCTRL",
       "getCreatePSControlAction" : {
@@ -450,7 +450,7 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mobboard_list.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -798,7 +798,7 @@
         "modelid" : "8e92202cd73f5c8866d73027e35f8428",
         "modeltype" : "PSSYSVIEWPANEL"
       },
-      "logicName" : "mobboard_list",
+      "logicName" : "mob_common_list",
       "minorSortDir" : "DESC",
       "getMinorSortPSAppDEField" : {
         "name" : "UPDATE_TIME",
@@ -892,49 +892,6 @@
         "id" : "import_work_item_waterfall"
       },
       "getPSDEListDataItems" : [ {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-        },
-        "name" : "state",
-        "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "title",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "show_identifier",
-        "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "assignee_name",
-        "getPSAppDEField" : {
-          "name" : "ASSIGNEE_NAME",
-          "codeName" : "assignee_name"
-        }
-      }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
-        },
-        "name" : "priority",
-        "getPSAppDEField" : {
-          "name" : "PRIORITY",
-          "codeName" : "priority"
-        }
-      }, {
         "dataType" : 5,
         "format" : "YYYY-MM-DD",
         "name" : "start_at",
@@ -949,6 +906,49 @@
         "getPSAppDEField" : {
           "name" : "END_AT",
           "codeName" : "end_at"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+        },
+        "name" : "priority",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "show_identifier",
+        "getPSAppDEField" : {
+          "name" : "SHOW_IDENTIFIER",
+          "codeName" : "show_identifier"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
         }
       }, {
         "dataType" : 25,
@@ -1055,6 +1055,35 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
+        "caption" : "开始时间",
+        "dataItemName" : "start_at",
+        "itemType" : "TEXTITEM",
+        "name" : "START_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "截止时间",
+        "dataItemName" : "end_at",
+        "itemType" : "TEXTITEM",
+        "name" : "END_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "标题",
+        "dataItemName" : "title",
+        "itemType" : "TEXTITEM",
+        "name" : "TITLE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
         "cLConvertMode" : "FRONT",
         "caption" : "状态",
         "dataItemName" : "state",
@@ -1065,10 +1094,11 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "标题",
-        "dataItemName" : "title",
+        "cLConvertMode" : "FRONT",
+        "caption" : "优先级",
+        "dataItemName" : "priority",
         "itemType" : "TEXTITEM",
-        "name" : "TITLE",
+        "name" : "PRIORITY",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -1090,36 +1120,6 @@
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "优先级",
-        "dataItemName" : "priority",
-        "itemType" : "TEXTITEM",
-        "name" : "PRIORITY",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "开始时间",
-        "dataItemName" : "start_at",
-        "itemType" : "TEXTITEM",
-        "name" : "START_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "截止时间",
-        "dataItemName" : "end_at",
-        "itemType" : "TEXTITEM",
-        "name" : "END_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
       } ],
       "getPSSysCss" : {
         "cssName" : "my_workitem"
@@ -1129,7 +1129,8 @@
         "pluginCode" : "MOB_MDCTRL_TREE",
         "runtimeObject" : true
       },
-      "pagingSize" : 5,
+      "pagingMode" : 2,
+      "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -1172,7 +1173,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "4190e6b5f9b16f41cb9dba09bfb4bfdf",
+      "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
       "modeltype" : "PSDELIST"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1196,7 +1197,7 @@
         "lanResTag" : "DE.LNAME.WORK_ITEM"
       },
       "caption" : "我负责的工作项",
-      "codeName" : "my_assignee_mobboard_captionbar",
+      "codeName" : "my_assignee_mob_captionbar",
       "controlType" : "CAPTIONBAR",
       "name" : "captionbar",
       "getPSAppDataEntity" : {
@@ -1206,6 +1207,7 @@
       "getPSControlParam" : { }
     } ]
   },
+  "refFlag" : false,
   "title" : "我负责的工作项",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEMOBMDVIEW",
@@ -1215,7 +1217,7 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "f2ffa6082af458398e7e5f7f62d1ef3f",
+  "modelid" : "27b29d58bbaa3392ecbe5f76dec420c9",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

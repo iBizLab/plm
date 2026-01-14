@@ -3,10 +3,10 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.WORK_ITEM"
   },
-  "caption" : "我负责的工作项",
-  "codeName" : "work_item_my_assignee_mobboard",
-  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
-  "name" : "work_itemmy_assignee_mobboard",
+  "caption" : "我创建的工作项",
+  "codeName" : "work_item_my_created_mob",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mob.json",
+  "name" : "work_itemmy_created_mob",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
@@ -15,8 +15,8 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
   },
-  "getPSDEViewCodeName" : "my_assignee_mobboard",
-  "getPSDEViewId" : "8a98bda76a0425e766f469ca350cf40f",
+  "getPSDEViewCodeName" : "my_created_mob",
+  "getPSDEViewId" : "50e574f4ba063dcd488605b24fae1b4c",
   "getPSSysCss" : {
     "cssName" : "mob_recent_item_style"
   },
@@ -26,10 +26,10 @@
       "hidden" : true,
       "viewFieldName" : "show_more"
     } ],
-    "codeName" : "usr1024174993",
+    "codeName" : "usr1024530121",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
-    "logicName" : "my_assignee_mobboard实体移动端多数据视图布局面板",
+    "logicName" : "my_created_mobdash实体移动端多数据视图布局面板",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -155,6 +155,20 @@
               "width" : 100,
               "widthMode" : "PX"
             },
+            "getPSPanelItems" : [ {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "righttoolbar",
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "heightMode" : "FULL",
+                "layout" : "FLEX",
+                "vAlignSelf" : "MIDDLE",
+                "widthMode" : "FULL"
+              },
+              "showCaption" : true
+            } ],
             "width" : 100.0
           } ],
           "predefinedType" : "Toolbar"
@@ -179,7 +193,7 @@
           "caption" : "容器",
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
-          "name" : "container1",
+          "name" : "container",
           "getPSLayout" : {
             "layout" : "FLEX"
           },
@@ -307,23 +321,23 @@
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "显示更多",
-          "codeName" : "show_more_assignee_item",
+          "codeName" : "show_more_created_item",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mob.json",
             "viewType" : "DEMOBMDVIEW"
           },
           "frontProcessType" : "WIZARD",
-          "fullCodeName" : "work_item_show_more_assignee_item",
-          "name" : "显示更多_我负责的工作项(移动端仪表盘)",
+          "fullCodeName" : "work_item_show_more_created_item",
+          "name" : "显示更多_我创建的工作项(移动端仪表盘)",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
           },
           "uIActionMode" : "FRONT",
-          "uIActionTag" : "show_more_assignee_item",
+          "uIActionTag" : "show_more_created_item",
           "uIActionType" : "DEUIACTION",
-          "id" : "show_more_assignee_item@work_item"
+          "id" : "show_more_created_item@work_item"
         },
         "tooltip" : "显示更多",
         "uIActionTarget" : "NONE",
@@ -376,7 +390,7 @@
     "mobilePanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "daeb14a5b3f9164dcfb6b3ded44e54b5",
+    "modelid" : "3a178f4cc24f324e6ef3a55f391eca7f",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -431,7 +445,7 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "mobboard_list",
+      "codeName" : "mob_common_list",
       "controlStyle" : "LISTVIEW",
       "controlType" : "MOBMDCTRL",
       "getCreatePSControlAction" : {
@@ -450,7 +464,7 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mobboard_list.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -458,7 +472,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_my_assignee"
+          "id" : "fetch_my_created"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -798,7 +812,7 @@
         "modelid" : "8e92202cd73f5c8866d73027e35f8428",
         "modeltype" : "PSSYSVIEWPANEL"
       },
-      "logicName" : "mobboard_list",
+      "logicName" : "mob_common_list",
       "minorSortDir" : "DESC",
       "getMinorSortPSAppDEField" : {
         "name" : "UPDATE_TIME",
@@ -871,7 +885,7 @@
           "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "fetch_my_assignee"
+            "id" : "fetch_my_created"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -892,49 +906,6 @@
         "id" : "import_work_item_waterfall"
       },
       "getPSDEListDataItems" : [ {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-        },
-        "name" : "state",
-        "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "title",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "show_identifier",
-        "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "assignee_name",
-        "getPSAppDEField" : {
-          "name" : "ASSIGNEE_NAME",
-          "codeName" : "assignee_name"
-        }
-      }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
-        },
-        "name" : "priority",
-        "getPSAppDEField" : {
-          "name" : "PRIORITY",
-          "codeName" : "priority"
-        }
-      }, {
         "dataType" : 5,
         "format" : "YYYY-MM-DD",
         "name" : "start_at",
@@ -949,6 +920,49 @@
         "getPSAppDEField" : {
           "name" : "END_AT",
           "codeName" : "end_at"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+        },
+        "name" : "priority",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "show_identifier",
+        "getPSAppDEField" : {
+          "name" : "SHOW_IDENTIFIER",
+          "codeName" : "show_identifier"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
         }
       }, {
         "dataType" : 25,
@@ -1055,6 +1069,35 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
+        "caption" : "开始时间",
+        "dataItemName" : "start_at",
+        "itemType" : "TEXTITEM",
+        "name" : "START_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "截止时间",
+        "dataItemName" : "end_at",
+        "itemType" : "TEXTITEM",
+        "name" : "END_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "标题",
+        "dataItemName" : "title",
+        "itemType" : "TEXTITEM",
+        "name" : "TITLE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
         "cLConvertMode" : "FRONT",
         "caption" : "状态",
         "dataItemName" : "state",
@@ -1065,10 +1108,11 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "标题",
-        "dataItemName" : "title",
+        "cLConvertMode" : "FRONT",
+        "caption" : "优先级",
+        "dataItemName" : "priority",
         "itemType" : "TEXTITEM",
-        "name" : "TITLE",
+        "name" : "PRIORITY",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -1090,36 +1134,6 @@
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "优先级",
-        "dataItemName" : "priority",
-        "itemType" : "TEXTITEM",
-        "name" : "PRIORITY",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "开始时间",
-        "dataItemName" : "start_at",
-        "itemType" : "TEXTITEM",
-        "name" : "START_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "截止时间",
-        "dataItemName" : "end_at",
-        "itemType" : "TEXTITEM",
-        "name" : "END_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
       } ],
       "getPSSysCss" : {
         "cssName" : "my_workitem"
@@ -1129,7 +1143,8 @@
         "pluginCode" : "MOB_MDCTRL_TREE",
         "runtimeObject" : true
       },
-      "pagingSize" : 5,
+      "pagingMode" : 2,
+      "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -1172,7 +1187,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "4190e6b5f9b16f41cb9dba09bfb4bfdf",
+      "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
       "modeltype" : "PSDELIST"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1195,8 +1210,8 @@
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.WORK_ITEM"
       },
-      "caption" : "我负责的工作项",
-      "codeName" : "my_assignee_mobboard_captionbar",
+      "caption" : "我创建的工作项",
+      "codeName" : "my_created_mob_captionbar",
       "controlType" : "CAPTIONBAR",
       "name" : "captionbar",
       "getPSAppDataEntity" : {
@@ -1206,7 +1221,8 @@
       "getPSControlParam" : { }
     } ]
   },
-  "title" : "我负责的工作项",
+  "refFlag" : false,
+  "title" : "我创建的工作项",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEMOBMDVIEW",
   "xDataControlName" : "mdctrl",
@@ -1215,7 +1231,7 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "f2ffa6082af458398e7e5f7f62d1ef3f",
+  "modelid" : "ffdc57d9cb2ab484ecb415d1f0c770ab",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,
