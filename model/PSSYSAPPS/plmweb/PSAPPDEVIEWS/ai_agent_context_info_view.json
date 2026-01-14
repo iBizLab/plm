@@ -346,6 +346,47 @@
         "codeName" : "top_p"
       }
     }, {
+      "id" : "rerank",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "RERANK",
+        "codeName" : "rerank"
+      }
+    }, {
+      "id" : "use_kg",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "USE_KG",
+        "codeName" : "use_kg"
+      }
+    }, {
+      "id" : "similarity_threshold",
+      "dataType" : 6,
+      "createDV" : "0.2",
+      "updateDV" : "0.2",
+      "getPSAppDEField" : {
+        "name" : "SIMILARITY_THRESHOLD",
+        "codeName" : "similarity_threshold"
+      }
+    }, {
+      "id" : "vector_similarity_weight",
+      "dataType" : 6,
+      "createDV" : "0.3",
+      "updateDV" : "0.3",
+      "getPSAppDEField" : {
+        "name" : "VECTOR_SIMILARITY_WEIGHT",
+        "codeName" : "vector_similarity_weight"
+      }
+    }, {
+      "id" : "top_k",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "TOP_K",
+        "codeName" : "top_k"
+      }
+    }, {
       "id" : "memory_mode",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -1253,6 +1294,186 @@
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "知识库",
+          "codeName" : "grouppanel11",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel11",
+          "getPSDEFormDetails" : [ {
+            "caption" : "召回重排",
+            "codeName" : "rerank",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK",
+              "codeName" : "rerank"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "rerank"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "使用知识图谱",
+            "codeName" : "use_kg",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "use_kg",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "USE_KG",
+              "codeName" : "use_kg"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "use_kg"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回相似度阈值",
+            "codeName" : "similarity_threshold",
+            "createDV" : "0.2",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "similarity_threshold",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SIMILARITY_THRESHOLD",
+              "codeName" : "similarity_threshold"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "similarity_threshold",
+              "precision" : 2,
+              "scale" : 2,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.2",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "createDV" : "0.3",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VECTOR_SIMILARITY_WEIGHT",
+              "codeName" : "vector_similarity_weight"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "vector_similarity_weight",
+              "precision" : 1,
+              "scale" : 1,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.3",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "最大召回数量",
+            "codeName" : "top_k",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "top_k",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOP_K",
+              "codeName" : "top_k"
+            },
+            "getPSEditor" : {
+              "editorType" : "NUMBER",
+              "name" : "top_k"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 8,
+            "childColMD" : 12,
             "columnCount" : 24,
             "layout" : "TABLE_24COL"
           },

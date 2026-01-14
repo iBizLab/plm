@@ -518,6 +518,7 @@
     }, {
       "id" : "rerank",
       "dataType" : 9,
+      "createDV" : "0",
       "getPSAppDEField" : {
         "name" : "RERANK",
         "codeName" : "rerank"
@@ -525,6 +526,7 @@
     }, {
       "id" : "use_kg",
       "dataType" : 9,
+      "createDV" : "0",
       "getPSAppDEField" : {
         "name" : "USE_KG",
         "codeName" : "use_kg"
@@ -532,6 +534,8 @@
     }, {
       "id" : "similarity_threshold",
       "dataType" : 6,
+      "createDV" : "0.2",
+      "updateDV" : "0.2",
       "getPSAppDEField" : {
         "name" : "SIMILARITY_THRESHOLD",
         "codeName" : "similarity_threshold"
@@ -539,6 +543,8 @@
     }, {
       "id" : "vector_similarity_weight",
       "dataType" : 6,
+      "createDV" : "0.3",
+      "updateDV" : "0.3",
       "getPSAppDEField" : {
         "name" : "VECTOR_SIMILARITY_WEIGHT",
         "codeName" : "vector_similarity_weight"
@@ -2019,6 +2025,7 @@
             "getPSDEFormDetails" : [ {
               "caption" : "召回重排",
               "codeName" : "rerank",
+              "createDV" : "0",
               "dataType" : 9,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -2046,6 +2053,7 @@
             }, {
               "caption" : "使用知识图谱",
               "codeName" : "use_kg",
+              "createDV" : "0",
               "dataType" : 9,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -2073,11 +2081,13 @@
             }, {
               "caption" : "召回相似度阈值",
               "codeName" : "similarity_threshold",
+              "createDV" : "0.2",
               "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
+              "itemWidth" : 430.0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
               "name" : "similarity_threshold",
@@ -2087,26 +2097,36 @@
                 "codeName" : "similarity_threshold"
               },
               "getPSEditor" : {
-                "editorType" : "TEXTBOX",
+                "editorParams" : {
+                  "maxvalue" : "1",
+                  "stepvalue" : "0.01"
+                },
+                "editorType" : "SLIDER",
+                "editorWidth" : 300.0,
+                "maxValue" : 1.0,
                 "name" : "similarity_threshold",
                 "precision" : 2,
-                "scale" : 2
+                "scale" : 2,
+                "stepValue" : 0.01
               },
               "getPSLayoutPos" : {
                 "colLG" : 8,
                 "colMD" : 12,
                 "layout" : "TABLE_24COL"
               },
+              "updateDV" : "0.2",
               "allowEmpty" : true,
               "showCaption" : true
             }, {
               "caption" : "向量相似度权重",
               "codeName" : "vector_similarity_weight",
+              "createDV" : "0.3",
               "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
+              "itemWidth" : 430.0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
               "name" : "vector_similarity_weight",
@@ -2116,16 +2136,24 @@
                 "codeName" : "vector_similarity_weight"
               },
               "getPSEditor" : {
-                "editorType" : "TEXTBOX",
+                "editorParams" : {
+                  "maxvalue" : "1",
+                  "stepvalue" : "0.01"
+                },
+                "editorType" : "SLIDER",
+                "editorWidth" : 300.0,
+                "maxValue" : 1.0,
                 "name" : "vector_similarity_weight",
                 "precision" : 1,
-                "scale" : 1
+                "scale" : 1,
+                "stepValue" : 0.01
               },
               "getPSLayoutPos" : {
                 "colLG" : 8,
                 "colMD" : 12,
                 "layout" : "TABLE_24COL"
               },
+              "updateDV" : "0.3",
               "allowEmpty" : true,
               "showCaption" : true
             }, {
@@ -2145,7 +2173,7 @@
                 "codeName" : "top_k"
               },
               "getPSEditor" : {
-                "editorType" : "TEXTBOX",
+                "editorType" : "NUMBER",
                 "name" : "top_k"
               },
               "getPSLayoutPos" : {
