@@ -15,82 +15,279 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ai.json"
   },
-  "getPSAppViewEngines" : [ {
-    "engineCat" : "VIEW",
-    "engineType" : "TabExpView",
-    "name" : "engine"
-  } ],
-  "getPSControls" : [ {
-    "codeName" : "data_relation2",
-    "controlType" : "DRTAB",
-    "dataRelationTag" : "DataRelation2",
-    "getEditItemCapPSLanguageRes" : {
-      "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
-    },
-    "editItemCaption" : "知识库",
-    "name" : "tabexppanel",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-    },
-    "getPSControlHandler" : {
-      "enableDEFieldPrivilege" : false,
-      "id" : "tabexppanel"
-    },
-    "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "TABEXPPANEL"
-    },
-    "getPSDEDRTabPages" : [ {
-      "caption" : "知识库实体表格视图（已启用）",
-      "name" : "actived",
-      "getPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_actived_grid_view.json",
-        "viewType" : "DEGRIDVIEW"
-      }
-    }, {
-      "caption" : "知识库实体表格视图（已删除）",
-      "name" : "deleted",
-      "getPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_deleted_grid_view.json",
-        "viewType" : "DEGRIDVIEW"
-      }
-    } ],
-    "uniqueTag" : "ai_knowledge_base_management_tab_exp_view__tabexppanel",
-    "modelid" : "27f262aaabbf4f6057c829d1c5dc4005",
-    "modeltype" : "PSDEDRTAB"
-  }, {
-    "getCapPSLanguageRes" : {
-      "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
-    },
-    "caption" : "知识库",
-    "codeName" : "management_tab_exp_view_captionbar",
-    "controlType" : "CAPTIONBAR",
-    "name" : "captionbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-    },
-    "getPSControlParam" : { }
-  } ],
   "getPSDEViewCodeName" : "management_tab_exp_view",
   "getPSDEViewId" : "68b310c8f5a011111506b15a86a072ad",
   "getPSViewLayoutPanel" : {
-    "codeName" : "layoutpanel",
-    "controlStyle" : "APPDETABEXPVIEW",
+    "codeName" : "usr0416853624",
     "controlType" : "VIEWLAYOUTPANEL",
+    "layoutMode" : "FLEX",
+    "logicName" : "management_tab_exp_view分页导航视图布局面板",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     },
     "getPSControlParam" : { },
-    "layoutBodyOnly" : true,
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getRootPSPanelItems" : [ {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "view_header",
+      "getPSLayout" : {
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "shrink" : 0
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_captionbar",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "标题栏",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "captionbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "showCaption" : true
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_tabexppanel",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : 1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "分页导航",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "tabexppanel",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "showCaption" : true
+        } ]
+      }, {
+        "caption" : "容器",
+        "cssStyle" : "margin-right:10px",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container2",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "传送部件占位",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "tabsearchbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "name" : "tabsearchbar",
+            "predefinedType" : "TELEPORT_PLACEHOLDER"
+          },
+          "showCaption" : true
+        } ]
+      } ],
+      "predefinedType" : "VIEWHEADER"
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container",
+      "getPSLayout" : {
+        "dir" : "row",
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : 1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_tabexppanel_left",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX",
+          "shrink" : 0
+        }
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container1",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : 1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_content",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : 1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "导航区占位",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "nav_pos",
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "name" : "nav_pos",
+              "getPSRawItemParams" : [ {
+                "key" : "EXPCACHE",
+                "value" : "NO_CACHE"
+              } ],
+              "predefinedType" : "NAV_POS"
+            },
+            "showCaption" : true
+          } ],
+          "predefinedType" : "VIEWCONTENT"
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_tabexppanel_bottom",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "shrink" : 0
+          }
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_tabexppanel_right",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX",
+          "shrink" : 0
+        }
+      } ]
+    } ],
+    "layoutBodyOnly" : false,
     "layoutPanel" : true,
-    "useDefaultLayout" : true
+    "useDefaultLayout" : false,
+    "viewProxyMode" : true,
+    "modelid" : "07b862287eac0817bd5377a037368a24",
+    "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+    "getPSAppViewEngines" : [ {
+      "engineCat" : "VIEW",
+      "engineType" : "TabExpView",
+      "name" : "engine"
+    } ],
+    "getPSControls" : [ {
+      "codeName" : "data_relation2",
+      "controlType" : "DRTAB",
+      "dataRelationTag" : "DataRelation2",
+      "getEditItemCapPSLanguageRes" : {
+        "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+      },
+      "editItemCaption" : "知识库",
+      "name" : "tabexppanel",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "tabexppanel"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "TABEXPPANEL"
+      },
+      "getPSDEDRTabPages" : [ {
+        "caption" : "知识库实体表格视图（已启用）",
+        "name" : "actived",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_actived_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        }
+      }, {
+        "caption" : "知识库实体表格视图（已删除）",
+        "name" : "deleted",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_deleted_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        }
+      } ],
+      "uniqueTag" : "ai_knowledge_base_management_tab_exp_view__tabexppanel",
+      "modelid" : "27f262aaabbf4f6057c829d1c5dc4005",
+      "modeltype" : "PSDEDRTAB"
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DE.LNAME.AI_KNOWLEDGE_BASE"
+      },
+      "caption" : "知识库",
+      "codeName" : "management_tab_exp_view_captionbar",
+      "controlType" : "CAPTIONBAR",
+      "name" : "captionbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "getPSControlParam" : { }
+    } ]
   },
   "tabLayout" : "TOP",
   "title" : "知识库",
