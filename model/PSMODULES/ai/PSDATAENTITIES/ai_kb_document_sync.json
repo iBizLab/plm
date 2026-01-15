@@ -2219,7 +2219,7 @@
       "topPos" : 370,
       "parallelOutput" : true
     }, {
-      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef all_docs_in_space = _all_pages?.collect { it.id } as Set ?: [] as Set\r\ndef exist_page_ids_doc = _docs.findAll {all_docs_in_space.contains(it.source_id)}\r\n_docs=exist_page_ids_doc\r\nprintln \"存在page_id的doc: ${_docs*.source_id}\"  \r\n",
+      "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _resourc = logic.param('resourc').getReal();\r\ndef all_docs_in_space = _all_pages?.collect { it.id } as Set ?: [] as Set\r\ndef exist_page_ids_doc = _docs.findAll {all_docs_in_space.contains(it.source_id)}\r\nprintln \"存在page_id的doc: ${exist_page_ids_doc*.source_id}\"  \r\n_resourc.set(\"docs\",exist_page_ids_doc)\r\n",
       "codeName" : "RAWSFCODE_02",
       "codeType" : "Groovy",
       "leftPos" : 110,
@@ -2253,6 +2253,21 @@
         }
       } ],
       "topPos" : 402,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "BINDPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "docs"
+      },
+      "leftPos" : 3,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定参数",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_docs"
+      },
+      "topPos" : 500,
       "parallelOutput" : true
     }, {
       "codeName" : "LOOPSUBCALL_02",
@@ -2298,7 +2313,7 @@
       "leftPos" : 150,
       "logicNodeType" : "RAWSFCODE",
       "name" : "查看最终要解析的doc",
-      "topPos" : 560,
+      "topPos" : 562,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
@@ -2414,6 +2429,11 @@
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
       },
       "entityPageParam" : true
+    }, {
+      "codeName" : "temp_docs",
+      "logicName" : "temp_docs",
+      "name" : "temp_docs",
+      "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,

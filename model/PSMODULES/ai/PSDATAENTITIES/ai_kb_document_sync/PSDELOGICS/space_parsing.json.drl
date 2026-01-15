@@ -14,6 +14,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpage;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpage_filter;
                 global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncspace_parsingpages_notin_docs;
+                global java.util.Map ai_kb_document_syncspace_parsingtemp_docs;
                     global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService ai_kb_document_syncservice;
                     global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
                     global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
@@ -45,6 +46,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[准备空间参数]
@@ -63,6 +65,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[查询空间下所有的页面]
@@ -79,6 +82,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[准备文档参数]
@@ -97,6 +101,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[查询最新空间文档]
@@ -113,6 +118,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[处理未同步页面]
@@ -129,6 +135,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[查询已同步页面]
@@ -145,6 +152,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[只解析存在page的doc]
@@ -161,6 +169,24 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam_01"
+            ruleflow-group "ai_kb_document_syncspace_parsingbindparam_01"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[解析空间下文档]
@@ -177,6 +203,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[查看最终要解析的doc]
@@ -193,6 +220,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -209,6 +237,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
             //逻辑处理节点[解析文档]
@@ -226,4 +255,5 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
