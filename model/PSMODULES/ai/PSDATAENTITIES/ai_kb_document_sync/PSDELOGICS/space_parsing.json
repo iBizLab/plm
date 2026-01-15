@@ -224,7 +224,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "LOOPSUBCALL_02"
+        "id" : "RAWSFCODE_02"
       },
       "name" : "连接名称",
       "getPSDELogicLinkGroupCond" : {
@@ -309,12 +309,12 @@
     "topPos" : 370,
     "parallelOutput" : true
   }, {
-    "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef doc_pageids_in_space = _docs?.collect { it.source_id } as Set ?: [] as Set\r\n\r\nprintln \"已有pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_exsit_doc = _all_pages.findAll {doc_pageids_in_space.contains(it.id)}\r\n\r\nprintln \"未存在pageId: ${pages_exsit_doc*.id}\"  ",
+    "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef all_docs_in_space = _docs?.collect { it.source_id } as Set ?: [] as Set\r\n\r\nprintln \"全部doc: $all_docs_in_space\"  \r\n\r\ndef doc_have_page = _all_pages.findAll {all_docs_in_space.contains(it.id)}\r\n\r\nprintln \"存在pageId的doc: ${doc_have_page*.id}\"  ",
     "codeName" : "RAWSFCODE_02",
     "codeType" : "Groovy",
     "leftPos" : 110,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "只解析page存在的doc",
+    "name" : "只解析存在page的doc",
     "topPos" : 402,
     "parallelOutput" : true
   }, {

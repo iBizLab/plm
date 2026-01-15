@@ -37,7 +37,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_03" id="dedataset_03" implementation="http://www.jboss.org/drools/rule" name="查询最新空间文档"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="处理未同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_02" id="dedataset_02" implementation="http://www.jboss.org/drools/rule" name="查询已同步页面"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="只解析page存在的doc"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="只解析存在page的doc"/>
                         <endEvent id="rawsfcode_02_end" name="end"/>
                         <sequenceFlow id="rawsfcode_02_end_line" sourceRef="rawsfcode_02" targetRef="rawsfcode_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_02" id="loopsubcall_02" implementation="http://www.jboss.org/drools/rule" name="解析空间下文档"/>
@@ -85,7 +85,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_dedataset_02" sourceRef="prepareparam_02" targetRef="dedataset_02">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-dedataset_03_loopsubcall_02" sourceRef="gateway-dedataset_03" targetRef="loopsubcall_02">
+                    <sequenceFlow id="gateway-dedataset_03_rawsfcode_02" sourceRef="gateway-dedataset_03" targetRef="rawsfcode_02">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_document_syncspace_parsingdefault:ai_kb_document_sync();
                                             $ai_kb_document_syncspace_parsingall_pages:article_page();
