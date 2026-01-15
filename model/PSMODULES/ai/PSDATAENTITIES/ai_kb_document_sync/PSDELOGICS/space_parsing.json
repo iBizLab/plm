@@ -205,6 +205,26 @@
     "topPos" : 260,
     "parallelOutput" : true
   }, {
+    "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _temp_docs = logic.param('temp_docs').getReal();\r\ndef all_docs_in_space = _all_pages?.collect { it.id } as Set ?: [] as Set\r\ndef exist_page_ids_doc = _docs.findAll {all_docs_in_space.contains(it.source_id)}\r\nprintln \"存在page_id的doc: ${exist_page_ids_doc*.source_id}\"  \r\n_temp_docs.set(\"final_docs\",exist_page_ids_doc)\r\n",
+    "codeName" : "RAWSFCODE_02",
+    "codeType" : "Groovy",
+    "leftPos" : 110,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只解析存在page的doc",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_02"
+      }
+    } ],
+    "topPos" : 370,
+    "parallelOutput" : true
+  }, {
     "codeName" : "DEDATASET_03",
     "getDstPSDEDataSet" : {
       "modelref" : true,
@@ -240,6 +260,16 @@
           },
           "logicType" : "SINGLE",
           "name" : "docs[size] 大于(>) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "all_pages"
+          },
+          "logicType" : "SINGLE",
+          "name" : "all_pages[size] 大于(>) 0",
           "paramValue" : "0"
         } ]
       },
@@ -309,54 +339,18 @@
     "topPos" : 370,
     "parallelOutput" : true
   }, {
-    "code" : "def _all_pages = logic.param('all_pages').getReal();\r\ndef _docs = logic.param('docs').getReal();\r\ndef _temp_docs = logic.param('temp_docs').getReal();\r\ndef all_docs_in_space = _all_pages?.collect { it.id } as Set ?: [] as Set\r\ndef exist_page_ids_doc = _docs.findAll {all_docs_in_space.contains(it.source_id)}\r\nprintln \"存在page_id的doc: ${exist_page_ids_doc*.source_id}\"  \r\n_temp_docs.set(\"final_docs\",exist_page_ids_doc)\r\n",
-    "codeName" : "RAWSFCODE_02",
-    "codeType" : "Groovy",
-    "leftPos" : 110,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "只解析存在page的doc",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "BINDPARAM_01"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "GT",
-          "dstFieldName" : "size",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "docs"
-          },
-          "logicType" : "SINGLE",
-          "name" : "docs[size] 大于(>) 0",
-          "paramValue" : "0"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE_02"
-      }
-    } ],
-    "topPos" : 402,
-    "parallelOutput" : true
-  }, {
     "codeName" : "BINDPARAM_01",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "docs"
     },
-    "leftPos" : 3,
+    "leftPos" : 110,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "构造最终解析doc",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE_03"
+        "id" : "LOOPSUBCALL_02"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -409,15 +403,6 @@
     "topPos" : 500,
     "parallelOutput" : true
   }, {
-    "code" : "def _docs = logic.param('docs').getReal();\r\nprintln \"最终doc: ${_docs*.source_id}\"  \r\n",
-    "codeName" : "RAWSFCODE_03",
-    "codeType" : "Groovy",
-    "leftPos" : 150,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "查看最终要解析的doc",
-    "topPos" : 584,
-    "parallelOutput" : true
-  }, {
     "codeName" : "END_01",
     "leftPos" : 616,
     "logicNodeType" : "END",
@@ -447,6 +432,15 @@
     "logicNodeType" : "DEACTION",
     "name" : "解析文档",
     "topPos" : 644,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _docs = logic.param('docs').getReal();\r\nprintln \"最终doc: ${_docs*.source_id}\"  \r\n",
+    "codeName" : "RAWSFCODE_03",
+    "codeType" : "Groovy",
+    "leftPos" : -26,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "查看最终要解析的doc",
+    "topPos" : 654,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
