@@ -1956,6 +1956,21 @@
           "id" : "PREPAREPARAM_01"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "SOURCE_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "doc_sync"
+            },
+            "logicType" : "SINGLE",
+            "name" : "doc_sync[SOURCE_ID] 值不为空(NotNil) "
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEACTION_01"
@@ -2202,6 +2217,14 @@
         "id" : "docs"
       },
       "topPos" : 370,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSFCODE_02",
+      "codeType" : "Groovy",
+      "leftPos" : 110,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只解析page存在的doc",
+      "topPos" : 402,
       "parallelOutput" : true
     }, {
       "codeName" : "LOOPSUBCALL_02",

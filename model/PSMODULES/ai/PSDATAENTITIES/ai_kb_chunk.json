@@ -375,7 +375,25 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
       },
       "joinType" : "MAIN",
-      "name" : "AI_KB_CHUNK"
+      "name" : "AI_KB_CHUNK",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_kb_document",
+          "fieldName" : "DOCUMENT_ID",
+          "name" : "(DOCUMENT_ID) 等于(=) 数据上下文 ai_kb_document",
+          "getPSDEField" : {
+            "name" : "DOCUMENT_ID",
+            "codeName" : "document_id"
+          },
+          "getPSVARTypeId" : "DATACONTEXT",
+          "ignoreEmpty" : true
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "TreeInput",
