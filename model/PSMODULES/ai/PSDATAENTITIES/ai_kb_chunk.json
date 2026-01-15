@@ -357,6 +357,44 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDEDATAQUERIES/tree/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "tree",
+    "dEFGroupType" : "FIELDS",
+    "logicName" : "tree",
+    "name" : "tree",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_CHUNK"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "TreeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "TreeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_usually_dto"
+      },
+      "type" : "DTOS"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "usually"
+    },
+    "viewLevel" : 100
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -425,7 +463,7 @@
     "name" : "tree",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
-      "id" : "Default"
+      "id" : "tree"
     } ],
     "getPSDEDataSetInput" : {
       "name" : "TreeInput",
@@ -439,17 +477,192 @@
       "name" : "TreeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
-        "id" : "ai_kb_chunk_dto"
+        "id" : "ai_kb_chunk_usually_dto"
       },
       "type" : "PAGE"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "usually"
     },
     "getPSSysSFPlugin" : {
       "modelref" : true,
       "path" : "PSSYSSFPLUGINS/UsrSFPlugin0407757309.json"
     },
-    "viewLevel" : 0,
+    "viewLevel" : 100,
     "enableBackend" : true,
     "enableFront" : true
+  } ],
+  "getAllPSDEFGroups" : [ {
+    "codeName" : "usually",
+    "groupType" : "FIELDS",
+    "name" : "通常属性组",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "id",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_CHUNK.ID"
+      },
+      "logicName" : "分块标识",
+      "orderValue" : 1,
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stringLength" : 100,
+      "allowEmpty" : false,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "name",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KB_CHUNK.NAME"
+      },
+      "logicName" : "分块名称",
+      "orderValue" : 2,
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "positions",
+      "logicName" : "文档位置",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "POSITIONS",
+        "codeName" : "positions"
+      },
+      "stringLength" : 1000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "tags",
+      "logicName" : "标签",
+      "orderValue" : 240,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSCODELISTS/kb_tag.json"
+      },
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "path",
+      "logicName" : "分块路径",
+      "orderValue" : 270,
+      "getPSDEField" : {
+        "name" : "PATH",
+        "codeName" : "path"
+      },
+      "stringLength" : 2000,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "sequence",
+      "logicName" : "文档索引顺序",
+      "orderValue" : 280,
+      "getPSDEField" : {
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "document_type",
+      "logicName" : "文档类型",
+      "orderValue" : 300,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSCODELISTS/ai_kb_document_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "DOCUMENT_TYPE",
+        "codeName" : "document_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "chunk_type",
+      "logicName" : "分块类型",
+      "orderValue" : 310,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSCODELISTS/chunk_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "CHUNK_TYPE",
+        "codeName" : "chunk_type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "分块类型",
+      "orderValue" : 310,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSCODELISTS/chunk_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "source_indices",
+      "logicName" : "源分块索引",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "SOURCE_INDICES",
+        "codeName" : "source_indices"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "source_count",
+      "logicName" : "源分块计数",
+      "orderValue" : 330,
+      "getPSDEField" : {
+        "name" : "SOURCE_COUNT",
+        "codeName" : "source_count"
+      },
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "DocumentName",
+      "logicName" : "知识库文档名称",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "DOCUMENT_NAME",
+        "codeName" : "DocumentName"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "pid",
+      "logicName" : "父分块标识",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "PID",
+        "codeName" : "pid"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -3240,6 +3453,155 @@
     "sourceType" : "DE",
     "type" : "DEFILTER",
     "defaultMode" : true
+  }, {
+    "name" : "ai_kb_chunk_usually_dto",
+    "getPSDEMethodDTOFields" : [ {
+      "logicName" : "分块标识",
+      "name" : "id",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "logicName" : "分块名称",
+      "name" : "name",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "文档位置",
+      "name" : "positions",
+      "getPSDEField" : {
+        "name" : "POSITIONS",
+        "codeName" : "positions"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 1000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "标签",
+      "name" : "tags",
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "分块路径",
+      "name" : "path",
+      "getPSDEField" : {
+        "name" : "PATH",
+        "codeName" : "path"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "文档索引顺序",
+      "name" : "sequence",
+      "getPSDEField" : {
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "文档类型",
+      "name" : "document_type",
+      "getPSDEField" : {
+        "name" : "DOCUMENT_TYPE",
+        "codeName" : "document_type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "original",
+      "logicName" : "分块类型",
+      "name" : "chunk_type",
+      "getPSDEField" : {
+        "name" : "CHUNK_TYPE",
+        "codeName" : "chunk_type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "original",
+      "logicName" : "分块类型",
+      "name" : "type",
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "源分块索引",
+      "name" : "source_indices",
+      "getPSDEField" : {
+        "name" : "SOURCE_INDICES",
+        "codeName" : "source_indices"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 1048576,
+      "type" : "SIMPLES"
+    }, {
+      "logicName" : "源分块计数",
+      "name" : "source_count",
+      "getPSDEField" : {
+        "name" : "SOURCE_COUNT",
+        "codeName" : "source_count"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库文档名称",
+      "name" : "document_name",
+      "getPSDEField" : {
+        "name" : "DOCUMENT_NAME",
+        "codeName" : "DocumentName"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "父分块标识",
+      "name" : "pid",
+      "getPSDEField" : {
+        "name" : "PID",
+        "codeName" : "pid"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    } ],
+    "sourceType" : "DE",
+    "type" : "DEFAULT"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
