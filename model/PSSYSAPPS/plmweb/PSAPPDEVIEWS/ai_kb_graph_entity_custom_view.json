@@ -6,6 +6,7 @@
   "caption" : "知识图谱",
   "codeName" : "ai_kb_graph_entity_custom_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_custom_view.json",
+  "mDCtrlActiveMode" : 1,
   "name" : "ai_kb_graph_entitycustom_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -298,6 +299,74 @@
       "name" : "LOGIC2",
       "getPSViewCtrlName" : "treeexpbar1",
       "scriptCode" : "console.log(\"数据变更tree\")\n// const activectrl = view.getCtrl(\"FORM\", \"form\");\n// activectrl.params.current_selected = null;\n\nconst treeCtrl = view.getCtrl(\"TREEEXPBAR\", \"treeexpbar\");\nconst treeCtrl1= view.getCtrl(\"TREEEXPBAR\", \"treeexpbar1\");\nconsole.log(\"treeCtrl1为\"+treeCtrl1.state.selectedData)\nconsole.log(\"treeCtrl为\"+treeCtrl.state.selectedData)\ntreeCtrl.state.selectedData = []\nawait treeCtrl.refresh();\n// const selectedData = treeCtrl1.state.selectedData[0];\n// const ai_kb_graph_relation =selectedData._deData.id || '';\n// if(ai_kb_graph_relation){\n//     activectrl.params.ai_kb_graph_relation = ai_kb_graph_relation;\n//     activectrl.params.current_selected = \"ai_kb_graph_relation\";\n// }\n// await activectrl.refresh();\n\n"
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "newdata",
+      "getPSAppUILogic" : {
+        "actionAfterWizard" : "DEFAULT",
+        "logicType" : "PREDEFINED",
+        "name" : "新建数据",
+        "getNewDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_NEWDATA",
+        "batchAddOnly" : false,
+        "enableBatchAdd" : false,
+        "enableWizardAdd" : false
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "opendata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : true
+      }
+    } ],
+    "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "realTitle" : "知识库图谱实体编辑视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
+      "name" : "EDITDATA",
+      "realTitle" : "知识库图谱实体编辑视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_graph_entity_edit_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
     } ],
     "getPSControls" : [ {
       "codeName" : "custom_view_treeexpbar1",
@@ -924,6 +993,23 @@
       "modelid" : "d661e58644a40af226bd09ef7c6247a6_treeexpbar",
       "modeltype" : "PSEXPBAR"
     }, {
+      "controlType" : "SEARCHBAR",
+      "name" : "searchbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "getPSControlParam" : {
+        "id" : "searchbar"
+      },
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 1,
+      "quickSearchWidth" : 0,
+      "enableFilter" : false,
+      "enableGroup" : false,
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : false
+    }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.AI_KB_GRAPH_ENTITY"
       },
@@ -940,8 +1026,11 @@
   },
   "title" : "知识图谱",
   "viewStyle" : "DEFAULT",
-  "viewType" : "DECUSTOMVIEW",
+  "viewType" : "DEMDCUSTOMVIEW",
   "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
   "showCaptionBar" : false,
   "modelid" : "d661e58644a40af226bd09ef7c6247a6",
   "modeltype" : "PSAPPDEVIEW"
