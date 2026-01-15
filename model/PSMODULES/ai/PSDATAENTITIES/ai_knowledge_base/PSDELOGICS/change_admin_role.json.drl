@@ -1,0 +1,94 @@
+package cn.ibizlab.plm.ai.logic.ai_knowledge_baselogic.change_admin_role;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_basechange_admin_roledefault;
+                global cn.ibizlab.plm.core.base.domain.user ai_knowledge_basechange_admin_rolefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.user ai_knowledge_basechange_admin_roleselectdata;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_member ai_knowledge_basechange_admin_roleupdate_member_info;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_memberService ai_kb_memberservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService iBzSysAi_knowledge_baseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_knowledge_basechange_admin_rolebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定srfactionparam参数]
+            rule "bindparam1"
+            ruleflow-group "ai_knowledge_basechange_admin_rolebindparam1"
+            when
+            then
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ai_knowledge_basechange_admin_roleloopsubcall1"
+            when
+            then
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立更新成员信息参数]
+            rule "renewparam4"
+            ruleflow-group "ai_knowledge_basechange_admin_rolerenewparam4"
+            when
+            then
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备更新管理员身份]
+            rule "prepareparam2"
+            ruleflow-group "ai_knowledge_basechange_admin_roleprepareparam2"
+            when
+            then
+                            ai_knowledge_basechange_admin_roleupdate_member_info.set("userid",ai_knowledge_basechange_admin_rolefor_temp_obj.get("id"));
+                            ai_knowledge_basechange_admin_roleupdate_member_info.set("roleid","admin");
+                            ai_knowledge_basechange_admin_roleupdate_member_info.set("product_id",ai_knowledge_basechange_admin_roledefault.get("id"));
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新管理员身份]
+            rule "deaction1"
+            ruleflow-group "ai_knowledge_basechange_admin_roledeaction1"
+            when
+            then
+                        ai_kb_memberservice.save(ai_knowledge_basechange_admin_roleupdate_member_info);
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ai_knowledge_basechange_admin_roleend1"
+            when
+            then
+                        update(ai_knowledge_basechange_admin_roledefault);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_rolefor_temp_obj);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleselectdata);//更新fact中变量值
+                        update(ai_knowledge_basechange_admin_roleupdate_member_info);//更新fact中变量值
+            end
