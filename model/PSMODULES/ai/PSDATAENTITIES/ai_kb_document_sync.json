@@ -2134,7 +2134,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL_02"
+          "id" : "RAWSFCODE_02"
         },
         "name" : "连接名称",
         "getPSDELogicLinkGroupCond" : {
@@ -2225,6 +2225,33 @@
       "leftPos" : 110,
       "logicNodeType" : "RAWSFCODE",
       "name" : "只解析存在page的doc",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "docs"
+            },
+            "logicType" : "SINGLE",
+            "name" : "docs[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        }
+      } ],
       "topPos" : 402,
       "parallelOutput" : true
     }, {

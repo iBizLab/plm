@@ -38,8 +38,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="处理未同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_02" id="dedataset_02" implementation="http://www.jboss.org/drools/rule" name="查询已同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="只解析存在page的doc"/>
-                        <endEvent id="rawsfcode_02_end" name="end"/>
-                        <sequenceFlow id="rawsfcode_02_end_line" sourceRef="rawsfcode_02" targetRef="rawsfcode_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_02" id="loopsubcall_02" implementation="http://www.jboss.org/drools/rule" name="解析空间下文档"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
@@ -85,7 +83,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_02_dedataset_02" sourceRef="prepareparam_02" targetRef="dedataset_02">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-dedataset_03_loopsubcall_02" sourceRef="gateway-dedataset_03" targetRef="loopsubcall_02">
+                    <sequenceFlow id="gateway-dedataset_03_rawsfcode_02" sourceRef="gateway-dedataset_03" targetRef="rawsfcode_02">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_document_syncspace_parsingdefault:ai_kb_document_sync();
                                             $ai_kb_document_syncspace_parsingall_pages:article_page();
@@ -105,6 +103,22 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset_02_rawsfcode_01" sourceRef="dedataset_02" targetRef="rawsfcode_01">
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode_02_loopsubcall_02" sourceRef="gateway-rawsfcode_02" targetRef="loopsubcall_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_document_syncspace_parsingdefault:ai_kb_document_sync();
+                                            $ai_kb_document_syncspace_parsingall_pages:article_page();
+                                            $ai_kb_document_syncspace_parsingdoc:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingdoc_filter:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingdoc_sync:ai_kb_document_sync();
+                                            $ai_kb_document_syncspace_parsingdocs:ai_kb_document();
+                                            $ai_kb_document_syncspace_parsingpage:article_page();
+                                            $ai_kb_document_syncspace_parsingpage_filter:article_page();
+                                            $ai_kb_document_syncspace_parsingpages_notin_docs:article_page();
+                                    eval($ai_kb_document_syncspace_parsingdefault==ai_kb_document_syncspace_parsingdefault && $ai_kb_document_syncspace_parsingall_pages==ai_kb_document_syncspace_parsingall_pages && $ai_kb_document_syncspace_parsingdoc==ai_kb_document_syncspace_parsingdoc && $ai_kb_document_syncspace_parsingdoc_filter==ai_kb_document_syncspace_parsingdoc_filter && $ai_kb_document_syncspace_parsingdoc_sync==ai_kb_document_syncspace_parsingdoc_sync && $ai_kb_document_syncspace_parsingdocs==ai_kb_document_syncspace_parsingdocs && $ai_kb_document_syncspace_parsingpage==ai_kb_document_syncspace_parsingpage && $ai_kb_document_syncspace_parsingpage_filter==ai_kb_document_syncspace_parsingpage_filter && $ai_kb_document_syncspace_parsingpages_notin_docs==ai_kb_document_syncspace_parsingpages_notin_docs);
+                                eval((RuleUtils.test($ai_kb_document_syncspace_parsingdocs.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall_02_deaction_03" sourceRef="loopsubcall_02" targetRef="deaction_03">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_02_end_01" sourceRef="loopsubcall_02" targetRef="end_01">
@@ -121,5 +135,9 @@
                             <sequenceFlow id="dedataset_03_gateway-dedataset_03_gatewayline" sourceRef="dedataset_03" targetRef="gateway-dedataset_03"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset_03_end_line" sourceRef="gateway-dedataset_03" targetRef="gateway-dedataset_03_end"/>
                             <endEvent id="gateway-dedataset_03_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode_02" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode_02_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode_02_gateway-rawsfcode_02_gatewayline" sourceRef="rawsfcode_02" targetRef="gateway-rawsfcode_02"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode_02_end_line" sourceRef="gateway-rawsfcode_02" targetRef="gateway-rawsfcode_02_end"/>
+                            <endEvent id="gateway-rawsfcode_02_end" name="end"/>
         </process>
     </definitions>
