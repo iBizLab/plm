@@ -1,6 +1,11 @@
 {
   "dBType" : "MYSQL5",
   "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "( <choose><when test=\"ctx.datacontext.ai_kb_document !=null \">  t1.`DOCUMENT_ID` = #{ctx.datacontext.ai_kb_document}  </when><otherwise>1=1</otherwise></choose> )",
+    "name" : "查询条件"
+  } ],
   "getPSDEDataQueryCodeExps" : [ {
     "expression" : "t1.`ACTIVE`",
     "name" : "ACTIVE"
