@@ -2228,7 +2228,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL_02"
+          "id" : "RAWSFCODE_03"
         },
         "name" : "连接名称",
         "getPSDELogicLinkGroupCond" : {
@@ -2289,7 +2289,16 @@
         "modelref" : true,
         "id" : "docs"
       },
-      "topPos" : 510,
+      "topPos" : 500,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _docs = logic.param('docs').getReal();\r\nprintln \"最终doc: ${_docs*.source_id}\"  \r\n",
+      "codeName" : "RAWSFCODE_03",
+      "codeType" : "Groovy",
+      "leftPos" : 150,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "查看最终要解析的doc",
+      "topPos" : 560,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
