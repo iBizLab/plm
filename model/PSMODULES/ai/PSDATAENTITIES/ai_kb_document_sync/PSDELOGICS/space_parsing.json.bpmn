@@ -40,8 +40,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingdedataset_02" id="dedataset_02" implementation="http://www.jboss.org/drools/rule" name="查询已同步页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="只解析存在page的doc"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingbindparam_01" id="bindparam_01" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <endEvent id="bindparam_01_end" name="end"/>
-                        <sequenceFlow id="bindparam_01_end_line" sourceRef="bindparam_01" targetRef="bindparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingloopsubcall_02" id="loopsubcall_02" implementation="http://www.jboss.org/drools/rule" name="解析空间下文档"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_document_syncspace_parsingrawsfcode_03" id="rawsfcode_03" implementation="http://www.jboss.org/drools/rule" name="查看最终要解析的doc"/>
                         <endEvent id="rawsfcode_03_end" name="end"/>
@@ -113,7 +111,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset_02_rawsfcode_01" sourceRef="dedataset_02" targetRef="rawsfcode_01">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-rawsfcode_02_rawsfcode_03" sourceRef="gateway-rawsfcode_02" targetRef="rawsfcode_03">
+                    <sequenceFlow id="gateway-rawsfcode_02_bindparam_01" sourceRef="gateway-rawsfcode_02" targetRef="bindparam_01">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_document_syncspace_parsingdefault:ai_kb_document_sync();
                                             $ai_kb_document_syncspace_parsingall_pages:article_page();
@@ -129,6 +127,8 @@
                                 eval((RuleUtils.test($ai_kb_document_syncspace_parsingdocs.get("size"),"GT","0")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam_01_rawsfcode_03" sourceRef="bindparam_01" targetRef="rawsfcode_03">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall_02_deaction_03" sourceRef="loopsubcall_02" targetRef="deaction_03">
                     </sequenceFlow>
