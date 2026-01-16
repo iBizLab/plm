@@ -31,6 +31,23 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             then
             end
 
+            //逻辑处理节点[实体数据集]
+            rule "dedataset_04"
+            ruleflow-group "ai_kb_document_syncspace_parsingdedataset_04"
+            when
+            then
+                        update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdoc_sync);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingdocs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingpages_notin_docs);//更新fact中变量值
+                        update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取文档同步数据]
             rule "deaction_01"
             ruleflow-group "ai_kb_document_syncspace_parsingdeaction_01"
@@ -68,7 +85,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
                         update(ai_kb_document_syncspace_parsingtemp_docs);//更新fact中变量值
             end
 
-            //逻辑处理节点[查询空间下所有的页面]
+            //逻辑处理节点[查询空间启用的页面]
             rule "dedataset_01"
             ruleflow-group "ai_kb_document_syncspace_parsingdedataset_01"
             when
@@ -91,7 +108,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.space_parsing;
             when
             then
                             ai_kb_document_syncspace_parsingdoc_filter.set("n_sync_id_eq",ai_kb_document_syncspace_parsingdoc_sync.get("id"));
-                            ai_kb_document_syncspace_parsingdoc_filter.set("size","1500");
+                            ai_kb_document_syncspace_parsingdoc_filter.set("size","2000");
                         update(ai_kb_document_syncspace_parsingdefault);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingall_pages);//更新fact中变量值
                         update(ai_kb_document_syncspace_parsingdoc);//更新fact中变量值
