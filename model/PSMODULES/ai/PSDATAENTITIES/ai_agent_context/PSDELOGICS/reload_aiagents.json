@@ -1,0 +1,53 @@
+{
+  "codeName" : "reload_aiagents",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDELOGICS/reload_aiagents.json",
+  "logicName" : "reload_aiagents",
+  "memo" : "重载AI代理对象",
+  "name" : "reload_aiagents",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 220,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 120,
+    "parallelOutput" : true
+  }, {
+    "code" : "def system_id = sys.deploySystemId\n//合成当前系统AI工厂reload信号标识\ndef reload_tag = \"reloadsignal-$system_id-sysaifactory-ai-ibizplmintelligence\"\ndef config = [:]\nconfig.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()\n//发布配置\nnet.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)\n",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 190,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "触发刷新信号",
+    "topPos" : 325,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

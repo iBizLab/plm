@@ -1,0 +1,327 @@
+{
+  "codeName" : "retrieval_test",
+  "controlType" : "SEARCHFORM",
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk/PSSEARCHFORMS/retrieval_test.json",
+  "logicName" : "检索测试自定义视图_搜索表单",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "similarity_threshold",
+    "dataType" : 25,
+    "createDV" : "0.2",
+    "updateDV" : "0.2"
+  }, {
+    "id" : "keyword_similarity_weight",
+    "dataType" : 25,
+    "createDV" : "0.7",
+    "updateDV" : "0.7"
+  }, {
+    "id" : "top_k",
+    "dataType" : 25,
+    "createDV" : "10",
+    "updateDV" : "10"
+  }, {
+    "id" : "cross_languages",
+    "dataType" : 25
+  }, {
+    "id" : "use_kg",
+    "dataType" : 25,
+    "createDV" : "0"
+  }, {
+    "id" : "n_rerank_eq",
+    "dataType" : 25,
+    "createDV" : "0",
+    "updateDV" : "0"
+  }, {
+    "id" : "query",
+    "dataType" : 25
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "常规条件",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "知识库文档分块基本信息",
+      "codeName" : "group1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "group1",
+      "getPSDEFormDetails" : [ {
+        "caption" : "相似度阈值",
+        "codeName" : "similarity_threshold",
+        "createDV" : "0.2",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "similarity_threshold",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "cssStyle" : "padding-left: 5px;",
+          "editorParams" : {
+            "maxvalue" : "1",
+            "stepvalue" : "0.01"
+          },
+          "editorType" : "SLIDER",
+          "editorWidth" : 350.0,
+          "maxValue" : 1.0,
+          "name" : "similarity_threshold",
+          "stepValue" : 0.01
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "0.2",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "关键字相似度权重",
+        "codeName" : "keyword_similarity_weight",
+        "createDV" : "0.7",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "keyword_similarity_weight",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "cssStyle" : "padding-left: 5px;",
+          "editorParams" : {
+            "maxvalue" : "1",
+            "stepvalue" : "0.01"
+          },
+          "editorType" : "SLIDER",
+          "editorWidth" : 350.0,
+          "maxValue" : 1.0,
+          "name" : "keyword_similarity_weight",
+          "stepValue" : 0.01
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "0.7",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "Top-K",
+        "codeName" : "top_k",
+        "createDV" : "10",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "top_k",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "cssStyle" : "padding-left: 5px;",
+          "editorParams" : {
+            "maxvalue" : "50",
+            "stepvalue" : "1"
+          },
+          "editorType" : "SLIDER",
+          "editorWidth" : 350.0,
+          "maxValue" : 50.0,
+          "name" : "top_k",
+          "stepValue" : 1.0
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "10",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "跨语言搜索",
+        "codeName" : "cross_languages",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "cross_languages",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "editorWidth" : 350.0,
+          "name" : "cross_languages",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/CodeList56.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "使用知识图谱",
+        "codeName" : "use_kg",
+        "createDV" : "0",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "use_kg",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "use_kg"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "是否重排",
+        "codeName" : "n_rerank_eq",
+        "createDV" : "0",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "n_rerank_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "n_rerank_eq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "0",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "测试文本",
+        "codeName" : "query",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "query",
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "query",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "HEIGHT" : "200"
+          },
+          "editorType" : "TEXTAREA_10",
+          "editorWidth" : 350.0,
+          "name" : "query",
+          "showMaxLength" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "actionType" : "UIACTION",
+        "caption" : "测试",
+        "codeName" : "button1",
+        "contentWidth" : 80.0,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "BUTTON",
+        "name" : "button1",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "searchform_button1"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 4,
+          "colMD" : 4,
+          "layout" : "TABLE_24COL",
+          "width" : 80,
+          "widthMode" : "PX"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "检索测试",
+          "codeName" : "retrieval_test",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_chunk_retrieval_test",
+          "name" : "检索测试",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+          },
+          "scriptCode" : "console.log(\"检索测试\"+view)\r\nconsole.log(\"检索测试\"+ctrl)\r\nconst container_multidata = view.layoutPanel.panelItems.container_multidata;\r\nif(container_multidata){\r\n    const similarity_threshold = ctrl.data.similarity_threshold;\r\n    const keyword_similarity_weight = ctrl.data.keyword_similarity_weight;\r\n    const top_k = ctrl.data.top_k;\r\n    const cross_languages = ctrl.data.cross_languages;\r\n    const use_kg = ctrl.data.use_kg;\r\n    const n_rerank_eq = ctrl.data.n_rerank_eq;\r\n    const query = ctrl.data.query;\r\n    view.params.similarity_threshold = similarity_threshold\r\n    view.params.keyword_similarity_weight = keyword_similarity_weight\r\n    view.params.top_k = top_k\r\n    view.params.cross_languages = cross_languages\r\n    view.params.use_kg = use_kg\r\n    view.params.n_rerank_eq = n_rerank_eq\r\n    view.params.query = query\r\n    await container_multidata.redrawView();\r\n}",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "retrieval_test",
+          "uIActionType" : "DEUIACTION",
+          "id" : "retrieval_test@ai_kb_chunk"
+        },
+        "tooltip" : "测试",
+        "uIActionTarget" : "NONE",
+        "width" : 80.0,
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : false
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "searchButtonStyle" : "NONE",
+  "tabHeaderPos" : "TOP",
+  "enableAdvanceSearch" : false,
+  "enableAutoSearch" : true,
+  "enableFilterSave" : false,
+  "noTabHeader" : true,
+  "modelid" : "15836725ae03c659fe449ae0b442d10c",
+  "modeltype" : "PSDEFORM_SEARCHFORM"
+}

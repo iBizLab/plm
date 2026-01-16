@@ -1,0 +1,118 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.product_ticket_re_counters;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketproduct_ticket_re_countersdefault;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketproduct_ticket_re_countersbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[工单关联需求]
+            rule "rawsqlcall1"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="-- 工单关联需求 SELECT 	count( t.id ) AS ticket_re_idea FROM 	idea t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'idea'  			AND t11.`PRINCIPAL_TYPE` = 'ticket'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND t.`IS_DELETED` = 0  ";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工单关联工作项]
+            rule "rawsqlcall2"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="-- 工单关联工作项 SELECT 	count( t.id ) AS ticket_re_work_item FROM 	work_item t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( t11.`PRINCIPAL_ID` = #{et.param0}          AND t11.`TARGET_TYPE` = 'work_item'          AND t11.`PRINCIPAL_TYPE` = 'ticket' )  	)  	AND  t.`IS_DELETED` = 0";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工单关联工单]
+            rule "rawsqlcall3"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall3"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="-- 工单关联工单 SELECT 	count( t.id ) AS ticket_re_ticket  FROM 	ticket t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( t11.`PRINCIPAL_ID` = #{et.param0}          AND t11.`TARGET_TYPE` = 'ticket'         AND t11.`PRINCIPAL_TYPE` = 'ticket' )  	)      AND t.`IS_DELETED` = 0";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ticketproduct_ticket_re_countersend1"
+            when
+            then
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[合并查询计数器]
+            rule "rawsqlcall5"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall5"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="SELECT     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'ticket' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS ticket_re_idea,     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'ticket' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS ticket_re_ticket,     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'ticket' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS ticket_re_work_item FROM     `RELATION` t11 JOIN     `ticket` t ON t.`ID` = t11.`PRINCIPAL_ID` LEFT JOIN     `idea` t1 ON t1.ID = t11.TARGET_ID  LEFT JOIN     `ticket` t3 ON t3.ID = t11.TARGET_ID  LEFT JOIN     `work_item` t4 ON t4.ID = t11.TARGET_ID WHERE     (t11.`PRINCIPAL_ID` = #{et.param0});";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[客户回复]
+            rule "rawsqlcall4"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall4"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="SELECT     count( t.id ) AS customer_comment FROM     comment t WHERE t.`OWNER_TYPE` = 'CUSTOMER_CONNECT'      AND t.`PRINCIPAL_TYPE` = 'CUSTOMER_CONNECT'      AND t.`PRINCIPAL_ID` = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workloadworkload_auto_cal" isClosed="false" isExecutable="true" name="base_workload_workload_auto_cal_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workloadworkload_auto_cal">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workloadworkload_auto_caldefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadworkload_auto_calactual" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadworkload_auto_calestimated" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadworkload_auto_calnext_work_load" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calp_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calp_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calp_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadworkload_auto_calremaining" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_caltarget_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calworkload_data" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_storageService))" name="extend_storageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workloadworkload_auto_caldefault" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadworkload_auto_calactual" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadworkload_auto_calcur_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calcur_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calcur_work_item_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calestimated" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadworkload_auto_calnext_work_load" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadworkload_auto_calp_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calp_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calp_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calremaining" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadworkload_auto_caltarget_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calworkload_data" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="计算父工作项汇聚工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="计算剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置实际工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="保存实际工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="保存剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="保存预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="填充递归调用参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置父工作项ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="递归调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsfcode2" sourceRef="rawsqlcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_prepareparam7" sourceRef="rawsfcode2" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction4" sourceRef="prepareparam7" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam8" sourceRef="deaction4" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_deaction5" sourceRef="prepareparam8" targetRef="deaction5">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_prepareparam5" sourceRef="deaction5" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction6" sourceRef="prepareparam5" targetRef="deaction6">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam2" sourceRef="deaction6" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_delogic1" sourceRef="prepareparam9" targetRef="delogic1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction3_prepareparam9" sourceRef="gateway-deaction3" targetRef="prepareparam9">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadworkload_auto_caldefault:workload();
+                                            $workloadworkload_auto_calactual:extend_storage();
+                                            $workloadworkload_auto_calcur_work_item_filter:work_item();
+                                            $workloadworkload_auto_calcur_work_item_page:work_item();
+                                            $workloadworkload_auto_calcur_work_item_temp:work_item();
+                                            $workloadworkload_auto_calestimated:extend_storage();
+                                            $workloadworkload_auto_calnext_work_load:workload();
+                                            $workloadworkload_auto_calp_work_item:work_item();
+                                            $workloadworkload_auto_calp_work_item_filter:work_item();
+                                            $workloadworkload_auto_calp_work_item_page:work_item();
+                                            $workloadworkload_auto_calremaining:extend_storage();
+                                            $workloadworkload_auto_caltarget_work_item:work_item();
+                                            $workloadworkload_auto_calworkload_data:work_item();
+                                    eval($workloadworkload_auto_caldefault==workloadworkload_auto_caldefault && $workloadworkload_auto_calactual==workloadworkload_auto_calactual && $workloadworkload_auto_calcur_work_item_filter==workloadworkload_auto_calcur_work_item_filter && $workloadworkload_auto_calcur_work_item_page==workloadworkload_auto_calcur_work_item_page && $workloadworkload_auto_calcur_work_item_temp==workloadworkload_auto_calcur_work_item_temp && $workloadworkload_auto_calestimated==workloadworkload_auto_calestimated && $workloadworkload_auto_calnext_work_load==workloadworkload_auto_calnext_work_load && $workloadworkload_auto_calp_work_item==workloadworkload_auto_calp_work_item && $workloadworkload_auto_calp_work_item_filter==workloadworkload_auto_calp_work_item_filter && $workloadworkload_auto_calp_work_item_page==workloadworkload_auto_calp_work_item_page && $workloadworkload_auto_calremaining==workloadworkload_auto_calremaining && $workloadworkload_auto_caltarget_work_item==workloadworkload_auto_caltarget_work_item && $workloadworkload_auto_calworkload_data==workloadworkload_auto_calworkload_data);
+                                eval((RuleUtils.test($workloadworkload_auto_calp_work_item.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="delogic1_end1" sourceRef="delogic1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction3" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction3_gateway-deaction3_gatewayline" sourceRef="deaction3" targetRef="gateway-deaction3"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction3_end_line" sourceRef="gateway-deaction3" targetRef="gateway-deaction3_end"/>
+                            <endEvent id="gateway-deaction3_end" name="end"/>
+        </process>
+    </definitions>

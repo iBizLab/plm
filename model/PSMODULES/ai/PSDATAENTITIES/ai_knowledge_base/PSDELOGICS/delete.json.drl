@@ -1,0 +1,52 @@
+package cn.ibizlab.plm.ai.logic.ai_knowledge_baselogic.delete;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_basedeletedefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_basedeleteupdate_obj;
+                    global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService ai_knowledge_baseservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService iBzSysAi_knowledge_baseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_knowledge_basedeletebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam1"
+            ruleflow-group "ai_knowledge_basedeleteprepareparam1"
+            when
+            then
+                            ai_knowledge_basedeleteupdate_obj.set("isdeleted","1");
+                            ai_knowledge_basedeleteupdate_obj.set("id",ai_knowledge_basedeletedefault.get("id"));
+                        update(ai_knowledge_basedeletedefault);//更新fact中变量值
+                        update(ai_knowledge_basedeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新知识库的删除标识]
+            rule "deaction1"
+            ruleflow-group "ai_knowledge_basedeletedeaction1"
+            when
+            then
+                        ai_knowledge_baseservice.update(ai_knowledge_basedeleteupdate_obj);
+                        update(ai_knowledge_basedeletedefault);//更新fact中变量值
+                        update(ai_knowledge_basedeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ai_knowledge_basedeleteend1"
+            when
+            then
+                        update(ai_knowledge_basedeletedefault);//更新fact中变量值
+                        update(ai_knowledge_basedeleteupdate_obj);//更新fact中变量值
+            end

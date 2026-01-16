@@ -1,0 +1,111 @@
+{
+  "codeName" : "retrieval_test",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDELOGICS/retrieval_test.json",
+  "logicName" : "检索测试",
+  "name" : "检索测试",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 192,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef query = _default.get('query')\r\ndef kb_id = _default.get('kb_id')\r\nif (query && kb_id){\r\n    def _params = [:]\r\n    def n_rerank_eq = (_default.get('n_rerank_eq') as Integer) ?: 0\r\n    def similarity_threshold = (_default.get(\"similarity_threshold\") as BigDecimal) ?: 0\r\n    def keyword_similarity_weight = (_default.get(\"keyword_similarity_weight\") as BigDecimal) ?: 0\r\n    def n_vector_similarity_gtandeq = 1 - keyword_similarity_weight\r\n    def top_k = (_default.get(\"top_k\") as Integer) ?: 0\r\n    def cross_languages = _default.get(\"cross_languages\") ?: \"\"\r\n    def use_kg = (_default.get(\"use_kg\") as Boolean) ?: false\r\n\r\n    _params.put('query', query)\r\n    _params.put('n_rerank_eq', n_rerank_eq)\r\n    _params.put('n_similarity_gtandeq', similarity_threshold)\r\n    _params.put('n_vector_similarity_gtandeq', n_vector_similarity_gtandeq)\r\n    _params.put('top_k', top_k)\r\n    _params.put('cross_languages', cross_languages)\r\n    _params.put('use_kg', use_kg)\r\n\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false);\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params);\r\n    _default.set('result',_page)\r\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 400,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "检索测试",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 190,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "leftPos" : 594,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM_01"
+      }
+    } ],
+    "srcFieldName" : "result",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 190,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 806,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 190,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "page",
+    "name" : "page",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
