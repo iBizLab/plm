@@ -655,16 +655,20 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "NONE",
-              "caption" : "搜索",
-              "codeName" : "searchButtonClick",
+              "caption" : "检索测试",
+              "codeName" : "retrieval_test",
               "frontProcessType" : "OTHER",
-              "fullCodeName" : "searchButtonClick",
-              "name" : "搜索表单搜索",
-              "scriptCode" : "ctrl.onSearchButtonClick()",
+              "fullCodeName" : "ai_kb_chunk_retrieval_test",
+              "name" : "检索测试",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
+              },
+              "scriptCode" : "console.log(\"检索测试\"+view)\r\nconsole.log(\"检索测试\"+ctrl)\r\nconst container_multidata = view.layoutPanel.panelItems.container_multidata;\r\nif(container_multidata){\r\n    const similarity_threshold = ctrl.data.similarity_threshold;\r\n    const keyword_similarity_weight = ctrl.data.keyword_similarity_weight;\r\n    const top_k = ctrl.data.top_k;\r\n    const cross_languages = ctrl.data.cross_languages;\r\n    const use_kg = ctrl.data.use_kg;\r\n    const n_rerank_eq = ctrl.data.n_rerank_eq;\r\n    const query = ctrl.data.query;\r\n    view.params.similarity_threshold = similarity_threshold\r\n    view.params.keyword_similarity_weight = keyword_similarity_weight\r\n    view.params.top_k = top_k\r\n    view.params.cross_languages = cross_languages\r\n    view.params.use_kg = use_kg\r\n    view.params.n_rerank_eq = n_rerank_eq\r\n    view.params.query = query\r\n    await container_multidata.refresh();\r\n}",
               "uIActionMode" : "FRONT",
-              "uIActionTag" : "searchButtonClick",
+              "uIActionTag" : "retrieval_test",
               "uIActionType" : "DEUIACTION",
-              "globalUIAction" : true
+              "id" : "retrieval_test@ai_kb_chunk"
             },
             "tooltip" : "测试",
             "uIActionTarget" : "NONE",
