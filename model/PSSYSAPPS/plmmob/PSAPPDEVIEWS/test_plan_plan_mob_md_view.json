@@ -191,7 +191,8 @@
             "name" : "plan_static_image",
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "shrink" : 0
             },
             "getPSRawItem" : {
               "contentType" : "IMAGE",
@@ -511,6 +512,17 @@
       "dataType" : 25,
       "getFrontPSCodeList" : {
         "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_status.json"
+      },
+      "name" : "status",
+      "getPSAppDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      }
+    }, {
+      "dataType" : 25,
+      "getFrontPSCodeList" : {
+        "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
       },
       "name" : "type",
@@ -526,14 +538,6 @@
         "codeName" : "name"
       }
     }, {
-      "dataType" : 5,
-      "format" : "YYYY-MM-DD",
-      "name" : "end_at",
-      "getPSAppDEField" : {
-        "name" : "END_AT",
-        "codeName" : "end_at"
-      }
-    }, {
       "dataType" : 25,
       "name" : "assignee_name",
       "getPSAppDEField" : {
@@ -541,15 +545,12 @@
         "codeName" : "assignee_name"
       }
     }, {
-      "dataType" : 25,
-      "getFrontPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_status.json"
-      },
-      "name" : "status",
+      "dataType" : 5,
+      "format" : "YYYY-MM-DD",
+      "name" : "end_at",
       "getPSAppDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
+        "name" : "END_AT",
+        "codeName" : "end_at"
       }
     }, {
       "dataType" : 25,
@@ -610,6 +611,16 @@
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "FRONT",
+      "caption" : "状态",
+      "dataItemName" : "status",
+      "itemType" : "TEXTITEM",
+      "name" : "STATUS",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
       "caption" : "测试类型",
       "dataItemName" : "type",
       "itemType" : "TEXTITEM",
@@ -631,16 +642,6 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "caption" : "结束时间",
-      "dataItemName" : "end_at",
-      "itemType" : "TEXTITEM",
-      "name" : "END_AT",
-      "valueFormat" : "YYYY-MM-DD",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
       "caption" : "负责人",
       "dataItemName" : "assignee_name",
       "itemType" : "TEXTITEM",
@@ -650,11 +651,11 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "状态",
-      "dataItemName" : "status",
+      "caption" : "结束时间",
+      "dataItemName" : "end_at",
       "itemType" : "TEXTITEM",
-      "name" : "STATUS",
+      "name" : "END_AT",
+      "valueFormat" : "YYYY-MM-DD",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
