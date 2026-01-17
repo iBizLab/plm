@@ -413,6 +413,54 @@
       "id" : "usually"
     },
     "viewLevel" : 100
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk/PSDEDATAQUERIES/valid/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "valid",
+    "logicName" : "启用",
+    "name" : "VALID",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_chunk.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_CHUNK",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "ACTIVE",
+          "name" : "(ACTIVE) 等于(=) 1",
+          "getPSDEField" : {
+            "name" : "ACTIVE",
+            "codeName" : "active"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -508,6 +556,32 @@
       "path" : "PSSYSSFPLUGINS/UsrSFPlugin0407757309.json"
     },
     "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "valid",
+    "logicName" : "启用",
+    "name" : "VALID",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "valid"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_chunk_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
