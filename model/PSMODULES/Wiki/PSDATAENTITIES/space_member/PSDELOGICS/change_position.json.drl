@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.wiki.logic.space_memberlogic.change_position;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space_member space_memberchange_positiondefault;
+                global cn.ibizlab.plm.core.wiki.domain.space_member space_memberchange_positionfor_temp_obj;
+                global cn.ibizlab.plm.core.wiki.domain.space_member space_memberchange_positionsrfactionparam;
+                    global cn.ibizlab.plm.core.wiki.service.Ispace_memberService space_memberservice;
+        global cn.ibizlab.plm.core.wiki.service.Ispace_memberService iBzSysSpace_memberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "space_memberchange_positionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取传递的参数]
+            rule "bindparam1"
+            ruleflow-group "space_memberchange_positionbindparam1"
+            when
+            then
+                        update(space_memberchange_positiondefault);//更新fact中变量值
+                        update(space_memberchange_positionfor_temp_obj);//更新fact中变量值
+                        update(space_memberchange_positionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更状态]
+            rule "deaction1"
+            ruleflow-group "space_memberchange_positiondeaction1"
+            when
+            then
+                        space_memberservice.update(space_memberchange_positiondefault);
+                        update(space_memberchange_positiondefault);//更新fact中变量值
+                        update(space_memberchange_positionfor_temp_obj);//更新fact中变量值
+                        update(space_memberchange_positionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环id列表进行操作]
+            rule "loopsubcall1"
+            ruleflow-group "space_memberchange_positionloopsubcall1"
+            when
+            then
+                        update(space_memberchange_positiondefault);//更新fact中变量值
+                        update(space_memberchange_positionfor_temp_obj);//更新fact中变量值
+                        update(space_memberchange_positionsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取传递的状态]
+            rule "prepareparam2"
+            ruleflow-group "space_memberchange_positionprepareparam2"
+            when
+            then
+                            space_memberchange_positiondefault.set("title",space_memberchange_positionfor_temp_obj.get("target_title"));
+                        update(space_memberchange_positiondefault);//更新fact中变量值
+                        update(space_memberchange_positionfor_temp_obj);//更新fact中变量值
+                        update(space_memberchange_positionsrfactionparam);//更新fact中变量值
+            end

@@ -1,0 +1,171 @@
+package cn.ibizlab.plm.insight.logic.insight_reportlogic.copy_report;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportcopy_reportdefault;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportcopy_reportcur_report;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportcopy_reportform_data;
+                global cn.ibizlab.plm.core.insight.domain.insight_report insight_reportcopy_reportnew_report;
+                global java.util.Map insight_reportcopy_reportsrfactionparam;
+                global cn.ibizlab.plm.core.base.domain.dyna_dashboard insight_reportcopy_reporttarget_board;
+                    global cn.ibizlab.plm.core.insight.service.Iinsight_reportService insight_reportservice;
+                    global cn.ibizlab.plm.core.base.service.Idyna_dashboardService dyna_dashboardservice;
+        global cn.ibizlab.plm.core.insight.service.Iinsight_reportService iBzSysInsight_reportDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "insight_reportcopy_reportbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "insight_reportcopy_reportend1"
+            when
+            then
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取当前报表详情]
+            rule "deaction2"
+            ruleflow-group "insight_reportcopy_reportdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(insight_reportservice.get(insight_reportcopy_reportcur_report.getId()),insight_reportcopy_reportcur_report);
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取目标仪表盘详情]
+            rule "deaction1"
+            ruleflow-group "insight_reportcopy_reportdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(dyna_dashboardservice.get(insight_reportcopy_reporttarget_board.getDynadashboardid()),insight_reportcopy_reporttarget_board);
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[传入参数]
+            rule "debugparam1"
+            ruleflow-group "insight_reportcopy_reportdebugparam1"
+            when
+            then
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取仪表盘id、报表id]
+            rule "prepareparam1"
+            ruleflow-group "insight_reportcopy_reportprepareparam1"
+            when
+            then
+                            insight_reportcopy_reportsrfactionparam.set("",insight_reportcopy_reportdefault.get("srfactionparam"));
+                            insight_reportcopy_reportform_data.set("",insight_reportcopy_reportsrfactionparam.get("0"));
+                            insight_reportcopy_reportcur_report.set("id",insight_reportcopy_reportdefault.get("id"));
+                            insight_reportcopy_reporttarget_board.set("dynadashboardid",insight_reportcopy_reportform_data.get("choosed_board"));
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "insight_reportcopy_reportrawsfcode1"
+            when
+            then
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "insight_reportcopy_reportdebugparam2"
+            when
+            then
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction4"
+            ruleflow-group "insight_reportcopy_reportdeaction4"
+            when
+            then
+                        dyna_dashboardservice.update(insight_reportcopy_reporttarget_board);
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置待新建的报表参数]
+            rule "prepareparam2"
+            ruleflow-group "insight_reportcopy_reportprepareparam2"
+            when
+            then
+                            insight_reportcopy_reportnew_report.set("name",insight_reportcopy_reportcur_report.get("name"));
+                            insight_reportcopy_reportnew_report.set("templatemodel",insight_reportcopy_reportcur_report.get("templatemodel"));
+                            insight_reportcopy_reportnew_report.set("charttype",insight_reportcopy_reportcur_report.get("charttype"));
+                            insight_reportcopy_reportnew_report.set("desc",insight_reportcopy_reportcur_report.get("desc"));
+                            insight_reportcopy_reportnew_report.set("group",insight_reportcopy_reportcur_report.get("group"));
+                            insight_reportcopy_reportnew_report.set("viewid",insight_reportcopy_reportform_data.get("target_view_id"));
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[新建报表]
+            rule "deaction3"
+            ruleflow-group "insight_reportcopy_reportdeaction3"
+            when
+            then
+                        insight_reportservice.create(insight_reportcopy_reportnew_report);
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end

@@ -1,0 +1,306 @@
+{
+  "codeName" : "work_item_test_plan_project",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/work_item_test_plan_project.json",
+  "logicName" : "获取测试计划对应项目",
+  "memo" : "获取测试计划对应项目",
+  "name" : "获取测试计划对应项目",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 380,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "存在测试计划标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "TEST_PLAN_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TEST_PLAN_ID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 120,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 340,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "绑定测试计划ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "name" : "Default[TEST_PLAN_ID] ==> test_plan[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TEST_PLAN_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 330
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_plan"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+    },
+    "leftPos" : 340,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取TEST_PLAN关联项目",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "项目ID不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "PROJECT_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "test_plan"
+          },
+          "logicType" : "SINGLE",
+          "name" : "test_plan[PROJECT_ID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_plan"
+    },
+    "topPos" : 480
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 340,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "赋值ProjectId",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "非缺陷",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "work_item_type_group_bug",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[work_item_type_group_bug] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "缺陷",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "work_item_type_group_bug",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[work_item_type_group_bug] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PROJECT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "test_plan[PROJECT_ID] ==> Default[PROJECT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PROJECT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "空值（NULL） ==> Default[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "PROJECT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "test_plan[PROJECT_NAME] ==> Default[PROJECT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PROJECT_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 660
+  }, {
+    "code" : "var Default = logic.getParam(\"Default\");\r\nvar test_plan = logic.getParam(\"test_plan\");\r\nif(test_plan.get(\"project_type\") != null){\r\n    Default.set(\"work_item_type_id\", test_plan.get(\"project_type\") + \"_bug\");\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 570,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "设置默认缺陷类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 660
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 380,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 932
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 570,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置默认缺陷类型名称",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "WORK_ITEM_TYPE_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[缺陷] ==> Default[WORK_ITEM_TYPE_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "缺陷",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 940
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "ctx",
+    "logicName" : "ctx",
+    "name" : "ctx",
+    "entityParam" : true
+  }, {
+    "codeName" : "test_plan",
+    "logicName" : "test_plan",
+    "name" : "test_plan",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

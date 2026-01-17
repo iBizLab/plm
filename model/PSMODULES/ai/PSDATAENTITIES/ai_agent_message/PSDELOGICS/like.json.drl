@@ -1,0 +1,90 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_messagelogic.like;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_message ai_agent_messagelikedefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_feedback ai_agent_messagelikeai_agent_feedback;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_message ai_agent_messagelikemessage;
+                    global cn.ibizlab.plm.core.ai.service.Iai_agent_feedbackService ai_agent_feedbackservice;
+                    global cn.ibizlab.plm.core.ai.service.Iai_agent_messageService ai_agent_messageservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_messageService iBzSysAi_agent_messageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_messagelikebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备点赞参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_agent_messagelikeprepareparam_01"
+            when
+            then
+                            ai_agent_messagelikeai_agent_feedback.set("feedbacktype","like");
+                            ai_agent_messagelikeai_agent_feedback.set("messageid",ai_agent_messagelikedefault.get("id"));
+                                ai_agent_messagelikeai_agent_feedback.set("userid",curuser.getSessionParams().get("srfpersonid"));
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成点赞记录]
+            rule "deaction_01"
+            ruleflow-group "ai_agent_messagelikedeaction_01"
+            when
+            then
+                        ai_agent_feedbackservice.create(ai_agent_messagelikeai_agent_feedback);
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "ai_agent_messagelikeprepareparam_02"
+            when
+            then
+                            ai_agent_messagelikemessage.set("id",ai_agent_messagelikedefault.get("id"));
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[取消点赞或点踩]
+            rule "delogic_01"
+            ruleflow-group "ai_agent_messagelikedelogic_01"
+            when
+            then
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_agent_messagelikeend_01"
+            when
+            then
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取消息信息]
+            rule "deaction_02"
+            ruleflow-group "ai_agent_messagelikedeaction_02"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_agent_messageservice.get(ai_agent_messagelikemessage.getId()),ai_agent_messagelikemessage);
+                        update(ai_agent_messagelikedefault);//更新fact中变量值
+                        update(ai_agent_messagelikeai_agent_feedback);//更新fact中变量值
+                        update(ai_agent_messagelikemessage);//更新fact中变量值
+            end

@@ -1,0 +1,247 @@
+{
+  "codeName" : "resource_member",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/member/PSDELOGICS/resource_member.json",
+  "logicName" : "获取资源成员（全局）",
+  "memo" : "获取资源成员（全局）",
+  "name" : "获取资源成员（全局）",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -70,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "存在全局资源标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "addon_resource",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[addon_resource] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 340,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : -110,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置全局资源组件标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource"
+      },
+      "name" : "Default[addon_resource] ==> addon_resource[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "addon_resource",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 507
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "member_page"
+    },
+    "leftPos" : 150,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "members",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "topPos" : 650
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "leftPos" : -110,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取资源组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "存在资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "未设置资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "topPos" : 650
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 190,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "member_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 830
+  }, {
+    "code" : "def _default = logic.param('Default').getReal();\r\ndef member_list = logic.param('member_list').getReal();\r\n\r\ndef id = _default.get('addon_resource');\r\n\r\ndef runtime = sys.dataentity('addon_resource');\r\ndef addon_resource = runtime.get(id)\r\ndef members = addon_resource.get('members');\r\nif (members != null ) {\r\n    members.each { item ->\r\n        member_list.add(item)\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 334,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 838
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "addon_resource",
+    "logicName" : "资源组件",
+    "name" : "资源组件",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "member_list",
+    "logicName" : "数据对象列表变量",
+    "name" : "数据对象列表变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "member_page",
+    "logicName" : "资源成员结果变量",
+    "name" : "资源成员结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
