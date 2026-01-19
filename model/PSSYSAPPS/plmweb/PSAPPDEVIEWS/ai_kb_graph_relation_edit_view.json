@@ -23,70 +23,6 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "edit_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（默认编辑界面）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-      },
-      "caption" : "保存",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction1"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf0c7@FontAwesome",
-        "cssClass" : "fa fa-save"
-      },
-      "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-        },
-        "caption" : "保存并关闭",
-        "codeName" : "SaveAndExit",
-        "dataAccessAction" : "SUBDATA",
-        "fullCodeName" : "SaveAndExit",
-        "name" : "编辑界面_保存并退出操作",
-        "getPSDEOPPriv" : {
-          "modelref" : true,
-          "id" : "SUBDATA"
-        },
-        "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandclose"
-        },
-        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndExit",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "保存",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-      },
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "xDataControlName" : "form",
-    "modelid" : "48c8f789be8a5522d3003293c1cf2ffb",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
     "codeName" : "main",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -284,6 +220,48 @@
         "codeName" : "name"
       }
     }, {
+      "id" : "kb_name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "KB_NAME",
+        "codeName" : "kb_name"
+      }
+    }, {
+      "id" : "subject_name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SUBJECT_NAME",
+        "codeName" : "subject_name"
+      }
+    }, {
+      "id" : "object_name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "OBJECT_NAME",
+        "codeName" : "object_name"
+      }
+    }, {
+      "id" : "predicate",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "PREDICATE",
+        "codeName" : "predicate"
+      }
+    }, {
+      "id" : "confidence",
+      "dataType" : 6,
+      "getPSAppDEField" : {
+        "name" : "CONFIDENCE",
+        "codeName" : "confidence"
+      }
+    }, {
+      "id" : "description",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -321,7 +299,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "LEFT",
+          "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "name",
           "noPrivDisplayMode" : 1,
@@ -330,9 +308,179 @@
             "codeName" : "name"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 500,
-            "name" : "name"
+            "editorType" : "SPAN",
+            "name" : "name",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "知识库名称",
+          "codeName" : "kb_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "kb_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "KB_NAME",
+            "codeName" : "kb_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "kb_name",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "主体名称",
+          "codeName" : "subject_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "subject_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SUBJECT_NAME",
+            "codeName" : "subject_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "subject_name",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "客体名称",
+          "codeName" : "object_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "object_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "OBJECT_NAME",
+            "codeName" : "object_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "object_name",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_RELATION.PREDICATE"
+          },
+          "caption" : "关系谓词",
+          "codeName" : "predicate",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "predicate",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "PREDICATE",
+            "codeName" : "predicate"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "predicate",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.AI_KB_GRAPH_RELATION.CONFIDENCE"
+          },
+          "caption" : "置信度",
+          "codeName" : "confidence",
+          "dataType" : 6,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "confidence",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CONFIDENCE",
+            "codeName" : "confidence"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "confidence",
+            "precision" : 2,
+            "scale" : 2,
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "描述",
+          "codeName" : "description",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "description",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "description",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -350,7 +498,7 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : false,
+        "infoGroupMode" : true,
         "showCaption" : true
       }, {
         "getCapPSLanguageRes" : {
@@ -387,22 +535,7 @@
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
       },
-      "infoGroupMode" : false
-    }, {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.AI_KB_GRAPH_RELATION.MAIN.FORMPAGE.FORMPAGE2"
-      },
-      "caption" : "其它",
-      "codeName" : "formpage2",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage2",
-      "getPSLayout" : {
-        "childColMD" : 24,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
+      "infoGroupMode" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,
@@ -442,7 +575,8 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_relation.json"
       }
     },
-    "noTabHeader" : false,
+    "infoFormMode" : true,
+    "noTabHeader" : true,
     "name" : "form",
     "modelid" : "b6829d6cbd1ce8acbf48940e4738a833",
     "modeltype" : "PSDEFORM_EDITFORM"
@@ -492,6 +626,7 @@
   "viewType" : "DEEDITVIEW",
   "xDataControlName" : "form",
   "enableDP" : true,
+  "showCaptionBar" : false,
   "showDataInfoBar" : true,
   "modelid" : "9e5ce16d69d2928b4f3bd477173d8ab5",
   "modeltype" : "PSAPPDEVIEW"
