@@ -1558,6 +1558,124 @@
     "reloadData" : true,
     "id" : "setting_role@ai_kb_member"
   } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "create_default_temp_members",
+    "defaultParamName" : "Default",
+    "logicName" : "新建知识库默认临时成员",
+    "memo" : "创建临时数据，并将当前用户加入到知识库临时成员内",
+    "name" : "新建知识库默认临时成员",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 392,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取当前用户数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "name",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "user"
+        },
+        "name" : "数据上下文[srfusername] ==> user[name]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfusername",
+        "srcValueType" : "DATACONTEXT"
+      }, {
+        "dstFieldName" : "role_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "user"
+        },
+        "name" : "直接值[admin] ==> user[role_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "admin",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "user_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "user"
+        },
+        "name" : "数据上下文[srfuserid] ==> user[user_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfuserid",
+        "srcValueType" : "DATACONTEXT"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.ai_kb_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 649,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "创建临时数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 910,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "user",
+      "logicName" : "当前人员",
+      "name" : "当前人员",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_member_assigned_grid_view.json",
