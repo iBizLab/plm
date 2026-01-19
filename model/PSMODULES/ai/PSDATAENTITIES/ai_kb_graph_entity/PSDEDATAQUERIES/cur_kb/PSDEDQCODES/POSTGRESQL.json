@@ -3,7 +3,7 @@
   "name" : "PostgreSQL",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( <choose><when test=\"ctx.datacontext.ai_knowledge_base !=null \">  t1.KB_ID = #{ctx.datacontext.ai_knowledge_base}  </when><otherwise>1=1</otherwise></choose> )",
+    "customCond" : "( t1.KB_ID = #{ctx.datacontext.ai_knowledge_base} )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
@@ -56,5 +56,5 @@
     "name" : "UPDATE_TIME"
   } ],
   "queryCode" : "SELECT\nt1.CONFIDENCE,\nt1.CONTEXT,\nt1.CREATE_MAN,\nt1.CREATE_TIME,\nt1.DESCRIPTION,\nt1.DOCUMENT_ID,\nt21.NAME AS DOCUMENT_NAME,\nt1.ID,\nt1.KB_ID,\nt11.NAME AS KB_NAME,\nt1.KEYWORDS,\nt1.NAME,\nt1.NORMALIZED_NAME,\nt1.TYPE,\nt1.UPDATE_MAN,\nt1.UPDATE_TIME\nFROM AI_KB_GRAPH_ENTITY t1 \nLEFT JOIN AI_KNOWLEDGE_BASE t11 ON t1.KB_ID = t11.ID \nLEFT JOIN AI_KB_DOCUMENT t21 ON t1.DOCUMENT_ID = t21.ID \n",
-  "id" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/cur_entity_type/PSDEDQCODES/POSTGRESQL.json"
+  "id" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/cur_kb/PSDEDQCODES/POSTGRESQL.json"
 }
