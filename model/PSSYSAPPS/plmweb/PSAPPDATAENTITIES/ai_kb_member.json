@@ -1490,6 +1490,34 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "移除成员",
+    "codeName" : "remove_member",
+    "confirmMsg" : "确认删除该成员？",
+    "fullCodeName" : "ai_kb_member_remove_member",
+    "name" : "移除成员",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_member.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf1f8@FontAwesome",
+      "cssClass" : "fa fa-trash"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove_member",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove_member@ai_kb_member"
+  }, {
     "actionTarget" : "MULTIKEY",
     "noPrivDisplayMode" : 1,
     "caption" : "设置",
@@ -1531,6 +1559,10 @@
     "id" : "setting_role@ai_kb_member"
   } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_member_assigned_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_member_role_edit_view.json",
     "viewType" : "DEOPTVIEW"
@@ -1718,5 +1750,33 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0227475921",
+    "name" : "知识库成员配置",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_member.json"
+    },
+    "uniqueTag" : "ai_kb_member__Usr0227475921",
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "u791682d",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_member.json"
+        },
+        "modelref" : true,
+        "id" : "remove_member@ai_kb_member"
+      }
+    } ]
+  } ]
 }

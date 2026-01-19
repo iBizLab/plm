@@ -31,10 +31,14 @@
       "id" : "similarity",
       "viewFieldName" : "similarity"
     }, {
-      "id" : "field_text_dynamic1",
+      "id" : "content",
       "viewFieldName" : "content"
     }, {
-      "id" : "field_slider",
+      "id" : "has_children",
+      "hidden" : true,
+      "viewFieldName" : "has_children"
+    }, {
+      "id" : "similarity1",
       "viewFieldName" : "similarity"
     }, {
       "id" : "field_text_dynamic2",
@@ -410,13 +414,13 @@
                 "fieldStates" : 3,
                 "itemStyle" : "DEFAULT",
                 "itemType" : "FIELD",
-                "name" : "field_text_dynamic1",
+                "name" : "content",
                 "getPSEditor" : {
                   "editorParams" : {
                     "READONLY" : "TRUE"
                   },
                   "editorType" : "SPAN",
-                  "name" : "field_text_dynamic1",
+                  "name" : "content",
                   "predefinedType" : "FIELD_TEXT_DYNAMIC",
                   "renderMode" : "TEXT_DYNAMIC",
                   "enableLinkView" : false,
@@ -427,6 +431,21 @@
                   "layout" : "FLEX"
                 },
                 "viewFieldName" : "content"
+              }, {
+                "caption" : "文本(动态)",
+                "itemType" : "FIELD",
+                "name" : "has_children",
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "has_children",
+                  "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "viewFieldName" : "has_children",
+                "hidden" : true
               }, {
                 "caption" : "命中子段落",
                 "itemStyle" : "DEFAULT",
@@ -439,6 +458,20 @@
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "has_children",
+                    "logicType" : "SINGLE",
+                    "name" : "has_children  等于(=) 1",
+                    "value" : "1"
+                  } ],
+                  "relatedItemNames" : [ "has_children" ],
+                  "notMode" : false
+                } ],
                 "getPSPanelItems" : [ {
                   "caption" : "多项数据容器",
                   "dataName" : "children",
@@ -446,7 +479,7 @@
                   "dataSourceType" : "ACTIVEDATAPARAM",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "CONTAINER",
-                  "name" : "container_multidata1",
+                  "name" : "children",
                   "getPSLayout" : {
                     "layout" : "FLEX"
                   },
@@ -460,7 +493,7 @@
                     "itemType" : "CONTAINER",
                     "name" : "container3",
                     "getPSLayout" : {
-                      "align" : "flex-start",
+                      "align" : "space-between",
                       "dir" : "row",
                       "layout" : "FLEX",
                       "vAlign" : "center"
@@ -470,48 +503,69 @@
                       "layout" : "FLEX"
                     },
                     "getPSPanelItems" : [ {
-                      "caption" : "标签",
-                      "contentType" : "RAW",
+                      "caption" : "容器",
                       "itemStyle" : "DEFAULT",
-                      "itemType" : "RAWITEM",
-                      "name" : "static_label2",
+                      "itemType" : "CONTAINER",
+                      "name" : "container4",
+                      "getPSLayout" : {
+                        "align" : "center",
+                        "dir" : "row",
+                        "layout" : "FLEX",
+                        "vAlign" : "center"
+                      },
                       "getPSLayoutPos" : {
                         "grow" : -1,
                         "layout" : "FLEX"
                       },
-                      "getPSRawItem" : {
-                        "caption" : "Score:",
+                      "getPSPanelItems" : [ {
+                        "caption" : "标签",
                         "contentType" : "RAW",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "RAWITEM",
                         "name" : "static_label2",
-                        "predefinedType" : "STATIC_LABEL",
-                        "renderMode" : "PARAGRAPH"
-                      },
-                      "rawContent" : "Score:",
-                      "showCaption" : true
-                    }, {
-                      "caption" : "滑块",
-                      "itemStyle" : "DEFAULT",
-                      "itemType" : "FIELD",
-                      "name" : "field_slider",
-                      "getPSEditor" : {
-                        "editorParams" : {
-                          "maxvalue" : "1",
-                          "stepvalue" : "0.01",
-                          "showtext" : "true",
-                          "format" : "0.00"
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
                         },
-                        "editorType" : "SLIDER",
-                        "maxValue" : 1.0,
-                        "name" : "field_slider",
-                        "predefinedType" : "FIELD_SLIDER",
-                        "stepValue" : 0.01
-                      },
-                      "getPSLayoutPos" : {
-                        "grow" : -1,
-                        "layout" : "FLEX",
-                        "spacingLeft" : "OUTERSMALL"
-                      },
-                      "viewFieldName" : "similarity"
+                        "getPSRawItem" : {
+                          "caption" : "Score:",
+                          "contentType" : "RAW",
+                          "name" : "static_label2",
+                          "predefinedType" : "STATIC_LABEL",
+                          "renderMode" : "PARAGRAPH"
+                        },
+                        "rawContent" : "Score:",
+                        "showCaption" : true
+                      }, {
+                        "caption" : "滑块",
+                        "contentWidth" : 200.0,
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "similarity1",
+                        "getPSEditor" : {
+                          "editorParams" : {
+                            "maxvalue" : "1",
+                            "stepvalue" : "0.01",
+                            "showtext" : "true",
+                            "format" : "0.00"
+                          },
+                          "editorType" : "SLIDER",
+                          "editorWidth" : 200.0,
+                          "maxValue" : 1.0,
+                          "name" : "similarity1",
+                          "predefinedType" : "FIELD_SLIDER",
+                          "stepValue" : 0.01
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL",
+                          "width" : 200,
+                          "widthMode" : "PX"
+                        },
+                        "viewFieldName" : "similarity",
+                        "width" : 200.0
+                      } ]
                     } ]
                   }, {
                     "caption" : "文本(动态)",
