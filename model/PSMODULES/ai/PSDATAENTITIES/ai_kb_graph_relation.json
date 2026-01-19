@@ -329,6 +329,56 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_relation/PSDEDATAQUERIES/cur_kb/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_kb",
+    "logicName" : "当前数据库",
+    "name" : "cur_kb",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_relation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_GRAPH_RELATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_knowledge_base",
+          "fieldName" : "KB_ID",
+          "name" : "(KB_ID) 等于(=) 数据上下文 ai_knowledge_base",
+          "getPSDEField" : {
+            "name" : "KB_ID",
+            "codeName" : "kb_id"
+          },
+          "getPSVARTypeId" : "DATACONTEXT",
+          "ignoreEmpty" : true
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_kbInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_kbResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_relation_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -359,6 +409,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_kb",
+    "logicName" : "当前数据库",
+    "name" : "cur_kb",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_kb"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_kbInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_kbResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_relation_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],

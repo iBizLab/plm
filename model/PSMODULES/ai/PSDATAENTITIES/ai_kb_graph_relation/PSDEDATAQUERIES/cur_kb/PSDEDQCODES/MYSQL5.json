@@ -1,0 +1,60 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "( <choose><when test=\"ctx.datacontext.ai_knowledge_base !=null \">  t1.`KB_ID` = #{ctx.datacontext.ai_knowledge_base}  </when><otherwise>1=1</otherwise></choose> )",
+    "name" : "查询条件"
+  } ],
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`ACTIVE`",
+    "name" : "ACTIVE"
+  }, {
+    "expression" : "t1.`CONFIDENCE`",
+    "name" : "CONFIDENCE"
+  }, {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`DESCRIPTION`",
+    "name" : "DESCRIPTION"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`KB_ID`",
+    "name" : "KB_ID"
+  }, {
+    "expression" : "t31.`NAME`",
+    "name" : "KB_NAME"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`OBJECT_ID`",
+    "name" : "OBJECT_ID"
+  }, {
+    "expression" : "t21.`NAME`",
+    "name" : "OBJECT_NAME"
+  }, {
+    "expression" : "t1.`PREDICATE`",
+    "name" : "PREDICATE"
+  }, {
+    "expression" : "t1.`SUBJECT_ID`",
+    "name" : "SUBJECT_ID"
+  }, {
+    "expression" : "t11.`NAME`",
+    "name" : "SUBJECT_NAME"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  } ],
+  "queryCode" : "SELECT\nt1.`ACTIVE`,\nt1.`CONFIDENCE`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`ID`,\nt1.`KB_ID`,\nt31.`NAME` AS `KB_NAME`,\nt1.`NAME`,\nt1.`OBJECT_ID`,\nt21.`NAME` AS `OBJECT_NAME`,\nt1.`PREDICATE`,\nt1.`SUBJECT_ID`,\nt11.`NAME` AS `SUBJECT_NAME`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `AI_KB_GRAPH_RELATION` t1 \nLEFT JOIN `AI_KB_GRAPH_ENTITY` t11 ON t1.`SUBJECT_ID` = t11.`ID` \nLEFT JOIN `AI_KB_GRAPH_ENTITY` t21 ON t1.`OBJECT_ID` = t21.`ID` \nLEFT JOIN `AI_KNOWLEDGE_BASE` t31 ON t1.`KB_ID` = t31.`ID` \n",
+  "id" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_relation/PSDEDATAQUERIES/cur_kb/PSDEDQCODES/MYSQL5.json"
+}

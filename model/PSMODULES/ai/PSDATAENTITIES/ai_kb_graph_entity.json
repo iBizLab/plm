@@ -365,24 +365,42 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/entity_type/PSDEDQCODES/MYSQL5.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/cur_entity_type/PSDEDQCODES/MYSQL5.json"
     }, {
       "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/entity_type/PSDEDQCODES/POSTGRESQL.json"
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/cur_entity_type/PSDEDQCODES/POSTGRESQL.json"
     } ],
-    "codeName" : "entity_type",
+    "codeName" : "cur_entity_type",
     "logicName" : "实体类型",
-    "name" : "entity_type",
+    "name" : "cur_entity_type",
     "getPSDEDQMain" : {
       "getJoinPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity.json"
       },
       "joinType" : "MAIN",
-      "name" : "AI_KB_GRAPH_ENTITY"
+      "name" : "AI_KB_GRAPH_ENTITY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_knowledge_base",
+          "fieldName" : "KB_ID",
+          "name" : "(KB_ID) 等于(=) 数据上下文 ai_knowledge_base",
+          "getPSDEField" : {
+            "name" : "KB_ID",
+            "codeName" : "kb_id"
+          },
+          "getPSVARTypeId" : "DATACONTEXT",
+          "ignoreEmpty" : true
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
-      "name" : "Entity_typeInput",
+      "name" : "Cur_entity_typeInput",
       "getPSDEFilterDTO" : {
         "modelref" : true,
         "id" : "ai_kb_graph_entity_filter_dto"
@@ -390,7 +408,56 @@
       "type" : "DTO"
     },
     "getPSDEDataQueryReturn" : {
-      "name" : "Entity_typeResult",
+      "name" : "Cur_entity_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_entity_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity/PSDEDATAQUERIES/cur_kb/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_kb",
+    "logicName" : "当前数据库实体",
+    "name" : "cur_kb",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_GRAPH_ENTITY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ai_knowledge_base",
+          "fieldName" : "KB_ID",
+          "name" : "(KB_ID) 等于(=) 数据上下文 ai_knowledge_base",
+          "getPSDEField" : {
+            "name" : "KB_ID",
+            "codeName" : "kb_id"
+          },
+          "getPSVARTypeId" : "DATACONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_kbInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_entity_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_kbResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ai_kb_graph_entity_dto"
@@ -430,13 +497,13 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
-    "codeName" : "entity_type",
+    "codeName" : "cur_entity_type",
     "groupMode" : 1,
     "logicName" : "实体类型",
-    "name" : "entity_type",
+    "name" : "cur_entity_type",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
-      "id" : "entity_type"
+      "id" : "cur_entity_type"
     } ],
     "getPSDEDataSetGroupParams" : [ {
       "alias" : "type",
@@ -449,7 +516,7 @@
       "enableGroup" : true
     } ],
     "getPSDEDataSetInput" : {
-      "name" : "Entity_typeInput",
+      "name" : "Cur_entity_typeInput",
       "getPSDEFilterDTO" : {
         "modelref" : true,
         "id" : "ai_kb_graph_entity_filter_dto"
@@ -457,7 +524,7 @@
       "type" : "DTO"
     },
     "getPSDEDataSetReturn" : {
-      "name" : "Entity_typeResult",
+      "name" : "Cur_entity_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ai_kb_graph_entity_dto"
@@ -467,6 +534,32 @@
     "enableBackend" : true,
     "enableFront" : true,
     "enableGroup" : true
+  }, {
+    "codeName" : "cur_kb",
+    "logicName" : "当前数据库实体",
+    "name" : "cur_kb",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_kb"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_kbInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_entity_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_kbResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_graph_entity_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
