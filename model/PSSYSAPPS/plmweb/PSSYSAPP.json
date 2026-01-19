@@ -192667,8 +192667,9 @@
             "name" : "我关注的"
           }, {
             "condType" : "CUSTOM",
-            "condition" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
-            "name" : "未依赖"
+            "condition" : "not exists(select 1 from `relation` t2 where (#{ctx.webcontext.work_item} = t2.principal_id or #{ctx.webcontext.work_item} = t2.target_id) and t2.principal_type = 'dependency')",
+            "memo" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
+            "name" : "与当前未依赖"
           } ]
         } ],
         "getPSDEDataSet" : {
