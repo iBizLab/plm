@@ -2122,8 +2122,9 @@
           "getPSVARTypeId" : "WEBCONTEXT"
         }, {
           "condType" : "CUSTOM",
-          "condition" : "not exists(select  1 from relation t3 where (t1.owner_id = t3.principal_id or  t1.owner_id = t3.target_id) and t3.principal_type = 'dependency')",
-          "name" : "未依赖"
+          "condition" : "not exists(select  1 from relation t3 where (#{ctx.webcontext.work_item} = t3.principal_id or  #{ctx.webcontext.work_item} = t3.target_id) and t3.principal_type = 'dependency')",
+          "memo" : "not exists(select  1 from relation t3 where (t1.owner_id = t3.principal_id or  t1.owner_id = t3.target_id) and t3.principal_type = 'dependency')",
+          "name" : "当前未依赖"
         } ]
       }
     },
