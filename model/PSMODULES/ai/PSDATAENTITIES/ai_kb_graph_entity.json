@@ -279,6 +279,9 @@
       "name" : "CONTEXT_VECTOR",
       "codeName" : "context_vector"
     }, {
+      "name" : "REFERENCE_TYPE",
+      "codeName" : "reference_type"
+    }, {
       "name" : "DESCRIPTION",
       "codeName" : "description"
     }, {
@@ -1971,6 +1974,101 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REFERENCE_TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "REFERENCE_TYPE",
+      "standardColumnName" : "REFERENCE_TYPE"
+    }, {
+      "columnName" : "REFERENCE_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "REFERENCE_TYPE",
+      "queryCodeExp" : "t1.`REFERENCE_TYPE`",
+      "standardColumnName" : "`REFERENCE_TYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REFERENCE_TYPE_EQ",
+      "name" : "N_REFERENCE_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REFERENCE_TYPE][引用类型]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[REFERENCE_TYPE][引用类型]移动端默认",
+        "stringLength" : 30,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REFERENCE_TYPE][引用类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REFERENCE_TYPE][引用类型]",
+        "stringLength" : 30,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REFERENCE_TYPE",
+          "maxValue" : 30,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[30]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[30]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[30]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "reference_type",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 30,
+    "logicName" : "引用类型",
+    "name" : "REFERENCE_TYPE",
+    "orderValue" : 280,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/graph_entity_reference_type.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "REFERENCE_TYPE"
+    },
+    "serviceCodeName" : "reference_type",
+    "stdDataType" : 25,
+    "stringLength" : 30,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "DESCRIPTION",
       "dBType" : "POSTGRESQL",
       "name" : "DESCRIPTION",
@@ -2797,6 +2895,17 @@
       "stdDataType" : 30,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "引用类型",
+      "name" : "reference_type",
+      "getPSDEField" : {
+        "name" : "REFERENCE_TYPE",
+        "codeName" : "reference_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 30,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "描述",
       "name" : "description",
       "getPSDEField" : {
@@ -2920,6 +3029,21 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "引用类型",
+      "name" : "n_reference_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REFERENCE_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REFERENCE_TYPE",
+        "codeName" : "reference_type"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
