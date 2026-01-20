@@ -19,13 +19,26 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "hookEventNames" : [ "ONLOADSUCCESS", "ONLOADDRAFTSUCCESS", "SAVE", "LOAD" ],
+  "hookEventNames" : [ "ONMOUNTED", "ONLOADSUCCESS", "ONLOADDRAFTSUCCESS", "SAVE", "LOAD" ],
   "logicName" : "切片策略向导表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
   },
   "getPSControlLogics" : [ {
+    "eventNames" : "onMounted",
+    "logicTag" : "wizardpanel_form_chunk",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "remove_batch_temp"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    }
+  }, {
     "eventNames" : "onLoadSuccess",
     "logicTag" : "wizardpanel_form_chunk",
     "logicType" : "SCRIPT",
