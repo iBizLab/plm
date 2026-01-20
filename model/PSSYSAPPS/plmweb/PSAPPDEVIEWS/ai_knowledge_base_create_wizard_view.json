@@ -1120,6 +1120,20 @@
         "hidden" : true,
         "dataType" : 25
       }, {
+        "id" : "embedding_model",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "EMBEDDING_MODEL",
+          "codeName" : "embedding_model"
+        }
+      }, {
+        "id" : "tag_sets",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "TAG_SETS",
+          "codeName" : "tag_sets"
+        }
+      }, {
         "id" : "chunk_method",
         "dataType" : 25,
         "createDV" : "FIXED",
@@ -1162,6 +1176,66 @@
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel1",
             "getPSDEFormDetails" : [ {
+              "caption" : "切片模型",
+              "codeName" : "embedding_model",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "embedding_model",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "EMBEDDING_MODEL",
+                "codeName" : "embedding_model"
+              },
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "maxLength" : 100,
+                "name" : "embedding_model"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 8,
+                "colMD" : 12,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "标签集",
+              "codeName" : "tag_sets",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "tag_sets",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "TAG_SETS",
+                "codeName" : "tag_sets"
+              },
+              "getPSEditor" : {
+                "editorType" : "CHECKBOXLIST",
+                "name" : "tag_sets",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag_sets.json"
+                }
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 8,
+                "colMD" : 12,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "needCodeListConfig" : true,
+              "showCaption" : true
+            }, {
               "caption" : "切片方法",
               "codeName" : "chunk_method",
               "createDV" : "FIXED",
@@ -1707,7 +1781,7 @@
                     "getPSDEFDLogics" : [ {
                       "groupOP" : "OR",
                       "logicType" : "GROUP",
-                      "name" : "OR",
+                      "name" : "OR [取反]",
                       "getPSDEFDLogics" : [ {
                         "condOP" : "EQ",
                         "dEFDName" : "method",
@@ -1739,7 +1813,7 @@
                         "name" : "method等于(=) PRESENTATION",
                         "value" : "PRESENTATION"
                       } ],
-                      "notMode" : false
+                      "notMode" : true
                     } ],
                     "relatedDetailNames" : [ "method" ],
                     "notMode" : false
