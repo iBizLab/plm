@@ -192671,7 +192671,7 @@
             "name" : "我关注的"
           }, {
             "condType" : "CUSTOM",
-            "condition" : "not exists(select 1 from `relation` t2 where (#{ctx.webcontext.work_item} = t2.principal_id or #{ctx.webcontext.work_item} = t2.target_id) and t2.principal_type = 'dependency')",
+            "condition" : "not exists(select 1 from `relation` t2 where (t2.principal_id = #{ctx.webcontext.work_item} or t2.target_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency')",
             "memo" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
             "name" : "与当前未依赖"
           } ]
