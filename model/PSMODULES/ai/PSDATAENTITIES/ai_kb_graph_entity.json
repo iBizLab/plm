@@ -276,6 +276,9 @@
       "name" : "DESCRIPTION_VECTOR",
       "codeName" : "description_vector"
     }, {
+      "name" : "CONTEXT_VECTOR",
+      "codeName" : "context_vector"
+    }, {
       "name" : "DESCRIPTION",
       "codeName" : "description"
     }, {
@@ -657,10 +660,12 @@
       "modelref" : true,
       "id" : "CREATE_MAN"
     },
+    "predefinedType" : "CREATEMAN",
     "serviceCodeName" : "create_man",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
@@ -917,9 +922,11 @@
       "modelref" : true,
       "id" : "UPDATE_TIME"
     },
+    "predefinedType" : "UPDATEDATE",
     "serviceCodeName" : "update_time",
     "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -1900,6 +1907,70 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONTEXT_VECTOR",
+      "dBType" : "POSTGRESQL",
+      "name" : "CONTEXT_VECTOR",
+      "standardColumnName" : "CONTEXT_VECTOR"
+    }, {
+      "columnName" : "CONTEXT_VECTOR",
+      "dBType" : "MYSQL5",
+      "name" : "CONTEXT_VECTOR",
+      "standardColumnName" : "`CONTEXT_VECTOR`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "context_vector",
+    "dEFType" : 1,
+    "dataType" : "VECTOR",
+    "importOrder" : 1000,
+    "length" : 1024,
+    "logicName" : "上下文向量",
+    "name" : "CONTEXT_VECTOR",
+    "orderValue" : 260,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CONTEXT_VECTOR"
+    },
+    "serviceCodeName" : "context_vector",
+    "stdDataType" : 30,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "DESCRIPTION",
       "dBType" : "POSTGRESQL",
       "name" : "DESCRIPTION",
@@ -2568,7 +2639,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "readOnly" : true
     }, {
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "创建时间",
@@ -2601,7 +2673,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "readOnly" : true
     }, {
       "logicName" : "实体标识",
       "name" : "id",
@@ -2702,6 +2775,16 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "上下文向量",
+      "name" : "context_vector",
+      "getPSDEField" : {
+        "name" : "CONTEXT_VECTOR",
+        "codeName" : "context_vector"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 30,
       "type" : "SIMPLE"
     }, {
       "logicName" : "描述向量",
