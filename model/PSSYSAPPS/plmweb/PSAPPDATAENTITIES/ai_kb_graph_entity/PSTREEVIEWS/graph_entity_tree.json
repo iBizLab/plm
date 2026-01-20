@@ -44,13 +44,19 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
-  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "hookEventNames" : [ "ONSELECTIONCHANGE", "SELECTIONCHANGE", "LOAD" ],
   "logicName" : "知识库图谱实体树",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
   },
   "getPSControlLogics" : [ {
+    "eventNames" : "onSelectionChange",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "SCRIPT",
+    "name" : "logic",
+    "scriptCode" : "console.log(\"数据变更tree\")\r\nconst treeCtrl= view.getCtrl(\"TREEEXPBAR\", \"treeexpbar\");\r\nconsole.log(\"treeCtrl\"+treeCtrl.state.selectedData)"
+  }, {
     "eventNames" : "SELECTIONCHANGE",
     "logicTag" : "treeexpbar_tree",
     "logicType" : "CUSTOM",
@@ -66,7 +72,7 @@
       "modelref" : true,
       "id" : "node"
     },
-    "name" : "有搜索时启用（分类）（node_2）-图谱实体（node）",
+    "name" : "null - null",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "node_2"
@@ -78,7 +84,7 @@
       "modelref" : true,
       "id" : "node"
     },
-    "name" : "实体类型（node_1）-图谱实体（node）",
+    "name" : "null - null",
     "parentFilter" : "type",
     "getParentPSDETreeNode" : {
       "modelref" : true,
@@ -91,7 +97,7 @@
       "modelref" : true,
       "id" : "node_1"
     },
-    "name" : "默认根节点（ROOT）-实体类型（node_1）",
+    "name" : "null - null",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
@@ -103,7 +109,7 @@
       "modelref" : true,
       "id" : "node_3"
     },
-    "name" : "默认根节点（ROOT）-有搜索时启用（实体）（node_3）",
+    "name" : "null - null",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
@@ -115,7 +121,7 @@
       "modelref" : true,
       "id" : "node_2"
     },
-    "name" : "默认根节点（ROOT）-有搜索时启用（分类）（node_2）",
+    "name" : "null - null",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
