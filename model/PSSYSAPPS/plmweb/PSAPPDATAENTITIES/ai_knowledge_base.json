@@ -3244,6 +3244,34 @@
     "reloadData" : true,
     "id" : "change_admin_role@ai_knowledge_base"
   }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建知识库",
+    "codeName" : "create_kb",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_create_wizard_view.json",
+      "viewType" : "DEWIZARDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_knowledge_base_create_kb",
+    "name" : "新建知识库",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "modelref" : true,
+      "id" : "open_new_kb@ai_knowledge_base"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_kb",
+    "uIActionType" : "DEUIACTION",
+    "id" : "create_kb@ai_knowledge_base"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "删除",
     "codeName" : "delete",
@@ -3401,6 +3429,32 @@
     "uIActionTag" : "open_kb_member",
     "uIActionType" : "DEUIACTION",
     "id" : "open_kb_member@ai_knowledge_base"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开新建知识库",
+    "codeName" : "open_new_kb",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_index_view.json",
+      "viewType" : "DEINDEXVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ai_knowledge_base_open_new_kb",
+    "name" : "打开新建知识库",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "AI_KNOWLEDGE_BASE",
+      "name" : "AI_KNOWLEDGE_BASE",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_new_kb",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_new_kb@ai_knowledge_base"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "更多设置",

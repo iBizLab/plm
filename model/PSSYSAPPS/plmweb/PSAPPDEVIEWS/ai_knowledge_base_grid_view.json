@@ -386,7 +386,7 @@
   }, {
     "codeName" : "grid_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（表格界面，只有一个新建按钮）",
+    "logicName" : "知识库实体表格视图_工具栏",
     "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -396,10 +396,7 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.NEW"
-      },
-      "caption" : "新建",
+      "caption" : "新建知识库",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction1",
@@ -409,39 +406,45 @@
         "id" : "toolbar_deuiaction1"
       },
       "getPSSysImage" : {
-        "glyph" : "xf0f6@FontAwesome",
-        "cssClass" : "fa fa-file-text-o"
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.NEW"
+        "actionTarget" : "NONE",
+        "caption" : "新建知识库",
+        "codeName" : "create_kb",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
         },
-        "caption" : "新建",
-        "codeName" : "New",
-        "fullCodeName" : "New",
-        "name" : "表格界面_新建操作",
-        "getPSSysImage" : {
-          "glyph" : "xf0f6@FontAwesome",
-          "cssClass" : "fa fa-file-text-o"
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "ai_knowledge_base_create_kb",
+        "name" : "新建知识库",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_kb@ai_knowledge_base"
         },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.NEW"
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
         },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "New",
-        "uIActionType" : "DEUIACTION"
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_kb",
+        "uIActionType" : "DEUIACTION",
+        "id" : "create_kb@ai_knowledge_base"
       },
-      "tooltip" : "新建",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.*.NEW"
-      },
+      "tooltip" : "新建知识库",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "cd9eb7eb8c0facf6084ba1508d888eea",
+    "modelid" : "c2741c82d9c5401f8dcf04d0c56d082a",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "default",
