@@ -44,13 +44,20 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
     }
   },
-  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "hookEventNames" : [ "ONSELECTIONCHANGE", "SELECTIONCHANGE", "LOAD" ],
   "logicName" : "知识库图谱关系树",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
   },
   "getPSControlLogics" : [ {
+    "eventNames" : "onSelectionChange",
+    "itemName" : "图谱关系",
+    "logicTag" : "treeexpbar1_tree",
+    "logicType" : "SCRIPT",
+    "name" : "logic",
+    "scriptCode" : "console.log(\"数据变更tree\")\r\nconst ai_kb_graph_relation = data[0].id\r\nconst graph_tree = view.getCtrl(\"TREEEXPBAR\", \"treeexpbar2\");\r\ngraph_tree.highlightElement(ai_kb_graph_relation, \"edge\")\r\n"
+  }, {
     "eventNames" : "SELECTIONCHANGE",
     "logicTag" : "treeexpbar1_tree",
     "logicType" : "CUSTOM",
@@ -87,7 +94,7 @@
     "enableEditData" : false,
     "enableNewData" : false,
     "enableQuickCreate" : false,
-    "enableQuickSearch" : false,
+    "enableQuickSearch" : true,
     "enableRemoveData" : false,
     "enableViewData" : false,
     "expandFirstOnly" : false,
@@ -133,7 +140,7 @@
     "enableNewData" : false,
     "enablePaging" : true,
     "enableQuickCreate" : false,
-    "enableQuickSearch" : false,
+    "enableQuickSearch" : true,
     "enableRemoveData" : false,
     "enableViewData" : false,
     "expandFirstOnly" : false,
