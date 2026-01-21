@@ -55,7 +55,7 @@
     "logicTag" : "treeexpbar_tree",
     "logicType" : "SCRIPT",
     "name" : "logic",
-    "scriptCode" : "console.log(\"数据变更tree\")\r\nconst ai_kb_graph_entity = data[0].id\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 清除所有节点的 'highlight' 状态\r\nconst allNodes = graph.getNodeData();\r\nconst stateUpdates = {};\r\nallNodes.forEach((node) => {\r\n  const currentStates = graph.getElementState(node.id);\r\n  const newStates = currentStates.filter((state) => state !== 'highlight');\r\n  stateUpdates[node.id] = newStates;\r\n});\r\ngraph.setElementState(stateUpdates);\r\n//高亮当前节点\r\ngraph_tree.highlightElement(ai_kb_graph_entity, \"node\")\r\n"
+    "scriptCode" : "console.log(\"数据变更tree\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 移除其他节点状态\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = [];\r\n        return acc;\r\n    })\r\n);\r\n// 移除其他连线状态\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = [];\r\n        return acc;\r\n    })\r\n)\r\n//高亮当前节点\r\ngraph_tree.highlightElement(ai_kb_graph_entity, \"node\");"
   }, {
     "eventNames" : "SELECTIONCHANGE",
     "logicTag" : "treeexpbar_tree",
@@ -66,6 +66,172 @@
     "logicTag" : "treeexpbar_tree",
     "logicType" : "CUSTOM",
     "name" : "treeexpbar_load"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "custom_view_node_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "图谱实体树工作栏",
+    "name" : "node_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+    },
+    "getPSControlParam" : {
+      "id" : "node_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "聚焦此实体",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_cm_deuiaction1"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "聚焦此实体",
+        "codeName" : "focusEntity",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_graph_entity_focusEntity",
+        "name" : "聚焦此实体",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "focusEntity",
+        "uIActionType" : "DEUIACTION",
+        "id" : "focusEntity@ai_kb_graph_entity"
+      },
+      "tooltip" : "聚焦此实体",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "隐藏此实体",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_cm_deuiaction2"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "隐藏此实体",
+        "codeName" : "hiddenEntity",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_graph_entity_hiddenEntity",
+        "name" : "隐藏此实体",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "hiddenEntity",
+        "uIActionType" : "DEUIACTION",
+        "id" : "hiddenEntity@ai_kb_graph_entity"
+      },
+      "tooltip" : "隐藏此实体",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "高亮实体",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction3",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_cm_deuiaction3"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "高亮实体",
+        "codeName" : "highlight",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_graph_entity_highlight",
+        "name" : "高亮实体",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "highlight",
+        "uIActionType" : "DEUIACTION",
+        "id" : "highlight@ai_kb_graph_entity"
+      },
+      "tooltip" : "高亮实体",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "按类型筛选",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction4",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_cm_deuiaction4"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "按类型筛选",
+        "codeName" : "typeFilter",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_graph_entity_typeFilter",
+        "name" : "按类型筛选",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "typeFilter",
+        "uIActionType" : "DEUIACTION",
+        "id" : "typeFilter@ai_kb_graph_entity"
+      },
+      "tooltip" : "按类型筛选",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "导出子图",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction5",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_cm_deuiaction5"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "导出子图",
+        "codeName" : "exportChildren",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "ai_kb_graph_entity_exportChildren",
+        "name" : "导出子图",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "exportChildren",
+        "uIActionType" : "DEUIACTION",
+        "id" : "exportChildren@ai_kb_graph_entity"
+      },
+      "tooltip" : "导出子图",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "b4a9a6d87135efe69ac2da46048ca5e6",
+    "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDETreeNodeRSs" : [ {
     "getChildPSDETreeNode" : {
@@ -173,6 +339,172 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+    },
+    "getPSDEContextMenu" : {
+      "codeName" : "custom_view_node_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "图谱实体树工作栏",
+      "name" : "node_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+      },
+      "getPSControlParam" : {
+        "id" : "node_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "聚焦此实体",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction1"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "聚焦此实体",
+          "codeName" : "focusEntity",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_graph_entity_focusEntity",
+          "name" : "聚焦此实体",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "focusEntity",
+          "uIActionType" : "DEUIACTION",
+          "id" : "focusEntity@ai_kb_graph_entity"
+        },
+        "tooltip" : "聚焦此实体",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "隐藏此实体",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction2"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "隐藏此实体",
+          "codeName" : "hiddenEntity",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_graph_entity_hiddenEntity",
+          "name" : "隐藏此实体",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "hiddenEntity",
+          "uIActionType" : "DEUIACTION",
+          "id" : "hiddenEntity@ai_kb_graph_entity"
+        },
+        "tooltip" : "隐藏此实体",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "高亮实体",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction3"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "高亮实体",
+          "codeName" : "highlight",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_graph_entity_highlight",
+          "name" : "高亮实体",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "highlight",
+          "uIActionType" : "DEUIACTION",
+          "id" : "highlight@ai_kb_graph_entity"
+        },
+        "tooltip" : "高亮实体",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "按类型筛选",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction4",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction4"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "按类型筛选",
+          "codeName" : "typeFilter",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_graph_entity_typeFilter",
+          "name" : "按类型筛选",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "typeFilter",
+          "uIActionType" : "DEUIACTION",
+          "id" : "typeFilter@ai_kb_graph_entity"
+        },
+        "tooltip" : "按类型筛选",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "导出子图",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction5",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction5"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "导出子图",
+          "codeName" : "exportChildren",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "ai_kb_graph_entity_exportChildren",
+          "name" : "导出子图",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "exportChildren",
+          "uIActionType" : "DEUIACTION",
+          "id" : "exportChildren@ai_kb_graph_entity"
+        },
+        "tooltip" : "导出子图",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "b4a9a6d87135efe69ac2da46048ca5e6",
+      "modeltype" : "PSDETOOLBAR"
     },
     "pagingSize" : 20,
     "getTextPSAppDEField" : {

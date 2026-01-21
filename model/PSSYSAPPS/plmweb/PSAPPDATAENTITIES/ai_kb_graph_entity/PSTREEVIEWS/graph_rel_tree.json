@@ -55,7 +55,7 @@
     "logicTag" : "treeexpbar1_tree",
     "logicType" : "SCRIPT",
     "name" : "logic",
-    "scriptCode" : "console.log(\"数据变更tree\")\r\nconst ai_kb_graph_relation = data[0].id\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\ngraph_tree.highlightElement(ai_kb_graph_relation, \"edge\")\r\n"
+    "scriptCode" : "console.log(\"数据变更tree\");\r\nconst ai_kb_graph_relation = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 移除其他节点状态\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = [];\r\n        return acc;\r\n    })\r\n);\r\n// 移除其他连线状态\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = [];\r\n        return acc;\r\n    })\r\n)\r\n//高亮当前连线\r\ngraph_tree.highlightElement(ai_kb_graph_relation, \"edge\");"
   }, {
     "eventNames" : "SELECTIONCHANGE",
     "logicTag" : "treeexpbar1_tree",
