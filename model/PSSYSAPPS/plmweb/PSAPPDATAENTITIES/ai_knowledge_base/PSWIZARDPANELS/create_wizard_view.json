@@ -609,6 +609,13 @@
         "codeName" : "rerank"
       }
     }, {
+      "id" : "rerank_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      }
+    }, {
       "id" : "use_kg",
       "dataType" : 9,
       "createDV" : "0",
@@ -647,6 +654,14 @@
       "getPSAppDEField" : {
         "name" : "GUIDANCE_PROMPT",
         "codeName" : "guidance_prompt"
+      }
+    }, {
+      "id" : "rerank_model_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL_ID",
+        "codeName" : "rerank_model_id"
       }
     }, {
       "id" : "id",
@@ -764,6 +779,74 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "召回重排模型",
+          "codeName" : "rerank_model",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "rerank_model",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "RERANK_MODEL",
+            "codeName" : "rerank_model"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "rerank",
+              "logicType" : "SINGLE",
+              "name" : "rerank等于(=) 1",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "rerank" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
+            },
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
+            "name" : "rerank_model",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "rerank_model_id"
+            } ],
+            "valueItemName" : "rerank_model_id",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "rerank_model_id",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -939,6 +1022,33 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "模型标识",
+        "codeName" : "rerank_model_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "rerank_model_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "RERANK_MODEL_ID",
+          "codeName" : "rerank_model_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "rerank_model_id"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"
@@ -1193,6 +1303,14 @@
         "codeName" : "chunk_method"
       }
     }, {
+      "id" : "embedding_model_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "EMBEDDING_MODEL_ID",
+        "codeName" : "embedding_model_id"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -1226,7 +1344,7 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel1",
           "getPSDEFormDetails" : [ {
-            "caption" : "切片模型",
+            "caption" : "embedding模型",
             "codeName" : "embedding_model",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
@@ -1242,15 +1360,43 @@
               "codeName" : "embedding_model"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 100,
-              "name" : "embedding_model"
+              "editorParams" : {
+                "AC" : "TRUE",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
+              "name" : "embedding_model",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+              },
+              "getPSEditorItems" : [ {
+                "name" : "embedding_model_id"
+              } ],
+              "placeHolder" : "未指定时使用全局默认",
+              "valueItemName" : "embedding_model_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colLG" : 8,
               "colMD" : 12,
               "layout" : "TABLE_24COL"
             },
+            "valueItemName" : "embedding_model_id",
             "allowEmpty" : true,
             "showCaption" : true
           }, {
@@ -2555,6 +2701,32 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "模型标识",
+        "codeName" : "embedding_model_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "embedding_model_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "EMBEDDING_MODEL_ID",
+          "codeName" : "embedding_model_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "embedding_model_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"

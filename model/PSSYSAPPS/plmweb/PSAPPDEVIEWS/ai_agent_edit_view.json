@@ -360,6 +360,13 @@
         "codeName" : "rerank"
       }
     }, {
+      "id" : "rerank_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      }
+    }, {
       "id" : "use_kg",
       "dataType" : 9,
       "createDV" : "0",
@@ -433,6 +440,14 @@
       "getPSAppDEField" : {
         "name" : "STREAM",
         "codeName" : "stream"
+      }
+    }, {
+      "id" : "rerank_model_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL_ID",
+        "codeName" : "rerank_model_id"
       }
     }, {
       "id" : "id",
@@ -1887,6 +1902,76 @@
               "allowEmpty" : true,
               "showCaption" : true
             }, {
+              "caption" : "召回重排模型",
+              "codeName" : "rerank_model",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "rerank_model",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "RERANK_MODEL",
+                "codeName" : "rerank_model"
+              },
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "rerank",
+                  "logicType" : "SINGLE",
+                  "name" : "rerank等于(=) 1",
+                  "value" : "1"
+                } ],
+                "relatedDetailNames" : [ "rerank" ],
+                "notMode" : false
+              } ],
+              "getPSEditor" : {
+                "editorParams" : {
+                  "AC" : "TRUE",
+                  "TRIGGER" : "TRUE",
+                  "PICKUPVIEW" : "FALSE"
+                },
+                "editorType" : "PICKEREX_TRIGGER",
+                "handlerType" : "PickupText",
+                "name" : "rerank_model",
+                "getPSAppDEACMode" : {
+                  "modelref" : true,
+                  "id" : "Default"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+                },
+                "getPSEditorItems" : [ {
+                  "name" : "rerank_model_id"
+                } ],
+                "placeHolder" : "未指定时使用全局默认",
+                "valueItemName" : "rerank_model_id",
+                "enableAC" : true,
+                "enablePickupView" : false,
+                "forceSelection" : true,
+                "showTrigger" : true,
+                "singleSelect" : true
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 8,
+                "colMD" : 12,
+                "layout" : "TABLE_24COL"
+              },
+              "valueItemName" : "rerank_model_id",
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
               "caption" : "使用知识图谱",
               "codeName" : "use_kg",
               "createDV" : "0",
@@ -2937,6 +3022,32 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "模型标识",
+        "codeName" : "rerank_model_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "rerank_model_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "RERANK_MODEL_ID",
+          "codeName" : "rerank_model_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "rerank_model_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.AI_AGENT.ID"

@@ -259,8 +259,8 @@
     }, {
       "id" : "chunk_method",
       "dataType" : 25,
-      "createDV" : "FIXED",
-      "updateDV" : "FIXED",
+      "createDV" : "NAIVE",
+      "updateDV" : "NAIVE",
       "getPSAppDEField" : {
         "name" : "CHUNK_METHOD",
         "codeName" : "chunk_method"
@@ -274,6 +274,14 @@
       "getPSAppDEField" : {
         "name" : "VISIBILITY",
         "codeName" : "visibility"
+      }
+    }, {
+      "id" : "embedding_model_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "EMBEDDING_MODEL_ID",
+        "codeName" : "embedding_model_id"
       }
     }, {
       "id" : "id",
@@ -314,7 +322,7 @@
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel3",
             "getPSDEFormDetails" : [ {
-              "caption" : "切片模型",
+              "caption" : "embedding模型",
               "codeName" : "embedding_model",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
@@ -330,15 +338,43 @@
                 "codeName" : "embedding_model"
               },
               "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "maxLength" : 100,
-                "name" : "embedding_model"
+                "editorParams" : {
+                  "AC" : "TRUE",
+                  "TRIGGER" : "TRUE",
+                  "PICKUPVIEW" : "FALSE"
+                },
+                "editorType" : "PICKEREX_TRIGGER",
+                "handlerType" : "PickupText",
+                "name" : "embedding_model",
+                "getPSAppDEACMode" : {
+                  "modelref" : true,
+                  "id" : "Default"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+                },
+                "getPSEditorItems" : [ {
+                  "name" : "embedding_model_id"
+                } ],
+                "placeHolder" : "未指定时使用全局默认",
+                "valueItemName" : "embedding_model_id",
+                "enableAC" : true,
+                "enablePickupView" : false,
+                "forceSelection" : true,
+                "showTrigger" : true,
+                "singleSelect" : true
               },
               "getPSLayoutPos" : {
                 "colLG" : 8,
                 "colMD" : 8,
                 "layout" : "TABLE_24COL"
               },
+              "valueItemName" : "embedding_model_id",
               "allowEmpty" : true,
               "showCaption" : true
             }, {
@@ -389,7 +425,7 @@
           }, {
             "caption" : "切片方法",
             "codeName" : "chunk_method",
-            "createDV" : "FIXED",
+            "createDV" : "NAIVE",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -420,7 +456,7 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "updateDV" : "FIXED",
+            "updateDV" : "NAIVE",
             "allowEmpty" : true,
             "needCodeListConfig" : true,
             "showCaption" : true
@@ -800,22 +836,8 @@
                 "labelWidth" : 130,
                 "name" : "layout_recognize",
                 "noPrivDisplayMode" : 1,
-                "getPSDEFDGroupLogics" : [ {
-                  "groupOP" : "AND",
-                  "logicCat" : "ITEMBLANK",
-                  "logicType" : "GROUP",
-                  "getPSDEFDLogics" : [ {
-                    "condOP" : "NOTEQ",
-                    "dEFDName" : "method",
-                    "logicType" : "SINGLE",
-                    "name" : "method不等于(<>) NAIVE",
-                    "value" : "NAIVE"
-                  } ],
-                  "relatedDetailNames" : [ "method" ],
-                  "notMode" : false
-                } ],
                 "getPSEditor" : {
-                  "editorType" : "TEXTBOX",
+                  "editorType" : "HIDDEN",
                   "name" : "layout_recognize"
                 },
                 "getPSLayoutPos" : {
@@ -824,9 +846,9 @@
                   "layout" : "TABLE_24COL"
                 },
                 "updateDV" : "DeepDOC",
-                "allowEmpty" : false,
-                "repeatContent" : true,
-                "showCaption" : true
+                "allowEmpty" : true,
+                "hidden" : true,
+                "repeatContent" : true
               }, {
                 "caption" : "自动关键词",
                 "codeName" : "auto_keywords",
@@ -1746,6 +1768,32 @@
           "layout" : "TABLE_24COL"
         },
         "updateDV" : "public",
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "模型标识",
+        "codeName" : "embedding_model_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "embedding_model_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "EMBEDDING_MODEL_ID",
+          "codeName" : "embedding_model_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "embedding_model_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
         "allowEmpty" : true,
         "hidden" : true
       }, {

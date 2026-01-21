@@ -354,6 +354,13 @@
         "codeName" : "rerank"
       }
     }, {
+      "id" : "rerank_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      }
+    }, {
       "id" : "use_kg",
       "dataType" : 9,
       "createDV" : "0",
@@ -1329,6 +1336,49 @@
             "getPSEditor" : {
               "editorType" : "SWITCH",
               "name" : "rerank"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排模型",
+            "codeName" : "rerank_model",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank_model",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK_MODEL",
+              "codeName" : "rerank_model"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "rerank",
+                "logicType" : "SINGLE",
+                "name" : "rerank等于(=) 1",
+                "value" : "1"
+              } ],
+              "relatedDetailNames" : [ "rerank" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "rerank_model",
+              "placeHolder" : "未指定时使用全局默认",
+              "enableLinkView" : false
             },
             "getPSLayoutPos" : {
               "colLG" : 8,

@@ -147,8 +147,8 @@
   }, {
     "id" : "chunk_method",
     "dataType" : 25,
-    "createDV" : "FIXED",
-    "updateDV" : "FIXED",
+    "createDV" : "NAIVE",
+    "updateDV" : "NAIVE",
     "getPSAppDEField" : {
       "name" : "CHUNK_METHOD",
       "codeName" : "chunk_method"
@@ -251,7 +251,7 @@
         }, {
           "caption" : "切片方法",
           "codeName" : "chunk_method",
-          "createDV" : "FIXED",
+          "createDV" : "NAIVE",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -297,7 +297,7 @@
             "colMD" : 8,
             "layout" : "TABLE_24COL"
           },
-          "updateDV" : "FIXED",
+          "updateDV" : "NAIVE",
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true
@@ -683,22 +683,8 @@
               "labelWidth" : 130,
               "name" : "layout_recognize",
               "noPrivDisplayMode" : 1,
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMBLANK",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "NOTEQ",
-                  "dEFDName" : "method",
-                  "logicType" : "SINGLE",
-                  "name" : "method不等于(<>) NAIVE",
-                  "value" : "NAIVE"
-                } ],
-                "relatedDetailNames" : [ "method" ],
-                "notMode" : false
-              } ],
               "getPSEditor" : {
-                "editorType" : "TEXTBOX",
+                "editorType" : "HIDDEN",
                 "name" : "layout_recognize"
               },
               "getPSLayoutPos" : {
@@ -707,9 +693,9 @@
                 "layout" : "TABLE_24COL"
               },
               "updateDV" : "DeepDOC",
-              "allowEmpty" : false,
-              "repeatContent" : true,
-              "showCaption" : true
+              "allowEmpty" : true,
+              "hidden" : true,
+              "repeatContent" : true
             }, {
               "caption" : "自动关键词",
               "codeName" : "auto_keywords",

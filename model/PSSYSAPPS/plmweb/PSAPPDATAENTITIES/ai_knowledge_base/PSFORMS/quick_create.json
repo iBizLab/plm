@@ -238,6 +238,14 @@
       "codeName" : "chunk_method"
     }
   }, {
+    "id" : "embedding_model_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "EMBEDDING_MODEL_ID",
+      "codeName" : "embedding_model_id"
+    }
+  }, {
     "id" : "id",
     "hidden" : true,
     "dataType" : 25,
@@ -321,15 +329,43 @@
             "codeName" : "embedding_model"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
-            "name" : "embedding_model"
+            "editorParams" : {
+              "AC" : "TRUE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
+            },
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
+            "name" : "embedding_model",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "embedding_model_id"
+            } ],
+            "placeHolder" : "未指定时使用全局默认",
+            "valueItemName" : "embedding_model_id",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colLG" : 8,
             "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
+          "valueItemName" : "embedding_model_id",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -1938,6 +1974,32 @@
       },
       "infoGroupMode" : false,
       "showCaption" : false
+    }, {
+      "caption" : "模型标识",
+      "codeName" : "embedding_model_id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "embedding_model_id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "EMBEDDING_MODEL_ID",
+        "codeName" : "embedding_model_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "embedding_model_id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"
