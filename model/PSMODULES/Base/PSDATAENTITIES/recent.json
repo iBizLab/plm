@@ -2124,11 +2124,11 @@
           "condType" : "CUSTOM",
           "condition" : "t1.`OWNER_ID` not in (select  principal_id from relation t3 where (t3.target_id = #{ctx.webcontext.work_item}) and t3.principal_type = 'dependency')",
           "memo" : "not exists(select  1 from relation t3 where (t1.owner_id = t3.principal_id or  t1.owner_id = t3.target_id) and t3.principal_type = 'dependency')",
-          "name" : "排除本工作项后置"
+          "name" : "排除本工作项后置关联"
         }, {
           "condType" : "CUSTOM",
           "condition" : "t1.`OWNER_ID` not in (select  target_id from relation t3 where (t3.principal_id = #{ctx.webcontext.work_item}) and t3.principal_type = 'dependency')",
-          "name" : "排除本工作项前置"
+          "name" : "排除本工作项前置关联"
         } ]
       }
     },
