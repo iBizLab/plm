@@ -276,7 +276,13 @@
         "name" : "field_textbox",
         "getPSEditor" : {
           "editorParams" : {
-            "AUTOFOCUS" : "true"
+            "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.markerController.parseCommentTag({icon, ...item});})",
+            "LINKVIEWID" : "recent_mob_redirect_view",
+            "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+            "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+            "AUTOFOCUS" : "true",
+            "QUOTEURL" : "`recents/fetch_recent_access`"
           },
           "editorStyle" : "MOB_VDITOR_COMMENT",
           "editorType" : "MOBHTMLTEXT",
