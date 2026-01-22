@@ -230,6 +230,9 @@
     }, {
       "name" : "DESCRIPTION",
       "codeName" : "description"
+    }, {
+      "name" : "ICON",
+      "codeName" : "icon"
     } ],
     "codeName" : "Table",
     "name" : "AI_KB_GRAPH_ENTITY_TYPE",
@@ -1091,6 +1094,85 @@
     "stdDataType" : 25,
     "stringLength" : 2000,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ICON",
+      "dBType" : "POSTGRESQL",
+      "name" : "ICON",
+      "standardColumnName" : "ICON"
+    }, {
+      "columnName" : "ICON",
+      "dBType" : "MYSQL5",
+      "name" : "ICON",
+      "queryCodeExp" : "t1.`ICON`",
+      "standardColumnName" : "`ICON`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "PICTURE_ONE",
+        "name" : "默认",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBPICTURE",
+        "name" : "移动端默认",
+        "stringLength" : 500,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ICON",
+          "maxValue" : 500,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[500]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[500]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[500]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "icon",
+    "dEFType" : 1,
+    "dataType" : "PICTURE",
+    "importOrder" : 1000,
+    "length" : 500,
+    "logicName" : "显示图标",
+    "name" : "ICON",
+    "orderValue" : 180,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ICON"
+    },
+    "serviceCodeName" : "icon",
+    "stdDataType" : 25,
+    "stringLength" : 500,
+    "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_kb_graph_entity_type_dto",
@@ -1190,6 +1272,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "显示图标",
+      "name" : "icon",
+      "getPSDEField" : {
+        "name" : "ICON",
+        "codeName" : "icon"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 500,
       "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
