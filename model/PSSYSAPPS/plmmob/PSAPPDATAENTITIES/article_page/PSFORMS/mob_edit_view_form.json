@@ -144,14 +144,11 @@
       "codeName" : "show_identifier"
     }
   }, {
-    "id" : "content",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "PUBLISH_CONTENT",
-      "codeName" : "publish_content"
-    }
+    "id" : "formitem",
+    "hidden" : true,
+    "dataType" : 25
   }, {
-    "id" : "formitem1",
+    "id" : "content",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "PUBLISH_CONTENT",
@@ -342,20 +339,16 @@
           "hidden" : true
         }, {
           "caption" : "正文",
-          "codeName" : "content",
-          "dataType" : 21,
+          "codeName" : "formitem",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 4,
           "labelPos" : "NONE",
           "labelWidth" : 0,
-          "name" : "content",
+          "name" : "formitem",
           "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "PUBLISH_CONTENT",
-            "codeName" : "publish_content"
-          },
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
@@ -384,14 +377,13 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
-            "contentType" : "HTML",
             "editorParams" : {
               "contenttype" : "HTML",
               "TITLE" : "name"
             },
             "editorStyle" : "MOB_ANCHO_HTML",
-            "editorType" : "RAW",
-            "name" : "content",
+            "editorType" : "HIDDEN",
+            "name" : "formitem",
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "MOB_ANCHO_HTML",
@@ -405,10 +397,11 @@
           },
           "resetItemName" : "format_type",
           "resetItemNames" : [ "format_type" ],
-          "allowEmpty" : true
+          "allowEmpty" : true,
+          "hidden" : true
         }, {
           "caption" : "发布正文",
-          "codeName" : "formitem1",
+          "codeName" : "content",
           "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -416,7 +409,7 @@
           "ignoreInput" : 4,
           "labelPos" : "NONE",
           "labelWidth" : 0,
-          "name" : "formitem1",
+          "name" : "content",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "PUBLISH_CONTENT",
@@ -460,7 +453,10 @@
             },
             "editorStyle" : "MOB_VDITOR",
             "editorType" : "MOBHTMLTEXT",
-            "name" : "formitem1",
+            "name" : "content",
+            "getPSEditorItems" : [ {
+              "name" : "format_type"
+            } ],
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "MOB_VDITOR",
@@ -472,6 +468,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "valueItemName" : "format_type",
           "allowEmpty" : true
         }, {
           "codeName" : "rawitem3",
