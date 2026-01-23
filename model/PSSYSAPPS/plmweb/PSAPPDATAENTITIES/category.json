@@ -3040,6 +3040,10 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "category_check_workflow",
     "name" : "查看审批单",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_workflow"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
@@ -3051,6 +3055,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check_workflow",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
     "id" : "check_workflow@category"
   }, {
     "actionTarget" : "SINGLEKEY",
@@ -3276,6 +3281,30 @@
     "id" : "workflow_design@category"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "check_workflow",
+    "defaultParamName" : "Default",
+    "logicName" : "查看审批单",
+    "name" : "查看审批单",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "create_children_category",
     "defaultParamName" : "Default",
     "logicName" : "新建子类别",
