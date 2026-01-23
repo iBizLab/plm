@@ -935,7 +935,7 @@
             "showCaption" : true,
             "showIcon" : true
           }, {
-            "caption" : "高亮实体",
+            "caption" : "高亮关联",
             "groupExtractMode" : "ITEM",
             "itemType" : "DEUIACTION",
             "name" : "deuiaction3",
@@ -946,21 +946,22 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "NONE",
-              "caption" : "高亮实体",
+              "caption" : "高亮关联",
               "codeName" : "highlight",
               "frontProcessType" : "OTHER",
               "fullCodeName" : "ai_kb_graph_entity_highlight",
-              "name" : "高亮实体",
+              "name" : "高亮关联",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
               },
+              "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "highlight",
               "uIActionType" : "DEUIACTION",
               "id" : "highlight@ai_kb_graph_entity"
             },
-            "tooltip" : "高亮实体",
+            "tooltip" : "高亮关联",
             "uIActionTarget" : "NONE",
             "showCaption" : true,
             "showIcon" : true
@@ -1101,7 +1102,7 @@
             "showCaption" : true,
             "showIcon" : true
           }, {
-            "caption" : "高亮实体",
+            "caption" : "高亮关联",
             "groupExtractMode" : "ITEM",
             "itemType" : "DEUIACTION",
             "name" : "deuiaction3",
@@ -1112,21 +1113,22 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "NONE",
-              "caption" : "高亮实体",
+              "caption" : "高亮关联",
               "codeName" : "highlight",
               "frontProcessType" : "OTHER",
               "fullCodeName" : "ai_kb_graph_entity_highlight",
-              "name" : "高亮实体",
+              "name" : "高亮关联",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
               },
+              "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "highlight",
               "uIActionType" : "DEUIACTION",
               "id" : "highlight@ai_kb_graph_entity"
             },
-            "tooltip" : "高亮实体",
+            "tooltip" : "高亮关联",
             "uIActionTarget" : "NONE",
             "showCaption" : true,
             "showIcon" : true
@@ -1351,7 +1353,7 @@
               "showCaption" : true,
               "showIcon" : true
             }, {
-              "caption" : "高亮实体",
+              "caption" : "高亮关联",
               "groupExtractMode" : "ITEM",
               "itemType" : "DEUIACTION",
               "name" : "deuiaction3",
@@ -1362,21 +1364,22 @@
               },
               "getPSUIAction" : {
                 "actionTarget" : "NONE",
-                "caption" : "高亮实体",
+                "caption" : "高亮关联",
                 "codeName" : "highlight",
                 "frontProcessType" : "OTHER",
                 "fullCodeName" : "ai_kb_graph_entity_highlight",
-                "name" : "高亮实体",
+                "name" : "高亮关联",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
                 },
+                "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "highlight",
                 "uIActionType" : "DEUIACTION",
                 "id" : "highlight@ai_kb_graph_entity"
               },
-              "tooltip" : "高亮实体",
+              "tooltip" : "高亮关联",
               "uIActionTarget" : "NONE",
               "showCaption" : true,
               "showIcon" : true
@@ -1489,7 +1492,7 @@
             "cLConvertMode" : "NONE",
             "dataType" : 25,
             "name" : "text",
-            "scriptCode" : "var type = data.type? data.type : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\nif (type && type != \"\") {\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag,type,context,\"\");\r\n    codeValue = codeItem.text;\r\n}\r\nreturn codeValue;",
+            "scriptCode" : "var type = data.type? data.type : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\nif (type && type != \"\") {\r\n    console.log(\"绘制类型图标\")\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag,type,context,\"\");\r\n    codeValue = codeItem.text;\r\n    if (codeItem.icon) {\r\n        const icon = codeItem.icon;\r\n        const appid = this.context.srfappid\r\n        const baseUrl = ibiz.env.baseUrl\r\n        const fileId = icon[0].id\r\n        const folder = icon[0].folder\r\n        const url = `${baseUrl}/${appid}/ibizutil/download/${folder}/${fileId}`\r\n        return '<div class=\"ibiz-code-list__item\" style=\"height: 36px;line-height: 36px;\"><div class=\"ibiz-icon\" style=\"height: 100%;padding-right: 8px;\">' + url + '</div>' + '</div>';\r\n\r\n    }\r\n}\r\nreturn codeValue;\r\n\r\n",
             "customCode" : true
           } ],
           "getTextPSAppDEField" : {
@@ -1610,7 +1613,7 @@
               "showCaption" : true,
               "showIcon" : true
             }, {
-              "caption" : "高亮实体",
+              "caption" : "高亮关联",
               "groupExtractMode" : "ITEM",
               "itemType" : "DEUIACTION",
               "name" : "deuiaction3",
@@ -1621,21 +1624,22 @@
               },
               "getPSUIAction" : {
                 "actionTarget" : "NONE",
-                "caption" : "高亮实体",
+                "caption" : "高亮关联",
                 "codeName" : "highlight",
                 "frontProcessType" : "OTHER",
                 "fullCodeName" : "ai_kb_graph_entity_highlight",
-                "name" : "高亮实体",
+                "name" : "高亮关联",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
                 },
+                "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "highlight",
                 "uIActionType" : "DEUIACTION",
                 "id" : "highlight@ai_kb_graph_entity"
               },
-              "tooltip" : "高亮实体",
+              "tooltip" : "高亮关联",
               "uIActionTarget" : "NONE",
               "showCaption" : true,
               "showIcon" : true
