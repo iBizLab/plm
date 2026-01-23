@@ -2025,6 +2025,69 @@
                   "repeatContent" : true,
                   "showCaption" : true
                 }, {
+                  "caption" : "文本预处理规则",
+                  "codeName" : "pre_process_rules",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "ignoreInput" : 0,
+                  "labelPos" : "TOP",
+                  "labelWidth" : 130,
+                  "name" : "pre_process_rules",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorType" : "CHECKBOXLIST",
+                    "name" : "pre_process_rules",
+                    "getPSAppCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
+                    }
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 24,
+                    "colMD" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "allowEmpty" : true,
+                  "needCodeListConfig" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
+                  "caption" : "片段展开子提示词",
+                  "codeName" : "chunk_extraction_sub_pnompt",
+                  "dataType" : 25,
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "FORMITEM",
+                  "enableCond" : 3,
+                  "ignoreInput" : 0,
+                  "itemHeight" : 300.0,
+                  "labelPos" : "LEFT",
+                  "labelWidth" : 130,
+                  "name" : "chunk_extraction_sub_pnompt",
+                  "noPrivDisplayMode" : 1,
+                  "getPSEditor" : {
+                    "editorHeight" : 300.0,
+                    "editorParams" : {
+                      "ISAUTO" : "true",
+                      "AC" : "true",
+                      "language" : "markdown"
+                    },
+                    "editorType" : "MARKDOWN",
+                    "mode" : "EDIT",
+                    "name" : "chunk_extraction_sub_pnompt",
+                    "enableAC" : true,
+                    "showMaxLength" : true
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 24,
+                    "colMD" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "allowEmpty" : true,
+                  "repeatContent" : true,
+                  "showCaption" : true
+                }, {
                   "codeName" : "grouppanel7",
                   "detailStyle" : "DEFAULT",
                   "detailType" : "GROUPPANEL",
@@ -2360,17 +2423,10 @@
                       "repeatContent" : true,
                       "showCaption" : true
                     }, {
-                      "caption" : "实体类型",
-                      "codeName" : "entity_types",
-                      "dataType" : 25,
+                      "codeName" : "grouppanel3",
                       "detailStyle" : "DEFAULT",
-                      "detailType" : "FORMITEM",
-                      "enableCond" : 3,
-                      "ignoreInput" : 0,
-                      "labelPos" : "TOP",
-                      "labelWidth" : 130,
-                      "name" : "entity_types",
-                      "noPrivDisplayMode" : 1,
+                      "detailType" : "GROUPPANEL",
+                      "name" : "grouppanel3",
                       "getPSDEFDGroupLogics" : [ {
                         "groupOP" : "AND",
                         "logicCat" : "PANELVISIBLE",
@@ -2384,188 +2440,216 @@
                         } ],
                         "relatedDetailNames" : [ "use_graphrag" ],
                         "notMode" : false
-                      }, {
-                        "groupOP" : "AND",
-                        "logicCat" : "ITEMBLANK",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "NOTEQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag不等于(<>) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
-                      }, {
-                        "groupOP" : "AND",
-                        "logicCat" : "ITEMENABLE",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "EQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag等于(=) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
                       } ],
-                      "getPSEditor" : {
-                        "editorParams" : {
-                          "forceselection" : "false"
-                        },
-                        "editorType" : "MDROPDOWNLIST",
+                      "getPSDEFormDetails" : [ {
+                        "caption" : "实体类型",
+                        "codeName" : "entity_types",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "ignoreInput" : 0,
+                        "labelPos" : "TOP",
+                        "labelWidth" : 130,
                         "name" : "entity_types",
-                        "getPSAppCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__entity_types.json"
+                        "noPrivDisplayMode" : 1,
+                        "getPSDEFDGroupLogics" : [ {
+                          "groupOP" : "AND",
+                          "logicCat" : "ITEMBLANK",
+                          "logicType" : "GROUP",
+                          "getPSDEFDLogics" : [ {
+                            "condOP" : "NOTEQ",
+                            "dEFDName" : "use_graphrag",
+                            "logicType" : "SINGLE",
+                            "name" : "use_graphrag不等于(<>) 1",
+                            "value" : "1"
+                          } ],
+                          "relatedDetailNames" : [ "use_graphrag" ],
+                          "notMode" : false
+                        } ],
+                        "getPSEditor" : {
+                          "editorParams" : {
+                            "forceselection" : "false"
+                          },
+                          "editorType" : "MDROPDOWNLIST",
+                          "name" : "entity_types",
+                          "getPSAppCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__entity_types.json"
+                          },
+                          "singleSelect" : false
                         },
-                        "singleSelect" : false
-                      },
-                      "getPSLayoutPos" : {
-                        "colLG" : 16,
-                        "colMD" : 16,
-                        "layout" : "TABLE_24COL"
-                      },
-                      "allowEmpty" : false,
-                      "needCodeListConfig" : true,
-                      "repeatContent" : true,
-                      "showCaption" : true
-                    }, {
-                      "caption" : "方法",
-                      "codeName" : "graphrag_method",
-                      "dataType" : 25,
-                      "detailStyle" : "DEFAULT",
-                      "detailType" : "FORMITEM",
-                      "enableCond" : 3,
-                      "fieldName" : "method",
-                      "ignoreInput" : 0,
-                      "labelPos" : "TOP",
-                      "labelWidth" : 130,
-                      "name" : "graphrag_method",
-                      "noPrivDisplayMode" : 1,
-                      "getPSDEFDGroupLogics" : [ {
-                        "groupOP" : "AND",
-                        "logicCat" : "PANELVISIBLE",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "EQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag等于(=) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
+                        "getPSLayoutPos" : {
+                          "colLG" : 8,
+                          "colMD" : 12,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : false,
+                        "needCodeListConfig" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
                       }, {
-                        "groupOP" : "AND",
-                        "logicCat" : "ITEMENABLE",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "EQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag等于(=) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
-                      } ],
-                      "getPSEditor" : {
-                        "editorType" : "DROPDOWNLIST",
+                        "caption" : "方法",
+                        "codeName" : "graphrag_method",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "fieldName" : "method",
+                        "ignoreInput" : 0,
+                        "labelPos" : "TOP",
+                        "labelWidth" : 130,
                         "name" : "graphrag_method",
-                        "getPSAppCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__graphrag_method.json"
+                        "noPrivDisplayMode" : 1,
+                        "getPSEditor" : {
+                          "editorType" : "DROPDOWNLIST",
+                          "name" : "graphrag_method",
+                          "getPSAppCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__graphrag_method.json"
+                          },
+                          "singleSelect" : true
                         },
-                        "singleSelect" : true
-                      },
-                      "getPSLayoutPos" : {
-                        "colLG" : 8,
-                        "colMD" : 8,
-                        "layout" : "TABLE_24COL"
-                      },
-                      "allowEmpty" : true,
-                      "needCodeListConfig" : true,
-                      "repeatContent" : true,
-                      "showCaption" : true
-                    }, {
-                      "caption" : "实体归一化",
-                      "codeName" : "resolution",
-                      "createDV" : "1",
-                      "dataType" : 25,
-                      "detailStyle" : "DEFAULT",
-                      "detailType" : "FORMITEM",
-                      "enableCond" : 3,
-                      "ignoreInput" : 0,
-                      "labelPos" : "TOP",
-                      "labelWidth" : 130,
-                      "name" : "resolution",
-                      "noPrivDisplayMode" : 1,
-                      "getPSDEFDGroupLogics" : [ {
-                        "groupOP" : "AND",
-                        "logicCat" : "PANELVISIBLE",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "EQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag等于(=) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
+                        "getPSLayoutPos" : {
+                          "colLG" : 8,
+                          "colMD" : 8,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : true,
+                        "needCodeListConfig" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
                       }, {
-                        "groupOP" : "AND",
-                        "logicCat" : "ITEMENABLE",
-                        "logicType" : "GROUP",
-                        "getPSDEFDLogics" : [ {
-                          "condOP" : "EQ",
-                          "dEFDName" : "use_graphrag",
-                          "logicType" : "SINGLE",
-                          "name" : "use_graphrag等于(=) 1",
-                          "value" : "1"
-                        } ],
-                        "relatedDetailNames" : [ "use_graphrag" ],
-                        "notMode" : false
+                        "caption" : "实体归一化",
+                        "codeName" : "resolution",
+                        "createDV" : "1",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "ignoreInput" : 0,
+                        "labelPos" : "TOP",
+                        "labelWidth" : 130,
+                        "name" : "resolution",
+                        "noPrivDisplayMode" : 1,
+                        "getPSEditor" : {
+                          "editorType" : "SWITCH",
+                          "name" : "resolution"
+                        },
+                        "getPSLayoutPos" : {
+                          "colLG" : 8,
+                          "colMD" : 8,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
+                      }, {
+                        "caption" : "社区报告生成",
+                        "codeName" : "community",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "ignoreInput" : 0,
+                        "labelPos" : "TOP",
+                        "labelWidth" : 130,
+                        "name" : "community",
+                        "noPrivDisplayMode" : 1,
+                        "getPSEditor" : {
+                          "editorType" : "SWITCH",
+                          "name" : "community"
+                        },
+                        "getPSLayoutPos" : {
+                          "colLG" : 8,
+                          "colMD" : 12,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
+                      }, {
+                        "caption" : "消除歧义子提示词",
+                        "codeName" : "disambiguation_sub_prompt",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "ignoreInput" : 0,
+                        "itemHeight" : 300.0,
+                        "labelPos" : "LEFT",
+                        "labelWidth" : 130,
+                        "name" : "disambiguation_sub_prompt",
+                        "noPrivDisplayMode" : 1,
+                        "getPSEditor" : {
+                          "editorHeight" : 300.0,
+                          "editorParams" : {
+                            "ISAUTO" : "true",
+                            "AC" : "true",
+                            "language" : "markdown"
+                          },
+                          "editorType" : "MARKDOWN",
+                          "mode" : "EDIT",
+                          "name" : "disambiguation_sub_prompt",
+                          "enableAC" : true,
+                          "showMaxLength" : true
+                        },
+                        "getPSLayoutPos" : {
+                          "colLG" : 24,
+                          "colMD" : 24,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
+                      }, {
+                        "caption" : "关系消歧子提示词",
+                        "codeName" : "relation_disambiguation_sub_prompt",
+                        "dataType" : 25,
+                        "detailStyle" : "DEFAULT",
+                        "detailType" : "FORMITEM",
+                        "enableCond" : 3,
+                        "ignoreInput" : 0,
+                        "itemHeight" : 300.0,
+                        "labelPos" : "LEFT",
+                        "labelWidth" : 130,
+                        "name" : "relation_disambiguation_sub_prompt",
+                        "noPrivDisplayMode" : 1,
+                        "getPSEditor" : {
+                          "editorHeight" : 300.0,
+                          "editorParams" : {
+                            "ISAUTO" : "true",
+                            "AC" : "true",
+                            "language" : "markdown"
+                          },
+                          "editorType" : "MARKDOWN",
+                          "mode" : "EDIT",
+                          "name" : "relation_disambiguation_sub_prompt",
+                          "enableAC" : true,
+                          "showMaxLength" : true
+                        },
+                        "getPSLayoutPos" : {
+                          "colLG" : 24,
+                          "colMD" : 12,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "allowEmpty" : true,
+                        "repeatContent" : true,
+                        "showCaption" : true
                       } ],
-                      "getPSEditor" : {
-                        "editorType" : "SWITCH",
-                        "name" : "resolution"
-                      },
-                      "getPSLayoutPos" : {
-                        "colLG" : 8,
-                        "colMD" : 8,
+                      "getPSLayout" : {
+                        "childColLG" : 8,
+                        "childColMD" : 12,
+                        "columnCount" : 24,
                         "layout" : "TABLE_24COL"
                       },
-                      "allowEmpty" : true,
-                      "repeatContent" : true,
-                      "showCaption" : true
-                    }, {
-                      "caption" : "社区报告生成",
-                      "codeName" : "community",
-                      "dataType" : 25,
-                      "detailStyle" : "DEFAULT",
-                      "detailType" : "FORMITEM",
-                      "enableCond" : 3,
-                      "ignoreInput" : 0,
-                      "labelPos" : "TOP",
-                      "labelWidth" : 130,
-                      "name" : "community",
-                      "noPrivDisplayMode" : 1,
-                      "getPSEditor" : {
-                        "editorType" : "SWITCH",
-                        "name" : "community"
-                      },
                       "getPSLayoutPos" : {
-                        "colLG" : 8,
                         "colMD" : 24,
                         "layout" : "TABLE_24COL"
                       },
-                      "allowEmpty" : true,
+                      "infoGroupMode" : false,
                       "repeatContent" : true,
-                      "showCaption" : true
+                      "showCaption" : false
                     } ],
                     "getPSLayout" : {
                       "childColMD" : 24,
@@ -2607,34 +2691,6 @@
                 "infoGroupMode" : false,
                 "repeatContent" : true,
                 "showCaption" : false
-              }, {
-                "caption" : "文本预处理规则",
-                "codeName" : "pre_process_rules",
-                "dataType" : 25,
-                "detailStyle" : "DEFAULT",
-                "detailType" : "FORMITEM",
-                "enableCond" : 3,
-                "ignoreInput" : 0,
-                "labelPos" : "TOP",
-                "labelWidth" : 130,
-                "name" : "pre_process_rules",
-                "noPrivDisplayMode" : 1,
-                "getPSEditor" : {
-                  "editorType" : "CHECKBOXLIST",
-                  "name" : "pre_process_rules",
-                  "getPSAppCodeList" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__text_clean_config.json"
-                  }
-                },
-                "getPSLayoutPos" : {
-                  "colMD" : 24,
-                  "layout" : "TABLE_24COL"
-                },
-                "allowEmpty" : true,
-                "needCodeListConfig" : true,
-                "repeatContent" : true,
-                "showCaption" : true
               }, {
                 "caption" : "自定义脱敏规则",
                 "codeName" : "grouppanel2",
