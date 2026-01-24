@@ -605,6 +605,9 @@
       "name" : "RERANK_MODEL",
       "codeName" : "rerank_model"
     }, {
+      "name" : "CHAT_MODEL",
+      "codeName" : "chat_model"
+    }, {
       "name" : "SIMILARITY_THRESHOLD",
       "codeName" : "similarity_threshold"
     }, {
@@ -643,6 +646,9 @@
     }, {
       "name" : "EMBEDDING_MODEL_ID",
       "codeName" : "embedding_model_id"
+    }, {
+      "name" : "CHAT_MODEL_ID",
+      "codeName" : "chat_model_id"
     } ],
     "codeName" : "Table",
     "name" : "AI_KNOWLEDGE_BASE",
@@ -2482,6 +2488,133 @@
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHAT_MODEL",
+      "dBType" : "POSTGRESQL",
+      "name" : "CHAT_MODEL",
+      "queryCodeExp" : "t1.CHAT_MODEL",
+      "standardColumnName" : "CHAT_MODEL"
+    }, {
+      "columnName" : "CHAT_MODEL",
+      "dBType" : "MYSQL5",
+      "name" : "CHAT_MODEL",
+      "standardColumnName" : "`CHAT_MODEL`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "PICKER",
+        "name" : "默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBPICKER",
+        "name" : "移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CHAT_MODEL",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "chat_model",
+    "dEFType" : 1,
+    "dataType" : "PICKUPTEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "交谈模型",
+    "name" : "CHAT_MODEL",
+    "orderValue" : 320,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDERS/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CHAT_MODEL"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "serviceCodeName" : "chat_model",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "getValuePSDEField" : {
+      "name" : "CHAT_MODEL_ID",
+      "codeName" : "chat_model_id"
+    },
+    "ignoreRefresh" : true,
+    "linkDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "SIMILARITY_THRESHOLD",
       "dBType" : "POSTGRESQL",
       "name" : "SIMILARITY_THRESHOLD",
@@ -3713,6 +3846,120 @@
     "stringLength" : 100,
     "valueFormat" : "%1$s",
     "linkDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHAT_MODEL_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "CHAT_MODEL_ID",
+      "queryCodeExp" : "t1.CHAT_MODEL_ID",
+      "standardColumnName" : "CHAT_MODEL_ID"
+    }, {
+      "columnName" : "CHAT_MODEL_ID",
+      "dBType" : "MYSQL5",
+      "name" : "CHAT_MODEL_ID",
+      "standardColumnName" : "`CHAT_MODEL_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CHAT_MODEL_ID_EQ",
+      "name" : "N_CHAT_MODEL_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "HIDDEN",
+        "name" : "移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CHAT_MODEL_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "chat_model_id",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "交谈模型标识",
+    "name" : "CHAT_MODEL_ID",
+    "orderValue" : 1000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDERS/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CHAT_MODEL_ID"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "serviceCodeName" : "chat_model_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "change_admin_role",
@@ -4383,6 +4630,17 @@
       "stringLength" : 2000,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "交谈模型",
+      "name" : "chat_model",
+      "getPSDEField" : {
+        "name" : "CHAT_MODEL",
+        "codeName" : "chat_model"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "召回重排模型",
       "name" : "rerank_model",
       "getPSDEField" : {
@@ -4446,6 +4704,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "交谈模型标识",
+      "name" : "chat_model_id",
+      "getPSDEField" : {
+        "name" : "CHAT_MODEL_ID",
+        "codeName" : "chat_model_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "切片方法",
@@ -4570,6 +4839,21 @@
   }, {
     "name" : "ai_knowledge_base_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "交谈模型标识",
+      "name" : "n_chat_model_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CHAT_MODEL_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CHAT_MODEL_ID",
+        "codeName" : "chat_model_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "模型标识",
       "name" : "n_embedding_model_id_eq",
       "getPSDEFSearchMode" : {
@@ -5377,6 +5661,36 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "ai_knowledge_source",
+    "enableFKey" : true
+  }, {
+    "codeName" : "chat_model",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDERS/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID.json",
+    "fKeyName" : "F2009951F46EC6BA08",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+    },
+    "name" : "DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "CHAT_MODEL_ID",
+      "codeName" : "chat_model_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "CHAT_MODEL",
+      "codeName" : "chat_model"
+    },
+    "pickupDEFName" : "CHAT_MODEL_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "chat_model",
     "enableFKey" : true
   }, {
     "codeName" : "embedding_model",
