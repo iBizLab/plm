@@ -127,14 +127,6 @@
       "codeName" : "content"
     }
   }, {
-    "id" : "formitem2",
-    "hidden" : true,
-    "dataType" : 25
-  }, {
-    "id" : "formitem",
-    "hidden" : true,
-    "dataType" : 25
-  }, {
     "id" : "format_type",
     "hidden" : true,
     "dataType" : 25,
@@ -251,9 +243,38 @@
           "name" : "CONTENT",
           "codeName" : "content"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "NOTEQ",
+            "dEFDName" : "format_type",
+            "logicType" : "SINGLE",
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
+          } ],
+          "relatedDetailNames" : [ "format_type" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "NOTEQ",
+            "dEFDName" : "format_type",
+            "logicType" : "SINGLE",
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
+          } ],
+          "relatedDetailNames" : [ "format_type" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorParams" : {
+            "enableEdit" : "true",
             "LINKVIEWID" : "recent_mob_redirect_view",
+            "MAXHEIGHT" : "760",
             "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
             "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
             "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
@@ -269,7 +290,8 @@
             "pluginType" : "EDITOR_CUSTOMSTYLE",
             "pluginCode" : "MOB_VDITOR",
             "runtimeObject" : true
-          }
+          },
+          "placeHolder" : "暂无内容"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
@@ -277,112 +299,6 @@
         },
         "valueItemName" : "format_type",
         "allowEmpty" : true
-      }, {
-        "caption" : "正文",
-        "codeName" : "formitem2",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 4,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem2",
-        "noPrivDisplayMode" : 1,
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "name" : "format_type等于(=) HTML",
-            "value" : "HTML"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        }, {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "name" : "format_type等于(=) HTML",
-            "value" : "HTML"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        } ],
-        "getPSEditor" : {
-          "editorParams" : {
-            "SHOWCOLLAPSE" : "false"
-          },
-          "editorType" : "HIDDEN",
-          "name" : "formitem2",
-          "placeHolder" : "请输入内容"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "format_type",
-        "resetItemNames" : [ "format_type" ],
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "正文",
-        "codeName" : "formitem",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 4,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem",
-        "noPrivDisplayMode" : 1,
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "name" : "format_type等于(=) MD",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        }, {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "name" : "format_type等于(=) MD",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        } ],
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "formitem"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "format_type",
-        "resetItemNames" : [ "format_type" ],
-        "allowEmpty" : true,
-        "hidden" : true
       }, {
         "codeName" : "rawitem1",
         "contentType" : "RAW",
