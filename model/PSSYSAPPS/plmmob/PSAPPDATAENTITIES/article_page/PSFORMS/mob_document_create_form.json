@@ -121,22 +121,16 @@
     }
   }, {
     "id" : "format_type",
+    "hidden" : true,
     "dataType" : 25,
-    "createDV" : "HTML",
-    "updateDV" : "HTML",
+    "createDV" : "MD",
+    "updateDV" : "MD",
     "getPSAppDEField" : {
       "name" : "FORMAT_TYPE",
       "codeName" : "format_type"
     }
   }, {
     "id" : "content",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "CONTENT",
-      "codeName" : "content"
-    }
-  }, {
-    "id" : "formitem",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "CONTENT",
@@ -247,7 +241,7 @@
       "getPSDEFormDetails" : [ {
         "caption" : "类型",
         "codeName" : "format_type",
-        "createDV" : "HTML",
+        "createDV" : "MD",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -262,21 +256,16 @@
           "codeName" : "format_type"
         },
         "getPSEditor" : {
-          "editorType" : "MOBRADIOLIST",
-          "name" : "format_type",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/formattype_chg.json"
-          }
+          "editorType" : "HIDDEN",
+          "name" : "format_type"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "HTML",
+        "updateDV" : "MD",
         "allowEmpty" : true,
-        "needCodeListConfig" : true,
-        "showCaption" : true
+        "hidden" : true
       }, {
         "caption" : "正文",
         "codeName" : "content",
@@ -284,7 +273,7 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 4,
+        "ignoreInput" : 0,
         "labelPos" : "NONE",
         "labelWidth" : 0,
         "name" : "content",
@@ -298,10 +287,11 @@
           "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
+            "condOP" : "NOTEQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
-            "value" : "HTML"
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],
           "notMode" : false
@@ -310,10 +300,11 @@
           "logicCat" : "ITEMENABLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
+            "condOP" : "NOTEQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
-            "value" : "HTML"
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],
           "notMode" : false
@@ -322,62 +313,6 @@
           "editorType" : "MOBHTMLTEXT",
           "name" : "content",
           "placeHolder" : "请输入内容"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "format_type",
-        "resetItemNames" : [ "format_type" ],
-        "allowEmpty" : true
-      }, {
-        "caption" : "正文",
-        "codeName" : "formitem",
-        "dataType" : 21,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 4,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CONTENT",
-          "codeName" : "content"
-        },
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        }, {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        } ],
-        "getPSEditor" : {
-          "editorType" : "MOBMARKDOWN",
-          "maxLength" : 16777215,
-          "mode" : "EDIT",
-          "name" : "formitem",
-          "placeHolder" : "请输入内容",
-          "showMaxLength" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
@@ -400,6 +335,7 @@
             "condOP" : "EQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
+            "name" : "format_type等于(=) EXCEL",
             "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],
