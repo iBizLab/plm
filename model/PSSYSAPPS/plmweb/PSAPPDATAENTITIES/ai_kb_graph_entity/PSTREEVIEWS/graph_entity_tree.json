@@ -413,7 +413,7 @@
       "modelref" : true,
       "id" : "node"
     },
-    "name" : "null - null",
+    "name" : "实体类型 - 图谱实体",
     "parentFilter" : "type",
     "getParentPSDETreeNode" : {
       "modelref" : true,
@@ -426,7 +426,7 @@
       "modelref" : true,
       "id" : "node_1"
     },
-    "name" : "null - null",
+    "name" : "默认根节点 - 实体类型",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
@@ -438,7 +438,7 @@
       "modelref" : true,
       "id" : "node_3"
     },
-    "name" : "null - null",
+    "name" : "默认根节点 - 有搜索时启用（实体）",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
@@ -707,7 +707,7 @@
       "cLConvertMode" : "NONE",
       "dataType" : 25,
       "name" : "text",
-      "scriptCode" : "var type = data.type ? data.type : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\n\r\nif (type && type !== \"\") {\r\n    console.log(\"绘制类型图标\");\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag, type, context, \"\");\r\n    codeValue = codeItem.text;\r\n\r\n    if (codeItem.icon) {\r\n        // icon 是字符串，需要先解析为 JSON 对象\r\n        let iconArray;\r\n        try {\r\n            iconArray = JSON.parse(codeItem.icon);\r\n        } catch (e) {\r\n            console.error(\"解析 icon 字符串失败:\", e);\r\n            return codeValue; // 解析失败时回退到文本\r\n        }\r\n\r\n        if (Array.isArray(iconArray) && iconArray.length > 0) {\r\n            const icon = iconArray[0];\r\n            // 构建文件下载URL\r\n            const fileUrl = ibiz.util.file.calcFileUpDownUrl(\r\n                A.context,\r\n                A.params,\r\n                {},\r\n                { osscat: icon.folder }\r\n            );\r\n            // 替换文件ID\r\n            const downloadUrl = fileUrl.downloadUrl.replace(\"%fileId%\", icon.id);\r\n            try {\r\n                const response = await fetch(downloadUrl);\r\n                if (!response.ok) {\r\n                    return \"\";\r\n                }\r\n                const blob = await response.blob();\r\n\r\n                // 6. 将SVG转换为base64\r\n                const base64Data = await new Promise((resolve, reject) => {\r\n                    const reader = new FileReader();\r\n                    reader.onloadend = () => {\r\n                        let data = reader.result;\r\n                        if (data) {\r\n                            // 转换MIME类型\r\n                            data = data.replace(\"data:application/octet-stream;base64\", \"data:image/svg+xml;base64\");\r\n                        }\r\n                        resolve(data);\r\n                    };\r\n                    reader.onerror = reject;\r\n                    reader.readAsDataURL(blob);\r\n                });\r\n                const imgstr = `<img alt=\"${codeValue}\" src=\"${base64Data}\">`;\r\n                return `<div class=\"ibiz-code-list__item\" style=\"height: 36px;line-height: 36px;\">\r\n                        <div class=\"ibiz-icon\" style=\"height: 100%;padding-right: 8px;\">\r\n                            ${imgstr}\r\n                        </div>\r\n                    </div>`;\r\n            } catch (error) {\r\n                ibiz.log.error(error);\r\n            }\r\n        }\r\n    }\r\n}\r\nreturn codeValue;",
+      "scriptCode" : "var type = data.type ? data.type : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\n\r\nif (type && type !== \"\") {\r\n    console.log(\"绘制类型图标\");\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag, type, context, \"\");\r\n    codeValue = codeItem.text;\r\n\r\n    if (codeItem.icon) {\r\n        // icon 是字符串，需要先解析为 JSON 对象\r\n        let iconArray;\r\n        try {\r\n            iconArray = JSON.parse(codeItem.icon);\r\n        } catch (e) {\r\n            console.error(\"解析 icon 字符串失败:\", e);\r\n            return codeValue; // 解析失败时回退到文本\r\n        }\r\n\r\n        if (Array.isArray(iconArray) && iconArray.length > 0) {\r\n            const icon = iconArray[0];\r\n            // 构建文件下载URL\r\n            const fileUrl = ibiz.util.file.calcFileUpDownUrl(\r\n                context,\r\n                {},\r\n                {},\r\n                { osscat: icon.folder }\r\n            );\r\n            // 替换文件ID\r\n            const downloadUrl = fileUrl.downloadUrl.replace(\"%fileId%\", icon.id);\r\n            try {\r\n                const response = await fetch(downloadUrl);\r\n                if (!response.ok) {\r\n                    return \"\";\r\n                }\r\n                const blob = await response.blob();\r\n\r\n                // 6. 将SVG转换为base64\r\n                const base64Data = await new Promise((resolve, reject) => {\r\n                    const reader = new FileReader();\r\n                    reader.onloadend = () => {\r\n                        let data = reader.result;\r\n                        if (data) {\r\n                            // 转换MIME类型\r\n                            data = data.replace(\"data:application/octet-stream;base64\", \"data:image/svg+xml;base64\");\r\n                        }\r\n                        resolve(data);\r\n                    };\r\n                    reader.onerror = reject;\r\n                    reader.readAsDataURL(blob);\r\n                });\r\n                const imgstr = `<img alt=\"${codeValue}\" src=\"${base64Data}\">`;\r\n                return `<div class=\"ibiz-code-list__item\" style=\"height: 36px;line-height: 36px;\">\r\n                        <div class=\"ibiz-icon\" style=\"height: 100%;padding-right: 8px;\">\r\n                            ${imgstr}\r\n                        </div>\r\n                    </div>`;\r\n            } catch (error) {\r\n                ibiz.log.error(error);\r\n            }\r\n        }\r\n    }\r\n}\r\nreturn codeValue;",
       "customCode" : true
     } ],
     "getTextPSAppDEField" : {
