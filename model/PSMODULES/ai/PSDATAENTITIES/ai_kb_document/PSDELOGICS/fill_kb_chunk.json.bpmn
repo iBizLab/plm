@@ -6,18 +6,41 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_documentfill_kb_chunkdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_knowledge_base()" name="ai_kb_documentfill_kb_chunkkb" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService))" name="ai_knowledge_baseservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_documentService))" name="iBzSysAi_kb_documentDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_documentfill_kb_chunkdefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
+                            <tns:global identifier="ai_kb_documentfill_kb_chunkkb" type="cn.ibizlab.plm.core.ai.domain.ai_knowledge_base" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentfill_kb_chunkdebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="变更填充数据"/>
+                        <endEvent id="debugparam_01_end" name="end"/>
+                        <sequenceFlow id="debugparam_01_end_line" sourceRef="debugparam_01" targetRef="debugparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentfill_kb_chunkend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
-                    <sequenceFlow id="begin_debugparam_01" sourceRef="begin" targetRef="debugparam_01">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentfill_kb_chunkprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentfill_kb_chunkdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="查询知识库切片策略"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentfill_kb_chunkprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="填充知识库参数"/>
+                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_documentfill_kb_chunkdefault:ai_kb_document();
+                                            $ai_kb_documentfill_kb_chunkkb:ai_knowledge_base();
+                                    eval($ai_kb_documentfill_kb_chunkdefault==ai_kb_documentfill_kb_chunkdefault && $ai_kb_documentfill_kb_chunkkb==ai_kb_documentfill_kb_chunkkb);
+                                eval((RuleUtils.test($ai_kb_documentfill_kb_chunkdefault.get("customChunk"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam_01_end_01" sourceRef="debugparam_01" targetRef="end_01">
+                    <sequenceFlow id="prepareparam_01_deaction_01" sourceRef="prepareparam_01" targetRef="deaction_01">
                     </sequenceFlow>
+                    <sequenceFlow id="deaction_01_prepareparam_02" sourceRef="deaction_01" targetRef="prepareparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_end_01" sourceRef="prepareparam_02" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
         </process>
     </definitions>
