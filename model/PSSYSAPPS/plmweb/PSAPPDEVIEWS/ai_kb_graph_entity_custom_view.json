@@ -1038,6 +1038,176 @@
           } ],
           "modelid" : "b4a9a6d87135efe69ac2da46048ca5e6",
           "modeltype" : "PSDETOOLBAR"
+        }, {
+          "codeName" : "custom_view_node3_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "图谱实体树工作栏",
+          "name" : "node_3_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_3_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "聚焦此实体",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction1"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "聚焦此实体",
+              "codeName" : "focusEntity",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_focusEntity",
+              "name" : "聚焦此实体",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"聚焦此实体\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n\r\n// 设置节点状态：高亮0层、1层、2层节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n    graph.setElementVisibility(node.id, 'visibility');\r\n        acc[node.id] = keepNodeIds.has(node.id) \r\n            ? [\"highlight\"] \r\n            : [\"inactive\"];\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮0-1层和1-2层的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        graph.setElementVisibility(edge.id, 'visibility');\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]\r\n            : [\"inactive\"];\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 聚焦并缩放\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.2);",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "focusEntity",
+              "uIActionType" : "DEUIACTION",
+              "id" : "focusEntity@ai_kb_graph_entity"
+            },
+            "tooltip" : "聚焦此实体",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "隐藏此实体",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction2"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "隐藏此实体",
+              "codeName" : "hiddenEntity",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_hiddenEntity",
+              "name" : "隐藏此实体",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"隐藏此实体\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要隐藏的节点和边集合\r\nconst hideElements = [];\r\nhideElements.push(ai_kb_graph_entity)\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity || targetId === ai_kb_graph_entity) {\r\n        hideElements.push(edge.id)\r\n    }\r\n});\r\n\r\n// 隐藏多个元素\r\nawait graph.hideElement(hideElements);",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "hiddenEntity",
+              "uIActionType" : "DEUIACTION",
+              "id" : "hiddenEntity@ai_kb_graph_entity"
+            },
+            "tooltip" : "隐藏此实体",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "高亮关联",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction3",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction3"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "高亮关联",
+              "codeName" : "highlight",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_highlight",
+              "name" : "高亮关联",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity || targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id)\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        graph.setElementVisibility(node.id, 'visibility');\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        graph.setElementVisibility(edge.id, 'visibility');\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "highlight",
+              "uIActionType" : "DEUIACTION",
+              "id" : "highlight@ai_kb_graph_entity"
+            },
+            "tooltip" : "高亮关联",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "按类型筛选",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction4",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction4"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "按类型筛选",
+              "codeName" : "typeFilter",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_typeFilter",
+              "name" : "按类型筛选",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"按类型筛选\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst type = data[0].type;\r\nview.params.n_type_eq = type\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\ngraph_tree.refresh()\r\n\r\n",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "typeFilter",
+              "uIActionType" : "DEUIACTION",
+              "id" : "typeFilter@ai_kb_graph_entity"
+            },
+            "tooltip" : "按类型筛选",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "导出子图",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction5",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction5"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "导出子图",
+              "codeName" : "exportChildren",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_exportChildren",
+              "name" : "导出子图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\ngraph_tree.exportImage()",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "exportChildren",
+              "uIActionType" : "DEUIACTION",
+              "id" : "exportChildren@ai_kb_graph_entity"
+            },
+            "tooltip" : "导出子图",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "modelid" : "b4a9a6d87135efe69ac2da46048ca5e6",
+          "modeltype" : "PSDETOOLBAR"
         } ],
         "getPSDETreeNodeRSs" : [ {
           "getChildPSDETreeNode" : {
@@ -1385,11 +1555,182 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           },
+          "getPSDEContextMenu" : {
+            "codeName" : "custom_view_node3_cm",
+            "controlType" : "CONTEXTMENU",
+            "logicName" : "图谱实体树工作栏",
+            "name" : "node_3_cm",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            },
+            "getPSControlParam" : {
+              "id" : "node_3_cm"
+            },
+            "getPSDEToolbarItems" : [ {
+              "caption" : "聚焦此实体",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction1",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "node_3_cm_deuiaction1"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "聚焦此实体",
+                "codeName" : "focusEntity",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "ai_kb_graph_entity_focusEntity",
+                "name" : "聚焦此实体",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+                },
+                "scriptCode" : "console.log(\"聚焦此实体\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n\r\n// 设置节点状态：高亮0层、1层、2层节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n    graph.setElementVisibility(node.id, 'visibility');\r\n        acc[node.id] = keepNodeIds.has(node.id) \r\n            ? [\"highlight\"] \r\n            : [\"inactive\"];\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮0-1层和1-2层的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        graph.setElementVisibility(edge.id, 'visibility');\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]\r\n            : [\"inactive\"];\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 聚焦并缩放\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.2);",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "focusEntity",
+                "uIActionType" : "DEUIACTION",
+                "id" : "focusEntity@ai_kb_graph_entity"
+              },
+              "tooltip" : "聚焦此实体",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "隐藏此实体",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction2",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "node_3_cm_deuiaction2"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "隐藏此实体",
+                "codeName" : "hiddenEntity",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "ai_kb_graph_entity_hiddenEntity",
+                "name" : "隐藏此实体",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+                },
+                "scriptCode" : "console.log(\"隐藏此实体\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要隐藏的节点和边集合\r\nconst hideElements = [];\r\nhideElements.push(ai_kb_graph_entity)\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity || targetId === ai_kb_graph_entity) {\r\n        hideElements.push(edge.id)\r\n    }\r\n});\r\n\r\n// 隐藏多个元素\r\nawait graph.hideElement(hideElements);",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "hiddenEntity",
+                "uIActionType" : "DEUIACTION",
+                "id" : "hiddenEntity@ai_kb_graph_entity"
+              },
+              "tooltip" : "隐藏此实体",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "高亮关联",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction3",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "node_3_cm_deuiaction3"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "高亮关联",
+                "codeName" : "highlight",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "ai_kb_graph_entity_highlight",
+                "name" : "高亮关联",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+                },
+                "scriptCode" : "console.log(\"高亮关联\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有出入边\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity || targetId === ai_kb_graph_entity) {\r\n        keepEdgeIds.add(edge.id)\r\n    }\r\n});\r\n\r\n// 设置节点状态：高亮当前节点\r\ngraph.setElementState(\r\n    graph.getNodeData().reduce((acc, node) => {\r\n        graph.setElementVisibility(node.id, 'visibility');\r\n        acc[node.id] = keepNodeIds.has(node.id)\r\n            ? [\"highlight\"] // 高亮状态\r\n            : [\"inactive\"]; // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\n\r\n// 设置边状态：高亮直接相连的边\r\ngraph.setElementState(\r\n    graph.getEdgeData().reduce((acc, edge) => {\r\n        graph.setElementVisibility(edge.id, 'visibility');\r\n        acc[edge.id] = keepEdgeIds.has(edge.id)\r\n            ? [\"highlight\"]  // 高亮状态\r\n            : [\"inactive\"];  // 淡化状态\r\n        return acc;\r\n    }, {})\r\n);\r\nawait graph.focusElement(ai_kb_graph_entity);\r\ngraph.zoomTo(1.1);\r\n",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "highlight",
+                "uIActionType" : "DEUIACTION",
+                "id" : "highlight@ai_kb_graph_entity"
+              },
+              "tooltip" : "高亮关联",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "按类型筛选",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction4",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "node_3_cm_deuiaction4"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "按类型筛选",
+                "codeName" : "typeFilter",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "ai_kb_graph_entity_typeFilter",
+                "name" : "按类型筛选",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+                },
+                "scriptCode" : "console.log(\"按类型筛选\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst type = data[0].type;\r\nview.params.n_type_eq = type\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\ngraph_tree.refresh()\r\n\r\n",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "typeFilter",
+                "uIActionType" : "DEUIACTION",
+                "id" : "typeFilter@ai_kb_graph_entity"
+              },
+              "tooltip" : "按类型筛选",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "导出子图",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction5",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "node_3_cm_deuiaction5"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "导出子图",
+                "codeName" : "exportChildren",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "ai_kb_graph_entity_exportChildren",
+                "name" : "导出子图",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+                },
+                "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\ngraph_tree.exportImage()",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "exportChildren",
+                "uIActionType" : "DEUIACTION",
+                "id" : "exportChildren@ai_kb_graph_entity"
+              },
+              "tooltip" : "导出子图",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            } ],
+            "modelid" : "b4a9a6d87135efe69ac2da46048ca5e6",
+            "modeltype" : "PSDETOOLBAR"
+          },
           "getPSDETreeNodeDataItems" : [ {
             "cLConvertMode" : "NONE",
             "dataType" : 25,
-            "name" : "text",
-            "scriptCode" : "var type = data.type ? data.type : \"\";\r\nvar entityName = data.name ? data.name : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\nconsole.log(\"有搜索时启用-绘制图标\");\r\nif (type && type !== \"\") {\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag, type, context, \"\");\r\n    codeValue = codeItem.text;\r\n    if (codeItem.icon) {\r\n        // icon 是字符串，需要先解析为 JSON 对象\r\n        let iconArray;\r\n        try {\r\n            iconArray = JSON.parse(codeItem.icon);\r\n        } catch (e) {\r\n            console.error(\"解析 icon 字符串失败:\", e);\r\n            return codeValue; // 解析失败时回退到文本\r\n        }\r\n\r\n        if (Array.isArray(iconArray) && iconArray.length > 0) {\r\n            const icon = iconArray[0];\r\n            // 构建文件下载URL\r\n            const fileUrl = ibiz.util.file.calcFileUpDownUrl(\r\n                context,\r\n                {},\r\n                {},\r\n                { osscat: icon.folder }\r\n            );\r\n            // 替换文件ID\r\n            const downloadUrl = fileUrl.downloadUrl.replace(\"%fileId%\", icon.id);\r\n            if (icon.name && icon.name.split(\".\").pop() === \"svg\") {\r\n                try {\r\n                    const response = await fetch(downloadUrl);\r\n                    if (!response.ok) {\r\n                        return \"\";\r\n                    }\r\n                    const blob = await response.blob();\r\n\r\n                    // 6将SVG转换为base64\r\n                    const base64Data = await new Promise((resolve, reject) => {\r\n                        const reader = new FileReader();\r\n                        reader.onloadend = () => {\r\n                            let data = reader.result;\r\n                            if (data) {\r\n                                // 转换MIME类型\r\n                                data = data.replace(\"data:application/octet-stream;base64\", \"data:image/svg+xml;base64\");\r\n                            }\r\n                            resolve(data);\r\n                        };\r\n                        reader.onerror = reject;\r\n                        reader.readAsDataURL(blob);\r\n                    });\r\n                    const imgstr = `<img alt=\"${codeValue}\" src=\"${base64Data}\" style=\"width: 25px; height: 25px;\">`;\r\n                    return `<div class=\"ibiz-code-list__item\" style=\"height: 36px; line-height: 36px; display: flex; align-items: center; gap:5px;\">  ${imgstr} ${entityName}</div>`;\r\n                } catch (error) {\r\n                    ibiz.log.error(error);\r\n                }\r\n            }else{\r\n                const imgstr = `<img alt=\"${codeValue}\" src=\"${downloadUrl}\" style=\"width: 25px; height: 25px;\">`;\r\n                return `<div class=\"ibiz-code-list__item\" style=\"height: 36px; line-height: 36px; display: flex; align-items: center; gap:5px;\">  ${imgstr} ${entityName}</div>`;\r\n            }\r\n        }\r\n    }\r\n}\r\nreturn entityName;",
+            "name" : "icon",
+            "scriptCode" : "var type = data.type ? data.type : \"\";\r\nvar entityName = data.name ? data.name : \"\";\r\nvar codeValue = \"\";\r\nvar codeItem = \"\";\r\nconsole.log(\"有搜索时启用-绘制图标\");\r\nif (type && type !== \"\") {\r\n    var codelisttag = \"ai__entity_types\";\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    const codelist = app.codeList;\r\n    codeItem = await codelist.getItem(codelisttag, type, context, \"\");\r\n    codeValue = codeItem.text;\r\n    if (codeItem.icon) {\r\n        // icon 是字符串，需要先解析为 JSON 对象\r\n        let iconArray;\r\n        try {\r\n            iconArray = JSON.parse(codeItem.icon);\r\n        } catch (e) {\r\n            console.error(\"解析 icon 字符串失败:\", e);\r\n            return codeValue; // 解析失败时回退到文本\r\n        }\r\n\r\n        if (Array.isArray(iconArray) && iconArray.length > 0) {\r\n            const icon = iconArray[0];\r\n            // 构建文件下载URL\r\n            const fileUrl = ibiz.util.file.calcFileUpDownUrl(\r\n                context,\r\n                {},\r\n                {},\r\n                { osscat: icon.folder }\r\n            );\r\n            // 替换文件ID\r\n            const downloadUrl = fileUrl.downloadUrl.replace(\"%fileId%\", icon.id);\r\n            if (icon.name && icon.name.split(\".\").pop() === \"svg\") {\r\n                try {\r\n                    const response = await fetch(downloadUrl);\r\n                    if (!response.ok) {\r\n                        return \"\";\r\n                    }\r\n                    const blob = await response.blob();\r\n\r\n                    // 6将SVG转换为base64\r\n                    const base64Data = await new Promise((resolve, reject) => {\r\n                        const reader = new FileReader();\r\n                        reader.onloadend = () => {\r\n                            let data = reader.result;\r\n                            if (data) {\r\n                                // 转换MIME类型\r\n                                data = data.replace(\"data:application/octet-stream;base64\", \"data:image/svg+xml;base64\");\r\n                            }\r\n                            resolve(data);\r\n                        };\r\n                        reader.onerror = reject;\r\n                        reader.readAsDataURL(blob);\r\n                    });\r\n                    const imgstr = `<img alt=\"${codeValue}\" src=\"${base64Data}\" style=\"width: 25px; height: 25px;\">`;\r\n                    return `<div class=\"ibiz-code-list__item\" style=\"height: 36px; line-height: 36px; display: flex; align-items: center; gap:5px;\">  ${imgstr}</div>`;\r\n                } catch (error) {\r\n                    ibiz.log.error(error);\r\n                }\r\n            }else{\r\n                const imgstr = `<img alt=\"${codeValue}\" src=\"${downloadUrl}\" style=\"width: 25px; height: 25px;\">`;\r\n                return `<div class=\"ibiz-code-list__item\" style=\"height: 36px; line-height: 36px; display: flex; align-items: center; gap:5px;\">  ${imgstr}</div>`;\r\n            }\r\n        }\r\n    }\r\n}\r\nreturn entityName;",
             "customCode" : true
           } ],
           "pagingSize" : 20,
