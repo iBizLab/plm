@@ -196,6 +196,7 @@
           },
           "getPSEditor" : {
             "editorParams" : {
+              "SRFNAVPARAM.n_model_category_eq" : "embedding",
               "AC" : "TRUE",
               "TRIGGER" : "TRUE",
               "PICKUPVIEW" : "FALSE"
@@ -217,6 +218,12 @@
             },
             "getPSEditorItems" : [ {
               "name" : "embedding_model_id"
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "n_model_category_eq",
+              "name" : "n_model_category_eq",
+              "value" : "embedding",
+              "rawValue" : true
             } ],
             "placeHolder" : "未指定时使用全局默认",
             "valueItemName" : "embedding_model_id",
@@ -802,6 +809,38 @@
               "repeatContent" : true,
               "showCaption" : true
             }, {
+              "codeName" : "chat_model",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "chat_model",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorParams" : {
+                  "SRFNAVPARAM.n_model_category_eq" : "chat"
+                },
+                "editorType" : "TEXTBOX",
+                "name" : "chat_model",
+                "getPSNavigateParams" : [ {
+                  "key" : "n_model_category_eq",
+                  "name" : "n_model_category_eq",
+                  "value" : "chat",
+                  "rawValue" : true
+                } ]
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 8,
+                "colMD" : 8,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true,
+              "showCaption" : true
+            }, {
               "caption" : "文本预处理规则",
               "codeName" : "pre_process_rules",
               "dataType" : 25,
@@ -831,15 +870,15 @@
               "repeatContent" : true,
               "showCaption" : true
             }, {
-              "caption" : "片段展开子提示词",
+              "caption" : "片段展开增强提示词",
               "codeName" : "chunk_extraction_sub_pnompt",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
-              "itemHeight" : 300.0,
-              "labelPos" : "LEFT",
+              "itemHeight" : 320.0,
+              "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "chunk_extraction_sub_pnompt",
               "noPrivDisplayMode" : 1,
@@ -1346,7 +1385,7 @@
                     "hidden" : true,
                     "repeatContent" : true
                   }, {
-                    "caption" : "消除歧义子提示词",
+                    "caption" : "消除歧义增强提示词",
                     "codeName" : "disambiguation_sub_prompt",
                     "dataType" : 25,
                     "detailStyle" : "DEFAULT",
@@ -1380,7 +1419,7 @@
                     "repeatContent" : true,
                     "showCaption" : true
                   }, {
-                    "caption" : "关系消歧子提示词",
+                    "caption" : "关系消歧增强提示词",
                     "codeName" : "relation_disambiguation_sub_prompt",
                     "dataType" : 25,
                     "detailStyle" : "DEFAULT",
