@@ -3869,20 +3869,50 @@
       "topPos" : 40,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM9",
-      "leftPos" : 1105,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "讨论",
+      "codeName" : "DEACTION6",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "commit_object"
+      },
+      "leftPos" : 920,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存关注人数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION8"
+          "id" : "PREPAREJSPARAM10"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM9"
+          "id" : "DEACTION6"
+        }
+      } ],
+      "topPos" : 620
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : -20,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "工作项",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
       "getPSDEUILogicNodeParams" : [ {
@@ -3891,9 +3921,9 @@
           "modelref" : true,
           "id" : "commit_object"
         },
-        "name" : "ctx[discuss_post] ==> commit_object[id]",
+        "name" : "ctx[work_item] ==> commit_object[id]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "discuss_post",
+        "srcFieldName" : "work_item",
         "getSrcPSDEUILogicParam" : {
           "modelref" : true,
           "id" : "ctx"
@@ -3935,170 +3965,11 @@
       } ],
       "topPos" : 480
     }, {
-      "codeName" : "DEACTION3",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "commit_object"
-      },
-      "leftPos" : 356,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存关注人数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        }
-      } ],
-      "topPos" : 620
-    }, {
-      "codeName" : "PREPAREJSPARAM7",
-      "leftPos" : 740,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "测试用例",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION5"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM7"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "commit_object"
-        },
-        "name" : "ctx[test_case] ==> commit_object[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "test_case",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 480
-    }, {
-      "codeName" : "DEACTION5",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "commit_object"
-      },
-      "leftPos" : 740,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存关注人数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION5"
-        }
-      } ],
-      "topPos" : 620
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : -20,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "工作项",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "commit_object"
-        },
-        "name" : "ctx[work_item] ==> commit_object[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "work_item",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 480
-    }, {
-      "codeName" : "PREPAREJSPARAM8",
-      "leftPos" : -244,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "页面",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION7"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM8"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "commit_object"
-        },
-        "name" : "ctx[article_page] ==> commit_object[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "article_page",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 480
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: \"article_page\",srfkey:context.principal_id})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 390,
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type,srfkey:context.principal_id})",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 50,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "通知刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -4108,88 +3979,10 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "RAWJSCODE2"
         }
       } ],
       "topPos" : 1050
-    }, {
-      "codeName" : "PREPAREJSPARAM6",
-      "leftPos" : 920,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "执行用例",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION6"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM6"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "commit_object"
-        },
-        "name" : "ctx[run] ==> commit_object[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "run",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 480
-    }, {
-      "codeName" : "PREPAREJSPARAM10",
-      "leftPos" : 220,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "空",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "PAGE",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "principal_type",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "ctx"
-            },
-            "logicType" : "SINGLE",
-            "name" : "ctx[principal_type] 等于(=) PAGE",
-            "paramValue" : "PAGE",
-            "value" : "PAGE"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        }
-      } ],
-      "topPos" : 936
     }, {
       "codeName" : "DEACTION4",
       "getDstPSAppDEAction" : {
@@ -4217,6 +4010,42 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEACTION4"
+        }
+      } ],
+      "topPos" : 620
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 260,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 1350
+    }, {
+      "codeName" : "DEACTION3",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "commit_object"
+      },
+      "leftPos" : 356,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存关注人数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
         }
       } ],
       "topPos" : 620
@@ -4254,26 +4083,20 @@
       } ],
       "topPos" : 480
     }, {
-      "codeName" : "END1",
-      "leftPos" : 260,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 1350
-    }, {
-      "codeName" : "DEACTION6",
+      "codeName" : "DEACTION2",
       "getDstPSAppDEAction" : {
         "modelref" : true,
         "id" : "update"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
       },
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
         "id" : "commit_object"
       },
-      "leftPos" : 920,
+      "leftPos" : 161,
       "logicNodeType" : "DEACTION",
       "name" : "保存关注人数据",
       "getPSDEUILogicLinks" : [ {
@@ -4285,64 +4108,7 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION6"
-        }
-      } ],
-      "topPos" : 620
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "mdctrl"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "mdctrl"
-      },
-      "leftPos" : 220,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "刷新列表",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        }
-      } ],
-      "topPos" : 1210
-    }, {
-      "codeName" : "DEACTION8",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "commit_object"
-      },
-      "leftPos" : 1105,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存关注人数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION8"
+          "id" : "DEACTION2"
         }
       } ],
       "topPos" : 620
@@ -4377,20 +4143,20 @@
       } ],
       "topPos" : 620
     }, {
-      "codeName" : "PREPAREJSPARAM4",
-      "leftPos" : 356,
+      "codeName" : "PREPAREJSPARAM9",
+      "leftPos" : 1105,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "工单",
+      "name" : "讨论",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION3"
+          "id" : "DEACTION8"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
+          "id" : "PREPAREJSPARAM9"
         }
       } ],
       "getPSDEUILogicNodeParams" : [ {
@@ -4399,9 +4165,9 @@
           "modelref" : true,
           "id" : "commit_object"
         },
-        "name" : "ctx[ticket] ==> commit_object[id]",
+        "name" : "ctx[discuss_post] ==> commit_object[id]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ticket",
+        "srcFieldName" : "discuss_post",
         "getSrcPSDEUILogicParam" : {
           "modelref" : true,
           "id" : "ctx"
@@ -4409,77 +4175,6 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 480
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type,srfkey:context.principal_id})",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 50,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 1050
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "attention_data"
-      },
-      "leftPos" : 164,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 222
-    }, {
-      "codeName" : "DEACTION7",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "commit_object"
-      },
-      "leftPos" : -244,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存关注人信息",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION7"
-        }
-      } ],
-      "topPos" : 620
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 161,
@@ -4711,37 +4406,186 @@
       } ],
       "topPos" : 316
     }, {
-      "codeName" : "DEACTION2",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "commit_object"
-      },
-      "leftPos" : 161,
-      "logicNodeType" : "DEACTION",
-      "name" : "保存关注人数据",
+      "codeName" : "PREPAREJSPARAM8",
+      "leftPos" : -244,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "页面",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM10"
+          "id" : "DEACTION7"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION2"
+          "id" : "PREPAREJSPARAM8"
         }
       } ],
-      "topPos" : 620
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "commit_object"
+        },
+        "name" : "ctx[article_page] ==> commit_object[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "article_page",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 480
     }, {
-      "code" : "return (async function() { \r\n    console.log('临时数据删除')\r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmmob.attention');\r\n    const list = service.local.getList();\r\n    var attention_data = uiLogic.attention_data;\r\n    // 临时数据删除\r\n    list.forEach(item => {\r\n        if(\r\n            item.user_id === uiLogic.default.user_id &&\r\n            item.owner_id === uiLogic.default.owner_id\r\n        ){\r\n            service.local.delete(context, item.id);\r\n        }else{\r\n            attention_data.push(item);\r\n        }\r\n    })\r\n    } \r\n)();\r\n",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "mdctrl"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "mdctrl"
+      },
+      "leftPos" : 220,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "刷新列表",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 1210
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: \"article_page\",srfkey:context.principal_id})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 390,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 1050
+    }, {
+      "codeName" : "PREPAREJSPARAM10",
+      "leftPos" : 220,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "空",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "PAGE",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) PAGE",
+            "paramValue" : "PAGE",
+            "value" : "PAGE"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        }
+      } ],
+      "topPos" : 936
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "attention_data"
+      },
+      "leftPos" : 164,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 222
+    }, {
+      "codeName" : "PREPAREJSPARAM6",
+      "leftPos" : 920,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "执行用例",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM6"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "commit_object"
+        },
+        "name" : "ctx[run] ==> commit_object[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "run",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 480
+    }, {
+      "code" : "return (async function() { \r\n    console.log('临时数据删除')\r\n    // 获取所有临时数据\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const service = await serviceUtil.getService(context, 'plmmob.attention');\r\n    const list = service.local.getList();\r\n    var attention_data = uiLogic.attention_data;\r\n    // 临时数据删除\r\n    list.forEach(item => {\r\n        // 用户id相等及所有者id相等则删除\r\n        if(\r\n            item.user_id === uiLogic.default.user_id &&\r\n            item.owner_id === uiLogic.default.owner_id\r\n        ){\r\n            service.local.delete(context, item.id);\r\n        }else{\r\n            attention_data.push(item);\r\n        }\r\n    })\r\n    } \r\n)();\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 164,
       "logicNodeType" : "RAWJSCODE",
@@ -4759,28 +4603,164 @@
         }
       } ],
       "topPos" : 140
+    }, {
+      "codeName" : "DEACTION7",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "commit_object"
+      },
+      "leftPos" : -244,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存关注人信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        }
+      } ],
+      "topPos" : 620
+    }, {
+      "codeName" : "PREPAREJSPARAM7",
+      "leftPos" : 740,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "测试用例",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION5"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM7"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "commit_object"
+        },
+        "name" : "ctx[test_case] ==> commit_object[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "test_case",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 480
+    }, {
+      "codeName" : "DEACTION8",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "commit_object"
+      },
+      "leftPos" : 1105,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存关注人数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION8"
+        }
+      } ],
+      "topPos" : 620
+    }, {
+      "codeName" : "PREPAREJSPARAM4",
+      "leftPos" : 356,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "工单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "commit_object"
+        },
+        "name" : "ctx[ticket] ==> commit_object[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ticket",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 480
+    }, {
+      "codeName" : "DEACTION5",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "commit_object"
+      },
+      "leftPos" : 740,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存关注人数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM10"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION5"
+        }
+      } ],
+      "topPos" : 620
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "attention_data",
-      "logicName" : "关注数据",
-      "name" : "关注数据",
-      "entityListParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "应用上下文",
-      "name" : "应用上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "attention_container",
-      "logicName" : "关注人容器对象",
-      "name" : "关注人容器对象",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "mdctrl",
       "logicName" : "多数据部件",
       "name" : "多数据部件",
@@ -4791,10 +4771,30 @@
       "name" : "提交对象",
       "entityParam" : true
     }, {
+      "codeName" : "attention_data",
+      "logicName" : "关注数据",
+      "name" : "关注数据",
+      "entityListParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "应用上下文",
+      "name" : "应用上下文",
+      "navContextParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "attention_container",
+      "logicName" : "关注人容器对象",
+      "name" : "关注人容器对象",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
