@@ -28,6 +28,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="设置禁用"/>
                         <endEvent id="prepareparam_01_end" name="end"/>
                         <sequenceFlow id="prepareparam_01_end_line" sourceRef="prepareparam_01" targetRef="prepareparam_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_08" id="prepareparam_08" implementation="http://www.jboss.org/drools/rule" name="准备embedding参数"/>
+                        <endEvent id="prepareparam_08_end" name="end"/>
+                        <sequenceFlow id="prepareparam_08_end_line" sourceRef="prepareparam_08" targetRef="prepareparam_08_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_04" id="prepareparam_04" implementation="http://www.jboss.org/drools/rule" name="设置tools"/>
                         <endEvent id="prepareparam_04_end" name="end"/>
                         <sequenceFlow id="prepareparam_04_end_line" sourceRef="prepareparam_04" targetRef="prepareparam_04_end"/>
@@ -88,6 +91,15 @@
                                             $ai_modelget_cloud_configmap:Map();
                                     eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
                                 eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("active"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_08" sourceRef="gateway-begin" targetRef="prepareparam_08">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_modelget_cloud_configdefault:ai_model();
+                                            $ai_modelget_cloud_configmap:Map();
+                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("modelCategory"),"EQ","embedding")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>

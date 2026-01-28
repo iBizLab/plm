@@ -78,6 +78,17 @@ package cn.ibizlab.plm.ai.logic.ai_modellogic.get_cloud_config;
                         update(ai_modelget_cloud_configmap);//更新fact中变量值
             end
 
+            //逻辑处理节点[准备embedding参数]
+            rule "prepareparam_08"
+            ruleflow-group "ai_modelget_cloud_configprepareparam_08"
+            when
+            then
+                            ai_modelget_cloud_configmap.set("embeddingmodel",ai_modelget_cloud_configdefault.get("codename"));
+                            ai_modelget_cloud_configmap.set("embeddingurl",ai_modelget_cloud_configdefault.get("apibaseurl"));
+                        update(ai_modelget_cloud_configdefault);//更新fact中变量值
+                        update(ai_modelget_cloud_configmap);//更新fact中变量值
+            end
+
             //逻辑处理节点[设置tools]
             rule "prepareparam_04"
             ruleflow-group "ai_modelget_cloud_configprepareparam_04"

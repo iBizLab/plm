@@ -168,6 +168,32 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
+        "id" : "PREPAREPARAM_08"
+      },
+      "name" : "embedding类",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "MODEL_CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[MODEL_CATEGORY] 等于(=) embedding",
+          "paramValue" : "embedding"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
         "id" : "PREPAREPARAM_02"
       },
       "name" : "连接名称",
@@ -269,10 +295,10 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 902,
+    "leftPos" : 980,
     "logicNodeType" : "RAWSFCODE",
     "name" : "发布oss配置代码",
-    "topPos" : 226,
+    "topPos" : 247,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_06",
@@ -305,6 +331,40 @@
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "1",
       "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 367,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_08",
+    "leftPos" : 980,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备embedding参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "embeddingmodel",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CODE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "embeddingurl",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "map"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "API_BASE_URL",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 367,
     "parallelOutput" : true
