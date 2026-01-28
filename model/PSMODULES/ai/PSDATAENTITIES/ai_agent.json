@@ -26,6 +26,17 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "codeName" : "A1ae2bf474a0bf2c5b0",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDELOGICS/reload_aiagents.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Create.json",
@@ -49,6 +60,17 @@
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "codeName" : "Ac3ef17cf7dd527949b",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDELOGICS/reload_aiagents.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Update",
     "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDEACTIONS/Update.json",
@@ -72,6 +94,17 @@
   }, {
     "actionMode" : "DELETE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "codeName" : "A32f7870752332b5dcb",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDELOGICS/reload_aiagents.json"
+      },
+      "internalLogic" : true
+    } ],
     "batchActionMode" : 1,
     "codeName" : "Remove",
     "dataAccessAction" : "DELETE",
@@ -3592,6 +3625,59 @@
     "stringLength" : 100,
     "valueFormat" : "%1$s",
     "linkDEField" : true
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "reload_aiagents",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent/PSDELOGICS/reload_aiagents.json",
+    "logicName" : "reload_aiagents",
+    "memo" : "重载AI代理对象",
+    "name" : "reload_aiagents",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 220,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 120,
+      "parallelOutput" : true
+    }, {
+      "code" : "def system_id = sys.deploySystemId\n//合成当前系统AI工厂reload信号标识\ndef reload_tag = \"reloadsignal-$system_id-sysaifactory-ai-ibizplmintelligence\"\ndef config = [:]\nconfig.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()\n//发布配置\nnet.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)\n",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 180,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "触发刷新信号",
+      "topPos" : 305,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "ai_agent_dto",
