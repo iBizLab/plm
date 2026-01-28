@@ -239,33 +239,66 @@
       "showIcon" : true
     }, {
       "caption" : "导出子图",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction5",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "node_cm_deuiaction5"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "NONE",
-        "caption" : "导出子图",
-        "codeName" : "exportSecondChildren",
-        "frontProcessType" : "OTHER",
-        "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
-        "name" : "导出子图(包含间接关系)",
+      "groupExtractMode" : "ITEMX",
+      "itemType" : "ITEMS",
+      "name" : "items2",
+      "getPSUIActionGroup" : {
+        "name" : "导出子图",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
         },
-        "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "exportSecondChildren",
-        "uIActionType" : "DEUIACTION",
-        "id" : "exportSecondChildren@ai_kb_graph_entity"
+        "getPSUIActionGroupDetails" : [ {
+          "caption" : "包含间接关系",
+          "detailType" : "DEUIACTION",
+          "name" : "uc690c89",
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "包含间接关系",
+            "codeName" : "exportFirstChildren",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "ai_kb_graph_entity_exportFirstChildren",
+            "name" : "导出子图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            },
+            "scriptCode" : "console.log(\"导出一层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(targetId);\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(sourceId);\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});\r\n",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "exportFirstChildren",
+            "uIActionType" : "DEUIACTION",
+            "id" : "exportFirstChildren@ai_kb_graph_entity"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "导出子图",
+          "detailType" : "DEUIACTION",
+          "name" : "u8992f8c",
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "导出子图",
+            "codeName" : "exportSecondChildren",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
+            "name" : "导出子图(包含间接关系)",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            },
+            "scriptCode" : "console.log(\"导出二层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "exportSecondChildren",
+            "uIActionType" : "DEUIACTION",
+            "id" : "exportSecondChildren@ai_kb_graph_entity"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        } ]
       },
       "tooltip" : "导出子图",
-      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -442,33 +475,66 @@
       "showIcon" : true
     }, {
       "caption" : "导出子图",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction5",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "node_3_cm_deuiaction5"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "NONE",
-        "caption" : "导出子图",
-        "codeName" : "exportSecondChildren",
-        "frontProcessType" : "OTHER",
-        "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
-        "name" : "导出子图(包含间接关系)",
+      "groupExtractMode" : "ITEMX",
+      "itemType" : "ITEMS",
+      "name" : "items2",
+      "getPSUIActionGroup" : {
+        "name" : "导出子图",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
         },
-        "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "exportSecondChildren",
-        "uIActionType" : "DEUIACTION",
-        "id" : "exportSecondChildren@ai_kb_graph_entity"
+        "getPSUIActionGroupDetails" : [ {
+          "caption" : "包含间接关系",
+          "detailType" : "DEUIACTION",
+          "name" : "uc690c89",
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "包含间接关系",
+            "codeName" : "exportFirstChildren",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "ai_kb_graph_entity_exportFirstChildren",
+            "name" : "导出子图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            },
+            "scriptCode" : "console.log(\"导出一层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(targetId);\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(sourceId);\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});\r\n",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "exportFirstChildren",
+            "uIActionType" : "DEUIACTION",
+            "id" : "exportFirstChildren@ai_kb_graph_entity"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "导出子图",
+          "detailType" : "DEUIACTION",
+          "name" : "u8992f8c",
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "导出子图",
+            "codeName" : "exportSecondChildren",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
+            "name" : "导出子图(包含间接关系)",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+            },
+            "scriptCode" : "console.log(\"导出二层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "exportSecondChildren",
+            "uIActionType" : "DEUIACTION",
+            "id" : "exportSecondChildren@ai_kb_graph_entity"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        } ]
       },
       "tooltip" : "导出子图",
-      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -729,33 +795,66 @@
         "showIcon" : true
       }, {
         "caption" : "导出子图",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction5",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "node_cm_deuiaction5"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "caption" : "导出子图",
-          "codeName" : "exportSecondChildren",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
-          "name" : "导出子图(包含间接关系)",
+        "groupExtractMode" : "ITEMX",
+        "itemType" : "ITEMS",
+        "name" : "items2",
+        "getPSUIActionGroup" : {
+          "name" : "导出子图",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           },
-          "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "exportSecondChildren",
-          "uIActionType" : "DEUIACTION",
-          "id" : "exportSecondChildren@ai_kb_graph_entity"
+          "getPSUIActionGroupDetails" : [ {
+            "caption" : "包含间接关系",
+            "detailType" : "DEUIACTION",
+            "name" : "uc690c89",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "包含间接关系",
+              "codeName" : "exportFirstChildren",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_exportFirstChildren",
+              "name" : "导出子图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"导出一层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(targetId);\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(sourceId);\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});\r\n",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "exportFirstChildren",
+              "uIActionType" : "DEUIACTION",
+              "id" : "exportFirstChildren@ai_kb_graph_entity"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "导出子图",
+            "detailType" : "DEUIACTION",
+            "name" : "u8992f8c",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "导出子图",
+              "codeName" : "exportSecondChildren",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
+              "name" : "导出子图(包含间接关系)",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"导出二层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "exportSecondChildren",
+              "uIActionType" : "DEUIACTION",
+              "id" : "exportSecondChildren@ai_kb_graph_entity"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ]
         },
         "tooltip" : "导出子图",
-        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       } ],
@@ -1025,33 +1124,66 @@
         "showIcon" : true
       }, {
         "caption" : "导出子图",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction5",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "node_3_cm_deuiaction5"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "caption" : "导出子图",
-          "codeName" : "exportSecondChildren",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
-          "name" : "导出子图(包含间接关系)",
+        "groupExtractMode" : "ITEMX",
+        "itemType" : "ITEMS",
+        "name" : "items2",
+        "getPSUIActionGroup" : {
+          "name" : "导出子图",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
           },
-          "scriptCode" : "console.log(\"导出子图\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "exportSecondChildren",
-          "uIActionType" : "DEUIACTION",
-          "id" : "exportSecondChildren@ai_kb_graph_entity"
+          "getPSUIActionGroupDetails" : [ {
+            "caption" : "包含间接关系",
+            "detailType" : "DEUIACTION",
+            "name" : "uc690c89",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "包含间接关系",
+              "codeName" : "exportFirstChildren",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_exportFirstChildren",
+              "name" : "导出子图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"导出一层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n\r\n// 获取当前节点的所有相邻节点\r\ngraph.getEdgeData().forEach(edge => {\r\n    const sourceId = edge.source;\r\n    const targetId = edge.target;\r\n    // 双向判断（处理无向图或双向边）\r\n    if (sourceId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(targetId);\r\n        keepEdgeIds.add(edge.id);\r\n    } else if (targetId === ai_kb_graph_entity) {\r\n        keepNodeIds.add(sourceId);\r\n        keepEdgeIds.add(edge.id);\r\n    }\r\n});\r\n\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});\r\n",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "exportFirstChildren",
+              "uIActionType" : "DEUIACTION",
+              "id" : "exportFirstChildren@ai_kb_graph_entity"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "导出子图",
+            "detailType" : "DEUIACTION",
+            "name" : "u8992f8c",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "导出子图",
+              "codeName" : "exportSecondChildren",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "ai_kb_graph_entity_exportSecondChildren",
+              "name" : "导出子图(包含间接关系)",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_graph_entity.json"
+              },
+              "scriptCode" : "console.log(\"导出二层邻居\");\r\nconst ai_kb_graph_entity = data[0].id;\r\nconst graph_tree = view.getCtrl(\"TREE\", \"treeexpbar2_tree\");\r\nconst graph = graph_tree.graph;\r\n// 初始化需要保留的节点和边集合\r\nconst keepNodeIds = new Set([ai_kb_graph_entity]);\r\nconst keepEdgeIds = new Set();\r\n// 获取当前节点的所有相邻节点（1层邻居）\r\nconst layer1Nodes = [];\r\ngraph.getEdgeData().forEach(edge => {\r\n    const { source, target, id } = edge;\r\n    if (source === ai_kb_graph_entity) {\r\n        keepNodeIds.add(target);\r\n        layer1Nodes.push(target);\r\n        keepEdgeIds.add(id);\r\n    } else if (target === ai_kb_graph_entity) {\r\n        keepNodeIds.add(source);\r\n        layer1Nodes.push(source);\r\n        keepEdgeIds.add(id);\r\n    }\r\n});\r\n\r\n// 获取1层节点的相邻节点（2层邻居）\r\nlayer1Nodes.forEach(nodeId => {\r\n    graph.getEdgeData().forEach(edge => {\r\n        const { source, target, id } = edge;\r\n        // 检查是否连接到1层节点\r\n        if (source === nodeId || target === nodeId) {\r\n            const neighbor = source === nodeId ? target : source;\r\n            // 仅添加未在keepNodeIds中的节点（避免重复和回溯）\r\n            if (!keepNodeIds.has(neighbor)) {\r\n                keepNodeIds.add(neighbor);\r\n                keepEdgeIds.add(id);\r\n            }\r\n        }\r\n    });\r\n});\r\n//导出子图\r\ngraph_tree.exportImage({\r\n    nodes: Array.from(keepNodeIds),\r\n    edges: Array.from(keepEdgeIds)\r\n});",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "exportSecondChildren",
+              "uIActionType" : "DEUIACTION",
+              "id" : "exportSecondChildren@ai_kb_graph_entity"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ]
         },
         "tooltip" : "导出子图",
-        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       } ],
