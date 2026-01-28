@@ -2146,32 +2146,6 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM_01"
-        },
-        "name" : "禁用时",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "ACTIVE",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[ACTIVE] 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
           "id" : "PREPAREPARAM_08"
         },
         "name" : "embedding类",
@@ -2189,6 +2163,32 @@
             "logicType" : "SINGLE",
             "name" : "Default[MODEL_CATEGORY] 等于(=) embedding",
             "paramValue" : "embedding"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "禁用时",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "ACTIVE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[ACTIVE] 等于(=) 0",
+            "paramValue" : "0"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -2217,6 +2217,16 @@
             "paramValue" : "0"
           } ]
         },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_09"
+        },
+        "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "Begin"
@@ -2384,7 +2394,7 @@
       "topPos" : 367,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal()\r\ndef _map = logic.param('map').getReal()\r\ndef key = _default.get(\"id\")\r\ndef token = \"credential- ${sys.getDeploySystemId()}-ai--${key}\"\r\n_map.set(\"embeddingtoken\",token)",
+      "code" : "def _default = logic.param('default').getReal()\ndef _map = logic.param('map').getReal()\ndef key = _default.get(\"id\")\ndef token = \"credential- ${sys.getDeploySystemId()}-ai--${key}\"\n_map.set(\"embeddingtoken\",token)",
       "codeName" : "RAWSFCODE_02",
       "codeType" : "Groovy",
       "leftPos" : 1116,
@@ -2434,6 +2444,40 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 390,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_09",
+      "leftPos" : 920,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备rerank参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "textrerankmodel",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "map"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "CODE_NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "textrerankurl",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "map"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "API_BASE_URL",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM_03",

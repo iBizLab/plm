@@ -38,6 +38,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_05" id="prepareparam_05" implementation="http://www.jboss.org/drools/rule" name="设置aitype"/>
                         <endEvent id="prepareparam_05_end" name="end"/>
                         <sequenceFlow id="prepareparam_05_end_line" sourceRef="prepareparam_05" targetRef="prepareparam_05_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_09" id="prepareparam_09" implementation="http://www.jboss.org/drools/rule" name="准备rerank参数"/>
+                        <endEvent id="prepareparam_09_end" name="end"/>
+                        <sequenceFlow id="prepareparam_09_end_line" sourceRef="prepareparam_09" targetRef="prepareparam_09_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="设置think"/>
                         <endEvent id="prepareparam_03_end" name="end"/>
                         <sequenceFlow id="prepareparam_03_end_line" sourceRef="prepareparam_03" targetRef="prepareparam_03_end"/>
@@ -86,21 +89,21 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $ai_modelget_cloud_configdefault:ai_model();
-                                            $ai_modelget_cloud_configmap:Map();
-                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
-                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("active"),"EQ","0")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
                     <sequenceFlow id="gateway-begin_prepareparam_08" sourceRef="gateway-begin" targetRef="prepareparam_08">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_modelget_cloud_configdefault:ai_model();
                                             $ai_modelget_cloud_configmap:Map();
                                     eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
                                 eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("modelCategory"),"EQ","embedding")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_modelget_cloud_configdefault:ai_model();
+                                            $ai_modelget_cloud_configmap:Map();
+                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("active"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -112,6 +115,8 @@
                                 eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("descOssImage"),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="begin_prepareparam_09" sourceRef="begin" targetRef="prepareparam_09">
                     </sequenceFlow>
                     <sequenceFlow id="begin_end_01" sourceRef="begin" targetRef="end_01">
                     </sequenceFlow>
