@@ -336,9 +336,20 @@
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_08",
-    "leftPos" : 980,
+    "leftPos" : 920,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备embedding参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_08"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "embeddingmodel",
       "getDstPSDELogicParam" : {
@@ -366,6 +377,15 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
+    "topPos" : 367,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('default').getReal()\r\ndef _map = logic.param('map').getReal()\r\ndef key = _default.get(\"id\")\r\ndef token = \"credential- ${sys.getDeploySystemId()}-ai--${key}\"\r\n_map.set(\"embeddingtoken\",token)",
+    "codeName" : "RAWSFCODE_02",
+    "codeType" : "Groovy",
+    "leftPos" : 1116,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "写入embeddingtoken",
     "topPos" : 367,
     "parallelOutput" : true
   }, {

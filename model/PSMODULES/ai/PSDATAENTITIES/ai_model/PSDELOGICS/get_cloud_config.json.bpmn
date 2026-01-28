@@ -29,8 +29,9 @@
                         <endEvent id="prepareparam_01_end" name="end"/>
                         <sequenceFlow id="prepareparam_01_end_line" sourceRef="prepareparam_01" targetRef="prepareparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_08" id="prepareparam_08" implementation="http://www.jboss.org/drools/rule" name="准备embedding参数"/>
-                        <endEvent id="prepareparam_08_end" name="end"/>
-                        <sequenceFlow id="prepareparam_08_end_line" sourceRef="prepareparam_08" targetRef="prepareparam_08_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="写入embeddingtoken"/>
+                        <endEvent id="rawsfcode_02_end" name="end"/>
+                        <sequenceFlow id="rawsfcode_02_end_line" sourceRef="rawsfcode_02" targetRef="rawsfcode_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_04" id="prepareparam_04" implementation="http://www.jboss.org/drools/rule" name="设置tools"/>
                         <endEvent id="prepareparam_04_end" name="end"/>
                         <sequenceFlow id="prepareparam_04_end_line" sourceRef="prepareparam_04" targetRef="prepareparam_04_end"/>
@@ -115,6 +116,8 @@
                     <sequenceFlow id="begin_end_01" sourceRef="begin" targetRef="end_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_07_rawsfcode_01" sourceRef="prepareparam_07" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_08_rawsfcode_02" sourceRef="prepareparam_08" targetRef="rawsfcode_02">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
