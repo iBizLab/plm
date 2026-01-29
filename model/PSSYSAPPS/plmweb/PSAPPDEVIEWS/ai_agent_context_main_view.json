@@ -2066,6 +2066,7 @@
           "infoGroupMode" : false,
           "showCaption" : false
         }, {
+          "actionGroupExtractMode" : "ITEM",
           "caption" : "智能体工作流",
           "codeName" : "grouppanel10",
           "detailStyle" : "DEFAULT",
@@ -2170,6 +2171,68 @@
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
+          },
+          "getPSUIActionGroup" : {
+            "codeName" : "Auto51667735",
+            "name" : "智能体flow界面行为组",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSUIActionGroupDetails" : [ {
+              "caption" : "设计",
+              "detailType" : "DEUIACTION",
+              "name" : "u8524b12",
+              "getPSSysImage" : {
+                "glyph" : "xf0ad@FontAwesome",
+                "cssClass" : "fa fa-wrench"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEKEY",
+                "caption" : "设计",
+                "codeName" : "open_design_view",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogicLogicDesign_AIAgent.json",
+                  "viewType" : "DESUBAPPREFVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "ai_agent_context_open_design_view",
+                "name" : "智能体工作流设计",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+                },
+                "getPSNavigateContexts" : [ {
+                  "key" : "PSDELOGIC",
+                  "name" : "PSDELOGIC",
+                  "value" : "${ai_agent_context}@ai.AI_AGENT_CONTEXT.agent_flow_templ",
+                  "rawValue" : false
+                }, {
+                  "key" : "PSSYSAICHATAGENT",
+                  "name" : "PSSYSAICHATAGENT",
+                  "value" : "ai.iBizPLMIntelligence.DynamicAgent",
+                  "rawValue" : true
+                }, {
+                  "key" : "PSSYSAIFACTORY",
+                  "name" : "PSSYSAIFACTORY",
+                  "value" : "ai.iBizPLMIntelligence",
+                  "rawValue" : true
+                } ],
+                "getPSSysImage" : {
+                  "glyph" : "xf0ad@FontAwesome",
+                  "cssClass" : "fa fa-wrench"
+                },
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "open_design_view",
+                "uIActionType" : "DEUIACTION",
+                "id" : "open_design_view@ai_agent_context"
+              },
+              "addSeparator" : false,
+              "showCaption" : true,
+              "showIcon" : true
+            } ],
+            "uniqueTag" : "ai_agent_context__Auto51667735"
           },
           "infoGroupMode" : false,
           "showCaption" : true
