@@ -578,6 +578,9 @@
       "name" : "CREATE_MAN",
       "codeName" : "create_man"
     }, {
+      "name" : "ENABLE",
+      "codeName" : "enable"
+    }, {
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
     }, {
@@ -1415,6 +1418,19 @@
         "allowEmpty" : false
       },
       "type" : "DEFAULT"
+    }, {
+      "name" : "[ID][知识库标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ID"
+        },
+        "editorType" : "SPAN",
+        "name" : "[ID][知识库标识]",
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM",
+        "allowEmpty" : false
+      },
+      "type" : "CUSTOM"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1517,6 +1533,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "name" : "[NAME][知识库名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.NAME"
+        },
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][知识库名称]",
+        "stringLength" : 200,
+        "uIMode" : "CUSTOM"
+      },
+      "type" : "CUSTOM"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1598,6 +1626,19 @@
       },
       "type" : "DEFAULT"
     }, {
+      "name" : "[CREATE_MAN][建立人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]",
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM",
+        "allowEmpty" : false
+      },
+      "type" : "CUSTOM"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_MAN][建立人]移动端默认",
       "getPSDEFFormItem" : {
@@ -1672,6 +1713,83 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ENABLE",
+      "dBType" : "POSTGRESQL",
+      "name" : "ENABLE",
+      "standardColumnName" : "ENABLE"
+    }, {
+      "columnName" : "ENABLE",
+      "dBType" : "MYSQL5",
+      "name" : "ENABLE",
+      "queryCodeExp" : "t1.`ENABLE`",
+      "standardColumnName" : "`ENABLE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ENABLE][逻辑有效标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ENABLE"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[ENABLE][逻辑有效标识]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ENABLE][逻辑有效标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ENABLE"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ENABLE][逻辑有效标识]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "enable",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.ENABLE"
+    },
+    "logicName" : "逻辑有效标识",
+    "name" : "ENABLE",
+    "orderValue" : 3,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ENABLE"
+    },
+    "serviceCodeName" : "enable",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
       "dBType" : "POSTGRESQL",
       "name" : "CREATE_TIME",
@@ -1685,6 +1803,19 @@
       "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "CUSTOM",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "CUSTOM"
+    }, {
       "codeName" : "Default",
       "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
@@ -1771,6 +1902,19 @@
       "standardColumnName" : "`UPDATE_MAN`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM",
+        "allowEmpty" : false
+      },
+      "type" : "CUSTOM"
+    }, {
       "codeName" : "Default",
       "name" : "[UPDATE_MAN][更新人]",
       "getPSDEFFormItem" : {
@@ -1873,6 +2017,19 @@
       "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "CUSTOM",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "CUSTOM"
+    }, {
       "codeName" : "Default",
       "name" : "[UPDATE_TIME][更新时间]",
       "getPSDEFFormItem" : {
@@ -1958,11 +2115,22 @@
       "queryCodeExp" : "t1.`VISIBILITY`",
       "standardColumnName" : "`VISIBILITY`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_VISIBILITY_EQ",
+      "name" : "N_VISIBILITY_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[VISIBILITY][可见范围]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VISIBILITY"
+        },
+        "codeName" : "Default",
         "editorType" : "DROPDOWNLIST",
-        "name" : "默认",
+        "name" : "[VISIBILITY][可见范围]",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
         "allowEmpty" : false,
@@ -1970,10 +2138,15 @@
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[VISIBILITY][可见范围]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VISIBILITY"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端默认",
+        "name" : "[VISIBILITY][可见范围]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
@@ -2012,6 +2185,9 @@
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VISIBILITY"
+    },
     "length" : 60,
     "logicName" : "可见范围",
     "name" : "VISIBILITY",
@@ -2050,19 +2226,29 @@
       "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[IS_DELETED][是否已删除]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.IS_DELETED"
+        },
+        "codeName" : "Default",
         "editorType" : "DROPDOWNLIST_100",
-        "name" : "默认",
+        "name" : "[IS_DELETED][是否已删除]",
         "uIMode" : "DEFAULT",
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[IS_DELETED][是否已删除]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.IS_DELETED"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBSWITCH",
-        "name" : "移动端默认",
+        "name" : "[IS_DELETED][是否已删除]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
         "needCodeListConfig" : true
@@ -2089,6 +2275,9 @@
     "dataType" : "YESNO",
     "defaultValue" : "0",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.IS_DELETED"
+    },
     "logicName" : "是否已删除",
     "name" : "IS_DELETED",
     "orderValue" : 160,
@@ -2122,25 +2311,35 @@
       "standardColumnName" : "`META_DATA`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[META_DATA][文档元数据]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.META_DATA"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[META_DATA][文档元数据]移动端默认",
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[META_DATA][文档元数据]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.META_DATA"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[META_DATA][文档元数据]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2171,6 +2370,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.META_DATA"
+    },
     "length" : 1048576,
     "logicName" : "文档元数据",
     "name" : "META_DATA",
@@ -2203,20 +2405,15 @@
       "standardColumnName" : "`TAG_SETS`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[TAG_SETS][标签集]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "CHECKBOXLIST",
-        "name" : "默认",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TAG_SETS"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBCHECKLIST",
-        "name" : "移动端默认",
+        "name" : "[TAG_SETS][标签集]移动端默认",
         "stringLength" : 2000,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
@@ -2224,6 +2421,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TAG_SETS][标签集]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TAG_SETS"
+        },
+        "codeName" : "Default",
+        "editorType" : "CHECKBOXLIST",
+        "name" : "[TAG_SETS][标签集]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2254,6 +2466,9 @@
     "dEFType" : 1,
     "dataType" : "SMCODELIST",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TAG_SETS"
+    },
     "length" : 2000,
     "logicName" : "标签集",
     "name" : "TAG_SETS",
@@ -2289,25 +2504,35 @@
       "standardColumnName" : "`GUIDANCE_PROMPT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[GUIDANCE_PROMPT][引导提示词]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.GUIDANCE_PROMPT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[GUIDANCE_PROMPT][引导提示词]移动端默认",
         "stringLength" : 2000,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[GUIDANCE_PROMPT][引导提示词]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.GUIDANCE_PROMPT"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[GUIDANCE_PROMPT][引导提示词]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2338,6 +2563,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT_1000",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.GUIDANCE_PROMPT"
+    },
     "length" : 2000,
     "logicName" : "引导提示词",
     "name" : "GUIDANCE_PROMPT",
@@ -2368,10 +2596,24 @@
       "queryCodeExp" : "t1.`RERANK_MODEL`",
       "standardColumnName" : "`RERANK_MODEL`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_RERANK_MODEL_EQ",
+      "name" : "N_RERANK_MODEL_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_RERANK_MODEL_LIKE",
+      "name" : "N_RERANK_MODEL_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[RERANK_MODEL][召回重排模型]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL"
+        },
         "codeName" : "Default",
         "editorType" : "PICKEREX_TRIGGER",
         "name" : "[RERANK_MODEL][召回重排模型]",
@@ -2394,6 +2636,9 @@
       "codeName" : "MobileDefault",
       "name" : "[RERANK_MODEL][召回重排模型]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "MOBPICKER",
         "name" : "[RERANK_MODEL][召回重排模型]移动端默认",
@@ -2444,6 +2689,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL"
+    },
     "length" : 100,
     "logicName" : "召回重排模型",
     "name" : "RERANK_MODEL",
@@ -2500,31 +2748,27 @@
       "queryCodeExp" : "t1.`CHAT_MODEL`",
       "standardColumnName" : "`CHAT_MODEL`"
     } ],
-    "getAllPSDEFUIModes" : [ {
-      "name" : "CHAT_MODEL",
-      "getPSDEFFormItem" : {
-        "editorType" : "PICKEREX_TRIGGER",
-        "name" : "CHAT_MODEL",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CHAT_MODEL_EQ",
+      "name" : "N_CHAT_MODEL_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "N_CHAT_MODEL_LIKE",
+      "name" : "N_CHAT_MODEL_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CHAT_MODEL][交谈模型]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "PICKEREX_TRIGGER",
-        "name" : "移动端默认",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[CHAT_MODEL][交谈模型]移动端默认",
         "refLinkPSDEViewCodeName" : "RedirectView",
         "refMPickupPSDEViewCodeName" : "MPickupView",
         "getRefPSDEACMode" : {
@@ -2542,6 +2786,52 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "name" : "[CHAT_MODEL][交谈模型]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL"
+        },
+        "editorType" : "PICKER",
+        "name" : "[CHAT_MODEL][交谈模型]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM"
+      },
+      "type" : "CUSTOM"
+    }, {
+      "name" : "CHAT_MODEL",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL"
+        },
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "CHAT_MODEL",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2572,6 +2862,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL"
+    },
     "length" : 100,
     "logicName" : "交谈模型",
     "name" : "CHAT_MODEL",
@@ -2629,20 +2922,15 @@
       "standardColumnName" : "`SIMILARITY_THRESHOLD`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[SIMILARITY_THRESHOLD][召回相似度阈值]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "precision" : 2,
-        "scale" : 2,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SIMILARITY_THRESHOLD"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[SIMILARITY_THRESHOLD][召回相似度阈值]移动端默认",
         "precision" : 2,
         "scale" : 2,
         "uIMode" : "MOBILEDEFAULT",
@@ -2650,6 +2938,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SIMILARITY_THRESHOLD][召回相似度阈值]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SIMILARITY_THRESHOLD"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SIMILARITY_THRESHOLD][召回相似度阈值]",
+        "precision" : 2,
+        "scale" : 2,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2669,6 +2972,9 @@
     "dEFType" : 1,
     "dataType" : "DECIMAL",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SIMILARITY_THRESHOLD"
+    },
     "logicName" : "召回相似度阈值",
     "name" : "SIMILARITY_THRESHOLD",
     "orderValue" : 460,
@@ -2700,20 +3006,15 @@
       "standardColumnName" : "`VECTOR_SIMILARITY_WEIGHT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[VECTOR_SIMILARITY_WEIGHT][向量相似度权重]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "precision" : 1,
-        "scale" : 1,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VECTOR_SIMILARITY_WEIGHT"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[VECTOR_SIMILARITY_WEIGHT][向量相似度权重]移动端默认",
         "precision" : 1,
         "scale" : 1,
         "uIMode" : "MOBILEDEFAULT",
@@ -2721,6 +3022,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[VECTOR_SIMILARITY_WEIGHT][向量相似度权重]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VECTOR_SIMILARITY_WEIGHT"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[VECTOR_SIMILARITY_WEIGHT][向量相似度权重]",
+        "precision" : 1,
+        "scale" : 1,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2740,6 +3056,9 @@
     "dEFType" : 1,
     "dataType" : "DECIMAL",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.VECTOR_SIMILARITY_WEIGHT"
+    },
     "logicName" : "向量相似度权重",
     "name" : "VECTOR_SIMILARITY_WEIGHT",
     "orderValue" : 470,
@@ -2771,23 +3090,33 @@
       "standardColumnName" : "`TOP_K`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[TOP_K][最大召回数量]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTBOX",
-        "name" : "默认",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TOP_K"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "移动端默认",
+        "name" : "[TOP_K][最大召回数量]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TOP_K][最大召回数量]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TOP_K"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[TOP_K][最大召回数量]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2807,6 +3136,9 @@
     "dEFType" : 1,
     "dataType" : "INT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TOP_K"
+    },
     "logicName" : "最大召回数量",
     "name" : "TOP_K",
     "orderValue" : 480,
@@ -2836,25 +3168,35 @@
       "standardColumnName" : "`RERANK`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[RERANK][召回重排]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBSWITCH",
-        "name" : "移动端默认",
+        "name" : "[RERANK][召回重排]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RERANK][召回重排]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK"
+        },
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[RERANK][召回重排]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2874,6 +3216,9 @@
     "dEFType" : 1,
     "dataType" : "YESNO",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK"
+    },
     "logicName" : "召回重排",
     "name" : "RERANK",
     "orderValue" : 490,
@@ -2907,25 +3252,35 @@
       "standardColumnName" : "`USE_KG`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[USE_KG][使用知识图谱]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "默认",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.USE_KG"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBSWITCH",
-        "name" : "移动端默认",
+        "name" : "[USE_KG][使用知识图谱]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[USE_KG][使用知识图谱]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.USE_KG"
+        },
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[USE_KG][使用知识图谱]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2945,6 +3300,9 @@
     "dEFType" : 1,
     "dataType" : "YESNO",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.USE_KG"
+    },
     "logicName" : "使用知识图谱",
     "name" : "USE_KG",
     "orderValue" : 510,
@@ -2984,9 +3342,28 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "name" : "[SOURCE_ID][知识库源标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_ID"
+        },
+        "editorType" : "HIDDEN",
+        "name" : "[SOURCE_ID][知识库源标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_source.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM"
+      },
+      "type" : "CUSTOM"
+    }, {
       "codeName" : "Default",
       "name" : "[SOURCE_ID][知识库源标识]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_ID"
+        },
         "codeName" : "Default",
         "editorType" : "HIDDEN",
         "name" : "[SOURCE_ID][知识库源标识]",
@@ -3002,6 +3379,9 @@
       "codeName" : "MobileDefault",
       "name" : "[SOURCE_ID][知识库源标识]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_ID"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "HIDDEN",
         "name" : "[SOURCE_ID][知识库源标识]移动端默认",
@@ -3045,6 +3425,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUP",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_ID"
+    },
     "length" : 100,
     "logicName" : "知识库源标识",
     "name" : "SOURCE_ID",
@@ -3097,25 +3480,35 @@
       "standardColumnName" : "`DESCRIPTION`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "MobileDefault",
+      "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "TEXTAREA_10",
-        "name" : "默认",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.DESCRIPTION"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
-        "name" : "移动端默认",
+        "name" : "[DESCRIPTION][描述]移动端默认",
         "stringLength" : 2000,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3146,6 +3539,9 @@
     "dEFType" : 1,
     "dataType" : "LONGTEXT_1000",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.DESCRIPTION"
+    },
     "length" : 2000,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
@@ -3176,10 +3572,74 @@
       "queryCodeExp" : "t1.`EMBEDDING_MODEL`",
       "standardColumnName" : "`EMBEDDING_MODEL`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_EMBEDDING_MODEL_EQ",
+      "name" : "N_EMBEDDING_MODEL_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_EMBEDDING_MODEL_LIKE",
+      "name" : "N_EMBEDDING_MODEL_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
     "getAllPSDEFUIModes" : [ {
+      "name" : "[EMBEDDING_MODEL][embedding模型]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL"
+        },
+        "editorType" : "PICKER",
+        "name" : "[EMBEDDING_MODEL][embedding模型]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM"
+      },
+      "type" : "CUSTOM"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[EMBEDDING_MODEL][embedding模型]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[EMBEDDING_MODEL][embedding模型]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
       "codeName" : "Auto21380472",
       "name" : "EMBEDDING_MODEL",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL"
+        },
         "codeName" : "Auto21380472",
         "editorType" : "PICKEREX_TRIGGER",
         "name" : "EMBEDDING_MODEL",
@@ -3199,29 +3659,6 @@
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "PICKEREX_TRIGGER",
-        "name" : "移动端默认",
-        "placeHolder" : "未指定时使用全局默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3252,6 +3689,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL"
+    },
     "length" : 100,
     "logicName" : "embedding模型",
     "name" : "EMBEDDING_MODEL",
@@ -3309,21 +3749,37 @@
       "queryCodeExp" : "t1.`CHUNK_METHOD`",
       "standardColumnName" : "`CHUNK_METHOD`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CHUNK_METHOD_EQ",
+      "name" : "N_CHUNK_METHOD_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[CHUNK_METHOD][切片方法]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHUNK_METHOD"
+        },
+        "codeName" : "Default",
         "editorType" : "DROPDOWNLIST",
-        "name" : "默认",
+        "name" : "[CHUNK_METHOD][切片方法]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT",
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[CHUNK_METHOD][切片方法]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHUNK_METHOD"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端默认",
+        "name" : "[CHUNK_METHOD][切片方法]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true,
@@ -3361,6 +3817,9 @@
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHUNK_METHOD"
+    },
     "length" : 100,
     "logicName" : "切片方法",
     "name" : "CHUNK_METHOD",
@@ -3396,19 +3855,29 @@
       "standardColumnName" : "`PARSER_CONFIG`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[PARSER_CONFIG][解析配置]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.PARSER_CONFIG"
+        },
+        "codeName" : "Default",
         "editorType" : "HIDDEN",
-        "name" : "默认",
+        "name" : "[PARSER_CONFIG][解析配置]",
         "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[PARSER_CONFIG][解析配置]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.PARSER_CONFIG"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "HIDDEN",
-        "name" : "移动端默认",
+        "name" : "[PARSER_CONFIG][解析配置]移动端默认",
         "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -3445,6 +3914,9 @@
     "dEFType" : 1,
     "dataType" : "ONE2ONEDATA",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.PARSER_CONFIG"
+    },
     "length" : 1048576,
     "logicName" : "解析配置",
     "name" : "PARSER_CONFIG",
@@ -3495,6 +3967,9 @@
       "codeName" : "MobileDefault",
       "name" : "[SOURCE_NAME][知识库源名称]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_NAME"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "MOBPICKER",
         "name" : "[SOURCE_NAME][知识库源名称]移动端默认",
@@ -3519,6 +3994,9 @@
       "codeName" : "Default",
       "name" : "[SOURCE_NAME][知识库源名称]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_NAME"
+        },
         "codeName" : "Default",
         "editorType" : "PICKER",
         "name" : "[SOURCE_NAME][知识库源名称]",
@@ -3537,6 +4015,29 @@
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
+    }, {
+      "name" : "[SOURCE_NAME][知识库源名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_NAME"
+        },
+        "editorType" : "PICKER",
+        "name" : "[SOURCE_NAME][知识库源名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_source/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_source.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "CUSTOM"
+      },
+      "type" : "CUSTOM"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3567,6 +4068,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUPTEXT",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.SOURCE_NAME"
+    },
     "length" : 200,
     "logicName" : "知识库源名称",
     "name" : "SOURCE_NAME",
@@ -3633,6 +4137,9 @@
       "codeName" : "Default",
       "name" : "[RERANK_MODEL_ID][模型标识]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL_ID"
+        },
         "codeName" : "Default",
         "editorType" : "HIDDEN",
         "name" : "[RERANK_MODEL_ID][模型标识]",
@@ -3648,6 +4155,9 @@
       "codeName" : "MobileDefault",
       "name" : "[RERANK_MODEL_ID][模型标识]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL_ID"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "HIDDEN",
         "name" : "[RERANK_MODEL_ID][模型标识]移动端默认",
@@ -3691,6 +4201,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUP",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.RERANK_MODEL_ID"
+    },
     "length" : 100,
     "logicName" : "模型标识",
     "name" : "RERANK_MODEL_ID",
@@ -3752,6 +4265,9 @@
       "codeName" : "MobileDefault",
       "name" : "[EMBEDDING_MODEL_ID][模型标识]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL_ID"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "HIDDEN",
         "name" : "[EMBEDDING_MODEL_ID][模型标识]移动端默认",
@@ -3769,6 +4285,9 @@
       "codeName" : "Default",
       "name" : "[EMBEDDING_MODEL_ID][模型标识]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL_ID"
+        },
         "codeName" : "Default",
         "editorType" : "HIDDEN",
         "name" : "[EMBEDDING_MODEL_ID][模型标识]",
@@ -3810,6 +4329,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUP",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.EMBEDDING_MODEL_ID"
+    },
     "length" : 100,
     "logicName" : "模型标识",
     "name" : "EMBEDDING_MODEL_ID",
@@ -3868,10 +4390,15 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
+      "codeName" : "Default",
+      "name" : "[CHAT_MODEL_ID][交谈模型标识]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL_ID"
+        },
+        "codeName" : "Default",
         "editorType" : "HIDDEN",
-        "name" : "默认",
+        "name" : "[CHAT_MODEL_ID][交谈模型标识]",
         "getRefPSDataEntity" : {
           "modelref" : true,
           "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
@@ -3881,10 +4408,15 @@
       },
       "type" : "DEFAULT"
     }, {
-      "name" : "移动端默认",
+      "codeName" : "MobileDefault",
+      "name" : "[CHAT_MODEL_ID][交谈模型标识]移动端默认",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL_ID"
+        },
+        "codeName" : "MobileDefault",
         "editorType" : "HIDDEN",
-        "name" : "移动端默认",
+        "name" : "[CHAT_MODEL_ID][交谈模型标识]移动端默认",
         "getRefPSDataEntity" : {
           "modelref" : true,
           "path" : "PSMODULES/ai/PSDATAENTITIES/ai_model.json"
@@ -3925,6 +4457,9 @@
     "dEFType" : 1,
     "dataType" : "PICKUP",
     "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL_ID"
+    },
     "length" : 100,
     "logicName" : "交谈模型标识",
     "name" : "CHAT_MODEL_ID",
@@ -4537,6 +5072,16 @@
       "allowEmpty" : false,
       "readOnly" : true
     }, {
+      "logicName" : "逻辑有效标识",
+      "name" : "enable",
+      "getPSDEField" : {
+        "name" : "ENABLE",
+        "codeName" : "enable"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "建立时间",
       "name" : "create_time",
@@ -4841,6 +5386,21 @@
   }, {
     "name" : "ai_knowledge_base_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "交谈模型",
+      "name" : "n_chat_model_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CHAT_MODEL_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CHAT_MODEL",
+        "codeName" : "chat_model"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "交谈模型标识",
       "name" : "n_chat_model_id_eq",
       "getPSDEFSearchMode" : {
@@ -4856,6 +5416,51 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "交谈模型",
+      "name" : "n_chat_model_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CHAT_MODEL_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "CHAT_MODEL",
+        "codeName" : "chat_model"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "切片方法",
+      "name" : "n_chunk_method_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CHUNK_METHOD_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CHUNK_METHOD",
+        "codeName" : "chunk_method"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "embedding模型",
+      "name" : "n_embedding_model_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_EMBEDDING_MODEL_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "EMBEDDING_MODEL",
+        "codeName" : "embedding_model"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "模型标识",
       "name" : "n_embedding_model_id_eq",
       "getPSDEFSearchMode" : {
@@ -4865,6 +5470,21 @@
       "getPSDEField" : {
         "name" : "EMBEDDING_MODEL_ID",
         "codeName" : "embedding_model_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "embedding模型",
+      "name" : "n_embedding_model_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_EMBEDDING_MODEL_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "EMBEDDING_MODEL",
+        "codeName" : "embedding_model"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -4901,6 +5521,21 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "召回重排模型",
+      "name" : "n_rerank_model_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_RERANK_MODEL_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "模型标识",
       "name" : "n_rerank_model_id_eq",
       "getPSDEFSearchMode" : {
@@ -4910,6 +5545,21 @@
       "getPSDEField" : {
         "name" : "RERANK_MODEL_ID",
         "codeName" : "rerank_model_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "召回重排模型",
+      "name" : "n_rerank_model_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_RERANK_MODEL_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -4955,6 +5605,21 @@
       "getPSDEField" : {
         "name" : "SOURCE_NAME",
         "codeName" : "source_name"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "可见范围",
+      "name" : "n_visibility_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_VISIBILITY_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
