@@ -365,6 +365,39 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDEDATAQUERIES/valid/PSDEDQCODES/POSTGRESQL.json"
+    } ],
+    "codeName" : "valid",
+    "logicName" : "启用",
+    "name" : "VALID",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AI_KB_MEMBER"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_member_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -395,6 +428,33 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "valid",
+    "logicName" : "启用",
+    "name" : "VALID",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "valid"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ValidInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ValidResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_member_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1094,6 +1154,7 @@
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
     "defaultValue" : "user",
+    "fieldTag" : "ROLE_TYPE",
     "importOrder" : 1000,
     "length" : 60,
     "logicName" : "角色",
@@ -1332,6 +1393,7 @@
     "codeName" : "kb_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
+    "fieldTag" : "KNOWLEDGE_BASE_ID",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "知识库标识",
