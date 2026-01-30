@@ -19,13 +19,26 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
     }
   },
-  "hookEventNames" : [ "SAVE", "LOAD" ],
+  "hookEventNames" : [ "ONMOUNTED", "SAVE", "LOAD" ],
   "logicName" : "召回策略向导表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
   },
   "getPSControlLogics" : [ {
+    "eventNames" : "onMounted",
+    "logicTag" : "wizardpanel_form_recall",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "remove_batch_temp"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+    }
+  }, {
     "eventNames" : "SAVE",
     "logicTag" : "wizardpanel_form_recall",
     "logicType" : "CUSTOM",

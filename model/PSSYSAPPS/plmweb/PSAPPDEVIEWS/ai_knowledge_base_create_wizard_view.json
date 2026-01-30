@@ -677,7 +677,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
         }
       },
-      "hookEventNames" : [ "ONMOUNTED", "ONLOADSUCCESS", "ONLOADDRAFTSUCCESS", "SAVE", "LOAD" ],
+      "hookEventNames" : [ "ONLOADSUCCESS", "ONLOADDRAFTSUCCESS", "SAVE", "LOAD" ],
       "logicName" : "切片策略向导表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -697,12 +697,12 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
           }
         }, {
-          "actionName" : "UpdateTemp",
+          "actionName" : "UpdateByKbTemp",
           "actionType" : "DEACTION",
           "name" : "update",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "UpdateTemp"
+            "id" : "UpdateByKbTemp"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -713,19 +713,6 @@
         "id" : "wizardpanel_form_chunk"
       },
       "getPSControlLogics" : [ {
-        "eventNames" : "onMounted",
-        "logicTag" : "wizardpanel_form_chunk",
-        "logicType" : "APPDEUILOGIC",
-        "name" : "logic",
-        "getPSAppDEUILogic" : {
-          "modelref" : true,
-          "id" : "remove_batch_temp"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
-        }
-      }, {
         "eventNames" : "onLoadSuccess",
         "logicTag" : "wizardpanel_form_chunk",
         "logicType" : "SCRIPT",
@@ -2593,12 +2580,12 @@
       "getUpdatePSControlAction" : {
         "modelref" : true,
         "id" : "update",
-        "actionName" : "UpdateTemp",
+        "actionName" : "UpdateByKbTemp",
         "actionType" : "DEACTION",
         "name" : "update",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "UpdateTemp"
+          "id" : "UpdateByKbTemp"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -2630,7 +2617,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
         }
       },
-      "hookEventNames" : [ "SAVE", "LOAD" ],
+      "hookEventNames" : [ "ONMOUNTED", "SAVE", "LOAD" ],
       "logicName" : "召回策略向导表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -2666,6 +2653,19 @@
         "id" : "wizardpanel_form_recall"
       },
       "getPSControlLogics" : [ {
+        "eventNames" : "onMounted",
+        "logicTag" : "wizardpanel_form_recall",
+        "logicType" : "APPDEUILOGIC",
+        "name" : "logic",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "remove_batch_temp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+        }
+      }, {
         "eventNames" : "SAVE",
         "logicTag" : "wizardpanel_form_recall",
         "logicType" : "CUSTOM",
