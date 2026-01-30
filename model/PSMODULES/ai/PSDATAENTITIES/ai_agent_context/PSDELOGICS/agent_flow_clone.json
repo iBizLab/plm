@@ -2,17 +2,17 @@
   "codeName" : "agent_flow_clone",
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDELOGICS/agent_flow_clone.json",
-  "logicName" : "flow智能体克隆",
-  "name" : "flow智能体克隆",
+  "logicName" : "agent_flow_clone",
+  "name" : "agent_flow_clone",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 180,
+    "leftPos" : 130,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION_01"
+        "id" : "DEBUGPARAM_01"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,7 +20,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 260,
+    "topPos" : 320,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION_01",
@@ -36,14 +36,113 @@
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
     },
-    "leftPos" : 340,
+    "leftPos" : 290,
     "logicNodeType" : "DEACTION",
     "name" : "获取选中flow智能体数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "COPYPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_01"
+      }
+    } ],
     "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_ag_context"
+    },
+    "topPos" : 290,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "COPYPARAM_01",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "clone_ag_context"
+    },
+    "leftPos" : 520,
+    "logicNodeType" : "COPYPARAM",
+    "name" : "拷贝参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "COPYPARAM_01"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_ag_context"
+    },
+    "topPos" : 300,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 520,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CODE_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "clone_ag_context"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CODE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 410,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM_01",
+    "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "Default"
     },
-    "topPos" : 280,
+    "leftPos" : 234,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "查看克隆参数",
+    "topPos" : 470,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_02",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "clone_ag_context"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "leftPos" : 520,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建flow智能体",
+    "topPos" : 520,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
@@ -55,6 +154,42 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "clone_ag_context",
+    "logicName" : "clone_ag_context",
+    "name" : "clone_ag_context",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "clone_delogic",
+    "logicName" : "clone_delogic",
+    "name" : "clone_delogic",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "original_ag_context",
+    "logicName" : "original_ag_context",
+    "name" : "original_ag_context",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "original_delogic",
+    "logicName" : "original_delogic",
+    "name" : "original_delogic",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
     "entityParam" : true
   } ],
   "getStartPSDELogicNode" : {
