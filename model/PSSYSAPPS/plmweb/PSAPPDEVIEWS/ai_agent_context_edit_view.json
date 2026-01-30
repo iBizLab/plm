@@ -539,19 +539,19 @@
         "codeName" : "scopes"
       }
     }, {
+      "id" : "is_default",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "IS_DEFAULT",
+        "codeName" : "is_default"
+      }
+    }, {
       "id" : "active",
       "dataType" : 9,
       "createDV" : "1",
       "getPSAppDEField" : {
         "name" : "ACTIVE",
         "codeName" : "active"
-      }
-    }, {
-      "id" : "is_default",
-      "dataType" : 9,
-      "getPSAppDEField" : {
-        "name" : "IS_DEFAULT",
-        "codeName" : "is_default"
       }
     }, {
       "id" : "description",
@@ -994,6 +994,33 @@
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
+          "caption" : "是否默认Agent",
+          "codeName" : "is_default",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "is_default",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "IS_DEFAULT",
+            "codeName" : "is_default"
+          },
+          "getPSEditor" : {
+            "editorType" : "SWITCH",
+            "name" : "is_default"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
           "caption" : "是否启用",
           "codeName" : "active",
           "createDV" : "1",
@@ -1020,33 +1047,6 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "是否默认Agent",
-          "codeName" : "is_default",
-          "dataType" : 9,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "is_default",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "IS_DEFAULT",
-            "codeName" : "is_default"
-          },
-          "getPSEditor" : {
-            "editorType" : "SWITCH",
-            "name" : "is_default"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "caption" : "描述",
@@ -2376,7 +2376,7 @@
             "getPSNavigateContexts" : [ {
               "key" : "PSDELOGIC",
               "name" : "PSDELOGIC",
-              "value" : "${ai_agent_context}@ai.AI_AGENT_CONTEXT.agent_flow_templ",
+              "value" : "${code_name}@ai.AI_AGENT_CONTEXT.agent_flow_templ",
               "rawValue" : false
             } ],
             "parentDataJO" : {
@@ -2430,7 +2430,7 @@
                 "getPSNavigateContexts" : [ {
                   "key" : "PSDELOGIC",
                   "name" : "PSDELOGIC",
-                  "value" : "${ai_agent_context}@ai.AI_AGENT_CONTEXT.agent_flow_templ",
+                  "value" : "${code_name}@ai.AI_AGENT_CONTEXT.agent_flow_templ",
                   "rawValue" : false
                 }, {
                   "key" : "PSSYSAICHATAGENT",
