@@ -306,6 +306,40 @@
     "enableBatchAction" : true
   }, {
     "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "UpdateByKbTemp",
+    "methodType" : "DEACTION",
+    "name" : "UpdateByKbTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "copyKbTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "UpdateByKbTempInput",
+      "name" : "UpdateByKbTempInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "UpdateByKbTempResult",
+      "name" : "UpdateByKbTempResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/UpdateByKbTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "UpdateTemp",
     "methodType" : "DEACTION",
@@ -2422,6 +2456,16 @@
     "stdDataType" : 25,
     "stringLength" : 100
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "copyKbTemp",
+    "defaultParamName" : "DEFAULT",
+    "logicName" : "从已有知识库克隆",
+    "name" : "从已有知识库克隆",
+    "scriptCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    var copy_target = data.copy_target;\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if(res && res.ok){\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        data.parser_config = targetData.parser_config\r\n        const updateRes = await kbService.updateTemp(context, data)\r\n        if (updateRes && updateRes.ok) {\r\n            console.log('临时数据更新成功:', updateRes);\r\n        }\r\n    }\r\n}",
+    "customCode" : true,
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "ai_knowledge_base_dto",
     "name" : "ai_knowledge_base_dto",
@@ -3239,6 +3283,40 @@
     "tempDataMode" : 1,
     "builtinMethod" : true,
     "enableBatchAction" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "UpdateByKbTemp",
+    "methodType" : "DEACTION",
+    "name" : "UpdateByKbTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "copyKbTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "UpdateByKbTempInput",
+      "name" : "UpdateByKbTempInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "UpdateByKbTempResult",
+      "name" : "UpdateByKbTempResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/UpdateByKbTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
