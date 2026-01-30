@@ -452,6 +452,36 @@
     },
     "builtinAction" : true
   }, {
+    "actionHolder" : 2,
+    "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "GetByKbTemp",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/GetByKbTemp.json",
+    "logicName" : "从已有知识库克隆",
+    "name" : "GetByKbTemp",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetByKbTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetByKbTempResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/copyKbTemp.json"
+    },
+    "enableBackend" : false
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -473,33 +503,6 @@
       "type" : "VOID"
     },
     "builtinAction" : true
-  }, {
-    "actionHolder" : 2,
-    "actionMode" : "UPDATE",
-    "actionType" : "DELOGIC",
-    "codeName" : "UpdateByKbTemp",
-    "dataAccessAction" : "UPDATE",
-    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/UpdateByKbTemp.json",
-    "logicName" : "从已有知识库克隆",
-    "name" : "UpdateByKbTemp",
-    "getPSDEActionInput" : {
-      "name" : "UpdateByKbTempInput",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_knowledge_base_dto"
-      },
-      "type" : "DTO",
-      "output" : true
-    },
-    "getPSDEActionReturn" : {
-      "name" : "UpdateByKbTempResult",
-      "type" : "VOID"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/copyKbTemp.json"
-    },
-    "enableBackend" : false
   }, {
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
@@ -4899,7 +4902,7 @@
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/copyKbTemp.json",
     "logicName" : "从已有知识库克隆",
     "name" : "从已有知识库克隆",
-    "scriptCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    var copy_target = data.copy_target;\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if(res && res.ok){\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        data.parser_config = targetData.parser_config\r\n        const updateRes = await kbService.updateTemp(context, data)\r\n        if (updateRes && updateRes.ok) {\r\n            console.log('临时数据更新成功:', updateRes);\r\n        }\r\n    }\r\n}",
+    "scriptCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.id) {\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    const kbTempData = await kbService.local.get(context, data.id);\r\n    console.log('临时数据为:', kbTempData);\r\n    var copy_target = data.copy_target;\r\n    if (data.use_copy === 1 && copy_target !== null) {\r\n        // 创建独立上下文（避免污染全局context）\r\n        const copyContext = {\r\n            ...context,\r\n            ai_knowledge_base: copy_target\r\n        };\r\n        const res = await kbService.get(copyContext)\r\n        if (res && res.ok) {\r\n            var targetData = res.data;\r\n            console.log('克隆已有数据库:', targetData);\r\n            data.parser_config = targetData.parser_config\r\n        }\r\n    }\r\n}\r\nreturn data;",
     "customCode" : true,
     "enableBackend" : false,
     "enableFront" : true
