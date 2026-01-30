@@ -143,6 +143,13 @@
       "codeName" : "embedding_model"
     }
   }, {
+    "id" : "chat_model",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "CHAT_MODEL",
+      "codeName" : "chat_model"
+    }
+  }, {
     "id" : "tag_sets",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -183,6 +190,14 @@
     "getPSAppDEField" : {
       "name" : "ID",
       "codeName" : "id"
+    }
+  }, {
+    "id" : "chat_model_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "CHAT_MODEL_ID",
+      "codeName" : "chat_model_id"
     }
   } ],
   "getPSDEFormPages" : [ {
@@ -284,6 +299,61 @@
             "allowEmpty" : true,
             "showCaption" : true
           }, {
+            "caption" : "交谈模型",
+            "codeName" : "chat_model",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "chat_model",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "CHAT_MODEL",
+              "codeName" : "chat_model"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "AC" : "TRUE",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
+              "name" : "chat_model",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+              },
+              "getPSEditorItems" : [ {
+                "name" : "chat_model_id"
+              } ],
+              "valueItemName" : "chat_model_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "valueItemName" : "chat_model_id",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
             "getCapPSLanguageRes" : {
               "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.TAG_SETS"
             },
@@ -321,7 +391,8 @@
             "showCaption" : true
           } ],
           "getPSLayout" : {
-            "childColMD" : 24,
+            "childColLG" : 8,
+            "childColMD" : 12,
             "columnCount" : 24,
             "layout" : "TABLE_24COL"
           },
@@ -890,29 +961,6 @@
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : false,
-              "repeatContent" : true,
-              "showCaption" : true
-            }, {
-              "codeName" : "chat_model_id",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "LEFT",
-              "labelWidth" : 130,
-              "name" : "chat_model_id",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "TEXTBOX",
-                "name" : "chat_model_id"
-              },
-              "getPSLayoutPos" : {
-                "colLG" : 8,
-                "colMD" : 8,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "repeatContent" : true,
               "showCaption" : true
             }, {
@@ -1878,6 +1926,35 @@
       "getPSEditor" : {
         "editorType" : "HIDDEN",
         "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.AI_KNOWLEDGE_BASE.CHAT_MODEL_ID"
+      },
+      "caption" : "交谈模型标识",
+      "codeName" : "chat_model_id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "chat_model_id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CHAT_MODEL_ID",
+        "codeName" : "chat_model_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "chat_model_id"
       },
       "getPSLayoutPos" : {
         "colMD" : 24,

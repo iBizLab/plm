@@ -97,6 +97,12 @@
       "codeName" : "visibility"
     }
   }, {
+    "id" : "use_copy",
+    "dataType" : 25
+  }, {
+    "id" : "copy_target",
+    "dataType" : 25
+  }, {
     "id" : "description",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -280,6 +286,96 @@
           "layout" : "TABLE_24COL"
         },
         "updateDV" : "private",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "从已有知识库克隆配置",
+        "codeName" : "use_copy",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "use_copy",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "use_copy"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "目标知识库",
+        "codeName" : "copy_target",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "copy_target",
+        "noPrivDisplayMode" : 1,
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "use_copy",
+            "logicType" : "SINGLE",
+            "name" : "use_copy等于(=) 1",
+            "value" : "1"
+          } ],
+          "relatedDetailNames" : [ "use_copy" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMBLANK",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "NOTEQ",
+            "dEFDName" : "use_copy",
+            "logicType" : "SINGLE",
+            "name" : "use_copy不等于(<>) 1",
+            "value" : "1"
+          } ],
+          "relatedDetailNames" : [ "use_copy" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "use_copy",
+            "logicType" : "SINGLE",
+            "name" : "use_copy等于(=) 1",
+            "value" : "1"
+          } ],
+          "relatedDetailNames" : [ "use_copy" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "DROPDOWNLIST",
+          "name" : "copy_target",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb.json"
+          },
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
         "allowEmpty" : false,
         "needCodeListConfig" : true,
         "showCaption" : true
