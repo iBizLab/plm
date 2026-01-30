@@ -153,6 +153,28 @@
       "codeName" : "flow_mode"
     }
   }, {
+    "id" : "scopes",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SCOPES",
+      "codeName" : "scopes"
+    }
+  }, {
+    "id" : "active",
+    "dataType" : 9,
+    "createDV" : "1",
+    "getPSAppDEField" : {
+      "name" : "ACTIVE",
+      "codeName" : "active"
+    }
+  }, {
+    "id" : "is_default",
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "IS_DEFAULT",
+      "codeName" : "is_default"
+    }
+  }, {
     "id" : "description",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -306,33 +328,11 @@
       "codeName" : "memory_max_turns"
     }
   }, {
-    "id" : "scopes",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "SCOPES",
-      "codeName" : "scopes"
-    }
-  }, {
     "id" : "sequence",
     "dataType" : 9,
     "getPSAppDEField" : {
       "name" : "SEQUENCE",
       "codeName" : "sequence"
-    }
-  }, {
-    "id" : "active",
-    "dataType" : 9,
-    "createDV" : "1",
-    "getPSAppDEField" : {
-      "name" : "ACTIVE",
-      "codeName" : "active"
-    }
-  }, {
-    "id" : "is_default",
-    "dataType" : 9,
-    "getPSAppDEField" : {
-      "name" : "IS_DEFAULT",
-      "codeName" : "is_default"
     }
   }, {
     "id" : "max_input_tokens",
@@ -471,6 +471,20 @@
           "name" : "AI_AGENT_NAME",
           "codeName" : "ai_agent_name"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "NOTEQ",
+            "dEFDName" : "flow_mode",
+            "logicType" : "SINGLE",
+            "name" : "flow_mode不等于(<>) DE",
+            "value" : "DE"
+          } ],
+          "relatedDetailNames" : [ "flow_mode" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorParams" : {
             "AC" : "TRUE",
@@ -568,6 +582,93 @@
         },
         "allowEmpty" : true,
         "hidden" : true
+      }, {
+        "caption" : "业务范围",
+        "codeName" : "scopes",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "scopes",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "SCOPES",
+          "codeName" : "scopes"
+        },
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "scopes",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__ai_agent_context_scopes.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "是否启用",
+        "codeName" : "active",
+        "createDV" : "1",
+        "dataType" : 9,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "active",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTIVE",
+          "codeName" : "active"
+        },
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "active"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "是否默认Agent",
+        "codeName" : "is_default",
+        "dataType" : 9,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "is_default",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "IS_DEFAULT",
+          "codeName" : "is_default"
+        },
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "is_default"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "showCaption" : true
       }, {
         "caption" : "描述",
         "codeName" : "description",
@@ -1590,39 +1691,6 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel5",
           "getPSDEFormDetails" : [ {
-            "caption" : "业务范围",
-            "codeName" : "scopes",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "scopes",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "SCOPES",
-              "codeName" : "scopes"
-            },
-            "getPSEditor" : {
-              "editorType" : "MDROPDOWNLIST",
-              "name" : "scopes",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__ai_agent_context_scopes.json"
-              },
-              "singleSelect" : false
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "needCodeListConfig" : true,
-            "showCaption" : true
-          }, {
             "caption" : "排序",
             "codeName" : "sequence",
             "dataType" : 9,
@@ -1648,61 +1716,6 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "showCaption" : true
-          }, {
-            "caption" : "是否启用",
-            "codeName" : "active",
-            "createDV" : "1",
-            "dataType" : 9,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "active",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "ACTIVE",
-              "codeName" : "active"
-            },
-            "getPSEditor" : {
-              "editorType" : "SWITCH",
-              "name" : "active"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
-          }, {
-            "caption" : "是否默认Agent",
-            "codeName" : "is_default",
-            "dataType" : 9,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "is_default",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "IS_DEFAULT",
-              "codeName" : "is_default"
-            },
-            "getPSEditor" : {
-              "editorType" : "SWITCH",
-              "name" : "is_default"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : false,
             "showCaption" : true
           }, {
             "caption" : "最大输入token数",
