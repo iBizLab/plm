@@ -1,0 +1,133 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_document_synclogic.sync_create_doc;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_sync ai_kb_document_syncsync_create_docdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document_wizard ai_kb_document_syncsync_create_docai_kb_doc_wizard;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_document_syncsync_create_dockb_doc;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_create_docpage;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_create_docpage_filter;
+                global cn.ibizlab.plm.core.wiki.domain.article_page ai_kb_document_syncsync_create_docpages;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+                    global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_document_syncService iBzSysAi_kb_document_syncDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_document_syncsync_create_docbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docprepareparam_01"
+            when
+            then
+                            ai_kb_document_syncsync_create_docpage_filter.set("n_space_id_eq",ai_kb_document_syncsync_create_docdefault.get("sourceid"));
+                            ai_kb_document_syncsync_create_docpage_filter.set("size","1000");
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询空间下的页面]
+            rule "dedataset_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docdedataset_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docloopsubcall_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "ai_kb_document_syncsync_create_docprepareparam_02"
+            when
+            then
+                            ai_kb_document_syncsync_create_dockb_doc.set("parserconfig",ai_kb_document_syncsync_create_docai_kb_doc_wizard.get("parserconfig"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("customchunk",ai_kb_document_syncsync_create_docai_kb_doc_wizard.get("customchunk"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("chunkmethod",ai_kb_document_syncsync_create_docai_kb_doc_wizard.get("chunkmethod"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("kbid",ai_kb_document_syncsync_create_docdefault.get("aiknowledgebaseid"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("sourceid",ai_kb_document_syncsync_create_docpage.get("id"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("sourcetype","page");
+                            ai_kb_document_syncsync_create_dockb_doc.set("type","space");
+                            ai_kb_document_syncsync_create_dockb_doc.set("name",ai_kb_document_syncsync_create_docpage.get("name"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("active","1");
+                            ai_kb_document_syncsync_create_dockb_doc.set("status","0");
+                            ai_kb_document_syncsync_create_dockb_doc.set("syncid",ai_kb_document_syncsync_create_docdefault.get("id"));
+                            ai_kb_document_syncsync_create_dockb_doc.set("syncfrequency",ai_kb_document_syncsync_create_docdefault.get("syncfrequency"));
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docend_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建知识库文档]
+            rule "deaction_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docdeaction_01"
+            when
+            then
+                        ai_kb_documentservice.create(ai_kb_document_syncsync_create_dockb_doc);
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam_01"
+            ruleflow-group "ai_kb_document_syncsync_create_docrenewparam_01"
+            when
+            then
+                        update(ai_kb_document_syncsync_create_docdefault);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docai_kb_doc_wizard);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_dockb_doc);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpage_filter);//更新fact中变量值
+                        update(ai_kb_document_syncsync_create_docpages);//更新fact中变量值
+            end

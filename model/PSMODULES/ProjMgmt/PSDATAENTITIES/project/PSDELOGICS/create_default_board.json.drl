@@ -1,0 +1,77 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_default_board;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectcreate_default_boarddefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.board projectcreate_default_boardboard;
+                global cn.ibizlab.plm.core.projmgmt.domain.entry projectcreate_default_boarddesign_entry;
+                global cn.ibizlab.plm.core.projmgmt.domain.entry projectcreate_default_boardidea_pool_entry;
+                global cn.ibizlab.plm.core.projmgmt.domain.entry projectcreate_default_boardissue_entry;
+                global cn.ibizlab.plm.core.projmgmt.domain.entry projectcreate_default_boardrd_entry;
+                global cn.ibizlab.plm.core.projmgmt.domain.swimlane projectcreate_default_boardswimlane;
+                global cn.ibizlab.plm.core.projmgmt.domain.entry projectcreate_default_boardtest_entry;
+                    global cn.ibizlab.plm.core.projmgmt.service.IboardService boardservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectcreate_default_boardbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[默认看板名称]
+            rule "prepareparam1"
+            ruleflow-group "projectcreate_default_boardprepareparam1"
+            when
+            then
+                            projectcreate_default_boardboard.set("name","默认看板");
+                            projectcreate_default_boardboard.set("id",projectcreate_default_boarddefault.get("id"));
+                            projectcreate_default_boardboard.set("projectid",projectcreate_default_boarddefault.get("id"));
+                        update(projectcreate_default_boarddefault);//更新fact中变量值
+                        update(projectcreate_default_boardboard);//更新fact中变量值
+                        update(projectcreate_default_boarddesign_entry);//更新fact中变量值
+                        update(projectcreate_default_boardidea_pool_entry);//更新fact中变量值
+                        update(projectcreate_default_boardissue_entry);//更新fact中变量值
+                        update(projectcreate_default_boardrd_entry);//更新fact中变量值
+                        update(projectcreate_default_boardswimlane);//更新fact中变量值
+                        update(projectcreate_default_boardtest_entry);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立默认看板]
+            rule "deaction1"
+            ruleflow-group "projectcreate_default_boarddeaction1"
+            when
+            then
+                        boardservice.create(projectcreate_default_boardboard);
+                        update(projectcreate_default_boarddefault);//更新fact中变量值
+                        update(projectcreate_default_boardboard);//更新fact中变量值
+                        update(projectcreate_default_boarddesign_entry);//更新fact中变量值
+                        update(projectcreate_default_boardidea_pool_entry);//更新fact中变量值
+                        update(projectcreate_default_boardissue_entry);//更新fact中变量值
+                        update(projectcreate_default_boardrd_entry);//更新fact中变量值
+                        update(projectcreate_default_boardswimlane);//更新fact中变量值
+                        update(projectcreate_default_boardtest_entry);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectcreate_default_boardend1"
+            when
+            then
+                        update(projectcreate_default_boarddefault);//更新fact中变量值
+                        update(projectcreate_default_boardboard);//更新fact中变量值
+                        update(projectcreate_default_boarddesign_entry);//更新fact中变量值
+                        update(projectcreate_default_boardidea_pool_entry);//更新fact中变量值
+                        update(projectcreate_default_boardissue_entry);//更新fact中变量值
+                        update(projectcreate_default_boardrd_entry);//更新fact中变量值
+                        update(projectcreate_default_boardswimlane);//更新fact中变量值
+                        update(projectcreate_default_boardtest_entry);//更新fact中变量值
+            end

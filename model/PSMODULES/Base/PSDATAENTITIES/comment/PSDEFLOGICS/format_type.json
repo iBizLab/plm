@@ -1,0 +1,59 @@
+{
+  "codeName" : "format_type",
+  "dEFLogicMode" : "COMPUTE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEFLOGICS/format_type.json",
+  "logicName" : "识别内容格式",
+  "logicSubType" : "DEFIELD",
+  "memo" : "识别评论内容格式",
+  "name" : "识别内容格式",
+  "getPSDEField" : {
+    "name" : "NAME",
+    "codeName" : "name"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 300,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('default').getReal()\r\ndef _content = _default.get('content').trim()\r\n\r\n\r\nif(_content != null){\r\n\r\n     // 检查 HTML（使用更简单的匹配）\r\n    boolean isHtml = false\r\n    boolean isMarkdown = false\r\n    \r\n    // 检查 HTML 标签\r\n    if (_content.contains(\"</\") && _content.contains(\">\")) {\r\n        // 检查成对的标签\r\n        def tags = [\"html\", \"body\", \"head\", \"div\", \"p\", \"span\", \"table\", \"ul\", \"ol\"]\r\n        tags.each { tag ->\r\n            if (_content.contains(\"<${tag}\") && _content.contains(\"</${tag}>\")) {\r\n                isHtml = true\r\n            }\r\n        }\r\n        \r\n        // 检查自闭合标签\r\n        def selfClosing = [\"br\", \"hr\", \"img\", \"input\", \"meta\", \"link\"]\r\n        selfClosing.each { tag ->\r\n            if (_content.contains(\"<${tag}\") && _content.contains(\"/>\")) {\r\n                isHtml = true\r\n            }\r\n        }\r\n    }\r\n    \r\n    // 检查 HTML 文档声明\r\n    if (_content.toLowerCase().contains(\"<!doctype html\")) {\r\n        isHtml = true\r\n    }\r\n    \r\n\r\n    // 链接 [_content](url)\r\n    if (_content.contains(\"[\") && _content.contains(\"](\") && _content.contains(\")\")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    // 列表\r\n    if (_content.contains(\"- \") || _content.contains(\"* \") || _content.contains(\"1. \")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    // 代码块\r\n    if (_content.contains(\"```\") || _content.contains(\"~~~\")) {\r\n        isMarkdown = true\r\n    }\r\n    \r\n    println \"评论1#######:$_default\"\r\n    \r\n    // 返回结果\r\n    if (isHtml && isMarkdown) {\r\n        _default.set('format_type', \"HTML\")\r\n    } else if (isMarkdown) {\r\n          _default.set('format_type', \"MD\")\r\n    } else {\r\n         _default.set('format_type', \"HTML\")\r\n    }\r\n    println \"评论2#######:$_default\"\r\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 260,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "判断内容格式",
+    "topPos" : 300,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

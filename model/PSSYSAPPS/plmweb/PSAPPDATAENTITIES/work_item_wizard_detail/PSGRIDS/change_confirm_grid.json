@@ -1,0 +1,249 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "change_confirm_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_wizard_detail/PSGRIDS/change_confirm_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_wizard_detail.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "确认变更类型_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_wizard_detail.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.TARGET_TYPE"
+    },
+    "caption" : "目标类型",
+    "codeName" : "target_type",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "target_type",
+    "excelCaption" : "目标类型",
+    "name" : "target_type",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TARGET_TYPE",
+      "codeName" : "target_type"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "工作项标题",
+    "codeName" : "title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "title",
+    "excelCaption" : "工作项标题",
+    "name" : "title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "目标工作项状态",
+    "codeName" : "target_state",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "target_state",
+    "excelCaption" : "目标工作项状态",
+    "name" : "target_state",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__scrum_state.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TARGET_STATE",
+      "codeName" : "target_state"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "优先级",
+    "codeName" : "priority",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "priority",
+    "excelCaption" : "优先级",
+    "name" : "priority",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "priority"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "负责人",
+    "codeName" : "assignee_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "assignee_name",
+    "excelCaption" : "负责人",
+    "name" : "assignee_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assigee_name"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "target_type",
+    "getPSAppDEField" : {
+      "name" : "TARGET_TYPE",
+      "codeName" : "target_type"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "target_state",
+    "getPSAppDEField" : {
+      "name" : "TARGET_STATE",
+      "codeName" : "target_state"
+    },
+    "scriptCode" : "const app = ibiz.hub.getApp(context.srfappid);\r\nconst tempparams = {...params, work_item_type_id: data.target_type, project_id: data.project_id, state: data.target_state}\r\nconst dataItems = await app.codeList.get(\r\n    'plmweb.projmgmt__scrum_state',\r\n    context,\r\n    tempparams,\r\n);\r\nconst value = data.target_state;\r\nconst item =dataItems.find(x => x.value === value);\r\nif (item) {\r\n    return `<div class=\"ibiz-dropdown ibiz-dropdown--readonly ibiz-dropdown--round ibiz-grid-field-edit-column__editor\" title=\"${item.text}\"><span class=\"ibiz-dropdown-readonly-text-item\" style=\"--ibiz-dropdown-readonly-text-item-color: ${item.color}; --ibiz-dropdown-select-option-item-color: ${item.color}; --ibiz-dropdown-select-option-item-bkcolor: ${item.bkcolor};\"><span class=\"ibiz-dropdown-readonly-text-item__label\">${item.text}</span></span></div>`;\r\n}",
+    "customCode" : true
+  }, {
+    "dataType" : 25,
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "priority"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assigee_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "project_id",
+    "getPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "wizard_id",
+    "getPSAppDEField" : {
+      "name" : "WIZARD_ID",
+      "codeName" : "wizard_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_wizard_detail.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : true,
+  "singleSelect" : true,
+  "modelid" : "a1d85707a144ff935bc4d0bed8ea3e10",
+  "modeltype" : "PSDEGRID"
+}

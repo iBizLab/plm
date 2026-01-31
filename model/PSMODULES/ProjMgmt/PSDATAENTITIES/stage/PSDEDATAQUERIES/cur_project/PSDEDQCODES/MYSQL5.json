@@ -1,0 +1,66 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "( t21.`PROJECT_ID` = #{ctx.webcontext.project} )",
+    "name" : "查询条件"
+  } ],
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`COLOR`",
+    "name" : "COLOR"
+  }, {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`IS_CURRENT`",
+    "name" : "IS_CURRENT"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`OPERATED_TIME`",
+    "name" : "OPERATED_TIME"
+  }, {
+    "expression" : "t1.`PID`",
+    "name" : "PID"
+  }, {
+    "expression" : "t11.`NAME`",
+    "name" : "PNAME"
+  }, {
+    "expression" : "t11.`COLOR`",
+    "name" : "P_COLOR"
+  }, {
+    "expression" : "t11.`SEQUENCE`",
+    "name" : "P_SEQUENCE"
+  }, {
+    "expression" : "t11.`TYPE`",
+    "name" : "P_TYPE"
+  }, {
+    "expression" : "t1.`RELEASE_ID`",
+    "name" : "RELEASE_ID"
+  }, {
+    "expression" : "t1.`SEQUENCE`",
+    "name" : "SEQUENCE"
+  }, {
+    "expression" : "t1.`STYLE`",
+    "name" : "STYLE"
+  }, {
+    "expression" : "t1.`TYPE`",
+    "name" : "TYPE"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  } ],
+  "queryCode" : "SELECT\nt1.`COLOR`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`ID`,\nt1.`IS_CURRENT`,\nt1.`NAME`,\nt1.`OPERATED_TIME`,\nt1.`PID`,\nt11.`NAME` AS `PNAME`,\nt11.`COLOR` AS `P_COLOR`,\nt11.`SEQUENCE` AS `P_SEQUENCE`,\nt11.`TYPE` AS `P_TYPE`,\nt1.`RELEASE_ID`,\nt1.`SEQUENCE`,\nt1.`STYLE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `STAGE` t1 \nLEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` \nLEFT JOIN `PROJECT_RELEASE` t21 ON t1.`RELEASE_ID` = t21.`ID` \n",
+  "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEDATAQUERIES/cur_project/PSDEDQCODES/MYSQL5.json"
+}

@@ -1,0 +1,52 @@
+package cn.ibizlab.plm.projmgmt.logic.baseline_work_itemlogic.snapshot_set_baseline;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item baseline_work_itemsnapshot_set_baselinedefault;
+                global cn.ibizlab.plm.core.base.domain.baseline baseline_work_itemsnapshot_set_baselinebaseline;
+                    global cn.ibizlab.plm.core.base.service.IbaselineService baselineservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Ibaseline_work_itemService iBzSysBaseline_work_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baseline_work_itemsnapshot_set_baselinebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设值基线状态为打开]
+            rule "prepareparam1"
+            ruleflow-group "baseline_work_itemsnapshot_set_baselineprepareparam1"
+            when
+            then
+                            baseline_work_itemsnapshot_set_baselinebaseline.set("status","1");
+                            baseline_work_itemsnapshot_set_baselinebaseline.set("id",baseline_work_itemsnapshot_set_baselinedefault.get("baseline_id"));
+                        update(baseline_work_itemsnapshot_set_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemsnapshot_set_baselinebaseline);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设立基线]
+            rule "deaction1"
+            ruleflow-group "baseline_work_itemsnapshot_set_baselinedeaction1"
+            when
+            then
+                        baselineservice.update(baseline_work_itemsnapshot_set_baselinebaseline);
+                        update(baseline_work_itemsnapshot_set_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemsnapshot_set_baselinebaseline);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "baseline_work_itemsnapshot_set_baselineend1"
+            when
+            then
+                        update(baseline_work_itemsnapshot_set_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemsnapshot_set_baselinebaseline);//更新fact中变量值
+            end

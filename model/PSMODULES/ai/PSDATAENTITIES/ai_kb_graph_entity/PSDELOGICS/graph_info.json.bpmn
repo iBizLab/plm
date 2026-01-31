@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.service.logic.ai_kb_graph_entitygraph_info" isClosed="false" isExecutable="true" name="ai_ai_kb_graph_entity_graph_info_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.service.logic.ai_kb_graph_entitygraph_info">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ai_kb_graph_entitygraph_infodefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_graph_entity()" name="ai_kb_graph_entitygraph_infoentity" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_graph_relation()" name="ai_kb_graph_entitygraph_inforelation" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_graph_entityService))" name="ai_kb_graph_entityservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_graph_relationService))" name="ai_kb_graph_relationservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_graph_entityService))" name="iBzSysAi_kb_graph_entityDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ai_kb_graph_entitygraph_infodefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_graph_entity" />
+                            <tns:global identifier="ai_kb_graph_entitygraph_infoentity" type="cn.ibizlab.plm.core.ai.domain.ai_kb_graph_entity" />
+                            <tns:global identifier="ai_kb_graph_entitygraph_inforelation" type="cn.ibizlab.plm.core.ai.domain.ai_kb_graph_relation" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infodeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infodeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoprepareparam_04" id="prepareparam_04" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_graph_entitygraph_infoend_02" id="end_02" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_02_end" name="end"/>
+                        <sequenceFlow id="end_02_end_line" sourceRef="end_02" targetRef="end_02_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_graph_entitygraph_infodefault:ai_kb_graph_entity();
+                                            $ai_kb_graph_entitygraph_infoentity:ai_kb_graph_entity();
+                                            $ai_kb_graph_entitygraph_inforelation:ai_kb_graph_relation();
+                                    eval($ai_kb_graph_entitygraph_infodefault==ai_kb_graph_entitygraph_infodefault && $ai_kb_graph_entitygraph_infoentity==ai_kb_graph_entitygraph_infoentity && $ai_kb_graph_entitygraph_inforelation==ai_kb_graph_entitygraph_inforelation);
+                                eval((RuleUtils.test($ai_kb_graph_entitygraph_infodefault.get("current_selected"),"EQ","ai_kb_graph_entity"))&&(RuleUtils.test($ai_kb_graph_entitygraph_infodefault.get("ai_kb_graph_entity"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_02" sourceRef="gateway-begin" targetRef="prepareparam_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_kb_graph_entitygraph_infodefault:ai_kb_graph_entity();
+                                            $ai_kb_graph_entitygraph_infoentity:ai_kb_graph_entity();
+                                            $ai_kb_graph_entitygraph_inforelation:ai_kb_graph_relation();
+                                    eval($ai_kb_graph_entitygraph_infodefault==ai_kb_graph_entitygraph_infodefault && $ai_kb_graph_entitygraph_infoentity==ai_kb_graph_entitygraph_infoentity && $ai_kb_graph_entitygraph_inforelation==ai_kb_graph_entitygraph_inforelation);
+                                eval((RuleUtils.test($ai_kb_graph_entitygraph_infodefault.get("current_selected"),"EQ","ai_kb_graph_relation"))&&(RuleUtils.test($ai_kb_graph_entitygraph_infodefault.get("ai_kb_graph_relation"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_01_deaction_01" sourceRef="prepareparam_01" targetRef="deaction_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_01_prepareparam_03" sourceRef="deaction_01" targetRef="prepareparam_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_03_end_01" sourceRef="prepareparam_03" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_deaction_02" sourceRef="prepareparam_02" targetRef="deaction_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_prepareparam_04" sourceRef="deaction_02" targetRef="prepareparam_04">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_04_end_02" sourceRef="prepareparam_04" targetRef="end_02">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

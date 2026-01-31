@@ -1,0 +1,66 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.allocate_person;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketallocate_persondefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketallocate_personfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketallocate_personsrfactionparam;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketallocate_personbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定选中负责人参数]
+            rule "bindparam1"
+            ruleflow-group "ticketallocate_personbindparam1"
+            when
+            then
+                        update(ticketallocate_persondefault);//更新fact中变量值
+                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
+                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ticketallocate_personloopsubcall1"
+            when
+            then
+                        update(ticketallocate_persondefault);//更新fact中变量值
+                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
+                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充负责人]
+            rule "prepareparam2"
+            ruleflow-group "ticketallocate_personprepareparam2"
+            when
+            then
+                            ticketallocate_persondefault.set("assigneeid",ticketallocate_personfor_temp_obj.get("assigneeid"));
+                            ticketallocate_persondefault.set("assigneename",ticketallocate_personfor_temp_obj.get("assigneename"));
+                        update(ticketallocate_persondefault);//更新fact中变量值
+                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
+                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更负责人]
+            rule "deaction1"
+            ruleflow-group "ticketallocate_persondeaction1"
+            when
+            then
+                        ticketservice.update(ticketallocate_persondefault);
+                        update(ticketallocate_persondefault);//更新fact中变量值
+                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
+                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
+            end

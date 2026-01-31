@@ -1,0 +1,94 @@
+package cn.ibizlab.plm.projmgmt.logic.stagelogic.del;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage stagedeldefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage stagedelreplace;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage stagedelsrfactionparam;
+                    global cn.ibizlab.plm.core.projmgmt.service.IstageService stageservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IstageService iBzSysStageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "stagedelbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "stagedelbindparam1"
+            when
+            then
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam2"
+            ruleflow-group "stagedelbindparam2"
+            when
+            then
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[替换发布阶段]
+            rule "rawsqlcall1"
+            ruleflow-group "stagedelrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",stagedelreplace.get("replace_id"));
+        param.put("param1",stagedeldefault.get("id"));
+    String strSql="UPDATE project_release t1, stage t2  SET t1.`STATUS` = t2.id  WHERE t2.RELEASE_ID = t1.ID   AND t2.pid = #{et.param0}  AND t1.`STATUS` = (SELECT id FROM stage WHERE release_id = t1.ID AND pid = #{et.param1}) ";
+                        iBzSysStageDefaultService.execute(strSql,param);//SQL调用
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[替换阶段同步属性]
+            rule "rawsqlcall2"
+            ruleflow-group "stagedelrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",stagedelreplace.get("replace_id"));
+        param.put("param1",stagedeldefault.get("id"));
+    String strSql="update stage t1, stage t2  set t1.is_current = t2.is_current, t1.operated_time = t2.operated_time  where t1.release_id = t2.release_id and t1.pid = #{et.param0} and t2.pid = #{et.param1}";
+                        iBzSysStageDefaultService.execute(strSql,param);//SQL调用
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除阶段]
+            rule "deaction1"
+            ruleflow-group "stagedeldeaction1"
+            when
+            then
+                        stageservice.remove(stagedeldefault.getId());
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "stagedelend1"
+            when
+            then
+                        update(stagedeldefault);//更新fact中变量值
+                        update(stagedelreplace);//更新fact中变量值
+                        update(stagedelsrfactionparam);//更新fact中变量值
+            end

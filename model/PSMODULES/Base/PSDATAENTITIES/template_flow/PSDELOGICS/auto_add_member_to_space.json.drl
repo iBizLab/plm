@@ -1,0 +1,155 @@
+package cn.ibizlab.plm.base.logic.template_flowlogic.auto_add_member_to_space;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.template_flow template_flowauto_add_member_to_spacedefault;
+                global cn.ibizlab.plm.core.wiki.domain.space template_flowauto_add_member_to_spacespace_filter;
+                global cn.ibizlab.plm.core.wiki.domain.space_member template_flowauto_add_member_to_spacespace_member;
+                global cn.ibizlab.plm.core.wiki.domain.space template_flowauto_add_member_to_spacespace_temp;
+                global cn.ibizlab.plm.core.wiki.domain.space template_flowauto_add_member_to_spacespaces;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+                    global cn.ibizlab.plm.core.wiki.service.IspaceService spaceservice;
+                    global cn.ibizlab.plm.core.wiki.service.Ispace_memberService space_memberservice;
+        global cn.ibizlab.plm.core.base.service.Itemplate_flowService iBzSysTemplate_flowDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "template_flowauto_add_member_to_spacebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取团队成员]
+            rule "deaction2"
+            ruleflow-group "template_flowauto_add_member_to_spacedeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(memberservice.get(template_flowauto_add_member_to_spacedefault.getId()),template_flowauto_add_member_to_spacedefault);
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置空间过滤条件]
+            rule "prepareparam2"
+            ruleflow-group "template_flowauto_add_member_to_spaceprepareparam2"
+            when
+            then
+                            template_flowauto_add_member_to_spacespace_filter.set("n_scope_id_eq",template_flowauto_add_member_to_spacedefault.get("owner_id"));
+                            template_flowauto_add_member_to_spacespace_filter.set("size","1000");
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取符合条件的空间]
+            rule "dedataset1"
+            ruleflow-group "template_flowauto_add_member_to_spacededataset1"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "template_flowauto_add_member_to_spaceend2"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查看ok空间]
+            rule "debugparam3"
+            ruleflow-group "template_flowauto_add_member_to_spacedebugparam3"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[逐空间执行]
+            rule "loopsubcall1"
+            ruleflow-group "template_flowauto_add_member_to_spaceloopsubcall1"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置空间成员]
+            rule "resetparam1"
+            ruleflow-group "template_flowauto_add_member_to_spaceresetparam1"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置空间成员属性]
+            rule "prepareparam1"
+            ruleflow-group "template_flowauto_add_member_to_spaceprepareparam1"
+            when
+            then
+                            template_flowauto_add_member_to_spacespace_member.set("userid",template_flowauto_add_member_to_spacedefault.get("user_id"));
+                            template_flowauto_add_member_to_spacespace_member.set("roleid",template_flowauto_add_member_to_spacedefault.get("role_id"));
+                            template_flowauto_add_member_to_spacespace_member.set("name",template_flowauto_add_member_to_spacedefault.get("name"));
+                            template_flowauto_add_member_to_spacespace_member.set("spaceid",template_flowauto_add_member_to_spacespace_temp.get("id"));
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查看空间成员]
+            rule "debugparam2"
+            ruleflow-group "template_flowauto_add_member_to_spacedebugparam2"
+            when
+            then
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加空间成员]
+            rule "deaction1"
+            ruleflow-group "template_flowauto_add_member_to_spacedeaction1"
+            when
+            then
+                        space_memberservice.save(template_flowauto_add_member_to_spacespace_member);
+                        update(template_flowauto_add_member_to_spacedefault);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_filter);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_member);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespace_temp);//更新fact中变量值
+                        update(template_flowauto_add_member_to_spacespaces);//更新fact中变量值
+            end
