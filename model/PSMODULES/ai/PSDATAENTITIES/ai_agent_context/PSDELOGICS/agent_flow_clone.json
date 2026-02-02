@@ -6,13 +6,13 @@
   "name" : "agent_flow_clone",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 130,
+    "leftPos" : 64,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION_01"
+        "id" : "PREPAREPARAM_02"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,7 +20,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 320,
+    "topPos" : 210,
     "parallelOutput" : true
   }, {
     "codeName" : "COPYPARAM_01",
@@ -28,7 +28,7 @@
       "modelref" : true,
       "id" : "clone_ag_context"
     },
-    "leftPos" : 510,
+    "leftPos" : 530,
     "logicNodeType" : "COPYPARAM",
     "name" : "拷贝参数",
     "getPSDELogicLinks" : [ {
@@ -46,7 +46,7 @@
       "modelref" : true,
       "id" : "original_ag_context"
     },
-    "topPos" : 280,
+    "topPos" : 300,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION_01",
@@ -62,7 +62,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
     },
-    "leftPos" : 280,
+    "leftPos" : 320,
     "logicNodeType" : "DEACTION",
     "name" : "获取选中flow智能体数据",
     "getPSDELogicLinks" : [ {
@@ -80,13 +80,13 @@
       "modelref" : true,
       "id" : "original_ag_context"
     },
-    "topPos" : 290,
+    "topPos" : 310,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM_01",
-    "leftPos" : 510,
+    "leftPos" : 740,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置新context代码标识",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -108,11 +108,106 @@
       "srcFieldName" : "CODE_NAME",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
+        "id" : "clone_ag_context2"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 310,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_02",
+    "leftPos" : 140,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_02"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CODE_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "clone_ag_context2"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CODE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 400,
+    "topPos" : 320,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _original_delogic = logic.param('original_delogic').getReal();\r\nprintln(\"当前_original_delogic：\"+_original_delogic);",
+    "codeName" : "RAWSFCODE_02",
+    "codeType" : "Groovy",
+    "leftPos" : 330,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "查看选择逻辑信息",
+    "topPos" : 450,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_03",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "leftPos" : 550,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取选择flow智能体逻辑",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_03"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "topPos" : 450,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('default').getReal();\r\nprintln(\"当前_default：\"+_default);\r\n\r\ndef _clone_ag_context = logic.param('clone_ag_context').getReal();\r\nprintln(\"当前_clone_ag_context：\"+_clone_ag_context);\r\n\r\n\r\ndef choose_logic_id=_default.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\nprintln(\"当前log_id：\"+choose_logic_id);\r\n\r\ndef _original_delogic = logic.param('original_delogic').getReal()\r\n_original_delogic.id=choose_logic_id",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 770,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "拼接选择逻辑id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_03"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 450,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION_02",
@@ -128,18 +223,9 @@
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
     },
-    "leftPos" : 120,
+    "leftPos" : 4,
     "logicNodeType" : "DEACTION",
     "name" : "创建flow智能体",
-    "topPos" : 480,
-    "parallelOutput" : true
-  }, {
-    "code" : "def _default = logic.param('default').getReal();\r\nprintln(\"当前_default：\"+_default);\r\n\r\ndef _clone_ag_context = logic.param('clone_ag_context').getReal();\r\nprintln(\"当前_clone_ag_context：\"+_clone_ag_context);\r\n\r\n\r\ndef choose_logic_id=_default.code_name+ \"ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\nprintln(\"当前id：\"+choose_logic_id);",
-    "codeName" : "RAWSFCODE_01",
-    "codeType" : "Groovy",
-    "leftPos" : 510,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "拼接逻辑id",
     "topPos" : 540,
     "parallelOutput" : true
   } ],
@@ -156,6 +242,16 @@
   }, {
     "codeName" : "clone_ag_context",
     "logicName" : "clone_ag_context",
+    "name" : "clone_ag_context",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "clone_ag_context2",
+    "logicName" : "clone_ag_context",
+    "memo" : "设置页面填写的代码标识",
     "name" : "clone_ag_context",
     "getParamPSDataEntity" : {
       "modelref" : true,
