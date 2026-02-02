@@ -4827,7 +4827,7 @@
       "topPos" : 350,
       "parallelOutput" : true
     }, {
-      "code" : "def _clone_delogic = logic.param('clone_delogic').getReal();\r\n\r\ndef _clone_ag_context2 = logic.param('clone_ag_context2').getReal()\r\ndef new_logic_id=_clone_ag_context2.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\n\r\n_clone_delogic.id=null\r\n_clone_delogic.LOGICTAG=new_logic_id\r\n\r\ndef delogicnodes=_clone_delogic.psdelogicnodes\r\n//json字符串转json对象\r\ndef nodes_json = new groovy.json.JsonSlurper().parseText(delogicnodes)\r\n_clone_delogic.LOGICTAG=nodes_json\r\n\r\nprintln(\"当前_clone_delogic：\"+_clone_delogic);\r\nprintln(\"当前psdelogicnodes：\"+_clone_delogic.psdelogicnodes);",
+      "code" : "def _clone_delogic = logic.param('clone_delogic').getReal();\r\n\r\ndef _clone_ag_context2 = logic.param('clone_ag_context2').getReal()\r\ndef new_logic_id=_clone_ag_context2.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\n\r\n_clone_delogic.id=null\r\n_clone_delogic.LOGICTAG=new_logic_id\r\n\r\ndef delogicnodes=_clone_delogic.psdelogicnodes\r\nprintln(\"当前delogicnodes：\"+delogicnodes);\r\n\r\n  def nodes_json = groovy.json.JsonOutput.toJson(delogicnodes)\r\n\r\n_clone_delogic.psdelogicnodes=nodes_json\r\n\r\nprintln(\"当前_clone_delogic：\"+_clone_delogic);\r\nprintln(\"当前psdelogicnodes：\"+_clone_delogic.psdelogicnodes);",
       "codeName" : "RAWSFCODE_03",
       "codeType" : "Groovy",
       "leftPos" : 130,
