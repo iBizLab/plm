@@ -212,7 +212,7 @@
     "topPos" : 350,
     "parallelOutput" : true
   }, {
-    "code" : "def _clone_delogic = logic.param('clone_delogic').getReal();\r\n\r\ndef _clone_ag_context2 = logic.param('clone_ag_context2').getReal()\r\ndef new_logic_id=_clone_ag_context2.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\n\r\n_clone_delogic.id=null\r\n_clone_delogic.LOGICTAG=new_logic_id\r\n\r\ndef delogicnodes=_clone_delogic.psdelogicnodes\r\nprintln(\"当前delogicnodes：\"+delogicnodes);\r\nprintln(\"delogicnodes类型: \" + delogicnodes.getClass().name)\r\ndef newNodesList = []\r\nnewNodesList.addAll(delogicnodes)\r\n// 设置回对象\r\n_clone_delogic.psdelogicnodes = newNodesList\r\n\r\nprintln(\"当前_clone_delogic：\"+_clone_delogic);\r\n",
+    "code" : "def _clone_delogic = logic.param('clone_delogic').getReal();\r\ndef _clone_ag_context2 = logic.param('clone_ag_context2').getReal()\r\ndef new_logic_id=_clone_ag_context2.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\r\n_clone_delogic.id=null\r\n_clone_delogic.LOGICTAG=new_logic_id\r\n\r\ndef delogicnodes=_clone_delogic.psdelogicnodes\r\nprintln(\"当前delogicnodes：\"+delogicnodes);\r\nprintln(\"delogicnodes类型: \" + delogicnodes.getClass().name)\r\nprintln(\"转换delogicnodes类型: \" +delogicnodes.toArray(new String[0]))\r\n_clone_delogic.psdelogicnodes = delogicnodes.toArray(new String[0])\r\n\r\nprintln(\"最终_clone_delogic：\"+_clone_delogic);\r\n",
     "codeName" : "RAWSFCODE_03",
     "codeType" : "Groovy",
     "leftPos" : 130,
