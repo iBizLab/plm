@@ -52,6 +52,21 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
             end
 
+            //逻辑处理节点[备份页面填写信息]
+            rule "prepareparam_02"
+            ruleflow-group "ai_agent_contextagent_flow_cloneprepareparam_02"
+            when
+            then
+                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("codename",ai_agent_contextagent_flow_clonedefault.get("codename"));
+                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("name",ai_agent_contextagent_flow_clonedefault.get("name"));
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_delogic);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取选中flow智能体数据]
             rule "deaction_01"
             ruleflow-group "ai_agent_contextagent_flow_clonedeaction_01"
@@ -87,22 +102,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             ruleflow-group "ai_agent_contextagent_flow_clonedeaction_02"
             when
             then
-                        ai_agent_contextservice.create(ai_agent_contextagent_flow_cloneclone_ag_context);
-                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
-                        update(ai_agent_contextagent_flow_cloneclone_ag_context);//更新fact中变量值
-                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
-                        update(ai_agent_contextagent_flow_cloneclone_delogic);//更新fact中变量值
-                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
-                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
-            end
-
-            //逻辑处理节点[备份页面填写信息]
-            rule "prepareparam_02"
-            ruleflow-group "ai_agent_contextagent_flow_cloneprepareparam_02"
-            when
-            then
-                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("codename",ai_agent_contextagent_flow_clonedefault.get("codename"));
-                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("name",ai_agent_contextagent_flow_clonedefault.get("name"));
+                        ai_agent_contextservice.create(ai_agent_contextagent_flow_cloneoriginal_ag_context);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
@@ -138,11 +138,12 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
             end
 
-            //逻辑处理节点[拼接选择逻辑id]
-            rule "rawsfcode_01"
-            ruleflow-group "ai_agent_contextagent_flow_clonerawsfcode_01"
+            //逻辑处理节点[获取选择flow智能体逻辑]
+            rule "deaction_03"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_03"
             when
             then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdelogicservice.get(ai_agent_contextagent_flow_cloneoriginal_delogic.getPsdelogicid()),ai_agent_contextagent_flow_cloneoriginal_delogic);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
@@ -151,12 +152,11 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取选择flow智能体逻辑]
-            rule "deaction_03"
-            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_03"
+            //逻辑处理节点[拼接选择逻辑id]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_agent_contextagent_flow_clonerawsfcode_01"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdelogicservice.get(ai_agent_contextagent_flow_cloneoriginal_delogic.getPsdelogicid()),ai_agent_contextagent_flow_cloneoriginal_delogic);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
