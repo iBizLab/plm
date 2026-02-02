@@ -49,6 +49,38 @@
     "topPos" : 300,
     "parallelOutput" : true
   }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 760,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置新context代码标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CODE_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "clone_ag_context"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CODE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "clone_ag_context2"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 300,
+    "parallelOutput" : true
+  }, {
     "codeName" : "DEACTION_01",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -80,38 +112,6 @@
       "modelref" : true,
       "id" : "original_ag_context"
     },
-    "topPos" : 310,
-    "parallelOutput" : true
-  }, {
-    "codeName" : "PREPAREPARAM_01",
-    "leftPos" : 740,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置新context代码标识",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE_01"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM_01"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "CODE_NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "clone_ag_context"
-      },
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "CODE_NAME",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "clone_ag_context2"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
     "topPos" : 310,
     "parallelOutput" : true
   }, {
@@ -153,6 +153,17 @@
     "leftPos" : 330,
     "logicNodeType" : "RAWSFCODE",
     "name" : "查看选择逻辑信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "COPYPARAM_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_02"
+      }
+    } ],
     "topPos" : 450,
     "parallelOutput" : true
   }, {
@@ -227,6 +238,41 @@
     "logicNodeType" : "DEACTION",
     "name" : "创建flow智能体",
     "topPos" : 540,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "COPYPARAM_02",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "clone_delogic"
+    },
+    "leftPos" : 330,
+    "logicNodeType" : "COPYPARAM",
+    "name" : "拷贝参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_03"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "COPYPARAM_02"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "topPos" : 560,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _clone_delogic = logic.param('clone_delogic').getReal();\r\nprintln(\"当前_clone_delogic：\"+_clone_delogic);",
+    "codeName" : "RAWSFCODE_03",
+    "codeType" : "Groovy",
+    "leftPos" : 560,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "查看新逻辑信息",
+    "topPos" : 560,
     "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
