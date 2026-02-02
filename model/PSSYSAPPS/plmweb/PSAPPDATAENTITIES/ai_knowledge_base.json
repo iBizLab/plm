@@ -175,7 +175,7 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        data.parser_config = targetData.parser_config\r\n    }\r\n}\r\nreturn data;",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        targetData.id = data.id;\r\n        targetData.name = data.name;\r\n        return targetData;\r\n    }\r\n}\r\nreturn data;",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
@@ -3111,7 +3111,7 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        data.parser_config = targetData.parser_config\r\n    }\r\n}\r\nreturn data;",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        console.log('克隆已有数据库:', targetData);\r\n        targetData.id = data.id;\r\n        targetData.name = data.name;\r\n        return targetData;\r\n    }\r\n}\r\nreturn data;",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
