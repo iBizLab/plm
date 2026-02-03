@@ -174,7 +174,45 @@
     "builtinMethod" : true
   }, {
     "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "GetKbCopyTemp",
+    "methodType" : "DEACTION",
+    "name" : "GetKbCopyTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "GetKbCopyTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "GetKbCopyTempInput",
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetKbCopyTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "GetKbCopyTempResult",
+      "name" : "GetKbCopyTempResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/GetKbCopyTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "READ",
     "actionType" : "BUILTIN",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const { id: _, name: __, ...rest } = targetData || {};\r\n        // data.parser_config = targetData.parser_config\r\n        Object.assign(data, rest);\r\n    }\r\n}\r\nreturn data;",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
@@ -2422,6 +2460,41 @@
     "stdDataType" : 25,
     "stringLength" : 100
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "GetKbCopyTemp",
+    "defaultParamName" : "Default",
+    "logicName" : "GetKbCopyTemp",
+    "name" : "GetKbCopyTemp",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_knowledge_base.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "ai_knowledge_base_dto",
     "name" : "ai_knowledge_base_dto",
@@ -3109,7 +3182,45 @@
     "builtinMethod" : true
   }, {
     "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "GetKbCopyTemp",
+    "methodType" : "DEACTION",
+    "name" : "GetKbCopyTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "GetKbCopyTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "GetKbCopyTempInput",
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetKbCopyTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "GetKbCopyTempResult",
+      "name" : "GetKbCopyTempResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/GetKbCopyTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "READ",
     "actionType" : "BUILTIN",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    var copy_target =data.copy_target;\r\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\r\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\r\n    // 创建独立上下文（避免污染全局context）\r\n    const copyContext = {\r\n        ...context,\r\n        ai_knowledge_base: copy_target\r\n    };\r\n    const res = await kbService.get(copyContext)\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const { id: _, name: __, ...rest } = targetData || {};\r\n        // data.parser_config = targetData.parser_config\r\n        Object.assign(data, rest);\r\n    }\r\n}\r\nreturn data;",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",

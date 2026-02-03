@@ -452,6 +452,36 @@
     },
     "builtinAction" : true
   }, {
+    "actionHolder" : 2,
+    "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "GetKbCopyTemp",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/GetKbCopyTemp.json",
+    "logicName" : "行为",
+    "name" : "GetKbCopyTemp",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetKbCopyTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetKbCopyTempResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/GetKbCopyTemp.json"
+    },
+    "enableBackend" : false
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -4592,6 +4622,37 @@
     "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "GetKbCopyTemp",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/GetKbCopyTemp.json",
+    "logicName" : "GetKbCopyTemp",
+    "name" : "GetKbCopyTemp",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "change_admin_role",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/change_admin_role.json",
