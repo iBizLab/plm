@@ -122,12 +122,12 @@
     "topPos" : 241,
     "parallelOutput" : true
   }, {
-    "code" : "def _default = logic.param('Default').getReal()\ndef _type = _default.get('type')\nif (_type == 'file'){\n    def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient(\"cloud-oss\", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)\n    def fileJson = _default.get(\"file\")\n    if (fileJson){\n        def file = new groovy.json.JsonSlurper().parseText(fileJson)\n        if (file.size() > 0){\n            println(\"输出file\"+file[0])\n            def fileId = file[0].id\n            def folder = file[0].folder\n            def fileText = iCloudOSSClient.downloadText(folder, fileId)\n            _default.set(\"parsed_content\", fileText)\n        }\n    }\n}",
+    "code" : "def _default = logic.param('Default').getReal()\n// def _type = _default.get('type')\n// if (_type == 'file'){\n//     def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient(\"cloud-oss\", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)\n//     def fileJson = _default.get(\"file\")\n//     if (fileJson){\n//         def file = new groovy.json.JsonSlurper().parseText(fileJson)\n//         if (file.size() > 0){\n//             println(\"输出file\"+file[0])\n//             def fileId = file[0].id\n//             def folder = file[0].folder\n//             def fileText = iCloudOSSClient.downloadText(folder, fileId)\n//             _default.set(\"parsed_content\", fileText)\n//         }\n//     }\n// }\n_default.set(\"parsed_content\", _default.original_content)",
     "codeName" : "RAWSFCODE_01",
     "codeType" : "Groovy",
     "leftPos" : 130,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "获取文件内容",
+    "name" : "获取origin文件内容",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -245,7 +245,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE_02"
+        "id" : "RAWSFCODE_04"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -302,6 +302,26 @@
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEBUGPARAM_02"
+      }
+    } ],
+    "topPos" : 648,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef parsed_content = _default.get('parsed_content')\r\ndef custom_chunk = _default.get('custom_chunk')\r\nif (custom_chunk == 0){\r\n    // 使用所属知识库默认规则\r\n    def knowledge_base_runtime = sys.dataentity('ai_knowledge_base')\r\n    def knowledge_base = knowledge_base_runtime.get(_default.get('kb_id'))\r\n    if (knowledge_base){\r\n        parser_config = knowledge_base.get('parser_config')\r\n    }\r\n}else if (custom_chunk == 1){\r\n    // 使用自定义规则\r\n    parser_config = _default.get('parser_config')\r\n}\r\nif (parser_config){\r\n    def process_content\r\n    def pre_process_rules = parser_config.get('pre_process_rules')\r\n    if (pre_process_rules) {\r\n        process_content = net.ibizsys.central.plugin.ai.util.TextPreprocessUtils.process(parsed_content,pre_process_rules)\r\n    }\r\n      def data_masking_rules = parser_config.get('data_masking_rules')\r\n    if (data_masking_rules){\r\n        // 根据正则规则pattern对parsed_content进行替换\r\n        def pattern_replacement_map = [:]\r\n        for (data_masking_rule in data_masking_rules){\r\n            def pattern = data_masking_rule.get('pattern')\r\n            def replacement = data_masking_rule.get('replacement') ?: ''\r\n            pattern_replacement_map[pattern] = replacement\r\n            process_content = net.ibizsys.central.plugin.ai.util.TextPreprocessUtils.process(process_content,pattern_replacement_map)\r\n        }\r\n    }\r\n    if(process_content){\r\n        def masked_data = logic.param('masked_data').getReal()\r\n        masked_data.set(\"id\", _default.get(\"id\"))\r\n        masked_data.set(\"parsed_content\", process_content)\r\n        masked_data.set(\"status\", \"3\")\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE_04",
+    "codeType" : "Groovy",
+    "leftPos" : 361,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "使用工具类解析",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_02"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_04"
       }
     } ],
     "topPos" : 648,

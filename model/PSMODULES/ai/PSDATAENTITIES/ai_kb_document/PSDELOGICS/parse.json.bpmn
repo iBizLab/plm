@@ -18,13 +18,14 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="获取文件内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="获取origin文件内容"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="提取元数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_03" id="rawsfcode_03" implementation="http://www.jboss.org/drools/rule" name="实体打印"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="正则解析文档内容"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparseprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_04" id="rawsfcode_04" implementation="http://www.jboss.org/drools/rule" name="使用工具类解析"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparseend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
@@ -63,7 +64,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_02_debugparam_02" sourceRef="rawsfcode_02" targetRef="debugparam_02">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam_01_rawsfcode_02" sourceRef="prepareparam_01" targetRef="rawsfcode_02">
+                    <sequenceFlow id="prepareparam_01_rawsfcode_04" sourceRef="prepareparam_01" targetRef="rawsfcode_04">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam_02_deaction_02" sourceRef="gateway-debugparam_02" targetRef="deaction_02">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -75,6 +76,8 @@
                                 eval((RuleUtils.test($ai_kb_documentparsemasked_data.get("id"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_04_debugparam_02" sourceRef="rawsfcode_04" targetRef="debugparam_02">
                     </sequenceFlow>
                     <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
                     </sequenceFlow>

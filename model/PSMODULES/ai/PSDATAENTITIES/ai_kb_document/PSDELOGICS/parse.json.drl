@@ -35,7 +35,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取文件内容]
+            //逻辑处理节点[获取origin文件内容]
             rule "rawsfcode_01"
             ruleflow-group "ai_kb_documentparserawsfcode_01"
             when
@@ -106,6 +106,17 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam_02"
             ruleflow-group "ai_kb_documentparsedebugparam_02"
+            when
+            then
+                        update(ai_kb_documentparsedefault);//更新fact中变量值
+                        update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparselastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsemasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[使用工具类解析]
+            rule "rawsfcode_04"
+            ruleflow-group "ai_kb_documentparserawsfcode_04"
             when
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
