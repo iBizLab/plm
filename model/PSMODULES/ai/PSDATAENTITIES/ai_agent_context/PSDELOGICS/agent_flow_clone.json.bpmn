@@ -6,6 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_agent_contextagent_flow_clonedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneclone_ag_context1" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneclone_ag_context2" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneoriginal_ag_context" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDELogic()" name="ai_agent_contextagent_flow_cloneoriginal_delogic" type="refentity"/>
@@ -14,6 +15,7 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_agent_contextService))" name="iBzSysAi_agent_contextDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_agent_contextagent_flow_clonedefault" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
+                            <tns:global identifier="ai_agent_contextagent_flow_cloneclone_ag_context1" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneclone_ag_context2" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneoriginal_ag_context" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneoriginal_delogic" type="cn.ibizlab.plm.core.extension.domain.PSDELogic" />
@@ -48,10 +50,11 @@
                     <sequenceFlow id="gateway-deaction_03_rawsfcode_03" sourceRef="gateway-deaction_03" targetRef="rawsfcode_03">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_agent_contextagent_flow_clonedefault:ai_agent_context();
+                                            $ai_agent_contextagent_flow_cloneclone_ag_context1:ai_agent_context();
                                             $ai_agent_contextagent_flow_cloneclone_ag_context2:ai_agent_context();
                                             $ai_agent_contextagent_flow_cloneoriginal_ag_context:ai_agent_context();
                                             $ai_agent_contextagent_flow_cloneoriginal_delogic:PSDELogic();
-                                    eval($ai_agent_contextagent_flow_clonedefault==ai_agent_contextagent_flow_clonedefault && $ai_agent_contextagent_flow_cloneclone_ag_context2==ai_agent_contextagent_flow_cloneclone_ag_context2 && $ai_agent_contextagent_flow_cloneoriginal_ag_context==ai_agent_contextagent_flow_cloneoriginal_ag_context && $ai_agent_contextagent_flow_cloneoriginal_delogic==ai_agent_contextagent_flow_cloneoriginal_delogic);
+                                    eval($ai_agent_contextagent_flow_clonedefault==ai_agent_contextagent_flow_clonedefault && $ai_agent_contextagent_flow_cloneclone_ag_context1==ai_agent_contextagent_flow_cloneclone_ag_context1 && $ai_agent_contextagent_flow_cloneclone_ag_context2==ai_agent_contextagent_flow_cloneclone_ag_context2 && $ai_agent_contextagent_flow_cloneoriginal_ag_context==ai_agent_contextagent_flow_cloneoriginal_ag_context && $ai_agent_contextagent_flow_cloneoriginal_delogic==ai_agent_contextagent_flow_cloneoriginal_delogic);
                                 eval((RuleUtils.test($ai_agent_contextagent_flow_cloneoriginal_delogic.get("psdelogicid"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>

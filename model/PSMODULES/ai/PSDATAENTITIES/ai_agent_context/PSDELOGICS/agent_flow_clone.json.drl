@@ -6,6 +6,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_clonedefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneclone_ag_context1;
                 global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneclone_ag_context2;
                 global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneoriginal_ag_context;
                 global cn.ibizlab.plm.core.extension.domain.PSDELogic ai_agent_contextagent_flow_cloneoriginal_delogic;
@@ -32,6 +33,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
                             ai_agent_contextagent_flow_cloneclone_ag_context2.set("codename",ai_agent_contextagent_flow_clonedefault.get("codename"));
                             ai_agent_contextagent_flow_cloneclone_ag_context2.set("name",ai_agent_contextagent_flow_clonedefault.get("name"));
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -44,6 +46,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_agent_contextservice.get(ai_agent_contextagent_flow_clonedefault.getId()),ai_agent_contextagent_flow_clonedefault);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -57,7 +60,9 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
                             ai_agent_contextagent_flow_cloneoriginal_ag_context.set("codename",ai_agent_contextagent_flow_cloneclone_ag_context2.get("codename"));
                                 ai_agent_contextagent_flow_cloneoriginal_ag_context.set("id",null);
                             ai_agent_contextagent_flow_cloneoriginal_ag_context.set("name",ai_agent_contextagent_flow_cloneclone_ag_context2.get("name"));
+                            ai_agent_contextagent_flow_cloneclone_ag_context1.set("codename",ai_agent_contextagent_flow_cloneoriginal_ag_context.get("codename"));
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -70,6 +75,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             then
                         ai_agent_contextservice.create(ai_agent_contextagent_flow_cloneoriginal_ag_context);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -82,6 +88,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             then
                         psdelogicservice.create(ai_agent_contextagent_flow_cloneoriginal_delogic);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -93,6 +100,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             when
             then
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -105,6 +113,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdelogicservice.get(ai_agent_contextagent_flow_cloneoriginal_delogic.getPsdelogicid()),ai_agent_contextagent_flow_cloneoriginal_delogic);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -116,6 +125,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             when
             then
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -128,6 +138,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             then
                         psdelogicservice.apply(ai_agent_contextagent_flow_cloneoriginal_delogic);
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
@@ -139,6 +150,7 @@ package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
             when
             then
                         update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
                         update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
