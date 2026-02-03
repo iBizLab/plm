@@ -7,6 +7,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentparsedefault;
                 global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_kb_documentparseagent_context;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentparsedocument;
                 global java.util.Map ai_kb_documentparselastreturn;
                 global cn.ibizlab.plm.core.ai.domain.ai_kb_document ai_kb_documentparsemasked_data;
                     global cn.ibizlab.plm.core.ai.service.Iai_kb_documentService ai_kb_documentservice;
@@ -23,6 +24,19 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
             end
 
+            //逻辑处理节点[拷贝变量]
+            rule "prepareparam_02"
+            ruleflow-group "ai_kb_documentparseprepareparam_02"
+            when
+            then
+                            ai_kb_documentparsedocument.set("",ai_kb_documentparsedefault.get(""));
+                        update(ai_kb_documentparsedefault);//更新fact中变量值
+                        update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
+                        update(ai_kb_documentparselastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsemasked_data);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取数据]
             rule "deaction_01"
             ruleflow-group "ai_kb_documentparsedeaction_01"
@@ -31,6 +45,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_kb_documentservice.get(ai_kb_documentparsedefault.getId()),ai_kb_documentparsedefault);
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -42,6 +57,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -53,6 +69,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -65,6 +82,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
                         ai_kb_documentservice.extract_meta_data(ai_kb_documentparsedefault);
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -76,6 +94,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -87,6 +106,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -99,6 +119,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
                             ai_kb_documentparsemasked_data.set("metadata",ai_kb_documentparsedefault.get("metadata"));
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -110,6 +131,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -121,6 +143,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -133,6 +156,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
                         ai_kb_documentservice.update(ai_kb_documentparsemasked_data);
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end
@@ -144,6 +168,7 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
                         update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
                         update(ai_kb_documentparselastreturn);//更新fact中变量值
                         update(ai_kb_documentparsemasked_data);//更新fact中变量值
             end

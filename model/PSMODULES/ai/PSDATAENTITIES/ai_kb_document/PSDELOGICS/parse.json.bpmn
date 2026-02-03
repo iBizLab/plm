@@ -7,6 +7,7 @@
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_kb_documentparsedefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_kb_documentparseagent_context" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_documentparsedocument" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="ai_kb_documentparselastreturn" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_kb_document()" name="ai_kb_documentparsemasked_data" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_kb_documentService))" name="ai_kb_documentservice" type="service"/>
@@ -14,9 +15,11 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_kb_documentparsedefault" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
                             <tns:global identifier="ai_kb_documentparseagent_context" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
+                            <tns:global identifier="ai_kb_documentparsedocument" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
                             <tns:global identifier="ai_kb_documentparsemasked_data" type="cn.ibizlab.plm.core.ai.domain.ai_kb_document" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparseprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="拷贝变量"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparserawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="获取origin文件内容"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparsedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
@@ -30,15 +33,18 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_kb_documentparseend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
-                    <sequenceFlow id="begin_deaction_01" sourceRef="begin" targetRef="deaction_01">
+                    <sequenceFlow id="begin_prepareparam_02" sourceRef="begin" targetRef="prepareparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_deaction_01" sourceRef="prepareparam_02" targetRef="deaction_01">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction_01_rawsfcode_03" sourceRef="gateway-deaction_01" targetRef="rawsfcode_03">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_documentparsedefault:ai_kb_document();
                                             $ai_kb_documentparseagent_context:ai_agent_context();
+                                            $ai_kb_documentparsedocument:ai_kb_document();
                                             $ai_kb_documentparselastreturn:Map();
                                             $ai_kb_documentparsemasked_data:ai_kb_document();
-                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
+                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsedocument==ai_kb_documentparsedocument && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
                                 eval((RuleUtils.test($ai_kb_documentparsedefault.get("type"),"NOTEQ","file"))&&(RuleUtils.test($ai_kb_documentparsedefault.get("sourceType"),"ISNOTNULL",""))&&(RuleUtils.test($ai_kb_documentparsedefault.get("sourceId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -47,9 +53,10 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_documentparsedefault:ai_kb_document();
                                             $ai_kb_documentparseagent_context:ai_agent_context();
+                                            $ai_kb_documentparsedocument:ai_kb_document();
                                             $ai_kb_documentparselastreturn:Map();
                                             $ai_kb_documentparsemasked_data:ai_kb_document();
-                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
+                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsedocument==ai_kb_documentparsedocument && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
                                 eval((RuleUtils.test($ai_kb_documentparsedefault.get("type"),"EQ","file"))&&(RuleUtils.test($ai_kb_documentparsedefault.get("file"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -70,9 +77,10 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_kb_documentparsedefault:ai_kb_document();
                                             $ai_kb_documentparseagent_context:ai_agent_context();
+                                            $ai_kb_documentparsedocument:ai_kb_document();
                                             $ai_kb_documentparselastreturn:Map();
                                             $ai_kb_documentparsemasked_data:ai_kb_document();
-                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
+                                    eval($ai_kb_documentparsedefault==ai_kb_documentparsedefault && $ai_kb_documentparseagent_context==ai_kb_documentparseagent_context && $ai_kb_documentparsedocument==ai_kb_documentparsedocument && $ai_kb_documentparsemasked_data==ai_kb_documentparsemasked_data);
                                 eval((RuleUtils.test($ai_kb_documentparsemasked_data.get("id"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>

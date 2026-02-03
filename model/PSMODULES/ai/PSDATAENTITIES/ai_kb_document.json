@@ -3733,7 +3733,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION_01"
+          "id" : "PREPAREPARAM_02"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -3741,7 +3741,37 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 130,
+      "topPos" : -20,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_02",
+      "leftPos" : -106,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "拷贝变量",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "document"
+        },
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 110,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -3843,7 +3873,7 @@
       "topPos" : 241,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\n// def _type = _default.get('type')\n// if (_type == 'file'){\n//     def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient(\"cloud-oss\", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)\n//     def fileJson = _default.get(\"file\")\n//     if (fileJson){\n//         def file = new groovy.json.JsonSlurper().parseText(fileJson)\n//         if (file.size() > 0){\n//             println(\"输出file\"+file[0])\n//             def fileId = file[0].id\n//             def folder = file[0].folder\n//             def fileText = iCloudOSSClient.downloadText(folder, fileId)\n//             _default.set(\"parsed_content\", fileText)\n//         }\n//     }\n// }\n_default.set(\"parsed_content\", _default.original_content)",
+      "code" : "def _default = logic.param('Default').getReal()\ndef _document = logic.param('document').getReal()\n// def _type = _default.get('type')\n// if (_type == 'file'){\n//     def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient(\"cloud-oss\", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)\n//     def fileJson = _default.get(\"file\")\n//     if (fileJson){\n//         def file = new groovy.json.JsonSlurper().parseText(fileJson)\n//         if (file.size() > 0){\n//             println(\"输出file\"+file[0])\n//             def fileId = file[0].id\n//             def folder = file[0].folder\n//             def fileText = iCloudOSSClient.downloadText(folder, fileId)\n//             _default.set(\"parsed_content\", fileText)\n//         }\n//     }\n// }\n_default.set(\"parsed_content\", _document.original_content)",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 130,
@@ -4107,6 +4137,15 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "document",
+      "logicName" : "document",
+      "name" : "document",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
       },
       "entityParam" : true
     }, {

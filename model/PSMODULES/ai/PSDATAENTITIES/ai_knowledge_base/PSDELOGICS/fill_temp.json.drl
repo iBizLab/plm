@@ -1,0 +1,70 @@
+package cn.ibizlab.plm.ai.logic.ai_knowledge_baselogic.fill_temp;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_basefill_tempdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_basefill_temptarget;
+                    global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService ai_knowledge_baseservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService iBzSysAi_knowledge_baseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_knowledge_basefill_tempbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam_01"
+            ruleflow-group "ai_knowledge_basefill_tempdebugparam_01"
+            when
+            then
+                        update(ai_knowledge_basefill_tempdefault);//更新fact中变量值
+                        update(ai_knowledge_basefill_temptarget);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "ai_knowledge_basefill_tempprepareparam_01"
+            when
+            then
+                            ai_knowledge_basefill_temptarget.set("id",ai_knowledge_basefill_tempdefault.get("ai_knowledge_base"));
+                        update(ai_knowledge_basefill_tempdefault);//更新fact中变量值
+                        update(ai_knowledge_basefill_temptarget);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction_01"
+            ruleflow-group "ai_knowledge_basefill_tempdeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_knowledge_baseservice.get(ai_knowledge_basefill_temptarget.getId()),ai_knowledge_basefill_temptarget);
+                        update(ai_knowledge_basefill_tempdefault);//更新fact中变量值
+                        update(ai_knowledge_basefill_temptarget);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "ai_knowledge_basefill_tempprepareparam_02"
+            when
+            then
+                            ai_knowledge_basefill_tempdefault.set("parserconfig",ai_knowledge_basefill_temptarget.get("parserconfig"));
+                        update(ai_knowledge_basefill_tempdefault);//更新fact中变量值
+                        update(ai_knowledge_basefill_temptarget);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_knowledge_basefill_tempend_01"
+            when
+            then
+                        update(ai_knowledge_basefill_tempdefault);//更新fact中变量值
+                        update(ai_knowledge_basefill_temptarget);//更新fact中变量值
+            end
