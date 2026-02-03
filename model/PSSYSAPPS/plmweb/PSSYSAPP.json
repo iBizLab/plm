@@ -6763,6 +6763,28 @@
     },
     "enableCache" : true
   }, {
+    "codeListTag" : "ai__kb_mode",
+    "codeListType" : "STATIC",
+    "codeName" : "ai__kb_mode",
+    "dynaInstMode" : 0,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_mode.json",
+    "emptyText" : "未定义",
+    "name" : "智能体知识库模式",
+    "getPSCodeItems" : [ {
+      "codeName" : "default",
+      "text" : "默认",
+      "value" : "default"
+    }, {
+      "codeName" : "include",
+      "text" : "包含",
+      "value" : "include"
+    }, {
+      "codeName" : "exclude",
+      "text" : "排除",
+      "value" : "exclude"
+    } ],
+    "enableCache" : true
+  }, {
     "codeListTag" : "ai__kb_tag",
     "codeListType" : "DYNAMIC",
     "codeName" : "ai__kb_tag",
@@ -223620,6 +223642,35 @@
         "stringLength" : 100
       }, {
         "getAllPSAppDEFUIModes" : [ {
+          "name" : "默认",
+          "getPSDEFFormItem" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "默认",
+            "stringLength" : 60,
+            "uIMode" : "DEFAULT",
+            "needCodeListConfig" : true
+          },
+          "type" : "DEFAULT"
+        }, {
+          "name" : "移动端默认",
+          "getPSDEFFormItem" : {
+            "editorType" : "MOBDROPDOWNLIST",
+            "name" : "移动端默认",
+            "stringLength" : 60,
+            "uIMode" : "MOBILEDEFAULT",
+            "mobileMode" : true,
+            "needCodeListConfig" : true
+          },
+          "type" : "MOBILEDEFAULT",
+          "mobileMode" : true
+        } ],
+        "codeName" : "kb_mode",
+        "logicName" : "知识库模式",
+        "name" : "KB_MODE",
+        "stdDataType" : 25,
+        "stringLength" : 60
+      }, {
+        "getAllPSAppDEFUIModes" : [ {
           "codeName" : "Default",
           "name" : "[AI_MODEL_ID][模型标识]",
           "getPSDEFFormItem" : {
@@ -224455,6 +224506,17 @@
           "getPSAppDEField" : {
             "name" : "RERANK_MODEL",
             "codeName" : "rerank_model"
+          },
+          "sourceType" : "DEFIELD",
+          "stdDataType" : 25,
+          "type" : "SIMPLE"
+        }, {
+          "codeName" : "kb_mode",
+          "logicName" : "知识库模式",
+          "name" : "kb_mode",
+          "getPSAppDEField" : {
+            "name" : "KB_MODE",
+            "codeName" : "kb_mode"
           },
           "sourceType" : "DEFIELD",
           "stdDataType" : 25,

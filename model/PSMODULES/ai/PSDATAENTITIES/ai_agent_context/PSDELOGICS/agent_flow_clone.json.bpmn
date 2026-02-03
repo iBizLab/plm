@@ -6,9 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ai_agent_contextagent_flow_clonedefault" type="entity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneclone_ag_context" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneclone_ag_context2" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDELogic()" name="ai_agent_contextagent_flow_cloneclone_delogic" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.ai.domain.ai_agent_context()" name="ai_agent_contextagent_flow_cloneoriginal_ag_context" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDELogic()" name="ai_agent_contextagent_flow_cloneoriginal_delogic" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_agent_contextService))" name="ai_agent_contextservice" type="service"/>
@@ -16,19 +14,11 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_agent_contextService))" name="iBzSysAi_agent_contextDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ai_agent_contextagent_flow_clonedefault" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
-                            <tns:global identifier="ai_agent_contextagent_flow_cloneclone_ag_context" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneclone_ag_context2" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
-                            <tns:global identifier="ai_agent_contextagent_flow_cloneclone_delogic" type="cn.ibizlab.plm.core.extension.domain.PSDELogic" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneoriginal_ag_context" type="cn.ibizlab.plm.core.ai.domain.ai_agent_context" />
                             <tns:global identifier="ai_agent_contextagent_flow_cloneoriginal_delogic" type="cn.ibizlab.plm.core.extension.domain.PSDELogic" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextagent_flow_clonecopyparam_02" id="copyparam_02" implementation="http://www.jboss.org/drools/rule" name="拷贝参数"/>
-                        <endEvent id="copyparam_02_end" name="end"/>
-                        <sequenceFlow id="copyparam_02_end_line" sourceRef="copyparam_02" targetRef="copyparam_02_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextagent_flow_clonecopyparam_01" id="copyparam_01" implementation="http://www.jboss.org/drools/rule" name="拷贝参数"/>
-                        <endEvent id="copyparam_01_end" name="end"/>
-                        <sequenceFlow id="copyparam_01_end_line" sourceRef="copyparam_01" targetRef="copyparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextagent_flow_cloneprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="备份页面填写信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextagent_flow_clonedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取选中flow智能体数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_contextagent_flow_cloneprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="设置新context数据"/>
@@ -58,12 +48,10 @@
                     <sequenceFlow id="gateway-deaction_03_rawsfcode_03" sourceRef="gateway-deaction_03" targetRef="rawsfcode_03">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_agent_contextagent_flow_clonedefault:ai_agent_context();
-                                            $ai_agent_contextagent_flow_cloneclone_ag_context:ai_agent_context();
                                             $ai_agent_contextagent_flow_cloneclone_ag_context2:ai_agent_context();
-                                            $ai_agent_contextagent_flow_cloneclone_delogic:PSDELogic();
                                             $ai_agent_contextagent_flow_cloneoriginal_ag_context:ai_agent_context();
                                             $ai_agent_contextagent_flow_cloneoriginal_delogic:PSDELogic();
-                                    eval($ai_agent_contextagent_flow_clonedefault==ai_agent_contextagent_flow_clonedefault && $ai_agent_contextagent_flow_cloneclone_ag_context==ai_agent_contextagent_flow_cloneclone_ag_context && $ai_agent_contextagent_flow_cloneclone_ag_context2==ai_agent_contextagent_flow_cloneclone_ag_context2 && $ai_agent_contextagent_flow_cloneclone_delogic==ai_agent_contextagent_flow_cloneclone_delogic && $ai_agent_contextagent_flow_cloneoriginal_ag_context==ai_agent_contextagent_flow_cloneoriginal_ag_context && $ai_agent_contextagent_flow_cloneoriginal_delogic==ai_agent_contextagent_flow_cloneoriginal_delogic);
+                                    eval($ai_agent_contextagent_flow_clonedefault==ai_agent_contextagent_flow_clonedefault && $ai_agent_contextagent_flow_cloneclone_ag_context2==ai_agent_contextagent_flow_cloneclone_ag_context2 && $ai_agent_contextagent_flow_cloneoriginal_ag_context==ai_agent_contextagent_flow_cloneoriginal_ag_context && $ai_agent_contextagent_flow_cloneoriginal_delogic==ai_agent_contextagent_flow_cloneoriginal_delogic);
                                 eval((RuleUtils.test($ai_agent_contextagent_flow_cloneoriginal_delogic.get("psdelogicid"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>

@@ -279,6 +279,9 @@
       "name" : "RERANK_MODEL",
       "codeName" : "rerank_model"
     }, {
+      "name" : "KB_MODE",
+      "codeName" : "kb_mode"
+    }, {
       "name" : "AI_MODEL_ID",
       "codeName" : "ai_model_id"
     }, {
@@ -1670,6 +1673,91 @@
     },
     "ignoreRefresh" : true,
     "linkDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "KB_MODE",
+      "dBType" : "POSTGRESQL",
+      "name" : "KB_MODE",
+      "standardColumnName" : "KB_MODE"
+    }, {
+      "columnName" : "KB_MODE",
+      "dBType" : "MYSQL5",
+      "name" : "KB_MODE",
+      "queryCodeExp" : "t1.`KB_MODE`",
+      "standardColumnName" : "`KB_MODE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "默认",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "KB_MODE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "kb_mode",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "知识库模式",
+    "name" : "KB_MODE",
+    "orderValue" : 550,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSCODELISTS/kb_mode.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "KB_MODE"
+    },
+    "serviceCodeName" : "kb_mode",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "AI_MODEL_ID",
@@ -3831,6 +3919,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库模式",
+      "name" : "kb_mode",
+      "getPSDEField" : {
+        "name" : "KB_MODE",
+        "codeName" : "kb_mode"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
       "logicName" : "有效",
