@@ -36,7 +36,7 @@
     "logicTag" : "wizardpanel_form_chunk_settings",
     "logicType" : "SCRIPT",
     "name" : "logic2",
-    "scriptCode" : "var chunk_method = data[0].chunk_method\ndata[0].parser_config.method = chunk_method"
+    "scriptCode" : "console.log('克隆已有数据库:', data);\nif (data[0] && data[0].use_copy === 1 && data[0].copy_target !== null) {\n    var copy_target =data[0].copy_target;\n    const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;\n    const kbService = await serviceUtil.getService(context, 'plmweb.ai_knowledge_base');\n    // 创建独立上下文（避免污染全局context）\n    const copyContext = {\n        ...context,\n        ai_knowledge_base: copy_target\n    };\n    const res = await kbService.get(copyContext)\n    if (res && res.ok) {\n        var targetData = res.data;\n        const { id: _, name: __, ...rest } = targetData || {};\n        // data.parser_config = targetData.parser_config\n        Object.assign(data[0], rest);\n    }\n}\nvar chunk_method = data[0].chunk_method\ndata[0].parser_config.method = chunk_method"
   }, {
     "eventNames" : "SAVE",
     "logicTag" : "wizardpanel_form_chunk_settings",

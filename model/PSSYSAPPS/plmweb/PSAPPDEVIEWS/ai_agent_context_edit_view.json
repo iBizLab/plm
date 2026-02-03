@@ -527,26 +527,11 @@
         "codeName" : "code_name"
       }
     }, {
-      "id" : "flow_mode",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "FLOW_MODE",
-        "codeName" : "flow_mode"
-      }
-    }, {
       "id" : "scopes",
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "SCOPES",
         "codeName" : "scopes"
-      }
-    }, {
-      "id" : "is_default",
-      "dataType" : 9,
-      "getPSAppDEField" : {
-        "name" : "IS_DEFAULT",
-        "codeName" : "is_default"
       }
     }, {
       "id" : "active",
@@ -557,11 +542,26 @@
         "codeName" : "active"
       }
     }, {
+      "id" : "is_default",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "IS_DEFAULT",
+        "codeName" : "is_default"
+      }
+    }, {
       "id" : "description",
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "description"
+      }
+    }, {
+      "id" : "flow_mode",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "FLOW_MODE",
+        "codeName" : "flow_mode"
       }
     }, {
       "id" : "default_system_prompt",
@@ -933,6 +933,20 @@
             "name" : "CODE_NAME",
             "codeName" : "code_name"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "NOTEQ",
+              "dEFDName" : "flow_mode",
+              "logicType" : "SINGLE",
+              "name" : "flow_mode不等于(<>) DE",
+              "value" : "DE"
+            } ],
+            "relatedDetailNames" : [ "flow_mode" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
             "maxLength" : 100,
@@ -945,32 +959,6 @@
           },
           "allowEmpty" : false,
           "showCaption" : true
-        }, {
-          "caption" : "智能体工作流模式",
-          "codeName" : "flow_mode",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "flow_mode",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "FLOW_MODE",
-            "codeName" : "flow_mode"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "flow_mode"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true
         }, {
           "caption" : "业务范围",
           "codeName" : "scopes",
@@ -997,11 +985,40 @@
             "singleSelect" : false
           },
           "getPSLayoutPos" : {
-            "colMD" : 24,
+            "colLG" : 12,
+            "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
           "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "是否启用",
+          "codeName" : "active",
+          "createDV" : "1",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 90,
+          "name" : "active",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ACTIVE",
+            "codeName" : "active"
+          },
+          "getPSEditor" : {
+            "editorType" : "SWITCH",
+            "name" : "active"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 6,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
           "showCaption" : true
         }, {
           "caption" : "是否默认Agent",
@@ -1024,39 +1041,11 @@
             "name" : "is_default"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
+            "colLG" : 6,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
-          "showCaption" : true
-        }, {
-          "caption" : "是否启用",
-          "codeName" : "active",
-          "createDV" : "1",
-          "dataType" : 9,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "active",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "ACTIVE",
-            "codeName" : "active"
-          },
-          "getPSEditor" : {
-            "editorType" : "SWITCH",
-            "name" : "active"
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
           "showCaption" : true
         }, {
           "caption" : "描述",
@@ -1088,6 +1077,32 @@
           },
           "allowEmpty" : true,
           "showCaption" : true
+        }, {
+          "caption" : "智能体工作流模式",
+          "codeName" : "flow_mode",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "flow_mode",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "FLOW_MODE",
+            "codeName" : "flow_mode"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "flow_mode"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
         }, {
           "caption" : "常规",
           "codeName" : "grouppanel4",
