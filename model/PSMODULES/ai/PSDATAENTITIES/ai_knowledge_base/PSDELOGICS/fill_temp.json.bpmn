@@ -17,7 +17,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_knowledge_basefill_tempdebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_knowledge_basefill_tempprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_knowledge_basefill_tempdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_knowledge_basefill_tempprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_knowledge_basefill_tempend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
@@ -27,9 +26,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_deaction_01" sourceRef="prepareparam_01" targetRef="deaction_01">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction_01_prepareparam_02" sourceRef="deaction_01" targetRef="prepareparam_02">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam_02_end_01" sourceRef="prepareparam_02" targetRef="end_01">
+                    <sequenceFlow id="deaction_01_end_01" sourceRef="deaction_01" targetRef="end_01">
                     </sequenceFlow>
         </process>
     </definitions>

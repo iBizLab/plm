@@ -175,7 +175,7 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        return res.data;\r\n    }\r\n}",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== context.temp_id) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        context.temp_id = targetData.id;\r\n        const { id: _, name: __, ...rest } = targetData || {};\r\n        Object.assign(data, rest);\r\n        return data;\r\n    }\r\n}",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
@@ -3144,7 +3144,7 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        return res.data;\r\n    }\r\n}",
+    "afterCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== context.temp_id) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        context.temp_id = targetData.id;\r\n        const { id: _, name: __, ...rest } = targetData || {};\r\n        Object.assign(data, rest);\r\n        return data;\r\n    }\r\n}",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
