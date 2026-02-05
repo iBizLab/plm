@@ -14,13 +14,16 @@
                             <tns:global identifier="discuss_postdel_commentcomment" type="cn.ibizlab.plm.core.base.domain.comment" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postdel_commentdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postdel_commentprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充评论属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postdel_commentdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="删除评论"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postdel_commentrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="热度-2"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postdel_commentend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
