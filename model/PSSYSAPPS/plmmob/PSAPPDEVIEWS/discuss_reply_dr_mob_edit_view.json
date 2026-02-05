@@ -61,9 +61,43 @@
       "eventNames" : "onClick",
       "itemName" : "FIELD_TEXTBOX",
       "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
+      "logicType" : "APPDEUIACTION",
       "name" : "logic",
-      "scriptCode" : "console.log(\"view\", view)\r\nview.layoutPanel.panelItems.send_comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.comment_container.state.visible=false;"
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开评论列表",
+        "codeName" : "open_comment_list",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+          "viewType" : "DEMOBMDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "test_case_open_comment_list",
+        "name" : "打开评论列表",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PRINCIPAL_ID",
+          "name" : "PRINCIPAL_ID",
+          "value" : "principal_id",
+          "rawValue" : false
+        }, {
+          "key" : "PRINCIPAL_TYPE",
+          "name" : "PRINCIPAL_TYPE",
+          "value" : "principal_type",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_comment_list",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "reloadData" : true,
+        "id" : "open_comment_list@test_case"
+      }
     } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
