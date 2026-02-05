@@ -3589,6 +3589,72 @@
     "queryColumn" : false,
     "uIAssistDEField" : true
   }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CUR_TEMP][当前知识库模版]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[CUR_TEMP][当前知识库模版]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CUR_TEMP][当前知识库模版]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CUR_TEMP][当前知识库模版]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CUR_TEMP",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "cur_temp",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "当前知识库模版",
+    "name" : "CUR_TEMP",
+    "orderValue" : 410,
+    "serviceCodeName" : "cur_temp",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SIMILARITY_THRESHOLD",
       "dBType" : "POSTGRESQL",
@@ -5185,7 +5251,7 @@
     "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDELOGICS/UpdateByKbTemp.json",
     "logicName" : "从其他数据库克隆",
     "name" : "从其他数据库克隆",
-    "scriptCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== data.cur_temp) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        data.cur_temp = targetData.id\r\n        await app.deService.exec('plmweb.ai_knowledge_base','UpdateTemp', context, data);\r\n    }\r\n}",
+    "scriptCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== data.cur_temp) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        data.cur_temp = targetData.id\r\n    }\r\n}\r\nawait app.deService.exec('plmweb.ai_knowledge_base','UpdateTemp', context, data);",
     "customCode" : true,
     "enableBackend" : false,
     "enableFront" : true
@@ -6436,6 +6502,17 @@
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTOS"
+    }, {
+      "logicName" : "当前知识库模版",
+      "name" : "cur_temp",
+      "getPSDEField" : {
+        "name" : "CUR_TEMP",
+        "codeName" : "cur_temp"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "召回相似度阈值",
       "name" : "similarity_threshold",
