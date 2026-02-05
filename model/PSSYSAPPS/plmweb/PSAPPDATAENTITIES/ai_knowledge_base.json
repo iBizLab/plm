@@ -175,7 +175,6 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data+view+context);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== context.kb_temp_id) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        context.kb_temp_id = targetData.id;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        return data;\r\n    }\r\n}",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
@@ -305,6 +304,41 @@
     "tempDataMode" : 1,
     "builtinMethod" : true,
     "enableBatchAction" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "beforeCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        data.cur_temp = targetData.id\r\n        return data;\r\n    }\r\n}",
+    "codeName" : "UpdateByKbTemp",
+    "methodType" : "DEACTION",
+    "name" : "UpdateByKbTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "UpdateByKbTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "UpdateByKbTempInput",
+      "name" : "UpdateByKbTempInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "UpdateByKbTempResult",
+      "name" : "UpdateByKbTempResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/UpdateByKbTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
@@ -2487,6 +2521,15 @@
     "stdDataType" : 25,
     "stringLength" : 100
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "UpdateByKbTemp",
+    "defaultParamName" : "DEFAULT",
+    "logicName" : "从其他数据库克隆",
+    "name" : "从其他数据库克隆",
+    "customCode" : true,
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "ai_knowledge_base_def_group_dto",
     "name" : "ai_knowledge_base_def_group_dto",
@@ -3535,7 +3578,6 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
-    "afterCode" : "console.log('克隆已有数据库:', data+view+context);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target !== context.kb_temp_id) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        context.kb_temp_id = targetData.id;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        return data;\r\n    }\r\n}",
     "codeName" : "GetTemp",
     "methodType" : "DEACTION",
     "name" : "GetTemp",
@@ -3665,6 +3707,41 @@
     "tempDataMode" : 1,
     "builtinMethod" : true,
     "enableBatchAction" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "beforeCode" : "console.log('克隆已有数据库:', data);\r\nif (data && data.use_copy === 1 && data.copy_target !== null && data.copy_target) {\r\n    const app = await ibiz.hub.getApp(context.srfappid);\r\n    context.ai_knowledge_base = data.id;\r\n    const res = await app.deService.exec('plmweb.ai_knowledge_base', 'fill_temp', context, {\r\n        \"ai_knowledge_base\": data.id,\r\n        \"copy_target\": data.copy_target\r\n    });\r\n    if (res && res.ok) {\r\n        var targetData = res.data;\r\n        const {id: _id, name: _name, use_copy: _useCopy, copy_target: _copyTarget, description: _description, ...rest} = targetData || {};\r\n        Object.assign(data, rest);\r\n        data.cur_temp = targetData.id\r\n        return data;\r\n    }\r\n}",
+    "codeName" : "UpdateByKbTemp",
+    "methodType" : "DEACTION",
+    "name" : "UpdateByKbTemp",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "UpdateByKbTemp"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "UpdateByKbTempInput",
+      "name" : "UpdateByKbTempInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_knowledge_base_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "UpdateByKbTempResult",
+      "name" : "UpdateByKbTempResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/UpdateByKbTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
