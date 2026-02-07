@@ -22,8 +22,13 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/plm?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=plm
       - JAVA_OPTS=-Xms512m -Xmx2048m -Xss1024K -Dgroovy.grape.report.downloads=true
-    entrypoint: /entrypoint-waitfor.sh
-    command: ibiz-ebsx-gateway:30086
+    entrypoint: >
+      /bin/sh -c "
+      echo '等待依赖服务...';
+      sleep 120;
+      echo '启动原entrypoint...';
+      exec /entrypoint-waitfor.sh ibiz-ebsx-gateway:30086
+      "
 
 
   #plmweb
