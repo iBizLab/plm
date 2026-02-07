@@ -8,8 +8,10 @@
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_grid_view.json",
   "funcViewMode" : "MDATAVIEW",
   "gridRowActiveMode" : 1,
+  "height" : 90,
   "memo" : "系统自动添加",
   "name" : "SysTodoGridView",
+  "openMode" : "INDEXVIEWTAB_POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
@@ -100,11 +102,11 @@
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
-    "codeName" : "main",
+    "codeName" : "todo",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
     "controlType" : "GRID",
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSGRIDS/main.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSGRIDS/todo.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -120,7 +122,12 @@
       }
     },
     "groupMode" : "NONE",
-    "logicName" : "主表格",
+    "logicName" : "待办表格",
+    "minorSortDir" : "DESC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "CREATEDATE",
+      "codeName" : "CreateDate"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
@@ -504,106 +511,8 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "3f00d52fc14a8330913671b688c0ece0",
+    "modelid" : "765e27803b4e0d8d2c48fdbc22ae569f",
     "modeltype" : "PSDEGRID"
-  }, {
-    "codeName" : "default",
-    "controlType" : "SEARCHFORM",
-    "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo/PSSEARCHFORMS/default.json",
-    "logicName" : "默认搜索表单",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-    },
-    "getPSControlHandler" : {
-      "getPSHandlerActions" : [ {
-        "actionType" : "FILTERACTION",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGet"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "loaddraft",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGetDraft"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "search",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterSearch"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-        }
-      } ],
-      "enableDEFieldPrivilege" : false,
-      "id" : "搜索表单处理器"
-    },
-    "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "SEARCHFORM"
-    },
-    "getPSDEFormPages" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.SYS_TODO.DEFAULT.FORMPAGE.FORMPAGE1"
-      },
-      "caption" : "常规条件",
-      "codeName" : "formpage1",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage1",
-      "getPSLayout" : {
-        "childColMD" : 24,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    } ],
-    "getPSLayout" : {
-      "childColMD" : 24,
-      "columnCount" : 24,
-      "layout" : "TABLE_24COL"
-    },
-    "searchButtonStyle" : "DEFAULT",
-    "tabHeaderPos" : "TOP",
-    "enableAdvanceSearch" : false,
-    "enableAutoSearch" : false,
-    "enableFilterSave" : false,
-    "noTabHeader" : true,
-    "name" : "searchform",
-    "modelid" : "1dbcb419c8b29e94c439f08f48cabcdb",
-    "modeltype" : "PSDEFORM_SEARCHFORM"
-  }, {
-    "codeName" : "grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（默认表格界面）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/SysTodo.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "xDataControlName" : "grid",
-    "modelid" : "ec6fbb681f5e3e6783c2af57e5eefaaa",
-    "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
@@ -658,6 +567,7 @@
   },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",
+  "width" : 90,
   "xDataControlName" : "grid",
   "enableDP" : true,
   "enableExport" : true,

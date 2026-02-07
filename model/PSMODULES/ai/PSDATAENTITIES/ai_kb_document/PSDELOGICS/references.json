@@ -1,0 +1,82 @@
+{
+  "codeName" : "references",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDELOGICS/references.json",
+  "logicName" : "参考引用",
+  "name" : "参考引用",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\ndef meta_data_str = _default.get('meta_data')\nif (meta_data_str) {\n    try {\n        def meta_data = new groovy.json.JsonSlurper().parseText(meta_data_str)\n        def references = meta_data.references\n        _default.set('references', references)\n    }catch (e){\n        println \"Error parsing meta_data: ${e}\"\n    }\n}",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 346,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "提取references",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 198,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "dstFieldName" : "references",
+    "leftPos" : 624,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAMFIELD",
+    "topPos" : 200,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "references",
+    "logicName" : "references",
+    "name" : "references",
+    "entityListParam" : true
+  } ],
+  "scriptCode" : "var meta_data = data.meta_data;\nif (meta_data && typeof meta_data === 'string') {\n    try {\n        const parsed = JSON.parse(meta_data);\n        if (Array.isArray(parsed.references)) {\n            data.references = parsed.references;\n        }\n    } catch (e) {\n        console.warn('Invalid meta_data JSON format, skipping references assignment', e);\n    }\n}",
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

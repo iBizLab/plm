@@ -31,6 +31,141 @@
         "codeName" : "title"
       }
     } ],
+    "getPSDEUIActionGroup" : {
+      "codeName" : "ai_inline_action_default",
+      "name" : "行内AI聊天界面行为组（默认）",
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "AI写作",
+        "detailType" : "DEUIACTION",
+        "name" : "u23c7f39",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "AI写作",
+          "codeName" : "inline_ai_write",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "inline_ai_write",
+          "name" : "AI写作",
+          "getPSNavigateParams" : [ {
+            "key" : "srfaiagent",
+            "name" : "srfaiagent",
+            "value" : "TextAgent_Writing",
+            "rawValue" : true
+          } ],
+          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "inline_ai_write",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "摘要生成",
+        "detailType" : "DEUIACTION",
+        "name" : "uc8a5f21",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "摘要生成",
+          "codeName" : "inline_summary_generate",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "inline_summary_generate",
+          "name" : "摘要生成",
+          "getPSNavigateParams" : [ {
+            "key" : "srfaiagent",
+            "name" : "srfaiagent",
+            "value" : "TextAgent_Summarization",
+            "rawValue" : true
+          }, {
+            "key" : "autoquestion",
+            "name" : "autoquestion",
+            "value" : "true",
+            "rawValue" : true
+          } ],
+          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "inline_summary_generate",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "detailType" : "DEUIACTIONGROUP",
+        "name" : "u4c96b58",
+        "getRefPSUIActionGroup" : {
+          "codeName" : "inline_text_optimizate",
+          "name" : "文本优化",
+          "getPSUIActionGroupDetails" : [ {
+            "caption" : "更简短",
+            "detailType" : "DEUIACTION",
+            "name" : "u409f0a0",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "更简短",
+              "codeName" : "inline_more_short",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "inline_more_short",
+              "name" : "更简短",
+              "getPSNavigateParams" : [ {
+                "key" : "srfaiagent",
+                "name" : "srfaiagent",
+                "value" : "TextAgent_Shortening",
+                "rawValue" : true
+              }, {
+                "key" : "autoquestion",
+                "name" : "autoquestion",
+                "value" : "true",
+                "rawValue" : true
+              } ],
+              "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "inline_more_short",
+              "uIActionType" : "DEUIACTION",
+              "globalUIAction" : true
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "更丰富",
+            "detailType" : "DEUIACTION",
+            "name" : "u7b027a8",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "更丰富",
+              "codeName" : "inline_more_rich",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "inline_more_rich",
+              "name" : "更丰富",
+              "getPSNavigateParams" : [ {
+                "key" : "srfaiagent",
+                "name" : "srfaiagent",
+                "value" : "TextAgent_Enhancement",
+                "rawValue" : true
+              }, {
+                "key" : "autoquestion",
+                "name" : "autoquestion",
+                "value" : "true",
+                "rawValue" : true
+              } ],
+              "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "inline_more_rich",
+              "uIActionType" : "DEUIACTION",
+              "globalUIAction" : true
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ]
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ]
+    },
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "TITLE",
@@ -8110,6 +8245,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "srfcontenttype",
+      "name" : "srfcontenttype",
+      "value" : "MARKDOWN",
+      "rawValue" : true
+    } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "chat_resource_print",
     "uIActionType" : "DEUIACTION",
@@ -8809,6 +8950,32 @@
     "uIActionType" : "DEUIACTION",
     "id" : "open_dyna_ticket@ticket"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "打开主视图",
+    "codeName" : "open_main_view_pop_up",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view_pop_up.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ticket_open_main_view_pop_up",
+    "name" : "打开主视图（模态弹出）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PRODUCT",
+      "name" : "PRODUCT",
+      "value" : "product_id",
+      "rawValue" : false
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_main_view_pop_up",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_main_view_pop_up@ticket"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "工单",
     "codeName" : "open_summary_ticket",
@@ -9197,6 +9364,27 @@
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
     "id" : "toolbar_link_ticket@ticket"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "工作项",
+    "codeName" : "toolbar_main_view_pop_up_toolbar_deuiaction2_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "ticket_toolbar_main_view_pop_up_toolbar_deuiaction2_click",
+    "name" : "工作项",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "toolbar_link_work_item"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "toolbar_main_view_pop_up_toolbar_deuiaction2_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "toolbar_main_view_pop_up_toolbar_deuiaction2_click@ticket"
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "工作项",
@@ -12916,6 +13104,10 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_bi_form_ticket_ratio.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view_pop_up.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,

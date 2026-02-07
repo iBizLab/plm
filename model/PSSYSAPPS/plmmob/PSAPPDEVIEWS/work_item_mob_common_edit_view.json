@@ -233,6 +233,14 @@
       "itemStyle" : "DEFAULT",
       "itemType" : "RAWITEM",
       "name" : "viewmsg_pos",
+      "getPSControlLogics" : [ {
+        "itemName" : "VIEWMSG_POS",
+        "logicTag" : "layoutpanel",
+        "logicType" : "SCRIPT",
+        "name" : "logic2",
+        "scriptCode" : "!!view.common_list_isshow",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSLayoutPos" : {
         "grow" : -1,
         "layout" : "FLEX",
@@ -690,6 +698,19 @@
     } ],
     "getPSAppViewLogics" : [ {
       "eventNames" : "onLoadSuccess",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "LOGIC_VIEWMSG_POS",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "archived_or_deleted_visible"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      }
+    }, {
+      "eventNames" : "onLoadSuccess",
       "logicTrigger" : "CTRLEVENT",
       "logicType" : "APPDEUILOGIC",
       "name" : "WORKLOAD_SCHEDULE",
@@ -725,8 +746,8 @@
         "codeName" : "open_mob_choose_assignee",
         "getFrontPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_select_tap_exp_view.json",
-          "viewType" : "DEMOBTABEXPVIEW"
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_pickup_view.json",
+          "viewType" : "DEMOBPICKUPVIEW"
         },
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_open_mob_choose_assignee",
@@ -760,7 +781,7 @@
         "codeName" : "open_recent_pickup_view",
         "getFrontPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_mob_pickup_view.json",
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_mob_pickup_view_comment.json",
           "viewType" : "DEMOBPICKUPVIEW"
         },
         "frontProcessType" : "WIZARD",
@@ -975,23 +996,23 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "estimated_update",
+        "name" : "预估工时表单项更新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "workload_schedule"
+        }, {
+          "name" : "estimated_workload"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nconsole.log('form_data',form_data);\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
         "codeName" : "remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "workload_schedule"
         } ],
         "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
-        "customCode" : true,
-        "showBusyIndicator" : false
-      }, {
-        "codeName" : "estimated_update",
-        "name" : "预估工时表单项更新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "estimated_workload"
-        }, {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nconsole.log('form_data',form_data);\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
         "customCode" : true,
         "showBusyIndicator" : false
       } ],
@@ -1294,6 +1315,9 @@
                 "codeName" : "title"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "rows" : "1"
+                },
                 "editorType" : "MOBTEXTAREA",
                 "maxLength" : 500,
                 "name" : "title",
@@ -1704,18 +1728,20 @@
                   },
                   "getPSEditor" : {
                     "editorParams" : {
-                      "MODE" : "DEFAULT",
-                      "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
+                      "enableEdit" : "true",
+                      "LINKVIEWID" : "recent_mob_redirect_view",
+                      "MAXHEIGHT" : "360",
                       "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
-                      "USERURL" : "`projects/${context.project}/project_members/fetch_default`",
+                      "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                      "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
                       "QUOTEURL" : "`recents/fetch_recent_access`"
                     },
-                    "editorStyle" : "MOB_COLLAPSE",
+                    "editorStyle" : "MOB_VDITOR",
                     "editorType" : "MOBHTMLTEXT",
                     "name" : "description",
                     "getPSSysPFPlugin" : {
                       "pluginType" : "EDITOR_CUSTOMSTYLE",
-                      "pluginCode" : "MOBCOMMENT",
+                      "pluginCode" : "MOB_VDITOR",
                       "runtimeObject" : true
                     }
                   },
@@ -2288,7 +2314,6 @@
                                 } ]
                               }, {
                                 "actionGroupExtractMode" : "ITEMS",
-                                "caption" : "按钮组",
                                 "itemStyle" : "DEFAULT",
                                 "itemType" : "BUTTONLIST",
                                 "name" : "buttonlist",
@@ -2401,7 +2426,8 @@
                                     "showIcon" : true
                                   } ],
                                   "uniqueTag" : "attachment__A258b62f7649916a65c"
-                                }
+                                },
+                                "userTag" : "link"
                               } ]
                             } ]
                           } ],
@@ -3166,11 +3192,13 @@
                     "condOP" : "EQ",
                     "dEFDName" : "project_type",
                     "logicType" : "SINGLE",
+                    "name" : "project_type等于(=) scrum",
                     "value" : "scrum"
                   }, {
                     "condOP" : "ISNOTNULL",
                     "dEFDName" : "sprint_id",
-                    "logicType" : "SINGLE"
+                    "logicType" : "SINGLE",
+                    "name" : "sprint_id值不为空(NotNil)"
                   } ],
                   "relatedDetailNames" : [ "project_type", "sprint_id" ],
                   "notMode" : false
@@ -3285,7 +3313,8 @@
                   "getPSDEFDLogics" : [ {
                     "condOP" : "ISNOTNULL",
                     "dEFDName" : "release_id",
-                    "logicType" : "SINGLE"
+                    "logicType" : "SINGLE",
+                    "name" : "release_id值不为空(NotNil)"
                   } ],
                   "relatedDetailNames" : [ "release_id" ],
                   "notMode" : false
@@ -3447,10 +3476,9 @@
                   "name" : "grouppanel9",
                   "getPSDEFormDetails" : [ {
                     "actionType" : "UIACTION",
-                    "buttonStyle" : "STYLE2",
                     "caption" : "添加预估工时",
                     "codeName" : "button3",
-                    "detailStyle" : "STYLE2",
+                    "detailStyle" : "DEFAULT",
                     "detailType" : "BUTTON",
                     "name" : "button3",
                     "getPSAppViewUIAction" : {
@@ -3650,10 +3678,9 @@
                   "name" : "grouppanel99",
                   "getPSDEFormDetails" : [ {
                     "actionType" : "UIACTION",
-                    "buttonStyle" : "STYLE2",
                     "caption" : "添加实际工时",
                     "codeName" : "button1",
-                    "detailStyle" : "STYLE2",
+                    "detailStyle" : "DEFAULT",
                     "detailType" : "BUTTON",
                     "name" : "button1",
                     "getPSAppViewUIAction" : {
@@ -3750,10 +3777,9 @@
                     "showCaption" : false
                   }, {
                     "actionType" : "UIACTION",
-                    "buttonStyle" : "STYLE2",
                     "caption" : "查看工时明细",
                     "codeName" : "button2",
-                    "detailStyle" : "STYLE2",
+                    "detailStyle" : "DEFAULT",
                     "detailType" : "BUTTON",
                     "name" : "button2",
                     "getPSAppViewUIAction" : {
@@ -4202,7 +4228,8 @@
                             "getPSLayout" : {
                               "align" : "flex-start",
                               "dir" : "row",
-                              "layout" : "FLEX"
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
                             },
                             "getPSLayoutPos" : {
                               "basis" : 100,
@@ -4242,6 +4269,7 @@
                               "getPSRawItem" : {
                                 "caption" : "个需求",
                                 "contentType" : "RAW",
+                                "cssStyle" : "line-height: 2rem;",
                                 "name" : "static_text",
                                 "predefinedType" : "STATIC_TEXT",
                                 "renderMode" : "TEXT"
@@ -4262,6 +4290,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -4271,7 +4302,8 @@
                             "getPSLayout" : {
                               "align" : "center",
                               "dir" : "row",
-                              "layout" : "FLEX"
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
                             },
                             "getPSLayoutPos" : {
                               "grow" : 1,
@@ -4440,6 +4472,11 @@
                         "name" : "打开数据",
                         "getOpenDataPSAppView" : {
                           "getPSNavigateContexts" : [ {
+                            "key" : "PRODUCT",
+                            "name" : "PRODUCT",
+                            "value" : "idea.product_id",
+                            "rawValue" : false
+                          }, {
                             "key" : "IDEA",
                             "name" : "IDEA",
                             "value" : "idea.id",
@@ -4453,6 +4490,11 @@
                         },
                         "getPSAppUILogicRefViews" : [ {
                           "getPSNavigateContexts" : [ {
+                            "key" : "PRODUCT",
+                            "name" : "PRODUCT",
+                            "value" : "idea.product_id",
+                            "rawValue" : false
+                          }, {
                             "key" : "IDEA",
                             "name" : "IDEA",
                             "value" : "idea.id",
@@ -4471,6 +4513,11 @@
                     "getPSAppViewRefs" : [ {
                       "name" : "EDITDATA",
                       "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "idea.product_id",
+                        "rawValue" : false
+                      }, {
                         "key" : "IDEA",
                         "name" : "IDEA",
                         "value" : "idea.id",
@@ -5184,6 +5231,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "e60f0a9e5012aa15fcdde3f1c2a8f54f",
@@ -6052,21 +6102,22 @@
                           },
                           "getPSPanelItems" : [ {
                             "caption" : "容器",
-                            "contentWidth" : 100.0,
+                            "contentWidth" : 150.0,
                             "itemStyle" : "DEFAULT",
                             "itemType" : "CONTAINER",
                             "name" : "view_left_toolbar",
                             "getPSLayout" : {
                               "align" : "flex-start",
                               "dir" : "row",
-                              "layout" : "FLEX"
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
                             },
                             "getPSLayoutPos" : {
                               "basis" : 100,
                               "grow" : -1,
                               "layout" : "FLEX",
                               "shrink" : 0,
-                              "width" : 100,
+                              "width" : 150,
                               "widthMode" : "PX"
                             },
                             "getPSPanelItems" : [ {
@@ -6106,7 +6157,10 @@
                               "rawContent" : "个子工作项",
                               "showCaption" : true
                             } ],
-                            "width" : 100.0
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
+                            "width" : 150.0
                           }, {
                             "caption" : "容器",
                             "itemStyle" : "DEFAULT",
@@ -6603,7 +6657,8 @@
                               },
                               "getPSLayoutPos" : {
                                 "grow" : -1,
-                                "layout" : "FLEX"
+                                "layout" : "FLEX",
+                                "shrink" : 0
                               },
                               "getPSPanelItems" : [ {
                                 "caption" : "文本(动态)",
@@ -7050,7 +7105,7 @@
                           "showCaption" : true,
                           "showIcon" : true
                         }, {
-                          "caption" : "添加",
+                          "caption" : "关联",
                           "groupExtractMode" : "ITEM",
                           "itemType" : "DEUIACTION",
                           "name" : "deuiaction1",
@@ -7064,7 +7119,7 @@
                           },
                           "getPSUIAction" : {
                             "actionTarget" : "NONE",
-                            "caption" : "添加子工作项",
+                            "caption" : "关联子工作项",
                             "codeName" : "mob_add_child",
                             "getFrontPSAppView" : {
                               "modelref" : true,
@@ -7073,7 +7128,7 @@
                             },
                             "frontProcessType" : "WIZARD",
                             "fullCodeName" : "work_item_mob_add_child",
-                            "name" : "添加子工作项（移动端）",
+                            "name" : "关联子工作项（移动端）",
                             "getPSAppDEMethod" : {
                               "modelref" : true,
                               "id" : "choose_child"
@@ -7098,9 +7153,9 @@
                               "cssClass" : "fa fa-plus"
                             },
                             "refreshMode" : 1,
-                            "successMsg" : "添加子工作项成功",
+                            "successMsg" : "关联子工作项成功",
                             "timeout" : 60000,
-                            "tooltip" : "添加子工作项",
+                            "tooltip" : "关联子工作项",
                             "uIActionMode" : "BACKEND",
                             "uIActionTag" : "mob_add_child",
                             "uIActionType" : "DEUIACTION",
@@ -7108,7 +7163,7 @@
                             "reloadData" : true,
                             "id" : "mob_add_child@work_item"
                           },
-                          "tooltip" : "添加子工作项",
+                          "tooltip" : "关联子工作项",
                           "uIActionTarget" : "NONE",
                           "showCaption" : true,
                           "showIcon" : true
@@ -7121,6 +7176,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "518efb81d741934f567b4d00e5702e05",
@@ -7399,6 +7457,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -8851,6 +8912,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "936cf801807ecd92f7b2d242959c0836",
@@ -9696,7 +9760,8 @@
                             "getPSLayout" : {
                               "align" : "flex-start",
                               "dir" : "row",
-                              "layout" : "FLEX"
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
                             },
                             "getPSLayoutPos" : {
                               "basis" : 100,
@@ -9756,6 +9821,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -11069,6 +11137,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "51ff6ffe67b2a464326877ba56eee8ce",
@@ -12001,6 +12072,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -12179,6 +12253,11 @@
                         "name" : "打开数据",
                         "getOpenDataPSAppView" : {
                           "getPSNavigateContexts" : [ {
+                            "key" : "PRODUCT",
+                            "name" : "PRODUCT",
+                            "value" : "idea.product_id",
+                            "rawValue" : false
+                          }, {
                             "key" : "TICKET",
                             "name" : "TICKET",
                             "value" : "ticket.id",
@@ -12192,6 +12271,11 @@
                         },
                         "getPSAppUILogicRefViews" : [ {
                           "getPSNavigateContexts" : [ {
+                            "key" : "PRODUCT",
+                            "name" : "PRODUCT",
+                            "value" : "idea.product_id",
+                            "rawValue" : false
+                          }, {
                             "key" : "TICKET",
                             "name" : "TICKET",
                             "value" : "ticket.id",
@@ -12210,6 +12294,11 @@
                     "getPSAppViewRefs" : [ {
                       "name" : "EDITDATA",
                       "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "idea.product_id",
+                        "rawValue" : false
+                      }, {
                         "key" : "TICKET",
                         "name" : "TICKET",
                         "value" : "ticket.id",
@@ -12940,6 +13029,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "46fbbe87ef0d83269c0621d199d700cd",
@@ -13975,17 +14067,11 @@
                               "contentType" : "HTML",
                               "editorParams" : {
                                 "contenttype" : "HTML",
-                                "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+                                "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
                               },
-                              "editorStyle" : "RAW_ACTIVITY",
                               "editorType" : "RAW",
                               "name" : "auditinfo",
-                              "getPSSysPFPlugin" : {
-                                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                "pluginCode" : "RAW_ACTIVITY",
-                                "runtimeObject" : true
-                              },
-                              "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+                              "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
                             },
                             "getPSLayoutPos" : {
                               "grow" : -1,
@@ -14286,13 +14372,6 @@
                       }
                     }, {
                       "dataType" : 25,
-                      "name" : "oppersonid",
-                      "getPSAppDEField" : {
-                        "name" : "OPPERSONID",
-                        "codeName" : "op_person_id"
-                      }
-                    }, {
-                      "dataType" : 25,
                       "name" : "objecttype",
                       "getPSAppDEField" : {
                         "name" : "OBJECTTYPE",
@@ -14312,6 +14391,13 @@
                       "getPSAppDEField" : {
                         "name" : "UPDATE_TIME",
                         "codeName" : "update_time"
+                      }
+                    }, {
+                      "dataType" : 25,
+                      "name" : "oppersonid",
+                      "getPSAppDEField" : {
+                        "name" : "OPPERSONID",
+                        "codeName" : "op_person_id"
                       }
                     }, {
                       "dataType" : 25,

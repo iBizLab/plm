@@ -734,35 +734,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -1087,7 +1063,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -1098,10 +1074,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -1137,7 +1113,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -1159,128 +1135,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "name" : "format_type等于(=) HTML",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "name" : "format_type等于(=) MD",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "name" : "format_type等于(=) EXCEL",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -4185,35 +4041,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -4493,7 +4325,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -4504,10 +4336,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -4543,7 +4375,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -4565,125 +4397,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -6960,35 +6675,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -7268,7 +6959,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -7279,10 +6970,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -7318,7 +7009,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -7340,125 +7031,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -9666,35 +9240,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -9981,7 +9531,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -9992,10 +9542,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -10031,7 +9581,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -10053,125 +9603,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -12480,35 +11913,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -12767,7 +12176,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -12778,10 +12187,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -12817,7 +12226,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -12839,125 +12248,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -15061,35 +14353,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -15355,7 +14623,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -15366,10 +14634,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -15405,7 +14673,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -15427,125 +14695,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -17756,35 +16907,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -18071,7 +17198,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -18082,10 +17209,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -18121,7 +17248,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -18143,125 +17270,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -20566,35 +19576,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -20860,7 +19846,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -20871,10 +19857,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -20910,7 +19896,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -20932,125 +19918,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -23261,35 +22130,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -23576,7 +22421,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -23587,10 +22432,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -23626,7 +22471,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -23648,125 +22493,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {
@@ -25896,6 +24624,14 @@
         "id" : "_FORM_HYBRID_TASK"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
+        "customCode" : true
+      }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
         "getPSAppDEMethod" : {
@@ -25905,14 +24641,6 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
         } ]
-      }, {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\n    ctrl.scheduler.triggerControlEvent(\n        'work_item_type_name',\n        'onChange',\n        null,\n    );\n}",
-        "customCode" : true
       }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
@@ -26083,35 +24811,11 @@
         "id" : "format_type",
         "hidden" : true,
         "dataType" : 25,
-        "createDV" : "HTML",
-        "updateDV" : "HTML",
+        "createDV" : "MD",
+        "updateDV" : "MD",
         "getPSAppDEField" : {
           "name" : "FORMAT_TYPE",
           "codeName" : "format_type"
-        }
-      }, {
-        "id" : "html_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "md_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
-        }
-      }, {
-        "id" : "excel_description",
-        "hidden" : true,
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "DESCRIPTION",
-          "codeName" : "description"
         }
       }, {
         "id" : "board_id",
@@ -26398,7 +25102,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 4,
+              "ignoreInput" : 0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
               "name" : "description",
@@ -26409,10 +25113,10 @@
               },
               "getPSEditor" : {
                 "editorParams" : {
-                  "defaulttype" : "HTML",
-                  "includes" : "[\"HTMLEDITOR_COLLAPSE\", \"MARKDOWN_DEFAULT\"]",
+                  "defaulttype" : "MD",
+                  "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                   "ac" : "true",
-                  "codelistid" : "plmweb.codelist54",
+                  "codelistid" : "plmweb.formattype_chg",
                   "srfaiagent" : "TextAgent_Writing"
                 },
                 "editorType" : "HTMLEDITOR",
@@ -26448,7 +25152,7 @@
             }, {
               "caption" : "内容格式",
               "codeName" : "format_type",
-              "createDV" : "HTML",
+              "createDV" : "MD",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -26470,125 +25174,8 @@
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "updateDV" : "HTML",
+              "updateDV" : "MD",
               "allowEmpty" : false,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "html_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "html_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "html_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "md_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "md_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "md_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "hidden" : true
-            }, {
-              "caption" : "描述",
-              "codeName" : "excel_description",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "excel_description",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "DESCRIPTION",
-                "codeName" : "description"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "EXCEL"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "HIDDEN",
-                "name" : "excel_description"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
               "hidden" : true
             } ],
             "getPSLayout" : {

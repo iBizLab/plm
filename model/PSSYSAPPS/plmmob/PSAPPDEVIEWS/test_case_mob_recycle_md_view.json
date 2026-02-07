@@ -189,7 +189,8 @@
             "name" : "case_static_image",
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "shrink" : 0
             },
             "getPSRawItem" : {
               "contentType" : "IMAGE",
@@ -251,6 +252,8 @@
             },
             "getPSPanelItems" : [ {
               "caption" : "容器",
+              "contentHeight" : 32.0,
+              "height" : 32.0,
               "itemStyle" : "DEFAULT",
               "itemType" : "CONTAINER",
               "name" : "container5",
@@ -262,6 +265,8 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
+                "height" : 32,
+                "heightMode" : "PX",
                 "layout" : "FLEX"
               },
               "getPSPanelItems" : [ {
@@ -371,7 +376,8 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "shrink" : 0
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
@@ -510,13 +516,6 @@
       "id" : "import_test_case"
     },
     "getPSDEListDataItems" : [ {
-      "dataType" : 25,
-      "name" : "maintenance_name",
-      "getPSAppDEField" : {
-        "name" : "MAINTENANCE_NAME",
-        "codeName" : "maintenance_name"
-      }
-    }, {
       "dataType" : 5,
       "format" : "YYYY-MM-DD HH:mm:ss",
       "name" : "update_time",
@@ -526,14 +525,10 @@
       }
     }, {
       "dataType" : 25,
-      "getFrontPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
-      },
-      "name" : "state",
+      "name" : "title",
       "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "dataType" : 25,
@@ -548,10 +543,21 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "title",
+      "getFrontPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
+      },
+      "name" : "state",
       "getPSAppDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
+        "name" : "STATE",
+        "codeName" : "state"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "maintenance_name",
+      "getPSAppDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
       }
     }, {
       "dataType" : 25,
@@ -591,15 +597,6 @@
     } ],
     "getPSDEListItems" : [ {
       "align" : "LEFT",
-      "caption" : "维护人",
-      "dataItemName" : "maintenance_name",
-      "itemType" : "TEXTITEM",
-      "name" : "MAINTENANCE_NAME",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.UPDATE_TIME"
       },
@@ -613,11 +610,10 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "状态",
-      "dataItemName" : "state",
+      "caption" : "标题",
+      "dataItemName" : "title",
       "itemType" : "TEXTITEM",
-      "name" : "STATE",
+      "name" : "TITLE",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -633,10 +629,20 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "caption" : "标题",
-      "dataItemName" : "title",
+      "cLConvertMode" : "FRONT",
+      "caption" : "状态",
+      "dataItemName" : "state",
       "itemType" : "TEXTITEM",
-      "name" : "TITLE",
+      "name" : "STATE",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "caption" : "维护人",
+      "dataItemName" : "maintenance_name",
+      "itemType" : "TEXTITEM",
+      "name" : "MAINTENANCE_NAME",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -802,7 +808,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "测试用例回收站（移动端）",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEMOBMDVIEW",

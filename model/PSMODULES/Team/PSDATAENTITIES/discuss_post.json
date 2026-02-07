@@ -1,5 +1,28 @@
 {
   "getAllPSDEACModes" : [ {
+    "codeName" : "AIChat",
+    "logicName" : "AI交互",
+    "name" : "AIChat",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    } ],
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/AIChat.json"
+  }, {
     "codeName" : "Default",
     "logicName" : "DEFAULT",
     "name" : "DEFAULT",
@@ -259,7 +282,7 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "del_comment",
     "dataAccessAction" : "READ",
@@ -276,7 +299,11 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Del_commentResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
@@ -578,6 +605,13 @@
     "standardTableName" : "`DISCUSS_POST`",
     "tableName" : "DISCUSS_POST",
     "valid" : true
+  }, {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "standardTableName" : "DISCUSS_POST",
+    "tableName" : "DISCUSS_POST",
+    "valid" : true
   } ],
   "getAllPSDEDBTables" : [ {
     "getAllPSDEFields" : [ {
@@ -655,6 +689,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "数据查询",
@@ -688,6 +725,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -721,6 +761,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/deleted/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/deleted/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "deleted",
     "logicName" : "已删除",
@@ -769,6 +812,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/mob_discuss_post_list/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/mob_discuss_post_list/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "mob_discuss_post_list",
     "logicName" : "讨论集合",
@@ -859,6 +905,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_attention/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_attention/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "my_attention",
     "logicName" : "我关注的",
@@ -981,6 +1030,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_create/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_create/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "my_create",
     "logicName" : "我发起的",
@@ -1072,6 +1124,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_post/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_post/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "my_post",
     "logicName" : "我的讨论",
@@ -1121,6 +1176,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_reply/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_reply/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "my_reply",
     "logicName" : "我回复的",
@@ -1233,6 +1291,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/normal/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/normal/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "normal",
     "logicName" : "正常状态讨论",
@@ -1281,6 +1342,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/parent_not_deleted/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/parent_not_deleted/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "parent_not_deleted",
     "logicName" : "父未删除",
@@ -1345,6 +1409,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/public/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/public/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "public",
     "logicName" : "公开",
@@ -1425,6 +1492,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/reader/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/reader/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "reader",
     "logicName" : "只读用户",
@@ -1532,6 +1602,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/recent/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/recent/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "recent",
     "logicName" : "最新讨论",
@@ -1929,6 +2002,12 @@
       "name" : "IDENTIFIER",
       "queryCodeExp" : "t1.`IDENTIFIER`",
       "standardColumnName" : "`IDENTIFIER`"
+    }, {
+      "columnName" : "IDENTIFIER",
+      "dBType" : "POSTGRESQL",
+      "name" : "IDENTIFIER",
+      "queryCodeExp" : "t1.IDENTIFIER",
+      "standardColumnName" : "IDENTIFIER"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2018,6 +2097,13 @@
       "name" : "IS_DELETED",
       "queryCodeExp" : "t1.`IS_DELETED`",
       "standardColumnName" : "`IS_DELETED`",
+      "valueAutoGen" : true
+    }, {
+      "columnName" : "IS_DELETED",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_DELETED",
+      "queryCodeExp" : "t1.IS_DELETED",
+      "standardColumnName" : "IS_DELETED",
       "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -2232,6 +2318,13 @@
       "queryCodeExp" : "t1.`STATUS`",
       "standardColumnName" : "`STATUS`",
       "valueAutoGen" : true
+    }, {
+      "columnName" : "STATUS",
+      "dBType" : "POSTGRESQL",
+      "name" : "STATUS",
+      "queryCodeExp" : "t1.STATUS",
+      "standardColumnName" : "STATUS",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_STATUS_EQ",
@@ -2397,6 +2490,13 @@
       "queryCodeExp" : "t1.`HEAT`",
       "standardColumnName" : "`HEAT`",
       "valueAutoGen" : true
+    }, {
+      "columnName" : "HEAT",
+      "dBType" : "POSTGRESQL",
+      "name" : "HEAT",
+      "queryCodeExp" : "t1.HEAT",
+      "standardColumnName" : "HEAT",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2461,6 +2561,12 @@
       "name" : "REPLIES",
       "queryCodeExp" : "(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`)",
       "standardColumnName" : "`REPLIES`"
+    }, {
+      "columnName" : "REPLIES",
+      "dBType" : "POSTGRESQL",
+      "name" : "REPLIES",
+      "queryCodeExp" : "(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.ID)",
+      "standardColumnName" : "REPLIES"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2535,6 +2641,11 @@
       "dBType" : "MYSQL5",
       "name" : "ATTENTION_COUNT",
       "standardColumnName" : "`ATTENTION_COUNT`"
+    }, {
+      "columnName" : "ATTENTION_COUNT",
+      "dBType" : "POSTGRESQL",
+      "name" : "ATTENTION_COUNT",
+      "standardColumnName" : "ATTENTION_COUNT"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2610,6 +2721,11 @@
       "dBType" : "MYSQL5",
       "name" : "COMMENT_COUNT",
       "standardColumnName" : "`COMMENT_COUNT`"
+    }, {
+      "columnName" : "COMMENT_COUNT",
+      "dBType" : "POSTGRESQL",
+      "name" : "COMMENT_COUNT",
+      "standardColumnName" : "COMMENT_COUNT"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2686,6 +2802,12 @@
       "name" : "TOPIC_IDENTIFIER",
       "queryCodeExp" : "t11.`IDENTIFIER`",
       "standardColumnName" : "`TOPIC_IDENTIFIER`"
+    }, {
+      "columnName" : "TOPIC_IDENTIFIER",
+      "dBType" : "POSTGRESQL",
+      "name" : "TOPIC_IDENTIFIER",
+      "queryCodeExp" : "t11.IDENTIFIER",
+      "standardColumnName" : "TOPIC_IDENTIFIER"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2796,6 +2918,13 @@
       "queryCodeExp" : "(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post')",
       "standardColumnName" : "`READ_COUNT`",
       "valueAutoGen" : true
+    }, {
+      "columnName" : "READ_COUNT",
+      "dBType" : "POSTGRESQL",
+      "name" : "READ_COUNT",
+      "queryCodeExp" : "(select count(1) as read_count from recent r where r.OWNER_ID = t1.ID and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post')",
+      "standardColumnName" : "READ_COUNT",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2872,6 +3001,12 @@
       "name" : "CONTENT",
       "queryCodeExp" : "t1.`CONTENT`",
       "standardColumnName" : "`CONTENT`"
+    }, {
+      "columnName" : "CONTENT",
+      "dBType" : "POSTGRESQL",
+      "name" : "CONTENT",
+      "queryCodeExp" : "t1.CONTENT",
+      "standardColumnName" : "CONTENT"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2951,6 +3086,12 @@
       "name" : "ID",
       "queryCodeExp" : "t1.`ID`",
       "standardColumnName" : "`ID`"
+    }, {
+      "columnName" : "ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "ID",
+      "queryCodeExp" : "t1.ID",
+      "standardColumnName" : "ID"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_ID_EQ",
@@ -3049,6 +3190,12 @@
       "name" : "NAME",
       "queryCodeExp" : "t1.`NAME`",
       "standardColumnName" : "`NAME`"
+    }, {
+      "columnName" : "NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
+      "standardColumnName" : "NAME"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_NAME_LIKE",
@@ -3147,6 +3294,12 @@
       "name" : "CREATE_MAN",
       "queryCodeExp" : "t1.`CREATE_MAN`",
       "standardColumnName" : "`CREATE_MAN`"
+    }, {
+      "columnName" : "CREATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
+      "standardColumnName" : "CREATE_MAN"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_CREATE_MAN_EQ",
@@ -3249,6 +3402,12 @@
       "name" : "CREATE_TIME",
       "queryCodeExp" : "t1.`CREATE_TIME`",
       "standardColumnName" : "`CREATE_TIME`"
+    }, {
+      "columnName" : "CREATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
+      "standardColumnName" : "CREATE_TIME"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -3329,6 +3488,12 @@
       "name" : "UPDATE_MAN",
       "queryCodeExp" : "t1.`UPDATE_MAN`",
       "standardColumnName" : "`UPDATE_MAN`"
+    }, {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
+      "standardColumnName" : "UPDATE_MAN"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -3425,6 +3590,12 @@
       "name" : "UPDATE_TIME",
       "queryCodeExp" : "t1.`UPDATE_TIME`",
       "standardColumnName" : "`UPDATE_TIME`"
+    }, {
+      "columnName" : "UPDATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
+      "standardColumnName" : "UPDATE_TIME"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -3505,6 +3676,12 @@
       "name" : "TOPIC_ID",
       "queryCodeExp" : "t1.`TOPIC_ID`",
       "standardColumnName" : "`TOPIC_ID`"
+    }, {
+      "columnName" : "TOPIC_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "TOPIC_ID",
+      "queryCodeExp" : "t1.TOPIC_ID",
+      "standardColumnName" : "TOPIC_ID"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_TOPIC_ID_EQ",
@@ -3618,6 +3795,12 @@
       "name" : "TOPIC_NAME",
       "queryCodeExp" : "t11.`NAME`",
       "standardColumnName" : "`TOPIC_NAME`"
+    }, {
+      "columnName" : "TOPIC_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "TOPIC_NAME",
+      "queryCodeExp" : "t11.NAME",
+      "standardColumnName" : "TOPIC_NAME"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_TOPIC_NAME_EQ",
@@ -4109,7 +4292,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 40,
+      "topPos" : 140,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
@@ -4133,21 +4316,21 @@
           "modelref" : true,
           "id" : "comment"
         },
-        "name" : "Default[comment_id] ==> comment[ID]",
+        "name" : "Default[del_comment_id] ==> comment[ID]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "comment_id",
+        "srcFieldName" : "del_comment_id",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 220
+      "topPos" : 290
     }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/Remove.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/delete.json"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -4214,7 +4397,8 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 665
+      "topPos" : 665,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

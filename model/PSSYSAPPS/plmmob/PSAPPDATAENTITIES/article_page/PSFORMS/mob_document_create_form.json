@@ -121,22 +121,16 @@
     }
   }, {
     "id" : "format_type",
+    "hidden" : true,
     "dataType" : 25,
-    "createDV" : "HTML",
-    "updateDV" : "HTML",
+    "createDV" : "MD",
+    "updateDV" : "MD",
     "getPSAppDEField" : {
       "name" : "FORMAT_TYPE",
       "codeName" : "format_type"
     }
   }, {
     "id" : "content",
-    "dataType" : 21,
-    "getPSAppDEField" : {
-      "name" : "CONTENT",
-      "codeName" : "content"
-    }
-  }, {
-    "id" : "formitem",
     "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "CONTENT",
@@ -207,8 +201,8 @@
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
         "name" : "name",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
@@ -216,6 +210,10 @@
           "codeName" : "name"
         },
         "getPSEditor" : {
+          "editorParams" : {
+            "MOBSHOWUNDERLINE" : "false",
+            "MOBSHOWEDITORBORDER" : "true"
+          },
           "editorType" : "MOBTEXT",
           "maxLength" : 200,
           "name" : "name",
@@ -225,7 +223,8 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : false
+        "allowEmpty" : false,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -247,7 +246,7 @@
       "getPSDEFormDetails" : [ {
         "caption" : "类型",
         "codeName" : "format_type",
-        "createDV" : "HTML",
+        "createDV" : "MD",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -262,21 +261,16 @@
           "codeName" : "format_type"
         },
         "getPSEditor" : {
-          "editorType" : "MOBRADIOLIST",
-          "name" : "format_type",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/CodeList54.json"
-          }
+          "editorType" : "HIDDEN",
+          "name" : "format_type"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "HTML",
+        "updateDV" : "MD",
         "allowEmpty" : true,
-        "needCodeListConfig" : true,
-        "showCaption" : true
+        "hidden" : true
       }, {
         "caption" : "正文",
         "codeName" : "content",
@@ -284,9 +278,9 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 4,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
         "name" : "content",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
@@ -298,10 +292,11 @@
           "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
+            "condOP" : "NOTEQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
-            "value" : "HTML"
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],
           "notMode" : false
@@ -310,17 +305,35 @@
           "logicCat" : "ITEMENABLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
+            "condOP" : "NOTEQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
-            "value" : "HTML"
+            "name" : "format_type不等于(<>) EXCEL",
+            "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],
           "notMode" : false
         } ],
         "getPSEditor" : {
+          "editorParams" : {
+            "MAXHEIGHT" : "125",
+            "LINKVIEWID" : "recent_mob_redirect_view",
+            "MOBSHOWUNDERLINE" : "false",
+            "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+            "enableEdit" : "true",
+            "MOBSHOWEDITORBORDER" : "true",
+            "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+            "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "QUOTEURL" : "`recents/fetch_recent_access`"
+          },
+          "editorStyle" : "MOB_VDITOR",
           "editorType" : "MOBHTMLTEXT",
           "name" : "content",
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "MOB_VDITOR",
+            "runtimeObject" : true
+          },
           "placeHolder" : "请输入内容"
         },
         "getPSLayoutPos" : {
@@ -329,63 +342,8 @@
         },
         "resetItemName" : "format_type",
         "resetItemNames" : [ "format_type" ],
-        "allowEmpty" : true
-      }, {
-        "caption" : "正文",
-        "codeName" : "formitem",
-        "dataType" : 21,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 4,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "formitem",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CONTENT",
-          "codeName" : "content"
-        },
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "PANELVISIBLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        }, {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "format_type",
-            "logicType" : "SINGLE",
-            "value" : "MD"
-          } ],
-          "relatedDetailNames" : [ "format_type" ],
-          "notMode" : false
-        } ],
-        "getPSEditor" : {
-          "editorType" : "MOBMARKDOWN",
-          "maxLength" : 16777215,
-          "mode" : "EDIT",
-          "name" : "formitem",
-          "placeHolder" : "请输入内容",
-          "showMaxLength" : true
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "resetItemName" : "format_type",
-        "resetItemNames" : [ "format_type" ],
-        "allowEmpty" : true
+        "allowEmpty" : true,
+        "showCaption" : true
       }, {
         "codeName" : "rawitem1",
         "contentType" : "RAW",
@@ -400,6 +358,7 @@
             "condOP" : "EQ",
             "dEFDName" : "format_type",
             "logicType" : "SINGLE",
+            "name" : "format_type等于(=) EXCEL",
             "value" : "EXCEL"
           } ],
           "relatedDetailNames" : [ "format_type" ],

@@ -1836,6 +1836,35 @@
     "uILogicAttachMode" : "REPLACE",
     "uILogicType" : "DELOGIC",
     "id" : "panel_usr0312103524_button_calluilogic_click@stencil"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "发布",
+    "codeName" : "release",
+    "dialogResult" : "OK",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "stencil_release",
+    "name" : "发布",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "release"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/stencil.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf1d9@FontAwesome",
+      "cssClass" : "fa fa-paper-plane-o"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "release",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "reloadData" : true,
+    "id" : "release@stencil"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "open_new_page",
@@ -2081,6 +2110,117 @@
       "modelref" : true,
       "id" : "Begin"
     }
+  }, {
+    "codeName" : "release",
+    "defaultParamName" : "Default",
+    "logicName" : "发布",
+    "name" : "发布",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "// uiLogic.stencil = view.layoutPanel.panelItems.form.control.getReal()[0];\r\n\r\nconst stencil = uiLogic.stencil;\r\n\r\nconsole.info(stencil);\r\n\r\nif(stencil.format_type === \"HTML\"  &&  stencil.html_description !== undefined){\r\n    stencil.content = stencil.html_description;\r\n}\r\nif(stencil.format_type === \"MD\"  &&  stencil.md_description !== undefined){\r\n    stencil.content = stencil.md_description;\r\n}\r\nif(stencil.format_type === \"EXCEL\" &&  stencil.excel_description !== undefined){\r\n    stencil.content = stencil.excel_description;\r\n}\r\n\r\n\r\n",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取表单数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 479,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "stencil"
+        },
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 316,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "save"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/stencil.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "stencil"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "发布",
+      "topPos" : 614,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "stencil",
+      "logicName" : "stencil",
+      "name" : "stencil",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
@@ -2272,7 +2412,7 @@
     "uniqueTag" : "stencil__Usr0312219795",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "ud35219b",
+      "name" : "u36a4224",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -2290,7 +2430,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u6a81dae",
+      "name" : "u127a5da",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

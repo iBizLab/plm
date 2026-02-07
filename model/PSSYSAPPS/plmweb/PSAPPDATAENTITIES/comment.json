@@ -3739,6 +3739,73 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "idea_comment_visible",
+    "defaultParamName" : "Default",
+    "logicName" : "需求展示评论显隐控制",
+    "name" : "需求展示评论显隐控制",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 10,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 194,
+      "parallelOutput" : true
+    }, {
+      "code" : "if (uiLogic.view.layoutPanel.panelItems.list.control.state.items.length==0){\r\n    uiLogic.view.parentView.layoutPanel.panelItems.form.control.details.grouppanel3.state.keepAlive=true;\r\n    uiLogic.view.parentView.layoutPanel.panelItems.form.control.details.grouppanel3.state.visible=false;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 290,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "评论显隐控制",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 192
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 610,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 194,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "refresh_comment",
     "defaultParamName" : "Default",
     "logicName" : "刷新评论列表（移动端）",

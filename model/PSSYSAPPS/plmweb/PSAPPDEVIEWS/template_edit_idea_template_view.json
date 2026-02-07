@@ -6,7 +6,7 @@
   "caption" : "编辑模板",
   "codeName" : "template_edit_idea_template_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_edit_idea_template_view.json",
-  "height" : 70,
+  "height" : 920,
   "name" : "templateedit_idea_template_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -347,8 +347,22 @@
           },
           "getPSEditor" : {
             "editorHeight" : 600.0,
+            "editorParams" : {
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
+            },
+            "editorStyle" : "VDITOR",
             "editorType" : "HTMLEDITOR",
-            "name" : "description"
+            "name" : "description",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "VDITOR",
+              "runtimeObject" : true
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -579,7 +593,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "编辑需求模板",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEOPTVIEW",

@@ -885,7 +885,8 @@
                         },
                         "getPSLayoutPos" : {
                           "grow" : -1,
-                          "layout" : "FLEX"
+                          "layout" : "FLEX",
+                          "shrink" : 0
                         },
                         "getPSPanelItems" : [ {
                           "caption" : "文本(动态)",
@@ -927,6 +928,11 @@
                   "modeltype" : "PSSYSVIEWPANEL"
                 },
                 "logicName" : "mob_common_list",
+                "minorSortDir" : "DESC",
+                "getMinorSortPSAppDEField" : {
+                  "name" : "UPDATE_TIME",
+                  "codeName" : "update_time"
+                },
                 "mobListStyle" : "LISTVIEW",
                 "getOrderValuePSAppDEField" : {
                   "name" : "SEQUENCE",
@@ -1019,18 +1025,20 @@
                   "id" : "import_work_item_waterfall"
                 },
                 "getPSDEListDataItems" : [ {
-                  "dataType" : 25,
-                  "name" : "show_identifier",
+                  "dataType" : 5,
+                  "format" : "YYYY-MM-DD",
+                  "name" : "start_at",
                   "getPSAppDEField" : {
-                    "name" : "SHOW_IDENTIFIER",
-                    "codeName" : "show_identifier"
+                    "name" : "START_AT",
+                    "codeName" : "start_at"
                   }
                 }, {
-                  "dataType" : 25,
-                  "name" : "assignee_name",
+                  "dataType" : 5,
+                  "format" : "YYYY-MM-DD",
+                  "name" : "end_at",
                   "getPSAppDEField" : {
-                    "name" : "ASSIGNEE_NAME",
-                    "codeName" : "assignee_name"
+                    "name" : "END_AT",
+                    "codeName" : "end_at"
                   }
                 }, {
                   "dataType" : 25,
@@ -1040,12 +1048,15 @@
                     "codeName" : "title"
                   }
                 }, {
-                  "dataType" : 5,
-                  "format" : "YYYY-MM-DD",
-                  "name" : "end_at",
+                  "dataType" : 25,
+                  "getFrontPSCodeList" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+                  },
+                  "name" : "state",
                   "getPSAppDEField" : {
-                    "name" : "END_AT",
-                    "codeName" : "end_at"
+                    "name" : "STATE",
+                    "codeName" : "state"
                   }
                 }, {
                   "dataType" : 25,
@@ -1060,22 +1071,17 @@
                   }
                 }, {
                   "dataType" : 25,
-                  "getFrontPSCodeList" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-                  },
-                  "name" : "state",
+                  "name" : "show_identifier",
                   "getPSAppDEField" : {
-                    "name" : "STATE",
-                    "codeName" : "state"
+                    "name" : "SHOW_IDENTIFIER",
+                    "codeName" : "show_identifier"
                   }
                 }, {
-                  "dataType" : 5,
-                  "format" : "YYYY-MM-DD",
-                  "name" : "start_at",
+                  "dataType" : 25,
+                  "name" : "assignee_name",
                   "getPSAppDEField" : {
-                    "name" : "START_AT",
-                    "codeName" : "start_at"
+                    "name" : "ASSIGNEE_NAME",
+                    "codeName" : "assignee_name"
                   }
                 }, {
                   "dataType" : 25,
@@ -1182,28 +1188,11 @@
                 } ],
                 "getPSDEListItems" : [ {
                   "align" : "LEFT",
-                  "caption" : "编号",
-                  "dataItemName" : "show_identifier",
+                  "caption" : "开始时间",
+                  "dataItemName" : "start_at",
                   "itemType" : "TEXTITEM",
-                  "name" : "SHOW_IDENTIFIER",
-                  "width" : 150,
-                  "widthString" : "150px",
-                  "enableSort" : true
-                }, {
-                  "align" : "LEFT",
-                  "caption" : "负责人",
-                  "dataItemName" : "assignee_name",
-                  "itemType" : "TEXTITEM",
-                  "name" : "ASSIGNEE_NAME",
-                  "width" : 150,
-                  "widthString" : "150px",
-                  "enableSort" : true
-                }, {
-                  "align" : "LEFT",
-                  "caption" : "标题",
-                  "dataItemName" : "title",
-                  "itemType" : "TEXTITEM",
-                  "name" : "TITLE",
+                  "name" : "START_AT",
+                  "valueFormat" : "YYYY-MM-DD",
                   "width" : 150,
                   "widthString" : "150px",
                   "enableSort" : true
@@ -1219,11 +1208,10 @@
                   "enableSort" : true
                 }, {
                   "align" : "LEFT",
-                  "cLConvertMode" : "FRONT",
-                  "caption" : "优先级",
-                  "dataItemName" : "priority",
+                  "caption" : "标题",
+                  "dataItemName" : "title",
                   "itemType" : "TEXTITEM",
-                  "name" : "PRIORITY",
+                  "name" : "TITLE",
                   "width" : 150,
                   "widthString" : "150px",
                   "enableSort" : true
@@ -1239,11 +1227,29 @@
                   "enableSort" : true
                 }, {
                   "align" : "LEFT",
-                  "caption" : "开始时间",
-                  "dataItemName" : "start_at",
+                  "cLConvertMode" : "FRONT",
+                  "caption" : "优先级",
+                  "dataItemName" : "priority",
                   "itemType" : "TEXTITEM",
-                  "name" : "START_AT",
-                  "valueFormat" : "YYYY-MM-DD",
+                  "name" : "PRIORITY",
+                  "width" : 150,
+                  "widthString" : "150px",
+                  "enableSort" : true
+                }, {
+                  "align" : "LEFT",
+                  "caption" : "编号",
+                  "dataItemName" : "show_identifier",
+                  "itemType" : "TEXTITEM",
+                  "name" : "SHOW_IDENTIFIER",
+                  "width" : 150,
+                  "widthString" : "150px",
+                  "enableSort" : true
+                }, {
+                  "align" : "LEFT",
+                  "caption" : "负责人",
+                  "dataItemName" : "assignee_name",
+                  "itemType" : "TEXTITEM",
+                  "name" : "ASSIGNEE_NAME",
                   "width" : 150,
                   "widthString" : "150px",
                   "enableSort" : true

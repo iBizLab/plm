@@ -511,8 +511,24 @@
                 "codeName" : "precondition"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "LINKVIEWID" : "recent_mob_redirect_view",
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                  "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                  "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+                  "READONLY" : "true",
+                  "QUOTEURL" : "`recents/fetch_recent_access`"
+                },
+                "editorStyle" : "MOB_VDITOR",
                 "editorType" : "MOBHTMLTEXT",
-                "name" : "precondition"
+                "name" : "precondition",
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "MOB_VDITOR",
+                  "runtimeObject" : true
+                },
+                "placeHolder" : "暂无内容",
+                "readOnly" : true
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
@@ -555,6 +571,7 @@
                     "condOP" : "EQ",
                     "dEFDName" : "is_group",
                     "logicType" : "SINGLE",
+                    "name" : "is_group等于(=) 1",
                     "value" : "1"
                   } ],
                   "relatedDetailNames" : [ "is_group" ],
@@ -592,6 +609,7 @@
                     "condOP" : "NOTEQ",
                     "dEFDName" : "is_group",
                     "logicType" : "SINGLE",
+                    "name" : "is_group不等于(<>) 1",
                     "value" : "1"
                   } ],
                   "relatedDetailNames" : [ "is_group" ],
@@ -628,6 +646,7 @@
                     "condOP" : "NOTEQ",
                     "dEFDName" : "is_group",
                     "logicType" : "SINGLE",
+                    "name" : "is_group不等于(<>) 1",
                     "value" : "1"
                   } ],
                   "relatedDetailNames" : [ "is_group" ],
@@ -1552,6 +1571,9 @@
                           },
                           "showCaption" : true
                         } ],
+                        "getPSSysCss" : {
+                          "cssName" : "mob-relation-container-style"
+                        },
                         "width" : 100.0
                       }, {
                         "caption" : "容器",
@@ -3202,6 +3224,9 @@
                           "rawContent" : "个工作项",
                           "showCaption" : true
                         } ],
+                        "getPSSysCss" : {
+                          "cssName" : "mob-relation-container-style"
+                        },
                         "width" : 100.0
                       }, {
                         "caption" : "容器",
@@ -5000,6 +5025,9 @@
                           },
                           "showCaption" : true
                         } ],
+                        "getPSSysCss" : {
+                          "cssName" : "mob-relation-container-style"
+                        },
                         "width" : 100.0
                       }, {
                         "caption" : "容器",
@@ -6075,6 +6103,9 @@
                     "showCaption" : true,
                     "showIcon" : true
                   } ],
+                  "getPSSysCss" : {
+                    "cssName" : "mob-toolbar"
+                  },
                   "toolbarStyle" : "MOBNAVRIGHTMENU",
                   "xDataControlName" : "mdctrl",
                   "modelid" : "ff462861c1f50a2b7cd6a3986feeefcc",
@@ -6953,7 +6984,6 @@
                       },
                       "getPSPanelItems" : [ {
                         "caption" : "容器",
-                        "contentWidth" : 100.0,
                         "itemStyle" : "DEFAULT",
                         "itemType" : "CONTAINER",
                         "name" : "view_left_toolbar",
@@ -6967,9 +6997,7 @@
                           "basis" : 100,
                           "grow" : -1,
                           "layout" : "FLEX",
-                          "shrink" : 0,
-                          "width" : 100,
-                          "widthMode" : "PX"
+                          "shrink" : 0
                         },
                         "getPSPanelItems" : [ {
                           "caption" : "左侧工具栏",
@@ -7021,7 +7049,9 @@
                           "rawContent" : "个结果附件",
                           "showCaption" : true
                         } ],
-                        "width" : 100.0
+                        "getPSSysCss" : {
+                          "cssName" : "mob-relation-container-style"
+                        }
                       }, {
                         "caption" : "容器",
                         "itemStyle" : "DEFAULT",
@@ -7782,6 +7812,9 @@
                     "showCaption" : true,
                     "showIcon" : true
                   } ],
+                  "getPSSysCss" : {
+                    "cssName" : "mob-toolbar"
+                  },
                   "toolbarStyle" : "MOBNAVRIGHTMENU",
                   "xDataControlName" : "mdctrl",
                   "modelid" : "1535ecaddb45a83499d238cd8904ef8d",

@@ -96,7 +96,17 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam_01_rawsfcode3" sourceRef="prepareparam_01" targetRef="rawsfcode3">
+                    <sequenceFlow id="gateway-prepareparam_01_rawsfcode3" sourceRef="gateway-prepareparam_01" targetRef="rawsfcode3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $spaceget_space_member_onedefault:space();
+                                            $spaceget_space_member_onefilter:space_member();
+                                            $spaceget_space_member_onefor_obj:Map();
+                                            $spaceget_space_member_onemembers:space_member();
+                                            $spaceget_space_member_oneuser:Map();
+                                    eval($spaceget_space_member_onedefault==spaceget_space_member_onedefault && $spaceget_space_member_onefilter==spaceget_space_member_onefilter && $spaceget_space_member_onemembers==spaceget_space_member_onemembers && );
+                                eval((RuleUtils.test($spaceget_space_member_onedefault.get("isArchived"),"EQ","0"))&&(RuleUtils.test($spaceget_space_member_onedefault.get("isDeleted"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
                     </sequenceFlow>

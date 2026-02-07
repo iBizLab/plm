@@ -22,6 +22,13 @@
     "engineType" : "OptionView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onCreated",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGIC",
+    "scriptCode" : "view.params.visibility = view.parentView.ctx.controllersMap.get('searchbar').state.selectedGroupItem.id;"
+  } ],
   "getPSAppViewNavParams" : [ {
     "key" : "owner_id",
     "name" : "owner_id",
@@ -347,8 +354,22 @@
           },
           "getPSEditor" : {
             "editorHeight" : 600.0,
+            "editorParams" : {
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
+            },
+            "editorStyle" : "VDITOR",
             "editorType" : "HTMLEDITOR",
-            "name" : "description"
+            "name" : "description",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "VDITOR",
+              "runtimeObject" : true
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -579,7 +600,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "新建需求模板",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEOPTVIEW",

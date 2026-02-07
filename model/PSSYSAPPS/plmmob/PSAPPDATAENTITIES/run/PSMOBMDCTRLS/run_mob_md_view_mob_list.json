@@ -122,7 +122,8 @@
           "name" : "case_static_image",
           "getPSLayoutPos" : {
             "grow" : -1,
-            "layout" : "FLEX"
+            "layout" : "FLEX",
+            "shrink" : 0
           },
           "getPSRawItem" : {
             "contentType" : "IMAGE",
@@ -403,6 +404,17 @@
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__run_status.json"
+    },
+    "name" : "status",
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    }
+  }, {
+    "dataType" : 25,
     "name" : "title",
     "getPSAppDEField" : {
       "name" : "TITLE",
@@ -420,22 +432,19 @@
       "codeName" : "state"
     }
   }, {
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "name" : "update_time",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
     "dataType" : 25,
     "name" : "maintenance_name",
     "getPSAppDEField" : {
       "name" : "MAINTENANCE_NAME",
       "codeName" : "maintenance_name"
-    }
-  }, {
-    "dataType" : 25,
-    "getFrontPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__run_status.json"
-    },
-    "name" : "status",
-    "getPSAppDEField" : {
-      "name" : "STATUS",
-      "codeName" : "status"
     }
   }, {
     "dataType" : 25,
@@ -447,14 +456,6 @@
     "getPSAppDEField" : {
       "name" : "TYPE",
       "codeName" : "type"
-    }
-  }, {
-    "dataType" : 5,
-    "format" : "YYYY-MM-DD HH:mm:ss",
-    "name" : "update_time",
-    "getPSAppDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
     }
   }, {
     "dataType" : 25,
@@ -487,6 +488,16 @@
   } ],
   "getPSDEListItems" : [ {
     "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "执行结果",
+    "dataItemName" : "status",
+    "itemType" : "TEXTITEM",
+    "name" : "STATUS",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
     "caption" : "标题",
     "dataItemName" : "title",
     "itemType" : "TEXTITEM",
@@ -506,25 +517,6 @@
     "enableSort" : true
   }, {
     "align" : "LEFT",
-    "caption" : "维护人",
-    "dataItemName" : "maintenance_name",
-    "itemType" : "TEXTITEM",
-    "name" : "MAINTENANCE_NAME",
-    "width" : 150,
-    "widthString" : "150px",
-    "enableSort" : true
-  }, {
-    "align" : "LEFT",
-    "cLConvertMode" : "FRONT",
-    "caption" : "执行结果",
-    "dataItemName" : "status",
-    "itemType" : "TEXTITEM",
-    "name" : "STATUS",
-    "width" : 150,
-    "widthString" : "150px",
-    "enableSort" : true
-  }, {
-    "align" : "LEFT",
     "getCapPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
@@ -533,6 +525,15 @@
     "itemType" : "TEXTITEM",
     "name" : "UPDATE_TIME",
     "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "维护人",
+    "dataItemName" : "maintenance_name",
+    "itemType" : "TEXTITEM",
+    "name" : "MAINTENANCE_NAME",
     "width" : 150,
     "widthString" : "150px",
     "enableSort" : true

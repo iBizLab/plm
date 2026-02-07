@@ -274,6 +274,40 @@
     "requestPath" : "/create_ai_kb_doc",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "fill_kb_chunk",
+    "methodType" : "DEACTION",
+    "name" : "fill_kb_chunk",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_wizard_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEACTIONS/fill_kb_chunk.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_kb_chunk"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_kb_chunk",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
     "codeName" : "get",
@@ -907,9 +941,9 @@
       "name" : "[SELECTION_PAGE_IDS][选择页面]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_PAGE_IDS][选择页面]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -918,9 +952,9 @@
       "name" : "[SELECTION_PAGE_IDS][选择页面]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_PAGE_IDS][选择页面]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -930,8 +964,8 @@
     "codeName" : "selection_page_ids",
     "logicName" : "选择页面",
     "name" : "SELECTION_PAGE_IDS",
-    "stdDataType" : 25,
-    "stringLength" : 4000
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -969,9 +1003,9 @@
       "name" : "[SELECTION_FILE_IDS][选择文件]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_FILE_IDS][选择文件]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -982,9 +1016,9 @@
       "name" : "[SELECTION_FILE_IDS][选择文件]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_FILE_IDS][选择文件]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -992,17 +1026,17 @@
     "codeName" : "selection_file_ids",
     "logicName" : "选择文件",
     "name" : "SELECTION_FILE_IDS",
-    "stdDataType" : 25,
-    "stringLength" : 4000
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[SELECTION_PAGE_NAMES][选择页面名称]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_PAGE_NAMES][选择页面名称]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -1011,9 +1045,9 @@
       "name" : "[SELECTION_PAGE_NAMES][选择页面名称]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_PAGE_NAMES][选择页面名称]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -1023,8 +1057,8 @@
     "codeName" : "selection_page_names",
     "logicName" : "选择页面名称",
     "name" : "SELECTION_PAGE_NAMES",
-    "stdDataType" : 25,
-    "stringLength" : 4000
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1118,6 +1152,36 @@
     "name" : "SELECTED_FILE_NAME",
     "stdDataType" : 21,
     "stringLength" : 1048576
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_PARSE_NOW][是否立即解析]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_PARSE_NOW][是否立即解析]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "is_parse_now",
+    "logicName" : "是否立即解析",
+    "name" : "IS_PARSE_NOW",
+    "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1311,7 +1375,7 @@
         "codeName" : "selection_file_ids"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "selection_page_ids",
@@ -1322,7 +1386,7 @@
         "codeName" : "selection_page_ids"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "selection_page_names",
@@ -1333,7 +1397,7 @@
         "codeName" : "selection_page_names"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "space_selection",
@@ -1388,6 +1452,17 @@
       },
       "sourceType" : "DEFIELD",
       "type" : "DTOS"
+    }, {
+      "codeName" : "is_parse_now",
+      "logicName" : "是否立即解析",
+      "name" : "is_parse_now",
+      "getPSAppDEField" : {
+        "name" : "IS_PARSE_NOW",
+        "codeName" : "is_parse_now"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "codeName" : "custom_chunk",
       "logicName" : "自定义切片",
@@ -1760,6 +1835,40 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/create_ai_kb_doc",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "fill_kb_chunk",
+    "methodType" : "DEACTION",
+    "name" : "fill_kb_chunk",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_wizard_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEACTIONS/fill_kb_chunk.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fill_kb_chunk"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fill_kb_chunk",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "actionTag" : "Get",

@@ -283,6 +283,13 @@
     "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "standardTableName" : "AI_AGENT_CONVERSATION",
+    "tableName" : "AI_AGENT_CONVERSATION",
+    "valid" : true
+  }, {
     "dBType" : "MYSQL5",
     "name" : "MYSQL5",
     "objNameCase" : "DEFAULT",
@@ -350,6 +357,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "DEFAULT",
@@ -383,6 +393,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -416,6 +429,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/active/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/active/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "active",
     "logicName" : "有效会话",
@@ -479,6 +495,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/cur_user_active/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDEDATAQUERIES/cur_user_active/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "cur_user_active",
     "logicName" : "当前用户会话",
@@ -652,6 +671,12 @@
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "ID",
+      "queryCodeExp" : "t1.ID",
+      "standardColumnName" : "ID"
+    }, {
+      "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
       "queryCodeExp" : "t1.`ID`",
@@ -750,6 +775,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
+      "standardColumnName" : "NAME"
+    }, {
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
       "name" : "NAME",
       "queryCodeExp" : "t1.`NAME`",
@@ -844,6 +875,12 @@
     "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CREATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
+      "standardColumnName" : "CREATE_MAN"
+    }, {
       "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "CREATE_MAN",
@@ -941,6 +978,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
+      "standardColumnName" : "CREATE_TIME"
+    }, {
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "CREATE_TIME",
       "queryCodeExp" : "t1.`CREATE_TIME`",
@@ -1020,6 +1063,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
+      "standardColumnName" : "UPDATE_MAN"
+    }, {
       "columnName" : "UPDATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_MAN",
@@ -1117,6 +1166,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "UPDATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
+      "standardColumnName" : "UPDATE_TIME"
+    }, {
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_TIME",
       "queryCodeExp" : "t1.`UPDATE_TIME`",
@@ -1196,111 +1251,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "AI_AGENT_NAME",
-      "dBType" : "MYSQL5",
-      "name" : "AI_AGENT_NAME",
-      "queryCodeExp" : "t21.`NAME`",
-      "standardColumnName" : "`AI_AGENT_NAME`"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "SPAN",
-        "name" : "默认",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
+      "columnName" : "TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "TYPE",
+      "queryCodeExp" : "t1.TYPE",
+      "standardColumnName" : "TYPE"
     }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "SPAN",
-        "name" : "移动端默认",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "AI_AGENT_NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "ai_agent_name",
-    "dEFType" : 3,
-    "dataType" : "PICKUPDATA",
-    "importOrder" : 1000,
-    "length" : 200,
-    "logicName" : "智能体名称",
-    "name" : "AI_AGENT_NAME",
-    "orderValue" : 230,
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDERS/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "AI_AGENT_NAME",
-      "codeName" : "ai_agent_name"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "serviceCodeName" : "ai_agent_name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
       "columnName" : "TYPE",
       "dBType" : "MYSQL5",
       "name" : "TYPE",
@@ -1382,6 +1338,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_TOP",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_TOP",
+      "queryCodeExp" : "t1.IS_TOP",
+      "standardColumnName" : "IS_TOP"
+    }, {
+      "columnName" : "IS_TOP",
       "dBType" : "MYSQL5",
       "name" : "IS_TOP",
       "queryCodeExp" : "t1.`IS_TOP`",
@@ -1446,6 +1408,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TITLE",
+      "dBType" : "POSTGRESQL",
+      "name" : "TITLE",
+      "queryCodeExp" : "t1.TITLE",
+      "standardColumnName" : "TITLE"
+    }, {
       "columnName" : "TITLE",
       "dBType" : "MYSQL5",
       "name" : "TITLE",
@@ -1520,6 +1488,13 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "STATUS",
+      "dBType" : "POSTGRESQL",
+      "name" : "STATUS",
+      "queryCodeExp" : "t1.STATUS",
+      "standardColumnName" : "STATUS",
+      "valueAutoGen" : true
+    }, {
       "columnName" : "STATUS",
       "dBType" : "MYSQL5",
       "name" : "STATUS",
@@ -1603,6 +1578,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SESSION_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "SESSION_ID",
+      "queryCodeExp" : "t1.SESSION_ID",
+      "standardColumnName" : "SESSION_ID"
+    }, {
+      "columnName" : "SESSION_ID",
       "dBType" : "MYSQL5",
       "name" : "SESSION_ID",
       "queryCodeExp" : "t1.`SESSION_ID`",
@@ -1683,6 +1664,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "USER_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "USER_ID",
+      "queryCodeExp" : "t1.USER_ID",
+      "standardColumnName" : "USER_ID"
+    }, {
+      "columnName" : "USER_ID",
       "dBType" : "MYSQL5",
       "name" : "USER_ID",
       "queryCodeExp" : "t1.`USER_ID`",
@@ -1756,243 +1743,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "AI_AGENT_ID",
-      "dBType" : "MYSQL5",
-      "name" : "AI_AGENT_ID",
-      "queryCodeExp" : "t11.`AI_AGENT_ID`",
-      "standardColumnName" : "`AI_AGENT_ID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_AI_AGENT_ID_EQ",
-      "name" : "N_AI_AGENT_ID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "SPAN",
-        "name" : "默认",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "SPAN",
-        "name" : "移动端默认",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "AI_AGENT_ID",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[100]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "ai_agent_id",
-    "dEFType" : 3,
-    "dataType" : "PICKUPDATA",
-    "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "智能体标识",
-    "name" : "AI_AGENT_ID",
-    "orderValue" : 1000,
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDERS/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "AI_AGENT_ID",
-      "codeName" : "ai_agent_id"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "serviceCodeName" : "ai_agent_id",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "AI_AGENT_CONTEXT_NAME",
-      "dBType" : "MYSQL5",
-      "name" : "AI_AGENT_CONTEXT_NAME",
-      "queryCodeExp" : "t11.`NAME`",
-      "standardColumnName" : "`AI_AGENT_CONTEXT_NAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_AI_AGENT_CONTEXT_NAME_EQ",
-      "name" : "N_AI_AGENT_CONTEXT_NAME_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    }, {
-      "codeName" : "N_AI_AGENT_CONTEXT_NAME_LIKE",
-      "name" : "N_AI_AGENT_CONTEXT_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "name" : "默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "PICKER",
-        "name" : "默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "name" : "移动端默认",
-      "getPSDEFFormItem" : {
-        "editorType" : "MOBPICKER",
-        "name" : "移动端默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "AI_AGENT_CONTEXT_NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "ai_agent_context_name",
-    "dEFType" : 3,
-    "dataType" : "PICKUPTEXT",
-    "importOrder" : 1000,
-    "length" : 200,
-    "logicName" : "智能体业务上下文名称",
-    "name" : "AI_AGENT_CONTEXT_NAME",
-    "orderValue" : 1000,
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDERS/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "serviceCodeName" : "ai_agent_context_name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "getValuePSDEField" : {
+      "columnName" : "AI_AGENT_CONTEXT_ID",
+      "dBType" : "POSTGRESQL",
       "name" : "AI_AGENT_CONTEXT_ID",
-      "codeName" : "ai_agent_context_id"
-    },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
+      "queryCodeExp" : "t1.AI_AGENT_CONTEXT_ID",
+      "standardColumnName" : "AI_AGENT_CONTEXT_ID"
+    }, {
       "columnName" : "AI_AGENT_CONTEXT_ID",
       "dBType" : "MYSQL5",
       "name" : "AI_AGENT_CONTEXT_ID",
@@ -2008,12 +1764,8 @@
     "getAllPSDEFUIModes" : [ {
       "name" : "默认",
       "getPSDEFFormItem" : {
-        "editorType" : "HIDDEN",
+        "editorType" : "TEXTBOX",
         "name" : "默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
         "stringLength" : 100,
         "uIMode" : "DEFAULT"
       },
@@ -2021,12 +1773,8 @@
     }, {
       "name" : "移动端默认",
       "getPSDEFFormItem" : {
-        "editorType" : "HIDDEN",
+        "editorType" : "MOBTEXT",
         "name" : "移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-        },
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
@@ -2061,7 +1809,7 @@
     } ],
     "codeName" : "ai_agent_context_id",
     "dEFType" : 1,
-    "dataType" : "PICKUP",
+    "dataType" : "TEXT",
     "fieldTag" : "AGENT_CONTEXT_ID",
     "importOrder" : 1000,
     "length" : 100,
@@ -2072,37 +1820,22 @@
       "modelref" : true,
       "id" : "Table"
     },
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDERS/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID.json"
-    },
     "getPSSysDBColumn" : {
       "modelref" : true,
       "id" : "AI_AGENT_CONTEXT_ID"
     },
-    "getRealPSDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
     "serviceCodeName" : "ai_agent_context_id",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "linkDEField" : true
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SEQUENCE",
+      "dBType" : "POSTGRESQL",
+      "name" : "SEQUENCE",
+      "queryCodeExp" : "t1.SEQUENCE",
+      "standardColumnName" : "SEQUENCE"
+    }, {
       "columnName" : "SEQUENCE",
       "dBType" : "MYSQL5",
       "name" : "SEQUENCE",
@@ -2592,17 +2325,6 @@
       "allowEmpty" : false,
       "readOnly" : true
     }, {
-      "logicName" : "智能体名称",
-      "name" : "ai_agent_name",
-      "getPSDEField" : {
-        "name" : "AI_AGENT_NAME",
-        "codeName" : "ai_agent_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 200,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "会话类型",
       "name" : "type",
       "getPSDEField" : {
@@ -2629,28 +2351,6 @@
       "getPSDEField" : {
         "name" : "AI_AGENT_CONTEXT_ID",
         "codeName" : "ai_agent_context_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "智能体业务上下文名称",
-      "name" : "ai_agent_context_name",
-      "getPSDEField" : {
-        "name" : "AI_AGENT_CONTEXT_NAME",
-        "codeName" : "ai_agent_context_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 200,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "智能体标识",
-      "name" : "ai_agent_id",
-      "getPSDEField" : {
-        "name" : "AI_AGENT_ID",
-        "codeName" : "ai_agent_id"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -2727,51 +2427,6 @@
       "getPSDEField" : {
         "name" : "AI_AGENT_CONTEXT_ID",
         "codeName" : "ai_agent_context_id"
-      },
-      "scale" : 0,
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "智能体业务上下文名称",
-      "name" : "n_ai_agent_context_name_eq",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_AI_AGENT_CONTEXT_NAME_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "AI_AGENT_CONTEXT_NAME",
-        "codeName" : "ai_agent_context_name"
-      },
-      "scale" : 0,
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "智能体业务上下文名称",
-      "name" : "n_ai_agent_context_name_like",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_AI_AGENT_CONTEXT_NAME_LIKE"
-      },
-      "getPSDEField" : {
-        "name" : "AI_AGENT_CONTEXT_NAME",
-        "codeName" : "ai_agent_context_name"
-      },
-      "scale" : 0,
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "智能体标识",
-      "name" : "n_ai_agent_id_eq",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_AI_AGENT_ID_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "AI_AGENT_ID",
-        "codeName" : "ai_agent_id"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",
@@ -3055,37 +2710,6 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "ai_agent_conversation",
-    "enableFKey" : true
-  } ],
-  "getMinorPSDERs" : [ {
-    "codeName" : "AI_AGENT_CONTEXT",
-    "dERType" : "DER1N",
-    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDERS/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID.json",
-    "fKeyName" : "F2ACBCBF412E59B152",
-    "getMajorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
-    },
-    "masterOrder" : -1,
-    "masterRS" : 0,
-    "getMinorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
-    },
-    "name" : "DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID",
-    "orderValue" : 100,
-    "getPSPickupDEField" : {
-      "name" : "AI_AGENT_CONTEXT_ID",
-      "codeName" : "ai_agent_context_id"
-    },
-    "getPSPickupTextDEField" : {
-      "name" : "AI_AGENT_CONTEXT_NAME",
-      "codeName" : "ai_agent_context_name"
-    },
-    "pickupDEFName" : "AI_AGENT_CONTEXT_ID",
-    "removeActionType" : -1,
-    "removeOrder" : 0,
-    "serviceCodeName" : "ai_agent_context",
     "enableFKey" : true
   } ],
   "name" : "AI_AGENT_CONVERSATION",

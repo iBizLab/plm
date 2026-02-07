@@ -1,0 +1,52 @@
+package cn.ibizlab.plm.ai.logic.ai_knowledge_baselogic.recover;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_baserecoverdefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_knowledge_base ai_knowledge_baserecoverupdate_obj;
+                    global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService ai_knowledge_baseservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_knowledge_baseService iBzSysAi_knowledge_baseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_knowledge_baserecoverbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam1"
+            ruleflow-group "ai_knowledge_baserecoverprepareparam1"
+            when
+            then
+                            ai_knowledge_baserecoverupdate_obj.set("isdeleted","0");
+                            ai_knowledge_baserecoverupdate_obj.set("id",ai_knowledge_baserecoverdefault.get("id"));
+                        update(ai_knowledge_baserecoverdefault);//更新fact中变量值
+                        update(ai_knowledge_baserecoverupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[恢复]
+            rule "deaction1"
+            ruleflow-group "ai_knowledge_baserecoverdeaction1"
+            when
+            then
+                        ai_knowledge_baseservice.update(ai_knowledge_baserecoverupdate_obj);
+                        update(ai_knowledge_baserecoverdefault);//更新fact中变量值
+                        update(ai_knowledge_baserecoverupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ai_knowledge_baserecoverend1"
+            when
+            then
+                        update(ai_knowledge_baserecoverdefault);//更新fact中变量值
+                        update(ai_knowledge_baserecoverupdate_obj);//更新fact中变量值
+            end

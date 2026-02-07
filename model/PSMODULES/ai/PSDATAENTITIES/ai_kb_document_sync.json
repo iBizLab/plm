@@ -108,16 +108,6 @@
     "getBeforePSDEActionLogics" : [ {
       "actionLogicType" : 1,
       "attachMode" : "BEFORE",
-      "codeName" : "A239b68057a083492a4",
-      "name" : "附加逻辑",
-      "getPSDELogic" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/sync_remove_doc_chunk.json"
-      },
-      "internalLogic" : true
-    }, {
-      "actionLogicType" : 1,
-      "attachMode" : "BEFORE",
       "codeName" : "A6dd0aeefbf68257749",
       "name" : "附加逻辑",
       "getPSDELogic" : {
@@ -199,6 +189,31 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "Async_space_parse",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/Async_space_parse.json",
+    "logicName" : "异步空间文档解析处理",
+    "name" : "Async_space_parse",
+    "getPSDEActionInput" : {
+      "name" : "Async_space_parseInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_sync_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Async_space_parseResult",
+      "type" : "ASYNCACTION"
+    },
+    "getRealPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/space_parse.json"
+    },
+    "asyncAction" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
@@ -242,8 +257,41 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "space_parse",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/space_parse.json",
+    "logicName" : "空间文档解析处理",
+    "name" : "space_parse",
+    "getPSDEActionInput" : {
+      "name" : "Space_parseInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_sync_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Space_parseResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/space_parse.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "standardTableName" : "AI_KB_DOCUMENT_SYNC",
+    "tableName" : "AI_KB_DOCUMENT_SYNC",
+    "valid" : true
+  }, {
     "dBType" : "MYSQL5",
     "name" : "MYSQL5",
     "objNameCase" : "DEFAULT",
@@ -295,6 +343,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "DEFAULT",
@@ -328,6 +379,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -392,6 +446,12 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "ID",
+      "queryCodeExp" : "t1.ID",
+      "standardColumnName" : "ID"
+    }, {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -491,6 +551,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
+      "standardColumnName" : "NAME"
+    }, {
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
       "name" : "NAME",
       "queryCodeExp" : "t1.`NAME`",
@@ -585,6 +651,12 @@
     "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CREATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
+      "standardColumnName" : "CREATE_MAN"
+    }, {
       "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "CREATE_MAN",
@@ -682,6 +754,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
+      "standardColumnName" : "CREATE_TIME"
+    }, {
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "CREATE_TIME",
       "queryCodeExp" : "t1.`CREATE_TIME`",
@@ -761,6 +839,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
+      "standardColumnName" : "UPDATE_MAN"
+    }, {
       "columnName" : "UPDATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_MAN",
@@ -858,6 +942,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "UPDATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
+      "standardColumnName" : "UPDATE_TIME"
+    }, {
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_TIME",
       "queryCodeExp" : "t1.`UPDATE_TIME`",
@@ -937,6 +1027,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SYNC_FREQUENCY",
+      "dBType" : "POSTGRESQL",
+      "name" : "SYNC_FREQUENCY",
+      "queryCodeExp" : "t1.SYNC_FREQUENCY",
+      "standardColumnName" : "SYNC_FREQUENCY"
+    }, {
       "columnName" : "SYNC_FREQUENCY",
       "dBType" : "MYSQL5",
       "name" : "SYNC_FREQUENCY",
@@ -1022,6 +1118,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SOURCE_TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "SOURCE_TYPE",
+      "queryCodeExp" : "t1.SOURCE_TYPE",
+      "standardColumnName" : "SOURCE_TYPE"
+    }, {
+      "columnName" : "SOURCE_TYPE",
       "dBType" : "MYSQL5",
       "name" : "SOURCE_TYPE",
       "queryCodeExp" : "t1.`SOURCE_TYPE`",
@@ -1102,6 +1204,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SOURCE_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "SOURCE_ID",
+      "queryCodeExp" : "t1.SOURCE_ID",
+      "standardColumnName" : "SOURCE_ID"
+    }, {
+      "columnName" : "SOURCE_ID",
       "dBType" : "MYSQL5",
       "name" : "SOURCE_ID",
       "queryCodeExp" : "t1.`SOURCE_ID`",
@@ -1181,6 +1289,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "AI_KNOWLEDGE_BASE_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "AI_KNOWLEDGE_BASE_ID",
+      "queryCodeExp" : "t1.AI_KNOWLEDGE_BASE_ID",
+      "standardColumnName" : "AI_KNOWLEDGE_BASE_ID"
+    }, {
       "columnName" : "AI_KNOWLEDGE_BASE_ID",
       "dBType" : "MYSQL5",
       "name" : "AI_KNOWLEDGE_BASE_ID",
@@ -1358,8 +1472,13 @@
           "id" : "extend_schedule"
         },
         "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "name",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
         "srcValue" : "知识库文档同步",
-        "srcValueType" : "SRCVALUE"
+        "srcValueType" : "SRCDLPARAM"
       }, {
         "dstFieldName" : "PRINCIPAL_ID",
         "getDstPSDELogicParam" : {
@@ -1377,7 +1496,7 @@
       "topPos" : 280,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 * * *',\r\n    'weekly': '0 0 * * 1', \r\n    'monthly': '0 0 1 * *'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]\r\n_extend_schedule.name=\"[\"+_default.name+\"]空间执行计划\"",
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 0 * * ?',\r\n    'weekly': '0 0 0 ? * MON', \r\n    'monthly': '0 0 0 1 * ?'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]\r\n_extend_schedule.name=\"[\"+_default.name+\"]空间执行计划\"\r\n\r\n_extend_schedule.payload = groovy.json.JsonOutput.toJson([\r\n    id: _default.id\r\n])",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "getDstPSDELogicParam" : {
@@ -1782,6 +1901,500 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
       },
       "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "space_parse",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDELOGICS/space_parse.json",
+    "logicName" : "空间文档解析处理",
+    "name" : "空间文档解析处理",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 60,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 150,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_02",
+      "leftPos" : 720,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备文档参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_SYNC_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_sync"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "2000",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 250,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+      },
+      "leftPos" : 10,
+      "logicNodeType" : "DEACTION",
+      "memo" : "根据extend_schedule_task的payload获取文档同步数据",
+      "name" : "获取文档同步数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "SOURCE_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "doc_sync"
+            },
+            "logicType" : "SINGLE",
+            "name" : "doc_sync[SOURCE_ID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_sync"
+      },
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 246,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备空间参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_space_id_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "page_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "SOURCE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "doc_sync"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "page_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1500",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_01",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "only_page"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "leftPos" : 466,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询空间启用的页面",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "all_pages"
+      },
+      "topPos" : 260,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_02",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 730,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询已同步页面",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_02"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "docs"
+      },
+      "topPos" : 380,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_03",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 320,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询最新空间文档",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "docs"
+            },
+            "logicType" : "SINGLE",
+            "name" : "docs[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_03"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "docs"
+      },
+      "topPos" : 400,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _all_pages = logic.param('all_pages')?.getReal() ?: []\r\ndef _docs = logic.param('docs')?.getReal() ?: []\r\ndef _doc_sync = logic.param('doc_sync')?.getReal() ?: []\r\ndef doc_pageids_in_space = (_docs?.collect { it?.source_id }?.findAll { it != null } ?: []) as Set\r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\n\r\nprintln \"已有pageId: $doc_pageids_in_space\"  \r\n\r\ndef pages_without_doc = _all_pages.findAll { !doc_pageids_in_space.contains(it.id)}\r\n\r\nprintln \"未存在pageId: ${pages_without_doc*.id}\"  \r\n\r\npages_without_doc.each { page ->\r\n    println \"页面ID: ${page.id}, 页面: ${page.name}\"\r\n    def new_doc = doc_runtime.entity()\r\n    new_doc.set('custom_chunk',0)\r\n    new_doc.set('source_id',page.id)\r\n    new_doc.set('name',page.name)\r\n    new_doc.set('sync_frequency',_doc_sync.sync_frequency)\r\n    new_doc.set('status',0)\r\n    new_doc.set('sync_id',_doc_sync.id)\r\n    new_doc.set('type','space')\r\n    new_doc.set('source_type','page')\r\n    new_doc.set('kb_id',_doc_sync.ai_knowledge_base_id)\r\n    doc_runtime.create(new_doc)\r\n}\r\n\r\n",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 520,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "处理未同步页面",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_03"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 400,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _all_pages = logic.param('all_pages')?.getReal() ?: []\r\ndef _docs = logic.param('docs')?.getReal() ?: []\r\ndef all_pages_in_space = _all_pages*.id.toSet()\r\ndef no_exist_pages_doc = _docs.findAll { !all_pages_in_space.contains(it.source_id) }\r\nprintln \"已删除page的doc: ${no_exist_pages_doc*.source_id}\"  \r\n\r\nif(no_exist_pages_doc){\r\n    def doc_runtime = sys.dataentity('ai_kb_document')\r\n    no_exist_pages_doc.each { doc ->\r\n        doc_runtime.remove(doc)\r\n    }\r\n}\r\n\r\n",
+      "codeName" : "RAWSFCODE_02",
+      "codeType" : "Groovy",
+      "leftPos" : 720,
+      "logicNodeType" : "RAWSFCODE",
+      "memo" : "清除page被删除对应的doc",
+      "name" : "清理冗余的doc",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "all_pages"
+            },
+            "logicType" : "SINGLE",
+            "name" : "all_pages[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        }
+      } ],
+      "topPos" : 500,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "LOOPSUBCALL_02",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc"
+      },
+      "leftPos" : 320,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "解析空间下文档",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_03"
+        },
+        "name" : "进入循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_02"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL_02"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "docs"
+      },
+      "topPos" : 540,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 640,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 660,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_03",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document/PSDEACTIONS/parse.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "doc"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "leftPos" : 330,
+      "logicNodeType" : "DEACTION",
+      "name" : "解析文档",
+      "topPos" : 670,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "all_pages",
+      "logicName" : "all_pages",
+      "name" : "all_pages",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "doc",
+      "logicName" : "doc",
+      "name" : "doc",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "doc_filter",
+      "logicName" : "doc_filter",
+      "name" : "doc_filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "doc_sync",
+      "logicName" : "doc_sync",
+      "name" : "doc_sync",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_sync.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "docs",
+      "logicName" : "docs",
+      "name" : "docs",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "page",
+      "logicName" : "page",
+      "name" : "page",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "page_filter",
+      "logicName" : "page_filter",
+      "name" : "page_filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "pages_notin_docs",
+      "logicName" : "pages_notin_docs",
+      "name" : "pages_notin_docs",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "temp_docs",
+      "logicName" : "temp_docs",
+      "name" : "temp_docs",
+      "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
@@ -2260,7 +2873,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "DELETE c FROM ai_kb_chunk  c WHERE  exists (select 1 from ai_kb_document doc where doc.id=c.document_id and doc.SYNC_ID= ? )",
+      "sql" : "DELETE   FROM ai_kb_chunk  c WHERE  exists (select 1 from ai_kb_document doc where doc.id=c.document_id and doc.SYNC_ID= ? )",
       "topPos" : 350,
       "parallelOutput" : true
     }, {
@@ -2288,7 +2901,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "DELETE doc FROM ai_kb_document doc WHERE doc.sync_id = ?",
+      "sql" : "DELETE  FROM ai_kb_document doc WHERE doc.sync_id = ?",
       "topPos" : 350,
       "parallelOutput" : true
     }, {
@@ -2477,7 +3090,7 @@
       "topPos" : 410,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 * * *',\r\n    'weekly': '0 0 * * 1', \r\n    'monthly': '0 0 1 * *'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]",
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _extend_schedule = logic.param('extend_schedule').getReal()\r\ndef sync_frequency = _default.sync_frequency\r\ndef frequencyMap = [\r\n    'daily': '0 0 0 * * ?',\r\n    'weekly': '0 0 0 ? * MON', \r\n    'monthly': '0 0 0 1 * ?'\r\n]\r\n_extend_schedule.timer_policy = frequencyMap[sync_frequency]",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "getDstPSDELogicParam" : {
@@ -2881,7 +3494,7 @@
   } ],
   "codeName" : "ai_kb_document_sync",
   "dEType" : 1,
-  "dSLink" : "DEFAULT",
+  "dSLink" : "DB3",
   "dataAccCtrlArch" : 1,
   "dataAccCtrlMode" : 1,
   "dataChangeLogMode" : 0,
@@ -2942,7 +3555,7 @@
       "codeName" : "sync_id"
     },
     "pickupDEFName" : "SYNC_ID",
-    "removeActionType" : -1,
+    "removeActionType" : 1,
     "removeOrder" : 0,
     "serviceCodeName" : "ai_kb_document_sync",
     "enableFKey" : true
@@ -2970,7 +3583,7 @@
       "codeName" : "ai_knowledge_base_id"
     },
     "pickupDEFName" : "AI_KNOWLEDGE_BASE_ID",
-    "removeActionType" : -1,
+    "removeActionType" : 1,
     "removeOrder" : 0,
     "serviceCodeName" : "ai_knowledge_base",
     "enableFKey" : true
@@ -3004,7 +3617,7 @@
   "name" : "AI_KB_DOCUMENT_SYNC",
   "getPSSysDBScheme" : {
     "modelref" : true,
-    "path" : "PSSYSDBSCHEMES/DEFAULT.json"
+    "path" : "PSSYSDBSCHEMES/DB3.json"
   },
   "getPSSystemModule" : {
     "modelref" : true,

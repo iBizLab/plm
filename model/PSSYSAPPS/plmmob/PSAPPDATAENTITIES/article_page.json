@@ -1331,7 +1331,7 @@
       },
       "getPSCodeList" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/CodeList54.json"
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/formattype_chg.json"
       },
       "getPSDEField" : {
         "name" : "FORMAT_TYPE",
@@ -8095,7 +8095,7 @@
     },
     "name" : "chat_resource",
     "reportFile" : "#",
-    "reportModel" : "<#list data as item>\r\n\r\n<#if item.name??>\r\n标题：${item.name}\r\n</#if>\r\n\r\n<#if item.publish_name??>\r\n发布人：${item.publish_name}\r\n</#if>\r\n\r\n<#if item.publish_time??>\r\n发布时间：${item.publish_time}\r\n</#if>\r\n\r\n<#if item.publish_content??>\r\n发布内容：${utils.html2md(item.publish_content!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/article_pages/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"PAGE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportModel" : "<#list data as item>\r\n\r\n<#if item.name??>\r\n标题：${item.name}\r\n</#if>\r\n\r\n<#if item.publish_name??>\r\n发布人：${item.publish_name}\r\n</#if>\r\n\r\n<#if item.publish_time??>\r\n发布时间：${item.publish_time}\r\n</#if>\r\n\r\n<#if item.publish_content??>\r\n发布内容：${utils.html2md(item.publish_content!\"\")}\r\n</#if>\r\n<#if ((item.comment_count!'0')?number) gt 0>\r\n<#assign comments = api.invoke(\"/article_pages/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"PAGE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n</#if>\r\n</#list>\r\n",
     "reportType" : "CHATRESOURCE"
   } ],
   "getAllPSAppDEUIActions" : [ {
@@ -8259,7 +8259,7 @@
     "id" : "mob_add_favorite@article_page"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建子页面",
+    "caption" : "新建文档",
     "codeName" : "mob_create_child_document",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -8387,7 +8387,7 @@
     "id" : "mob_draft@article_page"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建子分组",
+    "caption" : "新建分组",
     "codeName" : "mob_new_section",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -8432,8 +8432,8 @@
       "rawValue" : false
     } ],
     "getPSSysImage" : {
-      "glyph" : "xf07c@FontAwesome",
-      "cssClass" : "fa fa-folder-open"
+      "glyph" : "xf115@FontAwesome",
+      "cssClass" : "fa fa-folder-open-o"
     },
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_new_section",
@@ -8483,11 +8483,9 @@
       "modelref" : true,
       "id" : "UPDATE"
     },
-    "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_open_page_edit_view",
     "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
     "id" : "mob_open_page_edit_view@article_page"
   }, {
     "actionTarget" : "SINGLEKEY",
@@ -8983,86 +8981,6 @@
       "topPos" : -140,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 161,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "页面信息",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_info"
-        },
-        "name" : "Default ==> page_info",
-        "paramAction" : "COPYPARAM",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : -50
-    }, {
-      "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 161,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 680
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "modelref" : true,
-        "id" : "Exit"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "page_info"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "退出",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "topPos" : 548
-    }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -9096,39 +9014,36 @@
       } ],
       "topPos" : 420
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "publish_page"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "page_info"
-      },
+      "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 161,
-      "logicNodeType" : "DEACTION",
-      "name" : "发布页面",
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "页面信息",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE3"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "page_info"
-      },
-      "topPos" : 180
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "name" : "Default ==> page_info",
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -50
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
@@ -9137,7 +9052,26 @@
       "topPos" : 771,
       "parallelOutput" : true
     }, {
-      "code" : "//uiLogic.page_info = view.layoutPanel.panelItems.form.control.getReal();\r\n\r\nconst page_info = uiLogic.page_info;\r\n\r\nconsole.info(page_info);\r\n\r\nif(page_info.format_type === \"HTML\"  &&  page_info.html_description !== undefined){\r\n    page_info.content = page_info.html_description;\r\n}\r\nif(page_info.format_type === \"MD\"  &&  page_info.md_description !== undefined){\r\n    page_info.content = page_info.md_description;\r\n}\r\nif(page_info.format_type === \"EXCEL\" &&  page_info.excel_description !== undefined){\r\n    page_info.content = page_info.excel_description;\r\n}\r\n\r\n\r\n\r\n",
+      "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 161,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 680
+    }, {
+      "code" : "//uiLogic.page_info = view.layoutPanel.panelItems.form.control.getReal();\r\n\r\nconst page_info = uiLogic.page_info;\r\n\r\nconsole.info(page_info);\r\n\r\n// if(page_info.format_type === \"HTML\"  &&  page_info.html_description !== undefined){\r\n//     page_info.content = page_info.html_description;\r\n// }\r\n// if(page_info.format_type === \"MD\"  &&  page_info.md_description !== undefined){\r\n//     page_info.content = page_info.md_description;\r\n// }\r\n// if(page_info.format_type === \"EXCEL\" &&  page_info.excel_description !== undefined){\r\n//     page_info.content = page_info.excel_description;\r\n// }\r\n\r\n\r\n\r\n",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 161,
       "logicNodeType" : "RAWJSCODE",
@@ -9175,6 +9109,70 @@
         }
       } ],
       "topPos" : 302
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "publish_page"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "leftPos" : 161,
+      "logicNodeType" : "DEACTION",
+      "name" : "发布页面",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "topPos" : 180
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "modelref" : true,
+        "id" : "Exit"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "退出",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 548
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -9183,15 +9181,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "form",
-      "logicName" : "表单",
-      "name" : "表单",
-      "ctrlParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图",
       "name" : "当前视图",
       "activeViewParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "表单",
+      "name" : "表单",
+      "ctrlParam" : true
     }, {
       "codeName" : "page_info",
       "logicName" : "页面信息",
@@ -9564,9 +9562,9 @@
     },
     "uniqueTag" : "article_page__Usr1017923437",
     "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建子页面",
+      "caption" : "新建文档",
       "detailType" : "DEUIACTION",
-      "name" : "ubc2c5b2",
+      "name" : "u9385171",
       "getPSSysImage" : {
         "glyph" : "xf196@FontAwesome",
         "cssClass" : "fa fa-plus-square-o"
@@ -9583,12 +9581,12 @@
         "id" : "mob_create_child_document@article_page"
       }
     }, {
-      "caption" : "新建子分组",
+      "caption" : "新建分组",
       "detailType" : "DEUIACTION",
-      "name" : "ud0c64b7",
+      "name" : "ue47d4cb",
       "getPSSysImage" : {
-        "glyph" : "xf07c@FontAwesome",
-        "cssClass" : "fa fa-folder-open"
+        "glyph" : "xf115@FontAwesome",
+        "cssClass" : "fa fa-folder-open-o"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -9604,12 +9602,12 @@
     }, {
       "caption" : "收藏",
       "detailType" : "DEUIACTION",
-      "name" : "u4686fff",
+      "name" : "ud810304",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
       "tooltip" : "收藏",
-      "visibleScriptCode" : "data.type==1",
+      "visibleScriptCode" : "data.type==1&&data.is_favorite==0",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -9622,9 +9620,29 @@
         "id" : "mob_add_favorite@article_page"
       }
     }, {
+      "caption" : "取消收藏",
+      "detailType" : "DEUIACTION",
+      "name" : "u3c97fab",
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+      },
+      "tooltip" : "取消收藏",
+      "visibleScriptCode" : "data.type==1&&data.is_favorite==1",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "cancel_favorite@article_page"
+      }
+    }, {
       "caption" : "重命名",
       "detailType" : "DEUIACTION",
-      "name" : "uc720d73",
+      "name" : "u6e2f80f",
       "getPSSysImage" : {
         "glyph" : "xf0ec@FontAwesome",
         "cssClass" : "fa fa-exchange"
@@ -9643,7 +9661,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "uce48881",
+      "name" : "u2432a31",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

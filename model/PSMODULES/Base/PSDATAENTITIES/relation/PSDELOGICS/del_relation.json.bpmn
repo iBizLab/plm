@@ -6,20 +6,33 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="relationdel_relationdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationdel_relationfilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationdel_relationforward_relation_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationdel_relationpage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationdel_relationreverse_relation_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationdel_relationtemp" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="iBzSysRelationDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="relationdel_relationdefault" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationdel_relationfilter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="relationdel_relationforward_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationdel_relationpage" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="relationdel_relationreverse_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationdel_relationtemp" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充正反关联对象的主要关联属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接关联对象的主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="删除反向关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="删除当前关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="删除关联"/>
+                        <endEvent id="deaction4_end" name="end"/>
+                        <sequenceFlow id="deaction4_end_line" sourceRef="deaction4" targetRef="deaction4_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationdel_relationend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -31,7 +44,17 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_deaction3" sourceRef="deaction2" targetRef="deaction3">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction3_end1" sourceRef="deaction3" targetRef="end1">
+                    <sequenceFlow id="deaction3_prepareparam2" sourceRef="deaction3" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction5" sourceRef="loopsubcall1" targetRef="deaction5">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction4" sourceRef="loopsubcall1" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_end1" sourceRef="deaction5" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

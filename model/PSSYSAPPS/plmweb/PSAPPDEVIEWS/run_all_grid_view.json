@@ -1235,10 +1235,41 @@
         "name" : "EXECUTOR_NAME",
         "codeName" : "executor_name"
       },
+      "getPSSysPFPlugin" : {
+        "pluginType" : "GRID_COLRENDER",
+        "pluginCode" : "DYNAMIC_COLUMN",
+        "runtimeObject" : true
+      },
       "width" : 150,
       "widthUnit" : "PX",
       "enableRowEdit" : true,
-      "enableSort" : true
+      "enableSort" : true,
+      "getUserParam" : {
+        "dynamicColumn" : "executors",
+        "condField" : "multiple_people"
+      }
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "多人执行",
+      "codeName" : "executors",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "executors",
+      "excelCaption" : "多人执行",
+      "hideMode" : 2,
+      "name" : "executors",
+      "noPrivDisplayMode" : 1,
+      "objectIdField" : "id",
+      "objectNameField" : "name",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "valueType" : "OBJECTS",
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableRowEdit" : true,
+      "enableSort" : false
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
@@ -1458,6 +1489,14 @@
         "codeName" : "executor_name"
       }
     }, {
+      "dataType" : 21,
+      "name" : "executors",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "valueType" : "OBJECTS"
+    }, {
       "dataType" : 25,
       "name" : "maintenance_name",
       "getPSAppDEField" : {
@@ -1535,6 +1574,13 @@
       "getPSAppDEField" : {
         "name" : "BI_PLAN_NAME",
         "codeName" : "bi_plan_name"
+      }
+    }, {
+      "dataType" : 9,
+      "name" : "multiple_people",
+      "getPSAppDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
       }
     }, {
       "dataType" : 25,
@@ -1688,6 +1734,68 @@
         "singleSelect" : true
       },
       "valueItemName" : "executor_id",
+      "allowEmpty" : true,
+      "getUserParam" : {
+        "dynamicColumn" : "executors",
+        "condField" : "multiple_people"
+      }
+    }, {
+      "caption" : "多人执行",
+      "codeName" : "executors",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "executors",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ENABLEBOTTOMBUTTON" : "true",
+          "MULTIPLE" : "true",
+          "valueType" : "OBJECTS",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"user_name\"}",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "handlerType" : "PickupText",
+        "name" : "executors",
+        "objectIdField" : "id",
+        "objectNameField" : "name",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueType" : "OBJECTS",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
       "allowEmpty" : true
     }, {
       "caption" : "维护人",

@@ -711,6 +711,49 @@
                 "name" : "TITLE",
                 "codeName" : "title"
               },
+              "getPSDEUIAction" : {
+                "actionTarget" : "SINGLEKEY",
+                "caption" : "打开主视图·",
+                "codeName" : "open_main_view_pop_up",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view_pop_up.json",
+                  "viewType" : "DEEDITVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "work_item_open_main_view_pop_up",
+                "name" : "打开主视图（模态弹出）",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                },
+                "getPSNavigateContexts" : [ {
+                  "key" : "SRFDATATYPE",
+                  "name" : "SRFDATATYPE",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "PROJECT",
+                  "name" : "PROJECT",
+                  "value" : "project_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "WORK_ITEM_TYPE_ID",
+                  "name" : "WORK_ITEM_TYPE_ID",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "getPSNavigateParams" : [ {
+                  "key" : "srfdatatype",
+                  "name" : "srfdatatype",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "open_main_view_pop_up",
+                "uIActionType" : "DEUIACTION",
+                "id" : "open_main_view_pop_up@work_item"
+              },
               "width" : 200,
               "widthUnit" : "STAR",
               "enableSort" : true
@@ -1007,11 +1050,11 @@
               "id" : "queryconds",
               "dataType" : 25
             }, {
-              "id" : "n_project_id_eq",
+              "id" : "n_project_name_eq",
               "dataType" : 25,
               "getPSAppDEField" : {
-                "name" : "PROJECT_ID",
-                "codeName" : "project_id"
+                "name" : "PROJECT_NAME",
+                "codeName" : "project_name"
               }
             }, {
               "id" : "n_work_item_origin_state_eq",
@@ -1057,6 +1100,10 @@
                 "name" : "CREATE_TIME",
                 "codeName" : "create_time"
               }
+            }, {
+              "id" : "n_project_id_eq",
+              "hidden" : true,
+              "dataType" : 25
             } ],
             "getPSDEFormPages" : [ {
               "caption" : "常规条件",
@@ -1140,7 +1187,7 @@
                   "showCaption" : false
                 }, {
                   "caption" : "项目名称",
-                  "codeName" : "n_project_id_eq",
+                  "codeName" : "n_project_name_eq",
                   "dataType" : 25,
                   "detailStyle" : "DEFAULT",
                   "detailType" : "FORMITEM",
@@ -1148,31 +1195,64 @@
                   "ignoreInput" : 0,
                   "labelPos" : "TOP",
                   "labelWidth" : 130,
-                  "name" : "n_project_id_eq",
+                  "name" : "n_project_name_eq",
                   "noPrivDisplayMode" : 1,
                   "getPSAppDEField" : {
-                    "name" : "PROJECT_ID",
-                    "codeName" : "project_id"
+                    "name" : "PROJECT_NAME",
+                    "codeName" : "project_name"
                   },
                   "getPSEditor" : {
                     "editorParams" : {
-                      "overflowMode" : "ellipsis"
+                      "SRFNAVPARAM.n_is_deleted_eq" : "0",
+                      "SRFNAVPARAM.n_is_archived_eq" : "0",
+                      "overflowMode" : "ellipsis",
+                      "AC" : "TRUE",
+                      "TRIGGER" : "TRUE",
+                      "PICKUPVIEW" : "FALSE"
                     },
-                    "editorType" : "DROPDOWNLIST",
-                    "name" : "n_project_id_eq",
-                    "getPSAppCodeList" : {
+                    "editorType" : "PICKEREX_TRIGGER",
+                    "handlerType" : "PickupText",
+                    "name" : "n_project_name_eq",
+                    "getPSAppDEACMode" : {
                       "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__UsrCodeList0122047845.json"
+                      "id" : "Default"
                     },
+                    "getPSAppDEDataSet" : {
+                      "modelref" : true,
+                      "id" : "fetch_default"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "getPSEditorItems" : [ {
+                      "name" : "n_project_id_eq"
+                    } ],
+                    "getPSNavigateParams" : [ {
+                      "key" : "n_is_deleted_eq",
+                      "name" : "n_is_deleted_eq",
+                      "value" : "0",
+                      "rawValue" : true
+                    }, {
+                      "key" : "n_is_archived_eq",
+                      "name" : "n_is_archived_eq",
+                      "value" : "0",
+                      "rawValue" : true
+                    } ],
                     "placeHolder" : "选择项目",
+                    "valueItemName" : "n_project_id_eq",
+                    "enableAC" : true,
+                    "enablePickupView" : false,
+                    "forceSelection" : true,
+                    "showTrigger" : true,
                     "singleSelect" : true
                   },
                   "getPSLayoutPos" : {
                     "colMD" : 24,
                     "layout" : "TABLE_24COL"
                   },
+                  "valueItemName" : "n_project_id_eq",
                   "allowEmpty" : true,
-                  "needCodeListConfig" : true,
                   "showCaption" : true
                 }, {
                   "caption" : "工作项类型",
@@ -1419,6 +1499,27 @@
                 },
                 "infoGroupMode" : false,
                 "showCaption" : true
+              }, {
+                "codeName" : "n_project_id_eq",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "LEFT",
+                "labelWidth" : 130,
+                "name" : "n_project_id_eq",
+                "noPrivDisplayMode" : 1,
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "n_project_id_eq"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "hidden" : true
               } ],
               "getPSLayout" : {
                 "childColMD" : 24,
@@ -1488,7 +1589,6 @@
             "layoutPanel" : true,
             "useDefaultLayout" : true
           },
-          "refFlag" : false,
           "title" : "工作项高级搜索表格视图",
           "viewStyle" : "DEFAULT",
           "viewType" : "DEGRIDVIEW",
@@ -1681,7 +1781,6 @@
       "getPSControlParam" : { }
     } ]
   },
-  "refFlag" : false,
   "tabLayout" : "TOP",
   "title" : "高级搜索分页选择视图",
   "viewStyle" : "DEFAULT",

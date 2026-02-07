@@ -43,6 +43,7 @@
     } ],
     "codeName" : "usr1024033490",
     "controlType" : "VIEWLAYOUTPANEL",
+    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "FLEX",
     "logicName" : "mob_edit_view实体移动端编辑视图布局面板",
     "name" : "layoutpanel",
@@ -50,6 +51,48 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "FIELD_TEXTBOX",
+      "logicTag" : "layoutpanel",
+      "logicType" : "APPDEUIACTION",
+      "name" : "logic",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开评论列表",
+        "codeName" : "open_comment_list",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+          "viewType" : "DEMOBMDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "test_case_open_comment_list",
+        "name" : "打开评论列表",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PRINCIPAL_ID",
+          "name" : "PRINCIPAL_ID",
+          "value" : "principal_id",
+          "rawValue" : false
+        }, {
+          "key" : "PRINCIPAL_TYPE",
+          "name" : "PRINCIPAL_TYPE",
+          "value" : "principal_type",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_comment_list",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "reloadData" : true,
+        "id" : "open_comment_list@test_case"
+      }
+    } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
       "layout" : "FLEX"
@@ -649,6 +692,12 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
       }
+    }, {
+      "eventNames" : "onLoadSuccess",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "LOGIC",
+      "scriptCode" : "if (view.context.space == null) {\r\n    view.context.space = view.layoutPanel.panelItems.form.control.data.space_id;\r\n}"
     } ],
     "getPSControls" : [ {
       "autoSaveMode" : 1,
@@ -890,13 +939,6 @@
           "codeName" : "publish_content"
         }
       }, {
-        "id" : "formitem1",
-        "dataType" : 21,
-        "getPSAppDEField" : {
-          "name" : "PUBLISH_CONTENT",
-          "codeName" : "publish_content"
-        }
-      }, {
         "id" : "publish_man",
         "dataType" : 25,
         "getPSAppDEField" : {
@@ -972,7 +1014,8 @@
                   "getPSDEFDLogics" : [ {
                     "condOP" : "ISNOTNULL",
                     "dEFDName" : "icon",
-                    "logicType" : "SINGLE"
+                    "logicType" : "SINGLE",
+                    "name" : "icon值不为空(NotNil)"
                   } ],
                   "relatedDetailNames" : [ "icon" ],
                   "notMode" : false
@@ -1079,12 +1122,12 @@
               "allowEmpty" : true,
               "hidden" : true
             }, {
-              "caption" : "正文",
+              "caption" : "发布正文",
               "codeName" : "content",
               "dataType" : 21,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
-              "enableCond" : 3,
+              "enableCond" : 0,
               "ignoreInput" : 4,
               "labelPos" : "NONE",
               "labelWidth" : 0,
@@ -1094,106 +1137,33 @@
                 "name" : "PUBLISH_CONTENT",
                 "codeName" : "publish_content"
               },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              }, {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "HTML"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
               "getPSEditor" : {
-                "contentType" : "HTML",
                 "editorParams" : {
-                  "contenttype" : "HTML",
-                  "TITLE" : "name"
+                  "LINKVIEWID" : "recent_mob_redirect_view",
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                  "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                  "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+                  "READONLY" : "true",
+                  "QUOTEURL" : "`recents/fetch_recent_access`"
                 },
-                "editorStyle" : "MOB_ANCHO_HTML",
-                "editorType" : "RAW",
+                "editorStyle" : "MOB_VDITOR",
+                "editorType" : "MOBHTMLTEXT",
                 "name" : "content",
+                "getPSEditorItems" : [ {
+                  "name" : "format_type"
+                } ],
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
-                  "pluginCode" : "MOB_ANCHO_HTML",
+                  "pluginCode" : "MOB_VDITOR",
                   "runtimeObject" : true
                 },
-                "placeHolder" : "请输入内容"
+                "readOnly" : true
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
-              "resetItemName" : "format_type",
-              "resetItemNames" : [ "format_type" ],
-              "allowEmpty" : true
-            }, {
-              "caption" : "发布正文",
-              "codeName" : "formitem1",
-              "dataType" : 21,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 0,
-              "ignoreInput" : 4,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "formitem1",
-              "noPrivDisplayMode" : 1,
-              "getPSAppDEField" : {
-                "name" : "PUBLISH_CONTENT",
-                "codeName" : "publish_content"
-              },
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              }, {
-                "groupOP" : "AND",
-                "logicCat" : "ITEMENABLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "EQ",
-                  "dEFDName" : "format_type",
-                  "logicType" : "SINGLE",
-                  "value" : "MD"
-                } ],
-                "relatedDetailNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "getPSEditor" : {
-                "editorType" : "MOBMARKDOWN",
-                "maxLength" : 16777215,
-                "mode" : "EDIT",
-                "name" : "formitem1",
-                "showMaxLength" : true
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
+              "valueItemName" : "format_type",
               "allowEmpty" : true
             }, {
               "codeName" : "rawitem3",
@@ -1209,6 +1179,7 @@
                   "condOP" : "EQ",
                   "dEFDName" : "format_type",
                   "logicType" : "SINGLE",
+                  "name" : "format_type等于(=) EXCEL",
                   "value" : "EXCEL"
                 } ],
                 "relatedDetailNames" : [ "format_type" ],
@@ -1797,7 +1768,6 @@
                               } ]
                             }, {
                               "actionGroupExtractMode" : "ITEMS",
-                              "caption" : "按钮组",
                               "itemStyle" : "DEFAULT",
                               "itemType" : "BUTTONLIST",
                               "name" : "buttonlist",
@@ -1910,7 +1880,8 @@
                                   "showIcon" : true
                                 } ],
                                 "uniqueTag" : "attachment__A258b62f7649916a65c"
-                              }
+                              },
+                              "userTag" : "link"
                             } ]
                           } ]
                         } ],
@@ -2570,6 +2541,9 @@
                   "codeName" : "publish_man"
                 },
                 "getPSEditor" : {
+                  "editorParams" : {
+                    "MOBSHOWUNDERLINE" : "false"
+                  },
                   "editorStyle" : "MOB_PERSONNEL_INFO",
                   "editorType" : "SPAN",
                   "name" : "publish_man",
@@ -2628,6 +2602,9 @@
                   "codeName" : "publish_time"
                 },
                 "getPSEditor" : {
+                  "editorParams" : {
+                    "MOBSHOWUNDERLINE" : "false"
+                  },
                   "editorType" : "SPAN",
                   "name" : "publish_time",
                   "enableLinkView" : false
@@ -3241,11 +3218,9 @@
             "modelref" : true,
             "id" : "UPDATE"
           },
-          "refreshMode" : 1,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "mob_open_page_edit_view",
           "uIActionType" : "DEUIACTION",
-          "reloadData" : true,
           "id" : "mob_open_page_edit_view@article_page"
         },
         "tooltip" : "编辑",

@@ -166,22 +166,53 @@
         "itemType" : "CONTAINER",
         "name" : "view_toolbar2",
         "getPSLayout" : {
-          "layout" : "FLEX"
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
-          "caption" : "搜索栏",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "searchbar",
-          "getPSLayoutPos" : {
-            "grow" : -1,
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
             "layout" : "FLEX"
           },
-          "showCaption" : true
+          "getPSLayoutPos" : {
+            "grow" : 1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "搜索栏",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "searchbar",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "设置容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "setting_container",
+          "getPSLayout" : {
+            "dir" : "row-reverse",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "heightMode" : "FULL",
+            "layout" : "FLEX"
+          },
+          "predefinedType" : "SETTING_CONTAINER"
         } ],
         "predefinedType" : "Toolbar"
       }, {
@@ -279,7 +310,7 @@
           "codeName" : "show_more_assignee_item",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
             "viewType" : "DEMOBMDVIEW"
           },
           "frontProcessType" : "WIZARD",
@@ -373,6 +404,12 @@
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
         "getOpenDataPSAppView" : {
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          } ],
           "getRefPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
@@ -380,6 +417,12 @@
           }
         },
         "getPSAppUILogicRefViews" : [ {
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          } ],
           "getRefPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
@@ -392,6 +435,12 @@
     } ],
     "getPSAppViewRefs" : [ {
       "name" : "EDITDATA",
+      "getPSNavigateContexts" : [ {
+        "key" : "PROJECT",
+        "name" : "PROJECT",
+        "value" : "project_id",
+        "rawValue" : false
+      } ],
       "realTitle" : "移动端通用编辑",
       "getRefPSAppView" : {
         "modelref" : true,
@@ -400,7 +449,7 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "mob_common_list",
+      "codeName" : "mobboard_list",
       "controlStyle" : "LISTVIEW",
       "controlType" : "MOBMDCTRL",
       "getCreatePSControlAction" : {
@@ -419,7 +468,7 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mobboard_list.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -725,7 +774,8 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "shrink" : 0
               },
               "getPSPanelItems" : [ {
                 "caption" : "文本(动态)",
@@ -766,7 +816,12 @@
         "modelid" : "8e92202cd73f5c8866d73027e35f8428",
         "modeltype" : "PSSYSVIEWPANEL"
       },
-      "logicName" : "mob_common_list",
+      "logicName" : "mobboard_list",
+      "minorSortDir" : "DESC",
+      "getMinorSortPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
       "mobListStyle" : "LISTVIEW",
       "getOrderValuePSAppDEField" : {
         "name" : "SEQUENCE",
@@ -856,6 +911,24 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        }
+      }, {
+        "dataType" : 25,
         "name" : "show_identifier",
         "getPSAppDEField" : {
           "name" : "SHOW_IDENTIFIER",
@@ -870,21 +943,6 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "title",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD",
-        "name" : "end_at",
-        "getPSAppDEField" : {
-          "name" : "END_AT",
-          "codeName" : "end_at"
-        }
-      }, {
-        "dataType" : 25,
         "getFrontPSCodeList" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
@@ -895,23 +953,20 @@
           "codeName" : "priority"
         }
       }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-        },
-        "name" : "state",
-        "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
-        }
-      }, {
         "dataType" : 5,
         "format" : "YYYY-MM-DD",
         "name" : "start_at",
         "getPSAppDEField" : {
           "name" : "START_AT",
           "codeName" : "start_at"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
         }
       }, {
         "dataType" : 25,
@@ -1018,6 +1073,25 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "caption" : "状态",
+        "dataItemName" : "state",
+        "itemType" : "TEXTITEM",
+        "name" : "STATE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "标题",
+        "dataItemName" : "title",
+        "itemType" : "TEXTITEM",
+        "name" : "TITLE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
         "caption" : "编号",
         "dataItemName" : "show_identifier",
         "itemType" : "TEXTITEM",
@@ -1036,40 +1110,11 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "标题",
-        "dataItemName" : "title",
-        "itemType" : "TEXTITEM",
-        "name" : "TITLE",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "截止时间",
-        "dataItemName" : "end_at",
-        "itemType" : "TEXTITEM",
-        "name" : "END_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
         "cLConvertMode" : "FRONT",
         "caption" : "优先级",
         "dataItemName" : "priority",
         "itemType" : "TEXTITEM",
         "name" : "PRIORITY",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "状态",
-        "dataItemName" : "state",
-        "itemType" : "TEXTITEM",
-        "name" : "STATE",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -1083,14 +1128,26 @@
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "截止时间",
+        "dataItemName" : "end_at",
+        "itemType" : "TEXTITEM",
+        "name" : "END_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
       } ],
+      "getPSSysCss" : {
+        "cssName" : "my_workitem"
+      },
       "getPSSysPFPlugin" : {
         "pluginType" : "CUSTOM",
         "pluginCode" : "MOB_MDCTRL_TREE",
         "runtimeObject" : true
       },
-      "pagingMode" : 2,
-      "pagingSize" : 20,
+      "pagingSize" : 5,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -1133,7 +1190,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
+      "modelid" : "4190e6b5f9b16f41cb9dba09bfb4bfdf",
       "modeltype" : "PSDELIST"
     }, {
       "controlType" : "SEARCHBAR",

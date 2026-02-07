@@ -1,5 +1,217 @@
 {
   "getAllPSAppDEACModes" : [ {
+    "aCTag" : "TextAgent_Writing",
+    "aCType" : "CHATCOMPLETION",
+    "codeName" : "AIChat",
+    "logicName" : "用例助手",
+    "name" : "AIChat",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    } ],
+    "getPSDEUIActionGroup" : {
+      "codeName" : "ai_inline_action_test_case",
+      "name" : "行内AI聊天界面行为组（用例）",
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "AI写作",
+        "detailType" : "DEUIACTION",
+        "name" : "u6025ded",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "AI写作",
+          "codeName" : "inline_ai_write",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "inline_ai_write",
+          "name" : "AI写作",
+          "getPSNavigateParams" : [ {
+            "key" : "srfaiagent",
+            "name" : "srfaiagent",
+            "value" : "TextAgent_Writing",
+            "rawValue" : true
+          } ],
+          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "inline_ai_write",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "摘要生成",
+        "detailType" : "DEUIACTION",
+        "name" : "uda59266",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "摘要生成",
+          "codeName" : "inline_summary_generate",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "inline_summary_generate",
+          "name" : "摘要生成",
+          "getPSNavigateParams" : [ {
+            "key" : "srfaiagent",
+            "name" : "srfaiagent",
+            "value" : "TextAgent_Summarization",
+            "rawValue" : true
+          }, {
+            "key" : "autoquestion",
+            "name" : "autoquestion",
+            "value" : "true",
+            "rawValue" : true
+          } ],
+          "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "inline_summary_generate",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "detailType" : "DEUIACTIONGROUP",
+        "name" : "u2a4c1c8",
+        "getRefPSUIActionGroup" : {
+          "codeName" : "inline_text_optimizate",
+          "name" : "文本优化",
+          "getPSUIActionGroupDetails" : [ {
+            "caption" : "更简短",
+            "detailType" : "DEUIACTION",
+            "name" : "u409f0a0",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "更简短",
+              "codeName" : "inline_more_short",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "inline_more_short",
+              "name" : "更简短",
+              "getPSNavigateParams" : [ {
+                "key" : "srfaiagent",
+                "name" : "srfaiagent",
+                "value" : "TextAgent_Shortening",
+                "rawValue" : true
+              }, {
+                "key" : "autoquestion",
+                "name" : "autoquestion",
+                "value" : "true",
+                "rawValue" : true
+              } ],
+              "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "inline_more_short",
+              "uIActionType" : "DEUIACTION",
+              "globalUIAction" : true
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "更丰富",
+            "detailType" : "DEUIACTION",
+            "name" : "u7b027a8",
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "更丰富",
+              "codeName" : "inline_more_rich",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "inline_more_rich",
+              "name" : "更丰富",
+              "getPSNavigateParams" : [ {
+                "key" : "srfaiagent",
+                "name" : "srfaiagent",
+                "value" : "TextAgent_Enhancement",
+                "rawValue" : true
+              }, {
+                "key" : "autoquestion",
+                "name" : "autoquestion",
+                "value" : "true",
+                "rawValue" : true
+              } ],
+              "scriptCode" : "const editor = params.editor; \r\nibiz.inLineAIUtil.showAIChat(context, params, data[0], editor.getSelectionText(), editor.deACMode, editor.getInLineAiChatOptions());",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "inline_more_rich",
+              "uIActionType" : "DEUIACTION",
+              "globalUIAction" : true
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ]
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "查看模板",
+        "detailType" : "DEUIACTION",
+        "name" : "u5ec78dc",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "查看模板",
+          "codeName" : "check_test_case",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_test_case_list_exp_view.json",
+            "viewType" : "DELISTEXPVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "template_check_test_case",
+          "name" : "查看用例内容模板",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+          },
+          "refreshMode" : 1,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "check_test_case",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "reloadData" : true,
+          "id" : "check_test_case@template"
+        },
+        "userTag" : "template",
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ]
+    },
+    "pagingSize" : 50,
+    "getTextPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "getValuePSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "defaultMode" : false,
+    "enableBackend" : true,
+    "enablePagingBar" : false
+  }, {
     "codeName" : "Default",
     "logicName" : "DEFAULT",
     "name" : "DEFAULT",
@@ -9611,7 +9823,7 @@
     },
     "name" : "chat_resource",
     "reportFile" : "#",
-    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人：${item.maintenance_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.level_text??>\r\n重要程度：${item.level_text!''}\r\n</#if>\r\n\r\n\r\n<#if item.precondition??>\r\n前置条件：${utils.html2md(item.precondition!\"\")}\r\n</#if>\r\n \r\n\r\n <#if item.description??>\r\n描述：${utils.html2md(item.description!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/test_cases/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TEST_CASE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人：${item.maintenance_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.level_text??>\r\n重要程度：${item.level_text!''}\r\n</#if>\r\n\r\n\r\n<#if item.precondition??>\r\n前置条件：${utils.html2md(item.precondition!\"\")}\r\n</#if>\r\n \r\n <#if item.steps??>\r\n    <#assign steps = item.steps.getReal()>\r\n    <#if steps?has_content>\r\n        步骤列表：\r\n        <#if steps?is_sequence>\r\n            <#list steps as step>\r\n                <#if step.is_group?? && step.is_group == 1>\r\n                    ${step.name!\"\"}\r\n                </#if>\r\n            步骤描述：${step.description!\"\"}  预期结果：${step.expected_value!\"\"}\r\n            </#list>\r\n        </#if>\r\n    </#if>\r\n</#if>\r\n\r\n\r\n <#if item.description??>\r\n描述：${utils.html2md(item.description!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/test_cases/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TEST_CASE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t    ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
   } ],
   "getAllPSAppDEUIActions" : [ {
@@ -9890,6 +10102,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "srfcontenttype",
+      "name" : "srfcontenttype",
+      "value" : "MARKDOWN",
+      "rawValue" : true
+    } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "chat_resource_print",
     "uIActionType" : "DEUIACTION",
@@ -11125,6 +11343,32 @@
     "uIActionTag" : "open_case_main",
     "uIActionType" : "DEUIACTION",
     "id" : "open_case_main@test_case"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "打开主视图",
+    "codeName" : "open_main_view_pop_up",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view_pop_up.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "test_case_open_main_view_pop_up",
+    "name" : "打开主视图（模态弹出）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "LIBRARY",
+      "name" : "LIBRARY",
+      "value" : "test_library_id",
+      "rawValue" : false
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_main_view_pop_up",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_main_view_pop_up@test_case"
   }, {
     "actionTarget" : "NONE",
     "caption" : "打开更多测试用例",
@@ -14488,6 +14732,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_others_re_mpick_up_view.json",
     "viewType" : "DEMPICKUPVIEW2"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view_pop_up.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_advanced_search_grid_pickview.json",

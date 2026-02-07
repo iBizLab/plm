@@ -243,8 +243,10 @@
     }, {
       "id" : "visibility",
       "dataType" : 25,
-      "createDV" : "10",
-      "updateDV" : "10",
+      "createDVT" : "APPDATA",
+      "createDV" : "visibility",
+      "updateDVT" : "APPDATA",
+      "updateDV" : "visibility",
       "getPSAppDEField" : {
         "name" : "VISIBILITY",
         "codeName" : "visibility"
@@ -331,12 +333,13 @@
         }, {
           "caption" : "描述",
           "codeName" : "description",
+          "contentHeight" : 600.0,
           "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
+          "height" : 600.0,
           "ignoreInput" : 0,
-          "itemHeight" : 620.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "description",
@@ -346,12 +349,27 @@
             "codeName" : "description"
           },
           "getPSEditor" : {
-            "editorHeight" : 600.0,
+            "editorParams" : {
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
+            },
+            "editorStyle" : "VDITOR",
             "editorType" : "HTMLEDITOR",
-            "name" : "description"
+            "name" : "description",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "VDITOR",
+              "runtimeObject" : true
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
+            "height" : 600,
+            "heightMode" : "PX",
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -359,7 +377,8 @@
         }, {
           "caption" : "可用范围",
           "codeName" : "visibility",
-          "createDV" : "10",
+          "createDV" : "visibility",
+          "createDVT" : "APPDATA",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -385,7 +404,8 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "updateDV" : "10",
+          "updateDV" : "visibility",
+          "updateDVT" : "APPDATA",
           "allowEmpty" : false,
           "needCodeListConfig" : true,
           "showCaption" : true
@@ -579,7 +599,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "编辑工作项模板",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEOPTVIEW",

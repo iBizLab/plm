@@ -624,6 +624,14 @@
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
                   "name" : "version",
+                  "getPSControlLogics" : [ {
+                    "itemName" : "version",
+                    "logicTag" : "itemlayoutpanel",
+                    "logicType" : "SCRIPT",
+                    "name" : "versiondisplay",
+                    "scriptCode" : "data.funcstate == 1 || data.funcstate == 3",
+                    "triggerType" : "ITEMVISIBLE"
+                  } ],
                   "getPSEditor" : {
                     "editorType" : "SPAN",
                     "name" : "version",
@@ -642,11 +650,10 @@
                     "logicCat" : "PANELVISIBLE",
                     "logicType" : "GROUP",
                     "getPSPanelItemLogics" : [ {
-                      "condOp" : "EQ",
+                      "condOp" : "ISNOTNULL",
                       "dstModelField" : "version",
                       "logicType" : "SINGLE",
-                      "name" : "逻辑项",
-                      "value" : "-1"
+                      "name" : "version 值不为空(NotNil) "
                     } ],
                     "relatedItemNames" : [ "version" ],
                     "notMode" : false
@@ -733,18 +740,13 @@
                     "notMode" : false
                   } ],
                   "getPSPanelItems" : [ {
-                    "actionType" : "UIACTION",
-                    "buttonStyle" : "DEFAULT",
+                    "actionGroupExtractMode" : "ITEMX",
                     "caption" : "安装",
                     "itemStyle" : "DEFAULT",
-                    "itemType" : "BUTTON",
-                    "name" : "enabled",
-                    "getPSAppViewUIAction" : {
-                      "modelref" : true,
-                      "id" : "itemlayoutpanel_enabled"
-                    },
+                    "itemType" : "BUTTONLIST",
+                    "name" : "enable",
                     "getPSControlLogics" : [ {
-                      "itemName" : "enabled",
+                      "itemName" : "enable",
                       "logicTag" : "itemlayoutpanel",
                       "logicType" : "SCRIPT",
                       "name" : "logic2",
@@ -763,55 +765,102 @@
                         "condOp" : "ISNOTNULL",
                         "dstModelField" : "HTTPURLTOREPO",
                         "logicType" : "SINGLE",
-                        "name" : "逻辑项"
+                        "name" : "HTTPURLTOREPO 值不为空(NotNil) "
                       } ],
                       "relatedItemNames" : [ "httpurltorepo" ],
                       "notMode" : false
                     } ],
-                    "getPSUIAction" : {
-                      "actionTarget" : "SINGLEKEY",
-                      "caption" : "启用",
-                      "codeName" : "Install",
-                      "fullCodeName" : "PSCorePrdFunc_Install",
-                      "name" : "启用",
-                      "getPSAppDEMethod" : {
-                        "modelref" : true,
-                        "id" : "install"
-                      },
+                    "getPSUIActionGroup" : {
+                      "codeName" : "Usrinstallgroup",
+                      "name" : "安装界面行为组",
                       "getPSAppDataEntity" : {
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
                       },
-                      "getPSNavigateContexts" : [ {
-                        "key" : "PSCOREPRDFUNC",
-                        "name" : "PSCOREPRDFUNC",
-                        "value" : "pscoreprdfuncid",
-                        "rawValue" : false
-                      } ],
-                      "getPSNavigateParams" : [ {
-                        "key" : "n_pscoreprdid_eq",
-                        "name" : "n_pscoreprdid_eq",
-                        "value" : "srfv2systemid",
-                        "rawValue" : false
+                      "getPSUIActionGroupDetails" : [ {
+                        "caption" : "安装",
+                        "detailType" : "DEUIACTION",
+                        "name" : "u21435ad",
+                        "getPSUIAction" : {
+                          "actionTarget" : "SINGLEKEY",
+                          "caption" : "安装",
+                          "codeName" : "Install",
+                          "fullCodeName" : "PSCorePrdFunc_Install",
+                          "name" : "启用",
+                          "getPSAppDEMethod" : {
+                            "modelref" : true,
+                            "id" : "install"
+                          },
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                          },
+                          "getPSNavigateContexts" : [ {
+                            "key" : "PSCOREPRDFUNC",
+                            "name" : "PSCOREPRDFUNC",
+                            "value" : "pscoreprdfuncid",
+                            "rawValue" : false
+                          } ],
+                          "getPSNavigateParams" : [ {
+                            "key" : "n_pscoreprdid_eq",
+                            "name" : "n_pscoreprdid_eq",
+                            "value" : "srfv2systemid",
+                            "rawValue" : false
+                          }, {
+                            "key" : "reload",
+                            "name" : "reload",
+                            "value" : "false",
+                            "rawValue" : true
+                          } ],
+                          "refreshMode" : 1,
+                          "successMsg" : "安装成功！",
+                          "timeout" : 60000,
+                          "uIActionMode" : "BACKEND",
+                          "uIActionTag" : "Install",
+                          "uIActionType" : "DEUIACTION",
+                          "enableConfirm" : true,
+                          "reloadData" : true,
+                          "id" : "Install@PSCorePrdFunc"
+                        },
+                        "addSeparator" : false,
+                        "showCaption" : true,
+                        "showIcon" : true
                       }, {
-                        "key" : "reload",
-                        "name" : "reload",
-                        "value" : "false",
-                        "rawValue" : true
+                        "caption" : "安装特定版本",
+                        "detailType" : "DEUIACTION",
+                        "name" : "u88efbc8",
+                        "getPSUIAction" : {
+                          "actionTarget" : "SINGLEKEY",
+                          "caption" : "安装特定版本",
+                          "codeName" : "spec_ver_list",
+                          "dialogResult" : "OK",
+                          "getFrontPSAppView" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_spec_version.json",
+                            "viewType" : "DEEDITVIEW"
+                          },
+                          "frontProcessType" : "WIZARD",
+                          "fullCodeName" : "PSCorePrdFunc_spec_ver_list",
+                          "name" : "安装特定版本_版本清单",
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                          },
+                          "refreshMode" : 1,
+                          "uIActionMode" : "FRONT",
+                          "uIActionTag" : "spec_ver_list",
+                          "uIActionType" : "DEUIACTION",
+                          "closeEditView" : true,
+                          "closePopupView" : true,
+                          "reloadData" : true,
+                          "id" : "spec_ver_list@PSCorePrdFunc"
+                        },
+                        "addSeparator" : false,
+                        "showCaption" : true,
+                        "showIcon" : true
                       } ],
-                      "refreshMode" : 1,
-                      "successMsg" : "安装成功！",
-                      "timeout" : 60000,
-                      "uIActionMode" : "BACKEND",
-                      "uIActionTag" : "Install",
-                      "uIActionType" : "DEUIACTION",
-                      "enableConfirm" : true,
-                      "reloadData" : true,
-                      "id" : "Install@PSCorePrdFunc"
-                    },
-                    "tooltip" : "安装",
-                    "uIActionTarget" : "SINGLEKEY",
-                    "showCaption" : true
+                      "uniqueTag" : "PSCorePrdFunc__Usrinstallgroup"
+                    }
                   }, {
                     "actionGroupExtractMode" : "ITEMX",
                     "caption" : "卸载",
@@ -886,25 +935,34 @@
                         "showCaption" : true,
                         "showIcon" : false
                       }, {
-                        "caption" : "安装特定版本",
+                        "caption" : "查看版本清单",
                         "detailType" : "DEUIACTION",
-                        "name" : "uf0b2c8c",
+                        "name" : "u0d6704f",
                         "getPSUIAction" : {
-                          "actionTarget" : "SINGLEDATA",
-                          "caption" : "安装特定版本",
-                          "codeName" : "install_specific_ver_test",
-                          "frontProcessType" : "OTHER",
-                          "fullCodeName" : "PSCorePrdFunc_install_specific_ver_test",
-                          "name" : "安装特定版本_提示开发中",
+                          "actionTarget" : "SINGLEKEY",
+                          "caption" : "查看版本清单",
+                          "codeName" : "spec_ver_info",
+                          "dialogResult" : "OK",
+                          "getFrontPSAppView" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_spec_version.json",
+                            "viewType" : "DEEDITVIEW"
+                          },
+                          "frontProcessType" : "WIZARD",
+                          "fullCodeName" : "PSCorePrdFunc_spec_ver_info",
+                          "name" : "查看版本清单",
                           "getPSAppDataEntity" : {
                             "modelref" : true,
                             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
                           },
-                          "scriptCode" : "util.message.info(\"功能正在开发中\");",
+                          "refreshMode" : 1,
                           "uIActionMode" : "FRONT",
-                          "uIActionTag" : "install_specific_ver_test",
+                          "uIActionTag" : "spec_ver_info",
                           "uIActionType" : "DEUIACTION",
-                          "id" : "install_specific_ver_test@PSCorePrdFunc"
+                          "closeEditView" : true,
+                          "closePopupView" : true,
+                          "reloadData" : true,
+                          "id" : "spec_ver_info@PSCorePrdFunc"
                         },
                         "addSeparator" : false,
                         "showCaption" : true,

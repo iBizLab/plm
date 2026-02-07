@@ -6,10 +6,8 @@
   "caption" : "文档分块",
   "codeName" : "ai_kb_chunk_card_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_card_view.json",
-  "height" : 90,
   "mDCtrlActiveMode" : 1,
   "name" : "ai_kb_chunkcard_view",
-  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
@@ -36,7 +34,7 @@
         "getRefPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_quick_create_view.json",
-          "viewType" : "DEEDITVIEW"
+          "viewType" : "DEOPTVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
@@ -44,7 +42,7 @@
         "getRefPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_quick_create_view.json",
-          "viewType" : "DEEDITVIEW"
+          "viewType" : "DEOPTVIEW"
         }
       } ],
       "viewLogicType" : "APP_NEWDATA",
@@ -86,7 +84,7 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_chunk_quick_create_view.json",
-      "viewType" : "DEEDITVIEW"
+      "viewType" : "DEOPTVIEW"
     }
   }, {
     "name" : "EDITDATA",
@@ -354,24 +352,25 @@
           "itemType" : "CONTAINER",
           "name" : "container2",
           "getPSLayout" : {
-            "align" : "space-between",
             "dir" : "row",
-            "layout" : "FLEX",
-            "vAlign" : "center"
+            "layout" : "FLEX"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
             "height" : 50,
             "heightMode" : "PX",
-            "layout" : "FLEX"
+            "layout" : "FLEX",
+            "widthMode" : "FULL"
           },
           "getPSPanelItems" : [ {
             "caption" : "文本(动态)",
+            "contentWidth" : 90.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "FIELD",
             "name" : "name",
             "getPSEditor" : {
               "editorType" : "SPAN",
+              "editorWidth" : 90.0,
               "name" : "name",
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
@@ -380,62 +379,86 @@
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX",
-              "spacingTop" : "OUTERSMALL"
+              "spacingTop" : "OUTERSMALL",
+              "width" : 90,
+              "widthMode" : "PERCENTAGE"
             },
-            "viewFieldName" : "NAME"
+            "viewFieldName" : "NAME",
+            "width" : 90.0
           }, {
-            "actionType" : "UIACTION",
-            "buttonStyle" : "DEFAULT",
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.*.REMOVE"
-            },
-            "caption" : "删除",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "BUTTON",
-            "name" : "button_calluilogic",
-            "getPSAppViewUIAction" : {
-              "modelref" : true,
-              "id" : "itemlayoutpanel_button_calluilogic"
-            },
+            "actionGroupExtractMode" : "ITEMS",
+            "contentWidth" : 10.0,
+            "itemStyle" : "STYLE2",
+            "itemType" : "BUTTONLIST",
+            "name" : "buttonlist",
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "width" : 10,
+              "widthMode" : "PERCENTAGE"
             },
             "getPSSysImage" : {
-              "glyph" : "xf014@FontAwesome",
-              "cssClass" : "fa fa-trash-o"
+              "glyph" : "xf142@FontAwesome",
+              "cssClass" : "fa fa-ellipsis-v"
             },
-            "getPSUIAction" : {
-              "actionTarget" : "MULTIKEY",
-              "noPrivDisplayMode" : 1,
-              "getCapPSLanguageRes" : {
-                "lanResTag" : "TBB.TEXT.*.REMOVE"
-              },
-              "caption" : "删除",
-              "codeName" : "Remove",
-              "dataAccessAction" : "DELETE",
-              "fullCodeName" : "Remove",
-              "name" : "表格界面_删除操作",
-              "getPSDEOPPriv" : {
+            "getPSUIActionGroup" : {
+              "codeName" : "card_group",
+              "name" : "卡片视图更多界面行为组",
+              "getPSAppDataEntity" : {
                 "modelref" : true,
-                "id" : "DELETE"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
               },
-              "getPSSysImage" : {
-                "glyph" : "xf014@FontAwesome",
-                "cssClass" : "fa fa-trash-o"
-              },
-              "predefinedType" : "GRIDVIEW_REMOVEACTION",
-              "timeout" : 60000,
-              "tooltip" : "删除",
-              "getTooltipPSLanguageRes" : {
-                "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-              },
-              "uIActionMode" : "SYS",
-              "uIActionTag" : "Remove",
-              "uIActionType" : "DEUIACTION"
+              "getPSUIActionGroupDetails" : [ {
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "TBB.TEXT.*.REMOVE"
+                },
+                "caption" : "删除",
+                "detailType" : "DEUIACTION",
+                "name" : "u5ff871e",
+                "getPSSysImage" : {
+                  "glyph" : "xf014@FontAwesome",
+                  "cssClass" : "fa fa-trash-o"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "MULTIKEY",
+                  "noPrivDisplayMode" : 1,
+                  "getCapPSLanguageRes" : {
+                    "lanResTag" : "TBB.TEXT.*.REMOVE"
+                  },
+                  "caption" : "删除",
+                  "codeName" : "Remove",
+                  "dataAccessAction" : "DELETE",
+                  "fullCodeName" : "Remove",
+                  "name" : "表格界面_删除操作",
+                  "getPSDEOPPriv" : {
+                    "modelref" : true,
+                    "id" : "DELETE"
+                  },
+                  "getPSSysImage" : {
+                    "glyph" : "xf014@FontAwesome",
+                    "cssClass" : "fa fa-trash-o"
+                  },
+                  "predefinedType" : "GRIDVIEW_REMOVEACTION",
+                  "timeout" : 60000,
+                  "tooltip" : "删除",
+                  "getTooltipPSLanguageRes" : {
+                    "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+                  },
+                  "uIActionMode" : "SYS",
+                  "uIActionTag" : "Remove",
+                  "uIActionType" : "DEUIACTION"
+                },
+                "tooltip" : "删除",
+                "getTooltipPSLanguageRes" : {
+                  "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+                },
+                "addSeparator" : false,
+                "showCaption" : true,
+                "showIcon" : true
+              } ],
+              "uniqueTag" : "ai_kb_chunk__card_group"
             },
-            "tooltip" : "删除",
-            "uIActionTarget" : "MULTIKEY"
+            "width" : 10.0
           } ]
         }, {
           "caption" : "容器",
@@ -718,7 +741,6 @@
   "title" : "文档分块",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEDATAVIEW",
-  "width" : 90,
   "xDataControlName" : "dataview",
   "enableDP" : true,
   "enableFilter" : true,

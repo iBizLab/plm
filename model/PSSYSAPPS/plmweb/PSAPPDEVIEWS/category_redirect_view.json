@@ -7,6 +7,10 @@
   "codeName" : "category_redirect_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/category_redirect_view.json",
   "funcViewMode" : "REDIRECTVIEW",
+  "getGetDataPSAppDEAction" : {
+    "modelref" : true,
+    "id" : "get"
+  },
   "memo" : "系统自动添加",
   "name" : "categoryRedirectView",
   "getPSAppDataEntity" : {
@@ -17,6 +21,23 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
+  "getPSAppViewRefs" : [ {
+    "name" : "PART",
+    "realTitle" : "零件审批单",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_approval_grid_view_part.json",
+      "viewType" : "DEGRIDVIEW"
+    }
+  }, {
+    "name" : "DOCUMENT",
+    "realTitle" : "文档审批单",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_approval_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    }
+  } ],
   "getPSControls" : [ {
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.CATEGORY"
@@ -74,9 +95,13 @@
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.CATEGORY.REDIRECTVIEW"
   },
+  "getTypePSAppDEField" : {
+    "name" : "OWNER_SUBTYPE",
+    "codeName" : "owner_subtype"
+  },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEREDIRECTVIEW",
-  "enableCustomGetDataAction" : false,
+  "enableCustomGetDataAction" : true,
   "enableDP" : true,
   "enableWorkflow" : true,
   "redirectView" : true,

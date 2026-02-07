@@ -95,7 +95,7 @@ services:
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-ebsx-allinone-rt:8.1.0.575.34-arm64
+    image: ${IMAGE_URL}ibiz-ebsx-allinone-rt:8.1.0.577.33-arm64
     container_name: ibiz-ebsx-allinone
     ports:
       - "30000:30000"
@@ -109,8 +109,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=9d@A178@
       - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
-      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss512K
-      - IBIZ_SERVICEHUB_INITMODE=auto      
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss1024K
+      - IBIZ_SERVICEHUB_INITMODE=auto
     volumes:
       - allinone_data:/app/file
     networks:

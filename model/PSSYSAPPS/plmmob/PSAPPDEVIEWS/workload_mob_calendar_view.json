@@ -175,11 +175,56 @@
         "itemType" : "CONTAINER",
         "name" : "view_toolbar2",
         "getPSLayout" : {
-          "layout" : "FLEX"
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : 1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "搜索栏",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "searchbar",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "设置容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "setting_container",
+          "getPSLayout" : {
+            "dir" : "row-reverse",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "heightMode" : "FULL",
+            "layout" : "FLEX"
+          },
+          "predefinedType" : "SETTING_CONTAINER"
+        } ],
+        "getPSSysCss" : {
+          "cssName" : "mob-search-bar"
         },
         "predefinedType" : "Toolbar"
       }, {
@@ -195,16 +240,6 @@
           "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
-          "caption" : "搜索栏",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "searchbar",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "showCaption" : true
-        }, {
           "caption" : "搜索表单",
           "itemStyle" : "DEFAULT",
           "itemType" : "CTRLPOS",
@@ -521,7 +556,8 @@
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX",
-                  "shrink" : 0
+                  "shrink" : 0,
+                  "spacingRight" : "INNERSMALL"
                 },
                 "getPSPanelItemGroupLogics" : [ {
                   "groupOP" : "AND",
@@ -1000,6 +1036,9 @@
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
+        "ctrlParams" : {
+          "MOBFORMITEMALIGNMODE" : "left"
+        },
         "id" : "SEARCHFORM"
       },
       "getPSDEFormItems" : [ {
@@ -1175,7 +1214,7 @@
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
       },
-      "searchButtonStyle" : "DEFAULT",
+      "searchButtonStyle" : "NONE",
       "tabHeaderPos" : "TOP",
       "enableAdvanceSearch" : false,
       "enableAutoSearch" : true,

@@ -1415,7 +1415,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "template_check",
-    "name" : "查看工作项模板",
+    "name" : "查看工作项内容模板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -1424,6 +1424,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check",
     "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
     "reloadData" : true,
     "id" : "check@template"
   }, {
@@ -1437,7 +1438,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "template_check_idea",
-    "name" : "查看需求模板",
+    "name" : "查看需求内容模板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -1446,6 +1447,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check_idea",
     "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
     "reloadData" : true,
     "id" : "check_idea@template"
   }, {
@@ -1459,7 +1461,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "template_check_test_case",
-    "name" : "查看用例模板",
+    "name" : "查看用例内容模板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
@@ -1468,6 +1470,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check_test_case",
     "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
     "reloadData" : true,
     "id" : "check_test_case@template"
   }, {
@@ -1660,6 +1663,22 @@
     "uIActionType" : "DEUIACTION",
     "reloadData" : true,
     "id" : "edit_test_case@template"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "使用此模板",
+    "codeName" : "use_template",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "template_use_template",
+    "name" : "使用此模板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
+    },
+    "scriptCode" : "const vditor = view.ctx.parent.vditor;\r\nconst templateView = view.getController('templateshow_view');\r\nif (templateView) {\r\n    const form = templateView.getController('form');\r\n    const [data] = form.getData();\r\n    const description = data.description;\r\n    // 先清空\r\n    vditor.vditor.setValue('');\r\n    vditor.vditor.insertValue(description);\r\n    view.closeView();\r\n}\r\n",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "use_template",
+    "uIActionType" : "DEUIACTION",
+    "id" : "use_template@template"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "notify_refresh",

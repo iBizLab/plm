@@ -28,12 +28,19 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_01" id="prepareparam_01" implementation="http://www.jboss.org/drools/rule" name="设置禁用"/>
                         <endEvent id="prepareparam_01_end" name="end"/>
                         <sequenceFlow id="prepareparam_01_end_line" sourceRef="prepareparam_01" targetRef="prepareparam_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_08" id="prepareparam_08" implementation="http://www.jboss.org/drools/rule" name="准备embedding参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configrawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="写入embeddingtoken"/>
+                        <endEvent id="rawsfcode_02_end" name="end"/>
+                        <sequenceFlow id="rawsfcode_02_end_line" sourceRef="rawsfcode_02" targetRef="rawsfcode_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_04" id="prepareparam_04" implementation="http://www.jboss.org/drools/rule" name="设置tools"/>
                         <endEvent id="prepareparam_04_end" name="end"/>
                         <sequenceFlow id="prepareparam_04_end_line" sourceRef="prepareparam_04" targetRef="prepareparam_04_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_05" id="prepareparam_05" implementation="http://www.jboss.org/drools/rule" name="设置aitype"/>
                         <endEvent id="prepareparam_05_end" name="end"/>
                         <sequenceFlow id="prepareparam_05_end_line" sourceRef="prepareparam_05" targetRef="prepareparam_05_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_09" id="prepareparam_09" implementation="http://www.jboss.org/drools/rule" name="准备rerank参数"/>
+                        <endEvent id="prepareparam_09_end" name="end"/>
+                        <sequenceFlow id="prepareparam_09_end_line" sourceRef="prepareparam_09" targetRef="prepareparam_09_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_modelget_cloud_configprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="设置think"/>
                         <endEvent id="prepareparam_03_end" name="end"/>
                         <sequenceFlow id="prepareparam_03_end_line" sourceRef="prepareparam_03" targetRef="prepareparam_03_end"/>
@@ -82,6 +89,15 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_08" sourceRef="gateway-begin" targetRef="prepareparam_08">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_modelget_cloud_configdefault:ai_model();
+                                            $ai_modelget_cloud_configmap:Map();
+                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("modelCategory"),"EQ","embedding")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-begin_prepareparam_01" sourceRef="gateway-begin" targetRef="prepareparam_01">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ai_modelget_cloud_configdefault:ai_model();
@@ -100,9 +116,20 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam_09" sourceRef="gateway-begin" targetRef="prepareparam_09">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ai_modelget_cloud_configdefault:ai_model();
+                                            $ai_modelget_cloud_configmap:Map();
+                                    eval($ai_modelget_cloud_configdefault==ai_modelget_cloud_configdefault && );
+                                eval((RuleUtils.test($ai_modelget_cloud_configdefault.get("modelCategory"),"EQ","text_ranking")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="begin_end_01" sourceRef="begin" targetRef="end_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_07_rawsfcode_01" sourceRef="prepareparam_07" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_08_rawsfcode_02" sourceRef="prepareparam_08" targetRef="rawsfcode_02">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>

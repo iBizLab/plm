@@ -189,8 +189,42 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "doc_parsing_record",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEACTIONS/doc_parsing_record.json",
+    "logicName" : "文档解析记录",
+    "name" : "doc_parsing_record",
+    "getPSDEActionInput" : {
+      "name" : "Doc_parsing_recordInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "extend_scheduled_task_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Doc_parsing_recordResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/doc_parse_record.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "standardTableName" : "EXTEND_SCHEDULED_TASK",
+    "tableName" : "EXTEND_SCHEDULED_TASK",
+    "valid" : true
+  }, {
     "dBType" : "MYSQL5",
     "name" : "MYSQL5",
     "objNameCase" : "DEFAULT",
@@ -292,6 +326,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "DEFAULT",
@@ -325,6 +362,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -389,6 +429,12 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "ID",
+      "queryCodeExp" : "t1.ID",
+      "standardColumnName" : "ID"
+    }, {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -488,6 +534,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
+      "standardColumnName" : "NAME"
+    }, {
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
       "name" : "NAME",
       "queryCodeExp" : "t1.`NAME`",
@@ -583,6 +635,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ENABLE",
+      "dBType" : "POSTGRESQL",
+      "name" : "ENABLE",
+      "queryCodeExp" : "t1.ENABLE",
+      "standardColumnName" : "ENABLE"
+    }, {
+      "columnName" : "ENABLE",
       "dBType" : "MYSQL5",
       "name" : "ENABLE",
       "queryCodeExp" : "t1.`ENABLE`",
@@ -654,6 +712,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SCHEDULE_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "SCHEDULE_ID",
+      "queryCodeExp" : "t1.SCHEDULE_ID",
+      "standardColumnName" : "SCHEDULE_ID"
+    }, {
       "columnName" : "SCHEDULE_ID",
       "dBType" : "MYSQL5",
       "name" : "SCHEDULE_ID",
@@ -767,6 +831,12 @@
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "EXECUTOR_TAG",
+      "dBType" : "POSTGRESQL",
+      "name" : "EXECUTOR_TAG",
+      "queryCodeExp" : "t11.EXECUTOR_TAG",
+      "standardColumnName" : "EXECUTOR_TAG"
+    }, {
       "columnName" : "EXECUTOR_TAG",
       "dBType" : "MYSQL5",
       "name" : "EXECUTOR_TAG",
@@ -888,6 +958,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "TASK_TYPE_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "TASK_TYPE_NAME",
+      "queryCodeExp" : "t11.NAME",
+      "standardColumnName" : "TASK_TYPE_NAME"
+    }, {
+      "columnName" : "TASK_TYPE_NAME",
       "dBType" : "MYSQL5",
       "name" : "TASK_TYPE_NAME",
       "queryCodeExp" : "t11.`NAME`",
@@ -1006,6 +1082,12 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TASK_TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "TASK_TYPE",
+      "queryCodeExp" : "t1.TASK_TYPE",
+      "standardColumnName" : "TASK_TYPE"
+    }, {
       "columnName" : "TASK_TYPE",
       "dBType" : "MYSQL5",
       "name" : "TASK_TYPE",
@@ -1129,6 +1211,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "STATUS",
+      "dBType" : "POSTGRESQL",
+      "name" : "STATUS",
+      "queryCodeExp" : "t1.STATUS",
+      "standardColumnName" : "STATUS"
+    }, {
+      "columnName" : "STATUS",
       "dBType" : "MYSQL5",
       "name" : "STATUS",
       "queryCodeExp" : "t1.`STATUS`",
@@ -1231,6 +1319,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "RETRY_COUNT",
+      "dBType" : "POSTGRESQL",
+      "name" : "RETRY_COUNT",
+      "queryCodeExp" : "t1.RETRY_COUNT",
+      "standardColumnName" : "RETRY_COUNT"
+    }, {
+      "columnName" : "RETRY_COUNT",
       "dBType" : "MYSQL5",
       "name" : "RETRY_COUNT",
       "queryCodeExp" : "t1.`RETRY_COUNT`",
@@ -1305,6 +1399,12 @@
     "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "MAX_RETRY",
+      "dBType" : "POSTGRESQL",
+      "name" : "MAX_RETRY",
+      "queryCodeExp" : "t1.MAX_RETRY",
+      "standardColumnName" : "MAX_RETRY"
+    }, {
       "columnName" : "MAX_RETRY",
       "dBType" : "MYSQL5",
       "name" : "MAX_RETRY",
@@ -1416,6 +1516,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PAYLOAD",
+      "dBType" : "POSTGRESQL",
+      "name" : "PAYLOAD",
+      "queryCodeExp" : "t1.PAYLOAD",
+      "standardColumnName" : "PAYLOAD"
+    }, {
+      "columnName" : "PAYLOAD",
       "dBType" : "MYSQL5",
       "name" : "PAYLOAD",
       "queryCodeExp" : "t1.`PAYLOAD`",
@@ -1504,6 +1610,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "RESULT_MESSAGE",
+      "dBType" : "POSTGRESQL",
+      "name" : "RESULT_MESSAGE",
+      "queryCodeExp" : "t1.RESULT_MESSAGE",
+      "standardColumnName" : "RESULT_MESSAGE"
+    }, {
+      "columnName" : "RESULT_MESSAGE",
       "dBType" : "MYSQL5",
       "name" : "RESULT_MESSAGE",
       "queryCodeExp" : "t1.`RESULT_MESSAGE`",
@@ -1591,6 +1703,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SCHEDULED_AT",
+      "dBType" : "POSTGRESQL",
+      "name" : "SCHEDULED_AT",
+      "queryCodeExp" : "t1.SCHEDULED_AT",
+      "standardColumnName" : "SCHEDULED_AT"
+    }, {
+      "columnName" : "SCHEDULED_AT",
       "dBType" : "MYSQL5",
       "name" : "SCHEDULED_AT",
       "queryCodeExp" : "t1.`SCHEDULED_AT`",
@@ -1668,6 +1786,12 @@
     "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "RESULT",
+      "dBType" : "POSTGRESQL",
+      "name" : "RESULT",
+      "queryCodeExp" : "t1.RESULT",
+      "standardColumnName" : "RESULT"
+    }, {
       "columnName" : "RESULT",
       "dBType" : "MYSQL5",
       "name" : "RESULT",
@@ -1757,6 +1881,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "STARTED_AT",
+      "dBType" : "POSTGRESQL",
+      "name" : "STARTED_AT",
+      "queryCodeExp" : "t1.STARTED_AT",
+      "standardColumnName" : "STARTED_AT"
+    }, {
+      "columnName" : "STARTED_AT",
       "dBType" : "MYSQL5",
       "name" : "STARTED_AT",
       "queryCodeExp" : "t1.`STARTED_AT`",
@@ -1832,6 +1962,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "FINISHED_AT",
+      "dBType" : "POSTGRESQL",
+      "name" : "FINISHED_AT",
+      "queryCodeExp" : "t1.FINISHED_AT",
+      "standardColumnName" : "FINISHED_AT"
+    }, {
+      "columnName" : "FINISHED_AT",
       "dBType" : "MYSQL5",
       "name" : "FINISHED_AT",
       "queryCodeExp" : "t1.`FINISHED_AT`",
@@ -1906,6 +2042,12 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DESCRIPTION",
+      "dBType" : "POSTGRESQL",
+      "name" : "DESCRIPTION",
+      "queryCodeExp" : "t1.DESCRIPTION",
+      "standardColumnName" : "DESCRIPTION"
+    }, {
       "columnName" : "DESCRIPTION",
       "dBType" : "MYSQL5",
       "name" : "DESCRIPTION",
@@ -1993,6 +2135,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PRINCIPAL_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "PRINCIPAL_NAME",
+      "queryCodeExp" : "t1.PRINCIPAL_NAME",
+      "standardColumnName" : "PRINCIPAL_NAME"
+    }, {
       "columnName" : "PRINCIPAL_NAME",
       "dBType" : "MYSQL5",
       "name" : "PRINCIPAL_NAME",
@@ -2082,10 +2230,22 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PRINCIPAL_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "PRINCIPAL_ID",
+      "queryCodeExp" : "t1.PRINCIPAL_ID",
+      "standardColumnName" : "PRINCIPAL_ID"
+    }, {
+      "columnName" : "PRINCIPAL_ID",
       "dBType" : "MYSQL5",
       "name" : "PRINCIPAL_ID",
       "queryCodeExp" : "t1.`PRINCIPAL_ID`",
       "standardColumnName" : "`PRINCIPAL_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PRINCIPAL_ID_EQ",
+      "name" : "N_PRINCIPAL_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2169,6 +2329,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PRINCIPAL_TYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "PRINCIPAL_TYPE",
+      "queryCodeExp" : "t1.PRINCIPAL_TYPE",
+      "standardColumnName" : "PRINCIPAL_TYPE"
+    }, {
       "columnName" : "PRINCIPAL_TYPE",
       "dBType" : "MYSQL5",
       "name" : "PRINCIPAL_TYPE",
@@ -2257,6 +2423,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CREATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
+      "standardColumnName" : "CREATE_MAN"
+    }, {
       "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "CREATE_MAN",
@@ -2354,6 +2526,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
+      "standardColumnName" : "CREATE_TIME"
+    }, {
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "CREATE_TIME",
       "queryCodeExp" : "t1.`CREATE_TIME`",
@@ -2433,6 +2611,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
+      "standardColumnName" : "UPDATE_MAN"
+    }, {
       "columnName" : "UPDATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_MAN",
@@ -2530,6 +2714,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "UPDATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
+      "standardColumnName" : "UPDATE_TIME"
+    }, {
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_TIME",
       "queryCodeExp" : "t1.`UPDATE_TIME`",
@@ -2607,6 +2797,280 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "doc_parse_record",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDELOGICS/doc_parse_record.json",
+    "logicName" : "文档解析记录",
+    "name" : "文档解析记录",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "sync_id为空",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "sync_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[sync_id] 值为空(Nil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        },
+        "name" : "sync_id不为空",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "sync_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[sync_id] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 212,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 420,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_PRINCIPAL_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "task_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "doc_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "sort",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "task_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "finished_at,desc",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 190,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_01",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "task_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      },
+      "leftPos" : 650,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "tasks"
+            },
+            "logicType" : "SINGLE",
+            "name" : "tasks[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "tasks"
+      },
+      "topPos" : 250,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_02",
+      "leftPos" : 420,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "sort",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "task_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "finished_at,desc",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_PRINCIPAL_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "task_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "sync_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 328,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _tasks = logic.param('tasks').getReal(); \r\ndef _default = logic.param('default').getReal(); \r\ndef task = _tasks.first()\r\n_default.started_at=task.started_at\r\n_default.finished_at=task.finished_at\r\n_default.result_message=task.result_message\r\ndef durationMillis = _default.finished_at.getTime() - _default.started_at.getTime()\r\n_default.set(\"execution_time\",String.format(\"%.2f\", durationMillis/ 1000.0))",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 650,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "构造执行记录信息",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 410,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 556,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 508,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "task",
+      "logicName" : "task",
+      "name" : "task",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "task_filter",
+      "logicName" : "task_filter",
+      "name" : "task_filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "tasks",
+      "logicName" : "tasks",
+      "name" : "tasks",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "extend_scheduled_task_dto",
@@ -2950,6 +3414,21 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "任务主体标识",
+      "name" : "n_principal_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_PRINCIPAL_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "PRINCIPAL_ID",
+        "codeName" : "principal_id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "执行计划标识",
       "name" : "n_schedule_id_eq",
       "getPSDEFSearchMode" : {
@@ -3012,6 +3491,45 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "defaultMode" : true,
+    "systemReserved" : true
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "EditView2",
     "logicName" : "扩展计划任务实体编辑视图（左右关系）",
@@ -3023,6 +3541,12 @@
     "logicName" : "计划任务作业分页导航视图",
     "name" : "计划任务作业分页导航视图",
     "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "parsing_record_view",
+    "logicName" : "扩展计划任务实体文档解析记录编辑视图",
+    "name" : "扩展计划任务实体文档解析记录编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -3065,6 +3589,19 @@
     "name" : "扩展计划任务实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "TreeExpView",
+    "logicName" : "计划任务树导航视图",
+    "name" : "计划任务树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "Main2",
+    "logicName" : "扩展计划任务实体文档解析记录编辑视图_表单",
+    "modelTag2" : "0",
+    "name" : "扩展计划任务实体文档解析记录编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
@@ -3136,7 +3673,7 @@
       "codeName" : "schedule_id"
     },
     "pickupDEFName" : "SCHEDULE_ID",
-    "removeActionType" : -1,
+    "removeActionType" : 1,
     "removeOrder" : 0,
     "serviceCodeName" : "extend_schedule",
     "enableFKey" : true

@@ -168,6 +168,30 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "InstallSpecVer",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEACTIONS/InstallSpecVer.json",
+    "logicName" : "安装特定版本",
+    "name" : "INSTALLSPECVER",
+    "getPSDEActionInput" : {
+      "name" : "InstallSpecVerInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PSCorePrdFuncDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "InstallSpecVerResult",
+      "type" : "VOID"
+    },
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSSYSSFPLUGINS/InstallSpecDEActionRuntime.json"
+    }
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -257,6 +281,11 @@
     "name" : "MYSQL5",
     "objNameCase" : "DEFAULT",
     "valid" : true
+  }, {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "valid" : true
   } ],
   "getAllPSDEDRGroups" : [ {
     "modelref" : true,
@@ -276,6 +305,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "数据查询",
@@ -309,6 +341,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -415,6 +450,12 @@
       "name" : "FUNCTYPE",
       "queryCodeExp" : "t1.`FUNCTYPE`",
       "standardColumnName" : "`FUNCTYPE`"
+    }, {
+      "columnName" : "FUNCTYPE",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCTYPE",
+      "queryCodeExp" : "t1.FUNCTYPE",
+      "standardColumnName" : "FUNCTYPE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -489,6 +530,12 @@
       "name" : "SETTINGS",
       "queryCodeExp" : "t1.`SETTINGS`",
       "standardColumnName" : "`SETTINGS`"
+    }, {
+      "columnName" : "SETTINGS",
+      "dBType" : "POSTGRESQL",
+      "name" : "SETTINGS",
+      "queryCodeExp" : "t1.SETTINGS",
+      "standardColumnName" : "SETTINGS"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -559,6 +606,12 @@
       "name" : "VERS",
       "queryCodeExp" : "t1.`VERS`",
       "standardColumnName" : "`VERS`"
+    }, {
+      "columnName" : "VERS",
+      "dBType" : "POSTGRESQL",
+      "name" : "VERS",
+      "queryCodeExp" : "t1.VERS",
+      "standardColumnName" : "VERS"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -629,6 +682,12 @@
       "name" : "INFO",
       "queryCodeExp" : "t1.`INFO`",
       "standardColumnName" : "`INFO`"
+    }, {
+      "columnName" : "INFO",
+      "dBType" : "POSTGRESQL",
+      "name" : "INFO",
+      "queryCodeExp" : "t1.INFO",
+      "standardColumnName" : "INFO"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -700,6 +759,12 @@
       "name" : "CATEGORY",
       "queryCodeExp" : "t1.`CATEGORY`",
       "standardColumnName" : "`CATEGORY`"
+    }, {
+      "columnName" : "CATEGORY",
+      "dBType" : "POSTGRESQL",
+      "name" : "CATEGORY",
+      "queryCodeExp" : "t1.CATEGORY",
+      "standardColumnName" : "CATEGORY"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -774,6 +839,12 @@
       "name" : "CHANGELOG",
       "queryCodeExp" : "t1.`CHANGELOG`",
       "standardColumnName" : "`CHANGELOG`"
+    }, {
+      "columnName" : "CHANGELOG",
+      "dBType" : "POSTGRESQL",
+      "name" : "CHANGELOG",
+      "queryCodeExp" : "t1.CHANGELOG",
+      "standardColumnName" : "CHANGELOG"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -845,6 +916,12 @@
       "name" : "PSCOREPRDFUNCID",
       "queryCodeExp" : "t1.`PSCOREPRDFUNCID`",
       "standardColumnName" : "`PSCOREPRDFUNCID`"
+    }, {
+      "columnName" : "PSCOREPRDFUNCID",
+      "dBType" : "POSTGRESQL",
+      "name" : "PSCOREPRDFUNCID",
+      "queryCodeExp" : "t1.PSCOREPRDFUNCID",
+      "standardColumnName" : "PSCOREPRDFUNCID"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_PSCOREPRDFUNCID_EQ",
@@ -926,6 +1003,12 @@
       "name" : "PSCOREPRDFUNCNAME",
       "queryCodeExp" : "t1.`PSCOREPRDFUNCNAME`",
       "standardColumnName" : "`PSCOREPRDFUNCNAME`"
+    }, {
+      "columnName" : "PSCOREPRDFUNCNAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "PSCOREPRDFUNCNAME",
+      "queryCodeExp" : "t1.PSCOREPRDFUNCNAME",
+      "standardColumnName" : "PSCOREPRDFUNCNAME"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_PSCOREPRDFUNCNAME_LIKE",
@@ -1004,6 +1087,12 @@
       "name" : "CREATEMAN",
       "queryCodeExp" : "t1.`CREATEMAN`",
       "standardColumnName" : "`CREATEMAN`"
+    }, {
+      "columnName" : "CREATEMAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATEMAN",
+      "queryCodeExp" : "t1.CREATEMAN",
+      "standardColumnName" : "CREATEMAN"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1083,6 +1172,12 @@
       "name" : "CREATEDATE",
       "queryCodeExp" : "t1.`CREATEDATE`",
       "standardColumnName" : "`CREATEDATE`"
+    }, {
+      "columnName" : "CREATEDATE",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATEDATE",
+      "queryCodeExp" : "t1.CREATEDATE",
+      "standardColumnName" : "CREATEDATE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1147,6 +1242,12 @@
       "name" : "UPDATEMAN",
       "queryCodeExp" : "t1.`UPDATEMAN`",
       "standardColumnName" : "`UPDATEMAN`"
+    }, {
+      "columnName" : "UPDATEMAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATEMAN",
+      "queryCodeExp" : "t1.UPDATEMAN",
+      "standardColumnName" : "UPDATEMAN"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1226,6 +1327,12 @@
       "name" : "UPDATEDATE",
       "queryCodeExp" : "t1.`UPDATEDATE`",
       "standardColumnName" : "`UPDATEDATE`"
+    }, {
+      "columnName" : "UPDATEDATE",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATEDATE",
+      "queryCodeExp" : "t1.UPDATEDATE",
+      "standardColumnName" : "UPDATEDATE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1290,6 +1397,12 @@
       "name" : "MEMO",
       "queryCodeExp" : "t1.`MEMO`",
       "standardColumnName" : "`MEMO`"
+    }, {
+      "columnName" : "MEMO",
+      "dBType" : "POSTGRESQL",
+      "name" : "MEMO",
+      "queryCodeExp" : "t1.MEMO",
+      "standardColumnName" : "MEMO"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1360,6 +1473,12 @@
       "name" : "FULLNAME",
       "queryCodeExp" : "t1.`FULLNAME`",
       "standardColumnName" : "`FULLNAME`"
+    }, {
+      "columnName" : "FULLNAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "FULLNAME",
+      "queryCodeExp" : "t1.FULLNAME",
+      "standardColumnName" : "FULLNAME"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1430,6 +1549,12 @@
       "name" : "FUNCTAG",
       "queryCodeExp" : "t1.`FUNCTAG`",
       "standardColumnName" : "`FUNCTAG`"
+    }, {
+      "columnName" : "FUNCTAG",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCTAG",
+      "queryCodeExp" : "t1.FUNCTAG",
+      "standardColumnName" : "FUNCTAG"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1500,6 +1625,12 @@
       "name" : "ORDERVALUE",
       "queryCodeExp" : "t1.`ORDERVALUE`",
       "standardColumnName" : "`ORDERVALUE`"
+    }, {
+      "columnName" : "ORDERVALUE",
+      "dBType" : "POSTGRESQL",
+      "name" : "ORDERVALUE",
+      "queryCodeExp" : "t1.ORDERVALUE",
+      "standardColumnName" : "ORDERVALUE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1556,6 +1687,12 @@
       "name" : "FUNCURL",
       "queryCodeExp" : "t1.`FUNCURL`",
       "standardColumnName" : "`FUNCURL`"
+    }, {
+      "columnName" : "FUNCURL",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCURL",
+      "queryCodeExp" : "t1.FUNCURL",
+      "standardColumnName" : "FUNCURL"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1626,6 +1763,12 @@
       "name" : "AVATARURL",
       "queryCodeExp" : "t1.`AVATARURL`",
       "standardColumnName" : "`AVATARURL`"
+    }, {
+      "columnName" : "AVATARURL",
+      "dBType" : "POSTGRESQL",
+      "name" : "AVATARURL",
+      "queryCodeExp" : "t1.AVATARURL",
+      "standardColumnName" : "AVATARURL"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1696,6 +1839,12 @@
       "name" : "HTTPURLTOREPO",
       "queryCodeExp" : "t1.`HTTPURLTOREPO`",
       "standardColumnName" : "`HTTPURLTOREPO`"
+    }, {
+      "columnName" : "HTTPURLTOREPO",
+      "dBType" : "POSTGRESQL",
+      "name" : "HTTPURLTOREPO",
+      "queryCodeExp" : "t1.HTTPURLTOREPO",
+      "standardColumnName" : "HTTPURLTOREPO"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1766,6 +1915,12 @@
       "name" : "FULLPATH",
       "queryCodeExp" : "t1.`FULLPATH`",
       "standardColumnName" : "`FULLPATH`"
+    }, {
+      "columnName" : "FULLPATH",
+      "dBType" : "POSTGRESQL",
+      "name" : "FULLPATH",
+      "queryCodeExp" : "t1.FULLPATH",
+      "standardColumnName" : "FULLPATH"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1836,6 +1991,12 @@
       "name" : "PSCOREPRDNAME",
       "queryCodeExp" : "t1.`PSCOREPRDNAME`",
       "standardColumnName" : "`PSCOREPRDNAME`"
+    }, {
+      "columnName" : "PSCOREPRDNAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "PSCOREPRDNAME",
+      "queryCodeExp" : "t1.PSCOREPRDNAME",
+      "standardColumnName" : "PSCOREPRDNAME"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1909,6 +2070,12 @@
       "name" : "PATH",
       "queryCodeExp" : "t1.`PATH`",
       "standardColumnName" : "`PATH`"
+    }, {
+      "columnName" : "PATH",
+      "dBType" : "POSTGRESQL",
+      "name" : "PATH",
+      "queryCodeExp" : "t1.PATH",
+      "standardColumnName" : "PATH"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1979,6 +2146,12 @@
       "name" : "FUNCSN",
       "queryCodeExp" : "t1.`FUNCSN`",
       "standardColumnName" : "`FUNCSN`"
+    }, {
+      "columnName" : "FUNCSN",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCSN",
+      "queryCodeExp" : "t1.FUNCSN",
+      "standardColumnName" : "FUNCSN"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2049,6 +2222,12 @@
       "name" : "FUNCTAG2",
       "queryCodeExp" : "t1.`FUNCTAG2`",
       "standardColumnName" : "`FUNCTAG2`"
+    }, {
+      "columnName" : "FUNCTAG2",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCTAG2",
+      "queryCodeExp" : "t1.FUNCTAG2",
+      "standardColumnName" : "FUNCTAG2"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2119,6 +2298,12 @@
       "name" : "PSCOREPRDID",
       "queryCodeExp" : "t1.`PSCOREPRDID`",
       "standardColumnName" : "`PSCOREPRDID`"
+    }, {
+      "columnName" : "PSCOREPRDID",
+      "dBType" : "POSTGRESQL",
+      "name" : "PSCOREPRDID",
+      "queryCodeExp" : "t1.PSCOREPRDID",
+      "standardColumnName" : "PSCOREPRDID"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_PSCOREPRDID_EQ",
@@ -2195,6 +2380,12 @@
       "name" : "CURRENTVERSION",
       "queryCodeExp" : "t1.`CURRENTVERSION`",
       "standardColumnName" : "`CURRENTVERSION`"
+    }, {
+      "columnName" : "CURRENTVERSION",
+      "dBType" : "POSTGRESQL",
+      "name" : "CURRENTVERSION",
+      "queryCodeExp" : "t1.CURRENTVERSION",
+      "standardColumnName" : "CURRENTVERSION"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -2265,6 +2456,12 @@
       "name" : "FUNCSTATE",
       "queryCodeExp" : "t1.`FUNCSTATE`",
       "standardColumnName" : "`FUNCSTATE`"
+    }, {
+      "columnName" : "FUNCSTATE",
+      "dBType" : "POSTGRESQL",
+      "name" : "FUNCSTATE",
+      "queryCodeExp" : "t1.FUNCSTATE",
+      "standardColumnName" : "FUNCSTATE"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_FUNCSTATE_EQ",
@@ -2354,6 +2551,12 @@
       "name" : "SETTINGURL",
       "queryCodeExp" : "t1.`SETTINGURL`",
       "standardColumnName" : "`SETTINGURL`"
+    }, {
+      "columnName" : "SETTINGURL",
+      "dBType" : "POSTGRESQL",
+      "name" : "SETTINGURL",
+      "queryCodeExp" : "t1.SETTINGURL",
+      "standardColumnName" : "SETTINGURL"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -3082,6 +3285,12 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "SpecVersion",
+    "logicName" : "版本清单",
+    "name" : "版本清单",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "MarketApplicationView",
     "logicName" : "应用市场",
     "name" : "应用市场",
@@ -3196,7 +3405,7 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "Main2",
+    "codeName" : "CustMain",
     "logicName" : "自定义安装_表单",
     "modelTag2" : "0",
     "name" : "自定义安装_表单",
@@ -3221,6 +3430,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "SpecVersionForm",
+    "logicName" : "特定版本清单_表单",
+    "modelTag2" : "0",
+    "name" : "特定版本清单_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

@@ -12604,7 +12604,7 @@
       },
       "getRefPSAppDEDataSet" : {
         "modelref" : true,
-        "id" : "FetchDefault"
+        "id" : "FetchDependency_work_items"
       },
       "getRefPSAppDEMethodDTO" : {
         "modelref" : true,
@@ -15081,7 +15081,7 @@
       },
       "getRefPSAppDEDataSet" : {
         "modelref" : true,
-        "id" : "FetchDefault"
+        "id" : "FetchDependency_work_items"
       },
       "getRefPSAppDEMethodDTO" : {
         "modelref" : true,
@@ -21504,8 +21504,13 @@
         "name" : "我关注的"
       }, {
         "condType" : "CUSTOM",
-        "condition" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
-        "name" : "未依赖"
+        "condition" : "t1.`ID` not in (select target_id from relation t2 where (t2.principal_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency')",
+        "memo" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
+        "name" : "排除本工作项前置关联"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "t1.`ID` not in (select principal_id from relation t2 where (t2.target_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency')",
+        "name" : "排除本工作项后置关联"
       } ]
     } ],
     "getPSDEDataSet" : {
@@ -24465,90 +24470,6 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "full_screen@work_item"
   }, {
-    "actionTarget" : "NONE",
-    "caption" : "跳转已关闭的工作项",
-    "codeName" : "jump_closed_work_item",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_jump_closed_work_item",
-    "name" : "跳转已关闭的工作项",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_state_type_eq",
-      "name" : "n_state_type_eq",
-      "value" : "closed",
-      "rawValue" : true
-    } ],
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "jump_closed_work_item",
-    "uIActionType" : "DEUIACTION",
-    "id" : "jump_closed_work_item@work_item"
-  }, {
-    "actionTarget" : "NONE",
-    "caption" : "跳转已完成的工作项",
-    "codeName" : "jump_completed_work_item",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_jump_completed_work_item",
-    "name" : "跳转已完成的工作项",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_state_type_eq",
-      "name" : "n_state_type_eq",
-      "value" : "completed",
-      "rawValue" : true
-    } ],
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "jump_completed_work_item",
-    "uIActionType" : "DEUIACTION",
-    "id" : "jump_completed_work_item@work_item"
-  }, {
-    "actionTarget" : "NONE",
-    "caption" : "跳转进行中的工作项",
-    "codeName" : "jump_in_progress_work_item",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_jump_in_progress_work_item",
-    "name" : "跳转进行中的工作项",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_state_type_eq",
-      "name" : "n_state_type_eq",
-      "value" : "in_progress",
-      "rawValue" : true
-    } ],
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "jump_in_progress_work_item",
-    "uIActionType" : "DEUIACTION",
-    "id" : "jump_in_progress_work_item@work_item"
-  }, {
-    "actionTarget" : "NONE",
-    "caption" : "跳转未开始的工作项",
-    "codeName" : "jump_pending_work_item",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_jump_pending_work_item",
-    "name" : "跳转未开始的工作项",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_state_type_eq",
-      "name" : "n_state_type_eq",
-      "value" : "pending",
-      "rawValue" : true
-    } ],
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "jump_pending_work_item",
-    "uIActionType" : "DEUIACTION",
-    "id" : "jump_pending_work_item@work_item"
-  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "添加实际工时",
     "codeName" : "mob_add_actual_workload",
@@ -24750,7 +24671,7 @@
     "id" : "mob_add_causes@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "添加子工作项",
+    "caption" : "关联子工作项",
     "codeName" : "mob_add_child",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -24759,7 +24680,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "work_item_mob_add_child",
-    "name" : "添加子工作项（移动端）",
+    "name" : "关联子工作项（移动端）",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "choose_child"
@@ -24784,9 +24705,9 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "successMsg" : "添加子工作项成功",
+    "successMsg" : "关联子工作项成功",
     "timeout" : 60000,
-    "tooltip" : "添加子工作项",
+    "tooltip" : "关联子工作项",
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "mob_add_child",
     "uIActionType" : "DEUIACTION",
@@ -25960,6 +25881,110 @@
     "id" : "mob_create_waterfall_task@work_item"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "跳转已关闭的工作项",
+    "codeName" : "mob_jump_closed_work_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_mob_jump_closed_work_item",
+    "name" : "跳转已关闭的工作项（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "n_state_type_eq",
+      "name" : "n_state_type_eq",
+      "value" : "closed",
+      "rawValue" : true
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_jump_closed_work_item",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_jump_closed_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "跳转已完成的工作项",
+    "codeName" : "mob_jump_completed_work_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_mob_jump_completed_work_item",
+    "name" : "跳转已完成的工作项（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "n_state_type_eq",
+      "name" : "n_state_type_eq",
+      "value" : "completed",
+      "rawValue" : true
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_jump_completed_work_item",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_jump_completed_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "跳转进行中的工作项",
+    "codeName" : "mob_jump_in_progress_work_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_mob_jump_in_progress_work_item",
+    "name" : "跳转进行中的工作项（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "n_state_type_eq",
+      "name" : "n_state_type_eq",
+      "value" : "in_progress",
+      "rawValue" : true
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_jump_in_progress_work_item",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_jump_in_progress_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "跳转未开始的工作项",
+    "codeName" : "mob_jump_pending_work_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_mob_jump_pending_work_item",
+    "name" : "跳转未开始的工作项（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "n_state_type_eq",
+      "name" : "n_state_type_eq",
+      "value" : "pending",
+      "rawValue" : true
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_jump_pending_work_item",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_jump_pending_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "刷新子工作项列表（移动端）",
     "codeName" : "mob_refresh_work_item",
     "frontProcessType" : "OTHER",
@@ -26117,8 +26142,8 @@
     "codeName" : "open_mob_choose_assignee",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_select_tap_exp_view.json",
-      "viewType" : "DEMOBTABEXPVIEW"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_pickup_view.json",
+      "viewType" : "DEMOBPICKUPVIEW"
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "work_item_open_mob_choose_assignee",
@@ -26220,7 +26245,7 @@
     "codeName" : "show_more_assignee_item",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
       "viewType" : "DEMOBMDVIEW"
     },
     "frontProcessType" : "WIZARD",
@@ -26240,7 +26265,7 @@
     "codeName" : "show_more_created_item",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mobdash.json",
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mob.json",
       "viewType" : "DEMOBMDVIEW"
     },
     "frontProcessType" : "WIZARD",
@@ -26318,6 +26343,148 @@
     "id" : "toolbar_archive@work_item"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "archived_or_deleted_visible",
+    "defaultParamName" : "Default",
+    "logicName" : "已归档或已删除工作项显示隐藏",
+    "memo" : "已归档或已删除工作项显示隐藏",
+    "name" : "已归档或已删除工作项显示隐藏",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 140,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "is_archived",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[is_archived] 等于(=) 1",
+              "paramValue" : "1",
+              "value" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "is_deleted",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[is_deleted] 等于(=) 1",
+              "paramValue" : "1",
+              "value" : "1"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 323,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "viewmsg_pos_state"
+        },
+        "name" : "view[layoutPanel.panelItems.viewmsg_pos.state] ==> viewmsg_pos_state",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.viewmsg_pos.state",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "common_list_isshow",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "直接值[true] ==> view[common_list_isshow]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "viewmsg_pos_state"
+        },
+        "name" : "直接值[true] ==> viewmsg_pos_state[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 590,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "viewmsg_pos",
+      "logicName" : "视图消息占位",
+      "name" : "视图消息占位",
+      "entityParam" : true
+    }, {
+      "codeName" : "viewmsg_pos_state",
+      "logicName" : "视图消息占位状态",
+      "name" : "视图消息占位状态",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "chart_show_count",
     "defaultParamName" : "Default",
     "logicName" : "图表显示总数",
@@ -26708,6 +26875,292 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "mob_my_assign_chart_jump",
+    "defaultParamName" : "Default",
+    "logicName" : "我负责的工作项图表跳转（移动端）",
+    "name" : "我负责的工作项图表跳转（移动端）",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 320,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "已完成",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_catalog",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_catalog] 等于(=) 已完成",
+            "paramValue" : "已完成",
+            "value" : "已完成"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        },
+        "linkMode" : 0,
+        "name" : "未开始",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_catalog",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_catalog] 等于(=) 未开始",
+            "paramValue" : "未开始",
+            "value" : "未开始"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION3"
+        },
+        "linkMode" : 0,
+        "name" : "进行中",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_catalog",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_catalog] 等于(=) 进行中",
+            "paramValue" : "进行中",
+            "value" : "进行中"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION4"
+        },
+        "linkMode" : 0,
+        "name" : "已关闭",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_catalog",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_catalog] 等于(=) 已关闭",
+            "paramValue" : "已关闭",
+            "value" : "已关闭"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 160,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION3",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "modelref" : true,
+        "id" : "mob_jump_in_progress_work_item@work_item"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 764,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION3"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "modelref" : true,
+        "id" : "mob_jump_pending_work_item@work_item"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 764,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 72
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1219,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 160
+    }, {
+      "codeName" : "DEUIACTION4",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "modelref" : true,
+        "id" : "mob_jump_closed_work_item@work_item"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 764,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION4"
+        }
+      } ],
+      "topPos" : 370
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "modelref" : true,
+        "id" : "mob_jump_completed_work_item@work_item"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 764,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : -60
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctrl",
+      "logicName" : "当前部件",
+      "name" : "当前部件",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "mob_refresh_child_list",
     "defaultParamName" : "Default",
     "logicName" : "刷新关联子工作项列表（移动端）",
@@ -26865,314 +27318,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "my_assign_chart_jump",
-    "defaultParamName" : "Default",
-    "logicName" : "我负责的工作项图表跳转",
-    "name" : "我负责的工作项图表跳转",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "jump_completed_work_item@work_item"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 900,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "topPos" : -60
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "jump_pending_work_item@work_item"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 900,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "topPos" : 62
-    }, {
-      "codeName" : "DEUIACTION3",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "jump_in_progress_work_item@work_item"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 900,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION3"
-        }
-      } ],
-      "topPos" : 216
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1209,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 192
-    }, {
-      "codeName" : "DEUIACTION4",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "jump_closed_work_item@work_item"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 910,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION4"
-        }
-      } ],
-      "topPos" : 330
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 349,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "已完成",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "_catalog",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[_catalog] 等于(=) 已完成",
-            "paramValue" : "已完成",
-            "value" : "已完成"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        },
-        "linkMode" : 0,
-        "name" : "未开始",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "_catalog",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[_catalog] 等于(=) 未开始",
-            "paramValue" : "未开始",
-            "value" : "未开始"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION3"
-        },
-        "linkMode" : 0,
-        "name" : "进行中",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "_catalog",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[_catalog] 等于(=) 进行中",
-            "paramValue" : "进行中",
-            "value" : "进行中"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION4"
-        },
-        "linkMode" : 0,
-        "name" : "已关闭",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "_catalog",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[_catalog] 等于(=) 已关闭",
-            "paramValue" : "已关闭",
-            "value" : "已关闭"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 200
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctrl",
-      "logicName" : "当前部件",
-      "name" : "当前部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "notify_refresh_mob",
     "defaultParamName" : "Default",
     "logicName" : "通知刷新（移动端）",
@@ -27299,6 +27444,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_depend_mpick_up_view_pickup_md_view.json",
     "viewType" : "DEMOBPICKUPMDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mob.json",
+    "viewType" : "DEMOBMDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_child_mpick_up_view.json",
@@ -27443,6 +27592,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_work_item_statistic_chart_view.json",
     "viewType" : "DEMOBCHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mob.json",
+    "viewType" : "DEMOBMDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "复制",

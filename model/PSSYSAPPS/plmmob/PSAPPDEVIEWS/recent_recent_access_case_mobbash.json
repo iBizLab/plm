@@ -276,7 +276,7 @@
           "codeName" : "show_more_access_case",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_case_mobbash.json",
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_case_mob.json",
             "viewType" : "DEMOBMDVIEW"
           },
           "frontProcessType" : "WIZARD",
@@ -373,7 +373,7 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "mob_access_list",
+      "codeName" : "mobboard_list",
       "controlStyle" : "LISTVIEW",
       "controlType" : "MOBMDCTRL",
       "getCreatePSControlAction" : {
@@ -392,7 +392,7 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSMOBMDCTRLS/mob_access_list.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSMOBMDCTRLS/mobboard_list.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -505,7 +505,9 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX"
+                "layout" : "FLEX",
+                "shrink" : 0,
+                "spacingRight" : "INNERSMALL"
               },
               "viewFieldName" : "OWNER_SUBTYPE",
               "convertToCodeItemText" : true
@@ -585,7 +587,7 @@
         "modelid" : "e146b5b2ad41d3f33448205b0b14bd16",
         "modeltype" : "PSSYSVIEWPANEL"
       },
-      "logicName" : "mob_access_list",
+      "logicName" : "mobboard_list",
       "mobListStyle" : "LISTVIEW",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -667,20 +669,6 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
-        "name" : "owner_id",
-        "getPSAppDEField" : {
-          "name" : "OWNER_ID",
-          "codeName" : "owner_id"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "name",
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        }
-      }, {
-        "dataType" : 25,
         "getFrontPSCodeList" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_visite.json"
@@ -692,10 +680,10 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "recent_parent_name",
+        "name" : "name",
         "getPSAppDEField" : {
-          "name" : "RECENT_PARENT_NAME",
-          "codeName" : "recent_parent_name"
+          "name" : "NAME",
+          "codeName" : "name"
         }
       }, {
         "dataType" : 25,
@@ -703,6 +691,20 @@
         "getPSAppDEField" : {
           "name" : "SHOW_IDENTIFIER",
           "codeName" : "show_identifier"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "recent_parent_name",
+        "getPSAppDEField" : {
+          "name" : "RECENT_PARENT_NAME",
+          "codeName" : "recent_parent_name"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "owner_id",
+        "getPSAppDEField" : {
+          "name" : "OWNER_ID",
+          "codeName" : "owner_id"
         }
       }, {
         "dataType" : 25,
@@ -719,8 +721,10 @@
           "codeName" : "name"
         }
       } ],
-      "pagingMode" : 2,
-      "pagingSize" : 20,
+      "getPSSysCss" : {
+        "cssName" : "index-recentvisit-custom"
+      },
+      "pagingSize" : 5,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -763,7 +767,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "4aefa0458d2931fb6cb0926b0929c3e1",
+      "modelid" : "500dedad09378fccd4b822c68d9dfa9e",
       "modeltype" : "PSDELIST"
     }, {
       "codeName" : "default",

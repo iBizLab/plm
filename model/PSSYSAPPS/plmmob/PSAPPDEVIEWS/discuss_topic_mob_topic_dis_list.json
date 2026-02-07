@@ -416,22 +416,53 @@
                 "itemType" : "CONTAINER",
                 "name" : "view_toolbar2",
                 "getPSLayout" : {
-                  "layout" : "FLEX"
+                  "align" : "space-between",
+                  "dir" : "row",
+                  "layout" : "FLEX",
+                  "vAlign" : "center"
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
                 "getPSPanelItems" : [ {
-                  "caption" : "搜索栏",
+                  "caption" : "容器",
                   "itemStyle" : "DEFAULT",
-                  "itemType" : "CTRLPOS",
-                  "name" : "searchbar",
-                  "getPSLayoutPos" : {
-                    "grow" : -1,
+                  "itemType" : "CONTAINER",
+                  "name" : "container",
+                  "getPSLayout" : {
                     "layout" : "FLEX"
                   },
-                  "showCaption" : true
+                  "getPSLayoutPos" : {
+                    "grow" : 1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "搜索栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "searchbar",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "showCaption" : true
+                  } ]
+                }, {
+                  "caption" : "设置容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "setting_container",
+                  "getPSLayout" : {
+                    "dir" : "row-reverse",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "heightMode" : "FULL",
+                    "layout" : "FLEX"
+                  },
+                  "predefinedType" : "SETTING_CONTAINER"
                 } ],
                 "predefinedType" : "Toolbar"
               }, {
@@ -698,7 +729,8 @@
                         "name" : "static_image",
                         "getPSLayoutPos" : {
                           "grow" : -1,
-                          "layout" : "FLEX"
+                          "layout" : "FLEX",
+                          "shrink" : 0
                         },
                         "getPSRawItem" : {
                           "contentType" : "IMAGE",
@@ -744,7 +776,8 @@
                       },
                       "getPSLayoutPos" : {
                         "grow" : -1,
-                        "layout" : "FLEX"
+                        "layout" : "FLEX",
+                        "shrink" : 0
                       },
                       "getPSPanelItems" : [ {
                         "caption" : "标签",
@@ -874,6 +907,11 @@
                 "modeltype" : "PSSYSVIEWPANEL"
               },
               "logicName" : "List",
+              "minorSortDir" : "DESC",
+              "getMinorSortPSAppDEField" : {
+                "name" : "UPDATE_TIME",
+                "codeName" : "update_time"
+              },
               "mobListStyle" : "LISTVIEW",
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -955,13 +993,6 @@
               },
               "getPSDEListDataItems" : [ {
                 "dataType" : 25,
-                "name" : "name",
-                "getPSAppDEField" : {
-                  "name" : "NAME",
-                  "codeName" : "name"
-                }
-              }, {
-                "dataType" : 25,
                 "getFrontPSCodeList" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
@@ -978,6 +1009,13 @@
                 "getPSAppDEField" : {
                   "name" : "UPDATE_TIME",
                   "codeName" : "update_time"
+                }
+              }, {
+                "dataType" : 25,
+                "name" : "name",
+                "getPSAppDEField" : {
+                  "name" : "NAME",
+                  "codeName" : "name"
                 }
               }, {
                 "dataType" : 25,
@@ -1003,18 +1041,6 @@
               } ],
               "getPSDEListItems" : [ {
                 "align" : "LEFT",
-                "getCapPSLanguageRes" : {
-                  "lanResTag" : "DEF.LNAME.NAME"
-                },
-                "caption" : "讨论名称",
-                "dataItemName" : "name",
-                "itemType" : "TEXTITEM",
-                "name" : "NAME",
-                "width" : 150,
-                "widthString" : "150px",
-                "enableSort" : true
-              }, {
-                "align" : "LEFT",
                 "cLConvertMode" : "FRONT",
                 "getCapPSLanguageRes" : {
                   "lanResTag" : "DEF.LNAME.UPDATE_MAN"
@@ -1036,6 +1062,18 @@
                 "itemType" : "TEXTITEM",
                 "name" : "UPDATE_TIME",
                 "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+                "width" : 150,
+                "widthString" : "150px",
+                "enableSort" : true
+              }, {
+                "align" : "LEFT",
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "DEF.LNAME.NAME"
+                },
+                "caption" : "讨论名称",
+                "dataItemName" : "name",
+                "itemType" : "TEXTITEM",
+                "name" : "NAME",
                 "width" : 150,
                 "widthString" : "150px",
                 "enableSort" : true
@@ -1099,10 +1137,6 @@
                 "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
               },
               "getPSControlParam" : {
-                "ctrlParams" : {
-                  "PLACEMENT" : "left",
-                  "DIRECTION" : "vertical"
-                },
                 "id" : "RIGHTTOOLBAR"
               },
               "getPSDEToolbarItems" : [ {

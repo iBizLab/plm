@@ -358,8 +358,39 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/create_ai_kb_doc.json"
     },
     "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "fill_kb_chunk",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEACTIONS/fill_kb_chunk.json",
+    "logicName" : "填充知识库切片策略",
+    "name" : "fill_kb_chunk",
+    "getPSDEActionInput" : {
+      "name" : "Fill_kb_chunkInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_document_wizard_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Fill_kb_chunkResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/fill_kb_chunk.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
+    "dBType" : "POSTGRESQL",
+    "name" : "POSTGRESQL",
+    "objNameCase" : "DEFAULT",
+    "valid" : true
+  }, {
     "dBType" : "MYSQL5",
     "name" : "MYSQL5",
     "objNameCase" : "DEFAULT",
@@ -379,6 +410,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEDATAQUERIES/Default/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "Default",
     "logicName" : "DEFAULT",
@@ -412,6 +446,9 @@
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDEDATAQUERIES/View/PSDEDQCODES/POSTGRESQL.json"
     } ],
     "codeName" : "View",
     "logicName" : "默认（全部数据）",
@@ -477,6 +514,12 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "ID",
+      "queryCodeExp" : "t1.ID",
+      "standardColumnName" : "ID"
+    }, {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -568,6 +611,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.NAME",
+      "standardColumnName" : "NAME"
+    }, {
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
       "name" : "NAME",
       "queryCodeExp" : "t1.`NAME`",
@@ -655,6 +704,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ENABLE",
+      "dBType" : "POSTGRESQL",
+      "name" : "ENABLE",
+      "queryCodeExp" : "t1.ENABLE",
+      "standardColumnName" : "ENABLE"
+    }, {
+      "columnName" : "ENABLE",
       "dBType" : "MYSQL5",
       "name" : "ENABLE",
       "queryCodeExp" : "t1.`ENABLE`",
@@ -718,6 +773,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CREATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.CREATE_MAN",
+      "standardColumnName" : "CREATE_MAN"
+    }, {
       "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "CREATE_MAN",
@@ -807,6 +868,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.CREATE_TIME",
+      "standardColumnName" : "CREATE_TIME"
+    }, {
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "CREATE_TIME",
       "queryCodeExp" : "t1.`CREATE_TIME`",
@@ -878,6 +945,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.UPDATE_MAN",
+      "standardColumnName" : "UPDATE_MAN"
+    }, {
       "columnName" : "UPDATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_MAN",
@@ -967,6 +1040,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "UPDATE_TIME",
+      "dBType" : "POSTGRESQL",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.UPDATE_TIME",
+      "standardColumnName" : "UPDATE_TIME"
+    }, {
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_TIME",
       "queryCodeExp" : "t1.`UPDATE_TIME`",
@@ -1038,6 +1117,12 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IMPORT_METHOD",
+      "dBType" : "POSTGRESQL",
+      "name" : "IMPORT_METHOD",
+      "queryCodeExp" : "t1.IMPORT_METHOD",
+      "standardColumnName" : "IMPORT_METHOD"
+    }, {
       "columnName" : "IMPORT_METHOD",
       "dBType" : "MYSQL5",
       "name" : "IMPORT_METHOD",
@@ -1121,6 +1206,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SYNC_FREQUENCY",
+      "dBType" : "POSTGRESQL",
+      "name" : "SYNC_FREQUENCY",
+      "queryCodeExp" : "t1.SYNC_FREQUENCY",
+      "standardColumnName" : "SYNC_FREQUENCY"
+    }, {
+      "columnName" : "SYNC_FREQUENCY",
       "dBType" : "MYSQL5",
       "name" : "SYNC_FREQUENCY",
       "queryCodeExp" : "t1.`SYNC_FREQUENCY`",
@@ -1202,6 +1293,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SPACE_SELECTION",
+      "dBType" : "POSTGRESQL",
+      "name" : "SPACE_SELECTION",
+      "queryCodeExp" : "t1.SPACE_SELECTION",
+      "standardColumnName" : "SPACE_SELECTION"
+    }, {
       "columnName" : "SPACE_SELECTION",
       "dBType" : "MYSQL5",
       "name" : "SPACE_SELECTION",
@@ -1285,6 +1382,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SELECTION_PAGE_IDS",
+      "dBType" : "POSTGRESQL",
+      "name" : "SELECTION_PAGE_IDS",
+      "queryCodeExp" : "t1.SELECTION_PAGE_IDS",
+      "standardColumnName" : "SELECTION_PAGE_IDS"
+    }, {
+      "columnName" : "SELECTION_PAGE_IDS",
       "dBType" : "MYSQL5",
       "name" : "SELECTION_PAGE_IDS",
       "queryCodeExp" : "t1.`SELECTION_PAGE_IDS`",
@@ -1295,9 +1398,9 @@
       "name" : "[SELECTION_PAGE_IDS][选择页面]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_PAGE_IDS][选择页面]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -1306,9 +1409,9 @@
       "name" : "[SELECTION_PAGE_IDS][选择页面]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_PAGE_IDS][选择页面]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -1325,16 +1428,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "SELECTION_PAGE_IDS",
-          "maxValue" : 4000,
+          "maxValue" : 1048576,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[4000]",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[4000]"
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
       },
-      "ruleInfo" : "内容长度必须小于等于[4000]",
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -1342,18 +1445,25 @@
     } ],
     "codeName" : "selection_page_ids",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "LONGTEXT",
     "importOrder" : 1000,
-    "length" : 4000,
+    "length" : 1048576,
     "logicName" : "选择页面",
     "name" : "SELECTION_PAGE_IDS",
     "orderValue" : 180,
     "serviceCodeName" : "selection_page_ids",
-    "stdDataType" : 25,
-    "stringLength" : 4000,
-    "valueFormat" : "%1$s"
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "KB_ID",
+      "dBType" : "POSTGRESQL",
+      "name" : "KB_ID",
+      "queryCodeExp" : "t1.KB_ID",
+      "standardColumnName" : "KB_ID"
+    }, {
       "columnName" : "KB_ID",
       "dBType" : "MYSQL5",
       "name" : "KB_ID",
@@ -1425,6 +1535,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SELECTION_FILE_IDS",
+      "dBType" : "POSTGRESQL",
+      "name" : "SELECTION_FILE_IDS",
+      "queryCodeExp" : "t1.SELECTION_FILE_IDS",
+      "standardColumnName" : "SELECTION_FILE_IDS"
+    }, {
+      "columnName" : "SELECTION_FILE_IDS",
       "dBType" : "MYSQL5",
       "name" : "SELECTION_FILE_IDS",
       "queryCodeExp" : "t1.`SELECTION_FILE_IDS`",
@@ -1435,9 +1551,9 @@
       "name" : "[SELECTION_FILE_IDS][选择文件]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_FILE_IDS][选择文件]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -1448,9 +1564,9 @@
       "name" : "[SELECTION_FILE_IDS][选择文件]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_FILE_IDS][选择文件]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -1465,16 +1581,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "SELECTION_FILE_IDS",
-          "maxValue" : 4000,
+          "maxValue" : 1048576,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[4000]",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[4000]"
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
       },
-      "ruleInfo" : "内容长度必须小于等于[4000]",
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -1482,18 +1598,25 @@
     } ],
     "codeName" : "selection_file_ids",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "LONGTEXT",
     "importOrder" : 1000,
-    "length" : 4000,
+    "length" : 1048576,
     "logicName" : "选择文件",
     "name" : "SELECTION_FILE_IDS",
     "orderValue" : 180,
     "serviceCodeName" : "selection_file_ids",
-    "stdDataType" : 25,
-    "stringLength" : 4000,
-    "valueFormat" : "%1$s"
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SELECTION_PAGE_NAMES",
+      "dBType" : "POSTGRESQL",
+      "name" : "SELECTION_PAGE_NAMES",
+      "queryCodeExp" : "t1.SELECTION_PAGE_NAMES",
+      "standardColumnName" : "SELECTION_PAGE_NAMES"
+    }, {
       "columnName" : "SELECTION_PAGE_NAMES",
       "dBType" : "MYSQL5",
       "name" : "SELECTION_PAGE_NAMES",
@@ -1505,9 +1628,9 @@
       "name" : "[SELECTION_PAGE_NAMES][选择页面名称]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "TEXTAREA_10",
         "name" : "[SELECTION_PAGE_NAMES][选择页面名称]",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -1516,9 +1639,9 @@
       "name" : "[SELECTION_PAGE_NAMES][选择页面名称]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "MOBTEXTAREA",
         "name" : "[SELECTION_PAGE_NAMES][选择页面名称]移动端默认",
-        "stringLength" : 4000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -1535,16 +1658,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "SELECTION_PAGE_NAMES",
-          "maxValue" : 4000,
+          "maxValue" : 1048576,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[4000]",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[4000]"
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
       },
-      "ruleInfo" : "内容长度必须小于等于[4000]",
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -1552,18 +1675,25 @@
     } ],
     "codeName" : "selection_page_names",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "LONGTEXT",
     "importOrder" : 1000,
-    "length" : 4000,
+    "length" : 1048576,
     "logicName" : "选择页面名称",
     "name" : "SELECTION_PAGE_NAMES",
     "orderValue" : 180,
     "serviceCodeName" : "selection_page_names",
-    "stdDataType" : 25,
-    "stringLength" : 4000,
-    "valueFormat" : "%1$s"
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PARSER_CONFIG",
+      "dBType" : "POSTGRESQL",
+      "name" : "PARSER_CONFIG",
+      "queryCodeExp" : "t1.PARSER_CONFIG",
+      "standardColumnName" : "PARSER_CONFIG"
+    }, {
       "columnName" : "PARSER_CONFIG",
       "dBType" : "MYSQL5",
       "name" : "PARSER_CONFIG",
@@ -1640,6 +1770,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SELECTED_PAGE_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "SELECTED_PAGE_NAME",
+      "queryCodeExp" : "t1.SELECTED_PAGE_NAME",
+      "standardColumnName" : "SELECTED_PAGE_NAME"
+    }, {
+      "columnName" : "SELECTED_PAGE_NAME",
       "dBType" : "MYSQL5",
       "name" : "SELECTED_PAGE_NAME",
       "queryCodeExp" : "t1.`SELECTED_PAGE_NAME`",
@@ -1711,6 +1847,12 @@
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "SELECTED_FILE_NAME",
+      "dBType" : "POSTGRESQL",
+      "name" : "SELECTED_FILE_NAME",
+      "queryCodeExp" : "t1.SELECTED_FILE_NAME",
+      "standardColumnName" : "SELECTED_FILE_NAME"
+    }, {
+      "columnName" : "SELECTED_FILE_NAME",
       "dBType" : "MYSQL5",
       "name" : "SELECTED_FILE_NAME",
       "queryCodeExp" : "t1.`SELECTED_FILE_NAME`",
@@ -1781,6 +1923,82 @@
     "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_PARSE_NOW",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_PARSE_NOW",
+      "queryCodeExp" : "t1.IS_PARSE_NOW",
+      "standardColumnName" : "IS_PARSE_NOW",
+      "valueAutoGen" : true
+    }, {
+      "columnName" : "IS_PARSE_NOW",
+      "dBType" : "MYSQL5",
+      "name" : "IS_PARSE_NOW",
+      "queryCodeExp" : "t1.`IS_PARSE_NOW`",
+      "standardColumnName" : "`IS_PARSE_NOW`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_PARSE_NOW][是否立即解析]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_PARSE_NOW][是否立即解析]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_PARSE_NOW][是否立即解析]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_parse_now",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "logicName" : "是否立即解析",
+    "name" : "IS_PARSE_NOW",
+    "orderValue" : 290,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "serviceCodeName" : "is_parse_now",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CUSTOM_CHUNK",
+      "dBType" : "POSTGRESQL",
+      "name" : "CUSTOM_CHUNK",
+      "queryCodeExp" : "t1.CUSTOM_CHUNK",
+      "standardColumnName" : "CUSTOM_CHUNK"
+    }, {
       "columnName" : "CUSTOM_CHUNK",
       "dBType" : "MYSQL5",
       "name" : "CUSTOM_CHUNK",
@@ -1842,6 +2060,12 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHUNK_METHOD",
+      "dBType" : "POSTGRESQL",
+      "name" : "CHUNK_METHOD",
+      "queryCodeExp" : "t1.CHUNK_METHOD",
+      "standardColumnName" : "CHUNK_METHOD"
+    }, {
       "columnName" : "CHUNK_METHOD",
       "dBType" : "MYSQL5",
       "name" : "CHUNK_METHOD",
@@ -1948,7 +2172,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal(); \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\ndef doc_sync_runtime = sys.dataentity('ai_kb_document_sync')\r\ndef page_list = sys.codelist('Wiki__page_list')\r\ndef space_list = sys.codelist('Wiki__space_list')\r\n\r\ndef import_method=_default[\"import_method\"];\r\ndef kb_id=_default[\"kb_id\"]\r\ndef space_selection=_default[\"space_selection\"]\r\ndef sync_frequency=_default[\"sync_frequency\"]\r\ndef parser_config=_default[\"parser_config\"]\r\ndef custom_chunk=_default[\"custom_chunk\"]\r\ndef chunk_method=_default[\"chunk_method\"]\r\n\r\n//手动从空间导入\r\nif(import_method == \"space_manual\"){\r\n    def selection_page_ids=_default[\"selection_page_ids\"]\r\n    if(selection_page_ids){\r\n        //创建文档\r\n        selection_page_ids.split(',').each { String page_id ->\r\n            def new_doc=doc_runtime.entity()\r\n            def  page_name=page_list.getText(page_id)  \r\n            new_doc.set(\"name\",page_name)\r\n            new_doc.set(\"source_id\",page_id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"sync_frequency\",sync_frequency)\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"space\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n}\r\n\r\n//自动从空间同步\r\nif(import_method == \"space_auto_sync\"){\r\n    //创建文档同步\r\n    def new_doc_sync=doc_sync_runtime.entity()\r\n    def  space_name=space_list.getText(space_selection)  \r\n    new_doc_sync.set(\"name\",space_name)\r\n    new_doc_sync.set(\"ai_knowledge_base_id\",kb_id)\r\n    new_doc_sync.set(\"source_id\",space_selection)\r\n    new_doc_sync.set(\"source_type\",\"space\")\r\n    new_doc_sync.set(\"sync_frequency\",sync_frequency)\r\n    new_doc_sync.set(\"parser_config\",parser_config)\r\n    new_doc_sync.set(\"custom_chunk\",custom_chunk)\r\n    new_doc_sync.set(\"chunk_method\",chunk_method)\r\n    doc_sync_runtime.create(new_doc_sync)\r\n}\r\n\r\n//上传本地文件\r\nif(import_method == \"local_upload\"){\r\n    def selection_file_ids=_default[\"selection_file_ids\"]\r\n    if(selection_file_ids){\r\n        //创建文档\r\n        def files = new groovy.json.JsonSlurper().parseText(selection_file_ids)\r\n        files.each { file ->\r\n            def new_doc=doc_runtime.entity()\r\n            def file_name = file.name\r\n            int last_index = file.name.lastIndexOf(\".\")\r\n            if (last_index > 0) {\r\n                file_name = file.name.substring(0, last_index)\r\n            }\r\n            new_doc.set(\"name\",file_name)\r\n            new_doc.set(\"source_id\",file.id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"parser_config\",parser_config)\r\n            new_doc.set(\"type\",\"file\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"chunk_method\",chunk_method)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            doc_runtime.create(new_doc)\r\n        }\r\n    }\r\n\r\n}",
+      "code" : "def _default = logic.param('default').getReal(); \r\ndef doc_runtime = sys.dataentity('ai_kb_document')\r\ndef doc_sync_runtime = sys.dataentity('ai_kb_document_sync')\r\ndef page_list = sys.codelist('Wiki__page_list')\r\ndef space_list = sys.codelist('Wiki__space_list')\r\n\r\ndef import_method=_default[\"import_method\"];\r\ndef kb_id=_default[\"kb_id\"]\r\ndef space_selection=_default[\"space_selection\"]\r\ndef sync_frequency=_default[\"sync_frequency\"]\r\ndef parser_config=_default[\"parser_config\"]\r\ndef custom_chunk=_default[\"custom_chunk\"]\r\ndef chunk_method=_default[\"chunk_method\"]\r\ndef is_parse_now=_default[\"is_parse_now\"]\r\n\r\n//手动从空间导入\r\nif(import_method == \"space_manual\"){\r\n    def selection_page_ids=_default[\"selection_page_ids\"]\r\n    if(selection_page_ids){\r\n        //创建文档\r\n        selection_page_ids.split(',').each { String page_id ->\r\n            def new_doc=doc_runtime.entity()\r\n            def  page_name=page_list.getText(page_id)  \r\n            new_doc.set(\"name\",page_name)\r\n            new_doc.set(\"source_id\",page_id)\r\n            new_doc.set(\"source_type\",\"page\")\r\n            new_doc.set(\"sync_frequency\",sync_frequency)\r\n            new_doc.set(\"type\",\"space\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n\r\n            if(custom_chunk ==1){\r\n                new_doc.set(\"chunk_method\",chunk_method)\r\n                new_doc.set(\"parser_config\",parser_config)\r\n            }\r\n            doc_runtime.create(new_doc)\r\n\r\n             //立即解析\r\n            if(is_parse_now == 1){\r\n                println(\"立即解析文档...\")\r\n                doc_runtime.Async_parse(new_doc)\r\n            }else{\r\n                println(\"不解析...\")\r\n            }\r\n\r\n        }\r\n    }\r\n}else if(import_method == \"space_auto_sync\"){//自动从空间同步\r\n    //创建文档同步\r\n    def new_doc_sync=doc_sync_runtime.entity()\r\n    def  space_name=space_list.getText(space_selection)  \r\n    new_doc_sync.set(\"name\",space_name)\r\n    new_doc_sync.set(\"ai_knowledge_base_id\",kb_id)\r\n    new_doc_sync.set(\"source_id\",space_selection)\r\n    new_doc_sync.set(\"source_type\",\"space\")\r\n    new_doc_sync.set(\"sync_frequency\",sync_frequency)\r\n    new_doc_sync.set(\"custom_chunk\",custom_chunk)\r\n\r\n    if(custom_chunk ==1){\r\n        new_doc_sync.set(\"parser_config\",parser_config)\r\n        new_doc_sync.set(\"chunk_method\",chunk_method)\r\n}\r\n    doc_sync_runtime.create(new_doc_sync)\r\n\r\n    //立即解析\r\n      if(is_parse_now == 1){\r\n            println(\"立即解析空间文档...\")\r\n            doc_sync_runtime.Async_space_parse(new_doc_sync)\r\n        }\r\n\r\n}else if(import_method == \"local_upload\"){//上传本地文件\r\n    def selection_file_ids=_default[\"selection_file_ids\"]\r\n    if(selection_file_ids){\r\n        //创建文档\r\n        def files = new groovy.json.JsonSlurper().parseText(selection_file_ids)\r\n        files.each { file ->\r\n            def new_doc=doc_runtime.entity()\r\n            def file_name = file.name\r\n            int last_index = file.name.lastIndexOf(\".\")\r\n            if (last_index > 0) {\r\n                file_name = file.name.substring(0, last_index)\r\n                String doc_type = file.name.substring(last_index + 1)\r\n                new_doc.set(\"file_type\",doc_type)\r\n            }\r\n            def files_array = [file]\r\n            def file_string = groovy.json.JsonOutput.toJson(files_array)\r\n            new_doc.set(\"file\",file_string)\r\n            new_doc.set(\"size\",file.size)\r\n            new_doc.set(\"name\",file_name)\r\n            new_doc.set(\"type\",\"file\")\r\n            new_doc.set(\"custom_chunk\",custom_chunk)\r\n            new_doc.set(\"active\",1)\r\n            new_doc.set(\"kb_id\",kb_id)\r\n            new_doc.set(\"status\",0)\r\n            if(custom_chunk ==1){\r\n                new_doc.set(\"chunk_method\",chunk_method)\r\n                new_doc.set(\"parser_config\",parser_config)\r\n            }\r\n            doc_runtime.create(new_doc)\r\n\r\n              //立即解析\r\n            if(is_parse_now == 1){\r\n                println(\"立即解析上传文档...\")\r\n                doc_runtime.Async_parse(new_doc)\r\n            }\r\n\r\n        }\r\n    }\r\n\r\n}",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "getDstPSDELogicParam" : {
@@ -1988,6 +2212,196 @@
         "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
       },
       "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "fill_kb_chunk",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard/PSDELOGICS/fill_kb_chunk.json",
+    "logicName" : "填充知识库切片策略",
+    "name" : "填充知识库切片策略",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 184,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "CUSTOM_CHUNK",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[CUSTOM_CHUNK] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 250,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 740,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 270,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 240,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "kb"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "KB_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 400,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "kb"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
+      "leftPos" : 430,
+      "logicNodeType" : "DEACTION",
+      "name" : "查询知识库切片策略",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "kb"
+      },
+      "topPos" : 400,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_02",
+      "leftPos" : 640,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充知识库参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_02"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "PARSER_CONFIG",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PARSER_CONFIG",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "kb"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "CHUNK_METHOD",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "CHUNK_METHOD",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "kb"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 400,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_document_wizard.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "kb",
+      "logicName" : "kb",
+      "name" : "kb",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
+      },
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
@@ -2125,8 +2539,8 @@
         "codeName" : "selection_file_ids"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 4000,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "选择页面",
@@ -2136,8 +2550,8 @@
         "codeName" : "selection_page_ids"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 4000,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "选择页面名称",
@@ -2147,8 +2561,8 @@
         "codeName" : "selection_page_names"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 4000,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "选择空间",
@@ -2203,6 +2617,17 @@
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTOS"
+    }, {
+      "defaultValue" : "1",
+      "logicName" : "是否立即解析",
+      "name" : "is_parse_now",
+      "getPSDEField" : {
+        "name" : "IS_PARSE_NOW",
+        "codeName" : "is_parse_now"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "自定义切片",
       "name" : "custom_chunk",

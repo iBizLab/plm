@@ -239,6 +239,63 @@
       "codeName" : "tool_exceed_message"
     }
   }, {
+    "id" : "kb_mode",
+    "dataType" : 25,
+    "createDV" : "default",
+    "updateDV" : "default",
+    "getPSAppDEField" : {
+      "name" : "KB_MODE",
+      "codeName" : "kb_mode"
+    }
+  }, {
+    "id" : "rerank",
+    "dataType" : 9,
+    "createDV" : "0",
+    "getPSAppDEField" : {
+      "name" : "RERANK",
+      "codeName" : "rerank"
+    }
+  }, {
+    "id" : "rerank_model",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "RERANK_MODEL",
+      "codeName" : "rerank_model"
+    }
+  }, {
+    "id" : "use_kg",
+    "dataType" : 9,
+    "createDV" : "0",
+    "getPSAppDEField" : {
+      "name" : "USE_KG",
+      "codeName" : "use_kg"
+    }
+  }, {
+    "id" : "similarity_threshold",
+    "dataType" : 6,
+    "createDV" : "0.2",
+    "updateDV" : "0.2",
+    "getPSAppDEField" : {
+      "name" : "SIMILARITY_THRESHOLD",
+      "codeName" : "similarity_threshold"
+    }
+  }, {
+    "id" : "vector_similarity_weight",
+    "dataType" : 6,
+    "createDV" : "0.3",
+    "updateDV" : "0.3",
+    "getPSAppDEField" : {
+      "name" : "VECTOR_SIMILARITY_WEIGHT",
+      "codeName" : "vector_similarity_weight"
+    }
+  }, {
+    "id" : "top_k",
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "TOP_K",
+      "codeName" : "top_k"
+    }
+  }, {
     "id" : "memory_mode",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -279,6 +336,14 @@
     "getPSAppDEField" : {
       "name" : "STREAM",
       "codeName" : "stream"
+    }
+  }, {
+    "id" : "rerank_model_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "RERANK_MODEL_ID",
+      "codeName" : "rerank_model_id"
     }
   }, {
     "id" : "id",
@@ -1700,6 +1765,290 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel4",
         "getPSDEFormDetails" : [ {
+          "codeName" : "grouppanel10",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel10",
+          "getPSDEFormDetails" : [ {
+            "caption" : "知识库模式",
+            "codeName" : "kb_mode",
+            "createDV" : "default",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "kb_mode",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "KB_MODE",
+              "codeName" : "kb_mode"
+            },
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST",
+              "name" : "kb_mode",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_mode.json"
+              },
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "default",
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排",
+            "codeName" : "rerank",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK",
+              "codeName" : "rerank"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "rerank"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排模型",
+            "codeName" : "rerank_model",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank_model",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK_MODEL",
+              "codeName" : "rerank_model"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "rerank",
+                "logicType" : "SINGLE",
+                "name" : "rerank等于(=) 1",
+                "value" : "1"
+              } ],
+              "relatedDetailNames" : [ "rerank" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorParams" : {
+                "AC" : "TRUE",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
+              "name" : "rerank_model",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+              },
+              "getPSEditorItems" : [ {
+                "name" : "rerank_model_id"
+              } ],
+              "placeHolder" : "未指定时使用全局默认",
+              "valueItemName" : "rerank_model_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "valueItemName" : "rerank_model_id",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "使用知识图谱",
+            "codeName" : "use_kg",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "use_kg",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "USE_KG",
+              "codeName" : "use_kg"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "use_kg"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回相似度阈值",
+            "codeName" : "similarity_threshold",
+            "createDV" : "0.2",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "similarity_threshold",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SIMILARITY_THRESHOLD",
+              "codeName" : "similarity_threshold"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "similarity_threshold",
+              "precision" : 2,
+              "scale" : 2,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.2",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "createDV" : "0.3",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VECTOR_SIMILARITY_WEIGHT",
+              "codeName" : "vector_similarity_weight"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "vector_similarity_weight",
+              "precision" : 1,
+              "scale" : 1,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.3",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "最大召回数量",
+            "codeName" : "top_k",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "top_k",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOP_K",
+              "codeName" : "top_k"
+            },
+            "getPSEditor" : {
+              "editorType" : "NUMBER",
+              "name" : "top_k"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 8,
+            "childColMD" : 12,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
+        }, {
           "codeName" : "druipart2",
           "contentHeight" : 400.0,
           "dRItemTag" : "DRItem2",
@@ -1833,6 +2182,9 @@
               "name" : "MPICKUPVIEW:AI_KNOWLEDGE_BASE",
               "realOpenMode" : "POPUPMODAL",
               "realTitle" : "知识库数据多项选择视图",
+              "getRealTitlePSLanguageRes" : {
+                "lanResTag" : "PAGE.TITLE.AI_KNOWLEDGE_BASE.MPICKUPVIEW"
+              },
               "getRefPSAppView" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_knowledge_base_m_pickup_view.json",
@@ -2604,6 +2956,32 @@
       },
       "infoGroupMode" : false,
       "showCaption" : false
+    }, {
+      "caption" : "模型标识",
+      "codeName" : "rerank_model_id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "rerank_model_id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL_ID",
+        "codeName" : "rerank_model_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "rerank_model_id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.AI_AGENT.ID"

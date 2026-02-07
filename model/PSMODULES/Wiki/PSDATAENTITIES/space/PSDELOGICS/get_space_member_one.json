@@ -7,7 +7,7 @@
   "name" : "获取知识空间成员",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -400,
+    "leftPos" : -480,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -28,6 +28,11 @@
     "leftPos" : 5,
     "logicNodeType" : "END",
     "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
     "topPos" : 104,
     "parallelOutput" : true
   }, {
@@ -272,6 +277,32 @@
         "id" : "RAWSFCODE3"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "IS_ARCHIVED",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "IS_DELETED",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[IS_DELETED] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "PREPAREPARAM_01"

@@ -90,6 +90,136 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
         },
         "getPSUIActionGroupDetails" : [ {
+          "caption" : "提示词智能生成",
+          "detailType" : "DEUIACTION",
+          "name" : "udbd1903",
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "提示词智能生成",
+            "codeName" : "prompt",
+            "frontProcessType" : "CHAT",
+            "fullCodeName" : "ai_agent_context_prompt",
+            "name" : "提示词填充",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "dyna_agent"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "SRFAIAPPENDCURDATA",
+              "name" : "SRFAIAPPENDCURDATA",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "AI_AGENT_CONTEXT",
+              "name" : "AI_AGENT_CONTEXT",
+              "value" : "id",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "srfenableaiagentchange",
+              "name" : "srfenableaiagentchange",
+              "value" : "false",
+              "rawValue" : true
+            }, {
+              "key" : "hidetopicsidebar",
+              "name" : "hidetopicsidebar",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "disabletopicstorage",
+              "name" : "disabletopicstorage",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "srfaiagent",
+              "name" : "srfaiagent",
+              "value" : "AgentCreator",
+              "rawValue" : true
+            }, {
+              "key" : "autoquestion",
+              "name" : "autoquestion",
+              "value" : "true",
+              "rawValue" : true
+            } ],
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "prompt",
+            "uIActionType" : "DEUIACTION",
+            "id" : "prompt@ai_agent_context"
+          },
+          "visibleScriptCode" : "data.flow_mode != 'DE'",
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "上下文模版智能生成",
+          "detailType" : "DEUIACTION",
+          "name" : "u947b483",
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "上下文模版智能生成",
+            "codeName" : "template",
+            "frontProcessType" : "CHAT",
+            "fullCodeName" : "ai_agent_context_template",
+            "name" : "模版填充",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "dyna_agent"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_context.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "SRFAIAPPENDCURDATA",
+              "name" : "SRFAIAPPENDCURDATA",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "AI_AGENT_CONTEXT",
+              "name" : "AI_AGENT_CONTEXT",
+              "value" : "id",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "srfenableaiagentchange",
+              "name" : "srfenableaiagentchange",
+              "value" : "false",
+              "rawValue" : true
+            }, {
+              "key" : "hidetopicsidebar",
+              "name" : "hidetopicsidebar",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "disabletopicstorage",
+              "name" : "disabletopicstorage",
+              "value" : "true",
+              "rawValue" : true
+            }, {
+              "key" : "srfaiagent",
+              "name" : "srfaiagent",
+              "value" : "print",
+              "rawValue" : true
+            }, {
+              "key" : "autoquestion",
+              "name" : "autoquestion",
+              "value" : "true",
+              "rawValue" : true
+            } ],
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "template",
+            "uIActionType" : "DEUIACTION",
+            "id" : "template@ai_agent_context"
+          },
+          "visibleScriptCode" : "data.flow_mode != 'DE'",
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
           "caption" : "查看完整配置",
           "detailType" : "DEUIACTION",
           "name" : "u3235882",
@@ -122,6 +252,7 @@
             "uIActionType" : "DEUIACTION",
             "id" : "open_info_view@ai_agent_context"
           },
+          "visibleScriptCode" : "data.flow_mode != 'DE'",
           "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
@@ -151,45 +282,6 @@
             "id" : "open_debug_view@ai_agent_context"
           },
           "addSeparator" : true,
-          "showCaption" : true,
-          "showIcon" : true
-        }, {
-          "buttonStyle" : "WARNING",
-          "caption" : "AI+",
-          "detailType" : "DEUIACTION",
-          "name" : "u07ab374",
-          "getPSSysImage" : {
-            "glyph" : "xf123@FontAwesome",
-            "cssClass" : "fa fa-star-half-full"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "buttonStyle" : "WARNING",
-            "caption" : "AI+",
-            "codeName" : "ai",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
-              "viewType" : "DELISTVIEW"
-            },
-            "frontProcessType" : "WIZARD",
-            "fullCodeName" : "ai_agent_assignment_ai",
-            "name" : "AI+",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
-            },
-            "getPSSysImage" : {
-              "glyph" : "xf123@FontAwesome",
-              "cssClass" : "fa fa-star-half-full"
-            },
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "ai",
-            "uIActionType" : "DEUIACTION",
-            "globalUIAction" : true,
-            "id" : "ai@ai_agent_assignment"
-          },
-          "addSeparator" : false,
           "showCaption" : true,
           "showIcon" : true
         } ],
@@ -418,11 +510,11 @@
         "codeName" : "name"
       }
     }, {
-      "id" : "ai_agent_name",
+      "id" : "scopes",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "AI_AGENT_NAME",
-        "codeName" : "ai_agent_name"
+        "name" : "SCOPES",
+        "codeName" : "scopes"
       }
     }, {
       "id" : "code_name",
@@ -430,6 +522,23 @@
       "getPSAppDEField" : {
         "name" : "CODE_NAME",
         "codeName" : "code_name"
+      }
+    }, {
+      "id" : "ai_agent_name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "AI_AGENT_NAME",
+        "codeName" : "ai_agent_name"
+      }
+    }, {
+      "id" : "flow_mode",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDV" : "DEFAULT",
+      "updateDV" : "DEFAULT",
+      "getPSAppDEField" : {
+        "name" : "FLOW_MODE",
+        "codeName" : "flow_mode"
       }
     }, {
       "id" : "description",
@@ -504,6 +613,7 @@
     }, {
       "id" : "generation_mode",
       "dataType" : 25,
+      "createDV" : "precise",
       "getPSAppDEField" : {
         "name" : "GENERATION_MODE",
         "codeName" : "generation_mode"
@@ -511,6 +621,7 @@
     }, {
       "id" : "temperature",
       "dataType" : 6,
+      "createDV" : "0.1",
       "getPSAppDEField" : {
         "name" : "TEMPERATURE",
         "codeName" : "temperature"
@@ -518,9 +629,58 @@
     }, {
       "id" : "top_p",
       "dataType" : 6,
+      "createDV" : "0.7",
       "getPSAppDEField" : {
         "name" : "TOP_P",
         "codeName" : "top_p"
+      }
+    }, {
+      "id" : "rerank",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "RERANK",
+        "codeName" : "rerank"
+      }
+    }, {
+      "id" : "rerank_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      }
+    }, {
+      "id" : "use_kg",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "USE_KG",
+        "codeName" : "use_kg"
+      }
+    }, {
+      "id" : "similarity_threshold",
+      "dataType" : 6,
+      "createDV" : "0.2",
+      "updateDV" : "0.2",
+      "getPSAppDEField" : {
+        "name" : "SIMILARITY_THRESHOLD",
+        "codeName" : "similarity_threshold"
+      }
+    }, {
+      "id" : "vector_similarity_weight",
+      "dataType" : 6,
+      "createDV" : "0.3",
+      "updateDV" : "0.3",
+      "getPSAppDEField" : {
+        "name" : "VECTOR_SIMILARITY_WEIGHT",
+        "codeName" : "vector_similarity_weight"
+      }
+    }, {
+      "id" : "top_k",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "TOP_K",
+        "codeName" : "top_k"
       }
     }, {
       "id" : "memory_mode",
@@ -535,13 +695,6 @@
       "getPSAppDEField" : {
         "name" : "MEMORY_MAX_TURNS",
         "codeName" : "memory_max_turns"
-      }
-    }, {
-      "id" : "scopes",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "SCOPES",
-        "codeName" : "scopes"
       }
     }, {
       "id" : "sequence",
@@ -607,6 +760,14 @@
       "getPSAppDEField" : {
         "name" : "AI_AGENT_ID",
         "codeName" : "ai_agent_id"
+      }
+    }, {
+      "id" : "rerank_model_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL_ID",
+        "codeName" : "rerank_model_id"
       }
     }, {
       "id" : "id",
@@ -679,6 +840,67 @@
           "allowEmpty" : false,
           "showCaption" : true
         }, {
+          "caption" : "业务范围",
+          "codeName" : "scopes",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scopes",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPES",
+            "codeName" : "scopes"
+          },
+          "getPSEditor" : {
+            "editorType" : "MDROPDOWNLIST",
+            "name" : "scopes",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__ai_agent_context_scopes.json"
+            },
+            "singleSelect" : false
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 8,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "代码标识",
+          "codeName" : "code_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 91,
+          "name" : "code_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CODE_NAME",
+            "codeName" : "code_name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "code_name"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 8,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
           "caption" : "智能体模板",
           "codeName" : "ai_agent_name",
           "dataType" : 25,
@@ -730,41 +952,41 @@
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colLG" : 8,
+            "colMD" : 8,
             "layout" : "TABLE_24COL"
           },
           "valueItemName" : "ai_agent_id",
           "allowEmpty" : true,
           "showCaption" : true
         }, {
-          "caption" : "代码标识",
-          "codeName" : "code_name",
+          "caption" : "智能体工作流模式",
+          "codeName" : "flow_mode",
+          "createDV" : "DEFAULT",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 91,
-          "name" : "code_name",
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "flow_mode",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "CODE_NAME",
-            "codeName" : "code_name"
+            "name" : "FLOW_MODE",
+            "codeName" : "flow_mode"
           },
           "getPSEditor" : {
-            "editorType" : "TEXTBOX",
-            "maxLength" : 100,
-            "name" : "code_name"
+            "editorType" : "HIDDEN",
+            "name" : "flow_mode"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false,
-          "showCaption" : true
+          "updateDV" : "DEFAULT",
+          "allowEmpty" : true,
+          "hidden" : true
         }, {
           "caption" : "描述",
           "codeName" : "description",
@@ -1260,6 +1482,7 @@
             }, {
               "caption" : "生成模式",
               "codeName" : "generation_mode",
+              "createDV" : "precise",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
@@ -1304,6 +1527,7 @@
               "getPSDEFormDetails" : [ {
                 "caption" : "模型随机性参数(Temperature)",
                 "codeName" : "temperature",
+                "createDV" : "0.1",
                 "dataType" : 6,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
@@ -1346,6 +1570,7 @@
               }, {
                 "caption" : "概率核采样(Top P)",
                 "codeName" : "top_p",
+                "createDV" : "0.7",
                 "dataType" : 6,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
@@ -1415,6 +1640,256 @@
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "召回策略",
+          "codeName" : "grouppanel4",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel4",
+          "getPSDEFormDetails" : [ {
+            "caption" : "召回重排",
+            "codeName" : "rerank",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK",
+              "codeName" : "rerank"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "rerank"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排模型",
+            "codeName" : "rerank_model",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank_model",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK_MODEL",
+              "codeName" : "rerank_model"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "rerank",
+                "logicType" : "SINGLE",
+                "name" : "rerank等于(=) 1",
+                "value" : "1"
+              } ],
+              "relatedDetailNames" : [ "rerank" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorParams" : {
+                "AC" : "TRUE",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
+              "name" : "rerank_model",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_model.json"
+              },
+              "getPSEditorItems" : [ {
+                "name" : "rerank_model_id"
+              } ],
+              "placeHolder" : "未指定时使用全局默认",
+              "valueItemName" : "rerank_model_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "valueItemName" : "rerank_model_id",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "使用知识图谱",
+            "codeName" : "use_kg",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "use_kg",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "USE_KG",
+              "codeName" : "use_kg"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "use_kg"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回相似度阈值",
+            "codeName" : "similarity_threshold",
+            "createDV" : "0.2",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "similarity_threshold",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SIMILARITY_THRESHOLD",
+              "codeName" : "similarity_threshold"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "similarity_threshold",
+              "precision" : 2,
+              "scale" : 2,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.2",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "createDV" : "0.3",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VECTOR_SIMILARITY_WEIGHT",
+              "codeName" : "vector_similarity_weight"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "vector_similarity_weight",
+              "precision" : 1,
+              "scale" : 1,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.3",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "最大召回数量",
+            "codeName" : "top_k",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "top_k",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOP_K",
+              "codeName" : "top_k"
+            },
+            "getPSEditor" : {
+              "editorType" : "NUMBER",
+              "name" : "top_k"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 8,
+            "childColMD" : 12,
             "columnCount" : 24,
             "layout" : "TABLE_24COL"
           },
@@ -1511,39 +1986,6 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel5",
           "getPSDEFormDetails" : [ {
-            "caption" : "业务范围",
-            "codeName" : "scopes",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
-            "name" : "scopes",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "SCOPES",
-              "codeName" : "scopes"
-            },
-            "getPSEditor" : {
-              "editorType" : "MDROPDOWNLIST",
-              "name" : "scopes",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__ai_agent_context_scopes.json"
-              },
-              "singleSelect" : false
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "needCodeListConfig" : true,
-            "showCaption" : true
-          }, {
             "caption" : "排序",
             "codeName" : "sequence",
             "dataType" : 9,
@@ -1564,8 +2006,8 @@
               "name" : "sequence"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
@@ -1592,8 +2034,8 @@
               "name" : "active"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 24,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
@@ -1619,8 +2061,8 @@
               "name" : "is_default"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 24,
+              "colLG" : 8,
+              "colMD" : 8,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : false,
@@ -1814,7 +2256,9 @@
         },
         "getPSLayoutPos" : {
           "colLG" : 22,
+          "colLGOffset" : 1,
           "colMD" : 22,
+          "colMDOffset" : 1,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
@@ -1838,6 +2282,33 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "ai_agent_id"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 22,
+          "colMD" : 22,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "模型标识",
+        "codeName" : "rerank_model_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "rerank_model_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "RERANK_MODEL_ID",
+          "codeName" : "rerank_model_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "rerank_model_id"
         },
         "getPSLayoutPos" : {
           "colLG" : 22,

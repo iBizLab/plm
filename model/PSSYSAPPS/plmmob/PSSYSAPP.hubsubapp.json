@@ -62,16 +62,16 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
     "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建子页面",
+      "caption" : "新建文档",
       "detailType" : "DEUIACTION",
-      "name" : "ubc2c5b2",
+      "name" : "u9385171",
       "getPSSysImage" : {
         "glyph" : "xf196@FontAwesome",
         "cssClass" : "fa fa-plus-square-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "NONE",
-        "caption" : "新建子页面",
+        "caption" : "新建文档",
         "codeName" : "mob_create_child_document",
         "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
@@ -119,16 +119,16 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
-      "caption" : "新建子分组",
+      "caption" : "新建分组",
       "detailType" : "DEUIACTION",
-      "name" : "ud0c64b7",
+      "name" : "ue47d4cb",
       "getPSSysImage" : {
-        "glyph" : "xf07c@FontAwesome",
-        "cssClass" : "fa fa-folder-open"
+        "glyph" : "xf115@FontAwesome",
+        "cssClass" : "fa fa-folder-open-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "NONE",
-        "caption" : "新建子分组",
+        "caption" : "新建分组",
         "codeName" : "mob_new_section",
         "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
@@ -173,8 +173,8 @@
           "rawValue" : false
         } ],
         "getPSSysImage" : {
-          "glyph" : "xf07c@FontAwesome",
-          "cssClass" : "fa fa-folder-open"
+          "glyph" : "xf115@FontAwesome",
+          "cssClass" : "fa fa-folder-open-o"
         },
         "uIActionMode" : "FRONT",
         "uIActionTag" : "mob_new_section",
@@ -187,7 +187,7 @@
     }, {
       "caption" : "收藏",
       "detailType" : "DEUIACTION",
-      "name" : "u4686fff",
+      "name" : "ud810304",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -225,14 +225,59 @@
         "id" : "mob_add_favorite@article_page"
       },
       "tooltip" : "收藏",
-      "visibleScriptCode" : "data.type==1",
+      "visibleScriptCode" : "data.type==1&&data.is_favorite==0",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "取消收藏",
+      "detailType" : "DEUIACTION",
+      "name" : "u3c97fab",
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "取消收藏",
+        "codeName" : "cancel_favorite",
+        "fullCodeName" : "article_page_cancel_favorite",
+        "name" : "取消收藏",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "un_favorite"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "owner_id",
+          "name" : "owner_id",
+          "value" : "article_page",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "tooltip" : "取消收藏",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "cancel_favorite",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "cancel_favorite@article_page"
+      },
+      "tooltip" : "取消收藏",
+      "visibleScriptCode" : "data.type==1&&data.is_favorite==1",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true
     }, {
       "caption" : "重命名",
       "detailType" : "DEUIACTION",
-      "name" : "uc720d73",
+      "name" : "u6e2f80f",
       "getPSSysImage" : {
         "glyph" : "xf0ec@FontAwesome",
         "cssClass" : "fa fa-exchange"
@@ -273,7 +318,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "uce48881",
+      "name" : "u2432a31",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -2014,7 +2059,7 @@
     "pluginCode" : "PERSON_SELECT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizPersonelSelect",
-    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-alpha.206",
+    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-alpha.321",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2027,7 +2072,7 @@
     "pluginCode" : "MOB_PERSONEL_SELECT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "MobPersonelSelect",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.102",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.356",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2054,7 +2099,7 @@
     "pluginCode" : "TAB_GROUP_SELECT",
     "pluginType" : "TREE_RENDER",
     "rTObjectName" : "TabGroupSelect",
-    "rTObjectRepo" : "@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.100",
+    "rTObjectRepo" : "@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.372",
     "refMode" : "CONTROL",
     "refTag" : "TREEVIEW",
     "runtimeObject" : true
@@ -2091,21 +2136,7 @@
     "pluginCode" : "MOB_MDCTRL_TREE",
     "pluginType" : "CUSTOM",
     "rTObjectName" : "IBizMDCtrlTreeControl",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.105",
-    "refMode" : "CONTROL",
-    "refTag" : "MOBMDCTRL",
-    "runtimeObject" : true
-  }, {
-    "name" : "多选视图右侧列表插件",
-    "getPSSysPFPlugin" : {
-      "pluginType" : "LIST_RENDER",
-      "pluginCode" : "SAMPLE_LIST",
-      "runtimeObject" : true
-    },
-    "pluginCode" : "SAMPLE_LIST",
-    "pluginType" : "LIST_RENDER",
-    "rTObjectName" : "IBizSampleList",
-    "rTObjectRepo" : "@ibiz-template-plugin/sample-list@0.1.3-alpha.39",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.351",
     "refMode" : "CONTROL",
     "refTag" : "MOBMDCTRL",
     "runtimeObject" : true
@@ -2133,7 +2164,7 @@
     "pluginCode" : "DROPDOWN_SELECT_DATERANGE",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "DropdownSelectDaterange",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-dropdown-select-daterange@0.0.3-alpha.142",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-dropdown-select-daterange@0.0.3-alpha.330",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2151,16 +2182,16 @@
     "refTag" : "BACKEND",
     "runtimeObject" : true
   }, {
-    "name" : "直接内容（活动）",
+    "name" : "移动端vditor编辑器",
     "getPSSysPFPlugin" : {
       "pluginType" : "EDITOR_CUSTOMSTYLE",
-      "pluginCode" : "RAW_ACTIVITY",
+      "pluginCode" : "MOB_VDITOR",
       "runtimeObject" : true
     },
-    "pluginCode" : "RAW_ACTIVITY",
+    "pluginCode" : "MOB_VDITOR",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
-    "rTObjectName" : "IBizRawActivity",
-    "rTObjectRepo" : "@ibiz-template-plm/raw-activity@0.0.3-dev.1",
+    "rTObjectName" : "IBizMobHtmlComment",
+    "rTObjectRepo" : "@ibiz-template-plm/mob-html-vditor@0.0.3-alpha.415",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2173,7 +2204,7 @@
     "pluginCode" : "MOB_PERSONAL_PICKER_TREE",
     "pluginType" : "TREE_RENDER",
     "rTObjectName" : "IBizMobPersonalPickerTree",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.166",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.350",
     "refMode" : "CONTROL",
     "refTag" : "TREEVIEW",
     "runtimeObject" : true
@@ -2245,7 +2276,7 @@
     "pluginCode" : "MOB_COMMENT_ITEM",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "MobCommentItem",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-comment-item@0.0.3-alpha.166",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-comment-item@0.0.3-alpha.412",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2258,20 +2289,7 @@
     "pluginCode" : "MOBCOMMENT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizMobHtmlComment",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.197",
-    "refMode" : "EDITORSTYPE",
-    "runtimeObject" : true
-  }, {
-    "name" : "移动端锚点富文本",
-    "getPSSysPFPlugin" : {
-      "pluginType" : "EDITOR_CUSTOMSTYLE",
-      "pluginCode" : "MOB_ANCHO_HTML",
-      "runtimeObject" : true
-    },
-    "pluginCode" : "MOB_ANCHO_HTML",
-    "pluginType" : "EDITOR_CUSTOMSTYLE",
-    "rTObjectName" : "MobAnchoHtml",
-    "rTObjectRepo" : "@ibiz-template-plm/mob-ancho-html@0.0.3-alpha.103",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.356",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2312,7 +2330,7 @@
     "pluginCode" : "COMMENT_ITEM",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizCommentItemRawItem",
-    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.287",
+    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.411",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2325,7 +2343,7 @@
     "pluginCode" : "ANCHO_HTML",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "AnchoHtml",
-    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.216",
+    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.410",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -2366,7 +2384,7 @@
     "pluginCode" : "MOB_PROJECT_ATTRIBUTES",
     "pluginType" : "EDITFORM_RENDER",
     "rTObjectName" : "IBizMobProjectAttributes",
-    "rTObjectRepo" : "@ibiz-template-plmmob/mob-project-attributes@0.0.3-alpha.56",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-project-attributes@0.0.3-alpha.414",
     "refMode" : "CONTROL",
     "refTag" : "FORM",
     "runtimeObject" : true
@@ -2374,7 +2392,9 @@
   "getUserParam" : {
     "globalConfig.view.mobShowPresetBack" : "false",
     "DefaultOSSCat" : "plm",
-    "globalConfig.form.mobShowUnderLine" : "false"
+    "globalConfig.mob.toolbarGroupShowMode" : "DEFAULT",
+    "globalConfig.form.mobShowUnderLine" : "false",
+    "globalConfig.mob.mobShowBackTop" : "true"
   },
   "id" : "PSSYSAPPS/plmmob/PSSYSAPP.json"
 }

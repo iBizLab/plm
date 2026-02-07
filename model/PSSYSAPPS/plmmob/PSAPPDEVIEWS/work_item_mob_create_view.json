@@ -429,11 +429,24 @@
           },
           "getPSEditor" : {
             "editorParams" : {
+              "MAXHEIGHT" : "125",
+              "LINKVIEWID" : "recent_mob_redirect_view",
               "MOBSHOWUNDERLINE" : "false",
-              "MOBSHOWEDITORBORDER" : "true"
+              "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+              "enableEdit" : "true",
+              "MOBSHOWEDITORBORDER" : "true",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
             },
+            "editorStyle" : "MOB_VDITOR",
             "editorType" : "MOBHTMLTEXT",
             "name" : "description",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "MOB_VDITOR",
+              "runtimeObject" : true
+            },
             "placeHolder" : "输入描述"
           },
           "getPSLayoutPos" : {
@@ -993,7 +1006,6 @@
                           } ]
                         }, {
                           "actionGroupExtractMode" : "ITEMS",
-                          "caption" : "按钮组",
                           "itemStyle" : "DEFAULT",
                           "itemType" : "BUTTONLIST",
                           "name" : "buttonlist",
@@ -1106,7 +1118,8 @@
                               "showIcon" : true
                             } ],
                             "uniqueTag" : "attachment__A258b62f7649916a65c"
-                          }
+                          },
+                          "userTag" : "link"
                         } ]
                       } ]
                     } ],
@@ -1767,7 +1780,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "checkid值为空(Nil)"
             } ],
             "relatedDetailNames" : [ "checkid" ],
             "notMode" : false
@@ -2060,40 +2074,48 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
             }, {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
@@ -2140,40 +2162,48 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
             }, {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
@@ -2220,40 +2250,48 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
             }, {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_epic",
                 "value" : "scrum_epic"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_feature",
                 "value" : "scrum_feature"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_story",
                 "value" : "scrum_story"
               } ],
               "notMode" : false
@@ -2300,20 +2338,24 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_bug",
                 "value" : "scrum_bug"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) kanban_bug",
                 "value" : "kanban_bug"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) waterfall_bug",
                 "value" : "waterfall_bug"
               } ],
               "notMode" : false
@@ -2360,20 +2402,24 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_bug",
                 "value" : "scrum_bug"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) kanban_bug",
                 "value" : "kanban_bug"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) waterfall_bug",
                 "value" : "waterfall_bug"
               } ],
               "notMode" : false
@@ -2420,20 +2466,24 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_task",
                 "value" : "scrum_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) kanban_task",
                 "value" : "kanban_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) waterfall_task",
                 "value" : "waterfall_task"
               } ],
               "notMode" : false
@@ -2477,6 +2527,7 @@
             "editorParams" : {
               "multiple" : "true",
               "DROPDOWNVIEW" : "TRUE",
+              "SHOWNAMETEXT" : "false",
               "AC" : "TRUE",
               "MOBFORMITEMALIGNMODE" : "right",
               "PICKUPVIEW" : "TRUE"

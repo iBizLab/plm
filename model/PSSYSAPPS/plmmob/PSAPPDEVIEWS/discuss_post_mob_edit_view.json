@@ -33,8 +33,6 @@
   },
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
-      "id" : "field_textbox1"
-    }, {
       "id" : "field_textbox"
     }, {
       "id" : "attention_count",
@@ -45,7 +43,7 @@
     } ],
     "codeName" : "usr1018539994",
     "controlType" : "VIEWLAYOUTPANEL",
-    "hookEventNames" : [ "ONBLUR", "ONCLICK" ],
+    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "FLEX",
     "logicName" : "mob_edit_view实体移动端编辑视图布局面板",
     "name" : "layoutpanel",
@@ -54,26 +52,46 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
     },
     "getPSControlLogics" : [ {
-      "eventNames" : "onBlur",
-      "itemName" : "SEND_COMMENT_CONTAINER",
-      "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
-      "name" : "leave_hidden",
-      "scriptCode" : "view.layoutPanel.panelItems.send_comment_container.state.visible = false;"
-    }, {
       "eventNames" : "onClick",
       "itemName" : "FIELD_TEXTBOX",
       "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
+      "logicType" : "APPDEUIACTION",
       "name" : "logic1",
-      "scriptCode" : "console.log(\"聚焦事件view\", view)\r\nview.layoutPanel.panelItems.send_comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.comment_container.state.visible=false;\r\nview.layoutPanel.panelItems.field_textbox.editor.focus();"
-    }, {
-      "eventNames" : "onBlur",
-      "itemName" : "FIELD_TEXTBOX1",
-      "logicTag" : "layoutpanel",
-      "logicType" : "SCRIPT",
-      "name" : "onBlur",
-      "scriptCode" : "view.layoutPanel.panelItems.comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.send_comment_container.state.visible=false;"
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开评论列表",
+        "codeName" : "open_comment_list",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+          "viewType" : "DEMOBMDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "test_case_open_comment_list",
+        "name" : "打开评论列表",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PRINCIPAL_ID",
+          "name" : "PRINCIPAL_ID",
+          "value" : "principal_id",
+          "rawValue" : false
+        }, {
+          "key" : "PRINCIPAL_TYPE",
+          "name" : "PRINCIPAL_TYPE",
+          "value" : "principal_type",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_comment_list",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "reloadData" : true,
+        "id" : "open_comment_list@test_case"
+      }
     } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
@@ -225,110 +243,6 @@
       } ],
       "predefinedType" : "Content"
     }, {
-      "caption" : "发送评论容器",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "CONTAINER",
-      "name" : "send_comment_container",
-      "getPSLayout" : {
-        "align" : "flex-end",
-        "dir" : "row",
-        "layout" : "FLEX",
-        "vAlign" : "center"
-      },
-      "getPSLayoutPos" : {
-        "grow" : -1,
-        "layout" : "FLEX",
-        "shrink" : 0
-      },
-      "getPSPanelItemGroupLogics" : [ {
-        "groupOP" : "AND",
-        "logicCat" : "PANELVISIBLE",
-        "logicType" : "GROUP",
-        "getPSPanelItemLogics" : [ {
-          "condOp" : "EQ",
-          "logicType" : "SINGLE",
-          "name" : "逻辑项"
-        } ],
-        "notMode" : false
-      } ],
-      "getPSPanelItems" : [ {
-        "caption" : "文本框",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "FIELD",
-        "name" : "field_textbox1",
-        "getPSEditor" : {
-          "editorParams" : {
-            "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
-            "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
-            "USERURL" : "`projects/${context.project}/project_members/fetch_default`",
-            "QUOTEURL" : "`recents/fetch_recent_access`"
-          },
-          "editorStyle" : "COMMENT",
-          "editorType" : "MOBHTMLTEXT",
-          "name" : "field_textbox1",
-          "getPSSysPFPlugin" : {
-            "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "MOBCOMMENT",
-            "runtimeObject" : true
-          },
-          "placeHolder" : "发表评论",
-          "predefinedType" : "FIELD_TEXTBOX"
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX",
-          "widthMode" : "FULL"
-        }
-      }, {
-        "actionType" : "UIACTION",
-        "buttonStyle" : "DEFAULT",
-        "buttonWidth" : 75.0,
-        "caption" : "发送",
-        "contentWidth" : 75.0,
-        "itemStyle" : "DEFAULT",
-        "itemType" : "BUTTON",
-        "name" : "button_calluilogic_send",
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "layoutpanel_button_calluilogic_send"
-        },
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX",
-          "width" : 75,
-          "widthMode" : "PX"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEDATA",
-          "caption" : "发送",
-          "codeName" : "panel_usr1018539994_button_calluilogic_send_click",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "discuss_post_panel_usr1018539994_button_calluilogic_send_click",
-          "name" : "发送",
-          "getPSAppDEUILogic" : {
-            "modelref" : true,
-            "id" : "send_comment_mob"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
-          },
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "panel_usr1018539994_button_calluilogic_send_click",
-          "uIActionType" : "DEUIACTION",
-          "uILogicAttachMode" : "REPLACE",
-          "uILogicType" : "DELOGIC",
-          "id" : "panel_usr1018539994_button_calluilogic_send_click@discuss_post"
-        },
-        "tooltip" : "发送",
-        "uIActionTarget" : "SINGLEDATA",
-        "width" : 75.0,
-        "showCaption" : true
-      } ],
-      "getPSSysCss" : {
-        "cssName" : "comment_style_list"
-      }
-    }, {
       "caption" : "容器",
       "contentHeight" : 50.0,
       "height" : 50.0,
@@ -474,7 +388,7 @@
               "layout" : "FLEX"
             },
             "getPSPanelItems" : [ {
-              "actionType" : "NONE",
+              "actionType" : "UIACTION",
               "buttonStyle" : "DEFAULT",
               "buttonWidth" : 50.0,
               "caption" : "发送",
@@ -482,6 +396,10 @@
               "itemStyle" : "DEFAULT",
               "itemType" : "BUTTON",
               "name" : "button_calluilogic",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "layoutpanel_button_calluilogic"
+              },
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "layout" : "FLEX",
@@ -491,8 +409,43 @@
               "getPSSysImage" : {
                 "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729250039255\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"5411\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"20\" height=\"20\"><path d=\"M892 201.6c4.4 0 8 3.6 8 8v534.5c0 4.4-3.6 8-8 8H488.9c-32.3 0-63.1 12.1-86.8 34l-85.5 79-3-13.1c-13.3-58.8-64.6-99.8-124.9-99.8H134c-4.4 0-8-3.6-8-8V209.6c0-4.4 3.6-8 8-8h758m0-60H134c-37.6 0-68 30.4-68 68v534.5c0 37.6 30.4 68 68 68h54.7c31.8 0 59.3 22 66.3 53l6.5 29c5.6 24.7 27.2 39.5 49.6 39.5 12 0 24.1-4.2 34.1-13.5l97.5-90c12.6-11.6 29-18 46.1-18H892c37.6 0 68-30.4 68-68V209.6c0-37.5-30.5-68-68-68z\" p-id=\"5412\" fill=\"#bfbfbf\"></path><path d=\"M314 392.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5 57.5-25.8 57.5-57.5-25.7-57.5-57.5-57.5zM523.4 396.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5S581 486 581 454.2s-25.8-57.5-57.6-57.5zM732.8 396.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5c31.8 0 57.5-25.8 57.5-57.5s-25.7-57.5-57.5-57.5z\" p-id=\"5413\" fill=\"#bfbfbf\"></path></svg>"
               },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEDATA",
+                "caption" : "打开评论列表",
+                "codeName" : "open_comment_list",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+                  "viewType" : "DEMOBMDVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "test_case_open_comment_list",
+                "name" : "打开评论列表",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                },
+                "getPSNavigateContexts" : [ {
+                  "key" : "PRINCIPAL_ID",
+                  "name" : "PRINCIPAL_ID",
+                  "value" : "principal_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "PRINCIPAL_TYPE",
+                  "name" : "PRINCIPAL_TYPE",
+                  "value" : "principal_type",
+                  "rawValue" : false
+                } ],
+                "refreshMode" : 1,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "open_comment_list",
+                "uIActionType" : "DEUIACTION",
+                "globalUIAction" : true,
+                "reloadData" : true,
+                "id" : "open_comment_list@test_case"
+              },
               "tooltip" : "发送",
-              "uIActionTarget" : "NONE",
+              "uIActionTarget" : "SINGLEDATA",
               "width" : 50.0
             } ]
           } ]
@@ -1248,8 +1201,23 @@
                     "codeName" : "content"
                   },
                   "getPSEditor" : {
+                    "editorParams" : {
+                      "enableEdit" : "true",
+                      "LINKVIEWID" : "recent_mob_redirect_view",
+                      "MAXHEIGHT" : "360",
+                      "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                      "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                      "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+                      "QUOTEURL" : "`recents/fetch_recent_access`"
+                    },
+                    "editorStyle" : "MOB_VDITOR",
                     "editorType" : "MOBHTMLTEXT",
                     "name" : "content",
+                    "getPSSysPFPlugin" : {
+                      "pluginType" : "EDITOR_CUSTOMSTYLE",
+                      "pluginCode" : "MOB_VDITOR",
+                      "runtimeObject" : true
+                    },
                     "placeHolder" : "暂无内容"
                   },
                   "getPSLayoutPos" : {
@@ -1809,7 +1777,6 @@
                                   } ]
                                 }, {
                                   "actionGroupExtractMode" : "ITEMS",
-                                  "caption" : "按钮组",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "BUTTONLIST",
                                   "name" : "buttonlist",
@@ -1922,7 +1889,8 @@
                                       "showIcon" : true
                                     } ],
                                     "uniqueTag" : "attachment__A258b62f7649916a65c"
-                                  }
+                                  },
+                                  "userTag" : "link"
                                 } ]
                               } ]
                             } ],
@@ -3163,11 +3131,25 @@
                                 "grow" : -1,
                                 "layout" : "FLEX"
                               },
+                              "getPSPanelItemGroupLogics" : [ {
+                                "groupOP" : "AND",
+                                "logicCat" : "PANELVISIBLE",
+                                "logicType" : "GROUP",
+                                "getPSPanelItemLogics" : [ {
+                                  "condOp" : "NOTEQ",
+                                  "dstModelField" : "CONTENT",
+                                  "logicType" : "SINGLE",
+                                  "name" : "逻辑项",
+                                  "value" : "<p><del>该评论已删除</del></p>"
+                                } ],
+                                "relatedItemNames" : [ "content" ],
+                                "notMode" : false
+                              } ],
                               "getPSSysImage" : {
                                 "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728544519535\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1477\" width=\"32\" height=\"32\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M647.72092 65.871345c46.236694 0 85.804413 33.00354 94.206004 78.336l0.244522 1.37731L757.844834 237.536062H866.307992v3.992203h60.881092c17.63855 0 31.937622 14.299072 31.937622 31.937622 0 17.63855-14.299072 31.937622-31.937622 31.937622h-60.881092v493.037037c0 89.494207-71.823719 162.213177-160.973598 163.658355L702.62768 962.120858H321.37232c-89.494207 0-162.213177-71.823719-163.658355-160.973599L157.692008 798.440546V305.403509H96.810916c-17.63855 0-31.937622-14.299072-31.937622-31.937622 0-17.63855 14.299072-31.937622 31.937622-31.937622h60.881092v-3.992203h108.46216l15.674386-91.951407c7.768827-45.578979 46.952296-79.038628 93.051259-79.703329l1.399267-0.009981h271.44184zM794.448343 309.395712H229.551657v489.044834c0 49.702924 39.489871 90.180865 88.804554 91.771758l1.497076 0.036928L321.37232 890.261209h381.25536c50.203945 0 90.997271-40.291306 91.808686-90.302628L794.448343 798.440546V309.395712z m-442.136452 95.812865c17.63855 0 31.937622 14.299072 31.937622 31.937622v298.417154c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V437.146199c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 66.869396c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 0c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m-23.967189-342.331384H376.27908c-15.411899 0-28.601138 11.001513-31.401669 26.112l-0.08184 0.459103L330.95161 237.536062h362.095782l-13.842963-81.21837c-2.563992-15.040624-15.389942-26.122979-30.557318-26.558129l-0.459103-0.00998-0.467088-0.002994z\" fill=\"#bfbfbf\" p-id=\"1478\"></path></svg>"
                               },
                               "getPSUIAction" : {
-                                "actionTarget" : "SINGLEKEY",
+                                "actionTarget" : "SINGLEDATA",
                                 "caption" : "删除评论",
                                 "codeName" : "mob_del_comment",
                                 "confirmMsg" : "确认删除该评论？",
@@ -3202,7 +3184,7 @@
                                 "id" : "mob_del_comment@discuss_post"
                               },
                               "tooltip" : "按钮",
-                              "uIActionTarget" : "SINGLEKEY"
+                              "uIActionTarget" : "SINGLEDATA"
                             } ]
                           }, {
                             "caption" : "文本(动态)",
@@ -5215,10 +5197,6 @@
                         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_reply.json"
                       },
                       "getPSControlParam" : {
-                        "ctrlParams" : {
-                          "PLACEMENT" : "left",
-                          "DIRECTION" : "vertical"
-                        },
                         "id" : "RIGHTTOOLBAR"
                       },
                       "getPSDEToolbarItems" : [ {

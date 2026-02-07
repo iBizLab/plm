@@ -233,9 +233,18 @@
       "itemStyle" : "DEFAULT",
       "itemType" : "RAWITEM",
       "name" : "viewmsg_pos",
+      "getPSControlLogics" : [ {
+        "itemName" : "VIEWMSG_POS",
+        "logicTag" : "layoutpanel",
+        "logicType" : "SCRIPT",
+        "name" : "logic1",
+        "scriptCode" : "!!view.common_list_isshow",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSLayoutPos" : {
         "grow" : -1,
-        "layout" : "FLEX"
+        "layout" : "FLEX",
+        "shrink" : 0
       },
       "getPSRawItem" : {
         "name" : "viewmsg_pos",
@@ -703,6 +712,84 @@
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "APPDEUILOGIC",
+      "name" : "LOGIC_VIEWMSG_POS",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "archived_or_deleted_visible"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPDEUIACTION",
+      "name" : "MARKER",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "选择事项",
+        "codeName" : "open_recent_pickup_view",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_mob_pickup_view_comment.json",
+          "viewType" : "DEMOBPICKUPVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "comment_open_recent_pickup_view",
+        "name" : "打开最近访问选择视图（移动端）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_recent_pickup_view",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "id" : "open_recent_pickup_view@comment"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPDEUIACTION",
+      "name" : "MENTION",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "打开人员选择视图（移动端）",
+        "codeName" : "open_mob_choose_assignee",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_pickup_view.json",
+          "viewType" : "DEMOBPICKUPVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "work_item_open_mob_choose_assignee",
+        "name" : "打开人员选择视图（移动端）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project",
+          "rawValue" : false
+        } ],
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_mob_choose_assignee",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_mob_choose_assignee@work_item"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      }
+    }, {
+      "eventNames" : "onLoadSuccess",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "APPDEUILOGIC",
       "name" : "FILL_ATT_COM_COUNT",
       "getPSAppDEUILogic" : {
         "modelref" : true,
@@ -913,6 +1000,25 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "mob_estimated_update",
+        "name" : "预估工时表单项刷新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "remaining_workload"
+        }, {
+          "name" : "workload_schedule"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
+        "codeName" : "check_palntime",
+        "name" : "校验计划时间",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "plan_at"
+        } ],
+        "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
+        "customCode" : true
+      }, {
         "codeName" : "mob_remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
@@ -929,25 +1035,6 @@
         } ],
         "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
         "customCode" : true
-      }, {
-        "codeName" : "check_palntime",
-        "name" : "校验计划时间",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "plan_at"
-        } ],
-        "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
-        "customCode" : true
-      }, {
-        "codeName" : "mob_estimated_update",
-        "name" : "预估工时表单项刷新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "remaining_workload"
-        }, {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-        "customCode" : true,
-        "showBusyIndicator" : false
       } ],
       "getPSDEFormItems" : [ {
         "id" : "srfupdatedate",
@@ -1198,6 +1285,9 @@
                 "codeName" : "title"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "rows" : "1"
+                },
                 "editorType" : "MOBTEXTAREA",
                 "maxLength" : 500,
                 "name" : "title",
@@ -1522,8 +1612,23 @@
                     "codeName" : "description"
                   },
                   "getPSEditor" : {
+                    "editorParams" : {
+                      "enableEdit" : "true",
+                      "LINKVIEWID" : "recent_mob_redirect_view",
+                      "MAXHEIGHT" : "360",
+                      "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                      "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                      "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+                      "QUOTEURL" : "`recents/fetch_recent_access`"
+                    },
+                    "editorStyle" : "MOB_VDITOR",
                     "editorType" : "MOBHTMLTEXT",
                     "name" : "description",
+                    "getPSSysPFPlugin" : {
+                      "pluginType" : "EDITOR_CUSTOMSTYLE",
+                      "pluginCode" : "MOB_VDITOR",
+                      "runtimeObject" : true
+                    },
                     "placeHolder" : "暂无内容"
                   },
                   "getPSLayoutPos" : {
@@ -2095,7 +2200,6 @@
                                 } ]
                               }, {
                                 "actionGroupExtractMode" : "ITEMS",
-                                "caption" : "按钮组",
                                 "itemStyle" : "DEFAULT",
                                 "itemType" : "BUTTONLIST",
                                 "name" : "buttonlist",
@@ -2208,7 +2312,8 @@
                                     "showIcon" : true
                                   } ],
                                   "uniqueTag" : "attachment__A258b62f7649916a65c"
-                                }
+                                },
+                                "userTag" : "link"
                               } ]
                             } ]
                           } ],
@@ -3116,10 +3221,9 @@
                   "name" : "grouppanel6",
                   "getPSDEFormDetails" : [ {
                     "actionType" : "UIACTION",
-                    "buttonStyle" : "STYLE2",
                     "caption" : "添加预估工时",
                     "codeName" : "button4",
-                    "detailStyle" : "STYLE2",
+                    "detailStyle" : "DEFAULT",
                     "detailType" : "BUTTON",
                     "name" : "button4",
                     "getPSAppViewUIAction" : {
@@ -3314,10 +3418,9 @@
                   "name" : "grouppanel9",
                   "getPSDEFormDetails" : [ {
                     "actionType" : "UIACTION",
-                    "buttonStyle" : "STYLE2",
                     "caption" : "添加实际工时",
                     "codeName" : "button1",
-                    "detailStyle" : "STYLE2",
+                    "detailStyle" : "DEFAULT",
                     "detailType" : "BUTTON",
                     "name" : "button1",
                     "getPSAppViewUIAction" : {
@@ -3861,7 +3964,8 @@
                             "getPSLayout" : {
                               "align" : "flex-start",
                               "dir" : "row",
-                              "layout" : "FLEX"
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
                             },
                             "getPSLayoutPos" : {
                               "basis" : 100,
@@ -3921,6 +4025,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -4170,7 +4277,7 @@
                         "controlType" : "PANEL",
                         "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSPANELS/usr0927084292.json",
                         "layoutMode" : "TABLE_24COL",
-                        "logicName" : "mob_customer_list_列表项面板",
+                        "logicName" : "mob_customer_choose_list_列表项面板",
                         "getPSAppDataEntity" : {
                           "modelref" : true,
                           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
@@ -4868,6 +4975,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "3d0f07e9ca11cb13399e5046b54470a6",
@@ -5784,6 +5894,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -6714,6 +6827,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "9d2b8d134db04f6196e2038505b79ca1",
@@ -7641,6 +7757,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -8583,6 +8702,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "b3dbc84c276d0ee1f560bb54d4812351",
@@ -9504,6 +9626,9 @@
                               },
                               "showCaption" : true
                             } ],
+                            "getPSSysCss" : {
+                              "cssName" : "mob-relation-container-style"
+                            },
                             "width" : 100.0
                           }, {
                             "caption" : "容器",
@@ -10583,6 +10708,9 @@
                         "showCaption" : true,
                         "showIcon" : true
                       } ],
+                      "getPSSysCss" : {
+                        "cssName" : "mob-toolbar"
+                      },
                       "toolbarStyle" : "MOBNAVRIGHTMENU",
                       "xDataControlName" : "mdctrl",
                       "modelid" : "59e7534324cf35f8691bc56ed45ee50c",

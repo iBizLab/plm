@@ -179,14 +179,14 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "compute",
-      "name" : "compute_temperature_top_p",
-      "scriptCode" : "const modeConfigs = {\n  precise: { temperature: 0.1, top_p: 0.7 },\n  balanced: { temperature: 1, top_p: 0.7 },\n  creative: { temperature: 1, top_p: 0.8 }\n};\n\nconst config = modeConfigs[data.generation_mode];\nif (config) {\n  data.temperature = config.temperature;\n  data.top_p = config.top_p;\n}",
-      "customCode" : true
-    }, {
       "codeName" : "compute_generation_mode",
       "name" : "compute_generation_mode",
       "scriptCode" : "data.generation_mode='custom';",
+      "customCode" : true
+    }, {
+      "codeName" : "compute",
+      "name" : "compute_temperature_top_p",
+      "scriptCode" : "const modeConfigs = {\n  precise: { temperature: 0.1, top_p: 0.7 },\n  balanced: { temperature: 1, top_p: 0.7 },\n  creative: { temperature: 1, top_p: 0.8 }\n};\n\nconst config = modeConfigs[data.generation_mode];\nif (config) {\n  data.temperature = config.temperature;\n  data.top_p = config.top_p;\n}",
       "customCode" : true
     } ],
     "getPSDEFormItems" : [ {
@@ -344,6 +344,61 @@
       "getPSAppDEField" : {
         "name" : "TOP_P",
         "codeName" : "top_p"
+      }
+    }, {
+      "id" : "kb_mode",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "KB_MODE",
+        "codeName" : "kb_mode"
+      }
+    }, {
+      "id" : "rerank",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "RERANK",
+        "codeName" : "rerank"
+      }
+    }, {
+      "id" : "rerank_model",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "RERANK_MODEL",
+        "codeName" : "rerank_model"
+      }
+    }, {
+      "id" : "use_kg",
+      "dataType" : 9,
+      "createDV" : "0",
+      "getPSAppDEField" : {
+        "name" : "USE_KG",
+        "codeName" : "use_kg"
+      }
+    }, {
+      "id" : "similarity_threshold",
+      "dataType" : 6,
+      "createDV" : "0.2",
+      "updateDV" : "0.2",
+      "getPSAppDEField" : {
+        "name" : "SIMILARITY_THRESHOLD",
+        "codeName" : "similarity_threshold"
+      }
+    }, {
+      "id" : "vector_similarity_weight",
+      "dataType" : 6,
+      "createDV" : "0.3",
+      "updateDV" : "0.3",
+      "getPSAppDEField" : {
+        "name" : "VECTOR_SIMILARITY_WEIGHT",
+        "codeName" : "vector_similarity_weight"
+      }
+    }, {
+      "id" : "top_k",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "TOP_K",
+        "codeName" : "top_k"
       }
     }, {
       "id" : "memory_mode",
@@ -997,65 +1052,6 @@
           "infoGroupMode" : true,
           "showCaption" : true
         }, {
-          "caption" : "引用知识库",
-          "codeName" : "grouppanel4",
-          "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel4",
-          "getPSDEFormDetails" : [ {
-            "codeName" : "ai_agent_knowledge_rels",
-            "contentType" : "REPEATER",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "MDCTRL",
-            "name" : "ai_agent_knowledge_rels",
-            "getPSDEFormDetails" : [ {
-              "caption" : "知识库名称",
-              "codeName" : "ai_knowledge_base_name",
-              "dataType" : 25,
-              "detailStyle" : "DEFAULT",
-              "detailType" : "FORMITEM",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "labelPos" : "NONE",
-              "labelWidth" : 0,
-              "name" : "ai_knowledge_base_name",
-              "noPrivDisplayMode" : 1,
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "ai_knowledge_base_name",
-                "enableLinkView" : false
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "allowEmpty" : true,
-              "repeatContent" : true
-            } ],
-            "getPSLayout" : {
-              "childColMD" : 24,
-              "columnCount" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "infoGroupMode" : true,
-            "showCaption" : true
-          } ],
-          "getPSLayout" : {
-            "childColMD" : 24,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "infoGroupMode" : true,
-          "showCaption" : true
-        }, {
           "caption" : "大模型",
           "codeName" : "grouppanel1",
           "detailStyle" : "DEFAULT",
@@ -1145,7 +1141,7 @@
                 "dataType" : 6,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
-                "enableCond" : 3,
+                "enableCond" : 0,
                 "ignoreInput" : 0,
                 "labelPos" : "LEFT",
                 "labelWidth" : 204,
@@ -1187,7 +1183,7 @@
                 "dataType" : 6,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
-                "enableCond" : 3,
+                "enableCond" : 0,
                 "ignoreInput" : 0,
                 "labelPos" : "LEFT",
                 "labelWidth" : 204,
@@ -1250,6 +1246,321 @@
             },
             "infoGroupMode" : true,
             "showCaption" : false
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "知识库召回策略",
+          "codeName" : "grouppanel11",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel11",
+          "getPSDEFormDetails" : [ {
+            "caption" : "知识库模式",
+            "codeName" : "kb_mode",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 3,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "kb_mode",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "KB_MODE",
+              "codeName" : "kb_mode"
+            },
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "kb_mode",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_mode.json"
+              },
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "convertToCodeItemText" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排",
+            "codeName" : "rerank",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK",
+              "codeName" : "rerank"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "rerank"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回重排模型",
+            "codeName" : "rerank_model",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "rerank_model",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "RERANK_MODEL",
+              "codeName" : "rerank_model"
+            },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "EQ",
+                "dEFDName" : "rerank",
+                "logicType" : "SINGLE",
+                "name" : "rerank等于(=) 1",
+                "value" : "1"
+              } ],
+              "relatedDetailNames" : [ "rerank" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "rerank_model",
+              "placeHolder" : "未指定时使用全局默认",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "使用知识图谱",
+            "codeName" : "use_kg",
+            "createDV" : "0",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "use_kg",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "USE_KG",
+              "codeName" : "use_kg"
+            },
+            "getPSEditor" : {
+              "editorType" : "SWITCH",
+              "name" : "use_kg"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "召回相似度阈值",
+            "codeName" : "similarity_threshold",
+            "createDV" : "0.2",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "similarity_threshold",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SIMILARITY_THRESHOLD",
+              "codeName" : "similarity_threshold"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "similarity_threshold",
+              "precision" : 2,
+              "scale" : 2,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.2",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "向量相似度权重",
+            "codeName" : "vector_similarity_weight",
+            "createDV" : "0.3",
+            "dataType" : 6,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "itemWidth" : 430.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vector_similarity_weight",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VECTOR_SIMILARITY_WEIGHT",
+              "codeName" : "vector_similarity_weight"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "maxvalue" : "1",
+                "stepvalue" : "0.01"
+              },
+              "editorType" : "SLIDER",
+              "editorWidth" : 300.0,
+              "maxValue" : 1.0,
+              "name" : "vector_similarity_weight",
+              "precision" : 1,
+              "scale" : 1,
+              "stepValue" : 0.01
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "0.3",
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "最大召回数量",
+            "codeName" : "top_k",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "top_k",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TOP_K",
+              "codeName" : "top_k"
+            },
+            "getPSEditor" : {
+              "editorType" : "NUMBER",
+              "name" : "top_k"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 8,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 8,
+            "childColMD" : 12,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "引用知识库",
+          "codeName" : "grouppanel4",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel4",
+          "getPSDEFormDetails" : [ {
+            "codeName" : "ai_agent_knowledge_rels",
+            "contentType" : "REPEATER",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "MDCTRL",
+            "name" : "ai_agent_knowledge_rels",
+            "getPSDEFormDetails" : [ {
+              "caption" : "知识库名称",
+              "codeName" : "ai_knowledge_base_name",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "ai_knowledge_base_name",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "ai_knowledge_base_name",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : true,
+            "showCaption" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,

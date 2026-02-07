@@ -6,7 +6,7 @@
   "caption" : "评论搜索",
   "codeName" : "search_comment_advanced_search_grid_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_advanced_search_grid_view.json",
-  "gridRowActiveMode" : 1,
+  "gridRowActiveMode" : 0,
   "name" : "search_commentadvanced_search_grid_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -22,20 +22,6 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
-    "eventNames" : "onActive",
-    "logicTrigger" : "CTRLEVENT",
-    "logicType" : "APPDEUILOGIC",
-    "name" : "OPENDATA",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "open_main_view"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
-    },
-    "getPSViewCtrlName" : "grid"
-  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
@@ -61,6 +47,30 @@
       "batchAddOnly" : false,
       "enableBatchAdd" : false,
       "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_comment_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
     }
   } ],
   "getPSAppViewRefs" : [ {
@@ -205,7 +215,7 @@
       "cLConvertMode" : "NONE",
       "caption" : "内容",
       "getCellPSSysCss" : {
-        "cssName" : "normal-rich-text"
+        "cssName" : "normal-rich-linktext"
       },
       "codeName" : "content",
       "columnType" : "DEFGRIDCOLUMN",
@@ -216,6 +226,27 @@
       "getPSAppDEField" : {
         "name" : "CONTENT",
         "codeName" : "content"
+      },
+      "getPSDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开主视图",
+        "codeName" : "open_main_view_pop_up",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "search_comment_open_main_view_pop_up",
+        "name" : "打开主视图（模式弹出）",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "open_main_view"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_main_view_pop_up",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "id" : "open_main_view_pop_up@search_comment"
       },
       "width" : 200,
       "widthUnit" : "STAR",

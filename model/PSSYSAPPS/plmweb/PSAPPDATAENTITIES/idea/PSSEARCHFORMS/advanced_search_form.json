@@ -20,11 +20,11 @@
     "id" : "queryconds",
     "dataType" : 25
   }, {
-    "id" : "n_product_id_eq",
+    "id" : "n_product_name_eq",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "PRODUCT_ID",
-      "codeName" : "product_id"
+      "name" : "PRODUCT_NAME",
+      "codeName" : "product_name"
     }
   }, {
     "id" : "n_priority_eq",
@@ -63,6 +63,10 @@
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
     }
+  }, {
+    "id" : "n_product_id_eq",
+    "hidden" : true,
+    "dataType" : 25
   } ],
   "getPSDEFormPages" : [ {
     "getCapPSLanguageRes" : {
@@ -150,10 +154,10 @@
         "showCaption" : false
       }, {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.IDEA.ADVANCED_SEARCH_FORM.FORMITEM.N_PRODUCT_ID_EQ"
+          "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_PRODUCT_NAME_EQ"
         },
         "caption" : "产品名称",
-        "codeName" : "n_product_id_eq",
+        "codeName" : "n_product_name_eq",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -161,31 +165,64 @@
         "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "n_product_id_eq",
+        "name" : "n_product_name_eq",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
-          "name" : "PRODUCT_ID",
-          "codeName" : "product_id"
+          "name" : "PRODUCT_NAME",
+          "codeName" : "product_name"
         },
         "getPSEditor" : {
           "editorParams" : {
-            "overflowMode" : "ellipsis"
+            "SRFNAVPARAM.n_is_deleted_eq" : "0",
+            "SRFNAVPARAM.n_is_archived_eq" : "0",
+            "overflowMode" : "ellipsis",
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "PICKUPVIEW" : "FALSE"
           },
-          "editorType" : "DROPDOWNLIST",
-          "name" : "n_product_id_eq",
-          "getPSAppCodeList" : {
+          "editorType" : "PICKEREX_TRIGGER",
+          "handlerType" : "PickupText",
+          "name" : "n_product_name_eq",
+          "getPSAppDEACMode" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_list.json"
+            "id" : "Default"
           },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          },
+          "getPSEditorItems" : [ {
+            "name" : "n_product_id_eq"
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "n_is_deleted_eq",
+            "name" : "n_is_deleted_eq",
+            "value" : "0",
+            "rawValue" : true
+          }, {
+            "key" : "n_is_archived_eq",
+            "name" : "n_is_archived_eq",
+            "value" : "0",
+            "rawValue" : true
+          } ],
           "placeHolder" : "选择产品",
+          "valueItemName" : "n_product_id_eq",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "valueItemName" : "n_product_id_eq",
         "allowEmpty" : true,
-        "needCodeListConfig" : true,
         "showCaption" : true
       }, {
         "getCapPSLanguageRes" : {
@@ -417,6 +454,27 @@
       },
       "infoGroupMode" : false,
       "showCaption" : true
+    }, {
+      "codeName" : "n_product_id_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "n_product_id_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "n_product_id_eq"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,
