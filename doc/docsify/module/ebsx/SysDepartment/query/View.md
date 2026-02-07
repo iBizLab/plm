@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -85,12 +86,67 @@ FROM `` t1
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.BCODE,
+t1.CREATEDATE,
+t1.DDDEPTID,
+t1.DEPTCODE,
+t1.DEPTFULLNAME,
+t1.DEPTID,
+t1.DEPTLEADER,
+t1.DEPTLEADERID,
+t1.DEPTLEVEL,
+t1.DEPTNAME,
+t1.DOMAINS,
+t1.ENABLE,
+t1.ISVALID,
+t1.LEADERID,
+t1.LEADERNAME,
+t1.ORGID,
+t1.ORGNAME,
+t1.PDEPTID,
+t1.PDEPTNAME,
+t1.RESERVER,
+t1.RESERVER10,
+t1.RESERVER11,
+t1.RESERVER12,
+t1.RESERVER13,
+t1.RESERVER14,
+t1.RESERVER15,
+t1.RESERVER16,
+t1.RESERVER17,
+t1.RESERVER18,
+t1.RESERVER19,
+t1.RESERVER2,
+t1.RESERVER20,
+t1.RESERVER3,
+t1.RESERVER4,
+t1.RESERVER5,
+t1.RESERVER6,
+t1.RESERVER7,
+t1.RESERVER8,
+t1.RESERVER9,
+t1.SHORTNAME,
+t1.SHOWORDER,
+t1.UPDATEDATE,
+t1.WXWORKDEPTID
+FROM  t1 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

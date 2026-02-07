@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -46,15 +47,59 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DOCUMENT_ID`,
 t11.`NAME` AS `DOCUMENT_NAME`,
+t11.`TYPE` AS `DOCUMENT_TYPE`,
 t1.`ID`,
+t11.`KB_ID`,
 t1.`KEYWORDS`,
 t1.`KEY_QUESTIONS`,
 t1.`NAME`,
+t1.`PATH`,
+t1.`PID`,
 t1.`POSITIONS`,
+t1.`SEQUENCE`,
+t1.`SOURCE_COUNT`,
+t1.`SOURCE_INDICES`,
+t1.`TAGS`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_KB_CHUNK` t1 
 LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
+
+
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ACTIVE,
+t1.CONTENT,
+t1.CONTENT_PREVIEW,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DOCUMENT_ID,
+t11.NAME AS DOCUMENT_NAME,
+t11.TYPE AS DOCUMENT_TYPE,
+t1.ID,
+t11.KB_ID,
+t1.KEYWORDS,
+t1.KEY_QUESTIONS,
+t1.NAME,
+t1.PATH,
+t1.PID,
+t1.POSITIONS,
+t1.SEQUENCE,
+t1.SOURCE_COUNT,
+t1.SOURCE_INDICES,
+t1.TAGS,
+t1.TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM AI_KB_CHUNK t1 
+LEFT JOIN AI_KB_DOCUMENT t11 ON t1.DOCUMENT_ID = t11.ID 
 
 
 ```
@@ -67,6 +112,7 @@ LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID`
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

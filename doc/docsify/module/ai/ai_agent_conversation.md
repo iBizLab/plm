@@ -4,10 +4,7 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
-|智能体业务上下文标识|AI_AGENT_CONTEXT_ID|外键值|100|是||
-|智能体业务上下文名称|AI_AGENT_CONTEXT_NAME|外键值文本|200|是||
-|智能体标识|AI_AGENT_ID|外键值附加数据|100|是||
-|智能体名称|AI_AGENT_NAME|外键值附加数据|200|是||
+|智能体业务上下文标识|AI_AGENT_CONTEXT_ID|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
@@ -33,13 +30,6 @@
 | -------- |---------- |------------|----- |
 |[DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID](der/DER1N_AI_AGENT_MESSAGE_AI_AGENT_CONVERSATION_CONVERSATION_ID)|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|1:N关系||
 
-
-</el-tab-pane>
-<el-tab-pane label="从关系" name="minor">
-
-|  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
-| -------- |---------- |-----------|----- |
-|[DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID](der/DER1N_AI_AGENT_CONVERSATION_AI_AGENT_CONTEXT_AI_AGENT_CONTEXT_ID)|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|1:N关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -131,9 +121,6 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_AI_AGENT_CONTEXT_ID_EQ|智能体业务上下文标识|EQ||
-|N_AI_AGENT_CONTEXT_NAME_EQ|智能体业务上下文名称|EQ||
-|N_AI_AGENT_CONTEXT_NAME_LIKE|智能体业务上下文名称|LIKE||
-|N_AI_AGENT_ID_EQ|智能体标识|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_SESSION_ID_EQ|外部会话ID|EQ||

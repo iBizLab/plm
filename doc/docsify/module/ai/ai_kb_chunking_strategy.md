@@ -4,15 +4,33 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
-|块重叠|CHUNK_OVERLAP|整型||否||
-|块大小|CHUNK_SIZE|整型||否||
+|自动关键字|AUTO_KEYWORDS|数值||是||
+|自动问题|AUTO_QUESTIONS|数值||是||
+|片段展开提示词|CHUNK_EXTRACTION_PROMPT|长文本，没有长度限制|1048576|是||
+|片段展开子提示词|CHUNK_EXTRACTION_SUB_PNOMPT|长文本，没有长度限制|1048576|是||
+|块重叠|CHUNK_OVERLAP|整型||是||
+|块重叠|CHUNK_OVERLAP_NUM|整型||是||
+|块大小|CHUNK_SIZE|整型||是||
+|分块最大token数|CHUNK_TOKEN_NUM|数值||是||
+|分隔符|DELIMITER|文本，可指定长度|100|是||
+|消除歧义提示词|DISAMBIGUATION_PROMPT|长文本，没有长度限制|1048576|是||
+|消除歧义子提示词|FIELDDISAMBIGUATION_SUB_PROMPT|长文本，没有长度限制|1048576|是||
+|图检索增强|GRAPHRAG|一对一动态对象|1048576|是||
+|Excel转HTML|HTML4EXCEL|是否逻辑||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|保留分隔符|KEEP_SEPARATOR|是否逻辑||否||
-|单文档最大块数|MAX_CHUNK_COUNT_PER_DOC|整型||否||
+|忽略文件图片|IGNORE_PARSING_IMAGE|是否逻辑||是||
+|忽略文件链接引用|IGNORE_PARSING_OSS_LINK|是否逻辑||是||
+|保留分隔符|KEEP_SEPARATOR|是否逻辑||是||
+|布局识别方式|LAYOUT_RECOGNIZE|文本，可指定长度|100|是||
+|单文档最大块数|MAX_CHUNK_COUNT_PER_DOC|整型||是||
 |名称|NAME|文本，可指定长度|200|是||
 |文本预处理规则|PRE_PROCESS_RULES|[多项选择(文本值)](index/dictionary_index#text_clean_config "通用文本清洗配置")|2000|是||
+|RAPTOR设置|RAPTOR|一对一动态对象|1048576|是||
 |脱敏规则|REDACTION_RULES|一对多动态对象|1048576|是||
+|关系消歧提示词|RELATION_DISAMBIGUATION_PROMPT|长文本，没有长度限制|1048576|是||
+|关系消歧子提示词|RELATION_DISAMBIGUATION_SUB_PROMPT|长文本，没有长度限制|1048576|是||
 |分隔符|SEPARATOR|文本，可指定长度|100|是||
+|任务页面大小|TASK_PAGE_SIZE|数值||是||
 
 
 ## 关系

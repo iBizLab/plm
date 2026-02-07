@@ -45,6 +45,7 @@
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
+|异步空间文档解析处理|Async_space_parse|用户自定义|默认|不支持||||
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#ai_kb_document_sync_Create)|||
 |Get|Get|内置方法|默认|不支持||||
@@ -52,6 +53,7 @@
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#ai_kb_document_sync_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|空间文档解析处理|space_parse|[实体处理逻辑](module/ai/ai_kb_document_sync/logic/space_parse "空间文档解析处理")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
@@ -62,6 +64,7 @@
 |[同步删除文档和分块](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)|sync_remove_doc_chunk|无|||
 |[更新空间执行计划](module/ai/ai_kb_document_sync/logic/update_space_scheduled)|update_space_scheduled|属性逻辑|||
 |[生成空间执行计划](module/ai/ai_kb_document_sync/logic/generate_space_scheduled)|generate_space_scheduled|无|||
+|[空间文档解析处理](module/ai/ai_kb_document_sync/logic/space_parse)|space_parse|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -115,6 +118,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 空间文档解析处理 | space_parsing | 解析 |单项数据（主键）|<details><summary>后台调用</summary>[Async_space_parse](#行为)||
 | 删除文档同步数据 | remove_doc_snyc | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑

@@ -54,7 +54,7 @@ DEACTION1 --> END1
 
 
 
-*- N/A*
+返回 `Default(传入变量)`
 
 
 

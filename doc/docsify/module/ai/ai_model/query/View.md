@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -65,12 +66,43 @@ LEFT JOIN `AI_CREDENTIAL` t11 ON t1.`AI_CREDENTIAL_ID` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ACTIVE,
+t1.AI_CREDENTIAL_ID,
+t11.NAME AS AI_CREDENTIAL_NAME,
+t1.API_BASE_URL,
+t1.CODE_NAME,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DESC_OSS_IMAGE,
+t1.EXTRA_PARAMS,
+t1.ID,
+t1.MAX_CONTEXT_TOKENS,
+t1.MAX_OUTPUT_TOKENS,
+t1.MODEL_CAPABILITY,
+t1.MODEL_CATEGORY,
+t1.NAME,
+t1.PROVIDER,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM AI_MODEL t1 
+LEFT JOIN AI_CREDENTIAL t11 ON t1.AI_CREDENTIAL_ID = t11.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

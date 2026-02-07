@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -35,15 +36,54 @@
 
 ```sql
 SELECT
+t1.`AUTO_KEYWORDS`,
+t1.`AUTO_QUESTIONS`,
 t1.`CHUNK_OVERLAP`,
+t1.`CHUNK_OVERLAP_NUM`,
 t1.`CHUNK_SIZE`,
+t1.`CHUNK_TOKEN_NUM`,
+t1.`DELIMITER`,
+t1.`HTML4EXCEL`,
 t1.`ID`,
+t1.`IGNORE_PARSING_IMAGE`,
+t1.`IGNORE_PARSING_OSS_LINK`,
 t1.`KEEP_SEPARATOR`,
+t1.`LAYOUT_RECOGNIZE`,
 t1.`MAX_CHUNK_COUNT_PER_DOC`,
 t1.`NAME`,
 t1.`PRE_PROCESS_RULES`,
-t1.`SEPARATOR`
+t1.`SEPARATOR`,
+t1.`TASK_PAGE_SIZE`
 FROM `` t1 
+
+
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.AUTO_KEYWORDS,
+t1.AUTO_QUESTIONS,
+t1.CHUNK_OVERLAP,
+t1.CHUNK_OVERLAP_NUM,
+t1.CHUNK_SIZE,
+t1.CHUNK_TOKEN_NUM,
+t1.DELIMITER,
+t1.HTML4EXCEL,
+t1.ID,
+t1.IGNORE_PARSING_IMAGE,
+t1.IGNORE_PARSING_OSS_LINK,
+t1.KEEP_SEPARATOR,
+t1.LAYOUT_RECOGNIZE,
+t1.MAX_CHUNK_COUNT_PER_DOC,
+t1.NAME,
+t1.PRE_PROCESS_RULES,
+t1.SEPARATOR,
+t1.TASK_PAGE_SIZE
+FROM  t1 
 
 
 ```
@@ -56,6 +96,7 @@ FROM `` t1
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -60,12 +61,30 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ICON,
+t1.ID,
+t1.NAME,
+t1.PARENT_ID,
+t1.PUBLISH_NAME,
+t1.SPACE_ID
+FROM PAGE t1 
+
+WHERE ( t1.IS_DELETED = 0  AND  t1.IS_PUBLISHED = 1 )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -399,7 +399,7 @@
 |[过滤器默认查询(my_filter)](module/Wiki/article_page/dataset/my_filter)|my_filter|数据查询|否|||
 |[无父页面(no_parent_page)](module/Wiki/article_page/dataset/no_parent_page)|no_parent_page|数据查询|否|||
 |[正常(normal)](module/Wiki/article_page/dataset/normal)|normal|数据查询|否|||
-|[空间页面(移动端)(normal_tree_page)](module/Wiki/article_page/dataset/normal_tree_page)|normal_tree_page|数据查询|否|[TreeGridDEDataSetRuntime](index/plugin_index#UsrSFPlugin0407757309)||
+|[空间页面(移动端)(normal_tree_page)](module/Wiki/article_page/dataset/normal_tree_page)|normal_tree_page|数据查询|否|[TreeGridDEDataSetRuntime](index/plugin_index#UsrSFPlugin0407757309)|TreeGridDEDataSetRuntime|
 |[仅页面(only_page)](module/Wiki/article_page/dataset/only_page)|only_page|数据查询|否||只查询页面。不包含分组及草稿|
 |[reader](module/Wiki/article_page/dataset/reader)|reader|数据查询|否|||
 |[共享页面(shared_page)](module/Wiki/article_page/dataset/shared_page)|shared_page|数据查询|否|||
@@ -530,6 +530,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 关闭 | toolbar_model_show_view_pop_up_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 上传图标 | upload_icon | 上传图标 |单项数据|<details><summary>打开视图或向导（模态）</summary>[上传图标](app/view/article_page_upload_icon_option_view)</details>||
 | 移动端重命名 | mob_rename | 重命名 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_rename_view)</details>||
 | 页面导入 | page_upload | 导入页面 |无数据|<details><summary>打开数据导入视图</summary>[多类型页面数据导入]()</details>||
@@ -541,6 +542,7 @@
 | 重命名 | toolbar_tree_exp_view_node5_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 新建子分组 | toolbar_tree_exp_view_node3_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 | 打开界面编辑页（移动端） | mob_open_page_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_document_edit_view)</details>||
+| 打开主视图（模态弹出） | open_main_view | 打开主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_model_show_view_pop_up)</details>||
 | 切换草稿 | draft | 草稿 |无数据|用户自定义||
 | 草稿箱(移动端) | mob_draft | 草稿箱 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[草稿箱](app/view/article_page_mob_draft_list_view)</details>||
 | 保存命名版本 | set_name_version | 保存命名版本 |单项数据|<details><summary>后台调用</summary>[name_version_save](#行为)||
@@ -570,7 +572,7 @@
 | 重命名 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 页面共享设置（移动端） | mob_shared_setting | 页面共享 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_option_view)</details>||
 | 恢复历史版本并通知刷新 | recover_version_refresh | 恢复历史版本并通知刷新 |单项数据（主键）|用户自定义||
-| 移动端新建子分组 | mob_new_section | 新建子分组 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_add_childgroup_view)</details>||
+| 移动端新建子分组 | mob_new_section | 新建分组 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_add_childgroup_view)</details>||
 | 新建子分组 | toolbar_tree_exp_view_node1_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 关闭共享（移动端） | closed_shared_mob | 关闭共享 |单项数据（主键）|<details><summary>后台调用</summary>[closed_shared](#行为)||
@@ -579,7 +581,7 @@
 | 重命名 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 快速新建页面后续操作 | after_create_page | 新建文档 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_after_new_edit_view)</details>||
-| 移动端新建子页面（文档） | mob_create_child_document | 新建子页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_create_view)</details>||
+| 移动端新建子页面（文档） | mob_create_child_document | 新建文档 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_create_view)</details>||
 | 从模板新建（打开从模板新建视图） | get_form_stencil | 从模版新建 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_create_form_stencil_edit_view)</details>||
 | 关闭 | toolbar_model_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 打开评论列表（移动端） | mob_open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
@@ -598,6 +600,7 @@
 | 打印交谈资料_页面 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
 | 重命名 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 打开页面信息 | open_page_info | 打开页面信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面信息](app/view/article_page_page_detail_edit_view)</details>||
+| 评论 | toolbar_model_show_view_pop_up_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 查看空间成员 | open_space_member | 空间成员 |无数据|用户自定义||
 | 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 快速新建文档 | quick_create_page_document | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_qucik_create_view)</details>||

@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -26,6 +27,10 @@
 
 * `全部数据`
 
+> [!ATTENTION|label:存在长文本属性]
+>
+> `META_DATA(元数据)`
+
 
 
 
@@ -35,20 +40,74 @@
 
 ```sql
 SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
 t1.`CHUNK_METHOD`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
 t1.`ID`,
+t1.`IS_DELETED`,
+t1.`META_DATA`,
 t1.`NAME`,
 t1.`PARSER_CONFIG`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
 t1.`SOURCE_ID`,
-t11.`NAME` AS `SOURCE_NAME`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
 FROM `AI_KNOWLEDGE_BASE` t1 
-LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID` 
+
+
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CHAT_MODEL,
+t1.CHAT_MODEL_ID,
+t1.CHUNK_METHOD,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DESCRIPTION,
+t1.EMBEDDING_MODEL,
+t1.EMBEDDING_MODEL_ID,
+t1.ENABLE,
+t1.GUIDANCE_PROMPT,
+t1.ID,
+t1.IS_DELETED,
+t1.META_DATA,
+t1.NAME,
+t1.PARSER_CONFIG,
+t1.RERANK,
+t1.RERANK_MODEL,
+t1.RERANK_MODEL_ID,
+t1.SIMILARITY_THRESHOLD,
+t1.SOURCE_ID,
+t1.SOURCE_NAME,
+t1.TAG_SETS,
+t1.TOP_K,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME,
+t1.USE_KG,
+t1.VECTOR_SIMILARITY_WEIGHT,
+t1.VISIBILITY
+FROM AI_KNOWLEDGE_BASE t1 
 
 
 ```
@@ -61,6 +120,7 @@ LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID`
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

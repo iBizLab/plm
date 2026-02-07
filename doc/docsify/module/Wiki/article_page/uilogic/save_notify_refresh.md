@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./save_notify_refresh#begin {开始}]]
-state "页面信息" as PREPAREJSPARAM1  [[$./save_notify_refresh#preparejsparam1 {页面信息}]]
-state "通知刷新" as RAWJSCODE1  [[$./save_notify_refresh#rawjscode1 {通知刷新}]]
-state "退出" as DEUIACTION2  [[$./save_notify_refresh#deuiaction2 {退出}]]
 state "设置发布状态到当前视图" as PREPAREJSPARAM2  [[$./save_notify_refresh#preparejsparam2 {设置发布状态到当前视图}]]
-state "发布页面" as DEACTION1  [[$./save_notify_refresh#deaction1 {发布页面}]]
+state "页面信息" as PREPAREJSPARAM1  [[$./save_notify_refresh#preparejsparam1 {页面信息}]]
 state "结束" as END1 <<end>> [[$./save_notify_refresh#end1 {结束}]]
+state "通知刷新" as RAWJSCODE1  [[$./save_notify_refresh#rawjscode1 {通知刷新}]]
 state "注入脚本代码" as RAWJSCODE2  [[$./save_notify_refresh#rawjscode2 {注入脚本代码}]]
 state "设置表单是否变更" as RAWJSCODE3  [[$./save_notify_refresh#rawjscode3 {设置表单是否变更}]]
+state "发布页面" as DEACTION1  [[$./save_notify_refresh#deaction1 {发布页面}]]
+state "退出" as DEUIACTION2  [[$./save_notify_refresh#deuiaction2 {退出}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -65,15 +65,15 @@ const page_info = uiLogic.page_info;
 
 console.info(page_info);
 
-if(page_info.format_type === "HTML"  &&  page_info.html_description !== undefined){
-    page_info.content = page_info.html_description;
-}
-if(page_info.format_type === "MD"  &&  page_info.md_description !== undefined){
-    page_info.content = page_info.md_description;
-}
-if(page_info.format_type === "EXCEL" &&  page_info.excel_description !== undefined){
-    page_info.content = page_info.excel_description;
-}
+// if(page_info.format_type === "HTML"  &&  page_info.html_description !== undefined){
+//     page_info.content = page_info.html_description;
+// }
+// if(page_info.format_type === "MD"  &&  page_info.md_description !== undefined){
+//     page_info.content = page_info.md_description;
+// }
+// if(page_info.format_type === "EXCEL" &&  page_info.excel_description !== undefined){
+//     page_info.content = page_info.excel_description;
+// }
 
 
 
@@ -134,6 +134,6 @@ ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|表单|form|部件对象||
 |当前视图|view|当前视图对象||
+|表单|form|部件对象||
 |页面信息|page_info|数据对象||

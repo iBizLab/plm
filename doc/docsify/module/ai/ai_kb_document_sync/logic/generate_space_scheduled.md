@@ -37,7 +37,7 @@ RAWSFCODE_01 --> DEACTION_01
 
 1. 将`SYNC_SPACE` 设置给  `extend_schedule(task).TASK_TYPE(任务类型)`
 2. 将`AI_KB_DOCUMENT_SYNC` 设置给  `extend_schedule(task).PRINCIPAL_TYPE(任务主体类型)`
-3. 将`知识库文档同步` 设置给  `extend_schedule(task).PRINCIPAL_NAME(任务主体名称)`
+3. 将`Default(传入变量).name(名称)` 设置给  `extend_schedule(task).PRINCIPAL_NAME(任务主体名称)`
 4. 将`Default(传入变量).ID(标识)` 设置给  `extend_schedule(task).PRINCIPAL_ID(任务主体标识)`
 
 #### 构造定时器策略 :id=RAWSFCODE_01<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
@@ -51,12 +51,16 @@ def _default = logic.param('default').getReal()
 def _extend_schedule = logic.param('extend_schedule').getReal()
 def sync_frequency = _default.sync_frequency
 def frequencyMap = [
-    'daily': '0 0 * * *',
-    'weekly': '0 0 * * 1', 
-    'monthly': '0 0 1 * *'
+    'daily': '0 0 0 * * ?',
+    'weekly': '0 0 0 ? * MON', 
+    'monthly': '0 0 0 1 * ?'
 ]
 _extend_schedule.timer_policy = frequencyMap[sync_frequency]
 _extend_schedule.name="["+_default.name+"]空间执行计划"
+
+_extend_schedule.payload = groovy.json.JsonOutput.toJson([
+    id: _default.id
+])
 ```
 
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>

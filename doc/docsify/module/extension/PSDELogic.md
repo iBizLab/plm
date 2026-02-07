@@ -38,9 +38,9 @@
 |附加次序|ORDERVALUE|整型||是||
 |实体|PSDEID|文本，可指定长度|100|否||
 |实体处理逻辑标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICID|全局唯一标识，文本类型，用户不可见|100|否||
-|逻辑连接|PSDELOGICLINKS|一对多关系数据集合|1048576|是||
+|逻辑连接|PSDELOGICLINKS|一对多动态对象|1048576|是||
 |规则名称|PSDELOGICNAME|文本，可指定长度|200|否||
-|逻辑节点|PSDELOGICNODES|一对多关系数据集合|1048576|是||
+|逻辑节点|PSDELOGICNODES|一对多动态对象|1048576|是||
 |逻辑参数|PSDELOGICPARAMS|一对多动态对象|1048576|是||
 |实体|PSDENAME|文本，可指定长度|100|是||
 |成功率|SUCCESS_PER|数值||是||

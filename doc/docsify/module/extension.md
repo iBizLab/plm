@@ -8,6 +8,7 @@
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
 |[关于(ABOUT)](module/extension/ABOUT)|ABOUT|主实体|无存储||否|否|自控制|否||
 |[主状态值代理(MSVALUEPROXY)](module/extension/MSValueProxy)|MSValueProxy|主实体|无存储||否|否|自控制|否|用于主状态流转设计工具代理业务数据。|
+|[MCP服务标记代理(MCPSERVERTAGPROXY)](module/extension/McpServerTagProxy)|McpServerTagProxy|主实体|无存储||否|否|自控制|否||
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|PSAppPortlet|主实体|无存储||否|否|自控制|否|应用门户部件|
 |[核心产品(PSCOREPRD)](module/extension/PSCorePrd)|PSCorePrd|主实体|无存储||否|否|自控制|否|管理查看应用市场产品|
 |[核心产品分类(PSCOREPRDCAT)](module/extension/PSCorePrdCat)|PSCorePrdCat|主实体|无存储||否|否|自控制|否|管理查看应用市场产品目录|

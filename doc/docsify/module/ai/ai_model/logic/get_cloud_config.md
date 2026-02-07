@@ -21,8 +21,11 @@ state "准备多模态类型" as PREPAREPARAM_07  [[$./get_cloud_config#preparep
 state "发布oss配置代码" as RAWSFCODE_01  [[$./get_cloud_config#rawsfcode_01 {"发布oss配置代码"}]]
 state "准备参数" as PREPAREPARAM_06  [[$./get_cloud_config#prepareparam_06 {"准备参数"}]]
 state "设置禁用" as PREPAREPARAM_01  [[$./get_cloud_config#prepareparam_01 {"设置禁用"}]]
+state "准备embedding参数" as PREPAREPARAM_08  [[$./get_cloud_config#prepareparam_08 {"准备embedding参数"}]]
+state "写入embeddingtoken" as RAWSFCODE_02  [[$./get_cloud_config#rawsfcode_02 {"写入embeddingtoken"}]]
 state "设置tools" as PREPAREPARAM_04  [[$./get_cloud_config#prepareparam_04 {"设置tools"}]]
 state "设置aitype" as PREPAREPARAM_05  [[$./get_cloud_config#prepareparam_05 {"设置aitype"}]]
+state "准备rerank参数" as PREPAREPARAM_09  [[$./get_cloud_config#prepareparam_09 {"准备rerank参数"}]]
 state "设置think" as PREPAREPARAM_03  [[$./get_cloud_config#prepareparam_03 {"设置think"}]]
 
 
@@ -32,8 +35,11 @@ Begin --> PREPAREPARAM_05 : [[$./get_cloud_config#begin-prepareparam_05{连接�
 Begin --> PREPAREPARAM_06 : [[$./get_cloud_config#begin-prepareparam_06{连接名称} 连接名称]]
 Begin --> PREPAREPARAM_07 : [[$./get_cloud_config#begin-prepareparam_07{连接名称} 连接名称]]
 PREPAREPARAM_07 --> RAWSFCODE_01
+Begin --> PREPAREPARAM_08 : [[$./get_cloud_config#begin-prepareparam_08{embedding类} embedding类]]
+PREPAREPARAM_08 --> RAWSFCODE_02
 Begin --> PREPAREPARAM_01 : [[$./get_cloud_config#begin-prepareparam_01{禁用时} 禁用时]]
 Begin --> PREPAREPARAM_02 : [[$./get_cloud_config#begin-prepareparam_02{连接名称} 连接名称]]
+Begin --> PREPAREPARAM_09 : [[$./get_cloud_config#begin-prepareparam_09{连接名称} 连接名称]]
 Begin --> END_01
 
 
@@ -73,7 +79,46 @@ Begin --> END_01
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
 
 ```groovy
-net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig("cloud-oss","aiimage:\n  agent: ${sys.getDeploySystemId()}-ai--vl");
+net.ibizsys.central.cloud.core.spring.rt.ServiceHub serviceHub = net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance();
+
+        org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
+        String strConfig = serviceHub.getConfig("cloud-oss");
+        java.util.Map config = (!org.springframework.util.StringUtils.hasLength(strConfig)) ? new java.util.HashMap() : yaml.loadAs(strConfig, java.util.Map.class);
+
+        java.util.Map aiimage = config.getOrDefault("aiimage",new java.util.HashMap());
+        aiimage.put("agent","${sys.getDeploySystemId()}-ai--vl".toString());
+        config.put("aiimage",aiimage);
+
+
+        if(!config.containsKey("filepath")) {
+            String filepath = "/app/file/oss/file";
+            String allinone = serviceHub.getConfig("servicehub-allinone");
+            if(org.springframework.util.StringUtils.hasLength(allinone)){
+                java.util.Map allinoneConfig = yaml.loadAs(allinone, java.util.Map.class);
+                if(allinoneConfig.containsKey("systemsettings")) {
+                    java.util.Map systemsettings  = allinoneConfig.getOrDefault("systemsettings",new java.util.HashMap());
+                    if(systemsettings.containsKey("cloudossutil")) {
+                        java.util.Map cloudossutil  = systemsettings.getOrDefault("cloudossutil",new java.util.HashMap());
+                        if(cloudossutil.containsKey("filepath")) {
+                            filepath = cloudossutil.remove("filepath");
+                            if (cloudossutil.size()==0) {
+                                systemsettings.remove("cloudossutil");
+                            }
+                            serviceHub.publishConfig("servicehub-allinone",allinoneConfig)
+                        }
+                    }
+                }
+            }
+            config.put("filepath", filepath)
+        }
+        if(!config.containsKey("libreoffice")) {
+            java.util.Map libreoffice = new java.util.HashMap()
+            libreoffice.put("path","/usr/bin/soffice")
+            config.put("libreoffice",libreoffice)
+        }
+
+
+        serviceHub.publishConfig("cloud-oss", config);
 ```
 
 #### 准备参数 :id=PREPAREPARAM_06<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
@@ -88,6 +133,27 @@ net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(
 
 1. 将`1` 设置给  `map.disabled`
 
+#### 准备embedding参数 :id=PREPAREPARAM_08<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).CODE_NAME(模型标识)` 设置给  `map.embeddingmodel`
+2. 将`Default(传入变量).API_BASE_URL(模型 API 地址)` 设置给  `map.embeddingurl`
+
+#### 写入embeddingtoken :id=RAWSFCODE_02<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def _map = logic.param('map').getReal()
+def key = _default.get("id")
+def token = "credential-${sys.getDeploySystemId()}-ai--${key}".toString()
+_map.set("embeddingtoken",token)
+```
+
 #### 设置tools :id=PREPAREPARAM_04<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -100,6 +166,13 @@ net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(
 
 
 1. 将`deepseek` 设置给  `map.aitype`
+
+#### 准备rerank参数 :id=PREPAREPARAM_09<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).CODE_NAME(模型标识)` 设置给  `map.textrerankmodel`
+2. 将`Default(传入变量).API_BASE_URL(模型 API 地址)` 设置给  `map.textrerankurl`
 
 #### 设置think :id=PREPAREPARAM_03<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -124,12 +197,18 @@ net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(
 #### 连接名称 :id=Begin-PREPAREPARAM_07
 
 `Default(传入变量).MODEL_CATEGORY(模型类别)` EQ `vision`
+#### embedding类 :id=Begin-PREPAREPARAM_08
+
+`Default(传入变量).MODEL_CATEGORY(模型类别)` EQ `embedding`
 #### 禁用时 :id=Begin-PREPAREPARAM_01
 
 `Default(传入变量).ACTIVE(启用该模型)` EQ `0`
 #### 连接名称 :id=Begin-PREPAREPARAM_02
 
 `Default(传入变量).DESC_OSS_IMAGE(多模态图片解析)` NOTEQ `0`
+#### 连接名称 :id=Begin-PREPAREPARAM_09
+
+`Default(传入变量).MODEL_CATEGORY(模型类别)` EQ `text_ranking`
 
 
 ### 实体逻辑参数

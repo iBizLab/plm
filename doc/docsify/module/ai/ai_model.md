@@ -33,7 +33,12 @@
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
 |[DER1N_AI_AGENT_AI_MODEL_AI_MODEL_ID](der/DER1N_AI_AGENT_AI_MODEL_AI_MODEL_ID)|[智能体(AI_AGENT)](module/ai/ai_agent)|1:N关系||
+|[DER1N_AI_AGENT_AI_MODEL_RERANK_MODEL_ID](der/DER1N_AI_AGENT_AI_MODEL_RERANK_MODEL_ID)|[智能体(AI_AGENT)](module/ai/ai_agent)|1:N关系||
 |[DER1N_AI_AGENT_CONTEXT_AI_MODEL_AI_MODEL_ID](der/DER1N_AI_AGENT_CONTEXT_AI_MODEL_AI_MODEL_ID)|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|1:N关系||
+|[DER1N_AI_AGENT_CONTEXT_AI_MODEL_RERANK_MODEL_ID](der/DER1N_AI_AGENT_CONTEXT_AI_MODEL_RERANK_MODEL_ID)|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|1:N关系||
+|[DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID](der/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_CHAT_MODEL_ID)|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|1:N关系||
+|[DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_EMBEDDING_MODEL_ID](der/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_EMBEDDING_MODEL_ID)|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|1:N关系||
+|[DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_RERANK_MODEL_ID](der/DER1N_AI_KNOWLEDGE_BASE_AI_MODEL_RERANK_MODEL_ID)|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|1:N关系||
 
 
 </el-tab-pane>
@@ -111,6 +116,7 @@
 |N_AI_CREDENTIAL_NAME_EQ|AI凭证名称|EQ||
 |N_AI_CREDENTIAL_NAME_LIKE|AI凭证名称|LIKE||
 |N_ID_EQ|模型标识|EQ||
+|N_MODEL_CATEGORY_EQ|模型类别|EQ||
 |N_NAME_LIKE|模型名称|LIKE||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

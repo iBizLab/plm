@@ -11,14 +11,15 @@
 |逻辑有效标识|ENABLE|是否逻辑||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |导入方式|IMPORT_METHOD|[单项选择(文本值)](index/dictionary_index#import_method "导入方式")|60|是||
+|是否立即解析|IS_PARSE_NOW|是否逻辑||是||
 |知识库标识|KB_ID|文本，可指定长度|100|是||
 |名称|NAME|文本，可指定长度|200|是||
 |解析配置|PARSER_CONFIG|一对一关系数据对象|1048576|是||
 |已选择文件|SELECTED_FILE_NAME|一对多动态对象|1048576|是||
 |已选择页面|SELECTED_PAGE_NAME|一对多动态对象|1048576|是||
-|选择文件|SELECTION_FILE_IDS|文本，可指定长度|4000|是||
-|选择页面|SELECTION_PAGE_IDS|文本，可指定长度|4000|是||
-|选择页面名称|SELECTION_PAGE_NAMES|文本，可指定长度|4000|是||
+|选择文件|SELECTION_FILE_IDS|长文本，没有长度限制|1048576|是||
+|选择页面|SELECTION_PAGE_IDS|长文本，没有长度限制|1048576|是||
+|选择页面名称|SELECTION_PAGE_NAMES|长文本，没有长度限制|1048576|是||
 |选择空间|SPACE_SELECTION|单项选择(文本值)|60|是||
 |同步频率|SYNC_FREQUENCY|[单项选择(文本值)](index/dictionary_index#KBSyncFrequency "知识库同步频率")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -56,11 +57,13 @@
 |Update|Update|内置方法|默认|不支持||||
 |UpdateTemp|UpdateTemp|内置方法|默认|不支持||||
 |创建知识库文档|create_ai_kb_doc|[实体处理逻辑](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc "创建知识库文档")|默认|不支持||||
+|填充知识库切片策略|fill_kb_chunk|[实体处理逻辑](module/ai/ai_kb_document_wizard/logic/fill_kb_chunk "填充知识库切片策略")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[创建知识库文档](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc)|create_ai_kb_doc|无|||
+|[填充知识库切片策略](module/ai/ai_kb_document_wizard/logic/fill_kb_chunk)|fill_kb_chunk|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

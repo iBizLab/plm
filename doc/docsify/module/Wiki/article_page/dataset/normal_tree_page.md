@@ -1,6 +1,6 @@
 ## 空间页面(移动端)(normal_tree_page) <!-- {docsify-ignore-all} -->
 
-
+TreeGridDEDataSetRuntime
 
 <br>
 <p class="panel-title"><b>默认数据集</b></p>
@@ -15,6 +15,10 @@
 
 * `默认（全部查询列）`
 
+
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `SEQUENCE(序号)` `ASC`
 
 
 

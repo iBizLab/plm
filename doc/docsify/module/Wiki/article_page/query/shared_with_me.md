@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -84,12 +85,38 @@ WHERE EXISTS(SELECT * FROM `MEMBER` t11
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.EXPIRATION_DATE,
+t1.ID,
+t1.IS_SHARED,
+t1.IS_SHARED_SUBSET,
+t1.NAME,
+t1.PUBLISH_NAME,
+t1.SHARED_BY,
+t1.SHARED_TIME,
+t1.SPACE_ID,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM PAGE t1 
+LEFT JOIN SPACE t21 ON t1.SPACE_ID = t21.ID 
+
+WHERE EXISTS(SELECT * FROM MEMBER t11 
+ WHERE 
+ t1.ID = t11.OWNER_ID  AND  t11.OWNER_TYPE = 'PAGE'  AND  t11.OWNER_SUBTYPE = 'SHARED'  AND  ( t11.USER_ID = #{ctx.sessioncontext.srfuserid} ) ) AND ( t21.IS_DELETED = 0 ) AND ( t1.IS_DELETED = 0  AND  t1.IS_PUBLISHED = 1  AND  t1.IS_SHARED = '1' )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },
