@@ -45,11 +45,17 @@
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |安装|install|用户自定义|默认|不支持||||
+|安装特定版本|InstallSpecVer|用户自定义|默认|不支持||[InstallSpecDEActionRuntime](index/plugin_index#InstallSpecDEActionRuntime)||
 |重新加载|reload|用户自定义|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |卸载|uninstall|用户自定义|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[versions](module/extension/PSCorePrdFunc/logic/versions)|versions|无|||
 
 ## 主状态控制
 
@@ -140,6 +146,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/extension/PSCorePrdFunc/dataset/Default)|DEFAULT|数据查询|是|||
+|[versions](module/extension/PSCorePrdFunc/dataset/versions)|versions|[实体逻辑](module/extension/PSCorePrdFunc/logic/versions)|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -153,23 +160,29 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 指定版本安装 | install_spec_ver | 安装 |单项数据|<details><summary>后台调用</summary>[InstallSpecVer](#行为)||
 | 模型构建信息 | model_build_info | 构建信息 |无数据|用户自定义||
+| 查看版本清单 | spec_ver_info | 查看版本清单 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[版本清单](app/view/ps_core_prd_func_spec_version)</details>||
 | 打开卡片详情页面 | open_info_view | 打开卡片详情页面 |单项数据|<details><summary>打开视图或向导（模态）</summary>[核心产品功能](app/view/ps_core_prd_func_info_view)</details>||
-| 跳转插件设置页面 | skip_setting | 设置 |无数据|用户自定义||
 | 打开扩展设置视图 | open_module_setting_option | 扩展设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[扩展设置](app/view/ps_core_prd_func_setting_edit_view)</details>||
-| 重新加载 | Reload | 重新加载 |单项数据（主键）|<details><summary>后台调用</summary>[reload](#行为)||
 | 禁用 | Uninstall | 卸载 |单项数据（主键）|<details><summary>后台调用</summary>[uninstall](#行为)||
 | clone此应用 | clone_git | clone此应用 |无数据|用户自定义||
-| 启用 | Install | 启用 |单项数据（主键）|<details><summary>后台调用</summary>[install](#行为)||
-| 安装特定版本_提示开发中 | install_specific_ver_test | 安装特定版本 |单项数据|用户自定义||
+| 安装特定版本_版本清单 | spec_ver_list | 安装特定版本 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[版本清单](app/view/ps_core_prd_func_spec_version)</details>||
 | 跳转gitlab | skip_gitlab | Git |无数据|用户自定义||
+| 跳转插件设置页面 | skip_setting | 设置 |无数据|用户自定义||
+| 重新加载 | Reload | 重新加载 |单项数据（主键）|<details><summary>后台调用</summary>[reload](#行为)||
+| 自定义版本并安装 | custom_version_install | 安装 |单项数据|用户自定义||
+| 准备版本并安装 | prepare_version_install | 安装 |单项数据|用户自定义||
+| 启用 | Install | 安装 |单项数据（主键）|<details><summary>后台调用</summary>[install](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|clone_git||
+|[准备版本数据](module/extension/PSCorePrdFunc/uilogic/prepare_version_info)|prepare_version_info||
 |[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|init_plugin_info|进入扩展设置时，从setting中获取插件标识和插件库|
 |[更新插件设置](module/extension/PSCorePrdFunc/uilogic/update_plugin_setting)|update_plugin_setting|插件库更改后，更新setting字段|
+|[自定义版本安装](module/extension/PSCorePrdFunc/uilogic/custom_version_info)|custom_version_info||
 |[跳转gitlab](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)|skip_gitlab||
 |[跳转应用详情页面](module/extension/PSCorePrdFunc/uilogic/open_app_info)|open_app_info||
 |[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|skip_setting||
@@ -183,6 +196,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSCorePrdFunc?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/PSCorePrdFunc?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSCorePrdFunc?id=主状态控制`">
   主状态控制

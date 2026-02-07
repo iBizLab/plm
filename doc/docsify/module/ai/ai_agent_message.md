@@ -74,6 +74,11 @@
 |[点赞](module/ai/ai_agent_message/logic/like)|like|无|||
 |[点踩](module/ai/ai_agent_message/logic/dislike)|dislike|无|||
 
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|动态存储|动态存储|[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)||
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -157,6 +162,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_message?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_agent_message?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent_message?id=数据查询`">
   数据查询

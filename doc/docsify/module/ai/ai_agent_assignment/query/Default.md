@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -55,12 +56,37 @@ LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`CONTEXT_ID` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t11.CODE_NAME AS CONTEXT_CODE_NAME,
+t1.CONTEXT_ID,
+t11.NAME AS CONTEXT_NAME,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t11.DESCRIPTION,
+t1.ID,
+t1.NAME,
+t1.SYSTEM_FLAG,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME,
+t1.USE_TAG
+FROM AI_AGENT_ASSIGNMENT t1 
+LEFT JOIN AI_AGENT_CONTEXT t11 ON t1.CONTEXT_ID = t11.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

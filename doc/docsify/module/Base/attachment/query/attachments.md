@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -62,12 +63,38 @@ LEFT JOIN `WORK_ITEM` t11 ON t1.`OWNER_ID` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.FILE_ID,
+t1.ID,
+t1.NAME,
+t1.OWNER_ID,
+t1.OWNER_SUBTYPE,
+t1.OWNER_TYPE,
+t1.PARENT_VERSION_ID,
+t1.TITLE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM ATTACHMENT t1 
+LEFT JOIN WORK_ITEM t11 ON t1.OWNER_ID = t11.ID 
+ AND t1.OWNER_TYPE = 'ATTACHMENT' AND t1.OWNER_SUBTYPE IS NULL
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

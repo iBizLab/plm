@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -43,11 +44,38 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`NAME`,
+t11.`TOOL_TAG`,
+t11.`TOOL_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_AGENT_TOOL_REL` t1 
 LEFT JOIN `AI_TOOL` t11 ON t1.`AI_TOOL_ID` = t11.`ID` 
 LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+
+
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.AI_AGENT_ID,
+t21.NAME AS AI_AGENT_NAME,
+t1.AI_TOOL_ID,
+t11.NAME AS AI_TOOL_NAME,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.ID,
+t1.NAME,
+t11.TOOL_TAG,
+t11.TOOL_TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM AI_AGENT_TOOL_REL t1 
+LEFT JOIN AI_TOOL t11 ON t1.AI_TOOL_ID = t11.ID 
+LEFT JOIN AI_AGENT t21 ON t1.AI_AGENT_ID = t21.ID 
 
 
 ```
@@ -60,6 +88,7 @@ LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID`
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

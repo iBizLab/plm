@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -42,6 +43,7 @@ t1.`CUSTOM_CHUNK`,
 t1.`ENABLE`,
 t1.`ID`,
 t1.`IMPORT_METHOD`,
+t1.`IS_PARSE_NOW`,
 t1.`KB_ID`,
 t1.`NAME`,
 t1.`PARSER_CONFIG`,
@@ -61,12 +63,44 @@ FROM `` t1
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CHUNK_METHOD,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.CUSTOM_CHUNK,
+t1.ENABLE,
+t1.ID,
+t1.IMPORT_METHOD,
+t1.IS_PARSE_NOW,
+t1.KB_ID,
+t1.NAME,
+t1.PARSER_CONFIG,
+t1.SELECTED_FILE_NAME,
+t1.SELECTED_PAGE_NAME,
+t1.SELECTION_FILE_IDS,
+t1.SELECTION_PAGE_IDS,
+t1.SELECTION_PAGE_NAMES,
+t1.SPACE_SELECTION,
+t1.SYNC_FREQUENCY,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM  t1 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

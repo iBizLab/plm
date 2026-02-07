@@ -60,11 +60,13 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[DEFAULT](module/ai/ai_tool/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ai/ai_tool/query/View)|VIEW|否|否 |否 ||
+|[内置扩展mcp服务(extension_mcp_server)](module/ai/ai_tool/query/extension_mcp_server)|extension_mcp_server|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/ai/ai_tool/dataset/Default)|DEFAULT|数据查询|是|||
+|[内置扩展mcp服务(extension_mcp_server)](module/ai/ai_tool/dataset/extension_mcp_server)|extension_mcp_server|数据查询|否|||
 
 ## 数据权限
 

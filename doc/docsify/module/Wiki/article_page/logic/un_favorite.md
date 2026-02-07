@@ -54,7 +54,7 @@ delete from `favorite` where create_man = ? and owner_id = ?
 
 
 
-*- N/A*
+返回 `Default(传入变量)`
 
 
 

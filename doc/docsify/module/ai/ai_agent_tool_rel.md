@@ -12,6 +12,8 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
+|工具标识|TOOL_TAG|外键值附加数据|200|是||
+|工具类型|TOOL_TYPE|[外键值附加数据](index/dictionary_index#tool_type_codelist "Tool类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 

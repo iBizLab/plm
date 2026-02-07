@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -45,7 +46,6 @@ t1.`FILE`,
 t1.`FILE_TYPE`,
 t1.`ID`,
 t1.`KB_ID`,
-t11.`NAME` AS `KB_NAME`,
 t1.`NAME`,
 t1.`SIZE`,
 t1.`SOURCE_ID`,
@@ -53,11 +53,45 @@ t1.`SOURCE_TYPE`,
 t1.`STATUS`,
 t1.`SYNC_FREQUENCY`,
 t1.`SYNC_ID`,
+t11.`TAG_SETS`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_KB_DOCUMENT` t1 
 LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ACTIVE,
+t1.CHUNK_METHOD,
+t1.CHUNK_NUM,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.CUSTOM_CHUNK,
+t1.FILE,
+t1.FILE_TYPE,
+t1.ID,
+t1.KB_ID,
+t1.NAME,
+t1.SIZE,
+t1.SOURCE_ID,
+t1.SOURCE_TYPE,
+t1.STATUS,
+t1.SYNC_FREQUENCY,
+t1.SYNC_ID,
+t11.TAG_SETS,
+t1.TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM AI_KB_DOCUMENT t1 
+LEFT JOIN AI_KNOWLEDGE_BASE t11 ON t1.KB_ID = t11.ID 
 
 
 ```
@@ -70,6 +104,7 @@ LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID`
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

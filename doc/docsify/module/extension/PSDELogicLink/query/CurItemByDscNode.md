@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -52,12 +53,29 @@ WHERE ( t1.`DSTPSDELOGICNODEID` = #{ctx.datacontext.psdelogicnode} )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.DSTPSDELOGICNODEID,
+t1.PSDELOGICID,
+t1.PSDELOGICLINKID,
+t1.PSDELOGICLINKNAME,
+t1.SRCPSDELOGICNODEID
+FROM  t1 
+
+WHERE ( t1.DSTPSDELOGICNODEID = #{ctx.datacontext.psdelogicnode} )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -18,20 +18,28 @@
 |生成模式|GENERATION_MODE|[单项选择(文本值)](index/dictionary_index#ai_mode "AI生成模式")|60|是||
 |智能体标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否默认Agent|IS_DEFAULT|是否逻辑||否||
+|知识库模式|KB_MODE|[单项选择(文本值)](index/dictionary_index#kb_mode "智能体知识库模式")|60|是||
 |最大输入token数|MAX_INPUT_TOKENS|整型||否||
 |记忆对话轮数|MEMORY_MAX_TURNS|整型||是||
 |记忆模式|MEMORY_MODE|[单项选择(文本值)](index/dictionary_index#memory_mode "记忆模式")|200|是||
 |智能体名称|NAME|文本，可指定长度|200|是||
+|召回重排|RERANK|是否逻辑||是||
+|召回重排模型|RERANK_MODEL|外键值文本|100|是||
+|模型标识|RERANK_MODEL_ID|外键值|100|是||
 |排序|SEQUENCE|整型||是||
+|召回相似度阈值|SIMILARITY_THRESHOLD|数值||是||
 |流式输出|STREAM|是否逻辑||是||
 |预置建议问题|SUGGESTED_QUESTIONS|文本数组（没有长度限制）|1000|是||
 |模型随机性参数|TEMPERATURE|数值||是||
 |工具调用超限提示语|TOOL_EXCEED_MESSAGE|长文本，没有长度限制|1048576|是||
 |最大工具调用次数|TOOL_MAX_CALLS|整型||是||
+|最大召回数量|TOP_K|整型||是||
 |概率核采样|TOP_P|数值||是||
 |截断策略|TRIMMING_STRATEGY|[单项选择(文本值)](index/dictionary_index#trimming_strategy "截断策略")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|使用知识图谱|USE_KG|是否逻辑||是||
+|向量相似度权重|VECTOR_SIMILARITY_WEIGHT|数值||是||
 |欢迎消息模板|WELCOME_MESSAGE|长文本，没有长度限制|1048576|是||
 
 
@@ -54,6 +62,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DER1N_AI_AGENT_AI_MODEL_AI_MODEL_ID](der/DER1N_AI_AGENT_AI_MODEL_AI_MODEL_ID)|[AI大模型(AI_MODEL)](module/ai/ai_model)|1:N关系||
+|[DER1N_AI_AGENT_AI_MODEL_RERANK_MODEL_ID](der/DER1N_AI_AGENT_AI_MODEL_RERANK_MODEL_ID)|[AI大模型(AI_MODEL)](module/ai/ai_model)|1:N关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -63,12 +72,17 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#ai_agent_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
-|Remove|Remove|内置方法|默认|支持||||
+|Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#ai_agent_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#ai_agent_Update)|||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[reload_aiagents](module/ai/ai_agent/logic/reload_aiagents)|reload_aiagents|无||重载AI代理对象|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -121,6 +135,12 @@
 |N_GENERATION_MODE_EQ|生成模式|EQ||
 |N_ID_EQ|智能体标识|EQ||
 |N_NAME_LIKE|智能体名称|LIKE||
+|N_RERANK_MODEL_ID_EQ|模型标识|EQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 打开知识库配置 | open_kb_setting | 知识库配置 |无数据|用户自定义||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -135,6 +155,9 @@
 <el-anchor-link :href="`#/module/ai/ai_agent?id=行为`">
   行为
 </el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_agent?id=处理逻辑`">
+  处理逻辑
+</el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent?id=数据查询`">
   数据查询
 </el-anchor-link>
@@ -146,6 +169,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ai/ai_agent?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ai/ai_agent?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>
