@@ -1,0 +1,206 @@
+package cn.ibizlab.plm.projmgmt.logic.sprintlogic.end_sprint;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.sprint sprintend_sprintdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.sprint sprintend_sprintfor_sprint_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item sprintend_sprintfor_work_item_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.sprint sprintend_sprintsrfactionparam;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item sprintend_sprintwork_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item sprintend_sprintwork_item_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item sprintend_sprintwork_item_update_obj;
+                    global cn.ibizlab.plm.core.projmgmt.service.IsprintService sprintservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IsprintService iBzSysSprintDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "sprintend_sprintbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定选中对象]
+            rule "bindparam1"
+            ruleflow-group "sprintend_sprintbindparam1"
+            when
+            then
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置迭代状态（结束）]
+            rule "prepareparam1"
+            ruleflow-group "sprintend_sprintprepareparam1"
+            when
+            then
+                            sprintend_sprintdefault.set("status","3");
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新迭代状态]
+            rule "deaction2"
+            ruleflow-group "sprintend_sprintdeaction2"
+            when
+            then
+                        sprintservice.update(sprintend_sprintdefault);
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工作项状态设置为已完成]
+            rule "prepareparam2"
+            ruleflow-group "sprintend_sprintprepareparam2"
+            when
+            then
+                            sprintend_sprintwork_item_update_obj.set("state","40");
+                            sprintend_sprintwork_item_update_obj.set("id",sprintend_sprintfor_work_item_temp.get("id"));
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新工作项]
+            rule "deaction1"
+            ruleflow-group "sprintend_sprintdeaction1"
+            when
+            then
+                        work_itemservice.update(sprintend_sprintwork_item_update_obj);
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "sprintend_sprintloopsubcall1"
+            when
+            then
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备过滤器参数]
+            rule "prepareparam5"
+            ruleflow-group "sprintend_sprintprepareparam5"
+            when
+            then
+                            sprintend_sprintwork_item_filter.set("n_sprint_id_eq",sprintend_sprintfor_sprint_temp.get("id"));
+                            sprintend_sprintwork_item_filter.set("n_project_id_eq",sprintend_sprintfor_sprint_temp.get("projectid"));
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询该迭代下未完成的工作项]
+            rule "dedataset1"
+            ruleflow-group "sprintend_sprintdedataset1"
+            when
+            then
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "sprintend_sprintloopsubcall2"
+            when
+            then
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立工作项更新参数]
+            rule "renewparam1"
+            ruleflow-group "sprintend_sprintrenewparam1"
+            when
+            then
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更改工作项的迭代标识]
+            rule "prepareparam3"
+            ruleflow-group "sprintend_sprintprepareparam3"
+            when
+            then
+                            sprintend_sprintwork_item_update_obj.set("sprintid",sprintend_sprintfor_sprint_temp.get("target_sprint_id"));
+                            sprintend_sprintwork_item_update_obj.set("id",sprintend_sprintfor_work_item_temp.get("id"));
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[置空迭代标识]
+            rule "prepareparam4"
+            ruleflow-group "sprintend_sprintprepareparam4"
+            when
+            then
+                                sprintend_sprintwork_item_update_obj.set("sprintid",null);
+                        update(sprintend_sprintdefault);//更新fact中变量值
+                        update(sprintend_sprintfor_sprint_temp);//更新fact中变量值
+                        update(sprintend_sprintfor_work_item_temp);//更新fact中变量值
+                        update(sprintend_sprintsrfactionparam);//更新fact中变量值
+                        update(sprintend_sprintwork_item_filter);//更新fact中变量值
+                        update(sprintend_sprintwork_item_page);//更新fact中变量值
+                        update(sprintend_sprintwork_item_update_obj);//更新fact中变量值
+            end

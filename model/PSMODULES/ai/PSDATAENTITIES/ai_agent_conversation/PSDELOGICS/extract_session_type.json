@@ -1,0 +1,75 @@
+{
+  "codeName" : "extract_session_type",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation/PSDELOGICS/extract_session_type.json",
+  "logicName" : "提取session前缀并存储",
+  "name" : "提取session前缀并存储",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "// 获取sessionid参数\ndef _default = logic.param(\"default\").getReal()\ndef sessionId = _default.get(\"session_id\")\n\n// 提取前缀\ndef prefix = \"\"\nif(sessionId && sessionId.contains(\"@\")) {\n    prefix = sessionId.split(\"@\")[0]\n}\n\n// 存储到conversation_type参数\n_default.set(\"type\",prefix)",
+    "codeName" : "RAWSFCODE_01",
+    "codeType" : "Groovy",
+    "leftPos" : 230,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_01"
+      }
+    } ],
+    "topPos" : 430,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 484,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 432,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_conversation.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

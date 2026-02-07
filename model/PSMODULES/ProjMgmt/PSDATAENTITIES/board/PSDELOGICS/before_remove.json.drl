@@ -1,0 +1,69 @@
+package cn.ibizlab.plm.projmgmt.logic.boardlogic.before_remove;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.board boardbefore_removedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.project boardbefore_removeproject;
+                    global cn.ibizlab.plm.core.projmgmt.service.IboardService boardservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IboardService iBzSysBoardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "boardbefore_removebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取看板]
+            rule "deaction1"
+            ruleflow-group "boardbefore_removedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(boardservice.get(boardbefore_removedefault.getId()),boardbefore_removedefault);
+                        update(boardbefore_removedefault);//更新fact中变量值
+                        update(boardbefore_removeproject);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询项目下看板数量]
+            rule "rawsqlcall1"
+            ruleflow-group "boardbefore_removerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",boardbefore_removedefault.get("projectid"));
+    String strSql="select count(1) as project_with_board_num from `board` where project_id = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysBoardDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    boardbefore_removeproject.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(boardbefore_removedefault);//更新fact中变量值
+                        update(boardbefore_removeproject);//更新fact中变量值
+            end
+
+            //逻辑处理节点[抛出异常]
+            rule "throwexception1"
+            ruleflow-group "boardbefore_removethrowexception1"
+            when
+            then
+                        update(boardbefore_removedefault);//更新fact中变量值
+                        update(boardbefore_removeproject);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "boardbefore_removeend1"
+            when
+            then
+                        update(boardbefore_removedefault);//更新fact中变量值
+                        update(boardbefore_removeproject);//更新fact中变量值
+            end

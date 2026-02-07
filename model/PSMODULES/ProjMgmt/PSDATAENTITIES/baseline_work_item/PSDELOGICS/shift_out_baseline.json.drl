@@ -1,0 +1,38 @@
+package cn.ibizlab.plm.projmgmt.logic.baseline_work_itemlogic.shift_out_baseline;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item baseline_work_itemshift_out_baselinedefault;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Ibaseline_work_itemService iBzSysBaseline_work_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baseline_work_itemshift_out_baselinebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[删除基线-工作项关联数据]
+            rule "deaction1"
+            ruleflow-group "baseline_work_itemshift_out_baselinedeaction1"
+            when
+            then
+                        relationservice.remove(baseline_work_itemshift_out_baselinedefault.getId());
+                        update(baseline_work_itemshift_out_baselinedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "baseline_work_itemshift_out_baselineend1"
+            when
+            then
+                        update(baseline_work_itemshift_out_baselinedefault);//更新fact中变量值
+            end

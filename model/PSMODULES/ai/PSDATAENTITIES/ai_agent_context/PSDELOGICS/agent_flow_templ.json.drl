@@ -1,0 +1,23 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_templ;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_templdefault;
+                global java.util.Map ai_agent_contextagent_flow_templlast_return;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_contextService iBzSysAi_agent_contextDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin_01"
+            ruleflow-group "ai_agent_contextagent_flow_templbegin_01"
+            when
+            then
+                        update(ai_agent_contextagent_flow_templdefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_templlast_return);//更新fact中变量值
+            end

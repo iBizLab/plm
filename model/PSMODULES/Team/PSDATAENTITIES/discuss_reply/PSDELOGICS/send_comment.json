@@ -1,0 +1,191 @@
+{
+  "codeName" : "send_comment",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDELOGICS/send_comment.json",
+  "logicName" : "回复下添加评论",
+  "memo" : "回复下添加评论",
+  "name" : "回复下添加评论",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 162,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充评论属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "name" : "Default[principal_id] ==> comment[PRINCIPAL_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "principal_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CONTENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "name" : "Default[content] ==> comment[CONTENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "content",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "name" : "直接值[DISCUSS_REPLY] ==> comment[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "DISCUSS_REPLY",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "name" : "直接值[DISCUSS_REPLY] ==> comment[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "DISCUSS_REPLY",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 295
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "comment"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "添加评论",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "comment"
+    },
+    "topPos" : 384
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "讨论热度+2",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[POST_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "POST_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update discuss_post t1 set t1.heat = t1.heat + 2 \r\nwhere t1.id = ?",
+    "topPos" : 470
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "comment"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 578
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "comment",
+    "logicName" : "评论对象",
+    "name" : "评论对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

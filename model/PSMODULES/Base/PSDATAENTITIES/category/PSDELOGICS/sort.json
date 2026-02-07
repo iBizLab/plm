@@ -1,0 +1,226 @@
+{
+  "codeName" : "sort",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/category/PSDELOGICS/sort.json",
+  "logicName" : "新建类别排序",
+  "name" : "新建类别排序",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 296,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 290,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 256,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_OWNER_TYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[OWNER_TYPE] ==> filter[N_OWNER_TYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "sort",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[sequence,desc] ==> filter[sort]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "sequence,desc",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "N_OWNER_SUBTYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[OWNER_SUBTYPE] ==> filter[N_OWNER_SUBTYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_SUBTYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_SECTION_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[SECTION_ID] ==> filter[N_SECTION_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SECTION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_OWNER_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[OWNER_ID] ==> filter[N_OWNER_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 430,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "leftPos" : 256,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 580
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef page = logic.param('page').getReal()\r\n\r\ndef maxValue = 0\r\nif (page[0] != null) {\r\n    maxValue = page[0].get('sequence')\r\n    _default.set('sequence', maxValue + 10)\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 256,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 760
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 296,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 870,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "filter",
+    "name" : "filter",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "page",
+    "name" : "page",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,447 @@
+{
+  "codeName" : "after_create_notify",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/after_create_notify.json",
+  "logicName" : "添加关注后发送通知",
+  "memo" : "添加关注人员后，触发提醒关注通知消息给关注人员",
+  "name" : "添加关注后发送通知",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "页面",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      },
+      "name" : "产品需求",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY4"
+      },
+      "name" : "工单",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) TICKET",
+          "paramValue" : "TICKET"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY5"
+      },
+      "name" : "客户",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) CUSTOMER",
+          "paramValue" : "CUSTOMER"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY6"
+      },
+      "name" : "测试用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY7"
+      },
+      "name" : "执行用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[OWNER_TYPE] 等于(=) RUN",
+          "paramValue" : "RUN"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_work_item_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 80,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注工作项通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_page_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : -130,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注页面通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_idea_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 276,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注产品需求通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY4",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_ticket_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 485,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注工单通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY5",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_customer_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 660,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注客户通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY6",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_test_case_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 855,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注测试用例通知",
+    "topPos" : 380
+  }, {
+    "codeName" : "DENOTIFY7",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_run_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "leftPos" : 1106,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "提醒关注执行用例通知",
+    "topPos" : 380
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,157 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.agent_flow_clone;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_clonedefault;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneclone_ag_context1;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneclone_ag_context2;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextagent_flow_cloneoriginal_ag_context;
+                global cn.ibizlab.plm.core.extension.domain.PSDELogic ai_agent_contextagent_flow_cloneoriginal_delogic;
+                    global cn.ibizlab.plm.core.ai.service.Iai_agent_contextService ai_agent_contextservice;
+                    global cn.ibizlab.plm.core.extension.service.IPSDELogicService psdelogicservice;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_contextService iBzSysAi_agent_contextDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_contextagent_flow_clonebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[备份页面填写信息]
+            rule "prepareparam_02"
+            ruleflow-group "ai_agent_contextagent_flow_cloneprepareparam_02"
+            when
+            then
+                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("codename",ai_agent_contextagent_flow_clonedefault.get("codename"));
+                            ai_agent_contextagent_flow_cloneclone_ag_context2.set("name",ai_agent_contextagent_flow_clonedefault.get("name"));
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选中flow智能体数据]
+            rule "deaction_01"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ai_agent_contextservice.get(ai_agent_contextagent_flow_clonedefault.getId()),ai_agent_contextagent_flow_clonedefault);
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置新context数据]
+            rule "prepareparam_01"
+            ruleflow-group "ai_agent_contextagent_flow_cloneprepareparam_01"
+            when
+            then
+                                ai_agent_contextagent_flow_cloneoriginal_ag_context.set("id",null);
+                            ai_agent_contextagent_flow_cloneoriginal_ag_context.set("name",ai_agent_contextagent_flow_cloneclone_ag_context2.get("name"));
+                            ai_agent_contextagent_flow_cloneclone_ag_context1.set("codename",ai_agent_contextagent_flow_cloneoriginal_ag_context.get("codename"));
+                            ai_agent_contextagent_flow_cloneoriginal_ag_context.set("codename",ai_agent_contextagent_flow_cloneclone_ag_context2.get("codename"));
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建flow智能体]
+            rule "deaction_02"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_02"
+            when
+            then
+                        ai_agent_contextservice.create(ai_agent_contextagent_flow_cloneoriginal_ag_context);
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建logic]
+            rule "deaction_04"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_04"
+            when
+            then
+                        psdelogicservice.create(ai_agent_contextagent_flow_cloneoriginal_delogic);
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构造新逻辑信息]
+            rule "rawsfcode_03"
+            ruleflow-group "ai_agent_contextagent_flow_clonerawsfcode_03"
+            when
+            then
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选择flow智能体逻辑]
+            rule "deaction_03"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_03"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdelogicservice.get(ai_agent_contextagent_flow_cloneoriginal_delogic.getPsdelogicid()),ai_agent_contextagent_flow_cloneoriginal_delogic);
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接选择逻辑id]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_agent_contextagent_flow_clonerawsfcode_01"
+            when
+            then
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[应用逻辑]
+            rule "deaction_05"
+            ruleflow-group "ai_agent_contextagent_flow_clonedeaction_05"
+            when
+            then
+                        psdelogicservice.apply(ai_agent_contextagent_flow_cloneoriginal_delogic);
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_agent_contextagent_flow_cloneend_01"
+            when
+            then
+                        update(ai_agent_contextagent_flow_clonedefault);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context1);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneclone_ag_context2);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_ag_context);//更新fact中变量值
+                        update(ai_agent_contextagent_flow_cloneoriginal_delogic);//更新fact中变量值
+            end

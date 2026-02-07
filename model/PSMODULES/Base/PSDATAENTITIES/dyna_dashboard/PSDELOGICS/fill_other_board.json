@@ -1,0 +1,199 @@
+{
+  "codeName" : "fill_other_board",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDELOGICS/fill_other_board.json",
+  "logicName" : "获取其他仪表盘",
+  "memo" : "获取其他仪表盘",
+  "name" : "获取其他仪表盘",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 110,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 220,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1050,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "board_info"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 220
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 197,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 228
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 357,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[OWNER_ID] ==> filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 228
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+    },
+    "leftPos" : 519,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "board_page"
+    },
+    "topPos" : 228
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 689,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "board_info"
+      },
+      "name" : "board_page[0] ==> board_info",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "0",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "board_page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 228
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "board_info",
+    "logicName" : "报表信息",
+    "name" : "报表信息",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "board_page",
+    "logicName" : "报表分页结果",
+    "name" : "报表分页结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+    },
+    "filterParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

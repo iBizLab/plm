@@ -1,0 +1,56 @@
+package cn.ibizlab.plm.projmgmt.logic.stagelogic.add_predefined;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.stage stageadd_predefineddefault;
+                    global cn.ibizlab.plm.core.projmgmt.service.IstageService stageservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IstageService iBzSysStageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "stageadd_predefinedbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[新建阶段]
+            rule "deaction1"
+            ruleflow-group "stageadd_predefineddeaction1"
+            when
+            then
+                        stageservice.create(stageadd_predefineddefault);
+                        update(stageadd_predefineddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[为各阶段生成数据]
+            rule "rawsqlcall1"
+            ruleflow-group "stageadd_predefinedrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",stageadd_predefineddefault.get("createman"));
+        param.put("param1",stageadd_predefineddefault.get("createtime"));
+        param.put("param2",stageadd_predefineddefault.get("name"));
+        param.put("param3",stageadd_predefineddefault.get("id"));
+        param.put("param4",stageadd_predefineddefault.get("color"));
+        param.put("param5",stageadd_predefineddefault.get("type"));
+        param.put("param6",stageadd_predefineddefault.get("sequence"));
+    String strSql="insert into stage(ID, `CREATE_MAN`, `CREATE_TIME`, `NAME`, `RELEASE_ID`, `IS_CURRENT`, `PID`, `COLOR`, `TYPE`, `SEQUENCE`) select uuid(), #{et.param0}, #{et.param1}, #{et.param2}, id, 0, #{et.param3}, #{et.param4}, #{et.param5}, #{et.param6} from project_release";
+                        iBzSysStageDefaultService.execute(strSql,param);//SQL调用
+                        update(stageadd_predefineddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "stageadd_predefinedend1"
+            when
+            then
+                        update(stageadd_predefineddefault);//更新fact中变量值
+            end

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.ai.service.logic.ai_agent_conversationclear_all_except" isClosed="false" isExecutable="true" name="ai_ai_agent_conversation_clear_all_except_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.ai.service.logic.ai_agent_conversationclear_all_except">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ai_agent_conversationclear_all_exceptdefault" type="entity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.ai.service.Iai_agent_conversationService))" name="iBzSysAi_agent_conversationDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ai_agent_conversationclear_all_exceptdefault" type="cn.ibizlab.plm.core.ai.domain.ai_agent_conversation" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_conversationclear_all_exceptrawsqlcall_01" id="rawsqlcall_01" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ai_agent_conversationclear_all_exceptend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_rawsqlcall_01" sourceRef="begin" targetRef="rawsqlcall_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall_01_end_01" sourceRef="rawsqlcall_01" targetRef="end_01">
+                    </sequenceFlow>
+        </process>
+    </definitions>
