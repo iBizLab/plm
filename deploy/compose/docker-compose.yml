@@ -4,7 +4,7 @@ services:
   #plmservice
   plmservice:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.575.34.plm.251228
+    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.577.38.plm.260207
     container_name: plmservice
     ports:
       - "${SYSTEM_APIPORT}:${SYSTEM_APIPORT}"
@@ -21,7 +21,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=plm@2024
       - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/plm?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=plm
-      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K -Dgroovy.grape.report.downloads=true
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss1024K -Dgroovy.grape.report.downloads=true
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-gateway:30086
 
@@ -29,7 +29,7 @@ services:
   #plmweb
   plmweb:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.55.plm.251228
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.65.plm.260207
     container_name: plmweb
     ports:
       - ${SYSTEM_WEBPORT}:80
@@ -53,7 +53,7 @@ services:
   #plmmob
   plmmob:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.251207
+    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.7.41-alpha.37.plm.260207
     container_name: plmmob
     ports:
       - ${SYSTEM_MOBPORT}:80
@@ -73,7 +73,7 @@ services:
   #plmwiki
   plmwiki:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.49.plmwiki.251213
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.41-alpha.65.plmwiki.260207
     container_name: plmwiki
     ports:
       - ${SYSTEM_WIKIPORT}:80
