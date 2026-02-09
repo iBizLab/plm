@@ -20,11 +20,21 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.reparse;
             then
             end
 
-            //逻辑处理节点[结束]
-            rule "end_01"
-            ruleflow-group "ai_kb_documentreparseend_01"
+            //逻辑处理节点[置空parsed_content]
+            rule "prepareparam_01"
+            ruleflow-group "ai_kb_documentreparseprepareparam_01"
             when
             then
+                                ai_kb_documentreparsedefault.set("parsedcontent",null);
+                        update(ai_kb_documentreparsedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新doc数据]
+            rule "deaction_02"
+            ruleflow-group "ai_kb_documentreparsedeaction_02"
+            when
+            then
+                        ai_kb_documentservice.update(ai_kb_documentreparsedefault);
                         update(ai_kb_documentreparsedefault);//更新fact中变量值
             end
 
@@ -37,11 +47,10 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.reparse;
                         update(ai_kb_documentreparsedefault);//更新fact中变量值
             end
 
-            //逻辑处理节点[置空parsed_content]
-            rule "prepareparam_01"
-            ruleflow-group "ai_kb_documentreparseprepareparam_01"
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_documentreparseend_01"
             when
             then
-                                ai_kb_documentreparsedefault.set("parsedcontent",null);
                         update(ai_kb_documentreparsedefault);//更新fact中变量值
             end
