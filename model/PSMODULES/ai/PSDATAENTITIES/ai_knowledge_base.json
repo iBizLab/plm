@@ -3538,77 +3538,6 @@
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[MEMBERS][成员]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[MEMBERS][成员]移动端默认",
-        "stringLength" : 1048576,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[MEMBERS][成员]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[MEMBERS][成员]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "MEMBERS",
-          "maxValue" : 1048576,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[1048576]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[1048576]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[1048576]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "members",
-    "dEFType" : 5,
-    "dataType" : "ONE2MANYDATA",
-    "importOrder" : 1000,
-    "length" : 1048576,
-    "logicName" : "成员",
-    "name" : "MEMBERS",
-    "orderValue" : 400,
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
-    },
-    "serviceCodeName" : "members",
-    "stdDataType" : 21,
-    "stringLength" : 1048576,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "phisicalDEField" : false,
-    "queryColumn" : false,
-    "uIAssistDEField" : true
-  }, {
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
       "name" : "[CUR_TEMP][当前知识库模版]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
@@ -6641,28 +6570,6 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "成员",
-      "name" : "members",
-      "getPSDEField" : {
-        "name" : "MEMBERS",
-        "codeName" : "members"
-      },
-      "getPSDER" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
-      },
-      "getRefPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ai_kb_member_dto"
-      },
-      "getRefPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
-      },
-      "sourceType" : "DEFIELD",
-      "stringLength" : 1048576,
-      "type" : "DTOS"
-    }, {
       "logicName" : "当前知识库模版",
       "name" : "cur_temp",
       "getPSDEField" : {
@@ -6857,6 +6764,23 @@
       "stdDataType" : 25,
       "stringLength" : 200,
       "type" : "SIMPLE"
+    }, {
+      "name" : "kb_members",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member/PSDERS/DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ai_kb_member_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_member.json"
+      },
+      "scale" : 0,
+      "sourceType" : "DER",
+      "type" : "DTOS"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -7725,7 +7649,7 @@
       "path" : "PSMODULES/ai/PSDATAENTITIES/ai_knowledge_base.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 7,
+    "masterRS" : 15,
     "minorCodeName" : "kb_members",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -7734,10 +7658,6 @@
     "minorServiceCodeName" : "kb_members",
     "name" : "DER1N_AI_KB_MEMBER_AI_KNOWLEDGE_BASE_KB_ID",
     "orderValue" : 100,
-    "getPSOne2ManyDataDEField" : {
-      "name" : "MEMBERS",
-      "codeName" : "members"
-    },
     "getPSPickupDEField" : {
       "name" : "KB_ID",
       "codeName" : "kb_id"
@@ -7750,7 +7670,8 @@
     "removeActionType" : 1,
     "removeOrder" : 0,
     "serviceCodeName" : "ai_knowledge_base",
-    "enableFKey" : true
+    "enableFKey" : true,
+    "nestedRS" : true
   }, {
     "codeName" : "AI_KNOWLEDGE_BASE",
     "dERSubType" : "DER11",

@@ -605,6 +605,19 @@
       "engineType" : "EditView",
       "name" : "engine"
     } ],
+    "getPSAppViewLogics" : [ {
+      "eventNames" : "onMounted",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "mounted_view_logic",
+      "scriptCode" : "const form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.container_comment) {\n            return;\n        }\n        if (form.details.tabpanel3) {\n            const activeTab = form.details.tabpanel3.state.activeTab;\n            panelItems.container_comment.state.visible = activeTab === 'tabpage3';\n        }\n    });\n}"
+    }, {
+      "eventNames" : "onCloseView",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "close_view_logic",
+      "scriptCode" : "ibiz.mc.command.create.send({ srfdecodename: 'review'});"
+    } ],
     "getPSControls" : [ {
       "codeName" : "work_item_main_view_toolbar",
       "controlType" : "TOOLBAR",
