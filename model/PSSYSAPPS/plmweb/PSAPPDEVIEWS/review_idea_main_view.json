@@ -605,6 +605,19 @@
       "engineType" : "EditView",
       "name" : "engine"
     } ],
+    "getPSAppViewLogics" : [ {
+      "eventNames" : "onCloseView",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "close_view_logic",
+      "scriptCode" : "ibiz.mc.command.create.send({ srfdecodename: 'review'});"
+    }, {
+      "eventNames" : "onMounted",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "mounted_view_logic",
+      "scriptCode" : "const form = view.getController('form');\r\nif (form) {\r\n    form.evt.on('onFormDetailEvent', event =>{\r\n        const panelItems = view.layoutPanel.panelItems;\r\n        if (!panelItems.container_comment) {\r\n            return;\r\n        }\r\n        if (form.details.tabpanel3) {\r\n            const activeTab = form.details.tabpanel3.state.activeTab;\r\n            panelItems.container_comment.state.visible = activeTab === 'tabpage3';\r\n        }\r\n    });\r\n}"
+    } ],
     "getPSControls" : [ {
       "codeName" : "idea_main_view_toolbar",
       "controlType" : "TOOLBAR",
