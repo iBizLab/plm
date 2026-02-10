@@ -505,6 +505,7 @@
                           "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                           "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                           "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+                          "AC" : "TRUE",
                           "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                           "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                           "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
@@ -513,15 +514,16 @@
                           "USERURL" : "`spaces/${context.space}/space_members/fetch_default`",
                           "QUOTEURL" : "`recents/fetch_recent_access`"
                         },
-                        "editorStyle" : "COMMENT_WIKI",
+                        "editorStyle" : "VDITOR_COMMENT_WIKI",
                         "editorType" : "HTMLEDITOR",
                         "name" : "field_textbox",
                         "getPSSysPFPlugin" : {
                           "pluginType" : "EDITOR_CUSTOMSTYLE",
-                          "pluginCode" : "COMMENT",
+                          "pluginCode" : "VDITOR",
                           "runtimeObject" : true
                         },
-                        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "enableAC" : true
                       },
                       "getPSLayoutPos" : {
                         "grow" : 10,
