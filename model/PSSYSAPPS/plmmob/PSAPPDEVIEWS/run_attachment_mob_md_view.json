@@ -21,10 +21,6 @@
     "cssName" : "mob_common_list_style"
   },
   "getPSViewLayoutPanel" : {
-    "getAllPSPanelFields" : [ {
-      "id" : "total",
-      "viewFieldName" : "total"
-    } ],
     "codeName" : "usr1023356123",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
@@ -113,42 +109,6 @@
                 "vAlignSelf" : "MIDDLE",
                 "widthMode" : "FULL"
               },
-              "showCaption" : true
-            }, {
-              "caption" : "文本(动态)",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "total",
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "total",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "renderMode" : "TEXT_DYNAMIC",
-                "enableLinkView" : false
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "viewFieldName" : "total"
-            }, {
-              "caption" : "文本",
-              "contentType" : "RAW",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_text",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSRawItem" : {
-                "caption" : "个结果附件",
-                "contentType" : "RAW",
-                "name" : "static_text",
-                "predefinedType" : "STATIC_TEXT",
-                "renderMode" : "TEXT"
-              },
-              "rawContent" : "个结果附件",
               "showCaption" : true
             } ],
             "getPSSysCss" : {
@@ -327,19 +287,6 @@
       "name" : "engine"
     } ],
     "getPSAppViewLogics" : [ {
-      "eventNames" : "onLoadSuccess",
-      "logicTrigger" : "VIEWEVENT",
-      "logicType" : "APPDEUILOGIC",
-      "name" : "LOGIC",
-      "getPSAppDEUILogic" : {
-        "modelref" : true,
-        "id" : "get_mob_run_attachment"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
-      }
-    }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
       "name" : "newdata",
@@ -863,6 +810,7 @@
         "id" : "RIGHTTOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "PRIMARY",
         "caption" : "添加附件",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
@@ -911,13 +859,10 @@
         },
         "tooltip" : "添加附件",
         "uIActionTarget" : "NONE",
-        "showCaption" : true,
+        "showCaption" : false,
         "showIcon" : true
       } ],
-      "getPSSysCss" : {
-        "cssName" : "mob-toolbar"
-      },
-      "toolbarStyle" : "MOBNAVRIGHTMENU",
+      "toolbarStyle" : "USER",
       "xDataControlName" : "mdctrl",
       "modelid" : "1535ecaddb45a83499d238cd8904ef8d",
       "modeltype" : "PSDETOOLBAR"

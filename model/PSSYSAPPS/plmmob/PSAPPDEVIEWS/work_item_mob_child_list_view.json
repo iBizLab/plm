@@ -32,10 +32,6 @@
     "cssName" : "mob_child_work_item_style"
   },
   "getPSViewLayoutPanel" : {
-    "getAllPSPanelFields" : [ {
-      "id" : "total",
-      "viewFieldName" : "total"
-    } ],
     "codeName" : "usr0923042398",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
@@ -96,65 +92,30 @@
           },
           "getPSPanelItems" : [ {
             "caption" : "容器",
-            "contentWidth" : 150.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
-            "name" : "view_left_toolbar",
+            "name" : "view_captionbar",
             "getPSLayout" : {
-              "align" : "flex-start",
+              "align" : "center",
               "dir" : "row",
-              "layout" : "FLEX",
-              "vAlign" : "center"
+              "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
-              "basis" : 100,
-              "grow" : -1,
-              "layout" : "FLEX",
-              "shrink" : 0,
-              "width" : 150,
-              "widthMode" : "PX"
+              "grow" : 1,
+              "layout" : "FLEX"
             },
             "getPSPanelItems" : [ {
-              "caption" : "文本(动态)",
+              "caption" : "标题栏",
               "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "total",
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "total",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "renderMode" : "TEXT_DYNAMIC",
-                "enableLinkView" : false
-              },
+              "itemType" : "CTRLPOS",
+              "name" : "captionbar",
               "getPSLayoutPos" : {
                 "grow" : -1,
+                "heightMode" : "FULL",
                 "layout" : "FLEX"
               },
-              "viewFieldName" : "total"
-            }, {
-              "caption" : "文本",
-              "contentType" : "RAW",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_text",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSRawItem" : {
-                "caption" : "个子工作项",
-                "contentType" : "RAW",
-                "name" : "static_text",
-                "predefinedType" : "STATIC_TEXT",
-                "renderMode" : "TEXT"
-              },
-              "rawContent" : "个子工作项",
               "showCaption" : true
-            } ],
-            "getPSSysCss" : {
-              "cssName" : "mob-relation-container-style"
-            },
-            "width" : 150.0
+            } ]
           }, {
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
@@ -266,19 +227,6 @@
     "modelid" : "d50528a1f20702b094de9b3ab87f0b6c",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
-      "eventNames" : "onLoadSuccess",
-      "logicTrigger" : "VIEWEVENT",
-      "logicType" : "APPDEUILOGIC",
-      "name" : "ONLOADSUCCESS",
-      "getPSAppDEUILogic" : {
-        "modelref" : true,
-        "id" : "get_list_total"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-      }
-    }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
       "name" : "newdata",

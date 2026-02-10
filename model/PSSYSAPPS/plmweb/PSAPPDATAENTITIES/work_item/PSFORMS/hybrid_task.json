@@ -133,9 +133,9 @@
     "codeName" : "estimated_update",
     "name" : "预估工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "remaining_workload"
-    }, {
       "name" : "workload_schedule"
+    }, {
+      "name" : "remaining_workload"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\nvar actual_workload = form_data.actual_workload;\nvar estimated_workload = form_data.estimated_workload;  \nvar estimated = 0; // 预估工时\nif(estimated_workload){\n\testimated = Number(estimated_workload);\n}\nvar actual = 0; // 已登记的实际工时\nvar remaining = 0; // 剩余工时\nif(actual_workload){\n\tactual = Number(actual_workload);\n\tif(estimated_workload){\n\t\t// 计算剩余工时\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\n\t\tform_data.remaining_workload = remaining;\n\t}\n} else {\n\tremaining = estimated;\n\tform_data.remaining_workload = estimated_workload;\n}\n// 计算工时进度\nif((actual + remaining) != 0){\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\n\tform_data.workload_schedule = schedule;\n}",
     "customCode" : true,
@@ -24376,6 +24376,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     }
   },
+  "userTag" : "dynamic_update",
   "enableAutoSave" : true,
   "noTabHeader" : true,
   "modelid" : "64b826907470379c40b45970ec043af4",
