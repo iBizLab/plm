@@ -12514,6 +12514,41 @@
     "reportFile" : "#",
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dynamicMode" : 1,
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n<#if item.name??>\r\n标题：${item.name}\r\n</#if>\r\n\r\n<#if item.publish_name??>\r\n发布人：${item.publish_name}\r\n</#if>\r\n\r\n<#if item.publish_time??>\r\n发布时间：${item.publish_time}\r\n</#if>\r\n\r\n<#if item.publish_content??>\r\n发布内容：${utils.html2md(item.publish_content!\"\")}\r\n</#if>\r\n<#if ((item.comment_count!'0')?number) gt 0>\r\n<#assign comments = api.invoke(\"/article_pages/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"PAGE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n</#if>\r\n</#list>\r\n",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/base_extend/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "SINGLEKEY",
