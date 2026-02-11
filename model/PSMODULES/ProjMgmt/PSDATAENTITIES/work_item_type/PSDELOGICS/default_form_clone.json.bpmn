@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_typedefault_form_clone" isClosed="false" isExecutable="true" name="projmgmt_work_item_type_default_form_clone_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_typedefault_form_clone">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_item_typedefault_form_clonedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDEForm()" name="work_item_typedefault_form_clonedefault_create_form" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDEForm()" name="work_item_typedefault_form_clonedefault_main_form" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDEFormService))" name="psdeformservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService))" name="iBzSysWork_item_typeDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_item_typedefault_form_clonedefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_type" />
+                            <tns:global identifier="work_item_typedefault_form_clonedefault_create_form" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
+                            <tns:global identifier="work_item_typedefault_form_clonedefault_main_form" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造默认表单id"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取默认任务新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="获取默认任务主视图表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看task新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="查看task主视图表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_cloneend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_rawsfcode_01" sourceRef="begin" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_deaction_01" sourceRef="rawsfcode_01" targetRef="deaction_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_01_deaction_02" sourceRef="deaction_01" targetRef="deaction_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_debugparam_01" sourceRef="deaction_02" targetRef="debugparam_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_debugparam_02" sourceRef="debugparam_01" targetRef="debugparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam_02_end_01" sourceRef="debugparam_02" targetRef="end_01">
+                    </sequenceFlow>
+        </process>
+    </definitions>

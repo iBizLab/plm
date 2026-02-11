@@ -1,0 +1,85 @@
+package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.default_form_clone;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_type work_item_typedefault_form_clonedefault;
+                global cn.ibizlab.plm.core.extension.domain.PSDEForm work_item_typedefault_form_clonedefault_create_form;
+                global cn.ibizlab.plm.core.extension.domain.PSDEForm work_item_typedefault_form_clonedefault_main_form;
+                    global cn.ibizlab.plm.core.extension.service.IPSDEFormService psdeformservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService iBzSysWork_item_typeDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_item_typedefault_form_clonebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[构造默认表单id]
+            rule "rawsfcode_01"
+            ruleflow-group "work_item_typedefault_form_clonerawsfcode_01"
+            when
+            then
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取默认任务新建表单]
+            rule "deaction_01"
+            ruleflow-group "work_item_typedefault_form_clonedeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedefault_form_clonedefault_create_form.getPsdeformid()),work_item_typedefault_form_clonedefault_create_form);
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取默认任务主视图表单]
+            rule "deaction_02"
+            ruleflow-group "work_item_typedefault_form_clonedeaction_02"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedefault_form_clonedefault_main_form.getPsdeformid()),work_item_typedefault_form_clonedefault_main_form);
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查看task新建表单]
+            rule "debugparam_01"
+            ruleflow-group "work_item_typedefault_form_clonedebugparam_01"
+            when
+            then
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查看task主视图表单]
+            rule "debugparam_02"
+            ruleflow-group "work_item_typedefault_form_clonedebugparam_02"
+            when
+            then
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "work_item_typedefault_form_cloneend_01"
+            when
+            then
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
