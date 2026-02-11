@@ -2214,7 +2214,7 @@
     "name" : "克隆默认表单",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 180,
+      "leftPos" : 394,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -2228,7 +2228,60 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 320,
+      "topPos" : 100,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_create_form"
+      },
+      "leftPos" : 940,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "查看task新建表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 50,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_02",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_main_form"
+      },
+      "leftPos" : 1120,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "查看task主视图表单",
+      "topPos" : 60,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default_create_form = logic.param('default_create_form').getReal();\r\ndef _default_main_form = logic.param('default_main_form').getReal();\r\ndef _Default = logic.param('Default').getReal();\r\n\r\n_default_create_form.id=\"ProjMgmt.work_item.new_\"+_Default.code+\"_task\"\r\n_default_create_form.psdeid=\"ProjMgmt.work_item\"\r\n\r\n_default_main_form.id=\"ProjMgmt.work_item.\"+_Default.code+\"_task\"\r\n_default_main_form.psdeid=\"ProjMgmt.work_item\"",
+      "codeName" : "RAWSFCODE_02",
+      "codeType" : "Groovy",
+      "leftPos" : 984,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "准备克隆表单的参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_03"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_02"
+        }
+      } ],
+      "topPos" : 220,
       "parallelOutput" : true
     }, {
       "code" : "def _default_create_form = logic.param('default_create_form').getReal();\r\ndef _default_main_form = logic.param('default_main_form').getReal();\r\n_default_create_form.id=\"ProjMgmt.work_item.new_waterfall_task\"\r\n_default_main_form.id=\"ProjMgmt.work_item.waterfall_task\"",
@@ -2298,13 +2351,13 @@
         "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
       },
-      "leftPos" : 739,
+      "leftPos" : 759,
       "logicNodeType" : "DEACTION",
       "name" : "获取默认任务主视图表单",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM_01"
+          "id" : "RAWSFCODE_02"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -2319,36 +2372,120 @@
       "topPos" : 230,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM_01",
+      "codeName" : "DEACTION_03",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Create.json"
+      },
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "default_create_form"
       },
-      "leftPos" : 603,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看task新建表单",
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 1000,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建新建表单",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM_02"
+          "id" : "DEACTION_04"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM_01"
+          "id" : "DEACTION_03"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_create_form"
+      },
+      "topPos" : 350,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_05",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_main_form"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 580,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建主视图表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_06"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_05"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_main_form"
+      },
+      "topPos" : 360,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_04",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/apply.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_create_form"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 790,
+      "logicNodeType" : "DEACTION",
+      "name" : "应用新建表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_05"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_04"
         }
       } ],
       "topPos" : 360,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM_02",
+      "codeName" : "DEACTION_06",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/apply.json"
+      },
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "default_main_form"
       },
-      "leftPos" : 603,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看task主视图表单",
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 360,
+      "logicNodeType" : "DEACTION",
+      "name" : "应用主视图表单",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2357,17 +2494,17 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM_02"
+          "id" : "DEACTION_06"
         }
       } ],
-      "topPos" : 486,
+      "topPos" : 370,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 510,
+      "leftPos" : 394,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 610,
+      "topPos" : 540,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {

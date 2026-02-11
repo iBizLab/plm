@@ -16,25 +16,40 @@
                             <tns:global identifier="work_item_typedefault_form_clonedefault_main_form" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看task新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="查看task主视图表单"/>
+                        <endEvent id="debugparam_02_end" name="end"/>
+                        <sequenceFlow id="debugparam_02_end_line" sourceRef="debugparam_02" targetRef="debugparam_02_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="准备克隆表单的参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造默认表单id"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取默认任务新建表单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="获取默认任务主视图表单"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看task新建表单"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="查看task主视图表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="创建新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_05" id="deaction_05" implementation="http://www.jboss.org/drools/rule" name="创建主视图表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_04" id="deaction_04" implementation="http://www.jboss.org/drools/rule" name="应用新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_06" id="deaction_06" implementation="http://www.jboss.org/drools/rule" name="应用主视图表单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_cloneend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
                     <sequenceFlow id="begin_rawsfcode_01" sourceRef="begin" targetRef="rawsfcode_01">
                     </sequenceFlow>
+                    <sequenceFlow id="debugparam_01_debugparam_02" sourceRef="debugparam_01" targetRef="debugparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_02_deaction_03" sourceRef="rawsfcode_02" targetRef="deaction_03">
+                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode_01_deaction_01" sourceRef="rawsfcode_01" targetRef="deaction_01">
                     </sequenceFlow>
                     <sequenceFlow id="deaction_01_deaction_02" sourceRef="deaction_01" targetRef="deaction_02">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction_02_debugparam_01" sourceRef="deaction_02" targetRef="debugparam_01">
+                    <sequenceFlow id="deaction_02_rawsfcode_02" sourceRef="deaction_02" targetRef="rawsfcode_02">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam_01_debugparam_02" sourceRef="debugparam_01" targetRef="debugparam_02">
+                    <sequenceFlow id="deaction_03_deaction_04" sourceRef="deaction_03" targetRef="deaction_04">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam_02_end_01" sourceRef="debugparam_02" targetRef="end_01">
+                    <sequenceFlow id="deaction_05_deaction_06" sourceRef="deaction_05" targetRef="deaction_06">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_04_deaction_05" sourceRef="deaction_04" targetRef="deaction_05">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_06_end_01" sourceRef="deaction_06" targetRef="end_01">
                     </sequenceFlow>
         </process>
     </definitions>
