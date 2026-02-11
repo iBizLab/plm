@@ -42,32 +42,11 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.default_form_clone;
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备克隆表单的参数]
-            rule "rawsfcode_02"
-            ruleflow-group "work_item_typedefault_form_clonerawsfcode_02"
-            when
-            then
-                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
-                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
-                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
-            end
-
             //逻辑处理节点[构造默认表单id]
             rule "rawsfcode_01"
             ruleflow-group "work_item_typedefault_form_clonerawsfcode_01"
             when
             then
-                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
-                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
-                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
-            end
-
-            //逻辑处理节点[获取默认任务新建表单]
-            rule "deaction_01"
-            ruleflow-group "work_item_typedefault_form_clonedeaction_01"
-            when
-            then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedefault_form_clonedefault_create_form.getPsdeformid()),work_item_typedefault_form_clonedefault_create_form);
                         update(work_item_typedefault_form_clonedefault);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
@@ -84,12 +63,32 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.default_form_clone;
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
             end
 
-            //逻辑处理节点[创建新建表单]
-            rule "deaction_03"
-            ruleflow-group "work_item_typedefault_form_clonedeaction_03"
+            //逻辑处理节点[获取默认任务新建表单]
+            rule "deaction_01"
+            ruleflow-group "work_item_typedefault_form_clonedeaction_01"
             when
             then
-                        psdeformservice.create(work_item_typedefault_form_clonedefault_create_form);
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedefault_form_clonedefault_create_form.getPsdeformid()),work_item_typedefault_form_clonedefault_create_form);
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备克隆表单的参数]
+            rule "rawsfcode_02"
+            ruleflow-group "work_item_typedefault_form_clonerawsfcode_02"
+            when
+            then
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备克隆表单的参数]
+            rule "rawsfcode_03"
+            ruleflow-group "work_item_typedefault_form_clonerawsfcode_03"
+            when
+            then
                         update(work_item_typedefault_form_clonedefault);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
@@ -106,12 +105,12 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.default_form_clone;
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
             end
 
-            //逻辑处理节点[应用新建表单]
-            rule "deaction_04"
-            ruleflow-group "work_item_typedefault_form_clonedeaction_04"
+            //逻辑处理节点[创建新建表单]
+            rule "deaction_03"
+            ruleflow-group "work_item_typedefault_form_clonedeaction_03"
             when
             then
-                        psdeformservice.apply(work_item_typedefault_form_clonedefault_create_form);
+                        psdeformservice.create(work_item_typedefault_form_clonedefault_create_form);
                         update(work_item_typedefault_form_clonedefault);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
@@ -123,6 +122,17 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.default_form_clone;
             when
             then
                         psdeformservice.apply(work_item_typedefault_form_clonedefault_main_form);
+                        update(work_item_typedefault_form_clonedefault);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
+                        update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
+            end
+
+            //逻辑处理节点[应用新建表单]
+            rule "deaction_04"
+            ruleflow-group "work_item_typedefault_form_clonedeaction_04"
+            when
+            then
+                        psdeformservice.apply(work_item_typedefault_form_clonedefault_create_form);
                         update(work_item_typedefault_form_clonedefault);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_create_form);//更新fact中变量值
                         update(work_item_typedefault_form_clonedefault_main_form);//更新fact中变量值
