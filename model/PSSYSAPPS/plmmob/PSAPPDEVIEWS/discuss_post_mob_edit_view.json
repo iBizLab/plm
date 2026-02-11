@@ -683,7 +683,7 @@
       "scriptCode" : "console.log(\"控制评论容器显隐\"+view);\r\nconst form = view.getController('form');\r\nif (form) {\r\n    form.evt.on('onFormDetailEvent', event =>{\r\n        const panelItems = view.layoutPanel.panelItems;\r\n        //panelItems.send_comment_container.state.visible = false;\r\n        if (!panelItems.comment_container) {\r\n            return;\r\n        }\r\n        if (form.details.tabpanel1) {\r\n            const activeTab = form.details.tabpanel1.state.activeTab;\r\n            panelItems.comment_container.state.visible = activeTab === 'detailpage';\r\n        }\r\n    });\r\n}"
     }, {
       "eventNames" : "onLoadSuccess",
-      "logicTrigger" : "VIEWEVENT",
+      "logicTrigger" : "CTRLEVENT",
       "logicType" : "APPDEUILOGIC",
       "name" : "FILL_ATT_COM_COUNT",
       "getPSAppDEUILogic" : {
@@ -693,7 +693,8 @@
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
-      }
+      },
+      "getPSViewCtrlName" : "form"
     } ],
     "getPSControls" : [ {
       "autoSaveMode" : 1,

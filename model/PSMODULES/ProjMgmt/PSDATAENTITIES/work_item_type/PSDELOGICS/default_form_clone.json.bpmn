@@ -16,16 +16,9 @@
                             <tns:global identifier="work_item_typedefault_form_clonedefault_main_form" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_02" id="debugparam_02" implementation="http://www.jboss.org/drools/rule" name="查看task主视图表单"/>
-                        <endEvent id="debugparam_02_end" name="end"/>
-                        <sequenceFlow id="debugparam_02_end_line" sourceRef="debugparam_02" targetRef="debugparam_02_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="构造默认表单id"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取默认任务新建表单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="获取默认任务主视图表单"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_03" id="debugparam_03" implementation="http://www.jboss.org/drools/rule" name="查看def_type"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="查看task新建表单"/>
-                        <endEvent id="debugparam_01_end" name="end"/>
-                        <sequenceFlow id="debugparam_01_end_line" sourceRef="debugparam_01" targetRef="debugparam_01_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_02" id="rawsfcode_02" implementation="http://www.jboss.org/drools/rule" name="准备克隆表单的参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonerawsfcode_03" id="rawsfcode_03" implementation="http://www.jboss.org/drools/rule" name="准备克隆表单的参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedefault_form_clonedeaction_05" id="deaction_05" implementation="http://www.jboss.org/drools/rule" name="创建主视图表单"/>
@@ -60,8 +53,6 @@
                                 eval((RuleUtils.test($work_item_typedefault_form_clonedefault_main_form.get("psdeformid"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam_03_debugparam_01" sourceRef="debugparam_03" targetRef="debugparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_02_deaction_05" sourceRef="rawsfcode_02" targetRef="deaction_05">
                     </sequenceFlow>

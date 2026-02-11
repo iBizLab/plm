@@ -2232,18 +2232,7 @@
       "topPos" : 30,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM_02",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "default_main_form"
-      },
-      "leftPos" : 1310,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看task主视图表单",
-      "topPos" : 110,
-      "parallelOutput" : true
-    }, {
-      "code" : "def _default_create_form = logic.param('default_create_form').getReal();\r\ndef _default_main_form = logic.param('default_main_form').getReal();\r\n_default_create_form.id=\"ProjMgmt.work_item.new_waterfall_task\"\r\n_default_main_form.id=\"ProjMgmt.work_item.waterfall_task\"",
+      "code" : "def _default_create_form = logic.param('default_create_form').getReal()\r\ndef _default_main_form = logic.param('default_main_form').getReal()\r\ndef _default =  logic.param('default').getReal()\r\ndef project_type=_default.project_type\r\n\r\n_default_create_form.id=\"ProjMgmt.work_item.new_\"+project_type+\"_task\"\r\n_default_main_form.id=\"ProjMgmt.work_item.\"+project_type+\"_task\"",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 760,
@@ -2286,7 +2275,7 @@
         "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
       },
-      "leftPos" : 540,
+      "leftPos" : 530,
       "logicNodeType" : "DEACTION",
       "name" : "获取默认任务新建表单",
       "getPSDELogicLinks" : [ {
@@ -2371,40 +2360,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM_03",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 1226,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看def_type",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM_03"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEBUGPARAM_01",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "default_create_form"
-      },
-      "leftPos" : 1300,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "查看task新建表单",
-      "topPos" : 310,
-      "parallelOutput" : true
-    }, {
-      "code" : "def _default_main_form = logic.param('default_main_form').getReal();\r\ndef _default =  logic.param('default').getReal(); \r\ndef code_name=_default.code\r\n\r\n_default_main_form.id=\"ProjMgmt.work_item.waterfall_\"+code_name\r\n_default_main_form.psdeid=\"ProjMgmt.work_item\"\r\n_default_main_form.name=\"瀑布\"+_default.name\r\n_default_main_form.codename=\"waterfall_\"+code_name",
+      "code" : "def _default_main_form = logic.param('default_main_form').getReal();\r\ndef _default =  logic.param('default').getReal(); \r\ndef code_name=_default.code\r\n\r\n_default_main_form.id=\"ProjMgmt.work_item.\"+code_name\r\n_default_main_form.psdeid=\"ProjMgmt.work_item\"\r\n_default_main_form.name=_default.name\r\n_default_main_form.codename=code_name",
       "codeName" : "RAWSFCODE_02",
       "codeType" : "Groovy",
       "leftPos" : 1058,
@@ -2424,7 +2380,7 @@
       "topPos" : 330,
       "parallelOutput" : true
     }, {
-      "code" : "def _default_create_form = logic.param('default_create_form').getReal();\r\ndef _default =  logic.param('default').getReal(); \r\ndef code_name=_default.code\r\n\r\n_default_create_form.id=\"ProjMgmt.work_item.new_waterfall_\"+code_name\r\n_default_create_form.psdeid=\"ProjMgmt.work_item\"\r\n_default_create_form.name=\"新建瀑布\"+_default.name\r\n_default_create_form.codename=\"new_waterfall_\"+code_name\r\n\r\n",
+      "code" : "def _default_create_form = logic.param('default_create_form').getReal();\r\ndef _default =  logic.param('default').getReal(); \r\ndef code_name=_default.code\r\n\r\n_default_create_form.id=\"ProjMgmt.work_item.new_\"+code_name\r\n_default_create_form.psdeid=\"ProjMgmt.work_item\"\r\n_default_create_form.name=_default.name\r\n_default_create_form.codename=\"new_\"+code_name\r\n\r\n",
       "codeName" : "RAWSFCODE_03",
       "codeType" : "Groovy",
       "leftPos" : 520,
