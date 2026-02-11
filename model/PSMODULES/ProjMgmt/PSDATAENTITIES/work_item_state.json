@@ -190,6 +190,34 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "MOVEORDER",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "move_order",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEACTIONS/move_order.json",
+    "logicName" : "移动排序",
+    "name" : "move_order",
+    "getPSDEActionInput" : {
+      "name" : "Move_orderInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_state_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Move_orderResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_state_dto"
+      },
+      "type" : "DTOS"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    }
+  }, {
     "actionHolder" : 2,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
@@ -454,6 +482,11 @@
   }, {
     "codeName" : "Default",
     "logicName" : "数据集",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "name" : "DEFAULT",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -547,6 +580,7 @@
       "modelref" : true,
       "id" : "SEQUENCE"
     },
+    "predefinedType" : "ORDERVALUE",
     "serviceCodeName" : "sequence",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
