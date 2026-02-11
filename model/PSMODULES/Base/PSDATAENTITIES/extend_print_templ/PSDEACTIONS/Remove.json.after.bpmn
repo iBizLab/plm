@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.extend_print_templ.remove.afterLogic" isClosed="false" isExecutable="true" name="base_extend_print_templ_remove_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.extend_print_templ.remove.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.base.domain.extend_print_templ"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.base.service.logic.extend_print_templreload_print_temp" id="b5fc924328eaf812263c18e5eac63cf4" name="reload_print_temp.json.bpmn"/>
+                        <sequenceFlow id="begin_b5fc924328eaf812263c18e5eac63cf4" sourceRef="begin" targetRef="b5fc924328eaf812263c18e5eac63cf4"/>
+                            <sequenceFlow id="b5fc924328eaf812263c18e5eac63cf4_prepareparam1_end" sourceRef="b5fc924328eaf812263c18e5eac63cf4" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>
