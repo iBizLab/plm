@@ -1464,7 +1464,7 @@
       "topPos" : 120,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\ndef de_tag = _default.get(\"de_tag\")\nif (de_tag != null){\n    def de_runtime = sys.dataentity(de_tag)\n    def fullUniqueTag = de_runtime.getFullUniqueTag()\n    def system_id = sys.deploySystemId\n    //合成当前系统AI工厂reload信号标识\n    def reload_signal_prefix = \"reloadsignal\"\n    def reload_signal_id = \"${reload_signal_prefix}-${system_id}-deprint-${fullUniqueTag}-dynamic_chat_resource\"\n    println \"发布动态聊天资源配置:${reload_signal_id}\"\n    def config = [:]\n    config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()\n    //发布配置\n    net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_signal_id, config)\n}\n\n",
+      "code" : "def _default = logic.param('Default').getReal()\ndef de_tag = _default.get(\"de_tag\")\nif (de_tag != null){\n    def de_runtime = sys.dataentity(de_tag)\n    def fullUniqueTag = de_runtime.getFullUniqueTag().replace(\".\", \"-\").toLowerCase()\n    def system_id = sys.deploySystemId\n    //合成当前系统AI工厂reload信号标识\n    def reload_signal_prefix = \"reloadsignal\"\n    def reload_signal_id = \"${reload_signal_prefix}-${system_id}-deprint-${fullUniqueTag}-dynamic_chat_resource\"\n    println \"发布动态聊天资源配置:${reload_signal_id}\"\n    def config = [:]\n    config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()\n    //发布配置\n    net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_signal_id, config)\n}\n\n",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 180,
