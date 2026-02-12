@@ -2587,7 +2587,124 @@
       "leftPos" : 200,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
-      "topPos" : 200,
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 232,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _deform = logic.param('deform').getReal()\r\n_deform.id=\"ProjMgmt.work_item.\"+_default.id",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 350,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接form标识",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 230,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "deform"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 350,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "PSDEFORMID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "deform"
+            },
+            "logicType" : "SINGLE",
+            "name" : "deform[PSDEFORMID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "deform"
+      },
+      "topPos" : 350,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_02",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Remove.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "deform"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 350,
+      "logicNodeType" : "DEACTION",
+      "name" : "删除表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        }
+      } ],
+      "topPos" : 483,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 649,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 485,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -2599,6 +2716,15 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
       },
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "deform",
+      "logicName" : "deform",
+      "name" : "deform",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
