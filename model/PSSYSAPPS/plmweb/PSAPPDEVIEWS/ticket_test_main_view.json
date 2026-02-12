@@ -2196,6 +2196,7 @@
                     "detailType" : "GROUPPANEL",
                     "name" : "tab_description_container",
                     "getPSDEFormDetails" : [ {
+                      "caption" : "描述",
                       "codeName" : "description",
                       "dataType" : 21,
                       "detailStyle" : "DEFAULT",
@@ -2212,26 +2213,13 @@
                       },
                       "getPSEditor" : {
                         "editorParams" : {
-                          "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                          "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                          "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
-                          "enableFullScreen" : "true",
-                          "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                          "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
-                          "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
-                          "QUOTEURL" : "`recents/fetch_recent_access`",
-                          "srfaiagent" : "TextAgent_Writing",
-                          "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
-                          "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-                          "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                          "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-                          "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                          "enableEdit" : "true",
-                          "MODE" : "default",
+                          "hiddenswitch" : "true",
+                          "defaulttype" : "MD",
+                          "includes" : "[\"HTMLEDITOR_VDITOR\"]",
                           "ac" : "true",
-                          "MAXHEIGHT" : "450"
+                          "codelistid" : "plmweb.formattype_view",
+                          "srfaiagent" : "TextAgent_Writing"
                         },
-                        "editorStyle" : "COLLAPSE",
                         "editorType" : "HTMLEDITOR",
                         "name" : "description",
                         "getPSAppDEACMode" : {
@@ -2246,11 +2234,6 @@
                           "modelref" : true,
                           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
                         },
-                        "getPSSysPFPlugin" : {
-                          "pluginType" : "EDITOR_CUSTOMSTYLE",
-                          "pluginCode" : "COMMENT",
-                          "runtimeObject" : true
-                        },
                         "placeHolder" : "输入描述",
                         "enableAC" : true
                       },
@@ -2258,8 +2241,11 @@
                         "colMD" : 24,
                         "layout" : "TABLE_24COL"
                       },
-                      "allowEmpty" : true,
-                      "emptyCaption" : true
+                      "getPSSysPFPlugin" : {
+                        "pluginType" : "FORM_USERCONTROL",
+                        "pluginCode" : "COMPOSITE_FORM_ITEM_EX"
+                      },
+                      "allowEmpty" : true
                     } ],
                     "getPSLayout" : {
                       "childColMD" : 24,
