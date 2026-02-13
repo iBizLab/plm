@@ -182,7 +182,7 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_hub.json"
           },
-          "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    // print_id: 'chat_resource',\r\n    print_id: 'dynamic_chat_resource',\r\n    de_name: item.srfdename\r\n  },\r\n  metadata: {\r\n    //name: item.title?item.title:item.name\r\n   name: item.title ? item.title : (item.name ? item.name : item.content),\r\n   downloadContext: (item.srfdename || '') +':'+(item.id || ''),\r\n   downloadactionid: 'chat_resource_print@'+(item.srfdename || '')\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: transformedList });",
+          "scriptCode" : "console.log(\"\");\r\nconst srfpickupdata =  view.state.srfpickupdata;\r\nconst transformedList = srfpickupdata.map(item => ({\r\n  id: item.id,\r\n  type: 'deprint',\r\n  data: {\r\n    id: item.id,\r\n    // print_id: 'chat_resource',\r\n    print_id: 'dynamic_chat_resource@'+item.print_tag,\r\n    de_name: item.srfdename\r\n  },\r\n  metadata: {\r\n    //name: item.title?item.title:item.name\r\n   name: item.title ? item.title : (item.name ? item.name : item.content),\r\n   downloadContext: (item.srfdename || '') +':'+(item.id || ''),\r\n   downloadactionid: 'chat_resource_print@'+(item.srfdename || '')\r\n  }\r\n}));\r\nview.closeView({ ok: true, data: transformedList });",
           "timeout" : 60000,
           "uIActionMode" : "CUSTOM",
           "uIActionTag" : "panel_auto40195056_button_okaction_click",
