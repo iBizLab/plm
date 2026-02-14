@@ -2590,7 +2590,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/delete_custom_form.json",
     "logicName" : "删除表单",
-    "memo" : "删除工作项类型绑定的自定义表单",
+    "memo" : "删除工作项类型绑定的自定义新建、主视图表单",
     "name" : "删除表单",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -2611,7 +2611,7 @@
       "topPos" : 232,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal()\r\ndef _deform = logic.param('deform').getReal()\r\n_deform.id=\"ProjMgmt.work_item.\"+_default.id",
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _new_deform = logic.param('new_deform').getReal()\r\ndef _main_deform = logic.param('main_deform').getReal()\r\n\r\n_new_deform.id=\"ProjMgmt.work_item.\"+_default.id\r\n_main_deform.id=\"ProjMgmt.work_item.new_\"+_default.id",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 350,
@@ -2627,26 +2627,36 @@
           "modelref" : true,
           "id" : "RAWSFCODE_01"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_03"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
       } ],
       "topPos" : 230,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION_01",
+      "codeName" : "DEACTION_03",
       "getDstPSDEAction" : {
         "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Get.json"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "deform"
+        "id" : "main_deform"
       },
       "getDstPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
       },
-      "leftPos" : 350,
+      "leftPos" : 486,
       "logicNodeType" : "DEACTION",
-      "name" : "获取表单",
+      "name" : "获取主视图表单",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2662,10 +2672,59 @@
             "dstFieldName" : "PSDEFORMID",
             "getDstLogicParam" : {
               "modelref" : true,
-              "id" : "deform"
+              "id" : "main_deform"
             },
             "logicType" : "SINGLE",
-            "name" : "deform[PSDEFORMID] 值不为空(NotNil) "
+            "name" : "main_deform[PSDEFORMID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_03"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "main_deform"
+      },
+      "topPos" : 340,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_deform"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "leftPos" : 214,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取新建表单",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "PSDEFORMID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "new_deform"
+            },
+            "logicType" : "SINGLE",
+            "name" : "new_deform[PSDEFORMID] 值不为空(NotNil) "
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -2675,7 +2734,7 @@
       } ],
       "getRetPSDELogicParam" : {
         "modelref" : true,
-        "id" : "deform"
+        "id" : "new_deform"
       },
       "topPos" : 350,
       "parallelOutput" : true
@@ -2687,7 +2746,7 @@
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "deform"
+        "id" : "new_deform"
       },
       "getDstPSDataEntity" : {
         "modelref" : true,
@@ -2728,9 +2787,18 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "deform",
-      "logicName" : "deform",
-      "name" : "deform",
+      "codeName" : "main_deform",
+      "logicName" : "main_deform",
+      "name" : "main_deform",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "new_deform",
+      "logicName" : "new_deform",
+      "name" : "new_deform",
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm.json"

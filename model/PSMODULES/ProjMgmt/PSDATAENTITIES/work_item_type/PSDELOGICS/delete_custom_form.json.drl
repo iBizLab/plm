@@ -6,7 +6,8 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.delete_custom_form;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item_type work_item_typedelete_custom_formdefault;
-                global cn.ibizlab.plm.core.extension.domain.PSDEForm work_item_typedelete_custom_formdeform;
+                global cn.ibizlab.plm.core.extension.domain.PSDEForm work_item_typedelete_custom_formmain_deform;
+                global cn.ibizlab.plm.core.extension.domain.PSDEForm work_item_typedelete_custom_formnew_deform;
                     global cn.ibizlab.plm.core.extension.service.IPSDEFormService psdeformservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService iBzSysWork_item_typeDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -27,17 +28,30 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.delete_custom_form;
             when
             then
                         update(work_item_typedelete_custom_formdefault);//更新fact中变量值
-                        update(work_item_typedelete_custom_formdeform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formmain_deform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formnew_deform);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取表单]
+            //逻辑处理节点[获取主视图表单]
+            rule "deaction_03"
+            ruleflow-group "work_item_typedelete_custom_formdeaction_03"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedelete_custom_formmain_deform.getPsdeformid()),work_item_typedelete_custom_formmain_deform);
+                        update(work_item_typedelete_custom_formdefault);//更新fact中变量值
+                        update(work_item_typedelete_custom_formmain_deform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formnew_deform);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取新建表单]
             rule "deaction_01"
             ruleflow-group "work_item_typedelete_custom_formdeaction_01"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedelete_custom_formdeform.getPsdeformid()),work_item_typedelete_custom_formdeform);
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(psdeformservice.get(work_item_typedelete_custom_formnew_deform.getPsdeformid()),work_item_typedelete_custom_formnew_deform);
                         update(work_item_typedelete_custom_formdefault);//更新fact中变量值
-                        update(work_item_typedelete_custom_formdeform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formmain_deform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formnew_deform);//更新fact中变量值
             end
 
             //逻辑处理节点[删除表单]
@@ -45,9 +59,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.delete_custom_form;
             ruleflow-group "work_item_typedelete_custom_formdeaction_02"
             when
             then
-                        psdeformservice.remove(work_item_typedelete_custom_formdeform.getPsdeformid());
+                        psdeformservice.remove(work_item_typedelete_custom_formnew_deform.getPsdeformid());
                         update(work_item_typedelete_custom_formdefault);//更新fact中变量值
-                        update(work_item_typedelete_custom_formdeform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formmain_deform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formnew_deform);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -56,5 +71,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.delete_custom_form;
             when
             then
                         update(work_item_typedelete_custom_formdefault);//更新fact中变量值
-                        update(work_item_typedelete_custom_formdeform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formmain_deform);//更新fact中变量值
+                        update(work_item_typedelete_custom_formnew_deform);//更新fact中变量值
             end
