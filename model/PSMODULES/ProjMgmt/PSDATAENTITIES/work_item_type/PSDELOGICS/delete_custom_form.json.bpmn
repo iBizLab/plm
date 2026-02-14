@@ -19,7 +19,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="拼接form标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formdeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="获取主视图表单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formdeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取新建表单"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="删除表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="删除新建表单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formdeaction_04" id="deaction_04" implementation="http://www.jboss.org/drools/rule" name="删除主视图表单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_formend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
@@ -29,7 +30,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode_01_deaction_03" sourceRef="rawsfcode_01" targetRef="deaction_03">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-deaction_03_deaction_02" sourceRef="gateway-deaction_03" targetRef="deaction_02">
+                    <sequenceFlow id="gateway-deaction_03_deaction_04" sourceRef="gateway-deaction_03" targetRef="deaction_04">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_item_typedelete_custom_formdefault:work_item_type();
                                             $work_item_typedelete_custom_formmain_deform:PSDEForm();
@@ -50,6 +51,8 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_04_end_01" sourceRef="deaction_04" targetRef="end_01">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-deaction_03" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction_03_end_line"></exclusiveGateway>
                             <sequenceFlow id="deaction_03_gateway-deaction_03_gatewayline" sourceRef="deaction_03" targetRef="gateway-deaction_03"></sequenceFlow>
