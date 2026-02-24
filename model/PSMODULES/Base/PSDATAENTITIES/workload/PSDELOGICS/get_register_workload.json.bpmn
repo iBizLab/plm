@@ -24,7 +24,13 @@
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam1_deaction1" sourceRef="debugparam1" targetRef="deaction1">
+                    <sequenceFlow id="gateway-debugparam1_deaction1" sourceRef="gateway-debugparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadget_register_workloaddefault:workload();
+                                    eval($workloadget_register_workloaddefault==workloadget_register_workloaddefault);
+                                eval((RuleUtils.test($workloadget_register_workloaddefault.get("id"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
                     </sequenceFlow>
@@ -38,5 +44,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
         </process>
     </definitions>
