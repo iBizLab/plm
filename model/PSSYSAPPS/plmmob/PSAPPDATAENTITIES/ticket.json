@@ -8210,6 +8210,68 @@
     "reloadData" : true,
     "id" : "ticket_recover@ticket"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "恢复",
+    "codeName" : "ticket_recover_toolbar",
+    "confirmMsg" : "确定恢复所选工单吗？",
+    "dialogResult" : "OK",
+    "fullCodeName" : "ticket_ticket_recover_toolbar",
+    "name" : "工单恢复（工具栏）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "recover"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf021@FontAwesome",
+      "cssClass" : "fa fa-refresh"
+    },
+    "successMsg" : "成功恢复",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "ticket_recover_toolbar",
+    "uIActionType" : "DEUIACTION",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "enableConfirm" : true,
+    "id" : "ticket_recover_toolbar@ticket"
+  }, {
+    "actionTarget" : "MULTIKEY",
+    "caption" : "激活",
+    "codeName" : "toolbar_activate",
+    "confirmMsg" : "确认激活吗？",
+    "dataAccessAction" : "UPDATE",
+    "dialogResult" : "OK",
+    "fullCodeName" : "ticket_toolbar_activate",
+    "name" : "激活（工具栏）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "activate"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSSysImage" : {
+      "cssClass" : "key"
+    },
+    "successMsg" : "成功激活选中数据",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "toolbar_activate",
+    "uIActionType" : "DEUIACTION",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "enableConfirm" : true,
+    "id" : "toolbar_activate@ticket"
+  }, {
     "actionTarget" : "MULTIKEY",
     "caption" : "归档",
     "codeName" : "toolbar_ticket_archive",
@@ -8282,6 +8344,150 @@
     "id" : "toolbar_ticket_delete@ticket"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "archived_or_deleted_visible",
+    "defaultParamName" : "Default",
+    "logicName" : "已归档或已删除工单显示隐藏",
+    "memo" : "已归档或已删除工单显示隐藏",
+    "name" : "已归档或已删除工单显示隐藏",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 160,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "is_archived",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[is_archived] 等于(=) 1",
+              "paramValue" : "1",
+              "value" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "is_deleted",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[is_deleted] 等于(=) 1",
+              "paramValue" : "1",
+              "value" : "1"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 323,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "界面元素显隐控制",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "viewmsg_pos_state"
+        },
+        "name" : "view[layoutPanel.panelItems.viewmsg_pos.state] ==> viewmsg_pos_state",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.viewmsg_pos.state",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "common_list_isshow",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "直接值[true] ==> view[common_list_isshow]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "viewmsg_pos_state"
+        },
+        "name" : "直接值[true] ==> viewmsg_pos_state[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 198,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 550,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "viewmsg_pos_state",
+      "logicName" : "视图消息占位状态",
+      "name" : "视图消息占位状态",
+      "entityParam" : true
+    }, {
+      "codeName" : "viewmsg_pos",
+      "logicName" : "视图消息占位",
+      "name" : "视图消息占位",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "flush",
     "defaultParamName" : "Default",
     "logicName" : "通知刷新",

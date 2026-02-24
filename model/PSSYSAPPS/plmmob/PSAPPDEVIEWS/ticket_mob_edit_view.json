@@ -15,6 +15,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewMsgGroup" : {
+    "modelref" : true,
+    "id" : "UsrVMGroup0506712621"
+  },
   "getPSAppViewNavContexts" : [ {
     "key" : "PRINCIPAL_ID",
     "name" : "PRINCIPAL_ID",
@@ -224,6 +228,21 @@
         "predefinedType" : "Toolbar"
       } ],
       "predefinedType" : "Header"
+    }, {
+      "caption" : "视图消息占位",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "RAWITEM",
+      "name" : "viewmsg_pos",
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "shrink" : 0
+      },
+      "getPSRawItem" : {
+        "name" : "viewmsg_pos",
+        "predefinedType" : "VIEWMSG_POS"
+      },
+      "showCaption" : true
     }, {
       "caption" : "容器",
       "itemStyle" : "DEFAULT",
@@ -689,6 +708,19 @@
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+      }
+    }, {
+      "eventNames" : "onLoadSuccess",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "LOGIC_VIEWMSG_POS",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "archived_or_deleted_visible"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
       }
     } ],
     "getPSControls" : [ {
