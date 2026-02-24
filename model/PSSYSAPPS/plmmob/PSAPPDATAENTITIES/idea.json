@@ -13447,7 +13447,8 @@
       "leftPos" : 580,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 323,
@@ -13499,7 +13500,8 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 208
+      "topPos" : 198,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "view",
@@ -13522,6 +13524,78 @@
       "logicName" : "视图消息占位状态",
       "name" : "视图消息占位状态",
       "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "fill_att_com_count",
+    "defaultParamName" : "Default",
+    "logicName" : "获取关注人与评论数",
+    "name" : "获取关注人与评论数",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "const attention_counts = uiLogic.view.layoutPanel.panelItems.attention_count;\r\nif (attention_counts && uiLogic.default.attention_count !== undefined) {\r\n    attention_counts.setDataValue(uiLogic.default.attention_count);\r\n}\r\n\r\nconst comment_counts = uiLogic.view.layoutPanel.panelItems.comment_count;\r\ncomment_counts.setDataValue(uiLogic.default.comment_count);\r\n\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 386,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "填充关注&评论数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 612,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "CONTAINER_COUNT",
+      "logicName" : "统计容器",
+      "name" : "统计容器",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
