@@ -409,12 +409,6 @@
       "codeName" : "name",
       "columnType" : "DEFGRIDCOLUMN",
       "dataItemName" : "name",
-      "getLinkPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-        "viewType" : "DEREDIRECTVIEW"
-      },
-      "linkValueItem" : "srfkey",
       "name" : "name",
       "getPSAppDEField" : {
         "name" : "NAME",
@@ -423,6 +417,24 @@
       "getPSDETreeColumn" : {
         "modelref" : true,
         "id" : "name"
+      },
+      "getPSDEUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "新窗口打开",
+        "codeName" : "open_new",
+        "frontProcessType" : "OPENHTMLPAGE",
+        "fullCodeName" : "project_open_new",
+        "htmlPageUrl" : "./#/-/index/project=${data.id}/project_redirect_view/-",
+        "name" : "新开窗口（项目）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "tooltip" : "新窗口打开",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_new",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_new@project"
       },
       "getPSDEUIActionGroup" : {
         "codeName" : "Usr0305093607",
@@ -481,8 +493,7 @@
           "showIcon" : true
         } ],
         "uniqueTag" : "project__Usr0305093607"
-      },
-      "enableLinkView" : true
+      }
     }, {
       "cLConvertMode" : "NONE",
       "codeName" : "start_at",
