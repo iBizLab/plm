@@ -3672,21 +3672,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -4181,85 +4171,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -4356,6 +4267,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -4363,21 +4277,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -28056,21 +27955,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -28565,85 +28454,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -28740,6 +28550,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -28747,21 +28560,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -52146,21 +51944,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -52655,85 +52443,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -52830,6 +52539,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -52837,21 +52549,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -76268,21 +75965,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -76777,85 +76464,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -76952,6 +76560,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -76959,21 +76570,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -100369,21 +99965,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -100878,85 +100464,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -101053,6 +100560,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -101060,21 +100570,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -124374,21 +123869,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -124883,85 +124368,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -125058,6 +124464,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -125065,21 +124474,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -148400,21 +147794,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -148909,85 +148293,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -149084,6 +148389,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -149091,21 +148399,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -172501,21 +171794,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -173010,85 +172293,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -173185,6 +172389,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -173192,21 +172399,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -196527,21 +195719,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -197036,85 +196218,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -197211,6 +196314,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -197218,21 +196324,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
@@ -220941,21 +220032,11 @@
                               "id" : "content",
                               "viewFieldName" : "CONTENT"
                             }, {
-                              "id" : "html_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
-                              "id" : "md_content",
-                              "viewFieldName" : "CONTENT"
-                            }, {
                               "id" : "pcreate_man",
                               "viewFieldName" : "PCREATE_MAN"
                             }, {
                               "id" : "pcontent",
                               "viewFieldName" : "PCONTENT"
-                            }, {
-                              "id" : "format_type",
-                              "hidden" : true,
-                              "viewFieldName" : "FORMAT_TYPE"
                             } ],
                             "codeName" : "usr0103471499",
                             "controlType" : "PANEL",
@@ -221450,85 +220531,6 @@
                                   },
                                   "viewFieldName" : "CONTENT"
                                 }, {
-                                  "caption" : "文本(动态)",
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "html_content",
-                                  "getPSEditor" : {
-                                    "contentType" : "HTML",
-                                    "editorParams" : {
-                                      "contenttype" : "HTML",
-                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
-                                    },
-                                    "editorStyle" : "COMMENT_ITEM",
-                                    "editorType" : "RAW",
-                                    "name" : "html_content",
-                                    "getPSSysPFPlugin" : {
-                                      "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                      "pluginCode" : "COMMENT_ITEM",
-                                      "runtimeObject" : true
-                                    },
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
-                                  "caption" : "文本(动态)",
-                                  "fieldStates" : 3,
-                                  "itemStyle" : "DEFAULT",
-                                  "itemType" : "FIELD",
-                                  "name" : "md_content",
-                                  "getPSEditor" : {
-                                    "editorParams" : {
-                                      "disabledirectory" : "true",
-                                      "READONLY" : "TRUE"
-                                    },
-                                    "editorType" : "MARKDOWN",
-                                    "mode" : "EDIT",
-                                    "name" : "md_content",
-                                    "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                                    "readOnly" : true,
-                                    "showMaxLength" : true
-                                  },
-                                  "getPSLayoutPos" : {
-                                    "grow" : -1,
-                                    "layout" : "FLEX"
-                                  },
-                                  "getPSPanelItemGroupLogics" : [ {
-                                    "groupOP" : "AND",
-                                    "logicCat" : "PANELVISIBLE",
-                                    "logicType" : "GROUP",
-                                    "getPSPanelItemLogics" : [ {
-                                      "condOp" : "EQ",
-                                      "dstModelField" : "FORMAT_TYPE",
-                                      "logicType" : "SINGLE",
-                                      "name" : "FORMAT_TYPE 等于(=) MD1",
-                                      "value" : "MD1"
-                                    } ],
-                                    "relatedItemNames" : [ "format_type" ],
-                                    "notMode" : false
-                                  } ],
-                                  "viewFieldName" : "CONTENT"
-                                }, {
                                   "caption" : "容器",
                                   "itemStyle" : "DEFAULT",
                                   "itemType" : "CONTAINER",
@@ -221625,6 +220627,9 @@
                                       "grow" : 1,
                                       "layout" : "FLEX"
                                     },
+                                    "getPSSysCss" : {
+                                      "cssName" : "normal-rich-text"
+                                    },
                                     "viewFieldName" : "PCONTENT"
                                   } ],
                                   "getPSSysCss" : {
@@ -221632,21 +220637,6 @@
                                   }
                                 } ]
                               } ]
-                            }, {
-                              "caption" : "文本(动态)",
-                              "itemType" : "FIELD",
-                              "name" : "format_type",
-                              "getPSEditor" : {
-                                "editorType" : "HIDDEN",
-                                "name" : "format_type",
-                                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-                              },
-                              "getPSLayoutPos" : {
-                                "colMD" : 24,
-                                "layout" : "TABLE_24COL"
-                              },
-                              "viewFieldName" : "FORMAT_TYPE",
-                              "hidden" : true
                             } ],
                             "name" : "list_itempanel",
                             "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
