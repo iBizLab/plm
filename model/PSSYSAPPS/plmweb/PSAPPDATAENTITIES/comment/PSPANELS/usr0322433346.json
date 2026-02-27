@@ -14,7 +14,7 @@
     "hidden" : true,
     "viewFieldName" : "PID"
   }, {
-    "id" : "field_text_dynamic2",
+    "id" : "content",
     "viewFieldName" : "CONTENT"
   }, {
     "id" : "pcreate_man",
@@ -377,24 +377,23 @@
         "caption" : "文本(动态)",
         "itemStyle" : "DEFAULT",
         "itemType" : "FIELD",
-        "name" : "field_text_dynamic2",
+        "name" : "content",
         "getPSEditor" : {
-          "contentType" : "HTML",
           "editorParams" : {
-            "contenttype" : "HTML",
             "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-            "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-            "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
+            "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+            "READONLY" : "true"
           },
-          "editorStyle" : "COMMENT_ITEM",
-          "editorType" : "RAW",
-          "name" : "field_text_dynamic2",
+          "editorStyle" : "VDITOR",
+          "editorType" : "HTMLEDITOR",
+          "name" : "content",
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "COMMENT_ITEM",
+            "pluginCode" : "VDITOR",
             "runtimeObject" : true
           },
-          "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+          "readOnly" : true
         },
         "getPSLayoutPos" : {
           "grow" : -1,
@@ -485,15 +484,26 @@
           "getPSEditor" : {
             "contentType" : "HTML",
             "editorParams" : {
-              "contenttype" : "HTML"
+              "contenttype" : "HTML",
+              "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+              "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
             },
+            "editorStyle" : "COMMENT_ITEM",
             "editorType" : "RAW",
             "name" : "pcontent",
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "COMMENT_ITEM",
+              "runtimeObject" : true
+            },
             "predefinedType" : "FIELD_TEXT_DYNAMIC"
           },
           "getPSLayoutPos" : {
             "grow" : 1,
             "layout" : "FLEX"
+          },
+          "getPSSysCss" : {
+            "cssName" : "normal-rich-text"
           },
           "viewFieldName" : "PCONTENT"
         } ],

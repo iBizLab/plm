@@ -3213,10 +3213,7 @@
           "hidden" : true,
           "viewFieldName" : "PID"
         }, {
-          "id" : "html_content",
-          "viewFieldName" : "CONTENT"
-        }, {
-          "id" : "md_content",
+          "id" : "content",
           "viewFieldName" : "CONTENT"
         }, {
           "id" : "pcreate_man",
@@ -3224,10 +3221,6 @@
         }, {
           "id" : "pcontent",
           "viewFieldName" : "PCONTENT"
-        }, {
-          "id" : "format_type",
-          "hidden" : true,
-          "viewFieldName" : "FORMAT_TYPE"
         } ],
         "codeName" : "usr0228764297",
         "controlType" : "PANEL",
@@ -3568,80 +3561,28 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "html_content",
+              "name" : "content",
               "getPSEditor" : {
-                "contentType" : "HTML",
                 "editorParams" : {
-                  "contenttype" : "HTML",
                   "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                  "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                  "READONLY" : "true"
                 },
-                "editorStyle" : "COMMENT_ITEM",
-                "editorType" : "RAW",
-                "name" : "html_content",
+                "editorStyle" : "VDITOR",
+                "editorType" : "HTMLEDITOR",
+                "name" : "content",
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
-                  "pluginCode" : "COMMENT_ITEM",
+                  "pluginCode" : "VDITOR",
                   "runtimeObject" : true
                 },
-                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSPanelItemGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSPanelItemLogics" : [ {
-                  "condOp" : "NOTEQ",
-                  "dstModelField" : "FORMAT_TYPE",
-                  "logicType" : "SINGLE",
-                  "name" : "FORMAT_TYPE 不等于(<>) MD",
-                  "value" : "MD"
-                } ],
-                "relatedItemNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "viewFieldName" : "CONTENT"
-            }, {
-              "caption" : "文本(动态)",
-              "fieldStates" : 3,
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "md_content",
-              "getPSEditor" : {
-                "editorParams" : {
-                  "disabledirectory" : "true",
-                  "READONLY" : "TRUE"
-                },
-                "editorType" : "MARKDOWN",
-                "mode" : "EDIT",
-                "name" : "md_content",
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "readOnly" : true,
-                "showMaxLength" : true
+                "readOnly" : true
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "layout" : "FLEX"
               },
-              "getPSPanelItemGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSPanelItemLogics" : [ {
-                  "condOp" : "EQ",
-                  "dstModelField" : "FORMAT_TYPE",
-                  "logicType" : "SINGLE",
-                  "name" : "FORMAT_TYPE 等于(=) MD",
-                  "value" : "MD"
-                } ],
-                "relatedItemNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
               "viewFieldName" : "CONTENT"
             }, {
               "caption" : "容器",
@@ -3727,15 +3668,26 @@
                 "getPSEditor" : {
                   "contentType" : "HTML",
                   "editorParams" : {
-                    "contenttype" : "HTML"
+                    "contenttype" : "HTML",
+                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                    "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                   },
+                  "editorStyle" : "COMMENT_ITEM",
                   "editorType" : "RAW",
                   "name" : "pcontent",
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "COMMENT_ITEM",
+                    "runtimeObject" : true
+                  },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC"
                 },
                 "getPSLayoutPos" : {
                   "grow" : 1,
                   "layout" : "FLEX"
+                },
+                "getPSSysCss" : {
+                  "cssName" : "normal-rich-text"
                 },
                 "viewFieldName" : "PCONTENT"
               } ],
@@ -3744,21 +3696,6 @@
               }
             } ]
           } ]
-        }, {
-          "caption" : "文本(动态)",
-          "itemType" : "FIELD",
-          "name" : "format_type",
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "format_type",
-            "predefinedType" : "FIELD_TEXT_DYNAMIC"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "viewFieldName" : "FORMAT_TYPE",
-          "hidden" : true
         } ],
         "layoutPanel" : true,
         "name" : "list_itempanel",
