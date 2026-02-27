@@ -489,7 +489,7 @@
         }, {
           "name" : "selection_file_ids"
         } ],
-        "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.selection_file_ids){\r\n    file_ids = JSON.parse(data.selection_file_ids);\r\n    files = file_ids.map(file => {\r\n    const file_name =file.name.split('.')[0];   \r\n    return {\r\n        ai_kb_doc_name2: file_name,\r\n        file_size: file.size\r\n        };\r\n    });\r\n\r\n    return {\r\n        selection_file_ids: data.selection_file_ids,\r\n        selected_file_name: files \r\n        }\r\n}\r\n\r\n",
+        "scriptCode" : "let file_ids=[];\r\nlet files =[];\r\nif(data.selection_file_ids){\r\n    file_ids = JSON.parse(data.selection_file_ids);\r\n    files = file_ids.map(file => {\r\n    // const file_name =file.name.split('.')[0];   \r\n    const dot_index = file.name.lastIndexOf('.');\r\n    const file_name = dot_index !== -1 ? file.name.substring(0, dot_index) : file.name;\r\n    return {\r\n        ai_kb_doc_name2: file_name,\r\n        file_size: file.size\r\n        };\r\n    });\r\n\r\n    return {\r\n        selection_file_ids: data.selection_file_ids,\r\n        selected_file_name: files \r\n        }\r\n}\r\n\r\n",
         "customCode" : true
       } ],
       "getPSDEFormItems" : [ {
