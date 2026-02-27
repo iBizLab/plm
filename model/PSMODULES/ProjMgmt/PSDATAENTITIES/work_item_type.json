@@ -88,7 +88,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/delete_custom_form.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/delete_custom_model.json"
       },
       "internalLogic" : true
     } ],
@@ -2217,12 +2217,12 @@
     "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
-    "codeName" : "delete_custom_form",
+    "codeName" : "delete_custom_model",
     "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/delete_custom_form.json",
-    "logicName" : "删除表单",
-    "memo" : "删除工作项类型绑定的自定义新建、主视图表单",
-    "name" : "删除表单",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/delete_custom_model.json",
+    "logicName" : "删除扩展模型",
+    "memo" : "删除工作项类型绑定的扩展模型",
+    "name" : "删除扩展模型",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 410,
@@ -2242,12 +2242,12 @@
       "topPos" : 100,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('default').getReal()\r\ndef _new_deform = logic.param('new_deform').getReal()\r\ndef _main_deform = logic.param('main_deform').getReal()\r\n\r\n_new_deform.id=\"ProjMgmt.work_item.\"+_default.id\r\n_main_deform.id=\"ProjMgmt.work_item.new_\"+_default.id",
+      "code" : "def _default = logic.param('default').getReal()\r\ndef _new_deform = logic.param('new_deform').getReal()\r\ndef _main_deform = logic.param('main_deform').getReal()\r\ndef _default_ms_logic = logic.param('default_ms_logic').getReal()\r\n\r\n_new_deform.id=\"ProjMgmt.work_item.\"+_default.id\r\n_main_deform.id=\"ProjMgmt.work_item.new_\"+_default.id\r\n_default_ms_logic.id=\"ProjMgmt.work_item.\"+_default.id\r\n",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 350,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "拼接form标识",
+      "name" : "拼接model标识",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2268,8 +2268,67 @@
           "modelref" : true,
           "id" : "RAWSFCODE_01"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_05"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
       } ],
       "topPos" : 230,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_05",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEMSLogic/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_ms_logic"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEMSLogic.json"
+      },
+      "leftPos" : 740,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取主状态信息",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_06"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "PSDELOGICID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "default_ms_logic"
+            },
+            "logicType" : "SINGLE",
+            "name" : "default_ms_logic[PSDELOGICID] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_05"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_ms_logic"
+      },
+      "topPos" : 320,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_03",
@@ -2370,6 +2429,36 @@
       "topPos" : 350,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEACTION_06",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEMSLogic/PSDEACTIONS/Remove.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "default_ms_logic"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEMSLogic.json"
+      },
+      "leftPos" : 740,
+      "logicNodeType" : "DEACTION",
+      "name" : "删除",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_06"
+        }
+      } ],
+      "topPos" : 480,
+      "parallelOutput" : true
+    }, {
       "codeName" : "DEACTION_02",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -2446,6 +2535,15 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
       },
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "default_ms_logic",
+      "logicName" : "default_ms_logic",
+      "name" : "default_ms_logic",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEMSLogic.json"
+      },
       "entityParam" : true
     }, {
       "codeName" : "main_deform",
