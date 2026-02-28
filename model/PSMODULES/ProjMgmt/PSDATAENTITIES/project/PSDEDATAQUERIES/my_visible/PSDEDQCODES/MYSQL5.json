@@ -1,0 +1,102 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( t1.`VISIBILITY` = 'public'  OR  EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 \n WHERE \n t1.`ID` = t11.`PROJECT_ID` AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) ) )",
+    "name" : "查询条件"
+  } ],
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`NOTICE`",
+    "name" : "NOTICE"
+  }, {
+    "expression" : "t1.`ACTUAL_END_AT`",
+    "name" : "ACTUAL_END_AT"
+  }, {
+    "expression" : "t1.`ACTUAL_START_AT`",
+    "name" : "ACTUAL_START_AT"
+  }, {
+    "expression" : "(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`)",
+    "name" : "ALL_WORK_ITEMS"
+  }, {
+    "expression" : "t1.`ASSIGNEE_ID`",
+    "name" : "ASSIGNEE_ID"
+  }, {
+    "expression" : "t1.`ASSIGNEE_NAME`",
+    "name" : "ASSIGNEE_NAME"
+  }, {
+    "expression" : "t1.`COLOR`",
+    "name" : "COLOR"
+  }, {
+    "expression" : "(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`)",
+    "name" : "COMPLETED_WORK_ITEMS"
+  }, {
+    "expression" : "t1.`CONSUME_TIME`",
+    "name" : "CONSUME_TIME"
+  }, {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`DESCRIPTION`",
+    "name" : "DESCRIPTION"
+  }, {
+    "expression" : "t1.`END_AT`",
+    "name" : "END_AT"
+  }, {
+    "expression" : "t1.`EXPECTED_TIME`",
+    "name" : "EXPECTED_TIME"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`IDENTIFIER`",
+    "name" : "IDENTIFIER"
+  }, {
+    "expression" : "t1.`IS_ARCHIVED`",
+    "name" : "IS_ARCHIVED"
+  }, {
+    "expression" : "t1.`IS_DELETED`",
+    "name" : "IS_DELETED"
+  }, {
+    "expression" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` )",
+    "name" : "IS_FAVORITE"
+  }, {
+    "expression" : "t1.`IS_LOCAL_CONFIGURE`",
+    "name" : "IS_LOCAL_CONFIGURE"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`SCOPE_ID`",
+    "name" : "SCOPE_ID"
+  }, {
+    "expression" : "t1.`SCOPE_TYPE`",
+    "name" : "SCOPE_TYPE"
+  }, {
+    "expression" : "t1.`START_AT`",
+    "name" : "START_AT"
+  }, {
+    "expression" : "t1.`STATE`",
+    "name" : "STATE"
+  }, {
+    "expression" : "t11.`TYPE`",
+    "name" : "STATE_TYPE"
+  }, {
+    "expression" : "t1.`TYPE`",
+    "name" : "TYPE"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  }, {
+    "expression" : "t1.`VISIBILITY`",
+    "name" : "VISIBILITY"
+  } ],
+  "queryCode" : "SELECT\nt1.`ACTUAL_END_AT`,\nt1.`ACTUAL_START_AT`,\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`COLOR`,\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,\nt1.`CONSUME_TIME`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`EXPECTED_TIME`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LOCAL_CONFIGURE`,\nt1.`NAME`,\nt1.`SCOPE_ID`,\nt1.`SCOPE_TYPE`,\nt1.`START_AT`,\nt1.`STATE`,\nt11.`TYPE` AS `STATE_TYPE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VISIBILITY`\nFROM `PROJECT` t1 \nLEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` \n",
+  "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/my_visible/PSDEDQCODES/MYSQL5.json"
+}

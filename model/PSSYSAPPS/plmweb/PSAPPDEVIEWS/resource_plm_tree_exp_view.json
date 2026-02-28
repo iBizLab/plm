@@ -1,0 +1,472 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.RESOURCE"
+  },
+  "caption" : "资源管理",
+  "codeName" : "resource_plm_tree_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/resource_plm_tree_exp_view.json",
+  "name" : "resourceplm_tree_exp_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt_MFG.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeExpView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "plm_tree_exp_view_treeexpbar",
+    "controlType" : "TREEEXPBAR",
+    "name" : "treeexpbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+    },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:resource",
+      "realTitle" : "资源分配",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_resource_gantt_view.json",
+        "viewType" : "DEGANTTVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:workload",
+      "realTitle" : "工时管理分页导航视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_view.json",
+        "viewType" : "DETABEXPVIEW"
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treeexpbar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEEXPBAR"
+    },
+    "getPSControls" : [ {
+      "codeName" : "plm_tree",
+      "controlStyle" : "LIST_TREE",
+      "controlType" : "TREEVIEW",
+      "getCreatePSControlAction" : {
+        "modelref" : true,
+        "id" : "create",
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+        }
+      },
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource/PSTREEVIEWS/plm_tree.json",
+      "getFetchPSControlAction" : {
+        "modelref" : true,
+        "id" : "fetch",
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+        }
+      },
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+        }
+      },
+      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+      "logicName" : "生产资源树",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+          }
+        }, {
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+          }
+        }, {
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+          }
+        }, {
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+          }
+        }, {
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+          }
+        } ],
+        "userDRAction" : "READ",
+        "enableDEFieldPrivilege" : false,
+        "id" : "树视图处理器"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SELECTIONCHANGE",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_selectionchange"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_load"
+      } ],
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "getPSDETreeNodeRSs" : [ {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "workload"
+        },
+        "name" : "资源 - 工时管理",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "resource_group"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "resource_group"
+        },
+        "name" : "默认根节点 - 资源",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "resource"
+        },
+        "name" : "资源 - 资源分配",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "resource_group"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      } ],
+      "getPSDETreeNodes" : [ {
+        "counterMode" : 0,
+        "name" : "默认根节点",
+        "nodeType" : "ROOT",
+        "nodeValue" : "root",
+        "text" : "默认根节点",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : true,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ROOT"
+      }, {
+        "counterMode" : 0,
+        "name" : "资源分配",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_resource_gantt_view.json",
+          "viewType" : "DEGANTTVIEW"
+        },
+        "nodeType" : "resource",
+        "getPSNavigateContexts" : [ {
+          "key" : "ADDON_RESOURCE",
+          "name" : "ADDON_RESOURCE",
+          "value" : "all_resource",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1766476793373\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"18839\" width=\"16\" height=\"16\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M0 0h1024v1024H0z\" fill-opacity=\"0\" p-id=\"18840\"></path><path d=\"M307.2 233.244444a42.666667 42.666667 0 0 1-39.822222-39.822222V96.711111a39.822222 39.822222 0 0 1 79.644444 0v91.022222a43.804444 43.804444 0 0 1-39.822222 45.511111z m352.711111 0a38.684444 38.684444 0 0 1-39.822222-39.822222V96.711111a39.822222 39.822222 0 1 1 79.644444 0v91.022222a43.804444 43.804444 0 0 1-39.822222 45.511111z\" fill=\"#34CB99\" p-id=\"18841\"></path><path d=\"M267.377778 136.533333v56.888889a39.822222 39.822222 0 1 0 79.644444 0v-56.888889z m352.711111 0v56.888889a39.822222 39.822222 0 0 0 79.644444 0v-56.888889z\" fill=\"#34CB99\" p-id=\"18842\"></path><path d=\"M733.866667 136.533333H233.244444a128.568889 128.568889 0 0 0-130.844444 130.844445v506.311111a128.568889 128.568889 0 0 0 130.844444 130.844444h483.555556a153.031111 153.031111 0 0 0 153.6-153.6V267.377778a137.102222 137.102222 0 0 0-136.533333-130.844445zM204.8 290.133333h551.822222a39.822222 39.822222 0 0 1 0 79.644445H204.8a39.822222 39.822222 0 0 1 0-79.644445z m68.266667 267.377778H204.8a39.822222 39.822222 0 0 1 0-79.644444h68.266667a39.822222 39.822222 0 0 1 0 79.644444z m193.422222 0H398.222222a39.822222 39.822222 0 0 1 0-79.644444h68.266667a38.684444 38.684444 0 0 1 39.822222 39.822222 42.666667 42.666667 0 0 1-39.822222 39.822222z m352.711111 130.844445l-125.155556 136.533333a43.235556 43.235556 0 0 1-28.444444 11.377778 43.235556 43.235556 0 0 1-28.444444-11.377778L568.888889 756.622222a40.391111 40.391111 0 0 1 56.888889-56.888889l34.133333 34.133334 91.022222-102.4a39.822222 39.822222 0 0 1 68.266667 28.444444c0 11.377778 5.688889 22.755556 0 28.444445z\" fill=\"#34CB99\" fill-opacity=\".8\" p-id=\"18843\"></path><path d=\"M813.511111 523.377778a242.346667 242.346667 0 0 0-233.244444 0 232.106667 232.106667 0 0 0-119.466667 204.8 238.933333 238.933333 0 0 0 119.466667 204.8 227.555556 227.555556 0 0 0 233.244444 0 232.106667 232.106667 0 0 0 119.466667-204.8 252.017778 252.017778 0 0 0-119.466667-204.8z m5.688889 164.977778l-125.155556 136.533333a43.235556 43.235556 0 0 1-28.444444 11.377778 43.235556 43.235556 0 0 1-28.444444-11.377778L568.888889 756.622222a40.391111 40.391111 0 0 1 56.888889-56.888889l34.133333 34.133334 91.022222-102.4a39.822222 39.822222 0 0 1 68.266667 28.444444c0 11.377778 5.688889 22.755556 0 28.444445z\" fill=\"#34CB99\" p-id=\"18844\"></path></svg>"
+        },
+        "text" : "资源分配",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "resource"
+      }, {
+        "counterMode" : 0,
+        "name" : "资源",
+        "nodeType" : "resource_group",
+        "text" : "资源",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "resource_group"
+      }, {
+        "counterMode" : 0,
+        "name" : "工时管理",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_view.json",
+          "viewType" : "DETABEXPVIEW"
+        },
+        "nodeType" : "workload",
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1766473487837\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8045\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M204.8 537.6h89.6v32H204.8v-32z m454.4-83.2l-25.6-25.6c-32 25.6-64 57.6-89.6 89.6-6.4-6.4-19.2-6.4-25.6-6.4h-12.8c-25.6-57.6-64-108.8-102.4-166.4-6.4 12.8-19.2 12.8-25.6 19.2 25.6 57.6 57.6 115.2 102.4 172.8-12.8 6.4-12.8 19.2-12.8 25.6 0 32 25.6 51.2 51.2 51.2 32 0 51.2-25.6 51.2-51.2v-12.8c32-25.6 64-57.6 89.6-96z m172.8 204.8c-19.2 51.2-44.8 96-83.2 134.4-64 64-147.2 96-236.8 96s-172.8-38.4-236.8-96c-64-64-96-147.2-96-236.8C172.8 467.2 204.8 384 268.8 320c51.2-51.2 108.8-83.2 172.8-96v89.6l249.6-140.8L441.6 25.6v89.6c-89.6 19.2-179.2 64-243.2 128-83.2 83.2-128 192-128 313.6 0 115.2 44.8 230.4 128 313.6s192 128 313.6 128c115.2 0 230.4-44.8 313.6-128 51.2-51.2 83.2-108.8 108.8-179.2l6.4-12.8-108.8-32v12.8zM512 768h32v89.6H512V768z m236.8-19.2l-64-64-19.2 19.2 64 64 19.2-19.2z m-371.2-32l-19.2-19.2-64 64 19.2 19.2 64-64zM358.4 384l-64-64-19.2 25.6 64 64 19.2-25.6z m377.6-57.6l-19.2-19.2-64 64 19.2 19.2 64-64z m0 192h89.6v32h-89.6v-32z\" fill=\"#3581F8\" p-id=\"8046\"></path><path d=\"M825.6 441.6c6.4 19.2 12.8 44.8 12.8 64v12.8l102.4-6.4v-19.2c-6.4-32-12.8-64-19.2-89.6l-6.4-12.8-96 38.4 6.4 12.8zM947.2 544v-19.2l-102.4 6.4v19.2c0 19.2 0 38.4-6.4 64v12.8l96 32 6.4-19.2c6.4-32 6.4-57.6 6.4-89.6v-6.4zM774.4 352c12.8 12.8 25.6 32 32 51.2l6.4 12.8 96-38.4-6.4-19.2c-12.8-25.6-25.6-51.2-44.8-70.4l-12.8-12.8-83.2 64c6.4 0 12.8 12.8 12.8 12.8zM697.6 275.2c19.2 12.8 32 25.6 51.2 38.4l12.8 12.8 83.2-64-12.8-12.8-6.4-6.4c-19.2-19.2-38.4-32-57.6-51.2l-12.8-6.4-64 83.2c-6.4 0 6.4 6.4 6.4 6.4z\" fill=\"#3581F8\" p-id=\"8047\"></path></svg>"
+        },
+        "text" : "工时管理",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "workload"
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "LIST_TREE",
+        "runtimeObject" : true
+      },
+      "getRemovePSControlAction" : {
+        "modelref" : true,
+        "id" : "remove",
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+        }
+      },
+      "treeGridMode" : 0,
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+        }
+      },
+      "enableRootSelect" : false,
+      "outputIconDefault" : true,
+      "rootVisible" : false,
+      "name" : "treeexpbar_tree",
+      "modelid" : "93687D3E-A9DA-4967-8061-D7FD4B156578",
+      "modeltype" : "PSDETREEVIEW"
+    } ],
+    "xDataControlName" : "treeexpbar_tree",
+    "enableCounter" : true,
+    "enableSearch" : false,
+    "showTitleBar" : true,
+    "modelid" : "60691ac6945d6105031384da0a954cf0_treeexpbar",
+    "modeltype" : "PSEXPBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.RESOURCE"
+    },
+    "caption" : "资源管理",
+    "codeName" : "plm_tree_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "plm_tree_exp_view",
+  "getPSDEViewId" : "3704277D-8298-49B4-BFC5-EE73F19BAECF",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/resource.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "资源管理",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEEXPVIEW",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showDataInfoBar" : true,
+  "modelid" : "60691ac6945d6105031384da0a954cf0",
+  "modeltype" : "PSAPPDEVIEW"
+}

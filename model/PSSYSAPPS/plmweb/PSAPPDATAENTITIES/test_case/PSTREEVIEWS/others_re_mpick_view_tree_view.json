@@ -1,0 +1,469 @@
+{
+  "codeName" : "others_re_mpick_view_tree_view",
+  "controlStyle" : "GROUP_TREE",
+  "controlType" : "TREEVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSTREEVIEWS/others_re_mpick_view_tree_view.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "logicName" : "其他实体关联用例多项选择视图_树视图",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_selectionchange"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_load"
+  } ],
+  "getPSDEDataImport" : {
+    "modelref" : true,
+    "id" : "import_test_case"
+  },
+  "getPSDETreeNodeRSs" : [ {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_2"
+    },
+    "name" : "父模块 - 子模块",
+    "getParentPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "pid"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "test_suite",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_suite/PSDERS/DER1N_TEST_SUITE_TEST_SUITE_PID.json",
+      "fKeyName" : "F23F3E7F2CF4536C71",
+      "logicName" : "模块",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_suite.json"
+      },
+      "masterOrder" : -1,
+      "masterRS" : 48,
+      "minorCodeName" : "test_suites",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_suite.json"
+      },
+      "minorServiceCodeName" : "test_suites",
+      "name" : "DER1N_TEST_SUITE_TEST_SUITE_PID",
+      "orderValue" : 100,
+      "getPSDER1NDEFieldMaps" : [ {
+        "codeName" : "Usr0130167649",
+        "getMajorPSDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "mapType" : "NOTEXISTS",
+        "name" : "是否叶子节点"
+      } ],
+      "getPSPickupDEField" : {
+        "name" : "PID",
+        "codeName" : "Pid"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "PNAME",
+        "codeName" : "Pname"
+      },
+      "pickupDEFName" : "PID",
+      "removeActionType" : 1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "test_suite",
+      "enableFKey" : true,
+      "recursiveRS" : true
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_1"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "默认根节点 - 测试库",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_1"
+    },
+    "name" : "测试库 - 父模块",
+    "getParentPSAppDEField" : {
+      "name" : "LIBRARY_ID",
+      "codeName" : "library_id"
+    },
+    "getParentPSDER1N" : {
+      "codeName" : "library",
+      "dERType" : "DER1N",
+      "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_suite/PSDERS/DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID.json",
+      "fKeyName" : "FD2E577EB810416266",
+      "logicName" : "测试库",
+      "getMajorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+      },
+      "masterOrder" : 100,
+      "masterRS" : 5,
+      "minorCodeName" : "test_suites",
+      "getMinorPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_suite.json"
+      },
+      "minorServiceCodeName" : "test_suites",
+      "name" : "DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID",
+      "orderValue" : 100,
+      "getPSPickupDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "Library_id"
+      },
+      "getPSPickupTextDEField" : {
+        "name" : "LIBRARY_NAME",
+        "codeName" : "Library_name"
+      },
+      "pickupDEFName" : "LIBRARY_ID",
+      "removeActionType" : -1,
+      "removeOrder" : 0,
+      "serviceCodeName" : "library",
+      "enableFKey" : true
+    },
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  } ],
+  "getPSDETreeNodes" : [ {
+    "counterMode" : 0,
+    "name" : "默认根节点",
+    "nodeType" : "ROOT",
+    "nodeValue" : "root",
+    "text" : "默认根节点",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : true,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "ROOT"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "memo" : "其他实体关联用例多项选择视图_选择数据视图",
+    "name" : "测试库",
+    "nodeType" : "node",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "target_type",
+      "name" : "target_type",
+      "value" : "target_type",
+      "rawValue" : false
+    }, {
+      "key" : "principal_type",
+      "name" : "principal_type",
+      "value" : "principal_type",
+      "rawValue" : false
+    }, {
+      "key" : "n_test_library_id_eq",
+      "name" : "n_test_library_id_eq",
+      "value" : "id",
+      "rawValue" : false
+    }, {
+      "key" : "principal_id",
+      "name" : "principal_id",
+      "value" : "principal_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"20\" height=\"20\">\n  <defs>\n    <path d=\"M9.01651185,3.27273154 C9.31543831,3.27189848 9.60227033,3.39300127 9.81307558,3.60905148 L12.1206744,5.96139483 C12.1627802,6.00466067 12.2201457,6.02891007 12.2799308,6.02871536 L21.2371542,6.02871536 C21.8590036,6.02942731 22.362938,6.54313302 22.3636364,7.17704017 L22.3636364,19.5789479 C22.362938,20.2128551 21.8590036,20.7265608 21.2371542,20.7272727 L2.76284584,20.7272727 C2.14099642,20.7265608 1.63706204,20.2128551 1.63636364,19.5789479 L1.63636364,4.42106066 C1.63706203,3.78715352 2.14099641,3.2734478 2.76284584,3.27273154 L9.01651185,3.27273154 Z M15.59375,9.09375 L8.40625,9.09375 C8.23339844,9.09375 8.09375,9.23339844 8.09375,9.40625 L8.09375,16.59375 C8.09375,16.7666016 8.23339844,16.90625 8.40625,16.90625 L15.59375,16.90625 C15.7666016,16.90625 15.90625,16.7666016 15.90625,16.59375 L15.90625,9.40625 C15.90625,9.23339844 15.7666016,9.09375 15.59375,9.09375 Z M15.203125,9.796875 L15.203125,16.203125 L8.796875,16.203125 L8.796875,9.796875 L15.203125,9.796875 Z M10.5269345,14.015625 C10.3111983,14.015625 10.1363095,14.1905138 10.1363095,14.40625 C10.1363095,14.6219862 10.3111983,14.796875 10.5269345,14.796875 C10.7426707,14.796875 10.9175595,14.6219862 10.9175595,14.40625 C10.9175595,14.1905138 10.7426707,14.015625 10.5269345,14.015625 Z M13.7385725,14.09375 L11.815997,14.09375 C11.7730282,14.09375 11.737872,14.1289063 11.737872,14.171875 L11.737872,14.640625 C11.737872,14.6835938 11.7730282,14.71875 11.815997,14.71875 L13.7385725,14.71875 C13.7815413,14.71875 13.8166975,14.6835938 13.8166975,14.640625 L13.8166975,14.171875 C13.8166975,14.1289063 13.7815413,14.09375 13.7385725,14.09375 Z M11.4557772,12.2446536 L11.272574,12.2446536 C11.216407,12.2446536 11.1634381,12.2717332 11.1307155,12.3175448 L10.5171659,13.1689369 L10.3201696,12.7829992 C10.2872103,12.7374055 10.2345871,12.7102786 10.1784334,12.7102786 L9.9952303,12.7102786 C9.92909044,12.7102786 9.89066344,12.7852672 9.92920487,12.8390224 L10.4160022,13.5141317 C10.4854914,13.6109791 10.6295786,13.6109791 10.6991361,13.5140367 L11.5217208,12.3735112 C11.560344,12.3196422 11.521917,12.2446536 11.4557772,12.2446536 Z M13.7385725,12.6875 L11.815997,12.6875 C11.7730282,12.6875 11.737872,12.7226563 11.737872,12.765625 L11.737872,13.234375 C11.737872,13.2773438 11.7730282,13.3125 11.815997,13.3125 L13.7385725,13.3125 C13.7815413,13.3125 13.8166975,13.2773438 13.8166975,13.234375 L13.8166975,12.765625 C13.8166975,12.7226563 13.7815413,12.6875 13.7385725,12.6875 Z M13.7385725,11.28125 L10.2635598,11.28125 C10.2205911,11.28125 10.1854348,11.3164063 10.1854348,11.359375 L10.1854348,11.828125 C10.1854348,11.8710938 10.2205911,11.90625 10.2635598,11.90625 L13.7385725,11.90625 C13.7815413,11.90625 13.8166975,11.8710937 13.8166975,11.828125 L13.8166975,11.359375 C13.8166975,11.3164062 13.7815413,11.28125 13.7385725,11.28125 Z\" id=\"ybm2uil0m__0io7o8c6ia\"></path>\n  </defs>\n  <use fill=\"#56AAFC\" fill-rule=\"nonzero\" xlink:href=\"#ybm2uil0m__0io7o8c6ia\"></use>\n</svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getLeafFlagPSAppDEField" : {
+      "name" : "IS_LEAF",
+      "codeName" : "is_leaf"
+    },
+    "maxSize" : -1,
+    "name" : "父模块",
+    "nodeType" : "node_1",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_suite.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "target_type",
+      "name" : "target_type",
+      "value" : "target_type",
+      "rawValue" : false
+    }, {
+      "key" : "principal_type",
+      "name" : "principal_type",
+      "value" : "principal_type",
+      "rawValue" : false
+    }, {
+      "key" : "n_suites_like",
+      "name" : "n_suites_like",
+      "value" : "id",
+      "rawValue" : false
+    }, {
+      "key" : "principal_id",
+      "name" : "principal_id",
+      "value" : "principal_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf0c9@FontAwesome",
+      "cssClass" : "fa fa-reorder"
+    },
+    "sortDir" : "ASC",
+    "getSortPSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_1"
+  }, {
+    "counterMode" : 0,
+    "dataSourceType" : "DEDATASET",
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getLeafFlagPSAppDEField" : {
+      "name" : "IS_LEAF",
+      "codeName" : "is_leaf"
+    },
+    "maxSize" : -1,
+    "name" : "子模块",
+    "nodeType" : "node_2",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_suite.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "target_type",
+      "name" : "target_type",
+      "value" : "target_type",
+      "rawValue" : false
+    }, {
+      "key" : "principal_type",
+      "name" : "principal_type",
+      "value" : "principal_type",
+      "rawValue" : false
+    }, {
+      "key" : "n_suite_id_eq",
+      "name" : "n_suite_id_eq",
+      "value" : "id",
+      "rawValue" : false
+    }, {
+      "key" : "principal_id",
+      "name" : "principal_id",
+      "value" : "principal_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf0c9@FontAwesome",
+      "cssClass" : "fa fa-reorder"
+    },
+    "sortDir" : "ASC",
+    "getSortPSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : true,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_2"
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "GROUP_TREE",
+    "runtimeObject" : true
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "treeGridMode" : 0,
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "enableRootSelect" : false,
+  "outputIconDefault" : true,
+  "rootVisible" : false,
+  "modelid" : "92eedac49b1063139e13f97127452413",
+  "modeltype" : "PSDETREEVIEW"
+}

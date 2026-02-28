@@ -1,0 +1,77 @@
+package cn.ibizlab.plm.base.logic.relationlogic.differentiate_job_type;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.relation relationdifferentiate_job_typedefault;
+                global cn.ibizlab.plm.core.base.domain.relation relationdifferentiate_job_typefor_obj;
+                global cn.ibizlab.plm.core.base.domain.relation relationdifferentiate_job_typeresult_page;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.base.service.IrelationService iBzSysRelationDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "relationdifferentiate_job_typebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[查询工作项依赖]
+            rule "dedataset1"
+            ruleflow-group "relationdifferentiate_job_typededataset1"
+            when
+            then
+                        update(relationdifferentiate_job_typedefault);//更新fact中变量值
+                        update(relationdifferentiate_job_typefor_obj);//更新fact中变量值
+                        update(relationdifferentiate_job_typeresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充任务类型]
+            rule "prepareparam1"
+            ruleflow-group "relationdifferentiate_job_typeprepareparam1"
+            when
+            then
+                            relationdifferentiate_job_typefor_obj.set("jobtype","after");
+                            relationdifferentiate_job_typefor_obj.set("link_id",relationdifferentiate_job_typefor_obj.get("targetid"));
+                        update(relationdifferentiate_job_typedefault);//更新fact中变量值
+                        update(relationdifferentiate_job_typefor_obj);//更新fact中变量值
+                        update(relationdifferentiate_job_typeresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "relationdifferentiate_job_typeloopsubcall1"
+            when
+            then
+                        update(relationdifferentiate_job_typedefault);//更新fact中变量值
+                        update(relationdifferentiate_job_typefor_obj);//更新fact中变量值
+                        update(relationdifferentiate_job_typeresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充任务类型]
+            rule "prepareparam2"
+            ruleflow-group "relationdifferentiate_job_typeprepareparam2"
+            when
+            then
+                            relationdifferentiate_job_typefor_obj.set("jobtype","front");
+                            relationdifferentiate_job_typefor_obj.set("link_id",relationdifferentiate_job_typefor_obj.get("principalid"));
+                        update(relationdifferentiate_job_typedefault);//更新fact中变量值
+                        update(relationdifferentiate_job_typefor_obj);//更新fact中变量值
+                        update(relationdifferentiate_job_typeresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "relationdifferentiate_job_typeend1"
+            when
+            then
+                        update(relationdifferentiate_job_typedefault);//更新fact中变量值
+                        update(relationdifferentiate_job_typefor_obj);//更新fact中变量值
+                        update(relationdifferentiate_job_typeresult_page);//更新fact中变量值
+            end

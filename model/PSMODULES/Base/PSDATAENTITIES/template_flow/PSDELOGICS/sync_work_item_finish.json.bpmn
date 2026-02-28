@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.template_flowsync_work_item_finish" isClosed="false" isExecutable="true" name="base_template_flow_sync_work_item_finish_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.template_flowsync_work_item_finish">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="template_flowsync_work_item_finishchild_work_items" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="template_flowsync_work_item_finishdefault" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="template_flowsync_work_item_finishfilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="template_flowsync_work_item_finishparent_work_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Itemplate_flowService))" name="iBzSysTemplate_flowDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="template_flowsync_work_item_finishchild_work_items" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="template_flowsync_work_item_finishdefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="template_flowsync_work_item_finishfilter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="template_flowsync_work_item_finishparent_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin_01" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowsync_work_item_finishprepareparam_02" id="prepareparam_02" implementation="http://www.jboss.org/drools/rule" name="设置子工作项过滤条件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowsync_work_item_finishdedataset_01" id="dedataset_01" implementation="http://www.jboss.org/drools/rule" name="获取子工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowsync_work_item_finishend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowsync_work_item_finishprepareparam_03" id="prepareparam_03" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowsync_work_item_finishdeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="更新工作项状态"/>
+                    <sequenceFlow id="begin_01_prepareparam_02" sourceRef="begin_01" targetRef="prepareparam_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_02_dedataset_01" sourceRef="prepareparam_02" targetRef="dedataset_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset_01_prepareparam_03" sourceRef="gateway-dedataset_01" targetRef="prepareparam_03">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $template_flowsync_work_item_finishchild_work_items:work_item();
+                                            $template_flowsync_work_item_finishdefault:work_item();
+                                            $template_flowsync_work_item_finishfilter:work_item();
+                                            $template_flowsync_work_item_finishparent_work_item:work_item();
+                                    eval($template_flowsync_work_item_finishchild_work_items==template_flowsync_work_item_finishchild_work_items && $template_flowsync_work_item_finishdefault==template_flowsync_work_item_finishdefault && $template_flowsync_work_item_finishfilter==template_flowsync_work_item_finishfilter && $template_flowsync_work_item_finishparent_work_item==template_flowsync_work_item_finishparent_work_item);
+                                eval((RuleUtils.test($template_flowsync_work_item_finishchild_work_items.get("total"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam_03_deaction_02" sourceRef="prepareparam_03" targetRef="deaction_02">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset_01" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset_01_gateway-dedataset_01_gatewayline" sourceRef="dedataset_01" targetRef="gateway-dedataset_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset_01_end_line" sourceRef="gateway-dedataset_01" targetRef="gateway-dedataset_01_end"/>
+                            <endEvent id="gateway-dedataset_01_end" name="end"/>
+        </process>
+    </definitions>

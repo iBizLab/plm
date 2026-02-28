@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.prodmgmt.logic.product_taglogic.delete_tag;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_tag product_tagdelete_tagdefault;
+                global java.util.Map product_tagdelete_tagfilter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_tag product_tagdelete_tagplan_filter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_tag product_tagdelete_tagproduct_plan_pages;
+        global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_tagService iBzSysProduct_tagDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "product_tagdelete_tagbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "product_tagdelete_tagend1"
+            when
+            then
+                        update(product_tagdelete_tagdefault);//更新fact中变量值
+                        update(product_tagdelete_tagfilter);//更新fact中变量值
+                        update(product_tagdelete_tagplan_filter);//更新fact中变量值
+                        update(product_tagdelete_tagproduct_plan_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新标签属性]
+            rule "rawsqlcall1"
+            ruleflow-group "product_tagdelete_tagrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",product_tagdelete_tagdefault.get("id"));
+        param.put("param1",product_tagdelete_tagdefault.get("id"));
+    String strSql="UPDATE ticket SET tags = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', tags, ','), CONCAT(',', #{et.param0}, ','), ',')) WHERE FIND_IN_SET(#{et.param1}, tags) > 0 ;";
+                        iBzSysProduct_tagDefaultService.execute(strSql,param);//SQL调用
+                        update(product_tagdelete_tagdefault);//更新fact中变量值
+                        update(product_tagdelete_tagfilter);//更新fact中变量值
+                        update(product_tagdelete_tagplan_filter);//更新fact中变量值
+                        update(product_tagdelete_tagproduct_plan_pages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除标签]
+            rule "rawsqlcall2"
+            ruleflow-group "product_tagdelete_tagrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",product_tagdelete_tagdefault.get("id"));
+    String strSql="delete  from product_tag where  id = #{et.param0}";
+                        iBzSysProduct_tagDefaultService.execute(strSql,param);//SQL调用
+                        update(product_tagdelete_tagdefault);//更新fact中变量值
+                        update(product_tagdelete_tagfilter);//更新fact中变量值
+                        update(product_tagdelete_tagplan_filter);//更新fact中变量值
+                        update(product_tagdelete_tagproduct_plan_pages);//更新fact中变量值
+            end
