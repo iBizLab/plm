@@ -1799,13 +1799,13 @@
     },
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "refresh_comment"
+      "id" : "notify_refresh"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/comment.json"
     },
-    "refreshMode" : 2,
+    "refreshMode" : 1,
     "successMsg" : "删除成功",
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
@@ -1825,15 +1825,20 @@
       "modelref" : true,
       "id" : "no_top"
     },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "notify_refresh"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/comment.json"
     },
-    "refreshMode" : 2,
+    "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "no_top",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "no_top@comment"
@@ -1912,15 +1917,20 @@
       "modelref" : true,
       "id" : "top"
     },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "notify_refresh"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/comment.json"
     },
-    "refreshMode" : 2,
+    "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "top",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "top@comment"
@@ -2424,58 +2434,16 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "refresh_comment",
+    "codeName" : "notify_refresh",
     "defaultParamName" : "Default",
-    "logicName" : "刷新评论列表（移动端）",
+    "logicName" : "通知刷新",
     "memo" : "刷新",
-    "name" : "刷新评论列表（移动端）",
+    "name" : "通知刷新",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 310,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "principal_type",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "ctx"
-            },
-            "logicType" : "SINGLE",
-            "name" : "ctx[principal_type] 等于(=) discuss_post",
-            "paramValue" : "discuss_post",
-            "value" : "discuss_post"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n'plmmob.comment',\r\n'Update',\r\ncontext,\r\nuiLogic.default,\r\n);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 858,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "topPos" : 200
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 580,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2485,23 +2453,37 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "Begin"
         }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "CONTENT",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[<p><del>该评论已删除</del>...] ==> Default[CONTENT]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "c",
-        "srcValue" : "<p><del>该评论已删除</del></p>",
-        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 810,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'comment'});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 520,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 196
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -2509,11 +2491,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "ctx",
-      "name" : "ctx",
-      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
