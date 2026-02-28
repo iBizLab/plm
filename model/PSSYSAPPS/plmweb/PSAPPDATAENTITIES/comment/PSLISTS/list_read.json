@@ -65,6 +65,10 @@
       "hidden" : true,
       "viewFieldName" : "PID"
     }, {
+      "id" : "is_top",
+      "hidden" : true,
+      "viewFieldName" : "IS_TOP"
+    }, {
       "id" : "content",
       "viewFieldName" : "CONTENT"
     }, {
@@ -178,6 +182,40 @@
             },
             "viewFieldName" : "CREATE_TIME"
           }, {
+            "caption" : "置顶",
+            "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "top_text",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "OUTERSMALL"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "IS_TOP",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "1"
+              } ],
+              "relatedItemNames" : [ "is_top" ],
+              "notMode" : false
+            } ],
+            "getPSRawItem" : {
+              "caption" : "置顶",
+              "contentType" : "RAW",
+              "name" : "top_text",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "置顶",
+            "showCaption" : true
+          }, {
             "caption" : "文本(动态)",
             "itemType" : "FIELD",
             "name" : "field_text_dynamic3",
@@ -207,7 +245,24 @@
             },
             "viewFieldName" : "PID",
             "hidden" : true
-          } ]
+          }, {
+            "caption" : "文本(动态)",
+            "itemType" : "FIELD",
+            "name" : "is_top",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "is_top"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "IS_TOP",
+            "hidden" : true
+          } ],
+          "getPSSysCss" : {
+            "cssName" : "top_style"
+          }
         } ]
       }, {
         "caption" : "容器",
@@ -365,11 +420,6 @@
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "list_read",
-  "minorSortDir" : "ASC",
-  "getMinorSortPSAppDEField" : {
-    "name" : "CREATE_TIME",
-    "codeName" : "create_time"
-  },
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
