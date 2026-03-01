@@ -1,0 +1,48 @@
+package cn.ibizlab.plm.ai.logic.ai_kb_chunklogic.retrieval_test;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_kb_chunk ai_kb_chunkretrieval_testdefault;
+                global java.util.Map ai_kb_chunkretrieval_testpage;
+        global cn.ibizlab.plm.core.ai.service.Iai_kb_chunkService iBzSysAi_kb_chunkDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_kb_chunkretrieval_testbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[检索测试]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_kb_chunkretrieval_testrawsfcode_01"
+            when
+            then
+                        update(ai_kb_chunkretrieval_testdefault);//更新fact中变量值
+                        update(ai_kb_chunkretrieval_testpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam_01"
+            ruleflow-group "ai_kb_chunkretrieval_testbindparam_01"
+            when
+            then
+                        update(ai_kb_chunkretrieval_testdefault);//更新fact中变量值
+                        update(ai_kb_chunkretrieval_testpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_kb_chunkretrieval_testend_01"
+            when
+            then
+                        update(ai_kb_chunkretrieval_testdefault);//更新fact中变量值
+                        update(ai_kb_chunkretrieval_testpage);//更新fact中变量值
+            end

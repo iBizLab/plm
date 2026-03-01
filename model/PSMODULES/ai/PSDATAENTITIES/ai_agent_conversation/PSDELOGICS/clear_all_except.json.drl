@@ -1,0 +1,41 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_conversationlogic.clear_all_except;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_conversation ai_agent_conversationclear_all_exceptdefault;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_conversationService iBzSysAi_agent_conversationDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_conversationclear_all_exceptbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall_01"
+            ruleflow-group "ai_agent_conversationclear_all_exceptrawsqlcall_01"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ai_agent_conversationclear_all_exceptdefault.get("sessionid"));
+        param.put("param1",curuser.getSessionParams().get("srfpersonid"));
+    String strSql="UPDATE AI_AGENT_CONVERSATION  SET STATUS= 'ended' WHERE SESSION_ID <> #{et.param0} AND  USER_ID = #{et.param1}";
+                        iBzSysAi_agent_conversationDefaultService.execute(strSql,param);//SQL调用
+                        update(ai_agent_conversationclear_all_exceptdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "ai_agent_conversationclear_all_exceptend_01"
+            when
+            then
+                        update(ai_agent_conversationclear_all_exceptdefault);//更新fact中变量值
+            end

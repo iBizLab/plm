@@ -1,0 +1,28 @@
+package cn.ibizlab.plm.base.logic.extend_print_templlogic.reload_print_temp;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.extend_print_templ extend_print_templreload_print_tempdefault;
+        global cn.ibizlab.plm.core.base.service.Iextend_print_templService iBzSysExtend_print_templDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "extend_print_templreload_print_tempbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[触发刷新信号]
+            rule "rawsfcode_01"
+            ruleflow-group "extend_print_templreload_print_temprawsfcode_01"
+            when
+            then
+                        update(extend_print_templreload_print_tempdefault);//更新fact中变量值
+            end

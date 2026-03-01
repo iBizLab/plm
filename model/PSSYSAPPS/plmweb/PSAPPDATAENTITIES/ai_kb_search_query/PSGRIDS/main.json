@@ -1,0 +1,307 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "main",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query/PSGRIDS/main.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "主表格",
+  "getNavPSAppView" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_kb_search_result_custom_view.json",
+    "viewType" : "DECUSTOMVIEW"
+  },
+  "getNavPSDER" : {
+    "codeName" : "AI_KB_SEARCH_QUERY",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result/PSDERS/DER1N_AI_KB_SEARCH_RESULT_AI_KB_SEARCH_QUERY_QUERY_ID.json",
+    "fKeyName" : "F0127E63FA9021B8C2",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_query.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_kb_search_result.json"
+    },
+    "name" : "DER1N_AI_KB_SEARCH_RESULT_AI_KB_SEARCH_QUERY_QUERY_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "QUERY_ID",
+      "codeName" : "query_id"
+    },
+    "pickupDEFName" : "QUERY_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "ai_kb_search_query",
+    "enableFKey" : true
+  },
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.RAW_QUERY"
+    },
+    "caption" : "原始问题",
+    "codeName" : "raw_query",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "raw_query",
+    "excelCaption" : "原始问题",
+    "name" : "raw_query",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "RAW_QUERY",
+      "codeName" : "raw_query"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.SOURCE"
+    },
+    "caption" : "来源",
+    "codeName" : "source",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "source",
+    "excelCaption" : "来源",
+    "name" : "source",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__ai_search_source.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "SOURCE",
+      "codeName" : "source"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.TAGS"
+    },
+    "caption" : "检索标签",
+    "codeName" : "tags",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "tags",
+    "excelCaption" : "检索标签",
+    "name" : "tags",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__kb_tag.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TAGS",
+      "codeName" : "tags"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.IS_ANSWERED"
+    },
+    "caption" : "有效回答",
+    "codeName" : "is_answered",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "is_answered",
+    "excelCaption" : "有效回答",
+    "name" : "is_answered",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "IS_ANSWERED",
+      "codeName" : "is_answered"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.TOTAL_DURATION"
+    },
+    "caption" : "总耗时",
+    "codeName" : "total_duration",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "total_duration",
+    "excelCaption" : "总耗时",
+    "name" : "total_duration",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TOTAL_DURATION",
+      "codeName" : "total_duration"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.AI_KB_SEARCH_QUERY.CREATE_TIME"
+    },
+    "caption" : "创建时间",
+    "codeName" : "create_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "create_time",
+    "excelCaption" : "创建时间",
+    "name" : "create_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 21,
+    "name" : "raw_query",
+    "getPSAppDEField" : {
+      "name" : "RAW_QUERY",
+      "codeName" : "raw_query"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "source",
+    "getPSAppDEField" : {
+      "name" : "SOURCE",
+      "codeName" : "source"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "tags",
+    "getPSAppDEField" : {
+      "name" : "TAGS",
+      "codeName" : "tags"
+    }
+  }, {
+    "dataType" : 9,
+    "name" : "is_answered",
+    "getPSAppDEField" : {
+      "name" : "IS_ANSWERED",
+      "codeName" : "is_answered"
+    }
+  }, {
+    "dataType" : 6,
+    "name" : "total_duration",
+    "getPSAppDEField" : {
+      "name" : "TOTAL_DURATION",
+      "codeName" : "total_duration"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "create_time",
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingMode" : 1,
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_search_query.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "47d49f880d4d71a30f3e992b434efe15",
+  "modeltype" : "PSDEGRID"
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_typedelete_custom_model" isClosed="false" isExecutable="true" name="projmgmt_work_item_type_delete_custom_model_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_typedelete_custom_model">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_item_typedelete_custom_modeldefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDEMSLogic()" name="work_item_typedelete_custom_modeldefault_ms_logic" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDEForm()" name="work_item_typedelete_custom_modelmain_deform" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDEForm()" name="work_item_typedelete_custom_modelnew_deform" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDEMSLogicService))" name="psdemslogicservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDEFormService))" name="psdeformservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService))" name="iBzSysWork_item_typeDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_item_typedelete_custom_modeldefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_type" />
+                            <tns:global identifier="work_item_typedelete_custom_modeldefault_ms_logic" type="cn.ibizlab.plm.core.extension.domain.PSDEMSLogic" />
+                            <tns:global identifier="work_item_typedelete_custom_modelmain_deform" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
+                            <tns:global identifier="work_item_typedelete_custom_modelnew_deform" type="cn.ibizlab.plm.core.extension.domain.PSDEForm" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modelrawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="拼接model标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_05" id="deaction_05" implementation="http://www.jboss.org/drools/rule" name="获取主状态信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_03" id="deaction_03" implementation="http://www.jboss.org/drools/rule" name="获取主视图form"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取新建form"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_06" id="deaction_06" implementation="http://www.jboss.org/drools/rule" name="删除"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="删除"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modeldeaction_04" id="deaction_04" implementation="http://www.jboss.org/drools/rule" name="删除"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_typedelete_custom_modelend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end_01_end" name="end"/>
+                        <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
+                    <sequenceFlow id="begin_rawsfcode_01" sourceRef="begin" targetRef="rawsfcode_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_deaction_01" sourceRef="rawsfcode_01" targetRef="deaction_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_deaction_03" sourceRef="rawsfcode_01" targetRef="deaction_03">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode_01_deaction_05" sourceRef="rawsfcode_01" targetRef="deaction_05">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction_05_deaction_06" sourceRef="gateway-deaction_05" targetRef="deaction_06">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_item_typedelete_custom_modeldefault:work_item_type();
+                                            $work_item_typedelete_custom_modeldefault_ms_logic:PSDEMSLogic();
+                                            $work_item_typedelete_custom_modelmain_deform:PSDEForm();
+                                            $work_item_typedelete_custom_modelnew_deform:PSDEForm();
+                                    eval($work_item_typedelete_custom_modeldefault==work_item_typedelete_custom_modeldefault && $work_item_typedelete_custom_modeldefault_ms_logic==work_item_typedelete_custom_modeldefault_ms_logic && $work_item_typedelete_custom_modelmain_deform==work_item_typedelete_custom_modelmain_deform && $work_item_typedelete_custom_modelnew_deform==work_item_typedelete_custom_modelnew_deform);
+                                eval((RuleUtils.test($work_item_typedelete_custom_modeldefault_ms_logic.get("psdelogicid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction_03_deaction_04" sourceRef="gateway-deaction_03" targetRef="deaction_04">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_item_typedelete_custom_modeldefault:work_item_type();
+                                            $work_item_typedelete_custom_modeldefault_ms_logic:PSDEMSLogic();
+                                            $work_item_typedelete_custom_modelmain_deform:PSDEForm();
+                                            $work_item_typedelete_custom_modelnew_deform:PSDEForm();
+                                    eval($work_item_typedelete_custom_modeldefault==work_item_typedelete_custom_modeldefault && $work_item_typedelete_custom_modeldefault_ms_logic==work_item_typedelete_custom_modeldefault_ms_logic && $work_item_typedelete_custom_modelmain_deform==work_item_typedelete_custom_modelmain_deform && $work_item_typedelete_custom_modelnew_deform==work_item_typedelete_custom_modelnew_deform);
+                                eval((RuleUtils.test($work_item_typedelete_custom_modelmain_deform.get("psdeformid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction_01_deaction_02" sourceRef="gateway-deaction_01" targetRef="deaction_02">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_item_typedelete_custom_modeldefault:work_item_type();
+                                            $work_item_typedelete_custom_modeldefault_ms_logic:PSDEMSLogic();
+                                            $work_item_typedelete_custom_modelmain_deform:PSDEForm();
+                                            $work_item_typedelete_custom_modelnew_deform:PSDEForm();
+                                    eval($work_item_typedelete_custom_modeldefault==work_item_typedelete_custom_modeldefault && $work_item_typedelete_custom_modeldefault_ms_logic==work_item_typedelete_custom_modeldefault_ms_logic && $work_item_typedelete_custom_modelmain_deform==work_item_typedelete_custom_modelmain_deform && $work_item_typedelete_custom_modelnew_deform==work_item_typedelete_custom_modelnew_deform);
+                                eval((RuleUtils.test($work_item_typedelete_custom_modelnew_deform.get("psdeformid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_06_end_01" sourceRef="deaction_06" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_04_end_01" sourceRef="deaction_04" targetRef="end_01">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction_05" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction_05_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction_05_gateway-deaction_05_gatewayline" sourceRef="deaction_05" targetRef="gateway-deaction_05"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction_05_end_line" sourceRef="gateway-deaction_05" targetRef="gateway-deaction_05_end"/>
+                            <endEvent id="gateway-deaction_05_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction_03" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction_03_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction_03_gateway-deaction_03_gatewayline" sourceRef="deaction_03" targetRef="gateway-deaction_03"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction_03_end_line" sourceRef="gateway-deaction_03" targetRef="gateway-deaction_03_end"/>
+                            <endEvent id="gateway-deaction_03_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction_01" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction_01_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction_01_gateway-deaction_01_gatewayline" sourceRef="deaction_01" targetRef="gateway-deaction_01"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction_01_end_line" sourceRef="gateway-deaction_01" targetRef="gateway-deaction_01_end"/>
+                            <endEvent id="gateway-deaction_01_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.executordel_notice" isClosed="false" isExecutable="true" name="base_executor_del_notice_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.executordel_notice">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="executordel_noticedefault" type="entity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IexecutorService))" name="executorservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IexecutorService))" name="iBzSysExecutorDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="executordel_noticedefault" type="cn.ibizlab.plm.core.base.domain.executor" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="executordel_noticedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取执行人"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="executordel_noticerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="executordel_noticedenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知取消工作项分配执行人"/>
+                        <endEvent id="denotify1_end" name="end"/>
+                        <sequenceFlow id="denotify1_end_line" sourceRef="denotify1" targetRef="denotify1_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_rawsfcode1" sourceRef="deaction1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode1_denotify1" sourceRef="gateway-rawsfcode1" targetRef="denotify1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $executordel_noticedefault:executor();
+                                    eval($executordel_noticedefault==executordel_noticedefault);
+                                eval((RuleUtils.test($executordel_noticedefault.get("is_current_user"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-rawsfcode1" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode1_gateway-rawsfcode1_gatewayline" sourceRef="rawsfcode1" targetRef="gateway-rawsfcode1"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode1_end_line" sourceRef="gateway-rawsfcode1" targetRef="gateway-rawsfcode1_end"/>
+                            <endEvent id="gateway-rawsfcode1_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.team.service.logic.discuss_topicchange_admin_role" isClosed="false" isExecutable="true" name="team_discuss_topic_change_admin_role_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.team.service.logic.discuss_topicchange_admin_role">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="discuss_topicchange_admin_roledefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="discuss_topicchange_admin_rolefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="discuss_topicchange_admin_roleselectdata" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.team.domain.discuss_member()" name="discuss_topicchange_admin_roleupdate_member_info" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.team.service.Idiscuss_memberService))" name="discuss_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.team.service.Idiscuss_topicService))" name="iBzSysDiscuss_topicDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="discuss_topicchange_admin_roledefault" type="cn.ibizlab.plm.core.team.domain.discuss_topic" />
+                            <tns:global identifier="discuss_topicchange_admin_rolefor_temp_obj" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="discuss_topicchange_admin_roleselectdata" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="discuss_topicchange_admin_roleupdate_member_info" type="cn.ibizlab.plm.core.team.domain.discuss_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_rolebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_roleloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_rolerenewparam4" id="renewparam4" implementation="http://www.jboss.org/drools/rule" name="重新建立更新成员信息参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_roleprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备更新管理员身份"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_roledeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新管理员身份"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_topicchange_admin_roleend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $discuss_topicchange_admin_roledefault:discuss_topic();
+                                            $discuss_topicchange_admin_rolefor_temp_obj:user();
+                                            $discuss_topicchange_admin_roleselectdata:user();
+                                            $discuss_topicchange_admin_roleupdate_member_info:discuss_member();
+                                    eval($discuss_topicchange_admin_roledefault==discuss_topicchange_admin_roledefault && $discuss_topicchange_admin_rolefor_temp_obj==discuss_topicchange_admin_rolefor_temp_obj && $discuss_topicchange_admin_roleselectdata==discuss_topicchange_admin_roleselectdata && $discuss_topicchange_admin_roleupdate_member_info==discuss_topicchange_admin_roleupdate_member_info);
+                                eval((RuleUtils.test($discuss_topicchange_admin_roleselectdata.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_end1" sourceRef="gateway-bindparam1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $discuss_topicchange_admin_roledefault:discuss_topic();
+                                            $discuss_topicchange_admin_rolefor_temp_obj:user();
+                                            $discuss_topicchange_admin_roleselectdata:user();
+                                            $discuss_topicchange_admin_roleupdate_member_info:discuss_member();
+                                    eval($discuss_topicchange_admin_roledefault==discuss_topicchange_admin_roledefault && $discuss_topicchange_admin_rolefor_temp_obj==discuss_topicchange_admin_rolefor_temp_obj && $discuss_topicchange_admin_roleselectdata==discuss_topicchange_admin_roleselectdata && $discuss_topicchange_admin_roleupdate_member_info==discuss_topicchange_admin_roleupdate_member_info);
+                                eval((RuleUtils.test($discuss_topicchange_admin_roleselectdata.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam4" sourceRef="loopsubcall1" targetRef="renewparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam4_prepareparam2" sourceRef="renewparam4" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-bindparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam1_gateway-bindparam1_gatewayline" sourceRef="bindparam1" targetRef="gateway-bindparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam1_end_line" sourceRef="gateway-bindparam1" targetRef="gateway-bindparam1_end"/>
+                            <endEvent id="gateway-bindparam1_end" name="end"/>
+        </process>
+    </definitions>
