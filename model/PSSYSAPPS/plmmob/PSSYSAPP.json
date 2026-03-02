@@ -55870,6 +55870,7 @@
         "actionTarget" : "SINGLEDATA",
         "caption" : "移动",
         "codeName" : "mob_move",
+        "dialogResult" : "OK",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_move_option_view.json",
@@ -55877,21 +55878,9 @@
         },
         "fullCodeName" : "discuss_post_mob_move",
         "name" : "移动（移动端）",
-        "getNextPSUIAction" : {
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
-          },
-          "modelref" : true,
-          "id" : "mob_open_discuss_tree@discuss_post"
-        },
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "move"
-        },
-        "getPSAppDEUILogic" : {
-          "modelref" : true,
-          "id" : "mob_refresh"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -55900,13 +55889,16 @@
         "getPSSysImage" : {
           "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
         },
+        "refreshMode" : 1,
         "successMsg" : "移动成功",
         "timeout" : 60000,
         "uIActionMode" : "BACKEND",
         "uIActionTag" : "mob_move",
         "uIActionType" : "DEUIACTION",
-        "uILogicAttachMode" : "AFTER",
+        "closeEditView" : true,
+        "closePopupView" : true,
         "enableConfirm" : true,
+        "reloadData" : true,
         "id" : "mob_move@discuss_post"
       }, {
         "actionTarget" : "SINGLEDATA",
@@ -55933,26 +55925,6 @@
         "closePopupView" : true,
         "reloadData" : true,
         "id" : "mob_open_attention_list@discuss_post"
-      }, {
-        "actionTarget" : "NONE",
-        "caption" : "打开讨论树导航视图",
-        "codeName" : "mob_open_discuss_tree",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_post_tree.json",
-          "viewType" : "DEMOBTREEEXPVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "discuss_post_mob_open_discuss_tree",
-        "name" : "打开讨论树导航视图（移动端）",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
-        },
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "mob_open_discuss_tree",
-        "uIActionType" : "DEUIACTION",
-        "id" : "mob_open_discuss_tree@discuss_post"
       }, {
         "actionTarget" : "SINGLEKEY",
         "caption" : "打开",
@@ -56053,67 +56025,6 @@
         "id" : "recover@discuss_post"
       } ],
       "getAllPSAppDEUILogics" : [ {
-        "codeName" : "mob_refresh",
-        "defaultParamName" : "Default",
-        "logicName" : "刷新（移动端）",
-        "name" : "刷新（移动端）",
-        "getPSDEUILogicNodes" : [ {
-          "codeName" : "Begin",
-          "leftPos" : 200,
-          "logicNodeType" : "BEGIN",
-          "name" : "开始",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "Begin"
-            }
-          } ],
-          "topPos" : 200,
-          "parallelOutput" : true
-        }, {
-          "code" : "ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.discuss_post});",
-          "codeName" : "RAWJSCODE1",
-          "leftPos" : 160,
-          "logicNodeType" : "RAWJSCODE",
-          "name" : "通知刷新",
-          "getPSDEUILogicLinks" : [ {
-            "getDstPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "END1"
-            },
-            "linkMode" : 0,
-            "name" : "连接名称",
-            "getSrcPSDEUILogicNode" : {
-              "modelref" : true,
-              "id" : "RAWJSCODE1"
-            }
-          } ],
-          "topPos" : 337
-        }, {
-          "codeName" : "END1",
-          "leftPos" : 200,
-          "logicNodeType" : "END",
-          "name" : "结束",
-          "topPos" : 460
-        } ],
-        "getPSDEUILogicParams" : [ {
-          "codeName" : "Default",
-          "logicName" : "传入变量",
-          "name" : "传入变量",
-          "default" : true,
-          "entityParam" : true
-        } ],
-        "getStartPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
         "codeName" : "refresh",
         "defaultParamName" : "Default",
         "logicName" : "刷新",
