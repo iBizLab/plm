@@ -256,12 +256,28 @@
       "codeName" : "usr1229905828",
       "controlType" : "PANEL",
       "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type/PSPANELS/usr1229905828.json",
+      "hookEventNames" : [ "ONCLICK" ],
       "layoutMode" : "TABLE_24COL",
       "logicName" : "global_setting_列表项面板",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
       },
+      "getPSControlLogics" : [ {
+        "eventNames" : "onClick",
+        "itemName" : "BUTTON_CALLUILOGIC",
+        "logicTag" : "list_itempanel",
+        "logicType" : "APPDEUILOGIC",
+        "name" : "logic",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "delete_custom_model"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+        }
+      } ],
       "getPSControlParam" : { },
       "getPSLayout" : {
         "childColMD" : 24,
@@ -1290,17 +1306,13 @@
             "titleBarCloseMode" : 2,
             "showCaption" : true
           }, {
-            "actionType" : "UIACTION",
+            "actionType" : "NONE",
             "buttonStyle" : "STYLE2",
             "caption" : "移除",
             "itemStyle" : "STYLE2",
             "itemType" : "BUTTON",
             "memo" : "只能删除非系统类型的工作项",
             "name" : "button_calluilogic",
-            "getPSAppViewUIAction" : {
-              "modelref" : true,
-              "id" : "list_itempanel_button_calluilogic"
-            },
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -1325,37 +1337,8 @@
               "relatedItemNames" : [ "is_system" ],
               "notMode" : false
             } ],
-            "getPSUIAction" : {
-              "actionTarget" : "SINGLEDATA",
-              "caption" : "移除扩展模型",
-              "codeName" : "remove_model",
-              "frontProcessType" : "WIZARD",
-              "fullCodeName" : "work_item_type_remove_model",
-              "name" : "移除扩展模型",
-              "getPSAppDEUILogic" : {
-                "modelref" : true,
-                "id" : "delete_custom_model"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-              },
-              "getPSNavigateParams" : [ {
-                "key" : "id",
-                "name" : "id",
-                "value" : "id",
-                "rawValue" : false
-              } ],
-              "refreshMode" : 1,
-              "uIActionMode" : "FRONT",
-              "uIActionTag" : "remove_model",
-              "uIActionType" : "DEUIACTION",
-              "uILogicAttachMode" : "REPLACE",
-              "reloadData" : true,
-              "id" : "remove_model@work_item_type"
-            },
             "tooltip" : "移除",
-            "uIActionTarget" : "SINGLEDATA",
+            "uIActionTarget" : "NONE",
             "showCaption" : true
           } ]
         } ],
