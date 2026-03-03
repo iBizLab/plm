@@ -2157,6 +2157,27 @@
     "id" : "panel_usr12299058218_form_cfg_click@work_item_type"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "删除",
+    "codeName" : "panel_usr1229905828_button_calluilogic_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_type_panel_usr1229905828_button_calluilogic_click",
+    "name" : "删除",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "delete_custom_model"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "panel_usr1229905828_button_calluilogic_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "panel_usr1229905828_button_calluilogic_click@work_item_type"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "动态设计",
     "codeName" : "panel_usr1229905828_button_link1_click",
     "getFrontPSAppView" : {
@@ -2238,6 +2259,263 @@
     "uIActionTag" : "panel_usr1229905828_button_link_click",
     "uIActionType" : "DEUIACTION",
     "id" : "panel_usr1229905828_button_link_click@work_item_type"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "delete_custom_model",
+    "defaultParamName" : "Default",
+    "logicName" : "删除扩展模型",
+    "name" : "删除扩展模型",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 220,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 242,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET_01",
+      "getDstPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_all"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "leftPos" : 374,
+      "logicNodeType" : "DEDATASET",
+      "memo" : "查询类型是否被工作项引用（包含被删除、归档的工作项）",
+      "name" : "类型是否被引用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        },
+        "linkMode" : 0,
+        "name" : "被引用",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "work_item_pages"
+            },
+            "logicType" : "SINGLE",
+            "name" : "work_item_pages[size] 大于(>) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "无引用",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "work_item_pages"
+            },
+            "logicType" : "SINGLE",
+            "name" : "work_item_pages[size] 等于(=) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_pages"
+      },
+      "topPos" : 426,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "N_WORK_ITEM_TYPE_ID_EQ",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "work_item_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 426,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 1040,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 428,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "remove"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 620,
+      "logicNodeType" : "DEACTION",
+      "name" : "删除工作项类型",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "topPos" : 520,
+      "parallelOutput" : true
+    }, {
+      "buttonsType" : "OK",
+      "codeName" : "MSGBOX_01",
+      "leftPos" : 820,
+      "logicNodeType" : "MSGBOX",
+      "getMsgBoxParam" : {
+        "modelref" : true,
+        "id" : "message_obj"
+      },
+      "msgBoxType" : "INFO",
+      "name" : "消息提示",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX_01"
+        }
+      } ],
+      "topPos" : 270,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(1234);\r\n\r\nconst _default = uiLogic.default;\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=_default.name;\r\nconst _work_item_pages=_default.work_item_pages;\r\nconst  work_item_names= _default?.work_item_pages?.map(p => p.name).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "构造消息提示",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 260,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "work_item_filter",
+      "logicName" : "work_item_filter",
+      "name" : "work_item_filter",
+      "filterParam" : true
+    }, {
+      "codeName" : "massage_result",
+      "logicName" : "massage_result",
+      "name" : "massage_result",
+      "lastReturnParam" : true
+    }, {
+      "codeName" : "message_obj",
+      "logicName" : "message_obj",
+      "name" : "message_obj",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "work_item_pages",
+      "logicName" : "work_item_pages",
+      "name" : "work_item_pages",
+      "entityPageParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
