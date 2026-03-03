@@ -2157,11 +2157,11 @@
     "id" : "panel_usr12299058218_form_cfg_click@work_item_type"
   }, {
     "actionTarget" : "SINGLEDATA",
-    "caption" : "删除",
+    "caption" : "移除",
     "codeName" : "panel_usr1229905828_button_calluilogic_click",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "work_item_type_panel_usr1229905828_button_calluilogic_click",
-    "name" : "删除",
+    "name" : "移除",
     "getPSAppDEUILogic" : {
       "modelref" : true,
       "id" : "delete_custom_model"
@@ -2273,7 +2273,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
+          "id" : "RAWJSCODE_02"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2296,7 +2296,7 @@
       },
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "work_item_filter"
+        "id" : "item_filter"
       },
       "leftPos" : 374,
       "logicNodeType" : "DEDATASET",
@@ -2309,22 +2309,6 @@
         },
         "linkMode" : 0,
         "name" : "被引用",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "work_item_pages"
-            },
-            "logicType" : "SINGLE",
-            "name" : "work_item_pages[size] 大于(>) 0",
-            "paramValue" : "0",
-            "value" : "0"
-          } ]
-        },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
@@ -2336,22 +2320,6 @@
         },
         "linkMode" : 0,
         "name" : "无引用",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "work_item_pages"
-            },
-            "logicType" : "SINGLE",
-            "name" : "work_item_pages[size] 等于(=) 0",
-            "paramValue" : "0",
-            "value" : "0"
-          } ]
-        },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
@@ -2359,9 +2327,17 @@
       } ],
       "getRetPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "work_item_pages"
+        "id" : "item_page"
       },
       "topPos" : 426,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(3333333);\r\nconst _default = uiLogic.default;\r\nconsole.log(11111,_default);",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 320,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 290,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
@@ -2384,7 +2360,7 @@
         "dstFieldName" : "n_work_item_type_id_eq",
         "getDstPSDEUILogicParam" : {
           "modelref" : true,
-          "id" : "work_item_filter"
+          "id" : "item_filter"
         },
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "ID",
@@ -2465,7 +2441,7 @@
       "topPos" : 270,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(1234);\r\n\r\nconst _default = uiLogic.default;\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=_default.name;\r\nconst _work_item_pages=_default.work_item_pages;\r\nconst  work_item_names= _default?.work_item_pages?.map(p => p.name).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(1234);\r\n\r\nconst _default = uiLogic.default;\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=_default.name;\r\nconst  work_item_names= _default?.item_page?.map(p => p.name).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -2486,10 +2462,10 @@
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "work_item_filter",
-      "logicName" : "work_item_filter",
-      "name" : "work_item_filter",
-      "filterParam" : true
+      "codeName" : "item_page",
+      "logicName" : "item_page",
+      "name" : "item_page",
+      "entityPageParam" : true
     }, {
       "codeName" : "massage_result",
       "logicName" : "massage_result",
@@ -2507,10 +2483,10 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "work_item_pages",
-      "logicName" : "work_item_pages",
-      "name" : "work_item_pages",
-      "entityPageParam" : true
+      "codeName" : "item_filter",
+      "logicName" : "item_filter",
+      "name" : "item_filter",
+      "filterParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
