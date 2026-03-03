@@ -2253,6 +2253,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "id",
+      "name" : "id",
+      "value" : "id",
+      "rawValue" : false
+    } ],
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "remove_model",
@@ -2310,6 +2316,22 @@
         },
         "linkMode" : 0,
         "name" : "被引用",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "item_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "item_page[size] 大于(>) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
@@ -2321,6 +2343,22 @@
         },
         "linkMode" : 0,
         "name" : "无引用",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "item_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "item_page[size] 等于(=) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEDATASET_01"
