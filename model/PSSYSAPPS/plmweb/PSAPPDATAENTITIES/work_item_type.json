@@ -2157,27 +2157,6 @@
     "id" : "panel_usr12299058218_form_cfg_click@work_item_type"
   }, {
     "actionTarget" : "SINGLEDATA",
-    "caption" : "移除",
-    "codeName" : "panel_usr1229905828_button_calluilogic_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "work_item_type_panel_usr1229905828_button_calluilogic_click",
-    "name" : "移除",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "delete_custom_model"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-    },
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "panel_usr1229905828_button_calluilogic_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "panel_usr1229905828_button_calluilogic_click@work_item_type"
-  }, {
-    "actionTarget" : "SINGLEDATA",
     "caption" : "动态设计",
     "codeName" : "panel_usr1229905828_button_link1_click",
     "getFrontPSAppView" : {
@@ -2259,6 +2238,28 @@
     "uIActionTag" : "panel_usr1229905828_button_link_click",
     "uIActionType" : "DEUIACTION",
     "id" : "panel_usr1229905828_button_link_click@work_item_type"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "移除扩展模型",
+    "codeName" : "remove_extend_model",
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_type_remove_extend_model",
+    "name" : "移除扩展模型",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "delete_custom_model"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "remove_extend_model",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "reloadData" : true,
+    "id" : "remove_extend_model@work_item_type"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "delete_custom_model",
@@ -2273,7 +2274,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "PREPAREJSPARAM_01"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2364,11 +2365,18 @@
       "topPos" : 426,
       "parallelOutput" : true
     }, {
-      "code" : "\r\nuiLogic.default.id=context.work_item_type;\r\nconst _default = uiLogic.default;\r\nconsole.log(11,_default);\r\nconsole.log(22,view);\r\nconsole.log(33,context);\r\nconsole.log(44,viewParam);\r\nconsole.log(5555566,params);\r\n\r\n",
+      "code" : "const _default = uiLogic.default;\r\nconsole.log(11,_default);\r\nconsole.log(33,context);\r\nconsole.log(5555566,params);\r\n\r\n",
       "codeName" : "RAWJSCODE_02",
       "leftPos" : 330,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
+      "topPos" : 212,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2378,16 +2386,9 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "PREPAREJSPARAM_01"
         }
       } ],
-      "topPos" : 212,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 170,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
       "getPSDEUILogicNodeParams" : [ {
         "dstFieldName" : "n_work_item_type_id_eq",
         "getDstPSDEUILogicParam" : {
