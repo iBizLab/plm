@@ -2273,7 +2273,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
+          "id" : "RAWJSCODE_02"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2364,18 +2364,11 @@
       "topPos" : 426,
       "parallelOutput" : true
     }, {
-      "code" : "\r\nconst _default = uiLogic.default;\r\nconsole.log(11,_default);\r\nconsole.log(22,view);\r\nconsole.log(33,context);\r\nconsole.log(44,viewParam);\r\nconsole.log(5555566,params);\r\n\r\n",
+      "code" : "\r\nuiLogic.default.id=context.work_item_type;\r\nconst _default = uiLogic.default;\r\nconsole.log(11,_default);\r\nconsole.log(22,view);\r\nconsole.log(33,context);\r\nconsole.log(44,viewParam);\r\nconsole.log(5555566,params);\r\n\r\n",
       "codeName" : "RAWJSCODE_02",
       "leftPos" : 330,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
-      "topPos" : 212,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 170,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2385,9 +2378,16 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM_01"
+          "id" : "RAWJSCODE_02"
         }
       } ],
+      "topPos" : 212,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM_01",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
       "getPSDEUILogicNodeParams" : [ {
         "dstFieldName" : "n_work_item_type_id_eq",
         "getDstPSDEUILogicParam" : {
