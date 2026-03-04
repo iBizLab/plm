@@ -2376,7 +2376,7 @@
       "topPos" : 426,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(5555566,params);\r\nconst type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\n\r\nresult.forEach(item => {\r\n  console.log(\"id\", item.id);\r\n  console.log(\"name\", item.name);\r\n});",
+      "code" : "console.log(5555566,params);\r\nconst type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\n\r\n\r\nresult.data.forEach(item => {\r\n  console.log(\"id\", item.id);\r\n  console.log(\"name\", item.name);\r\n});\r\n\r\nuiLogic.item_page=result.data;\r\n console.log(\"xxx\", uiLogic.item_page);",
       "codeName" : "RAWJSCODE_02",
       "leftPos" : 320,
       "logicNodeType" : "RAWJSCODE",
@@ -2459,7 +2459,7 @@
       "topPos" : 270,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(1234);\r\n\r\nconst _default = uiLogic.default;\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=_default.name;\r\nconst  work_item_names= _default?.item_page?.map(p => p.name).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(1234);\r\n\r\n\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.name).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
