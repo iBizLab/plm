@@ -2157,6 +2157,27 @@
     "id" : "panel_usr12299058218_form_cfg_click@work_item_type"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "移除",
+    "codeName" : "panel_usr1229905828_button_calluilogic_click",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_type_panel_usr1229905828_button_calluilogic_click",
+    "name" : "移除",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "delete_custom_model"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "panel_usr1229905828_button_calluilogic_click",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "uILogicType" : "DELOGIC",
+    "id" : "panel_usr1229905828_button_calluilogic_click@work_item_type"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "动态设计",
     "codeName" : "panel_usr1229905828_button_link1_click",
     "getFrontPSAppView" : {
@@ -2238,28 +2259,6 @@
     "uIActionTag" : "panel_usr1229905828_button_link_click",
     "uIActionType" : "DEUIACTION",
     "id" : "panel_usr1229905828_button_link_click@work_item_type"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "移除扩展模型",
-    "codeName" : "remove_extend_model",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_type_remove_extend_model",
-    "name" : "移除扩展模型",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "delete_custom_model"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-    },
-    "refreshMode" : 1,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "remove_extend_model",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "reloadData" : true,
-    "id" : "remove_extend_model@work_item_type"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "delete_custom_model",
@@ -2268,7 +2267,7 @@
     "name" : "删除扩展模型",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -20,
+      "leftPos" : 76,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -2283,7 +2282,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 282,
+      "topPos" : 278,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2407,7 +2406,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 1000,
+      "leftPos" : 760,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -2415,7 +2414,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 390,
+      "topPos" : 440,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -2446,12 +2445,12 @@
           "id" : "DEACTION_01"
         }
       } ],
-      "topPos" : 462,
+      "topPos" : 452,
       "parallelOutput" : true
     }, {
       "buttonsType" : "OK",
       "codeName" : "MSGBOX_01",
-      "leftPos" : 810,
+      "leftPos" : 680,
       "logicNodeType" : "MSGBOX",
       "getMsgBoxParam" : {
         "modelref" : true,
@@ -2471,7 +2470,7 @@
           "id" : "MSGBOX_01"
         }
       } ],
-      "topPos" : 268,
+      "topPos" : 278,
       "parallelOutput" : true
     }, {
       "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\n// const work_item_type_name=params.name;\r\nconst work_item_type_name=uiLogic.default.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被【${work_item_names}】工作项使用，不能删除！`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
