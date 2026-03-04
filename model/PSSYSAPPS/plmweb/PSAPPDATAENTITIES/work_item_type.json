@@ -2321,7 +2321,7 @@
       "topPos" : 630,
       "parallelOutput" : true
     }, {
-      "code" : "const type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;\r\n console.log(\"xxxxxx\", uiLogic.item_page);",
+      "code" : "const type_id =params.id;\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;",
       "codeName" : "RAWJSCODE_02",
       "leftPos" : 310,
       "logicNodeType" : "RAWJSCODE",
@@ -2459,7 +2459,7 @@
       "topPos" : 268,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(1234);\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\n// const message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\nconst message = `工作项类型 <span style=\"color: #ffb6c1; font-weight: bold;\">${work_item_type_name}</span> 已被 <span style=\"color: #87ceeb; font-weight: bold;\">${work_item_names}</span> 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被【${work_item_names}】工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
