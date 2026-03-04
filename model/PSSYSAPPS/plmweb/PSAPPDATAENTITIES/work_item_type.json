@@ -2279,13 +2279,13 @@
     "name" : "删除扩展模型",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 330,
+      "leftPos" : 30,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "PREPAREJSPARAM_01"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2294,7 +2294,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 214,
+      "topPos" : 272,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2310,22 +2310,10 @@
         "modelref" : true,
         "id" : "item_filter"
       },
-      "leftPos" : 64,
+      "leftPos" : 230,
       "logicNodeType" : "DEDATASET",
       "memo" : "查询类型是否被工作项引用（包含被删除、归档的工作项）",
       "name" : "类型是否被引用",
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "item_page"
-      },
-      "topPos" : 630,
-      "parallelOutput" : true
-    }, {
-      "code" : "const type_id =params.id;\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;",
-      "codeName" : "RAWJSCODE_02",
-      "leftPos" : 310,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2351,7 +2339,7 @@
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "DEDATASET_01"
         }
       }, {
         "getDstPSDEUILogicNode" : {
@@ -2378,17 +2366,55 @@
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE_02"
+          "id" : "DEDATASET_01"
         }
       } ],
-      "topPos" : 350,
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "item_page"
+      },
+      "topPos" : 402,
+      "parallelOutput" : true
+    }, {
+      "code" : "const type_id =params.id;\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 286,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 208,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 54,
+      "leftPos" : -30,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "准备参数",
-      "topPos" : 446,
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM_01"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "n_work_item_type_id_eq",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "item_filter"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 402,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
@@ -2459,7 +2485,7 @@
       "topPos" : 268,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被【${work_item_names}】工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被【${work_item_names}】工作项使用，不能删除！`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -2492,14 +2518,14 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 54,
+      "leftPos" : -200,
       "logicNodeType" : "DEACTION",
       "name" : "查询type数据",
       "getRetPSDEUILogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
-      "topPos" : 540,
+      "topPos" : 522,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
