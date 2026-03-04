@@ -2253,17 +2253,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
     },
-    "getPSNavigateParams" : [ {
-      "key" : "id",
-      "name" : "id",
-      "value" : "id",
-      "rawValue" : false
-    }, {
-      "key" : "name",
-      "name" : "name",
-      "value" : "name",
-      "rawValue" : false
-    } ],
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "remove_extend_model",
@@ -2279,7 +2268,7 @@
     "name" : "删除扩展模型",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -80,
+      "leftPos" : -130,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -2294,7 +2283,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 282,
+      "topPos" : 280,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2385,7 +2374,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 16,
+      "leftPos" : 50,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "准备参数",
       "getPSDEUILogicLinks" : [ {
@@ -2407,14 +2396,14 @@
           "id" : "item_filter"
         },
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
+        "srcFieldName" : "id",
         "getSrcPSDEUILogicParam" : {
           "modelref" : true,
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 570,
+      "topPos" : 310,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
@@ -2442,7 +2431,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 600,
+      "leftPos" : 470,
       "logicNodeType" : "DEACTION",
       "name" : "删除工作项类型",
       "getPSDEUILogicLinks" : [ {
@@ -2487,7 +2476,7 @@
     }, {
       "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被【${work_item_names}】工作项使用，不能删除！`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
-      "leftPos" : 590,
+      "leftPos" : 470,
       "logicNodeType" : "RAWJSCODE",
       "name" : "构造消息提示",
       "getPSDEUILogicLinks" : [ {
@@ -2502,7 +2491,7 @@
           "id" : "RAWJSCODE_01"
         }
       } ],
-      "topPos" : 268,
+      "topPos" : 278,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_02",
