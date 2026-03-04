@@ -2279,7 +2279,7 @@
     "name" : "删除扩展模型",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 330,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -2294,7 +2294,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 330,
+      "topPos" : 214,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2310,7 +2310,7 @@
         "modelref" : true,
         "id" : "item_filter"
       },
-      "leftPos" : 306,
+      "leftPos" : 64,
       "logicNodeType" : "DEDATASET",
       "memo" : "查询类型是否被工作项引用（包含被删除、归档的工作项）",
       "name" : "类型是否被引用",
@@ -2318,7 +2318,7 @@
         "modelref" : true,
         "id" : "item_page"
       },
-      "topPos" : 580,
+      "topPos" : 630,
       "parallelOutput" : true
     }, {
       "code" : "const type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;\r\n console.log(\"xxxxxx\", uiLogic.item_page);",
@@ -2392,7 +2392,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 1040,
+      "leftPos" : 1000,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -2400,7 +2400,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 428,
+      "topPos" : 390,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION_01",
@@ -2416,7 +2416,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 620,
+      "leftPos" : 600,
       "logicNodeType" : "DEACTION",
       "name" : "删除工作项类型",
       "getPSDEUILogicLinks" : [ {
@@ -2431,12 +2431,12 @@
           "id" : "DEACTION_01"
         }
       } ],
-      "topPos" : 520,
+      "topPos" : 462,
       "parallelOutput" : true
     }, {
       "buttonsType" : "OK",
       "codeName" : "MSGBOX_01",
-      "leftPos" : 820,
+      "leftPos" : 810,
       "logicNodeType" : "MSGBOX",
       "getMsgBoxParam" : {
         "modelref" : true,
@@ -2456,10 +2456,10 @@
           "id" : "MSGBOX_01"
         }
       } ],
-      "topPos" : 270,
+      "topPos" : 268,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(1234);\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\nconst message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(1234);\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=params.name;\r\nconst  work_item_names= uiLogic.item_page?.map(p => p.title).filter(Boolean).join(',') || '';  \r\n// const message = `工作项类型 ${work_item_type_name} 已被 ${work_item_names} 工作项使用，不能删除`;\r\nconst message = `工作项类型 <span style=\"color: #ffb6c1; font-weight: bold;\">${work_item_type_name}</span> 已被 <span style=\"color: #87ceeb; font-weight: bold;\">${work_item_names}</span> 工作项使用，不能删除`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -2492,7 +2492,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 130,
+      "leftPos" : 54,
       "logicNodeType" : "DEACTION",
       "name" : "查询type数据",
       "getRetPSDEUILogicParam" : {
