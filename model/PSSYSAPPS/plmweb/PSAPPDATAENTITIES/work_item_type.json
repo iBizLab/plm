@@ -2466,7 +2466,7 @@
       "topPos" : 278,
       "parallelOutput" : true
     }, {
-      "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=uiLogic.default.name;\r\nconst project_names = [...new Set(uiLogic.item_page?.map(p => p.project_name).filter(Boolean))].join(',') || '';\r\nconst message = `工作项类型 ${work_item_type_name} 已被项目使用,不能删除！\r\n使用的项目包括:【${project_names}】`;\r\n_message.message = message;\r\n_message.title = \"提示\";",
+      "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=uiLogic.default.name;\r\n//去重\r\nconst project_names = [...new Set(uiLogic.item_page?.map(p => p.project_name).filter(Boolean))].join(',') || '';\r\nconst message = `工作项类型 ${work_item_type_name} 已被项目使用,不能删除！\r\n使用的项目包括: ${project_names} `;\r\n\r\n_message.message = message;\r\n_message.title = \"提示\";",
       "codeName" : "RAWJSCODE_01",
       "leftPos" : 470,
       "logicNodeType" : "RAWJSCODE",
