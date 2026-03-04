@@ -2279,7 +2279,7 @@
     "name" : "删除扩展模型",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 190,
+      "leftPos" : 200,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -2294,7 +2294,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 272,
+      "topPos" : 330,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2310,10 +2310,22 @@
         "modelref" : true,
         "id" : "item_filter"
       },
-      "leftPos" : 374,
+      "leftPos" : 306,
       "logicNodeType" : "DEDATASET",
       "memo" : "查询类型是否被工作项引用（包含被删除、归档的工作项）",
       "name" : "类型是否被引用",
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "item_page"
+      },
+      "topPos" : 580,
+      "parallelOutput" : true
+    }, {
+      "code" : "const type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\nuiLogic.item_page=result.data;\r\n console.log(\"xxxxxx\", uiLogic.item_page);",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 310,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2339,7 +2351,7 @@
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEDATASET_01"
+          "id" : "RAWJSCODE_02"
         }
       }, {
         "getDstPSDEUILogicNode" : {
@@ -2366,29 +2378,17 @@
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEDATASET_01"
+          "id" : "RAWJSCODE_02"
         }
       } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "item_page"
-      },
-      "topPos" : 426,
-      "parallelOutput" : true
-    }, {
-      "code" : "console.log(5555566,params);\r\nconst type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\n\r\n\r\nresult.data.forEach(item => {\r\n  console.log(\"id\", item.id);\r\n  console.log(\"name\", item.name);\r\n});\r\n\r\nuiLogic.item_page=result.data;\r\n console.log(\"xxx\", uiLogic.item_page);",
-      "codeName" : "RAWJSCODE_02",
-      "leftPos" : 320,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "topPos" : 230,
+      "topPos" : 350,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
-      "leftPos" : 170,
+      "leftPos" : 54,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "准备参数",
-      "topPos" : 426,
+      "topPos" : 446,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
