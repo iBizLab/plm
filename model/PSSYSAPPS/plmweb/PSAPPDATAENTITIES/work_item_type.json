@@ -2258,6 +2258,11 @@
       "name" : "id",
       "value" : "id",
       "rawValue" : false
+    }, {
+      "key" : "name",
+      "name" : "name",
+      "value" : "name",
+      "rawValue" : false
     } ],
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
@@ -2371,57 +2376,18 @@
       "topPos" : 426,
       "parallelOutput" : true
     }, {
-      "code" : "\r\nuiLogic.default.id=params.id;\r\nconst _default = uiLogic.default;\r\nconsole.log(11,_default);\r\nconsole.log(5555566,params);\r\n\r\n",
+      "code" : "console.log(5555566,params);\r\nconst type_id =params.id;\r\n\r\nconst app = ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(\r\n        context, \"plmweb.work_item\" \r\n);\r\n\r\nconst result = await deService.fetchDefault(context, { \"n_work_item_type_id_eq\": type_id });\r\n\r\nresult.forEach(item => {\r\n  console.log(\"id\", item.id);\r\n  console.log(\"name\", item.name);\r\n});",
       "codeName" : "RAWJSCODE_02",
-      "leftPos" : 330,
+      "leftPos" : 320,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION_02"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE_02"
-        }
-      } ],
-      "topPos" : 212,
+      "topPos" : 230,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
       "leftPos" : 170,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "准备参数",
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "n_work_item_type_id_eq",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "item_filter"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "work_item_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "context"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "ID",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "work_item_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "context"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
       "topPos" : 426,
       "parallelOutput" : true
     }, {
@@ -2526,22 +2492,17 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 330,
+      "leftPos" : 130,
       "logicNodeType" : "DEACTION",
       "name" : "查询type数据",
       "getRetPSDEUILogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
-      "topPos" : 318,
+      "topPos" : 540,
       "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "context",
-      "logicName" : "context",
-      "name" : "context",
-      "activeViewParam" : true
-    }, {
       "codeName" : "item_page",
       "logicName" : "item_page",
       "name" : "item_page",
