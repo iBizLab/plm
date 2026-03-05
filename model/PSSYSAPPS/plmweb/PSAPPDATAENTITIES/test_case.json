@@ -12567,14 +12567,35 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 1145,
+      "leftPos" : 1015,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "view.parentView.layoutPanel.panelItems.form.control.state.modified=false;",
+      "codeName" : "RAWJSCODE_01",
+      "leftPos" : 830,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "重置脏检查参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_01"
+        }
+      } ],
+      "topPos" : 198,
+      "parallelOutput" : true
     }, {
       "code" : "const old_data = uiLogic.form.data;\r\n// 清空关注人数组\r\nold_data.attentions = [];\r\nconst ctx = uiLogic.ctx;\r\n// 创建新的数据对象\r\nconst new_data = {\r\n    user_id: ctx.srfuserid,\r\n    name: ctx.srfusername,\r\n    type: 40\r\n};\r\nuiLogic.form.data.attentions.push(new_data);\r\n\r\n\r\n",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 440,
+      "leftPos" : 330,
       "logicNodeType" : "RAWJSCODE",
       "name" : "设置新关注人",
       "getPSDEUILogicLinks" : [ {
@@ -12589,17 +12610,17 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 200
     }, {
       "code" : "const app2 = ibiz.hub.getApp(context.srfappid);\r\napp2.deService.exec('plmweb.attachment', 'fetchdefault', {...context, test_case: viewParam.id}).then((res) => {\r\n    const attachments = res.data || [];\r\n    attachments.forEach((attachment) => {\r\n        app2.deService.exec('plmweb.attachment', 'remove', {...context, attachment: attachment.srfkey}, attachment);\r\n    })\r\n})",
       "codeName" : "RAWJSCODE2",
-      "leftPos" : 694,
+      "leftPos" : 604,
       "logicNodeType" : "RAWJSCODE",
       "name" : "清空附件数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWJSCODE_01"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -12608,7 +12629,7 @@
           "id" : "RAWJSCODE2"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 198
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "ctx",
