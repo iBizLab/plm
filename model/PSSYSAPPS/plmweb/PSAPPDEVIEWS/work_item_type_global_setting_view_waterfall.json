@@ -1369,6 +1369,76 @@
             "titleBarCloseMode" : 2,
             "showCaption" : true
           }, {
+            "actionType" : "UIACTION",
+            "buttonStyle" : "STYLE2",
+            "caption" : "移除",
+            "itemStyle" : "STYLE2",
+            "itemType" : "BUTTON",
+            "memo" : "只能删除非系统的工作项类型",
+            "name" : "button_calluilogic",
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "list_itempanel_button_calluilogic"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "name" : "OR ",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "is_system",
+                  "logicType" : "SINGLE",
+                  "name" : "is_system 等于(=) 01",
+                  "value" : "01"
+                } ],
+                "notMode" : false
+              } ],
+              "relatedItemNames" : [ "is_system" ],
+              "notMode" : false
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "移除",
+              "codeName" : "remove_extend_model",
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "work_item_type_remove_extend_model",
+              "name" : "移除扩展模型",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "delete_custom_model"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
+              "refreshMode" : 1,
+              "tooltip" : "移除",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "remove_extend_model",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "reloadData" : true,
+              "id" : "remove_extend_model@work_item_type"
+            },
+            "tooltip" : "移除",
+            "uIActionTarget" : "SINGLEDATA"
+          }, {
             "caption" : "按钮组",
             "itemStyle" : "DEFAULT",
             "itemType" : "BUTTONLIST",
@@ -1491,7 +1561,27 @@
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "global_setting",
+    "minorSortDir" : "ASC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "mobListStyle" : "EXTVIEW1",
+    "getMovePSControlAction" : {
+      "modelref" : true,
+      "id" : "move",
+      "actionName" : "move",
+      "actionType" : "DEACTION",
+      "name" : "move",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "move"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+      }
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
@@ -1544,6 +1634,18 @@
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+        }
+      }, {
+        "actionName" : "move",
+        "actionType" : "DEACTION",
+        "name" : "move",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "move"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
