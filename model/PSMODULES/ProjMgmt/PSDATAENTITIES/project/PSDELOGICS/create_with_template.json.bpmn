@@ -12,8 +12,8 @@
                             <tns:global identifier="projectcreate_with_templatedefault" type="cn.ibizlab.plm.core.projmgmt.domain.project" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="复制"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="新建"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="复制"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数##"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templateend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
@@ -35,9 +35,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="deaction_02_debugparam_01" sourceRef="deaction_02" targetRef="debugparam_01">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction_01_end_01" sourceRef="deaction_01" targetRef="end_01">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction_02_debugparam_01" sourceRef="deaction_02" targetRef="debugparam_01">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam_01_end_01" sourceRef="debugparam_01" targetRef="end_01">
                     </sequenceFlow>

@@ -20,21 +20,21 @@ package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_with_template;
             then
             end
 
-            //逻辑处理节点[复制]
-            rule "deaction_02"
-            ruleflow-group "projectcreate_with_templatedeaction_02"
-            when
-            then
-                        projectservice.copy(projectcreate_with_templatedefault);
-                        update(projectcreate_with_templatedefault);//更新fact中变量值
-            end
-
             //逻辑处理节点[新建]
             rule "deaction_01"
             ruleflow-group "projectcreate_with_templatedeaction_01"
             when
             then
                         projectservice.create(projectcreate_with_templatedefault);
+                        update(projectcreate_with_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[复制]
+            rule "deaction_02"
+            ruleflow-group "projectcreate_with_templatedeaction_02"
+            when
+            then
+                        projectservice.copy(projectcreate_with_templatedefault);
                         update(projectcreate_with_templatedefault);//更新fact中变量值
             end
 
