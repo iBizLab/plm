@@ -5,12 +5,12 @@
   "getFinishPSControlAction" : {
     "modelref" : true,
     "id" : "finish",
-    "actionName" : "Create",
+    "actionName" : "create_with_template",
     "actionType" : "DEACTION",
     "name" : "finish",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "create"
+      "id" : "create_with_template"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -903,7 +903,11 @@
       "id" : "template_flag",
       "dataType" : 25
     }, {
-      "id" : "project",
+      "id" : "project_name",
+      "dataType" : 25
+    }, {
+      "id" : "project_id",
+      "hidden" : true,
       "dataType" : 25
     }, {
       "id" : "description",
@@ -1509,7 +1513,7 @@
             "allowEmpty" : false,
             "showCaption" : true
           }, {
-            "caption" : "使用项目模板",
+            "caption" : "选择项目模板，并创建项目",
             "codeName" : "grouppanel3",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
@@ -1536,38 +1540,27 @@
               },
               "allowEmpty" : true
             }, {
-              "codeName" : "project",
+              "codeName" : "project_name",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
               "ignoreInput" : 0,
+              "itemWidth" : 530.0,
               "labelPos" : "TOP",
               "labelWidth" : 130,
-              "name" : "project",
+              "name" : "project_name",
               "noPrivDisplayMode" : 1,
               "getPSDEFDGroupLogics" : [ {
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
                 "getPSDEFDLogics" : [ {
-                  "groupOP" : "OR",
-                  "logicType" : "GROUP",
-                  "name" : "OR",
-                  "getPSDEFDLogics" : [ {
-                    "condOP" : "EQ",
-                    "dEFDName" : "template_flag",
-                    "logicType" : "SINGLE",
-                    "name" : "template_flag等于(=) true",
-                    "value" : "true"
-                  }, {
-                    "condOP" : "EQ",
-                    "dEFDName" : "template_flag",
-                    "logicType" : "SINGLE",
-                    "name" : "template_flag等于(=) 1",
-                    "value" : "1"
-                  } ],
-                  "notMode" : false
+                  "condOP" : "EQ",
+                  "dEFDName" : "template_flag",
+                  "logicType" : "SINGLE",
+                  "name" : "template_flag等于(=) 1",
+                  "value" : "1"
                 } ],
                 "relatedDetailNames" : [ "template_flag" ],
                 "notMode" : false
@@ -1579,7 +1572,8 @@
                   "PICKUPVIEW" : "FALSE"
                 },
                 "editorType" : "PICKEREX_TRIGGER",
-                "name" : "project",
+                "editorWidth" : 400.0,
+                "name" : "project_name",
                 "getPSAppDEACMode" : {
                   "modelref" : true,
                   "id" : "Default"
@@ -1592,6 +1586,10 @@
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                 },
+                "getPSEditorItems" : [ {
+                  "name" : "project_id"
+                } ],
+                "valueItemName" : "project_id",
                 "enableAC" : true,
                 "enablePickupView" : false,
                 "forceSelection" : true,
@@ -1602,9 +1600,35 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "resetItemName" : "template_flag",
+              "resetItemNames" : [ "template_flag" ],
+              "valueItemName" : "project_id",
               "allowEmpty" : true,
               "emptyCaption" : true,
               "showCaption" : true
+            }, {
+              "codeName" : "project_id",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "project_id",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "project_id"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "resetItemName" : "template_flag",
+              "resetItemNames" : [ "template_flag" ],
+              "allowEmpty" : true,
+              "hidden" : true
             } ],
             "getPSLayout" : {
               "layout" : "FLEX"
@@ -1626,7 +1650,7 @@
             "detailType" : "FORMITEM",
             "enableCond" : 3,
             "ignoreInput" : 0,
-            "itemHeight" : 160.0,
+            "itemHeight" : 120.0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
             "name" : "description",
@@ -1636,7 +1660,7 @@
               "codeName" : "description"
             },
             "getPSEditor" : {
-              "editorHeight" : 140.0,
+              "editorHeight" : 100.0,
               "editorParams" : {
                 "HEIGHT" : "200"
               },
