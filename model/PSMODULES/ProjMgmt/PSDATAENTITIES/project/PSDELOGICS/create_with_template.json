@@ -20,15 +20,14 @@
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "condOP" : "NOTEQ",
-          "dstFieldName" : "template_flag",
+          "condOP" : "ISNULL",
+          "dstFieldName" : "project_template_id",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[template_flag] 不等于(<>) 1",
-          "paramValue" : "1"
+          "name" : "Default[project_template_id] 值为空(Nil) "
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -46,15 +45,14 @@
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "condOP" : "EQ",
-          "dstFieldName" : "template_flag",
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "project_template_id",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[template_flag] 等于(=) 1",
-          "paramValue" : "1"
+          "name" : "Default[project_template_id] 值不为空(NotNil) "
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -63,6 +61,40 @@
       }
     } ],
     "topPos" : -280,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_02",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "leftPos" : 190,
+    "logicNodeType" : "DEACTION",
+    "name" : "复制",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_02"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 40,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION_01",
@@ -99,22 +131,14 @@
     "topPos" : 90,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEACTION_02",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
-    },
+    "codeName" : "DEBUGPARAM_01",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "Default"
     },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-    },
-    "leftPos" : 190,
-    "logicNodeType" : "DEACTION",
-    "name" : "复制",
+    "leftPos" : 116,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数##",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -123,14 +147,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION_02"
+        "id" : "DEBUGPARAM_01"
       }
     } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "topPos" : 90,
+    "topPos" : 150,
     "parallelOutput" : true
   }, {
     "codeName" : "END_01",
@@ -167,7 +187,7 @@
         "id" : "Default"
       },
       "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "project_id",
+      "srcFieldName" : "project_template_id",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"

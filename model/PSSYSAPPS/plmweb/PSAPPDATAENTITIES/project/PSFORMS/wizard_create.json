@@ -157,27 +157,26 @@
       "codeName" : "identifier"
     }
   }, {
-    "id" : "template_flag",
+    "id" : "project_template_name",
     "dataType" : 25
   }, {
-    "id" : "project_name",
+    "id" : "project_template_id",
+    "hidden" : true,
     "dataType" : 25
-  }, {
-    "id" : "project_id",
-    "dataType" : 25
-  }, {
-    "id" : "id",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    }
   }, {
     "id" : "description",
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "DESCRIPTION",
       "codeName" : "description"
+    }
+  }, {
+    "id" : "id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
     }
   } ],
   "getPSDEFormPages" : [ {
@@ -774,31 +773,8 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel3",
           "getPSDEFormDetails" : [ {
-            "caption" : "根据项目模板创建",
-            "codeName" : "template_flag",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
-            "name" : "template_flag",
-            "noPrivDisplayMode" : 1,
-            "getPSEditor" : {
-              "editorType" : "SWITCH",
-              "name" : "template_flag"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 8,
-              "colMD" : 8,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
-          }, {
             "caption" : "项目模板",
-            "codeName" : "project_name",
+            "codeName" : "project_template_name",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -806,7 +782,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "project_name",
+            "name" : "project_template_name",
             "noPrivDisplayMode" : 1,
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -829,7 +805,7 @@
                 "PICKUPVIEW" : "FALSE"
               },
               "editorType" : "PICKEREX_TRIGGER",
-              "name" : "project_name",
+              "name" : "project_template_name",
               "getPSAppDEACMode" : {
                 "modelref" : true,
                 "id" : "Default"
@@ -843,10 +819,10 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
               },
               "getPSEditorItems" : [ {
-                "name" : "id"
+                "name" : "project_template_id"
               } ],
               "placeHolder" : "选择项目模板",
-              "valueItemName" : "id",
+              "valueItemName" : "project_template_id",
               "enableAC" : true,
               "enablePickupView" : false,
               "forceSelection" : true,
@@ -854,69 +830,34 @@
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
-              "colLG" : 16,
-              "colMD" : 16,
+              "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "resetItemName" : "template_flag",
-            "resetItemNames" : [ "template_flag" ],
-            "valueItemName" : "id",
+            "valueItemName" : "project_template_id",
             "allowEmpty" : true,
             "showCaption" : true
           }, {
             "caption" : "项目ID",
-            "codeName" : "project_id",
+            "codeName" : "project_template_id",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
             "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "project_id",
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "project_template_id",
             "noPrivDisplayMode" : 1,
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "name" : "project_id"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "resetItemName" : "template_flag",
-            "resetItemNames" : [ "template_flag" ],
-            "allowEmpty" : true,
-            "showCaption" : true
-          }, {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.ID"
-            },
-            "caption" : "标识",
-            "codeName" : "id",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "LEFT",
-            "labelWidth" : 130,
-            "name" : "id",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "ID",
-              "codeName" : "id"
-            },
-            "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "id",
-              "enableLinkView" : false
+              "editorType" : "HIDDEN",
+              "name" : "project_template_id"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
-            "showCaption" : true
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -992,6 +933,35 @@
       },
       "infoGroupMode" : false,
       "showCaption" : false
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "caption" : "标识",
+      "codeName" : "id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,

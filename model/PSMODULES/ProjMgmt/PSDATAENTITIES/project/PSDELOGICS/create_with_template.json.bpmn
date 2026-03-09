@@ -12,8 +12,9 @@
                             <tns:global identifier="projectcreate_with_templatedefault" type="cn.ibizlab.plm.core.projmgmt.domain.project" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="新建"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="复制"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="新建"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templatedebugparam_01" id="debugparam_01" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数##"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcreate_with_templateend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
@@ -22,7 +23,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $projectcreate_with_templatedefault:project();
                                     eval($projectcreate_with_templatedefault==projectcreate_with_templatedefault);
-                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("template_flag"),"NOTEQ","1")))
+                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("project_template_id"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -30,13 +31,15 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $projectcreate_with_templatedefault:project();
                                     eval($projectcreate_with_templatedefault==projectcreate_with_templatedefault);
-                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("template_flag"),"EQ","1")))
+                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("project_template_id"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="deaction_02_debugparam_01" sourceRef="deaction_02" targetRef="debugparam_01">
+                    </sequenceFlow>
                     <sequenceFlow id="deaction_01_end_01" sourceRef="deaction_01" targetRef="end_01">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
+                    <sequenceFlow id="debugparam_01_end_01" sourceRef="debugparam_01" targetRef="end_01">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam_01_deaction_02" sourceRef="prepareparam_01" targetRef="deaction_02">
                     </sequenceFlow>
