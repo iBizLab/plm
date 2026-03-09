@@ -20,15 +20,6 @@ package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_with_template;
             then
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam_01"
-            ruleflow-group "projectcreate_with_templateprepareparam_01"
-            when
-            then
-                            projectcreate_with_templatedefault.set("id",projectcreate_with_templatedefault.get("project"));
-                        update(projectcreate_with_templatedefault);//更新fact中变量值
-            end
-
             //逻辑处理节点[新建]
             rule "deaction_01"
             ruleflow-group "projectcreate_with_templatedeaction_01"
@@ -52,5 +43,14 @@ package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_with_template;
             ruleflow-group "projectcreate_with_templateend_01"
             when
             then
+                        update(projectcreate_with_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "projectcreate_with_templateprepareparam_01"
+            when
+            then
+                            projectcreate_with_templatedefault.set("id",projectcreate_with_templatedefault.get("project_id"));
                         update(projectcreate_with_templatedefault);//更新fact中变量值
             end
