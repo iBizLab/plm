@@ -22,7 +22,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $projectcreate_with_templatedefault:project();
                                     eval($projectcreate_with_templatedefault==projectcreate_with_templatedefault);
-                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("project_id"),"ISNULL","")))
+                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("template_flag"),"NOTEQ","1")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -30,7 +30,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $projectcreate_with_templatedefault:project();
                                     eval($projectcreate_with_templatedefault==projectcreate_with_templatedefault);
-                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("project_id"),"ISNOTNULL","")))
+                                eval((RuleUtils.test($projectcreate_with_templatedefault.get("template_flag"),"EQ","1")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>

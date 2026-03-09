@@ -10878,14 +10878,15 @@
           "logicType" : "GROUP",
           "name" : "连接条件组",
           "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "project_id",
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "template_flag",
             "getDstLogicParam" : {
               "modelref" : true,
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[project_id] 值为空(Nil) "
+            "name" : "Default[template_flag] 不等于(<>) 1",
+            "paramValue" : "1"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -10903,14 +10904,15 @@
           "logicType" : "GROUP",
           "name" : "连接条件组",
           "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "project_id",
+            "condOP" : "EQ",
+            "dstFieldName" : "template_flag",
             "getDstLogicParam" : {
               "modelref" : true,
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[project_id] 值不为空(NotNil) "
+            "name" : "Default[template_flag] 等于(=) 1",
+            "paramValue" : "1"
           } ]
         },
         "getSrcPSDELogicNode" : {
