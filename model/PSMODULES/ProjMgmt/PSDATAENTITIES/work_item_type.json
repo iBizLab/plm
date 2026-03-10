@@ -300,6 +300,9 @@
       "name" : "ORGIN_STATE",
       "codeName" : "orgin_state"
     }, {
+      "name" : "ICON_DISP",
+      "codeName" : "icon_disp"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -1330,7 +1333,7 @@
     "dataType" : "LONGTEXT",
     "importOrder" : 1000,
     "length" : 16777215,
-    "logicName" : "图标",
+    "logicName" : "图标（Base64）",
     "name" : "ICON",
     "orderValue" : 210,
     "getPSDEDBTable" : {
@@ -1524,6 +1527,89 @@
     "serviceCodeName" : "orgin_state",
     "stdDataType" : 25,
     "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ICON_DISP",
+      "dBType" : "MYSQL5",
+      "name" : "ICON_DISP",
+      "queryCodeExp" : "t1.`ICON_DISP`",
+      "standardColumnName" : "`ICON_DISP`"
+    }, {
+      "columnName" : "ICON_DISP",
+      "dBType" : "POSTGRESQL",
+      "name" : "ICON_DISP",
+      "standardColumnName" : "ICON_DISP"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ICON_DISP][图标（显示）]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ICON_DISP][图标（显示）]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[ICON_DISP][图标（显示）]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[ICON_DISP][图标（显示）]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ICON_DISP",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "icon_disp",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "图标（显示）",
+    "name" : "ICON_DISP",
+    "orderValue" : 250,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ICON_DISP"
+    },
+    "serviceCodeName" : "icon_disp",
+    "stdDataType" : 25,
+    "stringLength" : 200,
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -3225,7 +3311,7 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "图标",
+      "logicName" : "图标（Base64）",
       "name" : "icon",
       "getPSDEField" : {
         "name" : "ICON",
@@ -3256,6 +3342,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "图标（显示）",
+      "name" : "icon_disp",
+      "getPSDEField" : {
+        "name" : "ICON_DISP",
+        "codeName" : "icon_disp"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
       "type" : "SIMPLE"
     }, {
       "logicName" : "建立人",
