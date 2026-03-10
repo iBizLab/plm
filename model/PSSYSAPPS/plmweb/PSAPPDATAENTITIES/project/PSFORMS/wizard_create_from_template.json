@@ -1,8 +1,8 @@
 {
-  "codeName" : "wizard_create",
+  "codeName" : "wizard_create_from_template",
   "controlType" : "FORM",
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/wizard_create.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/wizard_create_from_template.json",
   "formFuncMode" : "WIZARDFORM",
   "getGetPSControlAction" : {
     "modelref" : true,
@@ -20,7 +20,7 @@
     }
   },
   "hookEventNames" : [ "ONLOADSUCCESS", "SAVE", "LOAD" ],
-  "logicName" : "新建表单",
+  "logicName" : "从模板新建表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -157,6 +157,21 @@
       "codeName" : "identifier"
     }
   }, {
+    "id" : "project_template_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PROJECT_TEMPLATE_NAME",
+      "codeName" : "project_template_name"
+    }
+  }, {
+    "id" : "project_template_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PROJECT_TEMPLATE_ID",
+      "codeName" : "project_template_id"
+    }
+  }, {
     "id" : "description",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -173,18 +188,12 @@
     }
   } ],
   "getPSDEFormPages" : [ {
-    "getCapPSLanguageRes" : {
-      "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.FORMPAGE.FORMPAGE1"
-    },
     "caption" : "基本信息",
     "codeName" : "formpage1",
     "detailStyle" : "DEFAULT",
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.GROUPPANEL.GROUP1"
-      },
       "caption" : "项目基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
@@ -760,6 +769,118 @@
           "allowEmpty" : false,
           "showCaption" : true
         }, {
+          "caption" : "项目模板",
+          "codeName" : "grouppanel3",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel3",
+          "getPSDEFormDetails" : [ {
+            "caption" : "项目模板",
+            "codeName" : "project_template_name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "project_template_name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PROJECT_TEMPLATE_NAME",
+              "codeName" : "project_template_name"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "AC" : "TRUE",
+                "SRFNAVPARAM.N_IS_TEMPLATE_EQ" : "1",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE",
+                "SRFNAVPARAM.N_TYPE_EQ" : "%type%"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
+              "name" : "project_template_name",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+              },
+              "getPSEditorItems" : [ {
+                "name" : "project_template_id"
+              } ],
+              "getPSNavigateParams" : [ {
+                "key" : "n_is_template_eq",
+                "name" : "n_is_template_eq",
+                "value" : "1",
+                "rawValue" : true
+              }, {
+                "key" : "n_type_eq",
+                "name" : "n_type_eq",
+                "value" : "type",
+                "rawValue" : false
+              } ],
+              "placeHolder" : "选择项目模板",
+              "valueItemName" : "project_template_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "valueItemName" : "project_template_id",
+            "allowEmpty" : false,
+            "showCaption" : true
+          }, {
+            "caption" : "项目ID",
+            "codeName" : "project_template_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "project_template_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PROJECT_TEMPLATE_ID",
+              "codeName" : "project_template_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "project_template_id"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
+        }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.DESCRIPTION"
           },
@@ -770,7 +891,7 @@
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 220.0,
+          "itemHeight" : 140.0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "description",
@@ -780,7 +901,7 @@
             "codeName" : "description"
           },
           "getPSEditor" : {
-            "editorHeight" : 200.0,
+            "editorHeight" : 120.0,
             "editorParams" : {
               "HEIGHT" : "200"
             },
@@ -864,7 +985,7 @@
     "goFinishEnableScriptCode" : "data.scope_type !== \"organization\"",
     "goNextEnableScriptCode" : "data.scope_type === \"organization\"",
     "name" : "fill_info",
-    "getPSDEFormName" : "新建表单",
+    "getPSDEFormName" : "从模板新建表单",
     "getPSDEWizardStep" : {
       "modelref" : true,
       "id" : "项目信息"
@@ -895,6 +1016,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "1d636e0b6f41b56b7b5e6bd3ea6dd452",
+  "modelid" : "6efc5ec22a1cc93021b6f05c6904ae1d",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

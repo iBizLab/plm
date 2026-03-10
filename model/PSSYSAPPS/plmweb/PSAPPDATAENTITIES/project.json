@@ -649,9 +649,9 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "CREATE",
-    "codeName" : "create_with_template",
+    "codeName" : "create_from_template",
     "methodType" : "DEACTION",
-    "name" : "create_with_template",
+    "name" : "create_from_template",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
@@ -671,7 +671,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/create_with_template.json"
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/create_from_template.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -679,11 +679,11 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "create_with_template"
+      "id" : "create_from_template"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/create_with_template",
+    "requestPath" : "/create_from_template",
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -6087,9 +6087,9 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "CREATE",
-    "codeName" : "create_with_template",
+    "codeName" : "create_from_template",
     "methodType" : "DEACTION",
-    "name" : "create_with_template",
+    "name" : "create_from_template",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
@@ -6109,7 +6109,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/create_with_template.json"
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/create_from_template.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -6117,11 +6117,11 @@
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
-      "id" : "create_with_template"
+      "id" : "create_from_template"
     },
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
-    "requestPath" : "/create_with_template",
+    "requestPath" : "/create_from_template",
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -9481,8 +9481,41 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_create_project",
-    "memo" : "后续界面行为：打开新建项目",
     "name" : "新建项目",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "modelref" : true,
+      "id" : "open_new_project@project"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SRFUR__PROJECT_M"
+    },
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_project",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "create_project@project"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "从模板新建",
+    "codeName" : "create_project_from_template",
+    "dataAccessAction" : "SRFUR__PROJECT_M",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_create_wizard_from_template_view.json",
+      "viewType" : "DEWIZARDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_create_project_from_template",
+    "name" : "从模板新建",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -9493,11 +9526,11 @@
     },
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "create_project",
+    "uIActionTag" : "create_project_from_template",
     "uIActionType" : "DEUIACTION",
     "globalUIAction" : true,
     "reloadData" : true,
-    "id" : "create_project@project"
+    "id" : "create_project_from_template@project"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "删除",
@@ -10222,6 +10255,33 @@
     "uIActionTag" : "open_new",
     "uIActionType" : "DEUIACTION",
     "id" : "open_new@project"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开新建项目",
+    "codeName" : "open_new_project",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "frontProcessType" : "TOP",
+    "fullCodeName" : "project_open_new_project",
+    "name" : "打开新建项目",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PROJECT",
+      "name" : "PROJECT",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_new_project",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_new_project@project"
   }, {
     "actionTarget" : "NONE",
     "caption" : "查看已逾期工作项",
@@ -11549,6 +11609,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_management_tab_exp_view.json",
     "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_create_wizard_from_template_view.json",
+    "viewType" : "DEWIZARDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
