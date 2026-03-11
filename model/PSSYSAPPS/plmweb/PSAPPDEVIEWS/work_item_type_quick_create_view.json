@@ -6,7 +6,7 @@
   "caption" : "工作项类型",
   "codeName" : "work_item_type_quick_create_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_type_quick_create_view.json",
-  "height" : 70,
+  "height" : 600,
   "name" : "work_item_typequick_create_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -23,7 +23,7 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "codeName" : "quick_create",
+    "codeName" : "quick_cfg",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -42,7 +42,7 @@
       }
     },
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type/PSFORMS/quick_create.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type/PSFORMS/quick_cfg.json",
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
@@ -87,7 +87,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
       }
     },
-    "logicName" : "快速建立表单",
+    "logicName" : "快速配置表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
@@ -250,7 +250,10 @@
       }
     }, {
       "id" : "is_system",
+      "hidden" : true,
       "dataType" : 9,
+      "createDV" : "0",
+      "updateDV" : "0",
       "getPSAppDEField" : {
         "name" : "IS_SYSTEM",
         "codeName" : "is_system"
@@ -261,6 +264,14 @@
       "getPSAppDEField" : {
         "name" : "ICON",
         "codeName" : "icon"
+      }
+    }, {
+      "id" : "icon_display",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ICON_DISP",
+        "codeName" : "icon_disp"
       }
     }, {
       "id" : "project_type",
@@ -314,7 +325,7 @@
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
-          "enableCond" : 3,
+          "enableCond" : 0,
           "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
@@ -330,8 +341,7 @@
             "name" : "code"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
@@ -361,8 +371,7 @@
             "name" : "name"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
@@ -393,11 +402,10 @@
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
@@ -421,8 +429,7 @@
             "name" : "sequence"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -430,12 +437,12 @@
         }, {
           "caption" : "是否系统类型",
           "codeName" : "is_system",
+          "createDV" : "0",
           "dataType" : 9,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemWidth" : 230.0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
           "name" : "is_system",
@@ -445,23 +452,16 @@
             "codeName" : "is_system"
           },
           "getPSEditor" : {
-            "editorType" : "DROPDOWNLIST_100",
-            "editorWidth" : 100.0,
-            "name" : "is_system",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
-            },
-            "singleSelect" : true
+            "editorType" : "HIDDEN",
+            "name" : "is_system"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "updateDV" : "0",
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
-          "showCaption" : true
+          "hidden" : true
         }, {
           "codeName" : "grouppanel1",
           "detailStyle" : "DEFAULT",
@@ -496,19 +496,49 @@
               "maxFileSize" : -1,
               "minFileCount" : 0,
               "name" : "icon",
+              "getPSEditorItems" : [ {
+                "name" : "icon_display"
+              } ],
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "TOBASE64",
                 "runtimeObject" : true
-              }
+              },
+              "valueItemName" : "icon_display"
             },
             "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
+              "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "valueItemName" : "icon_display",
             "allowEmpty" : false,
             "showCaption" : true
+          }, {
+            "caption" : "显示图标",
+            "codeName" : "icon_display",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "icon_display",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "ICON_DISP",
+              "codeName" : "icon_disp"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "icon_display"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -545,8 +575,7 @@
             "name" : "project_type"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -573,16 +602,14 @@
             "name" : "orgin_state"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
           "hidden" : true
         } ],
         "getPSLayout" : {
-          "childColLG" : 12,
-          "childColMD" : 12,
+          "childColMD" : 24,
           "columnCount" : 24,
           "layout" : "TABLE_24COL"
         },
@@ -669,7 +696,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "7f3a8e4f936c2dfab7b3196209290333",
+    "modelid" : "2110bf993a7056d1aaca6cc42bb6b19f",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "quick_create_view_toolbar",
@@ -782,7 +809,7 @@
   },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
-  "width" : 70,
+  "width" : 800,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
