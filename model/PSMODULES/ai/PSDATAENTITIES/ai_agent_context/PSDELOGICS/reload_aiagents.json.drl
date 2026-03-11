@@ -1,0 +1,28 @@
+package cn.ibizlab.plm.ai.logic.ai_agent_contextlogic.reload_aiagents;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.ai.domain.ai_agent_context ai_agent_contextreload_aiagentsdefault;
+        global cn.ibizlab.plm.core.ai.service.Iai_agent_contextService iBzSysAi_agent_contextDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ai_agent_contextreload_aiagentsbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[触发刷新信号]
+            rule "rawsfcode_01"
+            ruleflow-group "ai_agent_contextreload_aiagentsrawsfcode_01"
+            when
+            then
+                        update(ai_agent_contextreload_aiagentsdefault);//更新fact中变量值
+            end

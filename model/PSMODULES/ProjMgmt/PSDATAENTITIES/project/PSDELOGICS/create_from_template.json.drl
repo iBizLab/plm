@@ -1,0 +1,64 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_from_template;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectcreate_from_templatedefault;
+                    global cn.ibizlab.plm.core.projmgmt.service.IprojectService projectservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectcreate_from_templatebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[新建]
+            rule "deaction_01"
+            ruleflow-group "projectcreate_from_templatedeaction_01"
+            when
+            then
+                        projectservice.create(projectcreate_from_templatedefault);
+                        update(projectcreate_from_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[复制]
+            rule "deaction_02"
+            ruleflow-group "projectcreate_from_templatedeaction_02"
+            when
+            then
+                        projectservice.copy(projectcreate_from_templatedefault);
+                        update(projectcreate_from_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数##]
+            rule "debugparam_01"
+            ruleflow-group "projectcreate_from_templatedebugparam_01"
+            when
+            then
+                        update(projectcreate_from_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "projectcreate_from_templateend_01"
+            when
+            then
+                        update(projectcreate_from_templatedefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "projectcreate_from_templateprepareparam_01"
+            when
+            then
+                            projectcreate_from_templatedefault.set("id",projectcreate_from_templatedefault.get("projecttemplateid"));
+                        update(projectcreate_from_templatedefault);//更新fact中变量值
+            end
