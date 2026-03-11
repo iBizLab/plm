@@ -16,6 +16,12 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavParams" : [ {
+    "key" : "project_id",
+    "name" : "project_id",
+    "value" : "project",
+    "rawValue" : false
+  } ],
   "getPSDEViewCodeName" : "waterfall_tree_grid_view",
   "getPSDEViewId" : "7208d826b8b74bf3630cbceda94258ad",
   "getPSViewLayoutPanel" : {
@@ -633,6 +639,46 @@
           },
           "tooltip" : "新建缺陷",
           "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "新建工作项（动态）",
+          "groupExtractMode" : "ITEMS",
+          "itemType" : "ITEMS",
+          "name" : "items3",
+          "getPSUIActionGroup" : {
+            "getDetailPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_project_work_item_type"
+            },
+            "getDetailPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+            },
+            "getDetailPSDEDataSet" : {
+              "modelref" : true,
+              "id" : "project_work_item_type"
+            },
+            "getDetailPSDataEntity" : {
+              "modelref" : true,
+              "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+            },
+            "dynamicMode" : 1,
+            "name" : "新建工作项（自适应）",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getTextPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            },
+            "getTextPSDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            }
+          },
+          "tooltip" : "新建工作项（动态）",
           "showCaption" : true,
           "showIcon" : true
         } ],
