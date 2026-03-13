@@ -16869,29 +16869,8 @@
       "leftPos" : 630,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 380
-    }, {
-      "codeName" : "create_idea",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "save"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "leftPos" : 780,
-      "logicNodeType" : "DEACTION",
-      "name" : "新建需求",
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "topPos" : -150
+      "topPos" : 380,
+      "parallelOutput" : true
     }, {
       "code" : "let choose = uiLogic.default.customer_id;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));\r\n    uiLogic.dto.principal_id = uiLogic.idea.id;\r\n    uiLogic.dto.id = uiLogic.idea.id;\r\n    uiLogic.dto.principal_type = \"idea\";\r\n    uiLogic.dto.target_type = \"customer\";\r\n}",
       "codeName" : "RAWJSCODE2",
@@ -16916,7 +16895,7 @@
               "id" : "dto"
             },
             "logicType" : "SINGLE",
-            "name" : "dto[srfactionparam] 值不为空(NotNil)"
+            "name" : "dto[srfactionparam] 值不为空(NotNil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {
@@ -16941,7 +16920,7 @@
               "id" : "dto"
             },
             "logicType" : "SINGLE",
-            "name" : "dto[srfactionparam] 值为空(Nil)"
+            "name" : "dto[srfactionparam] 值为空(Nil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {
