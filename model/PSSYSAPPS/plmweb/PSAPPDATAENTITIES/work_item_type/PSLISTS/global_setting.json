@@ -1153,6 +1153,7 @@
                 "id" : "edit_work_item_type@work_item_type"
               },
               "tooltip" : "编辑",
+              "visibleScriptCode" : "data.is_system ==0",
               "addSeparator" : false,
               "showCaption" : false,
               "showIcon" : true
@@ -1192,6 +1193,7 @@
                 "id" : "remove_extend_model@work_item_type"
               },
               "tooltip" : "移除",
+              "visibleScriptCode" : "data.is_system ==0",
               "addSeparator" : false,
               "showCaption" : false,
               "showIcon" : true
@@ -1201,188 +1203,6 @@
           "predefinedType" : "CONTAINER_GROUP",
           "titleBarCloseMode" : 2,
           "showCaption" : true
-        }, {
-          "actionType" : "UIACTION",
-          "buttonStyle" : "STYLE2",
-          "caption" : "移除",
-          "itemStyle" : "STYLE2",
-          "itemType" : "BUTTON",
-          "memo" : "只能删除非系统的工作项类型",
-          "name" : "button_calluilogic",
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "list_itempanel_button_calluilogic"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSPanelItemGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSPanelItemLogics" : [ {
-              "groupOP" : "OR",
-              "logicType" : "GROUP",
-              "name" : "OR ",
-              "getPSPanelItemLogics" : [ {
-                "condOp" : "EQ",
-                "dstModelField" : "is_system",
-                "logicType" : "SINGLE",
-                "name" : "is_system 等于(=) 01",
-                "value" : "01"
-              } ],
-              "notMode" : false
-            } ],
-            "relatedItemNames" : [ "is_system" ],
-            "notMode" : false
-          } ],
-          "getPSSysImage" : {
-            "glyph" : "xf014@FontAwesome",
-            "cssClass" : "fa fa-trash-o"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "caption" : "移除",
-            "codeName" : "remove_extend_model",
-            "frontProcessType" : "WIZARD",
-            "fullCodeName" : "work_item_type_remove_extend_model",
-            "name" : "移除扩展模型",
-            "getPSAppDEUILogic" : {
-              "modelref" : true,
-              "id" : "delete_custom_model"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-            },
-            "getPSSysImage" : {
-              "glyph" : "xf014@FontAwesome",
-              "cssClass" : "fa fa-trash-o"
-            },
-            "refreshMode" : 1,
-            "tooltip" : "移除",
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "remove_extend_model",
-            "uIActionType" : "DEUIACTION",
-            "uILogicAttachMode" : "REPLACE",
-            "reloadData" : true,
-            "id" : "remove_extend_model@work_item_type"
-          },
-          "tooltip" : "移除",
-          "uIActionTarget" : "SINGLEDATA"
-        }, {
-          "caption" : "按钮组",
-          "itemStyle" : "STYLE2",
-          "itemType" : "BUTTONLIST",
-          "memo" : "只能删除非系统的工作项类型",
-          "name" : "buttonlist",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSPanelItemGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "getPSPanelItemLogics" : [ {
-              "condOp" : "EQ",
-              "dstModelField" : "is_system",
-              "logicType" : "SINGLE",
-              "name" : "is_system 等于(=) 0",
-              "value" : "0"
-            } ],
-            "relatedItemNames" : [ "is_system" ],
-            "notMode" : false
-          } ],
-          "getPSUIActionGroup" : {
-            "codeName" : "global_type",
-            "name" : "全局工作项类型列表",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-            },
-            "getPSUIActionGroupDetails" : [ {
-              "detailType" : "DEUIACTION",
-              "name" : "u865c589",
-              "getPSSysImage" : {
-                "glyph" : "xf044@FontAwesome",
-                "cssClass" : "fa fa-edit"
-              },
-              "getPSUIAction" : {
-                "actionTarget" : "SINGLEKEY",
-                "caption" : "编辑",
-                "codeName" : "edit_work_item_type",
-                "getFrontPSAppView" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_type_quick_cfg_view.json",
-                  "viewType" : "DEEDITVIEW"
-                },
-                "frontProcessType" : "WIZARD",
-                "fullCodeName" : "work_item_type_edit_work_item_type",
-                "name" : "编辑工作项类型",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-                },
-                "getPSSysImage" : {
-                  "glyph" : "xf044@FontAwesome",
-                  "cssClass" : "fa fa-edit"
-                },
-                "refreshMode" : 1,
-                "tooltip" : "编辑",
-                "uIActionMode" : "FRONT",
-                "uIActionTag" : "edit_work_item_type",
-                "uIActionType" : "DEUIACTION",
-                "reloadData" : true,
-                "id" : "edit_work_item_type@work_item_type"
-              },
-              "tooltip" : "编辑",
-              "addSeparator" : false,
-              "showCaption" : false,
-              "showIcon" : true
-            }, {
-              "detailType" : "DEUIACTION",
-              "name" : "u3d28be2",
-              "getPSSysImage" : {
-                "glyph" : "xf014@FontAwesome",
-                "cssClass" : "fa fa-trash-o"
-              },
-              "getPSUIAction" : {
-                "actionTarget" : "SINGLEDATA",
-                "caption" : "移除",
-                "codeName" : "remove_extend_model",
-                "frontProcessType" : "WIZARD",
-                "fullCodeName" : "work_item_type_remove_extend_model",
-                "name" : "移除扩展模型",
-                "getPSAppDEUILogic" : {
-                  "modelref" : true,
-                  "id" : "delete_custom_model"
-                },
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-                },
-                "getPSSysImage" : {
-                  "glyph" : "xf014@FontAwesome",
-                  "cssClass" : "fa fa-trash-o"
-                },
-                "refreshMode" : 1,
-                "tooltip" : "移除",
-                "uIActionMode" : "FRONT",
-                "uIActionTag" : "remove_extend_model",
-                "uIActionType" : "DEUIACTION",
-                "uILogicAttachMode" : "REPLACE",
-                "reloadData" : true,
-                "id" : "remove_extend_model@work_item_type"
-              },
-              "tooltip" : "移除",
-              "addSeparator" : false,
-              "showCaption" : false,
-              "showIcon" : true
-            } ],
-            "uniqueTag" : "work_item_type__global_type"
-          }
         } ]
       } ],
       "getPSSysCss" : {

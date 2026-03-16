@@ -423,6 +423,34 @@
         "codeName" : "memory_max_turns"
       }
     }, {
+      "id" : "memory_kb_tag",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "MEMORY_KB_TAG",
+        "codeName" : "memory_kb_tag"
+      }
+    }, {
+      "id" : "memory_doc_tag",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "MEMORY_DOC_TAG",
+        "codeName" : "memory_doc_tag"
+      }
+    }, {
+      "id" : "publish_skill",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "PUBLISH_SKILL",
+        "codeName" : "publish_skill"
+      }
+    }, {
+      "id" : "skill_prompt",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "SKILL_PROMPT",
+        "codeName" : "skill_prompt"
+      }
+    }, {
       "id" : "max_input_tokens",
       "dataType" : 9,
       "getPSAppDEField" : {
@@ -449,6 +477,20 @@
       "getPSAppDEField" : {
         "name" : "STREAM",
         "codeName" : "stream"
+      }
+    }, {
+      "id" : "enable_searching",
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "ENABLE_SEARCHING",
+        "codeName" : "enable_searching"
+      }
+    }, {
+      "id" : "vlm_prompt",
+      "dataType" : 21,
+      "getPSAppDEField" : {
+        "name" : "VLM_PROMPT",
+        "codeName" : "vlm_prompt"
       }
     }, {
       "id" : "rerank_model_id",
@@ -2861,7 +2903,7 @@
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
-              "colMD" : 24,
+              "colMD" : 12,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
@@ -2889,6 +2931,151 @@
             },
             "getPSLayoutPos" : {
               "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "记忆存储知识库标记",
+            "codeName" : "memory_kb_tag",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "memory_kb_tag",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "MEMORY_KB_TAG",
+              "codeName" : "memory_kb_tag"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "maxLength" : 200,
+              "name" : "memory_kb_tag"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "记忆存储文档标记",
+            "codeName" : "memory_doc_tag",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "memory_doc_tag",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "MEMORY_DOC_TAG",
+              "codeName" : "memory_doc_tag"
+            },
+            "getPSEditor" : {
+              "editorType" : "TEXTBOX",
+              "maxLength" : 200,
+              "name" : "memory_doc_tag"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 12,
+            "childColMD" : 12,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "技能",
+          "codeName" : "grouppanel12",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel12",
+          "getPSDEFormDetails" : [ {
+            "caption" : "发布技能",
+            "codeName" : "publish_skill",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 230.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "publish_skill",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PUBLISH_SKILL",
+              "codeName" : "publish_skill"
+            },
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST_100",
+              "editorWidth" : 100.0,
+              "name" : "publish_skill",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              },
+              "placeHolder" : "继承自模版",
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "技能提示词",
+            "codeName" : "skill_prompt",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "skill_prompt",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SKILL_PROMPT",
+              "codeName" : "skill_prompt"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true",
+                "language" : "markdown"
+              },
+              "editorType" : "MARKDOWN",
+              "maxLength" : 1048576,
+              "mode" : "EDIT",
+              "name" : "skill_prompt",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 24,
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
@@ -2896,7 +3083,8 @@
             "showCaption" : true
           } ],
           "getPSLayout" : {
-            "childColMD" : 24,
+            "childColLG" : 12,
+            "childColMD" : 12,
             "columnCount" : 24,
             "layout" : "TABLE_24COL"
           },
@@ -3043,6 +3231,73 @@
             },
             "allowEmpty" : true,
             "needCodeListConfig" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "支持联网搜索",
+            "codeName" : "enable_searching",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "itemWidth" : 230.0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "enable_searching",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "ENABLE_SEARCHING",
+              "codeName" : "enable_searching"
+            },
+            "getPSEditor" : {
+              "editorType" : "DROPDOWNLIST_100",
+              "editorWidth" : 100.0,
+              "name" : "enable_searching",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              },
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "needCodeListConfig" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "视觉识别提示词",
+            "codeName" : "vlm_prompt",
+            "dataType" : 21,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "vlm_prompt",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VLM_PROMPT",
+              "codeName" : "vlm_prompt"
+            },
+            "getPSEditor" : {
+              "editorParams" : {
+                "ISAUTO" : "true"
+              },
+              "editorType" : "MARKDOWN",
+              "maxLength" : 1048576,
+              "mode" : "EDIT",
+              "name" : "vlm_prompt",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
             "showCaption" : true
           } ],
           "getPSLayout" : {
