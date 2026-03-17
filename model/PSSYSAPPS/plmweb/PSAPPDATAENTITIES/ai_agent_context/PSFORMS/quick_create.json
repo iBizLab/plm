@@ -71,7 +71,7 @@
   "getPSDEFormItemUpdates" : [ {
     "codeName" : "compute_generation_mode",
     "name" : "compute_generation_mode",
-    "scriptCode" : "data.generation_mode='custom';",
+    "scriptCode" : "data.generation_mode='custom';\r\n\r\nif(data.temperature ===0.1 && data.top_p ===0.7){\r\n    data.generation_mode='precise';\r\n}\r\n\r\nif(data.temperature ===0.6 && data.top_p ===0.7){\r\n    data.generation_mode='balanced';\r\n}\r\n\r\nif(data.temperature ===1 && data.top_p ===0.8){\r\n    data.generation_mode='creative';\r\n}",
     "customCode" : true
   }, {
     "codeName" : "compute",
@@ -604,7 +604,7 @@
           "name" : "ai_agent_name",
           "getPSAppDEACMode" : {
             "modelref" : true,
-            "id" : "Default"
+            "id" : "ai_agent_select"
           },
           "getPSAppDEDataSet" : {
             "modelref" : true,
