@@ -3287,7 +3287,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "PREPAREPARAM_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -3295,7 +3295,39 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 290,
+      "topPos" : 160,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 256,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充默认编码值",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "CODE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 300,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
@@ -3369,6 +3401,16 @@
           "modelref" : true,
           "id" : "DEDATASET1"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
       } ],
       "getRetPSDELogicParam" : {
         "modelref" : true,
@@ -3379,26 +3421,9 @@
       "code" : "def _default = logic.param('Default').getReal()\ndef page = logic.param('page').getReal()\n\ndef maxValue = 0\nif (page[0] != null) {\n    maxValue = page[0].get('sequence')\n    _default.set('sequence', maxValue + 10)\n}",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
-      "leftPos" : 256,
+      "leftPos" : 110,
       "logicNodeType" : "RAWSFCODE",
       "name" : "设置最大排序值",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM_01"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 710
-    }, {
-      "codeName" : "PREPAREPARAM_01",
-      "leftPos" : 256,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "填充默认编码值",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3407,25 +3432,10 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM_01"
+          "id" : "RAWSFCODE1"
         }
       } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "CODE",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 823,
-      "parallelOutput" : true
+      "topPos" : 740
     }, {
       "codeName" : "END1",
       "leftPos" : 296,
@@ -3436,7 +3446,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 920,
+      "topPos" : 880,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {

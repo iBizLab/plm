@@ -277,9 +277,9 @@
         "id" : "fill_kb_chunk"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "parser_config"
-      }, {
         "name" : "chunk_method"
+      }, {
+        "name" : "parser_config"
       } ]
     } ],
     "getPSDEFormItems" : [ {
@@ -868,7 +868,6 @@
               }, {
                 "caption" : "布局识别方式",
                 "codeName" : "layout_recognize",
-                "createDV" : "DeepDOC",
                 "dataType" : 25,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
@@ -879,18 +878,23 @@
                 "name" : "layout_recognize",
                 "noPrivDisplayMode" : 1,
                 "getPSEditor" : {
-                  "editorType" : "HIDDEN",
-                  "name" : "layout_recognize"
+                  "editorType" : "DROPDOWNLIST",
+                  "name" : "layout_recognize",
+                  "getPSAppCodeList" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ai__layout_recognize.json"
+                  },
+                  "singleSelect" : true
                 },
                 "getPSLayoutPos" : {
                   "colLG" : 12,
                   "colMD" : 12,
                   "layout" : "TABLE_24COL"
                 },
-                "updateDV" : "DeepDOC",
                 "allowEmpty" : true,
-                "hidden" : true,
-                "repeatContent" : true
+                "needCodeListConfig" : true,
+                "repeatContent" : true,
+                "showCaption" : true
               }, {
                 "caption" : "自动关键词",
                 "codeName" : "auto_keywords",

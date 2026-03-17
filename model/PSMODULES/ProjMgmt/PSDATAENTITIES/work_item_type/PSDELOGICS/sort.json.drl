@@ -22,6 +22,17 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.sort;
             then
             end
 
+            //逻辑处理节点[填充默认编码值]
+            rule "prepareparam_01"
+            ruleflow-group "work_item_typesortprepareparam_01"
+            when
+            then
+                            work_item_typesortdefault.set("code",work_item_typesortdefault.get("id"));
+                        update(work_item_typesortdefault);//更新fact中变量值
+                        update(work_item_typesortfilter);//更新fact中变量值
+                        update(work_item_typesortpage);//更新fact中变量值
+            end
+
             //逻辑处理节点[准备查询参数]
             rule "prepareparam1"
             ruleflow-group "work_item_typesortprepareparam1"
@@ -48,17 +59,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_item_typelogic.sort;
             ruleflow-group "work_item_typesortrawsfcode1"
             when
             then
-                        update(work_item_typesortdefault);//更新fact中变量值
-                        update(work_item_typesortfilter);//更新fact中变量值
-                        update(work_item_typesortpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[填充默认编码值]
-            rule "prepareparam_01"
-            ruleflow-group "work_item_typesortprepareparam_01"
-            when
-            then
-                            work_item_typesortdefault.set("code",work_item_typesortdefault.get("id"));
                         update(work_item_typesortdefault);//更新fact中变量值
                         update(work_item_typesortfilter);//更新fact中变量值
                         update(work_item_typesortpage);//更新fact中变量值
