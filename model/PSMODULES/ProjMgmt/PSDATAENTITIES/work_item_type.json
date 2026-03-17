@@ -1182,13 +1182,15 @@
       "dBType" : "MYSQL5",
       "name" : "CODE",
       "queryCodeExp" : "t1.`CODE`",
-      "standardColumnName" : "`CODE`"
+      "standardColumnName" : "`CODE`",
+      "valueAutoGen" : true
     }, {
       "columnName" : "CODE",
       "dBType" : "POSTGRESQL",
       "name" : "CODE",
       "queryCodeExp" : "t1.CODE",
-      "standardColumnName" : "CODE"
+      "standardColumnName" : "CODE",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_CODE_IN",
@@ -1250,6 +1252,8 @@
     "codeName" : "code",
     "dEFType" : 1,
     "dataType" : "TEXT",
+    "defaultValue" : "id",
+    "defaultValueType" : "PARAM",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "编码",
@@ -1626,15 +1630,13 @@
       "dBType" : "MYSQL5",
       "name" : "ID",
       "queryCodeExp" : "t1.`ID`",
-      "standardColumnName" : "`ID`",
-      "valueAutoGen" : true
+      "standardColumnName" : "`ID`"
     }, {
       "columnName" : "ID",
       "dBType" : "POSTGRESQL",
       "name" : "ID",
       "queryCodeExp" : "t1.ID",
-      "standardColumnName" : "ID",
-      "valueAutoGen" : true
+      "standardColumnName" : "ID"
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_ID_LIKE",
@@ -1708,8 +1710,6 @@
     "codeName" : "id",
     "dEFType" : 1,
     "dataType" : "GUID",
-    "defaultValue" : "code",
-    "defaultValueType" : "PARAM",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.ID"
@@ -1726,6 +1726,11 @@
       "modelref" : true,
       "id" : "ID"
     },
+    "getPSSysSequence" : {
+      "modelref" : true,
+      "path" : "PSSYSSEQUENCES/seq_work_item_type_id.json"
+    },
+    "sequenceMode" : "CREATE",
     "serviceCodeName" : "id",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -3310,6 +3315,8 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "id",
+      "defaultValueType" : "PARAM",
       "logicName" : "编码",
       "name" : "code",
       "getPSDEField" : {
@@ -3391,8 +3398,6 @@
       "allowEmpty" : false,
       "readOnly" : true
     }, {
-      "defaultValue" : "code",
-      "defaultValueType" : "PARAM",
       "logicName" : "标识",
       "name" : "id",
       "getPSDEField" : {
@@ -3459,6 +3464,8 @@
   }, {
     "name" : "work_item_type_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "defaultValue" : "id",
+      "defaultValueType" : "PARAM",
       "logicName" : "编码",
       "name" : "n_code_in",
       "getPSDEFSearchMode" : {
@@ -3489,8 +3496,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "defaultValue" : "code",
-      "defaultValueType" : "PARAM",
       "logicName" : "标识",
       "name" : "n_id_eq",
       "getPSDEFSearchMode" : {
@@ -3506,8 +3511,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "defaultValue" : "code",
-      "defaultValueType" : "PARAM",
       "logicName" : "标识",
       "name" : "n_id_like",
       "getPSDEFSearchMode" : {
