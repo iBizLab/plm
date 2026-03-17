@@ -42,7 +42,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/set_default_code.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/sort.json"
       },
       "internalLogic" : true
     } ],
@@ -3273,17 +3273,115 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
-    "codeName" : "set_default_code",
+    "codeName" : "sort",
     "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/set_default_code.json",
-    "logicName" : "设置类型编码默认值",
-    "memo" : "设置类型编码默认值",
-    "name" : "设置类型编码默认值",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDELOGICS/sort.json",
+    "logicName" : "新建默认排序",
+    "memo" : "填充默认排序值与编码值",
+    "name" : "新建默认排序",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 296,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 290,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 256,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备查询参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "sort",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "直接值[sequence,desc] ==> filter[sort]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "sequence,desc",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 430,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      },
+      "leftPos" : 256,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "page[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "topPos" : 550
+    }, {
+      "code" : "def _default = logic.param('Default').getReal()\ndef page = logic.param('page').getReal()\n\ndef maxValue = 0\nif (page[0] != null) {\n    maxValue = page[0].get('sequence')\n    _default.set('sequence', maxValue + 10)\n}",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 256,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置最大排序值",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3292,20 +3390,19 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "RAWSFCODE1"
         }
       } ],
-      "topPos" : 200,
-      "parallelOutput" : true
+      "topPos" : 710
     }, {
       "codeName" : "PREPAREPARAM_01",
-      "leftPos" : 160,
+      "leftPos" : 256,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充默认编码值",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "END_01"
+          "id" : "END1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -3327,11 +3424,11 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 320,
+      "topPos" : 823,
       "parallelOutput" : true
     }, {
-      "codeName" : "END_01",
-      "leftPos" : 200,
+      "codeName" : "END1",
+      "leftPos" : 296,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -3339,7 +3436,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 438,
+      "topPos" : 920,
       "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
@@ -3352,6 +3449,24 @@
       },
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "filter",
+      "logicName" : "filter",
+      "name" : "filter",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "page",
+      "logicName" : "page",
+      "name" : "page",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
