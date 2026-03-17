@@ -2444,7 +2444,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 278,
+      "topPos" : 258,
       "parallelOutput" : true
     }, {
       "codeName" : "DEDATASET_01",
@@ -2494,7 +2494,7 @@
       }, {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION_01"
+          "id" : "RAWJSCODE_02"
         },
         "linkMode" : 0,
         "name" : "无引用",
@@ -2523,7 +2523,7 @@
         "modelref" : true,
         "id" : "item_page"
       },
-      "topPos" : 402,
+      "topPos" : 380,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM_01",
@@ -2556,11 +2556,11 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 402,
+      "topPos" : 380,
       "parallelOutput" : true
     }, {
       "codeName" : "END_01",
-      "leftPos" : 760,
+      "leftPos" : 1206,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -2568,6 +2568,51 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
+      "topPos" : 440,
+      "parallelOutput" : true
+    }, {
+      "buttonsType" : "OKCANCEL",
+      "codeName" : "MSGBOX_02",
+      "leftPos" : 714,
+      "logicNodeType" : "MSGBOX",
+      "getMsgBoxParam" : {
+        "modelref" : true,
+        "id" : "message_obj"
+      },
+      "msgBoxType" : "INFO",
+      "name" : "消息弹窗确认",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX_02"
+        }
+      } ],
+      "topPos" : 438,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(\"构造消息提示2\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=uiLogic.default.name;\r\n\r\nconst message = `确认删除 工作项类型  ${work_item_type_name}  吗？`;\r\n\r\n_message.message = message;\r\n_message.title = \"确认删除\";",
+      "codeName" : "RAWJSCODE_02",
+      "leftPos" : 484,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "构造消息提示2",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX_02"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE_02"
+        }
+      } ],
       "topPos" : 440,
       "parallelOutput" : true
     }, {
@@ -2584,7 +2629,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 470,
+      "leftPos" : 930,
       "logicNodeType" : "DEACTION",
       "name" : "删除工作项类型",
       "getPSDEUILogicLinks" : [ {
@@ -2599,12 +2644,12 @@
           "id" : "DEACTION_01"
         }
       } ],
-      "topPos" : 452,
+      "topPos" : 440,
       "parallelOutput" : true
     }, {
       "buttonsType" : "OK",
       "codeName" : "MSGBOX_01",
-      "leftPos" : 680,
+      "leftPos" : 724,
       "logicNodeType" : "MSGBOX",
       "getMsgBoxParam" : {
         "modelref" : true,
@@ -2624,7 +2669,7 @@
           "id" : "MSGBOX_01"
         }
       } ],
-      "topPos" : 278,
+      "topPos" : 276,
       "parallelOutput" : true
     }, {
       "code" : "console.log(\"构造消息提示\");\r\nconst _message = uiLogic.message_obj;\r\nconst work_item_type_name=uiLogic.default.name;\r\n//去重\r\nconst project_names = [...new Set(uiLogic.item_page?.map(p => p.project_name).filter(Boolean))].join(',') || '';\r\nconst message = `工作项类型 ${work_item_type_name} 已被项目使用,不能删除！\r\n使用的项目包括: ${project_names} `;\r\n\r\n_message.message = message;\r\n_message.title = \"提示\";",
