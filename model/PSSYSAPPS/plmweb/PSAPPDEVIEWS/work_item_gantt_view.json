@@ -2840,7 +2840,6 @@
     "getPSDEToolbarItems" : [ {
       "buttonStyle" : "STYLE3",
       "caption" : "新建",
-      "groupExtractMode" : "ITEMS",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSControlLogics" : [ {
@@ -2851,55 +2850,128 @@
         "scriptCode" : "context.srfreadonly != true",
         "triggerType" : "ITEMVISIBLE"
       } ],
+      "getPSDEToolbarItems" : [ {
+        "groupExtractMode" : "ITEM",
+        "itemType" : "ITEMS",
+        "name" : "deuiaction2",
+        "getPSUIActionGroup" : {
+          "codeName" : "Auto24255750",
+          "getDetailPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_project_work_item_type"
+          },
+          "getDetailPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+          },
+          "getDetailPSDEDataSet" : {
+            "modelref" : true,
+            "id" : "project_work_item_type"
+          },
+          "getDetailPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+          },
+          "dynamicMode" : 1,
+          "getIconClsPSAppDEField" : {
+            "name" : "ICON",
+            "codeName" : "icon"
+          },
+          "getIconClsPSDEField" : {
+            "name" : "ICON",
+            "codeName" : "icon"
+          },
+          "name" : "新建工作项（通用_自适应）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getTextPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getTextPSDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "uniqueTag" : "work_item__Auto24255750",
+          "userTag" : "new_dyna_work_item@work_item",
+          "userTag2" : "code"
+        },
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
       },
-      "getPSUIActionGroup" : {
-        "codeName" : "Auto24255748",
-        "getDetailPSAppDEDataSet" : {
+      "tooltip" : "新建",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "新建动态工作项（all）",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction5",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction5"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建动态工作项（all）",
+        "codeName" : "new_dyna_work_item",
+        "dataAccessAction" : "SUBDATA",
+        "getFrontPSAppView" : {
           "modelref" : true,
-          "id" : "fetch_project_work_item_type"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_quick_create_view.json",
+          "viewType" : "DEOPTVIEW"
         },
-        "getDetailPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
-        },
-        "getDetailPSDEDataSet" : {
-          "modelref" : true,
-          "id" : "project_work_item_type"
-        },
-        "getDetailPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
-        },
-        "dynamicMode" : 1,
-        "getIconClsPSAppDEField" : {
-          "name" : "ICON",
-          "codeName" : "icon"
-        },
-        "getIconClsPSDEField" : {
-          "name" : "ICON",
-          "codeName" : "icon"
-        },
-        "name" : "新建工作项（自适应）",
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "work_item_new_dyna_work_item",
+        "memo" : "srfdynatype由工具栏触发界面行为根据动态界面行为组动态类型组装至应用上下文中",
+        "name" : "新建动态工作项（all）",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         },
-        "getTextPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
-        "getTextPSDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "uniqueTag" : "work_item__Auto24255748",
-        "userTag" : "new_dyna_work_item@work_item",
-        "userTag2" : "code"
+        "getPSNavigateContexts" : [ {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project",
+          "rawValue" : false
+        }, {
+          "key" : "CURPROJECT",
+          "name" : "CURPROJECT",
+          "value" : "project",
+          "rawValue" : false
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "work_item_type_id",
+          "name" : "work_item_type_id",
+          "value" : "srfdynatype",
+          "rawValue" : false
+        }, {
+          "key" : "srfdatatype",
+          "name" : "srfdatatype",
+          "value" : "srfdynatype",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_dyna_work_item",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "new_dyna_work_item@work_item"
       },
-      "tooltip" : "新建",
+      "tooltip" : "新建动态工作项（all）",
+      "uIActionTarget" : "NONE",
+      "hiddenItem" : true,
       "showCaption" : true,
       "showIcon" : true
     }, {
