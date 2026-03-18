@@ -721,7 +721,7 @@
   }, {
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
-    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "afterCode" : "console.log(\"填充复制项目信息\"+data)\r\nconst app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.project = data.id\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
     "codeName" : "fill_copy_info",
     "methodType" : "DEACTION",
     "name" : "fill_copy_info",
@@ -3782,7 +3782,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION2"
+          "id" : "PREPAREPARAM_01"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -3795,6 +3795,33 @@
         "id" : "project"
       },
       "topPos" : 580
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 328,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      } ],
+      "topPos" : 640,
+      "parallelOutput" : true
     }, {
       "codeName" : "DEACTION2",
       "getDstPSAppDEAction" : {
@@ -3846,7 +3873,8 @@
         "id" : "project"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 890
+      "topPos" : 890,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -6159,7 +6187,7 @@
   }, {
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
-    "afterCode" : "const app = await ibiz.hub.getApp(context.srfappid);\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
+    "afterCode" : "console.log(\"填充复制项目信息\"+data)\r\nconst app = await ibiz.hub.getApp(context.srfappid);\r\ncontext.project = data.id\r\nconst deService = await app.deService.getService(context, 'plmweb.project');\r\ndata.identifier = `${data.identifier}` + (Math.floor(Math.random() * 900) + 100);\r\nawait deService.local.update(context, data);",
     "codeName" : "fill_copy_info",
     "methodType" : "DEACTION",
     "name" : "fill_copy_info",

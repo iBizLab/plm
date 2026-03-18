@@ -24,6 +24,32 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             then
             end
 
+            //逻辑处理节点[调整为待切片]
+            rule "prepareparam_03"
+            ruleflow-group "ai_kb_documentparseprepareparam_03"
+            when
+            then
+                            ai_kb_documentparsedefault.set("status","3");
+                        update(ai_kb_documentparsedefault);//更新fact中变量值
+                        update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
+                        update(ai_kb_documentparselastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsemasked_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新文件类文档状态]
+            rule "deaction_04"
+            ruleflow-group "ai_kb_documentparsedeaction_04"
+            when
+            then
+                        ai_kb_documentservice.update(ai_kb_documentparsedefault);
+                        update(ai_kb_documentparsedefault);//更新fact中变量值
+                        update(ai_kb_documentparseagent_context);//更新fact中变量值
+                        update(ai_kb_documentparsedocument);//更新fact中变量值
+                        update(ai_kb_documentparselastreturn);//更新fact中变量值
+                        update(ai_kb_documentparsemasked_data);//更新fact中变量值
+            end
+
             //逻辑处理节点[拷贝变量]
             rule "prepareparam_02"
             ruleflow-group "ai_kb_documentparseprepareparam_02"
@@ -53,18 +79,6 @@ package cn.ibizlab.plm.ai.logic.ai_kb_documentlogic.parse;
             //逻辑处理节点[获取origin文件内容]
             rule "rawsfcode_01"
             ruleflow-group "ai_kb_documentparserawsfcode_01"
-            when
-            then
-                        update(ai_kb_documentparsedefault);//更新fact中变量值
-                        update(ai_kb_documentparseagent_context);//更新fact中变量值
-                        update(ai_kb_documentparsedocument);//更新fact中变量值
-                        update(ai_kb_documentparselastreturn);//更新fact中变量值
-                        update(ai_kb_documentparsemasked_data);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam_01"
-            ruleflow-group "ai_kb_documentparsedebugparam_01"
             when
             then
                         update(ai_kb_documentparsedefault);//更新fact中变量值
