@@ -63,13 +63,10 @@
     "cssName" : "new_create_style"
   },
   "getPSViewLayoutPanel" : {
-    "getAllPSPanelFields" : [ {
-      "id" : "is_nexted"
-    } ],
-    "codeName" : "custom_work",
+    "codeName" : "usr1121984393",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
-    "logicName" : "工作项自定义布局面板",
+    "logicName" : "dyna_quick_create_view选项操作视图布局面",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -205,7 +202,6 @@
       "itemType" : "CONTAINER",
       "name" : "view_footer",
       "getPSLayout" : {
-        "align" : "space-between",
         "dir" : "row-reverse",
         "layout" : "FLEX",
         "vAlign" : "center"
@@ -216,157 +212,68 @@
         "shrink" : 0
       },
       "getPSPanelItems" : [ {
-        "caption" : "容器",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "CONTAINER",
-        "name" : "container1",
-        "getPSLayout" : {
-          "align" : "flex-start",
-          "dir" : "row",
-          "layout" : "FLEX",
-          "vAlign" : "center"
+        "actionType" : "UIACTION",
+        "buttonStyle" : "PRIMARY",
+        "caption" : "确定",
+        "itemStyle" : "PRIMARY",
+        "itemType" : "BUTTON",
+        "name" : "button_okaction",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "layoutpanel_button_okaction"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "getPSPanelItems" : [ {
-          "actionType" : "UIACTION",
-          "buttonStyle" : "INFO",
-          "caption" : "取消",
-          "itemStyle" : "INFO",
-          "itemType" : "BUTTON",
-          "name" : "button_cancelaction",
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "layoutpanel_button_cancelaction"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "NONE",
-            "caption" : "关闭视图",
-            "codeName" : "close_view",
-            "frontProcessType" : "OTHER",
-            "fullCodeName" : "work_item_close_view",
-            "name" : "关闭视图",
-            "getPSAppDEUILogic" : {
-              "modelref" : true,
-              "id" : "notify_refresh"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-            },
-            "scriptCode" : "view.state.isLoading = false;\r\nview.closeView();",
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "close_view",
-            "uIActionType" : "DEUIACTION",
-            "uILogicAttachMode" : "AFTER",
-            "id" : "close_view@work_item"
-          },
-          "tooltip" : "取消",
-          "uIActionTarget" : "NONE",
-          "showCaption" : true
-        }, {
-          "actionType" : "UIACTION",
-          "buttonStyle" : "PRIMARY",
+        "getPSUIAction" : {
           "caption" : "确定",
-          "itemStyle" : "PRIMARY",
-          "itemType" : "BUTTON",
-          "name" : "button_okaction",
-          "getPSAppViewUIAction" : {
-            "modelref" : true,
-            "id" : "layoutpanel_button_okaction"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "caption" : "确定",
-            "codeName" : "panel_custom_work_button_okaction_click",
-            "frontProcessType" : "OTHER",
-            "fullCodeName" : "work_item_panel_custom_work_button_okaction_click",
-            "name" : "确定",
-            "getPSAppDEUILogic" : {
-              "modelref" : true,
-              "id" : "custom_confirm"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-            },
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "panel_custom_work_button_okaction_click",
-            "uIActionType" : "DEUIACTION",
-            "uILogicAttachMode" : "REPLACE",
-            "uILogicType" : "DELOGIC",
-            "id" : "panel_custom_work_button_okaction_click@work_item"
-          },
-          "tooltip" : "确定",
-          "uIActionTarget" : "SINGLEDATA",
-          "showCaption" : true
-        } ]
+          "codeName" : "Ok",
+          "fullCodeName" : "Ok",
+          "name" : "视图_确定",
+          "predefinedType" : "VIEW_OKACTION",
+          "timeout" : 60000,
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Ok",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "确定",
+        "showCaption" : true
       }, {
-        "caption" : "容器",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "CONTAINER",
-        "name" : "container",
-        "getPSLayout" : {
-          "align" : "flex-start",
-          "dir" : "row",
-          "layout" : "FLEX",
-          "vAlign" : "center"
+        "actionType" : "UIACTION",
+        "buttonStyle" : "INFO",
+        "caption" : "取消",
+        "itemStyle" : "INFO",
+        "itemType" : "BUTTON",
+        "name" : "button_cancelaction",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "layoutpanel_button_cancelaction"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "getPSPanelItems" : [ {
-          "caption" : "文本框",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "FIELD",
-          "name" : "is_nexted",
-          "getPSEditor" : {
-            "editorType" : "CHECKBOX",
-            "name" : "is_nexted"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          }
-        }, {
-          "caption" : "文本",
-          "contentType" : "RAW",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_text",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX",
-            "spacingLeft" : "OUTERSMALL"
-          },
-          "getPSRawItem" : {
-            "caption" : "继续新建下一条",
-            "contentType" : "RAW",
-            "name" : "static_text",
-            "predefinedType" : "STATIC_TEXT",
-            "renderMode" : "TEXT"
-          },
-          "rawContent" : "继续新建下一条",
-          "showCaption" : true
-        } ]
+        "getPSUIAction" : {
+          "caption" : "取消",
+          "codeName" : "Cancel",
+          "fullCodeName" : "Cancel",
+          "name" : "视图_取消",
+          "predefinedType" : "VIEW_CANCELACTION",
+          "timeout" : 60000,
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Cancel",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "取消",
+        "showCaption" : true
       } ]
     } ],
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "861bd237a6460224a09e155ee2e135a8",
+    "modelid" : "e43f571d67503aeafc4ef86a5269bed5",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
