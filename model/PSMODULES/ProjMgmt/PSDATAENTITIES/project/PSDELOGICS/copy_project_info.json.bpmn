@@ -16,7 +16,6 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcopy_project_infodeaction_01" id="deaction_01" implementation="http://www.jboss.org/drools/rule" name="获取目标项目数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcopy_project_inforawsfcode_01" id="rawsfcode_01" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcopy_project_infodeaction_02" id="deaction_02" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="projectcopy_project_infoend_01" id="end_01" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end_01_end" name="end"/>
                         <sequenceFlow id="end_01_end_line" sourceRef="end_01" targetRef="end_01_end"/>
@@ -24,9 +23,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction_01_rawsfcode_01" sourceRef="deaction_01" targetRef="rawsfcode_01">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode_01_deaction_02" sourceRef="rawsfcode_01" targetRef="deaction_02">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction_02_end_01" sourceRef="deaction_02" targetRef="end_01">
+                    <sequenceFlow id="rawsfcode_01_end_01" sourceRef="rawsfcode_01" targetRef="end_01">
                     </sequenceFlow>
         </process>
     </definitions>

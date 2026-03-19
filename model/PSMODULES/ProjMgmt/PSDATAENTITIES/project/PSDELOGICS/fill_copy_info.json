@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "DEACTION_01"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -22,6 +22,40 @@
       }
     } ],
     "topPos" : 410,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_01",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/copy_project_info.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "DEACTION",
+    "name" : "实体行为",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_01"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "project"
+    },
+    "topPos" : 510,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION1",
@@ -37,25 +71,13 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
     },
-    "leftPos" : 160,
     "logicNodeType" : "DEACTION",
     "name" : "获取目标项目数据",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
     "getRetPSDELogicParam" : {
       "modelref" : true,
       "id" : "project"
     },
-    "topPos" : 580
+    "topPos" : 600
   }, {
     "codeName" : "DEACTION2",
     "getDstPSDEAction" : {
