@@ -1,0 +1,83 @@
+package cn.ibizlab.plm.base.logic.extend_scheduled_tasklogic.doc_parse_record;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.extend_scheduled_task extend_scheduled_taskdoc_parse_recorddefault;
+                global cn.ibizlab.plm.core.base.domain.extend_scheduled_task extend_scheduled_taskdoc_parse_recordtask;
+                global cn.ibizlab.plm.core.base.domain.extend_scheduled_task extend_scheduled_taskdoc_parse_recordtask_filter;
+                global cn.ibizlab.plm.core.base.domain.extend_scheduled_task extend_scheduled_taskdoc_parse_recordtasks;
+                    global cn.ibizlab.plm.core.base.service.Iextend_scheduled_taskService extend_scheduled_taskservice;
+        global cn.ibizlab.plm.core.base.service.Iextend_scheduled_taskService iBzSysExtend_scheduled_taskDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recordbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_01"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recordprepareparam_01"
+            when
+            then
+                            extend_scheduled_taskdoc_parse_recordtask_filter.set("n_principal_id_eq",extend_scheduled_taskdoc_parse_recorddefault.get("doc_id"));
+                            extend_scheduled_taskdoc_parse_recordtask_filter.set("sort","finished_at,desc");
+                        update(extend_scheduled_taskdoc_parse_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset_01"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recorddedataset_01"
+            when
+            then
+                        update(extend_scheduled_taskdoc_parse_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam_02"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recordprepareparam_02"
+            when
+            then
+                            extend_scheduled_taskdoc_parse_recordtask_filter.set("sort","finished_at,desc");
+                            extend_scheduled_taskdoc_parse_recordtask_filter.set("n_principal_id_eq",extend_scheduled_taskdoc_parse_recorddefault.get("sync_id"));
+                        update(extend_scheduled_taskdoc_parse_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构造执行记录信息]
+            rule "rawsfcode_01"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recordrawsfcode_01"
+            when
+            then
+                        update(extend_scheduled_taskdoc_parse_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtasks);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "extend_scheduled_taskdoc_parse_recordend_01"
+            when
+            then
+                        update(extend_scheduled_taskdoc_parse_recorddefault);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtask_filter);//更新fact中变量值
+                        update(extend_scheduled_taskdoc_parse_recordtasks);//更新fact中变量值
+            end

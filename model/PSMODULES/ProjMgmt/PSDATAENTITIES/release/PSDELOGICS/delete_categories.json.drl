@@ -1,0 +1,41 @@
+package cn.ibizlab.plm.projmgmt.logic.releaselogic.delete_categories;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.release releasedelete_categoriesdefault;
+        global cn.ibizlab.plm.core.projmgmt.service.IreleaseService iBzSysReleaseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "releasedelete_categoriesbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "releasedelete_categoriesend1"
+            when
+            then
+                        update(releasedelete_categoriesdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[当类别删除时修改发布的类别属性]
+            rule "rawsqlcall1"
+            ruleflow-group "releasedelete_categoriesrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",releasedelete_categoriesdefault.get("id"));
+        param.put("param1",releasedelete_categoriesdefault.get("id"));
+    String strSql="UPDATE project_release SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', #{et.param0}, ','), ',')) WHERE FIND_IN_SET(#{et.param1}, categories) > 0 ;  ";
+                        iBzSysReleaseDefaultService.execute(strSql,param);//SQL调用
+                        update(releasedelete_categoriesdefault);//更新fact中变量值
+            end

@@ -1,0 +1,124 @@
+{
+  "codeName" : "distinctData",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDELOGICS/distinctData.json",
+  "logicName" : "数据去重",
+  "name" : "数据去重",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_user_all"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "settingList"
+    },
+    "topPos" : 378
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 509,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "outSettingList"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 485
+  }, {
+    "code" : "def _settingList = logic.param('settingList').getReal()\r\ndef _outSettingList = logic.param('outSettingList').getReal()\r\ndef existMap = [:]\r\nfor(def i=0;i<_settingList.content.size();i++){\r\n     def _setting = _settingList.content.getAt(i)\r\n     def appViewTag = _setting.get(\"app_view_tag\")\r\n     def _name = _setting.get(\"name\")\r\n     def ownertype = _setting.get(\"owner_type\")\r\n     def tag = String.format(\"%s|%s\",appViewTag,_name)\r\n     if(existMap.containsKey(tag) && ownertype != \"PERSONAL\"){\r\n         continue\r\n     }\r\n     existMap[tag] = _setting\r\n     _outSettingList.add(_setting)\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 493
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "outSettingList",
+    "logicName" : "输出列表",
+    "name" : "输出列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/app_view_theme.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "settingList",
+    "logicName" : "设置列表",
+    "name" : "设置列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

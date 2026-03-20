@@ -1,0 +1,334 @@
+package cn.ibizlab.plm.base.logic.memberlogic.choose_portfolio_resource;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.member memberchoose_portfolio_resourcedefault;
+                global cn.ibizlab.plm.core.base.domain.member memberchoose_portfolio_resourcefor_member;
+                global cn.ibizlab.plm.core.base.domain.portfolio_member memberchoose_portfolio_resourcefor_portfolio_member;
+                global cn.ibizlab.plm.core.base.domain.user memberchoose_portfolio_resourcefor_user_obj;
+                global cn.ibizlab.plm.core.base.domain.member memberchoose_portfolio_resourcegroup_page;
+                global cn.ibizlab.plm.core.base.domain.portfolio_member memberchoose_portfolio_resourceportfolio_member_filter;
+                global cn.ibizlab.plm.core.base.domain.portfolio_member memberchoose_portfolio_resourceportfolio_member_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.project_member memberchoose_portfolio_resourceproject_member_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.project_member memberchoose_portfolio_resourceproject_member_page;
+                global cn.ibizlab.plm.core.base.domain.user memberchoose_portfolio_resourceuser_filter;
+                global cn.ibizlab.plm.core.base.domain.user memberchoose_portfolio_resourceuser_page;
+                    global cn.ibizlab.plm.core.base.service.IuserService userservice;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+                    global cn.ibizlab.plm.core.base.service.Iportfolio_memberService portfolio_memberservice;
+        global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "memberchoose_portfolio_resourcebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置分页查询参数]
+            rule "prepareparam6"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam6"
+            when
+            then
+                            memberchoose_portfolio_resourcedefault.set("size","1000");
+                            memberchoose_portfolio_resourceuser_filter.set("size","1000");
+                            memberchoose_portfolio_resourceportfolio_member_filter.set("1000","1000");
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备部门成员过滤器参数]
+            rule "prepareparam2"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam2"
+            when
+            then
+                            memberchoose_portfolio_resourceuser_filter.set("n_department_id_eq",memberchoose_portfolio_resourcedefault.get("n_department_id_eq"));
+                            memberchoose_portfolio_resourceuser_filter.set("n_display_name_like",memberchoose_portfolio_resourcedefault.get("n_name_like"));
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备团队成员过滤器参数]
+            rule "prepareparam3"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam3"
+            when
+            then
+                            memberchoose_portfolio_resourcedefault.set("n_owner_id_eq",memberchoose_portfolio_resourcedefault.get("user_group"));
+                            memberchoose_portfolio_resourcedefault.set("n_owner_type_eq","GROUP");
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备当前项目集成员过滤器参数]
+            rule "prepareparam5"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam5"
+            when
+            then
+                            memberchoose_portfolio_resourceportfolio_member_filter.set("n_portfolio_id_eq",memberchoose_portfolio_resourcedefault.get("cur_project_set"));
+                            memberchoose_portfolio_resourceportfolio_member_filter.set("n_name_like",memberchoose_portfolio_resourcedefault.get("n_name_like"));
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取部门成员]
+            rule "dedataset2"
+            ruleflow-group "memberchoose_portfolio_resourcededataset2"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取团队成员]
+            rule "dedataset3"
+            ruleflow-group "memberchoose_portfolio_resourcededataset3"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取当前项目集下成员]
+            rule "dedataset4"
+            ruleflow-group "memberchoose_portfolio_resourcededataset4"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置用户标识与标识一致，目的已选择的成员不可再次勾选]
+            rule "prepareparam7"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam7"
+            when
+            then
+                            memberchoose_portfolio_resourcefor_portfolio_member.set("id",memberchoose_portfolio_resourcefor_portfolio_member.get("userid"));
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "memberchoose_portfolio_resourceloopsubcall1"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "memberchoose_portfolio_resourceloopsubcall2"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "memberchoose_portfolio_resourceloopsubcall3"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置用户标识与标识一致，目的已选择的成员不可再次勾选]
+            rule "prepareparam8"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam8"
+            when
+            then
+                            memberchoose_portfolio_resourcefor_member.set("id",memberchoose_portfolio_resourcefor_member.get("userid"));
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充用户标识]
+            rule "prepareparam4"
+            ruleflow-group "memberchoose_portfolio_resourceprepareparam4"
+            when
+            then
+                            memberchoose_portfolio_resourcefor_user_obj.set("name",memberchoose_portfolio_resourcefor_user_obj.get("displayname"));
+                            memberchoose_portfolio_resourcefor_user_obj.set("user_id",memberchoose_portfolio_resourcefor_user_obj.get("id"));
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end3"
+            ruleflow-group "memberchoose_portfolio_resourceend3"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "memberchoose_portfolio_resourceend2"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end4"
+            ruleflow-group "memberchoose_portfolio_resourceend4"
+            when
+            then
+                        update(memberchoose_portfolio_resourcedefault);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_portfolio_member);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcefor_user_obj);//更新fact中变量值
+                        update(memberchoose_portfolio_resourcegroup_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceportfolio_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceproject_member_page);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_filter);//更新fact中变量值
+                        update(memberchoose_portfolio_resourceuser_page);//更新fact中变量值
+            end

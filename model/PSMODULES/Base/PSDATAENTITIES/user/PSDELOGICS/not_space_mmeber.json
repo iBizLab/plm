@@ -1,0 +1,304 @@
+{
+  "codeName" : "not_space_mmeber",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDELOGICS/not_space_mmeber.json",
+  "logicName" : "非空间下成员",
+  "memo" : "非空间下成员",
+  "name" : "非空间下成员",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 40,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备空间成员查询过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_space_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member_filter"
+      },
+      "name" : "Default[space_id] ==> space_member_filter[n_space_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "space_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_owner_subtype_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shared_page_member_filter"
+      },
+      "name" : "直接值[SHARED] ==> shared_page_member_filter[n_owner_subtype_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "SHARED",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shared_page_member_filter"
+      },
+      "name" : "Default[shared_page] ==> shared_page_member_filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "shared_page",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shared_page_member_filter"
+      },
+      "name" : "直接值[1000] ==> shared_page_member_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1000",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_owner_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "shared_page_member_filter"
+      },
+      "name" : "直接值[PAGE] ==> shared_page_member_filter[n_owner_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "PAGE",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "space_member_filter"
+      },
+      "name" : "直接值[1000] ==> space_member_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1000",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 175
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_member_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取空间成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "space_members"
+    },
+    "topPos" : 300
+  }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "shared_page_member_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取已添加的共享页面成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "shared_page_members"
+    },
+    "topPos" : 424
+  }, {
+    "code" : "var space_members = logic.getParam(\"space_members\");\r\nvar shared_page_members = logic.getParam(\"shared_page_members\");\r\nvar user_filter = logic.getParam(\"Default\");\r\nvar user_ids = \"\";\r\nfor (var i = 0; i < space_members.length; i++) {\r\n    if(i>0){\r\n        user_ids = user_ids+\",\";\r\n    }\r\n    var space_member = space_members.get(i);\r\n    user_ids = user_ids + space_member.get(\"user_id\");\r\n}\r\nfor (var i = 0; i < shared_page_members.length; i++) {\r\n    if(user_ids != \"\"){\r\n        user_ids = user_ids+\",\";\r\n    }\r\n    var shared_page_member = shared_page_members.get(i);\r\n    user_ids = user_ids + shared_page_member.get(\"user_id\");\r\n}\r\nif(user_ids != \"\"){\r\n    user_filter.ni(\"id\",user_ids);\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "填充user过滤器ni参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 600
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取用户",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "user_page"
+    },
+    "topPos" : 738
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "user_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 902
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "shared_page_member_filter",
+    "logicName" : "共享页面成员",
+    "name" : "共享页面成员",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "shared_page_members",
+    "logicName" : "共享页面成员集合",
+    "name" : "共享页面成员集合",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "space_member_filter",
+    "logicName" : "空间成员过滤器",
+    "name" : "空间成员过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "space_members",
+    "logicName" : "空间成员集合",
+    "name" : "空间成员集合",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "user_page",
+    "logicName" : "用户分页查询结果变量",
+    "name" : "用户分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

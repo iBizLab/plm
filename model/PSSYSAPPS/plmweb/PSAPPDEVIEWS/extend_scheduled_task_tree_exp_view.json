@@ -1,0 +1,738 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.EXTEND_SCHEDULED_TASK"
+  },
+  "caption" : "计划任务",
+  "codeName" : "extend_scheduled_task_tree_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_tree_exp_view.json",
+  "name" : "extend_scheduled_taskTreeExpView",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeExpView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA@schedule",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "扩展计划任务编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.EXTEND_SCHEDULED_TASK.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "tree_exp_view_treeexpbar",
+    "controlType" : "TREEEXPBAR",
+    "name" : "treeexpbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+    },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:all_tasks",
+      "realTitle" : "扩展计划任务表格视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.EXTEND_SCHEDULED_TASK.GRIDVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:schedule",
+      "parentDataJO" : {
+        "srfparentdename" : "EXTEND_SCHEDULE",
+        "srfparentmode" : "DER1N_EXTEND_SCHEDULED_TASK_EXTEND_SCHEDULE_SCHEDULE_ID",
+        "srfparentdefname" : "SCHEDULE_ID"
+      },
+      "realTitle" : "扩展计划任务表格视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.EXTEND_SCHEDULED_TASK.GRIDVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treeexpbar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEEXPBAR"
+    },
+    "getPSControls" : [ {
+      "codeName" : "schedule_tree",
+      "controlType" : "TREEVIEW",
+      "getCreatePSControlAction" : {
+        "modelref" : true,
+        "id" : "create",
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+        }
+      },
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task/PSTREEVIEWS/schedule_tree.json",
+      "getFetchPSControlAction" : {
+        "modelref" : true,
+        "id" : "fetch",
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+        }
+      },
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+        }
+      },
+      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+      "logicName" : "执行计划树",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+          }
+        }, {
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+          }
+        }, {
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+          }
+        }, {
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+          }
+        }, {
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+          }
+        } ],
+        "userDRAction" : "READ",
+        "enableDEFieldPrivilege" : false,
+        "id" : "树视图处理器"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SELECTIONCHANGE",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_selectionchange"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_load"
+      } ],
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "getPSControls" : [ {
+        "codeName" : "tree_exp_view_schedule_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "计划树上下文工具栏",
+        "name" : "schedule_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+        },
+        "getPSControlParam" : {
+          "id" : "schedule_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "编辑",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "schedule_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "编辑",
+            "codeName" : "open_schedule_edit_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_schedule_edit_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "extend_schedule_open_schedule_edit_view",
+            "name" : "打开执行计划编辑视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_schedule_edit_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_schedule_edit_view@extend_schedule"
+          },
+          "tooltip" : "编辑",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "buttonStyle" : "DANGER",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.REMOVE"
+          },
+          "caption" : "删除",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 1,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "schedule_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "MULTIKEY",
+            "noPrivDisplayMode" : 1,
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.REMOVE"
+            },
+            "caption" : "删除",
+            "codeName" : "Remove",
+            "dataAccessAction" : "DELETE",
+            "fullCodeName" : "Remove",
+            "name" : "表格界面_删除操作",
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "DELETE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "predefinedType" : "GRIDVIEW_REMOVEACTION",
+            "timeout" : 60000,
+            "tooltip" : "删除",
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "Remove",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "删除",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+          },
+          "uIActionTarget" : "MULTIKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "modelid" : "b2e7d18dd9ef06f1d322ba14285ef25a",
+        "modeltype" : "PSDETOOLBAR"
+      } ],
+      "getPSDETreeNodeRSs" : [ {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "all_tasks"
+        },
+        "name" : "默认根节点（ROOT）-全部任务（node）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 2
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "schedule"
+        },
+        "name" : "默认根节点（ROOT）-执行计划（动态）（schedule）",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      } ],
+      "getPSDETreeNodes" : [ {
+        "counterMode" : 0,
+        "name" : "默认根节点",
+        "nodeType" : "ROOT",
+        "text" : "默认根节点",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : true,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : true,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ROOT"
+      }, {
+        "counterMode" : 0,
+        "name" : "全部任务",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "all_tasks",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0ae@FontAwesome",
+          "cssClass" : "fa fa-tasks"
+        },
+        "text" : "全部任务",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : true,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "all_tasks"
+      }, {
+        "counterMode" : 0,
+        "dataSourceType" : "DEDATASET",
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "maxSize" : -1,
+        "name" : "执行计划（动态）",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "getNavPSDER" : {
+          "codeName" : "EXTEND_SCHEDULE",
+          "dERType" : "DER1N",
+          "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task/PSDERS/DER1N_EXTEND_SCHEDULED_TASK_EXTEND_SCHEDULE_SCHEDULE_ID.json",
+          "fKeyName" : "FFDA31AE3455128DB7",
+          "getMajorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/extend_schedule.json"
+          },
+          "masterOrder" : -1,
+          "masterRS" : 0,
+          "getMinorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/extend_scheduled_task.json"
+          },
+          "name" : "DER1N_EXTEND_SCHEDULED_TASK_EXTEND_SCHEDULE_SCHEDULE_ID",
+          "orderValue" : 100,
+          "getPSPickupDEField" : {
+            "name" : "SCHEDULE_ID",
+            "codeName" : "schedule_id"
+          },
+          "pickupDEFName" : "SCHEDULE_ID",
+          "removeActionType" : 1,
+          "removeOrder" : 0,
+          "serviceCodeName" : "extend_schedule",
+          "enableFKey" : true
+        },
+        "nodeType" : "schedule",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_valid"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_schedule_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "计划树上下文工具栏",
+          "name" : "schedule_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+          },
+          "getPSControlParam" : {
+            "id" : "schedule_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "编辑",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "schedule_cm_deuiaction1"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "编辑",
+              "codeName" : "open_schedule_edit_view",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_schedule_edit_view.json",
+                "viewType" : "DEEDITVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "extend_schedule_open_schedule_edit_view",
+              "name" : "打开执行计划编辑视图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_schedule.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf044@FontAwesome",
+                "cssClass" : "fa fa-edit"
+              },
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_schedule_edit_view",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_schedule_edit_view@extend_schedule"
+            },
+            "tooltip" : "编辑",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "buttonStyle" : "DANGER",
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.REMOVE"
+            },
+            "caption" : "删除",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 1,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "schedule_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "MULTIKEY",
+              "noPrivDisplayMode" : 1,
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "TBB.TEXT.*.REMOVE"
+              },
+              "caption" : "删除",
+              "codeName" : "Remove",
+              "dataAccessAction" : "DELETE",
+              "fullCodeName" : "Remove",
+              "name" : "表格界面_删除操作",
+              "getPSDEOPPriv" : {
+                "modelref" : true,
+                "id" : "DELETE"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
+              "predefinedType" : "GRIDVIEW_REMOVEACTION",
+              "timeout" : 60000,
+              "tooltip" : "删除",
+              "getTooltipPSLanguageRes" : {
+                "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+              },
+              "uIActionMode" : "SYS",
+              "uIActionTag" : "Remove",
+              "uIActionType" : "DEUIACTION"
+            },
+            "tooltip" : "删除",
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+            },
+            "uIActionTarget" : "MULTIKEY",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "modelid" : "b2e7d18dd9ef06f1d322ba14285ef25a",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSDETreeNodeRVs" : [ {
+          "name" : "EDITDATA",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/extend_scheduled_task_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747382692888\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1798\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M512 73.142857c242.371048 0 438.857143 196.486095 438.857143 438.857143s-196.486095 438.857143-438.857143 438.857143S73.142857 754.371048 73.142857 512 269.628952 73.142857 512 73.142857z m38.716952 172.397714h-77.433904v282.136381c0 21.382095 17.310476 38.716952 38.716952 38.716953h209.042286v-77.433905h-170.325334V245.51619z\" p-id=\"1799\" fill=\"#FFCD5D\"></path></svg>"
+        },
+        "sortDir" : "DESC",
+        "getSortPSAppDEField" : {
+          "name" : "CREATE_TIME",
+          "codeName" : "create_time"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : true,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "schedule"
+      } ],
+      "getRemovePSControlAction" : {
+        "modelref" : true,
+        "id" : "remove",
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+        }
+      },
+      "treeGridMode" : 0,
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+        }
+      },
+      "enableRootSelect" : false,
+      "outputIconDefault" : true,
+      "rootVisible" : false,
+      "name" : "treeexpbar_tree",
+      "modelid" : "82abffaea257fac48ac6488a3c9dbaa5",
+      "modeltype" : "PSDETREEVIEW"
+    } ],
+    "xDataControlName" : "treeexpbar_tree",
+    "enableCounter" : true,
+    "enableSearch" : false,
+    "showTitleBar" : false,
+    "modelid" : "f64b5fd1e8e9e930607ebba89ddce3e7_treeexpbar",
+    "modeltype" : "PSEXPBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.EXTEND_SCHEDULED_TASK"
+    },
+    "caption" : "计划任务",
+    "codeName" : "tree_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "TreeExpView",
+  "getPSDEViewId" : "cd120dd36836a68975efe95d64d4b3e1",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_scheduled_task.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "计划任务",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEEXPVIEW",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showCaptionBar" : false,
+  "showDataInfoBar" : true,
+  "modelid" : "f64b5fd1e8e9e930607ebba89ddce3e7",
+  "modeltype" : "PSAPPDEVIEW"
+}
