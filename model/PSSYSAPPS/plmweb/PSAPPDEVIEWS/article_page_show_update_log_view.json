@@ -46,11 +46,11 @@
       "hidden" : true,
       "viewFieldName" : "is_lock"
     }, {
+      "id" : "field_textbox"
+    }, {
       "id" : "srfreadonly",
       "hidden" : true,
       "viewFieldName" : "srfreadonly"
-    }, {
-      "id" : "field_textbox"
     }, {
       "id" : "attentions",
       "viewFieldName" : "ATTENTIONS"
@@ -420,7 +420,8 @@
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX",
-              "shrink" : 0
+              "shrink" : 0,
+              "spacingLeft" : "OUTERSMALL"
             },
             "getPSPanelItems" : [ {
               "caption" : "引用布局面板",
@@ -464,21 +465,6 @@
                     "layout" : "FLEX"
                   },
                   "getPSPanelItems" : [ {
-                    "caption" : "文本框",
-                    "itemType" : "FIELD",
-                    "name" : "srfreadonly",
-                    "getPSEditor" : {
-                      "editorType" : "HIDDEN",
-                      "name" : "srfreadonly",
-                      "predefinedType" : "FIELD_TEXTBOX"
-                    },
-                    "getPSLayoutPos" : {
-                      "grow" : -1,
-                      "layout" : "FLEX"
-                    },
-                    "viewFieldName" : "srfreadonly",
-                    "hidden" : true
-                  }, {
                     "caption" : "容器",
                     "itemStyle" : "DEFAULT",
                     "itemType" : "CONTAINER",
@@ -486,12 +472,14 @@
                     "getPSLayout" : {
                       "dir" : "row",
                       "layout" : "FLEX",
-                      "vAlign" : "flex-end"
+                      "vAlign" : "center"
                     },
                     "getPSLayoutPos" : {
                       "grow" : -1,
                       "heightMode" : "FULL",
                       "layout" : "FLEX",
+                      "spacingLeft" : "INNERSMALL",
+                      "spacingTop" : "OUTERSMALL",
                       "widthMode" : "FULL"
                     },
                     "getPSPanelItems" : [ {
@@ -506,6 +494,7 @@
                           "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                           "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                           "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+                          "AC" : "TRUE",
                           "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                           "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                           "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
@@ -514,15 +503,16 @@
                           "USERURL" : "`spaces/${context.space}/space_members/fetch_default`",
                           "QUOTEURL" : "`recents/fetch_recent_access`"
                         },
-                        "editorStyle" : "COMMENT_WIKI",
+                        "editorStyle" : "VDITOR_COMMENT_WIKI",
                         "editorType" : "HTMLEDITOR",
                         "name" : "field_textbox",
                         "getPSSysPFPlugin" : {
                           "pluginType" : "EDITOR_CUSTOMSTYLE",
-                          "pluginCode" : "COMMENT",
+                          "pluginCode" : "VDITOR",
                           "runtimeObject" : true
                         },
-                        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "enableAC" : true
                       },
                       "getPSLayoutPos" : {
                         "grow" : 10,
@@ -640,15 +630,15 @@
                       "showCaption" : true
                     }, {
                       "caption" : "图片",
-                      "contentHeight" : 48.0,
+                      "contentHeight" : 30.0,
                       "contentType" : "IMAGE",
-                      "height" : 48.0,
+                      "height" : 30.0,
                       "itemStyle" : "DEFAULT",
                       "itemType" : "RAWITEM",
                       "name" : "comment_icon",
                       "getPSLayoutPos" : {
                         "grow" : -1,
-                        "height" : 48,
+                        "height" : 30,
                         "heightMode" : "PX",
                         "layout" : "FLEX",
                         "shrink" : 0
@@ -658,27 +648,42 @@
                         "dynaClass" : "['ibiz-panel-button--comment__icon']",
                         "name" : "comment_icon",
                         "getPSSysCss" : {
-                          "cssName" : "comment_icon"
+                          "cssName" : "right_comment_icon"
                         },
                         "getPSSysImage" : {
                           "glyph" : "xf18e@FontAwesome",
                           "cssClass" : "fa fa-arrow-circle-o-right"
                         },
                         "predefinedType" : "STATIC_IMAGE",
-                        "rawItemHeight" : 48.0
+                        "rawItemHeight" : 30.0
                       },
                       "getPSSysCss" : {
-                        "cssName" : "comment_icon"
+                        "cssName" : "right_comment_icon"
                       },
                       "getPSSysImage" : {
                         "glyph" : "xf18e@FontAwesome",
                         "cssClass" : "fa fa-arrow-circle-o-right"
                       },
-                      "rawItemHeight" : 48.0,
+                      "rawItemHeight" : 30.0,
                       "showCaption" : true
                     } ]
                   } ],
                   "predefinedType" : "CONTAINER_SINGLEDATA"
+                }, {
+                  "caption" : "文本框",
+                  "itemType" : "FIELD",
+                  "name" : "srfreadonly",
+                  "getPSEditor" : {
+                    "editorType" : "HIDDEN",
+                    "name" : "srfreadonly",
+                    "predefinedType" : "FIELD_TEXTBOX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "viewFieldName" : "srfreadonly",
+                  "hidden" : true
                 } ]
               } ],
               "predefinedType" : "PANELPART",
@@ -2235,10 +2240,11 @@
           "hidden" : true,
           "viewFieldName" : "PID"
         }, {
-          "id" : "html_content",
-          "viewFieldName" : "CONTENT"
+          "id" : "is_top",
+          "hidden" : true,
+          "viewFieldName" : "IS_TOP"
         }, {
-          "id" : "md_content",
+          "id" : "content",
           "viewFieldName" : "CONTENT"
         }, {
           "id" : "pcreate_man",
@@ -2246,23 +2252,22 @@
         }, {
           "id" : "pcontent",
           "viewFieldName" : "PCONTENT"
-        }, {
-          "id" : "format_type",
-          "hidden" : true,
-          "viewFieldName" : "FORMAT_TYPE"
         } ],
         "codeName" : "usr0228764297",
         "controlType" : "PANEL",
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page/PSPANELS/usr0228764297.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment/PSPANELS/usr0228764297.json",
         "layoutMode" : "FLEX",
         "logicName" : "list_wiki列表",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
         },
         "getPSControlParam" : { },
         "getPSLayout" : {
           "layout" : "FLEX"
+        },
+        "getPSSysCss" : {
+          "cssName" : "right_comment_list"
         },
         "getRootPSPanelItems" : [ {
           "itemStyle" : "DEFAULT",
@@ -2354,6 +2359,40 @@
                 },
                 "viewFieldName" : "CREATE_TIME"
               }, {
+                "caption" : "置顶",
+                "contentType" : "RAW",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "RAWITEM",
+                "name" : "top_text",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX",
+                  "spacingLeft" : "OUTERSMALL"
+                },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "IS_TOP",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "1"
+                  } ],
+                  "relatedItemNames" : [ "is_top" ],
+                  "notMode" : false
+                } ],
+                "getPSRawItem" : {
+                  "caption" : "置顶",
+                  "contentType" : "RAW",
+                  "name" : "top_text",
+                  "predefinedType" : "STATIC_TEXT",
+                  "renderMode" : "TEXT"
+                },
+                "rawContent" : "置顶",
+                "showCaption" : true
+              }, {
                 "caption" : "文本(动态)",
                 "itemType" : "FIELD",
                 "name" : "field_text_dynamic",
@@ -2383,7 +2422,24 @@
                 },
                 "viewFieldName" : "PID",
                 "hidden" : true
-              } ]
+              }, {
+                "caption" : "文本(动态)",
+                "itemType" : "FIELD",
+                "name" : "is_top",
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "is_top"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "viewFieldName" : "IS_TOP",
+                "hidden" : true
+              } ],
+              "getPSSysCss" : {
+                "cssName" : "top_style"
+              }
             }, {
               "caption" : "容器",
               "itemStyle" : "DEFAULT",
@@ -2393,7 +2449,7 @@
                 "itemName" : "CONTAINER2",
                 "logicTag" : "list_itempanel",
                 "logicType" : "SCRIPT",
-                "name" : "logic_readonly",
+                "name" : "readOnly",
                 "scriptCode" : "context.srfreadonly != true",
                 "triggerType" : "ITEMVISIBLE"
               } ],
@@ -2411,74 +2467,160 @@
                 "logicType" : "GROUP",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "NOTEQ",
-                  "dstModelField" : "HTML_CONTENT",
+                  "dstModelField" : "CONTENT",
                   "logicType" : "SINGLE",
-                  "name" : "HTML_CONTENT 不等于(<>) <p><del>该评论已删除</del></p>",
+                  "name" : "CONTENT 不等于(<>) <p><del>该评论已删除</del></p>",
                   "value" : "<p><del>该评论已删除</del></p>"
                 } ],
-                "relatedItemNames" : [ "html_content" ],
+                "relatedItemNames" : [ "content" ],
                 "notMode" : false
               } ],
               "getPSPanelItems" : [ {
-                "actionType" : "UIACTION",
-                "buttonStyle" : "STYLE2",
-                "caption" : "删除",
+                "actionGroupExtractMode" : "ITEMS",
                 "itemStyle" : "STYLE2",
-                "itemType" : "BUTTON",
-                "name" : "button_calluilogic",
-                "getPSAppViewUIAction" : {
-                  "modelref" : true,
-                  "id" : "list_itempanel_button_calluilogic"
-                },
-                "getPSControlLogics" : [ {
-                  "itemName" : "BUTTON_CALLUILOGIC",
-                  "logicTag" : "list_itempanel",
-                  "logicType" : "SCRIPT",
-                  "name" : "logic1",
-                  "scriptCode" : "data.create_man === context.srfuserid",
-                  "triggerType" : "ITEMVISIBLE"
-                } ],
+                "itemType" : "BUTTONLIST",
+                "name" : "top",
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
-                "getPSSysImage" : {
-                  "glyph" : "xf1f8@FontAwesome",
-                  "cssClass" : "fa fa-trash"
+                "getPSSysCss" : {
+                  "cssName" : "comment_btn_style"
                 },
-                "getPSUIAction" : {
-                  "actionTarget" : "SINGLEKEY",
-                  "caption" : "删除评论",
-                  "codeName" : "delete_comment_space",
-                  "confirmMsg" : "确认删除该评论？",
-                  "fullCodeName" : "comment_delete_comment_space",
-                  "name" : "删除评论（知识库）",
-                  "getNextPSUIAction" : {
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
-                    },
-                    "modelref" : true,
-                    "id" : "refresh_comment_list@comment"
-                  },
-                  "getPSAppDEMethod" : {
-                    "modelref" : true,
-                    "id" : "delete"
-                  },
+                "getPSSysImage" : {
+                  "glyph" : "xf142@FontAwesome",
+                  "cssClass" : "fa fa-ellipsis-v"
+                },
+                "getPSUIActionGroup" : {
+                  "codeName" : "Usr0519465800",
+                  "name" : "评论列表行为组",
                   "getPSAppDataEntity" : {
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                   },
-                  "successMsg" : "删除成功！",
-                  "timeout" : 60000,
-                  "uIActionMode" : "BACKEND",
-                  "uIActionTag" : "delete_comment_space",
-                  "uIActionType" : "DEUIACTION",
-                  "enableConfirm" : true,
-                  "id" : "delete_comment_space@comment"
-                },
-                "tooltip" : "删除",
-                "uIActionTarget" : "SINGLEKEY"
+                  "getPSUIActionGroupDetails" : [ {
+                    "caption" : "置顶",
+                    "detailType" : "DEUIACTION",
+                    "name" : "u8988d21",
+                    "getPSSysImage" : {
+                      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741120326\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4339\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M576 452.266667v422.4h-85.333333v-422.4l-89.6 89.6L341.333333 477.866667l192-192 192 192-59.733333 59.733333-89.6-85.333333z m213.333333-217.6h-512v-85.333334h512v85.333334z\" fill=\"#444444\" p-id=\"4340\"></path></svg>"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "置顶",
+                      "codeName" : "top",
+                      "fullCodeName" : "comment_top",
+                      "name" : "评论置顶",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "top"
+                      },
+                      "getPSAppDEUILogic" : {
+                        "modelref" : true,
+                        "id" : "notify_refresh"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                      },
+                      "refreshMode" : 1,
+                      "timeout" : 60000,
+                      "uIActionMode" : "BACKEND",
+                      "uIActionTag" : "top",
+                      "uIActionType" : "DEUIACTION",
+                      "uILogicAttachMode" : "AFTER",
+                      "enableConfirm" : true,
+                      "reloadData" : true,
+                      "id" : "top@comment"
+                    },
+                    "visibleScriptCode" : "data.is_top!=1",
+                    "addSeparator" : false,
+                    "showCaption" : true,
+                    "showIcon" : true
+                  }, {
+                    "caption" : "取消置顶",
+                    "detailType" : "DEUIACTION",
+                    "name" : "ue61a87a",
+                    "getPSSysImage" : {
+                      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741189924\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8698\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M228.43 433.23l70.893 63.016-47.261 39.385-78.77-63.016 55.139-39.384z m141.785-118.153L512 196.923l330.83 267.815-78.768 63.016-196.924-165.416v141.785L456.862 393.846v-23.63l-15.754 7.876-70.893-63.015z m196.923 441.108V1024H456.862V653.785l110.276 102.4zM39.385 86.646V0h945.23v86.646H39.385zM102.4 252.062l63.015-70.893 748.308 716.8-63.015 70.893-748.308-716.8z\" p-id=\"8699\"></path></svg>"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "取消置顶",
+                      "codeName" : "no_top",
+                      "fullCodeName" : "comment_no_top",
+                      "name" : "取消置顶",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "no_top"
+                      },
+                      "getPSAppDEUILogic" : {
+                        "modelref" : true,
+                        "id" : "notify_refresh"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                      },
+                      "refreshMode" : 1,
+                      "timeout" : 60000,
+                      "uIActionMode" : "BACKEND",
+                      "uIActionTag" : "no_top",
+                      "uIActionType" : "DEUIACTION",
+                      "uILogicAttachMode" : "AFTER",
+                      "enableConfirm" : true,
+                      "reloadData" : true,
+                      "id" : "no_top@comment"
+                    },
+                    "visibleScriptCode" : "data.is_top==1",
+                    "addSeparator" : false,
+                    "showCaption" : true,
+                    "showIcon" : true
+                  }, {
+                    "caption" : "删除",
+                    "detailType" : "DEUIACTION",
+                    "name" : "uefb364c",
+                    "getPSSysImage" : {
+                      "glyph" : "xf014@FontAwesome",
+                      "cssClass" : "fa fa-trash-o"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "删除",
+                      "codeName" : "del_comment",
+                      "confirmMsg" : "确认删除该评论？",
+                      "fullCodeName" : "comment_del_comment",
+                      "name" : "删除评论",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "delete"
+                      },
+                      "getPSAppDEUILogic" : {
+                        "modelref" : true,
+                        "id" : "notify_refresh"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                      },
+                      "refreshMode" : 1,
+                      "successMsg" : "删除成功",
+                      "timeout" : 60000,
+                      "uIActionMode" : "BACKEND",
+                      "uIActionTag" : "del_comment",
+                      "uIActionType" : "DEUIACTION",
+                      "uILogicAttachMode" : "AFTER",
+                      "enableConfirm" : true,
+                      "reloadData" : true,
+                      "id" : "del_comment@comment"
+                    },
+                    "visibleScriptCode" : "data.create_man === context.srfuserid",
+                    "addSeparator" : false,
+                    "showCaption" : true,
+                    "showIcon" : true
+                  } ],
+                  "uniqueTag" : "comment__Usr0519465800"
+                }
               }, {
                 "actionType" : "UIACTION",
                 "buttonStyle" : "STYLE2",
@@ -2495,7 +2637,7 @@
                   "logicTag" : "list_itempanel",
                   "logicType" : "SCRIPT",
                   "name" : "logic",
-                  "scriptCode" : "data.create_man === context.srfuserid&&data.format_type!=='MD'",
+                  "scriptCode" : "data.create_man === context.srfuserid",
                   "triggerType" : "ITEMVISIBLE"
                 } ],
                 "getPSLayoutPos" : {
@@ -2503,8 +2645,7 @@
                   "layout" : "FLEX"
                 },
                 "getPSSysImage" : {
-                  "glyph" : "xf044@FontAwesome",
-                  "cssClass" : "fa fa-edit"
+                  "rawContent" : "<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" width=\"1em\" preserveAspectRatio=\"xMidYMid meet\" focusable=\"false\" fill=\"CurrentColor\"><g id=\"ajpaction/edit\" stroke-width=\"1\" fill-rule=\"evenodd\"><path d=\"M2 8.34L10.71 0 15 4.17 6.538 13H2V8.34zm1.2.512V11.8h2.826l7.283-7.6-2.606-2.533L3.2 8.852zM0 16v-1.2h16V16H0z\" id=\"ajp编辑\"></path></g></svg>"
                 },
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEDATA",
@@ -2590,80 +2731,28 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "html_content",
+              "name" : "content",
               "getPSEditor" : {
-                "contentType" : "HTML",
                 "editorParams" : {
-                  "contenttype" : "HTML",
                   "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                  "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                  "READONLY" : "true"
                 },
-                "editorStyle" : "COMMENT_ITEM",
-                "editorType" : "RAW",
-                "name" : "html_content",
+                "editorStyle" : "VDITOR",
+                "editorType" : "HTMLEDITOR",
+                "name" : "content",
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
-                  "pluginCode" : "COMMENT_ITEM",
+                  "pluginCode" : "VDITOR",
                   "runtimeObject" : true
                 },
-                "predefinedType" : "FIELD_TEXT_DYNAMIC"
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSPanelItemGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSPanelItemLogics" : [ {
-                  "condOp" : "NOTEQ",
-                  "dstModelField" : "FORMAT_TYPE",
-                  "logicType" : "SINGLE",
-                  "name" : "FORMAT_TYPE 不等于(<>) MD",
-                  "value" : "MD"
-                } ],
-                "relatedItemNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
-              "viewFieldName" : "CONTENT"
-            }, {
-              "caption" : "文本(动态)",
-              "fieldStates" : 3,
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "md_content",
-              "getPSEditor" : {
-                "editorParams" : {
-                  "disabledirectory" : "true",
-                  "READONLY" : "TRUE"
-                },
-                "editorType" : "MARKDOWN",
-                "mode" : "EDIT",
-                "name" : "md_content",
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "readOnly" : true,
-                "showMaxLength" : true
+                "readOnly" : true
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "layout" : "FLEX"
               },
-              "getPSPanelItemGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSPanelItemLogics" : [ {
-                  "condOp" : "EQ",
-                  "dstModelField" : "FORMAT_TYPE",
-                  "logicType" : "SINGLE",
-                  "name" : "FORMAT_TYPE 等于(=) MD",
-                  "value" : "MD"
-                } ],
-                "relatedItemNames" : [ "format_type" ],
-                "notMode" : false
-              } ],
               "viewFieldName" : "CONTENT"
             }, {
               "caption" : "容器",
@@ -2741,46 +2830,40 @@
                 "itemStyle" : "DEFAULT",
                 "itemType" : "FIELD",
                 "name" : "pcontent",
-                "getPSControlRenders" : [ {
-                  "layoutPanelModel" : "data.pcontent?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replaceAll(/<span data-w-e-type=\"emoji\" class='emoji'>(.+?)<\\/span>/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;}).replaceAll(/{\"emoji\":\"(.+?)\"}/g, (x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;})",
-                  "name" : "logic3",
-                  "renderType" : "LAYOUTPANEL_MODEL"
-                } ],
                 "getPSEditor" : {
                   "contentType" : "HTML",
                   "editorParams" : {
-                    "contenttype" : "HTML"
+                    "contenttype" : "HTML",
+                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                    "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                   },
+                  "editorStyle" : "COMMENT_ITEM",
                   "editorType" : "RAW",
                   "name" : "pcontent",
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "COMMENT_ITEM",
+                    "runtimeObject" : true
+                  },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC"
                 },
                 "getPSLayoutPos" : {
                   "grow" : 1,
                   "layout" : "FLEX"
                 },
+                "getPSSysCss" : {
+                  "cssName" : "normal-rich-text"
+                },
                 "viewFieldName" : "PCONTENT"
               } ],
               "getPSSysCss" : {
                 "cssName" : "comment-replay"
               }
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "vditor-comment-item"
+            }
           } ]
-        }, {
-          "caption" : "文本(动态)",
-          "itemType" : "FIELD",
-          "name" : "format_type",
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "format_type",
-            "predefinedType" : "FIELD_TEXT_DYNAMIC"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "viewFieldName" : "FORMAT_TYPE",
-          "hidden" : true
         } ],
         "layoutPanel" : true,
         "name" : "list_itempanel",
@@ -2788,11 +2871,6 @@
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "list_wiki",
-      "minorSortDir" : "ASC",
-      "getMinorSortPSAppDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "create_time"
-      },
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -2999,7 +3077,7 @@
       "enableRowEditGroup" : false,
       "enableRowEditOrder" : false,
       "enableRowNew" : false,
-      "noSort" : false,
+      "noSort" : true,
       "showHeader" : true,
       "singleSelect" : true,
       "name" : "list",

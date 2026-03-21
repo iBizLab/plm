@@ -76,7 +76,7 @@
   } ],
   "getPSAppViewMsgGroup" : {
     "modelref" : true,
-    "id" : "UsrVMGroup1229617041"
+    "id" : "UsrVMGroup0419025627"
   },
   "getPSAppViewRefs" : [ {
     "name" : "NEWDATA",
@@ -102,6 +102,75 @@
     }
   } ],
   "getPSControls" : [ {
+    "codeName" : "global_setting_view_waterfall_tabtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "配置中心工作项类型列表视图工具栏",
+    "memo" : "瀑布项目、混合项目工作项类型列表工具栏",
+    "name" : "tabtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "新建工作项类型",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "tabtoolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建工作项类型",
+        "codeName" : "open_quick_create_view",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_type_global_edit_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "work_item_type_open_quick_create_view",
+        "name" : "打开工作项类型新建视图",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "project_type",
+          "name" : "project_type",
+          "value" : "n_project_type_eq",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_quick_create_view",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_quick_create_view@work_item_type"
+      },
+      "tooltip" : "新建工作项类型",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "list",
+    "modelid" : "e9297fed9c1af472fc05711acc08ff89",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "codeName" : "default",
     "controlType" : "SEARCHFORM",
     "defaultLabelWidth" : 130,
@@ -248,6 +317,10 @@
         "id" : "id",
         "hidden" : true,
         "viewFieldName" : "ID"
+      }, {
+        "id" : "is_system",
+        "hidden" : true,
+        "viewFieldName" : "IS_SYSTEM"
       } ],
       "codeName" : "usr1229905828",
       "controlType" : "PANEL",
@@ -362,6 +435,21 @@
                 "layout" : "FLEX"
               },
               "viewFieldName" : "ID",
+              "hidden" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemType" : "FIELD",
+              "name" : "is_system",
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "is_system",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "IS_SYSTEM",
               "hidden" : true
             }, {
               "caption" : "栅格容器",
@@ -531,6 +619,11 @@
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
                       },
                       "getPSNavigateContexts" : [ {
+                        "key" : "ENABLERESET",
+                        "name" : "ENABLERESET",
+                        "value" : "is_system",
+                        "rawValue" : false
+                      }, {
                         "key" : "PSDATAENTITY",
                         "name" : "PSDATAENTITY",
                         "value" : "ProjMgmt.work_item",
@@ -724,6 +817,11 @@
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
                       },
                       "getPSNavigateContexts" : [ {
+                        "key" : "ENABLERESET",
+                        "name" : "ENABLERESET",
+                        "value" : "is_system",
+                        "rawValue" : false
+                      }, {
                         "key" : "TYPE_ID",
                         "name" : "TYPE_ID",
                         "value" : "${id}",
@@ -1267,21 +1365,132 @@
               } ],
               "predefinedType" : "CONTAINER_GRID"
             } ],
+            "getPSUIActionGroup" : {
+              "codeName" : "global_type",
+              "name" : "全局工作项类型列表",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+              },
+              "getPSUIActionGroupDetails" : [ {
+                "detailType" : "DEUIACTION",
+                "name" : "u865c589",
+                "getPSSysImage" : {
+                  "glyph" : "xf044@FontAwesome",
+                  "cssClass" : "fa fa-edit"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "SINGLEKEY",
+                  "caption" : "编辑",
+                  "codeName" : "edit_work_item_type",
+                  "getFrontPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_type_global_edit_view.json",
+                    "viewType" : "DEOPTVIEW"
+                  },
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "work_item_type_edit_work_item_type",
+                  "name" : "编辑工作项类型",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+                  },
+                  "getPSSysImage" : {
+                    "glyph" : "xf044@FontAwesome",
+                    "cssClass" : "fa fa-edit"
+                  },
+                  "refreshMode" : 1,
+                  "tooltip" : "编辑",
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "edit_work_item_type",
+                  "uIActionType" : "DEUIACTION",
+                  "reloadData" : true,
+                  "id" : "edit_work_item_type@work_item_type"
+                },
+                "tooltip" : "编辑",
+                "visibleScriptCode" : "data.is_system ==0",
+                "addSeparator" : false,
+                "showCaption" : false,
+                "showIcon" : true
+              }, {
+                "detailType" : "DEUIACTION",
+                "name" : "u3d28be2",
+                "getPSSysImage" : {
+                  "glyph" : "xf014@FontAwesome",
+                  "cssClass" : "fa fa-trash-o"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "SINGLEDATA",
+                  "caption" : "移除",
+                  "codeName" : "remove_extend_model",
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "work_item_type_remove_extend_model",
+                  "name" : "移除扩展模型",
+                  "getPSAppDEUILogic" : {
+                    "modelref" : true,
+                    "id" : "delete_custom_model"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+                  },
+                  "getPSSysImage" : {
+                    "glyph" : "xf014@FontAwesome",
+                    "cssClass" : "fa fa-trash-o"
+                  },
+                  "refreshMode" : 1,
+                  "tooltip" : "移除",
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "remove_extend_model",
+                  "uIActionType" : "DEUIACTION",
+                  "uILogicAttachMode" : "REPLACE",
+                  "reloadData" : true,
+                  "id" : "remove_extend_model@work_item_type"
+                },
+                "tooltip" : "移除",
+                "visibleScriptCode" : "data.is_system ==0",
+                "addSeparator" : false,
+                "showCaption" : false,
+                "showIcon" : true
+              } ],
+              "uniqueTag" : "work_item_type__global_type"
+            },
             "predefinedType" : "CONTAINER_GROUP",
             "titleBarCloseMode" : 2,
             "showCaption" : true
           } ]
-        } ],
-        "getPSSysCss" : {
-          "cssName" : "work_item_type_global_style"
-        }
+        } ]
       } ],
       "name" : "list_itempanel",
       "modelid" : "266dfc28416fd9919aef218b7e7a5d14",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "global_setting",
+    "minorSortDir" : "ASC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "mobListStyle" : "EXTVIEW1",
+    "getMovePSControlAction" : {
+      "modelref" : true,
+      "id" : "move",
+      "actionName" : "move",
+      "actionType" : "DEACTION",
+      "name" : "move",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "move"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+      }
+    },
+    "getOrderValuePSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
@@ -1340,6 +1549,18 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
         }
       }, {
+        "actionName" : "move",
+        "actionType" : "DEACTION",
+        "name" : "move",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "move"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+        }
+      }, {
         "actionType" : "DEDATASET",
         "name" : "fetch",
         "getPSAppDEMethod" : {
@@ -1366,6 +1587,13 @@
     }, {
       "dataType" : 25,
       "name" : "name"
+    }, {
+      "dataType" : 9,
+      "getFrontPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+      },
+      "name" : "is_system"
     }, {
       "dataType" : 21,
       "name" : "icon"
@@ -1426,13 +1654,13 @@
     },
     "hasWFDataItems" : false,
     "enableGroup" : false,
-    "enableRowEdit" : false,
+    "enableRowEdit" : true,
     "enableRowEditGroup" : false,
-    "enableRowEditOrder" : false,
+    "enableRowEditOrder" : true,
     "enableRowNew" : false,
     "noSort" : false,
     "showHeader" : true,
-    "singleSelect" : false,
+    "singleSelect" : true,
     "name" : "list",
     "modelid" : "c5a5fc55cda750b5c324312abfadd530",
     "modeltype" : "PSDELIST"

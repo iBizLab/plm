@@ -65,19 +65,19 @@
       "name" : "logic",
       "getPSAppDEUIAction" : {
         "actionTarget" : "SINGLEDATA",
-        "caption" : "打开评论列表",
-        "codeName" : "open_comment_list",
+        "caption" : "打开评论输入框",
+        "codeName" : "open_comment_input",
         "getFrontPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_only_comment_md_view.json",
           "viewType" : "DEMOBMDVIEW"
         },
         "frontProcessType" : "WIZARD",
-        "fullCodeName" : "test_case_open_comment_list",
-        "name" : "打开评论列表",
+        "fullCodeName" : "comment_open_comment_input",
+        "name" : "打开评论输入框",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
         },
         "getPSNavigateContexts" : [ {
           "key" : "PRINCIPAL_ID",
@@ -90,13 +90,11 @@
           "value" : "principal_type",
           "rawValue" : false
         } ],
-        "refreshMode" : 1,
         "uIActionMode" : "FRONT",
-        "uIActionTag" : "open_comment_list",
+        "uIActionTag" : "open_comment_input",
         "uIActionType" : "DEUIACTION",
         "globalUIAction" : true,
-        "reloadData" : true,
-        "id" : "open_comment_list@test_case"
+        "id" : "open_comment_input@comment"
       }
     } ],
     "getPSControlParam" : { },
@@ -369,6 +367,7 @@
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
           "name" : "field_textbox",
+          "placeHolder" : "发表评论",
           "predefinedType" : "FIELD_TEXTBOX"
         },
         "getPSLayoutPos" : {
@@ -404,7 +403,7 @@
             "layout" : "FLEX"
           },
           "getPSPanelItems" : [ {
-            "actionType" : "NONE",
+            "actionType" : "UIACTION",
             "buttonStyle" : "DEFAULT",
             "buttonWidth" : 50.0,
             "caption" : "评论",
@@ -412,6 +411,10 @@
             "itemStyle" : "DEFAULT",
             "itemType" : "BUTTON",
             "name" : "button_calluilogic1",
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "layoutpanel_button_calluilogic1"
+            },
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX",
@@ -421,8 +424,41 @@
             "getPSSysImage" : {
               "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729250039255\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"5411\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"20\" height=\"20\"><path d=\"M892 201.6c4.4 0 8 3.6 8 8v534.5c0 4.4-3.6 8-8 8H488.9c-32.3 0-63.1 12.1-86.8 34l-85.5 79-3-13.1c-13.3-58.8-64.6-99.8-124.9-99.8H134c-4.4 0-8-3.6-8-8V209.6c0-4.4 3.6-8 8-8h758m0-60H134c-37.6 0-68 30.4-68 68v534.5c0 37.6 30.4 68 68 68h54.7c31.8 0 59.3 22 66.3 53l6.5 29c5.6 24.7 27.2 39.5 49.6 39.5 12 0 24.1-4.2 34.1-13.5l97.5-90c12.6-11.6 29-18 46.1-18H892c37.6 0 68-30.4 68-68V209.6c0-37.5-30.5-68-68-68z\" p-id=\"5412\" fill=\"#bfbfbf\"></path><path d=\"M314 392.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5 57.5-25.8 57.5-57.5-25.7-57.5-57.5-57.5zM523.4 396.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5S581 486 581 454.2s-25.8-57.5-57.6-57.5zM732.8 396.7c-31.8 0-57.5 25.8-57.5 57.5s25.8 57.5 57.5 57.5c31.8 0 57.5-25.8 57.5-57.5s-25.7-57.5-57.5-57.5z\" p-id=\"5413\" fill=\"#bfbfbf\"></path></svg>"
             },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "打开评论输入框",
+              "codeName" : "open_comment_input",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_only_comment_md_view.json",
+                "viewType" : "DEMOBMDVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "comment_open_comment_input",
+              "name" : "打开评论输入框",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
+              },
+              "getPSNavigateContexts" : [ {
+                "key" : "PRINCIPAL_ID",
+                "name" : "PRINCIPAL_ID",
+                "value" : "principal_id",
+                "rawValue" : false
+              }, {
+                "key" : "PRINCIPAL_TYPE",
+                "name" : "PRINCIPAL_TYPE",
+                "value" : "principal_type",
+                "rawValue" : false
+              } ],
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_comment_input",
+              "uIActionType" : "DEUIACTION",
+              "globalUIAction" : true,
+              "id" : "open_comment_input@comment"
+            },
             "tooltip" : "评论",
-            "uIActionTarget" : "NONE",
+            "uIActionTarget" : "SINGLEDATA",
             "width" : 50.0
           } ]
         }, {
@@ -579,7 +615,7 @@
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
       }
     }, {
       "eventNames" : "onLoadSuccess",
@@ -589,6 +625,7 @@
       "scriptCode" : "view.layoutPanel.panelItems.send_comment_container.state.visible=false;"
     } ],
     "getPSControls" : [ {
+      "autoSaveMode" : 1,
       "codeName" : "dr_mob_edit_view_form",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
@@ -1010,8 +1047,23 @@
                 "codeName" : "content"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "enableEdit" : "true",
+                  "LINKVIEWID" : "recent_mob_redirect_view",
+                  "MAXHEIGHT" : "360",
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                  "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                  "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : context.space? `spaces/${context.space}/space_members/fetch_default` : ''}`",
+                  "QUOTEURL" : "`recents/fetch_recent_access`"
+                },
+                "editorStyle" : "MOB_VDITOR",
                 "editorType" : "MOBHTMLTEXT",
                 "name" : "content",
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "MOB_VDITOR",
+                  "runtimeObject" : true
+                },
                 "placeHolder" : "暂无内容"
               },
               "getPSLayoutPos" : {
@@ -1640,8 +1692,12 @@
                             "relatedItemNames" : [ "content" ],
                             "notMode" : false
                           } ],
+                          "getPSSysCss" : {
+                            "cssName" : "star_css"
+                          },
                           "getPSSysImage" : {
-                            "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728544519535\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1477\" width=\"32\" height=\"32\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M647.72092 65.871345c46.236694 0 85.804413 33.00354 94.206004 78.336l0.244522 1.37731L757.844834 237.536062H866.307992v3.992203h60.881092c17.63855 0 31.937622 14.299072 31.937622 31.937622 0 17.63855-14.299072 31.937622-31.937622 31.937622h-60.881092v493.037037c0 89.494207-71.823719 162.213177-160.973598 163.658355L702.62768 962.120858H321.37232c-89.494207 0-162.213177-71.823719-163.658355-160.973599L157.692008 798.440546V305.403509H96.810916c-17.63855 0-31.937622-14.299072-31.937622-31.937622 0-17.63855 14.299072-31.937622 31.937622-31.937622h60.881092v-3.992203h108.46216l15.674386-91.951407c7.768827-45.578979 46.952296-79.038628 93.051259-79.703329l1.399267-0.009981h271.44184zM794.448343 309.395712H229.551657v489.044834c0 49.702924 39.489871 90.180865 88.804554 91.771758l1.497076 0.036928L321.37232 890.261209h381.25536c50.203945 0 90.997271-40.291306 91.808686-90.302628L794.448343 798.440546V309.395712z m-442.136452 95.812865c17.63855 0 31.937622 14.299072 31.937622 31.937622v298.417154c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V437.146199c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 66.869396c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 0c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m-23.967189-342.331384H376.27908c-15.411899 0-28.601138 11.001513-31.401669 26.112l-0.08184 0.459103L330.95161 237.536062h362.095782l-13.842963-81.21837c-2.563992-15.040624-15.389942-26.122979-30.557318-26.558129l-0.459103-0.00998-0.467088-0.002994z\" fill=\"#bfbfbf\" p-id=\"1478\"></path></svg>"
+                            "glyph" : "xf014@FontAwesome",
+                            "cssClass" : "fa fa-trash-o"
                           },
                           "getPSUIAction" : {
                             "actionTarget" : "SINGLEDATA",
@@ -2993,6 +3049,7 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_reply.json"
         }
       },
+      "enableAutoSave" : true,
       "enableItemPrivilege" : true,
       "mobileControl" : true,
       "noTabHeader" : true,
@@ -3011,6 +3068,74 @@
       "getPSControlParam" : {
         "id" : "RIGHTTOOLBAR"
       },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "操作",
+        "itemType" : "ITEMS",
+        "name" : "items1",
+        "getPSControlLogics" : [ {
+          "itemName" : "items1",
+          "logicTag" : "righttoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "items1",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSDEToolbarItems" : [ {
+          "caption" : "删除",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "righttoolbar_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "删除",
+            "codeName" : "mob_delete",
+            "confirmMsg" : "确认删除此回复？",
+            "dialogResult" : "OK",
+            "fullCodeName" : "discuss_reply_mob_delete",
+            "name" : "删除回复（移动端）",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "del_reply"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_reply.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "successMsg" : "删除成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "mob_delete",
+            "uIActionType" : "DEUIACTION",
+            "closeEditView" : true,
+            "closePopupView" : true,
+            "enableConfirm" : true,
+            "id" : "mob_delete@discuss_reply"
+          },
+          "tooltip" : "删除",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728985703503\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9591\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M332.3904 813.4656h545.1776c17.8176 0 31.3344-13.312 31.3344-31.3344s-13.312-31.3344-31.3344-31.3344H332.3904c-17.8176 0-31.3344 13.312-31.3344 31.3344 0 13.312 13.5168 31.3344 31.3344 31.3344z m0-268.288h545.1776c22.3232 0 35.84-13.312 35.84-31.3344s-13.312-31.3344-31.3344-31.3344H332.3904c-17.8176-4.5056-31.3344 9.0112-31.3344 31.3344 0 18.0224 13.5168 31.3344 31.3344 31.3344z m0-263.5776h545.1776c22.3232 0 35.84-17.8176 35.84-35.84 0-17.8176-13.312-31.3344-31.3344-31.3344H332.3904c-17.8176 0-31.3344 13.312-31.3344 31.3344 0 17.8176 13.5168 35.84 31.3344 35.84zM158.1056 826.7776c26.8288 0 49.152-22.3232 49.152-49.152s-22.3232-49.152-49.152-49.152-49.152 22.3232-49.152 49.152 22.3232 49.152 49.152 49.152z m49.152-312.9344c0-26.8288-22.3232-49.152-49.152-49.152-26.8288-4.5056-49.152 17.8176-49.152 49.152 0 26.8288 22.3232 49.152 49.152 49.152s49.152-22.3232 49.152-49.152zM158.1056 294.912c26.8288 0 49.152-22.3232 49.152-49.152s-22.3232-49.152-49.152-49.152-49.152 22.3232-49.152 49.152 22.3232 49.152 49.152 49.152z m0 0\" p-id=\"9592\"></path></svg>"
+        },
+        "tooltip" : "操作",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
       "toolbarStyle" : "MOBNAVRIGHTMENU",
       "xDataControlName" : "form",
       "modelid" : "e73dd03ed74a34c928af39cbb6051269",

@@ -29,7 +29,7 @@
     "logicType" : "SCRIPT",
     "name" : "LOGIC_REDRAW_VIEW",
     "getPSViewCtrlName" : "form",
-    "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'product_id') {\r\n        view.redrawView({\r\n            context: { product: value, dynamicnew: true },\r\n            params: {\r\n                srfdefdata: evt.data[0]\r\n            },\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
+    "scriptCode" : "console.log(\"表单数据变更\");\r\nctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'product_id') {\r\n        view.redrawView({\r\n            context: { product: value, dynamicnew: true },\r\n            params: {\r\n                srfdefdata: evt.data[0]\r\n            },\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
   } ],
   "getPSAppViewNavContexts" : [ {
     "key" : "PRODUCT",
@@ -486,6 +486,7 @@
               "getPSEditorItems" : [ {
                 "name" : "format_type"
               } ],
+              "placeHolder" : "输入描述",
               "enableAC" : true
             },
             "getPSLayoutPos" : {
@@ -1925,7 +1926,8 @@
         "id" : "toolbar_deuiaction1"
       },
       "getPSSysImage" : {
-        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1713508300087\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4303\" width=\"16\" height=\"16\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M140.8 140.8h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H140.8c-6.4 0-12.8-6.4-12.8-12.8V153.6c0-6.4 6.4-12.8 12.8-12.8z m0 403.2h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H140.8c-6.4 0-12.8-6.4-12.8-12.8V556.8c0-6.4 6.4-12.8 12.8-12.8z m428.8-403.2h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H569.6c-6.4 0-12.8-6.4-12.8-12.8V153.6c0-6.4 6.4-12.8 12.8-12.8z m115.2 531.2v-128H768v128h128v83.2h-128v128h-83.2v-128h-128v-83.2h128z\" fill=\"#2c2c2c\" p-id=\"4304\"></path></svg>"
+        "glyph" : "xf009@FontAwesome",
+        "cssClass" : "fa fa-th-large"
       },
       "getPSUIAction" : {
         "actionTarget" : "NONE",
@@ -2284,6 +2286,12 @@
           "modelid" : "03cd31b1f9f06728266fdeebd97fd6ac",
           "modeltype" : "PSDEFORM_EDITFORM"
         },
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFIGNORECHANGE",
+          "name" : "SRFIGNORECHANGE",
+          "value" : "true",
+          "rawValue" : true
+        } ],
         "getPSNavigateParams" : [ {
           "key" : "modaloption",
           "name" : "modaloption",

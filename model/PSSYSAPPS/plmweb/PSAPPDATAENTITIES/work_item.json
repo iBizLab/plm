@@ -4334,6 +4334,44 @@
     "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -7721,6 +7759,7 @@
           "srfnavparam.state" : "%state%",
           "srfnavparam.project_id" : "%project_id%",
           "srfnavparam.work_item_type_id" : "%work_item_type_id%",
+          "srfnavparam.id" : "%id%",
           "alwaysLoad" : "true"
         },
         "editorType" : "DROPDOWNLIST",
@@ -8417,7 +8456,7 @@
         "codeName" : "Default",
         "editorType" : "TEXTAREA_10",
         "name" : "[SOLUTION_WAY][解决办法]",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -8428,7 +8467,7 @@
         "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
         "name" : "[SOLUTION_WAY][解决办法]移动端默认",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -8438,8 +8477,8 @@
     "codeName" : "solution_way",
     "logicName" : "解决办法",
     "name" : "SOLUTION_WAY",
-    "stdDataType" : 25,
-    "stringLength" : 2000
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -12553,7 +12592,7 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "work_item_type_sequence",
@@ -14726,7 +14765,7 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFGROUPDETAIL",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "tags",
@@ -18203,6 +18242,44 @@
     "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -21412,6 +21489,36 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "ai_info"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempAll",
+    "dataSetTag" : "all",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "all",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "AllInput",
+      "name" : "AllInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "AllResult",
+      "name" : "AllResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -24890,6 +24997,46 @@
     "reportFile" : "#",
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "MULTIKEY",
@@ -25106,8 +25253,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "归档成功",
@@ -26260,7 +26406,7 @@
     "name" : "打印交谈资料_工作项",
     "getPSAppDEPrint" : {
       "modelref" : true,
-      "id" : "chat_resource"
+      "id" : "dynamic_chat_resource"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -26604,7 +26750,7 @@
     "id" : "delete@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建缺陷",
+    "caption" : "缺陷",
     "codeName" : "dyna_new_hybrid_bug",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26666,7 +26812,7 @@
     "id" : "dyna_new_hybrid_bug@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建史诗",
+    "caption" : "史诗",
     "codeName" : "dyna_new_hybrid_epic",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26727,7 +26873,7 @@
     "id" : "dyna_new_hybrid_epic@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建特性",
+    "caption" : "特性",
     "codeName" : "dyna_new_hybrid_feature",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26788,7 +26934,7 @@
     "id" : "dyna_new_hybrid_feature@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建事务",
+    "caption" : "事务",
     "codeName" : "dyna_new_hybrid_issue",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26849,7 +26995,7 @@
     "id" : "dyna_new_hybrid_issue@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建里程碑",
+    "caption" : "里程碑",
     "codeName" : "dyna_new_hybrid_milestone",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26910,7 +27056,7 @@
     "id" : "dyna_new_hybrid_milestone@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建需求",
+    "caption" : "需求",
     "codeName" : "dyna_new_hybrid_requirement",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -26971,7 +27117,7 @@
     "id" : "dyna_new_hybrid_requirement@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建阶段",
+    "caption" : "阶段",
     "codeName" : "dyna_new_hybrid_stage",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27032,7 +27178,7 @@
     "id" : "dyna_new_hybrid_stage@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建用户故事",
+    "caption" : "用户故事",
     "codeName" : "dyna_new_hybrid_story",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27093,7 +27239,7 @@
     "id" : "dyna_new_hybrid_story@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建任务",
+    "caption" : "任务",
     "codeName" : "dyna_new_hybrid_task",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27372,8 +27518,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf047@FontAwesome",
-      "cssClass" : "fa fa-arrows"
+      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "移动成功",
@@ -27406,8 +27551,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf047@FontAwesome",
-      "cssClass" : "fa fa-arrows"
+      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
     },
     "successMsg" : "移动成功",
     "timeout" : 60000,
@@ -27420,7 +27564,57 @@
     "id" : "move_in_form@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建缺陷",
+    "caption" : "新建动态工作项（hybrid）",
+    "codeName" : "new_dyna_hybrid_work_item",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_hybrid_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_new_dyna_hybrid_work_item",
+    "memo" : "srfdynatype由工具栏触发界面行为根据动态界面行为组动态类型组装至应用上下文中",
+    "name" : "新建动态工作项（hybrid）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PROJECT",
+      "name" : "PROJECT",
+      "value" : "project",
+      "rawValue" : false
+    }, {
+      "key" : "CURPROJECT",
+      "name" : "CURPROJECT",
+      "value" : "project",
+      "rawValue" : false
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "work_item_type_id",
+      "name" : "work_item_type_id",
+      "value" : "srfdynatype",
+      "rawValue" : false
+    }, {
+      "key" : "srfdatatype",
+      "name" : "srfdatatype",
+      "value" : "srfdynatype",
+      "rawValue" : false
+    } ],
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "new_dyna_hybrid_work_item",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "new_dyna_hybrid_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "缺陷",
     "codeName" : "new_dyna_kanban_bug",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27481,7 +27675,7 @@
     "id" : "new_dyna_kanban_bug@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建史诗",
+    "caption" : "史诗",
     "codeName" : "new_dyna_kanban_epic",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27542,7 +27736,7 @@
     "id" : "new_dyna_kanban_epic@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建特性",
+    "caption" : "特性",
     "codeName" : "new_dyna_kanban_feature",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27603,7 +27797,7 @@
     "id" : "new_dyna_kanban_feature@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建事务",
+    "caption" : "事务",
     "codeName" : "new_dyna_kanban_issue",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27664,7 +27858,7 @@
     "id" : "new_dyna_kanban_issue@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建用户故事",
+    "caption" : "用户故事",
     "codeName" : "new_dyna_kanban_story",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27725,7 +27919,7 @@
     "id" : "new_dyna_kanban_story@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建任务",
+    "caption" : "任务",
     "codeName" : "new_dyna_kanban_task",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27786,7 +27980,7 @@
     "id" : "new_dyna_kanban_task@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建缺陷",
+    "caption" : "缺陷",
     "codeName" : "new_dyna_scrum_bug",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27839,7 +28033,7 @@
     "id" : "new_dyna_scrum_bug@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建史诗",
+    "caption" : "史诗",
     "codeName" : "new_dyna_scrum_epic",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27891,7 +28085,7 @@
     "id" : "new_dyna_scrum_epic@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建特性",
+    "caption" : "特性",
     "codeName" : "new_dyna_scrum_feature",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27943,7 +28137,7 @@
     "id" : "new_dyna_scrum_feature@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建用户故事",
+    "caption" : "用户故事",
     "codeName" : "new_dyna_scrum_story",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -27995,7 +28189,7 @@
     "id" : "new_dyna_scrum_story@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建任务",
+    "caption" : "任务",
     "codeName" : "new_dyna_scrum_task",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -28047,7 +28241,7 @@
     "id" : "new_dyna_scrum_task@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建缺陷",
+    "caption" : "缺陷",
     "codeName" : "new_dyna_waterfall_bug",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -28099,7 +28293,7 @@
     "id" : "new_dyna_waterfall_bug@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建里程碑",
+    "caption" : "里程碑",
     "codeName" : "new_dyna_waterfall_milestone",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -28151,7 +28345,7 @@
     "id" : "new_dyna_waterfall_milestone@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建需求",
+    "caption" : "需求",
     "codeName" : "new_dyna_waterfall_requirement",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
@@ -28203,8 +28397,8 @@
     "id" : "new_dyna_waterfall_requirement@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建阶段",
-    "codeName" : "new_dyna_waterfall_stage",
+    "caption" : "新建动态工作项（waterfall）",
+    "codeName" : "new_dyna_waterfall_work_item",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -28212,8 +28406,9 @@
       "viewType" : "DEOPTVIEW"
     },
     "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_new_dyna_waterfall_stage",
-    "name" : "新建阶段（waterfall动态）",
+    "fullCodeName" : "work_item_new_dyna_waterfall_work_item",
+    "memo" : "srfdynatype由工具栏触发界面行为根据动态界面行为组动态类型组装至应用上下文中",
+    "name" : "新建动态工作项（waterfall）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -28236,36 +28431,34 @@
     "getPSNavigateParams" : [ {
       "key" : "work_item_type_id",
       "name" : "work_item_type_id",
-      "value" : "waterfall_stage",
-      "rawValue" : true
+      "value" : "srfdynatype",
+      "rawValue" : false
     }, {
       "key" : "srfdatatype",
       "name" : "srfdatatype",
-      "value" : "waterfall_stage",
-      "rawValue" : true
+      "value" : "srfdynatype",
+      "rawValue" : false
     } ],
-    "getPSSysImage" : {
-      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#56ABFB\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M5.63571804,6.34607462 L5.63571804,14.5602946 C5.63571804,14.7745815 5.77316366,14.917551 5.97941265,14.917551 L6.3232684,14.917551 L6.3232684,14.899638 L8.38575833,14.899638 L8.38575833,15.9889856 C8.38575833,16.2032725 8.52320394,16.3460746 8.72945294,16.3460746 L16.2918623,16.3460746 C16.4637418,16.3460746 16.635718,16.1675636 16.635718,15.9889856 L16.635718,13.131771 C16.635718,12.9174841 16.4981113,12.7746819 16.2918623,12.7746819 L8.72945294,12.7746819 C8.52320394,12.7746819 8.38575833,12.9174841 8.38575833,13.131771 L8.38575833,14.1852925 L6.3232684,14.1852925 L6.3232684,9.89955428 L8.38575833,9.89955428 L8.38575833,10.9889019 C8.38575833,11.2031888 8.52320394,11.3459909 8.72945294,11.3459909 L16.2918623,11.3459909 C16.4637418,11.3459909 16.635718,11.1674799 16.635718,10.9889019 L16.635718,8.13168727 C16.635718,7.91740036 16.4981113,7.77459822 16.2918623,7.77459822 L8.72945294,7.77459822 C8.52320394,7.77459822 8.38575833,7.91740036 8.38575833,8.13168727 L8.38575833,9.18537618 L6.3232684,9.18537618 L6.3232684,6.34607462 L5.63571804,6.34607462 Z M11.3023899,6.34607462 L3.96904617,6.34607462 C3.76904617,6.34607462 3.63571804,6.22607969 3.63571804,6.04608025 L3.63571804,3.64608306 C3.63571804,3.46608362 3.76904617,3.34607462 3.96904617,3.34607462 L11.3023899,3.34607462 C11.5023899,3.34607462 11.635718,3.46608362 11.635718,3.64608306 L11.635718,6.04606619 C11.635718,6.19607041 11.4690462,6.34607462 11.3023899,6.34607462 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-    },
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "new_dyna_waterfall_stage",
+    "uIActionTag" : "new_dyna_waterfall_work_item",
     "uIActionType" : "DEUIACTION",
     "reloadData" : true,
-    "id" : "new_dyna_waterfall_stage@work_item"
+    "id" : "new_dyna_waterfall_work_item@work_item"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建任务",
-    "codeName" : "new_dyna_waterfall_task",
+    "caption" : "新建动态工作项（all）",
+    "codeName" : "new_dyna_work_item",
     "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_waterfall_quick_create_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_quick_create_view.json",
       "viewType" : "DEOPTVIEW"
     },
     "frontProcessType" : "WIZARD",
-    "fullCodeName" : "work_item_new_dyna_waterfall_task",
-    "name" : "新建任务（waterfall动态）",
+    "fullCodeName" : "work_item_new_dyna_work_item",
+    "memo" : "srfdynatype由工具栏触发界面行为根据动态界面行为组动态类型组装至应用上下文中",
+    "name" : "新建动态工作项（all）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -28288,23 +28481,20 @@
     "getPSNavigateParams" : [ {
       "key" : "work_item_type_id",
       "name" : "work_item_type_id",
-      "value" : "waterfall_task",
-      "rawValue" : true
+      "value" : "srfdynatype",
+      "rawValue" : false
     }, {
       "key" : "srfdatatype",
       "name" : "srfdatatype",
-      "value" : "waterfall_task",
-      "rawValue" : true
+      "value" : "srfdynatype",
+      "rawValue" : false
     } ],
-    "getPSSysImage" : {
-      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#73D897\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M16.5,5.5 L3.5,5.5 C3.2234375,5.5 3,5.7234375 3,6 L3,15 C3,15.2765625 3.2234375,15.5 3.5,15.5 L16.5,15.5 C16.7765625,15.5 17,15.2765625 17,15 L17,6 C17,5.7234375 16.7765625,5.5 16.5,5.5 Z M8.625,12.75 C8.625,12.81875 8.56875,12.875 8.5,12.875 L5.625,12.875 C5.55625,12.875 5.5,12.81875 5.5,12.75 L5.5,12 C5.5,11.93125 5.55625,11.875 5.625,11.875 L8.5,11.875 C8.56875,11.875 8.625,11.93125 8.625,12 L8.625,12.75 Z M8.625,10.625 C8.625,10.69375 8.56875,10.75 8.5,10.75 L5.625,10.75 C5.55625,10.75 5.5,10.69375 5.5,10.625 L5.5,9.875 C5.5,9.80625 5.55625,9.75 5.625,9.75 L8.5,9.75 C8.56875,9.75 8.625,9.80625 8.625,9.875 L8.625,10.625 Z M14.4765625,9.1984375 L11.8984375,12.771875 C11.7984375,12.909375 11.5953125,12.909375 11.4953125,12.771875 L9.7109375,10.3 C9.6515625,10.2171875 9.7109375,10.1015625 9.8125,10.1015625 L10.6703125,10.1015625 C10.75,10.1015625 10.825,10.140625 10.871875,10.2046875 L11.696875,11.346875 L13.3171875,9.1015625 C13.3640625,9.0359375 13.4390625,8.9984375 13.51875,8.9984375 L14.375,8.9984375 C14.4765625,9 14.5359375,9.115625 14.4765625,9.1984375 L14.4765625,9.1984375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-    },
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "new_dyna_waterfall_task",
+    "uIActionTag" : "new_dyna_work_item",
     "uIActionType" : "DEUIACTION",
     "reloadData" : true,
-    "id" : "new_dyna_waterfall_task@work_item"
+    "id" : "new_dyna_work_item@work_item"
   }, {
     "actionTarget" : "NONE",
     "caption" : "新建缺陷",
@@ -34248,8 +34438,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "successMsg" : "归档成功",
     "timeout" : 60000,
@@ -43640,6 +43829,10 @@
     "viewType" : "DECHARTVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_kanban_main_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_cur_warning_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
@@ -43706,6 +43899,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_work_item_test.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_waterfall_main_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_waterfall_bug_grid_view.json",
@@ -43782,6 +43979,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_kanban_bug_daily_tide_report_view.json",
     "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_hybrid_main_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view_pop_up.json",
@@ -43874,6 +44075,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_summary_task_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_scrum_main_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_work_item_testdyna.json",
@@ -44361,6 +44566,135 @@
   "enableWFActions" : false,
   "major" : true,
   "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Auto24255748",
+    "getDetailPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_project_work_item_type"
+    },
+    "getDetailPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "getDetailPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "project_work_item_type"
+    },
+    "getDetailPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+    },
+    "dynamicMode" : 1,
+    "getIconClsPSAppDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "getIconClsPSDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "name" : "新建工作项（瀑布_自适应）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getTextPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "uniqueTag" : "work_item__Auto24255748",
+    "userTag" : "new_dyna_waterfall_work_item@work_item",
+    "userTag2" : "code"
+  }, {
+    "codeName" : "Auto24255749",
+    "getDetailPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_project_work_item_type"
+    },
+    "getDetailPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "getDetailPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "project_work_item_type"
+    },
+    "getDetailPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+    },
+    "dynamicMode" : 1,
+    "getIconClsPSAppDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "getIconClsPSDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "name" : "新建工作项（混合_自适应）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getTextPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "uniqueTag" : "work_item__Auto24255749",
+    "userTag" : "new_dyna_hybrid_work_item@work_item",
+    "userTag2" : "code"
+  }, {
+    "codeName" : "Auto24255750",
+    "getDetailPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_project_work_item_type"
+    },
+    "getDetailPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
+    },
+    "getDetailPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "project_work_item_type"
+    },
+    "getDetailPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+    },
+    "dynamicMode" : 1,
+    "getIconClsPSAppDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "getIconClsPSDEField" : {
+      "name" : "ICON",
+      "codeName" : "icon"
+    },
+    "name" : "新建工作项（通用_自适应）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getTextPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "uniqueTag" : "work_item__Auto24255750",
+    "userTag" : "new_dyna_work_item@work_item",
+    "userTag2" : "code"
+  }, {
     "codeName" : "Usr0102014691",
     "name" : "新建附件",
     "getPSAppDataEntity" : {
@@ -44487,8 +44821,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u0c6b04f",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -44506,8 +44839,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u66c1e16",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -44720,8 +45052,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u46a5b8b",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -44740,8 +45071,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u256ba08",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -44922,8 +45252,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u0d71cc5",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -44941,8 +45270,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u356338f",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45111,8 +45439,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u4cc6bf6",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45130,8 +45457,7 @@
       "detailType" : "DEUIACTION",
       "name" : "ube2dd5c",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45319,8 +45645,7 @@
       "detailType" : "DEUIACTION",
       "name" : "ud9babc3",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45338,8 +45663,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u2a0925e",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45527,8 +45851,7 @@
       "detailType" : "DEUIACTION",
       "name" : "ubd408d1",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45546,8 +45869,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u7a4a1c0",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45735,8 +46057,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u0218c0e",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45754,8 +46075,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u6dd2967",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45894,8 +46214,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u83bcd4d",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -45913,8 +46232,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u5f0eaf3",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -46080,7 +46398,7 @@
     },
     "uniqueTag" : "work_item__Usr0724237489",
     "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建史诗",
+      "caption" : "史诗",
       "detailType" : "DEUIACTION",
       "name" : "u54229ac",
       "getPSSysImage" : {
@@ -46098,7 +46416,7 @@
         "id" : "new_dyna_scrum_epic@work_item"
       }
     }, {
-      "caption" : "新建特性",
+      "caption" : "特性",
       "detailType" : "DEUIACTION",
       "name" : "u417e0d3",
       "getPSSysImage" : {
@@ -46116,7 +46434,7 @@
         "id" : "new_dyna_scrum_feature@work_item"
       }
     }, {
-      "caption" : "新建用户故事",
+      "caption" : "用户故事",
       "detailType" : "DEUIACTION",
       "name" : "u67b989f",
       "getPSSysImage" : {
@@ -46134,7 +46452,7 @@
         "id" : "new_dyna_scrum_story@work_item"
       }
     }, {
-      "caption" : "新建任务",
+      "caption" : "任务",
       "detailType" : "DEUIACTION",
       "name" : "u6688cca",
       "getPSSysImage" : {
@@ -46152,7 +46470,7 @@
         "id" : "new_dyna_scrum_task@work_item"
       }
     }, {
-      "caption" : "新建缺陷",
+      "caption" : "缺陷",
       "detailType" : "DEUIACTION",
       "name" : "u8e5e286",
       "getPSSysImage" : {
@@ -46342,177 +46660,6 @@
       }
     } ]
   }, {
-    "codeName" : "Usr1122290140",
-    "name" : "新建工作项（hybrid动态）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "uniqueTag" : "work_item__Usr1122290140",
-    "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建阶段",
-      "detailType" : "DEUIACTION",
-      "name" : "ufee7be1",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#56ABFB\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M5.63571804,6.34607462 L5.63571804,14.5602946 C5.63571804,14.7745815 5.77316366,14.917551 5.97941265,14.917551 L6.3232684,14.917551 L6.3232684,14.899638 L8.38575833,14.899638 L8.38575833,15.9889856 C8.38575833,16.2032725 8.52320394,16.3460746 8.72945294,16.3460746 L16.2918623,16.3460746 C16.4637418,16.3460746 16.635718,16.1675636 16.635718,15.9889856 L16.635718,13.131771 C16.635718,12.9174841 16.4981113,12.7746819 16.2918623,12.7746819 L8.72945294,12.7746819 C8.52320394,12.7746819 8.38575833,12.9174841 8.38575833,13.131771 L8.38575833,14.1852925 L6.3232684,14.1852925 L6.3232684,9.89955428 L8.38575833,9.89955428 L8.38575833,10.9889019 C8.38575833,11.2031888 8.52320394,11.3459909 8.72945294,11.3459909 L16.2918623,11.3459909 C16.4637418,11.3459909 16.635718,11.1674799 16.635718,10.9889019 L16.635718,8.13168727 C16.635718,7.91740036 16.4981113,7.77459822 16.2918623,7.77459822 L8.72945294,7.77459822 C8.52320394,7.77459822 8.38575833,7.91740036 8.38575833,8.13168727 L8.38575833,9.18537618 L6.3232684,9.18537618 L6.3232684,6.34607462 L5.63571804,6.34607462 Z M11.3023899,6.34607462 L3.96904617,6.34607462 C3.76904617,6.34607462 3.63571804,6.22607969 3.63571804,6.04608025 L3.63571804,3.64608306 C3.63571804,3.46608362 3.76904617,3.34607462 3.96904617,3.34607462 L11.3023899,3.34607462 C11.5023899,3.34607462 11.635718,3.46608362 11.635718,3.64608306 L11.635718,6.04606619 C11.635718,6.19607041 11.4690462,6.34607462 11.3023899,6.34607462 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_stage@work_item"
-      }
-    }, {
-      "caption" : "新建里程碑",
-      "detailType" : "DEUIACTION",
-      "name" : "u7a1a17e",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#73D897\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M9.953125,2.1875 L9.2421875,2.1875 C9.18203125,2.1875 9.1328125,2.23671875 9.1328125,2.296875 L9.1328125,5.6875 L7.875,5.6875 L7.875,3.28125 C7.875,3.22109375 7.82578125,3.171875 7.765625,3.171875 L3.0625,3.171875 L3.0625,9.078125 L7.765625,9.078125 C7.82578125,9.078125 7.875,9.02890625 7.875,8.96875 L7.875,6.6171875 L9.1328125,6.6171875 L9.1328125,9.953125 C9.1328125,10.0132812 9.18203125,10.0625 9.2421875,10.0625 L9.953125,10.0625 C10.0132812,10.0625 10.0625,10.0132812 10.0625,9.953125 L10.0625,2.296875 C10.0625,2.23671875 10.0132812,2.1875 9.953125,2.1875 Z M0,3.28125 L0,5.6875 L-1.2578125,5.6875 L-1.2578125,2.296875 C-1.2578125,2.23671875 -1.30703125,2.1875 -1.3671875,2.1875 L-2.078125,2.1875 C-2.13828125,2.1875 -2.1875,2.23671875 -2.1875,2.296875 L-2.1875,9.953125 C-2.1875,10.0132812 -2.13828125,10.0625 -2.078125,10.0625 L-1.3671875,10.0625 C-1.30703125,10.0625 -1.2578125,10.0132812 -1.2578125,9.953125 L-1.2578125,6.6171875 L0,6.6171875 L0,8.96875 C0,9.02890625 0.04921875,9.078125 0.109375,9.078125 L2.1875,9.078125 L2.1875,3.171875 L0.109375,3.171875 C0.04921875,3.171875 0,3.22109375 0,3.28125 Z\" transform=\"rotate(90 5.28125 11.34375)\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_milestone@work_item"
-      }
-    }, {
-      "caption" : "新建史诗",
-      "detailType" : "DEUIACTION",
-      "name" : "ud02a5a9",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#FF877B\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M14.87,9.92501466 L14.86625,9.91851511 C14.9487661,9.80270066 14.9954181,9.66350419 15,9.51944242 C15,9.08397222 14.6275,8.73169632 14.16625,8.73169632 L10,8.73169632 L10,4.78906613 C10,4.35359593 9.62625,4 9.16625,4 C8.81816569,3.99757056 8.50480227,4.2189591 8.37875,4.55638205 L5.13625,10.6815629 L5.14,10.6867625 C5.05411603,10.8051255 5.00524755,10.948056 5,11.0962345 C5,11.5317047 5.3725,11.8852805 5.83375,11.8852805 L9.99875,11.8852805 L9.99875,15.8279107 C9.82429026,16.1058792 9.85472809,16.4717685 10.0725,16.71445 C10.3036759,16.9695967 10.6553726,17.0636874 10.97625,16.9562335 C11.2902696,16.8648688 11.5128285,16.5747767 11.52875,16.2360828 L11.53375,16.2360828 L11.555,16.1970855 C11.57375,16.1632878 11.59375,16.1333898 11.6075,16.0995921 L14.87,9.92501466 L14.87,9.92501466 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_epic@work_item"
-      }
-    }, {
-      "caption" : "新建特性",
-      "detailType" : "DEUIACTION",
-      "name" : "u0436f5f",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#9191F9\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M14.5,2.515625 L10.925,2.515625 C10.1578125,2.515625 9.4078125,2.7359375 8.7625,3.1515625 L8,3.640625 L7.2375,3.1515625 C6.59375,2.7359375 5.8421875,2.515625 5.075,2.515625 L1.5,2.515625 C1.2234375,2.515625 1,2.7390625 1,3.015625 L1,11.890625 C1,12.1671875 1.2234375,12.390625 1.5,12.390625 L5.075,12.390625 C5.8421875,12.390625 6.5921875,12.6109375 7.2375,13.0265625 L7.93125,13.4734375 C7.9515625,13.4859375 7.975,13.49375 7.9984375,13.49375 C8.021875,13.49375 8.0453125,13.4875 8.065625,13.4734375 L8.759375,13.0265625 C9.40625,12.6109375 10.1578125,12.390625 10.925,12.390625 L14.5,12.390625 C14.7765625,12.390625 15,12.1671875 15,11.890625 L15,3.015625 C15,2.7390625 14.7765625,2.515625 14.5,2.515625 Z M6.3125,8.6484375 C6.3125,8.7125 6.2625,8.765625 6.2015625,8.765625 L3.2984375,8.765625 C3.2375,8.765625 3.1875,8.7125 3.1875,8.6484375 L3.1875,7.9453125 C3.1875,7.88125 3.2375,7.828125 3.2984375,7.828125 L6.2,7.828125 C6.2609375,7.828125 6.3109375,7.88125 6.3109375,7.9453125 L6.3109375,8.6484375 L6.3125,8.6484375 Z M6.3125,6.4609375 C6.3125,6.525 6.2625,6.578125 6.2015625,6.578125 L3.2984375,6.578125 C3.2375,6.578125 3.1875,6.525 3.1875,6.4609375 L3.1875,5.7578125 C3.1875,5.69375 3.2375,5.640625 3.2984375,5.640625 L6.2,5.640625 C6.2609375,5.640625 6.3109375,5.69375 6.3109375,5.7578125 L6.3109375,6.4609375 L6.3125,6.4609375 Z M12.8125,8.6484375 C12.8125,8.7125 12.7625,8.765625 12.7015625,8.765625 L9.7984375,8.765625 C9.7375,8.765625 9.6875,8.7125 9.6875,8.6484375 L9.6875,7.9453125 C9.6875,7.88125 9.7375,7.828125 9.7984375,7.828125 L12.7,7.828125 C12.7609375,7.828125 12.8109375,7.88125 12.8109375,7.9453125 L12.8109375,8.6484375 L12.8125,8.6484375 Z M12.8125,6.4609375 C12.8125,6.525 12.7625,6.578125 12.7015625,6.578125 L9.7984375,6.578125 C9.7375,6.578125 9.6875,6.525 9.6875,6.4609375 L9.6875,5.7578125 C9.6875,5.69375 9.7375,5.640625 9.7984375,5.640625 L12.7,5.640625 C12.7609375,5.640625 12.8109375,5.69375 12.8109375,5.7578125 L12.8109375,6.4609375 L12.8125,6.4609375 Z\" fill=\"#FFF\" transform=\"translate(2 2)\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_feature@work_item"
-      }
-    }, {
-      "caption" : "新建用户故事",
-      "detailType" : "DEUIACTION",
-      "name" : "u5bb1998",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#30D1FC\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M15,3.75 L13.3125,3.75 L13.3125,3.125 C13.3125,3.05625 13.25625,3 13.1875,3 L12.3125,3 C12.24375,3 12.1875,3.05625 12.1875,3.125 L12.1875,3.75 L9.8125,3.75 L9.8125,3.125 C9.8125,3.05625 9.75625,3 9.6875,3 L8.8125,3 C8.74375,3 8.6875,3.05625 8.6875,3.125 L8.6875,3.75 L7,3.75 C6.7234375,3.75 6.5,3.9734375 6.5,4.25 L6.5,6.125 L5,6.125 C4.7234375,6.125 4.5,6.3484375 4.5,6.625 L4.5,16.5 C4.5,16.7765625 4.7234375,17 5,17 L13,17 C13.2765625,17 13.5,16.7765625 13.5,16.5 L13.5,15 L15,15 C15.2765625,15 15.5,14.7765625 15.5,14.5 L15.5,4.25 C15.5,3.9734375 15.2765625,3.75 15,3.75 Z M12.375,9.59375 L10.03125,9.59375 L10.03125,7.25 L10.034375,7.25 L12.375,9.590625 L12.375,9.59375 Z M14.375,13.875 L13.5,13.875 L13.5,9.125 L10.5,6.125 L7.625,6.125 L7.625,4.875 L8.6875,4.875 L8.6875,5.375 C8.6875,5.44375 8.74375,5.5 8.8125,5.5 L9.6875,5.5 C9.75625,5.5 9.8125,5.44375 9.8125,5.375 L9.8125,4.875 L12.1875,4.875 L12.1875,5.375 C12.1875,5.44375 12.24375,5.5 12.3125,5.5 L13.1875,5.5 C13.25625,5.5 13.3125,5.44375 13.3125,5.375 L13.3125,4.875 L14.375,4.875 L14.375,13.875 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_story@work_item"
-      }
-    }, {
-      "caption" : "新建需求",
-      "detailType" : "DEUIACTION",
-      "name" : "u0ca1acc",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#FF877B\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M15,3 L5,3 C4.7234375,3 4.5,3.2234375 4.5,3.5 L4.5,11.765625 C4.5,11.75625 4.50625,11.75 4.515625,11.75 L7.9421875,11.75 L8.0234375,12.1359375 C8.2125,13.0703125 9.04375,13.75 10,13.75 C10.95625,13.75 11.7875,13.0703125 11.975,12.1359375 L12.05625,11.75 L15.484375,11.75 C15.49375,11.75 15.5,11.75625 15.5,11.765625 L15.5,3.5 C15.5,3.2234375 15.2765625,3 15,3 Z M13.125,9.703125 C13.125,9.771875 13.06875,9.828125 13,9.828125 L7,9.828125 C6.93125,9.828125 6.875,9.771875 6.875,9.703125 L6.875,8.953125 C6.875,8.884375 6.93125,8.828125 7,8.828125 L13,8.828125 C13.06875,8.828125 13.125,8.884375 13.125,8.953125 L13.125,9.703125 Z M13.125,7.203125 C13.125,7.271875 13.06875,7.328125 13,7.328125 L7,7.328125 C6.93125,7.328125 6.875,7.271875 6.875,7.203125 L6.875,6.453125 C6.875,6.384375 6.93125,6.328125 7,6.328125 L13,6.328125 C13.06875,6.328125 13.125,6.384375 13.125,6.453125 L13.125,7.203125 Z M15.484375,12.734375 L12.8453125,12.734375 C12.6640625,13.246875 12.3453125,13.7078125 11.921875,14.0578125 C11.3828125,14.5046875 10.7,14.75 10,14.75 C9.3,14.75 8.6171875,14.503125 8.078125,14.0578125 C7.6546875,13.7078125 7.3359375,13.246875 7.1546875,12.734375 L4.515625,12.734375 C4.50625,12.734375 4.5,12.728125 4.5,12.71875 L4.5,16.5 C4.5,16.7765625 4.7234375,17 5,17 L15,17 C15.2765625,17 15.5,16.7765625 15.5,16.5 L15.5,12.71875 C15.5,12.728125 15.49375,12.734375 15.484375,12.734375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_requirement@work_item"
-      }
-    }, {
-      "caption" : "新建任务",
-      "detailType" : "DEUIACTION",
-      "name" : "u8194918",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#73D897\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M16.5,5.5 L3.5,5.5 C3.2234375,5.5 3,5.7234375 3,6 L3,15 C3,15.2765625 3.2234375,15.5 3.5,15.5 L16.5,15.5 C16.7765625,15.5 17,15.2765625 17,15 L17,6 C17,5.7234375 16.7765625,5.5 16.5,5.5 Z M8.625,12.75 C8.625,12.81875 8.56875,12.875 8.5,12.875 L5.625,12.875 C5.55625,12.875 5.5,12.81875 5.5,12.75 L5.5,12 C5.5,11.93125 5.55625,11.875 5.625,11.875 L8.5,11.875 C8.56875,11.875 8.625,11.93125 8.625,12 L8.625,12.75 Z M8.625,10.625 C8.625,10.69375 8.56875,10.75 8.5,10.75 L5.625,10.75 C5.55625,10.75 5.5,10.69375 5.5,10.625 L5.5,9.875 C5.5,9.80625 5.55625,9.75 5.625,9.75 L8.5,9.75 C8.56875,9.75 8.625,9.80625 8.625,9.875 L8.625,10.625 Z M14.4765625,9.1984375 L11.8984375,12.771875 C11.7984375,12.909375 11.5953125,12.909375 11.4953125,12.771875 L9.7109375,10.3 C9.6515625,10.2171875 9.7109375,10.1015625 9.8125,10.1015625 L10.6703125,10.1015625 C10.75,10.1015625 10.825,10.140625 10.871875,10.2046875 L11.696875,11.346875 L13.3171875,9.1015625 C13.3640625,9.0359375 13.4390625,8.9984375 13.51875,8.9984375 L14.375,8.9984375 C14.4765625,9 14.5359375,9.115625 14.4765625,9.1984375 L14.4765625,9.1984375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_task@work_item"
-      }
-    }, {
-      "caption" : "新建缺陷",
-      "detailType" : "DEUIACTION",
-      "name" : "u0ac4903",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#FF877B\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M16.6875,10 L14.375,10 L14.375,8.4375 C15.575,8.4375 16.546875,7.465625 16.546875,6.265625 C16.546875,6.196875 16.490625,6.140625 16.421875,6.140625 L15.484375,6.140625 C15.415625,6.140625 15.359375,6.196875 15.359375,6.265625 C15.359375,6.809375 14.91875,7.25 14.375,7.25 L5.625,7.25 C5.08125,7.25 4.640625,6.809375 4.640625,6.265625 C4.640625,6.196875 4.584375,6.140625 4.515625,6.140625 L3.578125,6.140625 C3.509375,6.140625 3.453125,6.196875 3.453125,6.265625 C3.453125,7.465625 4.425,8.4375 5.625,8.4375 L5.625,10 L3.3125,10 C3.24375,10 3.1875,10.05625 3.1875,10.125 L3.1875,11 C3.1875,11.06875 3.24375,11.125 3.3125,11.125 L5.625,11.125 L5.625,12.625 C5.625,12.7265625 5.628125,12.828125 5.6359375,12.9265625 C4.5640625,13.384375 3.8125,14.4484375 3.8125,15.6875 C3.8125,15.75625 3.86875,15.8125 3.9375,15.8125 L4.8125,15.8125 C4.88125,15.8125 4.9375,15.75625 4.9375,15.6875 C4.9375,14.996875 5.3109375,14.3921875 5.86875,14.0671875 C5.9625,14.3359375 6.08125,14.5921875 6.2234375,14.8328125 C6.603125,15.48125 7.1453125,16.0234375 7.79375,16.403125 C8.2453125,16.6671875 8.746875,16.853125 9.2828125,16.9421875 C9.3515625,16.9421875 9.4078125,16.8859375 9.4078125,16.8171875 L9.4078125,9.5625 C9.4078125,9.49375 9.4640625,9.4375 9.5328125,9.4375 L10.4703125,9.4375 C10.5390625,9.4375 10.5953125,9.49375 10.5953125,9.5625 L10.5953125,16.815625 C10.5953125,16.884375 10.6515625,16.940625 10.7203125,16.940625 C11.25625,16.8515625 11.7578125,16.665625 12.209375,16.4015625 C12.8578125,16.021875 13.4,15.4796875 13.7796875,14.83125 C13.921875,14.5890625 14.040625,14.3328125 14.134375,14.065625 C14.6890625,14.3921875 15.0625,14.996875 15.0625,15.6875 C15.0625,15.75625 15.11875,15.8125 15.1875,15.8125 L16.0625,15.8125 C16.13125,15.8125 16.1875,15.75625 16.1875,15.6875 C16.1875,14.4484375 15.4359375,13.384375 14.3640625,12.9265625 C14.3703125,12.8265625 14.375,12.7265625 14.375,12.625 L14.375,11.125 L16.6875,11.125 C16.75625,11.125 16.8125,11.06875 16.8125,11 L16.8125,10.125 C16.8125,10.05625 16.75625,10 16.6875,10 Z M6.75,6.375 L13.25,6.375 C13.31875,6.375 13.375,6.31875 13.375,6.25 C13.375,5.625 13.2375,5.0515625 12.9703125,4.5609375 C12.7015625,4.06875 12.30625,3.6734375 11.8140625,3.4046875 C11.3234375,3.1375 10.75,3 10.125,3 L9.875,3 C9.25,3 8.6765625,3.1375 8.1859375,3.4046875 C7.69375,3.6734375 7.2984375,4.06875 7.0296875,4.5609375 C6.7625,5.0515625 6.625,5.625 6.625,6.25 C6.625,6.31875 6.68125,6.375 6.75,6.375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_bug@work_item"
-      }
-    }, {
-      "caption" : "新建事务",
-      "detailType" : "DEUIACTION",
-      "name" : "ude7b653",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#9A7EF4\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M10.853125,3.5109375 C10.946875,3.6046875 11,3.73125 11,3.8640625 L11,13.5 C11,13.7765625 10.7765625,14 10.5,14 L0.5,14 C0.2234375,14 0,13.7765625 0,13.5 L0,0.5 C0,0.2234375 0.2234375,0 0.5,0 L7.1359375,0 C7.26875,0 7.396875,0.053125 7.490625,0.146875 L10.853125,3.5109375 Z M9.846875,4.09375 L6.90625,1.153125 L6.90625,4.09375 L9.846875,4.09375 Z M2.5,6.53125 C2.43096441,6.53125 2.375,6.58721441 2.375,6.65625 L2.375,7.40625 C2.375,7.47528559 2.43096441,7.53125 2.5,7.53125 L8.5,7.53125 C8.56903559,7.53125 8.625,7.47528559 8.625,7.40625 L8.625,6.65625 C8.625,6.58721441 8.56903559,6.53125 8.5,6.53125 L2.5,6.53125 Z M2.5,8.65625 C2.43096441,8.65625 2.375,8.71221441 2.375,8.78125 L2.375,9.53125 C2.375,9.60028559 2.43096441,9.65625 2.5,9.65625 L5.375,9.65625 C5.44403559,9.65625 5.5,9.60028559 5.5,9.53125 L5.5,8.78125 C5.5,8.71221441 5.44403559,8.65625 5.375,8.65625 L2.5,8.65625 Z\" transform=\"translate(4.5 3)\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "dyna_new_hybrid_issue@work_item"
-      }
-    } ]
-  }, {
     "codeName" : "Usr1122556781",
     "name" : "新建工作项（kanban动态）",
     "getPSAppDataEntity" : {
@@ -46521,7 +46668,7 @@
     },
     "uniqueTag" : "work_item__Usr1122556781",
     "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建史诗",
+      "caption" : "史诗",
       "detailType" : "DEUIACTION",
       "name" : "u20393f1",
       "getPSSysImage" : {
@@ -46539,7 +46686,7 @@
         "id" : "new_dyna_kanban_epic@work_item"
       }
     }, {
-      "caption" : "新建特性",
+      "caption" : "特性",
       "detailType" : "DEUIACTION",
       "name" : "u67b1448",
       "getPSSysImage" : {
@@ -46557,7 +46704,7 @@
         "id" : "new_dyna_kanban_feature@work_item"
       }
     }, {
-      "caption" : "新建用户故事",
+      "caption" : "用户故事",
       "detailType" : "DEUIACTION",
       "name" : "udf968cf",
       "getPSSysImage" : {
@@ -46575,7 +46722,7 @@
         "id" : "new_dyna_kanban_story@work_item"
       }
     }, {
-      "caption" : "新建任务",
+      "caption" : "任务",
       "detailType" : "DEUIACTION",
       "name" : "u93861bb",
       "getPSSysImage" : {
@@ -46593,7 +46740,7 @@
         "id" : "new_dyna_kanban_task@work_item"
       }
     }, {
-      "caption" : "新建缺陷",
+      "caption" : "缺陷",
       "detailType" : "DEUIACTION",
       "name" : "u1ec0e10",
       "getPSSysImage" : {
@@ -46611,7 +46758,7 @@
         "id" : "new_dyna_kanban_bug@work_item"
       }
     }, {
-      "caption" : "新建事务",
+      "caption" : "事务",
       "detailType" : "DEUIACTION",
       "name" : "u95eca8a",
       "getPSSysImage" : {
@@ -46630,105 +46777,6 @@
       }
     } ]
   }, {
-    "codeName" : "Usr1122745958",
-    "name" : "新建工作项（waterfall动态）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "uniqueTag" : "work_item__Usr1122745958",
-    "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建阶段",
-      "detailType" : "DEUIACTION",
-      "name" : "ued8c928",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#56ABFB\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M5.63571804,6.34607462 L5.63571804,14.5602946 C5.63571804,14.7745815 5.77316366,14.917551 5.97941265,14.917551 L6.3232684,14.917551 L6.3232684,14.899638 L8.38575833,14.899638 L8.38575833,15.9889856 C8.38575833,16.2032725 8.52320394,16.3460746 8.72945294,16.3460746 L16.2918623,16.3460746 C16.4637418,16.3460746 16.635718,16.1675636 16.635718,15.9889856 L16.635718,13.131771 C16.635718,12.9174841 16.4981113,12.7746819 16.2918623,12.7746819 L8.72945294,12.7746819 C8.52320394,12.7746819 8.38575833,12.9174841 8.38575833,13.131771 L8.38575833,14.1852925 L6.3232684,14.1852925 L6.3232684,9.89955428 L8.38575833,9.89955428 L8.38575833,10.9889019 C8.38575833,11.2031888 8.52320394,11.3459909 8.72945294,11.3459909 L16.2918623,11.3459909 C16.4637418,11.3459909 16.635718,11.1674799 16.635718,10.9889019 L16.635718,8.13168727 C16.635718,7.91740036 16.4981113,7.77459822 16.2918623,7.77459822 L8.72945294,7.77459822 C8.52320394,7.77459822 8.38575833,7.91740036 8.38575833,8.13168727 L8.38575833,9.18537618 L6.3232684,9.18537618 L6.3232684,6.34607462 L5.63571804,6.34607462 Z M11.3023899,6.34607462 L3.96904617,6.34607462 C3.76904617,6.34607462 3.63571804,6.22607969 3.63571804,6.04608025 L3.63571804,3.64608306 C3.63571804,3.46608362 3.76904617,3.34607462 3.96904617,3.34607462 L11.3023899,3.34607462 C11.5023899,3.34607462 11.635718,3.46608362 11.635718,3.64608306 L11.635718,6.04606619 C11.635718,6.19607041 11.4690462,6.34607462 11.3023899,6.34607462 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "new_dyna_waterfall_stage@work_item"
-      }
-    }, {
-      "caption" : "新建里程碑",
-      "detailType" : "DEUIACTION",
-      "name" : "ude5d4f9",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#73D897\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M9.953125,2.1875 L9.2421875,2.1875 C9.18203125,2.1875 9.1328125,2.23671875 9.1328125,2.296875 L9.1328125,5.6875 L7.875,5.6875 L7.875,3.28125 C7.875,3.22109375 7.82578125,3.171875 7.765625,3.171875 L3.0625,3.171875 L3.0625,9.078125 L7.765625,9.078125 C7.82578125,9.078125 7.875,9.02890625 7.875,8.96875 L7.875,6.6171875 L9.1328125,6.6171875 L9.1328125,9.953125 C9.1328125,10.0132812 9.18203125,10.0625 9.2421875,10.0625 L9.953125,10.0625 C10.0132812,10.0625 10.0625,10.0132812 10.0625,9.953125 L10.0625,2.296875 C10.0625,2.23671875 10.0132812,2.1875 9.953125,2.1875 Z M0,3.28125 L0,5.6875 L-1.2578125,5.6875 L-1.2578125,2.296875 C-1.2578125,2.23671875 -1.30703125,2.1875 -1.3671875,2.1875 L-2.078125,2.1875 C-2.13828125,2.1875 -2.1875,2.23671875 -2.1875,2.296875 L-2.1875,9.953125 C-2.1875,10.0132812 -2.13828125,10.0625 -2.078125,10.0625 L-1.3671875,10.0625 C-1.30703125,10.0625 -1.2578125,10.0132812 -1.2578125,9.953125 L-1.2578125,6.6171875 L0,6.6171875 L0,8.96875 C0,9.02890625 0.04921875,9.078125 0.109375,9.078125 L2.1875,9.078125 L2.1875,3.171875 L0.109375,3.171875 C0.04921875,3.171875 0,3.22109375 0,3.28125 Z\" transform=\"rotate(90 5.28125 11.34375)\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "new_dyna_waterfall_milestone@work_item"
-      }
-    }, {
-      "caption" : "新建需求",
-      "detailType" : "DEUIACTION",
-      "name" : "u1c97142",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#FF877B\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M15,3 L5,3 C4.7234375,3 4.5,3.2234375 4.5,3.5 L4.5,11.765625 C4.5,11.75625 4.50625,11.75 4.515625,11.75 L7.9421875,11.75 L8.0234375,12.1359375 C8.2125,13.0703125 9.04375,13.75 10,13.75 C10.95625,13.75 11.7875,13.0703125 11.975,12.1359375 L12.05625,11.75 L15.484375,11.75 C15.49375,11.75 15.5,11.75625 15.5,11.765625 L15.5,3.5 C15.5,3.2234375 15.2765625,3 15,3 Z M13.125,9.703125 C13.125,9.771875 13.06875,9.828125 13,9.828125 L7,9.828125 C6.93125,9.828125 6.875,9.771875 6.875,9.703125 L6.875,8.953125 C6.875,8.884375 6.93125,8.828125 7,8.828125 L13,8.828125 C13.06875,8.828125 13.125,8.884375 13.125,8.953125 L13.125,9.703125 Z M13.125,7.203125 C13.125,7.271875 13.06875,7.328125 13,7.328125 L7,7.328125 C6.93125,7.328125 6.875,7.271875 6.875,7.203125 L6.875,6.453125 C6.875,6.384375 6.93125,6.328125 7,6.328125 L13,6.328125 C13.06875,6.328125 13.125,6.384375 13.125,6.453125 L13.125,7.203125 Z M15.484375,12.734375 L12.8453125,12.734375 C12.6640625,13.246875 12.3453125,13.7078125 11.921875,14.0578125 C11.3828125,14.5046875 10.7,14.75 10,14.75 C9.3,14.75 8.6171875,14.503125 8.078125,14.0578125 C7.6546875,13.7078125 7.3359375,13.246875 7.1546875,12.734375 L4.515625,12.734375 C4.50625,12.734375 4.5,12.728125 4.5,12.71875 L4.5,16.5 C4.5,16.7765625 4.7234375,17 5,17 L15,17 C15.2765625,17 15.5,16.7765625 15.5,16.5 L15.5,12.71875 C15.5,12.728125 15.49375,12.734375 15.484375,12.734375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "new_dyna_waterfall_requirement@work_item"
-      }
-    }, {
-      "caption" : "新建任务",
-      "detailType" : "DEUIACTION",
-      "name" : "uf673a18",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#73D897\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M16.5,5.5 L3.5,5.5 C3.2234375,5.5 3,5.7234375 3,6 L3,15 C3,15.2765625 3.2234375,15.5 3.5,15.5 L16.5,15.5 C16.7765625,15.5 17,15.2765625 17,15 L17,6 C17,5.7234375 16.7765625,5.5 16.5,5.5 Z M8.625,12.75 C8.625,12.81875 8.56875,12.875 8.5,12.875 L5.625,12.875 C5.55625,12.875 5.5,12.81875 5.5,12.75 L5.5,12 C5.5,11.93125 5.55625,11.875 5.625,11.875 L8.5,11.875 C8.56875,11.875 8.625,11.93125 8.625,12 L8.625,12.75 Z M8.625,10.625 C8.625,10.69375 8.56875,10.75 8.5,10.75 L5.625,10.75 C5.55625,10.75 5.5,10.69375 5.5,10.625 L5.5,9.875 C5.5,9.80625 5.55625,9.75 5.625,9.75 L8.5,9.75 C8.56875,9.75 8.625,9.80625 8.625,9.875 L8.625,10.625 Z M14.4765625,9.1984375 L11.8984375,12.771875 C11.7984375,12.909375 11.5953125,12.909375 11.4953125,12.771875 L9.7109375,10.3 C9.6515625,10.2171875 9.7109375,10.1015625 9.8125,10.1015625 L10.6703125,10.1015625 C10.75,10.1015625 10.825,10.140625 10.871875,10.2046875 L11.696875,11.346875 L13.3171875,9.1015625 C13.3640625,9.0359375 13.4390625,8.9984375 13.51875,8.9984375 L14.375,8.9984375 C14.4765625,9 14.5359375,9.115625 14.4765625,9.1984375 L14.4765625,9.1984375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "new_dyna_waterfall_task@work_item"
-      }
-    }, {
-      "caption" : "新建缺陷",
-      "detailType" : "DEUIACTION",
-      "name" : "u64e845d",
-      "getPSSysImage" : {
-        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <g fill=\"none\" fill-rule=\"evenodd\">\n    <rect fill=\"#FF877B\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n    <path d=\"M16.6875,10 L14.375,10 L14.375,8.4375 C15.575,8.4375 16.546875,7.465625 16.546875,6.265625 C16.546875,6.196875 16.490625,6.140625 16.421875,6.140625 L15.484375,6.140625 C15.415625,6.140625 15.359375,6.196875 15.359375,6.265625 C15.359375,6.809375 14.91875,7.25 14.375,7.25 L5.625,7.25 C5.08125,7.25 4.640625,6.809375 4.640625,6.265625 C4.640625,6.196875 4.584375,6.140625 4.515625,6.140625 L3.578125,6.140625 C3.509375,6.140625 3.453125,6.196875 3.453125,6.265625 C3.453125,7.465625 4.425,8.4375 5.625,8.4375 L5.625,10 L3.3125,10 C3.24375,10 3.1875,10.05625 3.1875,10.125 L3.1875,11 C3.1875,11.06875 3.24375,11.125 3.3125,11.125 L5.625,11.125 L5.625,12.625 C5.625,12.7265625 5.628125,12.828125 5.6359375,12.9265625 C4.5640625,13.384375 3.8125,14.4484375 3.8125,15.6875 C3.8125,15.75625 3.86875,15.8125 3.9375,15.8125 L4.8125,15.8125 C4.88125,15.8125 4.9375,15.75625 4.9375,15.6875 C4.9375,14.996875 5.3109375,14.3921875 5.86875,14.0671875 C5.9625,14.3359375 6.08125,14.5921875 6.2234375,14.8328125 C6.603125,15.48125 7.1453125,16.0234375 7.79375,16.403125 C8.2453125,16.6671875 8.746875,16.853125 9.2828125,16.9421875 C9.3515625,16.9421875 9.4078125,16.8859375 9.4078125,16.8171875 L9.4078125,9.5625 C9.4078125,9.49375 9.4640625,9.4375 9.5328125,9.4375 L10.4703125,9.4375 C10.5390625,9.4375 10.5953125,9.49375 10.5953125,9.5625 L10.5953125,16.815625 C10.5953125,16.884375 10.6515625,16.940625 10.7203125,16.940625 C11.25625,16.8515625 11.7578125,16.665625 12.209375,16.4015625 C12.8578125,16.021875 13.4,15.4796875 13.7796875,14.83125 C13.921875,14.5890625 14.040625,14.3328125 14.134375,14.065625 C14.6890625,14.3921875 15.0625,14.996875 15.0625,15.6875 C15.0625,15.75625 15.11875,15.8125 15.1875,15.8125 L16.0625,15.8125 C16.13125,15.8125 16.1875,15.75625 16.1875,15.6875 C16.1875,14.4484375 15.4359375,13.384375 14.3640625,12.9265625 C14.3703125,12.8265625 14.375,12.7265625 14.375,12.625 L14.375,11.125 L16.6875,11.125 C16.75625,11.125 16.8125,11.06875 16.8125,11 L16.8125,10.125 C16.8125,10.05625 16.75625,10 16.6875,10 Z M6.75,6.375 L13.25,6.375 C13.31875,6.375 13.375,6.31875 13.375,6.25 C13.375,5.625 13.2375,5.0515625 12.9703125,4.5609375 C12.7015625,4.06875 12.30625,3.6734375 11.8140625,3.4046875 C11.3234375,3.1375 10.75,3 10.125,3 L9.875,3 C9.25,3 8.6765625,3.1375 8.1859375,3.4046875 C7.69375,3.6734375 7.2984375,4.06875 7.0296875,4.5609375 C6.7625,5.0515625 6.625,5.625 6.625,6.25 C6.625,6.31875 6.68125,6.375 6.75,6.375 Z\" fill=\"#FFF\" fill-rule=\"nonzero\"></path>\n  </g>\n</svg>"
-      },
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "modelref" : true,
-        "id" : "new_dyna_waterfall_bug@work_item"
-      }
-    } ]
-  }, {
     "codeName" : "Usr1219078157",
     "name" : "新建需求（scrum）",
     "getPSAppDataEntity" : {
@@ -46737,7 +46785,7 @@
     },
     "uniqueTag" : "work_item__Usr1219078157",
     "getPSUIActionGroupDetails" : [ {
-      "caption" : "新建史诗",
+      "caption" : "史诗",
       "detailType" : "DEUIACTION",
       "name" : "ucc0cbcd",
       "getPSSysImage" : {
@@ -46755,7 +46803,7 @@
         "id" : "new_dyna_scrum_epic@work_item"
       }
     }, {
-      "caption" : "新建特性",
+      "caption" : "特性",
       "detailType" : "DEUIACTION",
       "name" : "ud9e4578",
       "getPSSysImage" : {
@@ -46773,7 +46821,7 @@
         "id" : "new_dyna_scrum_feature@work_item"
       }
     }, {
-      "caption" : "新建用户故事",
+      "caption" : "用户故事",
       "detailType" : "DEUIACTION",
       "name" : "u68bcb4d",
       "getPSSysImage" : {
@@ -47255,8 +47303,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u3d63df3",
       "getPSSysImage" : {
-        "glyph" : "xf047@FontAwesome",
-        "cssClass" : "fa fa-arrows"
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -47274,8 +47321,7 @@
       "detailType" : "DEUIACTION",
       "name" : "u1a1e7d6",
       "getPSSysImage" : {
-        "glyph" : "xf187@FontAwesome",
-        "cssClass" : "fa fa-archive"
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
       },
       "addSeparator" : false,
       "showCaption" : true,

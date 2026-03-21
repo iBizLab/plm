@@ -151,6 +151,23 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
+    "getMovePSControlAction" : {
+      "actionName" : "move_order",
+      "actionType" : "DEACTION",
+      "name" : "move",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "move_order"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+      }
+    },
+    "getOrderValuePSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
@@ -203,6 +220,18 @@
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+        }
+      }, {
+        "actionName" : "move_order",
+        "actionType" : "DEACTION",
+        "name" : "move",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "move_order"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -515,7 +544,7 @@
     "enableGroup" : false,
     "enablePagingBar" : false,
     "enableRowEdit" : false,
-    "enableRowEditOrder" : false,
+    "enableRowEditOrder" : true,
     "enableRowNew" : false,
     "forceFit" : true,
     "hideHeader" : false,

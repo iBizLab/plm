@@ -3792,6 +3792,44 @@
     "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -7179,6 +7217,7 @@
           "srfnavparam.state" : "%state%",
           "srfnavparam.project_id" : "%project_id%",
           "srfnavparam.work_item_type_id" : "%work_item_type_id%",
+          "srfnavparam.id" : "%id%",
           "alwaysLoad" : "true"
         },
         "editorType" : "DROPDOWNLIST",
@@ -7875,7 +7914,7 @@
         "codeName" : "Default",
         "editorType" : "TEXTAREA_10",
         "name" : "[SOLUTION_WAY][解决办法]",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -7886,7 +7925,7 @@
         "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
         "name" : "[SOLUTION_WAY][解决办法]移动端默认",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -7896,8 +7935,8 @@
     "codeName" : "solution_way",
     "logicName" : "解决办法",
     "name" : "SOLUTION_WAY",
-    "stdDataType" : 25,
-    "stringLength" : 2000
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -12011,7 +12050,7 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "work_item_type_sequence",
@@ -14184,7 +14223,7 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFGROUPDETAIL",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "codeName" : "tags",
@@ -17661,6 +17700,44 @@
     "requestPath" : "/fetch_ai_info",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_all",
+    "dataSetName" : "all",
+    "dataSetTag" : "all",
+    "methodType" : "FETCH",
+    "name" : "fetch_all",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_all",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_archived",
     "dataSetName" : "archived",
     "dataSetTag" : "archived",
@@ -20870,6 +20947,36 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "ai_info"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempAll",
+    "dataSetTag" : "all",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "all",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "AllInput",
+      "name" : "AllInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "AllResult",
+      "name" : "AllResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -24348,6 +24455,46 @@
     "reportFile" : "#",
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "SINGLEKEY",
@@ -26329,8 +26476,7 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "successMsg" : "归档成功",
     "timeout" : 60000,

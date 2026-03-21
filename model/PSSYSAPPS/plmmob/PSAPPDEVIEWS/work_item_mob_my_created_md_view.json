@@ -371,6 +371,30 @@
                 "layout" : "FLEX",
                 "spacingTop" : "OUTERSMALL"
               },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "groupOP" : "OR",
+                  "logicType" : "GROUP",
+                  "name" : "OR ",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "ISNOTNULL",
+                    "dstModelField" : "START_AT",
+                    "logicType" : "SINGLE",
+                    "name" : "START_AT 值不为空(NotNil) "
+                  }, {
+                    "condOp" : "ISNOTNULL",
+                    "dstModelField" : "END_AT",
+                    "logicType" : "SINGLE",
+                    "name" : "END_AT 值不为空(NotNil) "
+                  } ],
+                  "notMode" : false
+                } ],
+                "relatedItemNames" : [ "start_at", "end_at" ],
+                "notMode" : false
+              } ],
               "getPSPanelItems" : [ {
                 "caption" : "文本(动态)",
                 "itemStyle" : "DEFAULT",

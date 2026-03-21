@@ -1,5 +1,6 @@
 {
   "getAllPSDEACModes" : [ {
+    "aCType" : "CHATCOMPLETION",
     "codeName" : "AIChat",
     "logicName" : "AI交互",
     "name" : "AIChat",
@@ -18,8 +19,17 @@
         "codeName" : "name"
       }
     } ],
+    "getPSSysAIChatAgent" : {
+      "modelref" : true,
+      "id" : "DynamicAgent"
+    },
+    "getPSSysAIFactory" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSSYSAIFACTORIES/iBizPLMIntelligence.json"
+    },
     "pagingSize" : 50,
     "defaultMode" : false,
+    "enableBackend" : true,
     "enablePagingBar" : false,
     "id" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/AIChat.json"
   }, {
@@ -4318,7 +4328,7 @@
         },
         "name" : "Default[del_comment_id] ==> comment[ID]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "del_comment_id",
+        "srcFieldName" : "ID",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
@@ -4330,7 +4340,7 @@
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/delete.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/Remove.json"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,

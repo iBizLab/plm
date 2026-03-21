@@ -1,5 +1,5 @@
 {
-  "codeName" : "bi_form_workload_type_ratio",
+  "codeName" : "main2",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,11 +14,11 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSFORMS/bi_form_workload_type_ratio.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ/PSFORMS/main2.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -28,45 +28,45 @@
     "name" : "loaddraftfrom",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "getGetDraftPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraft",
-    "actionName" : "fill_bi_form_default",
+    "actionName" : "GetDraft",
     "actionType" : "DEACTION",
     "dataAccessAction" : "CREATE",
     "name" : "loaddraft",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fill_bi_form_default"
+      "id" : "get_draft"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "getGetPSControlAction" : {
     "modelref" : true,
     "id" : "load",
-    "actionName" : "fill_bi_form_default",
+    "actionName" : "Get",
     "actionType" : "DEACTION",
     "dataAccessAction" : "READ",
     "name" : "load",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fill_bi_form_default"
+      "id" : "get"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
-  "logicName" : "BI报表配置_工时类别占比",
+  "logicName" : "扩展打印模板快速编辑视图_表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
   },
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -115,13 +115,31 @@
   }, {
     "id" : "name",
     "dataType" : 25,
-    "createDV" : "工时类别",
-    "updateDV" : "工时类别"
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
   }, {
-    "id" : "type_id",
+    "id" : "de_tag",
     "dataType" : 25,
-    "createDV" : "1",
-    "updateDV" : "1"
+    "getPSAppDEField" : {
+      "name" : "DE_TAG",
+      "codeName" : "de_tag"
+    }
+  }, {
+    "id" : "print_tag",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
+  }, {
+    "id" : "print_model",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    }
   }, {
     "id" : "id",
     "hidden" : true,
@@ -138,15 +156,17 @@
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
-      "caption" : "配置",
+      "caption" : "扩展打印模板基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
-        "caption" : "指标配置",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.NAME"
+        },
+        "caption" : "名称",
         "codeName" : "name",
-        "createDV" : "工时类别",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -156,59 +176,122 @@
         "labelWidth" : 130,
         "name" : "name",
         "noPrivDisplayMode" : 1,
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "name",
-            "logicType" : "SINGLE",
-            "value" : "-1"
-          } ],
-          "relatedDetailNames" : [ "name" ],
-          "notMode" : false
-        } ],
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
+          "maxLength" : 200,
           "name" : "name"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "工时类别",
-        "allowEmpty" : true,
+        "allowEmpty" : false,
         "showCaption" : true
       }, {
-        "codeName" : "type_id",
-        "createDV" : "1",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.DE_TAG"
+        },
+        "caption" : "实体标识",
+        "codeName" : "de_tag",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "fieldName" : "type_id",
         "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "type_id",
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "de_tag",
         "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "DE_TAG",
+          "codeName" : "de_tag"
+        },
         "getPSEditor" : {
-          "editorType" : "MDROPDOWNLIST",
-          "name" : "type_id",
+          "editorType" : "DROPDOWNLIST",
+          "name" : "de_tag",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__workload_type.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__de_tag.json"
           },
-          "singleSelect" : false
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "1",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.PRINT_TAG"
+        },
+        "caption" : "打印标识",
+        "codeName" : "print_tag",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "print_tag",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PRINT_TAG",
+          "codeName" : "print_tag"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 200,
+          "name" : "print_tag"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
         "allowEmpty" : true,
-        "needCodeListConfig" : true
+        "showCaption" : true
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.PRINT_MODEL"
+        },
+        "caption" : "打印模型",
+        "codeName" : "print_model",
+        "dataType" : 21,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "itemHeight" : 220.0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "print_model",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PRINT_MODEL",
+          "codeName" : "print_model"
+        },
+        "getPSEditor" : {
+          "editorHeight" : 200.0,
+          "editorParams" : {
+            "HEIGHT" : "200"
+          },
+          "editorType" : "TEXTAREA_10",
+          "maxLength" : 1048576,
+          "name" : "print_model",
+          "showMaxLength" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : false,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -220,10 +303,10 @@
         "layout" : "TABLE_24COL"
       },
       "infoGroupMode" : false,
-      "showCaption" : true
+      "showCaption" : false
     }, {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.ID"
+        "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.ID"
       },
       "caption" : "标识",
       "codeName" : "id",
@@ -276,7 +359,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "tabHeaderPos" : "TOP",
@@ -293,10 +376,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "noTabHeader" : true,
-  "modelid" : "f79bae67eb417b249d845436e696c972",
+  "modelid" : "9f5f1ca6b6d0ffddd41d1e1312f7f79e",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

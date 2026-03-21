@@ -196,10 +196,7 @@
       "getPSAppDEMethod" : {
         "modelref" : true,
         "id" : "shared_url"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "shared_page_url"
-      } ]
+      }
     } ],
     "getPSDEFormItems" : [ {
       "id" : "srfupdatedate",
@@ -347,7 +344,7 @@
               "enableCond" : 3,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
-              "labelWidth" : 220,
+              "labelWidth" : 280,
               "name" : "is_shared_subset",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
@@ -383,72 +380,89 @@
             "infoGroupMode" : false,
             "showCaption" : false
           }, {
-            "caption" : "共享链接",
-            "codeName" : "shared_page_url",
-            "dataType" : 25,
+            "codeName" : "grouppanel6",
             "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 0,
-            "ignoreInput" : 0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
-            "name" : "shared_page_url",
-            "noPrivDisplayMode" : 1,
-            "getPSEditor" : {
-              "editorType" : "MOBTEXT",
-              "name" : "shared_page_url"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 20,
-              "colMD" : 20,
-              "colSM" : 20,
-              "colXS" : 20,
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel6",
+            "getPSDEFormDetails" : [ {
+              "caption" : "共享链接",
+              "codeName" : "shared_page_url",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 0,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "shared_page_url",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "MOBTEXT",
+                "name" : "shared_page_url"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 19,
+                "colMD" : 19,
+                "colSM" : 19,
+                "colXS" : 19,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true
+            }, {
+              "actionType" : "UIACTION",
+              "caption" : "复制",
+              "codeName" : "copy_page_url",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "BUTTON",
+              "name" : "copy_page_url",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "form_copy_page_url"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 4,
+                "colMD" : 4,
+                "colSM" : 4,
+                "colXS" : 4,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEDATA",
+                "caption" : "复制链接",
+                "codeName" : "copy_shared_url",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "article_page_copy_shared_url",
+                "name" : "复制共享页面链接",
+                "getPSAppDEUILogic" : {
+                  "modelref" : true,
+                  "id" : "copy_shared_url"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+                },
+                "tooltip" : "复制链接",
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "copy_shared_url",
+                "uIActionType" : "DEUIACTION",
+                "uILogicAttachMode" : "REPLACE",
+                "id" : "copy_shared_url@article_page"
+              },
+              "tooltip" : "复制",
+              "uIActionTarget" : "SINGLEDATA",
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
               "layout" : "TABLE_24COL"
             },
-            "allowEmpty" : true
-          }, {
-            "actionType" : "UIACTION",
-            "caption" : "复制",
-            "codeName" : "copy_page_url",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "BUTTON",
-            "name" : "copy_page_url",
-            "getPSAppViewUIAction" : {
-              "modelref" : true,
-              "id" : "form_copy_page_url"
-            },
             "getPSLayoutPos" : {
-              "colLG" : 4,
-              "colMD" : 4,
-              "colSM" : 4,
-              "colXS" : 4,
+              "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "getPSUIAction" : {
-              "actionTarget" : "SINGLEDATA",
-              "caption" : "复制链接",
-              "codeName" : "copy_shared_url",
-              "frontProcessType" : "OTHER",
-              "fullCodeName" : "article_page_copy_shared_url",
-              "name" : "复制共享页面链接",
-              "getPSAppDEUILogic" : {
-                "modelref" : true,
-                "id" : "copy_shared_url"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
-              },
-              "tooltip" : "复制链接",
-              "uIActionMode" : "FRONT",
-              "uIActionTag" : "copy_shared_url",
-              "uIActionType" : "DEUIACTION",
-              "uILogicAttachMode" : "REPLACE",
-              "id" : "copy_shared_url@article_page"
-            },
-            "tooltip" : "复制",
-            "uIActionTarget" : "SINGLEDATA",
-            "showCaption" : true
+            "infoGroupMode" : false,
+            "showCaption" : false
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -517,6 +531,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "enable_password",
                 "logicType" : "SINGLE",
+                "name" : "enable_password等于(=) 0",
                 "value" : "0"
               } ],
               "relatedDetailNames" : [ "enable_password" ],
@@ -529,6 +544,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "enable_password",
                 "logicType" : "SINGLE",
+                "name" : "enable_password等于(=) 1",
                 "value" : "1"
               } ],
               "relatedDetailNames" : [ "enable_password" ],
@@ -613,6 +629,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "enable_expiration",
                 "logicType" : "SINGLE",
+                "name" : "enable_expiration等于(=) 0",
                 "value" : "0"
               } ],
               "relatedDetailNames" : [ "enable_expiration" ],
@@ -625,6 +642,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "enable_expiration",
                 "logicType" : "SINGLE",
+                "name" : "enable_expiration等于(=) 1",
                 "value" : "1"
               } ],
               "relatedDetailNames" : [ "enable_expiration" ],

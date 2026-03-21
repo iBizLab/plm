@@ -272,6 +272,12 @@
     }, {
       "name" : "PID",
       "codeName" : "pid"
+    }, {
+      "name" : "USER_TAG",
+      "codeName" : "user_tag"
+    }, {
+      "name" : "USER_TAG2",
+      "codeName" : "user_tag2"
     } ],
     "codeName" : "Table",
     "name" : "AI_KB_CHUNK",
@@ -2490,6 +2496,12 @@
       "queryCodeExp" : "t11.`KB_ID`",
       "standardColumnName" : "`KB_ID`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_KB_ID_EQ",
+      "name" : "N_KB_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[KB_ID][知识库标识]",
@@ -3042,6 +3054,164 @@
     "viewLevel" : 0,
     "linkDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "USER_TAG",
+      "dBType" : "POSTGRESQL",
+      "name" : "USER_TAG",
+      "standardColumnName" : "USER_TAG"
+    }, {
+      "columnName" : "USER_TAG",
+      "dBType" : "MYSQL5",
+      "name" : "USER_TAG",
+      "queryCodeExp" : "t1.`USER_TAG`",
+      "standardColumnName" : "`USER_TAG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "USER_TAG",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "user_tag",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "用户标记",
+    "name" : "USER_TAG",
+    "orderValue" : 8000,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "USER_TAG"
+    },
+    "serviceCodeName" : "user_tag",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "USER_TAG2",
+      "dBType" : "POSTGRESQL",
+      "name" : "USER_TAG2",
+      "standardColumnName" : "USER_TAG2"
+    }, {
+      "columnName" : "USER_TAG2",
+      "dBType" : "MYSQL5",
+      "name" : "USER_TAG2",
+      "queryCodeExp" : "t1.`USER_TAG2`",
+      "standardColumnName" : "`USER_TAG2`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "name" : "默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "TEXTBOX",
+        "name" : "默认",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "name" : "移动端默认",
+      "getPSDEFFormItem" : {
+        "editorType" : "MOBTEXT",
+        "name" : "移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "USER_TAG2",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "user_tag2",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "用户标记2",
+    "name" : "USER_TAG2",
+    "orderValue" : 8500,
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "USER_TAG2"
+    },
+    "serviceCodeName" : "user_tag2",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s"
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "retrieval_test",
@@ -3068,7 +3238,7 @@
       "topPos" : 192,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal()\r\ndef query = _default.get('query')\r\ndef kb_id = _default.get('kb_id')\r\nif (query && kb_id){\r\n    def _params = [:]\r\n    def n_rerank_eq = (_default.get('n_rerank_eq') as Integer) ?: 0\r\n    def similarity_threshold = (_default.get(\"similarity_threshold\") as BigDecimal) ?: 0\r\n    def keyword_similarity_weight = (_default.get(\"keyword_similarity_weight\") as BigDecimal) ?: 0\r\n    def n_vector_similarity_gtandeq = 1 - keyword_similarity_weight\r\n    def top_k = (_default.get(\"top_k\") as Integer) ?: 0\r\n    def cross_languages = _default.get(\"cross_languages\") ?: \"\"\r\n    def use_kg = (_default.get(\"use_kg\") as Boolean) ?: false\r\n    _params.put('size', 1000)\r\n    _params.put('query', query)\r\n    _params.put('n_rerank_eq', n_rerank_eq)\r\n    _params.put('n_similarity_gtandeq', similarity_threshold)\r\n    _params.put('n_vector_similarity_gtandeq', n_vector_similarity_gtandeq)\r\n    _params.put('top_k', top_k)\r\n    _params.put('cross_languages', cross_languages)\r\n    _params.put('use_kg', use_kg)\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false)\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params)\r\n    if (_page){\r\n        def _content = _page.getContent()\r\n        if (_content){\r\n            def nodeMap = [:]\r\n            def roots = []\r\n            // 1. 遍历平铺数据，构建节点映射表\r\n            for (node in _content) {\r\n                def id = node.id\r\n                def pid = node.pid\r\n                if (!id) continue\r\n                // 复制原始节点数据并添加children字段\r\n                def newNode = [:]\r\n                newNode.putAll(node.any())\r\n                newNode.children = []\r\n                newNode.has_children = 0\r\n                nodeMap[id] = newNode\r\n            }\r\n            // 2. 构建父子关系\r\n            for (id in nodeMap.keySet()) {\r\n                def node = nodeMap[id]\r\n                def pid = node.pid?.toString()\r\n\r\n                // 判断是否为根节点（父ID为空）\r\n                if (!pid || pid == \"\") {\r\n                    roots.add(node)\r\n                } else {\r\n                    // 将当前节点添加到父节点的子节点列表\r\n                    def parentNode = nodeMap[pid]\r\n                    if (parentNode) {\r\n                        parentNode.children.add(node)\r\n                        parentNode.has_children = 1\r\n                    } else {\r\n                        // 父节点不存在，视为新根节点\r\n                        roots.add(node)\r\n                    }\r\n                }\r\n            }\r\n            // 3. 设置结果（返回树形结构）\r\n            _default.set('result', roots)\r\n        }\r\n    }\r\n}",
+      "code" : "def _default = logic.param('Default').getReal()\r\ndef query = _default.get('query')\r\ndef kb_id = _default.get('kb_id')\r\nif (query && kb_id){\r\n    def _params = [:]\r\n    def n_rerank_eq = (_default.get('n_rerank_eq') as Integer) ?: 0\r\n    def similarity_threshold = (_default.get(\"similarity_threshold\") as BigDecimal) ?: 0\r\n    def keyword_similarity_weight = (_default.get(\"keyword_similarity_weight\") as BigDecimal) ?: 0\r\n    def n_vector_similarity_gtandeq = 1 - keyword_similarity_weight\r\n    def top_k = (_default.get(\"top_k\") as Integer) ?: 0\r\n    def cross_languages = _default.get(\"cross_languages\") ?: \"\"\r\n    def use_kg = (_default.get(\"use_kg\") as Boolean) ?: false\r\n    def n_pageindex_eq = (_default.get('n_pageindex_eq') as Integer) ?: 0\r\n    _params.put('size', top_k)\r\n    _params.put('query', query)\r\n    _params.put('n_rerank_eq', n_rerank_eq)\r\n    _params.put('n_similarity_gtandeq', similarity_threshold)\r\n    _params.put('n_vector_similarity_gtandeq', n_vector_similarity_gtandeq)\r\n    _params.put('top_k', top_k)\r\n    _params.put('cross_languages', cross_languages)\r\n    _params.put('use_kg', use_kg)\r\n    _params.put('n_pageindex_eq', n_pageindex_eq)\r\n    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false)\r\n    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params)\r\n    if (_page){\r\n        def _content = _page.getContent()\r\n        if (_content){\r\n            def nodeMap = [:]\r\n            def roots = []\r\n            // 1. 遍历平铺数据，构建节点映射表\r\n            for (node in _content) {\r\n                def id = node.id\r\n                def pid = node.pid\r\n                if (!id) continue\r\n                // 复制原始节点数据并添加children字段\r\n                def newNode = [:]\r\n                newNode.putAll(node.any())\r\n                newNode.children = []\r\n                newNode.has_children = 0\r\n                nodeMap[id] = newNode\r\n            }\r\n            // 2. 构建父子关系\r\n            for (id in nodeMap.keySet()) {\r\n                def node = nodeMap[id]\r\n                def pid = node.pid?.toString()\r\n\r\n                // 判断是否为根节点（父ID为空）\r\n                if (!pid || pid == \"\") {\r\n                    roots.add(node)\r\n                } else {\r\n                    // 将当前节点添加到父节点的子节点列表\r\n                    def parentNode = nodeMap[pid]\r\n                    if (parentNode) {\r\n                        parentNode.children.add(node)\r\n                        parentNode.has_children = 1\r\n                    } else {\r\n                        // 父节点不存在，视为新根节点\r\n                        roots.add(node)\r\n                    }\r\n                }\r\n            }\r\n            // 3. 设置结果（返回树形结构）\r\n            _default.set('result', roots)\r\n        }\r\n    }\r\n}",
       "codeName" : "RAWSFCODE_01",
       "codeType" : "Groovy",
       "leftPos" : 400,
@@ -3434,6 +3604,28 @@
       "stdDataType" : 25,
       "stringLength" : 100,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "用户标记",
+      "name" : "user_tag",
+      "getPSDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "用户标记2",
+      "name" : "user_tag2",
+      "getPSDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -3495,6 +3687,21 @@
       "getPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "知识库标识",
+      "name" : "n_kb_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_KB_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "KB_ID",
+        "codeName" : "kb_id"
       },
       "scale" : 0,
       "sourceType" : "DEFSEARCHMODE",

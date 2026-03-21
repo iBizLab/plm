@@ -310,6 +310,68 @@
       "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\n    const { name } = evt;\n    const data = ctrl.state.data;\n    if (['work_item_type_id'].includes(name) && data.work_item_type_id && data.project_id) {\n        view.redrawView({\n            context: { project: data.project_id, dynamicnew: true },\n            params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },\n            isReloadModel: true,\n        });\n    }\n});"
     } ],
     "getPSControls" : [ {
+      "codeName" : "dyna_quick_create_view_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "AI通用工具栏",
+      "name" : "toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
+      },
+      "getPSControlParam" : {
+        "id" : "TOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "WARNING",
+        "caption" : "AI+",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf123@FontAwesome",
+          "cssClass" : "fa fa-star-half-full"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "buttonStyle" : "WARNING",
+          "caption" : "AI+",
+          "codeName" : "ai_nodata",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
+            "viewType" : "DELISTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "ai_agent_assignment_ai_nodata",
+          "name" : "AI+无数据",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf123@FontAwesome",
+            "cssClass" : "fa fa-star-half-full"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "ai_nodata",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "ai_nodata@ai_agent_assignment"
+        },
+        "tooltip" : "AI+",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "xDataControlName" : "form",
+      "modelid" : "514893fb34893a7093696d54919e7f54",
+      "modeltype" : "PSDETOOLBAR"
+    }, {
       "codeName" : "quick_create_work_item",
       "controlType" : "FORM",
       "getCreatePSControlAction" : {
@@ -492,6 +554,10 @@
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
+        "ctrlParams" : {
+          "ENABLEJSONSCHEMA" : "true",
+          "JSONSCHEMAPARAMS" : "{\"project_id\":\"%project%\"}"
+        },
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
@@ -6094,6 +6160,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_scrum_bug",
       "modelid" : "aef9bf6bf729a2b499015d9567a27b24",
@@ -8490,6 +8557,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_scrum_epic",
       "modelid" : "3eea6b8a7510e13e345a20e297553ff3",
@@ -10995,6 +11063,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_scrum_feature",
       "modelid" : "b592311bbcda7310edd4d132f3de010e",
@@ -13500,6 +13569,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_scrum_story",
       "modelid" : "3ece43d9c2e5b93123e2145d526a7ce2",
@@ -16254,6 +16324,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_scrum_task",
       "modelid" : "7b34c841f31ec30c42e622050dc3bd44",
@@ -18884,6 +18955,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_bug",
       "modelid" : "b6e59ff9aee4c378d06c10994b2ac979",
@@ -21445,6 +21517,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_epic",
       "modelid" : "b8b14c1751d7e3841d8ced115468257f",
@@ -24115,6 +24188,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_feature",
       "modelid" : "540cdc912ec161dc7b0dc52045a353f2",
@@ -26556,6 +26630,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_issue",
       "modelid" : "417418aaef49607d9faef5f37d8bdc1d",
@@ -29226,6 +29301,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_story",
       "modelid" : "f943268607c83dce8a6fc5cc242b504c",
@@ -32144,6 +32220,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_kanban_task",
       "modelid" : "59c44f07719775362183571b85046566",
@@ -34139,38 +34216,6 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
               "name" : "grouppanel9",
-              "getPSDEFDGroupLogics" : [ {
-                "groupOP" : "AND",
-                "logicCat" : "PANELVISIBLE",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "groupOP" : "OR",
-                  "logicType" : "GROUP",
-                  "name" : "OR",
-                  "getPSDEFDLogics" : [ {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) scrum_task",
-                    "value" : "scrum_task"
-                  }, {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) waterfall_task",
-                    "value" : "waterfall_task"
-                  }, {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) kanban_task",
-                    "value" : "kanban_task"
-                  } ],
-                  "notMode" : false
-                } ],
-                "relatedDetailNames" : [ "work_item_type_id" ],
-                "notMode" : false
-              } ],
               "getPSDEFormDetails" : [ {
                 "caption" : "多人任务",
                 "codeName" : "multiple_people",
@@ -34499,32 +34544,8 @@
                   "logicType" : "SINGLE",
                   "name" : "multiple_people等于(=) 1",
                   "value" : "1"
-                }, {
-                  "groupOP" : "OR",
-                  "logicType" : "GROUP",
-                  "name" : "OR",
-                  "getPSDEFDLogics" : [ {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) scrum_task",
-                    "value" : "scrum_task"
-                  }, {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) kanban_task",
-                    "value" : "kanban_task"
-                  }, {
-                    "condOP" : "EQ",
-                    "dEFDName" : "work_item_type_id",
-                    "logicType" : "SINGLE",
-                    "name" : "work_item_type_id等于(=) waterfall_task",
-                    "value" : "waterfall_task"
-                  } ],
-                  "notMode" : false
                 } ],
-                "relatedDetailNames" : [ "multiple_people", "work_item_type_id" ],
+                "relatedDetailNames" : [ "multiple_people" ],
                 "notMode" : false
               } ],
               "getPSEditor" : {
@@ -34897,6 +34918,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_waterfall_task",
       "modelid" : "625c169783aa9fc0c1c7fda0bfac0f84",
@@ -37282,6 +37304,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_waterfall_stage",
       "modelid" : "4233ad6c4315c5f7bd6d477b79df1f8f",
@@ -39787,6 +39810,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_waterfall_requirement",
       "modelid" : "9bbccbdfec35867fa36282b9db592b36",
@@ -42172,6 +42196,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_waterfall_milestone",
       "modelid" : "f34d55b346458600b8598d9b55417c1e",
@@ -44637,6 +44662,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_waterfall_bug",
       "modelid" : "0c51612e35d895dceee42ab79cdc0729",
@@ -47267,6 +47293,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_bug",
       "modelid" : "af322a756bf5b450d376a3fe0a564d67",
@@ -49828,6 +49855,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_epic",
       "modelid" : "6caaff8865362c4df59a23eedbb27891",
@@ -52497,6 +52525,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_feature",
       "modelid" : "959f64629df173a907c0a84b7ab427c6",
@@ -54938,6 +54967,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_issue",
       "modelid" : "523fe6f41543c8345812263a25b7111c",
@@ -57483,6 +57513,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_milestone",
       "modelid" : "6baeb3053034f81b86fc821c6d814312",
@@ -60153,6 +60184,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_requirement",
       "modelid" : "9adebc0a874a1443e29281aa5a66a496",
@@ -62698,6 +62730,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_stage",
       "modelid" : "119b9e8643207c858a3556a822247106",
@@ -65368,6 +65401,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_story",
       "modelid" : "38ae05b6b12fbee009c875096e09d21f",
@@ -68225,72 +68259,11 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
         }
       },
+      "userTag" : "dynamic_create",
       "noTabHeader" : true,
       "name" : "_form_hybrid_task",
       "modelid" : "6e975e76595f2b9f06ed7d9950bd17ad",
       "modeltype" : "PSDEFORM_EDITFORM"
-    }, {
-      "codeName" : "dyna_quick_create_view_toolbar",
-      "controlType" : "TOOLBAR",
-      "logicName" : "AI通用工具栏",
-      "name" : "toolbar",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_session.json"
-      },
-      "getPSControlParam" : {
-        "id" : "TOOLBAR"
-      },
-      "getPSDEToolbarItems" : [ {
-        "buttonStyle" : "WARNING",
-        "caption" : "AI+",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "toolbar_deuiaction1"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf123@FontAwesome",
-          "cssClass" : "fa fa-star-half-full"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "buttonStyle" : "WARNING",
-          "caption" : "AI+",
-          "codeName" : "ai_nodata",
-          "getFrontPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ai_agent_assignment_selector.json",
-            "viewType" : "DELISTVIEW"
-          },
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "ai_agent_assignment_ai_nodata",
-          "name" : "AI+无数据",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_agent_assignment.json"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf123@FontAwesome",
-            "cssClass" : "fa fa-star-half-full"
-          },
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "ai_nodata",
-          "uIActionType" : "DEUIACTION",
-          "globalUIAction" : true,
-          "id" : "ai_nodata@ai_agent_assignment"
-        },
-        "tooltip" : "AI+",
-        "uIActionTarget" : "NONE",
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "xDataControlName" : "form",
-      "modelid" : "514893fb34893a7093696d54919e7f54",
-      "modeltype" : "PSDETOOLBAR"
     }, {
       "codeName" : "dyna_quick_create_view_datainfobar",
       "controlType" : "DATAINFOBAR",

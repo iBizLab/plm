@@ -90,7 +90,7 @@
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
     "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "编辑工作项类型",
+    "realTitle" : "工作项类型",
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_type_global_edit_view.json",
@@ -131,6 +131,10 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "工作项类型表格视图（全局）_表格",
+    "getOrderValuePSAppDEField" : {
+      "name" : "SEQUENCE",
+      "codeName" : "sequence"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_type.json"
@@ -315,6 +319,7 @@
               "cssClass" : "fa fa-edit"
             },
             "predefinedType" : "GRIDVIEW_EDITACTION",
+            "refreshMode" : 1,
             "timeout" : 60000,
             "tooltip" : "编辑",
             "getTooltipPSLanguageRes" : {
@@ -322,7 +327,8 @@
             },
             "uIActionMode" : "SYS",
             "uIActionTag" : "Edit",
-            "uIActionType" : "DEUIACTION"
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true
           },
           "tooltip" : "编辑",
           "getTooltipPSLanguageRes" : {

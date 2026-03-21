@@ -24,10 +24,6 @@
   "getPSDEViewCodeName" : "mob_depend_on_list_view",
   "getPSDEViewId" : "e66ec17ddb819264d4fb512bbbce8128",
   "getPSViewLayoutPanel" : {
-    "getAllPSPanelFields" : [ {
-      "id" : "total",
-      "viewFieldName" : "total"
-    } ],
     "codeName" : "usr0924869356",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
@@ -87,80 +83,6 @@
             "spacingRight" : "OUTERMEDIUM"
           },
           "getPSPanelItems" : [ {
-            "caption" : "容器",
-            "contentWidth" : 100.0,
-            "itemStyle" : "DEFAULT",
-            "itemType" : "CONTAINER",
-            "name" : "view_left_toolbar",
-            "getPSLayout" : {
-              "align" : "flex-start",
-              "dir" : "row",
-              "layout" : "FLEX",
-              "vAlign" : "center"
-            },
-            "getPSLayoutPos" : {
-              "basis" : 100,
-              "grow" : -1,
-              "layout" : "FLEX",
-              "shrink" : 0,
-              "width" : 100,
-              "widthMode" : "PX"
-            },
-            "getPSPanelItems" : [ {
-              "caption" : "文本(动态)",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "FIELD",
-              "name" : "total",
-              "getPSEditor" : {
-                "editorType" : "SPAN",
-                "name" : "total",
-                "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                "renderMode" : "TEXT_DYNAMIC",
-                "enableLinkView" : false
-              },
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "viewFieldName" : "total"
-            }, {
-              "caption" : "文本",
-              "contentType" : "RAW",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_text",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSRawItem" : {
-                "caption" : "个依赖",
-                "contentType" : "RAW",
-                "name" : "static_text",
-                "predefinedType" : "STATIC_TEXT",
-                "renderMode" : "TEXT"
-              },
-              "rawContent" : "个依赖",
-              "showCaption" : true
-            }, {
-              "caption" : "左侧工具栏",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CTRLPOS",
-              "name" : "lefttoolbar",
-              "getPSLayoutPos" : {
-                "grow" : 1,
-                "heightMode" : "FULL",
-                "layout" : "FLEX",
-                "vAlignSelf" : "MIDDLE",
-                "widthMode" : "FULL"
-              },
-              "showCaption" : true
-            } ],
-            "getPSSysCss" : {
-              "cssName" : "mob-relation-container-style"
-            },
-            "width" : 100.0
-          }, {
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
@@ -303,19 +225,6 @@
     "modelid" : "966dde3774ddf1491ab632c12c8f7905",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
-      "eventNames" : "onLoadSuccess",
-      "logicTrigger" : "VIEWEVENT",
-      "logicType" : "APPDEUILOGIC",
-      "name" : "ONLOADSUCCESS",
-      "getPSAppDEUILogic" : {
-        "modelref" : true,
-        "id" : "get_list_total"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-      }
-    }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
       "name" : "newdata",
@@ -1483,6 +1392,7 @@
         "id" : "RIGHTTOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "PRIMARY",
         "caption" : "添加依赖",
         "itemType" : "ITEMS",
         "name" : "items1",
@@ -1608,13 +1518,10 @@
           "cssClass" : "fa fa-plus"
         },
         "tooltip" : "添加依赖",
-        "showCaption" : true,
+        "showCaption" : false,
         "showIcon" : true
       } ],
-      "getPSSysCss" : {
-        "cssName" : "mob-toolbar"
-      },
-      "toolbarStyle" : "MOBNAVRIGHTMENU",
+      "toolbarStyle" : "USER",
       "xDataControlName" : "mdctrl",
       "modelid" : "936cf801807ecd92f7b2d242959c0836",
       "modeltype" : "PSDETOOLBAR"

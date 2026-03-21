@@ -1,5 +1,5 @@
 {
-  "codeName" : "bi_form_risk_ratio",
+  "codeName" : "main",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,11 +14,11 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/bi_form_risk_ratio.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ/PSFORMS/main.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -28,45 +28,45 @@
     "name" : "loaddraftfrom",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "getGetDraftPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraft",
-    "actionName" : "fill_bi_form_default",
+    "actionName" : "GetDraft",
     "actionType" : "DEACTION",
     "dataAccessAction" : "CREATE",
     "name" : "loaddraft",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fill_bi_form_default"
+      "id" : "get_draft"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "getGetPSControlAction" : {
     "modelref" : true,
     "id" : "load",
-    "actionName" : "fill_bi_form_default",
+    "actionName" : "Get",
     "actionType" : "DEACTION",
     "dataAccessAction" : "READ",
     "name" : "load",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fill_bi_form_default"
+      "id" : "get"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
-  "logicName" : "BI报表配置_风险占比",
+  "logicName" : "主编辑表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
   },
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -113,15 +113,12 @@
     "hidden" : true,
     "dataType" : 25
   }, {
-    "id" : "type",
+    "id" : "name",
     "dataType" : 25,
-    "createDV" : "状态",
-    "updateDV" : "状态"
-  }, {
-    "id" : "state",
-    "dataType" : 25,
-    "createDV" : "delay",
-    "updateDV" : "delay"
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
   }, {
     "id" : "id",
     "hidden" : true,
@@ -132,83 +129,53 @@
     }
   } ],
   "getPSDEFormPages" : [ {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "CONTROL.DEFORM.EXTEND_PRINT_TEMPL.MAIN.FORMPAGE.FORMPAGE1"
+    },
     "caption" : "基本信息",
     "codeName" : "formpage1",
     "detailStyle" : "DEFAULT",
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
-      "caption" : "配置",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.EXTEND_PRINT_TEMPL.MAIN.GROUPPANEL.GROUP1"
+      },
+      "caption" : "扩展打印模板基本信息",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
-        "caption" : "指标配置",
-        "codeName" : "type",
-        "createDV" : "状态",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.NAME"
+        },
+        "caption" : "名称",
+        "codeName" : "name",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
         "ignoreInput" : 0,
-        "labelPos" : "TOP",
+        "labelPos" : "LEFT",
         "labelWidth" : 130,
-        "name" : "type",
+        "name" : "name",
         "noPrivDisplayMode" : 1,
-        "getPSDEFDGroupLogics" : [ {
-          "groupOP" : "AND",
-          "logicCat" : "ITEMENABLE",
-          "logicType" : "GROUP",
-          "getPSDEFDLogics" : [ {
-            "condOP" : "EQ",
-            "dEFDName" : "type",
-            "logicType" : "SINGLE",
-            "value" : "-1"
-          } ],
-          "relatedDetailNames" : [ "type" ],
-          "notMode" : false
-        } ],
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
-          "name" : "type"
+          "maxLength" : 200,
+          "name" : "name"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "updateDV" : "状态",
-        "allowEmpty" : false,
+        "allowEmpty" : true,
         "showCaption" : true
-      }, {
-        "codeName" : "state",
-        "createDV" : "delay",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "fieldName" : "state",
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "state",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "MDROPDOWNLIST",
-          "name" : "state",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_state.json"
-          },
-          "singleSelect" : false
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "updateDV" : "delay",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -223,7 +190,7 @@
       "showCaption" : true
     }, {
       "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.ID"
+        "lanResTag" : "DEF.LNAME.EXTEND_PRINT_TEMPL.ID"
       },
       "caption" : "标识",
       "codeName" : "id",
@@ -257,6 +224,21 @@
       "layout" : "TABLE_24COL"
     },
     "infoGroupMode" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "CONTROL.DEFORM.EXTEND_PRINT_TEMPL.MAIN.FORMPAGE.FORMPAGE2"
+    },
+    "caption" : "其它",
+    "codeName" : "formpage2",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage2",
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
   } ],
   "getPSLayout" : {
     "childColMD" : 24,
@@ -276,7 +258,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
   "tabHeaderPos" : "TOP",
@@ -293,10 +275,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/extend_print_templ.json"
     }
   },
-  "noTabHeader" : true,
-  "modelid" : "ac966bf7589bc99dc6f40e8fc96c13e4",
+  "noTabHeader" : false,
+  "modelid" : "34e91c9a568e7e91ea62ab737208950f",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

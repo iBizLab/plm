@@ -1674,7 +1674,7 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/template.json"
     },
-    "scriptCode" : "const vditor = view.ctx.parent.vditor;\r\nconst templateView = view.getController('templateshow_view');\r\nif (templateView) {\r\n    const form = templateView.getController('form');\r\n    const [data] = form.getData();\r\n    const description = data.description;\r\n    // 先清空\r\n    vditor.vditor.setValue('');\r\n    vditor.vditor.insertValue(description);\r\n    view.closeView();\r\n}\r\n",
+    "scriptCode" : "const vditor = view.ctx.parent.vditor;\r\nconst templateView = view.getController('templateshow_view');\r\nif (templateView) {\r\n    const form = templateView.getController('form');\r\n    const [data] = form.getData();\r\n    let description = data.description;\r\n    // 将&转换为&amp;，防止符号转化\r\n    if (description.includes('&')) {\r\n      description = description\r\n        .replace(/&reg/g, '&amp;reg')\r\n        .replace(/&copy/g, '&amp;copy')\r\n        .replace(/&trade/g, '&amp;trade');\r\n    }\r\n    // 先清空\r\n    vditor.vditor.setValue('');\r\n    vditor.vditor.insertValue(description);\r\n    view.closeView();\r\n}\r\n",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "use_template",
     "uIActionType" : "DEUIACTION",
@@ -1709,7 +1709,8 @@
       "leftPos" : 721,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "code" : "ibiz.mc.command.create.send({ srfdecodename: 'template'});",
       "codeName" : "RAWJSCODE1",
@@ -1728,7 +1729,7 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",

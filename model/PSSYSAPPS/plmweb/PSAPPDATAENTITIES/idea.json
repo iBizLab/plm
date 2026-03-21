@@ -12930,6 +12930,46 @@
     "reportFile" : "#",
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "MULTIKEY",
@@ -13734,6 +13774,12 @@
       "modelid" : "03cd31b1f9f06728266fdeebd97fd6ac",
       "modeltype" : "PSDEFORM_EDITFORM"
     },
+    "getPSNavigateContexts" : [ {
+      "key" : "SRFIGNORECHANGE",
+      "name" : "SRFIGNORECHANGE",
+      "value" : "true",
+      "rawValue" : true
+    } ],
     "getPSNavigateParams" : [ {
       "key" : "modaloption",
       "name" : "modaloption",
@@ -13934,8 +13980,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "成功归档",
@@ -13978,7 +14023,7 @@
     "id" : "idea_copy@idea"
   }, {
     "actionTarget" : "MULTIKEY",
-    "caption" : "需求移动",
+    "caption" : "移动",
     "codeName" : "idea_move",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -13988,7 +14033,7 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "idea_idea_move",
     "memo" : "批操作工具栏上按钮调用",
-    "name" : "需求移动",
+    "name" : "移动",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "idea_move"
@@ -13996,6 +14041,9 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "移动成功",
@@ -14008,7 +14056,7 @@
     "id" : "idea_move@idea"
   }, {
     "actionTarget" : "MULTIKEY",
-    "caption" : "需求移动",
+    "caption" : "移动",
     "codeName" : "idea_move_toolbar",
     "dialogResult" : "OK",
     "getFrontPSAppView" : {
@@ -14019,7 +14067,7 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "idea_idea_move_toolbar",
     "memo" : "批操作工具栏上按钮调用",
-    "name" : "需求移动（工具栏）",
+    "name" : "移动（工具栏）",
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "idea_move"
@@ -14027,6 +14075,9 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1772181217654\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7589\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\" fill=\"CurrentColor\"><path d=\"M78.1312 490.24h412.1088V78.1312L378.9056 189.4656a21.76 21.76 0 1 1-30.7712-30.7712l148.48-148.48a21.76 21.76 0 0 1 30.7712 0l148.48 148.48a21.76 21.76 0 0 1-30.7712 30.7712L533.76 78.1312v412.1088h412.1088l-111.3344-111.3344a21.76 21.76 0 0 1 30.7712-30.7712l148.48 148.48a21.76 21.76 0 0 1 0 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712-30.7712l111.3344-111.3344h-412.1088v412.1088l111.3344-111.3344a21.76 21.76 0 0 1 30.7712 30.7712l-148.48 148.48a21.76 21.76 0 0 1-30.7712 0l-148.48-148.48a21.76 21.76 0 0 1 30.7712-30.7712L490.24 945.8688v-412.1088H78.1312l111.3344 111.3344a21.76 21.76 0 0 1-30.7712 30.7712l-148.48-148.48a21.76 21.76 0 0 1 0-30.7712l148.48-148.48a21.76 21.76 0 1 1 30.7712 30.7712L78.1312 490.24z\"  p-id=\"7590\"></path></svg>"
     },
     "successMsg" : "移动成功",
     "timeout" : 60000,
@@ -14971,8 +15022,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "成功归档",
@@ -15774,7 +15824,8 @@
       "leftPos" : 580,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 323,
@@ -15826,7 +15877,8 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 208
+      "topPos" : 198,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "view",
@@ -16343,7 +16395,7 @@
         "modelref" : true,
         "id" : "form_data"
       },
-      "leftPos" : 688,
+      "leftPos" : 638,
       "logicNodeType" : "DEBUGPARAM",
       "name" : "调试逻辑参数",
       "getPSDEUILogicLinks" : [ {
@@ -16358,10 +16410,10 @@
           "id" : "DEBUGPARAM1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 196
     }, {
       "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 186,
+      "leftPos" : 156,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "绑定表单数据",
       "getPSDEUILogicLinks" : [ {
@@ -16390,16 +16442,17 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 208
+      "topPos" : 200
     }, {
       "codeName" : "END1",
       "leftPos" : 883,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 500,
+      "leftPos" : 390,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "设置表单数据",
       "getPSDEUILogicLinks" : [ {
@@ -16471,7 +16524,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 208
+      "topPos" : 198
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "form_data",
@@ -16816,29 +16869,8 @@
       "leftPos" : 630,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 380
-    }, {
-      "codeName" : "create_idea",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "save"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "leftPos" : 780,
-      "logicNodeType" : "DEACTION",
-      "name" : "新建需求",
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "topPos" : -150
+      "topPos" : 380,
+      "parallelOutput" : true
     }, {
       "code" : "let choose = uiLogic.default.customer_id;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));\r\n    uiLogic.dto.principal_id = uiLogic.idea.id;\r\n    uiLogic.dto.id = uiLogic.idea.id;\r\n    uiLogic.dto.principal_type = \"idea\";\r\n    uiLogic.dto.target_type = \"customer\";\r\n}",
       "codeName" : "RAWJSCODE2",
@@ -16863,7 +16895,7 @@
               "id" : "dto"
             },
             "logicType" : "SINGLE",
-            "name" : "dto[srfactionparam] 值不为空(NotNil)"
+            "name" : "dto[srfactionparam] 值不为空(NotNil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {
@@ -16888,7 +16920,7 @@
               "id" : "dto"
             },
             "logicType" : "SINGLE",
-            "name" : "dto[srfactionparam] 值为空(Nil)"
+            "name" : "dto[srfactionparam] 值为空(Nil) "
           } ]
         },
         "getSrcPSDEUILogicNode" : {

@@ -3482,6 +3482,44 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/all/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "all",
+    "dEFGroupType" : "FIELDS",
+    "logicName" : "所有工作项",
+    "name" : "all",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "AllInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "AllResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "DTOS"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "usually"
+    },
+    "viewLevel" : 100
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/archived/PSDEDQCODES/MYSQL5.json"
     }, {
       "modelref" : true,
@@ -8509,6 +8547,38 @@
     "enableFront" : true,
     "enableTempData" : true
   }, {
+    "codeName" : "all",
+    "logicName" : "所有工作项",
+    "name" : "all",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "all"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "AllInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "AllResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEFGroup" : {
+      "modelref" : true,
+      "id" : "usually"
+    },
+    "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "codeName" : "archived",
     "logicName" : "已归档",
     "majorSortDir" : "DESC",
@@ -11897,7 +11967,7 @@
         "name" : "SOLUTION_WAY",
         "codeName" : "solution_way"
       },
-      "stringLength" : 2000,
+      "stringLength" : 1048576,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -14135,7 +14205,7 @@
         "name" : "SOLUTION_WAY",
         "codeName" : "solution_way"
       },
-      "stringLength" : 2000,
+      "stringLength" : 1048576,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -16923,6 +16993,7 @@
           "srfnavparam.state" : "%state%",
           "srfnavparam.project_id" : "%project_id%",
           "srfnavparam.work_item_type_id" : "%work_item_type_id%",
+          "srfnavparam.id" : "%id%",
           "alwaysLoad" : "true"
         },
         "editorType" : "DROPDOWNLIST",
@@ -18794,7 +18865,7 @@
         "codeName" : "Default",
         "editorType" : "TEXTAREA_10",
         "name" : "[SOLUTION_WAY][解决办法]",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
@@ -18805,7 +18876,7 @@
         "codeName" : "MobileDefault",
         "editorType" : "MOBTEXTAREA",
         "name" : "[SOLUTION_WAY][解决办法]移动端默认",
-        "stringLength" : 2000,
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -18822,16 +18893,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "SOLUTION_WAY",
-          "maxValue" : 2000,
+          "maxValue" : 1048576,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[2000]"
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
       },
-      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -18839,9 +18910,9 @@
     } ],
     "codeName" : "solution_way",
     "dEFType" : 1,
-    "dataType" : "LONGTEXT_1000",
+    "dataType" : "LONGTEXT",
     "importOrder" : 1000,
-    "length" : 2000,
+    "length" : 1048576,
     "logicName" : "解决办法",
     "name" : "SOLUTION_WAY",
     "orderValue" : 400,
@@ -18854,10 +18925,11 @@
       "id" : "SOLUTION_WAY"
     },
     "serviceCodeName" : "solution_way",
-    "stdDataType" : 25,
-    "stringLength" : 2000,
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
     "valueFormat" : "%1$s",
-    "enableAudit" : true
+    "enableAudit" : true,
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "WORK_ITEM_TYPE_SEQUENCE",
@@ -50108,8 +50180,8 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 2000,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "工作项类型序号",
@@ -52658,8 +52730,8 @@
         "codeName" : "solution_way"
       },
       "sourceType" : "DEFGROUPDETAIL",
-      "stdDataType" : 25,
-      "stringLength" : 2000,
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "标签",
@@ -54484,6 +54556,47 @@
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE",
     "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEPRINTS/chat_resource.json"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人： ${item.assignee_name!''}\r\n\r\n工作项类型标识：${item.work_item_type_id!''}\r\n\r\n工作项类型：${item.work_item_type_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n\r\n<#if item.start_at?? && item.start_at?is_date>\r\n开始时间： ${item.start_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.end_at?? && item.end_at?is_date>\r\n结束时间： ${item.end_at?string(\"yyyy-MM-dd\")}\r\n</#if>\r\n\r\n<#if item.severity_text??>\r\n严重程度：${item.severity_text!''}\r\n</#if>\r\n\r\n<#if item.reappear_probability_text??>\r\n复现概率：${item.reappear_probability_text!''}\r\n</#if>\r\n\r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n所属项目：${item.project_name!''}\r\n\r\n\r\n<#if item.sprint_id??>\r\n所属迭代：${item.sprint_name!''}\r\n</#if>\r\n\r\n<#if item.release_id??>\r\n所属发布：${item.release_name!''}\r\n</#if>\r\n\r\n<#if item.estimated_workload??>\r\n预估工时：${item.estimated_workload!}\r\n</#if>\r\n\r\n<#if item.actual_workload??>\r\n实际工时：${item.actual_workload!}\r\n</#if>\r\n\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/work_items/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"WORK_ITEM\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    },
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEPRINTS/dynamic_chat_resource.json"
   } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
@@ -54639,6 +54752,14 @@
     },
     "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
     "utilType" : "NOTIFYSETTING"
+  }, {
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUTILDES/EXTENSION.json",
+    "name" : "扩展增强",
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/DynaEditViewModelExUtilRuntime.json"
+    },
+    "utilType" : "EXTENSION"
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "change_parent_pick_up_grid_view",
@@ -54735,6 +54856,12 @@
     "logicName" : "工作项执行人选项操作视图",
     "name" : "工作项执行人选项操作视图",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_waterfall_main_view",
+    "logicName" : "瀑布工作项主视图（动态）",
+    "name" : "瀑布工作项主视图（动态）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Usr07302198GridView",
@@ -55074,6 +55201,12 @@
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "dyna_scrum_main_view",
+    "logicName" : "scrum工作项主视图（动态）",
+    "name" : "scrum工作项主视图（动态）",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_calendar_exp_view",
     "logicName" : "工作项移动端日历视图",
     "name" : "工作项移动端日历视图",
@@ -55408,6 +55541,12 @@
     "logicName" : "我负责的工作项表格视图（首页）",
     "name" : "我负责的工作项表格视图（首页）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_hybrid_main_view",
+    "logicName" : "混合工作项主视图（动态）",
+    "name" : "混合工作项主视图（动态）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "move_view",
@@ -55771,6 +55910,12 @@
     "logicName" : "移动端工作项回收站多数据视图",
     "name" : "移动端工作项回收站多数据视图",
     "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_kanban_main_view",
+    "logicName" : "kanban工作项主视图（动态）",
+    "name" : "kanban工作项主视图（动态）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "kanban_backlog_property_report_view",

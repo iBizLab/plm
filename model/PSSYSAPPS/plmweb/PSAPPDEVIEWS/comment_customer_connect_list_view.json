@@ -567,7 +567,7 @@
           "hidden" : true,
           "viewFieldName" : "PID"
         }, {
-          "id" : "field_text_dynamic2",
+          "id" : "content",
           "viewFieldName" : "CONTENT"
         }, {
           "id" : "pcreate_man",
@@ -752,12 +752,12 @@
                 "logicType" : "GROUP",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "NOTEQ",
-                  "dstModelField" : "FIELD_TEXT_DYNAMIC2",
+                  "dstModelField" : "CONTENT",
                   "logicType" : "SINGLE",
-                  "name" : "逻辑项",
+                  "name" : "CONTENT 不等于(<>) <p><del>该评论已删除</del></p>",
                   "value" : "<p><del>该评论已删除</del></p>"
                 } ],
-                "relatedItemNames" : [ "field_text_dynamic2" ],
+                "relatedItemNames" : [ "content" ],
                 "notMode" : false
               } ],
               "getPSPanelItems" : [ {
@@ -826,8 +826,7 @@
                   "layout" : "FLEX"
                 },
                 "getPSSysImage" : {
-                  "glyph" : "xf044@FontAwesome",
-                  "cssClass" : "fa fa-edit"
+                  "rawContent" : "<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" width=\"1em\" preserveAspectRatio=\"xMidYMid meet\" focusable=\"false\" fill=\"CurrentColor\"><g id=\"ajpaction/edit\" stroke-width=\"1\" fill-rule=\"evenodd\"><path d=\"M2 8.34L10.71 0 15 4.17 6.538 13H2V8.34zm1.2.512V11.8h2.826l7.283-7.6-2.606-2.533L3.2 8.852zM0 16v-1.2h16V16H0z\" id=\"ajp编辑\"></path></g></svg>"
                 },
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEDATA",
@@ -877,8 +876,8 @@
                   "layout" : "FLEX"
                 },
                 "getPSSysImage" : {
-                  "glyph" : "xf1f8@FontAwesome",
-                  "cssClass" : "fa fa-trash"
+                  "glyph" : "xf014@FontAwesome",
+                  "cssClass" : "fa fa-trash-o"
                 },
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEKEY",
@@ -893,7 +892,7 @@
                   },
                   "getPSAppDEUILogic" : {
                     "modelref" : true,
-                    "id" : "refresh_comment"
+                    "id" : "notify_refresh"
                   },
                   "getPSAppDataEntity" : {
                     "modelref" : true,
@@ -931,24 +930,23 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "field_text_dynamic2",
+              "name" : "content",
               "getPSEditor" : {
-                "contentType" : "HTML",
                 "editorParams" : {
-                  "contenttype" : "HTML",
                   "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
-                  "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
+                  "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                  "READONLY" : "true"
                 },
-                "editorStyle" : "COMMENT_ITEM",
-                "editorType" : "RAW",
-                "name" : "field_text_dynamic2",
+                "editorStyle" : "VDITOR",
+                "editorType" : "HTMLEDITOR",
+                "name" : "content",
                 "getPSSysPFPlugin" : {
                   "pluginType" : "EDITOR_CUSTOMSTYLE",
-                  "pluginCode" : "COMMENT_ITEM",
+                  "pluginCode" : "VDITOR",
                   "runtimeObject" : true
                 },
-                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "readOnly" : true
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
@@ -1039,22 +1037,36 @@
                 "getPSEditor" : {
                   "contentType" : "HTML",
                   "editorParams" : {
-                    "contenttype" : "HTML"
+                    "contenttype" : "HTML",
+                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                    "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                   },
+                  "editorStyle" : "COMMENT_ITEM",
                   "editorType" : "RAW",
                   "name" : "pcontent",
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "COMMENT_ITEM",
+                    "runtimeObject" : true
+                  },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC"
                 },
                 "getPSLayoutPos" : {
                   "grow" : 1,
                   "layout" : "FLEX"
                 },
+                "getPSSysCss" : {
+                  "cssName" : "normal-rich-text"
+                },
                 "viewFieldName" : "PCONTENT"
               } ],
               "getPSSysCss" : {
                 "cssName" : "comment-replay"
               }
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "vditor-comment-item"
+            }
           } ]
         } ],
         "name" : "list_itempanel",

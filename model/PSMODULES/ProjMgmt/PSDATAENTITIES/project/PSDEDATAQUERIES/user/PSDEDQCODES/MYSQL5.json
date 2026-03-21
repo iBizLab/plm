@@ -61,6 +61,9 @@
     "expression" : "t1.`IS_LOCAL_CONFIGURE`",
     "name" : "IS_LOCAL_CONFIGURE"
   }, {
+    "expression" : "t1.`IS_TEMPLATE`",
+    "name" : "IS_TEMPLATE"
+  }, {
     "expression" : "t1.`NAME`",
     "name" : "NAME"
   }, {
@@ -91,6 +94,6 @@
     "expression" : "t1.`VISIBILITY`",
     "name" : "VISIBILITY"
   } ],
-  "queryCode" : "SELECT\nt1.`ACTUAL_END_AT`,\nt1.`ACTUAL_START_AT`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`COLOR`,\nt1.`CONSUME_TIME`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`EXPECTED_TIME`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LOCAL_CONFIGURE`,\nt1.`NAME`,\nt1.`SCOPE_ID`,\nt1.`SCOPE_TYPE`,\nt1.`START_AT`,\nt1.`STATE`,\nt11.`TYPE` AS `STATE_TYPE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VISIBILITY`\nFROM `PROJECT` t1 \nLEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` \n",
+  "queryCode" : "SELECT\nt1.`ACTUAL_END_AT`,\nt1.`ACTUAL_START_AT`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`COLOR`,\nt1.`CONSUME_TIME`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`EXPECTED_TIME`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LOCAL_CONFIGURE`,\nt1.`IS_TEMPLATE`,\nt1.`NAME`,\nt1.`SCOPE_ID`,\nt1.`SCOPE_TYPE`,\nt1.`START_AT`,\nt1.`STATE`,\nt11.`TYPE` AS `STATE_TYPE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VISIBILITY`\nFROM `PROJECT` t1 \nLEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` \n",
   "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/user/PSDEDQCODES/MYSQL5.json"
 }

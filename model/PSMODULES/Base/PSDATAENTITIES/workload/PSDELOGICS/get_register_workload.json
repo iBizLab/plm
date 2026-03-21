@@ -21,7 +21,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -30,
+    "topPos" : -90,
     "parallelOutput" : true
   }, {
     "codeName" : "DEBUGPARAM1",
@@ -38,12 +38,27 @@
         "id" : "DEACTION1"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[ID] 值不为空(NotNil) "
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEBUGPARAM1"
       }
     } ],
-    "topPos" : 81
+    "topPos" : 21
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -268,7 +283,8 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 910
+    "topPos" : 910,
+    "parallelOutput" : true
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

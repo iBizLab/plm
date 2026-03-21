@@ -1,0 +1,250 @@
+{
+  "codeName" : "create_default_flow_logic",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context/PSDELOGICS/create_default_flow_logic.json",
+  "logicName" : "建立默认flow交谈逻辑",
+  "name" : "建立默认flow交谈逻辑",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -30,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "FLOW_MODE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[FLOW_MODE] 等于(=) DE",
+          "paramValue" : "DE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 204,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM_01",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备模板智能体逻辑",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_03"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM_01"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PSDELOGICID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "original_delogic"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ai.AI_AGENT_CONTEXT.agent_flow_templ",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 202,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_03",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "leftPos" : 370,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取选择flow智能体逻辑",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_03"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "PSDELOGICID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "original_delogic"
+          },
+          "logicType" : "SINGLE",
+          "name" : "original_delogic[PSDELOGICID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_03"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "topPos" : 202,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_04",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建logic",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_05"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_04"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "topPos" : 430,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _original_delogic = logic.param('original_delogic').getReal();\ndef _default = logic.param('Default').getReal()\n_original_delogic.id=_default.code_name+ \"@ai.AI_AGENT_CONTEXT.agent_flow_templ\"\n_original_delogic.psdeid=_default.code_name+ \"@ai.AI_AGENT_CONTEXT\"\n_original_delogic.psdelogicname=_default.name\n",
+    "codeName" : "RAWSFCODE_03",
+    "codeType" : "Groovy",
+    "leftPos" : 370,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "构造新逻辑信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_04"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE_03"
+      }
+    } ],
+    "topPos" : 430,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION_05",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/apply.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "original_delogic"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "应用逻辑",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END_01"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION_05"
+      }
+    } ],
+    "topPos" : 570,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END_01",
+    "leftPos" : 410,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 572,
+    "parallelOutput" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "original_ag_context",
+    "logicName" : "original_ag_context",
+    "name" : "original_ag_context",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ai/PSDATAENTITIES/ai_agent_context.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "original_delogic",
+    "logicName" : "original_delogic",
+    "name" : "original_delogic",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

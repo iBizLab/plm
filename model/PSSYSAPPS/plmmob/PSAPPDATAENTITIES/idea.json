@@ -12514,6 +12514,46 @@
     "reportFile" : "#",
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人 ${item.assignee_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.priority_text??>\r\n优先级：${item.priority_text!''}\r\n</#if>\r\n\r\n描述：${utils.html2md(item.description!\"\")}\r\n\r\n<#assign comments = api.invoke(\"/ideas/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"IDEA\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t> ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    }
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "SINGLEKEY",
@@ -13330,8 +13370,7 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
     },
     "getPSSysImage" : {
-      "glyph" : "xf187@FontAwesome",
-      "cssClass" : "fa fa-archive"
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"CurrentColor\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\"></path>\n</svg>"
     },
     "refreshMode" : 1,
     "successMsg" : "成功归档",
@@ -13408,7 +13447,8 @@
       "leftPos" : 580,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 323,
@@ -13460,7 +13500,8 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 208
+      "topPos" : 198,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "view",
@@ -13483,6 +13524,78 @@
       "logicName" : "视图消息占位状态",
       "name" : "视图消息占位状态",
       "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "fill_att_com_count",
+    "defaultParamName" : "Default",
+    "logicName" : "获取关注人与评论数",
+    "name" : "获取关注人与评论数",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "const attention_counts = uiLogic.view.layoutPanel.panelItems.attention_count;\r\nif (attention_counts && uiLogic.default.attention_count !== undefined) {\r\n    attention_counts.setDataValue(uiLogic.default.attention_count);\r\n}\r\n\r\nconst comment_counts = uiLogic.view.layoutPanel.panelItems.comment_count;\r\ncomment_counts.setDataValue(uiLogic.default.comment_count);\r\n\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 386,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "填充关注&评论数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 612,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "CONTAINER_COUNT",
+      "logicName" : "统计容器",
+      "name" : "统计容器",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

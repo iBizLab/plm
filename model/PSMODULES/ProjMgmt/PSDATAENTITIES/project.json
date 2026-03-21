@@ -753,6 +753,59 @@
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
+    "codeName" : "copy_project_info",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/copy_project_info.json",
+    "logicName" : "copy_project_info",
+    "name" : "copy_project_info",
+    "getPSDEActionInput" : {
+      "name" : "Copy_project_infoInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Copy_project_infoResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/copy_project_info.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CREATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "create_from_template",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/create_from_template.json",
+    "logicName" : "使用模板创建项目",
+    "name" : "create_from_template",
+    "getPSDEActionInput" : {
+      "name" : "Create_from_templateInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Create_from_templateResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/create_from_template.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
     "codeName" : "delete",
     "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/delete.json",
@@ -1318,6 +1371,9 @@
     }, {
       "name" : "CONSUME_TIME",
       "codeName" : "consume_time"
+    }, {
+      "name" : "IS_TEMPLATE",
+      "codeName" : "is_template"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -8084,6 +8140,221 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_TEMPLATE",
+      "dBType" : "MYSQL5",
+      "name" : "IS_TEMPLATE",
+      "queryCodeExp" : "t1.`IS_TEMPLATE`",
+      "standardColumnName" : "`IS_TEMPLATE`",
+      "valueAutoGen" : true
+    }, {
+      "columnName" : "IS_TEMPLATE",
+      "dBType" : "POSTGRESQL",
+      "name" : "IS_TEMPLATE",
+      "standardColumnName" : "IS_TEMPLATE",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_IS_TEMPLATE_EQ",
+      "name" : "N_IS_TEMPLATE_EQ",
+      "stdDataType" : 9,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_TEMPLATE][是否模板]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_TEMPLATE][是否模板]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_TEMPLATE][是否模板]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_TEMPLATE][是否模板]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_template",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "logicName" : "是否模板",
+    "name" : "IS_TEMPLATE",
+    "orderValue" : 430,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IS_TEMPLATE"
+    },
+    "serviceCodeName" : "is_template",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_TEMPLATE_NAME][项目模板名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PROJECT_TEMPLATE_NAME][项目模板名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PROJECT_TEMPLATE_NAME][项目模板名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[PROJECT_TEMPLATE_NAME][项目模板名称]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PROJECT_TEMPLATE_NAME",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "project_template_name",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "项目模板名称",
+    "name" : "PROJECT_TEMPLATE_NAME",
+    "orderValue" : 440,
+    "serviceCodeName" : "project_template_name",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[PROJECT_TEMPLATE_ID][项目模板标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[PROJECT_TEMPLATE_ID][项目模板标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PROJECT_TEMPLATE_ID][项目模板标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PROJECT_TEMPLATE_ID][项目模板标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PROJECT_TEMPLATE_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "project_template_id",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "项目模板标识",
+    "name" : "PROJECT_TEMPLATE_ID",
+    "orderValue" : 450,
+    "serviceCodeName" : "project_template_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -10379,6 +10650,123 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "copy_project_info",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/copy_project_info.json",
+    "logicName" : "复制项目信息",
+    "name" : "复制项目信息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 365,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取目标项目数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "topPos" : 198,
+      "parallelOutput" : true
+    }, {
+      "code" : "def project = logic.param('project').getReal()\r\nproject.id = null\r\nproject.identifier = 'PROJ' + UUID.randomUUID().toString().replaceAll('-', '').toUpperCase().take(11)\r\nlogic.param('project').getDataEntityRuntime().fillEntityKeyValue(project)",
+      "codeName" : "RAWSFCODE_01",
+      "codeType" : "Groovy",
+      "leftPos" : 365,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE_01"
+        }
+      } ],
+      "topPos" : 332,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 405,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 500,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "project",
+      "logicName" : "project",
+      "name" : "project",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "create_default_board",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/create_default_board.json",
@@ -10602,6 +10990,222 @@
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
       },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "create_from_template",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/create_from_template.json",
+    "logicName" : "使用模板创建项目",
+    "name" : "使用模板创建项目",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 60,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "project_template_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[project_template_id] 值为空(Nil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "project_template_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[project_template_id] 值不为空(NotNil) "
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : -280,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_01",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : -120,
+      "logicNodeType" : "DEACTION",
+      "name" : "新建",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_01"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 40,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION_02",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Copy.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 190,
+      "logicNodeType" : "DEACTION",
+      "name" : "复制",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 40,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM_01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 116,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数##",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END_01"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM_01"
+        }
+      } ],
+      "topPos" : 150,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END_01",
+      "leftPos" : 80,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 280,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM_01",
+      "leftPos" : 190,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION_02"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM_01"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "id",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "project_template_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -69,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
@@ -11235,7 +11839,8 @@
         "id" : "project"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 890
+      "topPos" : 890,
+      "parallelOutput" : true
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -15315,6 +15920,7 @@
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
       },
+      "pattern" : "^[A-Z0-9]{1,15}$",
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
       "stringLength" : 15,
@@ -15507,6 +16113,7 @@
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
       },
+      "pattern" : "^[A-Z0-9]{1,15}$",
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
       "stringLength" : 15,
@@ -15695,6 +16302,7 @@
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
       },
+      "pattern" : "^[A-Z0-9]{1,15}$",
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 15,
@@ -15928,6 +16536,39 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "是否模板",
+      "name" : "is_template",
+      "getPSDEField" : {
+        "name" : "IS_TEMPLATE",
+        "codeName" : "is_template"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "项目模板名称",
+      "name" : "project_template_name",
+      "getPSDEField" : {
+        "name" : "PROJECT_TEMPLATE_NAME",
+        "codeName" : "project_template_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "项目模板标识",
+      "name" : "project_template_id",
+      "getPSDEField" : {
+        "name" : "PROJECT_TEMPLATE_ID",
+        "codeName" : "project_template_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -16085,6 +16726,7 @@
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
       },
+      "pattern" : "^[A-Z0-9]{1,15}$",
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
       "stringLength" : 15,
@@ -16499,6 +17141,22 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "是否模板",
+      "name" : "n_is_template_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_IS_TEMPLATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "IS_TEMPLATE",
+        "codeName" : "is_template"
+      },
+      "scale" : 0,
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "项目名称",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -16662,6 +17320,7 @@
         "name" : "IDENTIFIER",
         "codeName" : "identifier"
       },
+      "pattern" : "^[A-Z0-9]{1,15}$",
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
       "stringLength" : 15,
@@ -17734,6 +18393,12 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "create_wizard_from_template_view",
+    "logicName" : "从模板新建项目向导视图",
+    "name" : "从模板新建项目向导视图",
+    "realModelSubType" : "DEWIZARDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "is_archived_grid_view",
     "logicName" : "归档项目表格视图",
     "name" : "归档项目表格视图",
@@ -17866,6 +18531,14 @@
     "logicName" : "项目概览_基本信息",
     "modelTag2" : "0",
     "name" : "项目概览_基本信息",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "wizard_create_from_template",
+    "logicName" : "从模板新建表单",
+    "modelTag" : "WIZARDFORM",
+    "modelTag2" : "0",
+    "name" : "从模板新建表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

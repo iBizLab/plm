@@ -20301,7 +20301,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "SELECT\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_test_case,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_work_item\r\nFROM\r\n    `RELATION` t11\r\nJOIN\r\n    `test_case` t ON t.`ID` = t11.`PRINCIPAL_ID`\r\nLEFT JOIN\r\n    `idea` t1 ON t1.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `test_case` t2 ON t2.`ID` = t11.`TARGET_ID`\r\nLEFT JOIN\r\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\r\nWHERE\r\n    (t11.`PRINCIPAL_ID` = ?);",
+      "sql" : "SELECT\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_test_case,\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 and t5.`group` <> 'bug' THEN 1 ELSE 0 END),0) AS test_case_re_work_item\nFROM\n    `RELATION` t11\nJOIN\n    `test_case` t ON t.`ID` = t11.`PRINCIPAL_ID`\nLEFT JOIN\n    `idea` t1 ON t1.ID = t11.TARGET_ID \nLEFT JOIN\n    `test_case` t2 ON t2.`ID` = t11.`TARGET_ID`\nLEFT JOIN\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\nLEFT JOIN\n    `work_item_type` t5 ON t4.work_item_type_id = t5.id\nWHERE\n    (t11.`PRINCIPAL_ID` = ?);",
       "topPos" : 208,
       "fillDstLogicParam" : true
     }, {
@@ -22578,6 +22578,47 @@
     "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人：${item.maintenance_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.level_text??>\r\n重要程度：${item.level_text!''}\r\n</#if>\r\n\r\n\r\n<#if item.precondition??>\r\n前置条件：${utils.html2md(item.precondition!\"\")}\r\n</#if>\r\n \r\n <#if item.steps??>\r\n    <#assign steps = item.steps.getReal()>\r\n    <#if steps?has_content>\r\n        步骤列表：\r\n        <#if steps?is_sequence>\r\n            <#list steps as step>\r\n                <#if step.is_group?? && step.is_group == 1>\r\n                    ${step.name!\"\"}\r\n                </#if>\r\n            步骤描述：${step.description!\"\"}  预期结果：${step.expected_value!\"\"}\r\n            </#list>\r\n        </#if>\r\n    </#if>\r\n</#if>\r\n\r\n\r\n <#if item.description??>\r\n描述：${utils.html2md(item.description!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/test_cases/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TEST_CASE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t    ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
     "reportType" : "CHATRESOURCE",
     "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEPRINTS/chat_resource.json"
+  }, {
+    "codeName" : "dynamic_chat_resource",
+    "getContentTypePSDEField" : {
+      "name" : "PRINT_TYPE",
+      "codeName" : "print_type"
+    },
+    "dataAccessAction" : "READ",
+    "dynamicMode" : 1,
+    "getGetDataPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "name" : "dynamic_chat_resource",
+    "getNamePSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "reportFile" : "#",
+    "reportModel" : "<#list data as item>\r\n\r\n编号：${item.show_identifier!''}\r\n\r\n标题：${item.title!''}\r\n\r\n负责人：${item.maintenance_name!''}\r\n\r\n<#if item.state_text??>\r\n状态：${item.state_text!''}\r\n</#if>\r\n \r\n<#if item.level_text??>\r\n重要程度：${item.level_text!''}\r\n</#if>\r\n\r\n\r\n<#if item.precondition??>\r\n前置条件：${utils.html2md(item.precondition!\"\")}\r\n</#if>\r\n \r\n <#if item.steps??>\r\n    <#assign steps = item.steps.getReal()>\r\n    <#if steps?has_content>\r\n        步骤列表：\r\n        <#if steps?is_sequence>\r\n            <#list steps as step>\r\n                <#if step.is_group?? && step.is_group == 1>\r\n                    ${step.name!\"\"}\r\n                </#if>\r\n            步骤描述：${step.description!\"\"}  预期结果：${step.expected_value!\"\"}\r\n            </#list>\r\n        </#if>\r\n    </#if>\r\n</#if>\r\n\r\n\r\n <#if item.description??>\r\n描述：${utils.html2md(item.description!\"\")}\r\n</#if>\r\n\r\n\r\n<#assign comments = api.invoke(\"/test_cases/\"+item.id+\"/comments/fetch_default\",'{\"n_owner_type_eq\":\"TEST_CASE\",\"n_principal_id_eq\":\"'+item.id+'\",\"page\":0,\"size\":1000}') >\r\n<#if comments?has_content>\r\n评论\r\n\t<#list comments as comment>\r\n\t${comment.create_man!\"\"}于${comment.create_time!\"\"}发表\r\n\t\t<#if comment.pcontent??>\r\n\t\t    ${comment.pcontent}\r\n\t\t</#if>\r\n\t\t${utils.html2md(comment.content!\"\")}\r\n\t</#list>\r\n</#if>\r\n\r\n</#list>",
+    "getReportModelPSDEField" : {
+      "name" : "PRINT_MODEL",
+      "codeName" : "print_model"
+    },
+    "reportType" : "CHATRESOURCE",
+    "getReportTypePSDEField" : {
+      "name" : "REPORT_TYPE",
+      "codeName" : "report_type"
+    },
+    "getSourcePSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getSourcePSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_print_templ.json"
+    },
+    "getUniqueTagPSDEField" : {
+      "name" : "PRINT_TAG",
+      "codeName" : "print_tag"
+    },
+    "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEPRINTS/dynamic_chat_resource.json"
   } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",

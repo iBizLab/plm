@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.copy_project_info;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectcopy_project_infodefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectcopy_project_infoproject;
+                    global cn.ibizlab.plm.core.projmgmt.service.IprojectService projectservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectcopy_project_infobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取目标项目数据]
+            rule "deaction_01"
+            ruleflow-group "projectcopy_project_infodeaction_01"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(projectservice.get(projectcopy_project_infodefault.getId()),projectcopy_project_infodefault);
+                        update(projectcopy_project_infodefault);//更新fact中变量值
+                        update(projectcopy_project_infoproject);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode_01"
+            ruleflow-group "projectcopy_project_inforawsfcode_01"
+            when
+            then
+                        update(projectcopy_project_infodefault);//更新fact中变量值
+                        update(projectcopy_project_infoproject);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end_01"
+            ruleflow-group "projectcopy_project_infoend_01"
+            when
+            then
+                        update(projectcopy_project_infodefault);//更新fact中变量值
+                        update(projectcopy_project_infoproject);//更新fact中变量值
+            end

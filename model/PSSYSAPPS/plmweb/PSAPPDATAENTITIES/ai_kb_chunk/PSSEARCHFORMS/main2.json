@@ -31,6 +31,10 @@
     "dataType" : 25,
     "createDV" : "0"
   }, {
+    "id" : "n_pageindex_eq",
+    "dataType" : 25,
+    "createDV" : "0"
+  }, {
     "id" : "n_rerank_eq",
     "dataType" : 25,
     "createDV" : "0",
@@ -200,6 +204,29 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
+        "caption" : "智能目录索引",
+        "codeName" : "n_pageindex_eq",
+        "createDV" : "0",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "n_pageindex_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "SWITCH",
+          "name" : "n_pageindex_eq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
         "caption" : "是否重排",
         "codeName" : "n_rerank_eq",
         "createDV" : "0",
@@ -281,7 +308,7 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ai_kb_chunk.json"
           },
-          "scriptCode" : "console.log(\"检索测试\"+view)\r\nconsole.log(\"检索测试\"+ctrl)\r\nconst container_multidata = view.layoutPanel.panelItems.container_multidata;\r\nif(container_multidata){\r\n    const similarity_threshold = ctrl.data.similarity_threshold;\r\n    const keyword_similarity_weight = ctrl.data.keyword_similarity_weight;\r\n    const top_k = ctrl.data.top_k;\r\n    const cross_languages = ctrl.data.cross_languages;\r\n    const use_kg = ctrl.data.use_kg;\r\n    const n_rerank_eq = ctrl.data.n_rerank_eq;\r\n    const query = ctrl.data.query;\r\n    view.params.similarity_threshold = similarity_threshold\r\n    view.params.keyword_similarity_weight = keyword_similarity_weight\r\n    view.params.top_k = top_k\r\n    view.params.cross_languages = cross_languages\r\n    view.params.use_kg = use_kg\r\n    view.params.n_rerank_eq = n_rerank_eq\r\n    view.params.query = query\r\n    await container_multidata.initContainerData();\r\n}",
+          "scriptCode" : "console.log(\"检索测试\"+view)\r\nconsole.log(\"检索测试\"+ctrl)\r\nconst container_multidata = view.layoutPanel.panelItems.container_multidata;\r\nif(container_multidata){\r\n    const similarity_threshold = ctrl.data.similarity_threshold;\r\n    const keyword_similarity_weight = ctrl.data.keyword_similarity_weight;\r\n    const top_k = ctrl.data.top_k;\r\n    const cross_languages = ctrl.data.cross_languages;\r\n    const use_kg = ctrl.data.use_kg;\r\n    const n_rerank_eq = ctrl.data.n_rerank_eq;\r\n    const n_pageindex_eq = ctrl.data.n_pageindex_eq;\r\n    const query = ctrl.data.query;\r\n    view.params.similarity_threshold = similarity_threshold\r\n    view.params.keyword_similarity_weight = keyword_similarity_weight\r\n    view.params.top_k = top_k\r\n    view.params.cross_languages = cross_languages\r\n    view.params.use_kg = use_kg\r\n    view.params.n_rerank_eq = n_rerank_eq\r\n    view.params.n_pageindex_eq = n_pageindex_eq\r\n    view.params.query = query\r\n    await container_multidata.initContainerData();\r\n}",
           "uIActionMode" : "FRONT",
           "uIActionTag" : "retrieval_test",
           "uIActionType" : "DEUIACTION",
