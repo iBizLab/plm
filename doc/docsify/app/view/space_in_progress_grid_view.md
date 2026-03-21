@@ -16,9 +16,9 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [设置管理员](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [删除](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [归档](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [删除](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [设置管理员](module/Wiki/space#界面行为)
 
 ### 关联视图
   * [空间(space_edit_view)](app/view/space_edit_view)

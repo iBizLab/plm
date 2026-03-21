@@ -47,6 +47,51 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/Base/template/dataset/Default)|DEFAULT|数据查询|是|||
 
+## 数据权限
+
+##### 全部数据（读） :id=template-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
+##### 全部数据（读写） :id=template-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `UPDATE`
+* `READ`
+* `CREATE`
+
+
+
+##### 我的通用模板（读写） :id=template-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `自定义条件` ：`[('create_man','=',#{srf.sessioncontext.srfpersonid})]`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `DELETE`
+* `READ`
+* `UPDATE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -59,14 +104,15 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 使用此模板 | use_template | 使用此模板 |无数据|用户自定义||
 | 新建需求模板 | create_idea | 新建模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建模板](app/view/template_create_idea_template_view)</details>||
 | 新建用例模板 | create_test_case | 新建模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建模板](app/view/template_create_test_case_template_view)</details>||
 | 编辑工作项模板 | edit | 编辑模板 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑模板](app/view/template_edit_work_item_template_view)</details>||
 | 编辑用例模板 | edit_test_case | 编辑模板 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑模板](app/view/template_edit_test_case_template_view)</details>||
-| 查看用例模板 | check_test_case | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例列表导航](app/view/template_test_case_list_exp_view)</details>||
+| 查看用例内容模板 | check_test_case | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例列表导航](app/view/template_test_case_list_exp_view)</details>||
 | 新建工作项模板 | create | 新建模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建模板](app/view/template_create_work_item_template_view)</details>||
-| 查看工作项模板 | check | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项列表导航](app/view/template_work_item_list_exp_view)</details>||
-| 查看需求模板 | check_idea | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[需求列表导航](app/view/template_idea_list_exp_view)</details>||
+| 查看工作项内容模板 | check | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项列表导航](app/view/template_work_item_list_exp_view)</details>||
+| 查看需求内容模板 | check_idea | 查看模板 |无数据|<details><summary>打开视图或向导（模态）</summary>[需求列表导航](app/view/template_idea_list_exp_view)</details>||
 | 删除模板 | delete | 删除模板 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 编辑需求模板 | edit_idea | 编辑模板 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑模板](app/view/template_edit_idea_template_view)</details>||
 
@@ -93,6 +139,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/template?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/template?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/template?id=搜索模式`">
   搜索模式

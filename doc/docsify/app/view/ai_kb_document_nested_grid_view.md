@@ -18,10 +18,14 @@
 
 
 ### 关联界面行为
-  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [打开知识库文档同步表格视图](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [文档重新解析](module/ai/ai_kb_document#界面行为)
   * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [打开知识库文档编辑视图](module/ai/ai_kb_document#界面行为)
-  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_删除操作](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [重新切片](module/ai/ai_kb_document#界面行为)
   * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_新建操作](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [打开知识库文档同步表格视图](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_删除操作](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [重新索引](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [表格界面_删除操作](module/ai/ai_kb_document#界面行为)
 
 ### 关联视图
   * [文档分块(ai_kb_chunk_card_view)](app/view/ai_kb_chunk_card_view)

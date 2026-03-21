@@ -71,11 +71,6 @@ defaultObj.set("srfreadonly", false);
 
 返回 `Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -125,12 +120,11 @@ var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", true);
 ```
 
-#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
 
 
-返回 `Default(传入变量)`
-
+*- N/A*
 #### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -142,6 +136,12 @@ var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
+
+#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
 
 
 ### 连接条件说明

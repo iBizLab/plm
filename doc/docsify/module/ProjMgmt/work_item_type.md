@@ -11,8 +11,9 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |类型分组|GROUP|[单项选择(文本值)](index/dictionary_index#work_item_type_group "工作项类型分组")|60|是||
-|图标|ICON|长文本，没有长度限制|100|是||
-|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|图标|ICON|长文本，没有长度限制|16777215|是||
+|图标（显示）|ICON_DISP|文本，可指定长度|200|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup><sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_type_id)</sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否系统类型|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |原始状态|ORGIN_STATE|文本，可指定长度|100|是||
@@ -51,17 +52,21 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_type_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
-|Remove|Remove|内置方法|默认|支持||||
+|Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#work_item_type_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|移动|move|用户自定义|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/work_item_type/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[准备默认扩展模型](module/ProjMgmt/work_item_type/logic/prepare_default_model)|prepare_default_model|无||给新建的工作项类型绑定默认模型|
+|[删除扩展模型](module/ProjMgmt/work_item_type/logic/delete_custom_model)|delete_custom_model|无||删除工作项类型绑定的扩展模型|
+|[新建默认排序](module/ProjMgmt/work_item_type/logic/sort)|sort|无||填充默认排序值与编码值|
 |[无操作](module/ProjMgmt/work_item_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
@@ -138,7 +143,15 @@
 | 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
 | 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
 | 新建工作项类型 | create_type | 新建工作项类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项类型](app/view/work_item_type_global_create_view)</details>||
+| 打开工作项类型新建视图 | open_quick_create_view | 新建工作项类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项类型](app/view/work_item_type_global_edit_view)</details>||
+| 移除扩展模型 | remove_extend_model | 移除 |单项数据|<details><summary>打开视图或向导（模态）</summary></details>||
 | 配置 | panel_usr1229905828_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
+| 编辑工作项类型 | edit_work_item_type | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项类型](app/view/work_item_type_global_edit_view)</details>||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[删除扩展模型](module/ProjMgmt/work_item_type/uilogic/delete_custom_model)|delete_custom_model||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -170,6 +183,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_type?id=界面行为`">
   界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_type?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

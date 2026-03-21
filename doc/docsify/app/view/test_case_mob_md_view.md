@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_刷新操作](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [新建测试用例（移动端）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_刷新操作](module/TestMgmt/test_case#界面行为)
 
 ### 关联视图
   * [新建(test_case_mob_create_view)](app/view/test_case_mob_create_view)

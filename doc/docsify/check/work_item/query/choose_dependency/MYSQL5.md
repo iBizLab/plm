@@ -49,7 +49,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -82,5 +81,5 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency') )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`ID` not in (select target_id from relation t2 where (t2.principal_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency')  AND  t1.`ID` not in (select principal_id from relation t2 where (t2.target_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency') )
 ```

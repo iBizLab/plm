@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -62,12 +63,40 @@ LEFT JOIN `COMMENT` t11 ON t1.`PID` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CONTENT,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.ID,
+t1.IS_TOP,
+t1.NAME,
+t1.OWNER_TYPE,
+t11.CONTENT AS PCONTENT,
+t11.CREATE_MAN AS PCREATE_MAN,
+t1.PID,
+t1.PRINCIPAL_ID,
+t1.PRINCIPAL_NAME,
+t1.PRINCIPAL_TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM COMMENT t1 
+LEFT JOIN COMMENT t11 ON t1.PID = t11.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -60,12 +60,32 @@
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[DEFAULT](module/Base/extend_schedule/query/Default)|DEFAULT|是|否 |否 ||
+|[启用(VALID)](module/Base/extend_schedule/query/Valid)|VALID|否|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/extend_schedule/query/View)|VIEW|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/Base/extend_schedule/dataset/Default)|DEFAULT|数据查询|是|||
+|[启用(VALID)](module/Base/extend_schedule/dataset/Valid)|VALID|数据查询|否|||
+
+## 数据权限
+
+##### 全部数据（读写） :id=extend_schedule-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+* `UPDATE`
+* `CREATE`
+* `DELETE`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -77,6 +97,11 @@
 |N_TASK_TYPE_EQ|任务类型|EQ||
 |N_TASK_TYPE_NAME_EQ|任务类型名称|EQ||
 |N_TASK_TYPE_NAME_LIKE|任务类型名称|LIKE||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 打开执行计划编辑视图 | open_schedule_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[执行计划](app/view/extend_schedule_edit_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -97,8 +122,14 @@
 <el-anchor-link :href="`#/module/Base/extend_schedule?id=数据集合`">
   数据集合
 </el-anchor-link>
+<el-anchor-link :href="`#/module/Base/extend_schedule?id=数据权限`">
+  数据权限
+</el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_schedule?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/extend_schedule?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

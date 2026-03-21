@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -58,12 +59,35 @@ WHERE ( t1.`SPACE_ID` = #{ctx.webcontext.space} )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.FORMAT_TYPE,
+t1.ID,
+t1.IS_GLOBAL,
+t1.NAME,
+t1.SPACE_ID,
+t11.NAME AS SPACE_NAME,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM STENCIL t1 
+LEFT JOIN SPACE t11 ON t1.SPACE_ID = t11.ID 
+
+WHERE ( t1.SPACE_ID = #{ctx.webcontext.space} )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

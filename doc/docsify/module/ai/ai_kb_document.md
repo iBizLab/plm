@@ -30,6 +30,8 @@
 |文档类型|TYPE|[单项选择(文本值)](index/dictionary_index#ai_kb_document_type "知识库文档类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 
 
 ###### 属性组
@@ -129,7 +131,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/ai/ai_kb_document/dataset/Default)|DEFAULT|数据查询|是|||
 |[简单查询(simple)](module/ai/ai_kb_document/dataset/simple)|simple|数据查询|否|||
-|[未解析文档(UNPARSED)](module/ai/ai_kb_document/dataset/unparsed)|UNPARSED|[实体逻辑](module/ai/ai_kb_document/logic/unparsed)|否|||
+|[未解析文档(UNPARSED)](module/ai/ai_kb_document/dataset/unparsed)|UNPARSED|数据查询|否|||
 
 ## 数据权限
 

@@ -30,7 +30,7 @@ state "已删除归档只读" as RAWSFCODE_01  [[$./get_space_member_one#rawsfco
 Begin --> PREPAREPARAM_01
 PREPAREPARAM_01 --> RAWSFCODE_01 : [[$./get_space_member_one#prepareparam_01-rawsfcode_01{已删除、已归档} 已删除、已归档]]
 RAWSFCODE_01 --> END2
-PREPAREPARAM_01 --> RAWSFCODE3
+PREPAREPARAM_01 --> RAWSFCODE3 : [[$./get_space_member_one#prepareparam_01-rawsfcode3{连接名称} 连接名称]]
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_space_member_one#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> RAWSFCODE1 : [[$./get_space_member_one#dedataset3-rawsfcode1{不在知识空间中的成员} 不在知识空间中的成员]]
@@ -141,13 +141,16 @@ defaultObj.set("srfreadonly", true);
 
 
 
-*- N/A*
+返回 `Default(传入变量)`
 
 
 ### 连接条件说明
 #### 已删除、已归档 :id=PREPAREPARAM_01-RAWSFCODE_01
 
 (`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1` OR `Default(传入变量).IS_DELETED(是否已删除)` EQ `1`)
+#### 连接名称 :id=PREPAREPARAM_01-RAWSFCODE3
+
+`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `0` AND `Default(传入变量).IS_DELETED(是否已删除)` EQ `0`
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2
 
 `Default(传入变量).srfreadonly` ISNULL

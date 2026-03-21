@@ -19,7 +19,7 @@ state "备份页面填写信息" as PREPAREPARAM_02  [[$./agent_flow_clone#prepa
 state "获取选中flow智能体数据" as DEACTION_01  [[$./agent_flow_clone#deaction_01 {"获取选中flow智能体数据"}]]
 state "设置新context数据" as PREPAREPARAM_01  [[$./agent_flow_clone#prepareparam_01 {"设置新context数据"}]]
 state "创建flow智能体" as DEACTION_02  [[$./agent_flow_clone#deaction_02 {"创建flow智能体"}]]
-state "创建logic" as DEACTION_04  [[$./agent_flow_clone#deaction_04 {"创建logic"}]]
+state "更新logic" as DEACTION_04  [[$./agent_flow_clone#deaction_04 {"更新logic"}]]
 state "构造新逻辑信息" as RAWSFCODE_03  [[$./agent_flow_clone#rawsfcode_03 {"构造新逻辑信息"}]]
 state "获取选择flow智能体逻辑" as DEACTION_03  [[$./agent_flow_clone#deaction_03 {"获取选择flow智能体逻辑"}]]
 state "拼接选择逻辑id" as RAWSFCODE_01  [[$./agent_flow_clone#rawsfcode_01 {"拼接选择逻辑id"}]]
@@ -80,11 +80,11 @@ DEACTION_05 --> END_01
 
 调用实体 [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md) 行为 [Create](module/ai/ai_agent_context#行为) ，行为参数为`original_ag_context`
 
-#### 创建logic :id=DEACTION_04<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新logic :id=DEACTION_04<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
-调用实体 [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic.md) 行为 [Create](module/extension/PSDELogic#行为) ，行为参数为`original_delogic`
+调用实体 [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic.md) 行为 [Update](module/extension/PSDELogic#行为) ，行为参数为`original_delogic`
 
 将执行结果返回给参数`original_delogic`
 
@@ -98,7 +98,8 @@ DEACTION_05 --> END_01
 def _original_delogic = logic.param('original_delogic').getReal();
 def _clone_ag_context2 = logic.param('clone_ag_context2').getReal()
 _original_delogic.id=_clone_ag_context2.code_name+ "@ai.AI_AGENT_CONTEXT.agent_flow_templ"
-_original_delogic.psdeid=_clone_ag_context2.code_name+ "@ai.AI_AGENT_CONTEXT"
+_original_delogic.psdeid=_clone_ag_context2.code_name+ "@ai.AI_AGENT_CONTEXT";
+_original_delogic.name=_clone_ag_context2.name;
 println("最终_original_delogic："+_original_delogic);
 
 ```

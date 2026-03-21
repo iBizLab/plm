@@ -6692,6 +6692,7 @@ String
 </div>
 </el-row>
 权限标识：`READ`
+TreeGridDEDataSetRuntime
 
 
 
@@ -11955,7 +11956,7 @@ String
 <el-alert title="/shared_spaces/{pkey}/article_pages/fetch_normal_tree_page" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-
+TreeGridDEDataSetRuntime
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -15987,7 +15988,7 @@ String
 <el-alert title="/spaces/{pkey}/article_pages/fetch_normal_tree_page" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-
+TreeGridDEDataSetRuntime
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

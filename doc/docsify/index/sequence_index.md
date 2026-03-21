@@ -1,5 +1,38 @@
 # 系统序列 <!-- {docsify-ignore-all} -->
 
+### 工作项类型编号 :id=seq_work_item_type_id
+
+
+<br>
+<p class="panel-title"><b>序列标记</b></p>
+
+* `seq_work_item_type_id`
+
+
+<p class="panel-title"><b>序列格式化</b></p>
+
+* `null`
+
+<p class="panel-title"><b>序列实体</b></p>
+
+* [序列(SEQUENCE_GENERATOR)](module/Base/sequence_generator.md)
+
+<p class="panel-title"><b>值存储属性</b></p>
+
+* `当前值(CURRENT_VALUE)` 值区间为`[1 , 9999]`
+
+<p class="panel-title"><b>标记存储属性</b></p>
+
+* `名称(NAME)`
+
+
+
+##### 序列使用清单
+
+> [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type.md) `标识(ID)` <br>
+
+
+
 ### 工作项编号 :id=seq_work_item_id
 
 

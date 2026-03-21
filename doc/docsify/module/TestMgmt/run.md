@@ -121,6 +121,48 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 
 </el-tab-pane>
+<el-tab-pane label="多人执行" name="field_group_executors_group">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|执行人|EXECUTORS|一对多关系数据集合|1048576|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
+|测试用例标识|CASE_ID|外键值|100|是||
+|测试计划标识|PLAN_ID|外键值|100|是||
+|测试计划|PLAN_NAME|外键值文本|200|是||
+|名称|CASE_NAME|外键值文本|200|是||
+|用例状态|STATE|外键值附加数据|60|是||
+|用例模块标识|SUITE_ID|外键值附加数据|100|是||
+|模块路径|SUITES|外键值附加数据|500|是||
+|用例类型|TYPE|外键值附加数据|60|是||
+|重要程度|LEVEL|外键值附加数据|60|是||
+|所属模块|SUITE_NAME|外键值附加数据|200|是||
+|所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
+|编号|IDENTIFIER|外键值附加数据|100|是||
+|测试库标识|LIBRARY_ID|外键值附加数据|100|是||
+|标题|TITLE|外键值附加数据|500|是||
+|测试库编号|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
+|评审结果|REVIEW_RESULT_STATE|[外键值附加数据](index/dictionary_index#review_result "评审结果")|60|是||
+|测试库是否归档|LIBRARY_IS_ARCHIVED|外键值附加数据||是||
+|测试类型|TEST_TYPE|外键值附加数据|60|是||
+|名称|NAME|文本，可指定长度|200|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|执行人标识|EXECUTOR_ID|文本，可指定长度|100|是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|执行时间|EXECUTED_AT|日期时间型||是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
+|多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
+|是否最新|IS_NEWEST|是否逻辑||是||
+|bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
+
+</el-tab-pane>
 
 </el-tabs>
 </el-row>
@@ -164,7 +206,7 @@
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#run_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#run_Update)|||
 |添加计划执行用例|add_plan_run|[实体处理逻辑](module/TestMgmt/run/logic/create_plan_run "添加计划执行用例")|默认|不支持||||
 |批设置执行结果|batch_save_run_history|[实体处理逻辑](module/TestMgmt/run/logic/batch_save_run_history "批设置执行结果")|默认|不支持||||
 |自定义draft|custom_draft|[实体处理逻辑](module/TestMgmt/run/logic/custom_draft "获取草稿")|默认|不支持||||
@@ -204,6 +246,7 @@
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
+|[设置第一执行人（表格使用）](module/TestMgmt/run/logic/set_first_executor)|set_first_executor|无|||
 |[通过发布规划计划](module/TestMgmt/run/logic/program_plan_by_release)|program_plan_by_release|无||通过发布规划计划|
 |[通过工作项规划计划](module/TestMgmt/run/logic/program_plan_by_workitem)|program_plan_by_workitem|无||通过工作项规划计划|
 |[通过迭代规划计划](module/TestMgmt/run/logic/program_plan_by_sprint)|program_plan_by_sprint|无||通过迭代规划计划|

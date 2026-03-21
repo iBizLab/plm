@@ -11,6 +11,8 @@
 
 |    实体col200|    通知名称col200          |  消息模板col300   |  使用场景col250    |  备注col300  |
 | --------|------------ |   -------- | -------- | -------- |
+|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member)|[知识库成员加入通知(create_member_notify)](module/ai/ai_kb_member/notify/create_member_notify)|[知识库通知模板(加入知识库成员)](#kb_member_create)|||
+|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member)|[知识库成员移除通知(remover_member_notify)](module/ai/ai_kb_member/notify/remover_member_notify)|[知识库通知模板(移除知识库成员)](#kb_member_remove)|[移除知识库成员发送通知(remove_kb_member_notify)](module/ai/ai_kb_member/logic/remove_kb_member_notify)||
 |[关注(ATTENTION)](module/Base/attention)|[客户提醒关注通知(attention_customer_notify)](module/Base/attention/notify/attention_customer_notify)|[提醒关注客户通知模板](#notice_attention_customer)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
 |[关注(ATTENTION)](module/Base/attention)|[产品需求提醒关注通知(attention_idea_notify)](module/Base/attention/notify/attention_idea_notify)|[提醒关注产品需求通知模板](#notice_attention_idea)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
 |[关注(ATTENTION)](module/Base/attention)|[页面提醒关注通知(attention_page_notify)](module/Base/attention/notify/attention_page_notify)|[提醒关注页面通知模板](#notice_attention_page)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
@@ -269,6 +271,67 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品
 微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品：${data.name}
+```
+#### 用例AIChat历史(test_case_ai_chat_history) :id=test_case_ai_chat_history
+
+
+模板类型：`静态`
+
+模板引擎：`Groovy`
+
+内容类型：`纯文本`
+
+内容：
+```
+<user>
+<![CDATA[
+你是我的AI助手，为我提供相关用例的建议
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白，我是你的用例AI助手
+]]>
+</assistant>
+<user>
+<![CDATA[
+用例[${data.name}]，来自测试库[${data.test_library_name}]。工作内容如下：
+${data.description}
+]]>
+</user>
+<assistant>
+<![CDATA[
+好的，我已对用例[${data.name}]有了初步的了解
+]]>
+</assistant>
+<%
+def list = data.children("COMMENT");
+if(list) {%>
+<user>
+<![CDATA[
+对于该用例，存在以下评论，我将逐一向你介绍。
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白，我会参考相关的评论意见
+]]>
+</assistant>
+<% list.each {%>
+<user>
+<![CDATA[
+用户[${it.codelisttext("update_man")}]于[${it.get("update_time", "未知时间")}]发表下述评论：
+${it.get("content", "")}
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白
+]]>
+</assistant>
+<%}
+}
+%>
 ```
 #### 提醒关注客户通知模板(notice_attention_customer) :id=notice_attention_customer
 
@@ -585,7 +648,7 @@ view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.parent("pri
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -634,6 +697,50 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+#### 知识库通知模板(加入知识库成员)(kb_member_create) :id=kb_member_create
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`route://-/index/ai_knowledge_base=${data.kb_id}/ai_knowledge_base_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.ai_knowledge_base_grid_view%2540plmweb.ai_knowledge_base.main%2522%252C%2522srfnavlogicid%2522%253A%2522ada50c4e-4cf1-b6d4-9200-6fb28ba95527%253A593bd52e-d964-101c-2155-367ff16ae0b8%2522%257D;srfnav=index_view/ai_kb_document_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.create_mantext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">把你加入了知识库</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <span class="notice-card__object-name" title="${data.kb_name}">${data.kb_name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.create_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 智能协同 · ${data.kb_name}</span>
+        </div>
+    </div>
+</div>
+```
+
+钉钉内容：
+```
+${data.create_mantext}把你加入了知识库：${data.kb_name}
+```
+
+微信消息内容：
+```
+${data.create_mantext}把你加入了知识库：${data.kb_name}
 ```
 #### 工单通知模板(负责人变更)(ticket_assignee_onchange) :id=ticket_assignee_onchange
 
@@ -733,7 +840,7 @@ srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -1272,7 +1379,7 @@ srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -1671,6 +1778,67 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+#### 需求AIChat历史(idea_ai_chat_history) :id=idea_ai_chat_history
+
+
+模板类型：`静态`
+
+模板引擎：`Groovy`
+
+内容类型：`纯文本`
+
+内容：
+```
+<user>
+<![CDATA[
+你是我的AI助手，为我提供相关需求的建议
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白，我是你的需求AI助手
+]]>
+</assistant>
+<user>
+<![CDATA[
+需求[${data.name}]，来自产品[${data.product_name}]。工作内容如下：
+${data.description}
+]]>
+</user>
+<assistant>
+<![CDATA[
+好的，我已对需求[${data.name}]有了初步的了解
+]]>
+</assistant>
+<%
+def list = data.children("COMMENT");
+if(list) {%>
+<user>
+<![CDATA[
+对于该需求，存在以下评论，我将逐一向你介绍。
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白，我会参考相关的评论意见
+]]>
+</assistant>
+<% list.each {%>
+<user>
+<![CDATA[
+用户[${it.codelisttext("update_man")}]于[${it.get("update_time", "未知时间")}]发表下述评论：
+${it.get("content", "")}
+]]>
+</user>
+<assistant>
+<![CDATA[
+明白
+]]>
+</assistant>
+<%}
+}
+%>
 ```
 #### 测试用例通知模板(删除/恢复测试用例)(test_case_remove_or_recover) :id=test_case_remove_or_recover
 
@@ -2189,6 +2357,48 @@ ${data.update_mantext}给你分配了需求：${data.title}
 			    </div>
 			</div>
 ```
+#### 知识库通知模板(移除知识库成员)(kb_member_remove) :id=kb_member_remove
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">把你移除了知识库</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <span class="notice-card__object-name" title="${data.kb_name}">${data.kb_name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 智能协同 · ${data.kb_name}</span>
+        </div>
+    </div>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}把你移除了知识库：${data.kb_name}
+```
+
+微信消息内容：
+```
+${data.update_mantext}把你移除了知识库：${data.kb_name}
+```
 #### 空间通知模板(归档/激活空间)(space_archived_or_activate) :id=space_archived_or_activate
 
 
@@ -2460,7 +2670,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 					</#if>
 					<span class="notice-card__object-name" title="${parent.name}">${parent.name}</span>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -3160,7 +3370,7 @@ srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.pare
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -3611,7 +3821,7 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
@@ -4556,7 +4766,7 @@ srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.par
 						<span class="notice-card__object-name" title="${parent.title}">${parent.title}</span>
 					</#if>		
 				</div>
-			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')>
+			<#assign content = data.content?replace('<img[^>]*>', '[图片]', 'r')?replace('<p[^>]*>', '', 'r')?replace('</?p[^>]*>', '', 'r')?replace('<span[^>]*>', '', 'r')?replace('</?span[^>]*>', '', 'r')?replace('!.*?\\)', '', 'r')>
 			<#assign regex = "(\\@\\{.*?\\})">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>

@@ -117,6 +117,8 @@ uiLogic.view.layoutPanel.panelItems.container_singledata.panelItems.field_textbo
 uiLogic.view.edit_comment_id = null;
 uiLogic.view.reply_comment_id = null;
 uiLogic.editor.reply.value = null;
+uiLogic.editor.toggleCollapse(false);
+
 ```
 
 #### 视图部件调用 :id=VIEWCTRLINVOKE1<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>

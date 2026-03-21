@@ -1,0 +1,16 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SET_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_TAG` t1 
+
+
+```

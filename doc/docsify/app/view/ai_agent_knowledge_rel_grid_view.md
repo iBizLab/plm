@@ -18,8 +18,8 @@
 
 
 ### 关联界面行为
-  * [智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel) : [表格界面_新建操作](module/ai/ai_agent_knowledge_rel#界面行为)
   * [智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel) : [表格界面_删除操作](module/ai/ai_agent_knowledge_rel#界面行为)
+  * [智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel) : [表格界面_新建操作](module/ai/ai_agent_knowledge_rel#界面行为)
 
 ### 关联视图
   * [智能体知识库引用(ai_agent_knowledge_rel_edit_view)](app/view/ai_agent_knowledge_rel_edit_view)

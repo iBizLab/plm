@@ -39,6 +39,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DER1N_AI_KB_MEMBER_USER_USER_ID](der/DER1N_AI_KB_MEMBER_USER_USER_ID)|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member)|1:N关系||
 |[DER1N_CUSTOMER_USER_ASSIGNEE_ID](der/DER1N_CUSTOMER_USER_ASSIGNEE_ID)|[客户(CUSTOMER)](module/ProdMgmt/customer)|1:N关系||
 |[DER1N_DEPARTMENT_USER_HEAD_ID](der/DER1N_DEPARTMENT_USER_HEAD_ID)|[部门(DEPARTMENT)](module/Base/department)|1:N关系||
 |[DER1N_DISCUSS_MEMBER_USER_USER_ID](der/DER1N_DISCUSS_MEMBER_USER_USER_ID)|[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|1:N关系||

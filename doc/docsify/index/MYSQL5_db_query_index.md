@@ -302,24 +302,36 @@ t11.`NAME` AS `AI_MODEL_NAME`,
 t1.`CODE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`ENABLE_SEARCHING`,
 t1.`ENABLE_SUGGESTED_QUESTIONS`,
 t1.`ENABLE_THINKING`,
 t1.`ENABLE_TOOLS`,
 t1.`GENERATION_MODE`,
 t1.`ID`,
 t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
 t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
 t1.`MEMORY_MAX_TURNS`,
 t1.`MEMORY_MODE`,
 t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
 t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
 t1.`STREAM`,
 t1.`TEMPERATURE`,
 t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
 t1.`TOP_P`,
 t1.`TRIMMING_STRATEGY`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`
 FROM `AI_AGENT` t1 
 LEFT JOIN `AI_MODEL` t11 ON t1.`AI_MODEL_ID` = t11.`ID` 
 
@@ -336,26 +348,40 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUSTOM_SUGGESTION_PROMPT`,
 t1.`DEFAULT_SYSTEM_PROMPT`,
+t1.`ENABLE_SEARCHING`,
 t1.`ENABLE_SUGGESTED_QUESTIONS`,
 t1.`ENABLE_THINKING`,
 t1.`ENABLE_TOOLS`,
 t1.`GENERATION_MODE`,
 t1.`ID`,
 t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
 t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
 t1.`MEMORY_MAX_TURNS`,
 t1.`MEMORY_MODE`,
 t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
 t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SKILL_PROMPT`,
 t1.`STREAM`,
 t1.`SUGGESTED_QUESTIONS`,
 t1.`TEMPERATURE`,
 t1.`TOOL_EXCEED_MESSAGE`,
 t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
 t1.`TOP_P`,
 t1.`TRIMMING_STRATEGY`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VLM_PROMPT`,
 t1.`WELCOME_MESSAGE`
 FROM `AI_AGENT` t1 
 LEFT JOIN `AI_MODEL` t11 ON t1.`AI_MODEL_ID` = t11.`ID` 
@@ -413,36 +439,52 @@ LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`CONTEXT_ID` = t11.`ID`
 SELECT
 t1.`ACTIVE`,
 t1.`AI_AGENT_ID`,
-t11.`NAME` AS `AI_AGENT_NAME`,
+t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`AI_MODEL_ID`,
-t21.`NAME` AS `AI_MODEL_NAME`,
+t31.`NAME` AS `AI_MODEL_NAME`,
 t1.`CODE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
+t1.`ENABLE_SEARCHING`,
 t1.`ENABLE_SUGGESTED_QUESTIONS`,
 t1.`ENABLE_THINKING`,
 t1.`ENABLE_TOOLS`,
+t1.`FLOW_MODE`,
 t1.`GENERATION_MODE`,
 t1.`ID`,
 t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
 t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
 t1.`MEMORY_MAX_TURNS`,
 t1.`MEMORY_MODE`,
 t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
 t1.`SCOPES`,
 t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SPEC_KB_ID`,
+t11.`NAME` AS `SPEC_KB_NAME`,
 t1.`STREAM`,
 t1.`SYSTEM_FLAG`,
 t1.`TEMPERATURE`,
 t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
 t1.`TOP_P`,
 t1.`TRIMMING_STRATEGY`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`
 FROM `AI_AGENT_CONTEXT` t1 
-LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
-LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`SPEC_KB_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+LEFT JOIN `AI_MODEL` t31 ON t1.`AI_MODEL_ID` = t31.`ID` 
 
 ```
 
@@ -451,9 +493,9 @@ LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID`
 SELECT
 t1.`ACTIVE`,
 t1.`AI_AGENT_ID`,
-t11.`NAME` AS `AI_AGENT_NAME`,
+t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`AI_MODEL_ID`,
-t21.`NAME` AS `AI_MODEL_NAME`,
+t31.`NAME` AS `AI_MODEL_NAME`,
 t1.`CODE_NAME`,
 t1.`CONTEXT_DEBUG_DATA`,
 t1.`CREATE_MAN`,
@@ -461,32 +503,50 @@ t1.`CREATE_TIME`,
 t1.`CUSTOM_SUGGESTION_PROMPT`,
 t1.`DEFAULT_SYSTEM_PROMPT`,
 t1.`DESCRIPTION`,
+t1.`ENABLE_SEARCHING`,
 t1.`ENABLE_SUGGESTED_QUESTIONS`,
 t1.`ENABLE_THINKING`,
 t1.`ENABLE_TOOLS`,
+t1.`FLOW_MODE`,
 t1.`GENERATION_MODE`,
 t1.`ID`,
 t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
 t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
 t1.`MEMORY_MAX_TURNS`,
 t1.`MEMORY_MODE`,
 t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
 t1.`SCOPES`,
 t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SKILL_PROMPT`,
+t1.`SPEC_KB_ID`,
+t11.`NAME` AS `SPEC_KB_NAME`,
 t1.`STREAM`,
 t1.`SUGGESTED_QUESTIONS`,
 t1.`SYSTEM_FLAG`,
 t1.`TEMPERATURE`,
 t1.`TOOL_EXCEED_MESSAGE`,
 t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
 t1.`TOP_P`,
 t1.`TRIMMING_STRATEGY`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VLM_PROMPT`,
 t1.`WELCOME_MESSAGE`
 FROM `AI_AGENT_CONTEXT` t1 
-LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
-LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`SPEC_KB_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+LEFT JOIN `AI_MODEL` t31 ON t1.`AI_MODEL_ID` = t31.`ID` 
 
 ```
 
@@ -495,38 +555,109 @@ LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID`
 SELECT
 t1.`ACTIVE`,
 t1.`AI_AGENT_ID`,
-t11.`NAME` AS `AI_AGENT_NAME`,
+t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`AI_MODEL_ID`,
-t21.`NAME` AS `AI_MODEL_NAME`,
+t31.`NAME` AS `AI_MODEL_NAME`,
 t1.`CODE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
+t1.`ENABLE_SEARCHING`,
 t1.`ENABLE_SUGGESTED_QUESTIONS`,
 t1.`ENABLE_THINKING`,
 t1.`ENABLE_TOOLS`,
+t1.`FLOW_MODE`,
 t1.`GENERATION_MODE`,
 t1.`ID`,
 t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
 t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
 t1.`MEMORY_MAX_TURNS`,
 t1.`MEMORY_MODE`,
 t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
 t1.`SCOPES`,
 t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SPEC_KB_ID`,
+t11.`NAME` AS `SPEC_KB_NAME`,
 t1.`STREAM`,
 t1.`SYSTEM_FLAG`,
 t1.`TEMPERATURE`,
 t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
 t1.`TOP_P`,
 t1.`TRIMMING_STRATEGY`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`
 FROM `AI_AGENT_CONTEXT` t1 
-LEFT JOIN `AI_AGENT` t11 ON t1.`AI_AGENT_ID` = t11.`ID` 
-LEFT JOIN `AI_MODEL` t21 ON t1.`AI_MODEL_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`SPEC_KB_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+LEFT JOIN `AI_MODEL` t31 ON t1.`AI_MODEL_ID` = t31.`ID` 
 
 WHERE ( ( FIND_IN_SET(#{ctx.webcontext.srfaiagentscope}, t1.`SCOPES`) > 0  OR  t1.`SCOPES` IS NULL ) )
+```
+
+#### flow智能体(flow_agents) :id=ai_agent_context-flow_agents
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`AI_AGENT_ID`,
+t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_MODEL_ID`,
+t31.`NAME` AS `AI_MODEL_NAME`,
+t1.`CODE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE_SEARCHING`,
+t1.`ENABLE_SUGGESTED_QUESTIONS`,
+t1.`ENABLE_THINKING`,
+t1.`ENABLE_TOOLS`,
+t1.`FLOW_MODE`,
+t1.`GENERATION_MODE`,
+t1.`ID`,
+t1.`IS_DEFAULT`,
+t1.`KB_MODE`,
+t1.`MAX_INPUT_TOKENS`,
+t1.`MEMORY_DOC_TAG`,
+t1.`MEMORY_KB_TAG`,
+t1.`MEMORY_MAX_TURNS`,
+t1.`MEMORY_MODE`,
+t1.`NAME`,
+t1.`PUBLISH_SKILL`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SCOPES`,
+t1.`SEQUENCE`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SPEC_KB_ID`,
+t11.`NAME` AS `SPEC_KB_NAME`,
+t1.`STREAM`,
+t1.`SYSTEM_FLAG`,
+t1.`TEMPERATURE`,
+t1.`TOOL_MAX_CALLS`,
+t1.`TOP_K`,
+t1.`TOP_P`,
+t1.`TRIMMING_STRATEGY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`
+FROM `AI_AGENT_CONTEXT` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`SPEC_KB_ID` = t11.`ID` 
+LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
+LEFT JOIN `AI_MODEL` t31 ON t1.`AI_MODEL_ID` = t31.`ID` 
+
+WHERE ( t1.`FLOW_MODE` = 'DE' )
 ```
 
 
@@ -536,9 +667,6 @@ WHERE ( ( FIND_IN_SET(#{ctx.webcontext.srfaiagentscope}, t1.`SCOPES`) > 0  OR  t
 ```sql
 SELECT
 t1.`AI_AGENT_CONTEXT_ID`,
-t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
-t11.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -553,8 +681,6 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `AI_AGENT_CONVERSATION` t1 
-LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
 
 ```
 
@@ -562,9 +688,6 @@ LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID`
 ```sql
 SELECT
 t1.`AI_AGENT_CONTEXT_ID`,
-t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
-t11.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -579,8 +702,6 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `AI_AGENT_CONVERSATION` t1 
-LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
 
 ```
 
@@ -588,9 +709,6 @@ LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID`
 ```sql
 SELECT
 t1.`AI_AGENT_CONTEXT_ID`,
-t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
-t11.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -605,8 +723,6 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `AI_AGENT_CONVERSATION` t1 
-LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
 
 WHERE ( ( t1.`STATUS` = 'active'  OR  t1.`STATUS` = 'paused' ) )
 ```
@@ -615,9 +731,6 @@ WHERE ( ( t1.`STATUS` = 'active'  OR  t1.`STATUS` = 'paused' ) )
 ```sql
 SELECT
 t1.`AI_AGENT_CONTEXT_ID`,
-t11.`NAME` AS `AI_AGENT_CONTEXT_NAME`,
-t11.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -632,8 +745,6 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `AI_AGENT_CONVERSATION` t1 
-LEFT JOIN `AI_AGENT_CONTEXT` t11 ON t1.`AI_AGENT_CONTEXT_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t11.`AI_AGENT_ID` = t21.`ID` 
 
 WHERE ( ( t1.`STATUS` = 'active'  OR  t1.`STATUS` = 'paused' )  AND  t1.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`TYPE` = 'topic' )
 ```
@@ -684,9 +795,9 @@ FROM `AI_AGENT_FEEDBACK` t1
 ```sql
 SELECT
 t1.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_AGENT_NAME`,
 t1.`AI_KNOWLEDGE_BASE_ID`,
-t11.`NAME` AS `AI_KNOWLEDGE_BASE_NAME`,
+t1.`AI_KNOWLEDGE_BASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -694,8 +805,6 @@ t1.`NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_AGENT_KNOWLEDGE_REL` t1 
-LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`AI_KNOWLEDGE_BASE_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
 
 ```
 
@@ -703,9 +812,9 @@ LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID`
 ```sql
 SELECT
 t1.`AI_AGENT_ID`,
-t21.`NAME` AS `AI_AGENT_NAME`,
+t1.`AI_AGENT_NAME`,
 t1.`AI_KNOWLEDGE_BASE_ID`,
-t11.`NAME` AS `AI_KNOWLEDGE_BASE_NAME`,
+t1.`AI_KNOWLEDGE_BASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -713,8 +822,6 @@ t1.`NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_AGENT_KNOWLEDGE_REL` t1 
-LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`AI_KNOWLEDGE_BASE_ID` = t11.`ID` 
-LEFT JOIN `AI_AGENT` t21 ON t1.`AI_AGENT_ID` = t21.`ID` 
 
 ```
 
@@ -789,6 +896,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`NAME`,
+t11.`TOOL_TAG`,
+t11.`TOOL_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_AGENT_TOOL_REL` t1 
@@ -808,6 +917,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`NAME`,
+t11.`TOOL_TAG`,
+t11.`TOOL_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `AI_AGENT_TOOL_REL` t1 
@@ -882,13 +993,24 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DOCUMENT_ID`,
 t11.`NAME` AS `DOCUMENT_NAME`,
+t11.`TYPE` AS `DOCUMENT_TYPE`,
 t1.`ID`,
+t11.`KB_ID`,
 t1.`KEYWORDS`,
 t1.`KEY_QUESTIONS`,
 t1.`NAME`,
+t1.`PATH`,
+t1.`PID`,
 t1.`POSITIONS`,
+t1.`SEQUENCE`,
+t1.`SOURCE_COUNT`,
+t1.`SOURCE_INDICES`,
+t1.`TAGS`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `AI_KB_CHUNK` t1 
 LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
 
@@ -904,16 +1026,82 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DOCUMENT_ID`,
 t11.`NAME` AS `DOCUMENT_NAME`,
+t11.`TYPE` AS `DOCUMENT_TYPE`,
 t1.`ID`,
+t11.`KB_ID`,
 t1.`KEYWORDS`,
 t1.`KEY_QUESTIONS`,
 t1.`NAME`,
+t1.`PATH`,
+t1.`PID`,
 t1.`POSITIONS`,
+t1.`SEQUENCE`,
+t1.`SOURCE_COUNT`,
+t1.`SOURCE_INDICES`,
+t1.`TAGS`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `AI_KB_CHUNK` t1 
 LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
 
+```
+
+#### tree :id=ai_kb_chunk-tree
+```sql
+SELECT
+t11.`NAME` AS `DOCUMENT_NAME`,
+t11.`TYPE` AS `DOCUMENT_TYPE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PATH`,
+t1.`PID`,
+t1.`POSITIONS`,
+t1.`SEQUENCE`,
+t1.`SOURCE_COUNT`,
+t1.`SOURCE_INDICES`,
+t1.`TAGS`,
+t1.`TYPE`
+FROM `AI_KB_CHUNK` t1 
+LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
+
+WHERE ( <choose><when test="ctx.datacontext.ai_kb_document !=null ">  t1.`DOCUMENT_ID` = #{ctx.datacontext.ai_kb_document}  </when><otherwise>1=1</otherwise></choose> )
+```
+
+#### 启用(VALID) :id=ai_kb_chunk-valid
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONTENT`,
+t1.`CONTENT_PREVIEW`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t11.`NAME` AS `DOCUMENT_NAME`,
+t11.`TYPE` AS `DOCUMENT_TYPE`,
+t1.`ID`,
+t11.`KB_ID`,
+t1.`KEYWORDS`,
+t1.`KEY_QUESTIONS`,
+t1.`NAME`,
+t1.`PATH`,
+t1.`PID`,
+t1.`POSITIONS`,
+t1.`SEQUENCE`,
+t1.`SOURCE_COUNT`,
+t1.`SOURCE_INDICES`,
+t1.`TAGS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
+FROM `AI_KB_CHUNK` t1 
+LEFT JOIN `AI_KB_DOCUMENT` t11 ON t1.`DOCUMENT_ID` = t11.`ID` 
+
+WHERE ( t1.`ACTIVE` = 1 )
 ```
 
 
@@ -932,7 +1120,6 @@ t1.`FILE`,
 t1.`FILE_TYPE`,
 t1.`ID`,
 t1.`KB_ID`,
-t11.`NAME` AS `KB_NAME`,
 t1.`NAME`,
 t1.`SIZE`,
 t1.`SOURCE_ID`,
@@ -940,9 +1127,12 @@ t1.`SOURCE_TYPE`,
 t1.`STATUS`,
 t1.`SYNC_FREQUENCY`,
 t1.`SYNC_ID`,
+t11.`TAG_SETS`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `AI_KB_DOCUMENT` t1 
 LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
 
@@ -961,23 +1151,80 @@ t1.`FILE`,
 t1.`FILE_TYPE`,
 t1.`ID`,
 t1.`KB_ID`,
-t11.`NAME` AS `KB_NAME`,
 t1.`META_DATA`,
 t1.`NAME`,
 t1.`PARSED_CONTENT`,
 t1.`PARSER_CONFIG`,
+t1.`PARSE_ERROR`,
 t1.`SIZE`,
 t1.`SOURCE_ID`,
 t1.`SOURCE_TYPE`,
 t1.`STATUS`,
 t1.`SYNC_FREQUENCY`,
 t1.`SYNC_ID`,
+t11.`TAG_SETS`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
+FROM `AI_KB_DOCUMENT` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+#### 简单查询(simple) :id=ai_kb_document-simple
+```sql
+SELECT
+t1.`CHUNK_METHOD`,
+t1.`CUSTOM_CHUNK`,
+t1.`FILE_TYPE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`SYNC_ID`,
+t11.`TAG_SETS`,
+t1.`TYPE`,
 t1.`UPDATE_TIME`
 FROM `AI_KB_DOCUMENT` t1 
 LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
 
+```
+
+#### 未解析文档(UNPARSED) :id=ai_kb_document-unparsed
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CHUNK_METHOD`,
+t1.`CHUNK_NUM`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOM_CHUNK`,
+t1.`FILE`,
+t1.`FILE_TYPE`,
+t1.`ID`,
+t1.`KB_ID`,
+t1.`META_DATA`,
+t1.`NAME`,
+t1.`PARSED_CONTENT`,
+t1.`PARSER_CONFIG`,
+t1.`PARSE_ERROR`,
+t1.`SIZE`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_TYPE`,
+t1.`STATUS`,
+t1.`SYNC_FREQUENCY`,
+t1.`SYNC_ID`,
+t11.`TAG_SETS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
+FROM `AI_KB_DOCUMENT` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+WHERE ( t1.`ACTIVE` = 1  AND  t1.`STATUS` = '3'  AND  ( t1.`PARSED_CONTENT` IS NOT NULL  OR  t1.`FILE` IS NOT NULL ) )
 ```
 
 
@@ -1018,45 +1265,873 @@ FROM `AI_KB_DOCUMENT_SYNC` t1
 ```
 
 
+## [知识库图谱实体(AI_KB_GRAPH_ENTITY)](module/ai/ai_kb_graph_entity.md) :id=ai_kb_graph_entity
+
+#### DEFAULT :id=ai_kb_graph_entity-Default
+```sql
+SELECT
+t1.`CONFIDENCE`,
+t1.`CONTEXT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DOCUMENT_ID`,
+t21.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`KEYWORDS`,
+t1.`NAME`,
+t1.`NORMALIZED_NAME`,
+t1.`REFERENCE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t1.`DOCUMENT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_graph_entity-View
+```sql
+SELECT
+t1.`CONFIDENCE`,
+t1.`CONTEXT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DOCUMENT_ID`,
+t21.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`KEYWORDS`,
+t1.`NAME`,
+t1.`NORMALIZED_NAME`,
+t1.`REFERENCE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t1.`DOCUMENT_ID` = t21.`ID` 
+
+```
+
+#### 实体类型(cur_entity_type) :id=ai_kb_graph_entity-cur_entity_type
+```sql
+SELECT
+t1.`CONFIDENCE`,
+t1.`CONTEXT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DOCUMENT_ID`,
+t21.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`KEYWORDS`,
+t1.`NAME`,
+t1.`NORMALIZED_NAME`,
+t1.`REFERENCE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t1.`DOCUMENT_ID` = t21.`ID` 
+
+WHERE ( <choose><when test="ctx.datacontext.ai_knowledge_base !=null ">  t1.`KB_ID` = #{ctx.datacontext.ai_knowledge_base}  </when><otherwise>1=1</otherwise></choose> )
+```
+
+#### 当前数据库实体(cur_kb) :id=ai_kb_graph_entity-cur_kb
+```sql
+SELECT
+t1.`CONFIDENCE`,
+t1.`CONTEXT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DOCUMENT_ID`,
+t21.`NAME` AS `DOCUMENT_NAME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`KEYWORDS`,
+t1.`NAME`,
+t1.`NORMALIZED_NAME`,
+t1.`REFERENCE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t1.`DOCUMENT_ID` = t21.`ID` 
+
+WHERE ( t1.`KB_ID` = #{ctx.datacontext.ai_knowledge_base} )
+```
+
+
+## [知识库图谱实体文档分块(AI_KB_GRAPH_ENTITY_CHUNK)](module/ai/ai_kb_graph_entity_chunk.md) :id=ai_kb_graph_entity_chunk
+
+#### DEFAULT :id=ai_kb_graph_entity_chunk-Default
+```sql
+SELECT
+t1.`CHUNK_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`DOCUMENT_ID`,
+t1.`ENTITY_ID`,
+t1.`ID`,
+t21.`KB_ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY_CHUNK` t1 
+LEFT JOIN `AI_KB_CHUNK` t11 ON t1.`CHUNK_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t11.`DOCUMENT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_graph_entity_chunk-View
+```sql
+SELECT
+t1.`CHUNK_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`DOCUMENT_ID`,
+t1.`ENTITY_ID`,
+t1.`ID`,
+t21.`KB_ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_ENTITY_CHUNK` t1 
+LEFT JOIN `AI_KB_CHUNK` t11 ON t1.`CHUNK_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_DOCUMENT` t21 ON t11.`DOCUMENT_ID` = t21.`ID` 
+
+```
+
+
+## [知识库图谱实体类型(AI_KB_GRAPH_ENTITY_TYPE)](module/ai/ai_kb_graph_entity_type.md) :id=ai_kb_graph_entity_type
+
+#### DEFAULT :id=ai_kb_graph_entity_type-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_GRAPH_ENTITY_TYPE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_graph_entity_type-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_GRAPH_ENTITY_TYPE` t1 
+
+```
+
+#### 数据查询(VALID) :id=ai_kb_graph_entity_type-valid
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ICON`,
+t1.`ID`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_GRAPH_ENTITY_TYPE` t1 
+
+```
+
+
+## [知识库图谱关系(AI_KB_GRAPH_RELATION)](module/ai/ai_kb_graph_relation.md) :id=ai_kb_graph_relation
+
+#### DEFAULT :id=ai_kb_graph_relation-Default
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONFIDENCE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`KB_ID`,
+t31.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`OBJECT_ID`,
+t21.`NAME` AS `OBJECT_NAME`,
+t1.`PREDICATE`,
+t1.`SUBJECT_ID`,
+t11.`NAME` AS `SUBJECT_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_RELATION` t1 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t11 ON t1.`SUBJECT_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t21 ON t1.`OBJECT_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t31 ON t1.`KB_ID` = t31.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_graph_relation-View
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONFIDENCE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`KB_ID`,
+t31.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`OBJECT_ID`,
+t21.`NAME` AS `OBJECT_NAME`,
+t1.`PREDICATE`,
+t1.`SUBJECT_ID`,
+t11.`NAME` AS `SUBJECT_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_RELATION` t1 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t11 ON t1.`SUBJECT_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t21 ON t1.`OBJECT_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t31 ON t1.`KB_ID` = t31.`ID` 
+
+```
+
+#### 当前数据库(cur_kb) :id=ai_kb_graph_relation-cur_kb
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`CONFIDENCE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`KB_ID`,
+t31.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`OBJECT_ID`,
+t21.`NAME` AS `OBJECT_NAME`,
+t1.`PREDICATE`,
+t1.`SUBJECT_ID`,
+t11.`NAME` AS `SUBJECT_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_RELATION` t1 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t11 ON t1.`SUBJECT_ID` = t11.`ID` 
+LEFT JOIN `AI_KB_GRAPH_ENTITY` t21 ON t1.`OBJECT_ID` = t21.`ID` 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t31 ON t1.`KB_ID` = t31.`ID` 
+
+WHERE ( <choose><when test="ctx.datacontext.ai_knowledge_base !=null ">  t1.`KB_ID` = #{ctx.datacontext.ai_knowledge_base}  </when><otherwise>1=1</otherwise></choose> )
+```
+
+
+## [知识库图谱关系文档分块(AI_KB_GRAPH_RELATION_CHUNK)](module/ai/ai_kb_graph_relation_chunk.md) :id=ai_kb_graph_relation_chunk
+
+#### DEFAULT :id=ai_kb_graph_relation_chunk-Default
+```sql
+SELECT
+t1.`CHUNK_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`RELATION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_RELATION_CHUNK` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_graph_relation_chunk-View
+```sql
+SELECT
+t1.`CHUNK_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`RELATION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_GRAPH_RELATION_CHUNK` t1 
+
+```
+
+
+## [知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member.md) :id=ai_kb_member
+
+#### DEFAULT :id=ai_kb_member-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_KB_MEMBER` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_member-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_KB_MEMBER` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+#### 启用(VALID) :id=ai_kb_member-valid
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`KB_ID`,
+t11.`NAME` AS `KB_NAME`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `AI_KB_MEMBER` t1 
+LEFT JOIN `AI_KNOWLEDGE_BASE` t11 ON t1.`KB_ID` = t11.`ID` 
+
+```
+
+
+## [知识库检索记录(AI_KB_SEARCH_QUERY)](module/ai/ai_kb_search_query.md) :id=ai_kb_search_query
+
+#### DEFAULT :id=ai_kb_search_query-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FEEDBACK`,
+t1.`ID`,
+t1.`IS_ANSWERED`,
+t1.`IS_KNOWLEDGE_GAP`,
+t1.`NAME`,
+t1.`NORMALIZED_QUERY`,
+t1.`SOURCE`,
+t1.`TAGS`,
+t1.`TOTAL_DURATION`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`,
+t1.`USER_SATISFACTION`
+FROM `AI_KB_SEARCH_QUERY` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_search_query-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FEEDBACK`,
+t1.`ID`,
+t1.`IS_ANSWERED`,
+t1.`IS_KNOWLEDGE_GAP`,
+t1.`NAME`,
+t1.`NORMALIZED_QUERY`,
+t1.`RAW_QUERY`,
+t1.`RETRIEVAL_CONFIG`,
+t1.`SOURCE`,
+t1.`SOURCE_METADATA`,
+t1.`TAGS`,
+t1.`TOTAL_DURATION`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`,
+t1.`USER_SATISFACTION`
+FROM `AI_KB_SEARCH_QUERY` t1 
+
+```
+
+
+## [知识库检索结果(AI_KB_SEARCH_RESULT)](module/ai/ai_kb_search_result.md) :id=ai_kb_search_result
+
+#### DEFAULT :id=ai_kb_search_result-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t1.`ID`,
+t1.`KB_ID`,
+t1.`NAME`,
+t1.`QUERY_ID`,
+t1.`RANK`,
+t1.`RETRIEVAL_MODE`,
+t1.`SIMILARITY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_SEARCH_RESULT` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_search_result-View
+```sql
+SELECT
+t1.`CHUNK_SNAPSHOTS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t1.`HIT_CONTENT`,
+t1.`ID`,
+t1.`KB_ID`,
+t1.`MERGED_CONTENT`,
+t1.`NAME`,
+t1.`QUERY_ID`,
+t1.`RANK`,
+t11.`RAW_QUERY`,
+t1.`RETRIEVAL_MODE`,
+t1.`SIMILARITY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_SEARCH_RESULT` t1 
+LEFT JOIN `AI_KB_SEARCH_QUERY` t11 ON t1.`QUERY_ID` = t11.`ID` 
+
+```
+
+#### 当前记录(cur_query) :id=ai_kb_search_result-cur_query
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DOCUMENT_ID`,
+t1.`ID`,
+t1.`KB_ID`,
+t1.`NAME`,
+t1.`QUERY_ID`,
+t1.`RANK`,
+t1.`RETRIEVAL_MODE`,
+t1.`SIMILARITY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_SEARCH_RESULT` t1 
+
+```
+
+
+## [知识库标签(AI_KB_TAG)](module/ai/ai_kb_tag.md) :id=ai_kb_tag
+
+#### DEFAULT :id=ai_kb_tag-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SET_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_TAG` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_tag-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SET_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_TAG` t1 
+
+```
+
+#### 启用(VALID) :id=ai_kb_tag-valid
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SET_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALUE`
+FROM `AI_KB_TAG` t1 
+
+```
+
+
+## [知识库标签集(AI_KB_TAG_SET)](module/ai/ai_kb_tag_set.md) :id=ai_kb_tag_set
+
+#### DEFAULT :id=ai_kb_tag_set-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`SCOPE`,
+t1.`SOURCE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_TAG_SET` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=ai_kb_tag_set-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`SCOPE`,
+t1.`SOURCE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_KB_TAG_SET` t1 
+
+```
+
+
 ## [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base.md) :id=ai_knowledge_base
 
 #### DEFAULT :id=ai_knowledge_base-Default
 ```sql
 SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
 t1.`CHUNK_METHOD`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
 t1.`SOURCE_ID`,
-t11.`NAME` AS `SOURCE_NAME`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
 FROM `AI_KNOWLEDGE_BASE` t1 
-LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID` 
 
 ```
 
 #### 默认（全部数据）(VIEW) :id=ai_knowledge_base-View
 ```sql
 SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
 t1.`CHUNK_METHOD`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
 t1.`ID`,
+t1.`IS_DELETED`,
+t1.`META_DATA`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`PARSER_CONFIG`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+```
+
+#### 管理员(admin) :id=ai_knowledge_base-admin
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+WHERE EXISTS(SELECT * FROM `AI_KB_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`KB_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+```
+
+#### 已删除(deleted) :id=ai_knowledge_base-deleted
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 公开(public) :id=ai_knowledge_base-public
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+```
+
+#### 只读用户(reader) :id=ai_knowledge_base-reader
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+WHERE EXISTS(SELECT * FROM `AI_KB_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`KB_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+```
+
+#### 操作用户(user) :id=ai_knowledge_base-user
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PAGEINDEX`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
+t1.`SOURCE_ID`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
+FROM `AI_KNOWLEDGE_BASE` t1 
+
+WHERE EXISTS(SELECT * FROM `AI_KB_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`KB_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+```
+
+#### 启用知识库(VALID) :id=ai_knowledge_base-valid
+```sql
+SELECT
+t1.`CHAT_MODEL`,
+t1.`CHAT_MODEL_ID`,
+t1.`CHUNK_METHOD`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`EMBEDDING_MODEL`,
+t1.`EMBEDDING_MODEL_ID`,
+t1.`ENABLE`,
+t1.`GUIDANCE_PROMPT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`META_DATA`,
 t1.`NAME`,
 t1.`PARSER_CONFIG`,
+t1.`RERANK`,
+t1.`RERANK_MODEL`,
+t1.`RERANK_MODEL_ID`,
+t1.`SIMILARITY_THRESHOLD`,
 t1.`SOURCE_ID`,
-t11.`NAME` AS `SOURCE_NAME`,
+t1.`SOURCE_NAME`,
+t1.`TAG_SETS`,
+t1.`TOP_K`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USE_KG`,
+t1.`VECTOR_SIMILARITY_WEIGHT`,
+t1.`VISIBILITY`
 FROM `AI_KNOWLEDGE_BASE` t1 
-LEFT JOIN `AI_KNOWLEDGE_SOURCE` t11 ON t1.`SOURCE_ID` = t11.`ID` 
 
+WHERE ( ( t1.`IS_DELETED` = 0  OR  t1.`IS_DELETED` IS NULL ) )
 ```
 
 
@@ -1209,6 +2284,32 @@ FROM `AI_TOOL` t1
 
 ```
 
+#### 内置扩展mcp服务(extension_mcp_server) :id=ai_tool-extension_mcp_server
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`API_AUTH_TYPE`,
+t1.`API_HEADERS`,
+t1.`API_KEY`,
+t1.`API_METHOD`,
+t1.`API_URL`,
+t1.`CLIENT_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TIMEOUT`,
+t1.`TOKEN_URL`,
+t1.`TOOL_TAG`,
+t1.`TOOL_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_TOOL` t1 
+
+WHERE ( t1.`TOOL_TYPE` = 'mcp_built_in_extension' )
+```
+
 
 ## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md) :id=app_view_theme
 
@@ -1359,7 +2460,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1407,7 +2508,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1454,7 +2555,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1517,7 +2618,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1563,7 +2664,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1621,7 +2722,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1665,7 +2766,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1709,7 +2810,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1753,7 +2854,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1780,7 +2881,7 @@ t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') = '1' )
 ```
 
 #### 过滤器默认查询(my_filter) :id=article_page-my_filter
@@ -1797,7 +2898,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1841,7 +2942,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1885,7 +2986,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1929,7 +3030,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -1973,7 +3074,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -2017,7 +3118,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -2063,7 +3164,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -2118,7 +3219,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -2162,7 +3263,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -2228,7 +3329,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -5507,6 +6608,45 @@ FROM `EXTEND_LOG` t1
 ```
 
 
+## [扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ.md) :id=extend_print_templ
+
+#### DEFAULT :id=extend_print_templ-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DE_TAG`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PRINT_MODEL`,
+t1.`PRINT_TAG`,
+t1.`PRINT_TYPE`,
+t1.`REPORT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_PRINT_TEMPL` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=extend_print_templ-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DE_TAG`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PRINT_MODEL`,
+t1.`PRINT_TAG`,
+t1.`PRINT_TYPE`,
+t1.`REPORT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_PRINT_TEMPL` t1 
+
+```
+
+
 ## [扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule.md) :id=extend_schedule
 
 #### DEFAULT :id=extend_schedule-Default
@@ -5519,6 +6659,31 @@ t1.`ENABLE`,
 t1.`ID`,
 t1.`NAME`,
 t1.`NEXT_TRIGGER_TIME`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_NAME`,
+t1.`PRINCIPAL_TYPE`,
+t1.`SCHEDULE_TYPE`,
+t1.`TASK_TYPE`,
+t11.`NAME` AS `TASK_TYPE_NAME`,
+t1.`TIMER_POLICY`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_SCHEDULE` t1 
+LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID` 
+
+```
+
+#### 启用(VALID) :id=extend_schedule-Valid
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`NEXT_TRIGGER_TIME`,
+t1.`PAYLOAD`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_NAME`,
 t1.`PRINCIPAL_TYPE`,
@@ -10227,6 +11392,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10264,6 +11430,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`NOTICE`,
 t1.`SCOPE_ID`,
@@ -10300,6 +11467,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10338,6 +11506,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10374,6 +11543,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10436,6 +11606,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10472,6 +11643,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10508,6 +11680,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10544,6 +11717,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10580,6 +11754,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10616,6 +11791,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10694,6 +11870,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10732,6 +11909,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10768,6 +11946,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10806,6 +11985,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10842,6 +12022,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10880,6 +12061,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10916,6 +12098,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10953,6 +12136,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -10989,6 +12173,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -11027,6 +12212,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -11065,6 +12251,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
+t1.`IS_TEMPLATE`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -11653,7 +12840,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.project_id = #{ctx.webcontext.project} and t3.is_deleted = 0)  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  not exists(select  1 from relation t3 where (t1.owner_id = t3.principal_id or  t1.owner_id = t3.target_id) and t3.principal_type = 'dependency') )
+WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.project_id = #{ctx.webcontext.project} and t3.is_deleted = 0)  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  t1.`OWNER_ID` not in (select  principal_id from relation t3 where (t3.target_id = #{ctx.webcontext.work_item}) and t3.principal_type = 'dependency')  AND  t1.`OWNER_ID` not in (select  target_id from relation t3 where (t3.principal_id = #{ctx.webcontext.work_item}) and t3.principal_type = 'dependency') )
 ```
 
 #### 本人最新访问(user) :id=recent-user
@@ -13672,9 +14859,11 @@ WHERE ( t41.`IS_DELETED` = 0 )
 #### 当前模块下用例(normal) :id=run-normal
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS attention_count FROM RUN r LEFT JOIN `attention` att ON r.ID = att.OWNER_ID WHERE r.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM RUN r LEFT JOIN `comment` com ON r.ID = com.PRINCIPAL_ID WHERE r.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
@@ -13696,13 +14885,17 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
+t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+(SELECT count(1) FROM relation t2 inner join work_item t3 on t3.id = t2.TARGET_ID and  t3.IS_DELETED = 0 inner join work_item_type t4 on t4.ID = t3.WORK_ITEM_TYPE_ID and t4.`GROUP` = 'bug' where t1.id = t2.PRINCIPAL_ID AND t2.TARGET_TYPE = 'work_item') AS `RELATION_TOTAL_BUG`,
+(select count(1) from run_history where run_id = t1.`ID`) AS `RELATION_TOTAL_HISTORY`,
 t1.`REMARK`,
 t11.`REVIEW_RESULT_STATE`,
 concat(t41.`IDENTIFIER`,'-',t11.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t11.`STATE`,
 t1.`STATUS`,
+t1.`STEPS`,
 t31.`SUITES`,
 t11.`SUITE_ID`,
 t31.`NAME` AS `SUITE_NAME`,
@@ -17924,9 +19117,10 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
 
+/*ALIAS.run=t51*/
 WHERE EXISTS(SELECT * FROM `RUN` t51 
  WHERE 
- t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
+ t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where ${alias.RUN}.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
 ```
 
 #### 未开始和进行中的计划(pending_and_in_progress) :id=test_plan-pending_and_in_progress
@@ -18248,7 +19442,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18335,7 +19528,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18395,7 +19587,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18438,7 +19629,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18527,7 +19717,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18570,7 +19759,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18613,7 +19801,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18656,7 +19843,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18701,7 +19887,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18744,7 +19929,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18851,7 +20035,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18894,7 +20077,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18937,7 +20119,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -18980,7 +20161,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19023,7 +20203,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19066,7 +20245,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19109,7 +20287,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19152,7 +20329,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19195,7 +20371,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19251,7 +20426,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19294,7 +20468,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19339,7 +20512,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19382,7 +20554,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19427,7 +20598,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19470,7 +20640,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19515,7 +20684,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19560,7 +20728,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19605,7 +20772,6 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
-t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -19987,7 +21153,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20168,7 +21333,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20202,6 +21366,54 @@ LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID`
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from project t2, project_member t3 where t1.project_id = t2.id and t2.id = t3.project_id and t3.user_id = #{ctx.sessioncontext.srfpersonid}) )
+```
+
+#### 所有工作项(all) :id=work_item-all
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t31.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+t1.`RISK`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+
 ```
 
 #### 已归档(archived) :id=work_item-archived
@@ -20256,7 +21468,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20485,7 +21696,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20573,7 +21783,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20661,7 +21870,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20760,7 +21968,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20848,7 +22055,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20936,7 +22142,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -20969,7 +22174,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency') )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`ID` not in (select target_id from relation t2 where (t2.principal_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency')  AND  t1.`ID` not in (select principal_id from relation t2 where (t2.target_id = #{ctx.webcontext.work_item}) and t2.principal_type = 'dependency') )
 ```
 
 #### 选择父工作项(choose_parent_work_item) :id=work_item-choose_parent_work_item
@@ -21024,7 +22229,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21316,7 +22520,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21404,7 +22607,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21597,7 +22799,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21685,7 +22886,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21773,7 +22973,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21861,7 +23060,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -21949,7 +23147,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22037,7 +23234,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22125,7 +23321,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22213,7 +23408,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22301,7 +23495,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22389,7 +23582,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22477,7 +23669,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22565,7 +23756,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22788,7 +23978,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22878,7 +24067,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -22968,7 +24156,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23118,7 +24305,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23244,7 +24430,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23332,7 +24517,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23422,7 +24606,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23510,7 +24693,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23649,7 +24831,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23737,7 +24918,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23875,7 +25055,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -23966,7 +25145,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24054,7 +25232,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24142,7 +25319,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24230,7 +25406,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24318,7 +25493,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24510,7 +25684,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24598,7 +25771,6 @@ t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
 t51.`NAME` AS `SPRINT_NAME`,
 t51.`STATUS` AS `SPRINT_STATUS`,
@@ -24798,6 +25970,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24820,6 +25993,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24842,6 +26016,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24865,6 +26040,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24888,6 +26064,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24910,6 +26087,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -24933,6 +26111,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,

@@ -42,7 +42,7 @@ RAWSQLCALL1 --> END1
 
 
 
-1. 将`Default(传入变量).comment_id` 设置给  `comment(评论对象).ID(标识)`
+1. 将`Default(传入变量).ID(标识)` 设置给  `comment(评论对象).ID(标识)`
 
 #### 删除评论 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

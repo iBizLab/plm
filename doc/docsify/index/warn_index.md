@@ -1,26 +1,36 @@
 # 模型预警 <!-- {docsify-ignore-all} -->
 
 
-### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[182]</font></sup>
+### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[202]</font></sup>
 | 实体col200   | 处理逻辑col300  | 脚本模式col100  |
 | --------   |------------|----------|
 |[关于(ABOUT)](module/extension/ABOUT#处理逻辑)|[获取关于信息(GetAboutInfo)](module/extension/ABOUT/logic/GetAboutInfo.md)|否|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority.md)|否|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[获取视图消息(get_view_msg)](module/Base/addon/logic/get_view_msg.md)|是|
+|[智能体(AI_AGENT)](module/ai/ai_agent#处理逻辑)|[reload_aiagents](module/ai/ai_agent/logic/reload_aiagents.md)|否|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#处理逻辑)|[agent_flow_clone](module/ai/ai_agent_context/logic/agent_flow_clone.md)|否|
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#处理逻辑)|[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents.md)|否|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#处理逻辑)|[删除logic扩展模型(delete_extend_model)](module/ai/ai_agent_context/logic/delete_extend_model.md)|否|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#处理逻辑)|[建立默认flow交谈逻辑(create_default_flow_logic)](module/ai/ai_agent_context/logic/create_default_flow_logic.md)|否|
 |[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation#处理逻辑)|[提取session前缀并存储(extract_session_type)](module/ai/ai_agent_conversation/logic/extract_session_type.md)|否|
-|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document#处理逻辑)|[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing.md)|否|
+|[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk#处理逻辑)|[检索测试(retrieval_test)](module/ai/ai_kb_chunk/logic/retrieval_test.md)|否|
+|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document#处理逻辑)|[参考引用(references)](module/ai/ai_kb_document/logic/references.md)|否|
+|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document#处理逻辑)|[文档解析处理(parse)](module/ai/ai_kb_document/logic/parse.md)|否|
 |[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document#处理逻辑)|[更新文档执行计划(update_doc_scheduled)](module/ai/ai_kb_document/logic/update_doc_scheduled.md)|否|
 |[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document#处理逻辑)|[生成文档执行计划(generate_doc_scheduled)](module/ai/ai_kb_document/logic/generate_doc_scheduled.md)|否|
 |[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync#处理逻辑)|[更新空间执行计划(update_space_scheduled)](module/ai/ai_kb_document_sync/logic/update_space_scheduled.md)|否|
 |[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync#处理逻辑)|[生成空间执行计划(generate_space_scheduled)](module/ai/ai_kb_document_sync/logic/generate_space_scheduled.md)|否|
+|[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync#处理逻辑)|[空间文档解析处理(space_parse)](module/ai/ai_kb_document_sync/logic/space_parse.md)|否|
 |[知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard#处理逻辑)|[创建知识库文档(create_ai_kb_doc)](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc.md)|否|
+|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member#处理逻辑)|[移除知识库成员发送通知(remove_kb_member_notify)](module/ai/ai_kb_member/logic/remove_kb_member_notify.md)|否|
+|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base#处理逻辑)|[从其他数据库克隆(UpdateByKbTemp)](module/ai/ai_knowledge_base/logic/UpdateByKbTemp.md)|是|
 |[AI大模型(AI_MODEL)](module/ai/ai_model#处理逻辑)|[获取Cloud配置(get_cloud_config)](module/ai/ai_model/logic/get_cloud_config.md)|否|
 |[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme#处理逻辑)|[获取过滤条件(fill_search_conds)](module/ebsx/app_view_theme/logic/fill_search_conds.md)|否|
 |[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea#处理逻辑)|[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison.md)|否|
 |[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page#处理逻辑)|[基线对比数据查询(baseline_comparison)](module/Wiki/baseline_page/logic/baseline_comparison.md)|否|
 |[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case#处理逻辑)|[基线对比数据查询(baseline_comparison)](module/TestMgmt/baseline_test_case/logic/baseline_comparison.md)|否|
 |[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item#处理逻辑)|[基线对比数据查询(baseline_comparison)](module/ProjMgmt/baseline_work_item/logic/baseline_comparison.md)|否|
+|[类别(CATEGORY)](module/Base/category#处理逻辑)|[新建类别排序(sort)](module/Base/category/logic/sort.md)|否|
 |[评论(COMMENT)](module/Base/comment#处理逻辑)|[识别内容格式(format_type)](module/Base/comment/logic/format_type.md)|否|
 |[客户(CUSTOMER)](module/ProdMgmt/customer#处理逻辑)|[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify.md)|否|
 |[客户(CUSTOMER)](module/ProdMgmt/customer#处理逻辑)|[取消关联(del_relation)](module/ProdMgmt/customer/logic/del_relation.md)|否|
@@ -34,6 +44,8 @@
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[使用此模板(use_cur_template)](module/Base/dyna_dashboard/logic/use_cur_template.md)|否|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[更新看板部件模型(sync_portlet_model)](module/Base/dyna_dashboard/logic/sync_portlet_model.md)|否|
 |[执行人(EXECUTOR)](module/Base/executor#处理逻辑)|[删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice.md)|否|
+|[扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ#处理逻辑)|[重载动态打印模版(reload_print_temp)](module/Base/extend_print_templ/logic/reload_print_temp.md)|否|
+|[扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task#处理逻辑)|[文档解析记录(doc_parse_record)](module/Base/extend_scheduled_task/logic/doc_parse_record.md)|否|
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline#处理逻辑)|[生成阶段排序值(fill_stage_order)](module/TestMgmt/guideline/logic/fill_stage_order.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProdMgmt/idea/logic/fill_bi_form_default.md)|是|
@@ -87,6 +99,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[waterfall项目组件权限计数器(waterfall_project_addon_authority)](module/ProjMgmt/project/logic/waterfall_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[创建项目流程准则(auto_create_guideline)](module/ProjMgmt/project/logic/auto_create_guideline.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProjMgmt/project/logic/fill_bi_form_default.md)|是|
+|[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[复制项目信息(copy_project_info)](module/ProjMgmt/project/logic/copy_project_info.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[看板项目组件权限计数器(kanban_project_addon_authority)](module/ProjMgmt/project/logic/kanban_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取快速新建项目集合(quick_create)](module/ProjMgmt/project/logic/quick_create.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one.md)|否|
@@ -95,6 +108,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state.md)|否|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#处理逻辑)|[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify.md)|否|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag#处理逻辑)|[获取关联的工作项(get_con_project_tag)](module/ProjMgmt/project_tag/logic/get_con_project_tag.md)|否|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#处理逻辑)|[versions](module/extension/PSCorePrdFunc/logic/versions.md)|否|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic#处理逻辑)|[WebHook地址(WebHook)](module/extension/PSDELogic/logic/WebHook.md)|是|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic#处理逻辑)|[失败率计算(failure_per)](module/extension/PSDELogic/logic/failure_per.md)|是|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic#处理逻辑)|[获取最后运行状态(get_last_run_info)](module/extension/PSDELogic/logic/get_last_run_info.md)|否|
@@ -116,7 +130,9 @@
 |[执行用例(RUN)](module/TestMgmt/run#处理逻辑)|[获取测试库成员(get_library_member)](module/TestMgmt/run/logic/get_library_member.md)|否|
 |[执行用例(RUN)](module/TestMgmt/run#处理逻辑)|[记录执行结果(create_result)](module/TestMgmt/run/logic/create_result.md)|否|
 |[执行用例(RUN)](module/TestMgmt/run#处理逻辑)|[设置执行人(set_executor)](module/TestMgmt/run/logic/set_executor.md)|否|
+|[执行用例(RUN)](module/TestMgmt/run#处理逻辑)|[设置第一执行人（表格使用）(set_first_executor)](module/TestMgmt/run/logic/set_first_executor.md)|否|
 |[执行用例(RUN)](module/TestMgmt/run#处理逻辑)|[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test.md)|否|
+|[分组(SECTION)](module/Base/section#处理逻辑)|[新建分组排序(sort)](module/Base/section/logic/sort.md)|否|
 |[共享空间(SHARED_SPACE)](module/Wiki/shared_space#处理逻辑)|[校验共享访问密码(access_password)](module/Wiki/shared_space/logic/access_password.md)|否|
 |[共享空间(SHARED_SPACE)](module/Wiki/shared_space#处理逻辑)|[检验共享页面(check_shared)](module/Wiki/shared_space/logic/check_shared.md)|否|
 |[共享空间(SHARED_SPACE)](module/Wiki/shared_space#处理逻辑)|[获取共享链接(shared_url)](module/Wiki/shared_space/logic/shared_url.md)|否|
@@ -141,6 +157,7 @@
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[填充最近执行(fill_latest_executed)](module/TestMgmt/test_case/logic/fill_latest_executed.md)|否|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type.md)|否|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member.md)|否|
+|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite#处理逻辑)|[新建模块排序(sort)](module/TestMgmt/test_suite/logic/sort.md)|否|
 |[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[其他实体关联工单(others_relation_ticket)](module/ProdMgmt/ticket/logic/others_relation_ticket.md)|否|
 |[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProdMgmt/ticket/logic/fill_bi_form_default.md)|是|
 |[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[查询归档数据(get_archived_info)](module/ProdMgmt/ticket/logic/get_archived_info.md)|否|
@@ -184,6 +201,9 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[选择子工作项(choose_child)](module/ProjMgmt/work_item/logic/choose_child.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[需求数量燃尽图(require_burn_out)](module/ProjMgmt/work_item/logic/require_burn_out.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[项目资源成员设置(project_resource_setting)](module/ProjMgmt/work_item/logic/project_resource_setting.md)|否|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type#处理逻辑)|[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model.md)|否|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type#处理逻辑)|[删除扩展模型(delete_custom_model)](module/ProjMgmt/work_item_type/logic/delete_custom_model.md)|否|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type#处理逻辑)|[新建默认排序(sort)](module/ProjMgmt/work_item_type/logic/sort.md)|否|
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[变更工作项类型(change)](module/ProjMgmt/work_item_wizard/logic/change.md)|否|
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[填充操作明细属性(fill_details)](module/ProjMgmt/work_item_wizard/logic/fill_details.md)|否|
 
@@ -336,17 +356,21 @@
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/logic/backlog_accumulate_flow.md)|
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[首页待完成项计数器(count_my_todo)](module/ProjMgmt/work_item/logic/count_my_todo.md)|
 
-### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[357]</font></sup>
+### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[363]</font></sup>
 | 实体col200   | 界面逻辑col300  |
 | --------   |------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource#界面逻辑)|[资源删除逻辑](module/Base/addon_resource/uilogic/resource_del)|
 |[智能体分配(AI_AGENT_ASSIGNMENT)](module/ai/ai_agent_assignment#界面逻辑)|[run分配智能体逻辑](module/ai/ai_agent_assignment/uilogic/run)|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#界面逻辑)|[prompt_feedback](module/ai/ai_agent_context/uilogic/prompt_feedback)|
+|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context#界面逻辑)|[template_feedback](module/ai/ai_agent_context/uilogic/template_feedback)|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session#界面逻辑)|[jenkins_build](module/ai/ai_agent_session/uilogic/jenkins_build)|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session#界面逻辑)|[remark_feedback](module/ai/ai_agent_session/uilogic/remark_feedback)|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session#界面逻辑)|[debug_context](module/ai/ai_agent_session/uilogic/debug_context)|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session#界面逻辑)|[accept_feedback](module/ai/ai_agent_session/uilogic/accept_feedback)|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session#界面逻辑)|[dyna_context](module/ai/ai_agent_session/uilogic/dyna_context)|
 |[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync#界面逻辑)|[刷新文档同步表格](module/ai/ai_kb_document_sync/uilogic/refresh_doc_sync_grid)|
+|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member#界面逻辑)|[新建知识库默认临时成员](module/ai/ai_kb_member/uilogic/create_default_temp_members)|
+|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base#界面逻辑)|[批量删除知识库成员临时数据](module/ai/ai_knowledge_base/uilogic/remove_batch_temp)|
 |[附件(ATTACHMENT)](module/Base/attachment#界面逻辑)|[添加附件数据(表格)](module/Base/attachment/uilogic/add_attachment_grid)|
 |[附件(ATTACHMENT)](module/Base/attachment#界面逻辑)|[附件删除](module/Base/attachment/uilogic/remove_attachment)|
 |[附件(ATTACHMENT)](module/Base/attachment#界面逻辑)|[附件删除（表格）](module/Base/attachment/uilogic/remove_attachment_grid)|
@@ -362,22 +386,24 @@
 |[看板(BOARD)](module/ProjMgmt/board#界面逻辑)|[看板删除逻辑](module/ProjMgmt/board/uilogic/board_remove)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[控制评论按钮显示（知识库）](module/Base/comment/uilogic/comment_icon_show_wiki)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[添加回复(客户沟通)](module/Base/comment/uilogic/add_comment_client)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论（移动端）](module/Base/comment/uilogic/reply_comment_mob)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送讨论评论（移动端）](module/Base/comment/uilogic/send_topic_comment_mob)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论（移动端）](module/Base/comment/uilogic/send_comment_mob)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论](module/Base/comment/uilogic/reply_comment)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[需求展示评论显隐控制](module/Base/comment/uilogic/idea_comment_visible)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[ai添加评论](module/Base/comment/uilogic/ai_comment)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[清空评论(客户沟通)](module/Base/comment/uilogic/clear_comment_client)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[清空评论（知识库）](module/Base/comment/uilogic/clear_comment_wiki)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论(客户沟通)](module/Base/comment/uilogic/send_comment_customer_comment)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[控制评论按钮隐藏（知识库）](module/Base/comment/uilogic/comment_icon_hidden_wiki)|
+|[评论(COMMENT)](module/Base/comment#界面逻辑)|[通知刷新](module/Base/comment/uilogic/notify_refresh)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[编辑评论](module/Base/comment/uilogic/edit_comment)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[获取客户沟通总条数](module/Base/comment/uilogic/get_customer_comment_total)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[获取列表总条数](module/Base/comment/uilogic/get_list_total)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论（移动端）](module/Base/comment/uilogic/reply_comment_mob)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论（移动端）](module/Base/comment/uilogic/send_comment_mob)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论](module/Base/comment/uilogic/reply_comment)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[编辑评论（知识库）](module/Base/comment/uilogic/edit_comment_wiki)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论](module/Base/comment/uilogic/send_comment)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[ai添加评论](module/Base/comment/uilogic/ai_comment)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[清空评论(客户沟通)](module/Base/comment/uilogic/clear_comment_client)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论(知识库)](module/Base/comment/uilogic/send_comment_wiki)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[清空评论（知识库）](module/Base/comment/uilogic/clear_comment_wiki)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[清空评论](module/Base/comment/uilogic/clear_comment)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[发送评论(客户沟通)](module/Base/comment/uilogic/send_comment_customer_comment)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[控制评论按钮隐藏（知识库）](module/Base/comment/uilogic/comment_icon_hidden_wiki)|
-|[评论(COMMENT)](module/Base/comment#界面逻辑)|[刷新评论列表（移动端）](module/Base/comment/uilogic/refresh_comment)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论（知识库）](module/Base/comment/uilogic/reply_comment_wiki)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[编辑评论（知识库）(客户沟通)](module/Base/comment/uilogic/edit_comment_wiki_client)|
 |[评论(COMMENT)](module/Base/comment#界面逻辑)|[回复评论（知识库）(客户沟通)](module/Base/comment/uilogic/reply_comment_wiki_client)|
@@ -399,7 +425,9 @@
 |[数据字典(DICTIONARY)](module/Base/dictionary_data#界面逻辑)|[判断操作列是否禁用](module/Base/dictionary_data/uilogic/judge_column_state)|
 |[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member#界面逻辑)|[新建协作默认临时成员](module/Team/discuss_member/uilogic/create_default_temp_members)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[编辑回复](module/Team/discuss_post/uilogic/edit_reply)|
+|[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[添加附件数据](module/Team/discuss_post/uilogic/add_attachment)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[讨论关闭时隐藏回复输入框](module/Team/discuss_post/uilogic/status_control_visible)|
+|[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[添加回复](module/Team/discuss_post/uilogic/add_reply)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)|
@@ -408,9 +436,6 @@
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[清空回复](module/Team/discuss_post/uilogic/clear_reply)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[发送讨论下评论](module/Team/discuss_post/uilogic/send_comment)|
-|[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|
-|[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[添加附件数据](module/Team/discuss_post/uilogic/add_attachment)|
-|[讨论(DISCUSS_POST)](module/Team/discuss_post#界面逻辑)|[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|
 |[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply#界面逻辑)|[回复下删除评论](module/Team/discuss_reply/uilogic/rely_del_comment)|
 |[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply#界面逻辑)|[获取回复列表总条数（移动端）](module/Team/discuss_reply/uilogic/mob_get_reply_total)|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic#界面逻辑)|[计算表格列行为状态(discuss_topic)](module/Team/discuss_topic/uilogic/calc_column_action_state)|
@@ -428,7 +453,6 @@
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[关联工作项（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_work_item)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|
-|[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[通知刷新](module/ProdMgmt/idea/uilogic/flush)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[关联测试用例（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_test_case)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)|
@@ -436,6 +460,7 @@
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[工单关联需求值变更](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|
+|[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[重置上下文产品ID](module/ProdMgmt/idea/uilogic/reset_product_id)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)|
@@ -504,6 +529,8 @@
 |[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state#界面逻辑)|[判断操作列是否禁用](module/ProjMgmt/project_state/uilogic/judge_column_state)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[自定义版本安装](module/extension/PSCorePrdFunc/uilogic/custom_version_info)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[准备版本数据](module/extension/PSCorePrdFunc/uilogic/prepare_version_info)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转应用详情页面](module/extension/PSCorePrdFunc/uilogic/open_app_info)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转gitlab](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)|
@@ -525,11 +552,11 @@
 |[项目发布(RELEASE)](module/ProjMgmt/release#界面逻辑)|[门户全屏](module/ProjMgmt/release/uilogic/full_screen)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[计算表格列行为状态(review)](module/TestMgmt/review/uilogic/calc_column_action_state)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[门户编辑](module/TestMgmt/review/uilogic/edit_to_design)|
-|[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[通知刷新](module/TestMgmt/review/uilogic/notify_refresh)|
+|[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[门户刷新](module/TestMgmt/review/uilogic/portlet_refresh)|
+|[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[批量删除评审用例临时数据](module/TestMgmt/review/uilogic/remove_batch_temp)|
-|[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[门户刷新](module/TestMgmt/review/uilogic/portlet_refresh)|
 |[评审(REVIEW)](module/TestMgmt/review#界面逻辑)|[门户全屏](module/TestMgmt/review/uilogic/full_screen)|
 |[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content#界面逻辑)|[计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)|
 |[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content#界面逻辑)|[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|
@@ -556,7 +583,6 @@
 |[执行用例(RUN)](module/TestMgmt/run#界面逻辑)|[填充并刷新门户数据（测试）](module/TestMgmt/run/uilogic/fill_and_refresh_portlet)|
 |[执行用例(RUN)](module/TestMgmt/run#界面逻辑)|[门户全屏](module/TestMgmt/run/uilogic/full_screen)|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment#界面逻辑)|[获取结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)|
-|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment#界面逻辑)|[获取移动端结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment#界面逻辑)|[添加附件数据](module/TestMgmt/run_attachment/uilogic/add_attachment)|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment#界面逻辑)|[删除](module/TestMgmt/run_attachment/uilogic/del)|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment#界面逻辑)|[添加附件数据（移动端）](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)|
@@ -573,13 +599,13 @@
 |[迭代(SPRINT)](module/ProjMgmt/sprint#界面逻辑)|[计算进度](module/ProjMgmt/sprint/uilogic/cal_schedule)|
 |[迭代(SPRINT)](module/ProjMgmt/sprint#界面逻辑)|[门户刷新](module/ProjMgmt/sprint/uilogic/portlet_refresh)|
 |[迭代(SPRINT)](module/ProjMgmt/sprint#界面逻辑)|[门户全屏](module/ProjMgmt/sprint/uilogic/full_screen)|
+|[页面模板(STENCIL)](module/Wiki/stencil#界面逻辑)|[发布](module/Wiki/stencil/uilogic/release)|
 |[页面模板(STENCIL)](module/Wiki/stencil#界面逻辑)|[打开新建页面并关闭模板中心](module/Wiki/stencil/uilogic/open_new_page)|
 |[通用模板(TEMPLATE)](module/Base/template#界面逻辑)|[通知刷新](module/Base/template/uilogic/notify_refresh)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[门户编辑](module/TestMgmt/test_case/uilogic/edit_to_design)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[工作项关联用例值变更](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[上传附件（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_add_attachment)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[关联工作项（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_work_item)|
-|[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[门户刷新](module/TestMgmt/test_case/uilogic/portlet_refresh)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|
@@ -591,7 +617,6 @@
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[查看版本](module/TestMgmt/test_case/uilogic/check_version)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[查看预估工时明细](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[组件显隐重置](module/TestMgmt/test_case/uilogic/reset)|
-|[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#界面逻辑)|[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|
@@ -696,13 +721,17 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[门户全屏](module/ProjMgmt/work_item/uilogic/full_screen)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[工单关联工作项值变更](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|
 |[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state#界面逻辑)|[判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type#界面逻辑)|[删除扩展模型](module/ProjMgmt/work_item_type/uilogic/delete_custom_model)|
 
-### 包含长文本的查询<sup class="footnote-symbol"> <font color=orange>[114]</font></sup>
+### 包含长文本的查询<sup class="footnote-symbol"> <font color=orange>[121]</font></sup>
 | 实体col200   | 数据查询col300  |
 | --------   |------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|[数据查询(DEFAULT)](module/Base/addon_resource/query/Default)|
 |[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|[DEFAULT](module/ai/ai_agent_message/query/Default)|
 |[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|[DEFAULT](module/ai/ai_kb_chunk/query/Default)|
+|[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|[启用(VALID)](module/ai/ai_kb_chunk/query/valid)|
+|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|[未解析文档(UNPARSED)](module/ai/ai_kb_document/query/unparsed)|
+|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|[启用知识库(VALID)](module/ai/ai_knowledge_base/query/valid)|
 |[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|[数据查询(DEFAULT)](module/ebsx/app_view_theme/query/Default)|
 |[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|[当前系统（全局）(CUR_SYSTEM)](module/ebsx/app_view_theme/query/cur_system)|
 |[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|[当前系统全部（含用户）(CUR_SYSTEM_ALL)](module/ebsx/app_view_theme/query/cur_system_all)|
@@ -742,6 +771,8 @@
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|[系统仪表盘(is_system)](module/Base/dyna_dashboard/query/is_system)|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|[我的看板(my_dashboard)](module/Base/dyna_dashboard/query/my_dashboard)|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|[正常数据(normal)](module/Base/dyna_dashboard/query/normal)|
+|[扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ)|[DEFAULT](module/Base/extend_print_templ/query/Default)|
+|[扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule)|[启用(VALID)](module/Base/extend_schedule/query/Valid)|
 |[洞察力(INSIGHT)](module/Base/insight)|[数据查询(DEFAULT)](module/Base/insight/query/Default)|
 |[洞察力(INSIGHT)](module/Base/insight)|[工作项分布(property_distribution)](module/Base/insight/query/property_distribution)|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|[数据查询(DEFAULT)](module/Insight/insight_report/query/Default)|
@@ -808,6 +839,8 @@
 |[工时(WORKLOAD)](module/Base/workload)|[团队工时(user_group_workload)](module/Base/workload/query/user_group_workload)|
 |[工时(WORKLOAD)](module/Base/workload)|[工作项工时(work_item_workload)](module/Base/workload/query/work_item_workload)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[拷贝集合(copy)](module/ProjMgmt/work_item/query/copy)|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[正常状态(normal)](module/ProjMgmt/work_item/query/normal)|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[顶层数据查询(top)](module/ProjMgmt/work_item/query/top)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[数据查询(DEFAULT)](module/ProjMgmt/work_item_type/query/Default)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[选择变更工作项类型(choose_target_type)](module/ProjMgmt/work_item_type/query/choose_target_type)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[当前项目工作项类型(cur_project_type)](module/ProjMgmt/work_item_type/query/cur_project_type)|
@@ -956,53 +989,43 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[6]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
 |[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[32]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[22]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |
 | --------   |------------|------------|
-|[活动(ACTIVITY)](module/Base/activity)|主表格(main)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
 |[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|多项选择视图表格(m_pickup)|[知识库(ai_knowledge_base_pickup_grid_view)](app/view/ai_knowledge_base_pickup_grid_view)|
 |[类别(CATEGORY)](module/Base/category)|工作流表格_表格(workflow_design_grid_grid)|[类别(category_pick_up_grid_view)](app/view/category_pick_up_grid_view)|
 |[部门(DEPARTMENT)](module/Base/department)|主表格(main)|[部门(department_pick_up_grid_view)](app/view/department_pick_up_grid_view)|
-|[数据字典(DICTIONARY)](module/Base/dictionary_data)|主表格(main)|[数据字典(dictionary_data_grid_view)](app/view/dictionary_data_grid_view)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post)|回收站_表格(recycle_bin_grid)|[回收站(discuss_post_recycle_bin_grid_view)](app/view/discuss_post_recycle_bin_grid_view)|
 |[看板栏(ENTRY)](module/ProjMgmt/entry)|主表格(main)|[看板栏(entry_pick_up_grid_view)](app/view/entry_pick_up_grid_view)|
-|[收藏(FAVORITE)](module/Base/favorite)|我收藏的空间表格视图_表格(space_grid_view_grid)|[我的收藏(favorite_space_grid_view)](app/view/favorite_space_grid_view)|
 |[需求(IDEA)](module/ProdMgmt/idea)|需求回收站表格(recycle_grid)|[需求(idea_recycle_grid_view)](app/view/idea_recycle_grid_view)|
-|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主表格(main)|[效能成员(insight_member_grid_view)](app/view/insight_member_grid_view)|
-|[岗位(JOB)](module/Base/job)|主表格(main)|[岗位(job_pick_up_grid_view)](app/view/job_pick_up_grid_view)|
 |[成员(MEMBER)](module/Base/member)|资源成员多项选择视图_表格(resource_mpick_up_grid)|[成员(member_portfolio_resource_mpick_up_grid_view)](app/view/member_portfolio_resource_mpick_up_grid_view)|
-|[第三方用户(OPENUSER)](module/ebsx/openuser)|主表格(main)|[第三方用户(openuser_grid_view)](app/view/openuser_grid_view)|
 |[页面(PAGE)](module/Wiki/article_page)|页面回收站表格视图_表格(recycle_grid_view_grid)|[知识库文档(article_page_nested_doc_grid_view)](app/view/article_page_nested_doc_grid_view)|
-|[系统参数(PARAMETER)](module/Base/parameter)|系统参数表格部件(all_parameter_grid)|[系统参数(parameter_grid_view)](app/view/parameter_grid_view)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|选择项目集表格(choose_project_grid)|[文件夹(portfolio_pick_up_grid_view)](app/view/portfolio_pick_up_grid_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|主表格(main)|[项目标签(project_tag_grid_view)](app/view/project_tag_grid_view)|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|自动规则测试_表格(test_auto_rules_grid_view_grid)|[实体处理逻辑(psde_logic_test_auto_rules_grid_view)](app/view/psde_logic_test_auto_rules_grid_view)|
-|[最近访问(RECENT)](module/Base/recent)|访问记录表格视图_表格(access_record_grid_grid)|[访问记录(recent_access_record_grid)](app/view/recent_access_record_grid)|
-|[关联(RELATION)](module/Base/relation)|主表格(main)|[关联(relation_grid_view)](app/view/relation_grid_view)|
 |[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|主表格(main)|[角色成员(role_member_grid_view)](app/view/role_member_grid_view)|
 |[分组(SECTION)](module/Base/section)|主表格(main)|[分组(section_pick_up_grid_view)](app/view/section_pick_up_grid_view)|
-|[空间(SPACE)](module/Wiki/space)|选择空间表格(choose_space)|[空间(space_pick_up_grid_view)](app/view/space_pick_up_grid_view)|
 |[通用模板(TEMPLATE)](module/Base/template)|主表格(main)|[通用模板(template_grid_view)](app/view/template_grid_view)|
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|测试用例表格视图_表格(test_grid_view_all_grid)|[回收站(test_case_recycle_grid_view)](app/view/test_case_recycle_grid_view)|
-|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|主表格(main)|[用例模块(test_suite_grid_view)](app/view/test_suite_grid_view)|
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|测试用例回收站表格视图_表格(recycle_grid_view_grid)|[回收站(test_case_recycle_grid_view)](app/view/test_case_recycle_grid_view)|
+|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|主表格(main)|[用例模块(test_suite_pick_up_grid_view)](app/view/test_suite_pick_up_grid_view)|
 |[工单(TICKET)](module/ProdMgmt/ticket)|工单回收站表格(ticket_delete_grid)|[工单(ticket_recover_grid_view)](app/view/ticket_recover_grid_view)|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|主表格(main)|[工单类型(ticket_type_pick_up_grid_view)](app/view/ticket_type_pick_up_grid_view)|
-|[企业用户(USER)](module/Base/user)|主表格(main)|[企业用户(user_pick_up_grid_view)](app/view/user_pick_up_grid_view)|
-|[工作(WORK)](module/Base/work)|项目集工作表格(item_set_grid)|[工作(work_grid_view)](app/view/work_grid_view)|
+|[企业用户(USER)](module/Base/user)|用户多项数据选择表格视图_表格(pickupgridview_user_grid)|[用户选择(user_choose_pick_up_grid_view)](app/view/user_choose_pick_up_grid_view)|
+|[工作(WORK)](module/Base/work)|主表格(main)|[工作(work_grid_view)](app/view/work_grid_view)|
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|主表格(main)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|回收站_表格(recycle_bin_grid)|[工作项(work_item_program_pickup_grid_view)](app/view/work_item_program_pickup_grid_view)|
 
-### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[88]</font></sup>
+### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[86]</font></sup>
 | 实体col200   |   视图col400 | 搜索表单col400  |
 | --------   |------------|-----------|
-|[活动(ACTIVITY)](module/Base/activity)|全部活动列表（测试）_搜索表单(test_all_list_view_search_form)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
+|[活动(ACTIVITY)](module/Base/activity)|全部活动列表（测试）_搜索表单(test_all_list_view_search_form)|[全部活动列表（测试）(activity_test_all_list_view)](app/view/activity_test_all_list_view)|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|默认搜索表单(default)|[资源视图管理(addon_resource_all_grid_view)](app/view/addon_resource_all_grid_view)|
 |[智能体(AI_AGENT)](module/ai/ai_agent)|默认搜索表单(default)|[智能体模板(ai_agent_grid_view)](app/view/ai_agent_grid_view)|
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|默认搜索表单(default)|[智能体(ai_agent_context_grid_view)](app/view/ai_agent_context_grid_view)|
@@ -1011,8 +1034,13 @@
 |[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|默认搜索表单(default)|[会话消息(ai_agent_message_grid_view)](app/view/ai_agent_message_grid_view)|
 |[智能体工具引用(AI_AGENT_TOOL_REL)](module/ai/ai_agent_tool_rel)|默认搜索表单(default)|[智能体工具引用(ai_agent_tool_rel_grid_view)](app/view/ai_agent_tool_rel_grid_view)|
 |[AI凭证(AI_CREDENTIAL)](module/ai/ai_credential)|默认搜索表单(default)|[AI凭证(ai_credential_grid_view)](app/view/ai_credential_grid_view)|
-|[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|默认搜索表单(default)|[文档分块(ai_kb_chunk_card_view)](app/view/ai_kb_chunk_card_view)|
-|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|默认搜索表单(default)|[知识库文档(ai_kb_document_nested_grid_view)](app/view/ai_kb_document_nested_grid_view)|
+|[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|知识库文档分块树表格视图_搜索表单(main5)|[文档分块(ai_kb_chunk_card_view)](app/view/ai_kb_chunk_card_view)|
+|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|默认搜索表单(default)|[知识库文档(ai_kb_document_grid_view)](app/view/ai_kb_document_grid_view)|
+|[知识库图谱实体类型(AI_KB_GRAPH_ENTITY_TYPE)](module/ai/ai_kb_graph_entity_type)|知识库图谱实体类型配置中心表格视图_搜索表单(main2)|[知识库图谱实体类型(ai_kb_graph_entity_type_config_grid_view)](app/view/ai_kb_graph_entity_type_config_grid_view)|
+|[知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member)|知识库成员配置表格_搜索表单(main2)|[知识库成员(ai_kb_member_assigned_grid_view)](app/view/ai_kb_member_assigned_grid_view)|
+|[知识库标签(AI_KB_TAG)](module/ai/ai_kb_tag)|默认搜索表单(default)|[标签(ai_kb_tag_nested_grid_view)](app/view/ai_kb_tag_nested_grid_view)|
+|[知识库标签集(AI_KB_TAG_SET)](module/ai/ai_kb_tag_set)|默认搜索表单(default)|[标签集(ai_kb_tag_set_grid_view)](app/view/ai_kb_tag_set_grid_view)|
+|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|知识库实体表格视图（已删除）_搜索表单(main5)|[知识库(ai_knowledge_base_actived_grid_view)](app/view/ai_knowledge_base_actived_grid_view)|
 |[知识库源(AI_KNOWLEDGE_SOURCE)](module/ai/ai_knowledge_source)|默认搜索表单(default)|[知识库源(ai_knowledge_source_grid_view)](app/view/ai_knowledge_source_grid_view)|
 |[AI大模型(AI_MODEL)](module/ai/ai_model)|默认搜索表单(default)|[AI大模型(ai_model_grid_view)](app/view/ai_model_grid_view)|
 |[基线(BASELINE)](module/Base/baseline)|默认搜索表单(default)|[全部基线(baseline_library_grid_view)](app/view/baseline_library_grid_view)|
@@ -1022,36 +1050,32 @@
 |[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|默认搜索表单(default)|[基线对比(baseline_work_item_comparison_grid_view)](app/view/baseline_work_item_comparison_grid_view)|
 |[看板(BOARD)](module/ProjMgmt/board)|默认搜索表单(default)|[看板管理(board_grid_view)](app/view/board_grid_view)|
 |[类别(CATEGORY)](module/Base/category)|默认搜索表单(default)|[类别(category_pick_up_grid_view)](app/view/category_pick_up_grid_view)|
-|[交付物(DELIVERABLE)](module/Base/deliverable)|默认搜索表单(default)|[交付物(deliverable_grid_view)](app/view/deliverable_grid_view)|
+|[交付物(DELIVERABLE)](module/Base/deliverable)|默认搜索表单(default)|[交付物(deliverable_project_grid_view)](app/view/deliverable_project_grid_view)|
 |[部门(DEPARTMENT)](module/Base/department)|默认搜索表单(default)|[部门(department_pick_up_grid_view)](app/view/department_pick_up_grid_view)|
-|[数据字典(DICTIONARY)](module/Base/dictionary_data)|默认搜索表单(default)|[数据字典(dictionary_data_grid_view)](app/view/dictionary_data_grid_view)|
 |[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|默认搜索表单(default)|[协作成员(discuss_member_bind_grid_view)](app/view/discuss_member_bind_grid_view)|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post)|默认搜索表单(default)|[全部讨论(discuss_post_all_grid_view)](app/view/discuss_post_all_grid_view)|
 |[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)|默认搜索表单(default)|[最新回复(discuss_reply_latest_grid_view)](app/view/discuss_reply_latest_grid_view)|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|默认搜索表单(default)|[全部话题(discuss_topic_all_grid_view)](app/view/discuss_topic_all_grid_view)|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|系统模板仪表盘表格视图_搜索表单(usr07093743_search_form)|[仪表盘管理(dyna_dashboard_insight_view_grid_view)](app/view/dyna_dashboard_insight_view_grid_view)|
 |[看板栏(ENTRY)](module/ProjMgmt/entry)|默认搜索表单(default)|[看板栏(entry_pick_up_grid_view)](app/view/entry_pick_up_grid_view)|
-|[扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)](module/Base/extend_scheduled_task_his)|默认搜索表单(default)|[扩展计划任务历史(extend_scheduled_task_his_grid_view)](app/view/extend_scheduled_task_his_grid_view)|
+|[扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ)|默认搜索表单(default)|[扩展打印模板(extend_print_templ_grid_view)](app/view/extend_print_templ_grid_view)|
 |[扩展任务类型(EXTEND_TASK_TYPE)](module/Base/extend_task_type)|默认搜索表单(default)|[扩展任务类型(extend_task_type_grid_view)](app/view/extend_task_type_grid_view)|
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|测试库流程准则表格视图_搜索表单(usr05137803_search_form)|[评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)|
 |[需求(IDEA)](module/ProdMgmt/idea)|我的事项需求表格视图_搜索表单(usr11144851_search_form)|[需求反查(idea_drill_detail_grid_view)](app/view/idea_drill_detail_grid_view)|
 |[洞察力(INSIGHT)](module/Base/insight)|默认搜索表单(default)|[全部报表(insight_all_report_grid_view)](app/view/insight_all_report_grid_view)|
-|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|默认搜索表单(default)|[视图成员(insight_member_assigned_grid_view)](app/view/insight_member_assigned_grid_view)|
+|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|视图成员配置_搜索表单(config_grdi_view_search_form)|[视图成员(insight_member_assigned_grid_view)](app/view/insight_member_assigned_grid_view)|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|全部报表表格视图_搜索表单(usr05200683_search_form)|[全部报表(insight_report_all_report_grid_view)](app/view/insight_report_all_report_grid_view)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|默认搜索表单(default)|[全部视图(insight_view_all_grid_view)](app/view/insight_view_all_grid_view)|
-|[岗位(JOB)](module/Base/job)|默认搜索表单(default)|[岗位(job_pick_up_grid_view)](app/view/job_pick_up_grid_view)|
 |[测试库(LIBRARY)](module/TestMgmt/library)|默认搜索表单(default)|[全部测试库(library_all_grid_view)](app/view/library_all_grid_view)|
 |[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|默认搜索表单(default)|[测试库成员(library_member_assigned_grid_view)](app/view/library_member_assigned_grid_view)|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|默认搜索表单(default)|[登录日志(login_log_grid_view)](app/view/login_log_grid_view)|
-|[成员(MEMBER)](module/Base/member)|成员职位表格视图_搜索表单(position_grid_view_search_form)|[成员(member_grid_view)](app/view/member_grid_view)|
-|[第三方用户(OPENUSER)](module/ebsx/openuser)|默认搜索表单(default)|[第三方用户(openuser_grid_view)](app/view/openuser_grid_view)|
+|[成员(MEMBER)](module/Base/member)|默认搜索表单(default)|[成员(member_grid_view)](app/view/member_grid_view)|
 |[页面(PAGE)](module/Wiki/article_page)|默认搜索表单(default)|[我的收藏(article_page_my_favorite_page_grid_view)](app/view/article_page_my_favorite_page_grid_view)|
-|[系统参数(PARAMETER)](module/Base/parameter)|默认搜索表单(default)|[系统参数(parameter_grid_view)](app/view/parameter_grid_view)|
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|默认搜索表单(default)|[文件夹成员(portfolio_member_project_bind_member_grid_view)](app/view/portfolio_member_project_bind_member_grid_view)|
 |[产品(PRODUCT)](module/ProdMgmt/product)|默认搜索表单(default)|[全部产品(product_all_grid_view)](app/view/product_all_grid_view)|
 |[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|默认搜索表单(default)|[成员(product_member_assigned_grid_view)](app/view/product_member_assigned_grid_view)|
-|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|默认搜索表单(default)|[产品标签(product_tag_grid_view)](app/view/product_tag_grid_view)|
-|[项目(PROJECT)](module/ProjMgmt/project)|产品关联项目表格视图_搜索表单(usr12030053_search_form)|[项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)|
+|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|默认搜索表单(default)|[标签管理(product_tag_tag_grid_view)](app/view/product_tag_tag_grid_view)|
+|[项目(PROJECT)](module/ProjMgmt/project)|项目看板视图_搜索表单(kanban_view_search_form)|[项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|默认搜索表单(default)|[项目成员(project_member_assigned_copy_grid_view)](app/view/project_member_assigned_copy_grid_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|默认搜索表单(default)|[项目标签(project_tag_grid_view)](app/view/project_tag_grid_view)|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField)|默认搜索表单(default)|[项目属性(psde_field_data_extend_grid_view)](app/view/psde_field_data_extend_grid_view)|
@@ -1059,14 +1083,13 @@
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|默认搜索表单(default)|[事件通知(psde_notify_event_hook_grid_view)](app/view/psde_notify_event_hook_grid_view)|
 |[智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension)|BI维度全部表格视图_搜索表单(all_grid_view_search_form)|[BI维度(ps_sys_bi_cube_dimension_all_grid_view)](app/view/ps_sys_bi_cube_dimension_all_grid_view)|
 |[智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure)|BI指标全部表格视图_搜索表单(all_grid_view_search_form)|[BI指标(ps_sys_bi_cube_measure_all_grid_view)](app/view/ps_sys_bi_cube_measure_all_grid_view)|
-|[最近访问(RECENT)](module/Base/recent)|最近访问页面表格视图_搜索表单(usr02299198_search_form)|[访问记录(recent_access_record_grid)](app/view/recent_access_record_grid)|
+|[最近访问(RECENT)](module/Base/recent)|最近访问页面表格视图_搜索表单(usr02299198_search_form)|[访问记录(recent_access_record_list)](app/view/recent_access_record_list)|
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|默认搜索表单(default)|[引用索引(references_index_grid_view)](app/view/references_index_grid_view)|
-|[关联(RELATION)](module/Base/relation)|默认搜索表单(default)|[关联(relation_grid_view)](app/view/relation_grid_view)|
+|[关联(RELATION)](module/Base/relation)|默认搜索表单(default)|[关联(relation_idea_re_customer_list_view)](app/view/relation_idea_re_customer_list_view)|
 |[项目发布(RELEASE)](module/ProjMgmt/release)|发布数量反查表格视图_搜索表单(usr07166471_search_form)|[发布数量(release_drill_detail_grid_view)](app/view/release_drill_detail_grid_view)|
 |[资源组件成员(RESOURCE_MEMBER)](module/Base/resource_member)|默认搜索表单(default)|[选择成员(resource_member_binding_grid_view)](app/view/resource_member_binding_grid_view)|
 |[评审(REVIEW)](module/TestMgmt/review)|全部评审表格视图_搜索表单(all_grid_view_search_form)|[全部评审(review_all_grid_view)](app/view/review_all_grid_view)|
 |[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|评审内容实体表格视图_搜索表单(usr04199724_search_form)|[评审内容(review_content_under_review_grid_view)](app/view/review_content_under_review_grid_view)|
-|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|评审内容实体表格视图_搜索表单(usr04199724_search_form)|[评审内容(review_content_idea_under_review_grid_view)](app/view/review_content_idea_under_review_grid_view)|
 |[角色(ROLE)](module/Base/role)|默认搜索表单(default)|[角色配置(role_grid_view)](app/view/role_grid_view)|
 |[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|默认搜索表单(default)|[角色成员(role_member_grid_view)](app/view/role_member_grid_view)|
 |[执行用例(RUN)](module/TestMgmt/run)|执行用例反查表格视图_搜索表单(usr07178382_search_form)|[执行用例反查(run_drill_detail_grid_view)](app/view/run_drill_detail_grid_view)|
@@ -1075,36 +1098,37 @@
 |[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|默认搜索表单(default)|[空间成员(space_member_assigned_grid_view)](app/view/space_member_assigned_grid_view)|
 |[迭代(SPRINT)](module/ProjMgmt/sprint)|迭代数量反查表格视图_搜索表单(usr07168148_search_form)|[迭代数量(sprint_drill_detail_grid_view)](app/view/sprint_drill_detail_grid_view)|
 |[页面模板(STENCIL)](module/Wiki/stencil)|默认搜索表单(default)|[页面模板(stencil_space_all_grid_view)](app/view/stencil_space_all_grid_view)|
-|[待办(SYS_TODO)](module/ebsx/SysTodo)|默认搜索表单(default)|[待办(sys_todo_grid_view)](app/view/sys_todo_grid_view)|
 |[通用模板(TEMPLATE)](module/Base/template)|默认搜索表单(default)|[通用模板(template_grid_view)](app/view/template_grid_view)|
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|测试用例回收站表格视图_搜索表单(recycle_grid_view_search_form)|[测试用例反查(test_case_drill_detail_grid_view)](app/view/test_case_drill_detail_grid_view)|
-|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|默认搜索表单(default)|[用例模板(test_case_template_all_grid_view)](app/view/test_case_template_all_grid_view)|
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|我的事项用例表格视图_搜索表单(usr11142624_search_form)|[测试用例反查(test_case_drill_detail_grid_view)](app/view/test_case_drill_detail_grid_view)|
+|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|全部用例模板表格视图_搜索表单(all_grid_view_search_form)|[用例模板(test_case_template_all_grid_view)](app/view/test_case_template_all_grid_view)|
 |[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|默认搜索表单(default)|[全部计划(test_plan_cur_project_grid_view)](app/view/test_plan_cur_project_grid_view)|
-|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|默认搜索表单(default)|[用例模块(test_suite_grid_view)](app/view/test_suite_grid_view)|
+|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|默认搜索表单(default)|[用例模块(test_suite_pick_up_grid_view)](app/view/test_suite_pick_up_grid_view)|
 |[工单(TICKET)](module/ProdMgmt/ticket)|我的事项工单表格视图_搜索表单(usr11142302_search_form)|[工单反查(ticket_drill_detail_grid_view)](app/view/ticket_drill_detail_grid_view)|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|默认搜索表单(default)|[工单类型(ticket_type_pick_up_grid_view)](app/view/ticket_type_pick_up_grid_view)|
 |[企业用户(USER)](module/Base/user)|企业用户管理表格视图_搜索表单(grid_view_search_form)|[企业用户(user_pick_up_grid_view)](app/view/user_pick_up_grid_view)|
-|[版本(VERSION)](module/Base/version)|默认搜索表单(default)|[版本(version_pick_up_grid_view)](app/view/version_pick_up_grid_view)|
 |[工作(WORK)](module/Base/work)|默认搜索表单(default)|[工作(work_grid_view)](app/view/work_grid_view)|
 |[工时(WORKLOAD)](module/Base/workload)|工时反查表格视图_搜索表单(usr07173798_search_form)|[工时反查(workload_drill_detail_grid_view)](app/view/workload_drill_detail_grid_view)|
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|默认搜索表单(default)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|工时反查表格视图_搜索表单(usr07223309_search_form)|[工作项完成率(work_item_completed_drill_detail_grid_view)](app/view/work_item_completed_drill_detail_grid_view)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_mixed)](app/view/work_item_type_global_setting_mixed)|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[74]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[72]</font></sup>
 | 实体col200   |   视图col400 |表单col400  |
 | --------   |------------|------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|容量设置表单(capacity_form)|[容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)|
 |[智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel)|主编辑表单(main)|[智能体知识库引用(ai_agent_knowledge_rel_edit_view)](app/view/ai_agent_knowledge_rel_edit_view)|
 |[智能体工具引用(AI_AGENT_TOOL_REL)](module/ai/ai_agent_tool_rel)|主编辑表单(main)|[智能体工具引用(ai_agent_tool_rel_edit_view)](app/view/ai_agent_tool_rel_edit_view)|
 |[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)|主编辑表单(main)|[知识库文档同步(ai_kb_document_sync_edit_view)](app/view/ai_kb_document_sync_edit_view)|
+|[知识库图谱实体类型(AI_KB_GRAPH_ENTITY_TYPE)](module/ai/ai_kb_graph_entity_type)|主编辑表单(main)|[知识库图谱实体类型(ai_kb_graph_entity_type_edit_view)](app/view/ai_kb_graph_entity_type_edit_view)|
+|[知识库检索记录(AI_KB_SEARCH_QUERY)](module/ai/ai_kb_search_query)|主编辑表单(main)|[知识库检索记录(ai_kb_search_query_edit_view)](app/view/ai_kb_search_query_edit_view)|
+|[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|知识库配置视图_表单(main6)|[高级设置(ai_knowledge_base_advanced_setting_view)](app/view/ai_knowledge_base_advanced_setting_view)|
 |[附件(ATTACHMENT)](module/Base/attachment)|主编辑表单(main)|[附件(attachment_edit_view)](app/view/attachment_edit_view)|
 |[基线(BASELINE)](module/Base/baseline)|主编辑表单(main)|[新建快照(baseline_create_plan_snapshot_view)](app/view/baseline_create_plan_snapshot_view)|
 |[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|主编辑表单(main)|[基线需求(baseline_idea_edit_view)](app/view/baseline_idea_edit_view)|
 |[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|主编辑表单(main)|[基线页面(baseline_page_edit_view)](app/view/baseline_page_edit_view)|
 |[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|主编辑表单(main)|[基线用例(baseline_test_case_edit_view)](app/view/baseline_test_case_edit_view)|
 |[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|主编辑表单(main)|[基线工作项(baseline_work_item_edit_view)](app/view/baseline_work_item_edit_view)|
-|[看板(BOARD)](module/ProjMgmt/board)|主编辑表单(main)|[确认删除看板(board_confirm_remove_view)](app/view/board_confirm_remove_view)|
+|[看板(BOARD)](module/ProjMgmt/board)|主编辑表单(main)|[看板(board_edit_view)](app/view/board_edit_view)|
 |[类别(CATEGORY)](module/Base/category)|主编辑表单(main)|[类别(category_edit_view)](app/view/category_edit_view)|
 |[评论(COMMENT)](module/Base/comment)|主编辑表单(main)|[评论(comment_edit_view)](app/view/comment_edit_view)|
 |[客户(CUSTOMER)](module/ProdMgmt/customer)|需求客户信息视图_表单(info_view_form)|[客户(customer_edit_view)](app/view/customer_edit_view)|
@@ -1113,17 +1137,16 @@
 |[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|主编辑表单(main)|[职位选择(discuss_member_choose_position_option_view)](app/view/discuss_member_choose_position_option_view)|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|话题讨论列表编辑视图（移动端）_表单(mob_topic_dis_list_form)|[高级设置(discuss_topic_advanced_setting_edit_view)](app/view/discuss_topic_advanced_setting_edit_view)|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|主编辑表单(main)|[动态数据看板(dyna_dashboard_edit_view)](app/view/dyna_dashboard_edit_view)|
+|[扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ)|主编辑表单(main)|[扩展打印模板(extend_print_templ_edit_view)](app/view/extend_print_templ_edit_view)|
 |[收藏(FAVORITE)](module/Base/favorite)|主编辑表单(main)|[收藏(favorite_edit_view)](app/view/favorite_edit_view)|
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|主编辑表单(main)|[流程配置(guideline_config_option_view)](app/view/guideline_config_option_view)|
-|[需求(IDEA)](module/ProdMgmt/idea)|需求排期表单(idea_re_plan)|[需求(idea_bi_form_idea_ratio)](app/view/idea_bi_form_idea_ratio)|
+|[需求(IDEA)](module/ProdMgmt/idea)|需求排期表单(idea_re_plan)|[需求(idea_idea_re_plan_option_view)](app/view/idea_idea_re_plan_option_view)|
 |[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主编辑表单(main)|[职位选择(insight_member_choose_position_option_view)](app/view/insight_member_choose_position_option_view)|
-|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|设置仪表盘选项操作视图_表单(set_board_option_view_form)|[设置仪表盘(insight_report_set_board_option_view)](app/view/insight_report_set_board_option_view)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|视图配置视图_表单(setting_view_form)|[视图信息(insight_view_advanced_setting_edit_view)](app/view/insight_view_advanced_setting_edit_view)|
 |[测试库(LIBRARY)](module/TestMgmt/library)|测试库首页视图_表单(overview)|[高级设置(library_advanced_setting_edit_view)](app/view/library_advanced_setting_edit_view)|
 |[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|测试库成员选择职位选项操作视图_表单(usr12129613_form)|[职位选择(library_member_choose_position_option_view)](app/view/library_member_choose_position_option_view)|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|主编辑表单(main)|[登录日志(login_log_edit_view)](app/view/login_log_edit_view)|
-|[后台管理(MANAGEMENT)](module/Base/management)|主编辑表单(main)|[配置中心(management_test_setting_view)](app/view/management_test_setting_view)|
-|[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|config_view_表单(测试)(config_view_test_form)|[通知设置(notify_setting_config_view)](app/view/notify_setting_config_view)|
+|[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|config_view_表单(config_view_form)|[通知设置(notify_setting_config_view)](app/view/notify_setting_config_view)|
 |[第三方用户(OPENUSER)](module/ebsx/openuser)|主编辑表单(main)|[第三方用户(openuser_edit_view)](app/view/openuser_edit_view)|
 |[页面(PAGE)](module/Wiki/article_page)|引用代码表_表单(test_view_form)|[页面(article_page_edit_view)](app/view/article_page_edit_view)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|项目集首页视图_表单(project_index_view_form)|[高级设置(portfolio_project_set_advanced_view)](app/view/portfolio_project_set_advanced_view)|
@@ -1137,7 +1160,6 @@
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|项目标签确认删除_表单(project_tag_remove_view_form)|[项目标签(project_tag_edit_view)](app/view/project_tag_edit_view)|
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|主编辑表单(main)|[应用门户部件(ps_app_portlet_edit_view)](app/view/ps_app_portlet_edit_view)|
 |[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|主编辑表单(main)|[逻辑设计(psde_logic_logic_design_custom)](app/view/psde_logic_logic_design_custom)|
-|[实体主状态迁移逻辑(PSDEMSLOGIC)](module/extension/PSDEMSLogic)|接口表单(api)|[主状态逻辑设计(psdems_logic_ms_logic_design_custom)](app/view/psdems_logic_ms_logic_design_custom)|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|主编辑表单(main)|[实体通知(psde_notify_edit_view)](app/view/psde_notify_edit_view)|
 |[最近访问(RECENT)](module/Base/recent)|主编辑表单(main)|[最近访问(recent_edit_view)](app/view/recent_edit_view)|
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|主编辑表单(main)|[引用索引(references_index_edit_view)](app/view/references_index_edit_view)|
@@ -1147,7 +1169,6 @@
 |[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|主编辑表单(main)|[产品需求评审内容(review_content_idea_edit_view)](app/view/review_content_idea_edit_view)|
 |[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|主编辑表单(main)|[系统角色成员(role_member_edit_view)](app/view/role_member_edit_view)|
 |[执行用例(RUN)](module/TestMgmt/run)|执行用例关联执行结果移动端_表单(mob_run_re_history_form)|[编辑部件(run_daily_tendencies_option_view)](app/view/run_daily_tendencies_option_view)|
-|[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|执行结果表单(run_histroy_form)|[执行结果(run_history_re_run_edit_view)](app/view/run_history_re_run_edit_view)|
 |[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|主编辑表单(main)|[附件搜索(search_attachment_edit_view)](app/view/search_attachment_edit_view)|
 |[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|主编辑表单(main)|[评论搜索(search_comment_edit_view)](app/view/search_comment_edit_view)|
 |[空间(SPACE)](module/Wiki/space)|空间移动端列表表单视图（移动端）_表单(mob_list_form_view_form)|[高级设置(space_advanced_setting_edit_view)](app/view/space_advanced_setting_edit_view)|
@@ -1157,14 +1178,12 @@
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|主编辑表单(main)|[确认删除(stage_del_confirm_view)](app/view/stage_del_confirm_view)|
 |[页面模板(STENCIL)](module/Wiki/stencil)|另存为模板选项操作视图_表单(save_option_view_form)|[另存为模板(stencil_save_option_view)](app/view/stencil_save_option_view)|
 |[待办(SYS_TODO)](module/ebsx/SysTodo)|主编辑表单(main)|[待办(sys_todo_edit_view)](app/view/sys_todo_edit_view)|
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|附件_表单(attachment_form)|[用例(test_case_bi_form_case_ratio_view)](app/view/test_case_bi_form_case_ratio_view)|
-|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|主编辑表单(main)|[检查更新(test_plan_check_refresh_option_view)](app/view/test_plan_check_refresh_option_view)|
-|[工单(TICKET)](module/ProdMgmt/ticket)|BI报表配置_工单占比(bi_form_ticket_ratio)|[工单(ticket_bi_form_ticket_ratio)](app/view/ticket_bi_form_ticket_ratio)|
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|附件_表单(attachment_form)|[用例(test_case_only_attchment_view)](app/view/test_case_only_attchment_view)|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|主编辑表单(main)|[确认删除(ticket_type_confirm_remove_view)](app/view/ticket_type_confirm_remove_view)|
 |[企业用户(USER)](module/Base/user)|修改密码页（移动端）_表单(change_password_view_form)|[帐号设置(user_account_view)](app/view/user_account_view)|
 |[版本(VERSION)](module/Base/version)|主编辑表单(main)|[版本(version_edit_view)](app/view/version_edit_view)|
 |[工作(WORK)](module/Base/work)|主编辑表单(main)|[工作(work_edit_view)](app/view/work_edit_view)|
 |[工时(WORKLOAD)](module/Base/workload)|主编辑表单(main)|[工时(workload_edit_view)](app/view/workload_edit_view)|
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|主编辑表单(main)|[确认删除(workload_type_confirm_remove_view)](app/view/workload_type_confirm_remove_view)|
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|BI报表配置_工作项状态(bi_form_item_state)|[工作项(work_item_bi_form_view_item_bug)](app/view/work_item_bi_form_view_item_bug)|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|BI报表配置_工作项缺陷(bi_form_item_bug)|[工作项(work_item_bi_form_view_item_bug)](app/view/work_item_bi_form_view_item_bug)|
 |[工作项操作向导明细(WORK_ITEM_WIZARD_DETAIL)](module/ProjMgmt/work_item_wizard_detail)|主编辑表单(main)|[工作项操作向导明细(work_item_wizard_detail_edit_view)](app/view/work_item_wizard_detail_edit_view)|

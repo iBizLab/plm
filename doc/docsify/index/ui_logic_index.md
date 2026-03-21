@@ -27,6 +27,13 @@
 |[run分配智能体逻辑](module/ai/ai_agent_assignment/uilogic/run)|run||
 
 
+## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md) :id=ai_agent_context
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[prompt_feedback](module/ai/ai_agent_context/uilogic/prompt_feedback)|prompt_feedback||
+|[template_feedback](module/ai/ai_agent_context/uilogic/template_feedback)|template_feedback||
+
 
 
 
@@ -45,6 +52,12 @@
 
 
 
+## [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk.md) :id=ai_kb_chunk
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[切换显示模式](module/ai/ai_kb_chunk/uilogic/switch_show_mode)|switch_show_mode|切换表格的显示模式|
+
 
 
 
@@ -55,6 +68,28 @@
 |[刷新文档同步表格](module/ai/ai_kb_document_sync/uilogic/refresh_doc_sync_grid)|refresh_doc_sync_grid||
 
 
+
+
+
+
+
+
+## [知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member.md) :id=ai_kb_member
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[新建知识库默认临时成员](module/ai/ai_kb_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到知识库临时成员内|
+
+
+
+
+
+
+## [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base.md) :id=ai_knowledge_base
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[批量删除知识库成员临时数据](module/ai/ai_knowledge_base/uilogic/remove_batch_temp)|remove_batch_temp|获取知识库内所有临时成员数据并删除|
 
 
 
@@ -90,6 +125,7 @@
 |[产品基线新建分组](module/Base/baseline/uilogic/product_create_section)|product_create_section|产品基线调用树节点新建方法，新建分组|
 |[产品基线新建类别](module/Base/baseline/uilogic/product_create_category)|product_create_category|产品基线调用树节点新建方法新建类别|
 |[删除类别或分组](module/Base/baseline/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
+|[新建子类别](module/Base/baseline/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[查看规划快照](module/Base/baseline/uilogic/check_plan_snapshot)|check_plan_snapshot|查看规划快照|
 |[测试库基线新建分组](module/Base/baseline/uilogic/library_create_section)|library_create_section|测试库基线调用树节点新建方法，新建分组|
 |[测试库基线新建类别](module/Base/baseline/uilogic/library_create_category)|library_create_category|测试库基线调用树节点新建方法新建类别|
@@ -130,6 +166,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[删除类别或分组](module/Base/category/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建子类别](module/Base/category/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[编辑类别或分组](module/Base/category/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
 
@@ -139,8 +176,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[ai添加评论](module/Base/comment/uilogic/ai_comment)|ai_comment||
-|[刷新评论列表](module/Base/comment/uilogic/refresh_comment_list)|refresh_comment_list|刷新|
-|[刷新评论列表（移动端）](module/Base/comment/uilogic/refresh_comment)|refresh_comment|刷新|
+|[发送讨论评论（移动端）](module/Base/comment/uilogic/send_topic_comment_mob)|send_topic_comment_mob|发送讨论评论，用于讨论页面评论框|
 |[发送评论](module/Base/comment/uilogic/send_comment)|send_comment|发送评论，并关闭评论输入框|
 |[发送评论(客户沟通)](module/Base/comment/uilogic/send_comment_customer_comment)|send_comment_customer_comment|发送评论，并关闭评论输入框，刷新评论列表|
 |[发送评论(知识库)](module/Base/comment/uilogic/send_comment_wiki)|send_comment_wiki|发送评论，并关闭评论输入框，刷新评论列表|
@@ -149,6 +185,7 @@
 |[回复评论（知识库）](module/Base/comment/uilogic/reply_comment_wiki)|reply_comment_wiki|获取回复对象评论信息，并展开评论输入框，显示回复组件|
 |[回复评论（知识库）(客户沟通)](module/Base/comment/uilogic/reply_comment_wiki_client)|reply_comment_wiki_client|获取回复对象评论信息，并展开评论输入框，显示回复组件|
 |[回复评论（移动端）](module/Base/comment/uilogic/reply_comment_mob)|reply_comment_mob|获取回复对象评论信息，并回填评论输入框，显示回复组件|
+|[打开人员选择视图（移动端）](module/Base/comment/uilogic/mob_open_user)|mob_open_user||
 |[控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)|comment_icon_show|显示评论按钮|
 |[控制评论按钮显示（知识库）](module/Base/comment/uilogic/comment_icon_show_wiki)|comment_icon_show_wiki|知识库评论按钮显示|
 |[控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)|comment_icon_hidden|获取部件状态信息，通过直接赋值，控制指定部件显示隐藏|
@@ -162,6 +199,8 @@
 |[编辑评论（知识库）(客户沟通)](module/Base/comment/uilogic/edit_comment_wiki_client)|edit_comment_wiki_client|编辑评论，获取评论数据，展开评论输入框并赋值|
 |[获取列表总条数](module/Base/comment/uilogic/get_list_total)|get_list_total|获取列表总条数|
 |[获取客户沟通总条数](module/Base/comment/uilogic/get_customer_comment_total)|get_customer_comment_total|获取客户沟通的总条数信息|
+|[通知刷新](module/Base/comment/uilogic/notify_refresh)|notify_refresh|刷新|
+|[需求展示评论显隐控制](module/Base/comment/uilogic/idea_comment_visible)|idea_comment_visible||
 
 
 
@@ -171,6 +210,7 @@
 | --------|--------|------|
 |[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProdMgmt/customer/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数(初始化使用)](module/ProdMgmt/customer/uilogic/get_customer_score_2)|get_customer_score_2|获取客户分数以及百分比（初始化使用）|
@@ -222,7 +262,6 @@
 | --------|--------|------|
 |[删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
-|[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
 |[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|send_reply_comment|添加回复的评论，展开底部输入框<br>reply实体列表使用|
 |[发送讨论下评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
@@ -263,6 +302,7 @@
 |[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success|列表加载完成|
 |[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name|获取选中模板名称|
 |[通知刷新](module/Base/dyna_dashboard/uilogic/notify_refresh)|notify_refresh||
+
 
 
 
@@ -318,6 +358,7 @@
 |[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[组件显隐重置](module/ProdMgmt/idea/uilogic/reset)|reset||
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|
 |[获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)|get_grid_total|获取表格的总条数信息|
@@ -330,7 +371,6 @@
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
-|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 
 
@@ -398,6 +438,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[计算活跃成员数据信息](module/Base/login_log/uilogic/calc_active_member_info)|calc_active_member_info|获取活跃成员下的昨日活跃人数、昨日活跃率、活跃总人数的数值|
+
 
 
 
@@ -508,6 +549,7 @@
 |[切换显示模式](module/ProdMgmt/product_plan/uilogic/switch_show_mode)|switch_show_mode|切换排期的显示模式|
 |[删除类别或分组](module/ProdMgmt/product_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/ProdMgmt/product_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProdMgmt/product_plan/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProdMgmt/product_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProdMgmt/product_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
@@ -557,8 +599,10 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|clone_git||
+|[准备版本数据](module/extension/PSCorePrdFunc/uilogic/prepare_version_info)|prepare_version_info||
 |[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|init_plugin_info|进入扩展设置时，从setting中获取插件标识和插件库|
 |[更新插件设置](module/extension/PSCorePrdFunc/uilogic/update_plugin_setting)|update_plugin_setting|插件库更改后，更新setting字段|
+|[自定义版本安装](module/extension/PSCorePrdFunc/uilogic/custom_version_info)|custom_version_info||
 |[跳转gitlab](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)|skip_gitlab||
 |[跳转应用详情页面](module/extension/PSCorePrdFunc/uilogic/open_app_info)|open_app_info||
 |[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|skip_setting||
@@ -623,6 +667,7 @@
 |[删除类别或分组](module/ProjMgmt/release/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[控制关联迭代](module/ProjMgmt/release/uilogic/control_relation_sprint)|control_relation_sprint|根据项目类型控制发布概览中关联迭代面板的显示|
 |[新建分组](module/ProjMgmt/release/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProjMgmt/release/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProjMgmt/release/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProjMgmt/release/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算进度](module/ProjMgmt/release/uilogic/cal_schedule)|cal_schedule|表格列计算进度|
@@ -641,6 +686,7 @@
 |[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|refresh_main_view|刷新评审主视图|
 |[批量删除评审用例临时数据](module/TestMgmt/review/uilogic/remove_batch_temp)|remove_batch_temp|获取评审所有临时用例并删除|
 |[新建分组](module/TestMgmt/review/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/TestMgmt/review/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/TestMgmt/review/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑类别或分组](module/TestMgmt/review/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -720,7 +766,6 @@
 |[删除](module/TestMgmt/run_attachment/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
 |[添加附件数据](module/TestMgmt/run_attachment/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[添加附件数据（移动端）](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)|mob_add_attachment|调用附件上传行为，添加附件数据|
-|[获取移动端结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)|get_mob_run_attachment||
 |[获取结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)|get_run_attachment_total|获取结果附件总条数|
 |[附件删除（移动端）](module/TestMgmt/run_attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
 
@@ -778,6 +823,7 @@
 | --------|--------|------|
 |[删除类别或分组](module/ProjMgmt/sprint/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
 |[新建分组](module/ProjMgmt/sprint/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProjMgmt/sprint/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProjMgmt/sprint/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProjMgmt/sprint/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算进度](module/ProjMgmt/sprint/uilogic/cal_schedule)|cal_schedule|表格列计算进度|
@@ -792,6 +838,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[发布](module/Wiki/stencil/uilogic/release)|release||
 |[打开新建页面并关闭模板中心](module/Wiki/stencil/uilogic/open_new_page)|open_new_page|打开新建页并关闭模板中心|
 
 
@@ -836,9 +883,7 @@
 |[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
 |[组件显隐重置](module/TestMgmt/test_case/uilogic/reset)|reset||
-|[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[选择用例模板](module/TestMgmt/test_case/uilogic/choose_case_template)|choose_case_template|选择用例模板后回填所选模板数据至表单|
 |[通知刷新（移动端）](module/TestMgmt/test_case/uilogic/send_refresh)|send_refresh||
@@ -855,6 +900,7 @@
 | --------|--------|------|
 |[删除类别或分组](module/TestMgmt/test_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/TestMgmt/test_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/TestMgmt/test_plan/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/TestMgmt/test_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[移入计划](module/TestMgmt/test_plan/uilogic/shift_in_test_plan)|shift_in_test_plan|获取选中数据，通过后台处理，完成测试用例移入计划操作|
 |[编辑类别或分组](module/TestMgmt/test_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -993,6 +1039,7 @@
 |[已归档或已删除工作项显示隐藏](module/ProjMgmt/work_item/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工作项显示隐藏|
 |[建立关联数据](module/ProjMgmt/work_item/uilogic/create_relation)|create_relation|新建执行后触发，建立关联数据|
 |[我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)|my_assign_chart_jump||
+|[我负责的工作项图表跳转（移动端）](module/ProjMgmt/work_item/uilogic/mob_my_assign_chart_jump)|mob_my_assign_chart_jump||
 |[打开BI报表设计界面](module/ProjMgmt/work_item/uilogic/open_bi_report_design)|open_bi_report_design|打开bi报表设计界面，后续需删除|
 |[执行用例关联工作项(缺陷)值变更](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
 |[新建事务（hybrid）工具栏](module/ProjMgmt/work_item/uilogic/new_hybrid_kanban_issue_toolbar)|new_hybrid_kanban_issue_toolbar|在混合看板新建工作项时，添加entry_id|
@@ -1048,6 +1095,12 @@
 | --------|--------|------|
 |[判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
+
+## [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type.md) :id=work_item_type
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除扩展模型](module/ProjMgmt/work_item_type/uilogic/delete_custom_model)|delete_custom_model||
 
 
 

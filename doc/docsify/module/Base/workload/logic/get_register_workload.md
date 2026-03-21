@@ -26,7 +26,7 @@ state "结束" as END1 <<end>> [[$./get_register_workload#end1 {"结束"}]]
 
 
 Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> DEACTION1
+DEBUGPARAM1 --> DEACTION1 : [[$./get_register_workload#debugparam1-deaction1{连接名称} 连接名称]]
 DEACTION1 --> RAWSQLCALL1
 RAWSQLCALL1 --> RAWSQLCALL4
 RAWSQLCALL4 --> RAWSQLCALL2
@@ -181,6 +181,11 @@ if(principal_type == 'TEST_CASE'){
 
 返回 `Default(传入变量)`
 
+
+### 连接条件说明
+#### 连接名称 :id=DEBUGPARAM1-DEACTION1
+
+`Default(传入变量).ID(标识)` ISNOTNULL
 
 
 ### 实体逻辑参数

@@ -16,8 +16,8 @@
 
 ### 关联界面行为
   * [产品(PRODUCT)](module/ProdMgmt/product) : [归档](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [设置管理员](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [删除](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [设置管理员](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [产品(product_edit_view)](app/view/product_edit_view)

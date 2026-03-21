@@ -19,6 +19,19 @@
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
 |<el-row justify="space-between"><el-col :span="20">generation_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
+|<el-row justify="space-between"><el-col :span="20">similarity_threshold</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|召回相似度阈值|
+|<el-row justify="space-between"><el-col :span="20">vector_similarity_weight</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|向量相似度权重|
+|<el-row justify="space-between"><el-col :span="20">top_k</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最大召回数量|
+|<el-row justify="space-between"><el-col :span="20">rerank</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|召回重排|
+|<el-row justify="space-between"><el-col :span="20">use_kg</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|使用知识图谱|
+|<el-row justify="space-between"><el-col :span="20">rerank_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|召回重排模型|
+|<el-row justify="space-between"><el-col :span="20">kb_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库模式|
+|<el-row justify="space-between"><el-col :span="20">vlm_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视觉识别提示词|
+|<el-row justify="space-between"><el-col :span="20">publish_skill</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布技能|
+|<el-row justify="space-between"><el-col :span="20">skill_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|技能提示词|
+|<el-row justify="space-between"><el-col :span="20">enable_searching</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|支持联网搜索|
+|<el-row justify="space-between"><el-col :span="20">memory_kb_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储知识库标记|
+|<el-row justify="space-between"><el-col :span="20">memory_doc_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储文档标记|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">ai_model_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
@@ -32,6 +45,7 @@
 |<el-row justify="space-between"><el-col :span="20">max_input_tokens</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|最大输入token数|
 |<el-row justify="space-between"><el-col :span="20">memory_max_turns</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|记忆对话轮数|
 |<el-row justify="space-between"><el-col :span="20">memory_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆模式|
+|<el-row justify="space-between"><el-col :span="20">rerank_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序|
 |<el-row justify="space-between"><el-col :span="20">stream</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|流式输出|
 |<el-row justify="space-between"><el-col :span="20">suggested_questions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预置建议问题|
@@ -56,6 +70,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -69,6 +96,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -95,6 +123,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -108,6 +149,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -154,6 +196,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -167,6 +222,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -228,6 +284,19 @@
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
 |<el-row justify="space-between"><el-col :span="20">generation_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
+|<el-row justify="space-between"><el-col :span="20">similarity_threshold</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|召回相似度阈值|
+|<el-row justify="space-between"><el-col :span="20">vector_similarity_weight</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|向量相似度权重|
+|<el-row justify="space-between"><el-col :span="20">top_k</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最大召回数量|
+|<el-row justify="space-between"><el-col :span="20">rerank</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|召回重排|
+|<el-row justify="space-between"><el-col :span="20">use_kg</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|使用知识图谱|
+|<el-row justify="space-between"><el-col :span="20">rerank_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|召回重排模型|
+|<el-row justify="space-between"><el-col :span="20">kb_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库模式|
+|<el-row justify="space-between"><el-col :span="20">vlm_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视觉识别提示词|
+|<el-row justify="space-between"><el-col :span="20">publish_skill</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布技能|
+|<el-row justify="space-between"><el-col :span="20">skill_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|技能提示词|
+|<el-row justify="space-between"><el-col :span="20">enable_searching</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|支持联网搜索|
+|<el-row justify="space-between"><el-col :span="20">memory_kb_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储知识库标记|
+|<el-row justify="space-between"><el-col :span="20">memory_doc_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储文档标记|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">ai_model_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
@@ -241,6 +310,7 @@
 |<el-row justify="space-between"><el-col :span="20">max_input_tokens</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|最大输入token数|
 |<el-row justify="space-between"><el-col :span="20">memory_max_turns</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|记忆对话轮数|
 |<el-row justify="space-between"><el-col :span="20">memory_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆模式|
+|<el-row justify="space-between"><el-col :span="20">rerank_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序|
 |<el-row justify="space-between"><el-col :span="20">stream</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|流式输出|
 |<el-row justify="space-between"><el-col :span="20">suggested_questions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预置建议问题|
@@ -265,6 +335,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -278,6 +361,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -304,6 +388,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -317,6 +414,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -352,6 +450,19 @@
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
 |<el-row justify="space-between"><el-col :span="20">generation_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
+|<el-row justify="space-between"><el-col :span="20">similarity_threshold</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|召回相似度阈值|
+|<el-row justify="space-between"><el-col :span="20">vector_similarity_weight</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|向量相似度权重|
+|<el-row justify="space-between"><el-col :span="20">top_k</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最大召回数量|
+|<el-row justify="space-between"><el-col :span="20">rerank</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|召回重排|
+|<el-row justify="space-between"><el-col :span="20">use_kg</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|使用知识图谱|
+|<el-row justify="space-between"><el-col :span="20">rerank_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|召回重排模型|
+|<el-row justify="space-between"><el-col :span="20">kb_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库模式|
+|<el-row justify="space-between"><el-col :span="20">vlm_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视觉识别提示词|
+|<el-row justify="space-between"><el-col :span="20">publish_skill</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布技能|
+|<el-row justify="space-between"><el-col :span="20">skill_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|技能提示词|
+|<el-row justify="space-between"><el-col :span="20">enable_searching</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|支持联网搜索|
+|<el-row justify="space-between"><el-col :span="20">memory_kb_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储知识库标记|
+|<el-row justify="space-between"><el-col :span="20">memory_doc_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储文档标记|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">ai_model_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
@@ -365,6 +476,7 @@
 |<el-row justify="space-between"><el-col :span="20">max_input_tokens</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|最大输入token数|
 |<el-row justify="space-between"><el-col :span="20">memory_max_turns</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|记忆对话轮数|
 |<el-row justify="space-between"><el-col :span="20">memory_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆模式|
+|<el-row justify="space-between"><el-col :span="20">rerank_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序|
 |<el-row justify="space-between"><el-col :span="20">stream</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|流式输出|
 |<el-row justify="space-between"><el-col :span="20">suggested_questions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预置建议问题|
@@ -389,6 +501,19 @@
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -402,6 +527,7 @@
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -442,6 +568,19 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
 |<el-row justify="space-between"><el-col :span="20">generation_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
+|<el-row justify="space-between"><el-col :span="20">similarity_threshold</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|召回相似度阈值|
+|<el-row justify="space-between"><el-col :span="20">vector_similarity_weight</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|向量相似度权重|
+|<el-row justify="space-between"><el-col :span="20">top_k</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最大召回数量|
+|<el-row justify="space-between"><el-col :span="20">rerank</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|召回重排|
+|<el-row justify="space-between"><el-col :span="20">use_kg</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|使用知识图谱|
+|<el-row justify="space-between"><el-col :span="20">rerank_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|召回重排模型|
+|<el-row justify="space-between"><el-col :span="20">kb_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库模式|
+|<el-row justify="space-between"><el-col :span="20">vlm_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视觉识别提示词|
+|<el-row justify="space-between"><el-col :span="20">publish_skill</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布技能|
+|<el-row justify="space-between"><el-col :span="20">skill_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|技能提示词|
+|<el-row justify="space-between"><el-col :span="20">enable_searching</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|支持联网搜索|
+|<el-row justify="space-between"><el-col :span="20">memory_kb_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储知识库标记|
+|<el-row justify="space-between"><el-col :span="20">memory_doc_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储文档标记|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">ai_model_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
@@ -455,6 +594,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">max_input_tokens</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|最大输入token数|
 |<el-row justify="space-between"><el-col :span="20">memory_max_turns</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|记忆对话轮数|
 |<el-row justify="space-between"><el-col :span="20">memory_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆模式|
+|<el-row justify="space-between"><el-col :span="20">rerank_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序|
 |<el-row justify="space-between"><el-col :span="20">stream</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|流式输出|
 |<el-row justify="space-between"><el-col :span="20">suggested_questions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预置建议问题|
@@ -479,6 +619,19 @@ Integer
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -492,6 +645,7 @@ Integer
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -518,6 +672,19 @@ Integer
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -531,6 +698,7 @@ Integer
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -566,6 +734,19 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
 |<el-row justify="space-between"><el-col :span="20">generation_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
+|<el-row justify="space-between"><el-col :span="20">similarity_threshold</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|召回相似度阈值|
+|<el-row justify="space-between"><el-col :span="20">vector_similarity_weight</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|向量相似度权重|
+|<el-row justify="space-between"><el-col :span="20">top_k</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最大召回数量|
+|<el-row justify="space-between"><el-col :span="20">rerank</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|召回重排|
+|<el-row justify="space-between"><el-col :span="20">use_kg</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|使用知识图谱|
+|<el-row justify="space-between"><el-col :span="20">rerank_model</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|召回重排模型|
+|<el-row justify="space-between"><el-col :span="20">kb_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库模式|
+|<el-row justify="space-between"><el-col :span="20">vlm_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|视觉识别提示词|
+|<el-row justify="space-between"><el-col :span="20">publish_skill</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布技能|
+|<el-row justify="space-between"><el-col :span="20">skill_prompt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|技能提示词|
+|<el-row justify="space-between"><el-col :span="20">enable_searching</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|支持联网搜索|
+|<el-row justify="space-between"><el-col :span="20">memory_kb_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储知识库标记|
+|<el-row justify="space-between"><el-col :span="20">memory_doc_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆存储文档标记|
 |<el-row justify="space-between"><el-col :span="20">active</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|有效|
 |<el-row justify="space-between"><el-col :span="20">ai_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">ai_model_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
@@ -579,6 +760,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">max_input_tokens</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|最大输入token数|
 |<el-row justify="space-between"><el-col :span="20">memory_max_turns</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|记忆对话轮数|
 |<el-row justify="space-between"><el-col :span="20">memory_mode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|记忆模式|
+|<el-row justify="space-between"><el-col :span="20">rerank_model_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序|
 |<el-row justify="space-between"><el-col :span="20">stream</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|流式输出|
 |<el-row justify="space-between"><el-col :span="20">suggested_questions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预置建议问题|
@@ -603,6 +785,19 @@ Integer
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -616,6 +811,7 @@ Integer
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -642,6 +838,19 @@ Integer
   "update_man" : null,
   "update_time" : null,
   "generation_mode" : null,
+  "similarity_threshold" : null,
+  "vector_similarity_weight" : null,
+  "top_k" : null,
+  "rerank" : null,
+  "use_kg" : null,
+  "rerank_model" : null,
+  "kb_mode" : null,
+  "vlm_prompt" : null,
+  "publish_skill" : null,
+  "skill_prompt" : null,
+  "enable_searching" : null,
+  "memory_kb_tag" : null,
+  "memory_doc_tag" : null,
   "active" : null,
   "ai_model_id" : null,
   "ai_model_name" : null,
@@ -655,6 +864,7 @@ Integer
   "max_input_tokens" : null,
   "memory_max_turns" : null,
   "memory_mode" : null,
+  "rerank_model_id" : null,
   "sequence" : null,
   "stream" : null,
   "suggested_questions" : null,
@@ -693,6 +903,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_generation_mode_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
+|<el-row justify="space-between"><el-col :span="20">n_rerank_model_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 
 
 
@@ -708,6 +919,7 @@ Integer
   "n_generation_mode_eq" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_rerank_model_id_eq" : null,
 }
 ```
 
@@ -723,6 +935,19 @@ Integer
     "update_man" : null,
     "update_time" : null,
     "generation_mode" : null,
+    "similarity_threshold" : null,
+    "vector_similarity_weight" : null,
+    "top_k" : null,
+    "rerank" : null,
+    "use_kg" : null,
+    "rerank_model" : null,
+    "kb_mode" : null,
+    "vlm_prompt" : null,
+    "publish_skill" : null,
+    "skill_prompt" : null,
+    "enable_searching" : null,
+    "memory_kb_tag" : null,
+    "memory_doc_tag" : null,
     "active" : null,
     "ai_model_id" : null,
     "ai_model_name" : null,
@@ -736,6 +961,7 @@ Integer
     "max_input_tokens" : null,
     "memory_max_turns" : null,
     "memory_mode" : null,
+    "rerank_model_id" : null,
     "sequence" : null,
     "stream" : null,
     "suggested_questions" : null,
@@ -774,6 +1000,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_generation_mode_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|生成模式|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体标识|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|智能体名称|
+|<el-row justify="space-between"><el-col :span="20">n_rerank_model_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
 
 
 
@@ -789,6 +1016,7 @@ Integer
   "n_generation_mode_eq" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_rerank_model_id_eq" : null,
 }
 ```
 
@@ -804,6 +1032,19 @@ Integer
     "update_man" : null,
     "update_time" : null,
     "generation_mode" : null,
+    "similarity_threshold" : null,
+    "vector_similarity_weight" : null,
+    "top_k" : null,
+    "rerank" : null,
+    "use_kg" : null,
+    "rerank_model" : null,
+    "kb_mode" : null,
+    "vlm_prompt" : null,
+    "publish_skill" : null,
+    "skill_prompt" : null,
+    "enable_searching" : null,
+    "memory_kb_tag" : null,
+    "memory_doc_tag" : null,
     "active" : null,
     "ai_model_id" : null,
     "ai_model_name" : null,
@@ -817,6 +1058,7 @@ Integer
     "max_input_tokens" : null,
     "memory_max_turns" : null,
     "memory_mode" : null,
+    "rerank_model_id" : null,
     "sequence" : null,
     "stream" : null,
     "suggested_questions" : null,

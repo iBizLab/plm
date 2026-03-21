@@ -216,7 +216,7 @@
 | 项目集信息 | project_info | 项目集信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[文件夹](app/view/portfolio_project_show_view)</details>||
 | 删除项目集 | delete_project_set | 删除项目集 |单项数据（主键）|<details><summary>后台调用</summary>[delete_project_set](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
-| 编辑基本信息（项目集） | open_project_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
+| 编辑基本信息 | open_project_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 打开项目集主视图 | open_project_set_index_view | 打开项目集主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[文件夹](app/view/portfolio_project_index_view)</details>||
 
 ## 界面逻辑

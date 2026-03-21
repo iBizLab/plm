@@ -203,6 +203,7 @@
 | 添加客户（其他实体关联） | other_add_relation_customer | 添加客户 |无数据|用户自定义||
 | 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 新建客户 | new_customer | 新建客户 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建客户](app/view/customer_quick_create_view)</details>||
+| 新建类别 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 删除 | delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除（工具栏） | toolbar_delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -222,6 +223,7 @@
 | --------|--------|--------|
 |[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProdMgmt/customer/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取客户分数(初始化使用)](module/ProdMgmt/customer/uilogic/get_customer_score_2)|get_customer_score_2|获取客户分数以及百分比（初始化使用）|

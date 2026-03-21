@@ -4,7 +4,6 @@
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-#### DATAINFOBAR(datainfobar)
 
 
 <script>

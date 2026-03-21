@@ -410,15 +410,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/discuss_posts/{key}/del_comment" type="info" :closable="false" ></el-alert>
+<el-alert title="/discuss_posts/del_comment" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`READ`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
 
 
 
@@ -473,6 +468,34 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "identifier" : null,
+  "is_deleted" : null,
+  "attentions" : null,
+  "attachments" : null,
+  "status" : null,
+  "comments" : null,
+  "heat" : null,
+  "replies" : null,
+  "attention_count" : null,
+  "comment_count" : null,
+  "read_count" : null,
+  "topic_identifier" : null,
+  "content" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "topic_id" : null,
+  "topic_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 删除
 
@@ -2484,7 +2507,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/discuss_topics/{pkey}/discuss_posts/{key}/del_comment" type="info" :closable="false" ></el-alert>
+<el-alert title="/discuss_topics/{pkey}/discuss_posts/del_comment" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2493,7 +2516,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|话题主键|
-|key|String|标识|
 
 
 

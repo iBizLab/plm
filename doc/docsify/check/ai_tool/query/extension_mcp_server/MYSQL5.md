@@ -1,0 +1,24 @@
+```sql
+SELECT
+t1.`ACTIVE`,
+t1.`API_AUTH_TYPE`,
+t1.`API_HEADERS`,
+t1.`API_KEY`,
+t1.`API_METHOD`,
+t1.`API_URL`,
+t1.`CLIENT_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TIMEOUT`,
+t1.`TOKEN_URL`,
+t1.`TOOL_TAG`,
+t1.`TOOL_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `AI_TOOL` t1 
+
+WHERE ( t1.`TOOL_TYPE` = 'mcp_built_in_extension' )
+```

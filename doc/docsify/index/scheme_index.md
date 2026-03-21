@@ -123,17 +123,27 @@
 |CREATE_TIME|建立时间|DATETIME|是||||
 |CUSTOM_SUGGESTION_PROMPT|自定义建议提示词|TEXT|是|1048576|||
 |DEFAULT_SYSTEM_PROMPT|默认系统提示词|TEXT|是|1048576|||
+|ENABLE_SEARCHING|支持联网搜索|INT|是||||
 |ENABLE_SUGGESTED_QUESTIONS|启用问题建议|INT|是||||
 |ENABLE_THINKING|启用思考链|INT|是||||
 |ENABLE_TOOLS|调用工具|INT|是||||
 |GENERATION_MODE|生成模式|VARCHAR|是|60|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_DEFAULT|是否默认Agent|INT|是||||
+|KB_MODE|知识库模式|VARCHAR|是|60|||
 |MAX_INPUT_TOKENS|最大输入token数|INT|是||||
+|MEMORY_DOC_TAG|记忆存储文档标记|VARCHAR|是|200|||
+|MEMORY_KB_TAG|记忆存储知识库标记|VARCHAR|是|200|||
 |MEMORY_MAX_TURNS|记忆对话轮数|INT|是||||
 |MEMORY_MODE|记忆模式|VARCHAR|是|200|||
 |NAME|名称|VARCHAR|是|200|||
+|PUBLISH_SKILL|发布技能|INT|是||||
+|RERANK|召回重排|INT|是||||
+|RERANK_MODEL|召回重排模型|VARCHAR|是|100|||
+|RERANK_MODEL_ID|模型标识|VARCHAR|是|100|||
 |SEQUENCE|排序|INT|是||||
+|SIMILARITY_THRESHOLD|召回相似度阈值|DECIMAL|是||2||
+|SKILL_PROMPT|技能提示词|TEXT|是|1048576|||
 |STREAM|流式输出|INT|是||||
 |STREAM_ENABLED|启用流式输出|INT|是||||
 |SUGGESTED_QUESTIONS|预制建议问题|TEXT|是|1000|||
@@ -142,10 +152,14 @@
 |TOOLS_ENABLED|调用工具|INT|是||||
 |TOOL_EXCEED_MESSAGE|工具调用超限提示语|TEXT|是|1048576|||
 |TOOL_MAX_CALLS|最大工具调用次数|INT|是||||
+|TOP_K|最大召回数量|INT|是||||
 |TOP_P|概率核采样|DECIMAL|是||2||
 |TRIMMING_STRATEGY|截断策略|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USE_KG|使用知识图谱|INT|是||||
+|VECTOR_SIMILARITY_WEIGHT|向量相似度权重|DECIMAL|是||1||
+|VLM_PROMPT|视觉识别提示词|TEXT|是|1048576|||
 |WELCOME_MESSAGE|欢迎消息模板|TEXT|是|1048576|||
 #### 智能体分配(AI_AGENT_ASSIGNMENT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -175,28 +189,44 @@
 |CUSTOM_SUGGESTION_PROMPT|自定义建议提示词|TEXT|是|1048576|||
 |DEFAULT_SYSTEM_PROMPT|默认系统提示词|TEXT|是|1048576|||
 |DESCRIPTION|描述|VARCHAR|是|2000|||
+|ENABLE_SEARCHING|支持联网搜索|INT|是||||
 |ENABLE_SUGGESTED_QUESTIONS|启用问题建议|INT|是||||
 |ENABLE_THINKING|启用思考链|INT|是||||
 |ENABLE_TOOLS|调用工具|INT|是||||
+|FLOW_MODE|智能体工作流模式|VARCHAR|是|60|||
 |GENERATION_MODE|生成模式|VARCHAR|是|60|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_DEFAULT|是否默认Agent|INT|是||||
+|KB_MODE|知识库模式|VARCHAR|是|60|||
 |MAX_INPUT_TOKENS|最大输入token数|INT|是||||
+|MEMORY_DOC_TAG|记忆存储文档标记|VARCHAR|是|200|||
+|MEMORY_KB_TAG|记忆存储知识库标记|VARCHAR|是|200|||
 |MEMORY_MAX_TURNS|记忆对话轮数|INT|是||||
 |MEMORY_MODE|记忆模式|VARCHAR|是|60|||
 |NAME|名称|VARCHAR|是|200|||
+|PUBLISH_SKILL|发布技能|INT|是||||
+|RERANK|召回重排|INT|是||||
+|RERANK_MODEL|召回重排模型|VARCHAR|是|100|||
+|RERANK_MODEL_ID|模型标识|VARCHAR|是|100|||
 |SCOPES|业务范围|VARCHAR|是|500|||
 |SEQUENCE|排序|INT|是||||
+|SIMILARITY_THRESHOLD|召回相似度阈值|DECIMAL|是||2||
+|SKILL_PROMPT|技能提示词|TEXT|是|1048576|||
+|SPEC_KB_ID|规格库标识|VARCHAR|是|100|||
 |STREAM|流式输出|INT|是||||
 |SUGGESTED_QUESTIONS|预置建议问题|TEXT|是|1000|||
 |SYSTEM_FLAG|系统标记|INT|是||||
 |TEMPERATURE|模型随机性参数|DECIMAL|是||2||
 |TOOL_EXCEED_MESSAGE|工具调用超限提示语|TEXT|是|1048576|||
 |TOOL_MAX_CALLS|最大工具调用次数|INT|是||||
+|TOP_K|最大召回数量|INT|是||||
 |TOP_P|概率核采样|DECIMAL|是||2||
 |TRIMMING_STRATEGY|截断策略|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USE_KG|使用知识图谱|INT|是||||
+|VECTOR_SIMILARITY_WEIGHT|向量相似度权重|DECIMAL|是||1||
+|VLM_PROMPT|视觉识别提示词|TEXT|是|1048576|||
 |WELCOME_MESSAGE|欢迎消息模板|TEXT|是|1048576|||
 #### 智能体会话(AI_AGENT_CONVERSATION)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -235,7 +265,9 @@
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |AI_AGENT_ID|智能体标识|VARCHAR|是|100|||
+|AI_AGENT_NAME|智能体名称|VARCHAR|是|200|||
 |AI_KNOWLEDGE_BASE_ID|知识库标识|VARCHAR|是|100|||
+|AI_KNOWLEDGE_BASE_NAME|知识库名称|VARCHAR|是|200|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
@@ -299,14 +331,19 @@
 |ACTIVE|是否启用|INT|是||||
 |CONTENT|块内容|TEXT|是|1048576|||
 |CONTENT_PREVIEW|块内容（预览）|VARCHAR|是|100|||
+|CONTENT_VECTOR|块内容向量|VARBINARY|是||||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |DOCUMENT_ID|知识库文档标识|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|分块标识|VARCHAR|否|100|||
-|KEYWORDS|关键词|VARCHAR|是|1000|||
-|KEY_QUESTIONS|关键问题|VARCHAR|是|1000|||
+|KEYWORDS|关键词|VARCHAR|是|4000|||
+|KEY_QUESTIONS|关键问题|VARCHAR|是|4000|||
+|KEY_QUESTIONS_VECTOR|关键问题向量|VARBINARY|是||||
 |NAME|分块名称|VARCHAR|是|200|||
+|PATH|分块路径|VARCHAR|是|2000|||
+|PID|父分块标识|VARCHAR|是|100|||
 |POSITIONS|文档位置|VARCHAR|是|100|||
+|TAGS|标签|VARCHAR|是|2000|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 知识库文档切片策略(AI_KB_CHUNKING_STRATEGY)
@@ -327,6 +364,7 @@
 |NAME|知识库文档名称|VARCHAR|是|200|||
 |PARSED_CONTENT|解析内容|TEXT|是|1048576|||
 |PARSER_CONFIG|解析配置|TEXT|是|1048576|||
+|PARSE_ERROR|错误信息|TEXT|是|1048576|||
 |SCHEDULED_AT|计划执行时间|DATETIME|是||||
 |SIZE|内容大小|DECIMAL|是||||
 |SOURCE_ID|源标识|VARCHAR|是|200|||
@@ -351,6 +389,33 @@
 |SYNC_FREQUENCY|同步频率|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库检索记录(AI_KB_SEARCH_QUERY)
+#### 知识库检索结果(AI_KB_SEARCH_RESULT)
+#### 知识库标签(AI_KB_TAG)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ENABLE|逻辑有效标识|INT|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|SET_ID|标签集标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VALUE|标签值|VARCHAR|是|100|||
+#### 知识库标签集(AI_KB_TAG_SET)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ENABLE|逻辑有效标识|INT|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|OWNER_ID|范围所属标识|VARCHAR|是|100|||
+|SCOPE|范围|VARCHAR|是|60|||
+|SOURCE_ID|源标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 知识库(AI_KNOWLEDGE_BASE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -363,6 +428,8 @@
 |NAME|名称|VARCHAR|是|200|||
 |PARSER_CONFIG|解析配置|TEXT|是|1048576|||
 |SOURCE_ID|知识库源标识|VARCHAR|是|100|||
+|SOURCE_NAME|知识库源名称|VARCHAR|是|200|||
+|TAG_SETS|标签集|VARCHAR|是|2000|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 知识库源(AI_KNOWLEDGE_SOURCE)
@@ -722,6 +789,20 @@
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
 |START_AT|起始时间|DATETIME|是||||
 |STATE|状态|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 扩展打印模板(EXTEND_PRINT_TEMPL)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DE_TAG|实体标识|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PRINT_MODEL|打印模型|TEXT|是|1048576|||
+|PRINT_TAG|打印标识|VARCHAR|是|200|||
+|PRINT_TYPE|打印类型|VARCHAR|是|60|||
+|REPORT_TYPE|报表类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 扩展执行计划(EXTEND_SCHEDULE)
@@ -1285,6 +1366,7 @@
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
 |IS_LOCAL_CONFIGURE|是否本地配置|INT|是||||
+|IS_TEMPLATE|是否模板|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |NOTICE|公告|TEXT|是|1048576|||
 |SCOPE_ID|所属对象|VARCHAR|是|100|||
@@ -1754,7 +1836,7 @@
 |PRIORITY|优先级|VARCHAR|是|60|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
 |SOLUTION|解决方案|VARCHAR|是|60|||
-|SOLUTION_WAY|解决办法|VARCHAR|是|2000|||
+|SOLUTION_WAY|解决办法|TEXT|是|2000|||
 |STATE|状态|VARCHAR|是|60|||
 |SUBMITTED_AT|提交时间|DATETIME|是||||
 |SUBMITTER_ID|提交人标识|VARCHAR|是|100|||
@@ -1936,7 +2018,7 @@
 |RISK|风险|VARCHAR|是|60|||
 |SEQUENCE|序号|DECIMAL|是||||
 |SEVERITY|严重程度|VARCHAR|是|60|||
-|SOLUTION_WAY|解决办法|VARCHAR|是|2000|||
+|SOLUTION_WAY|解决办法|TEXT|是|1048576|||
 |SPRINT_ID|迭代标识|VARCHAR|是|100|||
 |START_AT|开始时间|DATETIME|是||||
 |STATE|状态|VARCHAR|是|100|||
@@ -2027,6 +2109,7 @@
 |CREATE_TIME|建立时间|DATETIME|是||||
 |GROUP|类型分组|VARCHAR|是|60|||
 |ICON|图标|TEXT|是|100|||
+|ICON_DISP|图标（显示）|VARCHAR|是|200|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_SYSTEM|是否归属系统|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
@@ -2035,6 +2118,278 @@
 |PROJECT_TYPE|项目类型|VARCHAR|是|60|||
 |SEQUENCE|序号|DECIMAL|是||||
 |SUB_TYPE|下级类型|VARCHAR|是|200|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+### 知识库体系
+#### 知识库文档分块(AI_KB_CHUNK)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTIVE|是否启用|INT|是||||
+|CONTENT|块内容|TEXT|是|1048576|||
+|CONTENT_PREVIEW|块内容（预览）|VARCHAR|是|100|||
+|CONTENT_VECTOR|块内容向量|30|是|1024|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DOCUMENT_ID|知识库文档标识|VARCHAR|是|100|||
+|DOCUMENT_TYPE|文档类型|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|分块标识|VARCHAR|否|100|||
+|KEYWORDS|关键词|VARCHAR|是|4000|||
+|KEY_QUESTIONS|关键问题|VARCHAR|是|4000|||
+|KEY_QUESTIONS_VECTOR|关键问题向量|30|是|1024|||
+|NAME|分块名称|VARCHAR|是|200|||
+|PATH|分块路径|VARCHAR|是|2000|||
+|PID|父分块标识|VARCHAR|是|100|||
+|POSITIONS|文档位置|VARCHAR|是|1000|||
+|SEQUENCE|文档索引顺序|INT|是||||
+|SOURCE_COUNT|源分块计数|INT|是||||
+|SOURCE_INDICES|源分块索引|TEXT|是|1048576|||
+|TAGS|标签|VARCHAR|是|2000|||
+|TYPE|分块类型|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
+#### 知识库文档(AI_KB_DOCUMENT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTIVE|是否启用|INT|是||||
+|CHUNK_METHOD|切片方法|VARCHAR|是|100|||
+|CHUNK_NUM|切片数量|DECIMAL|是||||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|CUSTOM_CHUNK|自定义切片|INT|是||||
+|FILE|上传文件|VARCHAR|是|500|||
+|FILE_TYPE|文件类型|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|知识库文档标识|VARCHAR|否|100|||
+|KB_ID|知识库标识|VARCHAR|是|100|||
+|META_DATA|文档元数据|TEXT|是|1048576|||
+|NAME|知识库文档名称|VARCHAR|是|200|||
+|PARSED_CONTENT|解析内容|TEXT|是|1048576|||
+|PARSER_CONFIG|解析配置|TEXT|是|1048576|||
+|PARSE_ERROR|错误信息|TEXT|是|1048576|||
+|SIZE|内容大小|DECIMAL|是||||
+|SOURCE_ID|源标识|VARCHAR|是|200|||
+|SOURCE_TYPE|源类型|VARCHAR|是|60|||
+|STATUS|状态|VARCHAR|是|60|||
+|SYNC_FREQUENCY|同步频率|VARCHAR|是|60|||
+|SYNC_ID|文档同步标识|VARCHAR|是|100|||
+|TYPE|文档类型|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
+#### 知识库文档同步(AI_KB_DOCUMENT_SYNC)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|AI_KNOWLEDGE_BASE_ID|知识库标识|VARCHAR|是|100|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|SOURCE_ID|源标识|VARCHAR|是|200|||
+|SOURCE_TYPE|源类型|VARCHAR|是|60|||
+|SYNC_FREQUENCY|同步频率|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库图谱实体(AI_KB_GRAPH_ENTITY)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CONFIDENCE|置信度|DECIMAL|是||2||
+|CONTEXT|上下文|VARCHAR|是|1000|||
+|CONTEXT_VECTOR|上下文向量|30|是|1024|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|DESCRIPTION_VECTOR|描述向量|30|是|1024|||
+|DOCUMENT_ID|知识库文档标识|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|实体标识|VARCHAR|否|100|||
+|KB_ID|知识库标识|VARCHAR|是|100|||
+|KEYWORDS|关键词|VARCHAR|是|1000|||
+|NAME|名称|VARCHAR|是|500|||
+|NORMALIZED_NAME|规范名称|VARCHAR|是|500|||
+|REFERENCE_TYPE|引用类型|VARCHAR|是|30|||
+|TYPE|类型|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库图谱实体文档分块(AI_KB_GRAPH_ENTITY_CHUNK)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CHUNK_ID|分块标识|VARCHAR|是|100|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ENTITY_ID|实体标识|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库图谱实体类型(AI_KB_GRAPH_ENTITY_TYPE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|ENABLE|逻辑有效标识|INT|是||||
+|ICON|显示图标|VARCHAR|是|500|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VALUE|类型值|VARCHAR|是|100|||
+#### 知识库图谱关系(AI_KB_GRAPH_RELATION)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTIVE|是否启用|INT|是||||
+|CONFIDENCE|置信度|DECIMAL|是||2||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|DESCRIPTION_VECTOR|描述向量|30|是|1024|||
+|ID<i class="fa fa-key"></i>|关系标识|VARCHAR|否|100|||
+|KB_ID|知识库标识|VARCHAR|是|100|||
+|NAME|关系名称|VARCHAR|是|500|||
+|OBJECT_ID|客体标识|VARCHAR|是|100|||
+|PREDICATE|关系谓词|VARCHAR|是|200|||
+|SUBJECT_ID|主体标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库图谱关系文档分块(AI_KB_GRAPH_RELATION_CHUNK)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CHUNK_ID|分块标识|VARCHAR|是|100|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|RELATION_ID|关系标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库成员(AI_KB_MEMBER)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTIVE|是否启用|INT|是||||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|ENABLE|逻辑有效标识|INT|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|KB_ID|知识库标识|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
+|ROLE_ID|角色|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_ID|标识|VARCHAR|是|100|||
+#### 知识库检索记录(AI_KB_SEARCH_QUERY)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|EMBEDDING|查询向量|30|是||||
+|FEEDBACK|用户反馈信息|VARCHAR|是|2000|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_ANSWERED|有效回答|INT|是||||
+|IS_KNOWLEDGE_GAP|知识缺口|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|NORMALIZED_QUERY|标准化问题|VARCHAR|是|100|||
+|RAW_QUERY|原始问题|TEXT|是|1048576|||
+|RETRIEVAL_CONFIG|召回配置|TEXT|是|1048576|||
+|SOURCE|来源|VARCHAR|是|60|||
+|SOURCE_METADATA|来源元数据|TEXT|是|1048576|||
+|TAGS|检索标签|VARCHAR|是|2000|||
+|TOTAL_DURATION|总耗时|DECIMAL|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_ID|用户标识|VARCHAR|是|100|||
+|USER_SATISFACTION|满意度评分|INT|是||||
+#### 知识库检索结果(AI_KB_SEARCH_RESULT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CHUNK_SNAPSHOTS|分块快照集合|TEXT|是|1048576|||
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DOCUMENT_ID|文档标识|VARCHAR|是|100|||
+|HIT_CONTENT|命中内容快照|TEXT|是|1048576|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|KB_ID|知识库标识|VARCHAR|是|100|||
+|MERGED_CONTENT|合并内容快照|TEXT|是|1048576|||
+|NAME|名称|VARCHAR|是|200|||
+|QUERY_ID|标识|VARCHAR|是|100|||
+|RANK|结果排序|INT|是||||
+|RETRIEVAL_MODE|召回模式|VARCHAR|是|100|||
+|SIMILARITY|相似度得分|DECIMAL|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库标签(AI_KB_TAG)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|ENABLE|逻辑有效标识|INT|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|SET_ID|标签集标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VALUE|标签值|VARCHAR|是|100|||
+#### 知识库标签集(AI_KB_TAG_SET)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|创建人|VARCHAR|是|100|||
+|CREATE_TIME|创建时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|ENABLE|逻辑有效标识|INT|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|展示名称|VARCHAR|是|200|||
+|OWNER_ID|范围所属标识|VARCHAR|是|100|||
+|SCOPE|范围|VARCHAR|是|60|||
+|SOURCE_ID|源标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 知识库(AI_KNOWLEDGE_BASE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CHAT_MODEL|交谈模型|VARCHAR|是|100|||
+|CHAT_MODEL_ID|交谈模型标识|VARCHAR|是|100|||
+|CHUNK_METHOD|切片方法|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|DESCRIPTION_VECTOR|描述向量|30|是|1024|||
+|EMBEDDING_MODEL|embedding模型|VARCHAR|是|100|||
+|EMBEDDING_MODEL_ID|模型标识|VARCHAR|是|100|||
+|ENABLE|逻辑有效标识|INT|是||||
+|GUIDANCE_PROMPT|引导提示词|VARCHAR|是|2000|||
+|GUIDANCE_PROMPT_VECTOR|引导词向量|30|是|1024|||
+|ID<i class="fa fa-key"></i>|知识库标识|VARCHAR|否|100|||
+|IS_DELETED|是否已删除|INT|是||||
+|META_DATA|文档元数据|TEXT|是|1048576|||
+|NAME|知识库名称|VARCHAR|是|200|||
+|PAGEINDEX|智能目录索引|INT|是||||
+|PARSER_CONFIG|解析配置|TEXT|是|1048576|||
+|RERANK|召回重排|INT|是||||
+|RERANK_MODEL|召回重排模型|VARCHAR|是|100|||
+|RERANK_MODEL_ID|模型标识|VARCHAR|是|100|||
+|SIMILARITY_THRESHOLD|召回相似度阈值|DECIMAL|是||2||
+|SOURCE_ID|知识库源标识|VARCHAR|是|100|||
+|SOURCE_NAME|知识库源名称|VARCHAR|是|200|||
+|TAG_SETS|标签集|VARCHAR|是|2000|||
+|TOP_K|最大召回数量|INT|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USE_KG|使用知识图谱|INT|是||||
+|VECTOR_SIMILARITY_WEIGHT|向量相似度权重|DECIMAL|是||1||
+|VISIBILITY|可见范围|VARCHAR|是|60|||
+#### 知识库源(AI_KNOWLEDGE_SOURCE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTIVE|是否启用|INT|是||||
+|API_KEY|API密钥|TEXT|是|1048576|||
+|BASE_URL|接口URL|VARCHAR|是|500|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|知识库源标识|VARCHAR|否|100|||
+|LAST_SYNC_TIME|最后同步时间|DATETIME|是||||
+|NAME|知识库源名称|VARCHAR|是|200|||
+|TYPE|源类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 

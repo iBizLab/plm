@@ -29,6 +29,8 @@
 |分块类型|TYPE|[单项选择(文本值)](index/dictionary_index#chunk_type "文档分块类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 
 
 ###### 属性组
@@ -152,6 +154,7 @@
 |N_DOCUMENT_NAME_EQ|知识库文档名称|EQ||
 |N_DOCUMENT_NAME_LIKE|知识库文档名称|LIKE||
 |N_ID_EQ|分块标识|EQ||
+|N_KB_ID_EQ|知识库标识|EQ||
 |N_NAME_LIKE|分块名称|LIKE||
 |N_PID_EQ|父分块标识|EQ||
 

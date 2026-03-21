@@ -10,6 +10,7 @@
 #### 列表(list)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
+#### 工具栏(tabtoolbar)
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -18,6 +19,7 @@
 
 ### 关联界面行为
   * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [配置](module/ProjMgmt/work_item_type#界面行为)
+  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [打开工作项类型新建视图](module/ProjMgmt/work_item_type#界面行为)
   * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [配置](module/ProjMgmt/work_item_type#界面行为)
   * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [配置](module/ProjMgmt/work_item_type#界面行为)
 
@@ -29,6 +31,7 @@
   * [设计(psdemslogicmslogicdesign_modal)](app/view/psdemslogicmslogicdesign_modal)
   * [动态设计(work_item_dyna_tab_exp_view)](app/view/work_item_dyna_tab_exp_view)
   * [工作项类型(work_item_type_edit_view)](app/view/work_item_type_edit_view)
+  * [工作项类型(work_item_type_global_edit_view)](app/view/work_item_type_global_edit_view)
 
 <script>
  const { createApp } = Vue

@@ -28,7 +28,9 @@ state "执行脚本代码" as RAWSFCODE4  [[$./get_discuss_member_one#rawsfcode4
 
 
 Begin --> PREPAREPARAM3
-PREPAREPARAM3 --> RAWSFCODE3
+PREPAREPARAM3 --> RAWSFCODE4 : [[$./get_discuss_member_one#prepareparam3-rawsfcode4{已删除已归档} 已删除已归档]]
+RAWSFCODE4 --> END2
+PREPAREPARAM3 --> RAWSFCODE3 : [[$./get_discuss_member_one#prepareparam3-rawsfcode3{连接名称} 连接名称]]
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_discuss_member_one#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> RAWSFCODE1 : [[$./get_discuss_member_one#dedataset3-rawsfcode1{不在话题中的成员} 不在话题中的成员]]
@@ -38,8 +40,6 @@ PREPAREPARAM5 --> RAWSFCODE2 : [[$./get_discuss_member_one#prepareparam5-rawsfco
 RAWSFCODE2 --> END6
 PREPAREPARAM5 --> RAWSFCODE1 : [[$./get_discuss_member_one#prepareparam5-rawsfcode1{只读成员} 只读成员]]
 RAWSFCODE3 --> END2 : [[$./get_discuss_member_one#rawsfcode3-end2{系统管理员} 系统管理员]]
-PREPAREPARAM3 --> RAWSFCODE4 : [[$./get_discuss_member_one#prepareparam3-rawsfcode4{已删除已归档} 已删除已归档]]
-RAWSFCODE4 --> END2
 
 
 @enduml
@@ -132,8 +132,6 @@ defaultObj.set("srfreadonly", true);
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-console.log('');
-
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
@@ -147,6 +145,12 @@ defaultObj.set("srfreadonly", true);
 
 
 ### 连接条件说明
+#### 已删除已归档 :id=PREPAREPARAM3-RAWSFCODE4
+
+(`Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1`)
+#### 连接名称 :id=PREPAREPARAM3-RAWSFCODE3
+
+`Default(传入变量).IS_DELETED(是否已删除)` EQ `0` AND `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `0`
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2
 
 `Default(传入变量).srfreadonly` ISNULL
@@ -165,9 +169,6 @@ defaultObj.set("srfreadonly", true);
 #### 系统管理员 :id=RAWSFCODE3-END2
 
 `Default(传入变量).srfreadonly` EQ `false`
-#### 已删除已归档 :id=PREPAREPARAM3-RAWSFCODE4
-
-(`Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1`)
 
 
 ### 实体逻辑参数

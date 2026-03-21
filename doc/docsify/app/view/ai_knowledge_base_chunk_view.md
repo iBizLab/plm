@@ -1,4 +1,4 @@
-# 知识库切片策略(ai_knowledge_base_chunk_view)  <!-- {docsify-ignore-all} -->
+# 高级配置(ai_knowledge_base_chunk_view)  <!-- {docsify-ignore-all} -->
 
 
 
@@ -6,11 +6,19 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
-#### 工具栏(toolbar)
 
+##### 部件逻辑
+* `onLoadSuccess`
+```
+var chunk_method = data[0].chunk_method
+data[0].parser_config.method = chunk_method
+```
+* `onLoadDraftSuccess`
+```
+var chunk_method = data[0].chunk_method
+data[0].parser_config.method = chunk_method
+```
 
-### 关联界面行为
-  * [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base) : [编辑界面_保存操作](module/ai/ai_knowledge_base#界面行为)
 
 <script>
  const { createApp } = Vue

@@ -82,7 +82,7 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#category_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
@@ -95,6 +95,7 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除类别及子类别](module/Base/category/logic/delete_child_category)|delete_child_category|无||删除类别及其下子类别（测试）|
+|[新建类别排序](module/Base/category/logic/sort)|sort|无|||
 |[设置默认分组](module/Base/category/logic/set_section)|set_section|属性逻辑||设置默认分组|
 
 ## 数据查询
@@ -200,7 +201,7 @@
 | 流程_设计 | workflow_design | 流程设计 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作流版本设计](app/view/pswfversiondesign)</details>||
 | 编辑 | toolbar_tree_exp_view_node_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_category_tree_exp_view_node_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
-| 流程_查看审批单 | workflow_approve | 查看审批单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[类别](app/view/category_redirect_view)</details>||
+| 新建职位 | toolbar_tree_exp_view_node_cm_deuiaction3_click | 新建职位 |单项数据|用户自定义||
 | 编辑 | edit_design | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作流表](app/view/category_workflow_edit_view)</details>||
 | 删除 | toolbar_category_tree_exp_view_node1_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 删除 | remove | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
@@ -210,6 +211,7 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[删除类别或分组](module/Base/category/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建子类别](module/Base/category/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[编辑类别或分组](module/Base/category/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

@@ -1,0 +1,12 @@
+```sql
+SELECT
+t1.CREATE_TIME,
+t1.DESCRIPTION,
+t1.ID,
+t1.NAME,
+t1.UPDATE_TIME,
+t1.VERSION
+FROM  t1 
+
+
+```

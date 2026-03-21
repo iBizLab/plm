@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -62,12 +63,39 @@ WHERE ( t1.`TYPE` = 'plan'  AND  t1.`OWNER_TYPE` = 'PROJECT'  AND  t1.`OWNER_ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ASSIGNEE_ID,
+t1.ASSIGNEE_NAME,
+t1.CATEGORIES,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DESCRIPTION,
+t1.ID,
+t1.NAME,
+t1.OWNER_ID,
+t1.OWNER_SUBTYPE,
+t1.OWNER_TYPE,
+t1.STATUS,
+t1.TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM BASELINE t1 
+
+WHERE ( t1.TYPE = 'plan'  AND  t1.OWNER_TYPE = 'PROJECT'  AND  t1.OWNER_ID = #{ctx.webcontext.owner_id} )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

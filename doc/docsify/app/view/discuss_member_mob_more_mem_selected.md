@@ -9,7 +9,7 @@
 
 
 ### 关联视图
-  * [人员选择(discuss_member_mob_dpet_pickup_tree_view)](app/view/discuss_member_mob_dpet_pickup_tree_view)
+  * [人员选择(discuss_member_mob_dpet_pickup_tree_view_no_person)](app/view/discuss_member_mob_dpet_pickup_tree_view_no_person)
 
 <script>
  const { createApp } = Vue

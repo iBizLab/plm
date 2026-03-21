@@ -19,7 +19,6 @@ state "idea实体赋参" as PREPAREJSPARAM2  [[$./create_and_relation_customer#p
 state "进行关联操作" as DEACTION1  [[$./create_and_relation_customer#deaction1 {进行关联操作}]]
 state "通知刷新" as RAWJSCODE3  [[$./create_and_relation_customer#rawjscode3 {通知刷新}]]
 state "结束" as END1 <<end>> [[$./create_and_relation_customer#end1 {结束}]]
-state "新建需求" as create_idea  [[$./create_and_relation_customer#create_idea {新建需求}]]
 state "获取选中列表" as RAWJSCODE2  [[$./create_and_relation_customer#rawjscode2 {获取选中列表}]]
 
 
@@ -47,14 +46,6 @@ RAWJSCODE2 --> RAWJSCODE3 : [[$./create_and_relation_customer#rawjscode2-rawjsco
 
 
 1. 将`Default(传入变量)` 设置给  `idea`
-
-#### 新建需求 :id=create_idea<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
-
-
-
-调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 行为 [Save](module/ProdMgmt/idea#行为) ，行为参数为`idea`
-
-将执行结果返回给参数`idea`
 
 #### 获取选中列表 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 

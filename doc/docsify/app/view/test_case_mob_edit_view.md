@@ -19,7 +19,7 @@ false
 #### 工具栏(righttoolbar)
 
 ## 视图界面逻辑
-  * [获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)
+  * [获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)
 
 
 ### 关联界面行为

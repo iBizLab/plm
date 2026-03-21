@@ -10,6 +10,7 @@
 |代码标识|CODENAME|文本，可指定长度|60|否||
 |建立时间|CREATEDATE|日期时间型|8|否||
 |建立人|CREATEMAN|文本，可指定长度|60|否||
+|表单数据类型|DATATYPE|文本，可指定长度|50|是||
 |扩展模型|DYNAMODELFLAG|是否逻辑||是||
 |扩展标记|EXTENSION_TAG|文本，可指定长度|200|是||
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||

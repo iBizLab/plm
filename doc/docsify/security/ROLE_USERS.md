@@ -7,7 +7,7 @@
 |统一资源|标识|
 |---|---|
 |智能报表立方体维度模型扩展（只读）|EXTENSION__READ_PSSYSBICUBEDIMENSION|
-|基础数据|BASE|
+|基础数据|BASE_DATA|
 |智能报表立方体模型扩展（只读）|EXTENSION__READ_PSSYSBICUBE|
 |逻辑模型扩展（只读）|EXTENSION__READ_PSDELOGIC|
 |智能报表模型扩展（只读）|EXTENSION__READ_PSSYSBIREPORT|
@@ -41,6 +41,7 @@
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|<a href ="#/module/Insight/insight_report#insight_report-all_r">全部数据（读）</a>|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|<a href ="#/module/Insight/insight_view#insight_view-user_rw">普通用户（读写）</a>|
 |[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|<a href ="#/module/TestMgmt/review_wizard#review_wizard-all_rw">全部数据（读写）</a>|
+|[通用模板(TEMPLATE)](module/Base/template)|<a href ="#/module/Base/template#template-user_rw">我的通用模板（读写）</a>|
 |[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|<a href ="#/module/ai/ai_agent_context#ai_agent_context-all_w">全部数据（写）</a>|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|<a href ="#/module/ProjMgmt/work_item#work_item-user_r">操作用户(读)</a>|
 |[页面(PAGE)](module/Wiki/article_page)|<a href ="#/module/Wiki/article_page#article_page-shaerd_w">与我共享(写)</a>|
@@ -64,6 +65,7 @@
 |[企业用户(USER)](module/Base/user)|<a href ="#/module/Base/user#user-all_r">全部数据（读）</a>|
 |[智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)|<a href ="#/module/ai/ai_agent_conversation#ai_agent_conversation-user_rw">我的智能体会话（读写）</a>|
 |[工时(WORKLOAD)](module/Base/workload)|<a href ="#/module/Base/workload#workload-user_rw">我的工时（读写）</a>|
+|[通用模板(TEMPLATE)](module/Base/template)|<a href ="#/module/Base/template#template-all_r">全部数据（读）</a>|
 |[需求(IDEA)](module/ProdMgmt/idea)|<a href ="#/module/ProdMgmt/idea#idea-user_w">操作用户(写)</a>|
 |[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|<a href ="#/module/ProdMgmt/product_ticket_type#product_ticket_type-all_r">全部数据（读）</a>|
 |[智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure)|<a href ="#/module/extension/PSSysBICubeMeasure#pssysbicubemeasure-all_rw">全部数据（读写）</a>|

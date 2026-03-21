@@ -11,7 +11,7 @@
   * [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic) : [根据模板标识建立](module/extension/PSDELogic#界面行为)
 
 ### 关联视图
-  * [实体处理逻辑(psdelogiclogicdesign_readonly)](app/view/psdelogiclogicdesign_readonly)
+  * [实体处理逻辑(PSDELogicLogicDesign_Readonly)](app/view/PSDELogicLogicDesign_Readonly)
 
 <script>
  const { createApp } = Vue

@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[255]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[282]</font></sup>
 
 #### [关于(ABOUT)](module/extension/ABOUT)的处理逻辑[获取关于信息(GetAboutInfo)](module/extension/ABOUT/logic/GetAboutInfo)
 
@@ -26,6 +26,47 @@ for(var i=0 ;i<addons.size;i++){
     result.set(addon.get('ddon_type'),addon.get('is_enabled'));
 }
 ```
+#### [智能体(AI_AGENT)](module/ai/ai_agent)的处理逻辑[reload_aiagents](module/ai/ai_agent/logic/reload_aiagents)
+
+节点：触发刷新信号
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def system_id = sys.deploySystemId
+//合成当前系统AI工厂reload信号标识
+def reload_tag = "reloadsignal-$system_id-sysaifactory-ai-ibizplmintelligence"
+def config = [:]
+config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()
+//发布配置
+net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)
+
+```
+#### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[agent_flow_clone](module/ai/ai_agent_context/logic/agent_flow_clone)
+
+节点：构造新逻辑信息
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _original_delogic = logic.param('original_delogic').getReal();
+def _clone_ag_context2 = logic.param('clone_ag_context2').getReal()
+_original_delogic.id=_clone_ag_context2.code_name+ "@ai.AI_AGENT_CONTEXT.agent_flow_templ"
+_original_delogic.psdeid=_clone_ag_context2.code_name+ "@ai.AI_AGENT_CONTEXT";
+_original_delogic.name=_clone_ag_context2.name;
+println("最终_original_delogic："+_original_delogic);
+
+```
+#### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[agent_flow_clone](module/ai/ai_agent_context/logic/agent_flow_clone)
+
+节点：拼接选择逻辑id
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _clone_ag_context1 = logic.param('clone_ag_context1').getReal();
+def choose_logic_id=_clone_ag_context1.code_name+ "@ai.AI_AGENT_CONTEXT.agent_flow_templ"
+def _original_delogic = logic.param('original_delogic').getReal()
+_original_delogic.id=choose_logic_id
+println("选择的choose_logic_id："+choose_logic_id);
+```
 #### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents)
 
 节点：触发刷新信号
@@ -39,6 +80,30 @@ def config = [:]
 config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()
 //发布配置
 net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_tag, config)
+
+```
+#### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[删除logic扩展模型(delete_extend_model)](module/ai/ai_agent_context/logic/delete_extend_model)
+
+节点：拼接model标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def _delogic = logic.param('delogic').getReal()
+_delogic.id=_default.code_name+ "@ai.AI_AGENT_CONTEXT.agent_flow_templ"
+
+```
+#### [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)的处理逻辑[建立默认flow交谈逻辑(create_default_flow_logic)](module/ai/ai_agent_context/logic/create_default_flow_logic)
+
+节点：构造新逻辑信息
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _original_delogic = logic.param('original_delogic').getReal();
+def _default = logic.param('Default').getReal()
+_original_delogic.id=_default.code_name+ "@ai.AI_AGENT_CONTEXT.agent_flow_templ"
+_original_delogic.psdeid=_default.code_name+ "@ai.AI_AGENT_CONTEXT"
+_original_delogic.psdelogicname=_default.name
 
 ```
 #### [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation)的处理逻辑[提取session前缀并存储(extract_session_type)](module/ai/ai_agent_conversation/logic/extract_session_type)
@@ -60,30 +125,123 @@ if(sessionId && sessionId.contains("@")) {
 // 存储到conversation_type参数
 _default.set("type",prefix)
 ```
-#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+#### [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)的处理逻辑[检索测试(retrieval_test)](module/ai/ai_kb_chunk/logic/retrieval_test)
 
-节点：获取文件内容
+节点：检索测试
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
 
 ```groovy
 def _default = logic.param('Default').getReal()
-def _type = _default.get('type')
-if (_type == 'file'){
-    def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient("cloud-oss", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)
-    def fileJson = _default.get("file")
-    if (fileJson){
-        def file = new groovy.json.JsonSlurper().parseText(fileJson)
-        if (file.size() > 0){
-            println("输出file"+file[0])
-            def fileId = file[0].id
-            def folder = file[0].folder
-            def fileText = iCloudOSSClient.downloadText(folder, fileId)
-            _default.set("parsed_content", fileText)
+def query = _default.get('query')
+def kb_id = _default.get('kb_id')
+if (query && kb_id){
+    def _params = [:]
+    def n_rerank_eq = (_default.get('n_rerank_eq') as Integer) ?: 0
+    def similarity_threshold = (_default.get("similarity_threshold") as BigDecimal) ?: 0
+    def keyword_similarity_weight = (_default.get("keyword_similarity_weight") as BigDecimal) ?: 0
+    def n_vector_similarity_gtandeq = 1 - keyword_similarity_weight
+    def top_k = (_default.get("top_k") as Integer) ?: 0
+    def cross_languages = _default.get("cross_languages") ?: ""
+    def use_kg = (_default.get("use_kg") as Boolean) ?: false
+    def n_pageindex_eq = (_default.get('n_pageindex_eq') as Integer) ?: 0
+    _params.put('size', top_k)
+    _params.put('query', query)
+    _params.put('n_rerank_eq', n_rerank_eq)
+    _params.put('n_similarity_gtandeq', similarity_threshold)
+    _params.put('n_vector_similarity_gtandeq', n_vector_similarity_gtandeq)
+    _params.put('top_k', top_k)
+    _params.put('cross_languages', cross_languages)
+    _params.put('use_kg', use_kg)
+    _params.put('n_pageindex_eq', n_pageindex_eq)
+    def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false)
+    def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params)
+    if (_page){
+        def _content = _page.getContent()
+        if (_content){
+            def nodeMap = [:]
+            def roots = []
+            // 1. 遍历平铺数据，构建节点映射表
+            for (node in _content) {
+                def id = node.id
+                def pid = node.pid
+                if (!id) continue
+                // 复制原始节点数据并添加children字段
+                def newNode = [:]
+                newNode.putAll(node.any())
+                newNode.children = []
+                newNode.has_children = 0
+                nodeMap[id] = newNode
+            }
+            // 2. 构建父子关系
+            for (id in nodeMap.keySet()) {
+                def node = nodeMap[id]
+                def pid = node.pid?.toString()
+
+                // 判断是否为根节点（父ID为空）
+                if (!pid || pid == "") {
+                    roots.add(node)
+                } else {
+                    // 将当前节点添加到父节点的子节点列表
+                    def parentNode = nodeMap[pid]
+                    if (parentNode) {
+                        parentNode.children.add(node)
+                        parentNode.has_children = 1
+                    } else {
+                        // 父节点不存在，视为新根节点
+                        roots.add(node)
+                    }
+                }
+            }
+            // 3. 设置结果（返回树形结构）
+            _default.set('result', roots)
         }
     }
 }
 ```
-#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[参考引用(references)](module/ai/ai_kb_document/logic/references)
+
+节点：提取references
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def meta_data_str = _default.get('meta_data')
+if (meta_data_str) {
+    try {
+        def meta_data = new groovy.json.JsonSlurper().parseText(meta_data_str)
+        def references = meta_data.references
+        _default.set('references', references)
+    }catch (e){
+        println "Error parsing meta_data: ${e}"
+    }
+}
+```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parse)](module/ai/ai_kb_document/logic/parse)
+
+节点：获取origin文件内容
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def _document = logic.param('document').getReal()
+// def _type = _default.get('type')
+// if (_type == 'file'){
+//     def iCloudOSSClient = sys.getSysUtilRuntime(net.ibizsys.central.cloud.core.sysutil.ISysCloudClientUtilRuntime.class, false).getServiceClient("cloud-oss", net.ibizsys.central.cloud.core.cloudutil.client.ICloudOSSClient.class, true)
+//     def fileJson = _default.get("file")
+//     if (fileJson){
+//         def file = new groovy.json.JsonSlurper().parseText(fileJson)
+//         if (file.size() > 0){
+//             println("输出file"+file[0])
+//             def fileId = file[0].id
+//             def folder = file[0].folder
+//             def fileText = iCloudOSSClient.downloadText(folder, fileId)
+//             _default.set("parsed_content", fileText)
+//         }
+//     }
+// }
+_default.set("parsed_content", _document.get("original_content"))
+```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parse)](module/ai/ai_kb_document/logic/parse)
 
 节点：实体打印
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
@@ -97,17 +255,25 @@ if (deCodeName && dstEntityKey) {
     def bos = new java.io.ByteArrayOutputStream()
     def dePrintCodeName = "chat_resource"
     def keys = [dstEntityKey] as Object[]
-    dstEntityRuntime.outputPrint(
-        dePrintCodeName,
-        bos,
-        keys,
-        null,
-        false
-    )
+    net.ibizsys.central.cloud.core.security.IEmployeeContext lastEmployeeContext = net.ibizsys.central.cloud.core.security.EmployeeContext.getCurrent();
+    try {
+        net.ibizsys.central.cloud.core.security.EmployeeContext.setCurrent(sys.createSuperUserContext());
+        dstEntityRuntime.outputPrint(
+            dePrintCodeName,
+            bos,
+            keys,
+            null,
+            false
+        )
+    }
+    finally {
+        net.ibizsys.central.cloud.core.security.EmployeeContext.setCurrent(lastEmployeeContext);
+    }
+
     _default.set("parsed_content", bos.toString("utf-8"))
 }
 ```
-#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parsing)](module/ai/ai_kb_document/logic/parsing)
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parse)](module/ai/ai_kb_document/logic/parse)
 
 节点：正则解析文档内容
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
@@ -149,6 +315,14 @@ if (parser_config){
         // 剥离 HTML 标签（保留纯文本，如 <p>Hello</p> → Hello）
         if (rulesList.contains('remove_html_tags')) {
             parsed_content = parsed_content.replaceAll(/<[^>]+>/, '')
+        }
+        
+        //移除Md格式中的图片与链接
+        if (rulesList.contains('remove_img_url')) {
+            // 移除Markdown图片格式：![alt](url)
+            parsed_content = parsed_content.replaceAll(/!\[([^\]]*)\]\(([^)]*)\)/, '')
+            // 移除Markdown链接格式：[text](url)
+            parsed_content = parsed_content.replaceAll(/\[([^\]]*)\]\(([^)]*)\)/, '')
         }
 
         // 移除电子邮箱及 URL（精准匹配，避免误删）
@@ -196,6 +370,134 @@ if (parser_config){
 
 }
 ```
+#### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[文档解析处理(parse)](module/ai/ai_kb_document/logic/parse)
+
+节点：使用工具类解析
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def parsed_content = _default.get('parsed_content')
+def parse_error =  _default.get('parse_error')?:""
+def custom_chunk = _default.get('custom_chunk')
+// 默认使用自定义规则
+def parser_config = _default.get('parser_config')
+if (custom_chunk == 0){
+    // 使用所属知识库默认规则
+    def knowledge_base_runtime = sys.dataentity('ai_knowledge_base')
+    def knowledge_base = knowledge_base_runtime.get(_default.get('kb_id'))
+    if (knowledge_base){
+        parser_config = knowledge_base.get('parser_config')
+    }
+}
+if (parsed_content && parser_config){
+    // 辅助函数：检测内容类型
+    def detectContentType = { content ->
+    if (!content || !(content instanceof String)) {
+        return null
+    }
+    try {
+        new groovy.json.JsonSlurper().parseText(content.trim())
+        return 'json'
+    } catch (ignore) {}
+    try {
+        new XmlSlurper(false, false).parseText(content.trim()) // 禁用DTD和命名空间简化验证
+        return 'xml'
+    } catch (ignore) {}
+    return null
+}
+
+    // 辅助函数：验证内容类型
+    def validateContentType = { content, expectedType ->
+    if (!content || !(content instanceof String) || !expectedType) {
+        return false
+    }
+    try {
+        if (expectedType == 'json') {
+            new groovy.json.JsonSlurper().parseText(content.trim())
+            return true
+        } else if (expectedType == 'xml') {
+            new XmlSlurper(false, false).parseText(content.trim())
+            return true
+        }
+    } catch (Exception e) {
+        return false
+    }
+    return false
+}
+
+    // 1、判断parsed_content类型为xml/json 
+    def contentType = detectContentType(parsed_content)
+    if (!contentType) {
+        parse_error = parse_error + "${parsed_content}不是有效JSON/XML"
+    }
+    // 2、进行文本预处理 
+    def pre_process_rules = parser_config.get('pre_process_rules')
+    if (pre_process_rules) {
+        def process_content = net.ibizsys.central.plugin.ai.util.TextPreprocessUtils.process(parsed_content,pre_process_rules)
+        // 3、判断预处理后文本是否符合原类型 
+        if (!validateContentType(process_content, contentType)) {
+            // 4、去掉文本预处理中可能干扰的选项，重新执行文本预处理 
+            // 定义针对结构化数据的高危规则（会破坏JSON/XML语法结构）
+            def dangerousRulesMap = [
+                'json': ['normalize_punctuation', 'remove_header_footer', 'remove_watermark'],
+                'xml':  ['remove_html_tags', 'remove_js_css', 'remove_header_footer', 'remove_watermark', 'normalize_punctuation']
+        ]
+
+            // 将逗号分隔的规则字符串转为规范列表（去空格、去空值）
+            def allRulesList = pre_process_rules.split(',').collect { it }.findAll { it }
+
+            // 获取当前内容类型对应的危险规则（小写匹配，增强健壮性）
+            def dangerousRules = (dangerousRulesMap[contentType] ?: []).collect { it.toLowerCase() }
+            def safeRulesList = allRulesList.findAll { rule -> !(rule.toLowerCase() in dangerousRules) }
+
+            // 仅当存在安全规则且与原规则不同时尝试修复
+            if (safeRulesList && safeRulesList.size() < allRulesList.size()) {
+                try {
+                    // 拼接为逗号分隔字符串（符合TextPreprocessUtils要求）
+                    def safeRulesStr = safeRulesList.join(',')
+                    def recoveredContent = net.ibizsys.central.plugin.ai.util.TextPreprocessUtils.process(parsed_content, safeRulesStr)
+
+                    if (validateContentType(recoveredContent, contentType)) {
+                        parsed_content = recoveredContent
+                        def fallbackMsg = "预处理成功：原始规则破坏${contentType}结构。移除高危规则[${dangerousRules.join(',')}]后成功解析"
+                        parse_error = parse_error + fallbackMsg
+
+                    }
+                } catch (Exception e) {
+                    def fallbackMsg = "预处理失败：原始规则破坏${contentType}结构。移除高危规则[${dangerousRules.join(',')}]后仍无效，保持原始内容"
+                    parse_error = parse_error + fallbackMsg
+                }
+            }
+
+        }else {
+            parsed_content = process_content
+        }
+    }
+    // 5、进行数据脱敏 
+    def data_masking_rules = parser_config.get('data_masking_rules')
+    if (data_masking_rules){
+        // 根据正则规则pattern对parsed_content进行替换
+        def pattern_replacement_map = [:]
+        data_masking_rules.each { rule ->
+            def pattern = rule?.get('pattern')
+            if (pattern) {
+                pattern_replacement_map[pattern] = rule?.get('replacement') ?: ''
+            }
+        }
+        if (!pattern_replacement_map.isEmpty()) {
+            parsed_content = net.ibizsys.central.plugin.ai.util.TextPreprocessUtils.process(parsed_content, pattern_replacement_map)
+        }
+    }
+    def masked_data = logic.param('masked_data').getReal()
+    masked_data.set("id", _default.get("id"))
+    masked_data.set("parsed_content", parsed_content)
+    masked_data.set("status", "3")
+    masked_data.set("parse_error", parse_error)
+}
+
+
+```
 #### [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)的处理逻辑[更新文档执行计划(update_doc_scheduled)](module/ai/ai_kb_document/logic/update_doc_scheduled)
 
 节点：构造定时器策略
@@ -206,9 +508,9 @@ def _default = logic.param('default').getReal()
 def _extend_schedule = logic.param('extend_schedule').getReal()
 def sync_frequency = _default.sync_frequency
 def frequencyMap = [
-    'daily': '0 0 * * *',
-    'weekly': '0 0 * * 1', 
-    'monthly': '0 0 1 * *'
+    'daily': '0 0 0 * * ?',
+    'weekly': '0 0 0 ? * MON', 
+    'monthly': '0 0 0 1 * ?'
 ]
 _extend_schedule.timer_policy = frequencyMap[sync_frequency]
 ```
@@ -222,12 +524,17 @@ def _default = logic.param('default').getReal()
 def _extend_schedule = logic.param('extend_schedule').getReal()
 def sync_frequency = _default.sync_frequency
 def frequencyMap = [
-    'daily': '0 0 * * *',
-    'weekly': '0 0 * * 1', 
-    'monthly': '0 0 1 * *'
+    'daily': '0 0 0 * * ?',
+    'weekly': '0 0 0 ? * MON', 
+    'monthly': '0 0 0 1 * ?'
 ]
 _extend_schedule.timer_policy = frequencyMap[sync_frequency]
 _extend_schedule.name="["+_default.name+"]文档执行计划"
+
+_extend_schedule.payload = groovy.json.JsonOutput.toJson([
+    id: _default.id
+])
+
 ```
 #### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[更新空间执行计划(update_space_scheduled)](module/ai/ai_kb_document_sync/logic/update_space_scheduled)
 
@@ -239,9 +546,9 @@ def _default = logic.param('default').getReal()
 def _extend_schedule = logic.param('extend_schedule').getReal()
 def sync_frequency = _default.sync_frequency
 def frequencyMap = [
-    'daily': '0 0 * * *',
-    'weekly': '0 0 * * 1', 
-    'monthly': '0 0 1 * *'
+    'daily': '0 0 0 * * ?',
+    'weekly': '0 0 0 ? * MON', 
+    'monthly': '0 0 0 1 * ?'
 ]
 _extend_schedule.timer_policy = frequencyMap[sync_frequency]
 ```
@@ -255,12 +562,72 @@ def _default = logic.param('default').getReal()
 def _extend_schedule = logic.param('extend_schedule').getReal()
 def sync_frequency = _default.sync_frequency
 def frequencyMap = [
-    'daily': '0 0 * * *',
-    'weekly': '0 0 * * 1', 
-    'monthly': '0 0 1 * *'
+    'daily': '0 0 0 * * ?',
+    'weekly': '0 0 0 ? * MON', 
+    'monthly': '0 0 0 1 * ?'
 ]
 _extend_schedule.timer_policy = frequencyMap[sync_frequency]
 _extend_schedule.name="["+_default.name+"]空间执行计划"
+
+_extend_schedule.payload = groovy.json.JsonOutput.toJson([
+    id: _default.id
+])
+```
+#### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[空间文档解析处理(space_parse)](module/ai/ai_kb_document_sync/logic/space_parse)
+
+节点：处理未同步页面
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _all_pages = logic.param('all_pages')?.getReal() ?: []
+def _docs = logic.param('docs')?.getReal() ?: []
+def _doc_sync = logic.param('doc_sync')?.getReal() ?: []
+def doc_pageids_in_space = (_docs?.collect { it?.source_id }?.findAll { it != null } ?: []) as Set
+def doc_runtime = sys.dataentity('ai_kb_document')
+
+println "已有pageId: $doc_pageids_in_space"  
+
+def pages_without_doc = _all_pages.findAll { !doc_pageids_in_space.contains(it.id)}
+
+println "未存在pageId: ${pages_without_doc*.id}"  
+
+pages_without_doc.each { page ->
+    println "页面ID: ${page.id}, 页面: ${page.name}"
+    def new_doc = doc_runtime.entity()
+    new_doc.set('custom_chunk',0)
+    new_doc.set('source_id',page.id)
+    new_doc.set('name',page.name)
+    new_doc.set('sync_frequency',_doc_sync.sync_frequency)
+    new_doc.set('status',0)
+    new_doc.set('sync_id',_doc_sync.id)
+    new_doc.set('type','space')
+    new_doc.set('source_type','page')
+    new_doc.set('kb_id',_doc_sync.ai_knowledge_base_id)
+    doc_runtime.create(new_doc)
+}
+
+
+```
+#### [知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)的处理逻辑[空间文档解析处理(space_parse)](module/ai/ai_kb_document_sync/logic/space_parse)
+
+节点：清理冗余的doc
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _all_pages = logic.param('all_pages')?.getReal() ?: []
+def _docs = logic.param('docs')?.getReal() ?: []
+def all_pages_in_space = _all_pages*.id.toSet()
+def no_exist_pages_doc = _docs.findAll { !all_pages_in_space.contains(it.source_id) }
+println "已删除page的doc: ${no_exist_pages_doc*.source_id}"  
+
+if(no_exist_pages_doc){
+    def doc_runtime = sys.dataentity('ai_kb_document')
+    no_exist_pages_doc.each { doc ->
+        doc_runtime.remove(doc)
+    }
+}
+
+
 ```
 #### [知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard)的处理逻辑[创建知识库文档(create_ai_kb_doc)](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc)
 
@@ -281,6 +648,7 @@ def sync_frequency=_default["sync_frequency"]
 def parser_config=_default["parser_config"]
 def custom_chunk=_default["custom_chunk"]
 def chunk_method=_default["chunk_method"]
+def is_parse_now=_default["is_parse_now"]
 
 //手动从空间导入
 if(import_method == "space_manual"){
@@ -294,20 +662,29 @@ if(import_method == "space_manual"){
             new_doc.set("source_id",page_id)
             new_doc.set("source_type","page")
             new_doc.set("sync_frequency",sync_frequency)
-            new_doc.set("parser_config",parser_config)
             new_doc.set("type","space")
             new_doc.set("custom_chunk",custom_chunk)
-            new_doc.set("chunk_method",chunk_method)
             new_doc.set("active",1)
             new_doc.set("kb_id",kb_id)
             new_doc.set("status",0)
+
+            if(custom_chunk ==1){
+                new_doc.set("chunk_method",chunk_method)
+                new_doc.set("parser_config",parser_config)
+            }
             doc_runtime.create(new_doc)
+
+             //立即解析
+            if(is_parse_now == 1){
+                println("立即解析文档...")
+                doc_runtime.Async_parse(new_doc)
+            }else{
+                println("不解析...")
+            }
+
         }
     }
-}
-
-//自动从空间同步
-if(import_method == "space_auto_sync"){
+}else if(import_method == "space_auto_sync"){//自动从空间同步
     //创建文档同步
     def new_doc_sync=doc_sync_runtime.entity()
     def  space_name=space_list.getText(space_selection)  
@@ -316,14 +693,21 @@ if(import_method == "space_auto_sync"){
     new_doc_sync.set("source_id",space_selection)
     new_doc_sync.set("source_type","space")
     new_doc_sync.set("sync_frequency",sync_frequency)
-    new_doc_sync.set("parser_config",parser_config)
     new_doc_sync.set("custom_chunk",custom_chunk)
-    new_doc_sync.set("chunk_method",chunk_method)
-    doc_sync_runtime.create(new_doc_sync)
-}
 
-//上传本地文件
-if(import_method == "local_upload"){
+    if(custom_chunk ==1){
+        new_doc_sync.set("parser_config",parser_config)
+        new_doc_sync.set("chunk_method",chunk_method)
+}
+    doc_sync_runtime.create(new_doc_sync)
+
+    //立即解析
+      if(is_parse_now == 1){
+            println("立即解析空间文档...")
+            doc_sync_runtime.Async_space_parse(new_doc_sync)
+        }
+
+}else if(import_method == "local_upload"){//上传本地文件
     def selection_file_ids=_default["selection_file_ids"]
     if(selection_file_ids){
         //创建文档
@@ -334,22 +718,44 @@ if(import_method == "local_upload"){
             int last_index = file.name.lastIndexOf(".")
             if (last_index > 0) {
                 file_name = file.name.substring(0, last_index)
+                String doc_type = file.name.substring(last_index + 1)
+                new_doc.set("file_type",doc_type)
             }
+            def files_array = [file]
+            def file_string = groovy.json.JsonOutput.toJson(files_array)
+            new_doc.set("file",file_string)
+            new_doc.set("size",file.size)
             new_doc.set("name",file_name)
-            new_doc.set("source_id",file.id)
-            new_doc.set("source_type","page")
-            new_doc.set("parser_config",parser_config)
             new_doc.set("type","file")
             new_doc.set("custom_chunk",custom_chunk)
-            new_doc.set("chunk_method",chunk_method)
             new_doc.set("active",1)
             new_doc.set("kb_id",kb_id)
             new_doc.set("status",0)
+            if(custom_chunk ==1){
+                new_doc.set("chunk_method",chunk_method)
+                new_doc.set("parser_config",parser_config)
+            }
             doc_runtime.create(new_doc)
+
+              //立即解析
+            if(is_parse_now == 1){
+                println("立即解析上传文档...")
+                doc_runtime.Async_parse(new_doc)
+            }
+
         }
     }
 
 }
+```
+#### [知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member)的处理逻辑[移除知识库成员发送通知(remove_kb_member_notify)](module/ai/ai_kb_member/logic/remove_kb_member_notify)
+
+节点：获取当前操作时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("update_time", new Date());
 ```
 #### [AI大模型(AI_MODEL)](module/ai/ai_model)的处理逻辑[获取Cloud配置(get_cloud_config)](module/ai/ai_model/logic/get_cloud_config)
 
@@ -357,7 +763,58 @@ if(import_method == "local_upload"){
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
 
 ```groovy
-net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig("cloud-oss","aiimage:\n  agent: ${sys.getDeploySystemId()}-ai--vl");
+net.ibizsys.central.cloud.core.spring.rt.ServiceHub serviceHub = net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance();
+
+        org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
+        String strConfig = serviceHub.getConfig("cloud-oss");
+        java.util.Map config = (!org.springframework.util.StringUtils.hasLength(strConfig)) ? new java.util.HashMap() : yaml.loadAs(strConfig, java.util.Map.class);
+
+        java.util.Map aiimage = config.getOrDefault("aiimage",new java.util.HashMap());
+        aiimage.put("agent","${sys.getDeploySystemId()}-ai--vl".toString());
+        config.put("aiimage",aiimage);
+
+
+        if(!config.containsKey("filepath")) {
+            String filepath = "/app/file/oss/file";
+            String allinone = serviceHub.getConfig("servicehub-allinone");
+            if(org.springframework.util.StringUtils.hasLength(allinone)){
+                java.util.Map allinoneConfig = yaml.loadAs(allinone, java.util.Map.class);
+                if(allinoneConfig.containsKey("systemsettings")) {
+                    java.util.Map systemsettings  = allinoneConfig.getOrDefault("systemsettings",new java.util.HashMap());
+                    if(systemsettings.containsKey("cloudossutil")) {
+                        java.util.Map cloudossutil  = systemsettings.getOrDefault("cloudossutil",new java.util.HashMap());
+                        if(cloudossutil.containsKey("filepath")) {
+                            filepath = cloudossutil.remove("filepath");
+                            if (cloudossutil.size()==0) {
+                                systemsettings.remove("cloudossutil");
+                            }
+                            serviceHub.publishConfig("servicehub-allinone",allinoneConfig)
+                        }
+                    }
+                }
+            }
+            config.put("filepath", filepath)
+        }
+        if(!config.containsKey("libreoffice")) {
+            java.util.Map libreoffice = new java.util.HashMap()
+            libreoffice.put("path","/usr/bin/soffice")
+            config.put("libreoffice",libreoffice)
+        }
+
+
+        serviceHub.publishConfig("cloud-oss", config);
+```
+#### [AI大模型(AI_MODEL)](module/ai/ai_model)的处理逻辑[获取Cloud配置(get_cloud_config)](module/ai/ai_model/logic/get_cloud_config)
+
+节点：写入embeddingtoken
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def _map = logic.param('map').getReal()
+def key = _default.get("id")
+def token = "credential-${sys.getDeploySystemId()}-ai--${key}".toString()
+_map.set("embeddingtoken",token)
 ```
 #### [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)的处理逻辑[获取过滤条件(fill_search_conds)](module/ebsx/app_view_theme/logic/fill_search_conds)
 
@@ -513,6 +970,21 @@ if(work_item_for_temp.get("cur_version_id")){
         version_id_in = work_item_for_temp.get("cur_version_id");
     }
     work_item_versions.set("version_id_in", version_id_in);
+}
+```
+#### [类别(CATEGORY)](module/Base/category)的处理逻辑[新建类别排序(sort)](module/Base/category/logic/sort)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def page = logic.param('page').getReal()
+
+def maxValue = 0
+if (page[0] != null) {
+    maxValue = page[0].get('sequence')
+    _default.set('sequence', maxValue + 10)
 }
 ```
 #### [评论(COMMENT)](module/Base/comment)的处理逻辑[识别内容格式(format_type)](module/Base/comment/logic/format_type)
@@ -842,8 +1314,6 @@ defaultObj.set("srfreadonly", true);
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-console.log('');
-
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
@@ -952,6 +1422,45 @@ def _default = logic.param('Default').getReal()
 if(_default.get('user_id') == user.getUserid()){
     _default.set('is_current_user', '1')
 }
+```
+#### [扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ)的处理逻辑[重载动态打印模版(reload_print_temp)](module/Base/extend_print_templ/logic/reload_print_temp)
+
+节点：触发刷新信号
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def de_tag = _default.get("de_tag")
+if (de_tag != null){
+    def de_runtime = sys.dataentity(de_tag)
+    def fullUniqueTag = de_runtime.getFullUniqueTag().replace(".", "-").toLowerCase()
+    def system_id = sys.deploySystemId
+    //合成当前系统AI工厂reload信号标识
+    def reload_signal_prefix = "reloadsignal"
+    def reload_signal_id = "${reload_signal_prefix}-${system_id}-deprint-${fullUniqueTag}-dynamic_chat_resource"
+    println "发布动态聊天资源配置:${reload_signal_id}"
+    def config = [:]
+    config.reload_time = net.ibizsys.runtime.util.DateUtils.getCurTimeString()
+    //发布配置
+    net.ibizsys.central.cloud.core.spring.rt.ServiceHub.getInstance().publishConfig(reload_signal_id, config)
+}
+
+
+```
+#### [扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task)的处理逻辑[文档解析记录(doc_parse_record)](module/Base/extend_scheduled_task/logic/doc_parse_record)
+
+节点：构造执行记录信息
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _tasks = logic.param('tasks').getReal(); 
+def _default = logic.param('default').getReal(); 
+def task = _tasks.first()
+_default.started_at=task.started_at
+_default.finished_at=task.finished_at
+_default.result_message=task.result_message
+def durationMillis = _default.finished_at.getTime() - _default.started_at.getTime()
+_default.set("execution_time",String.format("%.2f", durationMillis/ 1000.0))
 ```
 #### [流程准则(GUIDELINE)](module/TestMgmt/guideline)的处理逻辑[生成阶段排序值(fill_stage_order)](module/TestMgmt/guideline/logic/fill_stage_order)
 
@@ -2636,6 +3145,17 @@ var new_guideline = logic.getParam("new_guideline");
 var for_obj_guideline = logic.getParam("for_obj_guideline");
 new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("id"));
 ```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[复制项目信息(copy_project_info)](module/ProjMgmt/project/logic/copy_project_info)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def project = logic.param('project').getReal()
+project.id = null
+project.identifier = 'PROJ' + UUID.randomUUID().toString().replaceAll('-', '').toUpperCase().take(11)
+logic.param('project').getDataEntityRuntime().fillEntityKeyValue(project)
+```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[看板项目组件权限计数器(kanban_project_addon_authority)](module/ProjMgmt/project/logic/kanban_project_addon_authority)
 
 节点：构建计数器结果
@@ -2848,6 +3368,28 @@ var work_item = logic.getParam("Default");
 var num = work_item.get("num");
 work_item.set("remind", "标签删除后不可恢复。共 " + num + " 个工作项正在使用此标签，删除后会从对应工作项中移除。");
 
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[versions](module/extension/PSCorePrdFunc/logic/versions)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+        def versions = logic.getParam("versions");
+        if(entity.get("versions")  && entity.get("versions") instanceof List && ((List)entity.get("versions")).size()>0) {
+            List list = ((List)entity.get("versions"));
+            if(!"latest".equalsIgnoreCase(list.get(0).getOrDefault("version",""))) {
+                Map latest = new HashMap();
+                entity.copyTo(latest);
+                versions.add(latest)
+            }
+            for(def ver:list) {
+                Map item = new HashMap();
+                entity.copyTo(item);
+                item.putAll(ver);
+                versions.add(item);
+            }
+        }
 ```
 #### [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)的处理逻辑[获取最后运行状态(get_last_run_info)](module/extension/PSDELogic/logic/get_last_run_info)
 
@@ -3457,6 +3999,28 @@ if (list.size == 1) {
     _default.set('executors', null)
 }
 ```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[设置第一执行人（表格使用）(set_first_executor)](module/TestMgmt/run/logic/set_first_executor)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+
+def list = []
+if (_default.get('executors') != null) {
+    _default.set('executor_name', null)
+    _default.set('executor_id', null)
+    list = _default.get('executors')
+    if (list.size != 0) {
+        if (list[0].get('is_assignee') == null) {
+            list[0].set('is_assignee', 1)
+            _default.set('executor_name', list[0].get('user_name'))
+            _default.set('executor_id', list[0].get('user_id'))
+        }
+    }
+}
+```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test)
 
 节点：获取选中的用例ID
@@ -3476,6 +4040,21 @@ if(id != null && id != ''){
     } else {
         ids.add(id);
     }
+}
+```
+#### [分组(SECTION)](module/Base/section)的处理逻辑[新建分组排序(sort)](module/Base/section/logic/sort)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def page = logic.param('page').getReal()
+
+def maxValue = 0
+if (page[0] != null) {
+    maxValue = page[0].get('sequence')
+    _default.set('sequence', maxValue + 10)
 }
 ```
 #### [共享空间(SHARED_SPACE)](module/Wiki/shared_space)的处理逻辑[校验共享访问密码(access_password)](module/Wiki/shared_space/logic/access_password)
@@ -4101,6 +4680,21 @@ defaultObj.set("srfreadonly", true);
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
+```
+#### [用例模块(TEST_SUITE)](module/TestMgmt/test_suite)的处理逻辑[新建模块排序(sort)](module/TestMgmt/test_suite/logic/sort)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def page = logic.param('page').getReal()
+
+def maxValue = 0
+if (page[0] != null) {
+    maxValue = page[0].get('sequence')
+    _default.set('sequence', maxValue + 10)
+}
 ```
 #### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[其他实体关联工单(others_relation_ticket)](module/ProdMgmt/ticket/logic/others_relation_ticket)
 
@@ -5316,6 +5910,113 @@ resource_member.set('day_capacity', day_capacity)
 def insert_members = logic.param('insert_members').getReal()
 def addon_resource = logic.param('addon_resource').getReal()
 addon_resource.set('members', insert_members)
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model)
+
+节点：构造默认主状态逻辑标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def default_ms_logic = logic.param('default_ms_logic').getReal()
+def _default =  logic.param('default').getReal()
+def project_type=_default.project_type
+
+default_ms_logic.id="ProjMgmt.work_item."+project_type+"_task"
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model)
+
+节点：构造默认表单id
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default_create_form = logic.param('default_create_form').getReal()
+def _default_main_form = logic.param('default_main_form').getReal()
+def _default =  logic.param('default').getReal()
+def project_type=_default.project_type
+
+_default_create_form.id="ProjMgmt.work_item.new_"+project_type+"_task"
+_default_main_form.id="ProjMgmt.work_item."+project_type+"_task"
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model)
+
+节点：准备新建表单的参数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default_create_form = logic.param('default_create_form').getReal();
+def _default =  logic.param('default').getReal(); 
+def code_name=_default.id
+
+_default_create_form.id="ProjMgmt.work_item.new_"+code_name
+_default_create_form.psdeid="ProjMgmt.work_item"
+_default_create_form.name="新建"+_default.name
+_default_create_form.codename="new_"+code_name
+_default_create_form.datatype=code_name
+
+
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model)
+
+节点：准备主视图表单参数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default_main_form = logic.param('default_main_form').getReal();
+def _default =  logic.param('default').getReal(); 
+def code_name=_default.id
+
+_default_main_form.id="ProjMgmt.work_item."+code_name
+_default_main_form.psdeid="ProjMgmt.work_item"
+_default_main_form.name=_default.name
+_default_main_form.codename=code_name
+_default_main_form.datatype=code_name
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model)
+
+节点：准备主状态逻辑参数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def default_ms_logic = logic.param('default_ms_logic').getReal();
+def _default =  logic.param('default').getReal(); 
+def code_name=_default.id
+
+default_ms_logic.id="ProjMgmt.work_item."+code_name
+default_ms_logic.psdeid="ProjMgmt.work_item"
+default_ms_logic.name=_default.name
+default_ms_logic.codename=code_name
+default_ms_logic.logictag=code_name
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[删除扩展模型(delete_custom_model)](module/ProjMgmt/work_item_type/logic/delete_custom_model)
+
+节点：拼接model标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def _new_deform = logic.param('new_deform').getReal()
+def _main_deform = logic.param('main_deform').getReal()
+def _default_ms_logic = logic.param('default_ms_logic').getReal()
+
+_new_deform.id="ProjMgmt.work_item."+_default.id
+_main_deform.id="ProjMgmt.work_item.new_"+_default.id
+_default_ms_logic.id="ProjMgmt.work_item."+_default.id
+
+```
+#### [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)的处理逻辑[新建默认排序(sort)](module/ProjMgmt/work_item_type/logic/sort)
+
+节点：设置最大排序值
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def page = logic.param('page').getReal()
+
+def maxValue = 0
+if (page[0] != null) {
+    maxValue = page[0].get('sequence')
+    _default.set('sequence', maxValue + 10)
+}
 ```
 #### [工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)的处理逻辑[变更工作项类型(change)](module/ProjMgmt/work_item_wizard/logic/change)
 

@@ -53,12 +53,12 @@ if(button_calluilogic){
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [需求关联工单值变更](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)
   * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [需求关联工单值变更](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)

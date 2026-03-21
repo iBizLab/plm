@@ -14,6 +14,7 @@ def sync_frequency=_default["sync_frequency"]
 def parser_config=_default["parser_config"]
 def custom_chunk=_default["custom_chunk"]
 def chunk_method=_default["chunk_method"]
+def is_parse_now=_default["is_parse_now"]
 
 //手动从空间导入
 if(import_method == "space_manual"){
@@ -27,20 +28,29 @@ if(import_method == "space_manual"){
             new_doc.set("source_id",page_id)
             new_doc.set("source_type","page")
             new_doc.set("sync_frequency",sync_frequency)
-            new_doc.set("parser_config",parser_config)
             new_doc.set("type","space")
             new_doc.set("custom_chunk",custom_chunk)
-            new_doc.set("chunk_method",chunk_method)
             new_doc.set("active",1)
             new_doc.set("kb_id",kb_id)
             new_doc.set("status",0)
+
+            if(custom_chunk ==1){
+                new_doc.set("chunk_method",chunk_method)
+                new_doc.set("parser_config",parser_config)
+            }
             doc_runtime.create(new_doc)
+
+             //立即解析
+            if(is_parse_now == 1){
+                println("立即解析文档...")
+                doc_runtime.Async_parse(new_doc)
+            }else{
+                println("不解析...")
+            }
+
         }
     }
-}
-
-//自动从空间同步
-if(import_method == "space_auto_sync"){
+}else if(import_method == "space_auto_sync"){//自动从空间同步
     //创建文档同步
     def new_doc_sync=doc_sync_runtime.entity()
     def  space_name=space_list.getText(space_selection)  
@@ -49,14 +59,21 @@ if(import_method == "space_auto_sync"){
     new_doc_sync.set("source_id",space_selection)
     new_doc_sync.set("source_type","space")
     new_doc_sync.set("sync_frequency",sync_frequency)
-    new_doc_sync.set("parser_config",parser_config)
     new_doc_sync.set("custom_chunk",custom_chunk)
-    new_doc_sync.set("chunk_method",chunk_method)
-    doc_sync_runtime.create(new_doc_sync)
-}
 
-//上传本地文件
-if(import_method == "local_upload"){
+    if(custom_chunk ==1){
+        new_doc_sync.set("parser_config",parser_config)
+        new_doc_sync.set("chunk_method",chunk_method)
+}
+    doc_sync_runtime.create(new_doc_sync)
+
+    //立即解析
+      if(is_parse_now == 1){
+            println("立即解析空间文档...")
+            doc_sync_runtime.Async_space_parse(new_doc_sync)
+        }
+
+}else if(import_method == "local_upload"){//上传本地文件
     def selection_file_ids=_default["selection_file_ids"]
     if(selection_file_ids){
         //创建文档
@@ -67,18 +84,31 @@ if(import_method == "local_upload"){
             int last_index = file.name.lastIndexOf(".")
             if (last_index > 0) {
                 file_name = file.name.substring(0, last_index)
+                String doc_type = file.name.substring(last_index + 1)
+                new_doc.set("file_type",doc_type)
             }
+            def files_array = [file]
+            def file_string = groovy.json.JsonOutput.toJson(files_array)
+            new_doc.set("file",file_string)
+            new_doc.set("size",file.size)
             new_doc.set("name",file_name)
-            new_doc.set("source_id",file.id)
-            new_doc.set("source_type","page")
-            new_doc.set("parser_config",parser_config)
             new_doc.set("type","file")
             new_doc.set("custom_chunk",custom_chunk)
-            new_doc.set("chunk_method",chunk_method)
             new_doc.set("active",1)
             new_doc.set("kb_id",kb_id)
             new_doc.set("status",0)
+            if(custom_chunk ==1){
+                new_doc.set("chunk_method",chunk_method)
+                new_doc.set("parser_config",parser_config)
+            }
             doc_runtime.create(new_doc)
+
+              //立即解析
+            if(is_parse_now == 1){
+                println("立即解析上传文档...")
+                doc_runtime.Async_parse(new_doc)
+            }
+
         }
     }
 

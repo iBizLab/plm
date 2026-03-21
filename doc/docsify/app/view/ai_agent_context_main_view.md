@@ -11,12 +11,14 @@
 
 
 ### 关联界面行为
-  * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [取消变更](module/ai/ai_agent_context#界面行为)
   * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [编辑界面_保存并新建操作](module/ai/ai_agent_context#界面行为)
   * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [编辑界面_保存操作](module/ai/ai_agent_context#界面行为)
+  * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [取消变更](module/ai/ai_agent_context#界面行为)
 
 ### 关联视图
+  * [实体处理逻辑(PSDELogicLogicDesign_Readonly)](app/view/PSDELogicLogicDesign_Readonly)
   * [智能体(ai_agent_pickup_view)](app/view/ai_agent_pickup_view)
+  * [知识库(ai_knowledge_base_pickup_view)](app/view/ai_knowledge_base_pickup_view)
   * [AI大模型(ai_model_pickup_view)](app/view/ai_model_pickup_view)
 
 <script>

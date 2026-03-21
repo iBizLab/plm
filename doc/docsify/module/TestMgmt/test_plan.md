@@ -359,6 +359,7 @@
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 关联跳转测试计划主视图 | open_test_plan_main_view | 关联跳转测试计划主视图 |单项数据|用户自定义||
 | 开始测试 | start_test_plan | 开始测试 |单项数据|<details><summary>后台调用</summary>[start_test_plan](#行为)||
+| 新建类别 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | open_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑测试计划](app/view/test_plan_update_option_view)</details>||
@@ -380,6 +381,7 @@
 | --------|--------|--------|
 |[删除类别或分组](module/TestMgmt/test_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/TestMgmt/test_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/TestMgmt/test_plan/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/TestMgmt/test_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[移入计划](module/TestMgmt/test_plan/uilogic/shift_in_test_plan)|shift_in_test_plan|获取选中数据，通过后台处理，完成测试用例移入计划操作|
 |[编辑类别或分组](module/TestMgmt/test_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|

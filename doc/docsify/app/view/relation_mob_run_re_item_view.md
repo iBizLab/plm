@@ -5,11 +5,9 @@
 ## 控件
 #### CAPTIONBAR(captionbar)
 #### 移动端多数据视图(mdctrl)
-#### 工具栏(righttoolbar)
 #### 搜索栏(searchbar)
 
 ## 视图界面逻辑
-  * [获取关联列表总条数](module/Base/relation/uilogic/get_list_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 

@@ -13,6 +13,7 @@
   * [DevOps数据集成](module/DevOps)
   * [产品管理（制造业）](module/ProdMgmt_MFG)
   * [智能](module/ai)
+  * [基础(扩展)](module/base_extend)
 
 * <i class="fa-solid fa-cube"></i> 智能报表
   * [智能报表](bi_scheme/BIScheme/BIScheme)
@@ -51,5 +52,6 @@
   * [前端插件](index/pfplugin_index)
   * [国际化](i18n/i18n_res)
   * 数据库查询
+    * [POSTGRESQL](index/POSTGRESQL_db_query_index)
     * [MYSQL5](index/MYSQL5_db_query_index)
 * [<i class="fa fa-warning" /></i> 模型预警](index/warn_index)

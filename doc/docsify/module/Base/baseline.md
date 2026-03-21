@@ -146,51 +146,55 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | toolbar_product_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 删除 | toolbar_project_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 删除 | toolbar_product_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除快照 | del_snapshot | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
-| 删除 | toolbar_library_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建类别 | toolbar_product_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 新建分组 | toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 编辑 | toolbar_project_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 设立完成（产品） | set_complete_product | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_product](#行为)||
-| 新建分组 | toolbar_product_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 新建类别 | toolbar_project_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_space_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 查看快照 | open_snapshot_gantt_view | 查看 |单项数据|用户自定义||
-| 编辑 | toolbar_space_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 删除基线 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 编辑 | toolbar_library_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_space_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 删除 | toolbar_project_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 编辑快照 | edit_snapshot | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑快照](app/view/baseline_edit_snapshot_view)</details>||
-| 编辑基线（测试库） | open_library_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_library_update_view)</details>||
 | 编辑 | toolbar_space_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_library_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 编辑 | toolbar_product_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 设立完成（项目） | set_complete_project | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_project](#行为)||
-| 新建类别 | toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_space_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 新建分组 | toolbar_project_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 新建类别 | toolbar_library_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 新建类别 | toolbar_product_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_library_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 设立完成（空间） | set_complete_space | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_space](#行为)||
 | 编辑 | toolbar_library_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 快照管理 | snapshot_management | 快照管理 |无数据|<details><summary>打开视图或向导（模态）</summary>[快照管理](app/view/baseline_snapshot_management_gird_view)</details>||
-| 编辑 | toolbar_library_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | toolbar_space_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 编辑基线（项目） | open_project_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_project_update_view)</details>||
 | 编辑 | toolbar_project_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 编辑基线（产品） | open_product_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_product_update_view)</details>||
-| 删除 | toolbar_product_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 删除 | toolbar_space_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_product_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 编辑 | toolbar_project_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 删除 | toolbar_project_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建类别 | toolbar_space_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 设立完成（测试库） | set_complete_library | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_library](#行为)||
 | 编辑 | toolbar_product_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 打开规划快照甘特图 | open_snapshot_gantt | 打开规划快照甘特图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[规划快照](app/view/baseline_work_item_gantt_view)</details>||
 | 新建快照 | create_snapshot | 新建快照 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建快照](app/view/baseline_create_plan_snapshot_view)</details>||
+| 删除 | toolbar_project_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_product_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_library_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 设立完成（产品） | set_complete_product | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_product](#行为)||
+| 新建分组 | toolbar_product_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 编辑 | toolbar_space_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除基线 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 编辑快照 | edit_snapshot | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑快照](app/view/baseline_edit_snapshot_view)</details>||
+| 编辑基线（测试库） | open_library_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_library_update_view)</details>||
+| 编辑 | toolbar_product_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 新建类别 | toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 新建分组 | toolbar_project_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 快照管理 | snapshot_management | 快照管理 |无数据|<details><summary>打开视图或向导（模态）</summary>[快照管理](app/view/baseline_snapshot_management_gird_view)</details>||
+| 编辑 | toolbar_library_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 编辑 | toolbar_space_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_product_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_space_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_project_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_project_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 打开规划快照甘特图 | open_snapshot_gantt | 打开规划快照甘特图 |单项数据|<details><summary>打开视图或向导（模态）</summary></details>||
 | 编辑基线（空间） | open_space_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_space_update_view)</details>||
+| 新建类别 | toolbar_project_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 新建类别 | toolbar_space_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 
 ## 界面逻辑
@@ -199,6 +203,7 @@
 |[产品基线新建分组](module/Base/baseline/uilogic/product_create_section)|product_create_section|产品基线调用树节点新建方法，新建分组|
 |[产品基线新建类别](module/Base/baseline/uilogic/product_create_category)|product_create_category|产品基线调用树节点新建方法新建类别|
 |[删除类别或分组](module/Base/baseline/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
+|[新建子类别](module/Base/baseline/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[查看规划快照](module/Base/baseline/uilogic/check_plan_snapshot)|check_plan_snapshot|查看规划快照|
 |[测试库基线新建分组](module/Base/baseline/uilogic/library_create_section)|library_create_section|测试库基线调用树节点新建方法，新建分组|
 |[测试库基线新建类别](module/Base/baseline/uilogic/library_create_category)|library_create_category|测试库基线调用树节点新建方法新建类别|

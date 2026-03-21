@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -30,10 +31,10 @@
 
 
 ### 查询连接
-* **RUN*存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID**<br>
+* **RUN存在1:N（EXISTS (SELECT)）DER1N_RUN_TEST_PLAN_PLAN_ID**<br>
 连接关系：[DER1N_RUN_TEST_PLAN_PLAN_ID](der/DER1N_RUN_TEST_PLAN_PLAN_ID)<br>
 连接实体：[测试计划](module/TestMgmt/test_plan)<br>
-连接条件：((`EXECUTOR_ID(执行人标识)` EQ `用户上下文.srfpersonid` OR `exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})`))<br>
+连接条件：((`EXECUTOR_ID(执行人标识)` EQ `用户上下文.srfpersonid` OR `exists(select 1 from executor t2 where ${alias.RUN}.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid})`))<br>
 * **LIBRARY相关N:1（INNER JOIN）DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID**<br>
 连接关系：[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)<br>
 连接实体：[测试库](module/TestMgmt/library)<br>
@@ -76,9 +77,52 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
 
+/*ALIAS.run=t51*/
 WHERE EXISTS(SELECT * FROM `RUN` t51 
  WHERE 
- t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t51.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
+ t1.`ID` = t51.`PLAN_ID`  AND  ( ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where ${alias.RUN}.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.`IS_DELETED` = 0 )
+```
+
+</el-dialog>
+
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ASSIGNEE_ID,
+t1.ASSIGNEE_NAME,
+t1.CATEGORIES,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.END_AT,
+t1.ID,
+t1.LIBRARY_ID,
+t21.IDENTIFIER AS LIBRARY_IDENTIFIER,
+t21.IS_DELETED AS LIBRARY_IS_DELETED,
+t21.NAME AS LIBRARY_NAME,
+t1.NAME,
+t1.PROJECT_ID,
+t11.NAME AS PROJECT_NAME,
+t11.TYPE AS PROJECT_TYPE,
+t1.RELEASE_ID,
+t41.NAME AS RELEASE_NAME,
+t1.SPRINT_ID,
+t31.NAME AS SPRINT_NAME,
+t1.START_AT,
+t1.STATUS,
+t1.TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM TEST_PLAN t1 
+LEFT JOIN PROJECT t11 ON t1.PROJECT_ID = t11.ID 
+LEFT JOIN LIBRARY t21 ON t1.LIBRARY_ID = t21.ID 
+LEFT JOIN SPRINT t31 ON t1.SPRINT_ID = t31.ID 
+LEFT JOIN PROJECT_RELEASE t41 ON t1.RELEASE_ID = t41.ID 
+
+/*ALIAS.run=t51*/
+WHERE EXISTS(SELECT * FROM RUN t51 
+ WHERE 
+ t1.ID = t51.PLAN_ID  AND  ( ( t51.EXECUTOR_ID = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where ${alias.RUN}.id = t2.owner_id and t2.owner_type = 'RUN' and t2.owner_subtype = 'RUN' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) ) ) ) AND ( t21.IS_DELETED = 0 )
 ```
 
 </el-dialog>
@@ -89,6 +133,7 @@ WHERE EXISTS(SELECT * FROM `RUN` t51
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

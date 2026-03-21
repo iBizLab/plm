@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -58,12 +59,35 @@ WHERE ( t1.`IS_SHARED` <> '0' )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ACCESS_PASSWORD,
+t1.EXPIRATION_DATE,
+t1.ID,
+t1.IS_SHARED,
+t1.NAME,
+t1.SCOPE_TYPE,
+t1.SHARED_BY,
+t1.SHARED_PAGES,
+t1.SHARED_TIME,
+t1.SHOW_LOGO,
+t1.SHOW_TITLE
+FROM SPACE t1 
+
+WHERE ( t1.IS_SHARED <> '0' )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -4,7 +4,7 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
-|交谈模型|CHAT_MODEL|外键值文本|200|是||
+|交谈模型|CHAT_MODEL|外键值文本|100|是||
 |交谈模型标识|CHAT_MODEL_ID|外键值|100|是||
 |切片方法|CHUNK_METHOD|[单项选择(文本值)](index/dictionary_index#chunkingstrategy "切片策略")|100|是||
 |目标知识库|COPY_TARGET|文本，可指定长度|100|是||
@@ -12,15 +12,17 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |当前知识库模版|CUR_TEMP|文本，可指定长度|100|是||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
+|描述向量|DESCRIPTION_VECTOR|VECTOR|1024|是||
 |embedding模型|EMBEDDING_MODEL|外键值文本|100|是||
 |模型标识|EMBEDDING_MODEL_ID|外键值|100|是||
 |逻辑有效标识|ENABLE|是否逻辑||是||
 |引导提示词|GUIDANCE_PROMPT|长文本，长度1000|2000|是||
+|引导词向量|GUIDANCE_PROMPT_VECTOR|VECTOR|1024|是||
 |知识库标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否已删除|IS_DELETED|是否逻辑||是||
-|成员|MEMBERS|一对多关系数据集合|1048576|是||
 |元数据|META_DATA|长文本，没有长度限制|1048576|是||
 |知识库名称|NAME|文本，可指定长度|200|是||
+|智能目录索引|PAGEINDEX|是否逻辑||是||
 |解析配置|PARSER_CONFIG|一对一关系数据对象|1048576|是||
 |召回重排|RERANK|是否逻辑||是||
 |召回重排模型|RERANK_MODEL|外键值文本|100|是||
@@ -60,7 +62,7 @@
 |标签集|TAG_SETS|多项选择(文本值)|2000|是||
 |引导提示词|GUIDANCE_PROMPT|长文本，长度1000|2000|是||
 |召回重排模型|RERANK_MODEL|外键值文本|100|是||
-|交谈模型|CHAT_MODEL|外键值文本|200|是||
+|交谈模型|CHAT_MODEL|外键值文本|100|是||
 |从已有知识库克隆|USE_COPY|是否逻辑||是||
 |目标知识库|COPY_TARGET|文本，可指定长度|100|是||
 |召回相似度阈值|SIMILARITY_THRESHOLD|数值||是||
@@ -91,6 +93,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DER1N_AI_AGENT_CONTEXT_AI_KNOWLEDGE_BASE_SPEC_KB_ID](der/DER1N_AI_AGENT_CONTEXT_AI_KNOWLEDGE_BASE_SPEC_KB_ID)|[智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context)|1:N关系||
 |[DER1N_AI_AGENT_KNOWLEDGE_REL_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_BASE_ID](der/DER1N_AI_AGENT_KNOWLEDGE_REL_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_BASE_ID)|[智能体知识库引用(AI_AGENT_KNOWLEDGE_REL)](module/ai/ai_agent_knowledge_rel)|1:N关系||
 |[DER1N_AI_KB_DOCUMENT_AI_KNOWLEDGE_BASE_KB_ID](der/DER1N_AI_KB_DOCUMENT_AI_KNOWLEDGE_BASE_KB_ID)|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|1:N关系||
 |[DER1N_AI_KB_DOCUMENT_SYNC_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_BASE_ID](der/DER1N_AI_KB_DOCUMENT_SYNC_AI_KNOWLEDGE_BASE_AI_KNOWLEDGE_BASE_ID)|[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)|1:N关系||

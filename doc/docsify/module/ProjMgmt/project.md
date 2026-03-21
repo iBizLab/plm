@@ -26,9 +26,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |是否已删除|IS_DELETED|是否逻辑||是||
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |是否本地配置|IS_LOCAL_CONFIGURE|是否逻辑||是||
+|是否模板|IS_TEMPLATE|是否逻辑||是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |项目名称|NAME|文本，可指定长度|200|否||
 |公告|NOTICE|长文本，没有长度限制|1048576|是||
+|项目模板标识|PROJECT_TEMPLATE_ID|文本，可指定长度|100|是||
+|项目模板名称|PROJECT_TEMPLATE_NAME|文本，可指定长度|100|是||
 |进度|SCHEDULE|数值||是||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
@@ -263,6 +266,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |激活|activate|[实体处理逻辑](module/ProjMgmt/project/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/ProjMgmt/project/logic/archive "归档")|默认|不支持||||
 |变更管理员角色|change_admin_role|[实体处理逻辑](module/ProjMgmt/project/logic/change_admin_role "变更管理员角色")|默认|不支持||||
+|copy_project_info|copy_project_info|[实体处理逻辑](module/ProjMgmt/project/logic/copy_project_info "复制项目信息")|默认|不支持||||
+|使用模板创建项目|create_from_template|[实体处理逻辑](module/ProjMgmt/project/logic/create_from_template "使用模板创建项目")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProjMgmt/project/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProjMgmt/project/logic/favorite "设置星标")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProjMgmt/project/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
@@ -289,6 +294,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[scrum项目组件权限计数器](module/ProjMgmt/project/logic/scrum_project_addon_authority)|scrum_project_addon_authority|无||获取scrum项目组件权限|
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
+|[使用模板创建项目](module/ProjMgmt/project/logic/create_from_template)|create_from_template|无|||
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
 |[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
@@ -298,6 +304,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[填充复制项目信息](module/ProjMgmt/project/logic/fill_copy_info)|fill_copy_info|无||复制项目时，填充当前项目的基本信息|
+|[复制项目信息](module/ProjMgmt/project/logic/copy_project_info)|copy_project_info|无|||
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -500,6 +507,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |N_IDENTIFIER_LIKE|项目标识|LIKE||
 |N_IS_ARCHIVED_EQ|是否已归档|EQ||
 |N_IS_DELETED_EQ|是否已删除|EQ||
+|N_IS_TEMPLATE_EQ|是否模板|EQ||
 |N_NAME_LIKE|项目名称|LIKE||
 |N_SCOPE_TYPE_EQ|所属|EQ||
 |N_STATE_EQ|项目状态|EQ||
@@ -539,6 +547,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 查看全部工作项 | open_all_work_item | 查看全部工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[未完成工作项](app/view/work_item_work_item_grid_view)</details>||
+| 从模板新建 | create_project_from_template | 从模板新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_from_template_view)</details>||
 | 移动项目 | move_project | 移动项目 |单项数据（主键）|<details><summary>后台调用</summary>[project_move](#行为)||
 | 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/work_item_mob_recycle_bin_md_view)</details>||
 | 打开项目移动端列表视图 | open_mob_list_view | 打开项目移动端列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_mob_list_view)</details>||

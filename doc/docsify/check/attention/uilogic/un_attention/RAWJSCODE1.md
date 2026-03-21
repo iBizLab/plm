@@ -10,7 +10,11 @@ return (async function() {
     var attention_data = uiLogic.attention_data;
     // 临时数据删除
     list.forEach(item => {
-        if(item.id ==uiLogic.default.id){
+        // 用户id相等及所有者id相等则删除
+        if(
+            item.user_id === uiLogic.default.user_id &&
+            item.owner_id === uiLogic.default.owner_id
+        ){
             service.local.delete(context, item.id);
         }else{
             attention_data.push(item);

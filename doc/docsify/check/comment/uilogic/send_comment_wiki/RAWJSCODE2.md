@@ -6,4 +6,6 @@ uiLogic.view.layoutPanel.panelItems.container_singledata.panelItems.field_textbo
 uiLogic.view.edit_comment_id = null;
 uiLogic.view.reply_comment_id = null;
 uiLogic.editor.reply.value = null;
+uiLogic.editor.toggleCollapse(false);
+
 ```

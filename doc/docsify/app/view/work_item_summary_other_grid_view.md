@@ -18,8 +18,8 @@
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [表格界面_导出操作（Excel）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
 
 <script>
  const { createApp } = Vue

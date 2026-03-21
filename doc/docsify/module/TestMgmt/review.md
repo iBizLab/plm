@@ -266,6 +266,7 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_PRINCIPAL_ID_EQ|评审主体标识|EQ||
 |N_PRINCIPAL_TYPE_EQ|评审主体类型|EQ||
+|N_STAGE_LIKE|阶段|LIKE||
 |N_STATE_EQ|评审状态|EQ||
 |N_TYPE_EQ|评审类型|EQ||
 
@@ -282,6 +283,7 @@
 | 新建分组 | toolbar_work_item_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 新建分组 | toolbar_page_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 新建工作项评审 | new_work_item_review | 新建评审 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建评审](app/view/review_wizard_work_create_wizard_view)</details>||
+| 新建类别 | toolbar_work_item_tree_exp_view_node8_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 添加需求评审内容 | add_idea_review_content | 添加内容 |无数据|<details><summary>后台调用</summary>[add_review_content](#行为)||
 | 撤销评审 | repeal_review | 撤销评审 |单项数据|<details><summary>后台调用</summary>[repeal_review](#行为)|SUBDATA|
 | 删除 | toolbar_work_item_tree_exp_view_node9_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -303,6 +305,7 @@
 | 删除 | delete | 删除 |单项数据|<details><summary>后台调用</summary>[Remove](#行为)||
 | 编辑 | toolbar_page_tree_exp_view_node10_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建类别 | toolbar_page_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 新建类别 | toolbar_page_tree_exp_view_node8_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 删除 | toolbar_idea_tree_exp_view_node9_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 新建分组 | toolbar_idea_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
@@ -317,6 +320,8 @@
 | 删除 | toolbar_page_tree_exp_view_node8_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 提交评审 | submit_review | 提交评审 |单项数据|<details><summary>后台调用</summary>[submit_review](#行为)|SUBDATA|
 | 新建类别 | toolbar_idea_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 新建类别 | toolbar_tree_exp_view_node8_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
+| 新建类别 | toolbar_idea_tree_exp_view_node8_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node10_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | toolbar_work_item_tree_exp_view_node8_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
@@ -330,6 +335,7 @@
 |[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|refresh_main_view|刷新评审主视图|
 |[批量删除评审用例临时数据](module/TestMgmt/review/uilogic/remove_batch_temp)|remove_batch_temp|获取评审所有临时用例并删除|
 |[新建分组](module/TestMgmt/review/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/TestMgmt/review/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/TestMgmt/review/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑类别或分组](module/TestMgmt/review/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|

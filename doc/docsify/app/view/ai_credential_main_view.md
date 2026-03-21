@@ -14,9 +14,9 @@
 
 
 ### 关联界面行为
-  * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [编辑界面_保存并新建操作](module/ai/ai_credential#界面行为)
   * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [取消变更](module/ai/ai_credential#界面行为)
   * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [编辑界面_保存操作](module/ai/ai_credential#界面行为)
+  * [AI凭证(AI_CREDENTIAL)](module/ai/ai_credential) : [编辑界面_保存并新建操作](module/ai/ai_credential#界面行为)
 
 <script>
  const { createApp } = Vue

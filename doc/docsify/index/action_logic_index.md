@@ -1,5 +1,44 @@
 # 行为附加 <!-- {docsify-ignore-all} -->
 
+## [智能体(AI_AGENT)](module/ai/ai_agent.md)  :id=ai_agent
+
+#### [Create](module/ai/ai_agent#行为) :id=ai_agent_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent/logic/reload_aiagents.md)
+
+
+#### [Remove](module/ai/ai_agent#行为) :id=ai_agent_Remove
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent/logic/reload_aiagents.md)
+
+
+#### [Update](module/ai/ai_agent#行为) :id=ai_agent_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [reload_aiagents](module/ai/ai_agent/logic/reload_aiagents.md)
+
+
+
 ## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md)  :id=ai_agent_context
 
 #### [Create](module/ai/ai_agent_context#行为) :id=ai_agent_context_Create
@@ -11,11 +50,21 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [建立默认flow交谈逻辑(create_default_flow_logic)](module/ai/ai_agent_context/logic/create_default_flow_logic.md)
+
+> [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents.md)
 
 
 #### [Remove](module/ai/ai_agent_context#行为) :id=ai_agent_context_Remove
 
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除logic扩展模型(delete_extend_model)](module/ai/ai_agent_context/logic/delete_extend_model.md)
 
 
 
@@ -84,6 +133,18 @@
 > 执行处理逻辑 [生成文档执行计划(generate_doc_scheduled)](module/ai/ai_kb_document/logic/generate_doc_scheduled.md)
 
 
+#### [Get](module/ai/ai_kb_document#行为) :id=ai_kb_document_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [参考引用(references)](module/ai/ai_kb_document/logic/references.md)
+
+
 #### [Remove](module/ai/ai_kb_document#行为) :id=ai_kb_document_Remove
 
 
@@ -127,10 +188,6 @@
 
 <p class="panel-title"><b>操作之前</b></p>
 <br>
-
-> [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [同步删除文档和分块(sync_remove_doc_chunk)](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk.md)
-
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [删除空间执行计划(remove_space_scheduled)](module/ai/ai_kb_document_sync/logic/remove_space_scheduled.md)
@@ -220,6 +277,22 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [删除看板之前判断(before_remove)](module/ProjMgmt/board/logic/before_remove.md)
+
+
+
+
+
+## [类别(CATEGORY)](module/Base/category.md)  :id=category
+
+#### [Create](module/Base/category#行为) :id=category_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建类别排序(sort)](module/Base/category/logic/sort.md)
 
 
 
@@ -425,6 +498,45 @@
 > 执行处理逻辑 [删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice.md)
 
 
+
+
+
+## [扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ.md)  :id=extend_print_templ
+
+#### [Create](module/Base/extend_print_templ#行为) :id=extend_print_templ_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [重载动态打印模版(reload_print_temp)](module/Base/extend_print_templ/logic/reload_print_temp.md)
+
+
+#### [Remove](module/Base/extend_print_templ#行为) :id=extend_print_templ_Remove
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [重载动态打印模版(reload_print_temp)](module/Base/extend_print_templ/logic/reload_print_temp.md)
+
+
+#### [Update](module/Base/extend_print_templ#行为) :id=extend_print_templ_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [重载动态打印模版(reload_print_temp)](module/Base/extend_print_templ/logic/reload_print_temp.md)
 
 
 
@@ -1145,6 +1257,35 @@
 
 
 
+#### [Update](module/TestMgmt/run#行为) :id=run_Update
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [设置第一执行人（表格使用）(set_first_executor)](module/TestMgmt/run/logic/set_first_executor.md)
+
+
+
+
+
+## [分组(SECTION)](module/Base/section.md)  :id=section
+
+#### [Create](module/Base/section#行为) :id=section_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建分组排序(sort)](module/Base/section/logic/sort.md)
+
+
+
+
 
 ## [共享空间(SHARED_SPACE)](module/Wiki/shared_space.md)  :id=shared_space
 
@@ -1335,6 +1476,22 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [填充类别文本(fill_categories_name)](module/TestMgmt/test_plan/logic/fill_categories_name.md)
+
+
+
+## [用例模块(TEST_SUITE)](module/TestMgmt/test_suite.md)  :id=test_suite
+
+#### [Create](module/TestMgmt/test_suite#行为) :id=test_suite_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建模块排序(sort)](module/TestMgmt/test_suite/logic/sort.md)
+
+
 
 
 
@@ -1534,6 +1691,41 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/work_item/logic/create_recent.md)
+
+
+
+## [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type.md)  :id=work_item_type
+
+#### [Create](module/ProjMgmt/work_item_type#行为) :id=work_item_type_Create
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建默认排序(sort)](module/ProjMgmt/work_item_type/logic/sort.md)
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [准备默认扩展模型(prepare_default_model)](module/ProjMgmt/work_item_type/logic/prepare_default_model.md)
+
+
+#### [Remove](module/ProjMgmt/work_item_type#行为) :id=work_item_type_Remove
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除扩展模型(delete_custom_model)](module/ProjMgmt/work_item_type/logic/delete_custom_model.md)
+
+
 
 
 

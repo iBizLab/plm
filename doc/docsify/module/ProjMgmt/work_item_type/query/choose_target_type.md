@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -49,6 +50,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`GROUP`,
 t1.`ICON`,
+t1.`ICON_DISP`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
@@ -66,12 +68,39 @@ WHERE ( exists(select 1 from `project` t2 where t2.`TYPE` = t1.`PROJECT_TYPE` an
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CODE,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.GROUP,
+t1.ICON,
+t1.ID,
+t1.IS_SYSTEM,
+t1.NAME,
+t1.ORGIN_STATE,
+t1.PROJECT_ID,
+t1.PROJECT_TYPE,
+t1.SEQUENCE,
+t1.SUB_TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM WORK_ITEM_TYPE t1 
+
+WHERE ( exists(select 1 from `project` t2 where t2.`TYPE` = t1.`PROJECT_TYPE` and t2.`ID` = #{ctx.webcontext.project_id} and t1.`ID` <> #{ctx.webcontext.origin_type}) )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

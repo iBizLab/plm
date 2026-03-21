@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -54,12 +55,36 @@ LEFT JOIN `PORTFOLIO` t11 ON t1.`PORTFOLIO_ID` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.ID,
+t1.NAME,
+t1.PORTFOLIO_ID,
+t11.IDENTIFIER AS PORTFOLIO_IDENTIFIER,
+t11.NAME AS PORTFOLIO_NAME,
+t1.ROLE_ID,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME,
+t1.USER_ID
+FROM PORTFOLIO_MEMBER t1 
+LEFT JOIN PORTFOLIO t11 ON t1.PORTFOLIO_ID = t11.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

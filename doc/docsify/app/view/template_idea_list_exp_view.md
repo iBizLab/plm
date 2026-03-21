@@ -1,6 +1,9 @@
 # 需求列表导航(template_idea_list_exp_view)  <!-- {docsify-ignore-all} -->
 
 
+系统自动添加
+
+
 
 ## 控件
 #### CAPTIONBAR(captionbar)
@@ -24,6 +27,7 @@ view.layoutPanel.panelItems.no_data_container.state.visible = true;
 
 ### 关联界面行为
   * [通用模板(TEMPLATE)](module/Base/template) : [新建需求模板](module/Base/template#界面行为)
+  * [通用模板(TEMPLATE)](module/Base/template) : [使用此模板](module/Base/template#界面行为)
 
 ### 关联视图
   * [新建模板(template_create_idea_template_view)](app/view/template_create_idea_template_view)

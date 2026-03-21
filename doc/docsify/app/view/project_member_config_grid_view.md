@@ -15,9 +15,9 @@
 
 ### 关联界面行为
   * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [设置角色](module/ProjMgmt/project_member#界面行为)
+  * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [职位变更](module/ProjMgmt/project_member#界面行为)
   * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [表格界面_删除操作](module/ProjMgmt/project_member#界面行为)
   * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [添加项目成员](module/ProjMgmt/project_member#界面行为)
-  * [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member) : [职位变更](module/ProjMgmt/project_member#界面行为)
 
 ### 关联视图
   * [选择职位(project_member_choose_position_option_view)](app/view/project_member_choose_position_option_view)

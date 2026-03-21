@@ -701,6 +701,7 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -2023,6 +2024,7 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -3244,9 +3246,136 @@
 
 </tr>
 
+
+
+
+
+
+
+
+
+
   <tr>
 
-<td rowspan="2"><a href ="#/module/ai/ai_knowledge_base">知识库(AI_KNOWLEDGE_BASE)</a></td>
+<td rowspan="2"><a href ="#/module/ai/ai_kb_tag_set">知识库标签集(AI_KB_TAG_SET)</a></td>
+
+<td><a href ="#/module/ai/ai_kb_tag_set#ai_kb_tag_set-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_kb_tag_set#ai_kb_tag_set-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="5"><a href ="#/module/ai/ai_knowledge_base">知识库(AI_KNOWLEDGE_BASE)</a></td>
+
+<td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
 
 <td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-all_r">全部数据（读）</a></td>
 <td align="center">
@@ -3314,6 +3443,82 @@
 </td>
 <td align="center">
 <i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-user_r">只读用户（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -4278,9 +4483,174 @@
 </tr>
 
 
+  <tr>
+
+<td rowspan="1"><a href ="#/module/Base/extend_schedule">扩展执行计划(EXTEND_SCHEDULE)</a></td>
+
+<td><a href ="#/module/Base/extend_schedule#extend_schedule-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/Base/extend_scheduled_task">扩展计划任务(EXTEND_SCHEDULED_TASK)</a></td>
+
+<td><a href ="#/module/Base/extend_scheduled_task#extend_scheduled_task-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/Base/extend_scheduled_task_his">扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)</a></td>
+
+<td><a href ="#/module/Base/extend_scheduled_task_his#extend_scheduled_task_his-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
+  <tr>
 
+<td rowspan="1"><a href ="#/module/Base/extend_task_type">扩展任务类型(EXTEND_TASK_TYPE)</a></td>
+
+<td><a href ="#/module/Base/extend_task_type#extend_task_type-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
   <tr>
 
@@ -5364,6 +5734,7 @@
 </td>
 
 </tr>
+
 
 
 
@@ -8405,6 +8776,125 @@
 
 
 
+  <tr>
+
+<td rowspan="3"><a href ="#/module/Base/template">通用模板(TEMPLATE)</a></td>
+
+<td><a href ="#/module/Base/template#template-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Base/template#template-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Base/template#template-user_rw">我的通用模板（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
 
 
 
