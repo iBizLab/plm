@@ -70,21 +70,32 @@ if (answer && typeof answer == 'string') {
         if (ret.data_type == 'jsonobject' && formController) {
             Object.entries(ret.data).forEach(([key, value]) => {
                 try {
-                    if(value && value !='null' && formController.getFormDetail("FORMITEM",key)) {
-                        var newvalue = value;
-                        if(key === 'description' || key === 'content') {
-                            var oldvalue = formController.data[key];
-                            if(oldvalue) {
-                                newvalue = oldvalue + "\n---------\n" + value;
-                            }
-                            if(key ==='description' &&  (_entity_tag=='work_item' || _entity_tag=='idea')) {
-                                formController.setDataValue('formitem1', newvalue);
-                                formController.setDataValue('md_description', newvalue);
-                                formController.setDataValue('html_description', newvalue);
-                            }
-                        }
-                        formController.setDataValue(key, newvalue);
-                        console.log(`已设置表单字段: ${key} =`, newvalue);
+                    if(value && value !='null') {
+                        let newvalue = value;
+						const curFormDetail = formController.getFormDetail("FORMITEM",key);
+						if(curFormDetail){
+							if(key === 'description' || key === 'content') {
+								var oldvalue = formController.data[key];
+								if(oldvalue) {
+									newvalue = oldvalue + "\n---------\n" + value;
+								}
+								if(key ==='description' &&  (_entity_tag=='work_item' || _entity_tag=='idea')) {
+									formController.setDataValue('formitem1', newvalue);
+									formController.setDataValue('md_description', newvalue);
+									formController.setDataValue('html_description', newvalue);
+								}
+							}
+							formController.setDataValue(key, newvalue);
+							console.log(`已设置表单字段: ${key} =`, newvalue);
+						}else{
+							const curFormMDCtrl = formController.formMDCtrls.find((item) =>{
+								return item.model.fieldName === key && item.model.contentType === "REPEATER";
+							})
+							if(curFormMDCtrl){
+								curFormMDCtrl.setValue(newvalue);
+								console.log(`已设置表单字段: ${key} =`, newvalue);
+							}
+						}
                     }
                 } catch (error) {
                 }

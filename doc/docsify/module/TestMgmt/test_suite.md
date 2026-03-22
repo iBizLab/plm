@@ -51,13 +51,18 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#test_suite_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |移动需求|move_order|用户自定义|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[新建模块排序](module/TestMgmt/test_suite/logic/sort)|sort|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -133,6 +138,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_suite?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/test_suite?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_suite?id=数据查询`">
   数据查询

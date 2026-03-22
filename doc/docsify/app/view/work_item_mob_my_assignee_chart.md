@@ -8,13 +8,13 @@
 
 ##### 部件逻辑
 * `onLoadSuccess` : [图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)
-* `onActive` : [我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)
+* `onActive` : [我负责的工作项图表跳转（移动端）](module/ProjMgmt/work_item/uilogic/mob_my_assign_chart_jump)
 #### 搜索栏(searchbar)
 
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [我负责的工作项图表跳转（移动端）](module/ProjMgmt/work_item/uilogic/mob_my_assign_chart_jump)
 
 <script>
  const { createApp } = Vue

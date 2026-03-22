@@ -95,14 +95,15 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开客户主视图 | open_customer_main_view | 打开客户主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_main_view)</details>||
+| 打开客户主视图 | open_customer_main_view | 打开客户主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_main_view_pop_up)</details>||
 | 打印交谈资料_评论搜索 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
-| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
-| 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
-| 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
+| 打开主视图（模式弹出） | open_main_view_pop_up | 打开主视图 |单项数据|用户自定义||
+| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view_pop_up)</details>||
+| 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view_pop_up)</details>||
+| 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view_pop_up)</details>||
 | 打开执行用例主视图 | open_run_main_view | 打开执行用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[执行用例](app/view/run_main_view)</details>||
-| 打开页面主视图 | open_page_main_view | 打开页面主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_show_view)</details>||
-| 打开工单主视图 | open_ticket_main_view | 打开工单主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view)</details>||
+| 打开页面主视图 | open_page_main_view | 打开页面主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_model_show_view_pop_up)</details>||
+| 打开工单主视图 | open_ticket_main_view | 打开工单主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view_pop_up)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

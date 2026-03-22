@@ -14,12 +14,15 @@
 ## 视图界面逻辑
 * `onCreated`
 ```javascript
+console.log("表单数据变更");
 ctrl.evt.on('onFormDataChange', evt => {
     const { name, value } = evt;
     if (name === 'product_id') {
         view.redrawView({
             context: { product: value, dynamicnew: true },
-            params: {},
+            params: {
+                srfdefdata: evt.data[0]
+            },
             isReloadModel: true,
         });
     }

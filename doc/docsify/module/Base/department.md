@@ -130,7 +130,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 编辑部门 | edit_dept | 编辑部门 |单项数据|<details><summary>打开视图或向导（模态）</summary>[部门](app/view/department_dept_option_view)</details>||
+| 编辑部门 | edit_dept | 编辑部门 |单项数据|<details><summary>打开视图或向导（模态）</summary></details>||
 | 新建部门 | new_dept | 新建部门 |单项数据|<details><summary>打开视图或向导（模态）</summary>[部门](app/view/department_dept_option_new_view)</details>||
 | 删除部门 | delete | 删除部门 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 新建根部门 | new_root_dept | 新建根部门 |单项数据|<details><summary>打开视图或向导（模态）</summary>[部门](app/view/department_dept_option_new_view)</details>||

@@ -60,8 +60,8 @@ if(button_calluilogic){
   * [关联(RELATION)](module/Base/relation) : [查看客户统计信息](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)
   * [关联(RELATION)](module/Base/relation) : [触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)
 
 ### 关联视图
   * [客户(customer_main_view)](app/view/customer_main_view)

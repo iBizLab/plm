@@ -10,7 +10,7 @@
 
 
 ### 关联界面行为
-  * [页面模板(STENCIL)](module/Wiki/stencil) : [编辑界面_保存并退出操作](module/Wiki/stencil#界面行为)
+  * [页面模板(STENCIL)](module/Wiki/stencil) : [发布](module/Wiki/stencil#界面行为)
 
 <script>
  const { createApp } = Vue

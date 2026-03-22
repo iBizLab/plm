@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -73,12 +74,49 @@ LEFT JOIN `EXTEND_TASK_TYPE` t11 ON t1.`TASK_TYPE` = t11.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DESCRIPTION,
+t1.ENABLE,
+t11.EXECUTOR_TAG,
+t1.FINISHED_AT,
+t1.ID,
+t1.MAX_RETRY,
+t1.NAME,
+t1.PAYLOAD,
+t1.PRINCIPAL_ID,
+t1.PRINCIPAL_NAME,
+t1.PRINCIPAL_TYPE,
+t1.RESULT,
+t1.RESULT_MESSAGE,
+t1.RETRY_COUNT,
+t1.SCHEDULED_AT,
+t1.SCHEDULE_ID,
+t1.STARTED_AT,
+t1.STATUS,
+t1.TASK_TYPE,
+t11.NAME AS TASK_TYPE_NAME,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM EXTEND_SCHEDULED_TASK t1 
+LEFT JOIN EXTEND_TASK_TYPE t11 ON t1.TASK_TYPE = t11.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -33,21 +33,12 @@ DEBUGPARAM1 --> END1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
 
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
-#### 绑定表单数据 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`form(表单).data` 绑定给  `form_data(表单数据)`
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`表单数据`的详细信息
 
 #### 设置表单数据 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -58,12 +49,21 @@ DEBUGPARAM1 --> END1
 3. 将`Default(传入变量).category_id` 设置给  `form_data(表单数据).category_id`
 4. 将`Default(传入变量).description` 设置给  `form_data(表单数据).description`
 
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`表单数据`的详细信息
+
+#### 绑定表单数据 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`form(表单).data` 绑定给  `form_data(表单数据)`
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

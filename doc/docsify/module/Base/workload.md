@@ -332,9 +332,10 @@
 | 工时明细返回主表单 | back | 返回 |无数据|用户自定义||
 | 工时日历时长链接（管理） | calendar_duration_management_link | 工时日历时长链接（管理） |单项数据（主键）|用户自定义||
 | 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
-| 删除工时 | delere | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除工时 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 打开测试库主视图 | open_library_main_view | 打开测试库主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_main_view)</details>||
 | 所属维度表格列行为 | parent_dimension | 所属维度表格列行为 |单项数据（主键）|用户自定义|工作台->工时日历->项目/产品/测试库维度->时长表格列->绑定行为|
+| 修改预估工时 | modify_forecast | 修改 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_mob_forecast_edit_view)</details>||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 所属维度表格列行为（管理） | management_parent_dimension | 项目/产品/测试库工时时长链接跳转（管理） |单项数据（主键）|用户自定义|工时管理->工时日历->项目/产品/测试库维度->时长表格列->绑定行为|
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
@@ -352,13 +353,14 @@
 | 打开工时移动端重定向视图 | open_workload_mob_redirect | 打开工时移动端重定向视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_mob_redirect_view)</details>||
 | 工时日历链接日志表格视图（管理） | management_calendar_duration_link | 工时日历链接日志表格视图（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->工作项/产品需求/测试用例维度->工时时长链接|
 | 团队维度表格列行为 | group_dimension | 团队维度表格列行为 |单项数据|用户自定义|工时管理->工时日历->团队维度->时长表格列->绑定行为|
+| 修改实际工时 | modify | 修改 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
 | 工作类别总登记时长链接跳转（管理） | management_type_duration_link | 工作类别总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
 | 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_redirect_view)</details>||
 | 打开工作类别工时记录 | open_type_workload_detail | 打开工作类别工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_type_of_link_grid_view)</details>|工作台->工时日历->工作类别维度->工时时长链接|
 | 打开所属下的工时日志 | opent_parent_link | 打开所属下的工时日志 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日历->项目/产品/测试库维度->工时时长链接|
-| 打开团队工时日志链接表格视图 | open_group_link_view | 打开团队工时日志链接表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_group_duration_link_grid_view)</details>||
+| 打开团队工时日志链接表格视图 | open_group_link_view | 打开团队工时日志链接表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary></details>||
 | 打开团队下成员工时日历视图 | open_group_member_calendar | 打开团队下成员工时日历视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[团队成员](app/view/workload_group_member_grid_view)</details>||
 
 ## 界面逻辑

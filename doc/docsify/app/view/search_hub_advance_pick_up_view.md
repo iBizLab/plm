@@ -12,15 +12,15 @@
 
 
 ### 关联界面行为
+  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_附件搜索](module/FTR/search_hub#界面行为)
   * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_页面](module/FTR/search_hub#界面行为)
-  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [确定](module/FTR/search_hub#界面行为)
-  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_工作项](module/FTR/search_hub#界面行为)
   * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_测试用例](module/FTR/search_hub#界面行为)
   * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_评论搜索](module/FTR/search_hub#界面行为)
-  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_工单](module/FTR/search_hub#界面行为)
-  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_附件搜索](module/FTR/search_hub#界面行为)
-  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [视图_取消](module/FTR/search_hub#界面行为)
+  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_工作项](module/FTR/search_hub#界面行为)
   * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_需求](module/FTR/search_hub#界面行为)
+  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [打印交谈资料_工单](module/FTR/search_hub#界面行为)
+  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [视图_取消](module/FTR/search_hub#界面行为)
+  * [检索中心(SEARCH_HUB)](module/FTR/search_hub) : [确定](module/FTR/search_hub#界面行为)
 
 ### 关联视图
   * [高级搜索(search_hub_tab_search_pickup_view)](app/view/search_hub_tab_search_pickup_view)

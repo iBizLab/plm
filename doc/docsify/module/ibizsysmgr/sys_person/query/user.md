@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -73,12 +74,50 @@ WHERE t1.ENABLE = 1 AND ( t1.`ID` = #{ctx.sessioncontext.srfpersonid} )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.AVATAR,
+t1.CREATE_TIME,
+t1.CREATOR,
+t1.DC,
+t1.DESCRIPTION,
+t1.DISPLAY_NAME,
+concat_ws(',',t1.DISPLAY_NAME,t1.ORGANIZATION_NAME) AS DN,
+t1.EMPLOYEE_NUMBER,
+t1.EMPLOYEE_TYPE,
+t1.ENABLE,
+t1.ID,
+t1.IDENTIFICATION_NUMBER,
+t1.MAIL,
+t1.MDEPARTMENT_ID,
+t1.MDEPARTMENT_NAME,
+t1.MOBILE,
+t1.ORGANIZATION_ID,
+t1.ORGANIZATION_NAME,
+t1.POSTAL_ADDRESS,
+t1.STATUS,
+t1.TELEPHONE_NUMBER,
+t1.TITLE,
+t1.UID,
+t1.UPDATER,
+t1.UPDATE_TIME,
+t1.USER_PASSWORD
+FROM  t1 
+
+WHERE t1.ENABLE = 1 AND ( t1.ID = #{ctx.sessioncontext.srfpersonid} )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

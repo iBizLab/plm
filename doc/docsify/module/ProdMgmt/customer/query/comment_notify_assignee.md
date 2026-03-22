@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -54,12 +55,27 @@ WHERE ( exists (select 1 from comment t2 where t1.ID = t2.PRINCIPAL_ID and t2.ID
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ASSIGNEE_ID,
+t1.ASSIGNEE_NAME,
+t1.ID
+FROM CUSTOMER t1 
+
+WHERE ( exists (select 1 from comment t2 where t1.ID = t2.PRINCIPAL_ID and t2.ID = #{ctx.webcontext.id} and t2.create_man != t1.assignee_id) )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

@@ -9,7 +9,6 @@
 #### 搜索栏(searchbar)
 
 ## 视图界面逻辑
-  * [获取移动端结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 

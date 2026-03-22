@@ -9,6 +9,18 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
+
+##### 部件逻辑
+* `onLoadSuccess`
+```
+var chunk_method = data[0].chunk_method
+data[0].parser_config.method = chunk_method
+```
+* `onLoadDraftSuccess`
+```
+var chunk_method = data[0].chunk_method
+data[0].parser_config.method = chunk_method
+```
 #### 工具栏(toolbar)
 
 
@@ -17,7 +29,6 @@
 
 ### 关联视图
   * [知识库文档(ai_kb_document_nested_grid_view)](app/view/ai_kb_document_nested_grid_view)
-  * [知识库源(ai_knowledge_source_pickup_view)](app/view/ai_knowledge_source_pickup_view)
 
 <script>
  const { createApp } = Vue

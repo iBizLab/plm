@@ -25,6 +25,9 @@ view.parentView.parentView.state['srfpickupdata'] = data;
   * newdata(预置新建数据逻辑)
 
 
+### 关联界面行为
+  * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [打开主视图（模式弹出）](module/Base/search_attachment#界面行为)
+
 ### 关联界面逻辑
   * [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment) : [打开详情视图](module/Base/search_attachment/uilogic/open_main_view)
 

@@ -1,7 +1,8 @@
 
-### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[32]</font></sup>   <!-- {docsify-ignore-all} -->
+### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[33]</font></sup>   <!-- {docsify-ignore-all} -->
 | 实体   | 数据集合  |
 | --------   |------------|
+|[知识库图谱实体(AI_KB_GRAPH_ENTITY)](module/ai/ai_kb_graph_entity)|[实体类型(cur_entity_type)](module/ai/ai_kb_graph_entity/dataset/cur_entity_type)|
 |[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|[排重用户(distinct_userid)](module/ebsx/auth_log_admin/dataset/distinct_userid)|
 |[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|[日期分组集合(group_by_data)](module/ebsx/auth_log_admin/dataset/group_by_data)|
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|[执行情况统计(execution_statistics)](module/Base/extend_log/dataset/execution_statistics)|

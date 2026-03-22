@@ -1,7 +1,7 @@
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-DELETE doc FROM ai_kb_document doc WHERE doc.sync_id = ?
+DELETE  FROM ai_kb_document doc WHERE doc.sync_id = ?
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

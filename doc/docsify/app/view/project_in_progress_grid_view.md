@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [项目(PROJECT)](module/ProjMgmt/project) : [删除](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [设置管理员](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [归档](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [删除](module/ProjMgmt/project#界面行为)
 
 ### 关联视图
   * [项目(project_edit_view)](app/view/project_edit_view)

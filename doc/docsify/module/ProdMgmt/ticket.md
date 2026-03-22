@@ -36,7 +36,7 @@
 |工单数|REP_NUM|文本，可指定长度|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |解决方案|SOLUTION|单项选择(文本值)|60|是||
-|解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
+|解决办法|SOLUTION_WAY|长文本，没有长度限制|2000|是||
 |状态|STATE|单项选择(文本值)|60|否||
 |提交时间|SUBMITTED_AT|日期时间型||是||
 |提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
@@ -101,7 +101,7 @@
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |工单数|REP_NUM|文本，可指定长度|200|是||
-|解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
+|解决办法|SOLUTION_WAY|长文本，没有长度限制|2000|是||
 |关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |评论数|COMMENT_COUNT|文本，可指定长度|200|是||
 |产品是否删除|PRODUCT_IS_DELETED|外键值附加数据||是||
@@ -602,6 +602,7 @@
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 客户关联工单（移动端） | mob_customer_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[customer_choose_ticket](#行为)||
 | 打印交谈资料_工单 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
+| 打开主视图（模态弹出） | open_main_view_pop_up | 打开主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view_pop_up)</details>||
 | 工作项 | toolbar_test_main_view_toolbar_deuiaction2_click | 工作项 |单项数据|用户自定义||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 配置 | panel_usr1022695769_button_calluilogic1_click | 工单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单设计](app/view/ticket_dyna_tab_exp_view)</details>||
@@ -615,6 +616,7 @@
 | 打开工单关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单关注](app/view/attention_mob_ticket_md_view)</details>||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 打开动态工单 | open_dyna_ticket | 打开动态工单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view)</details>||
+| 工作项 | toolbar_main_view_pop_up_toolbar_deuiaction2_click | 工作项 |单项数据|用户自定义||
 | 客户取消关联工单 | customer_del_ticket | 取消关联 |单项数据|<details><summary>后台调用</summary>[customer_del_ticket](#行为)||
 | 配置 | panel_usr1023088817_button_calluilogic1_click | 工单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_product_dyna_tab_exp_view)</details>||
 | 全屏 | toolbar_ticket_grid_parts_toolbar_deuiaction1_click | 全屏 |单项数据|用户自定义||

@@ -8,9 +8,9 @@
 
 
 ### 关联界面行为
+  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [打开BI报表设计图面板视图](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [AI+](module/Insight/insight_report#界面行为)
-  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
 
 ### 关联视图
   * [智能体选择器(ai_agent_assignment_selector)](app/view/ai_agent_assignment_selector)

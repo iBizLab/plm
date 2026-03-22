@@ -4,6 +4,10 @@
 
 * [实体映射](module/extension/MSValueProxy/demap/DEMap.md)
 
+## [MCP服务标记代理(MCPSERVERTAGPROXY)](module/extension/McpServerTagProxy.md) :id=McpServerTagProxy
+
+* [实体映射](module/extension/McpServerTagProxy/demap/DEMap.md)
+
 ## [部门(DEPARTMENT)](module/Base/department.md) :id=department
 
 * [ebsx部门映射(ebsx_mapping)](module/Base/department/demap/ebsx_mapping.md)

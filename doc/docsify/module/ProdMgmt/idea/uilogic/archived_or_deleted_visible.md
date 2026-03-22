@@ -29,6 +29,14 @@ PREPAREJSPARAM1 --> END1
 
 ### 处理步骤说明
 
+#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`view.layoutPanel.panelItems.viewmsg_pos.state` 设置给  `viewmsg_pos_state(视图消息占位状态)`
+2. 将`true` 设置给  `view.common_list_isshow`
+3. 将`true` 设置给  `viewmsg_pos_state(视图消息占位状态).visible`
+
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
 
@@ -38,14 +46,6 @@ PREPAREJSPARAM1 --> END1
 
 
 
-
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`view.layoutPanel.panelItems.viewmsg_pos.state` 设置给  `viewmsg_pos_state(视图消息占位状态)`
-2. 将`true` 设置给  `view.common_list_isshow`
-3. 将`true` 设置给  `viewmsg_pos_state(视图消息占位状态).visible`
 
 ### 连接条件说明
 #### 连接名称 :id=Begin-PREPAREJSPARAM1

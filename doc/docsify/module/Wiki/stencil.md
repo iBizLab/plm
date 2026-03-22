@@ -135,6 +135,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 发布 | release | 发布 |无数据|用户自定义||
 | 使用此模板 | panel_usr0312103524_button_calluilogic_click | 使用此模板 |单项数据|用户自定义||
 | 编辑模板 | edit_stencil | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面模板](app/view/stencil_edit_view)</details>||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
@@ -142,6 +143,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[发布](module/Wiki/stencil/uilogic/release)|release||
 |[打开新建页面并关闭模板中心](module/Wiki/stencil/uilogic/open_new_page)|open_new_page|打开新建页并关闭模板中心|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

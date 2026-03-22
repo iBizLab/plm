@@ -44,6 +44,7 @@
 |组织管理|ORG_M|
 |智能报表立方体指标模型扩展（只读）|EXTENSION__READ_PSSYSBICUBEMEASURE|
 |工作流模型扩展（只读）|EXTENSION__READ_PSWFVERSION|
+|应用门户部件（只读）|EXTENSION__READ_PSAPPPORTLET|
 |知识管理|SPACE|
 |工作流模型扩展|EXTENSION__MANAGE_PSWFVERSION|
 |逻辑模型扩展（只读）|EXTENSION__READ_PSDELOGIC|
@@ -61,6 +62,7 @@
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|<a href ="#/module/Base/portfolio#portfolio-all_rw">全部数据（读写）</a>|
 |[洞察力(INSIGHT)](module/Base/insight)|<a href ="#/module/Base/insight#insight-all_rw">全部数据（读写）</a>|
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|<a href ="#/module/Base/workload_type#workload_type-all_rw">全部数据（读写）</a>|
+|[扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)](module/Base/extend_scheduled_task_his)|<a href ="#/module/Base/extend_scheduled_task_his#extend_scheduled_task_his-all_rw">全部数据（读写）</a>|
 |[知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard)|<a href ="#/module/ai/ai_kb_document_wizard#ai_kb_document_wizard-all_rw">全部数据（读写）</a>|
 |[智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension)|<a href ="#/module/extension/PSSysBICubeDimension#pssysbicubedimension-all_rw">全部数据（读写）</a>|
 |[AI凭证(AI_CREDENTIAL)](module/ai/ai_credential)|<a href ="#/module/ai/ai_credential#ai_credential-all_rw">全部数据（读写）</a>|
@@ -94,10 +96,12 @@
 |[组织(ORGANIZATION)](module/Base/organization)|<a href ="#/module/Base/organization#organization-all_rw">全部数据（读写）</a>|
 |[交付物(DELIVERABLE)](module/Base/deliverable)|<a href ="#/module/Base/deliverable#deliverable-all_rw">全部数据（读写）</a>|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|<a href ="#/module/Base/login_log#login_log-all_rw">全部数据（读写）</a>|
+|[扩展任务类型(EXTEND_TASK_TYPE)](module/Base/extend_task_type)|<a href ="#/module/Base/extend_task_type#extend_task_type-all_rw">全部数据（读写）</a>|
 |[智能体会话消息(AI_AGENT_MESSAGE)](module/ai/ai_agent_message)|<a href ="#/module/ai/ai_agent_message#ai_agent_message-all_rw">全部数据（读写）</a>|
 |[工作流(PSWORKFLOW)](module/extension/PSWorkflow)|<a href ="#/module/extension/PSWorkflow#psworkflow-all_rw">全部数据（读写）</a>|
 |[智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session)|<a href ="#/module/ai/ai_agent_session#ai_agent_session-all_rw">全部数据（读写）</a>|
 |[组件权限成员(ADDON_ROLE_MEMBER)](module/Base/addon_role_member)|<a href ="#/module/Base/addon_role_member#addon_role_member-all_rw">全部数据（读写）</a>|
+|[通用模板(TEMPLATE)](module/Base/template)|<a href ="#/module/Base/template#template-all_rw">全部数据（读写）</a>|
 |[系统角色(SYS_ROLE_UAA)](module/ibizsysmgr/sys_role)|<a href ="#/module/ibizsysmgr/sys_role#sys_role-all_rw">全部数据（读写）</a>|
 |[空间(SPACE)](module/Wiki/space)|<a href ="#/module/Wiki/space#space-all_rw">全部数据（读写）</a>|
 |[工作流版本(PSWFVERSION)](module/extension/PSWFVersion)|<a href ="#/module/extension/PSWFVersion#pswfversion-all_rw">全部数据（读写）</a>|
@@ -108,6 +112,7 @@
 |[关联(RELATION)](module/Base/relation)|<a href ="#/module/Base/relation#relation-all_rw">全部数据（读写）</a>|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|<a href ="#/module/ProjMgmt/work_item_type#work_item_type-all_rw">全部数据（读写）</a>|
 |[工单(TICKET)](module/ProdMgmt/ticket)|<a href ="#/module/ProdMgmt/ticket#ticket-all_rw">全部数据（读写）</a>|
+|[扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule)|<a href ="#/module/Base/extend_schedule#extend_schedule-all_rw">全部数据（读写）</a>|
 |[人员(SYS_PERSON)](module/ibizsysmgr/sys_person)|<a href ="#/module/ibizsysmgr/sys_person#sys_person-all_rw">全部数据（读写）</a>|
 |[知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base)|<a href ="#/module/ai/ai_knowledge_base#ai_knowledge_base-all_rw">全部数据（读写）</a>|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|<a href ="#/module/Insight/insight_report#insight_report-all_rw">全部数据（读写）</a>|
@@ -124,6 +129,7 @@
 |[角色(ROLE)](module/Base/role)|<a href ="#/module/Base/role#role-all_rw">全部数据（读写）</a>|
 |[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|<a href ="#/module/ProjMgmt/project_state#project_state-all_rw">全部数据（读写）</a>|
 |[页面模板(STENCIL)](module/Wiki/stencil)|<a href ="#/module/Wiki/stencil#stencil-all_rw">全部数据（读写）</a>|
+|[知识库标签集(AI_KB_TAG_SET)](module/ai/ai_kb_tag_set)|<a href ="#/module/ai/ai_kb_tag_set#ai_kb_tag_set-all_rw">全部数据（读写）</a>|
 |[系统角色(SYS_ROLE)](module/ebsx/Role)|<a href ="#/module/ebsx/Role#role-all_rw">全部数据（读写）</a>|
 |[项目(PROJECT)](module/ProjMgmt/project)|<a href ="#/module/ProjMgmt/project#project-all_rw">全部数据（读写）</a>|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField)|<a href ="#/module/extension/PSDEField#psdefield-all_rw">全部数据（读写）</a>|
@@ -134,6 +140,7 @@
 |[视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)|<a href ="#/module/Base/view_theme_setting#view_theme_setting-all_rw">全部数据（读写）</a>|
 |[类别(CATEGORY)](module/Base/category)|<a href ="#/module/Base/category#category-all_rw">全部数据（读写）</a>|
 |[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|<a href ="#/module/Base/role_member#role_member-all_rw">全部数据（读写）</a>|
+|[活动(ACTIVITY)](module/Base/activity)|<a href ="#/module/Base/activity#activity-all_r">全部数据（读）</a>|
 |[智能体回复反馈(AI_AGENT_FEEDBACK)](module/ai/ai_agent_feedback)|<a href ="#/module/ai/ai_agent_feedback#ai_agent_feedback-all_rw">全部数据（读写）</a>|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|<a href ="#/module/extension/PSDENotify#psdenotify-all_rw">全部数据（读写）</a>|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|<a href ="#/module/ProdMgmt/ticket_type#ticket_type-all_rw">全部数据（读写）</a>|
@@ -145,6 +152,7 @@
 |[知识库文档同步(AI_KB_DOCUMENT_SYNC)](module/ai/ai_kb_document_sync)|<a href ="#/module/ai/ai_kb_document_sync#ai_kb_document_sync-all_rw">全部数据（读写）</a>|
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|<a href ="#/module/ProjMgmt/stage#stage-all_rw">全部数据（读写）</a>|
 |[人员(SYS_EMP)](module/ebsx/SysEmployee)|<a href ="#/module/ebsx/SysEmployee#sysemployee-all_rw">全部数据（读写）</a>|
+|[扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task)|<a href ="#/module/Base/extend_scheduled_task#extend_scheduled_task-all_rw">全部数据（读写）</a>|
 
 
 

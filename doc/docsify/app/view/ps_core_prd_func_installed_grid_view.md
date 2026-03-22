@@ -14,8 +14,13 @@
   * opendata(预置打开数据逻辑)
 
 
+### 关联界面行为
+  * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [禁用](module/extension/PSCorePrdFunc#界面行为)
+  * [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc) : [查看版本清单](module/extension/PSCorePrdFunc#界面行为)
+
 ### 关联视图
   * [核心产品功能(ps_core_prd_func_info_view)](app/view/ps_core_prd_func_info_view)
+  * [版本清单(ps_core_prd_func_spec_version)](app/view/ps_core_prd_func_spec_version)
 
 <script>
  const { createApp } = Vue

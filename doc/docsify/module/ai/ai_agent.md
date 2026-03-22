@@ -12,6 +12,7 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |自定义建议提示词|CUSTOM_SUGGESTION_PROMPT|长文本，没有长度限制|1048576|是||
 |默认系统提示词|DEFAULT_SYSTEM_PROMPT|长文本，没有长度限制|1048576|是||
+|支持联网搜索|ENABLE_SEARCHING|是否逻辑||是||
 |启用问题建议|ENABLE_SUGGESTED_QUESTIONS|是否逻辑||是||
 |启用思考链|ENABLE_THINKING|是否逻辑||是||
 |调用工具|ENABLE_TOOLS|是否逻辑||是||
@@ -20,14 +21,18 @@
 |是否默认Agent|IS_DEFAULT|是否逻辑||否||
 |知识库模式|KB_MODE|[单项选择(文本值)](index/dictionary_index#kb_mode "智能体知识库模式")|60|是||
 |最大输入token数|MAX_INPUT_TOKENS|整型||否||
+|记忆存储文档标记|MEMORY_DOC_TAG|文本，可指定长度|200|是||
+|记忆存储知识库标记|MEMORY_KB_TAG|文本，可指定长度|200|是||
 |记忆对话轮数|MEMORY_MAX_TURNS|整型||是||
 |记忆模式|MEMORY_MODE|[单项选择(文本值)](index/dictionary_index#memory_mode "记忆模式")|200|是||
 |智能体名称|NAME|文本，可指定长度|200|是||
+|发布技能|PUBLISH_SKILL|是否逻辑||是||
 |召回重排|RERANK|是否逻辑||是||
 |召回重排模型|RERANK_MODEL|外键值文本|100|是||
 |模型标识|RERANK_MODEL_ID|外键值|100|是||
 |排序|SEQUENCE|整型||是||
 |召回相似度阈值|SIMILARITY_THRESHOLD|数值||是||
+|技能提示词|SKILL_PROMPT|长文本，没有长度限制|1048576|是||
 |流式输出|STREAM|是否逻辑||是||
 |预置建议问题|SUGGESTED_QUESTIONS|文本数组（没有长度限制）|1000|是||
 |模型随机性参数|TEMPERATURE|数值||是||
@@ -40,6 +45,7 @@
 |更新时间|UPDATE_TIME|日期时间型||否||
 |使用知识图谱|USE_KG|是否逻辑||是||
 |向量相似度权重|VECTOR_SIMILARITY_WEIGHT|数值||是||
+|视觉识别提示词|VLM_PROMPT|长文本，没有长度限制|1048576|是||
 |欢迎消息模板|WELCOME_MESSAGE|长文本，没有长度限制|1048576|是||
 
 

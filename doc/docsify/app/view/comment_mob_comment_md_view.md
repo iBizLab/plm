@@ -9,6 +9,10 @@
 #### 搜索栏(searchbar)
 
 ## 视图界面逻辑
+* `onCloseView`
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'comment'});
+```
   * 打开人员选择视图（移动端）
   * 打开最近访问选择视图（移动端）
   * newdata(预置新建数据逻辑)
@@ -16,9 +20,9 @@
 
 
 ### 关联界面行为
-  * [评论(COMMENT)](module/Base/comment) : [发送评论（移动端）](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [回复](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [删除评论](module/Base/comment#界面行为)
+  * [评论(COMMENT)](module/Base/comment) : [发送评论（移动端）](module/Base/comment#界面行为)
 
 <script>
  const { createApp } = Vue

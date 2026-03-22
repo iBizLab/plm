@@ -9,7 +9,7 @@
 #### 工具栏(righttoolbar)
 
 ## 视图界面逻辑
-  * [获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)
+  * [获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)
 * `onLoadSuccess`
 ```javascript
 view.layoutPanel.panelItems.send_comment_container.state.visible=false;
@@ -17,10 +17,13 @@ view.layoutPanel.panelItems.send_comment_container.state.visible=false;
 
 
 ### 关联界面行为
+  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [打开评论输入框](module/Team/discuss_reply#界面行为)
+  * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [删除回复（移动端）](module/Team/discuss_reply#界面行为)
   * [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply) : [发送](module/Team/discuss_reply#界面行为)
 
 ### 关联视图
   * [评论(comment_dis_comment_mob_md_view)](app/view/comment_dis_comment_mob_md_view)
+  * [评论(comment_mob_only_comment_md_view)](app/view/comment_mob_only_comment_md_view)
 
 <script>
  const { createApp } = Vue

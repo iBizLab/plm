@@ -27,6 +27,7 @@
 |[动态看板部件配置(DYNA_PORTLET_SETTING)](module/Base/dyna_portlet_setting)|dyna_portlet_setting|主实体|无存储||否|否|自控制|否|动态看板部件配置信息|
 |[执行人(EXECUTOR)](module/Base/executor)|executor|主实体|SQL|EXECUTOR|是|否|附属主实体控制|否||
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|extend_log|主实体|SQL|EXTEND_LOG|否|否|自控制|否|记录扩展日志|
+|[扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ)|extend_print_templ|主实体|SQL|EXTEND_PRINT_TEMPL|否|否|自控制|否||
 |[扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule)|extend_schedule|主实体|SQL|EXTEND_SCHEDULE|否|否|自控制|否||
 |[扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task)|extend_scheduled_task|主实体|SQL|EXTEND_SCHEDULED_TASK|否|否|自控制|否||
 |[扩展计划任务历史(EXTEND_SCHEDULED_TASK_HIS)](module/Base/extend_scheduled_task_his)|extend_scheduled_task_his|主实体|SQL|EXTEND_SCHEDULED_TASK_HIS|否|否|自控制|否||

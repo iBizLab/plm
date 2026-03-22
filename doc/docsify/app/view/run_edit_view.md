@@ -11,8 +11,6 @@
 * `onLoadSuccess` : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
 * `onChange`
 ```
-console.log('值变更事件');
-console.log(view);
 var executor_id = ctrl.details.executor_id;
 var executor_name = ctrl.details.executor_name;
 var executors = ctrl.details.executors.value;
@@ -42,8 +40,8 @@ if(executors != null && executors != undefined && executors.length > 0){
 
 
 ### 关联界面逻辑
-  * [执行用例(RUN)](module/TestMgmt/run) : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
   * [执行用例(RUN)](module/TestMgmt/run) : [打开关联用例](module/TestMgmt/run/uilogic/open_re_run)
+  * [执行用例(RUN)](module/TestMgmt/run) : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
 
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)

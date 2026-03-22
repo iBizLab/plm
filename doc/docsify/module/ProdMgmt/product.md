@@ -370,7 +370,7 @@
 | 产品回收站（移动端） | mob_product_recycle_bin | 回收站 |单项数据|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/product_mob_recycle_tab_view)</details>||
 | 激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 打开新建产品 | open_new_product | 打开新建产品 |单项数据|<details><summary>打开顶级视图</summary>[产品](app/view/product_index_view)</details>||
-| 产品高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/product_mob_ad_setting_view)</details>||
+| 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/product_mob_ad_setting_view)</details>||
 | 产品关联项目 | relation_project | 关联项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联项目](app/view/project_choose_project_option_view)</details>||
 | 产品归档（进行中-移动端） | mob_in_progress_into_archived | 产品归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 

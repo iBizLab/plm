@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -100,12 +101,53 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.ASSIGNEE_ID,
+t1.ASSIGNEE_NAME,
+t1.CHANNEL,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.CUSTOMER_ID,
+t21.NAME AS CUSTOMER_NAME,
+t1.ESTIMATED_AT,
+t1.ID,
+t1.IDENTIFIER,
+t1.IS_ARCHIVED,
+t1.IS_DELETED,
+t1.NAME,
+t1.PRIORITY,
+t1.PRODUCT_ID,
+t11.IS_DELETED AS PRODUCT_IS_DELETED,
+t11.NAME AS PRODUCT_NAME,
+t1.SOLUTION,
+t1.STATE,
+t1.SUBMITTED_AT,
+t1.SUBMITTER_ID,
+t1.SUBMITTER_NAME,
+t1.TAGS,
+t1.TITLE,
+t1.TYPE,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM TICKET t1 
+LEFT JOIN PRODUCT t11 ON t1.PRODUCT_ID = t11.ID 
+LEFT JOIN CUSTOMER t21 ON t1.CUSTOMER_ID = t21.ID 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

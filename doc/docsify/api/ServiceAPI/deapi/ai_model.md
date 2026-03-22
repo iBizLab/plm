@@ -496,6 +496,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_ai_credential_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI凭证名称|
 |<el-row justify="space-between"><el-col :span="20">n_ai_credential_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|AI凭证名称|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型标识|
+|<el-row justify="space-between"><el-col :span="20">n_model_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型类别|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模型名称|
 
 
@@ -510,6 +511,7 @@ Integer
   "n_ai_credential_name_eq" : null,
   "n_ai_credential_name_like" : null,
   "n_id_eq" : null,
+  "n_model_category_eq" : null,
   "n_name_like" : null,
 }
 ```

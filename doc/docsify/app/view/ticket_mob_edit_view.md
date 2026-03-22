@@ -9,14 +9,15 @@
 #### 工具栏(righttoolbar)
 
 ## 视图界面逻辑
-  * [获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)
+  * [获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)
+  * [已归档或已删除工单显示隐藏](module/ProdMgmt/ticket/uilogic/archived_or_deleted_visible)
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档（工具栏）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [打开工单关注列表（移动端）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [打开评论列表](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [附件(attachment_mob_md_view)](app/view/attachment_mob_md_view)

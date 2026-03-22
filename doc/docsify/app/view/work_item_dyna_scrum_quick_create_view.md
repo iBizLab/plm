@@ -364,8 +364,8 @@ ctrl.evt.on('onFormDataChange', evt => {
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关闭视图](module/ProjMgmt/work_item#界面行为)
   * [智能体会话(AI_AGENT_SESSION)](module/ai/ai_agent_session) : [AI+无数据](module/ai/ai_agent_session#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关闭视图](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [确定](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑

@@ -6,10 +6,12 @@
 |AI凭证同步组件||PSSysUtilImpl|[CredentialDESyncUtilRuntime](#CredentialDESyncUtilRuntime)||
 |AI模型同步组件||PSSysUtilImpl|[AIAgentDESyncUtilRuntime](#AIAgentDESyncUtilRuntime)||
 |AI工具同步组件||PSSysUtilImpl|[AIToolDESyncUtilRuntime](#AIToolDESyncUtilRuntime)||
+|KB同步组件||PSSysUtilImpl|[KBAgentDESyncUtilRuntime](#KBAgentDESyncUtilRuntime)||
 |SysDEBIReportProxyUtilRuntime||PSSysUtilImpl|[SysDEBIReportProxyUtilRuntime](#UsrSFPlugin0702700490)||
 |知识库组件||PSSysUtilImpl|[SysKnowledgeBaseUtilRuntime](#SysKnowledgeBaseUtilRuntime)|知识库功能组件运行时|
-|SysMcpServerUtil||PSSysUtilImpl|[SysMcpServerUtilRuntime](#SysMcpServerUtilRuntime)||
+|SysMcpServerUtil||PSSysUtilImpl|[PlmSysMcpServerUtilRuntime](#PlmSysMcpServerUtilRuntime)|自动初始化AITOOL数据|
 |SysPSDEModelUtilRuntime||PSSysUtilImpl|[PLMSysPSDEModelUtilRuntime](#PLMSysPSDEModelUtilRuntime)||
+|任务调度组件||PSSysUtilImpl|[DefaultSysDETaskUtilRuntime](#DefaultSysDETaskUtilRuntime)||
 |用户导入增强||PSSysTranslatorImpl|[One2ManyUserImpTransRuntime](#UsrSFPlugin0424744613)|参数名               说明                                   默认值<br>username       指定从用户实体对象中获取值名称名称             display_name<br>userdename     指定用户数据实体名称                          user<br>one2manyfield  指定转换器属性映射的1对多集合属性名称          attentions<br>one2manyuserid 指定映射的1对多集合属性中存储用户标识属性名称   user_id|
 |结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
 |交付物导入增强||PSSysTranslatorImpl|[One2ManyDeliverableImpTransRuntime](#UsrSFPlugin1119809482)|导入工作项时，生成交付物<br>多个交付物以“；”进行隔开|
@@ -18,6 +20,8 @@
 |工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
 |检查新版本(CheckVersion)|[关于(ABOUT)](module/extension/ABOUT)|PSDEUserCustomActionImpl|[CheckUpdateDEActionRuntime](#CheckUpdateDEActionRuntime)|检查系统新版本|
 |智能体业务上下文(AI_AGENT_CONTEXT)||PSDataEntityImpl|[AIAgentContextDERuntime](#AIAgentContextDERuntime)||
+|树表数据集合(tree)|[知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)|数据集合获取树表格层级数据|
+|提取元数据(extract_meta_data)|[知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document)|PSDEUserCustomActionImpl|[ExtractMetaDataDEActionRuntime](#ExtractMetaDataDEActionRuntime)||
 |填充产品需求版本数据(fill_version_data)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充测试用例版本数据(fill_version_data)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
@@ -28,6 +32,7 @@
 |多类型页面数据导入|[页面(PAGE)](module/Wiki/article_page)|PSDEDataImportImpl|[PageDataImportRuntimeEx](#PageDataImportRuntimeEx)|页面导入使用|
 |version|[页面(PAGE)](module/Wiki/article_page)|PSDEUtilImpl|[DEVersionControlUtilRuntimeEx](#UsrSFPlugin0628633282)|排除新建模式行为自动建立版本|
 |复制(Copy)|[项目(PROJECT)](module/ProjMgmt/project)|PSDEBuiltinActionImpl|[ProjectCopyDEActionRuntime](#ProjectCopyDEActionRuntime)|项目拷贝增强插件|
+|安装特定版本(INSTALLSPECVER)|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|PSDEUserCustomActionImpl|[InstallSpecDEActionRuntime](#InstallSpecDEActionRuntime)||
 |版本数据存储|[关联(RELATION)](module/Base/relation)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
 |版本数据存储|[执行用例(RUN)](module/TestMgmt/run)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
 |测试用例导入|[用例(TEST_CASE)](module/TestMgmt/test_case)|PSDEDataImportImpl|[DynaFieldDEDataImportRuntimeEx](#DynaFieldDEDataImportRuntimeEx)|支持动态属性导入|
@@ -48,6 +53,7 @@
 |看板工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |敏捷工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |瀑布工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
+|扩展增强|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEUtilImpl|[DynaEditViewModelExUtilRuntime](#DynaEditViewModelExUtilRuntime)|增强动态视图表单获取能力|
 
 ### AIAgentContextDERuntime :id=AIAgentContextDERuntime
 
@@ -153,7 +159,7 @@ public class AIAgentContextDERuntime extends DataEntityRuntime {
                         }
                         if (aiAgentContextDTO.get("ai_agent_knowledge_rels")){
                             def kb_refs = aiAgentContextDTO.get("ai_agent_knowledge_rels")
-                            def tags = kb_refs.collect { it.kb_tag }
+                            def tags = kb_refs.collect { it.ai_knowledge_base_id }
                                     .join(',')
                             aiAgentContextDTO.set("kb_tags",tags)
                         }
@@ -193,7 +199,7 @@ public class AIAgentContextDERuntime extends DataEntityRuntime {
                     }
                     if (aiAgentContextDTO.get("ai_agent_knowledge_rels")){
                         def kb_refs = aiAgentContextDTO.get("ai_agent_knowledge_rels")
-                        def tags = kb_refs.collect { it.kb_tag }
+                        def tags = kb_refs.collect { it.ai_knowledge_base_id }
                                 .join(',')
                         aiAgentContextDTO.set("kb_tags",tags)
                     }
@@ -769,6 +775,7 @@ public class BoardCopyDEActionRuntime extends CopyDEActionRuntime {
                 }
             }
 //            throw new Exception("TestCopy");
+		    iEntityDTO.reload(ret, true);
             return ret;
         }
     }
@@ -977,6 +984,300 @@ public class CheckUpdateDEActionRuntime extends DEActionRuntimeBase {
 
 ```groovy
 null
+```
+### DefaultSysDETaskUtilRuntime :id=DefaultSysDETaskUtilRuntime
+
+
+```net.ibizsys.central.plugin.task.sysutil.DefaultSysDETaskUtilRuntime```
+
+```groovy
+null
+```
+### DynaEditViewModelExUtilRuntime :id=DynaEditViewModelExUtilRuntime
+增强动态视图表单获取能力
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.util.DynaEditViewModelExUtilRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.util
+
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.node.ArrayNode
+import com.fasterxml.jackson.databind.node.ObjectNode
+import groovy.transform.CompileStatic
+import net.ibizsys.central.cloud.core.util.domain.V2SystemExtensionForm
+import net.ibizsys.central.cloud.core.util.domain.V2SystemExtensionSuite
+import net.ibizsys.central.plugin.extension.dataentity.util.DEExtensionUtilRuntime
+import net.ibizsys.central.plugin.extension.psmodel.util.ExtensionUtils
+import net.ibizsys.model.PSModelEnums
+import net.ibizsys.model.app.IPSApplication
+import net.ibizsys.model.app.dataentity.IPSAppDataEntity
+import net.ibizsys.model.app.view.IPSAppDEView
+import net.ibizsys.model.app.view.IPSAppView
+import net.ibizsys.model.app.view.PSAppDEViewImpl
+import net.ibizsys.model.app.view.PSAppViewImpl
+import net.ibizsys.model.app.view.PSAppViewRefImpl
+import net.ibizsys.model.control.form.IPSDEForm
+import net.ibizsys.model.control.form.PSDEFormImpl
+import net.ibizsys.model.dataentity.defield.IPSDEField
+import net.ibizsys.model.dataentity.der.IPSDER1N
+import net.ibizsys.model.dataentity.der.IPSDERBase
+import net.ibizsys.model.dataentity.der.IPSDERCustom
+import net.ibizsys.psmodel.core.domain.PSDEForm
+import net.ibizsys.psmodel.runtime.util.PSModelRTServiceBase
+import net.ibizsys.psmodel.runtime.util.PSModelRTServiceFactory
+import net.ibizsys.runtime.util.JsonUtils
+import org.springframework.util.ObjectUtils
+import org.springframework.util.StringUtils
+
+import java.util.stream.Collectors
+
+@CompileStatic
+public class DynaEditViewModelExUtilRuntime extends DEExtensionUtilRuntime {
+    @Override
+    protected ObjectNode getPSAppDEEditViewModel(IPSAppDEView iPSAppDEView, String strWFTag, Object param) throws Throwable {
+        ObjectNode originViewNode = super.getPSAppDEEditViewModel(iPSAppDEView, strWFTag, param);
+        V2SystemExtensionSuite v2SystemExtensionSuite = this.getV2SystemExtensionSuite(false);
+        String srfParentDEName = null;
+        String srfParentKey = null;
+        String strFormTagPrefix = null;
+        String strDataType;
+        if (param instanceof Map) {
+            Map map = (Map)param;
+            srfParentDEName = (String)map.get("srfparentdename");
+            srfParentKey = (String)map.get("srfparentkey");
+            strDataType = (String)map.get("srfdatatype");
+        } else {
+            strDataType = null;
+        }
+
+        if (StringUtils.hasLength(srfParentDEName) && StringUtils.hasLength(srfParentKey)) {
+            List<IPSDERBase> psDERBases = this.getPSDataEntity().getMinorPSDERs();
+            if (psDERBases != null) {
+                Iterator var14 = psDERBases.iterator();
+
+                while(var14.hasNext()) {
+                    IPSDERBase iPSDERBase = (IPSDERBase)var14.next();
+                    if (iPSDERBase.getMajorPSDataEntity().getName().equalsIgnoreCase(srfParentDEName)) {
+                        if (iPSDERBase instanceof IPSDER1N) {
+                            IPSDER1N iPSDER1N = (IPSDER1N)iPSDERBase;
+                            strFormTagPrefix = String.format("FIELD__%s__%s", iPSDER1N.getPSPickupDEFieldMust().getName().toUpperCase(), srfParentKey);
+                            break;
+                        }
+
+                        if (iPSDERBase instanceof IPSDERCustom) {
+                            IPSDERCustom iPSDERCustom = (IPSDERCustom)iPSDERBase;
+                            IPSDEField iPSDEField = iPSDERCustom.getPickupPSDEField();
+                            if (iPSDEField != null) {
+                                strFormTagPrefix = String.format("FIELD__%s__%s", iPSDEField.getName().toUpperCase(), srfParentKey);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        JsonNode node = originViewNode.get(PSAppViewImpl.ATTR_GETPSCONTROLS);
+        if(node == null) {
+            //尝试从视图面板中获取
+            JsonNode viewLayoutPanelNode = originViewNode.get(PSAppViewImpl.ATTR_GETPSVIEWLAYOUTPANEL);
+            if(viewLayoutPanelNode instanceof ObjectNode) {
+                node = ((ObjectNode)viewLayoutPanelNode).get(PSAppViewImpl.ATTR_GETPSCONTROLS);
+            }
+        }
+        Map<String, String> formCodeNameMap = new HashMap<String, String>();
+        //以下代码调整为从当前实体表单提取表单标记，usertag=原始表单usertag
+        IPSApplication iPSApplication = iPSAppDEView.getParentPSModelObject(IPSApplication.class);
+        List<IPSDEForm> psDEFormList = new ArrayList<IPSDEForm>();
+        List<IPSAppView> curDEViews = iPSApplication.getAllPSAppViews().stream().filter {it->return it.getPSAppDataEntity()!=null && it.getPSAppDataEntity().getPSDataEntity().getName().equals(this.getPSDataEntity().getName())}.collect().toList()
+        for(IPSAppView iPSAppView : curDEViews) {
+            net.ibizsys.psmodel.runtime.util.PSModelRTServiceBase.fillPSControlList(IPSDEForm.class, iPSAppView, psDEFormList);
+        }
+        int dynaSysMode = 1;
+        if(node instanceof ArrayNode) {
+            //循环表单
+            ArrayNode arrayNode = (ArrayNode) node;
+            for (int i = 0; i < arrayNode.size(); i++) {
+                ObjectNode ctrlNode = (ObjectNode) arrayNode.get(i);
+                JsonNode dynaSysModeNode = ctrlNode.get("dynaSysMode");
+                if (dynaSysModeNode != null && dynaSysModeNode.asInt() > 1) {
+                    dynaSysMode = dynaSysModeNode.asInt();
+                }
+            }
+        }
+        //查出原始表单
+        Map<String, IPSDEForm> psDEFormMap = new HashMap<String, IPSDEForm>();
+        for(IPSDEForm iPSDEForm : psDEFormList) {
+//            if("dynamic_update".equals(iPSDEForm.getUserTag())||"dynamic_create".equals(iPSDEForm.getUserTag())){
+            if(dynaSysMode == 2) {
+                if ("dynamic_update".equals(iPSDEForm.getUserTag())) {
+                    psDEFormMap.put(iPSDEForm.getName(), iPSDEForm);
+                    formCodeNameMap.put(iPSDEForm.getCodeName(), "");
+                    ArrayNode arrayNode = (ArrayNode) node;
+                    ObjectNode form = iPSDEForm.getObjectNode();
+                    arrayNode.add(form);
+                }
+            }
+        }
+
+        Map<String, V2SystemExtensionForm> v2SystemExtensionFormMap = new HashMap<String, V2SystemExtensionForm>();
+        Map<String, V2SystemExtensionForm> extraV2SystemExtensionFormMap = new HashMap<String, V2SystemExtensionForm>();
+        List<ObjectNode> list = new ArrayList<ObjectNode>();
+        //查出表单
+        List<V2SystemExtensionForm> v2SystemExtensionFormList = v2SystemExtensionSuite.getForms();
+        if(!ObjectUtils.isEmpty(v2SystemExtensionFormList)) {
+            for(V2SystemExtensionForm v2SystemExtensionForm : v2SystemExtensionFormList) {
+                if(!StringUtils.hasLength(v2SystemExtensionForm.getRuntimeModel())) {
+                    continue;
+                }
+
+                if(!StringUtils.hasLength(v2SystemExtensionForm.getExtensionModel())) {
+                    continue;
+                }
+
+                if(!this.getDataEntityTag().equals(v2SystemExtensionForm.getDataEntityTag())){
+                    continue;
+                }
+                //过滤参数，非当前视图实体表单计算可能会出现异常
+                String[] formTags = v2SystemExtensionForm.getFormTag().split("[@]");
+                if(formTags != null && formTags.length > 1){
+                    if(!formTags[0].equalsIgnoreCase(strFormTagPrefix)){
+                        continue;
+                    }
+                }
+                PSDEForm psDEForm = JsonUtils.as(v2SystemExtensionForm.getExtensionModel(), PSDEForm.class);
+
+                if(formCodeNameMap.containsKey(psDEForm.getCodeName().toLowerCase())) {
+                    //避免重复写入覆盖
+                    if(!v2SystemExtensionFormMap.containsKey(psDEForm.getCodeName().toLowerCase()) || v2SystemExtensionForm.getFormTag().contains("@")){
+                        v2SystemExtensionFormMap.put(psDEForm.getCodeName().toLowerCase(), v2SystemExtensionForm);
+                    }
+                }else {
+                    extraV2SystemExtensionFormMap.put(psDEForm.getCodeName().toLowerCase(), v2SystemExtensionForm);
+                }
+
+            }
+        }
+        //templForm
+        ObjectNode templForm;
+        if(node instanceof ArrayNode) {
+            //循环表单
+            ArrayNode arrayNode = (ArrayNode)node;
+            for(int i = 0 ;i<arrayNode.size();i++) {
+                ObjectNode ctrlNode = (ObjectNode) arrayNode.get(i);
+                String strName = ctrlNode.get("name").asText();
+                if(strName.equals("form")){
+                    templForm = ctrlNode;
+                }
+                if(!(strName.equals("form")||strName.startsWith("_form_"))){
+                    list.add(ctrlNode);
+                }
+                else {
+                    String strCodeName = null;
+                    JsonNode codeNameNode = ctrlNode.get("codeName");
+                    if(codeNameNode != null) {
+                        strCodeName = codeNameNode.asText();
+                    }
+                    V2SystemExtensionForm v2SystemExtensionForm = StringUtils.hasLength(strCodeName)? v2SystemExtensionFormMap.remove(strCodeName.toLowerCase()): null;
+                    if(v2SystemExtensionForm == null) {
+                        list.add(ctrlNode);
+                    }
+                    else {
+                        String strRuntimeModel = ExtensionUtils.replaceRuntimeModel(v2SystemExtensionForm.getRuntimeModel(), iPSApplication, false);
+                        ObjectNode form = JsonUtils.toObjectNode(strRuntimeModel);
+                        //ObjectNode form = JsonUtils.toObjectNode(v2SystemExtensionForm.getRuntimeModel());
+                        ObjectNode newForm = ctrlNode.deepCopy();// JsonUtils.toObjectNode(ctrlNode.toString());
+                        newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMITEMUPDATES, form.get(PSDEFormImpl.ATTR_GETPSDEFORMITEMUPDATES));
+                        newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMPAGES, form.get(PSDEFormImpl.ATTR_GETPSDEFORMPAGES));
+                        newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMITEMVRS, form.get(PSDEFormImpl.ATTR_GETPSDEFORMITEMVRS));
+                        newForm.set(PSDEFormImpl.ATTR_GETCODENAME, form.get(PSDEFormImpl.ATTR_GETCODENAME));
+                        newForm.set(PSDEFormImpl.ATTR_GETLOGICNAME, form.get(PSDEFormImpl.ATTR_GETLOGICNAME));
+                        if(form.get(PSDEFormImpl.ATTR_ISNOTABHEADER)!=null) {
+                            newForm.set(PSDEFormImpl.ATTR_ISNOTABHEADER, form.get(PSDEFormImpl.ATTR_ISNOTABHEADER));
+                        }
+
+                        ArrayNode newPSAppCounterRefNodes = null;
+                        if(newForm.has(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS)) {
+                            newPSAppCounterRefNodes = (ArrayNode)newForm.get(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                        }
+                        else {
+                            newPSAppCounterRefNodes = newForm.putArray(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                        }
+
+                        if(form.has(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS)) {
+                            ArrayNode psAppCounterRefNodes = (ArrayNode)form.get(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                            newPSAppCounterRefNodes.addAll(psAppCounterRefNodes);
+                        }
+
+
+                        newForm.remove(PSDEFormImpl.ATTR_GETPSDEFORMITEMS);
+                        newForm.remove(PSDEFormImpl.ATTR_GETDYNAMODELFILEPATH);
+
+                        list.add(newForm);
+                    }
+                }
+            }
+
+            //判断剩余表单是否为新增表单
+            for(V2SystemExtensionForm v2SystemExtensionForm : extraV2SystemExtensionFormMap.values()) {
+                if(!StringUtils.hasLength(v2SystemExtensionForm.getExtensionModel())) {
+                    continue;
+                }
+                PSDEForm psDEForm = JsonUtils.as(v2SystemExtensionForm.getExtensionModel(), PSDEForm.class);
+//                if ((strDataType != null && strDataType.equals(psDEForm.getDataType()))) {
+                String strRuntimeModel = ExtensionUtils.replaceRuntimeModel(v2SystemExtensionForm.getRuntimeModel(), iPSApplication, false);
+                ObjectNode form = JsonUtils.toObjectNode(strRuntimeModel);
+                ObjectNode newForm = templForm.deepCopy();
+                newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMITEMUPDATES, form.get(PSDEFormImpl.ATTR_GETPSDEFORMITEMUPDATES));
+                newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMPAGES, form.get(PSDEFormImpl.ATTR_GETPSDEFORMPAGES));
+                newForm.set(PSDEFormImpl.ATTR_GETPSDEFORMITEMVRS, form.get(PSDEFormImpl.ATTR_GETPSDEFORMITEMVRS));
+                newForm.set(PSDEFormImpl.ATTR_GETCODENAME, form.get(PSDEFormImpl.ATTR_GETCODENAME));
+                newForm.set(PSDEFormImpl.ATTR_GETLOGICNAME, form.get(PSDEFormImpl.ATTR_GETLOGICNAME));
+                if(form.get(PSDEFormImpl.ATTR_ISNOTABHEADER)!=null) {
+                    newForm.set(PSDEFormImpl.ATTR_ISNOTABHEADER, form.get(PSDEFormImpl.ATTR_ISNOTABHEADER));
+                }
+
+                ArrayNode newPSAppCounterRefNodes = null;
+                if(newForm.has(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS)) {
+                    newPSAppCounterRefNodes = (ArrayNode)newForm.get(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                }
+                else {
+                    newPSAppCounterRefNodes = newForm.putArray(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                }
+
+                if(form.has(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS)) {
+                    ArrayNode psAppCounterRefNodes = (ArrayNode)form.get(PSDEFormImpl.ATTR_GETPSAPPCOUNTERREFS);
+                    newPSAppCounterRefNodes.addAll(psAppCounterRefNodes);
+                }
+
+                if(form.get("dataType")!=null) {
+                    newForm.put("name", "_form_" + form.get("dataType").asText())
+                    newForm.put("dataType", form.get("dataType").asText())
+                }
+                if(form.get("userTag")!=null){
+                    newForm.put("userTag",form.get("userTag").asText())
+                }
+                newForm.remove(PSDEFormImpl.ATTR_GETPSDEFORMITEMS);
+                newForm.remove(PSDEFormImpl.ATTR_GETDYNAMODELFILEPATH);
+                list.add(newForm);
+//                }
+            }
+            //仅保留新建表单
+            if(dynaSysMode == 1){
+                list = list.stream().filter({ item -> (item.get("userTag") == null || item.get("userTag").asText().equals("dynamic_create"))}).collect(Collectors.toList());
+            }
+            //高级动态模式(过滤当前指定类型表单)
+            if(dynaSysMode == 2){
+                list = list.stream().filter({ item -> (item.get("dataType") != null && item.get("dataType").asText().equals(strDataType)) || item.get("dataType") == null }).collect(Collectors.toList());
+                list = list.stream().filter({ item -> (item.get("userTag") == null || item.get("userTag").asText().equals("dynamic_update"))}).collect(Collectors.toList());
+            }
+            arrayNode.removeAll();
+            arrayNode.addAll(list);
+            return originViewNode;
+        }
+    }
+}
 ```
 ### DynaFieldDEDataImportRuntimeEx :id=DynaFieldDEDataImportRuntimeEx
 支持动态属性导入
@@ -1233,6 +1534,109 @@ public class EventHookDENotifyRuntimeEx extends DENotifyRuntime{
 }
 
 ```
+### ExtractMetaDataDEActionRuntime :id=ExtractMetaDataDEActionRuntime
+
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.action.ExtractMetaDataDEActionRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.action
+
+import net.ibizsys.model.util.JsonUtils
+import groovy.transform.CompileStatic
+import net.ibizsys.central.dataentity.action.DEActionRuntimeBase
+import net.ibizsys.central.util.IEntityDTO
+import com.vladsch.flexmark.ast.Image;
+import com.vladsch.flexmark.ast.Link;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Document;
+import com.vladsch.flexmark.util.ast.NodeVisitor;
+import com.vladsch.flexmark.util.ast.VisitHandler
+import groovy.json.JsonSlurper
+import java.text.SimpleDateFormat
+
+@CompileStatic
+class ExtractMetaDataDEActionRuntime extends DEActionRuntimeBase {
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
+    @Override
+    protected Object onExecute(IEntityDTO iEntityDTO) throws Throwable {
+        def parsed_content = iEntityDTO.get('parsed_content').toString()
+        if (parsed_content) {
+            def meta_data = [:]
+            def references = []
+            // 解析Markdown内容
+            Parser parser = Parser.builder().build()
+            Document document = parser.parse(parsed_content)
+            // 收集所有图片节点
+            List<Image> images = []
+            NodeVisitor imageCollector = new NodeVisitor(new VisitHandler<>(Image, images.&add))
+            imageCollector.visit(document)
+
+            // 收集所有链接节点
+            List<Link> links = []
+            NodeVisitor linkCollector = new NodeVisitor(new VisitHandler<>(Link, links.&add))
+            linkCollector.visit(document)
+
+            // 处理图片
+            images.each { image ->
+                def path = image.getUrl().toString()
+                def name = image.getText().toString()
+                def position = image.getLineNumber()
+                def source_markdown = image.getChars().toString()
+                references.add([
+                        type: "image",
+                        path: path,
+                        name: name,
+                        position: position,
+                        source_markdown: source_markdown
+                ])
+            }
+
+            // 处理链接（仅包含/ibizutil/download）
+            links.each { link ->
+                def path = link.getUrl().toString()
+                // 仅处理包含指定路径的链接
+                if (path.contains("/ibizutil/download")) {
+                    def name = link.getText().toString()
+                    def position = link.getLineNumber()
+                    def source_markdown = link.getChars().toString()
+                    references.add([
+                            type: "url",
+                            path: path,
+                            name: name,
+                            position: position,
+                            source_markdown : source_markdown
+                    ])
+                }
+            }
+
+            // 更新_meta_data
+            def sourceType = iEntityDTO.get('source_type')
+            meta_data.put('source_type', sourceType)
+            def _type = iEntityDTO.get('type')
+            if (_type == 'file'){
+                def fileJson = iEntityDTO.get('file').toString()
+                def file = new JsonSlurper().parseText(fileJson)as ArrayList
+                def fileName = file[0].getAt("name")
+                def fileType = iEntityDTO.get('file_type').toString()
+                def fileSize = file[0].getAt("size")
+                meta_data.put('file_size', fileSize)
+                meta_data.put('file_type', fileType)
+                meta_data.put('title', fileName)
+                meta_data.put('source_type', "file")
+            }
+            def now = new Date()
+            def nowStr = sdf.format(now)
+            meta_data.put('parsed_at', nowStr)
+            meta_data.put('references', references)
+            def metaDataJson = JsonUtils.getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(meta_data);
+            iEntityDTO.set('meta_data', metaDataJson)
+        }
+        return iEntityDTO;
+    }
+}
+```
 ### FieldChangeDENotifyRuntimeEx :id=FieldChangeDENotifyRuntimeEx
 运行时属性变更通知增强插件
 
@@ -1362,6 +1766,457 @@ public class FieldChangeDENotifyRuntimeEx extends DENotifyRuntime{
 全局实体运行时插件
 
 ```net.ibizsys.central.plugin.util.dataentity.DynaDataEntityRuntime```
+
+```groovy
+null
+```
+### InstallSpecDEActionRuntime :id=InstallSpecDEActionRuntime
+
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.action.InstallSpecDEActionRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.action
+
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ArrayNode
+import net.ibizsys.central.cloud.core.spring.rt.ServiceHub
+import net.ibizsys.central.cloud.core.util.domain.V2System
+import net.ibizsys.central.cloud.core.util.domain.V2SystemMerge
+import net.ibizsys.central.cloud.core.util.domain.V2SystemSource
+import net.ibizsys.central.cloud.core.util.domain.V2SystemVersion
+import net.ibizsys.central.cloud.core.util.domain.V2SystemVersionType
+import net.ibizsys.central.plugin.extension.psmodel.service.PSCorePrdFuncRTService
+import net.ibizsys.central.plugin.extension.psmodel.util.IExtensionPSModelRTServiceSession
+import net.ibizsys.central.plugin.extension.sysutil.HubSysExtensionUtilRuntime
+import net.ibizsys.central.plugin.extension.sysutil.ISysExtensionUtilRuntime
+import net.ibizsys.central.plugin.util.dataentity.action.DEActionRuntimeBase
+import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.central.util.SearchContextDTO
+import net.ibizsys.psmodel.core.domain.PSCorePrdFunc
+import net.ibizsys.psmodel.core.util.IPSModelServiceSession
+import net.ibizsys.psmodel.core.util.PSModelServiceSession
+import net.ibizsys.psmodel.core.util.PSModels
+import net.ibizsys.psmodel.runtime.util.PSModelRTServiceFactory
+import net.ibizsys.runtime.util.JsonUtils
+import net.ibizsys.runtime.util.ZipUtils
+import org.apache.commons.io.FileUtils
+import org.apache.commons.logging.LogFactory
+import org.eclipse.jgit.api.CloneCommand
+import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.api.PullCommand
+import org.eclipse.jgit.api.errors.CheckoutConflictException
+import org.eclipse.jgit.api.errors.WrongRepositoryStateException
+import org.eclipse.jgit.internal.storage.file.FileRepository
+import org.springframework.data.domain.Page
+import org.springframework.util.DigestUtils
+import org.springframework.util.ObjectUtils
+import org.springframework.util.StringUtils
+import org.yaml.snakeyaml.Yaml
+import org.apache.commons.compress.utils.IOUtils
+
+
+import java.nio.file.Paths
+import java.util.zip.ZipInputStream
+
+
+public class InstallSpecDEActionRuntime extends DEActionRuntimeBase {
+    private static final org.apache.commons.logging.Log log = LogFactory.getLog(InstallSpecDEActionRuntime.class);
+
+    private HubSysExtensionUtilRuntime hubSysExtensionUtilRuntime ;
+
+    private HubSysExtensionUtilRuntime getHubSysExtensionUtilRuntime() {
+        if(hubSysExtensionUtilRuntime == null) {
+            ISysExtensionUtilRuntime iSysExtensionUtilRuntime = this.getSystemRuntime().getSysUtilRuntime(ISysExtensionUtilRuntime.class, false);
+            if(iSysExtensionUtilRuntime instanceof HubSysExtensionUtilRuntime ) {
+                hubSysExtensionUtilRuntime = (HubSysExtensionUtilRuntime) iSysExtensionUtilRuntime;
+            }
+        }
+        return hubSysExtensionUtilRuntime;
+    }
+
+
+    @Override
+    protected Object onExecute(IEntityDTO entity) throws Throwable {
+
+
+        IPSModelServiceSession iPSModelServiceSession = getHubSysExtensionUtilRuntime().createPSModelServiceSession(this.getSystemRuntime());
+        IPSModelServiceSession lastPSModelServiceSession = PSModelServiceSession.getCurrent(true);
+
+        PSModelRTServiceFactory lastPSModelRTServiceFactory = PSModelRTServiceFactory.getCurrent(true);
+        PSModelRTServiceFactory.setCurrent(getHubSysExtensionUtilRuntime().getPSModelRTServiceFactory(this.getSystemRuntime()));
+        PSModelServiceSession.setCurrent(iPSModelServiceSession);
+        try{
+
+
+            PSCorePrdFuncRTService service = (PSCorePrdFuncRTService) iPSModelServiceSession.getPSModelService(PSModels.PSCOREPRDFUNC);
+            PSCorePrdFunc m = service.getDomain(entity);
+            String specVersion = entity.getString("version","latest").toLowerCase();
+            String majorSystemId =  this.getSystemRuntime().getV2DeploySystem().getSystemId();
+
+            String strHttpUrlToRepo = entity.getString("http_url_to_repo",entity.getString("httpurltorepo",""))
+            String strBranch = entity.getString("default_branch",entity.getString("defaultbranch",""))
+            String zipfile = entity.getString("zipfile","")
+            if(StringUtils.hasLength(zipfile)) {
+                JsonNode node = JsonUtils.toJsonNode(zipfile);
+                if(node instanceof ArrayNode) {
+                    node = ((ArrayNode)node).get(0);
+                }
+                net.ibizsys.runtime.util.domain.File ossFile = JsonUtils.as(node, net.ibizsys.runtime.util.domain.File.class);
+                m.set("ossfile",ossFile)
+            }
+            m.setHttpUrlToRepo(strHttpUrlToRepo)
+
+            m.set("default_branch",strBranch)
+
+            if (!specVersion.equalsIgnoreCase("latest")) {
+                if (!StringUtils.hasLength(m.getPSCorePrdFuncId())) {
+                    m.setPSCorePrdFuncId("${m.getFuncType()}.${majorSystemId}.${m.getFuncSN()}");
+                }
+                PSCorePrdFunc existFunc = null;
+                try {
+                    existFunc = service.get(m.getPSCorePrdFuncId(),false)
+                }catch (Exception ex) {
+                    existFunc = new PSCorePrdFunc()
+                    m.copyTo(existFunc)
+                }
+
+                V2System v2System = service.getV2SystemIf(existFunc);
+                if(v2System!=null) {
+                    List<V2SystemVersion> v2SystemVersionList = new ArrayList<V2SystemVersion>();
+
+                    Map<String, V2SystemVersion> v2SystemVersionMap = new HashMap<String, V2SystemVersion>();
+                    if (true) {
+                        SearchContextDTO searchContextDTO = new SearchContextDTO();
+                        searchContextDTO.all();
+                        // searchContextDTO.eq(V2SystemVersion.FIELD_TYPE, "CORE");
+                        Page<V2SystemVersion> v2SystemVersionPage = getHubSysExtensionUtilRuntime().getCloudExtensionClient().fetchSystemVersions(v2System.getId(), searchContextDTO);
+                        if (!ObjectUtils.isEmpty(v2SystemVersionPage) && !ObjectUtils.isEmpty(v2SystemVersionPage.getContent())) {
+                            v2SystemVersionList.addAll(v2SystemVersionPage.getContent());
+                            for (V2SystemVersion v2SystemVersion : v2SystemVersionPage.getContent()) {
+                                if (V2SystemVersionType.CORE.value.equals(v2SystemVersion.getType())) {
+                                    v2SystemVersionMap.put(v2SystemVersion.getName().toLowerCase(), v2SystemVersion);
+                                }
+                            }
+                        }
+                    }
+                    V2SystemVersion v2SystemVersion = v2SystemVersionMap.get(specVersion);
+                    if(v2SystemVersion == null) {
+                        v2SystemVersion = new V2SystemVersion();
+                        v2SystemVersion.setType(V2SystemVersionType.CORE.value);
+                        v2SystemVersion.setName(specVersion);
+
+                        net.ibizsys.runtime.util.domain.File ossFile = m.get("ossfile");
+
+                        V2SystemSource v2SystemSource = getSystemSource(v2System, m.getHttpUrlToRepo(),(String)m.get("default_branch"),ossFile,specVersion);
+
+                        v2SystemVersion.setSystemSourceId(v2SystemSource.getId());
+                        v2SystemVersion = getHubSysExtensionUtilRuntime().getCloudExtensionClient().createSystemVersion(v2System.getId(), v2SystemVersion);
+                    }
+
+                    String systemSourceId = v2SystemVersion.getSystemSourceId();
+                    m.set(V2SystemMerge.FIELD_MERGE_SYSTEM_SOURCE_ID,systemSourceId);
+
+                }
+            }
+            service.install(m);
+            return entity;
+
+        } finally {
+            PSModelServiceSession.setCurrent(lastPSModelServiceSession);
+            PSModelRTServiceFactory.setCurrent(lastPSModelRTServiceFactory);
+        }
+    }
+
+
+    def processOssFile(net.ibizsys.runtime.util.domain.File ossFile) {
+        def inputStream = null
+        def zipInputStream = null
+
+        try {
+            
+            if(!StringUtils.hasLength(ossFile.getOSSId()))
+                ossFile.setOSSId(ossFile.getFileId());
+
+            net.ibizsys.runtime.util.domain.File tempFile = this.getSystemRuntime().getSysFileUtilRuntime().getOSSFile(ossFile.getOSSId(), ossFile.getFolder(), true);
+
+            // 获取输入流
+            inputStream = this.getSystemRuntime()
+                    .getSysFileUtilRuntime(false)
+                    .getInputStream(tempFile)
+
+            // 将流复制到字节数组
+            def byteArrayOutputStream = new ByteArrayOutputStream()
+            IOUtils.copy(inputStream, byteArrayOutputStream)
+            def byteArray = byteArrayOutputStream.toByteArray()
+
+            // 计算MD5并设置
+            def md5Hex = DigestUtils.md5DigestAsHex(byteArray)
+            println "计算得到的MD5: ${md5Hex}"
+            ossFile.setDigestCode(md5Hex)  // 设置到ossFile对象
+
+            // 检查ZIP根目录是否有系统模型文件
+            zipInputStream = new ZipInputStream(new ByteArrayInputStream(byteArray))
+            def zipEntry = zipInputStream.getNextEntry()
+            def foundFiles = []
+
+            while (zipEntry != null) {
+                def entryName = zipEntry.name
+
+                // 只检查根目录文件
+                if (!entryName.contains("/") && !entryName.contains("\\")) {
+                    if (entryName == "ibizmodel.yaml"   ||
+                            entryName == "PSSYSTEM.json") {
+                        foundFiles << entryName
+                    }
+                }
+
+                zipEntry = zipInputStream.getNextEntry()
+            }
+
+            if (foundFiles.isEmpty()) {
+                throw new RuntimeException("ZIP包不合法：根目录未找到系统模型文件(ibizmodel.yaml或PSSYSTEM.json)")
+            }
+
+            println "ZIP包校验通过，找到系统模型文件: ${foundFiles.join(', ')}"
+            return true
+
+        } finally {
+            IOUtils.closeQuietly(zipInputStream)
+            IOUtils.closeQuietly(inputStream)
+        }
+    }
+
+    public V2SystemSource getSystemSource(V2System v2System, String strHttpUrlToRepo,String strBranch, net.ibizsys.runtime.util.domain.File ossFile,String version) {
+
+        V2SystemSource v2SystemSource = null;
+
+        String systemId = v2System.getId()
+
+        if (!StringUtils.hasLength(strBranch)) {
+            strBranch = "master"
+        }
+        if(ossFile!=null && processOssFile(ossFile)) {
+
+            v2SystemSource = new V2SystemSource();
+            v2SystemSource.setName(version);
+            v2SystemSource.setOssFile(ossFile.getOSSId());
+
+
+            v2SystemSource.setDigest(ossFile.getDigestCode());
+            v2SystemSource.setVersion(1);
+            v2SystemSource = getHubSysExtensionUtilRuntime().getCloudExtensionClient().createSystemSource(systemId, v2SystemSource);
+            return v2SystemSource
+        }
+
+        boolean bGitMode = true
+        String strSubFolder = null
+        String strSystemPath = v2System.getName()
+
+        if (StringUtils.hasLength(strHttpUrlToRepo)) {
+            // 处理可能的子文件夹路径（如：http://example.com/repo.zip#subfolder）
+            String[] parts = strHttpUrlToRepo.split("[#]")
+            if (parts.length == 2) {
+                strHttpUrlToRepo = parts[0]
+                strSubFolder = parts[1]
+                bGitMode = false
+            }
+
+            // 提取系统路径名称
+            String[] items = strHttpUrlToRepo.split("[/]")
+            String strLastItem = items[-1]  // Groovy 简写，获取最后一个元素
+
+            if (bGitMode) {
+                // Git 仓库
+                int nPos = strLastItem.lastIndexOf(".git")
+                if (nPos != -1 && nPos == strLastItem.length() - 4) {
+                    strSystemPath = strLastItem[0..<nPos]
+                } else {
+                    bGitMode = false
+                    nPos = strLastItem.lastIndexOf(".zip")
+                    if (nPos != -1 && nPos == strLastItem.length() - 4) {
+                        strSystemPath = strLastItem[0..<nPos]
+                    }
+                }
+            } else {
+                // Zip 文件
+                int nPos = strLastItem.lastIndexOf(".zip")
+                if (nPos != -1 && nPos == strLastItem.length() - 4) {
+                    strSystemPath = strLastItem[0..<nPos]
+                }
+            }
+        }
+
+        strSystemPath = "${strSystemPath}-${version}"
+
+        String strFilePath = Paths.get(
+                ServiceHub.getInstance().getServiceHubSetting().getSystemModelFolder(),
+                "systemsources3",
+                systemId,
+                strSystemPath,
+                strBranch
+        ).toString()
+
+        File file = new File(strFilePath)
+        String strPath = file.canonicalPath
+
+        if (bGitMode && StringUtils.hasLength(strHttpUrlToRepo)) {
+            log.debug("插件系统[${systemId}]使用Git路径：${strHttpUrlToRepo}")
+
+            try {
+                if (file.exists()) {
+                    // 使用 withCloseable 自动管理资源
+                    new FileRepository(new File("${strPath}${File.separator}.git")).withCloseable { fr ->
+                        new Git(fr).withCloseable { git ->
+                            PullCommand pullCommand = git.pull().setRemoteBranchName(strBranch)
+                            pullCommand.call()
+                        }
+                    }
+                    log.debug("Git仓库[${systemId}]拉取成功")
+                } else {
+                    // 创建目录
+                    if (file.mkdirs()) {
+                        log.debug("创建目录: ${file.canonicalPath}")
+                    }
+
+                    // 克隆仓库
+                    CloneCommand cloneCommand = Git.cloneRepository()
+                            .setURI(strHttpUrlToRepo)
+                            .setDirectory(file)
+                            .setBranch(strBranch)
+                            .setCloneSubmodules(true)  // 如果有子模块，一并克隆
+
+
+
+                    cloneCommand.call().withCloseable { git ->
+                        log.debug("Git仓库[${systemId}]克隆成功")
+                    }
+                }
+            } catch (WrongRepositoryStateException | CheckoutConflictException ex) {
+                log.error("Git仓库状态异常，${ex.message}。执行清除目录操作[${file.canonicalPath}]", ex)
+                try {
+                    FileUtils.deleteDirectory(file)
+                    log.info("已清除异常目录: ${file.canonicalPath}")
+                } catch (IOException e) {
+                    log.warn("清除目录失败: ${e.message}")
+                }
+                throw new Exception("签出Git项目发生异常: ${ex.message}", ex)
+            } catch (Exception ex) {
+                log.error("Git操作失败[${systemId}]: ${ex.message}", ex)
+                throw new Exception("Git操作失败: ${ex.message}", ex)
+            }
+        }
+        else {
+            // Zip模式
+            if (!StringUtils.hasLength(strHttpUrlToRepo)) {
+                throw new Exception("未提供有效的代码仓库地址")
+            }
+
+            log.debug("插件系统[${systemId}]使用Zip路径：${strHttpUrlToRepo}")
+
+            if (!file.exists()) {
+                File tempFile = null
+                try {
+                    // 创建临时文件
+                    tempFile = File.createTempFile("resource_${systemId}_${System.currentTimeMillis()}", ".zip")
+                    log.debug("下载Zip文件到临时文件: ${tempFile.absolutePath}")
+
+                    // 下载文件
+                    this.getSystemRuntime().getDefaultWebClient().download(strHttpUrlToRepo, tempFile)
+
+                    // 解压文件
+                    ZipUtils.unzip(tempFile, file)
+                    log.debug("Zip文件解压成功: ${file.canonicalPath}")
+                } catch (Exception ex) {
+                    log.error("下载或解压Zip文件失败[${systemId}]: ${ex.message}", ex)
+                    throw new Exception("下载或解压文件发生异常: ${ex.message}", ex)
+                } finally {
+                    // 清理临时文件
+                    if (tempFile?.exists()) {
+                        if (!tempFile.delete()) {
+                            log.warn("无法删除临时文件: ${tempFile.absolutePath}")
+                        }
+                    }
+                }
+            } else {
+                log.debug("Zip目录已存在: ${file.canonicalPath}")
+            }
+
+            // 处理子文件夹
+            if (StringUtils.hasLength(strSubFolder)) {
+                file = new File(file.absolutePath + File.separator + strSubFolder)
+                if (!file.exists() || !file.isDirectory()) {
+                    throw new Exception("指定的子文件夹不存在: ${strSubFolder}")
+                }
+                strPath = file.canonicalPath
+            }
+        }
+
+        File modelFolder = null;
+        // 检查是否有ibizmodel.yaml配置文件
+        File modelFile = new File("${strPath}${File.separator}ibizmodel.yaml")
+        if (modelFile.exists()) {
+            try {
+                Yaml yaml = new Yaml()
+                InputStream inputStream = null
+                try {
+                    inputStream = new FileInputStream(modelFile)
+                    Map config = yaml.loadAs(inputStream, Map)
+                    if (config?.modelfolder) {
+                        String strModelFolder = config.modelfolder as String
+                        modelFolder = new File(strPath + File.separator + strModelFolder)
+
+                    }
+                } finally {
+                    inputStream?.close()
+                }
+            } catch (Exception ex) {
+                log.error("加载系统模型配置发生异常: ${ex.message}", ex)
+                throw new Exception("加载系统模型配置发生异常: ${ex.message}", ex)
+            }
+        }
+
+        if (modelFolder == null || !modelFolder.exists() || !modelFolder.isDirectory()) {
+            File systemModelFile = new File("${strPath}${File.separator}PSSYSTEM.json")
+            if (systemModelFile.exists()) {
+                modelFolder = file
+            }
+        }
+
+        if (modelFolder!=null && modelFolder.exists() && modelFolder.isDirectory()) {
+            // 建立模型压缩文件
+            File zipTempFile = File.createTempFile("model_" + strSystemPath, ".zip");
+            ZipUtils.zip(modelFolder, zipTempFile);
+            String strFileHashCode = "";
+            FileInputStream fis = null
+            try {
+                fis = new FileInputStream(zipTempFile)
+                strFileHashCode = DigestUtils.md5DigestAsHex(fis)
+            } finally {
+                fis?.close()
+            }
+            String strOSSCat = net.ibizsys.central.cloud.core.sysutil.ISysExtensionUtilRuntime.OSSCAT_DYNAMODEL;
+            ossFile = this.getSystemRuntime().getSysFileUtilRuntime(false).createOSSFile(zipTempFile, strOSSCat);
+
+            v2SystemSource = new V2SystemSource();
+            v2SystemSource.setName(version);
+            v2SystemSource.setOssFile(ossFile.getOSSId());
+            v2SystemSource.setDigest(strFileHashCode);
+            v2SystemSource.setVersion(1);
+            v2SystemSource = getHubSysExtensionUtilRuntime().getCloudExtensionClient().createSystemSource(systemId, v2SystemSource);
+
+        }
+        if (v2SystemSource == null)
+            throw new Exception("根目录未找到系统模型文件(ibizmodel.yaml或PSSYSTEM.json)")
+        return v2SystemSource;
+    }
+}
+
+```
+### KBAgentDESyncUtilRuntime :id=KBAgentDESyncUtilRuntime
+
+
+```net.ibizsys.central.plugin.util.sysutil.KBAgentDESyncUtilRuntime```
 
 ```groovy
 null
@@ -1638,6 +2493,7 @@ class PLMAIAgentLogicNodeRuntime extends DELogicSysAIChatAgentNodeRuntime {
 			chatCompletionRequest = new ChatCompletionRequest();
 			if(objParam instanceof ChatCompletionRequest) {
 				ChatCompletionRequest chatCompletionRequest2 = (ChatCompletionRequest)objParam;
+                chatCompletionRequest2.copyTo(chatCompletionRequest);
 				//放入历史消息
 				if(iPSDESysAIChatAgentLogic.getHistoryCount() > 0 && !ObjectUtils.isEmpty(chatCompletionRequest2.getMessages()) && chatCompletionRequest2.getMessages().size() > iPSDESysAIChatAgentLogic.getHistoryCount()) {
 					List<ChatMessage> list = chatCompletionRequest2.getMessages().subList(chatCompletionRequest2.getMessages().size() - iPSDESysAIChatAgentLogic.getHistoryCount(), chatCompletionRequest2.getMessages().size());
@@ -1670,18 +2526,24 @@ class PLMAIAgentLogicNodeRuntime extends DELogicSysAIChatAgentNodeRuntime {
 			chatCompletionResult = iSysAIChatAgentRuntime.chatCompletion(objParam , chatCompletionRequest, new LinkedHashMap<String, Object>(), true, true);
 		}
 
-		Object objRet = this.getRealResult(chatCompletionResult, chatCompletionRequest, objParam, iDELogicRuntimeContext, iDELogicSession, iPSDESysAIChatAgentLogic);
+		Object objRet = this.getRealResult(iDELogicRuntimeContext, iDELogicSession, iPSDESysAIChatAgentLogic, chatCompletionResult, chatCompletionRequest, objParam);
 
-		iDELogicSession.setLastReturn(objRet);
+		iDELogicSession.setLastReturn(chatCompletionResult);
 
 		if(iPSDESysAIChatAgentLogic.getRetPSDELogicParam() != null) {
 			IDELogicParamRuntime retDELogicParamRuntime = iDELogicRuntimeContext.getDELogicRuntime().getDELogicParamRuntime(iPSDESysAIChatAgentLogic.getRetPSDELogicParam().getCodeName(), false);
-			retDELogicParamRuntime.bind(iDELogicSession, objRet);
+			if(retDELogicParamRuntime.getReal() instanceof ChatCompletionResult){
+				iDELogicSession.setLastReturn(chatCompletionResult);
+				retDELogicParamRuntime.bind(iDELogicSession, chatCompletionResult);
+			}else {
+				iDELogicSession.setLastReturn(objRet);
+				retDELogicParamRuntime.bind(iDELogicSession, objRet);
+			}
 		}
 	}
 
-	protected Object getRealResult(ChatCompletionResult chatCompletionResult, ChatCompletionRequest chatCompletionRequest, Object objParam, IDELogicRuntimeContext iDELogicRuntimeContext, IDELogicSession iDELogicSession, IPSDESysAIChatAgentLogic iPSDESysAIChatAgentLogic) throws Exception {
-		java.lang.Object realResult = super.getRealResult(chatCompletionResult,chatCompletionRequest,objParam,iDELogicRuntimeContext,iDELogicSession,iPSDESysAIChatAgentLogic);
+	protected Object getRealResult(IDELogicRuntimeContext iDELogicRuntimeContext, IDELogicSession iDELogicSession, IPSDESysAIChatAgentLogic iPSDESysAIChatAgentLogic, ChatCompletionResult chatCompletionResult, ChatCompletionRequest chatCompletionRequest, Object objParam) throws Exception {
+		java.lang.Object realResult = super.getRealResult(iDELogicRuntimeContext, iDELogicSession, iPSDESysAIChatAgentLogic, chatCompletionResult, chatCompletionRequest, objParam);
 		if (realResult) {
 			if (realResult instanceof String) {
 				List<Map<String, Object>>  patterns = [
@@ -1768,6 +2630,141 @@ public class PageDataImportRuntimeEx extends POIDEDataImportRuntime  {
 
 }
 ```
+### PlmSysMcpServerUtilRuntime :id=PlmSysMcpServerUtilRuntime
+自动初始化AITOOL数据
+
+```cn.ibizlab.plm.user.plugin.groovy.sysutil.PlmSysMcpServerUtilRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.sysutil
+
+import groovy.transform.CompileStatic
+import net.ibizsys.central.cloud.core.IServiceSystemRuntime
+import net.ibizsys.central.cloud.core.ServiceSystemRuntime
+import net.ibizsys.central.dataentity.IDataEntityRuntime
+import net.ibizsys.central.plugin.ai.sysutil.SysMcpServerUtilRuntime;
+import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.runtime.util.DataTypeUtils;
+import net.ibizsys.runtime.util.ExceptionUtils;
+import net.ibizsys.runtime.util.IAction
+import net.ibizsys.runtime.util.KeyValueUtils
+
+@CompileStatic
+public class PlmSysMcpServerUtilRuntime extends SysMcpServerUtilRuntime {
+
+    public final static String DEFAULT_TOOLTAG_FORMAT = "%s";
+    public final static String DEFAULT_TOOLNAME_FORMAT = "%s内置Mcp服务";
+    public final static String DEFAULT_TOOLTYPE = "mcp";
+    public final static String DEFAULT_AUTHTYPE = "bearer_token";
+
+    private IDataEntityRuntime aiToolDERuntime = null;
+    protected IDataEntityRuntime getAIToolDERuntime() {
+        if (this.aiToolDERuntime == null) {
+            this.aiToolDERuntime = this.getMainSystemRuntime().getDataEntityRuntime("AI_TOOL");
+        }
+
+        return this.aiToolDERuntime;
+    }
+
+    @Override
+    protected void onInit() throws Exception {
+
+        super.onInit();
+
+        // prepareAITools();
+    }
+    protected void onInstall() throws Exception {
+        prepareAITools();
+    }
+    /**
+     * 准备默认MCPTool数据
+     * @throws Exception
+     */
+    protected void prepareAITools() throws Exception {
+        try {
+            this.getSystemRuntime().executeUserContextAction(new IAction() {
+                @Override
+                public Object execute(Object[] args) throws Throwable {
+                    onPrepareAITools();
+                    return null;
+                }
+            }, null);
+
+        } catch (Throwable ex) {
+            ex = ExceptionUtils.unwrapThrowable(ex);
+            throw new Exception(String.format("准备AITools发生异常，%s", ex.getMessage()), ex);
+        }
+    }
+
+    protected void onPrepareAITools() throws Throwable {
+        IEntityDTO iEntityDTO = this.getAIToolDERuntime().createEntity();
+        String toolTag = String.format(DEFAULT_TOOLTAG_FORMAT,this.getSystemRuntime().getDeploySystemId());
+        String toolName = "";
+        if(((ServiceSystemRuntime)this.getSystemRuntime()).getV2DeploySystem()!=null){
+            toolName = String.format(DEFAULT_TOOLNAME_FORMAT,((ServiceSystemRuntime)this.getSystemRuntime()).getV2DeploySystem().getSystemName());
+        }
+        else if(((ServiceSystemRuntime)this.getSystemRuntime()).getV2SystemMerge()!=null){
+            toolName = String.format(DEFAULT_TOOLNAME_FORMAT,((ServiceSystemRuntime)this.getSystemRuntime()).getV2SystemMerge().getMergeSystemName());
+        }
+        String baseUrl = this.getBaseUrl();
+        iEntityDTO.set("tool_tag",toolTag);
+        if(!this.getAIToolDERuntime().rawSelect(iEntityDTO,true)) {
+            iEntityDTO.set("name",toolName);
+            iEntityDTO.set("tool_type",DEFAULT_TOOLTYPE);
+            iEntityDTO.set("api_url",baseUrl);
+            iEntityDTO.set("active",1);
+            iEntityDTO.set("api_auth_type", DEFAULT_AUTHTYPE);
+            iEntityDTO.set("bearer_token", KeyValueUtils.genMD5Ex(toolTag));
+            this.getAIToolDERuntime().execute(new IAction() {
+                @Override
+                public Object execute(Object[] args) throws Throwable {
+                    aiToolDERuntime.create(iEntityDTO);
+                    return null;
+                }
+            }, null);
+        }else if (DataTypeUtils.getIntegerValue(iEntityDTO.get("active"), 0) == 0){
+            iEntityDTO.set("active",1);
+            this.getAIToolDERuntime().execute(new IAction() {
+                @Override
+                public Object execute(Object[] args) throws Throwable {
+                    aiToolDERuntime.sysUpdate(iEntityDTO);
+                    return null;
+                }
+            }, null);
+        }
+    }
+
+    @Override
+    protected void onUninstall() throws Throwable {
+        IEntityDTO iEntityDTO = this.getAIToolDERuntime().createEntity();
+        String toolTag = String.format(DEFAULT_TOOLTAG_FORMAT,this.getSystemRuntime().getDeploySystemId());
+        iEntityDTO.set("tool_tag",toolTag);
+        if(this.getAIToolDERuntime().rawSelect(iEntityDTO,true) && ((ServiceSystemRuntime)this.getSystemRuntime()).getMainSystemRuntime(true) != null) {
+            iEntityDTO.set("active",0);
+            this.getAIToolDERuntime().execute(new IAction() {
+                @Override
+                public Object execute(Object[] args) throws Throwable {
+                    aiToolDERuntime.sysUpdate(iEntityDTO);
+                    return null;
+                }
+            }, null);
+        }
+    }
+
+    /**
+     * 获取主系统运行时
+     * @return
+     */
+    public IServiceSystemRuntime getMainSystemRuntime() {
+        IServiceSystemRuntime mainSystemRuntime =((ServiceSystemRuntime) this.getSystemRuntime()).getMainSystemRuntime(true);
+        if(mainSystemRuntime == null) {
+            mainSystemRuntime = (IServiceSystemRuntime) this.getSystemRuntime();
+        }
+        return mainSystemRuntime;
+    }
+}
+
+```
 ### ProjectCopyDEActionRuntime :id=ProjectCopyDEActionRuntime
 项目拷贝增强插件
 
@@ -1804,6 +2801,13 @@ public class ProjectCopyDEActionRuntime extends CopyDEActionRuntime {
     private static String WORK_ITEM_DENAME = "WORK_ITEM";
     private static String COMMENT_DENAME = "COMMENT";
     private static String COMMENTS_DEFIELD = "comments";
+
+    @Override
+    protected Object onExecute(IEntityDTO iEntityDTO) throws Throwable {
+        IEntityDTO ret = super.onExecute(iEntityDTO);
+        iEntityDTO.reload(ret, true);
+        return ret;
+    }
 
     @Override
     protected void onCopyPSDER1NBase(IEntityDTO srcEntityDTO, IEntityDTO retEntityDTO, IPSDER1NBase iPSDERBase) throws Throwable {
@@ -3330,6 +4334,7 @@ package cn.ibizlab.plm.user.plugin.groovy.dataentity.codelist
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import groovy.transform.CompileStatic
+import net.ibizsys.central.util.IEntityDTO
 import net.ibizsys.central.dataentity.logic.IDEMSLogicRuntime
 import net.ibizsys.model.IPSModelObjectRuntime
 import net.ibizsys.model.codelist.IPSCodeItem
@@ -3492,6 +4497,23 @@ class MSLogicCodeListRuntimeEx extends DEMainStateCodeListRuntime {
 
         return this.getSystemRuntimeBaseContext().getPSSystemService().createAndInitPSModelObject((IPSModelObjectRuntime)this.getPSCodeList(),
                 IPSCodeItem.class, objNode);
+    }
+
+    protected IEntity getEntity(Object keyOrData) throws Throwable {
+        if(keyOrData instanceof IEntity) {
+            return (IEntity)keyOrData;
+        }
+        if(keyOrData instanceof Map) {
+            IEntityDTO iEntityDTO = this.getDataEntityRuntime().createEntity((Map)keyOrData, false);
+            this.getDataEntityRuntime().rawSelect(iEntityDTO,true);
+            return iEntityDTO;
+        }
+
+
+        Object objKeyValue = DataTypeUtils.asSimple(keyOrData);
+        IEntityDTO iEntityDTO = this.getDataEntityRuntime().createEntity();
+        iEntityDTO.set( this.getDataEntityRuntime().getKeyPSDEField().getLowerCaseName(), objKeyValue);
+        return iEntityDTO;
     }
 }
 ```

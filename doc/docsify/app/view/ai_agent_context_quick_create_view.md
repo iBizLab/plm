@@ -14,6 +14,7 @@
 
 ### 关联视图
   * [智能体(ai_agent_pickup_view)](app/view/ai_agent_pickup_view)
+  * [知识库(ai_knowledge_base_pickup_view)](app/view/ai_knowledge_base_pickup_view)
   * [AI大模型(ai_model_pickup_view)](app/view/ai_model_pickup_view)
 
 <script>

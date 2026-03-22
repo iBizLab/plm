@@ -17,6 +17,7 @@
 
 ### 关联视图
   * [工作项(work_item_mob_common_edit_view)](app/view/work_item_mob_common_edit_view)
+  * [我负责的工作项(work_item_my_assignee_mob)](app/view/work_item_my_assignee_mob)
 
 <script>
  const { createApp } = Vue

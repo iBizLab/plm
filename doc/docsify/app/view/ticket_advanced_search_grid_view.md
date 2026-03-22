@@ -19,9 +19,13 @@ viewParam.queryconds=["n_title_like", "n_identifier_like", "n_description_like"]
   * opendata(预置打开数据逻辑)
 
 
+### 关联界面行为
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [打开主视图（模态弹出）](module/ProdMgmt/ticket#界面行为)
+
 ### 关联视图
   * [工单(ticket_edit_view)](app/view/ticket_edit_view)
   * [工单(ticket_main_view)](app/view/ticket_main_view)
+  * [工单(ticket_main_view_pop_up)](app/view/ticket_main_view_pop_up)
 
 <script>
  const { createApp } = Vue

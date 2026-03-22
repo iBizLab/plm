@@ -264,6 +264,8 @@
 |N_CATEGORY_NAME_EQ|分类|EQ||
 |N_CATEGORY_NAME_LIKE|分类|LIKE||
 |N_ID_EQ|标识|EQ||
+|N_IS_ARCHIVED_EQ|是否已归档|EQ||
+|N_IS_DELETED_EQ|是否已删除|EQ||
 |N_IS_SHARED_EQ|是否开启共享|EQ||
 |N_NAME_LIKE|空间名称|LIKE||
 |N_SCOPE_ID_EQ|所属对象|EQ||
@@ -278,7 +280,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 新建目录 | create_category | 新建目录 |无数据|用户自定义||
-| 编辑空间基本信息 | edit_space_info | 编辑基本信息 |单项数据（主键）|用户自定义||
+| 编辑基本信息 | edit_space_info | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 取消关联（其他实体关联） | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)|其他实体关联需求表格、需求关联需求表格上界面行为组调用；|
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 空间设置（移动端） | mob_setting | 空间设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间设置](app/view/space_mob_setting_view)</details>||
@@ -304,7 +306,7 @@
 | 移动端进行中_删除 | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开空间导航页 | open_space_exp_page | 打开空间导航页 |无数据|<details><summary>打开顶级视图</summary>[知识管理](app/view/space_tree_exp_view)</details>||
 | 移出分类 | move_out_category | 移出分类 |多项数据（主键）|<details><summary>后台调用</summary>[move_out_category](#行为)||
-| 查看空间成员 | open_space_member | 空间成员 |单项数据（主键）|用户自定义||
+| 空间成员 | open_space_member | 空间成员 |单项数据（主键）|用户自定义||
 | 移动空间 | move_space | 移动空间 |单项数据（主键）|<details><summary>后台调用</summary>[move_space](#行为)||
 | 删除并至主页 | delete_to_home | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||

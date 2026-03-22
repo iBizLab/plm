@@ -562,6 +562,7 @@
 | 移动 | move | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 打印交谈资料_测试用例 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
+| 打开主视图（模态弹出） | open_main_view_pop_up | 打开主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view_pop_up)</details>||
 | 移入计划（气泡） | case_move_plan | 移入计划 |多项数据（主键）|<details><summary>后台调用</summary>[case_move_plan](#行为)||
 | 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
 | 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
@@ -588,9 +589,7 @@
 |[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[查看预估工时明细](module/TestMgmt/test_case/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
 |[组件显隐重置](module/TestMgmt/test_case/uilogic/reset)|reset||
-|[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[选择用例模板](module/TestMgmt/test_case/uilogic/choose_case_template)|choose_case_template|选择用例模板后回填所选模板数据至表单|
 |[通知刷新（移动端）](module/TestMgmt/test_case/uilogic/send_refresh)|send_refresh||

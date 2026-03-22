@@ -17,6 +17,16 @@ searchBar.state.query = view.params.srfquery ? view.params.srfquery : '';
 ```
 * `onCreated`
 ```javascript
+delete context.library;
+delete context.test_case;
+delete context.project;
+delete context.work_item;
+delete context.product;
+delete context.idea;
+delete context.ticket;
+delete context.space;
+delete context.article_page;
+
 view.ctx.evt.on('onRegister', (name, c) => {
     if(name==='tabexppanel'){
         c.state.expViewParams={query: viewParam.srfquery}

@@ -9,7 +9,7 @@
 
 <p class="panel-title"><b>数据集类型</b></p>
 
-* `实体逻辑`
+* `数据查询`
 
 <p class="panel-title"><b>选择列级别</b></p>
 

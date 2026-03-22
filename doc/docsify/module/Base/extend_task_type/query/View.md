@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -63,12 +64,39 @@ FROM `EXTEND_TASK_TYPE` t1
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CODE,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.DESCRIPTION,
+t1.EXECUTOR_CONFIG,
+t1.EXECUTOR_SUBTYPE,
+t1.EXECUTOR_TAG,
+t1.EXECUTOR_TYPE,
+t1.ID,
+t1.MAX_RETRY,
+t1.NAME,
+t1.RETRYABLE,
+t1.TIMEOUT_SEC,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM EXTEND_TASK_TYPE t1 
+
+
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

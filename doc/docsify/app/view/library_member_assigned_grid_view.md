@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [删除成员](module/TestMgmt/library_member#界面行为)
   * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [表格界面_新建操作](module/TestMgmt/library_member#界面行为)
+  * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [删除成员](module/TestMgmt/library_member#界面行为)
 
 ### 关联界面逻辑
   * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [新建测试库默认临时成员](module/TestMgmt/library_member/uilogic/create_default_temp_members)

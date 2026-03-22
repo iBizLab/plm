@@ -1,4 +1,4 @@
-# 编辑工作项类型(work_item_type_global_edit_view)  <!-- {docsify-ignore-all} -->
+# 工作项类型(work_item_type_global_edit_view)  <!-- {docsify-ignore-all} -->
 
 
 

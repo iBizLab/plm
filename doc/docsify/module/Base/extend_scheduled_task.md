@@ -55,6 +55,12 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|文档解析记录|doc_parsing_record|[实体处理逻辑](module/Base/extend_scheduled_task/logic/doc_parse_record "文档解析记录")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[文档解析记录](module/Base/extend_scheduled_task/logic/doc_parse_record)|doc_parse_record|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -67,6 +73,24 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[DEFAULT](module/Base/extend_scheduled_task/dataset/Default)|DEFAULT|数据查询|是|||
 
+## 数据权限
+
+##### 全部数据（读写） :id=extend_scheduled_task-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `DELETE`
+* `READ`
+* `CREATE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -74,6 +98,7 @@
 |N_EXECUTOR_TAG_LIKE|执行器标记|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_PRINCIPAL_ID_EQ|任务主体标识|EQ||
 |N_SCHEDULE_ID_EQ|执行计划标识|EQ||
 |N_STATUS_EQ|任务状态|EQ||
 |N_TASK_TYPE_EQ|任务类型|EQ||
@@ -91,11 +116,17 @@
 <el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=行为`">
   行为
 </el-anchor-link>
+<el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=处理逻辑`">
+  处理逻辑
+</el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=数据查询`">
   数据查询
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_scheduled_task?id=搜索模式`">
   搜索模式

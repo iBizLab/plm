@@ -8,11 +8,18 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [配置](module/ProdMgmt/ticket#界面行为)
+  * [扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule) : [打开执行计划编辑视图](module/Base/extend_schedule#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
+  * [扩展执行计划(EXTEND_SCHEDULE)](module/Base/extend_schedule) : [表格界面_删除操作](module/Base/extend_schedule#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [配置](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
+  * [知识库图谱实体类型(ai_kb_graph_entity_type_config_grid_view)](app/view/ai_kb_graph_entity_type_config_grid_view)
+  * [知识库(ai_knowledge_base_actived_grid_view)](app/view/ai_knowledge_base_actived_grid_view)
+  * [配置中心(ai_knowledge_base_config_tree_exp_view2)](app/view/ai_knowledge_base_config_tree_exp_view2)
+  * [知识库(ai_knowledge_base_deleted_grid_view)](app/view/ai_knowledge_base_deleted_grid_view)
+  * [知识库(ai_knowledge_base_management_tab_exp_view)](app/view/ai_knowledge_base_management_tab_exp_view)
   * [共享页面(article_page_shared_grid_view)](app/view/article_page_shared_grid_view)
   * [发布配置(dictionary_data_global_tab_exp_view)](app/view/dictionary_data_global_tab_exp_view)
   * [数据字典(dictionary_data_idea_dictionary_grid_view)](app/view/dictionary_data_idea_dictionary_grid_view)
@@ -25,9 +32,12 @@
   * [话题(discuss_topic_is_deleted_grid_view)](app/view/discuss_topic_is_deleted_grid_view)
   * [话题管理(discuss_topic_management_tab_exp_view)](app/view/discuss_topic_management_tab_exp_view)
   * [系统模板仪表盘(dyna_dashboard_system_board_grid_view)](app/view/dyna_dashboard_system_board_grid_view)
+  * [扩展打印模板(extend_print_templ_grid_view)](app/view/extend_print_templ_grid_view)
+  * [执行计划(extend_schedule_edit_view)](app/view/extend_schedule_edit_view)
+  * [扩展计划任务(extend_scheduled_task_edit_view)](app/view/extend_scheduled_task_edit_view)
   * [扩展计划任务(extend_scheduled_task_grid_view)](app/view/extend_scheduled_task_grid_view)
-  * [扩展计划任务历史(extend_scheduled_task_his_grid_view)](app/view/extend_scheduled_task_his_grid_view)
   * [计划任务作业(extend_scheduled_task_tab_exp_view)](app/view/extend_scheduled_task_tab_exp_view)
+  * [计划任务(extend_scheduled_task_tree_exp_view)](app/view/extend_scheduled_task_tree_exp_view)
   * [扩展任务类型(extend_task_type_grid_view)](app/view/extend_task_type_grid_view)
   * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)

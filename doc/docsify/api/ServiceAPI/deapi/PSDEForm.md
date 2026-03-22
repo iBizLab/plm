@@ -18,6 +18,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -37,6 +38,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -60,6 +62,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -103,6 +106,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -163,6 +167,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -182,6 +187,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -205,6 +211,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -239,6 +246,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -258,6 +266,7 @@
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -297,6 +306,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -316,6 +326,7 @@ Integer
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -339,6 +350,7 @@ Integer
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -373,6 +385,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -392,6 +405,7 @@ Integer
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -415,6 +429,7 @@ Integer
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -454,6 +469,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">datatype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|表单数据类型|
 |<el-row justify="space-between"><el-col :span="20">formtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|表单类型|
 |<el-row justify="space-between"><el-col :span="20">psdeformid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体表单标识|
 |<el-row justify="space-between"><el-col :span="20">psdeformname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体表单名称|
@@ -473,6 +489,7 @@ Integer
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "datatype" : null,
   "formtype" : null,
   "psdeformid" : null,
   "psdeformname" : null,
@@ -539,6 +556,7 @@ Integer
     "codename" : null,
     "createdate" : null,
     "createman" : null,
+    "datatype" : null,
     "formtype" : null,
     "psdeformid" : null,
     "psdeformname" : null,

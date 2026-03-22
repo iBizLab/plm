@@ -34,11 +34,6 @@ RAWJSCODE1 --> END1
 
 
 
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
@@ -48,6 +43,11 @@ RAWJSCODE1 --> END1
 ```javascript
 ibiz.mc.command.create.send({ srfdecodename: 'template'});
 ```
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

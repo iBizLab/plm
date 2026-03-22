@@ -26,7 +26,7 @@
 
 运行对象：`IBizLuckySheet`
 
-远程仓库：`@ibiz-template-plm/lucky-sheet-editor@0.0.3-alpha.291`
+远程仓库：`@ibiz-template-plm/lucky-sheet-editor@0.0.3-alpha.432`
 
 ### cron表达式编辑器 :id=CronEditor
 
@@ -46,6 +46,15 @@
 
 远程仓库：`@ibiz-template-odoo/odoo-search-bar@0.1.8-alpha.336`
 
+### vditor编辑器 :id=VDITOR
+
+
+插件标识：`VDITOR`
+
+运行对象：`Vditor`
+
+远程仓库：`@ibiz-template-plm/html-vditor@0.0.3-alpha.433`
+
 ### x6设计节点 :id=X6DesignNode
 
 
@@ -55,6 +64,15 @@
 
 
 插件标识：`X6DesignLink`
+
+### 上传图片转base64 :id=TOBASE64
+
+
+插件标识：`TOBASE64`
+
+运行对象：`ImgToBase64`
+
+远程仓库：`@ibiz-template-plugin/img-to-base64@0.1.8-alpha.438`
 
 ### 个人团队选择 :id=TEAM_SELECT
 
@@ -99,7 +117,7 @@
 
 运行对象：`IBizPersonelSelect`
 
-远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.206`
+远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.434`
 
 ### 人员选择（移动端） :id=MOB_PERSONEL_SELECT
 
@@ -108,7 +126,7 @@
 
 运行对象：`MobPersonelSelect`
 
-远程仓库：`@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.102`
+远程仓库：`@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.356`
 
 ### 信息标题 :id=DATA_INFO_TITLE
 
@@ -162,7 +180,7 @@
 
 运行对象：`IBizAttention`
 
-远程仓库：`@ibiz-template-plm/attention@0.0.3-alpha.198`
+远程仓库：`@ibiz-template-plm/attention@0.0.3-alpha.319`
 
 ### 分组树 :id=GROUP_TREE
 
@@ -180,7 +198,7 @@
 
 运行对象：`TabGroupSelect`
 
-远程仓库：`@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.100`
+远程仓库：`@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.372`
 
 ### 分页导航下拉 :id=TAB_EXP_SELECT
 
@@ -204,6 +222,24 @@
 运行对象：`IBizListTreeControl`
 
 远程仓库：`@ibiz-template-plm/list-tree@0.0.3-alpha.225`
+
+### 动态列插件 :id=DYNAMIC_COLUMN
+
+
+插件标识：`DYNAMIC_COLUMN`
+
+运行对象：`DYNAMIC_COLUMN`
+
+远程仓库：`@ibiz-template-plm/dynamic-column@0.0.3-alpha.326`
+
+### 动态类型工具栏 :id=DYNATYPETOOLBAR
+
+
+插件标识：`DYNATYPETOOLBAR`
+
+运行对象：`DynaTypeToolBar`
+
+远程仓库：`@ibiz-template-plm/dyna-type-toolbar@0.0.3-alpha.436`
 
 ### 团队选择 :id=TEAM_PICKER
 
@@ -271,7 +307,7 @@
 
 运行对象：`IBizMDCtrlTreeControl`
 
-远程仓库：`@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.105`
+远程仓库：`@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.351`
 
 ### 多选视图右侧列表插件 :id=SAMPLE_LIST
 
@@ -289,7 +325,7 @@
 
 运行对象：`IBizCheckboxGrid`
 
-远程仓库：`@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.211`
+远程仓库：`@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.311`
 
 ### 工时表格 :id=WORKLOAD_TABLE
 
@@ -352,7 +388,7 @@
 
 运行对象：`DropdownSelectDaterange`
 
-远程仓库：`@ibiz-template-plmmob/mob-dropdown-select-daterange@0.0.3-alpha.142`
+远程仓库：`@ibiz-template-plmmob/mob-dropdown-select-daterange@0.0.3-alpha.330`
 
 ### 显示模式工具栏项 :id=SHOW_MODE_TOOLBAR_ITEM
 
@@ -415,7 +451,7 @@
 
 运行对象：`IBizRepeaterGridCaseSteps`
 
-远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-alpha.192`
+远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-alpha.435`
 
 ### 直接内容表格列 :id=JSCODE_GRID_COLUMN
 
@@ -433,7 +469,7 @@
 
 运行对象：`IBizRawActivity`
 
-远程仓库：`@ibiz-template-plm/raw-activity@0.0.3-dev.1`
+远程仓库：`@ibiz-template-plm/raw-activity@0.0.3-alpha.423`
 
 ### 看板快捷操作 :id=KANBAN_OPERATE
 
@@ -444,6 +480,24 @@
 
 远程仓库：`@ibiz-template-plm/kanban-operate@0.0.3-dev.40`
 
+### 知识图谱 :id=KNOWLEDGE_GRAPH
+
+
+插件标识：`KNOWLEDGE_GRAPH`
+
+运行对象：`KnowledgeGraph`
+
+远程仓库：`@ibiz-template-plm/knowledge-graph@0.0.3-alpha.404`
+
+### 移动端vditor编辑器 :id=MOB_VDITOR
+
+
+插件标识：`MOB_VDITOR`
+
+运行对象：`IBizMobHtmlComment`
+
+远程仓库：`@ibiz-template-plm/mob-html-vditor@0.0.3-alpha.432`
+
 ### 移动端人员选择树 :id=MOB_PERSONAL_PICKER_TREE
 
 
@@ -451,7 +505,7 @@
 
 运行对象：`IBizMobPersonalPickerTree`
 
-远程仓库：`@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.166`
+远程仓库：`@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.350`
 
 ### 移动端树视图增强 :id=MOB_TREE_VIEW_EX
 
@@ -496,7 +550,7 @@
 
 运行对象：`MobCommentItem`
 
-远程仓库：`@ibiz-template-plmmob/mob-comment-item@0.0.3-alpha.166`
+远程仓库：`@ibiz-template-plmmob/mob-comment-item@0.0.3-alpha.431`
 
 ### 移动端评论框 :id=MOBCOMMENT
 
@@ -505,16 +559,7 @@
 
 运行对象：`IBizMobHtmlComment`
 
-远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.197`
-
-### 移动端锚点富文本 :id=MOB_ANCHO_HTML
-
-
-插件标识：`MOB_ANCHO_HTML`
-
-运行对象：`MobAnchoHtml`
-
-远程仓库：`@ibiz-template-plm/mob-ancho-html@0.0.3-alpha.103`
+远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.356`
 
 ### 组装选中数据 :id=ASSEMBLE_SELECTED_DATA
 
@@ -541,7 +586,7 @@
 
 运行对象：`IBizFormDataComparison`
 
-远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-alpha.223`
+远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-alpha.407`
 
 ### 自动规则 :id=AUTO_RULES
 
@@ -613,7 +658,7 @@
 
 运行对象：`IBizGridEditColumn`
 
-远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.237`
+远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.428`
 
 ### 评审内容排序 :id=REVIEW_CONTENT_SORT
 
@@ -640,7 +685,7 @@
 
 运行对象：`IBizCommentItemRawItem`
 
-远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.287`
+远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.428`
 
 ### 评论回复列表 :id=COMMENT_LIST
 
@@ -740,7 +785,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.216`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.410`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 
@@ -803,7 +848,16 @@
 
 运行对象：`IBizMobProjectAttributes`
 
-远程仓库：`@ibiz-template-plmmob/mob-project-attributes@0.0.3-alpha.56`
+远程仓库：`@ibiz-template-plmmob/mob-project-attributes@0.0.3-alpha.414`
+
+### 预览markdown :id=PREVIEW
+
+
+插件标识：`PREVIEW`
+
+运行对象：`MarkdownPreview`
+
+远程仓库：`@ibiz-template-plm/markdown-preview@0.0.3-alpha.368`
 
 
 

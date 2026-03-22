@@ -31,9 +31,13 @@ view.parentView.parentView.state['srfpickupdata'] = data;
   * opendata(预置打开数据逻辑)
 
 
+### 关联界面行为
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [打开主视图（模态弹出）](module/TestMgmt/test_case#界面行为)
+
 ### 关联视图
   * [用例(test_case_edit_view)](app/view/test_case_edit_view)
   * [用例(test_case_main_view)](app/view/test_case_main_view)
+  * [用例(test_case_main_view_pop_up)](app/view/test_case_main_view_pop_up)
 
 <script>
  const { createApp } = Vue

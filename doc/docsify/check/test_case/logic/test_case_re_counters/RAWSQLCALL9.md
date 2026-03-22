@@ -4,7 +4,7 @@
 SELECT
     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,
     COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_test_case,
-    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_work_item
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 and t5.`group` <> 'bug' THEN 1 ELSE 0 END),0) AS test_case_re_work_item
 FROM
     `RELATION` t11
 JOIN
@@ -15,6 +15,8 @@ LEFT JOIN
     `test_case` t2 ON t2.`ID` = t11.`TARGET_ID`
 LEFT JOIN
     `work_item` t4 ON t4.ID = t11.TARGET_ID
+LEFT JOIN
+    `work_item_type` t5 ON t4.work_item_type_id = t5.id
 WHERE
     (t11.`PRINCIPAL_ID` = ?);
 ```

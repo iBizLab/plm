@@ -15,12 +15,14 @@
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||
 |扩展标记3|EXTENSION_TAG3|文本，可指定长度|200|是||
 |扩展标记4|EXTENSION_TAG4|文本，可指定长度|200|是||
+|逻辑标记|LOGICTAG|文本，可指定长度|60|是||
+|逻辑标记2|LOGICTAG2|文本，可指定长度|60|是||
 |逻辑类型|LOGICTYPE|文本，可指定长度|50|是||
 |实体|PSDEID|文本，可指定长度|100|否||
 |实体处理逻辑标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICID|全局唯一标识，文本类型，用户不可见|100|否||
-|逻辑连接|PSDELOGICLINKS|一对多关系数据集合|1048576|是||
+|逻辑连接|PSDELOGICLINKS|一对多动态对象|1048576|是||
 |实体处理逻辑名称|PSDELOGICNAME|文本，可指定长度|200|是||
-|逻辑节点|PSDELOGICNODES|一对多关系数据集合|1048576|是||
+|逻辑节点|PSDELOGICNODES|一对多动态对象|1048576|是||
 |实体|PSDENAME|文本，可指定长度|100|否||
 |更新时间|UPDATEDATE|日期时间型|8|否||
 |更新人|UPDATEMAN|文本，可指定长度|60|否||

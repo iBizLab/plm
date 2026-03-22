@@ -17,6 +17,9 @@
 ### 关联界面行为
   * [最近访问(RECENT)](module/Base/recent) : [显示更多_最近访问的用例（移动端仪表盘）](module/Base/recent#界面行为)
 
+### 关联视图
+  * [最近访问的用例(recent_recent_access_case_mob)](app/view/recent_recent_access_case_mob)
+
 <script>
  const { createApp } = Vue
   createApp({

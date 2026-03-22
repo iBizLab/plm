@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [编辑](module/ai/ai_agent_context#界面行为)
   * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [删除](module/ai/ai_agent_context#界面行为)
+  * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [编辑](module/ai/ai_agent_context#界面行为)
   * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [查看](module/ai/ai_agent_context#界面行为)
   * [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context) : [表格界面_新建操作](module/ai/ai_agent_context#界面行为)
 

@@ -33,14 +33,24 @@
 
 
 
+## [智能体(AI_AGENT)](module/ai/ai_agent.md) :id=ai_agent
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[reload_aiagents](module/ai/ai_agent/logic/reload_aiagents)|reload_aiagents|无||重载AI代理对象|
+
 
 
 ## [智能体业务上下文(AI_AGENT_CONTEXT)](module/ai/ai_agent_context.md) :id=ai_agent_context
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[agent_flow_clone](module/ai/ai_agent_context/logic/agent_flow_clone)|agent_flow_clone|无||克隆flow智能体|
+|[agent_flow_templ](module/ai/ai_agent_context/logic/agent_flow_templ)|agent_flow_templ|AICHAT||智能体处理流(模板)|
 |[fill_with_agent](module/ai/ai_agent_context/logic/fill_with_agent)|fill_with_agent|无||由插件补充填充，此配置仅作为填充入口|
 |[reload_aiagents](module/ai/ai_agent_context/logic/reload_aiagents)|reload_aiagents|无||重载AI代理对象|
+|[删除logic扩展模型](module/ai/ai_agent_context/logic/delete_extend_model)|delete_extend_model|无|||
+|[建立默认flow交谈逻辑](module/ai/ai_agent_context/logic/create_default_flow_logic)|create_default_flow_logic|无|||
 
 
 ## [智能体会话(AI_AGENT_CONVERSATION)](module/ai/ai_agent_conversation.md) :id=ai_agent_conversation
@@ -79,6 +89,12 @@
 |[获取Cloud配置](module/ai/ai_credential/logic/get_cloud_config)|get_cloud_config|无|||
 
 
+## [知识库文档分块(AI_KB_CHUNK)](module/ai/ai_kb_chunk.md) :id=ai_kb_chunk
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[检索测试](module/ai/ai_kb_chunk/logic/retrieval_test)|retrieval_test|无|||
+
 
 
 ## [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document.md) :id=ai_kb_document
@@ -86,8 +102,12 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除文档执行计划](module/ai/ai_kb_document/logic/remove_doc_scheduled)|remove_doc_scheduled|无|||
-|[文档解析处理](module/ai/ai_kb_document/logic/parsing)|parsing|无|||
+|[参考引用](module/ai/ai_kb_document/logic/references)|references|无|||
+|[填充知识库切片策略](module/ai/ai_kb_document/logic/fill_kb_chunk)|fill_kb_chunk|无|||
+|[文档解析处理](module/ai/ai_kb_document/logic/parse)|parse|无|||
+|[文档重新解析](module/ai/ai_kb_document/logic/reparse)|reparse|无|||
 |[更新文档执行计划](module/ai/ai_kb_document/logic/update_doc_scheduled)|update_doc_scheduled|属性逻辑|||
+|[未切片数据集](module/ai/ai_kb_document/logic/unparsed)|unparsed|无|||
 |[生成文档执行计划](module/ai/ai_kb_document/logic/generate_doc_scheduled)|generate_doc_scheduled|无|||
 
 
@@ -101,6 +121,7 @@
 |[同步删除文档和分块](module/ai/ai_kb_document_sync/logic/sync_remove_doc_chunk)|sync_remove_doc_chunk|无|||
 |[更新空间执行计划](module/ai/ai_kb_document_sync/logic/update_space_scheduled)|update_space_scheduled|属性逻辑|||
 |[生成空间执行计划](module/ai/ai_kb_document_sync/logic/generate_space_scheduled)|generate_space_scheduled|无|||
+|[空间文档解析处理](module/ai/ai_kb_document_sync/logic/space_parse)|space_parse|无|||
 
 
 ## [知识库文档向导(AI_KB_DOCUMENT_WIZARD)](module/ai/ai_kb_document_wizard.md) :id=ai_kb_document_wizard
@@ -108,7 +129,42 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[创建知识库文档](module/ai/ai_kb_document_wizard/logic/create_ai_kb_doc)|create_ai_kb_doc|无|||
+|[填充知识库切片策略](module/ai/ai_kb_document_wizard/logic/fill_kb_chunk)|fill_kb_chunk|无|||
 
+
+## [知识库图谱实体(AI_KB_GRAPH_ENTITY)](module/ai/ai_kb_graph_entity.md) :id=ai_kb_graph_entity
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[获取图谱实体/关系信息](module/ai/ai_kb_graph_entity/logic/graph_info)|graph_info|无|||
+
+
+
+
+
+
+## [知识库成员(AI_KB_MEMBER)](module/ai/ai_kb_member.md) :id=ai_kb_member
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[变更角色](module/ai/ai_kb_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/ai/ai_kb_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[移除知识库成员发送通知](module/ai/ai_kb_member/logic/remove_kb_member_notify)|remove_kb_member_notify|无||移除知识库成员时向对应用户发送通知消息|
+
+
+
+
+
+
+## [知识库(AI_KNOWLEDGE_BASE)](module/ai/ai_knowledge_base.md) :id=ai_knowledge_base
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[从其他数据库克隆](module/ai/ai_knowledge_base/logic/UpdateByKbTemp)|UpdateByKbTemp|无|||
+|[删除](module/ai/ai_knowledge_base/logic/delete)|delete|无||知识库数据的逻辑删除，修改知识库的是否删除属性值|
+|[变更管理员角色](module/ai/ai_knowledge_base/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[填充拷贝数据](module/ai/ai_knowledge_base/logic/fill_temp)|fill_temp|无|||
+|[恢复](module/ai/ai_knowledge_base/logic/recover)|recover|无||恢复已删除状态知识库数据，修改知识库的是否删除属性值|
 
 
 
@@ -210,6 +266,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除类别及子类别](module/Base/category/logic/delete_child_category)|delete_child_category|无||删除类别及其下子类别（测试）|
+|[新建类别排序](module/Base/category/logic/sort)|sort|无|||
 |[设置默认分组](module/Base/category/logic/set_section)|set_section|属性逻辑||设置默认分组|
 
 
@@ -357,6 +414,19 @@
 
 
 
+## [扩展打印模板(EXTEND_PRINT_TEMPL)](module/Base/extend_print_templ.md) :id=extend_print_templ
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[重载动态打印模版](module/Base/extend_print_templ/logic/reload_print_temp)|reload_print_temp|无||重载动态打印模版|
+
+
+
+## [扩展计划任务(EXTEND_SCHEDULED_TASK)](module/Base/extend_scheduled_task.md) :id=extend_scheduled_task
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[文档解析记录](module/Base/extend_scheduled_task/logic/doc_parse_record)|doc_parse_record|无|||
 
 
 
@@ -505,6 +575,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[计算活跃成员图表数据](module/Base/login_log/logic/calc_active_chart_datas)|calc_active_chart_datas|无||计算活跃成员模块下的图表所需要的数据|
 |[计算活跃成员数据信息](module/Base/login_log/logic/calc_active_member_info)|calc_active_member_info|无||获取活跃成员下的昨日活跃人数、昨日活跃率、活跃总人数、近七日活跃人数、近七日活跃率的数值|
+
 
 
 
@@ -688,6 +759,7 @@
 |[scrum项目组件权限计数器](module/ProjMgmt/project/logic/scrum_project_addon_authority)|scrum_project_addon_authority|无||获取scrum项目组件权限|
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
+|[使用模板创建项目](module/ProjMgmt/project/logic/create_from_template)|create_from_template|无|||
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
 |[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
@@ -697,6 +769,7 @@
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[填充复制项目信息](module/ProjMgmt/project/logic/fill_copy_info)|fill_copy_info|无||复制项目时，填充当前项目的基本信息|
+|[复制项目信息](module/ProjMgmt/project/logic/copy_project_info)|copy_project_info|无|||
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -750,6 +823,12 @@
 
 
 
+
+## [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc.md) :id=PSCorePrdFunc
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[versions](module/extension/PSCorePrdFunc/logic/versions)|versions|无|||
 
 
 
@@ -945,6 +1024,7 @@
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
+|[设置第一执行人（表格使用）](module/TestMgmt/run/logic/set_first_executor)|set_first_executor|无|||
 |[通过发布规划计划](module/TestMgmt/run/logic/program_plan_by_release)|program_plan_by_release|无||通过发布规划计划|
 |[通过工作项规划计划](module/TestMgmt/run/logic/program_plan_by_workitem)|program_plan_by_workitem|无||通过工作项规划计划|
 |[通过迭代规划计划](module/TestMgmt/run/logic/program_plan_by_sprint)|program_plan_by_sprint|无||通过迭代规划计划|
@@ -982,6 +1062,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除分组及其下类别](module/Base/section/logic/delete_section)|delete_section|无||删除分组及其下子类别（测试）|
+|[新建分组排序](module/Base/section/logic/sort)|sort|无|||
 
 
 
@@ -1178,6 +1259,12 @@
 |[计划操作标识业务计算逻辑](module/TestMgmt/test_plan/logic/oppriv_logic)|oppriv_logic|实体操作标识计算逻辑||计划操作标识业务计算逻辑|
 |[负责人变更附加逻辑](module/TestMgmt/test_plan/logic/assignee_onchange)|assignee_onchange|属性逻辑||测试计划负责人变更时触发相应的通知消息|
 
+
+## [用例模块(TEST_SUITE)](module/TestMgmt/test_suite.md) :id=test_suite
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[新建模块排序](module/TestMgmt/test_suite/logic/sort)|sort|无|||
 
 
 ## [工单(TICKET)](module/ProdMgmt/ticket.md) :id=ticket
@@ -1381,6 +1468,9 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[准备默认扩展模型](module/ProjMgmt/work_item_type/logic/prepare_default_model)|prepare_default_model|无||给新建的工作项类型绑定默认模型|
+|[删除扩展模型](module/ProjMgmt/work_item_type/logic/delete_custom_model)|delete_custom_model|无||删除工作项类型绑定的扩展模型|
+|[新建默认排序](module/ProjMgmt/work_item_type/logic/sort)|sort|无||填充默认排序值与编码值|
 |[无操作](module/ProjMgmt/work_item_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 

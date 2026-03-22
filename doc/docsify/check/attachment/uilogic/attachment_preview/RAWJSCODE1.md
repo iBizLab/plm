@@ -11,7 +11,7 @@ if (file_preview_address !== null && file_preview_address !== undefined && file_
 
     let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;
     const app = ibiz.hub.getApp(context.srfappid);
-    const OSSCat = app.model.userParam?.DefaultOSSCat;
+    const OSSCat = ibiz.env.defaultOSSCat || app.model.userParam?.DefaultOSSCat;
     uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');
 
     var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;

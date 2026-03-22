@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [智能体(AI_AGENT)](module/ai/ai_agent) : [表格界面_删除操作](module/ai/ai_agent#界面行为)
   * [智能体(AI_AGENT)](module/ai/ai_agent) : [表格界面_新建操作](module/ai/ai_agent#界面行为)
+  * [智能体(AI_AGENT)](module/ai/ai_agent) : [表格界面_删除操作](module/ai/ai_agent#界面行为)
 
 ### 关联视图
   * [智能体模板(ai_agent_edit_view)](app/view/ai_agent_edit_view)

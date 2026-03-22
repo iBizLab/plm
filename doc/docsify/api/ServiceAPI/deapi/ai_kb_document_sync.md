@@ -185,6 +185,58 @@
 
 ```
 
+## 异步空间文档解析处理
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_kb_document_syncs/{key}/async_space_parse" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">sync_frequency</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|同步频率|
+|<el-row justify="space-between"><el-col :span="20">source_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源类型|
+|<el-row justify="space-between"><el-col :span="20">source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源标识|
+|<el-row justify="space-between"><el-col :span="20">ai_knowledge_base_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "sync_frequency" : null,
+  "source_type" : null,
+  "source_id" : null,
+  "ai_knowledge_base_id" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+```
+
 ## 检查知识库文档同步主键
 
 <el-row>
@@ -354,6 +406,55 @@ Integer
 }
 
 ```
+
+## 空间文档解析处理
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_kb_document_syncs/{key}/space_parse" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">sync_frequency</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|同步频率|
+|<el-row justify="space-between"><el-col :span="20">source_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源类型|
+|<el-row justify="space-between"><el-col :span="20">source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源标识|
+|<el-row justify="space-between"><el-col :span="20">ai_knowledge_base_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "sync_frequency" : null,
+  "source_type" : null,
+  "source_id" : null,
+  "ai_knowledge_base_id" : null,
+}
+```
+
+
 
 ## DEFAULT
 
@@ -680,6 +781,39 @@ Integer
 
 
 
+## 根据知识库异步空间文档解析处理
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_knowledge_bases/{pkey}/ai_kb_document_syncs/{key}/async_space_parse" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|知识库主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">sync_frequency</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|同步频率|
+|<el-row justify="space-between"><el-col :span="20">source_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源类型|
+|<el-row justify="space-between"><el-col :span="20">source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源标识|
+|<el-row justify="space-between"><el-col :span="20">ai_knowledge_base_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
+
+
+
 ## 根据知识库检查知识库文档同步主键
 
 <el-row>
@@ -760,6 +894,39 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|知识库主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">sync_frequency</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|同步频率|
+|<el-row justify="space-between"><el-col :span="20">source_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源类型|
+|<el-row justify="space-between"><el-col :span="20">source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|源标识|
+|<el-row justify="space-between"><el-col :span="20">ai_knowledge_base_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
+
+
+
+## 根据知识库空间文档解析处理
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_knowledge_bases/{pkey}/ai_kb_document_syncs/{key}/space_parse" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|知识库主键|
+|key|String|标识|
 
 
 

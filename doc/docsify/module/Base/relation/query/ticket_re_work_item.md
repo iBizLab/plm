@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -73,12 +74,43 @@ WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.princi
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t1.CUR_VERSION_ID,
+t1.ID,
+t1.LEVEL,
+t1.NAME,
+t1.OWNER_TYPE,
+t1.PARENT_VERSION_ID,
+t1.PRINCIPAL_ID,
+t1.PRINCIPAL_TYPE,
+t1.RELATION_TYPE,
+t1.SEQUENCE,
+t1.TARGET_ID,
+t1.TARGET_TYPE,
+t1.TARGET_VERSION_ID,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM RELATION t1 
+LEFT JOIN WORK_ITEM t11 ON t1.TARGET_ID = t11.ID 
+
+
+WHERE ( t11.IS_DELETED = 0 ) AND ( t1.PRINCIPAL_ID = #{ctx.webcontext.principal_id}  AND  t1.TARGET_TYPE = 'work_item'  AND  t1.PRINCIPAL_TYPE = 'ticket' )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

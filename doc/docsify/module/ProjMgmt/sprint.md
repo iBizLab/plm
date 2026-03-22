@@ -301,6 +301,7 @@
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 刷新 | toolbar_sprint_grid_parts_toolbar_deuiaction2_click | 刷新 |单项数据|用户自定义||
 | 编辑 | open_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑迭代](app/view/sprint_update_view)</details>||
+| 新建类别 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建类别 |单项数据|用户自定义||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 开始迭代 | start_sprint | 开始迭代 |单项数据（主键）|<details><summary>后台调用</summary>[start_sprint](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -324,6 +325,7 @@
 | --------|--------|--------|
 |[删除类别或分组](module/ProjMgmt/sprint/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
 |[新建分组](module/ProjMgmt/sprint/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建子类别](module/ProjMgmt/sprint/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建类别](module/ProjMgmt/sprint/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProjMgmt/sprint/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算进度](module/ProjMgmt/sprint/uilogic/cal_schedule)|cal_schedule|表格列计算进度|

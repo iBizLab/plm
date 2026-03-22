@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./ai_estimated#begin {开始}]]
-state "结束" as END_02 <<end>> [[$./ai_estimated#end_02 {结束}]]
-state "结束" as END_01 <<end>> [[$./ai_estimated#end_01 {结束}]]
-state "准备参数" as PREPAREJSPARAM_01  [[$./ai_estimated#preparejsparam_01 {准备参数}]]
-state "AI登记预估工时" as DEACTION_01  [[$./ai_estimated#deaction_01 {AI登记预估工时}]]
-state "注入脚本代码" as RAWJSCODE4  [[$./ai_estimated#rawjscode4 {注入脚本代码}]]
 state "刷新父页面" as RAWJSCODE_02  [[$./ai_estimated#rawjscode_02 {刷新父页面}]]
+state "结束" as END_01 <<end>> [[$./ai_estimated#end_01 {结束}]]
+state "注入脚本代码" as RAWJSCODE4  [[$./ai_estimated#rawjscode4 {注入脚本代码}]]
+state "AI登记预估工时" as DEACTION_01  [[$./ai_estimated#deaction_01 {AI登记预估工时}]]
+state "准备参数" as PREPAREJSPARAM_01  [[$./ai_estimated#preparejsparam_01 {准备参数}]]
+state "结束" as END_02 <<end>> [[$./ai_estimated#end_02 {结束}]]
 
 
 Begin --> RAWJSCODE4
@@ -110,17 +110,22 @@ if (answer && typeof answer == 'string') {
 
 ```
 
-#### AI登记预估工时 :id=DEACTION_01<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
-
-
-
-调用实体 [工时(WORKLOAD)](module/Base/workload.md) 行为 [Create](module/Base/workload#行为) ，行为参数为`list`
-
 #### 准备参数 :id=PREPAREJSPARAM_01<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`预估工时登记未成功` 设置给  `result.content`
+
+#### 结束 :id=END_02<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+
+#### AI登记预估工时 :id=DEACTION_01<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工时(WORKLOAD)](module/Base/workload.md) 行为 [Create](module/Base/workload#行为) ，行为参数为`list`
 
 #### 刷新父页面 :id=RAWJSCODE_02<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -133,11 +138,6 @@ view.parentView.call("Refresh");
 ibiz.message.success('预估工时登记成功');
 uiLogic.result = {content: "预估工时登记成功"};
 ```
-
-#### 结束 :id=END_02<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
 
 #### 结束 :id=END_01<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -154,7 +154,7 @@ uiLogic.result = {content: "预估工时登记成功"};
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|list|list|数据对象列表||
-|result|result|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|result|result|数据对象||
+|list|list|数据对象列表||
 |resultcnt|resultcnt|简单数据||

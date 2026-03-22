@@ -11,7 +11,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
-(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
 t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
@@ -38,5 +38,5 @@ t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` and OWNER_TYPE='article_page') = '1' )
 ```

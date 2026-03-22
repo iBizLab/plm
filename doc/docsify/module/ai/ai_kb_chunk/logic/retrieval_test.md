@@ -50,7 +50,8 @@ if (query && kb_id){
     def top_k = (_default.get("top_k") as Integer) ?: 0
     def cross_languages = _default.get("cross_languages") ?: ""
     def use_kg = (_default.get("use_kg") as Boolean) ?: false
-    _params.put('size', 1000)
+    def n_pageindex_eq = (_default.get('n_pageindex_eq') as Integer) ?: 0
+    _params.put('size', top_k)
     _params.put('query', query)
     _params.put('n_rerank_eq', n_rerank_eq)
     _params.put('n_similarity_gtandeq', similarity_threshold)
@@ -58,6 +59,7 @@ if (query && kb_id){
     _params.put('top_k', top_k)
     _params.put('cross_languages', cross_languages)
     _params.put('use_kg', use_kg)
+    _params.put('n_pageindex_eq', n_pageindex_eq)
     def iSysKnowledgeBaseUtilRuntime = sys.getSysUtilRuntime(net.ibizsys.central.plugin.ai.sysutil.ISysKnowledgeBaseUtilRuntime.class, false)
     def _page = iSysKnowledgeBaseUtilRuntime.fetchChunks(kb_id, _params)
     if (_page){

@@ -15,10 +15,11 @@
 
 
 ### 关联界面行为
+  * [通用模板(TEMPLATE)](module/Base/template) : [使用此模板](module/Base/template#界面行为)
+  * [通用模板(TEMPLATE)](module/Base/template) : [查看需求内容模板](module/Base/template#界面行为)
+  * [通用模板(TEMPLATE)](module/Base/template) : [查看用例内容模板](module/Base/template#界面行为)
   * [通用模板(TEMPLATE)](module/Base/template) : [新建工作项模板](module/Base/template#界面行为)
-  * [通用模板(TEMPLATE)](module/Base/template) : [查看用例模板](module/Base/template#界面行为)
-  * [通用模板(TEMPLATE)](module/Base/template) : [查看需求模板](module/Base/template#界面行为)
-  * [通用模板(TEMPLATE)](module/Base/template) : [查看工作项模板](module/Base/template#界面行为)
+  * [通用模板(TEMPLATE)](module/Base/template) : [查看工作项内容模板](module/Base/template#界面行为)
 
 ### 关联视图
   * [新建模板(template_create_work_item_template_view)](app/view/template_create_work_item_template_view)

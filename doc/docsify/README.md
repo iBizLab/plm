@@ -22,6 +22,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |[DevOps数据集成](module/DevOps)|DevOps||DevOps数据集成|
 |[产品管理（制造业）](module/ProdMgmt_MFG)|ProdMgmt_MFG|||
 |[智能](module/ai)|ai|||
+|[基础(扩展)](module/base_extend)|base_extend|||
 
 
 #### 服务接口
@@ -60,6 +61,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 
 |  中文名col200      |   代码名col200  |   备注col600  |
 |  --------   |------------|  -----   |
+|[POSTGRESQL](db/POSTGRESQL)|POSTGRESQL||
 |[MYSQL5](db/MYSQL5)|MYSQL5||
 [^ibizsysmgr]: ibizsysmgr系统模型组
 [^ebsx]: allinone模型组

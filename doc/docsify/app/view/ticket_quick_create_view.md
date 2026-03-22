@@ -16,7 +16,9 @@ ctrl.evt.on('onFormDataChange', evt => {
     if (name === 'product_id') {
         view.redrawView({
             context: { product: value, dynamicnew: true },
-            params: {},
+            params: {
+                srfdefdata: evt.data[0]
+            },
             isReloadModel: true,
         });
     }

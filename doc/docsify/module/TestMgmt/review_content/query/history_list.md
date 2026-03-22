@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -64,12 +65,41 @@ WHERE ( t11.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.CHANGE_TYPE,
+t1.CREATE_MAN,
+t1.CREATE_TIME,
+t11.CUR_VERSION_ID,
+t1.FINAL_STAGE_RESULTS,
+t1.ID,
+t1.NAME,
+t11.OWNER_TYPE,
+t11.PARENT_VERSION_ID,
+t11.PRINCIPAL_ID,
+t11.PRINCIPAL_TYPE,
+t11.TARGET_ID,
+t11.TARGET_TYPE,
+t11.TARGET_VERSION_ID,
+t1.UPDATE_MAN,
+t1.UPDATE_TIME
+FROM REVIEW_CONTENT_EXTEND t1 
+LEFT JOIN RELATION t11 ON t1.ID = t11.ID 
+
+WHERE ( t11.PRINCIPAL_ID = #{ctx.webcontext.principal_id} )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

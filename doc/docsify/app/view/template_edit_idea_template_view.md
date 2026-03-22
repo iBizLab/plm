@@ -1,6 +1,9 @@
 # 编辑模板(template_edit_idea_template_view)  <!-- {docsify-ignore-all} -->
 
 
+系统自动添加
+
+
 
 ## 控件
 #### CAPTIONBAR(captionbar)

@@ -16,6 +16,9 @@
 ### 关联界面行为
   * [最近访问(RECENT)](module/Base/recent) : [显示更多_最近访问的项目（移动端仪表盘）](module/Base/recent#界面行为)
 
+### 关联视图
+  * [最近访问的项目(recent_mob_recent_access_project)](app/view/recent_mob_recent_access_project)
+
 <script>
  const { createApp } = Vue
   createApp({

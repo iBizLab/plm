@@ -25,6 +25,7 @@
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_is_template_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否模板|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目状态|
@@ -48,6 +49,7 @@
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
+  "n_is_template_eq" : null,
   "n_name_like" : null,
   "n_scope_type_eq" : null,
   "n_state_eq" : null,

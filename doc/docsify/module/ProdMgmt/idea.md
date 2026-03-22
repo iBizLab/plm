@@ -715,7 +715,7 @@
 | 更新需求进度 | update_idea_progress | 更新需求进度 |单项数据（主键）|<details><summary>后台调用</summary>[update_idea_progress](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
-| 需求移动 | idea_move | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
+| 移动 | idea_move | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 查看工单统计信息 | check_ticket_info | 查看工单信息 |无数据|用户自定义||
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -734,6 +734,7 @@
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；恢复已删除的需求|
 | 新建子模块 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建子模块 |单项数据|用户自定义||
 | 打印交谈资料_需求 | chat_resource_print | 打印 |单项数据|<details><summary>打开打印视图</summary>[chat_resource]()</details>||
+| 打开主视图（模态弹出） | open_main_view_pop_up | 打开主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view_pop_up)</details>||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 需求归档 | idea_archive | 需求归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|批操作工具栏上按钮调用|
 | 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
@@ -745,7 +746,7 @@
 | 新建模块 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建模块 |单项数据|用户自定义||
 | 需求复制 | idea_copy | 需求复制 |多项数据（主键）|<details><summary>后台调用</summary>[idea_copy](#行为)|批操作工具栏上按钮调用|
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
-| 需求移动（工具栏） | idea_move_toolbar | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
+| 移动（工具栏） | idea_move_toolbar | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 打开需求关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[需求关注](app/view/attention_mob_idea_md_view)</details>||
 | 评论 | toolbar_show_edit_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 显示下拉并展开数据（嵌入视图） | toolbar_show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
@@ -782,6 +783,7 @@
 |[用例关联需求值变更](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[组件显隐重置](module/ProdMgmt/idea/uilogic/reset)|reset||
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[获取关注人与评论数](module/ProdMgmt/idea/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)|get_customer_score|获取客户分数|
 |[获取工单数量](module/ProdMgmt/idea/uilogic/get_ticket_num)|get_ticket_num|获取工单数量|
 |[获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)|get_grid_total|获取表格的总条数信息|
@@ -794,7 +796,6 @@
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联需求值变更](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
-|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 ## 导入模式
 

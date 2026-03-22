@@ -183,7 +183,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 打开移动端事项分页导航视图(我创建的事项) | open_my_tab_created | 打开移动端事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_my_mob_tab_view)</details>||
-| 显示更多_最近访问的项目（移动端仪表盘） | show_more_access_project | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的项目](app/view/recent_recent_access_project_mobbash)</details>||
+| 显示更多_最近访问的项目（移动端仪表盘） | show_more_access_project | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的项目](app/view/recent_mob_recent_access_project)</details>||
 | 打开首页 | open_home_page | 打开首页 |无数据|用户自定义||
 | 新建工作项（测试用例） | test_case_create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_quick_create_view)</details>||
 | 首页 | panel_de_custom_index_view_layout_overview_button_calluilogic_click | 产品管理 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品管理](app/view/product_tree_exp_view)</details>||
@@ -202,7 +202,7 @@
 | 新建工作项 | create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_quick_create_view)</details>||
 | 新建缺陷(执行用例) | run_create_new_work_item_bug | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建工单（客户） | customer_create_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
-| 显示更多_最近访问的用例（移动端仪表盘） | show_more_access_case | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的用例](app/view/recent_recent_access_case_mobbash)</details>||
+| 显示更多_最近访问的用例（移动端仪表盘） | show_more_access_case | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的用例](app/view/recent_recent_access_case_mob)</details>||
 | 通过重定向视图跳转 | jump | 通过重定向视图跳转 |单项数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_redirect_view)</details>||
 
 ## 界面逻辑

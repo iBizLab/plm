@@ -1,6 +1,9 @@
 # 工作项列表导航(template_work_item_list_exp_view)  <!-- {docsify-ignore-all} -->
 
 
+系统自动添加
+
+
 
 ## 控件
 #### CAPTIONBAR(captionbar)
@@ -23,6 +26,7 @@ view.layoutPanel.panelItems.no_data_container.state.visible = true;
 
 
 ### 关联界面行为
+  * [通用模板(TEMPLATE)](module/Base/template) : [使用此模板](module/Base/template#界面行为)
   * [通用模板(TEMPLATE)](module/Base/template) : [新建工作项模板](module/Base/template#界面行为)
 
 ### 关联视图

@@ -29,6 +29,7 @@
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -54,6 +55,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -81,6 +83,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -128,6 +131,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -190,6 +194,7 @@
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -215,6 +220,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -242,6 +248,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -278,6 +285,7 @@
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -303,6 +311,7 @@
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -344,6 +353,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -369,6 +379,7 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -396,11 +407,81 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
 
 ```
+
+## 填充知识库切片策略
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ai_kb_document_wizards/{key}/fill_kb_chunk" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">enable</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|逻辑有效标识|
+|<el-row justify="space-between"><el-col :span="20">import_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|导入方式|
+|<el-row justify="space-between"><el-col :span="20">sync_frequency</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|同步频率|
+|<el-row justify="space-between"><el-col :span="20">kb_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|知识库标识|
+|<el-row justify="space-between"><el-col :span="20">selection_file_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择文件|
+|<el-row justify="space-between"><el-col :span="20">selection_page_ids</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面|
+|<el-row justify="space-between"><el-col :span="20">selection_page_names</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择页面名称|
+|<el-row justify="space-between"><el-col :span="20">space_selection</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择空间|
+|<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
+|<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
+|<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
+|<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
+|<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "id" : null,
+  "name" : null,
+  "enable" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "import_method" : null,
+  "sync_frequency" : null,
+  "kb_id" : null,
+  "selection_file_ids" : null,
+  "selection_page_ids" : null,
+  "selection_page_names" : null,
+  "space_selection" : null,
+  "parser_config" : null,
+  "selected_file_name" : null,
+  "selected_page_name" : null,
+  "is_parse_now" : null,
+  "custom_chunk" : null,
+  "chunk_method" : null,
+}
+```
+
+
 
 ## 获取知识库文档向导草稿
 
@@ -432,6 +513,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -457,6 +539,7 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -484,6 +567,7 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -520,6 +604,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parser_config</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|解析配置|
 |<el-row justify="space-between"><el-col :span="20">selected_file_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择文件|
 |<el-row justify="space-between"><el-col :span="20">selected_page_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|已选择页面|
+|<el-row justify="space-between"><el-col :span="20">is_parse_now</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否立即解析|
 |<el-row justify="space-between"><el-col :span="20">custom_chunk</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|自定义切片|
 |<el-row justify="space-between"><el-col :span="20">chunk_method</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|切片方法|
 
@@ -545,6 +630,7 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -572,6 +658,7 @@ Integer
   "parser_config" : null,
   "selected_file_name" : null,
   "selected_page_name" : null,
+  "is_parse_now" : null,
   "custom_chunk" : null,
   "chunk_method" : null,
 }
@@ -641,6 +728,7 @@ Integer
     "parser_config" : null,
     "selected_file_name" : null,
     "selected_page_name" : null,
+    "is_parse_now" : null,
     "custom_chunk" : null,
     "chunk_method" : null,
   }

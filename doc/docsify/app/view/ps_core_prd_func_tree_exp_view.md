@@ -13,6 +13,7 @@
 
 
 ### 关联视图
+  * [自定义安装(ps_core_prd_func_custom_install_view)](app/view/ps_core_prd_func_custom_install_view)
   * [已安装应用(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)
   * [应用市场(ps_core_prd_func_market_application_view)](app/view/ps_core_prd_func_market_application_view)
   * [核心产品(ps_core_prd_market_application_view)](app/view/ps_core_prd_market_application_view)

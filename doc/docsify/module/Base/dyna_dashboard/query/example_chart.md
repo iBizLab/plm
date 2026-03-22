@@ -7,6 +7,7 @@
 
 <el-row>
 &nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+&nbsp;<el-tag @click="POSTGRESQL = true">POSTGRESQL</el-tag>
 </el-row>
 
 <br>
@@ -72,12 +73,33 @@ WHERE ( t1.`IS_SYSTEM` = 1 )
 
 </el-dialog>
 
+<el-dialog v-model="POSTGRESQL" title="POSTGRESQL">
+
+```sql
+SELECT
+t1.APPID,
+t1.DESC,
+t1.DYNADASHBOARDID,
+t1.DYNADASHBOARDNAME,
+t1.EXAMPLE_CHART,
+t1.IS_SYSTEM,
+t1.MODELID,
+t1.SEQUENCES,
+t1.TYPE
+FROM DYNADASHBOARD t1 
+
+WHERE ( t1.IS_SYSTEM = 1 )
+```
+
+</el-dialog>
+
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
                 MYSQL5 : false
+                POSTGRESQL : false
         
       }
     },

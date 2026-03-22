@@ -19,11 +19,11 @@ if(view.params.sync_id){
 
 
 ### 关联界面行为
-  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_退出操作](module/ai/ai_kb_document#界面行为)
   * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_保存并退出操作](module/ai/ai_kb_document#界面行为)
+  * [知识库文档(AI_KB_DOCUMENT)](module/ai/ai_kb_document) : [编辑界面_退出操作](module/ai/ai_kb_document#界面行为)
 
 ### 关联视图
-  * [知识库(ai_knowledge_base_pickup_view)](app/view/ai_knowledge_base_pickup_view)
+  * [文档解析记录(extend_scheduled_task_parsing_record_view)](app/view/extend_scheduled_task_parsing_record_view)
 
 <script>
  const { createApp } = Vue
