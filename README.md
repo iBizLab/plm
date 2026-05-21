@@ -51,11 +51,11 @@ iBizPLM划分为8大模块：
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
 - 系统操作手册：[https://plm.ibizlab.cn/wiki/](https://plm.ibizlab.cn/wiki/)
-- 系统详细设计文档：[https://plm.ibizlab.cn/doc/](https://plm.ibizlab.cn/doc/) 特别鸣谢：[doc-generator](https://gitee.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
-- 基于 SpringBoot/Groovy 和 Vue 的轻量级应用程序源码 [plm-service](https://gitee.com/iBizLab/plm-service) [plm-web](https://gitee.com/iBizLab/plm-web)
-- 插件和组件仓库(前端组件plm-web-plugins，数据迁移/知识库导出/社区插件)代码仓库 [plm-open](https://gitee.com/ibizplm-open)
-- 依赖支撑服务(ebsx-allinone支撑服务/ebsx-gateway网关/uaa认证服务/前后端框架)仓库 [ibizlab-cloud](https://gitee.com/organizations/ibizlab-cloud/projects)
-- 应用市场仓库 [ibizlab-appstore](https://gitee.com/organizations/ibizlab-appstore/projects)
+- 系统详细设计文档：[https://plm.ibizlab.cn/doc/](https://plm.ibizlab.cn/doc/) 特别鸣谢：[doc-generator](https://github.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
+- 基于 SpringBoot/Groovy 和 Vue 的轻量级应用程序源码 [plm-service](https://github.com/iBizLab/plm-service) [plm-web](https://github.com/iBizLab/plm-web)
+- 插件和组件仓库(前端组件plm-web-plugins，数据迁移/知识库导出/社区插件)代码仓库 [plm-open](https://github.com/ibizplm-open)
+- 依赖支撑服务(ebsx-allinone支撑服务/ebsx-gateway网关/uaa认证服务/前后端框架)仓库 [ibizlab-cloud](https://github.com/organizations/ibizlab-cloud/projects)
+- 应用市场仓库 [ibizlab-appstore](https://github.com/organizations/ibizlab-appstore/projects)
 
 ### 安装部署
 
@@ -68,7 +68,7 @@ iBizPLM划分为8大模块：
 进入plm/deploy/compose目录
 
 ```
-git clone https://gitee.com/ibizlab/plm.git
+git clone https://github.com/ibizlab/plm.git
 cd plm/deploy/compose
 ```
 
